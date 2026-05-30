@@ -1,0 +1,326 @@
+{
+  "name": "facodi-youtube-url-content-extraction",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "facodi/youtube/analyze",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-youtube-analyze",
+      "name": "Webhook - YouTube Analyze",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body ?? $json;\nconst secret = $json.headers?.['x-n8n-webhook-secret'] ?? $json.headers?.['X-N8N-Webhook-Secret'];\nif ($env.N8N_WEBHOOK_SECRET && secret !== $env.N8N_WEBHOOK_SECRET) {\n  throw new Error('unauthorized');\n}\nconst youtubeUrl = String(body.youtube_url ?? body.youtubeUrl ?? '').trim();\nif (!youtubeUrl) throw new Error('youtube_url is required');\nreturn [{ json: {\n  youtube_url: youtubeUrl,\n  language: String(body.language ?? 'pt').slice(0, 12).toLowerCase(),\n  user_id: body.user_id ?? body.userId ?? null,\n  source: String(body.source ?? 'n8n_youtube_url_import'),\n  force_reprocess: Boolean(body.force_reprocess ?? body.forceReprocess ?? false)\n}}];"
+      },
+      "id": "validate-request",
+      "name": "Validate Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent($json.youtube_url) }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (compatible; FACODI-n8n/1.0)"
+            },
+            {
+              "name": "accept-language",
+              "value": "pt-PT,pt;q=0.9,en;q=0.8"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "youtube-oembed",
+      "name": "Fetch YouTube Metadata",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.FACODI_PYTHON_HELPER_URL }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { ...$('Validate Request').first().json, metadata: $json } }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "python-normalize-pre-ai",
+      "name": "Python Normalize Metadata",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [780, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL + '/rest/v1/videos?on_conflict=youtube_id' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Prefer",
+              "value": "resolution=merge-duplicates,return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.rows.video_upsert }}",
+        "options": {}
+      },
+      "id": "upsert-video",
+      "name": "Upsert Supabase Video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1040, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL + '/rest/v1/rpc/list_education_playlists_for_assignment' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { p_language: $('Validate Request').first().json.language, p_limit: 160 } }}",
+        "options": {}
+      },
+      "id": "load-playlists",
+      "name": "Load Education Playlists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1300, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.OPENAI_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { model: $env.OPENAI_MODEL || 'gpt-4o-mini', response_format: { type: 'json_object' }, messages: [ { role: 'system', content: 'Return only valid JSON for FACODI educational video enrichment.' }, { role: 'user', content: JSON.stringify({ request: $('Validate Request').first().json, metadata: $('Fetch YouTube Metadata').first().json, playlists: $json.slice ? $json.slice(0, 60) : $json }) } ] } }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "openai-enrichment",
+      "name": "OpenAI Enrichment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1560, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.FACODI_PYTHON_HELPER_URL }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { ...$('Validate Request').first().json, metadata: $('Fetch YouTube Metadata').first().json, playlists: $('Load Education Playlists').first().json, video_id: $('Upsert Supabase Video').first().json[0]?.id ?? $('Upsert Supabase Video').first().json.id, ai_response: $json.choices?.[0]?.message?.content } }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "python-finalize",
+      "name": "Python Finalize Analysis",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1820, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL + '/rest/v1/ai_enrichments' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.rows.ai_enrichment }}",
+        "options": {}
+      },
+      "id": "insert-ai-enrichment",
+      "name": "Insert AI Enrichment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2080, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Python Finalize Analysis').first().json.assignment.assigned_playlist_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "has-playlist",
+      "name": "Has Playlist Assignment",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2340, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL + '/rest/v1/playlist_videos?on_conflict=playlist_id,video_id' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.SUPABASE_SERVICE_ROLE_KEY }}"
+            },
+            {
+              "name": "Prefer",
+              "value": "resolution=ignore-duplicates,return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Python Finalize Analysis').first().json.rows.playlist_video }}",
+        "options": {}
+      },
+      "id": "insert-playlist-video",
+      "name": "Insert Playlist Link",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2600, -120]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $('Python Finalize Analysis').first().json.response }}",
+        "options": {}
+      },
+      "id": "respond-success",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2860, 0]
+    }
+  ],
+  "connections": {
+    "Webhook - YouTube Analyze": {
+      "main": [[{ "node": "Validate Request", "type": "main", "index": 0 }]]
+    },
+    "Validate Request": {
+      "main": [[{ "node": "Fetch YouTube Metadata", "type": "main", "index": 0 }]]
+    },
+    "Fetch YouTube Metadata": {
+      "main": [[{ "node": "Python Normalize Metadata", "type": "main", "index": 0 }]]
+    },
+    "Python Normalize Metadata": {
+      "main": [[{ "node": "Upsert Supabase Video", "type": "main", "index": 0 }]]
+    },
+    "Upsert Supabase Video": {
+      "main": [[{ "node": "Load Education Playlists", "type": "main", "index": 0 }]]
+    },
+    "Load Education Playlists": {
+      "main": [[{ "node": "OpenAI Enrichment", "type": "main", "index": 0 }]]
+    },
+    "OpenAI Enrichment": {
+      "main": [[{ "node": "Python Finalize Analysis", "type": "main", "index": 0 }]]
+    },
+    "Python Finalize Analysis": {
+      "main": [[{ "node": "Insert AI Enrichment", "type": "main", "index": 0 }]]
+    },
+    "Insert AI Enrichment": {
+      "main": [[{ "node": "Has Playlist Assignment", "type": "main", "index": 0 }]]
+    },
+    "Has Playlist Assignment": {
+      "main": [
+        [{ "node": "Insert Playlist Link", "type": "main", "index": 0 }],
+        [{ "node": "Respond Success", "type": "main", "index": 0 }]
+      ]
+    },
+    "Insert Playlist Link": {
+      "main": [[{ "node": "Respond Success", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "pinData": {}
+}
