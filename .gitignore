@@ -70,6 +70,7 @@ workspace/data/*
 
 # Data archives
 data/*
+!data/*.ts
 famebuilders/
 final_data/
 
