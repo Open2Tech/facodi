@@ -8,7 +8,7 @@ interface SubmissionListPageProps {
 }
 
 export const SubmissionListPage: React.FC<SubmissionListPageProps> = ({ locale = 'pt' }) => {
-  const t = createTranslator(locale as Locale);
+  const { t } = createTranslator(locale as Locale);
 
   const [submissions, setSubmissions] = useState<ContentSubmission[]>([]);
   const [loading, setLoading] = useState(true);

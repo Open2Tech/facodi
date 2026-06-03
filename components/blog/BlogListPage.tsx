@@ -8,7 +8,7 @@ interface BlogListPageProps {
 }
 
 const BlogListPage: React.FC<BlogListPageProps> = ({ locale, onSelectPost }) => {
-  const t = createTranslator(locale);
+  const { t } = createTranslator(locale);
   const posts = useMemo(() => getPublishedPosts(), []);
 
   return (

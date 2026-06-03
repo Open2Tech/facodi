@@ -24,7 +24,7 @@ interface ContentSubmissionPageProps {
 }
 
 export const ContentSubmissionPage: React.FC<ContentSubmissionPageProps> = ({ locale = 'pt' }) => {
-  const t = createTranslator(locale as Locale);
+  const { t } = createTranslator(locale as Locale);
   const { profile } = useAuth();
 
   const [formData, setFormData] = useState<FormData>({

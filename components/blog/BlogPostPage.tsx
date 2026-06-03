@@ -10,7 +10,7 @@ interface BlogPostPageProps {
 }
 
 const BlogPostPage: React.FC<BlogPostPageProps> = ({ slug, locale, onBack }) => {
-  const t = createTranslator(locale);
+  const { t } = createTranslator(locale);
   const post = useMemo(() => getPostBySlug(slug), [slug]);
 
   if (!post) {

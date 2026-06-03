@@ -263,6 +263,8 @@ const translations = {
     'institutional.seaEu.link': 'SEA-EU Alliance',
     'institutional.ualg.badge': 'UAlg',
     'institutional.ualg.link': 'Universidade do Algarve',
+    'institutional.footer.text': 'FACODI é um projeto colaborativo para educação digital aberta.',
+    'institutional.disclaimer.pt': 'Esta é uma plataforma em desenvolvimento com conteúdo de demonstração.',
   },
   en: {
     // Navigation

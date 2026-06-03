@@ -9,7 +9,7 @@ interface AdminReviewDashboardProps {
 }
 
 export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ locale = 'pt' }) => {
-  const t = createTranslator(locale as Locale);
+  const { t } = createTranslator(locale as Locale);
 
   const [activeTab, setActiveTab] = useState<'submissions' | 'applications'>('submissions');
   const [submissions, setSubmissions] = useState<ContentSubmission[]>([]);

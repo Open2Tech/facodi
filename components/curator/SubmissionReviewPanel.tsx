@@ -14,7 +14,7 @@ export const SubmissionReviewPanel: React.FC<SubmissionReviewPanelProps> = ({
   locale = 'pt',
   onClose,
 }) => {
-  const t = createTranslator(locale as Locale);
+  const { t } = createTranslator(locale as Locale);
 
   const [submission, setSubmission] = useState<ContentSubmission | null>(null);
   const [loading, setLoading] = useState(true);

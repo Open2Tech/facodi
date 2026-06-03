@@ -21,6 +21,7 @@ const Contributors = React.lazy(() => import('./components/Contributors'));
 const LessonDetail = React.lazy(() => import('./components/LessonDetail'));
 const InstitutionalPage = React.lazy(() => import('./components/InstitutionalPage'));
 const AINavigator = React.lazy(() => import('./components/AINavigator'));
+const VideoList = React.lazy(() => import('./components/videos/VideoList'));
 const VideoDetail = React.lazy(() => import('./components/videos/VideoDetail'));
 const AuthModal = React.lazy(() => import('./components/auth/AuthModal'));
 const ProfilePage = React.lazy(() => import('./components/user/ProfilePage'));
@@ -913,6 +914,7 @@ const App: React.FC = () => {
           <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
             <ProfilePage
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
+              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -1004,6 +1006,7 @@ const App: React.FC = () => {
             }}
             onNavigate={handleUnitSelect}
             courseTitle={coursesById.get(selectedUnit.courseId)?.title}
+            t={t}
           />
         </Suspense>
       );
@@ -1037,7 +1040,16 @@ const App: React.FC = () => {
             }}
             onNavigate={handleLessonSelect}
             courseTitle={coursesById.get(selectedLesson.courseId)?.title}
+            t={t}
           />
+        </Suspense>
+      );
+    }
+
+    if (currentView === 'videos') {
+      return (
+        <Suspense fallback={lazyFallback}>
+          <VideoList onSelectVideo={handleVideoSelect} t={t} />
         </Suspense>
       );
     }
@@ -1052,6 +1064,7 @@ const App: React.FC = () => {
               updateRoute('videos');
             }}
             onSelectVideo={handleVideoSelect}
+            t={t}
           />
         </Suspense>
       );
@@ -1094,6 +1107,7 @@ const App: React.FC = () => {
               setCurrentView('repository');
               updateRoute('repository');
             }}
+            t={t}
             courses={courses}
             units={units}
             isLoading={isCatalogLoading}
@@ -1254,7 +1268,7 @@ const App: React.FC = () => {
         {renderContent()}
         {showAuthModal && (
           <Suspense fallback={null}>
-            <AuthModal onClose={() => setShowAuthModal(false)} />
+            <AuthModal onClose={() => setShowAuthModal(false)} t={t} />
           </Suspense>
         )}
         {enableAiNavigator && (

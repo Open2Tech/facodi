@@ -22,7 +22,7 @@ interface CuratorApplicationPageProps {
 }
 
 export const CuratorApplicationPage: React.FC<CuratorApplicationPageProps> = ({ locale = 'pt' }) => {
-  const t = createTranslator(locale as Locale);
+  const { t } = createTranslator(locale as Locale);
   const { profile } = useAuth();
   
   const [formData, setFormData] = useState<FormData>({
