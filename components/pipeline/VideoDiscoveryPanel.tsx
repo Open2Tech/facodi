@@ -298,7 +298,7 @@ const VideoDiscoveryPanel: React.FC<VideoDiscoveryPanelProps> = ({ onSuccess }) 
         </>
       )}
 
-      <style jsx>{`
+      <style>{`
         .video-discovery-panel {
           width: 100%;
           padding: 2rem 1.5rem;

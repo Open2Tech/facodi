@@ -392,7 +392,7 @@ const AIAnalysisPanel: React.FC<AIAnalysisPanelProps> = ({ onSuccess }) => {
         </>
       )}
 
-      <style jsx>{`
+      <style>{`
         .ai-analysis-panel {
           width: 100%;
           padding: 2rem 1.5rem;

@@ -343,7 +343,7 @@ const PlaylistMapper: React.FC<PlaylistMapperProps> = ({ onSuccess }) => {
         </>
       )}
 
-      <style jsx>{`
+      <style>{`
         .playlist-mapper {
           width: 100%;
           padding: 2rem 1.5rem;

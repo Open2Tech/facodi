@@ -34,6 +34,9 @@ const translations = {
     'auth.successSignedIn': 'Login realizado com sucesso.',
     'auth.orContinueWith': 'Ou continue com',
     'auth.continueWithGoogle': 'Continuar com Google',
+    'auth.adminBadge': 'Administrador',
+    'auth.editorBadge': 'Editor',
+    'auth.userBadge': 'Utilizador',
 
     // Home
     'home.heroBadge': 'Educação Aberta',
@@ -295,6 +298,9 @@ const translations = {
     'auth.successSignedIn': 'Signed in successfully.',
     'auth.orContinueWith': 'Or continue with',
     'auth.continueWithGoogle': 'Continue with Google',
+    'auth.adminBadge': 'Administrator',
+    'auth.editorBadge': 'Editor',
+    'auth.userBadge': 'User',
 
     // Home
     'home.heroBadge': 'Open Education',

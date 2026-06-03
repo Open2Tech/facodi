@@ -118,7 +118,7 @@ const EditorialReviewPanel: React.FC<EditorialReviewPanelProps> = ({
           </button>
         </div>
 
-        <style jsx>{`
+        <style>{`
           .editorial-review-panel {
             width: 100%;
             padding: 2rem 1.5rem;
@@ -350,7 +350,7 @@ const EditorialReviewPanel: React.FC<EditorialReviewPanelProps> = ({
         </button>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .editorial-review-panel {
           width: 100%;
           padding: 2rem 1.5rem;

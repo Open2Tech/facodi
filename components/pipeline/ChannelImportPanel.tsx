@@ -88,7 +88,7 @@ const ChannelImportPanel: React.FC<ChannelImportPanelProps> = ({ onSuccess }) =>
         </div>
       </form>
 
-      <style jsx>{`
+      <style>{`
         .channel-import-panel {
           width: 100%;
           max-width: 600px;

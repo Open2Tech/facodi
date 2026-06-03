@@ -162,7 +162,7 @@ const ChannelCurationPageContent: React.FC<ChannelCurationPageProps> = ({ locale
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .channel-curation-page {
           min-height: 100vh;
           background: #f9f9f9;
