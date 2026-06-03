@@ -1,5 +1,5 @@
 
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, useMemo } from 'react';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import CourseCard from './components/CourseCard';

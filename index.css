@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
   FACODI Design System — Utilitários visuais centralizados.
   Padrão: stark-border (1px black), sem radius excessivo, tipografia uppercase pesada.
