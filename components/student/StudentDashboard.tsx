@@ -1,20 +1,17 @@
 import React from 'react';
 import { useStudentDashboard } from '../../hooks/useStudentDashboard';
 import { useAuth } from '../../contexts/AuthContext';
-import { Translator } from '../../data/i18n';
 
 interface StudentDashboardProps {
   onBack: () => void;
   onSelectCourse: (unitId: string) => void;
   onSelectVideo: (videoId: string) => void;
-  t: Translator;
 }
 
 export default function StudentDashboard({
   onBack,
   onSelectCourse,
   onSelectVideo,
-  t,
 }: StudentDashboardProps): React.ReactElement {
   const { user } = useAuth();
   const { data: dashboard, isLoading, error } = useStudentDashboard();

@@ -1,12 +1,11 @@
 
-import React, { Suspense, useState, useMemo, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import CourseCard from './components/CourseCard';
 import PlaylistCard from './components/PlaylistCard';
 import Courses from './components/Courses';
 import { Category, Course, CurricularUnit, FilterState, Playlist } from './types';
-import { createTranslator, Locale } from './data/i18n';
 import { CatalogSource, loadCatalogData } from './services/catalogSource';
 import { useAuth } from './contexts/AuthContext';
 import { supabase } from './services/supabase';
@@ -83,7 +82,7 @@ const App: React.FC = () => {
   const [selectedAdminSubmissionId, setSelectedAdminSubmissionId] = useState<string | null>(null);
   const [selectedPageSlug, setSelectedPageSlug] = useState<string | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
-  const [locale, setLocale] = useState<Locale>('pt');
+  const [locale, setLocale] = useState<string>('pt');
   const [courses, setCourses] = useState<Course[]>([]);
   const [units, setUnits] = useState<CurricularUnit[]>([]);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
@@ -100,8 +99,6 @@ const App: React.FC = () => {
     year: 'All',
     semester: 'All'
   });
-
-  const t = useMemo(() => createTranslator(locale), [locale]);
 
   const updateRoute = (view: View, unitId?: string | null, lessonId?: string | null, videoId?: string | null, blogSlug?: string | null) => {
     let path = '/';
@@ -912,7 +909,6 @@ const App: React.FC = () => {
           <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
             <ProfilePage
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
-              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -948,7 +944,6 @@ const App: React.FC = () => {
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
               onSelectCourse={handleUnitSelect}
               onSelectVideo={handleVideoSelect}
-              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -962,7 +957,6 @@ const App: React.FC = () => {
             <StudentMyCoursesPage
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
               onSelectCourse={handleUnitSelect}
-              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -975,7 +969,6 @@ const App: React.FC = () => {
           <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
             <StudentProgressPage
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
-              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -988,7 +981,6 @@ const App: React.FC = () => {
           <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
             <StudentHistoryPage
               onBack={() => { setCurrentView('home'); updateRoute('home'); }}
-              t={t}
             />
           </RequireAuth>
         </Suspense>
@@ -1007,8 +999,7 @@ const App: React.FC = () => {
               updateRoute('repository');
             }}
             onNavigate={handleUnitSelect}
-            t={t}
-              courseTitle={coursesById.get(selectedUnit.courseId)?.title}
+            courseTitle={coursesById.get(selectedUnit.courseId)?.title}
           />
         </Suspense>
       );
@@ -1041,8 +1032,7 @@ const App: React.FC = () => {
               updateRoute('repository');
             }}
             onNavigate={handleLessonSelect}
-            t={t}
-              courseTitle={coursesById.get(selectedLesson.courseId)?.title}
+            courseTitle={coursesById.get(selectedLesson.courseId)?.title}
           />
         </Suspense>
       );
@@ -1058,7 +1048,6 @@ const App: React.FC = () => {
               updateRoute('videos');
             }}
             onSelectVideo={handleVideoSelect}
-            t={t}
           />
         </Suspense>
       );
@@ -1088,7 +1077,6 @@ const App: React.FC = () => {
               setCurrentView('repository');
               updateRoute('repository');
             }}
-            t={t}
             courses={courses}
             units={units}
           />
@@ -1101,7 +1089,6 @@ const App: React.FC = () => {
               setCurrentView('repository');
               updateRoute('repository');
             }}
-            t={t}
             courses={courses}
             units={units}
             isLoading={isCatalogLoading}
@@ -1262,7 +1249,7 @@ const App: React.FC = () => {
         {renderContent()}
         {showAuthModal && (
           <Suspense fallback={null}>
-            <AuthModal onClose={() => setShowAuthModal(false)} t={t} />
+            <AuthModal onClose={() => setShowAuthModal(false)} />
           </Suspense>
         )}
         {enableAiNavigator && (

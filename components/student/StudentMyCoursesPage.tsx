@@ -1,18 +1,15 @@
 import React from 'react';
 import { useMyCourses } from '../../hooks/useMyCourses';
 import { useAuth } from '../../contexts/AuthContext';
-import { Translator } from '../../data/i18n';
 
 interface StudentMyCoursesPageProps {
   onBack: () => void;
   onSelectCourse: (unitId: string) => void;
-  t: Translator;
 }
 
 export default function StudentMyCoursesPage({
   onBack,
   onSelectCourse,
-  t,
 }: StudentMyCoursesPageProps): React.ReactElement {
   const { user } = useAuth();
   const { courses, isLoading, error } = useMyCourses();

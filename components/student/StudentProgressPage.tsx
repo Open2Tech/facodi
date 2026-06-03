@@ -1,16 +1,13 @@
 import React from 'react';
 import { useStudentDashboard } from '../../hooks/useStudentDashboard';
 import { useAuth } from '../../contexts/AuthContext';
-import { Translator } from '../../data/i18n';
 
 interface StudentProgressPageProps {
   onBack: () => void;
-  t: Translator;
 }
 
 export default function StudentProgressPage({
   onBack,
-  t,
 }: StudentProgressPageProps): React.ReactElement {
   const { user } = useAuth();
   const { data: dashboard, isLoading, error } = useStudentDashboard();
