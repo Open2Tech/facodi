@@ -15,6 +15,25 @@ const translations = {
     'nav.blog': 'Blog',
     'nav.languageLabel': 'Selecionar idioma',
     'nav.login': 'Entrar',
+    'nav.logout': 'Sair',
+
+    // Auth
+    'auth.signIn': 'Entrar',
+    'auth.signUp': 'Criar conta',
+    'auth.email': 'Email',
+    'auth.password': 'Senha',
+    'auth.displayName': 'Nome de exibicao',
+    'auth.bio': 'Bio',
+    'auth.editProfile': 'Editar perfil',
+    'auth.saveChanges': 'Salvar alteracoes',
+    'auth.unitFavorites': 'Unidades favoritas',
+    'auth.noFavorites': 'Nenhuma unidade favorita',
+    'auth.errorGeneric': 'Ocorreu um erro. Tente novamente.',
+    'auth.errorInvalidCredentials': 'Credenciais invalidas.',
+    'auth.errorEmailInUse': 'Email ja em uso.',
+    'auth.successSignedIn': 'Login realizado com sucesso.',
+    'auth.orContinueWith': 'Ou continue com',
+    'auth.continueWithGoogle': 'Continuar com Google',
 
     // Home
     'home.heroBadge': 'Educação Aberta',
@@ -46,6 +65,7 @@ const translations = {
 
     // Home - Journey Section
     'home.journeyeyebrow': 'Como Começar',
+    'home.journeyEyebrow': 'Como Começar',
     'home.journeyTitle': 'Sua Jornada de Aprendizagem',
     'home.journeyStep1': 'Explore nossos cursos e unidades',
     'home.journeyStep2': 'Escolha o seu caminho de aprendizagem',
@@ -68,6 +88,19 @@ const translations = {
     'home.feature.playlists.description': 'Conteúdo público curado por nossa comunidade',
     'home.feature.progress.title': 'Acompanhamento',
     'home.feature.progress.description': 'Monitore seu progresso e conquistas',
+    'home.feature.curatorship.title': 'Curadoria',
+    'home.feature.curatorship.description': 'Conteúdos avaliados por especialistas e pela comunidade',
+
+    // Home - Courses Section
+    'home.coursesEyebrow': 'Cursos',
+    'home.coursesTitle': 'Trilhas em Destaque',
+    'home.coursesSubtitle': 'Planos e unidades curriculares organizados para o seu percurso',
+    'home.viewAllCourses': 'Ver todos os cursos',
+
+    // Home - Manifesto
+    'home.manifestoEyebrow': 'Manifesto',
+    'home.manifestoTitle': 'Educação aberta, comunitária e digital',
+    'home.manifestoDescription': 'Conheça os princípios que guiam a FACODI e a nossa comunidade.',
     
     // Home - Other
     'home.courseCardFootSuffix': 'unidades',
@@ -76,6 +109,160 @@ const translations = {
     'home.ctaTitle': 'FACODI — Faculdade Comunitária Digital',
     'home.ctaDescription': 'Combinação de playlists abertas, progresso',
     'home.ctaSecondary': 'Saber Mais',
+
+    // Blog
+    'blog.title': 'Blog',
+    'blog.empty': 'Nenhuma publicação encontrada.',
+    'blog.readMore': 'Ler mais',
+    'blog.by': 'Por',
+    'blog.backToList': 'Voltar',
+
+    // Courses
+    'courses.title': 'Cursos',
+    'courses.lead': 'Explore os percursos disponíveis',
+    'courses.description': 'Escolha um curso para acessar o currículo e as unidades.',
+    'courses.unitsMapped': 'unidades mapeadas',
+    'courses.viewCurriculum': 'Ver currículo',
+    'courses.loading': 'Carregando cursos...',
+
+    // Course Detail
+    'courseDetail.back': 'Voltar',
+    'courseDetail.credits': 'Créditos',
+    'courseDetail.location': 'Local',
+    'courseDetail.prerequisites': 'Pré-requisitos',
+    'courseDetail.curatorship': 'Curadoria',
+    'courseDetail.download': 'Download',
+    'courseDetail.related': 'Relacionado',
+    'courseDetail.relatedExercises': 'Exercícios relacionados',
+    'courseDetail.unitVideos': 'Vídeos da unidade',
+    'courseDetail.noVideos': 'Nenhum vídeo encontrado para esta unidade.',
+
+    // Lesson Detail
+    'lessonDetail.category': 'Categoria',
+    'lessonDetail.section': 'Seção',
+    'lessonDetail.unitCode': 'Código da unidade',
+    'lessonDetail.links': 'Links',
+    'lessonDetail.officialSite': 'Site oficial',
+    'lessonDetail.syllabus': 'Plano de estudos',
+
+    // Video State
+    'videoState.loading': 'Carregando vídeos...',
+    'videoState.error': 'Erro ao carregar vídeos.',
+    'videoState.empty': 'Nenhum vídeo encontrado.',
+
+    // Videos
+    'videos.title': 'Vídeos',
+    'videos.subtitle': 'Conteúdo audiovisual curado',
+    'videos.searchPlaceholder': 'Buscar vídeos',
+    'videos.allCategories': 'Todas as categorias',
+    'videos.allPlaylists': 'Todas as playlists',
+    'videos.loading': 'Carregando vídeos...',
+    'videos.error': 'Erro ao carregar vídeos.',
+    'videos.empty': 'Nenhum vídeo encontrado.',
+    'videos.back': 'Voltar',
+    'videos.open': 'Abrir vídeo',
+    'videos.related': 'Relacionados',
+    'videos.upNext': 'Próximo',
+
+    // Video Suggest
+    'videoSuggest.title': 'Sugestão de vídeo',
+    'videoSuggest.urlLabel': 'URL do YouTube',
+    'videoSuggest.helper': 'Cole o link do vídeo para identificar automaticamente.',
+    'videoSuggest.detectedVideoId': 'Vídeo identificado',
+    'videoSuggest.invalidUrl': 'URL inválida.',
+    'videoSuggest.submitting': 'Enviando...',
+    'videoSuggest.submit': 'Enviar sugestão',
+    'videoSuggest.resultTitle': 'Resultado',
+    'videoSuggest.duplicate': 'Este vídeo já existe no catálogo.',
+    'videoSuggest.course': 'Curso',
+    'videoSuggest.unit': 'Unidade',
+    'videoSuggest.playlist': 'Playlist',
+    'videoSuggest.topic': 'Tema',
+    'videoSuggest.notFound': 'Não encontrado',
+    'videoSuggest.confidence': 'Confiança',
+
+    // Curator Apply
+    'curator.apply.title': 'Candidatura de Curadoria',
+    'curator.apply.intro': 'Preencha o formulário para participar da curadoria de conteúdos.',
+    'curator.apply.success': 'Candidatura enviada com sucesso.',
+    'curator.apply.error.duplicate': 'Você já possui uma candidatura ativa.',
+    'curator.apply.error.generic': 'Erro ao enviar candidatura.',
+    'curator.apply.status.pending': 'Pendente',
+    'curator.apply.status.approved': 'Aprovada',
+    'curator.apply.status.rejected': 'Rejeitada',
+    'curator.apply.form.fullName': 'Nome completo',
+    'curator.apply.form.email': 'Email',
+    'curator.apply.form.specialtyArea': 'Área de especialidade',
+    'curator.apply.form.availability': 'Disponibilidade',
+    'curator.apply.form.experienceSummary': 'Resumo da experiência',
+    'curator.apply.form.motivation': 'Motivação',
+    'curator.apply.form.portfolioUrl': 'Portfólio',
+    'curator.apply.form.relevantLinks': 'Links relevantes',
+    'curator.apply.form.guidelinesAccepted': 'Aceito as diretrizes',
+    'curator.apply.form.consentPrivacy': 'Concordo com a política de privacidade',
+    'curator.apply.form.submit': 'Enviar candidatura',
+    'curator.apply.form.submitting': 'Enviando...',
+
+    // Curator Submissions
+    'curator.submit.title': 'Submeter Conteúdo',
+    'curator.submit.intro': 'Ajude a expandir o catálogo com conteúdos relevantes.',
+    'curator.submit.success': 'Conteúdo enviado com sucesso.',
+    'curator.submit.error.duplicate': 'Este conteúdo já foi enviado.',
+    'curator.submit.error.invalidUrl': 'URL inválida.',
+    'curator.submit.error.generic': 'Erro ao enviar conteúdo.',
+    'curator.submit.contentType': 'Tipo de conteúdo',
+    'curator.submit.youtubeUrl': 'URL do YouTube',
+    'curator.submit.url': 'URL',
+    'curator.submit.suggestedTitle': 'Título sugerido',
+    'curator.submit.summary': 'Resumo',
+    'curator.submit.courseId': 'Curso',
+    'curator.submit.unitId': 'Unidade',
+    'curator.submit.topic': 'Tema',
+    'curator.submit.pedagogicalReason': 'Justificativa pedagógica',
+    'curator.submit.tags': 'Tags',
+    'curator.submit.additionalNotes': 'Notas adicionais',
+    'curator.submit.submit': 'Enviar',
+    'curator.submit.submitting': 'Enviando...',
+
+    // Curator Review Panel
+    'curator.reviewPanel.reviewNotes': 'Notas de revisão',
+    'curator.reviewPanel.rejectionReason': 'Motivo da rejeição',
+    'curator.reviewPanel.approve': 'Aprovar',
+    'curator.reviewPanel.requestChanges': 'Solicitar ajustes',
+    'curator.reviewPanel.reject': 'Rejeitar',
+
+    // Curator Review Dashboard
+    'curator.reviewDashboard.title': 'Painel de Revisão',
+    'curator.reviewDashboard.submissions': 'Submissões',
+    'curator.reviewDashboard.applications': 'Candidaturas',
+    'curator.reviewDashboard.filter': 'Filtrar',
+    'curator.reviewDashboard.noItems': 'Nenhum item encontrado.',
+
+    // Curator My Submissions
+    'curator.mySubmissions.title': 'Minhas Submissões',
+    'curator.mySubmissions.filter': 'Filtrar status',
+    'curator.mySubmissions.empty': 'Nenhuma submissão encontrada.',
+    'curator.mySubmissions.status.pending': 'Pendente',
+    'curator.mySubmissions.status.submitted': 'Enviada',
+    'curator.mySubmissions.status.in_review': 'Em revisão',
+    'curator.mySubmissions.status.approved': 'Aprovada',
+    'curator.mySubmissions.status.rejected': 'Rejeitada',
+    'curator.mySubmissions.status.needs_changes': 'Requer ajustes',
+    'curator.mySubmissions.status.published': 'Publicada',
+
+    // Institutional
+    'institutional.curator.context.title': 'Contexto de Curadoria',
+    'institutional.curator.context.text': 'A curadoria garante qualidade e relevância para o catálogo.',
+    'institutional.content.submission.text': 'Envie conteúdos que complementem as unidades curriculares.',
+    'institutional.education.badge': 'Educação Aberta',
+    'institutional.homepage.title': 'FACODI e a educação comunitária',
+    'institutional.homepage.textLong': 'Projeto colaborativo para democratizar o acesso à educação digital.',
+    'institutional.homepage.cta': 'Conhecer o projeto',
+    'institutional.project.publicName': 'FACODI',
+    'institutional.seaEu.badge': 'SEA-EU',
+    'institutional.seaEu.link': 'SEA-EU Alliance',
+    'institutional.ualg.badge': 'UAlg',
+    'institutional.ualg.link': 'Universidade do Algarve',
   },
   en: {
     // Navigation
@@ -87,6 +274,25 @@ const translations = {
     'nav.blog': 'Blog',
     'nav.languageLabel': 'Select language',
     'nav.login': 'Sign In',
+    'nav.logout': 'Sign Out',
+
+    // Auth
+    'auth.signIn': 'Sign In',
+    'auth.signUp': 'Sign Up',
+    'auth.email': 'Email',
+    'auth.password': 'Password',
+    'auth.displayName': 'Display name',
+    'auth.bio': 'Bio',
+    'auth.editProfile': 'Edit profile',
+    'auth.saveChanges': 'Save changes',
+    'auth.unitFavorites': 'Favorite units',
+    'auth.noFavorites': 'No favorite units',
+    'auth.errorGeneric': 'Something went wrong. Please try again.',
+    'auth.errorInvalidCredentials': 'Invalid credentials.',
+    'auth.errorEmailInUse': 'Email already in use.',
+    'auth.successSignedIn': 'Signed in successfully.',
+    'auth.orContinueWith': 'Or continue with',
+    'auth.continueWithGoogle': 'Continue with Google',
 
     // Home
     'home.heroBadge': 'Open Education',
@@ -109,6 +315,7 @@ const translations = {
     
     // Home - Journey Section
     'home.journeyeyebrow': 'Getting Started',
+    'home.journeyEyebrow': 'Getting Started',
     'home.journeyTitle': 'Your Learning Journey',
     'home.journeyStep1': 'Explore our courses and units',
     'home.journeyStep2': 'Choose your learning path',
@@ -131,12 +338,179 @@ const translations = {
     'home.feature.playlists.description': 'Public content curated by our community',
     'home.feature.progress.title': 'Tracking',
     'home.feature.progress.description': 'Monitor your progress and achievements',
+    'home.feature.curatorship.title': 'Curatorship',
+    'home.feature.curatorship.description': 'Content reviewed by specialists and the community',
+
+    // Home - Courses Section
+    'home.coursesEyebrow': 'Courses',
+    'home.coursesTitle': 'Featured Paths',
+    'home.coursesSubtitle': 'Plans and curricular units organized for your journey',
+    'home.viewAllCourses': 'View all courses',
+
+    // Home - Manifesto
+    'home.manifestoEyebrow': 'Manifesto',
+    'home.manifestoTitle': 'Open, community-driven digital education',
+    'home.manifestoDescription': 'Learn the principles that guide FACODI and our community.',
     'home.courseCardFootSuffix': 'units',
     'home.readManifesto': 'Read Manifesto',
     'home.ctaPrimary': 'Start Now',
     'home.ctaTitle': 'FACODI — Digital Community College',
     'home.ctaDescription': 'Combination of open playlists, progress',
     'home.ctaSecondary': 'Learn More',
+
+    // Blog
+    'blog.title': 'Blog',
+    'blog.empty': 'No posts found.',
+    'blog.readMore': 'Read more',
+    'blog.by': 'By',
+    'blog.backToList': 'Back',
+
+    // Courses
+    'courses.title': 'Courses',
+    'courses.lead': 'Explore available paths',
+    'courses.description': 'Choose a course to access the curriculum and units.',
+    'courses.unitsMapped': 'mapped units',
+    'courses.viewCurriculum': 'View curriculum',
+    'courses.loading': 'Loading courses...',
+
+    // Course Detail
+    'courseDetail.back': 'Back',
+    'courseDetail.credits': 'Credits',
+    'courseDetail.location': 'Location',
+    'courseDetail.prerequisites': 'Prerequisites',
+    'courseDetail.curatorship': 'Curatorship',
+    'courseDetail.download': 'Download',
+    'courseDetail.related': 'Related',
+    'courseDetail.relatedExercises': 'Related exercises',
+    'courseDetail.unitVideos': 'Unit videos',
+    'courseDetail.noVideos': 'No videos found for this unit.',
+
+    // Lesson Detail
+    'lessonDetail.category': 'Category',
+    'lessonDetail.section': 'Section',
+    'lessonDetail.unitCode': 'Unit code',
+    'lessonDetail.links': 'Links',
+    'lessonDetail.officialSite': 'Official site',
+    'lessonDetail.syllabus': 'Syllabus',
+
+    // Video State
+    'videoState.loading': 'Loading videos...',
+    'videoState.error': 'Error loading videos.',
+    'videoState.empty': 'No videos found.',
+
+    // Videos
+    'videos.title': 'Videos',
+    'videos.subtitle': 'Curated audiovisual content',
+    'videos.searchPlaceholder': 'Search videos',
+    'videos.allCategories': 'All categories',
+    'videos.allPlaylists': 'All playlists',
+    'videos.loading': 'Loading videos...',
+    'videos.error': 'Error loading videos.',
+    'videos.empty': 'No videos found.',
+    'videos.back': 'Back',
+    'videos.open': 'Open video',
+    'videos.related': 'Related',
+    'videos.upNext': 'Up next',
+
+    // Video Suggest
+    'videoSuggest.title': 'Video suggestion',
+    'videoSuggest.urlLabel': 'YouTube URL',
+    'videoSuggest.helper': 'Paste the video link to detect it automatically.',
+    'videoSuggest.detectedVideoId': 'Detected video',
+    'videoSuggest.invalidUrl': 'Invalid URL.',
+    'videoSuggest.submitting': 'Submitting...',
+    'videoSuggest.submit': 'Submit suggestion',
+    'videoSuggest.resultTitle': 'Result',
+    'videoSuggest.duplicate': 'This video already exists in the catalog.',
+    'videoSuggest.course': 'Course',
+    'videoSuggest.unit': 'Unit',
+    'videoSuggest.playlist': 'Playlist',
+    'videoSuggest.topic': 'Topic',
+    'videoSuggest.notFound': 'Not found',
+    'videoSuggest.confidence': 'Confidence',
+
+    // Curator Apply
+    'curator.apply.title': 'Curator application',
+    'curator.apply.intro': 'Fill out the form to participate in content curation.',
+    'curator.apply.success': 'Application submitted successfully.',
+    'curator.apply.error.duplicate': 'You already have an active application.',
+    'curator.apply.error.generic': 'Error submitting application.',
+    'curator.apply.status.pending': 'Pending',
+    'curator.apply.status.approved': 'Approved',
+    'curator.apply.status.rejected': 'Rejected',
+    'curator.apply.form.fullName': 'Full name',
+    'curator.apply.form.email': 'Email',
+    'curator.apply.form.specialtyArea': 'Specialty area',
+    'curator.apply.form.availability': 'Availability',
+    'curator.apply.form.experienceSummary': 'Experience summary',
+    'curator.apply.form.motivation': 'Motivation',
+    'curator.apply.form.portfolioUrl': 'Portfolio',
+    'curator.apply.form.relevantLinks': 'Relevant links',
+    'curator.apply.form.guidelinesAccepted': 'I accept the guidelines',
+    'curator.apply.form.consentPrivacy': 'I agree with the privacy policy',
+    'curator.apply.form.submit': 'Submit application',
+    'curator.apply.form.submitting': 'Submitting...',
+
+    // Curator Submissions
+    'curator.submit.title': 'Submit content',
+    'curator.submit.intro': 'Help expand the catalog with relevant content.',
+    'curator.submit.success': 'Content submitted successfully.',
+    'curator.submit.error.duplicate': 'This content was already submitted.',
+    'curator.submit.error.invalidUrl': 'Invalid URL.',
+    'curator.submit.error.generic': 'Error submitting content.',
+    'curator.submit.contentType': 'Content type',
+    'curator.submit.youtubeUrl': 'YouTube URL',
+    'curator.submit.url': 'URL',
+    'curator.submit.suggestedTitle': 'Suggested title',
+    'curator.submit.summary': 'Summary',
+    'curator.submit.courseId': 'Course',
+    'curator.submit.unitId': 'Unit',
+    'curator.submit.topic': 'Topic',
+    'curator.submit.pedagogicalReason': 'Pedagogical rationale',
+    'curator.submit.tags': 'Tags',
+    'curator.submit.additionalNotes': 'Additional notes',
+    'curator.submit.submit': 'Submit',
+    'curator.submit.submitting': 'Submitting...',
+
+    // Curator Review Panel
+    'curator.reviewPanel.reviewNotes': 'Review notes',
+    'curator.reviewPanel.rejectionReason': 'Rejection reason',
+    'curator.reviewPanel.approve': 'Approve',
+    'curator.reviewPanel.requestChanges': 'Request changes',
+    'curator.reviewPanel.reject': 'Reject',
+
+    // Curator Review Dashboard
+    'curator.reviewDashboard.title': 'Review dashboard',
+    'curator.reviewDashboard.submissions': 'Submissions',
+    'curator.reviewDashboard.applications': 'Applications',
+    'curator.reviewDashboard.filter': 'Filter',
+    'curator.reviewDashboard.noItems': 'No items found.',
+
+    // Curator My Submissions
+    'curator.mySubmissions.title': 'My submissions',
+    'curator.mySubmissions.filter': 'Filter status',
+    'curator.mySubmissions.empty': 'No submissions found.',
+    'curator.mySubmissions.status.pending': 'Pending',
+    'curator.mySubmissions.status.submitted': 'Submitted',
+    'curator.mySubmissions.status.in_review': 'In review',
+    'curator.mySubmissions.status.approved': 'Approved',
+    'curator.mySubmissions.status.rejected': 'Rejected',
+    'curator.mySubmissions.status.needs_changes': 'Needs changes',
+    'curator.mySubmissions.status.published': 'Published',
+
+    // Institutional
+    'institutional.curator.context.title': 'Curator context',
+    'institutional.curator.context.text': 'Curation ensures quality and relevance for the catalog.',
+    'institutional.content.submission.text': 'Submit content that complements curricular units.',
+    'institutional.education.badge': 'Open Education',
+    'institutional.homepage.title': 'FACODI and community education',
+    'institutional.homepage.textLong': 'A collaborative project to democratize access to digital education.',
+    'institutional.homepage.cta': 'Learn about the project',
+    'institutional.project.publicName': 'FACODI',
+    'institutional.seaEu.badge': 'SEA-EU',
+    'institutional.seaEu.link': 'SEA-EU Alliance',
+    'institutional.ualg.badge': 'UAlg',
+    'institutional.ualg.link': 'University of Algarve',
 
     // Development Badge
     'development.badge': 'In Development',
