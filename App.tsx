@@ -34,6 +34,7 @@ const ContentSubmissionPage = React.lazy(() => import('./components/curator/Cont
 const SubmissionListPage = React.lazy(() => import('./components/curator/SubmissionListPage').then(m => ({ default: m.SubmissionListPage })));
 const AdminReviewDashboard = React.lazy(() => import('./components/curator/AdminReviewDashboard').then(m => ({ default: m.AdminReviewDashboard })));
 const ChannelCurationPage = React.lazy(() => import('./components/ChannelCurationPage'));
+const CuratorChannelPipeline = React.lazy(() => import('./components/curator/ChannelCurationPage').then(m => ({ default: m.ChannelCurationPage })));
 const AdminDashboard = React.lazy(() => import('./components/admin/AdminDashboard'));
 const AdminContentListPage = React.lazy(() => import('./components/admin/AdminContentListPage'));
 const AdminContentDetailPage = React.lazy(() => import('./components/admin/AdminContentDetailPage'));
@@ -74,7 +75,7 @@ type View =
   | 'blog-post';
 
 const App: React.FC = () => {
-  const { user, profile } = useAuth();
+  const { user, profile, isLoading: isAuthLoading } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [currentView, setCurrentView] = useState<View>('home');
   const [selectedUnitId, setSelectedUnitId] = useState<string | null>(null);
@@ -796,12 +797,13 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'editor' && profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Editor ou Administrador" />;
       }
       return (
         <Suspense fallback={lazyFallback}>
-          <ChannelCurationPage locale={locale} />
+          <CuratorChannelPipeline locale={locale} />
         </Suspense>
       );
     }
@@ -810,6 +812,7 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Administrador" />;
       }
@@ -834,6 +837,7 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Administrador" />;
       }
@@ -862,6 +866,7 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Administrador" />;
       }
@@ -879,6 +884,7 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Administrador" />;
       }
@@ -896,6 +902,7 @@ const App: React.FC = () => {
       if (!user) {
         return <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>{null}</RequireAuth>;
       }
+      if (isAuthLoading) return lazyFallback;
       if (profile?.role !== 'admin') {
         return <PermissionDenied onBack={() => { setCurrentView('home'); updateRoute('home'); }} requiredRole="Administrador" />;
       }
