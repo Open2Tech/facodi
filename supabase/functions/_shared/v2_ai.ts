@@ -3,10 +3,31 @@ import { optionalEnv } from "./v2_supabase.ts";
 import { normalizeWhitespace, sha256Hex } from "./v2_text.ts";
 
 export interface EmbeddingResult {
-  provider: "openai";
+  provider: "openai" | "local";
   model: string;
   embedding: number[];
   usage: Record<string, unknown>;
+}
+
+function localDeterministicEmbedding(text: string, dimensions = 1536): number[] {
+  const clean = normalizeWhitespace(text);
+  const base = clean.length > 0 ? clean : "facodi-empty";
+  const values: number[] = [];
+  let state = 2166136261;
+
+  for (let i = 0; i < base.length; i += 1) {
+    state ^= base.charCodeAt(i);
+    state = Math.imul(state, 16777619) >>> 0;
+  }
+
+  for (let i = 0; i < dimensions; i += 1) {
+    state ^= i + 1;
+    state = Math.imul(state, 1664525) + 1013904223;
+    const normalized = ((state >>> 0) / 4294967295) * 2 - 1;
+    values.push(Number(normalized.toFixed(6)));
+  }
+
+  return values;
 }
 
 export interface LlmClassificationResult {
@@ -30,12 +51,18 @@ export function confidenceLevel(confidence: number): "low" | "medium" | "high" {
 }
 
 export async function generateEmbedding(text: string): Promise<EmbeddingResult> {
-  const apiKey = optionalEnv("OPENAI_API_KEY");
-  if (!apiKey) {
-    throw new HttpError(424, "missing_openai_key", "OPENAI_API_KEY is required for embeddings.");
-  }
   const model = optionalEnv("OPENAI_EMBEDDING_MODEL") ?? "text-embedding-3-small";
   const input = normalizeWhitespace(text).slice(0, 24000);
+  const apiKey = optionalEnv("OPENAI_API_KEY");
+
+  if (!apiKey) {
+    return {
+      provider: "local",
+      model: "local-hash-1536",
+      embedding: localDeterministicEmbedding(input),
+      usage: { fallback: true, reason: "missing_openai_key" },
+    };
+  }
 
   const response = await fetch("https://api.openai.com/v1/embeddings", {
     method: "POST",
@@ -48,12 +75,26 @@ export async function generateEmbedding(text: string): Promise<EmbeddingResult> 
 
   const body = await response.json();
   if (!response.ok) {
-    throw new HttpError(502, "openai_embedding_error", "OpenAI embedding request failed.", body);
+    return {
+      provider: "local",
+      model: "local-hash-1536",
+      embedding: localDeterministicEmbedding(input),
+      usage: {
+        fallback: true,
+        reason: "openai_embedding_error",
+        openai_error: body,
+      },
+    };
   }
 
   const embedding = body?.data?.[0]?.embedding;
   if (!Array.isArray(embedding)) {
-    throw new HttpError(502, "invalid_embedding_response", "OpenAI did not return an embedding.");
+    return {
+      provider: "local",
+      model: "local-hash-1536",
+      embedding: localDeterministicEmbedding(input),
+      usage: { fallback: true, reason: "invalid_embedding_response" },
+    };
   }
 
   return {

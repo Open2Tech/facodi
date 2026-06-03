@@ -38,6 +38,30 @@ function hasEditorRole(
   return null;
 }
 
+async function getProfileEditorRole(
+  admin: AdminClient,
+  userId: string,
+): Promise<"editor" | "admin" | null> {
+  const { data, error } = await admin
+    .from("profiles")
+    .select("role")
+    .eq("id", userId)
+    .maybeSingle<{ role: string | null }>();
+
+  if (error) {
+    return null;
+  }
+
+  const role = typeof data?.role === "string" ? data.role.toLowerCase() : null;
+  if (role === "admin") {
+    return "admin";
+  }
+  if (role === "editor") {
+    return "editor";
+  }
+  return null;
+}
+
 function validateSharedSecret(req: Request): boolean {
   const configured = optionalEnv("FACODI_WEBHOOK_SECRET");
   if (!configured) {
@@ -61,9 +85,16 @@ export async function requireEditorAuth(
     throw new HttpError(401, "unauthorized", "Invalid bearer token.");
   }
 
-  const role = hasEditorRole((data.user.app_metadata ?? {}) as Record<string, unknown>);
+  const appMetadataRole = hasEditorRole((data.user.app_metadata ?? {}) as Record<string, unknown>);
+  const profileRole = appMetadataRole ? null : await getProfileEditorRole(admin, data.user.id);
+  const role = appMetadataRole ?? profileRole;
+
   if (!role) {
-    throw new HttpError(403, "forbidden", "Editor or admin app_metadata role required.");
+    throw new HttpError(
+      403,
+      "forbidden",
+      "Editor or admin role required (app_metadata or profiles.role).",
+    );
   }
 
   return {

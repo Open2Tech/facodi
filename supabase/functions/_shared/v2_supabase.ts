@@ -43,7 +43,8 @@ export function createAdminClient(): AdminClient {
 }
 
 export function facodi(client: AdminClient) {
-  return client.schema("facodi");
+  const schema = optionalEnv("FACODI_DB_SCHEMA", ["SUPABASE_DB_SCHEMA"]) ?? "facodi";
+  return client.schema(schema);
 }
 
 export function unwrap<T>(result: { data: T | null; error: { message: string } | null }): T {
