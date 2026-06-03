@@ -9,6 +9,8 @@
  * for date/time formatting via native JS Intl APIs.
  */
 
+import { translations } from './translations';
+
 export type Locale = 'pt' | 'en';
 
 export interface Translator {
@@ -25,9 +27,8 @@ export function createTranslator(locale: Locale): Translator {
   return {
     locale,
     t: (key: string, defaultValue = key) => {
-      // Placeholder: return the key itself as fallback
-      // In a full implementation, this would look up the key in translation files
-      return defaultValue;
+      const trans = translations[locale] as Record<string, string>;
+      return trans?.[key] || defaultValue;
     },
   };
 }

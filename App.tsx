@@ -13,6 +13,7 @@ import RequireAuth from './components/auth/RequireAuth';
 import PermissionDenied from './components/auth/PermissionDenied';
 import SEOHead from './components/SEOHead';
 import { getPostBySlug } from './data/blogPosts';
+import { createTranslator } from './data/i18n';
 
 const Dashboard = React.lazy(() => import('./components/Dashboard'));
 const CourseDetail = React.lazy(() => import('./components/CourseDetail'));
@@ -99,6 +100,9 @@ const App: React.FC = () => {
     year: 'All',
     semester: 'All'
   });
+
+  const translator = useMemo(() => createTranslator(locale as 'pt' | 'en'), [locale]);
+  const t = (key: string, defaultValue?: string) => translator.t(key, defaultValue);
 
   const updateRoute = (view: View, unitId?: string | null, lessonId?: string | null, videoId?: string | null, blogSlug?: string | null) => {
     let path = '/';
@@ -1077,6 +1081,7 @@ const App: React.FC = () => {
               setCurrentView('repository');
               updateRoute('repository');
             }}
+            t={t}
             courses={courses}
             units={units}
           />
