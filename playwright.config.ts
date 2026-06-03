@@ -8,7 +8,10 @@ export default defineConfig({
   timeout: 60_000,
   use: {
     baseURL: E2E_BASE_URL,
-    headless: true
+    headless: true,
+    launchOptions: {
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
   },
   webServer: {
     command: `pnpm dev --host 127.0.0.1 --port ${E2E_PORT}`,
