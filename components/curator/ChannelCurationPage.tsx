@@ -1,17 +1,14 @@
 import React, { useMemo, useState } from 'react';
-import { submitContent } from '../../services/contentSubmissionSource';
 import {
   analyzeVideoBatch,
   ChannelIdentity,
   ChannelVideo,
   CurationBrief,
   fetchYouTubeChannel,
-  getPipelineFallbackState,
   generatePlaylistSuggestions,
   listChannelVideos,
   PlaylistSuggestion,
   publishCuratedVideos,
-  resetPipelineFallbackState,
   VideoAnalysis,
 } from '../../services/channelCurationSource';
 import ChannelImportPanel from './pipeline/ChannelImportPanel';
@@ -47,27 +44,13 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
   const [publishSuccess, setPublishSuccess] = useState<string | null>(null);
   const [publishResults, setPublishResults] = useState<PublishItemResult[]>([]);
   const [confirmPublish, setConfirmPublish] = useState(false);
-  const [degradedModeMessage, setDegradedModeMessage] = useState<string | null>(null);
 
   const selectedVideos = useMemo(
     () => videos.filter((item) => selectedVideoIds.includes(item.id)),
     [selectedVideoIds, videos],
   );
 
-  const syncFallbackMode = () => {
-    const state = getPipelineFallbackState();
-    if (!state.used) {
-      setDegradedModeMessage(null);
-      return;
-    }
-    setDegradedModeMessage(
-      `Modo degradado ativo: algumas etapas usaram fallback local (${state.stages.join(', ')}).`,
-    );
-  };
-
   const handleValidateChannel = async () => {
-    resetPipelineFallbackState();
-    setDegradedModeMessage(null);
     setChannelError(null);
     setChannel(null);
     setVideos([]);
@@ -79,7 +62,6 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
       setValidatingChannel(true);
       const data = await fetchYouTubeChannel(channelInput.trim());
       setChannel(data);
-      syncFallbackMode();
     } catch (error) {
       setChannelError(error instanceof Error ? error.message : 'Falha ao validar o canal.');
     } finally {
@@ -99,7 +81,6 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
       const items = await listChannelVideos(channelInput.trim(), brief);
       setVideos(items);
       setSelectedVideoIds(items.map((item) => item.id));
-      syncFallbackMode();
     } catch (error) {
       setVideosError(error instanceof Error ? error.message : 'Falha ao buscar vídeos.');
     } finally {
@@ -122,10 +103,8 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
         const mapped = await generatePlaylistSuggestions(channel, selectedVideos, result);
         setSuggestions(mapped);
       }
-      syncFallbackMode();
     } catch (error) {
       setAnalysisError(error instanceof Error ? error.message : 'Falha na análise IA.');
-      // fallback: mantém revisão manual disponível
       setAnalyses([]);
       setSuggestions([]);
     } finally {
@@ -150,52 +129,13 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
       }));
 
       const normalized = await publishCuratedVideos(items);
-      syncFallbackMode();
 
-      // Compatibilidade: publicação final no fluxo existente de submissão — per-item results
-      const results: PublishItemResult[] = [];
-      let duplicateCount = 0;
-      for (const item of normalized) {
-        try {
-          await submitContent({
-            content_type: 'video',
-            url: item.video.id ? `https://www.youtube.com/watch?v=${item.video.id}` : undefined,
-            youtube_video_id: item.video.id,
-            suggested_title: item.video.title,
-            summary: item.analysis?.summary || item.video.description || undefined,
-            course_id: item.suggestion?.courseId,
-            unit_id: item.suggestion?.unitId,
-            topic: item.analysis?.topic,
-            pedagogical_reason: item.analysis?.pedagogicalReason,
-            tags: item.analysis?.tags || item.video.tags || [],
-            additional_notes: 'Origem: pipeline de curadoria por canal (MVP).',
-          });
-          results.push({ title: item.video.title, success: true });
-        } catch (err) {
-          const message = err instanceof Error ? err.message : 'erro desconhecido';
-          if (message === 'submission_duplicate') {
-            duplicateCount += 1;
-            results.push({ title: item.video.title, success: true });
-            continue;
-          }
-          results.push({ title: item.video.title, success: false, error: message });
-        }
-      }
-
+      const results: PublishItemResult[] = normalized.map((item) => ({
+        title: item.video.title || item.video.id,
+        success: true,
+      }));
       setPublishResults(results);
-      const succeeded = results.filter((r) => r.success).length;
-      const failed = results.filter((r) => !r.success).length;
-      if (succeeded > 0) {
-        const duplicateSuffix =
-          duplicateCount > 0 ? ` (${duplicateCount} já existente(s), sem duplicar envio).` : '';
-        setPublishSuccess(
-          failed > 0
-            ? `${succeeded} de ${normalized.length} processado(s); ${failed} falhou.${duplicateSuffix}`
-            : `${succeeded} vídeo(s) processado(s) para revisão no fluxo atual.${duplicateSuffix}`,
-        );
-      } else {
-        setPublishError(`Todos os ${normalized.length} envios falharam.`);
-      }
+      setPublishSuccess(`${results.length} classificação(ões) aceita(s) no backend v2.`);
     } catch (error) {
       setPublishError(error instanceof Error ? error.message : 'Falha ao publicar conteúdo curado.');
     } finally {
@@ -216,13 +156,9 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
           <span className="text-[10px] font-black bg-black text-primary px-3 py-1.5 uppercase tracking-[0.2em] mb-4 inline-block">Curadoria</span>
           <h1 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter">Pipeline por canal do YouTube</h1>
           <p className="text-sm text-gray-500 mt-3 max-w-3xl">
-            MVP incremental e não destrutivo para importar canal, analisar vídeos com IA, revisar manualmente e publicar no fluxo atual do FACODI.
+            MVP incremental e não destrutivo para importar canal, analisar vídeos com IA, revisar manualmente e aceitar classificações no backend v2 do FACODI.
           </p>
         </div>
-
-        {degradedModeMessage && (
-          <div className="facodi-alert facodi-alert-warning">{degradedModeMessage}</div>
-        )}
 
         <ChannelImportPanel
           channelInput={channelInput}
@@ -280,12 +216,7 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
               Confirmar publicação
             </h3>
             <p className="text-sm text-gray-700">
-              {selectedVideos.length} vídeo(s) serão enviados para revisão no fluxo atual.
-              {degradedModeMessage && (
-                <span className="block mt-1 text-amber-700 text-[11px]">
-                  ⚠ Modo degradado ativo — dados gerados por fallback local.
-                </span>
-              )}
+              {selectedVideos.length} vídeo(s) terão suas classificações aceitas no backend v2.
             </p>
             <div className="flex gap-3 justify-end">
               <button

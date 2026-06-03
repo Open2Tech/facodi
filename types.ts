@@ -20,6 +20,8 @@ export enum Difficulty {
 
 export interface CurricularUnit {
   id: string;
+  code?: string;
+  slug?: string;
   name: string;
   description: string;
   content?: string;
@@ -34,6 +36,7 @@ export interface CurricularUnit {
   contributor: string;
   tags: string[];
   courseId: string;
+  courseCode?: string;
   prerequisites?: string[];
   // Odoo-enriched fields
   unitCode?: string;        // x_facodi_unit_code e.g. '19411003'
@@ -44,6 +47,8 @@ export interface CurricularUnit {
 
 export interface Course {
   id: string;
+  code?: string;
+  slug?: string;
   title: string;
   description: string;
   ects: number;
@@ -61,11 +66,14 @@ export interface Course {
 
 export interface Playlist {
   id: string;
+  slug?: string;
   title: string;
   description: string;
   units: string[]; 
   estimatedHours: number;
   creator: string;
+  courseId?: string;
+  unitId?: string;
   course_code?: string;
   unit_code?: string;
 }

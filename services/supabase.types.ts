@@ -12,6 +12,170 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.1"
   }
+  facodi: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      v_catalog_courses: {
+        Row: {
+          code: string | null
+          content_license: string | null
+          degree_type: string | null
+          description: string | null
+          ects: number | null
+          id: string | null
+          institution: string | null
+          language: string | null
+          long_description: string | null
+          metadata: Json | null
+          published: boolean | null
+          school: string | null
+          semesters: number | null
+          slug: string | null
+          status: string | null
+          title: string | null
+          updated_at: string | null
+          website_url: string | null
+          curriculum_version: string | null
+        }
+        Relationships: []
+      }
+      v_catalog_units: {
+        Row: {
+          category: string | null
+          code: string | null
+          content: string | null
+          content_url: string | null
+          contributor: string | null
+          course_code: string | null
+          course_id: string | null
+          difficulty: string | null
+          duration: string | null
+          ects: number | null
+          id: string | null
+          metadata: Json | null
+          name: string | null
+          position: number | null
+          prerequisites: string[] | null
+          section_name: string | null
+          semester: number | null
+          slug: string | null
+          source_url: string | null
+          status: string | null
+          summary: string | null
+          syllabus_url: string | null
+          tags: string[] | null
+          unit_code: string | null
+          updated_at: string | null
+          video_url: string | null
+          website_url: string | null
+          year: number | null
+        }
+        Relationships: []
+      }
+      v_catalog_playlists: {
+        Row: {
+          course_code: string | null
+          course_id: string | null
+          description: string | null
+          id: string | null
+          is_public: boolean | null
+          slug: string | null
+          title: string | null
+          total_duration_seconds: number | null
+          unit_code: string | null
+          unit_id: string | null
+          updated_at: string | null
+          video_count: number | null
+        }
+        Relationships: []
+      }
+      v_public_videos: {
+        Row: {
+          channel_name: string | null
+          classification_id: string | null
+          classification_status: string | null
+          confidence: number | null
+          course_id: string | null
+          created_at: string | null
+          description: string | null
+          duration_seconds: number | null
+          id: string | null
+          language: string | null
+          thumbnail_url: string | null
+          title: string | null
+          unit_id: string | null
+          updated_at: string | null
+          youtube_id: string | null
+        }
+        Relationships: []
+      }
+      v_playlist_videos: {
+        Row: {
+          channel_name: string | null
+          classification_id: string | null
+          classification_status: string | null
+          confidence: number | null
+          course_id: string | null
+          created_at: string | null
+          description: string | null
+          duration_seconds: number | null
+          id: string | null
+          language: string | null
+          playlist_id: string | null
+          playlist_slug: string | null
+          playlist_title: string | null
+          position: number | null
+          thumbnail_url: string | null
+          title: string | null
+          unit_id: string | null
+          updated_at: string | null
+          youtube_id: string | null
+        }
+        Relationships: []
+      }
+      v_admin_video_classifications: {
+        Row: {
+          channel_title: string | null
+          confidence: number | null
+          confidence_level: string | null
+          course_id: string | null
+          course_title: string | null
+          created_at: string | null
+          curricular_unit_id: string | null
+          evidence: Json | null
+          id: string | null
+          justification: string | null
+          metadata: Json | null
+          needs_review: boolean | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string | null
+          thumbnail_url: string | null
+          unit_code: string | null
+          unit_title: string | null
+          updated_at: string | null
+          video_id: string | null
+          video_title: string | null
+          youtube_video_id: string | null
+        }
+        Relationships: []
+      }
+    }
+    Functions: {
+      slugify_text: {
+        Args: { value: string; fallback?: string }
+        Returns: string
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       ai_enrichments: {

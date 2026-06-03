@@ -1,149 +1,150 @@
-import React, { useState, useEffect } from 'react';
-import { getAdminQueue, getSubmissionCountByStatus } from '../../services/contentSubmissionSource';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  listVideoClassifications,
+  reviewVideoClassification,
+  VideoClassificationReview,
+  VideoClassificationStatus,
+} from '../../services/classificationReviewSource';
 import { listApplications } from '../../services/curatorApplicationSource';
 import { createTranslator, type Locale } from '../../data/i18n';
-import type { ContentSubmission, EditorApplication } from '../../types';
+import type { EditorApplication } from '../../types';
 
 interface AdminReviewDashboardProps {
   locale?: Locale;
 }
 
+const CLASSIFICATION_STATUSES: VideoClassificationStatus[] = [
+  'draft',
+  'needs_review',
+  'accepted',
+  'corrected',
+  'rejected',
+];
+
 export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ locale = 'pt' }) => {
   const { t } = createTranslator(locale as Locale);
-
-  const [activeTab, setActiveTab] = useState<'submissions' | 'applications'>('submissions');
-  const [submissions, setSubmissions] = useState<ContentSubmission[]>([]);
+  const [activeTab, setActiveTab] = useState<'classifications' | 'applications'>('classifications');
+  const [classifications, setClassifications] = useState<VideoClassificationReview[]>([]);
   const [applications, setApplications] = useState<EditorApplication[]>([]);
-  const [statusCounts, setStatusCounts] = useState<Record<string, number>>({});
-  const [loading, setLoading] = useState(true);
-
-  const [submissionFilter, setSubmissionFilter] = useState<ContentSubmission['status'] | ''>('');
+  const [statusFilter, setStatusFilter] = useState<VideoClassificationStatus | ''>('');
   const [appFilter, setAppFilter] = useState<EditorApplication['status'] | ''>('');
+  const [loading, setLoading] = useState(true);
+  const [actionId, setActionId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // Load dashboard data on mount
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-
-        // Load submissions
-        const { submissions } = await getAdminQueue({
-          status: submissionFilter || undefined,
-          limit: 20,
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const [{ classifications: rows }, { applications: appRows }] = await Promise.all([
+        listVideoClassifications({
+          status: statusFilter || undefined,
+          limit: 60,
           offset: 0,
-        });
-        setSubmissions(submissions);
+        }),
+        listApplications(appFilter || undefined, 20, 0),
+      ]);
+      setClassifications(rows);
+      setApplications(appRows);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Falha ao carregar painel.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        // Load submission counts
-        const counts = await getSubmissionCountByStatus();
-        setStatusCounts(counts);
-
-        // Load applications
-        const { applications } = await listApplications(
-          appFilter || undefined,
-          20,
-          0
-        );
-        setApplications(applications);
-      } catch (err) {
-        console.error('Error loading dashboard:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
+  useEffect(() => {
     loadData();
-  }, [submissionFilter, appFilter]);
+  }, [statusFilter, appFilter]);
 
-  const submissionStatuses: ContentSubmission['status'][] = [
-    'pending',
-    'submitted',
-    'in_review',
-    'approved',
-    'rejected',
-    'needs_changes',
-    'published',
-  ];
+  const counts = useMemo(() => {
+    return classifications.reduce<Record<string, number>>((acc, item) => {
+      acc[item.status] = (acc[item.status] || 0) + 1;
+      if (item.needsReview) acc.needs_review = (acc.needs_review || 0) + 1;
+      return acc;
+    }, {});
+  }, [classifications]);
+
+  const handleReview = async (item: VideoClassificationReview, action: 'accept' | 'reject') => {
+    try {
+      setActionId(item.id);
+      setError(null);
+      await reviewVideoClassification(item.id, action);
+      await loadData();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Falha ao rever classificação.');
+    } finally {
+      setActionId(null);
+    }
+  };
 
   const appStatuses: EditorApplication['status'][] = ['pending', 'approved', 'rejected'];
 
   return (
     <div className="facodi-page">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-2">{t('curator.reviewDashboard.title')}</h1>
-          <p className="text-slate-600">{locale === 'pt' ? 'Painel administrativo de revisão' : 'Admin review panel'}</p>
+          <h1 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-2">
+            {t('curator.reviewDashboard.title')}
+          </h1>
+          <p className="text-slate-600">
+            {locale === 'pt' ? 'Revisão editorial v2 de classificações e candidaturas' : 'V2 editorial review for classifications and applications'}
+          </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {submissionStatuses.map((status) => (
+        {error && <div className="facodi-alert facodi-alert-error mb-6">{error}</div>}
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+          {CLASSIFICATION_STATUSES.map((status) => (
             <div key={status} className="stark-border bg-white p-4">
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500">
-                {t(`curator.mySubmissions.status.${status}`)}
-              </p>
-              <p className="text-2xl font-black text-black mt-1">
-                {statusCounts[status] || 0}
-              </p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500">{status}</p>
+              <p className="text-2xl font-black text-black mt-1">{counts[status] || 0}</p>
             </div>
           ))}
         </div>
 
-        {/* Tabs */}
         <div className="stark-border bg-white mb-8">
           <div className="flex border-b border-black">
             <button
-              onClick={() => setActiveTab('submissions')}
-              className={`flex-1 facodi-tab ${
-                activeTab === 'submissions'
-                  ? 'facodi-tab-active'
-                  : ''
-              }`}
+              onClick={() => setActiveTab('classifications')}
+              className={`flex-1 facodi-tab ${activeTab === 'classifications' ? 'facodi-tab-active' : ''}`}
             >
-              {t('curator.reviewDashboard.submissions')}
+              {locale === 'pt' ? 'Classificações v2' : 'V2 Classifications'}
             </button>
             <button
               onClick={() => setActiveTab('applications')}
-              className={`flex-1 facodi-tab ${
-                activeTab === 'applications'
-                  ? 'facodi-tab-active'
-                  : ''
-              }`}
+              className={`flex-1 facodi-tab ${activeTab === 'applications' ? 'facodi-tab-active' : ''}`}
             >
               {t('curator.reviewDashboard.applications')}
             </button>
           </div>
 
-          {/* Submissions Tab */}
-          {activeTab === 'submissions' && (
+          {activeTab === 'classifications' && (
             <div className="p-6">
               <div className="mb-6">
-                <label className="facodi-label mb-3">
-                  {t('curator.reviewDashboard.filter')}
-                </label>
+                <label className="facodi-label mb-3">{t('curator.reviewDashboard.filter')}</label>
                 <div className="flex flex-wrap gap-2">
                   <button
-                    onClick={() => setSubmissionFilter('')}
+                    onClick={() => setStatusFilter('')}
                     className={`px-3 py-2 transition-all ${
-                      submissionFilter === ''
+                      statusFilter === ''
                         ? 'bg-primary text-black stark-border text-[9px] font-black uppercase tracking-widest'
                         : 'stark-border text-[9px] font-black uppercase tracking-widest text-gray-400 hover:bg-brand-muted'
                     }`}
                   >
                     {locale === 'pt' ? 'Todas' : 'All'}
                   </button>
-                  {submissionStatuses.map((status) => (
+                  {CLASSIFICATION_STATUSES.map((status) => (
                     <button
                       key={status}
-                      onClick={() => setSubmissionFilter(status)}
+                      onClick={() => setStatusFilter(status)}
                       className={`px-3 py-2 transition-all ${
-                        submissionFilter === status
+                        statusFilter === status
                           ? 'bg-primary text-black stark-border text-[9px] font-black uppercase tracking-widest'
                           : 'stark-border text-[9px] font-black uppercase tracking-widest text-gray-400 hover:bg-brand-muted'
                       }`}
                     >
-                      {t(`curator.mySubmissions.status.${status}`)}
+                      {status}
                     </button>
                   ))}
                 </div>
@@ -151,49 +152,62 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
 
               {loading ? (
                 <p className="text-slate-600">{locale === 'pt' ? 'Carregando...' : 'Loading...'}</p>
-              ) : submissions.length === 0 ? (
+              ) : classifications.length === 0 ? (
                 <p className="text-slate-600">{t('curator.reviewDashboard.noItems')}</p>
               ) : (
                 <div className="space-y-4">
-                  {submissions.map((sub) => (
-                    <div
-                      key={sub.id}
-                      className="stark-border p-4 hover:bg-brand-muted transition-colors"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                  {classifications.map((item) => (
+                    <div key={item.id} className="stark-border p-4 hover:bg-brand-muted transition-colors">
+                      <div className="flex flex-col lg:flex-row gap-4">
+                        {item.thumbnailUrl && (
+                          <img
+                            src={item.thumbnailUrl}
+                            alt=""
+                            className="w-full lg:w-44 aspect-video object-cover stark-border"
+                            loading="lazy"
+                          />
+                        )}
                         <div className="flex-1">
-                          <h3 className="font-black text-black">{sub.suggested_title}</h3>
-                          <p className="text-xs text-gray-500 mt-1">{sub.author_name} ({sub.author_email})</p>
-                          <div className="flex gap-2 mt-2 flex-wrap">
+                          <div className="flex flex-wrap gap-2 mb-2">
                             <span className="stark-border text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">
-                              {sub.content_type}
+                              {item.status}
                             </span>
-                            {sub.course_id && (
-                              <span className="stark-border text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">
-                                {sub.course_id}
-                              </span>
-                            )}
-                            {sub.unit_id && (
-                              <span className="stark-border text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">
-                                {sub.unit_id}
+                            <span className="stark-border text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">
+                              {Math.round(item.confidence * 100)}%
+                            </span>
+                            {item.needsReview && (
+                              <span className="stark-border text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 bg-primary">
+                                needs review
                               </span>
                             )}
                           </div>
-                        </div>
-
-                        <div className="text-right">
-                          <span className="stark-border inline-block px-3 py-1 text-[9px] font-black uppercase tracking-widest">
-                            {t(`curator.mySubmissions.status.${sub.status}`)}
-                          </span>
-                          <p className="text-[9px] text-gray-400 mt-2">
-                            {new Date(sub.created_at).toLocaleDateString(locale === 'pt' ? 'pt-PT' : 'en-US')}
+                          <h3 className="font-black text-black">{item.videoTitle}</h3>
+                          <p className="text-xs text-gray-500 mt-1">{item.channelTitle || item.youtubeVideoId}</p>
+                          <p className="text-xs text-gray-600 mt-3">
+                            {item.courseTitle || item.courseId || 'Curso não associado'}
+                            {item.unitTitle ? ` · ${item.unitTitle}` : ''}
                           </p>
-                          <a
-                            href={`#submission-${sub.id}`}
-                            className="text-[9px] font-black uppercase tracking-widest text-black mt-2 block hover:text-primary"
+                          {item.justification && (
+                            <p className="text-xs text-gray-500 mt-3 leading-relaxed">{item.justification}</p>
+                          )}
+                        </div>
+                        <div className="flex lg:flex-col gap-2 lg:w-36">
+                          <button
+                            type="button"
+                            disabled={actionId === item.id}
+                            onClick={() => handleReview(item, 'accept')}
+                            className="flex-1 bg-primary text-black stark-border py-2 px-3 text-[9px] font-black uppercase tracking-widest disabled:opacity-50"
                           >
-                            {locale === 'pt' ? 'Ver detalhe' : 'View details'}
-                          </a>
+                            Aceitar
+                          </button>
+                          <button
+                            type="button"
+                            disabled={actionId === item.id}
+                            onClick={() => handleReview(item, 'reject')}
+                            className="flex-1 bg-white text-black stark-border py-2 px-3 text-[9px] font-black uppercase tracking-widest hover:bg-brand-muted disabled:opacity-50"
+                          >
+                            Rejeitar
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -203,13 +217,10 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
             </div>
           )}
 
-          {/* Applications Tab */}
           {activeTab === 'applications' && (
             <div className="p-6">
               <div className="mb-6">
-                <label className="facodi-label mb-3">
-                  {t('curator.reviewDashboard.filter')}
-                </label>
+                <label className="facodi-label mb-3">{t('curator.reviewDashboard.filter')}</label>
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setAppFilter('')}
@@ -244,10 +255,7 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
               ) : (
                 <div className="space-y-4">
                   {applications.map((app) => (
-                    <div
-                      key={app.id}
-                      className="stark-border p-4 hover:bg-brand-muted transition-colors"
-                    >
+                    <div key={app.id} className="stark-border p-4 hover:bg-brand-muted transition-colors">
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                         <div className="flex-1">
                           <h3 className="font-black text-black">{app.full_name}</h3>
@@ -258,22 +266,12 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
                             </p>
                           )}
                           <p className="text-[9px] text-gray-400 mt-2">
-                            {locale === 'pt' ? 'Enviada em' : 'Submitted'}: {' '}
                             {new Date(app.created_at).toLocaleDateString(locale === 'pt' ? 'pt-PT' : 'en-US')}
                           </p>
                         </div>
-
-                        <div className="text-right">
-                          <span className="stark-border inline-block px-3 py-1 text-[9px] font-black uppercase tracking-widest">
-                            {t(`curator.apply.status.${app.status}`)}
-                          </span>
-                          <a
-                            href={`#application-${app.id}`}
-                            className="text-[9px] font-black uppercase tracking-widest text-black mt-2 block hover:text-primary"
-                          >
-                            {locale === 'pt' ? 'Ver detalhe' : 'View details'}
-                          </a>
-                        </div>
+                        <span className="stark-border inline-block px-3 py-1 text-[9px] font-black uppercase tracking-widest">
+                          {t(`curator.apply.status.${app.status}`)}
+                        </span>
                       </div>
                     </div>
                   ))}

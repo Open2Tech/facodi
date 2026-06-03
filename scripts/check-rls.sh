@@ -6,13 +6,13 @@ if [[ -z "${SUPABASE_DB_URL:-}" ]]; then
   exit 1
 fi
 
-query="select tablename from pg_tables where schemaname = 'public' and not rowsecurity order by tablename;"
+query="select schemaname || '.' || tablename from pg_tables where schemaname in ('public', 'facodi') and not rowsecurity order by schemaname, tablename;"
 output="$(psql "$SUPABASE_DB_URL" -At -c "$query")"
 
 if [[ -n "$output" ]]; then
-  echo "RLS check failed. Public tables without RLS:"
+  echo "RLS check failed. Exposed tables without RLS:"
   echo "$output"
   exit 1
 fi
 
-echo "RLS check passed: all public tables have RLS enabled."
+echo "RLS check passed: all public and facodi tables have RLS enabled."

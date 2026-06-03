@@ -440,4 +440,4 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.v2_review_classification]
-verify_jwt = false
+verify_jwt = true

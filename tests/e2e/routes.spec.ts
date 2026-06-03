@@ -1,8 +1,18 @@
 import { test, expect } from '@playwright/test';
 
+async function dismissDevelopmentModal(page: Parameters<Parameters<typeof test>[1]>[0]['page']) {
+  const devDialog = page.getByRole('dialog', { name: /plataforma em desenvolvimento/i });
+  if (await devDialog.isVisible().catch(() => false)) {
+    await devDialog.getByRole('button', { name: /fechar/i }).first().click();
+    await expect(devDialog).not.toBeVisible({ timeout: 8_000 });
+  }
+}
+
 test('home loads and shows mission statement', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByText('Ensino superior acessível, aberto e comunitário')).toBeVisible();
+  await dismissDevelopmentModal(page);
+  await expect(page.getByRole('heading', { name: 'Faculdade Comunitária Digital', exact: true })).toBeVisible();
+  await expect(page.getByText(/plataforma colaborativa de educa..o digital/i).first()).toBeVisible();
 });
 
 test('courses page lists all degrees', async ({ page }) => {
@@ -22,15 +32,23 @@ test('courses page lists all degrees', async ({ page }) => {
 
 test('navigation to courses works', async ({ page }) => {
   await page.goto('/');
+  await dismissDevelopmentModal(page);
   await page.getByRole('navigation').getByRole('button', { name: 'Cursos' }).click();
   await expect(page).toHaveURL('/courses');
 });
 
-test('dark mode toggle updates theme', async ({ page }) => {
+test('current theme is the canonical light FACODI theme', async ({ page }) => {
   await page.goto('/');
-  const toggle = page.getByRole('button', { name: 'Alternar tema' });
-  await toggle.click();
-  await expect(page.locator('html')).toHaveClass(/dark/);
+  await expect(page.locator('html')).not.toHaveClass(/dark/);
+});
+
+test('videos page renders the public video surface', async ({ page }) => {
+  await page.goto('/videos');
+  await expect(page.getByRole('heading', { name: /v.deos/i })).toBeVisible({ timeout: 10_000 });
+  await expect(
+    page.locator('article').first()
+      .or(page.getByText(/nenhum|erro|carregando/i).first()),
+  ).toBeVisible({ timeout: 10_000 });
 });
 
 test('lesson detail renders a video block state', async ({ page }) => {

@@ -44,10 +44,10 @@ pnpm security:check-rls
 - Mantenha catalogo centralizado em `services/catalogSource.ts`.
 - Nao coloque detalhes de banco/provedor em componentes.
 - **Reutilize o cliente unico em `services/supabase.ts`** — nunca crie novas instancias com `createClient()`.
-- Preserve fallback para `mock` em caso de falha remota.
+- Falhas de catalogo remoto devem aparecer explicitamente; nao reintroduza fallback local de catalogo.
 
 ### Supabase-Specific Rules
-- ✅ Frontend reads use `public` schema only.
+- ✅ Frontend catalog/video reads use `facodi` read models.
 - ✅ Never expose `service_role` or secret keys in client code.
 - ✅ All data access through shared client singleton.
 - ✅ Use RLS policies for row-level access control (not frontend-side auth).

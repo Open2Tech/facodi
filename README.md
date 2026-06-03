@@ -17,24 +17,20 @@ Projeto mantido por Open2 Technology: https://open2.tech
 
 - Frontend: React + TypeScript.
 - Build e dev server: Vite.
-- Dados: modo local (`mock`) ou remoto (`supabase`).
-- Persistencia e auth: Supabase (schema `public` + RLS).
+- Dados: Supabase schema `facodi` como fonte canonica de catalogo e classificacao.
+- Persistencia e auth: Supabase (schemas `facodi` e `public` + RLS).
 - Contrato de catalogo centralizado em `services/catalogSource.ts`.
 
-Principio arquitetural: componentes devem ser agnosticos ao provedor de dados. Toda integracao de catalogo entra por `loadCatalogData()`.
+Principio arquitetural: componentes devem consumir o catalogo via `loadCatalogData()`, que le exclusivamente os read models do schema `facodi`.
 
 ## Modos de Dados
 
-A aplicacao usa `VITE_DATA_SOURCE`:
+O catalogo usa as views publicas do schema `facodi`:
 
-- `mock`: dados locais de `data/*.ts`.
-- `supabase`: leitura principal no schema `public`.
-
-No modo supabase, o catalogo usa principalmente:
-
-- `public.courses`
-- `public.units`
-- `public.playlists`
+- `facodi.v_catalog_courses`
+- `facodi.v_catalog_units`
+- `facodi.v_catalog_playlists`
+- `facodi.v_public_videos`
 
 ## Setup Rapido
 
@@ -73,7 +69,6 @@ Arquivo base: `.env.example`
 
 - `SITE_URL`
 - `VITE_SITE_URL`
-- `VITE_DATA_SOURCE` (recomendado: `mock` no primeiro boot)
 - `VITE_SUPABASE_URL` (obrigatorio para `supabase`)
 - `VITE_SUPABASE_PUBLISHABLE_KEY` (obrigatorio para `supabase`)
 - `SUPABASE_DB_URL` (necessario para `pnpm security:check-rls`)
@@ -91,7 +86,7 @@ Seguranca:
 - `contexts/`: estado global (auth e curadoria).
 - `hooks/`: logica de progresso, dashboard e cursos.
 - `services/`: acesso a dados e integracoes.
-- `data/`: fallback local para modo `mock`.
+- `data/`: traducoes e conteudo estatico nao-catalogo.
 - `content/`: conteudo institucional/blog.
 - `tests/e2e/`: cenarios Playwright.
 - `scripts/`: validacoes operacionais.
@@ -129,4 +124,3 @@ Seguranca:
 ## Licenca
 
 MIT
-

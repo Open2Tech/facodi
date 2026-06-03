@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { getSubmissionCountByStatus } from '../../services/contentSubmissionSource';
+import { listVideoClassifications } from '../../services/classificationReviewSource';
 import { listApplications } from '../../services/curatorApplicationSource';
 import PermissionDenied from '../auth/PermissionDenied';
 
 interface AdminDashboardProps {
   onBack: () => void;
-  onNavigate: (view: 'admin-contents' | 'admin-curators' | 'curator-admin-review') => void;
+  onNavigate: (view: 'admin-curators' | 'curator-admin-review' | 'curator-channel-pipeline') => void;
 }
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) => {
   const { profile } = useAuth();
-  const [counts, setCounts] = useState<Record<string, number>>({});
+  const [pendingClassifications, setPendingClassifications] = useState(0);
+  const [acceptedClassifications, setAcceptedClassifications] = useState(0);
   const [pendingApplications, setPendingApplications] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,11 +20,13 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
     const load = async () => {
       try {
         setIsLoading(true);
-        const [statusCounts, { total }] = await Promise.all([
-          getSubmissionCountByStatus(),
+        const [needsReview, accepted, { total }] = await Promise.all([
+          listVideoClassifications({ needsReview: true, limit: 1, offset: 0 }),
+          listVideoClassifications({ status: 'accepted', limit: 1, offset: 0 }),
           listApplications('pending', 1, 0),
         ]);
-        setCounts(statusCounts);
+        setPendingClassifications(needsReview.total);
+        setAcceptedClassifications(accepted.total);
         setPendingApplications(total);
       } catch (err) {
         console.error('[admin-dashboard] load error', err);
@@ -38,11 +41,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
     return <PermissionDenied onBack={onBack} requiredRole="Administrador" />;
   }
 
-  const pending = counts.pending || 0;
-  const inReview = counts.in_review || 0;
-  const needsChanges = counts.needs_changes || 0;
-  const approved = counts.approved || 0;
-  const alertCount = pending + inReview + needsChanges + pendingApplications;
+  const alertCount = pendingClassifications + pendingApplications;
 
   return (
     <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -77,16 +76,16 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
         <>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
             <div className="stark-border p-8 bg-white">
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Pendentes</p>
-              <p className="text-5xl font-black">{pending}</p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Classificações</p>
+              <p className="text-5xl font-black">{pendingClassifications}</p>
             </div>
             <div className="stark-border p-8 bg-white">
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Em Revisao</p>
-              <p className="text-5xl font-black">{inReview}</p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Aceitas</p>
+              <p className="text-5xl font-black">{acceptedClassifications}</p>
             </div>
             <div className="stark-border p-8 bg-white">
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Aprovados</p>
-              <p className="text-5xl font-black">{approved}</p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Pipeline</p>
+              <p className="text-5xl font-black">v2</p>
             </div>
             <div className="stark-border p-8 bg-black text-white">
               <p className="text-[9px] font-black uppercase tracking-widest text-gray-400 mb-2">Curadores</p>
@@ -96,12 +95,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <button
-              onClick={() => onNavigate('admin-contents')}
+              onClick={() => onNavigate('curator-channel-pipeline')}
               className="stark-border p-10 bg-white hover:bg-primary transition-all text-left"
             >
-              <span className="material-symbols-outlined text-2xl mb-3 block">article</span>
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-1">Moderacao</p>
-              <p className="text-xl font-black uppercase tracking-tight">Revisao de Conteudos</p>
+              <span className="material-symbols-outlined text-2xl mb-3 block">fact_check</span>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-1">Classificações</p>
+              <p className="text-xl font-black uppercase tracking-tight">Revisão v2</p>
             </button>
 
             <button
@@ -117,9 +116,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
               onClick={() => onNavigate('curator-admin-review')}
               className="stark-border p-10 bg-brand-muted hover:bg-primary transition-all text-left"
             >
-              <span className="material-symbols-outlined text-2xl mb-3 block">history</span>
-              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-1">Compatibilidade</p>
-              <p className="text-xl font-black uppercase tracking-tight">Painel Classico</p>
+              <span className="material-symbols-outlined text-2xl mb-3 block">smart_display</span>
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-1">Pipeline</p>
+              <p className="text-xl font-black uppercase tracking-tight">Canal YouTube</p>
             </button>
           </div>
         </>

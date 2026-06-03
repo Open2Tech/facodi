@@ -25,13 +25,9 @@ type View =
   | 'student-progress'
   | 'student-history'
   | 'curator-apply'
-  | 'curator-submit'
-  | 'curator-submissions'
   | 'curator-channel-pipeline'
   | 'curator-admin-review'
   | 'admin-dashboard'
-  | 'admin-contents'
-  | 'admin-content-detail'
   | 'admin-curators'
   | 'blog'
   | 'blog-post';
@@ -154,16 +150,6 @@ const Layout: React.FC<Props> = ({
               </button>
             )}
             {user && (profile?.role === 'editor' || profile?.role === 'admin') && (
-              <button onClick={() => navGo('curator-submit')} aria-current={isActive('curator-submit', ['curator-submissions']) ? 'page' : undefined} className={navCls('curator-submit', ['curator-submissions'])}>
-                Enviar Conteúdo
-              </button>
-            )}
-            {user && (profile?.role === 'editor' || profile?.role === 'admin') && (
-              <button onClick={() => navGo('curator-submissions')} aria-current={isActive('curator-submissions') ? 'page' : undefined} className={navCls('curator-submissions')}>
-                Minhas Sugestões
-              </button>
-            )}
-            {user && (profile?.role === 'editor' || profile?.role === 'admin') && (
               <button onClick={() => navGo('curator-channel-pipeline')} aria-current={isActive('curator-channel-pipeline') ? 'page' : undefined} className={navCls('curator-channel-pipeline')}>
                 Pipeline de Canal
               </button>
@@ -174,7 +160,7 @@ const Layout: React.FC<Props> = ({
               </button>
             )}
             {user && profile?.role === 'admin' && (
-              <button onClick={() => navGo('admin-dashboard')} aria-current={isActive('admin-dashboard', ['admin-contents', 'admin-content-detail', 'admin-curators', 'curator-admin-review']) ? 'page' : undefined} className={navCls('admin-dashboard', ['admin-contents', 'admin-content-detail', 'admin-curators', 'curator-admin-review'])}>
+              <button onClick={() => navGo('admin-dashboard')} aria-current={isActive('admin-dashboard', ['admin-curators', 'curator-admin-review']) ? 'page' : undefined} className={navCls('admin-dashboard', ['admin-curators', 'curator-admin-review'])}>
                 Painel Admin
               </button>
             )}
@@ -272,8 +258,6 @@ const Layout: React.FC<Props> = ({
             { view: 'dashboard' as View, label: t('nav.progress'), icon: 'dashboard' },
             { view: 'blog' as View, label: t('nav.blog'), icon: 'article' },
             ...(user ? [{ view: 'student-dashboard' as View, label: 'Meus Cursos', icon: 'video_library' }] : []),
-            ...(user && (profile?.role === 'editor' || profile?.role === 'admin') ? [{ view: 'curator-submit' as View, label: 'Enviar Conteúdo', icon: 'upload' }] : []),
-            ...(user && (profile?.role === 'editor' || profile?.role === 'admin') ? [{ view: 'curator-submissions' as View, label: 'Minhas Sugestões', icon: 'schedule' }] : []),
             ...(user && (profile?.role === 'editor' || profile?.role === 'admin') ? [{ view: 'curator-channel-pipeline' as View, label: 'Pipeline de Canal', icon: 'smart_display' }] : []),
             ...(user && profile?.role === 'user' ? [{ view: 'curator-apply' as View, label: 'Ser Curador', icon: 'edit_note' }] : []),
             ...(user && profile?.role === 'admin' ? [{ view: 'admin-dashboard' as View, label: 'Painel Admin', icon: 'admin_panel_settings' }] : []),

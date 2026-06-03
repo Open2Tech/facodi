@@ -27,14 +27,10 @@ Entrada unica de catalogo:
 
 - `services/catalogSource.ts` -> `loadCatalogData()`
 
-Modos:
-
-- `VITE_DATA_SOURCE=mock`
-- `VITE_DATA_SOURCE=supabase`
-
 Regra:
 
-- Componentes nao devem conhecer detalhes de provider.
+- Componentes nao devem conhecer detalhes de schema.
+- O catalogo canonico vem das views `facodi.v_catalog_*`.
 - Mapeamento e normalizacao ficam em `services/`.
 
 ## Supabase
@@ -69,7 +65,7 @@ Quando executar:
 - `services/`: acesso a dados e integracoes.
 - `contexts/`: estado global.
 - `hooks/`: logica reutilizavel de dominio.
-- `data/`: fallback local para modo `mock`.
+- `data/`: traducoes e conteudo estatico nao-catalogo.
 
 ## Convencoes para PR
 

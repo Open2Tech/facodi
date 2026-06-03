@@ -45,7 +45,7 @@ When touching files covered by instruction `applyTo`, follow those instruction f
 - Keep provider-specific data logic in [services/catalogSource.ts](services/catalogSource.ts).
 - Keep UI components provider-agnostic and typed via [types.ts](types.ts).
 - Use `loadCatalogData()` as the single catalog entrypoint.
-- Preserve mock fallback when live providers fail.
+- Do not reintroduce local catalog mock fallback; catalog failures should surface clearly.
 
 ## Critical Data Contracts
 
@@ -56,7 +56,7 @@ When touching files covered by instruction `applyTo`, follow those instruction f
 
 ## Supabase Safety Rules
 
-- Frontend catalog reads use public schema only.
+- Frontend catalog reads use `facodi` read models only.
 - Never expose service-role or other secret keys in frontend code.
 - Use a single shared client from [services/supabase.ts](services/supabase.ts); do not create additional client instances.
 - Never query `auth.users` from frontend code; use `public.profiles` access patterns defined in auth instructions.

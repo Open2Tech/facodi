@@ -7,8 +7,6 @@
 
 import { supabase } from './supabase';
 
-// NOTE: We intentionally keep local interfaces here because generated
-// supabase types in this branch are stale compared to the remote schema.
 export interface CourseEnrollment {
   id: string;
   user_id: string;
@@ -63,12 +61,11 @@ export async function enrollInCourse(courseId: string): Promise<CourseEnrollment
     throw new Error('User not authenticated');
   }
 
-  const sb = supabase as any;
-  const { data: course, error } = await sb
-    .from('courses')
-    .select('code')
-    .eq('code', courseId)
-    .eq('is_active', true)
+  const { data: course, error } = await supabase
+    .schema('facodi')
+    .from('v_catalog_courses')
+    .select('id')
+    .eq('id', courseId)
     .maybeSingle();
 
   if (error || !course) {
@@ -98,8 +95,7 @@ export async function getMyCourses(): Promise<CourseEnrollment[]> {
     return [];
   }
 
-  const sb = supabase as any;
-  const { data: progressRows, error } = await sb
+  const { data: progressRows, error } = await supabase
     .from('content_progress')
     .select('course_id, progress_percentage, last_accessed_at, created_at')
     .eq('user_id', userId)
@@ -173,8 +169,7 @@ export async function getCourseProgress(courseId: string): Promise<{
     return { totalProgress: 0, contents: [] };
   }
 
-  const sb = supabase as any;
-  const { data, error } = await sb
+  const { data, error } = await supabase
     .from('content_progress')
     .select('*')
     .eq('user_id', userId)
@@ -207,8 +202,7 @@ export async function getUnitProgress(unitId: string): Promise<{
     return { totalProgress: 0, contents: [] };
   }
 
-  const sb = supabase as any;
-  const { data, error } = await sb
+  const { data, error } = await supabase
     .from('content_progress')
     .select('*')
     .eq('user_id', userId)
@@ -250,8 +244,7 @@ export async function updateContentProgress(
     ? Math.round((watchSeconds / durationSeconds) * 100)
     : 0;
 
-  const sb = supabase as any;
-  const { data, error } = await sb
+  const { data, error } = await supabase
     .from('content_progress')
     .upsert({
       user_id: userId,
@@ -294,8 +287,7 @@ export async function markContentAsCompleted(
     throw new Error('User not authenticated');
   }
 
-  const sb = supabase as any;
-  let query = sb
+  let query = supabase
     .from('content_progress')
     .update({
       status: 'completed',
@@ -331,8 +323,7 @@ export async function getContinueWatching(limit: number = 5): Promise<ContentPro
     return [];
   }
 
-  const sb = supabase as any;
-  const { data, error } = await sb
+  const { data, error } = await supabase
     .from('content_progress')
     .select('*')
     .eq('user_id', userId)
@@ -369,8 +360,7 @@ export async function getStudentDashboard(): Promise<StudentDashboardData> {
     const courses = await getMyCourses();
 
     // Fetch continue watching
-    const sb = supabase as any;
-    const { data: continueWatching, error: continueError } = await sb
+    const { data: continueWatching, error: continueError } = await supabase
       .from('content_progress')
       .select('*')
       .eq('user_id', userId)
@@ -385,7 +375,7 @@ export async function getStudentDashboard(): Promise<StudentDashboardData> {
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-    const { data: activityRows, error: activitiesError } = await sb
+    const { data: activityRows, error: activitiesError } = await supabase
       .from('content_progress')
       .select('id, user_id, status, created_at, updated_at, course_id, curricular_unit_id, content_id, content_type')
       .eq('user_id', userId)
@@ -409,7 +399,7 @@ export async function getStudentDashboard(): Promise<StudentDashboardData> {
     }));
 
     // Calculate aggregate progress
-    const { data: allProgress, error: progressError } = await sb
+    const { data: allProgress, error: progressError } = await supabase
       .from('content_progress')
       .select('*')
       .eq('user_id', userId);
