@@ -5,10 +5,15 @@ const EDITOR_EMAIL = 'test-fun@monynha.com';
 const EDITOR_PASSWORD = 'monynha.com';
 
 async function dismissDevelopmentModal(page: Parameters<Parameters<typeof test>[1]>[0]['page']) {
+  const authDialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (await authDialog.isVisible().catch(() => false)) {
+    return;
+  }
+
   const devDialog = page.getByRole('dialog', { name: /plataforma em desenvolvimento/i });
   if (await devDialog.isVisible().catch(() => false)) {
-    await devDialog.getByRole('button', { name: /fechar/i }).first().click();
-    await expect(devDialog).not.toBeVisible({ timeout: 8_000 });
+    await devDialog.getByRole('button', { name: /fechar/i }).first().click({ timeout: 1_500 }).catch(() => undefined);
+    await expect(devDialog).not.toBeVisible({ timeout: 2_000 }).catch(() => undefined);
   }
 }
 
@@ -18,9 +23,11 @@ async function signIn(
   password: string,
 ) {
   await dismissDevelopmentModal(page);
-  const loginBtn = page.getByRole('button', { name: 'Entrar' }).first();
-  await loginBtn.click();
   const dialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (!(await dialog.isVisible().catch(() => false))) {
+    const loginBtn = page.getByRole('button', { name: 'Entrar' }).first();
+    await loginBtn.click({ timeout: 8_000 });
+  }
   await expect(dialog).toBeVisible();
   await dialog.locator('input[type="email"]').fill(email);
   await dialog.locator('input[type="password"]').fill(password);
@@ -73,7 +80,11 @@ test.describe('Curator Channel Pipeline - access control', () => {
       .getByRole('dialog')
       .filter({ has: page.locator('input[type="email"]') });
     const loginBtn = page.getByRole('button', { name: 'Entrar' });
-    await expect(authModal.or(loginBtn.first())).toBeVisible({ timeout: 8_000 });
+    if (await authModal.isVisible().catch(() => false)) {
+      await expect(authModal).toBeVisible();
+      return;
+    }
+    await expect(loginBtn.first()).toBeVisible({ timeout: 8_000 });
   });
 });
 

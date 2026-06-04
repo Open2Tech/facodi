@@ -167,23 +167,6 @@ const translations = {
     'videos.related': 'Relacionados',
     'videos.upNext': 'Próximo',
 
-    // Video Suggest
-    'videoSuggest.title': 'Sugestão de vídeo',
-    'videoSuggest.urlLabel': 'URL do YouTube',
-    'videoSuggest.helper': 'Cole o link do vídeo para identificar automaticamente.',
-    'videoSuggest.detectedVideoId': 'Vídeo identificado',
-    'videoSuggest.invalidUrl': 'URL inválida.',
-    'videoSuggest.submitting': 'Enviando...',
-    'videoSuggest.submit': 'Enviar sugestão',
-    'videoSuggest.resultTitle': 'Resultado',
-    'videoSuggest.duplicate': 'Este vídeo já existe no catálogo.',
-    'videoSuggest.course': 'Curso',
-    'videoSuggest.unit': 'Unidade',
-    'videoSuggest.playlist': 'Playlist',
-    'videoSuggest.topic': 'Tema',
-    'videoSuggest.notFound': 'Não encontrado',
-    'videoSuggest.confidence': 'Confiança',
-
     // Curator Apply
     'curator.apply.title': 'Candidatura de Curadoria',
     'curator.apply.intro': 'Preencha o formulário para participar da curadoria de conteúdos.',
@@ -206,27 +189,6 @@ const translations = {
     'curator.apply.form.submit': 'Enviar candidatura',
     'curator.apply.form.submitting': 'Enviando...',
 
-    // Curator Submissions
-    'curator.submit.title': 'Submeter Conteúdo',
-    'curator.submit.intro': 'Ajude a expandir o catálogo com conteúdos relevantes.',
-    'curator.submit.success': 'Conteúdo enviado com sucesso.',
-    'curator.submit.error.duplicate': 'Este conteúdo já foi enviado.',
-    'curator.submit.error.invalidUrl': 'URL inválida.',
-    'curator.submit.error.generic': 'Erro ao enviar conteúdo.',
-    'curator.submit.contentType': 'Tipo de conteúdo',
-    'curator.submit.youtubeUrl': 'URL do YouTube',
-    'curator.submit.url': 'URL',
-    'curator.submit.suggestedTitle': 'Título sugerido',
-    'curator.submit.summary': 'Resumo',
-    'curator.submit.courseId': 'Curso',
-    'curator.submit.unitId': 'Unidade',
-    'curator.submit.topic': 'Tema',
-    'curator.submit.pedagogicalReason': 'Justificativa pedagógica',
-    'curator.submit.tags': 'Tags',
-    'curator.submit.additionalNotes': 'Notas adicionais',
-    'curator.submit.submit': 'Enviar',
-    'curator.submit.submitting': 'Enviando...',
-
     // Curator Review Panel
     'curator.reviewPanel.reviewNotes': 'Notas de revisão',
     'curator.reviewPanel.rejectionReason': 'Motivo da rejeição',
@@ -240,18 +202,6 @@ const translations = {
     'curator.reviewDashboard.applications': 'Candidaturas',
     'curator.reviewDashboard.filter': 'Filtrar',
     'curator.reviewDashboard.noItems': 'Nenhum item encontrado.',
-
-    // Curator My Submissions
-    'curator.mySubmissions.title': 'Minhas Submissões',
-    'curator.mySubmissions.filter': 'Filtrar status',
-    'curator.mySubmissions.empty': 'Nenhuma submissão encontrada.',
-    'curator.mySubmissions.status.pending': 'Pendente',
-    'curator.mySubmissions.status.submitted': 'Enviada',
-    'curator.mySubmissions.status.in_review': 'Em revisão',
-    'curator.mySubmissions.status.approved': 'Aprovada',
-    'curator.mySubmissions.status.rejected': 'Rejeitada',
-    'curator.mySubmissions.status.needs_changes': 'Requer ajustes',
-    'curator.mySubmissions.status.published': 'Publicada',
 
     // Institutional
     'institutional.curator.context.title': 'Contexto de Curadoria',
@@ -421,22 +371,6 @@ const translations = {
     'videos.upNext': 'Up next',
 
     // Video Suggest
-    'videoSuggest.title': 'Video suggestion',
-    'videoSuggest.urlLabel': 'YouTube URL',
-    'videoSuggest.helper': 'Paste the video link to detect it automatically.',
-    'videoSuggest.detectedVideoId': 'Detected video',
-    'videoSuggest.invalidUrl': 'Invalid URL.',
-    'videoSuggest.submitting': 'Submitting...',
-    'videoSuggest.submit': 'Submit suggestion',
-    'videoSuggest.resultTitle': 'Result',
-    'videoSuggest.duplicate': 'This video already exists in the catalog.',
-    'videoSuggest.course': 'Course',
-    'videoSuggest.unit': 'Unit',
-    'videoSuggest.playlist': 'Playlist',
-    'videoSuggest.topic': 'Topic',
-    'videoSuggest.notFound': 'Not found',
-    'videoSuggest.confidence': 'Confidence',
-
     // Curator Apply
     'curator.apply.title': 'Curator application',
     'curator.apply.intro': 'Fill out the form to participate in content curation.',
@@ -460,26 +394,6 @@ const translations = {
     'curator.apply.form.submitting': 'Submitting...',
 
     // Curator Submissions
-    'curator.submit.title': 'Submit content',
-    'curator.submit.intro': 'Help expand the catalog with relevant content.',
-    'curator.submit.success': 'Content submitted successfully.',
-    'curator.submit.error.duplicate': 'This content was already submitted.',
-    'curator.submit.error.invalidUrl': 'Invalid URL.',
-    'curator.submit.error.generic': 'Error submitting content.',
-    'curator.submit.contentType': 'Content type',
-    'curator.submit.youtubeUrl': 'YouTube URL',
-    'curator.submit.url': 'URL',
-    'curator.submit.suggestedTitle': 'Suggested title',
-    'curator.submit.summary': 'Summary',
-    'curator.submit.courseId': 'Course',
-    'curator.submit.unitId': 'Unit',
-    'curator.submit.topic': 'Topic',
-    'curator.submit.pedagogicalReason': 'Pedagogical rationale',
-    'curator.submit.tags': 'Tags',
-    'curator.submit.additionalNotes': 'Additional notes',
-    'curator.submit.submit': 'Submit',
-    'curator.submit.submitting': 'Submitting...',
-
     // Curator Review Panel
     'curator.reviewPanel.reviewNotes': 'Review notes',
     'curator.reviewPanel.rejectionReason': 'Rejection reason',
@@ -495,17 +409,6 @@ const translations = {
     'curator.reviewDashboard.noItems': 'No items found.',
 
     // Curator My Submissions
-    'curator.mySubmissions.title': 'My submissions',
-    'curator.mySubmissions.filter': 'Filter status',
-    'curator.mySubmissions.empty': 'No submissions found.',
-    'curator.mySubmissions.status.pending': 'Pending',
-    'curator.mySubmissions.status.submitted': 'Submitted',
-    'curator.mySubmissions.status.in_review': 'In review',
-    'curator.mySubmissions.status.approved': 'Approved',
-    'curator.mySubmissions.status.rejected': 'Rejected',
-    'curator.mySubmissions.status.needs_changes': 'Needs changes',
-    'curator.mySubmissions.status.published': 'Published',
-
     // Institutional
     'institutional.curator.context.title': 'Curator context',
     'institutional.curator.context.text': 'Curation ensures quality and relevance for the catalog.',

@@ -421,6 +421,18 @@ verify_jwt = false
 [functions.v2_ingest_youtube_video]
 verify_jwt = false
 
+[functions.v2_submit_youtube_video]
+verify_jwt = true
+
+[functions.v2_get_video_submission_status]
+verify_jwt = true
+
+[functions.v2_fetch_youtube_channel]
+verify_jwt = true
+
+[functions.v2_list_channel_videos]
+verify_jwt = true
+
 [functions.v2_fetch_youtube_metadata]
 verify_jwt = false
 
@@ -440,4 +452,19 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.v2_review_classification]
+verify_jwt = true
+
+[functions.fetch_youtube_channel]
+verify_jwt = false
+
+[functions.list_channel_videos]
+verify_jwt = false
+
+[functions.analyze_video_batch]
+verify_jwt = false
+
+[functions.generate_playlist_suggestions]
+verify_jwt = false
+
+[functions.publish_curated_videos]
 verify_jwt = true

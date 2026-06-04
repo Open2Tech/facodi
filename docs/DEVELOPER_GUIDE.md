@@ -32,6 +32,7 @@ Regra:
 - Componentes nao devem conhecer detalhes de schema.
 - O catalogo canonico vem das views `facodi.v_catalog_*`.
 - Mapeamento e normalizacao ficam em `services/`.
+- Dominio de video/pipeline usa views `facodi` e Edge Functions `v2_*`; detalhes em `docs/FACODI_V2_VIDEO_PIPELINE.md`.
 
 ## Supabase
 
@@ -44,6 +45,7 @@ Regras essenciais:
 - Nao usar service role key no frontend.
 - Nao acessar `auth.users` no cliente.
 - Respeitar RLS para dados por usuario.
+- Gerar tipos com `pnpm exec supabase gen types typescript --project-id wvkjainfwsyiyfcmbtid --schema public,facodi > services/supabase.types.ts`.
 
 ## Testes e Validacao
 

@@ -14,13 +14,1137 @@ export type Database = {
   }
   facodi: {
     Tables: {
-      [_ in never]: never
+      analysis_jobs: {
+        Row: {
+          attempts: number
+          completed_at: string | null
+          created_at: string
+          current_step: string
+          error_code: string | null
+          error_message: string | null
+          id: string
+          input_payload: Json
+          input_url: string | null
+          job_type: string
+          request_source: string
+          requested_by: string | null
+          result_payload: Json
+          started_at: string | null
+          status: string
+          updated_at: string
+          video_id: string | null
+          youtube_video_id: string | null
+        }
+        Insert: {
+          attempts?: number
+          completed_at?: string | null
+          created_at?: string
+          current_step?: string
+          error_code?: string | null
+          error_message?: string | null
+          id?: string
+          input_payload?: Json
+          input_url?: string | null
+          job_type?: string
+          request_source?: string
+          requested_by?: string | null
+          result_payload?: Json
+          started_at?: string | null
+          status?: string
+          updated_at?: string
+          video_id?: string | null
+          youtube_video_id?: string | null
+        }
+        Update: {
+          attempts?: number
+          completed_at?: string | null
+          created_at?: string
+          current_step?: string
+          error_code?: string | null
+          error_message?: string | null
+          id?: string
+          input_payload?: Json
+          input_url?: string | null
+          job_type?: string
+          request_source?: string
+          requested_by?: string | null
+          result_payload?: Json
+          started_at?: string | null
+          status?: string
+          updated_at?: string
+          video_id?: string | null
+          youtube_video_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analysis_jobs_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "analysis_jobs_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_public_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "analysis_jobs_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      classification_candidates: {
+        Row: {
+          candidate_type: string
+          combined_score: number | null
+          confidence: number | null
+          course_id: string | null
+          created_at: string
+          curricular_unit_id: string | null
+          evidence: Json
+          id: string
+          job_id: string | null
+          justification: string | null
+          keyword_score: number | null
+          llm_score: number | null
+          metadata: Json
+          rank: number
+          vector_score: number | null
+          video_id: string
+        }
+        Insert: {
+          candidate_type: string
+          combined_score?: number | null
+          confidence?: number | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          evidence?: Json
+          id?: string
+          job_id?: string | null
+          justification?: string | null
+          keyword_score?: number | null
+          llm_score?: number | null
+          metadata?: Json
+          rank: number
+          vector_score?: number | null
+          video_id: string
+        }
+        Update: {
+          candidate_type?: string
+          combined_score?: number | null
+          confidence?: number | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          evidence?: Json
+          id?: string
+          job_id?: string | null
+          justification?: string | null
+          keyword_score?: number | null
+          llm_score?: number | null
+          metadata?: Json
+          rank?: number
+          vector_score?: number | null
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "classification_candidates_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "analysis_jobs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_public_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classification_candidates_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_terms: {
+        Row: {
+          confidence: number | null
+          course_id: string
+          created_at: string
+          source: string
+          term_id: string
+          weight: number
+        }
+        Insert: {
+          confidence?: number | null
+          course_id: string
+          created_at?: string
+          source?: string
+          term_id: string
+          weight?: number
+        }
+        Update: {
+          confidence?: number | null
+          course_id?: string
+          created_at?: string
+          source?: string
+          term_id?: string
+          weight?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_terms_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_terms_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_terms_term_id_fkey"
+            columns: ["term_id"]
+            isOneToOne: false
+            referencedRelation: "terms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      courses: {
+        Row: {
+          created_at: string
+          degree_type: string | null
+          description_html: string | null
+          external_id: string
+          external_source: string
+          id: string
+          language: string | null
+          metadata: Json
+          normalized_title: string
+          odoo_channel_id: number | null
+          plan_url: string | null
+          published: boolean
+          school: string | null
+          slug: string
+          source_url: string | null
+          status: string
+          summary: string | null
+          synced_at: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          degree_type?: string | null
+          description_html?: string | null
+          external_id: string
+          external_source?: string
+          id?: string
+          language?: string | null
+          metadata?: Json
+          normalized_title: string
+          odoo_channel_id?: number | null
+          plan_url?: string | null
+          published?: boolean
+          school?: string | null
+          slug: string
+          source_url?: string | null
+          status?: string
+          summary?: string | null
+          synced_at?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          degree_type?: string | null
+          description_html?: string | null
+          external_id?: string
+          external_source?: string
+          id?: string
+          language?: string | null
+          metadata?: Json
+          normalized_title?: string
+          odoo_channel_id?: number | null
+          plan_url?: string | null
+          published?: boolean
+          school?: string | null
+          slug?: string
+          source_url?: string | null
+          status?: string
+          summary?: string | null
+          synced_at?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      curricular_unit_terms: {
+        Row: {
+          confidence: number | null
+          created_at: string
+          curricular_unit_id: string
+          source: string
+          term_id: string
+          weight: number
+        }
+        Insert: {
+          confidence?: number | null
+          created_at?: string
+          curricular_unit_id: string
+          source?: string
+          term_id: string
+          weight?: number
+        }
+        Update: {
+          confidence?: number | null
+          created_at?: string
+          curricular_unit_id?: string
+          source?: string
+          term_id?: string
+          weight?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "curricular_unit_terms_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "curricular_unit_terms_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "curricular_unit_terms_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "curricular_unit_terms_term_id_fkey"
+            columns: ["term_id"]
+            isOneToOne: false
+            referencedRelation: "terms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      curricular_units: {
+        Row: {
+          code: string | null
+          course_id: string
+          created_at: string
+          curricular_year: number | null
+          description_html: string | null
+          ects: number | null
+          external_id: string
+          external_source: string
+          id: string
+          language: string | null
+          metadata: Json
+          normalized_title: string
+          odoo_slide_id: number | null
+          official_pdf_url: string | null
+          semester: number | null
+          slug: string
+          status: string
+          summary: string | null
+          synced_at: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          code?: string | null
+          course_id: string
+          created_at?: string
+          curricular_year?: number | null
+          description_html?: string | null
+          ects?: number | null
+          external_id: string
+          external_source?: string
+          id?: string
+          language?: string | null
+          metadata?: Json
+          normalized_title: string
+          odoo_slide_id?: number | null
+          official_pdf_url?: string | null
+          semester?: number | null
+          slug: string
+          status?: string
+          summary?: string | null
+          synced_at?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string | null
+          course_id?: string
+          created_at?: string
+          curricular_year?: number | null
+          description_html?: string | null
+          ects?: number | null
+          external_id?: string
+          external_source?: string
+          id?: string
+          language?: string | null
+          metadata?: Json
+          normalized_title?: string
+          odoo_slide_id?: number | null
+          official_pdf_url?: string | null
+          semester?: number | null
+          slug?: string
+          status?: string
+          summary?: string | null
+          synced_at?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      knowledge_chunks: {
+        Row: {
+          chunk_index: number
+          chunk_type: string
+          content_text: string
+          content_tokens: number | null
+          course_id: string | null
+          created_at: string
+          curricular_unit_id: string | null
+          embedding: string | null
+          entity_type: string
+          id: string
+          metadata: Json
+          source_id: string
+          updated_at: string
+        }
+        Insert: {
+          chunk_index?: number
+          chunk_type?: string
+          content_text: string
+          content_tokens?: number | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          embedding?: string | null
+          entity_type: string
+          id?: string
+          metadata?: Json
+          source_id: string
+          updated_at?: string
+        }
+        Update: {
+          chunk_index?: number
+          chunk_type?: string
+          content_text?: string
+          content_tokens?: number | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          embedding?: string | null
+          entity_type?: string
+          id?: string
+          metadata?: Json
+          source_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "knowledge_chunks_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_chunks_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_chunks_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_chunks_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "knowledge_chunks_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_chunks_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "knowledge_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      knowledge_sources: {
+        Row: {
+          content_hash: string | null
+          course_id: string | null
+          created_at: string
+          curricular_unit_id: string | null
+          entity_type: string
+          id: string
+          metadata: Json
+          source_type: string
+          source_url: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          content_hash?: string | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          entity_type: string
+          id?: string
+          metadata?: Json
+          source_type: string
+          source_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          content_hash?: string | null
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          entity_type?: string
+          id?: string
+          metadata?: Json
+          source_type?: string
+          source_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "knowledge_sources_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_sources_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_sources_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "knowledge_sources_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "knowledge_sources_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      model_runs: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          id: string
+          input_hash: string | null
+          input_summary: string | null
+          job_id: string | null
+          latency_ms: number | null
+          model: string
+          output_json: Json
+          prompt_version: string | null
+          provider: string
+          purpose: string
+          status: string
+          usage_json: Json
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          input_hash?: string | null
+          input_summary?: string | null
+          job_id?: string | null
+          latency_ms?: number | null
+          model: string
+          output_json?: Json
+          prompt_version?: string | null
+          provider: string
+          purpose: string
+          status?: string
+          usage_json?: Json
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          input_hash?: string | null
+          input_summary?: string | null
+          job_id?: string | null
+          latency_ms?: number | null
+          model?: string
+          output_json?: Json
+          prompt_version?: string | null
+          provider?: string
+          purpose?: string
+          status?: string
+          usage_json?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "model_runs_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "analysis_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      taxonomies: {
+        Row: {
+          code: string
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      terms: {
+        Row: {
+          aliases: string[]
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          language: string
+          metadata: Json
+          name: string
+          normalized_name: string
+          parent_id: string | null
+          taxonomy_id: string
+          updated_at: string
+        }
+        Insert: {
+          aliases?: string[]
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          language?: string
+          metadata?: Json
+          name: string
+          normalized_name: string
+          parent_id?: string | null
+          taxonomy_id: string
+          updated_at?: string
+        }
+        Update: {
+          aliases?: string[]
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          language?: string
+          metadata?: Json
+          name?: string
+          normalized_name?: string
+          parent_id?: string | null
+          taxonomy_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "terms_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "terms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "terms_taxonomy_id_fkey"
+            columns: ["taxonomy_id"]
+            isOneToOne: false
+            referencedRelation: "taxonomies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_artifacts: {
+        Row: {
+          artifact_type: string
+          content_hash: string | null
+          content_json: Json
+          content_text: string | null
+          created_at: string
+          embedding: string | null
+          id: string
+          language: string | null
+          metadata: Json
+          source: string
+          updated_at: string
+          video_id: string
+        }
+        Insert: {
+          artifact_type: string
+          content_hash?: string | null
+          content_json?: Json
+          content_text?: string | null
+          created_at?: string
+          embedding?: string | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          source?: string
+          updated_at?: string
+          video_id: string
+        }
+        Update: {
+          artifact_type?: string
+          content_hash?: string | null
+          content_json?: Json
+          content_text?: string | null
+          created_at?: string
+          embedding?: string | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          source?: string
+          updated_at?: string
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_artifacts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_artifacts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_public_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_artifacts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_classifications: {
+        Row: {
+          confidence: number
+          confidence_level: string
+          course_id: string | null
+          created_at: string
+          curricular_unit_id: string | null
+          evidence: Json
+          id: string
+          job_id: string | null
+          justification: string | null
+          metadata: Json
+          model_run_id: string | null
+          needs_review: boolean
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          updated_at: string
+          video_id: string
+        }
+        Insert: {
+          confidence: number
+          confidence_level?: string
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          evidence?: Json
+          id?: string
+          job_id?: string | null
+          justification?: string | null
+          metadata?: Json
+          model_run_id?: string | null
+          needs_review?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+          video_id: string
+        }
+        Update: {
+          confidence?: number
+          confidence_level?: string
+          course_id?: string | null
+          created_at?: string
+          curricular_unit_id?: string | null
+          evidence?: Json
+          id?: string
+          job_id?: string | null
+          justification?: string | null
+          metadata?: Json
+          model_run_id?: string | null
+          needs_review?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: true
+            referencedRelation: "analysis_jobs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_model_run_id_fkey"
+            columns: ["model_run_id"]
+            isOneToOne: false
+            referencedRelation: "model_runs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_public_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      youtube_videos: {
+        Row: {
+          canonical_url: string
+          channel_id: string | null
+          channel_title: string | null
+          created_at: string
+          description: string | null
+          duration_seconds: number | null
+          id: string
+          language: string | null
+          metadata: Json
+          published_at: string | null
+          status: string
+          tags: string[]
+          thumbnails: Json
+          title: string | null
+          updated_at: string
+          youtube_video_id: string
+        }
+        Insert: {
+          canonical_url: string
+          channel_id?: string | null
+          channel_title?: string | null
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          published_at?: string | null
+          status?: string
+          tags?: string[]
+          thumbnails?: Json
+          title?: string | null
+          updated_at?: string
+          youtube_video_id: string
+        }
+        Update: {
+          canonical_url?: string
+          channel_id?: string | null
+          channel_title?: string | null
+          created_at?: string
+          description?: string | null
+          duration_seconds?: number | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          published_at?: string | null
+          status?: string
+          tags?: string[]
+          thumbnails?: Json
+          title?: string | null
+          updated_at?: string
+          youtube_video_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
+      v_admin_video_classifications: {
+        Row: {
+          channel_title: string | null
+          confidence: number | null
+          confidence_level: string | null
+          course_id: string | null
+          course_title: string | null
+          created_at: string | null
+          curricular_unit_id: string | null
+          evidence: Json | null
+          id: string | null
+          justification: string | null
+          metadata: Json | null
+          needs_review: boolean | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string | null
+          thumbnail_url: string | null
+          unit_code: string | null
+          unit_title: string | null
+          updated_at: string | null
+          video_id: string | null
+          video_title: string | null
+          youtube_video_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_public_videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       v_catalog_courses: {
         Row: {
           code: string | null
           content_license: string | null
+          curriculum_version: string | null
           degree_type: string | null
           description: string | null
           ects: number | null
@@ -37,9 +1161,82 @@ export type Database = {
           title: string | null
           updated_at: string | null
           website_url: string | null
-          curriculum_version: string | null
+        }
+        Insert: {
+          code?: never
+          content_license?: never
+          curriculum_version?: never
+          degree_type?: string | null
+          description?: never
+          ects?: never
+          id?: string | null
+          institution?: never
+          language?: string | null
+          long_description?: never
+          metadata?: Json | null
+          published?: boolean | null
+          school?: string | null
+          semesters?: never
+          slug?: string | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          code?: never
+          content_license?: never
+          curriculum_version?: never
+          degree_type?: string | null
+          description?: never
+          ects?: never
+          id?: string | null
+          institution?: never
+          language?: string | null
+          long_description?: never
+          metadata?: Json | null
+          published?: boolean | null
+          school?: string | null
+          semesters?: never
+          slug?: string | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          website_url?: string | null
         }
         Relationships: []
+      }
+      v_catalog_playlists: {
+        Row: {
+          course_code: string | null
+          course_id: string | null
+          description: string | null
+          id: string | null
+          is_public: boolean | null
+          slug: string | null
+          title: string | null
+          total_duration_seconds: number | null
+          unit_code: string | null
+          unit_id: string | null
+          updated_at: string | null
+          video_count: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       v_catalog_units: {
         Row: {
@@ -72,44 +1269,22 @@ export type Database = {
           website_url: string | null
           year: number | null
         }
-        Relationships: []
-      }
-      v_catalog_playlists: {
-        Row: {
-          course_code: string | null
-          course_id: string | null
-          description: string | null
-          id: string | null
-          is_public: boolean | null
-          slug: string | null
-          title: string | null
-          total_duration_seconds: number | null
-          unit_code: string | null
-          unit_id: string | null
-          updated_at: string | null
-          video_count: number | null
-        }
-        Relationships: []
-      }
-      v_public_videos: {
-        Row: {
-          channel_name: string | null
-          classification_id: string | null
-          classification_status: string | null
-          confidence: number | null
-          course_id: string | null
-          created_at: string | null
-          description: string | null
-          duration_seconds: number | null
-          id: string | null
-          language: string | null
-          thumbnail_url: string | null
-          title: string | null
-          unit_id: string | null
-          updated_at: string | null
-          youtube_id: string | null
-        }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       v_playlist_videos: {
         Row: {
@@ -133,39 +1308,119 @@ export type Database = {
           updated_at: string | null
           youtube_id: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+        ]
       }
-      v_admin_video_classifications: {
+      v_public_videos: {
         Row: {
-          channel_title: string | null
+          channel_name: string | null
+          classification_id: string | null
+          classification_status: string | null
           confidence: number | null
-          confidence_level: string | null
           course_id: string | null
-          course_title: string | null
           created_at: string | null
-          curricular_unit_id: string | null
-          evidence: Json | null
+          description: string | null
+          duration_seconds: number | null
           id: string | null
-          justification: string | null
-          metadata: Json | null
-          needs_review: boolean | null
-          reviewed_at: string | null
-          reviewed_by: string | null
-          status: string | null
+          language: string | null
           thumbnail_url: string | null
-          unit_code: string | null
-          unit_title: string | null
+          title: string | null
+          unit_id: string | null
           updated_at: string | null
-          video_id: string | null
-          video_title: string | null
-          youtube_video_id: string | null
+          youtube_id: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_playlists"
+            referencedColumns: ["unit_id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "v_catalog_units"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Functions: {
+      match_knowledge_chunks: {
+        Args: {
+          course_filter?: string
+          match_count?: number
+          query_embedding: string
+        }
+        Returns: {
+          chunk_id: string
+          content_text: string
+          course_id: string
+          curricular_unit_id: string
+          metadata: Json
+          similarity: number
+        }[]
+      }
       slugify_text: {
-        Args: { value: string; fallback?: string }
+        Args: { fallback?: string; value: string }
         Returns: string
       }
     }
@@ -331,6 +1586,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          metadata: Json
+          name: string
+          status: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          metadata?: Json
+          name: string
+          status?: string
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          metadata?: Json
+          name?: string
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       content_pages: {
         Row: {
@@ -732,6 +2023,9 @@ export type Database = {
       editor_applications: {
         Row: {
           availability: string | null
+          confirmation_error: string | null
+          confirmation_provider_id: string | null
+          confirmation_sent_at: string | null
           consent_privacy: boolean
           created_at: string
           email: string
@@ -753,6 +2047,9 @@ export type Database = {
         }
         Insert: {
           availability?: string | null
+          confirmation_error?: string | null
+          confirmation_provider_id?: string | null
+          confirmation_sent_at?: string | null
           consent_privacy?: boolean
           created_at?: string
           email: string
@@ -774,6 +2071,9 @@ export type Database = {
         }
         Update: {
           availability?: string | null
+          confirmation_error?: string | null
+          confirmation_provider_id?: string | null
+          confirmation_sent_at?: string | null
           consent_privacy?: boolean
           created_at?: string
           email?: string
@@ -1009,8 +2309,157 @@ export type Database = {
             foreignKeyName: "playlist_collaborators_playlist_id_fkey"
             columns: ["playlist_id"]
             isOneToOne: false
+            referencedRelation: "v_education_playlist_assignment_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_collaborators_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
             referencedRelation: "v_playlist_exhibition"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_collaborators_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_follow_counts"
+            referencedColumns: ["playlist_id"]
+          },
+        ]
+      }
+      playlist_editor_requests: {
+        Row: {
+          created_at: string
+          id: string
+          message: string | null
+          playlist_id: string
+          requester_id: string
+          review_note: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          playlist_id: string
+          requester_id: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          playlist_id?: string
+          requester_id?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playlist_editor_requests_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_editor_requests_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_course_playlist_catalog"
+            referencedColumns: ["playlist_id"]
+          },
+          {
+            foreignKeyName: "playlist_editor_requests_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_education_playlist_assignment_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_editor_requests_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_exhibition"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_editor_requests_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_follow_counts"
+            referencedColumns: ["playlist_id"]
+          },
+        ]
+      }
+      playlist_follows: {
+        Row: {
+          created_at: string
+          id: string
+          notifications_enabled: boolean
+          playlist_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notifications_enabled?: boolean
+          playlist_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notifications_enabled?: boolean
+          playlist_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playlist_follows_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_follows_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_course_playlist_catalog"
+            referencedColumns: ["playlist_id"]
+          },
+          {
+            foreignKeyName: "playlist_follows_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_education_playlist_assignment_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_follows_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_exhibition"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_follows_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_follow_counts"
+            referencedColumns: ["playlist_id"]
           },
         ]
       }
@@ -1067,8 +2516,22 @@ export type Database = {
             foreignKeyName: "playlist_progress_playlist_id_fkey"
             columns: ["playlist_id"]
             isOneToOne: false
+            referencedRelation: "v_education_playlist_assignment_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_progress_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
             referencedRelation: "v_playlist_exhibition"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_progress_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_follow_counts"
+            referencedColumns: ["playlist_id"]
           },
           {
             foreignKeyName: "playlist_progress_video_id_fkey"
@@ -1140,8 +2603,22 @@ export type Database = {
             foreignKeyName: "playlist_videos_playlist_id_fkey"
             columns: ["playlist_id"]
             isOneToOne: false
+            referencedRelation: "v_education_playlist_assignment_candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_videos_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
             referencedRelation: "v_playlist_exhibition"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_videos_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_follow_counts"
+            referencedColumns: ["playlist_id"]
           },
           {
             foreignKeyName: "playlist_videos_video_id_fkey"
@@ -1495,6 +2972,177 @@ export type Database = {
         }
         Relationships: []
       }
+      video_submissions: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          duplicate_video_id: string | null
+          error_message: string | null
+          id: string
+          metadata: Json
+          processing_started_at: string | null
+          recoverable: boolean
+          status: string
+          updated_at: string
+          user_id: string
+          video_id: string | null
+          youtube_id: string
+          youtube_url: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          duplicate_video_id?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          processing_started_at?: string | null
+          recoverable?: boolean
+          status?: string
+          updated_at?: string
+          user_id: string
+          video_id?: string | null
+          youtube_id: string
+          youtube_url: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          duplicate_video_id?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          processing_started_at?: string | null
+          recoverable?: boolean
+          status?: string
+          updated_at?: string
+          user_id?: string
+          video_id?: string | null
+          youtube_id?: string
+          youtube_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_submissions_duplicate_video_id_fkey"
+            columns: ["duplicate_video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_exhibition"
+            referencedColumns: ["preview_video_id"]
+          },
+          {
+            foreignKeyName: "video_submissions_duplicate_video_id_fkey"
+            columns: ["duplicate_video_id"]
+            isOneToOne: false
+            referencedRelation: "v_video_exhibition"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_submissions_duplicate_video_id_fkey"
+            columns: ["duplicate_video_id"]
+            isOneToOne: false
+            referencedRelation: "videos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_submissions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_submissions_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_exhibition"
+            referencedColumns: ["preview_video_id"]
+          },
+          {
+            foreignKeyName: "video_submissions_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_video_exhibition"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_submissions_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_transcripts: {
+        Row: {
+          confidence: number
+          created_at: string
+          error_message: string | null
+          id: string
+          language: string | null
+          metadata: Json
+          provider: string
+          provider_model: string
+          status: string
+          summary: string | null
+          transcript_text: string | null
+          updated_at: string
+          video_id: string
+        }
+        Insert: {
+          confidence?: number
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          provider?: string
+          provider_model: string
+          status?: string
+          summary?: string | null
+          transcript_text?: string | null
+          updated_at?: string
+          video_id: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          language?: string | null
+          metadata?: Json
+          provider?: string
+          provider_model?: string
+          status?: string
+          summary?: string | null
+          transcript_text?: string | null
+          updated_at?: string
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_transcripts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_playlist_exhibition"
+            referencedColumns: ["preview_video_id"]
+          },
+          {
+            foreignKeyName: "video_transcripts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "v_video_exhibition"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_transcripts_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "videos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       video_view_events: {
         Row: {
           created_at: string
@@ -1671,6 +3319,72 @@ export type Database = {
         }
         Relationships: []
       }
+      v_education_playlist_assignment_candidates: {
+        Row: {
+          assignment_kind: string | null
+          course_code: string | null
+          created_at: string | null
+          description: string | null
+          id: string | null
+          is_assignment_candidate: boolean | null
+          is_ordered: boolean | null
+          is_public: boolean | null
+          language: string | null
+          name: string | null
+          slug: string | null
+          total_duration_seconds: number | null
+          unit_code: string | null
+          updated_at: string | null
+          video_count: number | null
+        }
+        Insert: {
+          assignment_kind?: never
+          course_code?: never
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          is_assignment_candidate?: never
+          is_ordered?: boolean | null
+          is_public?: boolean | null
+          language?: string | null
+          name?: string | null
+          slug?: string | null
+          total_duration_seconds?: number | null
+          unit_code?: never
+          updated_at?: string | null
+          video_count?: number | null
+        }
+        Update: {
+          assignment_kind?: never
+          course_code?: never
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          is_assignment_candidate?: never
+          is_ordered?: boolean | null
+          is_public?: boolean | null
+          language?: string | null
+          name?: string | null
+          slug?: string | null
+          total_duration_seconds?: number | null
+          unit_code?: never
+          updated_at?: string | null
+          video_count?: number | null
+        }
+        Relationships: []
+      }
+      v_home_exhibition: {
+        Row: {
+          categories: Json | null
+          curation_signals: Json | null
+          facodi_highlights: Json | null
+          featured_playlists: Json | null
+          generated_at: string | null
+          hero_videos: Json | null
+          metrics: Json | null
+        }
+        Relationships: []
+      }
       v_playlist_exhibition: {
         Row: {
           activity_at: string | null
@@ -1708,6 +3422,14 @@ export type Database = {
           },
         ]
       }
+      v_playlist_follow_counts: {
+        Row: {
+          followers_count: number | null
+          notifying_followers_count: number | null
+          playlist_id: string | null
+        }
+        Relationships: []
+      }
       v_video_exhibition: {
         Row: {
           category_color: string | null
@@ -1718,7 +3440,9 @@ export type Database = {
           comment_count: number | null
           created_at: string | null
           description: string | null
+          detected_language: string | null
           duration_seconds: number | null
+          effective_language: string | null
           enrichment_cultural_relevance: string | null
           enrichment_language: string | null
           enrichment_optimized_title: string | null
@@ -1737,6 +3461,9 @@ export type Database = {
           submitted_by_username: string | null
           thumbnail_url: string | null
           title: string | null
+          transcript_language: string | null
+          transcript_status: string | null
+          transcript_summary: string | null
           updated_at: string | null
           view_count: number | null
           youtube_id: string | null
@@ -1760,6 +3487,14 @@ export type Database = {
       }
     }
     Functions: {
+      add_video_to_default_education_playlist: {
+        Args: { p_video_id: string }
+        Returns: string
+      }
+      current_profile_can_manage_facodi_playlist: {
+        Args: never
+        Returns: boolean
+      }
       delete_user_account: { Args: never; Returns: undefined }
       follow_by_username_secure: {
         Args: { p_target_username: string }
@@ -1781,6 +3516,7 @@ export type Database = {
           sender_username: string
         }[]
       }
+      get_default_education_playlist_id: { Args: never; Returns: string }
       get_follow_stats_by_username_secure: {
         Args: { p_target_username: string }
         Returns: {
@@ -1796,9 +3532,43 @@ export type Database = {
             Args: { p_session_id?: string; p_video_id: string }
             Returns: number
           }
+      is_education_assignment_playlist: {
+        Args: {
+          p_course_code: string
+          p_is_ordered: boolean
+          p_slug: string
+          p_unit_code: string
+        }
+        Returns: boolean
+      }
+      is_facodi_playlist: {
+        Args: {
+          p_course_code: string
+          p_is_ordered: boolean
+          p_unit_code: string
+        }
+        Returns: boolean
+      }
       is_following_by_username_secure: {
         Args: { p_target_username: string }
         Returns: boolean
+      }
+      is_playlist_owner_or_collaborator: {
+        Args: { p_playlist_id: string; p_user_id: string }
+        Returns: boolean
+      }
+      list_education_playlists_for_assignment: {
+        Args: { p_language?: string; p_limit?: number }
+        Returns: {
+          course_code: string
+          description: string
+          id: string
+          is_ordered: boolean
+          is_public: boolean
+          language: string
+          name: string
+          unit_code: string
+        }[]
       }
       list_featured_videos: {
         Args: { p_limit?: number; p_offset?: number }
@@ -1894,6 +3664,40 @@ export type Database = {
       mark_top_videos_as_featured: {
         Args: { p_limit?: number }
         Returns: number
+      }
+      mark_video_submission_client_error: {
+        Args: {
+          p_error_code?: string
+          p_error_message: string
+          p_stage?: string
+          p_submission_id: string
+        }
+        Returns: {
+          completed_at: string | null
+          created_at: string
+          duplicate_video_id: string | null
+          error_message: string | null
+          id: string
+          metadata: Json
+          processing_started_at: string | null
+          recoverable: boolean
+          status: string
+          updated_at: string
+          user_id: string
+          video_id: string | null
+          youtube_id: string
+          youtube_url: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "video_submissions"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      normalize_slug_for_education_assignment: {
+        Args: { p_value: string }
+        Returns: string
       }
       playlist_accessible_to_user:
         | { Args: { p_playlist_id: string }; Returns: boolean }
@@ -2078,6 +3882,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  facodi: {
+    Enums: {},
+  },
   public: {
     Enums: {},
   },

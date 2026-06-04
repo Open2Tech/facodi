@@ -19,6 +19,8 @@ type View =
   | 'institutional-page'
   | 'videos'
   | 'video-detail'
+  | 'video-submit'
+  | 'video-submit-status'
   | 'profile'
   | 'student-dashboard'
   | 'student-my-courses'
@@ -59,7 +61,6 @@ const Layout: React.FC<Props> = ({
   const { isOpen: isDevelopmentOpen, isReady: isDevelopmentReady, closeNotice, openNotice } = useDevelopmentNotice();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const CONTENT_SUBMIT_URL = 'https://tube.open2.tech';
 
   const projectLinks = [
     { slug: 'manifesto', label: 'Manifesto', icon: 'flag' },
@@ -71,6 +72,14 @@ const Layout: React.FC<Props> = ({
 
   const navGo = (view: View) => { onViewChange(view); setMobileOpen(false); };
   const pageGo = (slug: string) => { onNavigatePage?.(slug); setMobileOpen(false); };
+  const submitVideoGo = () => {
+    if (user) {
+      navGo('video-submit');
+      return;
+    }
+    setMobileOpen(false);
+    onOpenAuth();
+  };
   const isActive = (view: View, extra?: View[]) => currentView === view || (extra?.includes(currentView) ?? false);
   const navCls = (view: View, extra?: View[]) =>
     `transition-all text-[10px] font-bold uppercase tracking-widest px-2 py-1.5 ${isActive(view, extra) ? 'text-black bg-primary stark-border' : 'text-gray-500 hover:text-black hover:bg-brand-muted'}`;
@@ -303,14 +312,12 @@ const Layout: React.FC<Props> = ({
               {t('nav.login')}
             </button>
           )}
-          <a
-            href={CONTENT_SUBMIT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={submitVideoGo}
             className="bg-white text-black py-3 text-[10px] font-black uppercase tracking-widest stark-border hover:bg-brand-muted transition-all w-full text-center"
           >
             Enviar Conteudo
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -379,7 +386,7 @@ const Layout: React.FC<Props> = ({
                 <li><button onClick={() => onNavigatePage?.('manifesto')} className="hover:text-primary">Manifesto</button></li>
                 <li><button onClick={() => onNavigatePage?.('sobre')} className="hover:text-primary">Sobre a FACODI</button></li>
                 <li><button onClick={() => onNavigatePage?.('comunidade')} className="hover:text-primary">Comunidade</button></li>
-                <li><a href={CONTENT_SUBMIT_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">Enviar Conteudo</a></li>
+                <li><button onClick={submitVideoGo} className="hover:text-primary">Enviar Conteudo</button></li>
                 <li><a href="https://open2.tech" className="hover:text-primary">Open2 Technology</a></li>
                 <li><a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Contacto Open2</a></li>
               </ul>
@@ -413,7 +420,7 @@ const Layout: React.FC<Props> = ({
                   © 2026 OPEN2 TECHNOLOGY. CONSTRUÍDO COM CARINHO PELA COMUNIDADE FACODI.
                 </p>
                 <div className="w-full lg:w-auto flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] font-bold uppercase tracking-[0.24em]">
-                  <a href={CONTENT_SUBMIT_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">ENVIAR CONTEUDO</a>
+                  <button onClick={submitVideoGo} className="hover:text-primary">ENVIAR CONTEUDO</button>
                   <a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">CONTACTO</a>
                   <button onClick={() => onNavigatePage?.('sobre')} className="hover:text-primary">PRIVACIDADE</button>
                   <button onClick={() => onNavigatePage?.('como-contribuir')} className="hover:text-primary">TERMOS</button>

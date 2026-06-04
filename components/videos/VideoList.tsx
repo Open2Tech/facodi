@@ -3,13 +3,16 @@ import { PublicPlaylist, VideoCategory, VideoItem } from '../../types';
 import { listPublicCategories, listPublicPlaylists, listPublicVideos } from '../../services/videoSource';
 import VideoCard from './VideoCard';
 import VideoState from './VideoState';
+import { useAuth } from '../../contexts/AuthContext';
 
 type Props = {
   onSelectVideo: (id: string) => void;
+  onSubmitVideo: () => void;
   t: (key: string) => string;
 };
 
-const VideoList: React.FC<Props> = ({ onSelectVideo, t }) => {
+const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
+  const { user } = useAuth();
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [categories, setCategories] = useState<VideoCategory[]>([]);
   const [playlists, setPlaylists] = useState<PublicPlaylist[]>([]);
@@ -82,6 +85,15 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, t }) => {
           <h1 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none mb-6">{t('videos.title')}</h1>
           <p className="text-xl lg:text-2xl text-gray-400 font-medium tracking-tight">{t('videos.subtitle')}</p>
         </div>
+        {user && (
+          <button
+            type="button"
+            onClick={onSubmitVideo}
+            className="bg-primary text-black px-6 py-4 text-[10px] font-black uppercase tracking-widest stark-border hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
+          >
+            Enviar video
+          </button>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">

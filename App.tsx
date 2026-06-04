@@ -23,6 +23,8 @@ const InstitutionalPage = React.lazy(() => import('./components/InstitutionalPag
 const AINavigator = React.lazy(() => import('./components/AINavigator'));
 const VideoList = React.lazy(() => import('./components/videos/VideoList'));
 const VideoDetail = React.lazy(() => import('./components/videos/VideoDetail'));
+const VideoSubmitPage = React.lazy(() => import('./components/videos/VideoSubmitPage'));
+const VideoSubmitStatusPage = React.lazy(() => import('./components/videos/VideoSubmitStatusPage'));
 const AuthModal = React.lazy(() => import('./components/auth/AuthModal'));
 const ProfilePage = React.lazy(() => import('./components/user/ProfilePage'));
 const StudentDashboard = React.lazy(() => import('./components/student/StudentDashboard'));
@@ -51,6 +53,8 @@ type View =
   | 'institutional-page'
   | 'videos'
   | 'video-detail'
+  | 'video-submit'
+  | 'video-submit-status'
   | 'profile'
   | 'student-dashboard'
   | 'student-my-courses'
@@ -72,6 +76,7 @@ const App: React.FC = () => {
   const [savedUnitIds, setSavedUnitIds] = useState<string[]>([]);
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+  const [selectedVideoJobId, setSelectedVideoJobId] = useState<string | null>(null);
   const [selectedPageSlug, setSelectedPageSlug] = useState<string | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
   const [locale, setLocale] = useState<string>('pt');
@@ -103,6 +108,8 @@ const App: React.FC = () => {
     if (view === 'lesson-detail' && lessonId) path = `/lessons/${lessonId}`;
     if (view === 'videos') path = '/videos';
     if (view === 'video-detail' && videoId) path = `/videos/${videoId}`;
+    if (view === 'video-submit') path = '/videos/submit';
+    if (view === 'video-submit-status' && videoId) path = `/videos/submit/${videoId}`;
     if (view === 'dashboard') path = '/dashboard';
     if (view === 'playlists') path = '/playlists';
     if (view === 'contributors') path = '/contributors';
@@ -175,6 +182,18 @@ const App: React.FC = () => {
       }
       if (path === '/student/history') {
         setCurrentView('student-history');
+        return;
+      }
+    }
+    if (path === '/videos/submit') {
+      setCurrentView('video-submit');
+      return;
+    }
+    if (path.startsWith('/videos/submit/')) {
+      const jobId = path.replace('/videos/submit/', '').split('/')[0];
+      if (jobId) {
+        setSelectedVideoJobId(jobId);
+        setCurrentView('video-submit-status');
         return;
       }
     }
@@ -348,6 +367,8 @@ const App: React.FC = () => {
       'curator-admin-review',
       'admin-dashboard',
       'admin-curators',
+      'video-submit',
+      'video-submit-status',
     ]);
 
     let path = '/';
@@ -418,6 +439,14 @@ const App: React.FC = () => {
       path = selectedVideoId ? `/videos/${selectedVideoId}` : '/videos';
       title = selectedVideoId ? `Video ${selectedVideoId} | FACODI` : 'Video | FACODI';
       description = 'Pagina de video educacional com contexto curricular e navegacao relacionada.';
+    } else if (currentView === 'video-submit') {
+      path = '/videos/submit';
+      title = 'Enviar video | FACODI';
+      description = 'Envie um video do YouTube para processamento no pipeline facodi v2.';
+    } else if (currentView === 'video-submit-status') {
+      path = selectedVideoJobId ? `/videos/submit/${selectedVideoJobId}` : '/videos/submit';
+      title = 'Status do video | FACODI';
+      description = 'Acompanhe o processamento v2 de um video submetido ao FACODI.';
     } else if (currentView === 'institutional-page') {
       const slugMeta: Record<string, { title: string; description: string }> = {
         manifesto: {
@@ -660,6 +689,17 @@ const App: React.FC = () => {
     setSelectedVideoId(id);
     setCurrentView('video-detail');
     updateRoute('video-detail', undefined, undefined, id);
+  };
+
+  const handleVideoSubmit = () => {
+    setCurrentView('video-submit');
+    updateRoute('video-submit');
+  };
+
+  const handleVideoJobSelect = (jobId: string) => {
+    setSelectedVideoJobId(jobId);
+    setCurrentView('video-submit-status');
+    updateRoute('video-submit-status', undefined, undefined, jobId);
   };
 
   const handleBlogSelect = (slug: string) => {
@@ -919,7 +959,40 @@ const App: React.FC = () => {
     if (currentView === 'videos') {
       return (
         <Suspense fallback={lazyFallback}>
-          <VideoList onSelectVideo={handleVideoSelect} t={t} />
+          <VideoList onSelectVideo={handleVideoSelect} onSubmitVideo={handleVideoSubmit} t={t} />
+        </Suspense>
+      );
+    }
+
+    if (currentView === 'video-submit') {
+      return (
+        <Suspense fallback={lazyFallback}>
+          <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
+            <VideoSubmitPage
+              onSubmitted={handleVideoJobSelect}
+              onBack={() => {
+                setCurrentView('videos');
+                updateRoute('videos');
+              }}
+            />
+          </RequireAuth>
+        </Suspense>
+      );
+    }
+
+    if (currentView === 'video-submit-status' && selectedVideoJobId) {
+      return (
+        <Suspense fallback={lazyFallback}>
+          <RequireAuth onOpenAuth={() => setShowAuthModal(true)}>
+            <VideoSubmitStatusPage
+              jobId={selectedVideoJobId}
+              onBack={() => {
+                setCurrentView('videos');
+                updateRoute('videos');
+              }}
+              onRetryJob={handleVideoJobSelect}
+            />
+          </RequireAuth>
         </Suspense>
       );
     }
@@ -958,6 +1031,7 @@ const App: React.FC = () => {
               setCurrentView('courses');
               updateRoute('courses');
             }}
+            onSubmitVideo={handleVideoSubmit}
             onNavigatePage={handlePageNavigate}
             onSelectCourse={(courseId) => {
               setFilters((f) => ({ ...f, courseId }));

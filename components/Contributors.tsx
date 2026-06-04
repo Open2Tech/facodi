@@ -64,8 +64,8 @@ const Contributors: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <article className="space-y-4">
             <p className="text-[10px] font-black uppercase tracking-widest">Content Submission</p>
-            <p className="text-xs text-gray-600 leading-relaxed">Publish educational videos and playlists through the community media pipeline.</p>
-            <a href="https://tube.open2.tech" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black uppercase tracking-widest underline decoration-primary decoration-2 underline-offset-4">Open Tube Platform</a>
+            <p className="text-xs text-gray-600 leading-relaxed">Publish educational videos through the FACODI V2 media pipeline.</p>
+            <a href="/videos/submit" className="text-[10px] font-black uppercase tracking-widest underline decoration-primary decoration-2 underline-offset-4">Submit Video</a>
           </article>
           <article className="space-y-4">
             <p className="text-[10px] font-black uppercase tracking-widest">Technical Collaboration</p>

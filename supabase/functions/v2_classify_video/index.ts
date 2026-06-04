@@ -10,6 +10,8 @@ interface Payload {
   youtube_video_id?: string;
 }
 
+const AUTO_ACCEPT_THRESHOLD = 0.8;
+
 function asNumber(value: unknown, fallback = 0): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? Math.max(0, Math.min(parsed, 1)) : fallback;
@@ -131,7 +133,11 @@ Deno.serve((req) =>
       llm.output_json.confidence,
       firstUnitCandidate?.combined_score ?? 0.3,
     );
-    const needsReview = Boolean(llm.output_json.needs_review ?? confidence < 0.8);
+    const autoAccepted = confidence >= AUTO_ACCEPT_THRESHOLD &&
+      llm.output_json.needs_review !== true &&
+      Boolean(courseId || unitId);
+    const needsReview = autoAccepted ? false : Boolean(llm.output_json.needs_review ?? true);
+    const now = new Date().toISOString();
     const classificationRow = {
       job_id: job.id,
       video_id: video.id,
@@ -140,7 +146,7 @@ Deno.serve((req) =>
       model_run_id: modelRun.id,
       confidence,
       confidence_level: confidenceLevel(confidence),
-      status: needsReview ? "needs_review" : "draft",
+      status: autoAccepted ? "accepted" : "needs_review",
       needs_review: needsReview,
       justification: typeof llm.output_json.justification === "string"
         ? llm.output_json.justification
@@ -148,7 +154,13 @@ Deno.serve((req) =>
       evidence: Array.isArray(llm.output_json.evidence)
         ? llm.output_json.evidence
         : enrichedCandidates.slice(0, 5),
-      metadata: { llm_output: llm.output_json },
+      reviewed_by: null,
+      reviewed_at: autoAccepted ? now : null,
+      metadata: {
+        llm_output: llm.output_json,
+        auto_accepted: autoAccepted,
+        auto_accept_threshold: AUTO_ACCEPT_THRESHOLD,
+      },
     };
 
     const existing = unwrapMaybe<{ id: string }>(
@@ -179,13 +191,14 @@ Deno.serve((req) =>
     await updateJob(admin, job.id as string, {
       status: needsReview ? "needs_review" : "succeeded",
       current_step: "classified",
-      completed_at: new Date().toISOString(),
+      completed_at: now,
       result_payload: {
         classification_id: classification.id,
         course_id: courseId,
         curricular_unit_id: unitId,
         confidence,
         needs_review: needsReview,
+        auto_accepted: autoAccepted,
       },
     });
 
@@ -198,6 +211,7 @@ Deno.serve((req) =>
       curricular_unit_id: unitId,
       confidence,
       needs_review: needsReview,
+      auto_accepted: autoAccepted,
     });
   })
 );

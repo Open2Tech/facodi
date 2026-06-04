@@ -4,6 +4,7 @@ import { Course, CurricularUnit } from '../types';
 
 interface HomeProps {
   onExplore: () => void;
+  onSubmitVideo: () => void;
   onNavigatePage?: (slug: string) => void;
   onSelectCourse?: (courseId: string) => void;
   t: (key: string) => string;
@@ -11,8 +12,7 @@ interface HomeProps {
   units: CurricularUnit[];
 }
 
-const Home: React.FC<HomeProps> = ({ onExplore, onNavigatePage, onSelectCourse, t, courses, units }) => {
-  const CONTENT_SUBMIT_URL = 'https://tube.open2.tech';
+const Home: React.FC<HomeProps> = ({ onExplore, onSubmitVideo, onNavigatePage, onSelectCourse, t, courses, units }) => {
   const totalUnits = units.length;
   const totalCourses = courses.length;
   return (
@@ -296,14 +296,12 @@ const Home: React.FC<HomeProps> = ({ onExplore, onNavigatePage, onSelectCourse, 
             >
               {t('home.ctaPrimary')}
             </button>
-            <a
-              href={CONTENT_SUBMIT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onSubmitVideo}
               className="bg-white text-black px-12 py-5 text-[10px] font-black uppercase tracking-[0.4em] stark-border hover:bg-brand-muted transition-all inline-flex items-center"
             >
               {t('home.ctaSecondary')}
-            </a>
+            </button>
           </div>
         </div>
       </section>

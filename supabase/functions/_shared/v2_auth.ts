@@ -2,12 +2,12 @@ import type { AdminClient } from "./v2_supabase.ts";
 import { createAdminClient, optionalEnv } from "./v2_supabase.ts";
 import { HttpError } from "./v2_http.ts";
 
-export type AuthMode = "secret" | "editor";
+export type AuthMode = "secret" | "user" | "editor";
 
 export interface AuthContext {
   mode: AuthMode;
   userId: string | null;
-  role: "editor" | "admin" | "service";
+  role: "user" | "editor" | "admin" | "service";
 }
 
 function getBearer(req: Request): string | null {
@@ -41,7 +41,7 @@ function hasEditorRole(
 async function getProfileEditorRole(
   admin: AdminClient,
   userId: string,
-): Promise<"editor" | "admin" | null> {
+): Promise<"user" | "editor" | "admin" | null> {
   const { data, error } = await admin
     .from("profiles")
     .select("role")
@@ -59,6 +59,9 @@ async function getProfileEditorRole(
   if (role === "editor") {
     return "editor";
   }
+  if (role === "user") {
+    return "user";
+  }
   return null;
 }
 
@@ -75,6 +78,26 @@ export async function requireEditorAuth(
   req: Request,
   admin: AdminClient = createAdminClient(),
 ): Promise<AuthContext> {
+  const auth = await requireUserAuth(req, admin);
+
+  if (auth.role !== "editor" && auth.role !== "admin") {
+    throw new HttpError(
+      403,
+      "forbidden",
+      "Editor or admin role required (app_metadata or profiles.role).",
+    );
+  }
+
+  return {
+    ...auth,
+    role: auth.role,
+  };
+}
+
+export async function requireUserAuth(
+  req: Request,
+  admin: AdminClient = createAdminClient(),
+): Promise<AuthContext> {
   const token = getBearer(req);
   if (!token) {
     throw new HttpError(401, "unauthorized", "Missing bearer token.");
@@ -86,19 +109,11 @@ export async function requireEditorAuth(
   }
 
   const appMetadataRole = hasEditorRole((data.user.app_metadata ?? {}) as Record<string, unknown>);
-  const profileRole = appMetadataRole ? null : await getProfileEditorRole(admin, data.user.id);
-  const role = appMetadataRole ?? profileRole;
-
-  if (!role) {
-    throw new HttpError(
-      403,
-      "forbidden",
-      "Editor or admin role required (app_metadata or profiles.role).",
-    );
-  }
+  const profileRole = await getProfileEditorRole(admin, data.user.id);
+  const role = appMetadataRole ?? profileRole ?? "user";
 
   return {
-    mode: "editor",
+    mode: role === "editor" || role === "admin" ? "editor" : "user",
     userId: data.user.id,
     role,
   };

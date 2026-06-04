@@ -45,6 +45,7 @@ pnpm security:check-rls
 - Nao coloque detalhes de banco/provedor em componentes.
 - **Reutilize o cliente unico em `services/supabase.ts`** — nunca crie novas instancias com `createClient()`.
 - Falhas de catalogo remoto devem aparecer explicitamente; nao reintroduza fallback local de catalogo.
+- Fluxos FACODI de video devem chamar apenas Edge Functions `v2_*`. Functions antigas podem existir para compatibilidade, mas nao sao dependencias do frontend novo.
 
 ### Supabase-Specific Rules
 - ✅ Frontend catalog/video reads use `facodi` read models.
@@ -60,6 +61,7 @@ pnpm security:check-rls
 - `CurricularUnit.courseId` deve apontar para `Course.id` existente.
 - `Playlist.units` deve seguir como `string[]` de ids validos.
 - Ordenacao de playlists deve ser deterministica.
+- Submissoes de video usam `/videos/submit` e status em `/videos/submit/:jobId`.
 
 ## Ambiente e Seguranca
 
@@ -84,5 +86,5 @@ pnpm security:check-rls
 
 ## Canais
 
-- Envio de conteudo audiovisual: https://tube.open2.tech
+- Envio de conteudo audiovisual: `/videos/submit`
 - Contato institucional: https://open2.tech/contact

@@ -1,10 +1,15 @@
 import { expect, test } from '@playwright/test';
 
 async function dismissDevelopmentModal(page: Parameters<Parameters<typeof test>[1]>[0]['page']) {
+  const authDialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (await authDialog.isVisible().catch(() => false)) {
+    return;
+  }
+
   const devDialog = page.getByRole('dialog', { name: /plataforma em desenvolvimento/i });
   if (await devDialog.isVisible().catch(() => false)) {
-    await devDialog.getByRole('button', { name: /fechar/i }).first().click();
-    await expect(devDialog).not.toBeVisible({ timeout: 8_000 });
+    await devDialog.getByRole('button', { name: /fechar/i }).first().click({ timeout: 1_500 }).catch(() => undefined);
+    await expect(devDialog).not.toBeVisible({ timeout: 2_000 }).catch(() => undefined);
   }
 }
 

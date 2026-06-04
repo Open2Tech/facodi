@@ -248,12 +248,12 @@ async function runV2Pipeline(video: ChannelVideo): Promise<VideoAnalysis> {
 }
 
 export async function importChannel(identifier: string): Promise<ChannelIdentity> {
-  const { data, error } = await supabase.functions.invoke('fetch_youtube_channel', {
-    body: { channelInput: identifier },
+  const { data, error } = await supabase.functions.invoke('v2_fetch_youtube_channel', {
+    body: { channel_input: identifier },
   });
 
   if (error) {
-    throw new Error(`fetch_youtube_channel failed: ${error.message}`);
+    throw new Error(`v2_fetch_youtube_channel failed: ${error.message}`);
   }
 
   return toChannelIdentity((data || {}) as Record<string, unknown>, identifier);
@@ -280,16 +280,16 @@ export async function listChannelVideos(
   const pageToken = typeof pageTokenOrBrief === 'string' ? pageTokenOrBrief : undefined;
   const effectiveMax = brief?.maxVideos || maxResults;
 
-  const { data, error } = await supabase.functions.invoke('list_channel_videos', {
+  const { data, error } = await supabase.functions.invoke('v2_list_channel_videos', {
     body: {
-      channelInput,
+      channel_input: channelInput,
       pageToken,
       brief: { maxVideos: effectiveMax },
     },
   });
 
   if (error) {
-    throw new Error(`list_channel_videos failed: ${error.message}`);
+    throw new Error(`v2_list_channel_videos failed: ${error.message}`);
   }
 
   const rows = Array.isArray(data)

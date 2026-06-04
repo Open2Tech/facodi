@@ -20,6 +20,7 @@ Projeto mantido por Open2 Technology: https://open2.tech
 - Dados: Supabase schema `facodi` como fonte canonica de catalogo e classificacao.
 - Persistencia e auth: Supabase (schemas `facodi` e `public` + RLS).
 - Contrato de catalogo centralizado em `services/catalogSource.ts`.
+- Mutacoes de video e pipeline via Edge Functions `v2_*`.
 
 Principio arquitetural: componentes devem consumir o catalogo via `loadCatalogData()`, que le exclusivamente os read models do schema `facodi`.
 
@@ -31,6 +32,10 @@ O catalogo usa as views publicas do schema `facodi`:
 - `facodi.v_catalog_units`
 - `facodi.v_catalog_playlists`
 - `facodi.v_public_videos`
+- `facodi.v_playlist_videos`
+
+Fluxos de video usam `/videos/submit`, `/videos/submit/:jobId` e `/curator/channel-pipeline`.
+O frontend nao deve chamar slugs antigos de video/canal; veja `docs/FACODI_V2_VIDEO_PIPELINE.md`.
 
 ## Setup Rapido
 
@@ -110,6 +115,7 @@ Seguranca:
 - Guia principal do projeto: `docs/FACODI.md`
 - Planejamento e roadmap: `docs/PLAN.md`
 - Guia tecnico de desenvolvimento: `docs/DEVELOPER_GUIDE.md`
+- Pipeline FACODI V2 de videos: `docs/FACODI_V2_VIDEO_PIPELINE.md`
 - Baseline de acessibilidade: `docs/ACCESSIBILITY_IMPROVEMENTS.md`
 - Resumo do estado atual: `docs/PHASE_2_SUMMARY.md`
 - Contribuicao: `CONTRIBUTING.md`

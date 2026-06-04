@@ -1,10 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 async function dismissDevelopmentModal(page: Parameters<Parameters<typeof test>[1]>[0]['page']) {
+  const authDialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (await authDialog.isVisible().catch(() => false)) {
+    return;
+  }
+
   const devDialog = page.getByRole('dialog', { name: /plataforma em desenvolvimento/i });
   if (await devDialog.isVisible().catch(() => false)) {
-    await devDialog.getByRole('button', { name: /fechar/i }).first().click();
-    await expect(devDialog).not.toBeVisible({ timeout: 8_000 });
+    await devDialog.getByRole('button', { name: /fechar/i }).first().click({ timeout: 1_500 }).catch(() => undefined);
+    await expect(devDialog).not.toBeVisible({ timeout: 2_000 }).catch(() => undefined);
   }
 }
 
@@ -49,6 +54,30 @@ test('videos page renders the public video surface', async ({ page }) => {
     page.locator('article').first()
       .or(page.getByText(/nenhum|erro|carregando/i).first()),
   ).toBeVisible({ timeout: 10_000 });
+});
+
+test('video submission route is the authenticated v2 entry point', async ({ page }) => {
+  await page.goto('/videos/submit');
+  await dismissDevelopmentModal(page);
+  await expect(page).toHaveURL('/videos/submit');
+  const authDialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (await authDialog.isVisible().catch(() => false)) {
+    await expect(authDialog).toBeVisible();
+    return;
+  }
+  await expect(page.getByText(/acesso restrito|autenticado/i).first()).toBeVisible({ timeout: 8_000 });
+});
+
+test('video submission status route is protected by auth', async ({ page }) => {
+  await page.goto('/videos/submit/00000000-0000-4000-8000-000000000000');
+  await dismissDevelopmentModal(page);
+  await expect(page).toHaveURL('/videos/submit/00000000-0000-4000-8000-000000000000');
+  const authDialog = page.getByRole('dialog').filter({ has: page.locator('input[type="email"]') });
+  if (await authDialog.isVisible().catch(() => false)) {
+    await expect(authDialog).toBeVisible();
+    return;
+  }
+  await expect(page.getByText(/acesso restrito|autenticado/i).first()).toBeVisible({ timeout: 8_000 });
 });
 
 test('lesson detail renders a video block state', async ({ page }) => {

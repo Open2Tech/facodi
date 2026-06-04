@@ -54,6 +54,8 @@ Deno.serve((req) =>
           input_url: payload.url ?? canonicalUrl,
           status: "queued",
           current_step: "ingested",
+          requested_by: auth.userId,
+          request_source: auth.mode === "secret" ? "internal_v2" : "facodi_editor_pipeline",
           input_payload: { ...payload, video_id: undefined },
           started_at: new Date().toISOString(),
         })
