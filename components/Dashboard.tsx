@@ -15,6 +15,38 @@ const Dashboard: React.FC<DashboardProps> = ({ savedUnits, onUnitClick, onRemove
   const targetECTS = 180;
   const progressPercent = Math.min((totalECTS / targetECTS) * 100, 100);
 
+  const exportPlanAsCsv = () => {
+    if (savedUnits.length === 0) return;
+
+    const escapeValue = (value: string | number) => {
+      const asText = String(value ?? '');
+      return `"${asText.replace(/"/g, '""')}"`;
+    };
+
+    const header = ['id', 'nome', 'curso', 'ects', 'categoria', 'duracao', 'contribuidor'];
+    const rows = savedUnits.map((unit) => [
+      unit.id,
+      unit.name,
+      unit.courseId,
+      unit.ects,
+      unit.category,
+      unit.duration,
+      unit.contributor,
+    ]);
+
+    const csv = [header, ...rows]
+      .map((row) => row.map((value) => escapeValue(value)).join(','))
+      .join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'facodi-plano.csv';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   const categoryCount = savedUnits.reduce((acc, unit) => {
     // Cast category to string to ensure stable Record key indexing
     const cat = unit.category as string;
@@ -103,7 +135,14 @@ const Dashboard: React.FC<DashboardProps> = ({ savedUnits, onUnitClick, onRemove
           <div className="stark-border bg-white">
             <div className="p-8 border-b border-black flex justify-between items-center bg-black text-white">
               <h3 className="text-xs font-black uppercase tracking-widest">Unidades em Foco ({savedUnits.length})</h3>
-              <button className="text-[9px] font-black uppercase tracking-widest hover:text-primary underline">Exportar Plano</button>
+              <button
+                type="button"
+                onClick={exportPlanAsCsv}
+                disabled={savedUnits.length === 0}
+                className="text-[9px] font-black uppercase tracking-widest hover:text-primary underline disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Exportar Plano
+              </button>
             </div>
             
             <div className="divide-y divide-black/10">
@@ -129,6 +168,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedUnits, onUnitClick, onRemove
                       <p className="text-[10px] font-bold">{unit.ects} ECTS</p>
                     </div>
                     <button 
+                      type="button"
+                      aria-label={`Remover ${unit.name} do plano`}
                       onClick={() => onRemove(unit.id)}
                       className="w-10 h-10 stark-border flex items-center justify-center hover:bg-red-500 hover:text-white transition-all"
                     >

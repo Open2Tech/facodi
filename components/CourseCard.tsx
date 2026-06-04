@@ -19,6 +19,8 @@ const CourseCard: React.FC<Props> = ({ unit, onClick, courseTitle }) => {
       <div className="flex justify-between items-start mb-8">
         <CategoryBadge category={unit.category} />
         <button 
+          type="button"
+          aria-label="Salvar unidade nos favoritos"
           className="text-gray-400 hover:text-black transition-colors"
           onClick={(e) => {
             e.stopPropagation();

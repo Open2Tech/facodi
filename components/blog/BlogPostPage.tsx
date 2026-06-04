@@ -35,8 +35,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ slug, locale, onBack }) => 
       <button
         type="button"
         onClick={onBack}
-        className="mb-8 stark-border px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all"
+        className="mb-8 stark-border px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all inline-flex items-center gap-2"
       >
+        <span className="material-symbols-outlined text-sm">arrow_back</span>
         {t('blog.backToList')}
       </button>
 

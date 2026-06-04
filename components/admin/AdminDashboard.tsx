@@ -15,26 +15,30 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
   const [acceptedClassifications, setAcceptedClassifications] = useState(0);
   const [pendingApplications, setPendingApplications] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasLoadError, setHasLoadError] = useState(false);
+
+  const loadDashboard = async () => {
+    try {
+      setIsLoading(true);
+      setHasLoadError(false);
+      const [needsReview, accepted, { total }] = await Promise.all([
+        listVideoClassifications({ needsReview: true, limit: 1, offset: 0 }),
+        listVideoClassifications({ status: 'accepted', limit: 1, offset: 0 }),
+        listApplications('pending', 1, 0),
+      ]);
+      setPendingClassifications(needsReview.total);
+      setAcceptedClassifications(accepted.total);
+      setPendingApplications(total);
+    } catch (err) {
+      console.error('[admin-dashboard] load error', err);
+      setHasLoadError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        setIsLoading(true);
-        const [needsReview, accepted, { total }] = await Promise.all([
-          listVideoClassifications({ needsReview: true, limit: 1, offset: 0 }),
-          listVideoClassifications({ status: 'accepted', limit: 1, offset: 0 }),
-          listApplications('pending', 1, 0),
-        ]);
-        setPendingClassifications(needsReview.total);
-        setAcceptedClassifications(accepted.total);
-        setPendingApplications(total);
-      } catch (err) {
-        console.error('[admin-dashboard] load error', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    load();
+    loadDashboard();
   }, []);
 
   if (profile?.role !== 'admin') {
@@ -71,6 +75,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack, onNavigate }) =
       {isLoading ? (
         <div className="py-24 flex items-center justify-center">
           <div className="w-10 h-10 border-4 border-black border-t-primary animate-spin" />
+        </div>
+      ) : hasLoadError ? (
+        <div className="stark-border bg-red-50 p-8">
+          <p className="text-sm font-bold uppercase tracking-widest text-red-700 mb-3">
+            Erro ao carregar indicadores administrativos
+          </p>
+          <button
+            onClick={loadDashboard}
+            className="stark-border px-4 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-colors"
+          >
+            Tentar novamente
+          </button>
         </div>
       ) : (
         <>

@@ -17,10 +17,22 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
   const [categories, setCategories] = useState<VideoCategory[]>([]);
   const [playlists, setPlaylists] = useState<PublicPlaylist[]>([]);
   const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [playlistId, setPlaylistId] = useState('');
+  const [retryKey, setRetryKey] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 300);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [search]);
 
   useEffect(() => {
     let active = true;
@@ -52,7 +64,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
     setIsLoading(true);
 
     listPublicVideos({
-      search: search || undefined,
+      search: debouncedSearch || undefined,
       categoryId: categoryId || undefined,
       playlistId: playlistId || undefined,
       limit: 60,
@@ -76,7 +88,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
     return () => {
       active = false;
     };
-  }, [search, categoryId, playlistId, t]);
+  }, [debouncedSearch, categoryId, playlistId, retryKey, t]);
 
   return (
     <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -139,7 +151,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
           message={error}
           actionLabel="Tentar novamente"
           onAction={() => {
-            setSearch((value) => value);
+            setRetryKey((value) => value + 1);
           }}
         />
       )}

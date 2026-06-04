@@ -101,6 +101,25 @@ export default function StudentHistoryPage({
     return labelMap[eventType] || eventType;
   };
 
+  const formatCompactId = (value: unknown, prefix: string): string | null => {
+    if (typeof value !== 'string' || value.length === 0) return null;
+    const compact = value.length > 8 ? value.slice(0, 8).toUpperCase() : value.toUpperCase();
+    return `${prefix} ${compact}`;
+  };
+
+  const formatMetadata = (metadata?: Record<string, unknown>): string | null => {
+    if (!metadata) return null;
+    const details = [
+      formatCompactId(metadata.course_id, 'Curso'),
+      formatCompactId(metadata.curricular_unit_id, 'Unidade'),
+      formatCompactId(metadata.content_id, 'Conteudo'),
+      typeof metadata.content_type === 'string' ? `Tipo ${metadata.content_type}` : null,
+    ].filter((item): item is string => Boolean(item));
+
+    if (details.length === 0) return null;
+    return details.join(' • ');
+  };
+
   return (
     <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
       <button
@@ -143,7 +162,7 @@ export default function StudentHistoryPage({
                   key={idx}
                   className="flex items-start gap-4 py-4 px-4 hover:bg-brand-muted transition-colors last:border-b-0 border-b"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-brand-primary text-white rounded-full flex-shrink-0 mt-0.5">
+                  <div className="flex items-center justify-center w-12 h-12 bg-primary text-black stark-border flex-shrink-0 mt-0.5">
                     <span className="material-symbols-outlined text-lg">
                       {getActivityIcon(activity.event_type)}
                     </span>
@@ -155,9 +174,9 @@ export default function StudentHistoryPage({
                     <p className="text-xs text-gray-600 mt-1">
                       {formattedDate} às {formattedTime}
                     </p>
-                    {activity.metadata && (
+                    {formatMetadata(activity.metadata) && (
                       <p className="text-xs text-gray-500 mt-2">
-                        {JSON.stringify(activity.metadata).substring(0, 100)}...
+                        {formatMetadata(activity.metadata)}
                       </p>
                     )}
                   </div>

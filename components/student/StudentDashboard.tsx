@@ -70,6 +70,11 @@ export default function StudentDashboard({
   }
 
   const hasEnrollments = dashboard.enrolledCourses.length > 0;
+  const formatCompactId = (id: string | null | undefined, fallback: string): string => {
+    if (!id) return fallback;
+    const compact = id.length > 8 ? id.slice(0, 8).toUpperCase() : id.toUpperCase();
+    return `${fallback} ${compact}`;
+  };
 
   return (
     <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -95,7 +100,7 @@ export default function StudentDashboard({
           <p className="text-sm font-semibold mb-4">Você ainda não se inscreveu em nenhum curso.</p>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-brand-primary text-white text-xs font-bold uppercase tracking-widest rounded hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-black text-xs font-bold uppercase tracking-widest stark-border hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
           >
             <span className="material-symbols-outlined">explore</span>
             Explorar Cursos
@@ -115,8 +120,8 @@ export default function StudentDashboard({
                   onClick={() => onSelectCourse(enrollment.course_id)}
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-lg font-bold flex-1">{enrollment.course_id}</h3>
-                    <span className="text-xs font-bold uppercase bg-brand-primary text-white px-2 py-1 rounded">
+                    <h3 className="text-lg font-bold flex-1">{formatCompactId(enrollment.course_id, 'Curso')}</h3>
+                    <span className="text-xs font-bold uppercase bg-primary text-black px-2 py-1 stark-border">
                       {enrollment.status}
                     </span>
                   </div>
@@ -125,9 +130,9 @@ export default function StudentDashboard({
                       <span className="text-xs font-semibold">Progresso</span>
                       <span className="text-xs font-bold">{enrollment.progress_percentage}%</span>
                     </div>
-                    <div className="w-full h-2 bg-gray-200 rounded overflow-hidden">
+                    <div className="w-full h-2 bg-brand-muted stark-border overflow-hidden">
                       <div
-                        className="h-full bg-brand-primary transition-all duration-300"
+                        className="h-full bg-primary transition-all duration-300"
                         style={{ width: `${enrollment.progress_percentage}%` }}
                       />
                     </div>
@@ -155,15 +160,15 @@ export default function StudentDashboard({
                     className="stark-border p-6 hover:bg-brand-muted transition-colors cursor-pointer"
                     onClick={() => onSelectVideo(content.content_id)}
                   >
-                    <h3 className="text-lg font-bold mb-2">{content.content_id}</h3>
+                      <h3 className="text-lg font-bold mb-2">{formatCompactId(content.content_id, 'Conteudo')}</h3>
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-xs font-semibold">Progresso</span>
                         <span className="text-xs font-bold">{content.progress_percentage}%</span>
                       </div>
-                      <div className="w-full h-2 bg-gray-200 rounded overflow-hidden">
+                        <div className="w-full h-2 bg-brand-muted stark-border overflow-hidden">
                         <div
-                          className="h-full bg-brand-primary transition-all duration-300"
+                            className="h-full bg-primary transition-all duration-300"
                           style={{ width: `${content.progress_percentage}%` }}
                         />
                       </div>
@@ -188,7 +193,7 @@ export default function StudentDashboard({
                 <div className="space-y-4">
                   {dashboard.recentActivity.slice(0, 10).map((activity, idx) => (
                     <div key={idx} className="flex items-start gap-4 pb-4 border-b last:border-b-0 last:pb-0">
-                      <span className="material-symbols-outlined text-sm text-brand-primary flex-shrink-0 mt-1">
+                      <span className="material-symbols-outlined text-sm text-black flex-shrink-0 mt-1">
                         check_circle
                       </span>
                       <div className="flex-1 min-w-0">

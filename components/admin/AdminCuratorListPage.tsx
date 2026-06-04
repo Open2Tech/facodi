@@ -12,6 +12,9 @@ const AdminCuratorListPage: React.FC<AdminCuratorListPageProps> = ({ onBack }) =
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
+  const [rejectTarget, setRejectTarget] = useState<EditorApplication | null>(null);
+  const [rejectReason, setRejectReason] = useState('');
+  const [isRejecting, setIsRejecting] = useState(false);
 
   const load = useCallback(async () => {
     try {
@@ -42,16 +45,20 @@ const AdminCuratorListPage: React.FC<AdminCuratorListPageProps> = ({ onBack }) =
     }
   };
 
-  const reject = async (id: string) => {
-    const reason = window.prompt('Motivo da rejeicao (obrigatorio):');
-    if (!reason || !reason.trim()) return;
+  const reject = async (id: string, reason: string) => {
+    if (!reason.trim()) return;
     try {
+      setIsRejecting(true);
       await updateApplicationStatus(id, 'rejected', reason.trim());
       setNote('Candidatura rejeitada.');
+      setRejectTarget(null);
+      setRejectReason('');
       await load();
     } catch (err) {
       console.error('[admin-curator-list] reject error', err);
       setError('Erro ao rejeitar candidatura.');
+    } finally {
+      setIsRejecting(false);
     }
   };
 
@@ -103,12 +110,49 @@ const AdminCuratorListPage: React.FC<AdminCuratorListPageProps> = ({ onBack }) =
                 {row.status === 'pending' && (
                   <div className="flex gap-2">
                     <button onClick={() => approve(row.id)} className="bg-primary stark-border px-4 py-2 text-[9px] font-black uppercase tracking-widest hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">Aprovar</button>
-                    <button onClick={() => reject(row.id)} className="stark-border px-4 py-2 text-[9px] font-black uppercase tracking-widest text-red-700">Rejeitar</button>
+                    <button onClick={() => setRejectTarget(row)} className="stark-border px-4 py-2 text-[9px] font-black uppercase tracking-widest text-red-700">Rejeitar</button>
                   </div>
                 )}
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {rejectTarget && (
+        <div className="fixed inset-0 z-50 bg-black/40 px-6 py-8 flex items-center justify-center">
+          <div className="w-full max-w-xl stark-border bg-white p-6">
+            <h2 className="text-xl font-black uppercase tracking-tight mb-2">Rejeitar candidatura</h2>
+            <p className="text-sm text-gray-600 mb-4">
+              Informe o motivo da rejeicao para {rejectTarget.full_name}.
+            </p>
+            <textarea
+              value={rejectReason}
+              onChange={(event) => setRejectReason(event.target.value)}
+              rows={5}
+              className="w-full stark-border p-3 text-sm mb-4"
+              placeholder="Motivo da rejeicao (obrigatorio)"
+            />
+            <div className="flex items-center justify-end gap-2">
+              <button
+                onClick={() => {
+                  if (isRejecting) return;
+                  setRejectTarget(null);
+                  setRejectReason('');
+                }}
+                className="stark-border px-4 py-2 text-[9px] font-black uppercase tracking-widest"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => reject(rejectTarget.id, rejectReason)}
+                disabled={isRejecting || !rejectReason.trim()}
+                className="stark-border px-4 py-2 text-[9px] font-black uppercase tracking-widest bg-red-100 text-red-700 disabled:opacity-50"
+              >
+                {isRejecting ? 'A rejeitar...' : 'Confirmar rejeicao'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

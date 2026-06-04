@@ -87,7 +87,7 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
           <h1 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-2">
             {t('curator.reviewDashboard.title')}
           </h1>
-          <p className="text-slate-600">
+          <p className="text-gray-600">
             {locale === 'pt' ? 'Revisão editorial v2 de classificações e candidaturas' : 'V2 editorial review for classifications and applications'}
           </p>
         </div>
@@ -151,9 +151,9 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
               </div>
 
               {loading ? (
-                <p className="text-slate-600">{locale === 'pt' ? 'Carregando...' : 'Loading...'}</p>
+                <p className="text-gray-600">{locale === 'pt' ? 'Carregando...' : 'Loading...'}</p>
               ) : classifications.length === 0 ? (
-                <p className="text-slate-600">{t('curator.reviewDashboard.noItems')}</p>
+                <p className="text-gray-600">{t('curator.reviewDashboard.noItems')}</p>
               ) : (
                 <div className="space-y-4">
                   {classifications.map((item) => (
@@ -249,9 +249,9 @@ export const AdminReviewDashboard: React.FC<AdminReviewDashboardProps> = ({ loca
               </div>
 
               {loading ? (
-                <p className="text-slate-600">{locale === 'pt' ? 'Carregando...' : 'Loading...'}</p>
+                <p className="text-gray-600">{locale === 'pt' ? 'Carregando...' : 'Loading...'}</p>
               ) : applications.length === 0 ? (
-                <p className="text-slate-600">{t('curator.reviewDashboard.noItems')}</p>
+                <p className="text-gray-600">{t('curator.reviewDashboard.noItems')}</p>
               ) : (
                 <div className="space-y-4">
                   {applications.map((app) => (

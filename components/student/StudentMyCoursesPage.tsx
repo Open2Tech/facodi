@@ -13,6 +13,11 @@ export default function StudentMyCoursesPage({
 }: StudentMyCoursesPageProps): React.ReactElement {
   const { user } = useAuth();
   const { courses, isLoading, error } = useMyCourses();
+  const formatCompactId = (id: string | null | undefined, fallback: string): string => {
+    if (!id) return fallback;
+    const compact = id.length > 8 ? id.slice(0, 8).toUpperCase() : id.toUpperCase();
+    return `${fallback} ${compact}`;
+  };
 
   if (!user) {
     return (
@@ -106,8 +111,8 @@ export default function StudentMyCoursesPage({
               onClick={() => onSelectCourse(enrollment.course_id)}
             >
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-bold flex-1 group-hover:text-brand-primary transition-colors">
-                  {enrollment.course_id}
+                <h3 className="text-lg font-bold flex-1 group-hover:text-black transition-colors">
+                  {formatCompactId(enrollment.course_id, 'Curso')}
                 </h3>
                 <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 stark-border ${
                   enrollment.status === 'active'
@@ -123,11 +128,11 @@ export default function StudentMyCoursesPage({
               <div className="mb-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold">Progresso</span>
-                  <span className="text-xs font-bold text-brand-primary">{enrollment.progress_percentage}%</span>
+                  <span className="text-xs font-bold text-black">{enrollment.progress_percentage}%</span>
                 </div>
-                <div className="w-full h-3 bg-gray-200 rounded overflow-hidden">
+                <div className="w-full h-3 bg-brand-muted stark-border overflow-hidden">
                   <div
-                    className="h-full bg-brand-primary transition-all duration-300"
+                    className="h-full bg-primary transition-all duration-300"
                     style={{ width: `${enrollment.progress_percentage}%` }}
                   />
                 </div>

@@ -263,6 +263,11 @@ const App: React.FC = () => {
       setCurrentView('home');
       return;
     }
+
+    if (isCatalogLoading && (path.startsWith('/lessons/') || path.startsWith('/courses/units/'))) {
+      return;
+    }
+
     setCurrentView('not-found');
   };
 
@@ -301,7 +306,7 @@ const App: React.FC = () => {
     const handlePop = () => syncViewWithLocation();
     window.addEventListener('popstate', handlePop);
     return () => window.removeEventListener('popstate', handlePop);
-  }, [units]);
+  }, [units, isCatalogLoading]);
 
   useEffect(() => {
     const privateViews = new Set<View>([

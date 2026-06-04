@@ -115,11 +115,11 @@ const ProfilePage: React.FC<Props> = ({ onBack, t }) => {
         <div className="lg:col-span-4 flex flex-col gap-8">
           <div className="stark-border p-8 flex flex-col items-center gap-4 bg-brand-muted">
             {avatarUrl ? (
-              <img src={avatarUrl} alt={profile.display_name ?? 'Avatar'} className="w-24 h-24 rounded-full stark-border object-cover" referrerPolicy="no-referrer" />
+              <img src={avatarUrl} alt={resolvedProfile.display_name ?? 'Avatar'} className="w-24 h-24 rounded-full stark-border object-cover" referrerPolicy="no-referrer" />
             ) : (
               <div className="w-24 h-24 rounded-full stark-border bg-primary flex items-center justify-center">
                 <span className="text-4xl font-black text-black select-none">
-                  {(profile.display_name ?? profile.username ?? '?')[0].toUpperCase()}
+                  {(resolvedProfile.display_name ?? resolvedProfile.username ?? '?')[0].toUpperCase()}
                 </span>
               </div>
             )}
@@ -173,9 +173,10 @@ const ProfilePage: React.FC<Props> = ({ onBack, t }) => {
               <button
                 type="submit"
                 disabled={isSaving}
-                className="self-start bg-primary text-black px-8 py-3 text-[10px] font-black uppercase tracking-widest stark-border hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all disabled:opacity-50"
+                className="self-start bg-primary text-black px-8 py-3 text-[10px] font-black uppercase tracking-widest stark-border hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all disabled:opacity-50 inline-flex items-center gap-2"
               >
-                {isSaving ? '...' : t('auth.saveChanges')}
+                {isSaving && <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>}
+                {isSaving ? 'A guardar...' : t('auth.saveChanges')}
               </button>
             </form>
           </div>

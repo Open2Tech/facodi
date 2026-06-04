@@ -22,6 +22,12 @@ const CourseDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
   const [fetchedContent, setFetchedContent] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const supportResourceUrl = unit.syllabusUrl || unit.websiteUrl || unit.contentUrl || null;
+
+  const openSupportResource = () => {
+    if (!supportResourceUrl) return;
+    window.open(supportResourceUrl, '_blank', 'noopener,noreferrer');
+  };
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -122,7 +128,12 @@ const CourseDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
                   <p className="text-[10px] text-gray-500 uppercase font-bold">FACODI Guild</p>
                 </div>
               </div>
-              <button className="w-full bg-white stark-border py-4 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1">
+              <button
+                type="button"
+                onClick={openSupportResource}
+                disabled={!supportResourceUrl}
+                className="w-full bg-white stark-border py-4 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0"
+              >
                 {t('courseDetail.download')}
               </button>
             </div>
@@ -161,13 +172,18 @@ const CourseDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
           <div className="mt-24 pt-16 border-t border-black/10">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] mb-8 text-gray-400">{t('courseDetail.related')}</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="stark-border p-10 hover:bg-primary transition-all cursor-pointer group flex flex-col justify-between h-48">
+              <button
+                type="button"
+                onClick={openSupportResource}
+                disabled={!supportResourceUrl}
+                className="stark-border p-10 hover:bg-primary transition-all cursor-pointer group flex flex-col justify-between h-48 text-left disabled:cursor-not-allowed disabled:opacity-40"
+              >
                 <div>
                   <p className="text-[9px] font-black mb-2 opacity-40 uppercase tracking-widest">Nó de Conhecimento</p>
                   <p className="text-xl font-black uppercase tracking-tight leading-none">{t('courseDetail.relatedExercises')}</p>
                 </div>
                 <span className="material-symbols-outlined text-2xl group-hover:translate-x-2 transition-transform self-end">arrow_right_alt</span>
-              </div>
+              </button>
 
               {/* Videos Section - REPLACES Recurso Externo Card */}
               <div>

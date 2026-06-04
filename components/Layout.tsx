@@ -82,7 +82,7 @@ const Layout: React.FC<Props> = ({
   };
   const isActive = (view: View, extra?: View[]) => currentView === view || (extra?.includes(currentView) ?? false);
   const navCls = (view: View, extra?: View[]) =>
-    `transition-all text-[10px] font-bold uppercase tracking-widest px-2 py-1.5 ${isActive(view, extra) ? 'text-black bg-primary stark-border' : 'text-gray-500 hover:text-black hover:bg-brand-muted'}`;
+    `transition-all text-[10px] font-bold uppercase tracking-widest px-2 py-1.5 focus-visible:outline-none focus-visible:stark-border focus-visible:bg-primary focus-visible:text-black ${isActive(view, extra) ? 'text-black bg-primary stark-border' : 'text-gray-500 hover:text-black hover:bg-brand-muted'}`;
 
   // Prevent body scroll when drawer is open
   useEffect(() => {
@@ -360,35 +360,26 @@ const Layout: React.FC<Props> = ({
                 >
                   <span className="material-symbols-outlined text-lg">contact_support</span>
                 </a>
-                <a
-                  href="https://open2.tech/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Abrir página de contato Open2 Technology"
-                  className="w-10 h-10 stark-border flex items-center justify-center hover:bg-primary transition-all cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-lg">mail</span>
-                </a>
               </div>
             </div>
             
             <div className="md:col-span-2">
               <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-8">NAVEGAÇÃO</h5>
               <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest">
-                <li><button onClick={() => onViewChange('home')} className="hover:text-primary">Início</button></li>
-                <li><button onClick={() => onViewChange('repository')} className="hover:text-primary">Cursos</button></li>
+                <li><button onClick={() => onViewChange('home')} className="hover:text-black hover:underline">Início</button></li>
+                <li><button onClick={() => onViewChange('repository')} className="hover:text-black hover:underline">Cursos</button></li>
               </ul>
             </div>
 
             <div className="md:col-span-2">
               <h5 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-8">COMUNIDADE</h5>
               <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest">
-                <li><button onClick={() => onNavigatePage?.('manifesto')} className="hover:text-primary">Manifesto</button></li>
-                <li><button onClick={() => onNavigatePage?.('sobre')} className="hover:text-primary">Sobre a FACODI</button></li>
-                <li><button onClick={() => onNavigatePage?.('comunidade')} className="hover:text-primary">Comunidade</button></li>
-                <li><button onClick={submitVideoGo} className="hover:text-primary">Enviar Conteudo</button></li>
-                <li><button onClick={() => onNavigatePage?.('contacto')} className="hover:text-primary">Contacto</button></li>
-                <li><a href="https://open2.tech" className="hover:text-primary">Open2 Technology</a></li>
+                <li><button onClick={() => onNavigatePage?.('manifesto')} className="hover:text-black hover:underline">Manifesto</button></li>
+                <li><button onClick={() => onNavigatePage?.('sobre')} className="hover:text-black hover:underline">Sobre a FACODI</button></li>
+                <li><button onClick={() => onNavigatePage?.('comunidade')} className="hover:text-black hover:underline">Comunidade</button></li>
+                <li><button onClick={submitVideoGo} className="hover:text-black hover:underline">Enviar Conteudo</button></li>
+                <li><button onClick={() => onNavigatePage?.('contacto')} className="hover:text-black hover:underline">Contacto</button></li>
+                <li><a href="https://open2.tech" className="hover:text-black hover:underline">Open2 Technology</a></li>
               </ul>
             </div>
 
@@ -420,17 +411,17 @@ const Layout: React.FC<Props> = ({
                   © 2026 OPEN2 TECHNOLOGY. CONSTRUÍDO COM CARINHO PELA COMUNIDADE FACODI.
                 </p>
                 <div className="w-full lg:w-auto flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] font-bold uppercase tracking-[0.24em]">
-                  <button onClick={submitVideoGo} className="hover:text-primary">ENVIAR CONTEUDO</button>
-                  <a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">CONTACTO</a>
-                  <button onClick={() => onNavigatePage?.('privacidade')} className="hover:text-primary">PRIVACIDADE</button>
-                  <button onClick={() => onNavigatePage?.('termos')} className="hover:text-primary">TERMOS</button>
-                  <button onClick={() => onNavigatePage?.('cookies')} className="hover:text-primary">COOKIES</button>
+                  <button onClick={submitVideoGo} className="hover:text-black hover:underline">ENVIAR CONTEUDO</button>
+                  <a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:underline">CONTACTO</a>
+                  <button onClick={() => onNavigatePage?.('privacidade')} className="hover:text-black hover:underline">PRIVACIDADE</button>
+                  <button onClick={() => onNavigatePage?.('termos')} className="hover:text-black hover:underline">TERMOS</button>
+                  <button onClick={() => onNavigatePage?.('cookies')} className="hover:text-black hover:underline">COOKIES</button>
                 </div>
               </div>
 
               <div className="flex lg:justify-end">
                 <details className="w-full lg:w-auto max-w-2xl cursor-pointer">
-                  <summary className="hover:text-primary list-none text-[9px] font-bold uppercase tracking-[0.24em]">AVISO LEGAL</summary>
+                  <summary className="hover:text-black hover:underline list-none text-[9px] font-bold uppercase tracking-[0.24em]">AVISO LEGAL</summary>
                   <div className="mt-3 text-[8px] font-medium leading-relaxed p-4 bg-gray-50 stark-border tracking-[0.02em]">
                     <p>{t('institutional.disclaimer.pt')}</p>
                   </div>

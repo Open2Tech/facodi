@@ -149,7 +149,7 @@ export const CuratorApplicationPage: React.FC<CuratorApplicationPageProps> = ({ 
           <div className="facodi-card">
             <h1 className="text-4xl font-black uppercase tracking-tighter mb-6">{t('curator.apply.title')}</h1>
             <div className="facodi-alert facodi-alert-info">
-              <p className="text-blue-900">
+              <p className="text-gray-900">
                 {locale === 'pt' 
                   ? 'Você já possui uma candidatura ativa.' 
                   : 'You already have an active application.'}
@@ -158,27 +158,27 @@ export const CuratorApplicationPage: React.FC<CuratorApplicationPageProps> = ({ 
 
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-semibold text-slate-700">
+                <label className="text-[9px] font-black uppercase tracking-widest text-gray-600">
                   {t('curator.apply.status.' + existingApp.status)}
                 </label>
-                <p className="text-base text-slate-900 mt-1">{existingApp.status}</p>
+                <p className="text-sm text-gray-900 mt-1 uppercase font-bold">{existingApp.status}</p>
               </div>
 
               {existingApp.review_notes && (
                 <div>
-                  <label className="text-sm font-semibold text-slate-700">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-gray-600">
                     {locale === 'pt' ? 'Notas de revisão' : 'Review notes'}
                   </label>
-                  <p className="text-base text-slate-900 mt-1">{existingApp.review_notes}</p>
+                  <p className="text-sm text-gray-900 mt-1">{existingApp.review_notes}</p>
                 </div>
               )}
 
               {existingApp.reviewed_at && (
                 <div>
-                  <label className="text-sm font-semibold text-slate-700">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-gray-600">
                     {locale === 'pt' ? 'Data de revisão' : 'Review date'}
                   </label>
-                  <p className="text-base text-slate-900 mt-1">
+                  <p className="text-sm text-gray-900 mt-1">
                     {new Date(existingApp.reviewed_at).toLocaleDateString(locale === 'pt' ? 'pt-PT' : 'en-US')}
                   </p>
                 </div>
@@ -380,7 +380,7 @@ export const CuratorApplicationPage: React.FC<CuratorApplicationPageProps> = ({ 
                   className="mt-1"
                   required
                 />
-                <span className="text-sm text-slate-700">
+                <span className="text-sm text-gray-700">
                   {t('curator.apply.form.guidelinesAccepted')} *
                 </span>
               </label>
@@ -394,7 +394,7 @@ export const CuratorApplicationPage: React.FC<CuratorApplicationPageProps> = ({ 
                   className="mt-1"
                   required
                 />
-                <span className="text-sm text-slate-700">
+                <span className="text-sm text-gray-700">
                   {t('curator.apply.form.consentPrivacy')} *
                 </span>
               </label>

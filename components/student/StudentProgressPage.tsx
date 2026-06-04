@@ -66,6 +66,11 @@ export default function StudentProgressPage({
   }
 
   const hasEnrollments = dashboard.enrolledCourses.length > 0;
+  const formatCompactId = (id: string | null | undefined, fallback: string): string => {
+    if (!id) return fallback;
+    const compact = id.length > 8 ? id.slice(0, 8).toUpperCase() : id.toUpperCase();
+    return `${fallback} ${compact}`;
+  };
 
   return (
     <div className="max-w-[1600px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
@@ -98,9 +103,9 @@ export default function StudentProgressPage({
               </p>
             </div>
           </div>
-          <div className="w-full h-4 bg-gray-200 rounded overflow-hidden">
+          <div className="w-full h-4 bg-brand-muted stark-border overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-brand-primary to-brand-secondary transition-all duration-300"
+              className="h-full bg-primary transition-all duration-300"
               style={{ width: `${dashboard.totalProgress}%` }}
             />
           </div>
@@ -118,17 +123,17 @@ export default function StudentProgressPage({
         <div className="space-y-8">
           {dashboard.enrolledCourses.map((enrollment) => (
             <div key={enrollment.id} className="stark-border p-8">
-              <h2 className="text-3xl font-bold mb-6">{enrollment.course_id}</h2>
+              <h2 className="text-3xl font-bold mb-6">{formatCompactId(enrollment.course_id, 'Curso')}</h2>
 
               <div className="space-y-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-semibold">Progresso do Curso</span>
-                    <span className="text-sm font-bold text-brand-primary">{enrollment.progress_percentage}%</span>
+                    <span className="text-sm font-bold text-black">{enrollment.progress_percentage}%</span>
                   </div>
-                  <div className="w-full h-4 bg-gray-200 rounded overflow-hidden">
+                  <div className="w-full h-4 bg-brand-muted stark-border overflow-hidden">
                     <div
-                      className="h-full bg-brand-primary transition-all duration-300"
+                      className="h-full bg-primary transition-all duration-300"
                       style={{ width: `${enrollment.progress_percentage}%` }}
                     />
                   </div>
