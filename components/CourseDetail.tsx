@@ -120,7 +120,7 @@ const CourseDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
             <div className="stark-border p-8 bg-brand-muted">
               <p className="text-[9px] uppercase font-black tracking-[0.3em] mb-4 text-gray-400">{t('courseDetail.curatorship')}</p>
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-primary font-black text-xs stark-border border-white/20">
+                <div className="w-10 h-10 bg-black stark-border flex items-center justify-center text-primary font-black text-xs">
                   {unit.contributor.charAt(0)}
                 </div>
                 <div>

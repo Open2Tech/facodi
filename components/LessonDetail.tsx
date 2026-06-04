@@ -3,6 +3,7 @@ import { CurricularUnit, Playlist } from '../types';
 import MarkdownView from './MarkdownView';
 import { findPlaylistForUnit } from '../services/catalogSource';
 import { usePlaylistVideos } from '../hooks/usePlaylistVideos';
+import VideoState from './videos/VideoState';
 
 interface Props {
   unit: CurricularUnit;
@@ -108,16 +109,22 @@ const LessonDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
       if (!playlist || videos.length === 0) {
         if (videosError) {
           return (
-            <div className="mb-16 p-4 bg-red-100 border border-red-300 rounded text-sm text-red-800">
-              <p className="font-bold">{t('videoState.error')}</p>
-              <p className="text-xs mt-1">{videosError.message}</p>
+            <div className="mb-16">
+              <VideoState
+                type="error"
+                title={t('videoState.error')}
+                message={videosError.message}
+              />
             </div>
           );
         }
         if (videosLoading) {
           return (
-            <div className="mb-16 p-4 bg-blue-100 border border-blue-300 rounded text-sm text-blue-800">
-              <p className="font-bold">{t('videoState.loading')}</p>
+            <div className="mb-16">
+              <VideoState
+                type="loading"
+                title={t('videoState.loading')}
+              />
             </div>
           );
         }
@@ -150,10 +157,10 @@ const LessonDetail: React.FC<Props> = ({ unit, allUnits, playlists, courseTitle,
               <button
                 key={video.id}
                 onClick={() => setSelectedVideoIndex(idx)}
-                className={`aspect-video rounded overflow-hidden border-2 transition-all ${
+                className={`aspect-video overflow-hidden stark-border transition-all ${
                   idx === selectedVideoIndex 
-                    ? 'border-primary bg-yellow-100' 
-                    : 'border-gray-300 hover:border-primary'
+                    ? 'bg-primary/20' 
+                    : 'hover:bg-brand-muted'
                 }`}
               >
                 <img 

@@ -156,6 +156,7 @@ export default function StudentHistoryPage({
                 hour: '2-digit',
                 minute: '2-digit',
               });
+              const metadataLabel = formatMetadata(activity.metadata);
 
               return (
                 <div
@@ -174,9 +175,9 @@ export default function StudentHistoryPage({
                     <p className="text-xs text-gray-600 mt-1">
                       {formattedDate} às {formattedTime}
                     </p>
-                    {formatMetadata(activity.metadata) && (
+                    {metadataLabel && (
                       <p className="text-xs text-gray-500 mt-2">
-                        {formatMetadata(activity.metadata)}
+                        {metadataLabel}
                       </p>
                     )}
                   </div>

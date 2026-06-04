@@ -14,6 +14,7 @@ import PermissionDenied from './components/auth/PermissionDenied';
 import SEOHead from './components/SEOHead';
 import { getPostBySlug } from './data/blogPosts';
 import { createTranslator } from './data/i18n';
+import type { View } from './view';
 
 const Dashboard = React.lazy(() => import('./components/Dashboard'));
 const CourseDetail = React.lazy(() => import('./components/CourseDetail'));
@@ -38,35 +39,6 @@ const AdminDashboard = React.lazy(() => import('./components/admin/AdminDashboar
 const AdminCuratorListPage = React.lazy(() => import('./components/admin/AdminCuratorListPage'));
 const BlogListPage = React.lazy(() => import('./components/blog/BlogListPage'));
 const BlogPostPage = React.lazy(() => import('./components/blog/BlogPostPage'));
-
-type View =
-  | 'home'
-  | 'not-found'
-  | 'courses'
-  | 'repository'
-  | 'paths'
-  | 'contributors'
-  | 'course-detail'
-  | 'lesson-detail'
-  | 'playlists'
-  | 'dashboard'
-  | 'institutional-page'
-  | 'videos'
-  | 'video-detail'
-  | 'video-submit'
-  | 'video-submit-status'
-  | 'profile'
-  | 'student-dashboard'
-  | 'student-my-courses'
-  | 'student-progress'
-  | 'student-history'
-  | 'curator-apply'
-  | 'curator-channel-pipeline'
-  | 'curator-admin-review'
-  | 'admin-dashboard'
-  | 'admin-curators'
-  | 'blog'
-  | 'blog-post';
 
 const App: React.FC = () => {
   const { user, profile, isLoading: isAuthLoading } = useAuth();
