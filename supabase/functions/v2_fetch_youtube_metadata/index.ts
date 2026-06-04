@@ -1,6 +1,6 @@
 import { requireInternalAuth } from "../_shared/v2_auth.ts";
 import { ensureMethod, json, readJson, withHttp } from "../_shared/v2_http.ts";
-import { createAdminClient, facodi, optionalEnv, unwrap } from "../_shared/v2_supabase.ts";
+import { createAdminClient, facodi, unwrap } from "../_shared/v2_supabase.ts";
 import { loadJobContext, updateJob } from "../_shared/v2_jobs.ts";
 import { fetchYouTubeMetadata } from "../_shared/v2_youtube.ts";
 import { normalizeWhitespace, sha256Hex } from "../_shared/v2_text.ts";
@@ -40,41 +40,14 @@ Deno.serve((req) =>
     const auth = await requireInternalAuth(req, admin);
     const payload = await readJson<Payload>(req);
     const { job, video } = await loadJobContext(admin, payload);
-    const apiKey = optionalEnv("YOUTUBE_API_KEY");
     const db = facodi(admin);
-    let metadata;
-
-    if (apiKey) {
-      metadata = await fetchYouTubeMetadata(video.youtube_video_id as string, apiKey);
-      const updateResult = await db
-        .from("youtube_videos")
-        .update({ ...metadata, status: "metadata_ready" })
-        .eq("id", video.id as string);
-      if (updateResult.error) {
-        throw updateResult.error;
-      }
-    } else {
-      metadata = {
-        youtube_video_id: video.youtube_video_id as string,
-        canonical_url: video.canonical_url as string,
-        title: video.title as string | null,
-        description: video.description as string | null,
-        channel_id: video.channel_id as string | null,
-        channel_title: video.channel_title as string | null,
-        duration_seconds: video.duration_seconds as number | null,
-        published_at: video.published_at as string | null,
-        thumbnails: video.thumbnails as Record<string, unknown>,
-        tags: video.tags as string[],
-        language: video.language as string | null,
-        metadata: video.metadata as Record<string, unknown>,
-      };
-      const updateResult = await db
-        .from("youtube_videos")
-        .update({ status: "metadata_ready" })
-        .eq("id", video.id as string);
-      if (updateResult.error) {
-        throw updateResult.error;
-      }
+    const metadata = await fetchYouTubeMetadata(video.youtube_video_id as string);
+    const updateResult = await db
+      .from("youtube_videos")
+      .update({ ...metadata, status: "metadata_ready" })
+      .eq("id", video.id as string);
+    if (updateResult.error) {
+      throw updateResult.error;
     }
 
     const text = normalizeWhitespace(
@@ -86,9 +59,9 @@ Deno.serve((req) =>
       content_json: metadata,
       content_text: metadata.title,
       language: metadata.language,
-      source: apiKey ? "youtube_api" : "system",
+      source: "youtube_oauth",
       content_hash: await sha256Hex(JSON.stringify(metadata)),
-      metadata: { fetched_with_youtube_api: Boolean(apiKey) },
+      metadata: { fetched_with_youtube_api: true, youtube_auth_mode: "oauth" },
     });
 
     if (text.length > 0) {
@@ -98,7 +71,7 @@ Deno.serve((req) =>
         content_json: {},
         content_text: text,
         language: metadata.language,
-        source: apiKey ? "youtube_api" : "system",
+        source: "youtube_oauth",
         content_hash: await sha256Hex(text),
         metadata: {},
       });
@@ -107,7 +80,7 @@ Deno.serve((req) =>
     await updateJob(admin, job.id as string, {
       status: "running",
       current_step: "metadata_ready",
-      result_payload: { metadata_ready: true, fetched_with_youtube_api: Boolean(apiKey) },
+      result_payload: { metadata_ready: true, fetched_with_youtube_api: true },
     });
 
     return json({
@@ -116,7 +89,8 @@ Deno.serve((req) =>
       job_id: job.id,
       video_id: video.id,
       youtube_video_id: metadata.youtube_video_id,
-      fetched_with_youtube_api: Boolean(apiKey),
+      fetched_with_youtube_api: true,
+      youtube_auth_mode: "oauth",
     });
   })
 );

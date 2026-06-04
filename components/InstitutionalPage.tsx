@@ -65,6 +65,258 @@ Learn more about Marcelo: [LinkedIn](https://linkedin.com/in/marcelo-m7) | [GitH
 
 The SEA-EU Alliance promotes collaboration among European universities, mobility, student participation, and projects that connect knowledge, territory, and innovation. FACODI aligns with this spirit by proposing an open, community-driven digital platform oriented toward lifelong learning.`;
 
+// Local fallback content for legal/compliance pages.
+// Served when Supabase is unreachable or during SSR. Canonical content lives in public.content_pages.
+type LegalEntry = { titlePt: string; titleEn: string; bodyPt: string; bodyEn: string };
+const LEGAL_CONTENT: Record<string, LegalEntry> = {
+  privacidade: {
+    titlePt: 'Política de Privacidade',
+    titleEn: 'Privacy Policy',
+    bodyPt: `# Política de Privacidade
+
+**Última atualização: junho de 2026**
+
+A FACODI respeita a sua privacidade e protege os seus dados em conformidade com o RGPD (Regulamento (UE) 2016/679).
+
+## Responsável
+
+Open2 Technology / Projeto FACODI — **Email**: facodi@open2.tech
+
+## Dados que Tratamos
+
+- Dados de conta (email, nome de utilizador)
+- Dados de perfil opcionais (nome de apresentação, foto)
+- Dados de atividade (cursos guardados, progresso)
+- Dados técnicos anonimizados para segurança
+
+## Base Legal
+
+Execução de contrato (Art. 6.º, al. b) e interesse legítimo (Art. 6.º, al. f).
+
+## Os Seus Direitos
+
+Acesso, retificação, apagamento e portabilidade dos dados. Reclamação à CNPD.
+Contacto: **facodi@open2.tech**
+
+## Cookies
+
+Utilizamos apenas cookies essenciais. Consulte a [Política de Cookies](/cookies).`,
+    bodyEn: `# Privacy Policy
+
+**Last updated: June 2026**
+
+FACODI respects your privacy and complies with GDPR (Regulation (EU) 2016/679).
+
+## Data Controller
+
+Open2 Technology / FACODI Project — **Email**: facodi@open2.tech
+
+## Your Rights
+
+Access, rectification, erasure and portability. Contact: **facodi@open2.tech**
+
+## Cookies
+
+We use only essential cookies. See our [Cookie Policy](/cookies).`,
+  },
+  termos: {
+    titlePt: 'Termos de Uso',
+    titleEn: 'Terms of Use',
+    bodyPt: `# Termos de Uso
+
+**Última atualização: junho de 2026**
+
+Ao utilizar a FACODI, aceita estes Termos.
+
+## O que é a FACODI
+
+Plataforma educacional aberta e comunitária. **Não é instituição de ensino certificada e não confere graus académicos.**
+
+## Regras de Conduta
+
+- Conteúdo ilegal ou ofensivo é proibido.
+- Uso comercial não autorizado é proibido.
+- Comprometer a segurança do sistema é proibido.
+
+## Isenção de Responsabilidade
+
+A plataforma é fornecida "tal como está". Não garantimos ausência de erros.
+
+## Contacto
+
+Questões: **facodi@open2.tech**`,
+    bodyEn: `# Terms of Use
+
+**Last updated: June 2026**
+
+By using FACODI you agree to these Terms.
+
+## What is FACODI
+
+An open educational platform. **Not an accredited institution and does not award degrees.**
+
+## Conduct Rules
+
+No illegal content, unauthorised commercial use, or compromising platform security.
+
+## Disclaimer
+
+Provided "as is". Contact: **facodi@open2.tech**`,
+  },
+  cookies: {
+    titlePt: 'Política de Cookies',
+    titleEn: 'Cookie Policy',
+    bodyPt: `# Política de Cookies
+
+**Última atualização: junho de 2026**
+
+| Cookie | Tipo | Finalidade | Duração |
+|---|---|---|---|
+| sb-auth-token | Essencial | Sessão de autenticação | Sessão |
+| facodi_locale | Funcional | Preferência de idioma | 1 ano |
+| facodi_saved | Funcional | Unidades curriculares guardadas | 1 ano |
+
+Não utilizamos cookies de rastreamento ou publicidade.
+
+Questões: **facodi@open2.tech**`,
+    bodyEn: `# Cookie Policy
+
+**Last updated: June 2026**
+
+| Cookie | Type | Purpose | Duration |
+|---|---|---|---|
+| sb-auth-token | Essential | Auth session | Session |
+| facodi_locale | Functional | Language preference | 1 year |
+| facodi_saved | Functional | Saved units | 1 year |
+
+No tracking or advertising cookies. Contact: **facodi@open2.tech**`,
+  },
+  contacto: {
+    titlePt: 'Contacto',
+    titleEn: 'Contact',
+    bodyPt: `# Contacto
+
+**Email**: facodi@open2.tech
+**Web**: [open2.tech/contact](https://open2.tech/contact)
+
+---
+
+## Suporte à Plataforma
+
+Problemas técnicos ou questões de conta → **facodi@open2.tech**
+
+## Curadoria e Contribuições
+
+Candidaturas de curador → [/curator/apply](/curator/apply)
+
+## Proteção de Dados (RGPD)
+
+Pedidos de acesso ou apagamento de dados → **facodi@open2.tech**
+
+---
+
+Operado por [Open2 Technology](https://open2.tech). Resposta em até 5 dias úteis.`,
+    bodyEn: `# Contact
+
+**Email**: facodi@open2.tech
+**Web**: [open2.tech/contact](https://open2.tech/contact)
+
+---
+
+## Platform Support
+
+Technical issues → **facodi@open2.tech**
+
+## Data Protection (GDPR)
+
+Data requests → **facodi@open2.tech**
+
+---
+
+Operated by [Open2 Technology](https://open2.tech). Response within 5 business days.`,
+  },
+  acessibilidade: {
+    titlePt: 'Declaração de Acessibilidade',
+    titleEn: 'Accessibility Statement',
+    bodyPt: `# Declaração de Acessibilidade
+
+**Estado:** Beta ativo — melhorias contínuas
+
+## O que Implementámos
+
+- Navegação por teclado em todos os fluxos críticos.
+- Atributos ARIA nas principais áreas de layout.
+- Contraste de cores validado (WCAG AA).
+- Suporte a \`prefers-reduced-motion\`.
+- Skip link disponível por teclado.
+- Atributo \`lang\` atualizado dinamicamente.
+
+## Conformidade
+
+Objetivo: **WCAG 2.1, nível AA**.
+
+## Reportar um Problema
+
+Barreiras de acessibilidade → **facodi@open2.tech**
+Resposta em até 5 dias úteis.`,
+    bodyEn: `# Accessibility Statement
+
+**Status:** Active Beta — continuous improvements
+
+## Implemented
+
+- Keyboard navigation for all critical flows.
+- ARIA attributes in main layout areas.
+- Colour contrast validated (WCAG AA).
+- \`prefers-reduced-motion\` support.
+- Skip link available via keyboard.
+
+## Compliance
+
+Target: **WCAG 2.1, Level AA**.
+
+## Report
+
+Accessibility barriers → **facodi@open2.tech**`,
+  },
+  'aviso-legal': {
+    titlePt: 'Aviso Legal',
+    titleEn: 'Legal Notice',
+    bodyPt: `# Aviso Legal
+
+**Operador**: Open2 Technology | **Email**: facodi@open2.tech
+**Website**: [facodi.open2.tech](https://facodi.open2.tech)
+
+A FACODI é uma plataforma educacional digital aberta. **Não é uma instituição de ensino reconhecida** e não confere diplomas nem certificados com valor legal.
+
+## Conteúdos de Terceiros
+
+Os conteúdos integrados pertencem aos seus autores. Para pedidos de remoção: **facodi@open2.tech**
+
+## Ligações Externas
+
+Não somos responsáveis pelo conteúdo de sites externos.
+
+## Lei Aplicável
+
+Lei portuguesa. Tribunal competente: comarca de Faro, Portugal.`,
+    bodyEn: `# Legal Notice
+
+**Operator**: Open2 Technology | **Email**: facodi@open2.tech
+**Website**: [facodi.open2.tech](https://facodi.open2.tech)
+
+FACODI is an open digital educational platform. **Not an accredited institution** and does not award degrees.
+
+## Third-Party Content
+
+Removal requests: **facodi@open2.tech**
+
+## Applicable Law
+
+Portuguese law. Competent court: district of Faro, Portugal.`,
+  },
+};
+
 const InstitutionalPage: React.FC<Props> = ({ slug, locale = 'pt', t, onBack }) => {
   const [page, setPage] = useState<ContentPage | null>(null);
   const [loading, setLoading] = useState(true);
@@ -90,7 +342,20 @@ const InstitutionalPage: React.FC<Props> = ({ slug, locale = 'pt', t, onBack }) 
         });
         setLoading(false);
       }
-    } else {
+    } else if (LEGAL_CONTENT[slug]) {
+      // Use local fallback for legal/compliance pages (Supabase is the canonical source,
+      // but we serve local content immediately to guarantee availability and SEO correctness).
+      const legal = LEGAL_CONTENT[slug];
+      if (!cancelled) {
+        setPage({
+          slug,
+          titlePt: legal.titlePt,
+          titleEn: legal.titleEn,
+          bodyPt: legal.bodyPt,
+          bodyEn: legal.bodyEn,
+        });
+        setLoading(false);
+      }
       // For other slugs, load from Supabase
       loadContentPage(slug).then((result) => {
         if (cancelled) return;

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { CurricularUnit } from '../types';
+import CategoryBadge from './CategoryBadge';
 
 interface Props {
   unit: CurricularUnit;
@@ -16,9 +17,7 @@ const CourseCard: React.FC<Props> = ({ unit, onClick, courseTitle }) => {
       className="group stark-border p-8 bg-white hover:bg-brand-muted transition-all duration-300 flex flex-col h-full cursor-pointer"
     >
       <div className="flex justify-between items-start mb-8">
-        <span className="text-[10px] font-black bg-black text-white px-3 py-1.5 uppercase tracking-[0.2em]">
-          {unit.category}
-        </span>
+        <CategoryBadge category={unit.category} />
         <button 
           className="text-gray-400 hover:text-black transition-colors"
           onClick={(e) => {

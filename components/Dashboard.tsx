@@ -1,6 +1,8 @@
 
 import React from 'react';
-import { CurricularUnit, Category } from '../types';
+import { CurricularUnit } from '../types';
+import CategoryBadge from './CategoryBadge';
+import { getCategoryMeta } from '../utils/categoryMeta';
 
 interface DashboardProps {
   savedUnits: CurricularUnit[];
@@ -76,14 +78,14 @@ const Dashboard: React.FC<DashboardProps> = ({ savedUnits, onUnitClick, onRemove
             <div className="space-y-6">
               {Object.entries(categoryCount).map(([cat, count]) => (
                 <div key={cat}>
-                  <div className="flex justify-between text-[10px] font-black uppercase mb-2">
-                    <span>{cat}</span>
+                  <div className="flex items-center justify-between gap-4 mb-2">
+                    <CategoryBadge category={cat} compact />
                     <span>{count} ECTS</span>
                   </div>
                   <div className="w-full h-1.5 bg-black/5">
                     {/* Fixed arithmetic operation error by renaming destructured variable and ensuring type safety with Number() cast */}
                     <div 
-                      className="h-full bg-black transition-all" 
+                      className={`h-full transition-all ${getCategoryMeta(cat).progressClassName}`} 
                       style={{ width: `${totalECTS > 0 ? (Number(count) / totalECTS) * 100 : 0}%` }}
                     ></div>
                   </div>

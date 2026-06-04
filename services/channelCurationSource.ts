@@ -109,6 +109,20 @@ function getErrorMessage(error: unknown): string {
   return String(error || 'unknown_error');
 }
 
+function getFunctionError(prefix: string, error: unknown, data?: unknown): Error {
+  const payload = data && typeof data === 'object' && !Array.isArray(data)
+    ? data as Record<string, unknown>
+    : {};
+  const code = typeof payload.error === 'string' ? payload.error : '';
+  if (code === 'missing_youtube_oauth') {
+    return new Error('YouTube OAuth não está configurado no backend. Configure YOUTUBE_OAUTH_CLIENT_ID, YOUTUBE_OAUTH_CLIENT_SECRET e YOUTUBE_OAUTH_REFRESH_TOKEN nos secrets do Supabase.');
+  }
+  const message = typeof payload.message === 'string'
+    ? payload.message
+    : getErrorMessage(error || payload.error);
+  return new Error(`${prefix}: ${message}`);
+}
+
 function normalizeDifficulty(value: unknown): DifficultyLevel {
   const raw = String(value || 'intermediate').toLowerCase();
   if (raw === 'foundational' || raw === 'beginner') return 'foundational';
@@ -267,7 +281,7 @@ export async function submitChannelVideos(
     },
   });
   if (error || !data || data.success === false) {
-    throw new Error(`v2_submit_channel_videos failed: ${getErrorMessage(error || data?.error)}`);
+    throw getFunctionError('v2_submit_channel_videos failed', error, data);
   }
   const rows = Array.isArray(data.jobs) ? data.jobs as Array<Record<string, unknown>> : [];
   return {
@@ -285,8 +299,8 @@ export async function importChannel(identifier: string): Promise<ChannelIdentity
     body: { channel_input: identifier },
   });
 
-  if (error) {
-    throw new Error(`v2_fetch_youtube_channel failed: ${error.message}`);
+  if (error || !data || data.success === false) {
+    throw getFunctionError('v2_fetch_youtube_channel failed', error, data);
   }
 
   return toChannelIdentity((data || {}) as Record<string, unknown>, identifier);
@@ -322,7 +336,7 @@ export async function listChannelVideos(
   });
 
   if (error) {
-    throw new Error(`v2_list_channel_videos failed: ${error.message}`);
+    throw getFunctionError('v2_list_channel_videos failed', error, data);
   }
 
   const rows = Array.isArray(data)
@@ -425,7 +439,7 @@ export async function publishCuratedVideos(
         },
       });
       if (error || data?.success === false) {
-        throw new Error(`v2_review_classification failed: ${getErrorMessage(error || data?.error)}`);
+        throw getFunctionError('v2_review_classification failed', error, data);
       }
     }
     return input;

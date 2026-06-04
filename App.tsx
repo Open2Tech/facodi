@@ -252,7 +252,7 @@ const App: React.FC = () => {
       return;
     }
     // Institutional pages: /manifesto, /sobre, /comunidade, /roadmap, /infraestrutura, /como-contribuir
-    const INSTITUTIONAL_SLUGS = ['manifesto', 'sobre', 'comunidade', 'roadmap', 'infraestrutura', 'como-contribuir', 'sobre-marcelo', 'sobre-ualg', 'sobre-open2', 'modelo-academico'];
+    const INSTITUTIONAL_SLUGS = ['manifesto', 'sobre', 'comunidade', 'roadmap', 'infraestrutura', 'como-contribuir', 'sobre-marcelo', 'sobre-ualg', 'sobre-open2', 'modelo-academico', 'privacidade', 'termos', 'cookies', 'contacto', 'acessibilidade', 'aviso-legal'];
     const slug = path.replace('/', '');
     if (INSTITUTIONAL_SLUGS.includes(slug)) {
       setSelectedPageSlug(slug);
@@ -488,6 +488,30 @@ const App: React.FC = () => {
         'modelo-academico': {
           title: 'Modelo academico | FACODI',
           description: 'Entenda como cursos, unidades curriculares e playlists estruturam percursos abertos de aprendizagem.',
+        },
+        privacidade: {
+          title: 'Politica de Privacidade | FACODI',
+          description: 'Saiba como a FACODI trata os seus dados pessoais em conformidade com o RGPD.',
+        },
+        termos: {
+          title: 'Termos de Uso | FACODI',
+          description: 'Condicoes gerais de utilizacao da plataforma FACODI — Faculdade Comunitaria Digital.',
+        },
+        cookies: {
+          title: 'Politica de Cookies | FACODI',
+          description: 'Informacao sobre os cookies utilizados pela plataforma FACODI e como geri-los.',
+        },
+        contacto: {
+          title: 'Contacto | FACODI',
+          description: 'Entre em contacto com a equipa FACODI para suporte, parcerias ou protecao de dados.',
+        },
+        acessibilidade: {
+          title: 'Declaracao de Acessibilidade | FACODI',
+          description: 'Compromisso da FACODI com acessibilidade digital e conformidade com WCAG 2.1 AA.',
+        },
+        'aviso-legal': {
+          title: 'Aviso Legal | FACODI',
+          description: 'Informacoes legais sobre a plataforma FACODI, operada pela Open2 Technology.',
         },
       };
       path = selectedPageSlug ? `/${selectedPageSlug}` : '/';

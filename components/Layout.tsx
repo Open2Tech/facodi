@@ -387,8 +387,8 @@ const Layout: React.FC<Props> = ({
                 <li><button onClick={() => onNavigatePage?.('sobre')} className="hover:text-primary">Sobre a FACODI</button></li>
                 <li><button onClick={() => onNavigatePage?.('comunidade')} className="hover:text-primary">Comunidade</button></li>
                 <li><button onClick={submitVideoGo} className="hover:text-primary">Enviar Conteudo</button></li>
+                <li><button onClick={() => onNavigatePage?.('contacto')} className="hover:text-primary">Contacto</button></li>
                 <li><a href="https://open2.tech" className="hover:text-primary">Open2 Technology</a></li>
-                <li><a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Contacto Open2</a></li>
               </ul>
             </div>
 
@@ -422,8 +422,9 @@ const Layout: React.FC<Props> = ({
                 <div className="w-full lg:w-auto flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] font-bold uppercase tracking-[0.24em]">
                   <button onClick={submitVideoGo} className="hover:text-primary">ENVIAR CONTEUDO</button>
                   <a href="https://open2.tech/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">CONTACTO</a>
-                  <button onClick={() => onNavigatePage?.('sobre')} className="hover:text-primary">PRIVACIDADE</button>
-                  <button onClick={() => onNavigatePage?.('como-contribuir')} className="hover:text-primary">TERMOS</button>
+                  <button onClick={() => onNavigatePage?.('privacidade')} className="hover:text-primary">PRIVACIDADE</button>
+                  <button onClick={() => onNavigatePage?.('termos')} className="hover:text-primary">TERMOS</button>
+                  <button onClick={() => onNavigatePage?.('cookies')} className="hover:text-primary">COOKIES</button>
                 </div>
               </div>
 

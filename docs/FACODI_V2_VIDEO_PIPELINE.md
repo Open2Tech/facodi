@@ -1,12 +1,12 @@
 # FACODI V2 Video Pipeline
 
-FACODI domain data is `facodi`-first. Catalog, public videos, channel pipeline,
-classifications, review, and user video submission must read from public
-`facodi` views and write through V2 Edge Functions.
+FACODI domain data is `facodi`-first. Catalog, public videos, channel pipeline, classifications,
+review, and user video submission must read from public `facodi` views and write through V2 Edge
+Functions.
 
-Supabase Auth and `public.profiles` remain the temporary identity and role
-source. Historical `public` domain tables and legacy Edge Functions may still
-exist for rollback or audit, but FACODI runtime code must not call them.
+Supabase Auth and `public.profiles` remain the temporary identity and role source. Historical
+`public` domain tables and legacy Edge Functions may still exist for rollback or audit, but FACODI
+runtime code must not call them.
 
 ## Public Read Models
 
@@ -19,8 +19,8 @@ Frontend catalog and video reads use:
 - `facodi.v_playlist_videos`
 - `facodi.v_admin_video_classifications` for editor/admin review surfaces
 
-These views are expected to use `security_invoker=true`, so RLS policies on the
-underlying `facodi` tables still apply.
+These views are expected to use `security_invoker=true`, so RLS policies on the underlying `facodi`
+tables still apply.
 
 ## Mutation Contract
 
@@ -38,33 +38,48 @@ New FACODI video and pipeline mutations use only V2 Edge Function slugs:
 - `v2_classify_video`
 - `v2_review_classification`
 
-Legacy video/channel slugs such as `fetch_youtube_channel`,
-`list_channel_videos`, `analyze_video_batch`, `generate_playlist_suggestions`,
-`publish_curated_videos`, `enrich-video`, and `import-youtube-playlist` are not
-frontend dependencies for FACODI V2. Keep them out of runtime imports and
-`supabase.functions.invoke(...)` calls.
+## YouTube Integration
+
+FACODI uses the YouTube Data API through OAuth 2.0. Do not configure or depend on `YOUTUBE_API_KEY`
+for runtime behaviour.
+
+Required Supabase secrets:
+
+- `YOUTUBE_OAUTH_CLIENT_ID`
+- `YOUTUBE_OAUTH_CLIENT_SECRET`
+- `YOUTUBE_OAUTH_REFRESH_TOKEN`
+
+The channel pipeline resolves channels through `channels.list`, reads the channel uploads playlist
+from `contentDetails.relatedPlaylists.uploads`, lists items with `playlistItems.list`, and fetches
+video metadata with `videos.list`. Do not use `search.list` in the initial channel flow.
+
+If OAuth is missing, backend functions return `missing_youtube_oauth` and the curator UI should
+explain which secrets are required.
+
+Legacy video/channel slugs such as `fetch_youtube_channel`, `list_channel_videos`,
+`analyze_video_batch`, `generate_playlist_suggestions`, `publish_curated_videos`, `enrich-video`,
+and `import-youtube-playlist` are not frontend dependencies for FACODI V2. Keep them out of runtime
+imports and `supabase.functions.invoke(...)` calls.
 
 ## Single Video Submission UX
 
 The user-facing submission flow is:
 
 1. `/videos/submit` validates a YouTube URL or ID and shows a preview.
-2. `v2_submit_youtube_video` creates a `facodi.analysis_jobs` row and starts the
-   V2 processing chain.
+2. `v2_submit_youtube_video` creates a `facodi.analysis_jobs` row and starts the V2 processing
+   chain.
 3. `/videos/submit/:jobId` polls `v2_get_video_submission_status`.
 4. Failed jobs can be retried by submitting the original URL again.
 
-This mirrors the Open2Tube pattern of simple URL entry, immediate job feedback,
-status polling, and retry, but keeps FACODI writes in the `facodi` schema.
+This mirrors the Open2Tube pattern of simple URL entry, immediate job feedback, status polling, and
+retry, but keeps FACODI writes in the `facodi` schema.
 
 ## Classification Review
 
-`v2_classify_video` auto-accepts high-confidence classifications when
-`confidence >= 0.8` and enough catalog context is present. Lower-confidence
-results remain `needs_review`.
+`v2_classify_video` auto-accepts high-confidence classifications when `confidence >= 0.8` and enough
+catalog context is present. Lower-confidence results remain `needs_review`.
 
-Editors and admins review classifications via `v2_review_classification`.
-Remote config must keep:
+Editors and admins review classifications via `v2_review_classification`. Remote config must keep:
 
 ```toml
 [functions.v2_review_classification]
@@ -82,17 +97,16 @@ pnpm exec supabase functions list --project-ref wvkjainfwsyiyfcmbtid
 pnpm exec supabase gen types typescript --project-id wvkjainfwsyiyfcmbtid --schema public,facodi > services/supabase.types.ts
 ```
 
-If the CLI is unavailable, use the Supabase MCP connector for function status,
-SQL validation, and type generation checks.
+If the CLI is unavailable, use the Supabase MCP connector for function status, SQL validation, and
+type generation checks.
 
 ## Validation Checklist
 
-- Runtime code has no `content_submissions`, `video_submissions`, local catalog
-  mock imports, `VITE_DATA_SOURCE`, `VITE_CURATOR_MOCK`, or non-V2 video
-  function invocations.
-- Removed frontend routes intentionally render 404:
-  `/curator/submit`, `/curator/submissions`, `/curator/channel-curation`, and
-  `/admin/conteudos`.
+- Runtime code has no `content_submissions`, `video_submissions`, local catalog mock imports,
+  `VITE_DATA_SOURCE`, `VITE_CURATOR_MOCK`, or non-V2 video function invocations.
+- Removed frontend routes intentionally render 404: `/curator/submit`, `/curator/submissions`,
+  `/curator/channel-curation`, and `/admin/conteudos`.
 - Public catalog/video counts are populated through `facodi` views.
 - Ordinary users can submit and poll only their own video jobs.
 - Editor/admin users can review classifications; non-editors cannot.
+- Runtime YouTube calls use OAuth Bearer tokens, not `YOUTUBE_API_KEY`.
