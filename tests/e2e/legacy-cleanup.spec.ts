@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const ROOT = process.cwd();
@@ -76,5 +76,17 @@ test('legacy catalog flags and mock sources are not referenced by runtime code',
 
   for (const slug of legacyEdgeSlugs) {
     expect(slug.test(combined), `${slug} should not appear in runtime code`).toBe(false);
+  }
+});
+
+test('legacy edge function sources are retained for compatibility', async () => {
+  for (const path of [
+    'supabase/functions/fetch_youtube_channel/index.ts',
+    'supabase/functions/list_channel_videos/index.ts',
+    'supabase/functions/analyze_video_batch/index.ts',
+    'supabase/functions/generate_playlist_suggestions/index.ts',
+    'supabase/functions/publish_curated_videos/index.ts',
+  ]) {
+    expect(existsSync(join(ROOT, path)), `${path} should remain available`).toBe(true);
   }
 });
