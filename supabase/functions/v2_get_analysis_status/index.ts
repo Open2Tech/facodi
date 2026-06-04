@@ -1,5 +1,6 @@
 import { requireInternalAuth } from "../_shared/v2_auth.ts";
 import { ensureMethod, json, optionalJson, withHttp } from "../_shared/v2_http.ts";
+import { listJobEvents } from "../_shared/v2_pipeline.ts";
 import { createAdminClient, facodi } from "../_shared/v2_supabase.ts";
 
 interface Payload {
@@ -47,7 +48,7 @@ Deno.serve((req) =>
       return json({ success: false, error: "job_not_found" }, 404);
     }
 
-    const [video, candidates, classification, artifacts] = await Promise.all([
+    const [video, candidates, classification, artifacts, events] = await Promise.all([
       job.data.video_id
         ? db.from("youtube_videos").select("*").eq("id", job.data.video_id).maybeSingle()
         : Promise.resolve({ data: null, error: null }),
@@ -63,6 +64,7 @@ Deno.serve((req) =>
           .select("id, artifact_type, source, language, content_hash, created_at")
           .eq("video_id", job.data.video_id)
         : Promise.resolve({ data: [], error: null }),
+      listJobEvents(admin, job.data.id),
     ]);
 
     for (const result of [video, candidates, classification, artifacts]) {
@@ -79,6 +81,7 @@ Deno.serve((req) =>
       artifacts: artifacts.data ?? [],
       candidates: candidates.data ?? [],
       classification: classification.data,
+      events,
     });
   })
 );

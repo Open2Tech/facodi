@@ -15,6 +15,11 @@ const terminalStatuses = new Set(['succeeded', 'failed', 'needs_review', 'cancel
 
 const stepLabels: Record<string, string> = {
   submitted: 'Submetido',
+  v2_fetch_youtube_metadata: 'Buscando metadados',
+  v2_extract_video_content: 'Extraindo conteudo',
+  v2_generate_embeddings: 'Gerando embeddings',
+  v2_match_video_candidates: 'Buscando candidatos',
+  v2_classify_video: 'Classificando',
   metadata_ready: 'Metadados',
   content_ready: 'Conteudo',
   embeddings_ready: 'Embeddings',
@@ -31,6 +36,7 @@ const VideoSubmitStatusPage: React.FC<Props> = ({ jobId, onBack, onRetryJob }) =
   const isTerminal = status ? terminalStatuses.has(status.job.status) : false;
   const classification = status?.classification;
   const autoAccepted = Boolean(classification?.metadata?.auto_accepted);
+  const events = status?.events || [];
 
   const stageText = useMemo(() => {
     const step = status?.job.current_step || 'submitted';
@@ -154,6 +160,46 @@ const VideoSubmitStatusPage: React.FC<Props> = ({ jobId, onBack, onRetryJob }) =
                   {autoAccepted ? ' - aceita automaticamente por alta confianca.' : ' - aguardando revisao editorial.'}
                 </p>
                 {classification.justification && <p className="text-sm mt-2">{classification.justification}</p>}
+              </div>
+            )}
+
+            {events.length > 0 && (
+              <div className="stark-border p-5">
+                <p className="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-4">
+                  Timeline
+                </p>
+                <div className="space-y-3">
+                  {events.map((event, index) => {
+                    const record = event as Record<string, unknown>;
+                    const step = String(record.step || '');
+                    const eventStatus = String(record.status || '');
+                    const eventType = String(record.event_type || '');
+                    const message = typeof record.message === 'string' ? record.message : '';
+                    return (
+                      <div key={String(record.id || index)} className="flex gap-3 items-start">
+                        <span
+                          className={`mt-1 block w-2.5 h-2.5 stark-border ${
+                            eventStatus === 'failed'
+                              ? 'bg-red-500'
+                              : eventStatus === 'succeeded'
+                                ? 'bg-primary'
+                                : 'bg-white'
+                          }`}
+                        />
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-widest">
+                            {stepLabels[step] || step} · {eventType}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Tentativa {String(record.attempt || 1)}
+                            {record.created_at ? ` · ${new Date(String(record.created_at)).toLocaleString()}` : ''}
+                          </p>
+                          {message && <p className="text-sm mt-1">{message}</p>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
 

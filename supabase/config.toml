@@ -424,6 +424,12 @@ verify_jwt = false
 [functions.v2_submit_youtube_video]
 verify_jwt = true
 
+[functions.v2_process_video_pipeline]
+verify_jwt = false
+
+[functions.v2_submit_channel_videos]
+verify_jwt = true
+
 [functions.v2_get_video_submission_status]
 verify_jwt = true
 

@@ -1,7 +1,7 @@
 import { requireUserAuth } from "../_shared/v2_auth.ts";
-import { ensureMethod, HttpError, json, readJson, withHttp } from "../_shared/v2_http.ts";
+import { ensureMethod, json, readJson, withHttp } from "../_shared/v2_http.ts";
+import { processVideoPipeline } from "../_shared/v2_pipeline.ts";
 import { createAdminClient, env, facodi, unwrap } from "../_shared/v2_supabase.ts";
-import { failJob } from "../_shared/v2_jobs.ts";
 import { canonicalYouTubeUrl, extractYouTubeVideoId } from "../_shared/v2_youtube.ts";
 
 declare const EdgeRuntime: { waitUntil?: (promise: Promise<unknown>) => void } | undefined;
@@ -11,52 +11,6 @@ interface Payload {
   video_id?: string;
   description?: string;
   language?: string;
-}
-
-async function invokeStage(functionName: string, jobId: string): Promise<Record<string, unknown>> {
-  const supabaseUrl = env("SUPABASE_URL");
-  const anonKey = env("SUPABASE_ANON_KEY");
-  const secret = env("FACODI_WEBHOOK_SECRET");
-  const response = await fetch(`${supabaseUrl}/functions/v1/${functionName}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": anonKey,
-      "x-facodi-webhook-secret": secret,
-    },
-    body: JSON.stringify({
-      job_id: jobId,
-      ...(functionName === "v2_generate_embeddings" ? { target: "video" } : {}),
-    }),
-  });
-  const data = await response.json().catch(() => ({})) as Record<string, unknown>;
-  if (!response.ok || data.success === false) {
-    throw new HttpError(
-      response.status || 500,
-      String(data.error ?? `${functionName}_failed`),
-      String(data.message ?? `${functionName} failed.`),
-      data,
-    );
-  }
-  return data;
-}
-
-async function processJob(jobId: string): Promise<void> {
-  const admin = createAdminClient();
-  try {
-    for (const functionName of [
-      "v2_fetch_youtube_metadata",
-      "v2_extract_video_content",
-      "v2_generate_embeddings",
-      "v2_match_video_candidates",
-      "v2_classify_video",
-    ]) {
-      await invokeStage(functionName, jobId);
-    }
-  } catch (error) {
-    await failJob(admin, jobId, error);
-    throw error;
-  }
 }
 
 Deno.serve((req) =>
@@ -109,7 +63,11 @@ Deno.serve((req) =>
         .single(),
     );
 
-    const promise = processJob(job.id);
+    env("SUPABASE_URL");
+    env("SUPABASE_ANON_KEY");
+    env("FACODI_WEBHOOK_SECRET");
+
+    const promise = processVideoPipeline(createAdminClient(), { job_id: job.id });
     if (typeof EdgeRuntime?.waitUntil === "function") {
       EdgeRuntime.waitUntil(promise);
     } else {

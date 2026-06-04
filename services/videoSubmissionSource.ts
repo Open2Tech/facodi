@@ -46,6 +46,7 @@ export type VideoSubmissionStatus = {
   classification: VideoSubmissionClassification | null;
   candidates: Array<Record<string, unknown>>;
   artifacts: Array<Record<string, unknown>>;
+  events: Array<Record<string, unknown>>;
 };
 
 export type SubmitVideoInput = {
@@ -116,5 +117,6 @@ export async function getVideoSubmissionStatus(jobId: string): Promise<VideoSubm
     classification: (data.classification ?? null) as VideoSubmissionClassification | null,
     candidates: Array.isArray(data.candidates) ? data.candidates : [],
     artifacts: Array.isArray(data.artifacts) ? data.artifacts : [],
+    events: Array.isArray(data.events) ? data.events : [],
   };
 }

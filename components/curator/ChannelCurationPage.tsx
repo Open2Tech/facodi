@@ -8,6 +8,7 @@ import {
   generatePlaylistSuggestions,
   listChannelVideos,
   PlaylistSuggestion,
+  PublishItemInput,
   publishCuratedVideos,
   VideoAnalysis,
 } from '../../services/channelCurationSource';
@@ -122,7 +123,7 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
     try {
       setPublishing(true);
 
-      const items = selectedVideos.map((video) => ({
+      const items: PublishItemInput[] = selectedVideos.map((video) => ({
         video,
         analysis: analyses.find((entry) => entry.videoId === video.id),
         suggestion: suggestions.find((entry) => entry.videoId === video.id),
