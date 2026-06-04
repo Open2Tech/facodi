@@ -31,12 +31,10 @@ pnpm exec playwright install
 - Contribution/PR expectations: [CONTRIBUTING.md](CONTRIBUTING.md)
 - Docs map for quick navigation: [README.md#documentacao](README.md#documentacao)
 - **Supabase architecture & audit**: [SUPABASE_AUDIT_REPORT.md](SUPABASE_AUDIT_REPORT.md)
+- **Odoo -> FACODI sync contract**: [../../docs/facodi-odoo-course-sync.md](../../docs/facodi-odoo-course-sync.md)
 - **Database migrations & schema changes**: [.github/instructions/supabase-migrations.instructions.md](.github/instructions/supabase-migrations.instructions.md)
 - Postman MCP rules: [.github/instructions/postman-mcp.instructions.md](.github/instructions/postman-mcp.instructions.md)
-
-**DEPRECATED INSTRUCTIONS** (archived for reference only, not active):
-- [.github/instructions/odoo-elearning-frontend.instructions.md](.github/instructions/odoo-elearning-frontend.instructions.md) — **Odoo integration NOT implemented** (2026-05-13)
-- [.github/instructions/odoo-elearning.instructions.md](.github/instructions/odoo-elearning.instructions.md) — **Odoo integration NOT implemented** (2026-05-13)
+- Odoo smoke workflow: [.github/workflows/odoo-integration-smoke.yml](.github/workflows/odoo-integration-smoke.yml)
 
 When touching files covered by instruction `applyTo`, follow those instruction files as authoritative.
 
@@ -61,6 +59,20 @@ When touching files covered by instruction `applyTo`, follow those instruction f
 - Use a single shared client from [services/supabase.ts](services/supabase.ts); do not create additional client instances.
 - Never query `auth.users` from frontend code; use `public.profiles` access patterns defined in auth instructions.
 
+## Odoo Integration Model
+
+- Odoo is integrated through backend orchestration and Supabase `v2_*` functions, not direct browser calls.
+- Canonical Odoo sync flow is documented in [../../docs/facodi-odoo-course-sync.md](../../docs/facodi-odoo-course-sync.md).
+- For operational connectivity checks, use [.github/workflows/odoo-integration-smoke.yml](.github/workflows/odoo-integration-smoke.yml).
+- Treat [.github/instructions/odoo-elearning-frontend.instructions.md](.github/instructions/odoo-elearning-frontend.instructions.md) as archived context, not active implementation guidance.
+
+## Environment & Secrets
+
+- Use `.env.example` as the base contract for local setup.
+- If root `.env` is missing FACODI Supabase values, sync tasks may read fallback values from `src/facodi-frontend/.env` (see [../../docs/facodi-odoo-course-sync.md](../../docs/facodi-odoo-course-sync.md)).
+- Keep sensitive keys in `.env.local` or CI secrets; never commit private keys or tokens.
+- Frontend must only use publishable Supabase keys (`VITE_SUPABASE_PUBLISHABLE_KEY`).
+
 ## Supabase Migrations & Schema Changes
 
 **When to use `mcp_supabase_apply_migration`:**
@@ -84,7 +96,7 @@ When touching files covered by instruction `applyTo`, follow those instruction f
 
 **Detailed guidance:** See [.github/instructions/supabase-migrations.instructions.md](.github/instructions/supabase-migrations.instructions.md) for tool reference, safety practices, RLS patterns, and workflow examples.
 
-
+Common pitfalls:
 
 - ID format changes break routing and joins.
 - Provider logic leaking into components causes coupling and regressions.
