@@ -1,5 +1,5 @@
 import { requireInternalAuth } from "../_shared/v2_auth.ts";
-import { ensureMethod, json, readJson, withHttp } from "../_shared/v2_http.ts";
+import { ensureMethod, HttpError, json, readJson, withHttp } from "../_shared/v2_http.ts";
 import { createAdminClient, facodi, unwrap } from "../_shared/v2_supabase.ts";
 import { canonicalYouTubeUrl, extractYouTubeVideoId } from "../_shared/v2_youtube.ts";
 
@@ -21,6 +21,9 @@ Deno.serve((req) =>
     const auth = await requireInternalAuth(req, admin);
     const payload = await readJson<Payload>(req);
     const youtubeVideoId = extractYouTubeVideoId(payload.video_id ?? payload.url ?? "");
+    if (!youtubeVideoId) {
+      throw new HttpError(400, "invalid_youtube_url", "Informe uma URL ou ID de vídeo do YouTube válido.");
+    }
     const canonicalUrl = canonicalYouTubeUrl(youtubeVideoId);
     const db = facodi(admin);
 
@@ -55,7 +58,7 @@ Deno.serve((req) =>
           status: "queued",
           current_step: "ingested",
           requested_by: auth.userId,
-          request_source: auth.mode === "secret" ? "internal_v2" : "facodi_editor_pipeline",
+          request_source: "facodi_editor_pipeline",
           input_payload: { ...payload, video_id: undefined },
           started_at: new Date().toISOString(),
         })

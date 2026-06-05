@@ -38,20 +38,22 @@ const SuggestionCard: React.FC<{ item: PlaylistSuggestion; index: number }> = ({
         <div>
           <p className="text-[9px] font-black uppercase tracking-widest text-gray-600 mb-1">Curso</p>
           <p className="text-sm font-black text-gray-800">
-            {item.courseId ? `📚 ${item.courseId}` : '❌ Sem mapeamento'}
+            {item.courseTitle || item.courseId || 'Sem mapeamento'}
           </p>
         </div>
         <div>
           <p className="text-[9px] font-black uppercase tracking-widest text-gray-600 mb-1">Unidade Curricular</p>
           <p className="text-sm font-black text-gray-800">
-            {item.unitId ? `📋 ${item.unitId}` : '❌ Sem unidade'}
+            {item.unitTitle || item.unitId || 'Sem unidade'}
           </p>
         </div>
         <div>
           <p className="text-[9px] font-black uppercase tracking-widest text-gray-600 mb-1">Playlist</p>
           <p className="text-sm font-black text-gray-800">
-            {item.playlistId ? `▶ ${item.playlistId}` : '❌ Sem playlist'}
+            {item.playlistName || item.playlistId || 'Sem playlist'}
           </p>
+          {item.playlistSlug && <p className="text-[10px] text-gray-500 mt-1">{item.playlistSlug}</p>}
+          {item.decisionSource && <p className="text-[10px] text-gray-500 mt-1">Origem: {item.decisionSource}</p>}
         </div>
       </div>
 

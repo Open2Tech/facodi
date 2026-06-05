@@ -13,6 +13,8 @@ export interface ChannelIdentity {
   channelId: string;
   username: string;
   title: string;
+  canonicalUrl?: string;
+  source?: string;
 }
 
 export interface ChannelVideo {
@@ -29,6 +31,7 @@ export interface ChannelVideo {
   channelName: string;
   channelTitle: string;
   tags?: string[];
+  source?: string;
 }
 
 export interface VideoAnalysis {
@@ -47,6 +50,13 @@ export interface VideoAnalysis {
   courseId?: string;
   unitId?: string;
   playlistId?: string;
+  playlistName?: string;
+  playlistSlug?: string;
+  courseTitle?: string;
+  unitTitle?: string;
+  decisionSource?: string;
+  needsReview?: boolean;
+  isFallback?: boolean;
 }
 
 export interface PlaylistSuggestion {
@@ -59,6 +69,12 @@ export interface PlaylistSuggestion {
   confidence: number;
   courseId?: string;
   unitId?: string;
+  playlistName?: string;
+  playlistSlug?: string;
+  courseTitle?: string;
+  unitTitle?: string;
+  decisionSource?: string;
+  isFallback?: boolean;
 }
 
 export interface PublishRequest {
@@ -114,8 +130,11 @@ function getFunctionError(prefix: string, error: unknown, data?: unknown): Error
     ? data as Record<string, unknown>
     : {};
   const code = typeof payload.error === 'string' ? payload.error : '';
-  if (code === 'missing_youtube_oauth') {
-    return new Error('YouTube OAuth não está configurado no backend. Configure YOUTUBE_OAUTH_CLIENT_ID, YOUTUBE_OAUTH_CLIENT_SECRET e YOUTUBE_OAUTH_REFRESH_TOKEN nos secrets do Supabase.');
+  if (code === 'youtube_public_blocked') {
+    return new Error('O YouTube bloqueou a leitura pública do canal/vídeo. Tente novamente mais tarde ou informe o vídeo manualmente.');
+  }
+  if (code === 'youtube_channel_videos_not_found') {
+    return new Error('Não encontrei vídeos públicos na aba /videos ou no feed Atom desse canal.');
   }
   const message = typeof payload.message === 'string'
     ? payload.message
@@ -132,7 +151,7 @@ function normalizeDifficulty(value: unknown): DifficultyLevel {
 }
 
 function toChannelIdentity(payload: Record<string, unknown>, fallback: string): ChannelIdentity {
-  const id = String(payload.channelId || payload.id || fallback);
+  const id = String(payload.channelId || payload.channel_id || payload.id || fallback);
   const title = String(payload.title || payload.name || fallback);
   const username = String(payload.username || payload.handle || title.toLowerCase().replace(/\s+/g, '-'));
   return {
@@ -142,16 +161,26 @@ function toChannelIdentity(payload: Record<string, unknown>, fallback: string): 
     title,
     username,
     description: typeof payload.description === 'string' ? payload.description : undefined,
-    thumbnailUrl: typeof payload.thumbnailUrl === 'string' ? payload.thumbnailUrl : undefined,
+    thumbnailUrl: typeof payload.thumbnailUrl === 'string'
+      ? payload.thumbnailUrl
+      : typeof payload.thumbnail_url === 'string'
+        ? payload.thumbnail_url
+        : undefined,
     subscriberCount: typeof payload.subscriberCount === 'number' ? payload.subscriberCount : undefined,
+    canonicalUrl: typeof payload.canonical_url === 'string' ? payload.canonical_url : undefined,
+    source: typeof payload.source === 'string' ? payload.source : undefined,
   };
 }
 
 function toChannelVideo(row: Record<string, unknown>, fallbackChannel: string): ChannelVideo {
-  const id = String(row.id || row.videoId || '');
-  const channelTitle = String(row.channelTitle || row.channelName || fallbackChannel);
-  const duration = Number(row.durationSeconds || row.duration || 0);
-  const thumbnail = typeof row.thumbnailUrl === 'string' ? row.thumbnailUrl : '';
+  const id = String(row.id || row.videoId || row.youtube_video_id || '');
+  const channelTitle = String(row.channelTitle || row.channelName || row.channel_title || fallbackChannel);
+  const duration = Number(row.durationSeconds || row.duration_seconds || row.duration || 0);
+  const thumbnail = typeof row.thumbnailUrl === 'string'
+    ? row.thumbnailUrl
+    : typeof row.thumbnail_url === 'string'
+      ? row.thumbnail_url
+      : '';
   return {
     id,
     videoId: id,
@@ -160,29 +189,35 @@ function toChannelVideo(row: Record<string, unknown>, fallbackChannel: string): 
     duration,
     durationSeconds: duration,
     viewCount: Number(row.viewCount || 0),
-    publishedAt: String(row.publishedAt || new Date().toISOString()),
+    publishedAt: String(row.publishedAt || row.published_at || new Date().toISOString()),
     thumbnailUrl: thumbnail || undefined,
     thumbnail,
     channelName: channelTitle,
     channelTitle,
     tags: Array.isArray(row.tags) ? row.tags.map((value) => String(value)) : [],
+    source: typeof row.source === 'string' ? row.source : undefined,
   };
 }
 
 function toPlaylistSuggestion(row: Record<string, unknown>, index: number, videoId: string): PlaylistSuggestion {
   const confidenceRaw = Number(row.confidence || 0.5);
   const confidence = confidenceRaw <= 1 ? confidenceRaw : confidenceRaw / 100;
-  const playlistId = String(row.playlistId || row.id || row.curricular_unit_id || `classification_${index + 1}`);
+  const playlistId = String(row.playlistId || row.playlist_id || row.id || row.curricular_unit_id || `classification_${index + 1}`);
   return {
     id: playlistId,
     playlistId,
     videoId,
-    name: String(row.suggestedUnit || row.name || row.curricular_unit_title || `Sugestao ${index + 1}`),
+    name: String(row.playlistName || row.playlist_title || row.suggestedUnit || row.name || row.curricular_unit_title || `Sugestao ${index + 1}`),
     matchPercentage: Math.round(confidence * 100),
     description: typeof row.description === 'string' ? row.description : undefined,
     confidence,
     courseId: typeof row.courseId === 'string' ? row.courseId : typeof row.course_id === 'string' ? row.course_id : undefined,
     unitId: typeof row.unitId === 'string' ? row.unitId : typeof row.curricular_unit_id === 'string' ? row.curricular_unit_id : undefined,
+    playlistName: typeof row.playlistName === 'string' ? row.playlistName : typeof row.playlist_title === 'string' ? row.playlist_title : undefined,
+    playlistSlug: typeof row.playlistSlug === 'string' ? row.playlistSlug : typeof row.playlist_slug === 'string' ? row.playlist_slug : undefined,
+    courseTitle: typeof row.courseTitle === 'string' ? row.courseTitle : undefined,
+    unitTitle: typeof row.unitTitle === 'string' ? row.unitTitle : undefined,
+    decisionSource: typeof row.decisionSource === 'string' ? row.decisionSource : typeof row.decision_source === 'string' ? row.decision_source : undefined,
   };
 }
 
@@ -222,10 +257,12 @@ async function pollAnalysisJob(jobId: string, video: ChannelVideo): Promise<Vide
 
 function statusToVideoAnalysis(statusData: Record<string, unknown>, video: ChannelVideo): VideoAnalysis {
   const classification = (statusData.classification || {}) as Record<string, unknown>;
+  const classificationMetadata = (classification.metadata || {}) as Record<string, unknown>;
   const candidates = Array.isArray(statusData.candidates)
     ? (statusData.candidates as Array<Record<string, unknown>>)
     : [];
   const best = candidates.find((candidate) => candidate.candidate_type === 'curricular_unit') || candidates[0] || {};
+  const bestMetadata = (best.metadata || {}) as Record<string, unknown>;
   const confidence = Number(classification.confidence || best.confidence || 0.65);
   const unitId = typeof best.curricular_unit_id === 'string'
     ? best.curricular_unit_id
@@ -237,26 +274,51 @@ function statusToVideoAnalysis(statusData: Record<string, unknown>, video: Chann
     : typeof classification.course_id === 'string'
       ? classification.course_id
       : undefined;
+  const playlistId = typeof classificationMetadata.playlist_id === 'string'
+    ? classificationMetadata.playlist_id
+    : typeof bestMetadata.playlist_id === 'string'
+      ? bestMetadata.playlist_id
+      : unitId;
+  const playlistName = typeof classificationMetadata.playlist_title === 'string'
+    ? classificationMetadata.playlist_title
+    : typeof bestMetadata.playlist_title === 'string'
+      ? bestMetadata.playlist_title
+      : undefined;
+  const playlistSlug = typeof classificationMetadata.playlist_slug === 'string'
+    ? classificationMetadata.playlist_slug
+    : typeof bestMetadata.playlist_slug === 'string'
+      ? bestMetadata.playlist_slug
+      : undefined;
+  const decisionSource = typeof classificationMetadata.decision_source === 'string'
+    ? classificationMetadata.decision_source
+    : typeof bestMetadata.decision_source === 'string'
+      ? bestMetadata.decision_source
+      : 'deterministic';
 
   return {
     videoId: video.id,
     classificationId: typeof classification.id === 'string' ? classification.id : undefined,
     difficulty: normalizeDifficulty(classification.confidence_level === 'high' ? 'advanced' : 'intermediate'),
     pedagogicalScore: Math.round(confidence * 100),
-    topics: ['v2', 'classification'],
+    topics: ['v2', decisionSource],
     justification: String(classification.justification || best.justification || ''),
-    playlistSuggestions: unitId ? [unitId] : [],
+    playlistSuggestions: playlistId ? [playlistId] : [],
     confidence: confidence * 100,
     topic: 'classification',
     summary:
       typeof classification.justification === 'string'
         ? classification.justification
-        : 'Classificacao automatica realizada pelo pipeline v2.',
+        : 'Sugestão determinística realizada pelo pipeline v2.',
     pedagogicalReason: String(classification.justification || best.justification || ''),
-    tags: ['v2', 'classification'],
-    playlistId: unitId,
+    tags: ['v2', decisionSource],
+    playlistId,
+    playlistName,
+    playlistSlug,
     courseId,
     unitId,
+    unitTitle: typeof playlistName === 'string' ? playlistName : undefined,
+    decisionSource,
+    needsReview: classification.needs_review !== false,
   };
 }
 
@@ -408,11 +470,15 @@ export async function generatePlaylistSuggestions(
       if (!analysis?.unitId) return null;
       return toPlaylistSuggestion(
         {
-          playlistId: analysis.unitId,
-          suggestedUnit: analysis.unitId,
+          playlistId: analysis.playlistId || analysis.unitId,
+          playlistName: analysis.playlistName,
+          playlistSlug: analysis.playlistSlug,
+          suggestedUnit: analysis.playlistName || analysis.unitId,
           confidence: (analysis.confidence || 70) / 100,
           courseId: analysis.courseId,
           unitId: analysis.unitId,
+          unitTitle: analysis.unitTitle,
+          decisionSource: analysis.decisionSource,
         },
         index,
         video.id,

@@ -157,7 +157,7 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
           <span className="text-[10px] font-black bg-black text-primary px-3 py-1.5 uppercase tracking-[0.2em] mb-4 inline-block">Curadoria</span>
           <h1 className="text-5xl lg:text-6xl font-black uppercase tracking-tighter">Pipeline por canal do YouTube</h1>
           <p className="text-sm text-gray-500 mt-3 max-w-3xl">
-            MVP incremental e não destrutivo para importar canal, analisar vídeos com IA, revisar manualmente e aceitar classificações no backend v2 do FACODI.
+            MVP incremental e não destrutivo para importar canal por fontes públicas do YouTube, sugerir playlist por inferência determinística e revisar classificações no backend v2 do FACODI.
           </p>
         </div>
 
@@ -172,6 +172,7 @@ export const ChannelCurationPage: React.FC<ChannelCurationPageProps> = () => {
         {channel && (
           <div className="facodi-alert facodi-alert-success">
             Canal validado: <strong>{channel.title}</strong> ({channel.channelId})
+            {channel.source === 'youtube_public' && <span> · Origem: YouTube público</span>}
           </div>
         )}
 

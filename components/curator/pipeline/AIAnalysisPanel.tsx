@@ -71,7 +71,7 @@ const AIAnalysisPanel: React.FC<AIAnalysisPanelProps> = ({ analyses, loading, er
     <div className="facodi-card space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="text-[10px] font-black uppercase tracking-[0.3em]">4. Análise com IA</h2>
+          <h2 className="text-[10px] font-black uppercase tracking-[0.3em]">4. Inferência de playlist</h2>
           {analyses.length > 0 && (
             <p className="text-[10px] text-gray-500 mt-1">
               {analyses.length} análise(s) gerada(s)
@@ -84,7 +84,7 @@ const AIAnalysisPanel: React.FC<AIAnalysisPanelProps> = ({ analyses, loading, er
           disabled={loading}
           className="bg-black text-white px-4 py-2 text-[10px] font-black uppercase tracking-widest disabled:opacity-50 stark-border hover:bg-gray-900"
         >
-          {loading ? '⏳ Analisando...' : '🤖 Executar análise'}
+          {loading ? 'Analisando...' : 'Executar inferência'}
         </button>
       </div>
       {error && (
@@ -95,7 +95,7 @@ const AIAnalysisPanel: React.FC<AIAnalysisPanelProps> = ({ analyses, loading, er
       )}
       {!analyses.length && !loading && (
         <div className="facodi-alert facodi-alert-info">
-          Sem análises ainda. Se a IA falhar, você pode continuar com revisão manual. Selecione vídeos e clique em "Executar análise".
+          Sem inferências ainda. Selecione vídeos e clique em "Executar inferência".
         </div>
       )}
       <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">

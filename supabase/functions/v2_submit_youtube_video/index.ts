@@ -1,7 +1,7 @@
 import { requireUserAuth } from "../_shared/v2_auth.ts";
-import { ensureMethod, json, readJson, withHttp } from "../_shared/v2_http.ts";
+import { ensureMethod, HttpError, json, readJson, withHttp } from "../_shared/v2_http.ts";
 import { processVideoPipeline } from "../_shared/v2_pipeline.ts";
-import { createAdminClient, env, facodi, unwrap } from "../_shared/v2_supabase.ts";
+import { createAdminClient, facodi, unwrap } from "../_shared/v2_supabase.ts";
 import { canonicalYouTubeUrl, extractYouTubeVideoId } from "../_shared/v2_youtube.ts";
 
 declare const EdgeRuntime: { waitUntil?: (promise: Promise<unknown>) => void } | undefined;
@@ -20,6 +20,9 @@ Deno.serve((req) =>
     const auth = await requireUserAuth(req, admin);
     const payload = await readJson<Payload>(req);
     const youtubeVideoId = extractYouTubeVideoId(payload.video_id ?? payload.url ?? "");
+    if (!youtubeVideoId) {
+      throw new HttpError(400, "invalid_youtube_url", "Informe uma URL ou ID de vídeo do YouTube válido.");
+    }
     const canonicalUrl = canonicalYouTubeUrl(youtubeVideoId);
     const db = facodi(admin);
 
@@ -62,10 +65,6 @@ Deno.serve((req) =>
         .select("id")
         .single(),
     );
-
-    env("SUPABASE_URL");
-    env("SUPABASE_ANON_KEY");
-    env("FACODI_WEBHOOK_SECRET");
 
     const promise = processVideoPipeline(createAdminClient(), { job_id: job.id });
     if (typeof EdgeRuntime?.waitUntil === "function") {

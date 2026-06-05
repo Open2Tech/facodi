@@ -40,21 +40,24 @@ New FACODI video and pipeline mutations use only V2 Edge Function slugs:
 
 ## YouTube Integration
 
-FACODI uses the YouTube Data API through OAuth 2.0. Do not configure or depend on `YOUTUBE_API_KEY`
-for runtime behaviour.
+FACODI uses public YouTube sources for the first deterministic curation flow. Do not configure or
+depend on YouTube API keys, YouTube OAuth credentials, or FACODI webhook secrets for runtime
+behaviour.
 
-Required Supabase secrets:
+Runtime sources:
 
-- `YOUTUBE_OAUTH_CLIENT_ID`
-- `YOUTUBE_OAUTH_CLIENT_SECRET`
-- `YOUTUBE_OAUTH_REFRESH_TOKEN`
+- public channel pages such as `https://www.youtube.com/@Matemateca`
+- public `/videos` pages to preserve the visual order shown by YouTube
+- public Atom feeds at `feeds/videos.xml?channel_id=...`
+- public watch-page metadata and oEmbed for individual videos
 
-The channel pipeline resolves channels through `channels.list`, reads the channel uploads playlist
-from `contentDetails.relatedPlaylists.uploads`, lists items with `playlistItems.list`, and fetches
-video metadata with `videos.list`. Do not use `search.list` in the initial channel flow.
+If YouTube blocks the public page/feed, backend functions return actionable errors such as
+`youtube_public_blocked` or `youtube_channel_videos_not_found`. The UI must not show mock video data
+in those cases.
 
-If OAuth is missing, backend functions return `missing_youtube_oauth` and the curator UI should
-explain which secrets are required.
+The default pipeline is deterministic-first: metadata, clean text, playlist candidates and
+classification. Embeddings and OpenAI/Gemini can remain available for future enrichment, but they do
+not block the initial playlist suggestion.
 
 Legacy video/channel slugs such as `fetch_youtube_channel`, `list_channel_videos`,
 `analyze_video_batch`, `generate_playlist_suggestions`, `publish_curated_videos`, `enrich-video`,
@@ -76,8 +79,9 @@ retry, but keeps FACODI writes in the `facodi` schema.
 
 ## Classification Review
 
-`v2_classify_video` auto-accepts high-confidence classifications when `confidence >= 0.8` and enough
-catalog context is present. Lower-confidence results remain `needs_review`.
+`v2_classify_video` creates revisable deterministic suggestions with
+`metadata.decision_source="deterministic"`. Results remain `needs_review` until an editor accepts,
+rejects or corrects them.
 
 Editors and admins review classifications via `v2_review_classification`. Remote config must keep:
 
@@ -109,4 +113,4 @@ type generation checks.
 - Public catalog/video counts are populated through `facodi` views.
 - Ordinary users can submit and poll only their own video jobs.
 - Editor/admin users can review classifications; non-editors cannot.
-- Runtime YouTube calls use OAuth Bearer tokens, not `YOUTUBE_API_KEY`.
+- Runtime YouTube calls use public HTML, Atom feed and oEmbed only.

@@ -70,6 +70,9 @@ const VideoCard: React.FC<{
             {video.tags && video.tags.length > 0 && (
               <span>🏷 {video.tags.slice(0, 2).join(', ')}</span>
             )}
+            {video.source === 'youtube_public' && (
+              <span>YouTube público</span>
+            )}
           </div>
         </div>
 

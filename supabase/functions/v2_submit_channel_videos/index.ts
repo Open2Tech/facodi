@@ -62,6 +62,9 @@ Deno.serve((req) =>
 
     for (const item of videos) {
       const youtubeVideoId = extractYouTubeVideoId(item.video_id ?? item.url ?? "");
+      if (!youtubeVideoId) {
+        throw new HttpError(400, "invalid_youtube_url", "Informe uma URL ou ID de vídeo do YouTube válido.");
+      }
       const canonicalUrl = canonicalYouTubeUrl(youtubeVideoId);
       const video = unwrap<{ id: string; youtube_video_id: string }>(
         await db
@@ -75,7 +78,7 @@ Deno.serve((req) =>
               channel_id: item.channel_id ?? null,
               channel_title: item.channel_title ?? payload.channel_input ?? null,
               published_at: item.published_at ?? null,
-              thumbnails: item.thumbnail_url ? { default: { url: item.thumbnail_url } } : {},
+              thumbnails: item.thumbnail_url ? { default: item.thumbnail_url, high: item.thumbnail_url } : {},
               tags: Array.isArray(item.tags) ? item.tags : [],
               language: item.language ?? null,
               metadata: {

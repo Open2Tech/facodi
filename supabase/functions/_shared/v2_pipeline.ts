@@ -1,15 +1,17 @@
 import { HttpError } from "./v2_http.ts";
 import type { AdminClient } from "./v2_supabase.ts";
-import { env, facodi, unwrap } from "./v2_supabase.ts";
+import { facodi, unwrap } from "./v2_supabase.ts";
 import { failJob, updateJob } from "./v2_jobs.ts";
+import { runPipelineStage } from "./v2_video_pipeline_steps.ts";
 
-export const PIPELINE_STAGES = [
+export const DEFAULT_PIPELINE_STAGES = [
   "v2_fetch_youtube_metadata",
   "v2_extract_video_content",
-  "v2_generate_embeddings",
   "v2_match_video_candidates",
   "v2_classify_video",
 ] as const;
+
+export const PIPELINE_STAGES = [...DEFAULT_PIPELINE_STAGES, "v2_generate_embeddings"] as const;
 
 export type PipelineStage = typeof PIPELINE_STAGES[number];
 
@@ -67,7 +69,7 @@ function isPipelineStage(value: string): value is PipelineStage {
 
 function normalizeStages(stages: string[] | undefined): PipelineStage[] {
   if (!stages || stages.length === 0) {
-    return [...PIPELINE_STAGES];
+    return [...DEFAULT_PIPELINE_STAGES];
   }
   const normalized = stages.map((stage) => stage.trim()).filter(Boolean);
   const invalid = normalized.filter((stage) => !isPipelineStage(stage));
@@ -81,13 +83,6 @@ function normalizeStages(stages: string[] | undefined): PipelineStage[] {
   return normalized as PipelineStage[];
 }
 
-function stageBody(stage: PipelineStage, jobId: string): Record<string, unknown> {
-  return {
-    job_id: jobId,
-    ...(stage === "v2_generate_embeddings" ? { target: "video" } : {}),
-  };
-}
-
 function isRecoverableStageError(error: StageError): boolean {
   if (error.status === 408 || error.status === 429) {
     return true;
@@ -96,7 +91,7 @@ function isRecoverableStageError(error: StageError): boolean {
     return true;
   }
   return [
-    "youtube_api_error",
+    "youtube_public_blocked",
     "supabase_error",
     "unexpected_error",
   ].includes(error.code);
@@ -186,28 +181,6 @@ export async function listJobEvents(
   return (result.data ?? []) as LoggedPipelineEvent[];
 }
 
-async function invokeStage(stage: PipelineStage, jobId: string): Promise<Record<string, unknown>> {
-  const response = await fetch(`${env("SUPABASE_URL")}/functions/v1/${stage}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": env("SUPABASE_ANON_KEY"),
-      "x-facodi-webhook-secret": env("FACODI_WEBHOOK_SECRET"),
-    },
-    body: JSON.stringify(stageBody(stage, jobId)),
-  });
-  const data = await response.json().catch(() => ({})) as Record<string, unknown>;
-  if (!response.ok || data.success === false) {
-    throw new HttpError(
-      response.status || 500,
-      String(data.error ?? `${stage}_failed`),
-      String(data.message ?? `${stage} failed.`),
-      data,
-    );
-  }
-  return data;
-}
-
 async function runStageWithRetries(
   admin: AdminClient,
   stage: PipelineStage,
@@ -232,7 +205,7 @@ async function runStageWithRetries(
     }));
 
     try {
-      const data = await invokeStage(stage, jobId);
+      const data = await runPipelineStage(admin, stage, { job_id: jobId });
       events.push(await logJobEvent(admin, {
         job_id: jobId,
         event_type: "stage_succeeded",

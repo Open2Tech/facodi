@@ -1,8 +1,8 @@
 import type { AdminClient } from "./v2_supabase.ts";
-import { createAdminClient, optionalEnv } from "./v2_supabase.ts";
+import { createAdminClient } from "./v2_supabase.ts";
 import { HttpError } from "./v2_http.ts";
 
-export type AuthMode = "secret" | "user" | "editor";
+export type AuthMode = "user" | "editor";
 
 export interface AuthContext {
   mode: AuthMode;
@@ -65,15 +65,6 @@ async function getProfileEditorRole(
   return null;
 }
 
-function validateSharedSecret(req: Request): boolean {
-  const configured = optionalEnv("FACODI_WEBHOOK_SECRET");
-  if (!configured) {
-    return false;
-  }
-  const provided = req.headers.get("x-facodi-webhook-secret")?.trim();
-  return Boolean(provided && provided === configured);
-}
-
 export async function requireEditorAuth(
   req: Request,
   admin: AdminClient = createAdminClient(),
@@ -123,13 +114,5 @@ export async function requireInternalAuth(
   req: Request,
   admin: AdminClient = createAdminClient(),
 ): Promise<AuthContext> {
-  if (validateSharedSecret(req)) {
-    return {
-      mode: "secret",
-      userId: null,
-      role: "service",
-    };
-  }
-
   return await requireEditorAuth(req, admin);
 }
