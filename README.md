@@ -87,8 +87,10 @@ Esse arquivo e intencional: o repositorio tambem possui `deno.json` e Supabase E
 mas a aplicacao web publica e um SPA Vite/React e deve ser buildada com `pnpm build`.
 
 No Coolify, mantenha a raiz do app apontando para este repositorio/pasta e deixe o Nixpacks ler
-`nixpacks.toml`; ele instala dependencias com `pnpm install --frozen-lockfile`, gera `dist/` e
-inicia `pnpm preview` em `0.0.0.0` usando a porta fornecida pelo ambiente.
+`nixpacks.toml`; ele usa o `pnpm` fornecido pelo Nixpacks, instala dependencias com
+`pnpm install --frozen-lockfile`, gera `dist/` e inicia `pnpm preview` em `0.0.0.0` usando a
+porta fornecida pelo ambiente. Nao use `corepack enable` no container de deploy: a versao do
+Corepack embutida no Node 22.11.0 pode falhar na verificacao de assinatura do pnpm.
 
 ## Variaveis de Ambiente
 
