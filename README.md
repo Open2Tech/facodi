@@ -92,6 +92,10 @@ No Coolify, mantenha a raiz do app apontando para este repositorio/pasta e deixe
 porta fornecida pelo ambiente. Nao use `corepack enable` no container de deploy: a versao do
 Corepack embutida no Node 22.11.0 pode falhar na verificacao de assinatura do pnpm.
 
+O `vite.config.ts` le `COOLIFY_FQDN`, `COOLIFY_URL`, `VITE_SITE_URL` e `SITE_URL` para preencher
+`preview.allowedHosts`; isso permite que `vite preview` responda ao dominio publico do Coolify,
+como `dev.facodi.com`, sem abrir hosts arbitrarios.
+
 ## Variaveis de Ambiente
 
 Arquivo base: `.env.example`
