@@ -339,6 +339,7 @@ const InstitutionalPage: React.FC<Props> = ({ slug, locale = 'pt', t, onBack }) 
           titleEn: 'About FACODI',
           bodyPt: INSTITUTIONAL_CONTENT_PT,
           bodyEn: INSTITUTIONAL_CONTENT_EN,
+          published: true,
         });
         setLoading(false);
       }
@@ -353,6 +354,7 @@ const InstitutionalPage: React.FC<Props> = ({ slug, locale = 'pt', t, onBack }) 
           titleEn: legal.titleEn,
           bodyPt: legal.bodyPt,
           bodyEn: legal.bodyEn,
+          published: true,
         });
         setLoading(false);
       }

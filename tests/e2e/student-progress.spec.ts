@@ -122,9 +122,7 @@ test.describe('Student Features - Progress Tracking', () => {
     await page.goto('/student/progress');
     await page.waitForLoadState('networkidle');
 
-    const title = await page.title();
-    expect(title).toContain('Progresso');
-    expect(title).toContain('FACODI');
+    await expect(page).toHaveTitle(/progresso.*FACODI/i);
   });
 
   test('Grid layout displays course cards', async ({ page }) => {

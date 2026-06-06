@@ -74,7 +74,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ slug, locale, onBack }) => 
       </header>
 
       <div className="stark-border bg-white p-8 lg:p-12">
-        <MarkdownView content={post.content} />
+        <MarkdownView content={post.content ?? ''} />
       </div>
     </article>
   );

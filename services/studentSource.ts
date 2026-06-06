@@ -15,6 +15,8 @@ export interface CourseEnrollment {
   progress_percentage: number;
   last_accessed_at: string | null;
   enrolled_at: string;
+  started_at: string | null;
+  completed_at: string | null;
 }
 
 export interface ContentProgress {
@@ -81,6 +83,8 @@ export async function enrollInCourse(courseId: string): Promise<CourseEnrollment
     progress_percentage: 0,
     last_accessed_at: null,
     enrolled_at: new Date().toISOString(),
+    started_at: null,
+    completed_at: null,
   };
 }
 
@@ -144,6 +148,8 @@ export async function getMyCourses(): Promise<CourseEnrollment[]> {
       progress_percentage: progress,
       last_accessed_at: acc.lastAccessed,
       enrolled_at: acc.createdAt || new Date().toISOString(),
+      started_at: acc.createdAt,
+      completed_at: progress >= 100 ? acc.lastAccessed : null,
     };
   });
 

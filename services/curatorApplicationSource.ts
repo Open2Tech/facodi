@@ -204,7 +204,7 @@ function mapEditorApplicationRow(row: EditorApplicationRow): EditorApplication {
     availability: row.availability,
     motivation: row.motivation,
     portfolio_url: row.portfolio_url,
-    guidelines_accepted: row.guidelines_accepted,
+    guidelines_accepted: row.guidelines_accepted ?? false,
     consent_privacy: row.consent_privacy,
     status: row.status as 'pending' | 'approved' | 'rejected',
     source_page: row.source_page,

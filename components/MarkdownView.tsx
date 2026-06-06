@@ -13,6 +13,7 @@ const MarkdownView: React.FC<Props> = ({ content }) => {
     const rawHtml = marked.parse(content, {
       gfm: true,
       breaks: true,
+      async: false,
     });
 
     return DOMPurify.sanitize(rawHtml, {

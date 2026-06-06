@@ -158,7 +158,7 @@ export default function StudentDashboard({
                   <div
                     key={content.id}
                     className="stark-border p-6 hover:bg-brand-muted transition-colors cursor-pointer"
-                    onClick={() => onSelectVideo(content.content_id)}
+                    onClick={() => content.content_id && onSelectVideo(content.content_id)}
                   >
                       <h3 className="text-lg font-bold mb-2">{formatCompactId(content.content_id, 'Conteudo')}</h3>
                     <div className="mb-4">
@@ -174,8 +174,8 @@ export default function StudentDashboard({
                       </div>
                     </div>
                     <p className="text-xs text-gray-500">
-                      {content.watch_seconds > 0 && (
-                        <>Assistido: {Math.round(content.watch_seconds / 60)}m</>
+                      {(content.watch_seconds ?? 0) > 0 && (
+                        <>Assistido: {Math.round((content.watch_seconds ?? 0) / 60)}m</>
                       )}
                     </p>
                   </div>

@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "App.tsx",
+    "types.ts",
+    "view.ts",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "contexts/**/*.ts",
+    "contexts/**/*.tsx",
+    "data/**/*.ts",
+    "hooks/**/*.ts",
+    "services/**/*.ts",
+    "utils/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "supabase",
+    "tests",
+    "playwright-report",
+    "test-results"
+  ]
+}

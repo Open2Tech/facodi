@@ -13,7 +13,7 @@ import RequireAuth from './components/auth/RequireAuth';
 import PermissionDenied from './components/auth/PermissionDenied';
 import SEOHead from './components/SEOHead';
 import { getPostBySlug } from './data/blogPosts';
-import { createTranslator } from './data/i18n';
+import { createTranslator, type Locale } from './data/i18n';
 import type { View } from './view';
 
 const Dashboard = React.lazy(() => import('./components/Dashboard'));
@@ -51,7 +51,7 @@ const App: React.FC = () => {
   const [selectedVideoJobId, setSelectedVideoJobId] = useState<string | null>(null);
   const [selectedPageSlug, setSelectedPageSlug] = useState<string | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
-  const [locale, setLocale] = useState<string>('pt');
+  const [locale, setLocale] = useState<Locale>('pt');
   const [courses, setCourses] = useState<Course[]>([]);
   const [units, setUnits] = useState<CurricularUnit[]>([]);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
@@ -69,8 +69,8 @@ const App: React.FC = () => {
     semester: 'All'
   });
 
-  const translator = useMemo(() => createTranslator(locale as 'pt' | 'en'), [locale]);
-  const t = (key: string, defaultValue?: string) => translator.t(key, defaultValue);
+  const translator = useMemo(() => createTranslator(locale), [locale]);
+  const t = (key: string, fallback?: string | Record<string, string | number>) => translator.t(key, typeof fallback === 'string' ? fallback : undefined);
 
   const updateRoute = (view: View, unitId?: string | null, lessonId?: string | null, videoId?: string | null, blogSlug?: string | null) => {
     let path = '/';
@@ -295,8 +295,7 @@ const App: React.FC = () => {
     ]);
 
     if (!user && privateViews.has(currentView)) {
-      setCurrentView('home');
-      updateRoute('home');
+      setShowAuthModal(true);
     }
   }, [user, currentView]);
 
@@ -586,7 +585,7 @@ const App: React.FC = () => {
   ]);
 
   useEffect(() => {
-    let timeoutId: number | null = null;
+    let timeoutId: ReturnType<typeof globalThis.setTimeout> | null = null;
     const schedule = () => setEnableAiNavigator(true);
 
     if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -598,10 +597,10 @@ const App: React.FC = () => {
       };
     }
 
-    timeoutId = window.setTimeout(schedule, 900);
+    timeoutId = globalThis.setTimeout(schedule, 900);
     return () => {
       if (timeoutId !== null) {
-        window.clearTimeout(timeoutId);
+        globalThis.clearTimeout(timeoutId);
       }
     };
   }, []);

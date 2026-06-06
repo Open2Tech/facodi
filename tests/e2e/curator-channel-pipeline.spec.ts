@@ -100,7 +100,7 @@ test.describe('Curator Channel Pipeline - v2 surface', () => {
     await expect(page.getByRole('heading', { name: /importar canal/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /crit.rios/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /descobrir/i })).toBeVisible();
-    await expect(page.getByRole('heading', { name: /an.lise/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /infer.ncia de playlist/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /mapeamento/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /revis.o editorial/i })).toBeVisible();
     await expect(page.getByText(/modo degradado/i)).not.toBeVisible();

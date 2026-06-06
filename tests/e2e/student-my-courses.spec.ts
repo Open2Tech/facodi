@@ -137,9 +137,7 @@ test.describe('Student Features - My Courses List', () => {
     await page.goto('/student/my-courses');
     await page.waitForLoadState('networkidle');
 
-    const title = await page.title();
-    expect(title).toContain('Cursos');
-    expect(title).toContain('FACODI');
+    await expect(page).toHaveTitle(/cursos.*FACODI/i);
   });
 
   test('Dark mode styling applied correctly', async ({ page }) => {
