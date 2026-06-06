@@ -225,7 +225,11 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
   }, [debouncedSearch, filters.categoryId, filters.playlistId, filters.language, filters.durationRange, retryKey, t]);
 
   const languageOptions = useMemo(() => {
-    return Array.from(new Set(libraryVideos.map((video) => video.language).filter(Boolean)))
+    const languages: string[] = libraryVideos
+      .map((video) => video.language)
+      .filter((language): language is string => Boolean(language));
+
+    return Array.from(new Set<string>(languages))
       .sort((a, b) => a.localeCompare(b));
   }, [libraryVideos]);
 

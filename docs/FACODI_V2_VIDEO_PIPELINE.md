@@ -39,6 +39,10 @@ Current UX contract:
 
 Reference screenshots live in `docs/screenshots/` and are linked from the project README.
 
+Navigation entrypoints for this surface are configured in `navigation.ts`. The same `Videos` item
+feeds the desktop header, mobile drawer, footer and active-state logic, reducing drift between
+navigation surfaces.
+
 ## Mutation Contract
 
 New FACODI video and pipeline mutations use only V2 Edge Function slugs:

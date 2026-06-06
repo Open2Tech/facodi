@@ -1199,6 +1199,7 @@ const App: React.FC = () => {
       />
       <Layout
         currentView={currentView}
+        currentPageSlug={selectedPageSlug}
         onViewChange={(view) => {
           setCurrentView(view);
           updateRoute(view);

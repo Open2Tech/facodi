@@ -31,6 +31,7 @@ Experiencia publica em `/videos`, com hero de biblioteca, metricas, filtros por 
 - Dados: Supabase schema `facodi` como fonte canonica de catalogo e classificacao.
 - Persistencia e auth: Supabase (schemas `facodi` e `public` + RLS).
 - Contrato de catalogo centralizado em `services/catalogSource.ts`.
+- Navegacao global centralizada em `navigation.ts`, usada por menu desktop, menu mobile e footer.
 - Mutacoes de video e pipeline via Edge Functions `v2_*`.
 
 Principio arquitetural: componentes devem consumir o catalogo via `loadCatalogData()`, que le exclusivamente os read models do schema `facodi`.
@@ -103,6 +104,7 @@ Seguranca:
 - `hooks/`: logica de progresso, dashboard e cursos.
 - `services/`: acesso a dados e integracoes.
 - `data/`: traducoes e conteudo estatico nao-catalogo.
+- `navigation.ts`: configuracao unica dos links globais, institucionais e de footer.
 - `content/`: conteudo institucional/blog.
 - `docs/screenshots/`: capturas de tela usadas no README e na documentacao visual.
 - `tests/e2e/`: cenarios Playwright.
