@@ -80,6 +80,16 @@ Em maquinas novas para E2E:
 pnpm exec playwright install
 ```
 
+## Deploy
+
+O deploy do frontend usa Nixpacks com Node/pnpm, configurado em `nixpacks.toml`.
+Esse arquivo e intencional: o repositorio tambem possui `deno.json` e Supabase Edge Functions,
+mas a aplicacao web publica e um SPA Vite/React e deve ser buildada com `pnpm build`.
+
+No Coolify, mantenha a raiz do app apontando para este repositorio/pasta e deixe o Nixpacks ler
+`nixpacks.toml`; ele instala dependencias com `pnpm install --frozen-lockfile`, gera `dist/` e
+inicia `pnpm preview` em `0.0.0.0` usando a porta fornecida pelo ambiente.
+
 ## Variaveis de Ambiente
 
 Arquivo base: `.env.example`
