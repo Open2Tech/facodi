@@ -16,8 +16,8 @@ async function dismissDevelopmentModal(page: Parameters<Parameters<typeof test>[
 test('home loads and shows mission statement', async ({ page }) => {
   await page.goto('/');
   await dismissDevelopmentModal(page);
-  await expect(page.getByRole('heading', { name: 'Faculdade Comunitária Digital', exact: true })).toBeVisible();
-  await expect(page.getByText(/plataforma colaborativa de educa..o digital/i).first()).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: /facodi/i })).toBeVisible();
+  await expect(page.getByRole('button', { name: /explorar trilhas|explore tracks/i })).toBeVisible();
 });
 
 test('courses page lists all degrees', async ({ page }) => {
