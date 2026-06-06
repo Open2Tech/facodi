@@ -59,7 +59,7 @@ const AINavigator: React.FC<AINavigatorProps> = ({ units }) => {
   };
 
   return (
-    <div className="fixed bottom-12 right-12 z-[100]">
+    <div className="hidden md:block fixed bottom-12 right-12 z-[100]">
       {isOpen ? (
         <div className="w-96 h-[500px] bg-white stark-border flex flex-col shadow-[20px_20px_0px_0px_#000000]">
           <div className="p-6 bg-black text-white flex justify-between items-center">

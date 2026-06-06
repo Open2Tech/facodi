@@ -323,7 +323,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
         </div>
       </section>
 
-      <section className="sticky top-16 md:top-20 z-20 bg-white/95 backdrop-blur stark-border p-4 lg:p-5 mb-12">
+      <section className="lg:sticky lg:top-20 z-20 bg-white/95 backdrop-blur stark-border p-4 lg:p-5 mb-12">
         <div className="grid grid-cols-1 xl:grid-cols-[1.5fr_1fr_1fr_0.8fr] gap-3 mb-4">
           <label className="block">
             <span className="text-[9px] font-black uppercase tracking-widest text-gray-500 block mb-2">Busca</span>
@@ -438,7 +438,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
         )}
       </section>
 
-        {user && (
+      {user && (
         <div className="mb-12 flex justify-end">
           <button
             type="button"
@@ -448,7 +448,7 @@ const VideoList: React.FC<Props> = ({ onSelectVideo, onSubmitVideo, t }) => {
             Enviar video
           </button>
         </div>
-        )}
+      )}
 
       {isLoading && <VideoState type="loading" title={t('videos.loading')} />}
 

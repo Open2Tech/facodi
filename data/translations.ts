@@ -9,6 +9,7 @@ const translations = {
     // Navigation
     'nav.home': 'Início',
     'nav.courses': 'Cursos',
+    'nav.videos': 'Vídeos',
     'nav.units': 'Unidades',
     'nav.progress': 'Meu Progresso',
     'nav.profile': 'Perfil',
@@ -223,6 +224,7 @@ const translations = {
     // Navigation
     'nav.home': 'Home',
     'nav.courses': 'Courses',
+    'nav.videos': 'Videos',
     'nav.units': 'Units',
     'nav.progress': 'My Progress',
     'nav.profile': 'Profile',

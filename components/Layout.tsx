@@ -114,6 +114,7 @@ const Layout: React.FC<Props> = ({
           <nav aria-label="Navegação principal" className="hidden md:flex flex-1 min-w-0 items-center gap-4 lg:gap-6 overflow-x-auto whitespace-nowrap">
             <button onClick={() => navGo('home')} aria-current={isActive('home') ? 'page' : undefined} className={navCls('home')}>{t('nav.home')}</button>
             <button onClick={() => navGo('courses')} aria-current={isActive('courses') ? 'page' : undefined} className={navCls('courses')}>{t('nav.courses')}</button>
+            <button onClick={() => navGo('videos')} aria-current={isActive('videos', ['video-detail', 'video-submit', 'video-submit-status']) ? 'page' : undefined} className={navCls('videos', ['video-detail', 'video-submit', 'video-submit-status'])}>{t('nav.videos')}</button>
             <button onClick={() => navGo('repository')} aria-current={isActive('repository', ['course-detail', 'lesson-detail']) ? 'page' : undefined} className={navCls('repository', ['course-detail', 'lesson-detail'])}>{t('nav.units')}</button>
             <button onClick={() => navGo('dashboard')} aria-current={isActive('dashboard') ? 'page' : undefined} className={`relative ${navCls('dashboard')}`}>
               {t('nav.progress')}
@@ -199,7 +200,7 @@ const Layout: React.FC<Props> = ({
                 <span className="absolute top-0 right-0 bg-primary text-black text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center stark-border">{savedCount}</span>
               )}
             </button>
-            <button onClick={() => setMobileOpen((open) => !open)} aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={mobileOpen} aria-controls="mobile-menu" className="w-10 h-10 flex items-center justify-center stark-border hover:bg-brand-muted transition-all text-black">
+            <button onClick={() => setMobileOpen((open) => !open)} aria-label="Abrir menu" aria-expanded={mobileOpen} aria-controls="mobile-menu" tabIndex={mobileOpen ? -1 : 0} className="w-10 h-10 flex items-center justify-center stark-border hover:bg-brand-muted transition-all text-black">
               <span className="relative block w-5 h-4" aria-hidden="true">
                 <span className={`absolute left-0 w-5 h-0.5 bg-current transition-all ${mobileOpen ? 'top-1.5 rotate-45' : 'top-0'}`} />
                 <span className={`absolute left-0 top-1.5 w-5 h-0.5 bg-current transition-all ${mobileOpen ? 'opacity-0' : 'opacity-100'}`} />
@@ -236,6 +237,7 @@ const Layout: React.FC<Props> = ({
           {([
             { view: 'home' as View, label: t('nav.home'), icon: 'home' },
             { view: 'courses' as View, label: t('nav.courses'), icon: 'school' },
+            { view: 'videos' as View, label: t('nav.videos'), icon: 'subscriptions' },
             { view: 'repository' as View, label: t('nav.units'), icon: 'grid_view' },
             { view: 'dashboard' as View, label: t('nav.progress'), icon: 'dashboard' },
             { view: 'blog' as View, label: t('nav.blog'), icon: 'article' },
