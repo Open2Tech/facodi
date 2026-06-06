@@ -22,6 +22,23 @@ Frontend catalog and video reads use:
 These views are expected to use `security_invoker=true`, so RLS policies on the underlying `facodi`
 tables still apply.
 
+## Public Discovery UX
+
+The public `/videos` page is the main discovery surface for FACODI video content. It reads from the
+same `facodi` public views and must remain usable without authentication.
+
+Current UX contract:
+
+- URL-persisted filters: `q`, `playlist`, `category`, `language`, and `duration`.
+- Search over title, description, channel name, and YouTube id.
+- Playlist/trail filtering through `v_catalog_playlists` and `v_playlist_videos`.
+- Language and duration filters derived from public video metadata.
+- Suggested tag chips derived from the current public video snapshot until taxonomy-backed tags are
+   available.
+- Discovery rails for featured, recent, quick lessons, course groups, and all results.
+
+Reference screenshots live in `docs/screenshots/` and are linked from the project README.
+
 ## Mutation Contract
 
 New FACODI video and pipeline mutations use only V2 Edge Function slugs:

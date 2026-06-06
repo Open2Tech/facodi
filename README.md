@@ -8,10 +8,21 @@ Projeto mantido por Open2 Technology: https://open2.tech
 
 - SPA em React 19 + TypeScript + Vite.
 - Catalogo academico com cursos, unidades curriculares e playlists.
+- Biblioteca publica de videos com busca, filtros persistidos na URL e secoes de descoberta.
 - Fluxos de autenticacao, perfil, progresso e historico de estudos.
 - Areas dedicadas para curadoria, pipeline editorial e administracao.
 - Conteudo institucional e blog em Markdown.
 - Suite de testes E2E com Playwright.
+
+## Capturas de Tela
+
+### Biblioteca de Videos
+
+Experiencia publica em `/videos`, com hero de biblioteca, metricas, filtros por trilha, idioma e duracao, tags sugeridas e rails de descoberta.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![Biblioteca de videos FACODI em desktop](docs/screenshots/videos-desktop.png) | ![Biblioteca de videos FACODI em mobile](docs/screenshots/videos-mobile.png) |
 
 ## Arquitetura Atual
 
@@ -93,6 +104,7 @@ Seguranca:
 - `services/`: acesso a dados e integracoes.
 - `data/`: traducoes e conteudo estatico nao-catalogo.
 - `content/`: conteudo institucional/blog.
+- `docs/screenshots/`: capturas de tela usadas no README e na documentacao visual.
 - `tests/e2e/`: cenarios Playwright.
 - `scripts/`: validacoes operacionais.
 - `supabase/functions/`: edge functions do projeto.
@@ -113,11 +125,10 @@ Seguranca:
 ## Documentacao
 
 - Guia principal do projeto: `docs/FACODI.md`
-- Planejamento e roadmap: `docs/PLAN.md`
 - Guia tecnico de desenvolvimento: `docs/DEVELOPER_GUIDE.md`
 - Pipeline FACODI V2 de videos: `docs/FACODI_V2_VIDEO_PIPELINE.md`
 - Baseline de acessibilidade: `docs/ACCESSIBILITY_IMPROVEMENTS.md`
-- Resumo do estado atual: `docs/PHASE_2_SUMMARY.md`
+- Capturas de tela do produto: `docs/screenshots/`
 - Contribuicao: `CONTRIBUTING.md`
 - Guardrails para agentes: `AGENTS.md`
 
