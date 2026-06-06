@@ -128,7 +128,9 @@ export async function runExtractVideoContent(
     video.title,
     video.description,
     Array.isArray(video.tags) ? (video.tags as string[]).join(" ") : "",
-    ...(artifacts.data ?? []).map((artifact) => artifact.content_text ?? ""),
+    ...(artifacts.data ?? []).map(
+      (artifact: { content_text?: string | null }) => artifact.content_text ?? "",
+    ),
   ].join("\n\n"));
 
   if (text.length === 0) {
@@ -285,6 +287,8 @@ export async function runClassifyVideo(
   await updateJob(admin, job.id as string, {
     status: "needs_review",
     current_step: "classified",
+    error_code: null,
+    error_message: null,
     completed_at: now,
     result_payload: {
       classification_id: classification.id,
