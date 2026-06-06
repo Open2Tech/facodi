@@ -127,6 +127,12 @@ export interface VideoItem {
   durationSeconds?: number;
   thumbnailUrl: string;
   language: string;
+  courseId?: string;
+  unitId?: string;
+  classificationStatus?: string;
+  confidence?: number;
+  createdAt?: string;
+  updatedAt?: string;
   categoryId?: string;
   category?: VideoCategory;
   playlistId?: string;

@@ -10,6 +10,10 @@ export type VideoQueryParams = {
   search?: string;
   categoryId?: string;
   playlistId?: string;
+  language?: string;
+  durationRange?: 'short' | 'medium' | 'long';
+  courseId?: string;
+  unitId?: string;
   limit?: number;
   offset?: number;
 };
@@ -30,6 +34,12 @@ function mapVideoRow(row: PublicVideoRow | PlaylistVideoRow): VideoItem {
     durationSeconds: row.duration_seconds ?? undefined,
     thumbnailUrl: row.thumbnail_url || `https://i.ytimg.com/vi/${row.youtube_id}/hqdefault.jpg`,
     language: row.language || 'pt',
+    courseId: row.course_id ?? undefined,
+    unitId: row.unit_id ?? undefined,
+    classificationStatus: row.classification_status ?? undefined,
+    confidence: row.confidence ?? undefined,
+    createdAt: row.created_at ?? undefined,
+    updatedAt: row.updated_at ?? undefined,
     playlistId: playlistRow.playlist_id ?? undefined,
     playlistName: playlistRow.playlist_title ?? undefined,
     playlistSlug: playlistRow.playlist_slug ?? undefined,
@@ -87,9 +97,41 @@ export async function listPlaylistVideos(playlistId: string): Promise<VideoItem[
   return (data || []).map(mapVideoRow);
 }
 
+function matchesQueryParams(video: VideoItem, params: VideoQueryParams): boolean {
+  if (params.search) {
+    const value = params.search.replace(/[,;%]/g, ' ').trim().toLowerCase();
+    const haystack = `${video.title} ${video.description} ${video.channelName} ${video.youtubeId}`.toLowerCase();
+    if (value && !haystack.includes(value)) {
+      return false;
+    }
+  }
+
+  if (params.language && video.language !== params.language) {
+    return false;
+  }
+
+  if (params.courseId && video.courseId !== params.courseId) {
+    return false;
+  }
+
+  if (params.unitId && video.unitId !== params.unitId) {
+    return false;
+  }
+
+  if (params.durationRange) {
+    const duration = video.durationSeconds || 0;
+    if (params.durationRange === 'short' && duration > 900) return false;
+    if (params.durationRange === 'medium' && (duration <= 900 || duration > 2400)) return false;
+    if (params.durationRange === 'long' && duration <= 2400) return false;
+  }
+
+  return true;
+}
+
 export async function listPublicVideos(params: VideoQueryParams = {}): Promise<VideoItem[]> {
   if (params.playlistId) {
-    return listPlaylistVideos(params.playlistId);
+    const playlistVideos = await listPlaylistVideos(params.playlistId);
+    return playlistVideos.filter((video) => matchesQueryParams(video, params));
   }
 
   const limit = params.limit ?? 24;
@@ -107,6 +149,30 @@ export async function listPublicVideos(params: VideoQueryParams = {}): Promise<V
     if (value) {
       query = query.or(`title.ilike.%${value}%,description.ilike.%${value}%,channel_name.ilike.%${value}%,youtube_id.ilike.%${value}%`);
     }
+  }
+
+  if (params.language) {
+    query = query.eq('language', params.language);
+  }
+
+  if (params.courseId) {
+    query = query.eq('course_id', params.courseId);
+  }
+
+  if (params.unitId) {
+    query = query.eq('unit_id', params.unitId);
+  }
+
+  if (params.durationRange === 'short') {
+    query = query.lte('duration_seconds', 900);
+  }
+
+  if (params.durationRange === 'medium') {
+    query = query.gt('duration_seconds', 900).lte('duration_seconds', 2400);
+  }
+
+  if (params.durationRange === 'long') {
+    query = query.gt('duration_seconds', 2400);
   }
 
   const { data, error } = await query;
