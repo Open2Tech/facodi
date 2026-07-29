@@ -19,19 +19,19 @@
                             <a class="btn facodi-button facodi-button-secondary" href="/web/login">Continuar aprendendo</a>
                         </div>
                     </div>
-                    <div class="facodi-hero-board" aria-label="Learning progress overview">
-                        <div class="facodi-board-top"><span>Mapa de aprendizagem</span><span class="facodi-live-dot">Ao vivo</span></div>
+                    <div class="facodi-hero-board" aria-label="Mapa de aprendizagem">
+                        <div class="facodi-board-top"><span>Mapa de aprendizagem</span><span class="facodi-live-dot">Aberto</span></div>
                         <div class="facodi-board-path">
-                            <div class="facodi-path-node is-complete"><i class="fa fa-check" aria-hidden="true"/></div>
+                            <div class="facodi-path-node is-complete"><i class="fa fa-compass" aria-hidden="true"/></div>
                             <div class="facodi-path-line is-complete"/>
                             <div class="facodi-path-node is-current">02</div>
                             <div class="facodi-path-line"/>
                             <div class="facodi-path-node">03</div>
                         </div>
                         <div class="facodi-board-cards">
-                            <div><span>Fundamentos</span><strong>Concluido</strong></div>
-                            <div class="is-selected"><span>Dados e sistemas</span><strong>Em andamento</strong></div>
-                            <div><span>Projeto aberto</span><strong>Proximo</strong></div>
+                            <div><span>Descubra</span><strong>Encontre um curso</strong></div>
+                            <div class="is-selected"><span>Aprenda</span><strong>No seu ritmo</strong></div>
+                            <div><span>Contribua</span><strong>Em comunidade</strong></div>
                         </div>
                     </div>
                 </section>
@@ -47,16 +47,10 @@
                     </aside>
                     <div class="facodi-dashboard-main">
                         <div class="facodi-section-heading">
-                            <div><p class="facodi-kicker">Painel de aprendizagem</p><h2>Ola, estudante.</h2></div>
+                            <div><p class="facodi-kicker">Catalogo de aprendizagem</p><h2>Cursos publicados</h2></div>
                             <a href="/slides" class="facodi-text-link">Ver todos os cursos <i class="fa fa-arrow-right" aria-hidden="true"/></a>
                         </div>
-                        <div class="facodi-stat-row">
-                            <article class="facodi-stat-card facodi-mint"><span>Sequencia atual</span><strong>12</strong><small>dias construindo habitos</small><i class="fa fa-bolt" aria-hidden="true"/></article>
-                            <article class="facodi-stat-card facodi-sky"><span>Meta semanal</span><strong>3/5</strong><small>sessoes concluidas</small><i class="fa fa-dot-circle-o" aria-hidden="true"/></article>
-                            <article class="facodi-stat-card facodi-sun"><span>ECTS em curso</span><strong>18</strong><small>de 30 neste semestre</small><i class="fa fa-graduation-cap" aria-hidden="true"/></article>
-                        </div>
-                        <div class="facodi-section-heading facodi-compact-heading"><h2>Continue de onde parou</h2><a href="/slides" class="facodi-text-link">Minha biblioteca</a></div>
-                        <!-- Real published channels injected by FacodiHome controller -->
+                        <!-- Real published channels are injected by the website.page mixin. -->
                         <div class="facodi-course-grid">
                             <t t-if="facodi_channels">
                                 <t t-foreach="facodi_channels" t-as="channel">
@@ -96,19 +90,10 @@
                                 </t>
                             </t>
                             <t t-else="">
-                                <!-- Fallback cards when no courses are published yet -->
-                                <a href="/slides" class="facodi-course-card facodi-course-cyan">
-                                    <div class="facodi-course-art"><span>CC</span><i class="fa fa-code" aria-hidden="true"/></div>
-                                    <div class="facodi-course-content"><p>Computacao</p><h3>Algoritmos e estruturas de dados</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
-                                </a>
-                                <a href="/slides" class="facodi-course-card facodi-course-blue">
-                                    <div class="facodi-course-art"><span>IA</span><i class="fa fa-sitemap" aria-hidden="true"/></div>
-                                    <div class="facodi-course-content"><p>Dados e inteligencia artificial</p><h3>Etica e sistemas inteligentes</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
-                                </a>
-                                <a href="/slides" class="facodi-course-card facodi-course-ink">
-                                    <div class="facodi-course-art"><span>SO</span><i class="fa fa-globe" aria-hidden="true"/></div>
-                                    <div class="facodi-course-content"><p>Sociedade aberta</p><h3>Conhecimento, cultura e colaboracao</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
-                                </a>
+                                <article class="facodi-course-card facodi-course-cyan">
+                                    <div class="facodi-course-art"><span>+</span><i class="fa fa-book" aria-hidden="true"/></div>
+                                    <div class="facodi-course-content"><p>Catalogo</p><h3>Nenhum curso publicado ainda</h3><div class="facodi-card-bottom"><a href="/slides" aria-label="Abrir catalogo"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
+                                </article>
                             </t>
                         </div>
                     </div>
@@ -118,23 +103,6 @@
                             <h3>Explore os cursos disponveis</h3>
                             <p>Acesse o catalogo de cursos e encontre o proximo topico para sua jornada de aprendizagem.</p>
                             <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catalogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
-                        </article>
-                        <article class="facodi-roadmap-card">
-                            <div class="facodi-panel-label"><span>ROTEIRO</span><span>64%</span></div>
-                            <h3>Bacharelado em Ciencia da Computacao</h3>
-                            <ol class="facodi-timeline">
-                                <li class="is-done"><i class="fa fa-check" aria-hidden="true"/><span><strong>Fundamentos</strong><small>12 unidades concluidas</small></span></li>
-                                <li class="is-current"><i class="fa fa-circle" aria-hidden="true"/><span><strong>Dados e sistemas</strong><small>Semestre atual</small></span></li>
-                                <li><i class="fa fa-circle-o" aria-hidden="true"/><span><strong>Projeto integrador</strong><small>Proximo semestre</small></span></li>
-                            </ol>
-                        </article>
-                        <article class="facodi-community-card">
-                            <div class="facodi-panel-label"><span>COMUNIDADE</span><span>+18 hoje</span></div>
-                            <h3>Acontecendo agora</h3>
-                            <p><strong>58 novos recursos</strong> foram revisados pela comunidade nesta semana.</p>
-                            <div class="facodi-contribution-grid" aria-label="Community contributions during the last four weeks">
-                                <i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/>
-                            </div>
                         </article>
                     </aside>
                 </section>

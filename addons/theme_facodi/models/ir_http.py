@@ -20,15 +20,18 @@ class FacodiWebsitePage(models.Model):
         # Only enrich the homepage response
         if (
             response is not None
-            and request.website.sudo().theme_id.name == 'theme_facodi'
             and http_request.httprequest.path == '/'
             and hasattr(response, 'qcontext')
         ):
-            channels = request.env['slide.channel'].search(
-                [('website_published', '=', True)],
-                order='sequence, id',
-                limit=6,
-            )
-            response.qcontext['facodi_channels'] = channels
+            Channel = request.env.get('slide.channel')
+            if Channel is not None:
+                channels = Channel.search(
+                    [('website_published', '=', True)],
+                    order='sequence, id',
+                    limit=6,
+                )
+                response.qcontext['facodi_channels'] = channels
 
         return response
+
+
