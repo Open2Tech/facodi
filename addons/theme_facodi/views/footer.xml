@@ -14,7 +14,7 @@
                         <a href="/contactus">Contato</a>
                         <a href="/web/login">Minha conta</a>
                     </div>
-                    <p class="facodi-footer-meta">Open source para aprender em publico.<br/><span t-esc="datetime.datetime.now().year"/> FACODI</p>
+                    <p class="facodi-footer-meta">Open source para aprender em publico.<br/><span t-esc="datetime.datetime.now().year"/> FACODI<br/>Criado por <a href="https://open2.tech" target="_blank" rel="noopener noreferrer">Open2 Technology</a></p>
                 </div>
             </div>
         </xpath>

@@ -5,7 +5,7 @@
     'category': 'Theme/Education',
     'version': '19.0.1.0.0',
     'sequence': 120,
-    'author': 'Open2Tech',
+    'author': 'Open2 Technology (open2.tech)',
     'license': 'LGPL-3',
     'depends': ['website', 'website_slides'],
     'data': [
