@@ -30,7 +30,7 @@
                         </div>
                         <div class="facodi-board-cards">
                             <div><span>Fundamentos</span><strong>Concluido</strong></div>
-                            <div class="is-selected"><span>Dados e IA</span><strong>Em andamento</strong></div>
+                            <div class="is-selected"><span>Dados e sistemas</span><strong>Em andamento</strong></div>
                             <div><span>Projeto aberto</span><strong>Proximo</strong></div>
                         </div>
                     </div>
@@ -113,11 +113,11 @@
                         </div>
                     </div>
                     <aside class="facodi-insights" aria-label="Learning insights">
-                        <article class="facodi-ai-card">
-                            <div class="facodi-panel-label"><span><i class="fa fa-sparkles" aria-hidden="true"/> FACODI IA</span><span>Beta</span></div>
-                            <h3>Seu proximo estudo</h3>
-                            <p>Revise arvores binarias antes de iniciar a proxima pratica. Posso criar uma sessao de 20 minutos.</p>
-                            <a class="btn facodi-button facodi-button-ai" href="/contactus">Abrir assistente <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                        <article class="facodi-roadmap-card">
+                            <div class="facodi-panel-label"><span>PROXIMO ESTUDO</span></div>
+                            <h3>Explore os cursos disponveis</h3>
+                            <p>Acesse o catalogo de cursos e encontre o proximo topico para sua jornada de aprendizagem.</p>
+                            <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catalogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                         </article>
                         <article class="facodi-roadmap-card">
                             <div class="facodi-panel-label"><span>ROTEIRO</span><span>64%</span></div>
