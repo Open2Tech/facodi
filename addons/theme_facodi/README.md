@@ -1,6 +1,6 @@
 # FACODI Theme
 
-`custom_theme` is the Odoo 19 Website and eLearning theme for FACODI - Faculdade Comunitaria Digital.
+`theme_facodi` is the Odoo 19 Website and eLearning theme for FACODI - Faculdade Comunitaria Digital.
 
 It provides the initial public experience: a learning-oriented hero, learner dashboard, responsive navigation, learning-resource snippet, course progress cards, roadmap, AI study prompt, and community activity surface. The content is intentionally representative; production course, program, community, and profile data should come from the Odoo Website, eLearning, Portal, Knowledge, Documents, Discuss, and Survey applications.
 
@@ -27,11 +27,15 @@ For a local update:
 ```bash
 python3 odoo-bin -d <database> \
   --addons-path=<odoo-addons>,odoo/facodi/addons \
-  -u custom_theme --stop-after-init
+  -u theme_facodi --stop-after-init
 ```
+
+### Transition from the legacy module
+
+The former `custom_theme` technical module is not an Odoo theme template and cannot participate in the native per-website theme lifecycle. Before deploying this version to a database that has the legacy module installed, uninstall **FACODI Theme** while the old addon is still available, deploy `theme_facodi`, update the Apps list, and install **FACODI Theme** again. Reapply the theme from Website configuration after installation.
 
 ## Delivery notes
 
-- Keep the module name `custom_theme` because this is the requested FACODI deployment module. All asset keys, CSS variables, tours, palette identifiers, and view IDs use a `facodi` prefix.
+- Keep the module name `theme_facodi`: Odoo recognizes theme modules through the `theme_` prefix. All asset keys, CSS variables, tours, palette identifiers, and view IDs use a `facodi` prefix.
 - Store approved FACODI source imagery, logo files, and typography licenses in `data/facodi/` before adding optimized files to `static/src/`.
 - Do not publish placeholder identity data or unverified academic claims. Configure company details and public contact data in Odoo before release.

@@ -4,6 +4,6 @@ from odoo import models
 class ThemeUtils(models.AbstractModel):
     _inherit = 'theme.utils'
 
-    def _custom_theme_post_copy(self, mod):
+    def _theme_facodi_post_copy(self, mod):
         self.enable_view('website.template_header_default')
         self.enable_view('website.template_footer_contact')

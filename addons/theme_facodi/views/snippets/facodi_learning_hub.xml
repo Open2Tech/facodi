@@ -3,11 +3,11 @@
     <template id="facodi_learning_hub" inherit_id="website.snippets" name="FACODI learning hub snippet">
         <xpath expr="//t[@id='installed_snippets_hook']" position="after">
             <t snippet-group="facodi" t-snippet="website.s_snippet_group" string="FACODI"
-                t-thumbnail="/custom_theme/static/description/facodi_theme_preview.svg"/>
+                    t-thumbnail="/theme_facodi/static/description/facodi_theme_preview.svg"/>
         </xpath>
         <xpath expr="//snippets[@id='snippet_structure']" position="inside">
-            <t t-snippet="custom_theme.s_facodi_learning_hub" string="Learning Hub" group="facodi"
-                t-thumbnail="/custom_theme/static/description/facodi_theme_preview.svg"/>
+                <t t-snippet="theme_facodi.s_facodi_learning_hub" string="Learning Hub" group="facodi"
+                    t-thumbnail="/theme_facodi/static/description/facodi_theme_preview.svg"/>
         </xpath>
     </template>
     <template id="s_facodi_learning_hub" name="FACODI Learning Hub">

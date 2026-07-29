@@ -18,7 +18,7 @@
     ],
     'assets': {
         'website.assets_editor': [
-            'custom_theme/static/src/js/facodi_theme_editor.js',
+            'theme_facodi/static/src/js/facodi_theme_editor.js',
         ],
     },
     'images': [
