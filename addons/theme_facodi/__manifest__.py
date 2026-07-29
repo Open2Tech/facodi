@@ -24,5 +24,9 @@
     'images': [
         'static/description/facodi_theme_preview.svg',
     ],
+    # Mapping used by the Website Configurator's SVG colour/image replacement
+    # pipeline (_process_svg).  Empty dict means the palette colours are
+    # applied but no image placeholders are swapped.
+    'images_preview_theme': {},
     'installable': True,
 }

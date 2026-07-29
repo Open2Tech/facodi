@@ -11,11 +11,21 @@
                         </button>
                         <div id="top_menu_collapse" class="collapse navbar-collapse">
                             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                                <li class="nav-item"><a class="nav-link" href="/slides">Cursos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/slides/all">Explorar</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/website/search">Comunidade</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/contactus">Sobre</a></li>
-                                <li class="nav-item ms-lg-2"><a class="btn facodi-button facodi-button-primary" href="/web/login">Entrar <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a></li>
+                                <!-- Dynamic menu items from Website backend -->
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu"
+                                        item_class.f="nav-item"
+                                        link_class.f="nav-link"/>
+                                </t>
+                                <!-- Sign-in / user dropdown -->
+                                <li class="nav-item ms-lg-2">
+                                    <t t-call="portal.placeholder_user_sign_in"
+                                        _link_class.f="btn facodi-button facodi-button-primary"/>
+                                    <t t-call="portal.user_dropdown"
+                                        _item_class.f="nav-item dropdown"
+                                        _link_class.f="btn facodi-button facodi-button-primary border-0"
+                                        _dropdown_menu_class.f="dropdown-menu-end"/>
+                                </li>
                             </ul>
                         </div>
                     </div>

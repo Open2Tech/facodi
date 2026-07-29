@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="facodi_homepage" inherit_id="website.homepage" name="FACODI learning dashboard" priority="20">
+    <!--
+        The FACODI homepage is a website.page record whose arch inherits
+        website.homepage.  Using noupdate="1" preserves any in-place edits
+        made by the site admin after the theme is applied.
+    -->
+    <template id="facodi_homepage" inherit_id="website.homepage"
+              name="FACODI learning dashboard" priority="20">
         <xpath expr="//div[@id='wrap']" position="replace">
-            <main id="wrap" class="oe_structure facodi-app-shell">
+            <div id="wrap" class="oe_structure facodi-app-shell">
                 <section class="facodi-hero" data-name="FACODI Welcome">
                     <div class="facodi-hero-copy">
                         <p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Aprenda em comunidade</p>
@@ -46,23 +52,64 @@
                         </div>
                         <div class="facodi-stat-row">
                             <article class="facodi-stat-card facodi-mint"><span>Sequencia atual</span><strong>12</strong><small>dias construindo habitos</small><i class="fa fa-bolt" aria-hidden="true"/></article>
-                            <article class="facodi-stat-card facodi-sky"><span>Meta semanal</span><strong>3/5</strong><small>sessões concluidas</small><i class="fa fa-dot-circle-o" aria-hidden="true"/></article>
+                            <article class="facodi-stat-card facodi-sky"><span>Meta semanal</span><strong>3/5</strong><small>sessoes concluidas</small><i class="fa fa-dot-circle-o" aria-hidden="true"/></article>
                             <article class="facodi-stat-card facodi-sun"><span>ECTS em curso</span><strong>18</strong><small>de 30 neste semestre</small><i class="fa fa-graduation-cap" aria-hidden="true"/></article>
                         </div>
                         <div class="facodi-section-heading facodi-compact-heading"><h2>Continue de onde parou</h2><a href="/slides" class="facodi-text-link">Minha biblioteca</a></div>
+                        <!-- Real published channels injected by FacodiHome controller -->
                         <div class="facodi-course-grid">
-                            <article class="facodi-course-card facodi-course-cyan">
-                                <div class="facodi-course-art"><span>CC</span><i class="fa fa-code" aria-hidden="true"/></div>
-                                <div class="facodi-course-content"><p>Computacao</p><h3>Algoritmos e estruturas de dados</h3><div class="facodi-progress"><span style="width: 72%"/></div><div class="facodi-card-bottom"><span>72% concluido</span><a href="/slides" aria-label="Continue Algorithms and data structures"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
-                            </article>
-                            <article class="facodi-course-card facodi-course-blue">
-                                <div class="facodi-course-art"><span>IA</span><i class="fa fa-sitemap" aria-hidden="true"/></div>
-                                <div class="facodi-course-content"><p>Dados e inteligencia artificial</p><h3>Etica e sistemas inteligentes</h3><div class="facodi-progress"><span style="width: 45%"/></div><div class="facodi-card-bottom"><span>45% concluido</span><a href="/slides" aria-label="Continue AI ethics"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
-                            </article>
-                            <article class="facodi-course-card facodi-course-ink">
-                                <div class="facodi-course-art"><span>SO</span><i class="fa fa-globe" aria-hidden="true"/></div>
-                                <div class="facodi-course-content"><p>Sociedade aberta</p><h3>Conhecimento, cultura e colaboracao</h3><div class="facodi-progress"><span style="width: 24%"/></div><div class="facodi-card-bottom"><span>24% concluido</span><a href="/slides" aria-label="Continue Open society"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
-                            </article>
+                            <t t-if="facodi_channels">
+                                <t t-foreach="facodi_channels" t-as="channel">
+                                    <a t-attf-href="/slides/#{slug(channel)}"
+                                       class="facodi-course-card"
+                                       t-att-aria-label="channel.name">
+                                        <div class="facodi-course-art">
+                                            <t t-if="channel.image_1920">
+                                                <div t-field="channel.image_1920"
+                                                     t-options="{'widget':'image','preview_image':'image_128'}"
+                                                     class="facodi-course-art-img"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-out="(channel.name or '')[:2].upper()"/>
+                                                <i class="fa fa-book" aria-hidden="true"/>
+                                            </t>
+                                        </div>
+                                        <div class="facodi-course-content">
+                                            <p t-field="channel.description_short"/>
+                                            <h3 t-field="channel.name"/>
+                                            <t t-if="channel.completion">
+                                                <div class="facodi-progress">
+                                                    <span t-attf-style="width:#{channel.completion}%"/>
+                                                </div>
+                                            </t>
+                                            <div class="facodi-card-bottom">
+                                                <t t-if="channel.completion">
+                                                    <span><t t-out="channel.completion"/>% concluido</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span><t t-out="channel.total_slides"/> aulas</span>
+                                                </t>
+                                                <i class="fa fa-arrow-right" aria-hidden="true"/>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <!-- Fallback cards when no courses are published yet -->
+                                <a href="/slides" class="facodi-course-card facodi-course-cyan">
+                                    <div class="facodi-course-art"><span>CC</span><i class="fa fa-code" aria-hidden="true"/></div>
+                                    <div class="facodi-course-content"><p>Computacao</p><h3>Algoritmos e estruturas de dados</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
+                                </a>
+                                <a href="/slides" class="facodi-course-card facodi-course-blue">
+                                    <div class="facodi-course-art"><span>IA</span><i class="fa fa-sitemap" aria-hidden="true"/></div>
+                                    <div class="facodi-course-content"><p>Dados e inteligencia artificial</p><h3>Etica e sistemas inteligentes</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
+                                </a>
+                                <a href="/slides" class="facodi-course-card facodi-course-ink">
+                                    <div class="facodi-course-art"><span>SO</span><i class="fa fa-globe" aria-hidden="true"/></div>
+                                    <div class="facodi-course-content"><p>Sociedade aberta</p><h3>Conhecimento, cultura e colaboracao</h3><div class="facodi-card-bottom"><span>Explorar</span><i class="fa fa-arrow-right" aria-hidden="true"/></div></div>
+                                </a>
+                            </t>
                         </div>
                     </div>
                     <aside class="facodi-insights" aria-label="Learning insights">
@@ -96,7 +143,7 @@
                     <div><p class="facodi-kicker">Conhecimento que circula</p><h2>Uma faculdade aberta para quem quer construir o futuro.</h2></div>
                     <div class="facodi-open-actions"><p>Estude com roteiros claros. Contribua com recursos revisados. Transforme seu percurso em algo que outras pessoas tambem podem seguir.</p><a class="btn facodi-button facodi-button-secondary" href="/slides">Conhecer a FACODI <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a></div>
                 </section>
-            </main>
+            </div>
         </xpath>
     </template>
 </odoo>
