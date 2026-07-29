@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="facodi_footer" inherit_id="website.layout" name="FACODI footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="facodi-footer" data-name="FACODI Footer" t-ignore="true" t-if="not no_footer">
+                <div class="container-fluid facodi-footer-inner">
+                    <div>
+                        <a href="/" class="facodi-wordmark">FACODI<span>.</span></a>
+                        <p>Faculdade Comunitaria Digital. Educacao superior aberta, colaborativa e acessivel.</p>
+                    </div>
+                    <div class="facodi-footer-links">
+                        <a href="/slides">Cursos</a>
+                        <a href="/website/search">Recursos abertos</a>
+                        <a href="/contactus">Contato</a>
+                        <a href="/web/login">Minha conta</a>
+                    </div>
+                    <p class="facodi-footer-meta">Open source para aprender em publico.<br/><span t-esc="datetime.datetime.now().year"/> FACODI</p>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
