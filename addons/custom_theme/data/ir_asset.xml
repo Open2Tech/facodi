@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <asset id="facodi_primary_variables" name="FACODI primary variables">
+        <field name="key">facodi.primary_variables</field>
+        <bundle>web._assets_primary_variables</bundle>
+        <path>custom_theme/static/src/scss/primary_variables.scss</path>
+    </asset>
+    <asset id="facodi_bootstrap_overrides" name="FACODI Bootstrap overrides">
+        <field name="key">facodi.bootstrap_overrides</field>
+        <bundle directive="prepend">web._assets_frontend_helpers</bundle>
+        <path>custom_theme/static/src/scss/bootstrap_overridden.scss</path>
+    </asset>
+    <asset id="facodi_frontend_styles" name="FACODI frontend styles">
+        <field name="key">facodi.frontend_styles</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>custom_theme/static/src/scss/facodi_frontend.scss</path>
+    </asset>
+</odoo>

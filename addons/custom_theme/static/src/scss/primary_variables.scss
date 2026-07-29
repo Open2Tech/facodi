@@ -1,0 +1,32 @@
+// FACODI theme tokens. Keep values in one place so the Open2Tech palette can evolve safely.
+$facodi-ink: oklch(0.24 0.045 250);
+$facodi-cyan: oklch(0.73 0.14 205);
+$facodi-blue: oklch(0.61 0.17 245);
+$facodi-mint: oklch(0.86 0.10 164);
+$facodi-sun: oklch(0.88 0.15 92);
+$facodi-paper: oklch(0.985 0.004 230);
+$facodi-line: oklch(0.35 0.035 250);
+
+$o-color-palettes: map-merge($o-color-palettes, (
+    'facodi': (
+        'o-color-1': $facodi-cyan,
+        'o-color-2': $facodi-blue,
+        'o-color-3': $facodi-mint,
+        'o-color-4': $facodi-paper,
+        'o-color-5': $facodi-ink,
+        'o-cc1-bg': 'o-color-4', 'o-cc1-text': 'o-color-5', 'o-cc1-headings': 'o-color-5', 'o-cc1-link': 'o-color-2', 'o-cc1-btn-primary': 'o-color-2', 'o-cc1-btn-primary-border': 'o-color-5',
+        'o-cc2-bg': 'o-color-5', 'o-cc2-text': 'o-color-4', 'o-cc2-headings': 'o-color-4', 'o-cc2-link': 'o-color-1', 'o-cc2-btn-primary': 'o-color-1', 'o-cc2-btn-primary-border': 'o-color-4',
+        'o-cc3-bg': 'o-color-1', 'o-cc3-text': 'o-color-5', 'o-cc3-headings': 'o-color-5', 'o-cc3-link': 'o-color-5', 'o-cc3-btn-primary': 'o-color-5', 'o-cc3-btn-primary-border': 'o-color-5',
+        'menu': 1, 'menu-border-color': 'o-color-5', 'footer': 1, 'copyright': 1,
+    ),
+));
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'facodi');
+$o-theme-color-palettes: map-merge($o-theme-color-palettes, ('facodi': ('alpha': $facodi-cyan, 'beta': $facodi-blue, 'gamma': $facodi-mint, 'delta': $facodi-paper, 'epsilon': $facodi-ink, 'success': oklch(0.63 0.15 150), 'info': $facodi-blue, 'warning': $facodi-sun, 'danger': oklch(0.57 0.20 25))));
+$o-theme-font-configs: map-merge($o-theme-font-configs, (
+    'Space Grotesk': ('family': ('Space Grotesk', sans-serif), 'url': 'Space+Grotesk:400,500,600,700'),
+    'Inter': ('family': ('Inter', sans-serif), 'url': 'Inter:400,500,600,700'),
+    'JetBrains Mono': ('family': ('JetBrains Mono', monospace), 'url': 'JetBrains+Mono:400,500,700'),
+));
+$o-website-values-palettes: append($o-website-values-palettes, ('color-palettes-name': 'facodi', 'font': 'Inter', 'headings-font': 'Space Grotesk', 'navbar-font': 'Inter', 'buttons-font': 'Inter', 'font-size-base': 1rem, 'body-line-height': 1.5, 'headings-line-height': 1.05, 'btn-border-width': 2px, 'btn-border-radius': .5rem, 'btn-border-radius-sm': .5rem, 'btn-border-radius-lg': .5rem, 'input-border-width': 2px, 'input-border-radius': .5rem, 'logo-height': 2rem));
+$o-color-palettes-compatibility-indexes: map-merge($o-color-palettes-compatibility-indexes, (1: 'facodi'));
+$o-theme-color-palettes-compatibility-indexes: map-merge($o-theme-color-palettes-compatibility-indexes, (1: 'facodi'));

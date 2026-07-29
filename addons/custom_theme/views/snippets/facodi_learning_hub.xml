@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="facodi_learning_hub" inherit_id="website.snippets" name="FACODI learning hub snippet">
+        <xpath expr="//div[@id='snippet_groups']" position="inside">
+            <t t-snippet="custom_theme.s_facodi_learning_hub" t-thumbnail="/custom_theme/static/description/facodi_theme_preview.svg"/>
+        </xpath>
+    </template>
+    <template id="s_facodi_learning_hub" name="FACODI Learning Hub">
+        <section class="s_facodi_learning_hub facodi-learning-hub" data-snippet="s_facodi_learning_hub" data-name="Learning Hub">
+            <div class="container">
+                <div class="facodi-section-heading"><div><p class="facodi-kicker">CURADORIA ABERTA</p><h2>Aprenda com contexto.</h2></div><a href="/slides" class="facodi-text-link">Explorar recursos <i class="fa fa-arrow-right" aria-hidden="true"/></a></div>
+                <div class="facodi-resource-grid">
+                    <article><i class="fa fa-play-circle" aria-hidden="true"/><h3>Videoaulas</h3><p>Explicacoes curtas para acompanhar cada unidade curricular.</p></article>
+                    <article><i class="fa fa-book" aria-hidden="true"/><h3>Leituras abertas</h3><p>Livros, artigos e documentos selecionados pela comunidade.</p></article>
+                    <article><i class="fa fa-comments" aria-hidden="true"/><h3>Estude junto</h3><p>Troque anotacoes, perguntas e caminhos de estudo.</p></article>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>
