@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- noupdate="1": preserves Website Builder edits on module upgrade -->
+    <data noupdate="1">
+
     <record id="page_about" model="website.page">
         <field name="name">Sobre a FACODI</field>
         <field name="type">qweb</field>
         <field name="url">/sobre</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_about</field>
+        <field name="website_meta_title">Sobre a FACODI — Faculdade Comunitaria Digital</field>
+        <field name="website_meta_description">O FACODI nasceu para aproximar pessoas, comunidades e conhecimento. Curriculos, percursos e materiais abertos para aprender com contexto e comunidade.</field>
         <field name="arch" type="xml">
             <t name="Sobre a FACODI" t-name="theme_facodi.page_about">
                 <t t-call="website.layout">
@@ -81,6 +86,8 @@
         <field name="url">/manifesto</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_manifesto</field>
+        <field name="website_meta_title">Manifesto — FACODI</field>
+        <field name="website_meta_description">Aprender em publico, construir com outras pessoas e manter o conhecimento em circulacao. Os principios que orientam o FACODI.</field>
         <field name="arch" type="xml">
             <t name="Manifesto FACODI" t-name="theme_facodi.page_manifesto">
                 <t t-call="website.layout">
@@ -133,6 +140,8 @@
         <field name="url">/comunidade</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_community</field>
+        <field name="website_meta_title">Comunidade — FACODI</field>
+        <field name="website_meta_description">Uma rede aberta de estudantes, curadores e parceiros. Conheca o ecossistema FACODI e como participar.</field>
         <field name="arch" type="xml">
             <t name="Comunidade FACODI" t-name="theme_facodi.page_community">
                 <t t-call="website.layout">
@@ -190,6 +199,8 @@
         <field name="url">/roadmap</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_roadmap</field>
+        <field name="website_meta_title">Roadmap — FACODI</field>
+        <field name="website_meta_description">Prioridades do FACODI para consolidar conteudo, percursos e reconhecimento de aprendizagens.</field>
         <field name="arch" type="xml">
             <t name="Roadmap FACODI" t-name="theme_facodi.page_roadmap">
                 <t t-call="website.layout">
@@ -234,6 +245,8 @@
         <field name="url">/como-contribuir</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_contribute</field>
+        <field name="website_meta_title">Como contribuir — FACODI</field>
+        <field name="website_meta_description">Formas de participar na evolucao do FACODI: curadoria de conteudo, parcerias academicas e colaboracao tecnica.</field>
         <field name="arch" type="xml">
             <t name="Como contribuir" t-name="theme_facodi.page_contribute">
                 <t t-call="website.layout">
@@ -274,6 +287,8 @@
             </t>
         </field>
     </record>
+
+    </data><!-- /noupdate -->
 
     <record id="menu_about" model="website.menu">
         <field name="name">Sobre</field>
