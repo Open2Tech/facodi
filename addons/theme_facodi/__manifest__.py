@@ -14,6 +14,7 @@
         'views/header.xml',
         'views/footer.xml',
         'views/homepage.xml',
+        'views/pages.xml',
         'views/snippets/facodi_learning_hub.xml',
     ],
     'assets': {
