@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        The FACODI homepage is a website.page record whose arch inherits
+        website.homepage.  Using noupdate="1" preserves any in-place edits
+        made by the site admin after the theme is applied.
+    -->
+    <template id="facodi_homepage" inherit_id="website.homepage"
+              name="FACODI learning dashboard" priority="20">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure facodi-app-shell">
+                <section class="facodi-hero" data-name="FACODI Welcome">
+                    <div class="facodi-hero-copy">
+                        <p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Aprenda em comunidade</p>
+                        <h1>Seu proximo capitulo comeca em rede.</h1>
+                        <p class="facodi-lead">Curriculos oficiais, recursos abertos e uma comunidade que transforma conhecimento em possibilidade.</p>
+                        <div class="facodi-actions">
+                            <a class="btn facodi-button facodi-button-primary" href="/slides">Explorar cursos <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                            <a class="btn facodi-button facodi-button-secondary" href="/web/login">Continuar aprendendo</a>
+                        </div>
+                    </div>
+                    <div class="facodi-hero-board" aria-label="Mapa de aprendizagem">
+                        <div class="facodi-board-top"><span>Mapa de aprendizagem</span><span class="facodi-live-dot">Aberto</span></div>
+                        <div class="facodi-board-path">
+                            <div class="facodi-path-node is-complete"><i class="fa fa-compass" aria-hidden="true"/></div>
+                            <div class="facodi-path-line is-complete"/>
+                            <div class="facodi-path-node is-current">02</div>
+                            <div class="facodi-path-line"/>
+                            <div class="facodi-path-node">03</div>
+                        </div>
+                        <div class="facodi-board-cards">
+                            <div><span>Descubra</span><strong>Encontre um curso</strong></div>
+                            <div class="is-selected"><span>Aprenda</span><strong>No seu ritmo</strong></div>
+                            <div><span>Contribua</span><strong>Em comunidade</strong></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="facodi-dashboard" data-name="FACODI Dashboard">
+                    <aside class="facodi-side-nav" aria-label="Learning navigation">
+                        <p>MINHA JORNADA</p>
+                        <a class="is-active" href="/web/login"><i class="fa fa-th-large" aria-hidden="true"/>Visao geral</a>
+                        <a href="/slides"><i class="fa fa-book" aria-hidden="true"/>Cursos</a>
+                        <a href="/website/search"><i class="fa fa-compass" aria-hidden="true"/>Descobrir</a>
+                        <a href="/web/login"><i class="fa fa-bookmark-o" aria-hidden="true"/>Salvos</a>
+                        <a href="/contactus"><i class="fa fa-users" aria-hidden="true"/>Comunidade</a>
+                    </aside>
+                    <div class="facodi-dashboard-main">
+                        <div class="facodi-section-heading">
+                            <div><p class="facodi-kicker">Catalogo de aprendizagem</p><h2>Cursos publicados</h2></div>
+                            <a href="/slides" class="facodi-text-link">Ver todos os cursos <i class="fa fa-arrow-right" aria-hidden="true"/></a>
+                        </div>
+                        <!-- Real published channels are injected by the website.page mixin. -->
+                        <div class="facodi-course-grid">
+                            <t t-if="facodi_channels">
+                                <t t-foreach="facodi_channels" t-as="channel">
+                                    <a t-attf-href="/slides/#{slug(channel)}"
+                                       class="facodi-course-card"
+                                       t-att-aria-label="channel.name">
+                                        <div class="facodi-course-art">
+                                            <t t-if="channel.image_1920">
+                                                <div t-field="channel.image_1920"
+                                                     t-options="{'widget':'image','preview_image':'image_128'}"
+                                                     class="facodi-course-art-img"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-out="(channel.name or '')[:2].upper()"/>
+                                                <i class="fa fa-book" aria-hidden="true"/>
+                                            </t>
+                                        </div>
+                                        <div class="facodi-course-content">
+                                            <p t-field="channel.description_short"/>
+                                            <h3 t-field="channel.name"/>
+                                            <t t-if="channel.completion">
+                                                <div class="facodi-progress">
+                                                    <span t-attf-style="width:#{channel.completion}%"/>
+                                                </div>
+                                            </t>
+                                            <div class="facodi-card-bottom">
+                                                <t t-if="channel.completion">
+                                                    <span><t t-out="channel.completion"/>% concluido</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span><t t-out="channel.total_slides"/> aulas</span>
+                                                </t>
+                                                <i class="fa fa-arrow-right" aria-hidden="true"/>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <article class="facodi-course-card facodi-course-cyan">
+                                    <div class="facodi-course-art"><span>+</span><i class="fa fa-book" aria-hidden="true"/></div>
+                                    <div class="facodi-course-content"><p>Catalogo</p><h3>Nenhum curso publicado ainda</h3><div class="facodi-card-bottom"><a href="/slides" aria-label="Abrir catalogo"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
+                                </article>
+                            </t>
+                        </div>
+                    </div>
+                    <aside class="facodi-insights" aria-label="Learning insights">
+                        <article class="facodi-roadmap-card">
+                            <div class="facodi-panel-label"><span>PROXIMO ESTUDO</span></div>
+                            <h3>Explore os cursos disponveis</h3>
+                            <p>Acesse o catalogo de cursos e encontre o proximo topico para sua jornada de aprendizagem.</p>
+                            <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catalogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                        </article>
+                    </aside>
+                </section>
+
+                <section class="facodi-open-section" data-name="FACODI Open Learning">
+                    <div><p class="facodi-kicker">Conhecimento que circula</p><h2>Uma faculdade aberta para quem quer construir o futuro.</h2></div>
+                    <div class="facodi-open-actions"><p>Estude com roteiros claros. Contribua com recursos revisados. Transforme seu percurso em algo que outras pessoas tambem podem seguir.</p><a class="btn facodi-button facodi-button-secondary" href="/slides">Conhecer a FACODI <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a></div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>

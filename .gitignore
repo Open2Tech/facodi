@@ -1,0 +1,24 @@
+# Python bytecode and compilation artefacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Odoo test databases and filestore
+.odoo_test_db
+filestore/
+
+# Editor / IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Odoo generated asset bundles (should never be committed)
+/static/src/*.min.js
+/static/src/*.min.css
+
+# Node tooling (if used for SCSS compilation outside Odoo)
+node_modules/
+package-lock.json
