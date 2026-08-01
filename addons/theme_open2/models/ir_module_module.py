@@ -20,5 +20,5 @@ class IrModuleModule(models.Model):
         ):
             self.env["theme.utils"].with_context(
                 website_id=website.id,
-            )._theme_open2_cleanup_inherited_navigation()
+            )._theme_open2_reconcile_website()
         return result

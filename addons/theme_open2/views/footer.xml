@@ -18,10 +18,9 @@
                     </div>
                     <nav aria-label="Footer navigation">
                         <h2>Navigation</h2>
-                        <a href="/solutions">Solutions</a>
-                        <a href="/partnerships">Partnerships</a>
-                        <a href="/open-source">Open Source</a>
-                        <a href="/contact">Contact</a>
+                        <t t-foreach="website.menu_id.child_id" t-as="footer_menu">
+                            <a t-att-href="footer_menu.page_id.url or footer_menu.url"><t t-out="footer_menu.name"/></a>
+                        </t>
                     </nav>
                     <nav aria-label="Social links">
                         <h2>Social hub</h2>

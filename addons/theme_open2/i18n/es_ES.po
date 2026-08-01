@@ -1067,3 +1067,83 @@ msgid ""
 msgstr ""
 "«La mejor tecnología la construyen personas que no temen compartir su "
 "trabajo»."
+
+#. module: theme_open2
+msgid "About"
+msgstr "Nosotros"
+
+#. module: theme_open2
+msgid "About Open2"
+msgstr "Sobre Open2"
+
+#. module: theme_open2
+msgid "Services"
+msgstr "Servicios"
+
+#. module: theme_open2
+msgid "Attachment <span>Optional</span>"
+msgstr "Archivo adjunto <span>Opcional</span>"
+
+#. module: theme_open2
+msgid "Create request"
+msgstr "Crear solicitud"
+
+#. module: theme_open2
+msgid "What can we help with? *"
+msgstr "¿En qué podemos ayudarte? *"
+
+#. module: theme_open2
+msgid "A short subject for your request."
+msgstr "Un asunto breve para tu solicitud."
+
+#. module: theme_open2
+msgid "Contact form temporarily unavailable."
+msgstr "Formulario de contacto temporalmente no disponible."
+
+#. module: theme_open2
+msgid ". No request submitted here will be silently lost."
+msgstr ". Ninguna solicitud enviada aquí se perderá silenciosamente."
+
+#. module: theme_open2
+msgid "Please email"
+msgstr "Escribe a"
+
+#. module: theme_open2
+msgid "Request received"
+msgstr "Solicitud recibida"
+
+#. module: theme_open2
+msgid "Return home"
+msgstr "Volver al inicio"
+
+#. module: theme_open2
+msgid "Explore our services"
+msgstr "Explorar nuestros servicios"
+
+#. module: theme_open2
+msgid "Ticket reference:"
+msgstr "Referencia de la solicitud:"
+
+#. module: theme_open2
+msgid "Thank you. <span class=\"open2-accent-teal\">We have it.</span>"
+msgstr "Gracias. <span class=\"open2-accent-teal\">Ya la tenemos.</span>"
+
+#. module: theme_open2
+msgid "Technology with a <span class=\"open2-accent-violet\">human purpose</span>"
+msgstr "Tecnología con un <span class=\"open2-accent-violet\">propósito humano</span>"
+
+#. module: theme_open2
+msgid "Practical systems, <span class=\"open2-outline\">built together</span>"
+msgstr "Sistemas prácticos, <span class=\"open2-outline\">construidos juntos</span>"
+
+#. module: theme_open2
+msgid "We are a software studio in Portugal, working remotely with organizations that want digital tools to be more useful, inclusive, and maintainable."
+msgstr "Somos un estudio de software en Portugal que trabaja en remoto con organizaciones que quieren herramientas digitales más útiles, inclusivas y fáciles de mantener."
+
+#. module: theme_open2
+msgid "From the first workshop to production support, we combine Odoo expertise, software engineering, and responsible automation around the way your team actually works."
+msgstr "Desde el primer taller hasta el soporte en producción, combinamos experiencia en Odoo, ingeniería de software y automatización responsable en torno a la forma real de trabajar de tu equipo."
+
+#. module: theme_open2
+msgid "Your request is now with the Open2 team. We will review it and reply using the email address you provided."
+msgstr "Tu solicitud ya está con el equipo de Open2. La revisaremos y responderemos a la dirección de correo indicada."

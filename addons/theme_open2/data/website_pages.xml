@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="page_about_view" model="theme.ir.ui.view">
+        <field name="name">About Open2</field><field name="type">qweb</field><field name="key">theme_open2.page_about</field>
+        <field name="arch" type="xml"><t name="About Open2" t-name="theme_open2.page_about"><t t-call="website.layout"><t t-set="additional_title">About Open2</t><t t-set="website_meta_description">Meet Open2 Technology, a people-first software studio building accessible and useful digital systems.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="About Hero"><div class="open2-container open2-split"><div><p class="open2-label">About Open2</p><h1>Technology with a <span class="open2-accent-violet">human purpose</span></h1></div><p class="open2-lead">We are a software studio in Portugal, working remotely with organizations that want digital tools to be more useful, inclusive, and maintainable.</p></div></section>
+            <t t-snippet-call="theme_open2.s_open2_intro"/><t t-snippet-call="theme_open2.s_open2_team"/><t t-snippet-call="theme_open2.s_open2_cta"/>
+        </div></t></t></field>
+    </record>
+    <record id="page_about" model="theme.website.page"><field name="url">/about</field><field name="view_id" ref="page_about_view"/><field name="is_published">True</field></record>
+
     <record id="page_solutions_view" model="theme.ir.ui.view">
         <field name="name">Solutions</field><field name="type">qweb</field><field name="key">theme_open2.page_solutions</field>
         <field name="arch" type="xml"><t name="Solutions" t-name="theme_open2.page_solutions"><t t-call="website.layout"><t t-set="additional_title">Solutions</t><t t-set="website_meta_description">Explore Open2 solutions in Odoo, bespoke software engineering, and responsible AI automation.</t><div id="wrap" class="oe_structure open2-page">
@@ -8,6 +17,15 @@
         </div></t></t></field>
     </record>
     <record id="page_solutions" model="theme.website.page"><field name="url">/solutions</field><field name="view_id" ref="page_solutions_view"/><field name="is_published">True</field></record>
+
+    <record id="page_services_view" model="theme.ir.ui.view">
+        <field name="name">Services</field><field name="type">qweb</field><field name="key">theme_open2.page_services</field>
+        <field name="arch" type="xml"><t name="Services" t-name="theme_open2.page_services"><t t-call="website.layout"><t t-set="additional_title">Services</t><t t-set="website_meta_description">Explore Open2 services for Odoo implementation, custom software, responsible AI, and automation.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="Services Hero"><div class="open2-container"><p class="open2-label open2-label--blue">Services</p><h1>Practical systems, <span class="open2-outline">built together</span></h1><p class="open2-lead open2-measure">From the first workshop to production support, we combine Odoo expertise, software engineering, and responsible automation around the way your team actually works.</p></div></section>
+            <t t-snippet-call="theme_open2.s_open2_services"/><t t-snippet-call="theme_open2.s_open2_ai"/><t t-snippet-call="theme_open2.s_open2_cta"/>
+        </div></t></t></field>
+    </record>
+    <record id="page_services" model="theme.website.page"><field name="url">/services</field><field name="view_id" ref="page_services_view"/><field name="is_published">True</field></record>
 
     <record id="page_partnerships_view" model="theme.ir.ui.view">
         <field name="name">Partnerships</field><field name="type">qweb</field><field name="key">theme_open2.page_partnerships</field>
@@ -35,6 +53,14 @@
         </div></t></t></field>
     </record>
     <record id="page_contact" model="theme.website.page"><field name="url">/contact</field><field name="view_id" ref="page_contact_view"/><field name="is_published">True</field></record>
+
+    <record id="page_contact_thank_you_view" model="theme.ir.ui.view">
+        <field name="name">Contact request received</field><field name="type">qweb</field><field name="key">theme_open2.page_contact_thank_you</field>
+        <field name="arch" type="xml"><t name="Contact request received" t-name="theme_open2.page_contact_thank_you"><t t-call="website.layout"><t t-set="additional_title">Request received</t><t t-set="website_meta_description">Your request has been received by Open2 Technology.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="Contact Confirmation"><div class="open2-container open2-measure"><p class="open2-label">Request received</p><h1>Thank you. <span class="open2-accent-teal">We have it.</span></h1><p class="open2-lead">Your request is now with the Open2 team. We will review it and reply using the email address you provided.</p><t t-if="request.session.get('form_builder_model_model') == 'helpdesk.ticket'"><t t-set="open2_ticket" t-value="request.website._website_form_last_record()"/><p class="open2-ticket-reference" t-if="open2_ticket">Ticket reference: <strong t-field="open2_ticket.sudo().ticket_ref"/></p></t><div class="open2-actions"><a class="btn open2-button open2-button--light" href="/">Return home</a><a class="open2-text-link" href="/services">Explore our services</a></div></div></section>
+        </div></t></t></field>
+    </record>
+    <record id="page_contact_thank_you" model="theme.website.page"><field name="url">/contact/thank-you</field><field name="view_id" ref="page_contact_thank_you_view"/><field name="is_published">True</field><field name="website_indexed">False</field></record>
 
     <record id="page_privacy_view" model="theme.ir.ui.view">
         <field name="name">Privacy Policy</field><field name="type">qweb</field><field name="key">theme_open2.page_privacy</field>
