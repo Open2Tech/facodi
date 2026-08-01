@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="open2-container open2-footer__bottom">
-                    <p>© <span t-esc="datetime.datetime.now().year"/> Open2 Technology. Democratizing access to technology.</p>
+                    <p>© <span t-esc="datetime.datetime.now().year"/> Open2 Technology. Open minds. Open source. Open future.</p>
                     <p>Legal pages will be published after review.</p>
                 </div>
             </div>

@@ -90,7 +90,7 @@ multiwebsite decision record.
 - Loader visible above the sticky header on the first visit, hidden after about 1.45 seconds, and absent on subsequent navigation in the same session.
 - `prefers-reduced-motion: reduce`: loader remained inactive and did not write the session flag.
 - Browser error log: empty on homepage, mobile homepage, and reduced-motion run.
-- Homepage SEO title: `Open2 Technology — Democratizing access to technology`.
+- Homepage SEO title after the brand refresh: `Open2 Technology — Building open solutions for a better tomorrow`.
 
 Evidence:
 
