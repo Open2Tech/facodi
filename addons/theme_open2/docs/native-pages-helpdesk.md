@@ -63,11 +63,18 @@ would mix websites and companies. Staging did not yet have Helpdesk installed.
 
 ## Multiwebsite contract
 
-The team lookup and hidden `team_id` are bound to `website.id`. Theme
-reconciliation creates or reuses a team only when the selected website uses
-`theme_open2`. Any generated `/helpdesk` menu removed by the reconciliation is
-limited to the Open2 website; FACODI pages, menus, teams and views are never
-selected by that cleanup.
+The team lookup resolves the website through Odoo's
+`website.get_current_website()` and the hidden `team_id` is bound to that
+website. Theme reconciliation creates or reuses a team only when the selected
+website uses `theme_open2`. Its generated `/helpdesk` menu cleanup is limited
+to the Open2 website.
+
+The separate dependency safeguard recognizes only the official
+`helpdesk.helpdesk_team1`, its generated `/helpdesk` menu and a zero-ticket
+state. It restores that bootstrap to unpublished after the first
+`website_helpdesk` installation; it does not delete the team. This returned
+FACODI staging to its exact pre-install navigation and matched the unchanged
+production state.
 
 The team is retained if the theme is later unloaded. This is intentionally
 non-destructive because it may contain business records and tickets.
@@ -95,6 +102,16 @@ Visual evidence:
 - [Contact after: Helpdesk form on mobile](evidence/contact-after-helpdesk-mobile.png)
 - [Ticket confirmation on mobile](evidence/contact-confirmation-mobile.png)
 - [Native About page on desktop](evidence/about-native-desktop.png)
+- [Final staging Contact on desktop](evidence/contact-staging-final-desktop.png)
+- [Final staging Contact on mobile](evidence/contact-staging-final-mobile.png)
+
+## Production result
+
+PR #132 promoted `theme_open2` `19.0.1.1.3` after staging approval. Production
+materialized the new native pages and six page-backed menu records on website
+2 only. The production E2E created one ticket with partner, attachment, New
+stage, assignee and notifications; the QA ticket was archived after
+verification. The FACODI snapshot was unchanged before and after release.
 
 ## Known limitation
 

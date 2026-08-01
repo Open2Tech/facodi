@@ -1,6 +1,9 @@
 # Validation record
 
-Validation date: 2026-08-01. All writes described below were made against disposable local PostgreSQL databases, except the explicitly identified native theme selection on Odoo.sh staging. No FACODI or production record was changed.
+Validation date: 2026-08-01. Local installation tests used disposable
+PostgreSQL databases. The explicitly identified staging and production E2E
+checks used reserved `example.com` identities; the production QA ticket was
+archived after verification. No FACODI page, menu, theme or asset was changed.
 
 ## Native pages and Helpdesk follow-up
 
@@ -24,6 +27,38 @@ Validation date: 2026-08-01. All writes described below were made against dispos
   that its backend RPC has no `request.website`. The lookup now uses Odoo's
   `website.get_current_website()`, which supports both frontend and backend
   rendering while honoring the forced multiwebsite session.
+
+## Final staging and production validation
+
+- Staging build: `theme_open2` `19.0.1.1.3`, following PRs #128–#131.
+- Production release: PR #132, merge commit `2bca7711`, module
+  `19.0.1.1.3` installed and current.
+- All eight public routes (`/`, `/about`, `/solutions`, `/services`,
+  `/open-source`, `/partnerships`, `/contact`, `/contact/thank-you`) returned
+  HTTP 200 in the Open2 website context.
+- Staging and production Website Builder entered Edit mode, exposed Blocks,
+  Style and Theme, and exited through Discard without saving.
+- Staging and production Contact E2E each created exactly one ticket in
+  `Open2 Website`, New stage, with the submitted partner, assigned user,
+  description and one SVG attachment. The confirmation page displayed ticket
+  reference `00001`.
+- Chatter creation and both internal/customer notifications were present. The
+  staging database was mail-neutralized; production used a reserved
+  `example.com` QA address.
+- Desktop 1440 × 1000, tablet 768 × 1024 and mobile 390 × 844 had one H1 and
+  no horizontal overflow. Mobile navigation exposed all six page-backed menu
+  entries. Keyboard focus used a visible browser outline.
+- FACODI before/after comparison: website 1 kept `theme_facodi`, its Home page,
+  seven navigation children, languages and unpublished default Helpdesk team.
+  The dependency-generated `/helpdesk` menu observed during the first staging
+  build was removed by the guarded `19.0.1.1.1` migration.
+
+Final evidence:
+
+- `docs/evidence/contact-staging-final-desktop.png`
+- `docs/evidence/contact-staging-final-mobile.png`
+- `docs/evidence/contact-before-mail-form-mobile.png`
+- `docs/evidence/contact-confirmation-mobile.png`
 
 See [native-pages-helpdesk.md](native-pages-helpdesk.md) for the diagnosis and
 multiwebsite decision record.
@@ -63,8 +98,6 @@ Evidence:
 - `docs/evidence/home-mobile.png`
 - `docs/evidence/loader-desktop.png`
 
-## Odoo.sh staging gate
-
 ## Odoo.sh staging validation
 
 Validated on the Odoo.sh staging database after build commit `2132d12`, with
@@ -91,10 +124,10 @@ module version `19.0.1.0.2` installed and current.
   authenticated editor/backend sessions. Its first-session, reduced-motion,
   and JavaScript-fallback behaviours remain covered by the local browser run.
 
-Remaining release checks are editorial or environment-dependent:
+Remaining editorial or extended audit checks:
 
-- [ ] Exercise Website Builder insertion, editing, duplication, reordering, and saving while authenticated.
-- [ ] Route contact mail to a staging-safe sink and verify delivery without contacting the public recipient.
+- [x] Open Website Builder and verify native snippet rendering without saving.
+- [x] Submit Contact to a staging-safe reserved identity and inspect the native Helpdesk records.
 - [ ] Validate all four languages using the staging website language selector.
 - [ ] Add 1920, 1280, 768, and 360 pixel evidence runs.
 - [ ] Complete keyboard, 200% zoom, contrast, and screen-reader checks on staging.
