@@ -2,6 +2,26 @@
 
 Validation date: 2026-08-01. All writes described below were made against disposable local PostgreSQL databases, except the explicitly identified native theme selection on Odoo.sh staging. No FACODI or production record was changed.
 
+## Native pages and Helpdesk follow-up
+
+- Clean install with `website_helpdesk`: passed.
+- Upgrade on the same disposable Odoo 19 Enterprise database: passed.
+- Current addon suite: 12 assertions across 8 test methods, zero failures or
+  errors.
+- Native page materialization: Home, About, Solutions, Services, Open Source,
+  Partnerships, Contact, confirmation, Privacy and Terms verified.
+- Website Builder: production `/contact` opened in edit mode and exposed the
+  block/style/theme panels; the audit exited without saving.
+- Contact E2E: one `helpdesk.ticket`, one partner and one attachment created;
+  team, website, New stage, assignee and confirmation reference verified.
+- Responsive checks: 1440 × 1000 and 390 × 844; one H1 per new page and no
+  horizontal overflow.
+- Browser console: no relevant frontend error during the local E2E.
+- Retired-brand regression scan remains covered by the addon test.
+
+See [native-pages-helpdesk.md](native-pages-helpdesk.md) for the diagnosis and
+multiwebsite decision record.
+
 ## Automated validation completed
 
 - Clean module install on `codoo_theme_open2_final_20260801` and, after this
