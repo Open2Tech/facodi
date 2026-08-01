@@ -1,0 +1,1071 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_open2
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: theme_open2 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:20+0000\n"
+"PO-Revision-Date: 2026-08-01 12:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "&lt;/&gt;"
+msgstr "&lt;/&gt;"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "<i class=\"fa fa-github\" aria-hidden=\"true\"/> GitHub"
+msgstr "<i class=\"fa fa-github\" aria-hidden=\"true\"/> GitHub"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid "<span aria-hidden=\"true\">AI</span>"
+msgstr "<span aria-hidden=\"true\">AI</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "<span aria-hidden=\"true\">→</span> View partnerships"
+msgstr "<span aria-hidden=\"true\">→</span> Voir les partenariats"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "<span class=\"open2-accent-blue\">Odoo</span> expertise"
+msgstr "Expertise <span class=\"open2-accent-blue\">Odoo</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "<span class=\"open2-project__number\" aria-hidden=\"true\">01</span>"
+msgstr "<span class=\"open2-project__number\" aria-hidden=\"true\">01</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "<span class=\"open2-project__number\" aria-hidden=\"true\">02</span>"
+msgstr "<span class=\"open2-project__number\" aria-hidden=\"true\">02</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid ""
+"<span>Accessibility.</span><span>Inclusion.</span><strong>Impact.</strong>"
+msgstr ""
+"<span>Accessibilité.</span><span>Inclusion.</span><strong>Impact.</strong>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_layout
+msgid "<span>Opening access</span>"
+msgstr "<span>Ouvrir l’accès</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "<span>Portugal · Remote first</span>"
+msgstr "<span>Portugal · Remote first</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid ""
+"<strong>Alignment</strong><span>We schedule a brief conversation.</span>"
+msgstr ""
+"<strong>Alignement</strong><span>Nous planifions un bref échange.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid ""
+"<strong>Internal tools</strong><span>Made for everyday usability.</span>"
+msgstr ""
+"<strong>Outils internes</strong><span>Conçus pour un usage quotidien.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid ""
+"<strong>Platforms</strong><span>Built for inclusive digital access.</span>"
+msgstr ""
+"<strong>Plateformes</strong><span>Conçues pour un accès numérique "
+"inclusif.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid ""
+"<strong>Proposal</strong><span>You receive a clear roadmap and "
+"budget.</span>"
+msgstr ""
+"<strong>Proposition</strong><span>Vous recevez une feuille de route et un "
+"budget clairs.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid ""
+"<strong>Review</strong><span>We analyze your project goals "
+"personally.</span>"
+msgstr ""
+"<strong>Analyse</strong><span>Nous étudions personnellement les objectifs du"
+" projet.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid ""
+"A modern software studio focused on accessibility, inclusion, and useful "
+"digital products for real people."
+msgstr ""
+"Un studio logiciel moderne axe sur l'accessibilite, l'inclusion et des "
+"produits numeriques utiles."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid "AI for <em>everyone</em>"
+msgstr "L’IA pour <em>tout le monde</em>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "API Sync"
+msgstr "Synchronisation API"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Academic partner for inclusive, applied technology."
+msgstr "Partenaire académique pour une technologie inclusive et appliquée."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "Accessible software"
+msgstr "Logiciels accessibles"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Airy"
+msgstr "Airy"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "An internet video archive and educational database for FACODI."
+msgstr ""
+"Une archive de videos d'internet et une base de donnees educative pour "
+"FACODI."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid ""
+"An open educational platform focused on democratizing access to higher "
+"education through community-driven learning paths."
+msgstr ""
+"Une plateforme éducative ouverte visant à démocratiser l’accès à "
+"l’enseignement supérieur grâce à des parcours portés par la communauté."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid "Become a partner"
+msgstr "Devenir partenaire"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_solutions_view
+msgid "Bespoke engineering"
+msgstr "Ingénierie sur mesure"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid ""
+"Beyond buzzwords, we use AI to remove friction, support better decisions, "
+"and make digital experiences clearer, faster, and easier for everyone."
+msgstr ""
+"Au-dela des effets de mode, nous utilisons l'IA pour reduire la friction et "
+"rendre les experiences numeriques plus claires et plus simples."
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Brand"
+msgstr "Brand"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid ""
+"Brings experience in technology strategy and systems thinking, aligning "
+"technology with real-world business needs."
+msgstr ""
+"Apporte une experience en strategie technologique et en pensee systemique "
+"pour aligner technologie et besoins metier."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_text_image
+msgid "Build around the real context."
+msgstr "Construire autour du contexte réel."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_header
+msgid "Build with us"
+msgstr "Construire avec nous"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid "Building <span class=\"open2-accent-teal\">open</span>"
+msgstr "Construire de façon <span class=\"open2-accent-teal\">ouverte</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_solutions_view
+msgid "Built for <span class=\"open2-outline\">purpose</span>"
+msgstr "Conçu avec <span class=\"open2-outline\">sens</span>"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Center"
+msgstr "Center"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid "Clarity"
+msgstr "Clarite"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Collaboration drives innovation."
+msgstr "La collaboration stimule l’innovation."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "Collaborator · Strategy"
+msgstr "Collaborateur · Strategie"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Community"
+msgstr "Communaute"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Compact"
+msgstr "Compact"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Company or project <span>Optional</span>"
+msgstr "Entreprise ou projet <span>Facultatif</span>"
+
+#. module: theme_open2
+#: model:theme.website.menu,name:theme_open2.menu_contact
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid "Contact"
+msgstr "Contact"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid ""
+"Contact Open2 to start an Odoo, custom software, or responsible AI "
+"automation project."
+msgstr ""
+"Contactez Open2 pour lancer un projet Odoo, logiciel sur mesure ou "
+"automatisation responsable par IA."
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Content alignment"
+msgstr "Content alignment"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Contrast"
+msgstr "Contrast"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Corvanis"
+msgstr "Corvanis"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "Custom Flows"
+msgstr "Flux Personnalises"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Default"
+msgstr "Default"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_hero
+msgid ""
+"Democratizing <span class=\"open2-accent-violet\">access to</span> <span "
+"class=\"open2-outline\">technology</span>"
+msgstr ""
+"Démocratiser <span class=\"open2-accent-violet\">l’accès à la</span> <span "
+"class=\"open2-outline\">technologie</span>"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Density"
+msgstr "Density"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Direct signal"
+msgstr "Contact direct"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid ""
+"Discover Open2 partnerships with universities, alliances, companies, and "
+"legal specialists."
+msgstr ""
+"Découvrez les partenariats Open2 avec des universités, alliances, "
+"entreprises et spécialistes juridiques."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "ERP Architecture"
+msgstr "Architecture ERP"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Education"
+msgstr "Education"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "European collaboration through FACODI and digital learning."
+msgstr ""
+"Collaboration européenne autour de FACODI et de l’apprentissage numérique."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_solutions_view
+msgid ""
+"Explore Open2 solutions in Odoo, bespoke software engineering, and "
+"responsible AI automation."
+msgstr ""
+"Découvrez les solutions Open2 en Odoo, ingénierie logicielle sur mesure et "
+"automatisation responsable par IA."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid ""
+"Explore open-source projects led by Open2 and collaborate on community-first"
+" software."
+msgstr ""
+"Découvrez les projets open source menés par Open2 et collaborez à des "
+"logiciels au service de la communauté."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_intro
+msgid "Explore our solutions <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"/>"
+msgstr "Découvrir nos solutions <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"/>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "FACODI"
+msgstr "FACODI"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Faculdade Comunitaria Digital"
+msgstr "Faculdade Comunitaria Digital"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid "Flow"
+msgstr "Flux"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid ""
+"Focuses on automation, applied AI, and full-stack development with a "
+"product-oriented mindset."
+msgstr ""
+"Spécialisé dans l’automatisation, l’IA appliquée et le développement full-"
+"stack avec une approche produit."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Footer navigation"
+msgstr "Navigation du pied de page"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "Founder · Software Engineer"
+msgstr "Fondateur · Ingenieur Logiciel"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "GitHub"
+msgstr "GitHub"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "GitHub organization"
+msgstr "Organisation GitHub"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_text_image
+msgid ""
+"Good software becomes part of how people work. We start by understanding the"
+" barriers, then design the clearest path through them."
+msgstr ""
+"Un bon logiciel s’intègre à la façon dont les personnes travaillent. Nous "
+"commençons par comprendre les obstacles, puis concevons le chemin le plus "
+"clair."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid ""
+"Helpful automations that remove repetitive work and keep teams focused on "
+"what matters."
+msgstr ""
+"Des automatisations utiles qui eliminent les taches repetitives et gardent "
+"les equipes concentrees."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid "Inclusion"
+msgstr "Inclusion"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "Inclusive by design"
+msgstr "Inclusif dès la conception"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_hero
+msgid "Inclusive technology"
+msgstr "Technologie inclusive"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid "Initial sync"
+msgstr "Synchronisation initiale"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Internet video archive and FACODI educational database"
+msgstr "Archive vidéo Internet et base éducative FACODI"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Jus Nacionalidade"
+msgstr "Jus Nacionalidade"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid ""
+"Knowledge systems that make information easy to find, understand, and act "
+"on."
+msgstr ""
+"Des systemes de connaissance qui rendent l'information facile a trouver, "
+"comprendre et utiliser."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Legal pages will be published after review."
+msgstr "Les pages légales seront publiées après validation."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid "Let's build <span class=\"open2-outline\">meaningful.</span>"
+msgstr ""
+"Construisons quelque chose qui a du <span "
+"class=\"open2-outline\">sens.</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_cta
+msgid "Let's build access"
+msgstr "Construisons l’accès"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_cta
+msgid ""
+"Let's build something people can actually use. No pressure, just a "
+"conversation about the barriers you want to remove."
+msgstr ""
+"Construisons quelque chose que les gens peuvent vraiment utiliser. Sans "
+"pression, juste une conversation."
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Light"
+msgstr "Light"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "Live Dashboards"
+msgstr "Tableaux de Bord Temps Reel"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Live deployment"
+msgstr "Mise en production"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "Marcelo Santos"
+msgstr "Marcelo Santos"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Marcelo on LinkedIn"
+msgstr "Marcelo on LinkedIn"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Message received."
+msgstr "Message reçu."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Navigation"
+msgstr "Navigation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid ""
+"No pressure. No fluff. Just a conversation about how we can simplify your "
+"digital complexity."
+msgstr ""
+"Sans pression. Sans bruit. Juste une conversation pour simplifier votre "
+"complexite numerique."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "O2"
+msgstr "O2"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid "Odoo capabilities"
+msgstr "Capacités Odoo"
+
+#. module: theme_open2
+#: model:theme.website.menu,name:theme_open2.menu_open_source
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid "Open Source"
+msgstr "Open Source"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid "Open ecosystem"
+msgstr "Ecosysteme ouvert"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_header
+msgid "Open navigation"
+msgstr "Ouvrir la navigation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Open source"
+msgstr "Open source"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid ""
+"Open-source is a tool for collective learning and democratizing technology."
+msgstr ""
+"L’open source est un outil d’apprentissage collectif et de démocratisation "
+"de la technologie."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 AI"
+msgstr "Open2 AI"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Call to Action"
+msgstr "Open2 Call to Action"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Contact"
+msgstr "Open2 Contact"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 FAQ"
+msgstr "Open2 FAQ"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Feature List"
+msgstr "Open2 Feature List"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Hero"
+msgstr "Open2 Hero"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Indicators"
+msgstr "Open2 Indicators"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Introduction"
+msgstr "Open2 Introduction"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Newsletter"
+msgstr "Open2 Newsletter"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Partners"
+msgstr "Open2 Partners"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Projects"
+msgstr "Open2 Projects"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Quote"
+msgstr "Open2 Quote"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.js:0
+msgid "Open2 Section"
+msgstr "Open2 Section"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Services"
+msgstr "Open2 Services"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Team"
+msgstr "Open2 Team"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_header
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Technology"
+msgstr "Technologie Open2"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_header
+msgid "Open2 Technology home"
+msgstr "Accueil Open2 Technology"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Open2 Technology on GitHub"
+msgstr "Open2 Technology sur GitHub"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Open2 Technology. Democratizing access to technology."
+msgstr "Open2 Technology. Démocratiser l’accès à la technologie."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Testimonials"
+msgstr "Open2 Testimonials"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "Open2 Text and Image"
+msgstr "Open2 Text and Image"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_intro
+msgid ""
+"Open2 brings engineering, accessibility, and practical collaboration "
+"together. We design systems around the people who rely on them."
+msgstr ""
+"Open2 réunit ingénierie, accessibilité et collaboration concrète. Nous "
+"concevons des systèmes autour des personnes qui les utilisent."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_text_image
+msgid "Open2 team member working on accessible software"
+msgstr "Membre de l’équipe Open2 travaillant sur un logiciel accessible"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid "Organization GitHub"
+msgstr "GitHub de l'Organisation"
+
+#. module: theme_open2
+#: model:theme.website.menu,name:theme_open2.menu_partnerships
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_hero
+msgid "Partnerships"
+msgstr "Partenariats"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid "Partnerships and collaboration"
+msgstr "Partenariats et collaboration"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "People-first technology."
+msgstr "La technologie au service des personnes."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid "Philosophy"
+msgstr "Philosophie"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Phone number <span>Optional</span>"
+msgstr "Téléphone <span>Facultatif</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Portugal · Remote first"
+msgstr "Portugal · Remote first"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_header
+msgid "Primary navigation"
+msgstr "Navigation principale"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_privacy_view
+msgid "Privacy Policy"
+msgstr "Politique de Confidentialite"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_cta
+msgid "Ready to <span>open access?</span>"
+msgstr "Prêt à <span>ouvrir l’accès ?</span>"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Return to the homepage"
+msgstr "Retour à l’accueil"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "SEA-EU Alliance"
+msgstr "Alliance SEA-EU"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Social hub"
+msgstr "Réseaux sociaux"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Social links"
+msgstr "Liens sociaux"
+
+#. module: theme_open2
+#: model:theme.website.menu,name:theme_open2.menu_solutions
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_solutions_view
+msgid "Solutions"
+msgstr "Solutions"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_open_source_view
+msgid ""
+"Some projects are production-ready; others are experiments. We value the "
+"learning process as much as the final product."
+msgstr ""
+"Certains projets sont prêts pour la production, d’autres sont expérimentaux."
+" Nous accordons autant de valeur à l’apprentissage qu’au produit final."
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Start"
+msgstr "Start"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_text_image
+msgid "Start a conversation"
+msgstr "Commencer une conversation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_hero
+msgid "Start a project"
+msgstr "Demarrer un projet"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Start conversation"
+msgstr "Demarrer la conversation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Strategic and technical product mentorship."
+msgstr "Mentorat produit stratégique et technique."
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Teal"
+msgstr "Teal"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_intro
+msgid "Technology should make participation possible."
+msgstr "La technologie doit rendre la participation possible."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Tell us about the barriers you want to remove."
+msgstr "Parlez-nous des obstacles que vous souhaitez lever."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_terms_view
+msgid "Terms of Service"
+msgstr "Conditions d'Utilisation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Thank you. Our team will reply as soon as possible."
+msgstr "Merci. Notre équipe vous répondra dès que possible."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_privacy_view
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_terms_view
+msgid "This unpublished page is reserved for legally reviewed content."
+msgstr ""
+"Cette page non publiée est réservée à un contenu validé juridiquement."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_ai
+msgid ""
+"Transparent, responsible solutions designed to serve real people in real "
+"contexts."
+msgstr ""
+"Des solutions transparentes et responsables, concues pour des personnes "
+"reelles."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "Trusted legal support for compliance pathways."
+msgstr "Un accompagnement juridique fiable pour les démarches de conformité."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Tube O2"
+msgstr "Tube O2"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "Tércio Barreto"
+msgstr "Tércio Barreto"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+msgid "Tércio on LinkedIn"
+msgstr "Tércio on LinkedIn"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid "University of Algarve"
+msgstr "Université de l’Algarve"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "Video"
+msgstr "Video"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_projects
+msgid "View source code"
+msgstr "Voir le code source"
+
+#. module: theme_open2
+#. odoo-javascript
+#: code:addons/theme_open2/static/src/website_builder/open2_options.xml:0
+msgid "Violet"
+msgstr "Violet"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid ""
+"We build around your context, your people, and your goals, so technology "
+"feels simple to use and valuable from day one."
+msgstr ""
+"Nous construisons selon votre contexte, vos equipes et vos objectifs, pour "
+"que la technologie soit simple et utile des le premier jour."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_hero
+msgid ""
+"We build digital products that break barriers, making technology accessible,"
+" inclusive, and truly useful for everyone."
+msgstr ""
+"Nous creons des produits numeriques qui eliminent les barrieres, pour rendre"
+" la technologie accessible, inclusive et vraiment utile a tout le monde."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid ""
+"We build with universities, companies, and specialists to turn ideas into "
+"accessible, production-ready systems."
+msgstr ""
+"Nous collaborons avec des universités, entreprises et spécialistes pour "
+"transformer des idées en systèmes accessibles et prêts pour la production."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_partners
+msgid ""
+"We build with universities, companies, and specialists who share our "
+"commitment to useful, accessible technology."
+msgstr ""
+"Nous collaborons avec des universités, entreprises et spécialistes qui "
+"partagent notre engagement pour une technologie utile et accessible."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_solutions_view
+msgid ""
+"We deliver outcomes, not just code. Every system is designed to help "
+"organizations work better with digital tools."
+msgstr ""
+"Nous livrons des résultats, pas seulement du code. Chaque système aide les "
+"organisations à mieux travailler avec les outils numériques."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_services
+msgid ""
+"We shape Odoo around real people and real operations, turning daily work "
+"into clear, accessible flows that help teams move with confidence."
+msgstr ""
+"Nous adaptons Odoo aux personnes et aux operations reelles, en transformant "
+"le travail quotidien en flux clairs et accessibles."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "What are you trying to build? *"
+msgstr "Que souhaitez-vous construire ? *"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "What happens next?"
+msgstr "Que se passe-t-il ensuite ?"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "What is your name? *"
+msgstr "Quel est votre nom ? *"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_partnerships_view
+msgid ""
+"Where <span class=\"open2-accent-violet\">collaboration</span> drives "
+"innovation"
+msgstr ""
+"Là où la <span class=\"open2-accent-violet\">collaboration</span> stimule "
+"l’innovation"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "Where can we reach you? *"
+msgstr "Comment pouvons-nous vous joindre ? *"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_team
+msgid "You work directly with the people designing and building the system."
+msgstr ""
+"Vous travaillez directement avec les personnes qui conçoivent et "
+"construisent le système."
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_footer
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_contact
+msgid "hello@open2.tech"
+msgstr "hello@open2.tech"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 artificial intelligence automation features"
+msgstr "open2 artificial intelligence automation features"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 call action contact"
+msgstr "open2 call action contact"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 contact form"
+msgstr "open2 contact form"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 hero intro headline"
+msgstr "open2 hero intro headline"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 introduction manifesto value"
+msgstr "open2 introduction manifesto value"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 partners logos ecosystem"
+msgstr "open2 partners logos ecosystem"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 projects products open source portfolio"
+msgstr "open2 projects products open source portfolio"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 quote statement testimonial"
+msgstr "open2 quote statement testimonial"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 services solutions odoo software"
+msgstr "open2 services solutions odoo software"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 team people"
+msgstr "open2 team people"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.open2_snippets
+msgid "open2 text image content"
+msgstr "open2 text image content"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.page_contact_view
+msgid ""
+"“Software is a conversation between human intuition and engineering logic.”"
+msgstr ""
+"« Le logiciel est un dialogue entre l’intuition humaine et la logique de "
+"l’ingénierie. »"
+
+#. module: theme_open2
+#: model_terms:theme.ir.ui.view,arch:theme_open2.s_open2_quote
+msgid ""
+"“The best technology is built by people who are not afraid to share their "
+"work.”"
+msgstr ""
+"« Les meilleures technologies sont conçues par des personnes qui n’ont pas "
+"peur de partager leur travail. »"
