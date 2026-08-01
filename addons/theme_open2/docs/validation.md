@@ -1,6 +1,6 @@
 # Validation record
 
-Validation date: 2026-08-01. All writes described below were made against disposable local PostgreSQL databases. No FACODI or production record was changed.
+Validation date: 2026-08-01. All writes described below were made against disposable local PostgreSQL databases, except the explicitly identified native theme selection on Odoo.sh staging. No FACODI or production record was changed.
 
 ## Automated validation completed
 
@@ -10,6 +10,7 @@ Validation date: 2026-08-01. All writes described below were made against dispos
 - Theme overlap regression: after installing the module on a website with no selected theme, zero `ir.ui.view`/`website.page` copies are created; all templates remain in `theme.*` records until the administrator selects the theme.
 - Two-website isolation: theme records copied only to the selected website; the control website was unchanged.
 - Theme unload: the website and a non-theme editorial page survived unload.
+- Navigation isolation: selecting Open2 removes only default-menu clones from the target website; Open2 theme menus and later editorial menus remain. The FACODI root menu is unchanged.
 - XML/QWeb loading and SCSS/JS asset compilation: passed during install, upgrade, and HTTP rendering.
 - Gettext catalogs (`pt_PT`, `fr_FR`, `es_ES`): loaded without errors and contain no empty translations.
 - Retired-brand scan: passed case-insensitively; the regression test constructs the retired phrase without storing it literally in the repository.
@@ -36,7 +37,13 @@ Evidence:
 
 ## Odoo.sh staging gate
 
-The following checks require the dedicated Odoo.sh staging branch and remain a deployment gate, not a local implementation gap:
+Initial staging audit and selection completed on the revision preceding this
+fix: the Open2 website received the expected theme copies and the FACODI
+theme/menu/language snapshot was unchanged. The audit also found copied FACODI
+default navigation in Open2; the correction is documented in
+`installation-diagnosis.md` and must be applied through a new Odoo.sh build.
+
+The following checks remain a deployment gate for version `19.0.1.0.1`:
 
 - [ ] Capture a read-only before snapshot of the real FACODI website.
 - [ ] Create the Open2 website through the native multiwebsite UI and apply the theme in that website context.

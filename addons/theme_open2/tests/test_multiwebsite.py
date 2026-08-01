@@ -53,6 +53,31 @@ class TestOpen2MultiwebsiteIsolation(TransactionCase):
             ("website_id", "=", self.existing_website.id),
         ]), self.existing_snapshot["assets"])
 
+    def test_theme_post_copy_removes_only_inherited_default_menus(self):
+        default_url = self.env.ref("website.main_menu").child_id[:1].url
+        inherited_menu = self.env["website.menu"].create({
+            "name": "Inherited menu",
+            "url": default_url,
+            "website_id": self.open2_website.id,
+            "parent_id": self.open2_website.menu_id.id,
+        })
+        custom_menu = self.env["website.menu"].create({
+            "name": "Open2 editorial menu",
+            "url": "/open2-editorial-menu",
+            "website_id": self.open2_website.id,
+            "parent_id": self.open2_website.menu_id.id,
+        })
+
+        self.open2_website.theme_id = self.theme
+        self.theme._theme_load(self.open2_website)
+        self.env["theme.utils"].with_context(
+            website_id=self.open2_website.id,
+        )._theme_open2_post_copy(self.theme)
+
+        self.assertFalse(inherited_menu.exists())
+        self.assertTrue(custom_menu.exists())
+        self.assertTrue(self.existing_website.menu_id.exists())
+
     def test_theme_unload_preserves_website_and_editorial_content(self):
         self.open2_website.theme_id = self.theme
         self.theme._theme_load(self.open2_website)
