@@ -1,5 +1,7 @@
 from odoo.tests import TransactionCase, tagged
 
+from odoo.addons.theme_open2.hooks import restore_default_helpdesk_bootstrap
+
 
 @tagged("post_install", "-at_install")
 class TestOpen2MultiwebsiteIsolation(TransactionCase):
@@ -80,6 +82,33 @@ class TestOpen2MultiwebsiteIsolation(TransactionCase):
         self.assertEqual(ticket.team_id, team)
         self.assertEqual(ticket.team_id.website_id, self.open2_website)
         self.assertEqual(ticket.partner_id.email, "open2-test@example.com")
+
+    def test_dependency_bootstrap_is_removed_only_when_empty(self):
+        default_team = self.env.ref("helpdesk.helpdesk_team1")
+        self.assertFalse(default_team.use_website_helpdesk_form)
+        self.assertFalse(default_team.website_menu_id)
+        default_team.write({
+            "use_website_helpdesk_form": True,
+            "is_published": True,
+        })
+        self.assertEqual(default_team.website_menu_id.url, "/helpdesk")
+
+        self.assertTrue(restore_default_helpdesk_bootstrap(self.env))
+        self.assertFalse(default_team.use_website_helpdesk_form)
+        self.assertFalse(default_team.is_published)
+        self.assertFalse(default_team.website_menu_id)
+
+        ticket = self.env["helpdesk.ticket"].create({
+            "name": "Existing default-team request",
+            "team_id": default_team.id,
+        })
+        default_team.write({
+            "use_website_helpdesk_form": True,
+            "is_published": True,
+        })
+        self.assertFalse(restore_default_helpdesk_bootstrap(self.env))
+        self.assertTrue(default_team.use_website_helpdesk_form)
+        self.assertTrue(ticket.exists())
 
     def test_theme_post_copy_removes_only_inherited_default_menus(self):
         default_url = self.env.ref("website.main_menu").child_id[:1].url
