@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Open2 favicon</title>
+  <defs>
+    <linearGradient id="arc" x1="8" y1="6" x2="56" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D3DF6"/>
+      <stop offset=".52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#00C2FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0D1117"/>
+  <path d="M12 42a20 20 0 1 1 40 0" fill="none" stroke="url(#arc)" stroke-width="6"/>
+  <text x="32" y="48" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-2">2</text>
+</svg>

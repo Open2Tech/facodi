@@ -1,26 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" role="img" aria-labelledby="open2-logo-title open2-logo-desc">
-  <title id="open2-logo-title">Open2 Technology</title>
-  <desc id="open2-logo-desc">Open2 Technology horizontal logo with gradient symbol</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" role="img" aria-labelledby="title desc">
+  <title id="title">Open2 Technology</title>
+  <desc id="desc">Horizontal Open2 Technology lockup</desc>
   <defs>
-    <linearGradient id="open2-arc" x1="34" y1="25" x2="127" y2="123" gradientUnits="userSpaceOnUse">
+    <linearGradient id="arc" x1="34" y1="25" x2="127" y2="123" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#6D3DF6"/>
       <stop offset=".52" stop-color="#3B82F6"/>
       <stop offset="1" stop-color="#00C2FF"/>
     </linearGradient>
-    <linearGradient id="open2-number" x1="324" y1="34" x2="384" y2="94" gradientUnits="userSpaceOnUse">
+    <linearGradient id="num" x1="324" y1="34" x2="384" y2="94" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#00C2FF"/>
       <stop offset=".58" stop-color="#3B82F6"/>
       <stop offset="1" stop-color="#6D3DF6"/>
     </linearGradient>
-    <filter id="open2-soft-shadow" x="-25%" y="-25%" width="150%" height="150%">
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
       <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity=".32"/>
     </filter>
   </defs>
-  <g filter="url(#open2-soft-shadow)">
-    <path d="M32 92a52 52 0 1 1 104 0" fill="none" stroke="url(#open2-arc)" stroke-width="13" stroke-linecap="butt"/>
+  <g filter="url(#shadow)">
+    <path d="M32 92a52 52 0 1 1 104 0" fill="none" stroke="url(#arc)" stroke-width="13"/>
     <text x="84" y="112" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-4">2</text>
   </g>
   <text x="164" y="85" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-3">Open</text>
-  <text x="336" y="85" fill="url(#open2-number)" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-3">2</text>
+  <text x="336" y="85" fill="url(#num)" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-3">2</text>
   <text x="167" y="116" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="13">TECHNOLOGY</text>
 </svg>

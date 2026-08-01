@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 320" role="img" aria-labelledby="title desc">
+  <title id="title">Open2 Technology</title>
+  <desc id="desc">Vertical Open2 Technology lockup</desc>
+  <defs>
+    <linearGradient id="arc" x1="64" y1="24" x2="216" y2="176" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D3DF6"/>
+      <stop offset=".52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#00C2FF"/>
+    </linearGradient>
+    <linearGradient id="num" x1="186" y1="184" x2="238" y2="235" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00C2FF"/>
+      <stop offset=".55" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#6D3DF6"/>
+    </linearGradient>
+  </defs>
+  <path d="M58 166a82 82 0 1 1 164 0" fill="none" stroke="url(#arc)" stroke-width="18"/>
+  <text x="140" y="192" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="136" font-weight="700" letter-spacing="-7">2</text>
+  <text x="55" y="247" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-3">Open</text>
+  <text x="196" y="247" fill="url(#num)" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-3">2</text>
+  <text x="64" y="278" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="500" letter-spacing="8">TECHNOLOGY</text>
+</svg>
