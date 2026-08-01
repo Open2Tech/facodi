@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="open2_layout" inherit_id="website.layout" name="Open2 global layout">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes">
+            <attribute name="t-attf-class" add="open2-site" separator=" "/>
+        </xpath>
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <div class="open2-loader" data-open2-loader="1" aria-hidden="true">
+                <div class="open2-loader__mark">
+                    <img src="/theme_open2/static/src/icons/open2-logo.svg" alt="" width="192" height="64"/>
+                    <span>Opening access</span>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//head" position="inside">
+            <link rel="icon" type="image/x-icon" href="/theme_open2/static/src/icons/favicon.ico"/>
+            <meta name="theme-color" content="#05070a"/>
+            <meta property="og:image" content="/theme_open2/static/src/img/open2-social.png"/>
+            <script t-if="main_object and 'url' in main_object and main_object.url == '/'" type="application/ld+json">
+                {"@context":"https://schema.org","@type":"Organization","name":"Open2 Technology","url":"https://open2.tech","logo":"https://open2.tech/theme_open2/static/src/icons/open2-logo.svg","sameAs":["https://github.com/Open2Tech"]}
+            </script>
+            <script t-if="main_object and 'url' in main_object and main_object.url == '/partnerships'" type="application/ld+json">
+                {"@context":"https://schema.org","@type":"ItemList","name":"Open2 Technology partnerships","itemListElement":[{"@type":"ListItem","position":1,"name":"University of Algarve"},{"@type":"ListItem","position":2,"name":"SEA-EU"},{"@type":"ListItem","position":3,"name":"Corvanis"},{"@type":"ListItem","position":4,"name":"Jus Nacionalidade"}]}
+            </script>
+        </xpath>
+        <xpath expr="//t[@t-set='meta_description']" position="after">
+            <t t-if="main_object and 'url' in main_object and main_object.url == '/'" t-set="meta_description" t-value="'Open2 builds accessible and inclusive technology for people, teams, and organizations.'"/>
+        </xpath>
+        <xpath expr="//t[@t-set='default_title']" position="after">
+            <t t-if="main_object and 'url' in main_object and main_object.url == '/'" t-set="default_title" t-value="'Open2 Technology — Democratizing access to technology'"/>
+        </xpath>
+    </template>
+</odoo>

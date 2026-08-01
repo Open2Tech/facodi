@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="open2_homepage" inherit_id="website.homepage" name="Open2 homepage" priority="30">
+        <xpath expr="//t[@t-call='website.layout']" position="inside">
+            <t t-set="title">Open2 Technology — Democratizing access to technology</t>
+            <t t-set="website_meta_description">Open2 builds accessible and inclusive technology for people, teams, and organizations.</t>
+        </xpath>
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure open2-page">
+                <t t-snippet-call="theme_open2.s_open2_hero"/>
+                <t t-snippet-call="theme_open2.s_open2_services"/>
+                <t t-snippet-call="theme_open2.s_open2_ai"/>
+                <t t-snippet-call="theme_open2.s_open2_team"/>
+                <t t-snippet-call="theme_open2.s_open2_cta"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

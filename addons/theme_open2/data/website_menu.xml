@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_solutions" model="theme.website.menu"><field name="name">Solutions</field><field name="page_id" ref="page_solutions"/><field name="sequence">10</field></record>
+    <record id="menu_partnerships" model="theme.website.menu"><field name="name">Partnerships</field><field name="page_id" ref="page_partnerships"/><field name="sequence">20</field></record>
+    <record id="menu_open_source" model="theme.website.menu"><field name="name">Open Source</field><field name="page_id" ref="page_open_source"/><field name="sequence">30</field></record>
+    <record id="menu_contact" model="theme.website.menu"><field name="name">Contact</field><field name="page_id" ref="page_contact"/><field name="sequence">40</field></record>
+</odoo>

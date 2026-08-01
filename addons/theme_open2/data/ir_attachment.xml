@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="open2_marcelo" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_marcelo</field>
+        <field name="name">Open2 — Marcelo Santos</field>
+        <field name="url">/theme_open2/static/src/img/marcelo.jpg</field>
+    </record>
+    <record id="open2_tercio" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_tercio</field>
+        <field name="name">Open2 — Tércio Barreto</field>
+        <field name="url">/theme_open2/static/src/img/tercio.jpeg</field>
+    </record>
+    <record id="open2_logo_ualg" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_logo_ualg</field>
+        <field name="name">Open2 partner — Universidade do Algarve</field>
+        <field name="url">/theme_open2/static/src/img/logo-ualg-white.svg</field>
+    </record>
+    <record id="open2_logo_sea_eu" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_logo_sea_eu</field>
+        <field name="name">Open2 partner — SEA-EU</field>
+        <field name="url">/theme_open2/static/src/img/logo-sea-eu.svg</field>
+    </record>
+    <record id="open2_logo_corvanis" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_logo_corvanis</field>
+        <field name="name">Open2 partner — Corvanis</field>
+        <field name="url">/theme_open2/static/src/img/logo-corvanis.png</field>
+    </record>
+    <record id="open2_logo_jus" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_logo_jus</field>
+        <field name="name">Open2 partner — Jus Nacionalidade</field>
+        <field name="url">/theme_open2/static/src/img/logo-jusnacionalidade.png</field>
+    </record>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="open2_snippets" inherit_id="website.snippets" name="Open2 snippets">
+        <xpath expr="//snippets[@id='snippet_groups']/t[@id='installed_snippets_hook']" position="before">
+            <t snippet-group="open2" t-snippet="website.s_snippet_group" string="Open2 Technology" t-thumbnail="/theme_open2/static/description/theme_open2.svg"/>
+        </xpath>
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="theme_open2.s_open2_hero" string="Open2 Hero" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_cover.svg"><keywords>open2 hero intro headline</keywords></t>
+            <t t-snippet="theme_open2.s_open2_intro" string="Open2 Introduction" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_text_block.svg"><keywords>open2 introduction manifesto value</keywords></t>
+            <t t-snippet="theme_open2.s_open2_services" string="Open2 Services" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_three_columns.svg"><keywords>open2 services solutions odoo software</keywords></t>
+            <t t-snippet="theme_open2.s_open2_ai" string="Open2 AI" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_three_columns.svg"><keywords>open2 artificial intelligence automation features</keywords></t>
+            <t t-snippet="theme_open2.s_open2_partners" string="Open2 Partners" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_group.svg"><keywords>open2 partners logos ecosystem</keywords></t>
+            <t t-snippet="theme_open2.s_open2_projects" string="Open2 Projects" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_media_list.svg"><keywords>open2 projects products open source portfolio</keywords></t>
+            <t t-snippet="theme_open2.s_open2_team" string="Open2 Team" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_company_team.svg"><keywords>open2 team people</keywords></t>
+            <t t-snippet="theme_open2.s_open2_text_image" string="Open2 Text and Image" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_text_image.svg"><keywords>open2 text image content</keywords></t>
+            <t t-snippet="theme_open2.s_open2_quote" string="Open2 Quote" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_blockquote.svg"><keywords>open2 quote statement testimonial</keywords></t>
+            <t t-snippet="theme_open2.s_open2_cta" string="Open2 Call to Action" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_cta_badge.svg"><keywords>open2 call action contact</keywords></t>
+            <t t-snippet="theme_open2.s_open2_contact" string="Open2 Contact" group="open2" t-forbid-sanitize="form" t-thumbnail="/website/static/src/img/snippets_thumbs/s_website_form.svg"><keywords>open2 contact form</keywords></t>
+            <t t-snippet="website.s_features" string="Open2 Feature List" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_three_columns.svg"/>
+            <t t-snippet="website.s_numbers_list" string="Open2 Indicators" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_progress_bar.svg"/>
+            <t t-snippet="website.s_quotes_carousel_minimal" string="Open2 Testimonials" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_blockquote.svg"/>
+            <t t-snippet="website.s_faq_collapse" string="Open2 FAQ" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_accordion.svg"/>
+            <t t-snippet="website_mass_mailing.s_newsletter_block" string="Open2 Newsletter" group="open2" t-thumbnail="/website_mass_mailing/static/src/img/snippets_thumbs/s_newsletter_block.svg"/>
+        </xpath>
+    </template>
+</odoo>
