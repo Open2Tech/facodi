@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI lesson page overrides.
+        Keeps the native Odoo lesson structure and applies FACODI spacing.
+    -->
+    <template id="facodi_lesson_main" inherit_id="website_slides.slide_main"
+              name="FACODI Lesson Page" priority="20">
+        <xpath expr="//div[hasclass('o_wslides_lesson_header')]" position="attributes">
+            <attribute name="class">o_wslides_lesson_header facodi-wslides-header</attribute>
+        </xpath>
+    </template>
+</odoo>

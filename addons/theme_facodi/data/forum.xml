@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI forums.  Records are created without a fixed website_id here;
+        the post-copy hook assigns them to the active FACODI website.
+    -->
+    <record id="forum_facodi_general" model="forum.forum">
+        <field name="name">Comunidade Geral</field>
+        <field name="description">Conversas, apresentacoes e perguntas gerais sobre a FACODI.</field>
+        <field name="mode">questions</field>
+        <field name="karma_ask">1</field>
+        <field name="karma_answer">1</field>
+    </record>
+
+    <record id="forum_facodi_data" model="forum.forum">
+        <field name="name">Dados e IA</field>
+        <field name="description">Discussao sobre dados abertos, inteligencia artificial, etica e ferramentas.</field>
+        <field name="mode">questions</field>
+        <field name="karma_ask">1</field>
+        <field name="karma_answer">1</field>
+    </record>
+
+    <record id="forum_facodi_computing" model="forum.forum">
+        <field name="name">Computacao</field>
+        <field name="description">Programacao, sistemas, algoritmos e infraestrutura.</field>
+        <field name="mode">questions</field>
+        <field name="karma_ask">1</field>
+        <field name="karma_answer">1</field>
+    </record>
+
+    <record id="forum_facodi_society" model="forum.forum">
+        <field name="name">Sociedade Aberta</field>
+        <field name="description">Conhecimento livre, cultura colaborativa, educacao e comunidade.</field>
+        <field name="mode">questions</field>
+        <field name="karma_ask">1</field>
+        <field name="karma_answer">1</field>
+    </record>
+
+    <record id="forum_facodi_support" model="forum.forum">
+        <field name="name">Suporte e Duvidas</field>
+        <field name="description">Ajuda sobre a plataforma, cursos, acesso e uso dos recursos.</field>
+        <field name="mode">questions</field>
+        <field name="karma_ask">1</field>
+        <field name="karma_answer">1</field>
+    </record>
+</odoo>

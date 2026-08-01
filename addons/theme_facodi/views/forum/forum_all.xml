@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI community landing page.
+        Replaces the default /forum page with a FACODI-styled list of forums.
+    -->
+    <template id="facodi_forum_all" inherit_id="website_forum.forum_all"
+              name="FACODI Community" priority="20">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure">
+                <section class="facodi-hero facodi-hero--compact">
+                    <div class="container">
+                        <p class="facodi-kicker"><i class="fa fa-users" aria-hidden="true"/> Comunidade</p>
+                        <h1>Aprenda junto com outras pessoas.</h1>
+                        <p class="facodi-lead">Participe nos foruns por area, faca perguntas, partilhe recursos e ajude a construir conhecimento coletivo.</p>
+                    </div>
+                </section>
+
+                <section class="container py-5">
+                    <div t-if="not forums" class="facodi-empty-state">
+                        <i class="fa fa-comments-o" aria-hidden="true"/>
+                        <h2>Ainda nao existem foruns.</h2>
+                        <p>Volte em breve ou explore os cursos disponiveis.</p>
+                        <a href="/slides" class="btn facodi-button facodi-button-primary">Explorar cursos</a>
+                    </div>
+
+                    <div t-if="forums" class="facodi-forum-grid">
+                        <t t-foreach="forums" t-as="forum">
+                            <a t-attf-href="/forum/#{slug(forum)}" class="facodi-forum-card">
+                                <h3 t-field="forum.name"/>
+                                <p t-field="forum.description"/>
+                                <span class="facodi-meta">
+                                    <i class="fa fa-question-circle" aria-hidden="true"/>
+                                    <t t-out="forum.total_posts"/> perguntas
+                                </span>
+                            </a>
+                        </t>
+                    </div>
+                </section>
+
+                <section class="facodi-open-section">
+                    <div>
+                        <p class="facodi-kicker">Participar</p>
+                        <h2>Tem uma duvida ou um recurso para partilhar?</h2>
+                    </div>
+                    <div class="facodi-open-actions">
+                        <p>Escolha o forum mais adequado e comece uma conversa. A comunidade ajuda a manter o conhecimento vivo e atualizado.</p>
+                        <a class="btn facodi-button facodi-button-secondary" href="/suporte">Precisa de suporte? <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI main menu structure.  Menu records are created without
+        noupdate so they are recreated on theme load for each website that
+        applies the theme.  The post-copy hook assigns them to the active
+        website and removes the inherited default Odoo menus.
+    -->
+    <record id="menu_facodi_home" model="website.menu">
+        <field name="name">Home</field>
+        <field name="url">/</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">10</field>
+    </record>
+
+    <record id="menu_facodi_courses" model="website.menu">
+        <field name="name">Cursos</field>
+        <field name="url">/slides</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+    <record id="menu_facodi_community" model="website.menu">
+        <field name="name">Comunidade</field>
+        <field name="url">/comunidade</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">30</field>
+    </record>
+
+    <record id="menu_facodi_events" model="website.menu">
+        <field name="name">Eventos</field>
+        <field name="url">/eventos</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">40</field>
+    </record>
+
+    <record id="menu_facodi_about" model="website.menu">
+        <field name="name">Sobre</field>
+        <field name="url">/sobre</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">50</field>
+    </record>
+
+    <record id="menu_facodi_support" model="website.menu">
+        <field name="name">Suporte</field>
+        <field name="url">/suporte</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">60</field>
+    </record>
+
+    <record id="menu_facodi_contribute" model="website.menu">
+        <field name="name">Contribuir</field>
+        <field name="url">/como-contribuir</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">70</field>
+    </record>
+</odoo>
