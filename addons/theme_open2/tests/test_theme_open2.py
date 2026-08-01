@@ -57,6 +57,13 @@ class TestOpen2Theme(TransactionCase):
         footer_view = self.env.ref("theme_open2.open2_footer")
         self.assertIn("footer_menu.page_id.url or footer_menu.url", footer_view.arch)
 
+    def test_portal_panel_styles_are_scoped_to_open2(self):
+        stylesheet = (Path(get_module_path("theme_open2")) /
+                      "static/src/scss/components.scss").read_text()
+        self.assertIn(".open2-site .o_portal_wrap", stylesheet)
+        self.assertIn(".open2-site .o_portal_my_home .o_portal_index_card > a", stylesheet)
+        self.assertNotIn(".o_portal_wrap {", stylesheet.replace(".open2-site .o_portal_wrap {", ""))
+
     def test_legal_pages_are_unpublished_and_not_indexed(self):
         for xmlid in ("theme_open2.page_privacy", "theme_open2.page_terms"):
             page = self.env.ref(xmlid)
