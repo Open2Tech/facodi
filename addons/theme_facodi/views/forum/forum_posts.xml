@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI forum post list overrides.
+        Simplifies the visual density of the question list and aligns it with
+        the FACODI card style.
+    -->
+    <template id="facodi_forum_post" inherit_id="website_forum.display_post"
+              name="FACODI Forum Post Card" priority="20">
+        <!-- Profile / user dashboard card mode -->
+        <xpath expr="//div[hasclass('card')]" position="attributes">
+            <attribute name="class">card border-2 mb-3 facodi-forum-post</attribute>
+        </xpath>
+        <!-- Forum list table row mode -->
+        <xpath expr="//tr[hasclass('position-relative')]" position="attributes">
+            <attribute name="class">position-relative d-flex d-lg-table-row facodi-forum-post-row</attribute>
+        </xpath>
+    </template>
+</odoo>

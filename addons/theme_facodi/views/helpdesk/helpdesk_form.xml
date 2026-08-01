@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI helpdesk ticket form overrides.
+        Wraps the native ticket form in a FACODI-styled container.
+    -->
+    <template id="facodi_helpdesk_form" inherit_id="website_helpdesk.team"
+              name="FACODI Ticket Form" priority="20">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class">oe_structure facodi-app-shell</attribute>
+        </xpath>
+    </template>
+</odoo>

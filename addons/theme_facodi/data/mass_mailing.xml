@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI newsletter mailing list.  Created on theme load via post-copy hook. -->
+    <record id="mailing_list_facodi_newsletter" model="mailing.list">
+        <field name="name">Newsletter FACODI</field>
+        <field name="is_public">True</field>
+    </record>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI helpdesk teams.  Records are created without a fixed website_id
+        here; the post-copy hook assigns them to the active FACODI website.
+    -->
+    <record id="helpdesk_team_general" model="helpdesk.team">
+        <field name="name">Duvidas Gerais</field>
+        <field name="description">Questoes gerais sobre a FACODI, cursos e comunidade.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_access" model="helpdesk.team">
+        <field name="name">Problemas de Acesso</field>
+        <field name="description">Dificuldades de login, recuperacao de conta ou permissoes.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_suggestions" model="helpdesk.team">
+        <field name="name">Sugestoes</field>
+        <field name="description">Ideias para cursos, conteudos, eventos ou melhorias na plataforma.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_reports" model="helpdesk.team">
+        <field name="name">Denuncias de Conteudo</field>
+        <field name="description">Reportar conteudo inadequado, violacao de direitos ou spam.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_partnerships" model="helpdesk.team">
+        <field name="name">Parcerias</field>
+        <field name="description">Propostas de colaboracao institucional, academica ou comunitaria.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_technical" model="helpdesk.team">
+        <field name="name">Suporte Tecnico</field>
+        <field name="description">Erros na plataforma, problemas de reproducao de conteudo ou bugs.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+
+    <record id="helpdesk_team_institutional" model="helpdesk.team">
+        <field name="name">Pedidos Institucionais</field>
+        <field name="description">Contactos oficiais, documentacao, pedidos formais e comunicacao institucional.</field>
+        <field name="use_website_helpdesk_form" eval="True"/>
+    </record>
+</odoo>
