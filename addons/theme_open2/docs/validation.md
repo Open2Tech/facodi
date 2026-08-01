@@ -132,3 +132,21 @@ Remaining editorial or extended audit checks:
 - [ ] Add 1920, 1280, 768, and 360 pixel evidence runs.
 - [ ] Complete keyboard, 200% zoom, contrast, and screen-reader checks on staging.
 - [ ] Review final Privacy and Terms copy before publishing either page.
+
+## Production portal panel refinement
+
+The native `/my/home` portal was audited on the Open2 website after the
+production release. The root cause of the unreadable cards was the theme's
+global `a { color: inherit; }` rule: Odoo's portal cards inherit the Open2
+white foreground while their native `bg-100` surfaces remain light.
+
+The fix is scoped to `.open2-site` and keeps the standard portal templates,
+links, counters, account sidebar, and Website Builder untouched. Portal cards
+now use an accessible dark foreground, a muted secondary color, visible focus
+states, consistent Open2 spacing, and a restrained hover elevation. The
+account sidebar remains dark-canvas content with readable actions. FACODI is
+not affected because it does not render the `.open2-site` theme root.
+
+The browser preview was captured at `docs/evidence/portal-before.png` and
+`docs/evidence/portal-preview.png`; the latter uses the exact scoped rules
+before the Odoo.sh build and is retained as a visual comparison artifact.

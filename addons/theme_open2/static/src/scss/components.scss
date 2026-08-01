@@ -61,6 +61,112 @@
 .open2-ticket-reference { margin-block: 2rem; padding-block: 1rem; border-block: 1px solid var(--open2-surface-raised); color: var(--open2-slate-300); }
 .open2-ticket-reference strong { color: var(--open2-white); }
 
+// Keep the native Odoo portal cards readable inside the Open2 dark canvas.
+// The portal intentionally uses `color: inherit` on its links; Open2's global
+// surface sets that inherited value to white, which makes the light cards
+// unreadable. This scope only applies when the Open2 theme is active.
+.open2-site .o_portal_wrap {
+    color: var(--open2-slate-300);
+}
+
+.open2-site .o_portal_wrap > .container {
+    padding-top: clamp(3rem, 7vw, 6rem);
+    padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.open2-site .o_portal_wrap h3 {
+    margin-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+    color: var(--open2-white);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -.04em;
+}
+
+.open2-site .o_portal_my_home .o_portal_docs {
+    --gutter-x: .75rem;
+    --gutter-y: .75rem;
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card {
+    min-height: 7.5rem;
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card > a {
+    min-height: 100%;
+    border: 2px solid transparent;
+    border-radius: .25rem !important;
+    background: var(--open2-white) !important;
+    color: var(--open2-black) !important;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .16);
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s var(--open2-ease);
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card > a:hover,
+.open2-site .o_portal_my_home .o_portal_index_card > a:focus-visible {
+    border-color: var(--open2-violet);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, .24);
+    color: var(--open2-black) !important;
+    transform: translateY(-2px);
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card > a:focus-visible {
+    outline: 3px solid var(--open2-violet);
+    outline-offset: 3px;
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card > a > div:not(.o_portal_icon),
+.open2-site .o_portal_my_home .o_portal_index_card > a .alert-link {
+    color: var(--open2-black) !important;
+}
+
+.open2-site .o_portal_my_home .o_portal_index_card > a .opacity-75 {
+    color: var(--open2-ink-muted) !important;
+    opacity: 1 !important;
+}
+
+.open2-site .o_portal_my_home .o_portal_icon {
+    flex: 0 0 3.5rem;
+    width: 3.5rem;
+}
+
+.open2-site .o_portal_my_home .o_portal_icon img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+.open2-site .o_portal_wrap .o_portal_my_details {
+    color: var(--open2-slate-300);
+}
+
+.open2-site .o_portal_wrap .mw-100 h5 {
+    color: var(--open2-white);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.35rem;
+}
+
+.open2-site .o_portal_wrap .mw-100 a.btn-link {
+    color: var(--open2-slate-300) !important;
+    text-decoration: underline;
+    text-underline-offset: .25rem;
+}
+
+.open2-site .o_portal_wrap .mw-100 a.btn-link:hover,
+.open2-site .o_portal_wrap .mw-100 a.btn-link:focus-visible {
+    color: var(--open2-violet) !important;
+}
+
+@media (max-width: 47.98rem) {
+    .open2-site .o_portal_wrap > .container {
+        padding-top: 2.5rem;
+    }
+
+    .open2-site .o_portal_my_home .o_portal_index_card {
+        min-height: 6.5rem;
+    }
+}
+
 @media (min-width: 48rem) {
     .open2-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
     .open2-form-grid__wide { grid-column: 1 / -1; }
