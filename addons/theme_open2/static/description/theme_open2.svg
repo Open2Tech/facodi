@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#05070a"/>
+  <rect x="72" y="66" width="1456" height="4" fill="#f8fafc"/>
+  <circle cx="116" cy="126" r="28" fill="none" stroke="#8b5cf6" stroke-width="8"/>
+  <text x="158" y="138" fill="#f8fafc" font-family="Arial" font-size="42" font-weight="700">Open2</text>
+  <text x="72" y="380" fill="#f8fafc" font-family="Arial" font-size="146" font-weight="700">DEMOCRATIZING</text>
+  <text x="72" y="530" fill="#8b5cf6" font-family="Arial" font-size="146" font-weight="700">ACCESS TO</text>
+  <text x="72" y="680" fill="none" stroke="#f8fafc" stroke-width="3" font-family="Arial" font-size="146" font-weight="700">TECHNOLOGY</text>
+  <rect x="72" y="785" width="360" height="74" fill="#8b5cf6"/>
+  <text x="110" y="833" fill="#f8fafc" font-family="Arial" font-size="24" font-weight="700">OPEN2 TECHNOLOGY</text>
+</svg>
