@@ -24,10 +24,11 @@ The Website Builder successfully opened `/contact`, exposed its
 was therefore not the cause of the reported architecture gap.
 
 The first staging E2E exposed a narrower editor-only context error: the
-Contact snippet used the page variable `website`, while
-`ir.ui.view.render_public_asset()` renders snippet previews with
-`request.website`. Version `19.0.1.1.2` uses the latter in the team lookup, so
-the same template now renders both as page content and in the snippet gallery.
+Contact snippet used page-only website context. The backend RPC behind
+`ir.ui.view.render_public_asset()` does not attach `website` to the request.
+Version `19.0.1.1.3` resolves it through the standard
+`request.env['website'].get_current_website()` method, which honors the forced
+website session and also supports backend rendering.
 
 ## Root cause
 

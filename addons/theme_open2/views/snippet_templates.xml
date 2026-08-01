@@ -186,7 +186,8 @@
         <section class="s_open2_contact open2-section" data-snippet="s_open2_contact" data-name="Open2 Contact Form">
             <div class="open2-container open2-contact__grid">
                 <div>
-                    <t t-set="open2_helpdesk_team" t-value="request.env['helpdesk.team'].sudo().search([('website_id', '=', request.website.id), ('company_id', '=', request.website.company_id.id), ('active', '=', True), ('use_website_helpdesk_form', '=', True)], order='sequence, id', limit=1)"/>
+                    <t t-set="open2_current_website" t-value="request.env['website'].get_current_website()"/>
+                    <t t-set="open2_helpdesk_team" t-value="request.env['helpdesk.team'].sudo().search([('website_id', '=', open2_current_website.id), ('company_id', '=', open2_current_website.company_id.id), ('active', '=', True), ('use_website_helpdesk_form', '=', True)], order='sequence, id', limit=1)"/>
                     <form t-if="open2_helpdesk_team" id="open2_helpdesk_ticket_form" action="/website/form/" method="post" enctype="multipart/form-data" class="s_website_form o_mark_required" data-mark="*" data-pre-fill="true" data-model_name="helpdesk.ticket" data-success-mode="redirect" data-success-page="/contact/thank-you" hide-change-model="true">
                         <input type="hidden" class="s_website_form_input" name="team_id" t-att-value="open2_helpdesk_team.id"/>
                         <div class="open2-form-grid">
