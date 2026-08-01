@@ -4,8 +4,10 @@ Validation date: 2026-08-01. All writes described below were made against dispos
 
 ## Automated validation completed
 
-- Clean module install on `codoo_theme_open2_final_20260801`: passed.
-- Module upgrade on `codoo_theme_open2_test_20260801`: passed.
+- Clean module install on `codoo_theme_open2_final_20260801` and, after this
+  correction, `codoo_theme_open2_fix_20260801`: passed.
+- Module upgrade on `codoo_theme_open2_test_20260801` and
+  `codoo_theme_open2_fix_20260801`: passed.
 - Odoo test suite: 5 test methods, 9 assertions, 0 failures, 0 errors.
 - Theme overlap regression: after installing the module on a website with no selected theme, zero `ir.ui.view`/`website.page` copies are created; all templates remain in `theme.*` records until the administrator selects the theme.
 - Two-website isolation: theme records copied only to the selected website; the control website was unchanged.
@@ -56,6 +58,12 @@ module version `19.0.1.0.2` installed and current.
   collapse navigation, and no browser console errors.
 - Desktop and mobile evidence: `docs/evidence/staging-open2-desktop.png` and
   `docs/evidence/staging-open2-mobile.png`.
+- The splash element and its assets load on staging without console errors. A
+  public, first-session activation cannot be exercised against the branch URL
+  while Open2 has no dedicated staging domain: the Odoo force-website endpoint
+  requires authentication, and the loader intentionally disables itself for
+  authenticated editor/backend sessions. Its first-session, reduced-motion,
+  and JavaScript-fallback behaviours remain covered by the local browser run.
 
 Remaining release checks are editorial or environment-dependent:
 
