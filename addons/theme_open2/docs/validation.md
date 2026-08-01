@@ -20,9 +20,10 @@ Validation date: 2026-08-01. All writes described below were made against dispos
 - Retired-brand regression scan remains covered by the addon test.
 - A second clean-install fixture verified that the dependency-generated
   `/helpdesk` menu is removed before tests while a used Helpdesk team is kept.
-- Staging Website Builder initially raised `KeyError: website` while rendering
-  the Contact snippet preview. The lookup now uses `request.website`, the
-  context supported by both public pages and `render_public_asset()`.
+- Staging Website Builder initially raised `KeyError: website`, then confirmed
+  that its backend RPC has no `request.website`. The lookup now uses Odoo's
+  `website.get_current_website()`, which supports both frontend and backend
+  rendering while honoring the forced multiwebsite session.
 
 See [native-pages-helpdesk.md](native-pages-helpdesk.md) for the diagnosis and
 multiwebsite decision record.
