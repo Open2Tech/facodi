@@ -3,7 +3,7 @@
     "summary": "Accessible, people-first technology website for Open2 Technology",
     "description": "A reusable Odoo 19 website theme for Open2 Technology.",
     "category": "Theme/Corporate",
-    "version": "19.0.1.0.2",
+    "version": "19.0.1.0.3",
     "sequence": 130,
     "author": "Open2 Technology",
     "website": "https://open2.tech",
