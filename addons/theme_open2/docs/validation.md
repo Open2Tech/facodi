@@ -5,6 +5,24 @@ PostgreSQL databases. The explicitly identified staging and production E2E
 checks used reserved `example.com` identities; the production QA ticket was
 archived after verification. No FACODI page, menu, theme or asset was changed.
 
+## Production SCSS compilation correction
+
+- Reported symptom: Website Builder displayed the global style compilation
+  warning and fell back to an older generated stylesheet.
+- Root cause: lowercase `min(28rem, 36vw)` in the Open2 hero visual was
+  evaluated by Odoo's LibSass and raised an incompatible-unit error.
+- Correction: preserve the expression as native CSS via `Min(...)`.
+- Regression coverage: every standalone Open2 SCSS file compiles with the
+  Odoo LibSass package.
+- Disposable Odoo 19 Enterprise database: clean install and 12 addon tests
+  passed with 0 failures and 0 errors; the subsequent module upgrade passed.
+- Full `web.assets_frontend` debug bundle compiled to 913,428 bytes without
+  the old-style fallback.
+- Chromium at 1440 × 1000 and 390 × 844 reported no page errors, no CSS
+  fallback, and no horizontal overflow.
+- Scope: one Open2 declaration and test/documentation metadata only. No FACODI
+  template, asset, palette, page, menu, or website configuration is touched.
+
 ## Native pages and Helpdesk follow-up
 
 - Clean install with `website_helpdesk`: passed.

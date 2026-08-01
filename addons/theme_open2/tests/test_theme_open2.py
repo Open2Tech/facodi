@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import sass
+
 from odoo.modules.module import get_module_path
 from odoo.tests import TransactionCase, tagged
 
@@ -63,6 +65,20 @@ class TestOpen2Theme(TransactionCase):
         self.assertIn(".open2-site .o_portal_wrap", stylesheet)
         self.assertIn(".open2-site .o_portal_my_home .o_portal_index_card > a", stylesheet)
         self.assertNotIn(".o_portal_wrap {", stylesheet.replace(".open2-site .o_portal_wrap {", ""))
+
+    def test_frontend_stylesheets_compile_with_odoo_libsass(self):
+        scss_path = Path(get_module_path("theme_open2")) / "static/src/scss"
+        standalone_stylesheets = [
+            "components.scss",
+            "editor.scss",
+            "loader.scss",
+            "snippets.scss",
+            "theme.scss",
+            "tokens.scss",
+        ]
+        for filename in standalone_stylesheets:
+            with self.subTest(stylesheet=filename):
+                sass.compile(filename=str(scss_path / filename))
 
     def test_brand_refresh_assets_are_available(self):
         module_path = Path(get_module_path("theme_open2"))

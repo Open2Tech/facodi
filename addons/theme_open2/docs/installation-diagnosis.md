@@ -3,6 +3,28 @@
 Date: 2026-08-01  
 Target: Odoo 19, `theme_open2`
 
+## Production Website Builder SCSS regression
+
+On 2026-08-01 the production Website Builder reproduced a deterministic
+`web.assets_frontend` compilation failure:
+
+```text
+Internal Error: Incompatible units: 'vw' and 'rem'.
+```
+
+The branding refresh introduced `width: min(28rem, 36vw)` in the hero visual.
+Odoo 19's Python LibSass treats lowercase `min()` as a Sass calculation and
+tries to compare the incompatible units during compilation. Using `Min()`
+preserves the declaration as the native CSS function; CSS function names are
+ASCII case-insensitive in the browser.
+
+The regression is reproducible without Odoo state by compiling
+`static/src/scss/snippets.scss` with the same `sass` Python package. The file
+fails before the correction and compiles after it. A module test now compiles
+all standalone Open2 frontend stylesheets so the same class of failure is
+caught before deployment. No Website Builder values, FACODI assets, or database
+records are changed by the correction.
+
 ## Factual staging audit
 
 The staging database recognised `theme_open2` as version `19.0.1.0.0` and

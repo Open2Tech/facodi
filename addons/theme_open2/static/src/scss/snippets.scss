@@ -4,7 +4,7 @@
 .s_open2_hero h1, .open2-page-hero h1 { max-width: 14ch; margin: 0 0 var(--open2-space-md); font-size: Clamp(3.4rem, 8vw, 5.8rem); line-height: .98; text-transform: none; }
 .open2-hero__footer { display: grid; gap: var(--open2-space-lg); align-items: end; }
 .open2-hero__footer > p { max-width: 43rem; margin: 0; color: var(--open2-slate-300); font-size: Clamp(1.15rem, 2vw, 1.7rem); font-weight: 500; line-height: 1.4; }
-.open2-hero__visual { position: relative; display: none; justify-self: end; width: min(28rem, 36vw); aspect-ratio: 1; place-items: center; }
+.open2-hero__visual { position: relative; display: none; justify-self: end; width: Min(28rem, 36vw); aspect-ratio: 1; place-items: center; }
 .open2-hero__visual::before { content: ""; position: absolute; inset: 12%; background: var(--open2-brand-gradient); filter: blur(3.8rem); opacity: .46; }
 .open2-hero__visual img { position: relative; width: 100%; filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, .45)); }
 .open2-hero__visual span { position: absolute; right: 0; bottom: 6%; padding: .55rem .75rem; border: 1px solid var(--open2-line); background: rgba(5, 7, 10, .76); color: var(--open2-slate-300); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
