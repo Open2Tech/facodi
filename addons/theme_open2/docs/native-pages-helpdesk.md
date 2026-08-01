@@ -94,7 +94,8 @@ Visual evidence:
 Installing Odoo's official `website_helpdesk` for the first time may enable
 its own default Customer Care web form and `/helpdesk` menu on the company's
 default website. This is standard Odoo module behavior, not theme behavior.
-Deployment validation must snapshot FACODI before dependency installation and
-verify that no such standard bootstrap menu remains exposed there. Existing
-production already has `website_helpdesk`, so the production upgrade does not
-repeat its post-install bootstrap.
+The theme post-install hook and the `19.0.1.1.1` migration reverse only that
+exact generated menu when the official default team has no tickets. A used,
+renamed or differently routed Helpdesk intake is retained. Existing
+production already has `website_helpdesk`, so its post-install bootstrap is not
+repeated there.

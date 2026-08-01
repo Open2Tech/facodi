@@ -6,7 +6,7 @@ Validation date: 2026-08-01. All writes described below were made against dispos
 
 - Clean install with `website_helpdesk`: passed.
 - Upgrade on the same disposable Odoo 19 Enterprise database: passed.
-- Current addon suite: 12 assertions across 8 test methods, zero failures or
+- Current addon suite: 13 assertions across 9 test methods, zero failures or
   errors.
 - Native page materialization: Home, About, Solutions, Services, Open Source,
   Partnerships, Contact, confirmation, Privacy and Terms verified.
@@ -18,6 +18,8 @@ Validation date: 2026-08-01. All writes described below were made against dispos
   horizontal overflow.
 - Browser console: no relevant frontend error during the local E2E.
 - Retired-brand regression scan remains covered by the addon test.
+- A second clean-install fixture verified that the dependency-generated
+  `/helpdesk` menu is removed before tests while a used Helpdesk team is kept.
 
 See [native-pages-helpdesk.md](native-pages-helpdesk.md) for the diagnosis and
 multiwebsite decision record.
