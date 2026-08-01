@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="website.homepage"/>
         <field name="arch" type="xml">
         <xpath expr="//t[@t-call='website.layout']" position="inside">
-            <t t-set="title">Open2 Technology — Democratizing access to technology</t>
+            <t t-set="title">Open2 Technology — Building open solutions for a better tomorrow</t>
             <t t-set="website_meta_description">Open2 builds accessible and inclusive technology for people, teams, and organizations.</t>
         </xpath>
         <xpath expr="//div[@id='wrap']" position="replace">
