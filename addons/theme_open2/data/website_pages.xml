@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="page_solutions_view" model="theme.ir.ui.view">
+        <field name="name">Solutions</field><field name="type">qweb</field><field name="key">theme_open2.page_solutions</field>
+        <field name="arch" type="xml"><t name="Solutions" t-name="theme_open2.page_solutions"><t t-call="website.layout"><t t-set="additional_title">Solutions</t><t t-set="website_meta_description">Explore Open2 solutions in Odoo, bespoke software engineering, and responsible AI automation.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="Solutions Hero"><div class="open2-container"><p class="open2-label open2-label--blue">Bespoke engineering</p><h1>Built for <span class="open2-outline">purpose</span></h1><p class="open2-lead open2-measure">We deliver outcomes, not just code. Every system is designed to help organizations work better with digital tools.</p></div></section>
+            <t t-snippet-call="theme_open2.s_open2_services"/><t t-snippet-call="theme_open2.s_open2_ai"/><t t-snippet-call="theme_open2.s_open2_cta"/>
+        </div></t></t></field>
+    </record>
+    <record id="page_solutions" model="theme.website.page"><field name="url">/solutions</field><field name="view_id" ref="page_solutions_view"/><field name="is_published">True</field></record>
+
+    <record id="page_partnerships_view" model="theme.ir.ui.view">
+        <field name="name">Partnerships</field><field name="type">qweb</field><field name="key">theme_open2.page_partnerships</field>
+        <field name="arch" type="xml"><t name="Partnerships" t-name="theme_open2.page_partnerships"><t t-call="website.layout"><t t-set="additional_title">Partnerships</t><t t-set="website_meta_description">Discover Open2 partnerships with universities, alliances, companies, and legal specialists.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-page-hero--tall open2-section" data-name="Partnerships Hero"><div class="open2-container"><p class="open2-label">Partnerships and collaboration</p><h1>Where <span class="open2-accent-violet">collaboration</span> drives innovation</h1><div class="open2-hero__footer"><p>We build with universities, companies, and specialists to turn ideas into accessible, production-ready systems.</p><div class="open2-actions"><a class="btn open2-button open2-button--light" href="/contact">Become a partner</a><a class="btn open2-button open2-button--outline" href="/open-source">Open ecosystem</a></div></div></div></section>
+            <t t-snippet-call="theme_open2.s_open2_partners"/><t t-snippet-call="theme_open2.s_open2_cta"/>
+        </div></t></t></field>
+    </record>
+    <record id="page_partnerships" model="theme.website.page"><field name="url">/partnerships</field><field name="view_id" ref="page_partnerships_view"/><field name="is_published">True</field></record>
+
+    <record id="page_open_source_view" model="theme.ir.ui.view">
+        <field name="name">Open Source</field><field name="type">qweb</field><field name="key">theme_open2.page_open_source</field>
+        <field name="arch" type="xml"><t name="Open Source" t-name="theme_open2.page_open_source"><t t-call="website.layout"><t t-set="additional_title">Open Source</t><t t-set="website_meta_description">Explore open-source projects led by Open2 and collaborate on community-first software.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="Open Source Hero"><div class="open2-container open2-split"><div><h1>Building <span class="open2-accent-teal">open</span></h1><p class="open2-lead">Open-source is a tool for collective learning and democratizing technology.</p></div><aside class="open2-philosophy"><h2>Philosophy</h2><p>Some projects are production-ready; others are experiments. We value the learning process as much as the final product.</p><a class="open2-text-link" href="https://github.com/Open2Tech" target="_blank" rel="noopener noreferrer">Organization GitHub</a></aside></div></section>
+            <t t-snippet-call="theme_open2.s_open2_projects"/><t t-snippet-call="theme_open2.s_open2_quote"/><t t-snippet-call="theme_open2.s_open2_cta"/>
+        </div></t></t></field>
+    </record>
+    <record id="page_open_source" model="theme.website.page"><field name="url">/open-source</field><field name="view_id" ref="page_open_source_view"/><field name="is_published">True</field></record>
+
+    <record id="page_contact_view" model="theme.ir.ui.view">
+        <field name="name">Contact</field><field name="type">qweb</field><field name="key">theme_open2.page_contact</field>
+        <field name="arch" type="xml"><t name="Contact" t-name="theme_open2.page_contact"><t t-call="website.layout"><t t-set="additional_title">Contact</t><t t-set="website_meta_description">Contact Open2 to start an Odoo, custom software, or responsible AI automation project.</t><div id="wrap" class="oe_structure open2-page">
+            <section class="open2-page-hero open2-section" data-name="Contact Hero"><div class="open2-container"><p class="open2-label">Initial sync</p><h1>Let's build <span class="open2-outline">meaningful.</span></h1><p class="open2-lead open2-measure">No pressure. No fluff. Just a conversation about how we can simplify your digital complexity.</p></div></section>
+            <t t-snippet-call="theme_open2.s_open2_contact"/><section class="s_open2_quote open2-section open2-section--compact" data-name="Open2 Contact Quote"><div class="open2-container"><blockquote>“Software is a conversation between human intuition and engineering logic.”</blockquote></div></section>
+        </div></t></t></field>
+    </record>
+    <record id="page_contact" model="theme.website.page"><field name="url">/contact</field><field name="view_id" ref="page_contact_view"/><field name="is_published">True</field></record>
+
+    <record id="page_privacy_view" model="theme.ir.ui.view">
+        <field name="name">Privacy Policy</field><field name="type">qweb</field><field name="key">theme_open2.page_privacy</field>
+        <field name="arch" type="xml"><t name="Privacy Policy" t-name="theme_open2.page_privacy"><t t-call="website.layout"><t t-set="additional_title">Privacy Policy</t><div id="wrap" class="oe_structure open2-page"><section class="open2-legal open2-section"><div class="open2-container open2-measure"><h1>Privacy Policy</h1><p>This unpublished page is reserved for legally reviewed content.</p></div></section></div></t></t></field>
+    </record>
+    <record id="page_privacy" model="theme.website.page"><field name="url">/privacy</field><field name="view_id" ref="page_privacy_view"/><field name="is_published">False</field><field name="website_indexed">False</field></record>
+
+    <record id="page_terms_view" model="theme.ir.ui.view">
+        <field name="name">Terms of Service</field><field name="type">qweb</field><field name="key">theme_open2.page_terms</field>
+        <field name="arch" type="xml"><t name="Terms of Service" t-name="theme_open2.page_terms"><t t-call="website.layout"><t t-set="additional_title">Terms of Service</t><div id="wrap" class="oe_structure open2-page"><section class="open2-legal open2-section"><div class="open2-container open2-measure"><h1>Terms of Service</h1><p>This unpublished page is reserved for legally reviewed content.</p></div></section></div></t></t></field>
+    </record>
+    <record id="page_terms" model="theme.website.page"><field name="url">/terms</field><field name="view_id" ref="page_terms_view"/><field name="is_published">False</field><field name="website_indexed">False</field></record>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="open2_footer" model="theme.ir.ui.view">
+        <field name="name">Open2 footer</field>
+        <field name="key">theme_open2.open2_footer</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website.layout"/>
+        <field name="arch" type="xml">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="open2-footer" data-name="Open2 Footer" t-if="not no_footer">
+                <div class="open2-container open2-footer__grid">
+                    <div class="open2-footer__brand">
+                        <a href="/" aria-label="Open2 Technology home">
+                            <img src="/theme_open2/static/src/icons/open2-logo.svg" alt="Open2 Technology" width="192" height="64" loading="lazy"/>
+                        </a>
+                        <p>A modern software studio focused on accessibility, inclusion, and useful digital products for real people.</p>
+                        <span>Portugal · Remote first</span>
+                    </div>
+                    <nav aria-label="Footer navigation">
+                        <h2>Navigation</h2>
+                        <a href="/solutions">Solutions</a>
+                        <a href="/partnerships">Partnerships</a>
+                        <a href="/open-source">Open Source</a>
+                        <a href="/contact">Contact</a>
+                    </nav>
+                    <nav aria-label="Social links">
+                        <h2>Social hub</h2>
+                        <a href="https://github.com/Open2Tech" target="_blank" rel="noopener noreferrer">GitHub organization</a>
+                        <a href="https://www.linkedin.com/in/marcelo-m7/" target="_blank" rel="noopener noreferrer">Marcelo on LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/t%C3%A9rcio-barreto-40a840120/" target="_blank" rel="noopener noreferrer">Tércio on LinkedIn</a>
+                    </nav>
+                    <div class="open2-footer__contact">
+                        <h2>Direct signal</h2>
+                        <a href="mailto:hello@open2.tech">hello@open2.tech</a>
+                        <a class="open2-footer__github" href="https://github.com/Open2Tech" target="_blank" rel="noopener noreferrer" aria-label="Open2 Technology on GitHub">
+                            <i class="fa fa-github" aria-hidden="true"/> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="open2-container open2-footer__bottom">
+                    <p>© <span t-esc="datetime.datetime.now().year"/> Open2 Technology. Democratizing access to technology.</p>
+                    <p>Legal pages will be published after review.</p>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="replace"/>
+        </field>
+    </record>
+</odoo>

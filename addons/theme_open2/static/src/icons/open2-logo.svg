@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 64" role="img" aria-labelledby="title desc">
+  <title id="title">Open2 Technology</title>
+  <desc id="desc">Open2 circular mark and wordmark</desc>
+  <defs>
+    <linearGradient id="open2-mark-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#3c83f6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="30" cy="32" r="23" fill="none" stroke="url(#open2-mark-gradient)" stroke-width="7"/>
+  <path d="M19 26c2-7 18-10 22-1 5 11-17 13-20 25h24" fill="none" stroke="#f8fafc" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="64" y="39" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="-1">Open2</text>
+  <text x="65" y="53" fill="#94a3b8" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="2.1">TECHNOLOGY</text>
+</svg>

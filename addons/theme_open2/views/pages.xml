@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="open2_homepage" model="theme.ir.ui.view">
+        <field name="name">Open2 homepage</field>
+        <field name="key">theme_open2.open2_homepage</field>
+        <field name="type">qweb</field>
+        <field name="priority">30</field>
+        <field name="inherit_id" ref="website.homepage"/>
+        <field name="arch" type="xml">
+        <xpath expr="//t[@t-call='website.layout']" position="inside">
+            <t t-set="title">Open2 Technology — Democratizing access to technology</t>
+            <t t-set="website_meta_description">Open2 builds accessible and inclusive technology for people, teams, and organizations.</t>
+        </xpath>
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure open2-page">
+                <t t-snippet-call="theme_open2.s_open2_hero"/>
+                <t t-snippet-call="theme_open2.s_open2_services"/>
+                <t t-snippet-call="theme_open2.s_open2_ai"/>
+                <t t-snippet-call="theme_open2.s_open2_team"/>
+                <t t-snippet-call="theme_open2.s_open2_cta"/>
+            </div>
+        </xpath>
+        </field>
+    </record>
+</odoo>

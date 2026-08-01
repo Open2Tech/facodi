@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <asset id="open2_primary_variables" name="Open2 primary variables">
+        <field name="key">theme_open2.primary_variables</field>
+        <bundle>web._assets_primary_variables</bundle>
+        <path>theme_open2/static/src/scss/primary_variables.scss</path>
+    </asset>
+    <asset id="open2_frontend_tokens" name="Open2 frontend tokens">
+        <field name="key">theme_open2.frontend_tokens</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_open2/static/src/scss/tokens.scss</path>
+    </asset>
+    <asset id="open2_frontend_theme" name="Open2 frontend theme">
+        <field name="key">theme_open2.frontend_theme</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_open2/static/src/scss/theme.scss</path>
+    </asset>
+    <asset id="open2_frontend_components" name="Open2 components">
+        <field name="key">theme_open2.frontend_components</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_open2/static/src/scss/components.scss</path>
+    </asset>
+    <asset id="open2_frontend_snippets" name="Open2 snippets">
+        <field name="key">theme_open2.frontend_snippets</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_open2/static/src/scss/snippets.scss</path>
+    </asset>
+    <asset id="open2_frontend_loader" name="Open2 loader">
+        <field name="key">theme_open2.frontend_loader</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_open2/static/src/scss/loader.scss</path>
+    </asset>
+    <asset id="open2_frontend_js" name="Open2 frontend interaction">
+        <field name="key">theme_open2.frontend_js</field>
+        <bundle>web.assets_frontend</bundle>
+        <field name="directive">before</field>
+        <field name="target">website/static/src/js/content/website_root_instance.js</field>
+        <path>theme_open2/static/src/js/loader.js</path>
+    </asset>
+    <asset id="open2_editor_styles" name="Open2 editor styles">
+        <field name="key">theme_open2.editor_styles</field>
+        <bundle>website.website_builder_assets</bundle>
+        <path>theme_open2/static/src/scss/editor.scss</path>
+    </asset>
+</odoo>

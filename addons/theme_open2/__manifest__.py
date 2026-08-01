@@ -1,0 +1,48 @@
+{
+    "name": "Open2 Technology Theme",
+    "summary": "Accessible, people-first technology website for Open2 Technology",
+    "description": "A reusable Odoo 19 website theme for Open2 Technology.",
+    "category": "Theme/Corporate",
+    "version": "19.0.1.0.0",
+    "sequence": 130,
+    "author": "Open2 Technology",
+    "website": "https://open2.tech",
+    "license": "LGPL-3",
+    "depends": ["website", "website_mass_mailing"],
+    "data": [
+        "data/generate_primary_template.xml",
+        "data/ir_asset.xml",
+        "data/ir_attachment.xml",
+        "views/layout.xml",
+        "views/header.xml",
+        "views/footer.xml",
+        "views/snippet_templates.xml",
+        "views/snippets.xml",
+        "views/pages.xml",
+        "data/website_pages.xml",
+        "data/website_menu.xml",
+    ],
+    "assets": {
+        "website.website_builder_assets": [
+            "theme_open2/static/src/website_builder/open2_options.js",
+            "theme_open2/static/src/website_builder/open2_options.xml",
+        ],
+        "web.assets_tests": [
+            "theme_open2/static/tests/tours/theme_open2_editor.js",
+        ],
+    },
+    "images": ["static/description/open2_theme_preview.svg"],
+    "images_preview_theme": {},
+    "configurator_snippets": {
+        "homepage": [
+            "s_open2_hero",
+            "s_open2_services",
+            "s_open2_ai",
+            "s_open2_team",
+            "s_open2_cta",
+        ],
+    },
+    "installable": True,
+    "auto_install": False,
+    "application": False,
+}

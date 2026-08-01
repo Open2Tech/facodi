@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="theme_open2.Open2SnippetOptions">
+        <BuilderRow label.translate="Density">
+            <BuilderButtonGroup>
+                <BuilderButton classAction="''">Default</BuilderButton>
+                <BuilderButton classAction="'open2-density-compact'">Compact</BuilderButton>
+                <BuilderButton classAction="'open2-density-airy'">Airy</BuilderButton>
+            </BuilderButtonGroup>
+        </BuilderRow>
+        <BuilderRow label.translate="Contrast">
+            <BuilderButtonGroup>
+                <BuilderButton classAction="''">Brand</BuilderButton>
+                <BuilderButton classAction="'open2-variant-light'">Light</BuilderButton>
+                <BuilderButton classAction="'open2-variant-violet'">Violet</BuilderButton>
+                <BuilderButton classAction="'open2-variant-teal'">Teal</BuilderButton>
+            </BuilderButtonGroup>
+        </BuilderRow>
+        <BuilderRow label.translate="Content alignment">
+            <BuilderButtonGroup>
+                <BuilderButton classAction="''">Start</BuilderButton>
+                <BuilderButton classAction="'open2-align-center'">Center</BuilderButton>
+            </BuilderButtonGroup>
+        </BuilderRow>
+    </t>
+</templates>
