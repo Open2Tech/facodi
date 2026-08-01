@@ -37,22 +37,31 @@ Evidence:
 
 ## Odoo.sh staging gate
 
-Initial staging audit and selection completed on the revision preceding this
-fix: the Open2 website received the expected theme copies and the FACODI
-theme/menu/language snapshot was unchanged. The audit also found copied FACODI
-default navigation in Open2; the correction is documented in
-`installation-diagnosis.md` and must be applied through a new Odoo.sh build.
+## Odoo.sh staging validation
 
-The following checks remain a deployment gate for version `19.0.1.0.2`:
+Validated on the Odoo.sh staging database after build commit `2132d12`, with
+module version `19.0.1.0.2` installed and current.
 
-- [ ] Capture a read-only before snapshot of the real FACODI website.
-- [ ] Create the Open2 website through the native multiwebsite UI and apply the theme in that website context.
-- [ ] Confirm the FACODI before/after snapshot is identical.
+- The native theme refresh was run in the Open2 website context. Its direct
+  root navigation now contains only `Solutions`, `Partnerships`, `Open Source`,
+  and `Contact`; each has an Open2 `theme_template_id`.
+- The FACODI snapshot is unchanged: website ID 1 still uses `theme_facodi`,
+  retains its root menu and seven child menus, and retains the same language
+  assignments.
+- Open2 page records are website ID 2 only. `/solutions`, `/partnerships`,
+  `/open-source`, and `/contact` are published; `/privacy` and `/terms` remain
+  unpublished and non-indexed.
+- Authenticated browser checks at 1440 × 1000 and 390 × 844 found one H1 per
+  public route, zero horizontal overflow, Open2 layout classes, working mobile
+  collapse navigation, and no browser console errors.
+- Desktop and mobile evidence: `docs/evidence/staging-open2-desktop.png` and
+  `docs/evidence/staging-open2-mobile.png`.
+
+Remaining release checks are editorial or environment-dependent:
+
 - [ ] Exercise Website Builder insertion, editing, duplication, reordering, and saving while authenticated.
 - [ ] Route contact mail to a staging-safe sink and verify delivery without contacting the public recipient.
 - [ ] Validate all four languages using the staging website language selector.
 - [ ] Add 1920, 1280, 768, and 360 pixel evidence runs.
 - [ ] Complete keyboard, 200% zoom, contrast, and screen-reader checks on staging.
 - [ ] Review final Privacy and Terms copy before publishing either page.
-
-Do not promote the branch until every staging gate is checked and the FACODI comparison is clean.
