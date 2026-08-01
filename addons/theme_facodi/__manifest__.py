@@ -3,7 +3,7 @@
     'summary': 'Digital learning experience for Faculdade Comunitaria Digital',
     'description': 'A neo-brutalist Website and eLearning theme for FACODI.',
     'category': 'Theme/Education',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'sequence': 120,
     'author': 'Open2 Technology (open2.tech)',
     'license': 'LGPL-3',
