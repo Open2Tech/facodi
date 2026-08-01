@@ -35,12 +35,13 @@ being correctly website-scoped.
 
 ## Correction
 
-`models/theme_utils.py` adds the supported Odoo 19 hook
-`theme.utils._theme_open2_post_copy`. It runs only after Open2 is chosen in the
-native theme chooser and receives the current `website_id` from the standard
-theme lifecycle. It removes direct children of that website's root menu only
-when they have no `theme_template_id` and their URL belongs to Odoo's global
-default menu hierarchy.
+`models/ir_module_module.py` uses Odoo 19's standard `_theme_load` lifecycle,
+which runs after the theme is materialised for its selected website and also on
+Odoo.sh module upgrades. `models/theme_utils.py` contains the idempotent,
+website-scoped reconciliation and is also exposed through the native post-copy
+hook used by the Website Builder. It removes direct children of that website's
+root menu only when they have no `theme_template_id` and their URL belongs to
+Odoo's global default menu hierarchy.
 
 This does not query, write, or unlink FACODI records. It retains Open2 theme
 menus and subsequent editor-created Open2 menus. A regression test covers both

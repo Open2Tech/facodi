@@ -70,9 +70,6 @@ class TestOpen2MultiwebsiteIsolation(TransactionCase):
 
         self.open2_website.theme_id = self.theme
         self.theme._theme_load(self.open2_website)
-        self.env["theme.utils"].with_context(
-            website_id=self.open2_website.id,
-        )._theme_open2_post_copy(self.theme)
 
         self.assertFalse(inherited_menu.exists())
         self.assertTrue(custom_menu.exists())

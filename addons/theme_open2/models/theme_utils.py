@@ -10,6 +10,11 @@ class ThemeOpen2Utils(models.AbstractModel):
 
     @api.model
     def _theme_open2_post_copy(self, module):
+        """Keep the Website Builder's post-copy path idempotent."""
+        self._theme_open2_cleanup_inherited_navigation()
+
+    @api.model
+    def _theme_open2_cleanup_inherited_navigation(self):
         """Remove only menus cloned from Odoo's global default hierarchy.
 
         Odoo copies ``website.main_menu`` when a website is created.  A website
@@ -25,7 +30,7 @@ class ThemeOpen2Utils(models.AbstractModel):
         """
         website_id = self.env.context.get("website_id")
         website = self.env["website"].browse(website_id).exists()
-        if not website or website.theme_id != module:
+        if not website or website.theme_id.name != "theme_open2":
             return
 
         default_menu = self.env.ref("website.main_menu", raise_if_not_found=False)

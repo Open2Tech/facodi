@@ -43,7 +43,7 @@ theme/menu/language snapshot was unchanged. The audit also found copied FACODI
 default navigation in Open2; the correction is documented in
 `installation-diagnosis.md` and must be applied through a new Odoo.sh build.
 
-The following checks remain a deployment gate for version `19.0.1.0.1`:
+The following checks remain a deployment gate for version `19.0.1.0.2`:
 
 - [ ] Capture a read-only before snapshot of the real FACODI website.
 - [ ] Create the Open2 website through the native multiwebsite UI and apply the theme in that website context.

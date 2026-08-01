@@ -23,7 +23,7 @@ Prepare a new website with these values without writing them yet:
 1. Create the website from Website → Configuration → Websites.
 2. Switch the website selector to Open2 Technology.
 3. Install/select the Open2 Technology Theme from the native theme chooser.
-4. Confirm copied records have the new website ID before editing navigation. The Open2 theme's standard `theme.utils` post-copy hook removes only navigation cloned from Odoo's global default menu; it does not read, change, or remove FACODI menus.
+4. Confirm copied records have the new website ID before editing navigation. The Open2 theme's standard theme-load lifecycle removes only navigation cloned from Odoo's global default menu; it does not read, change, or remove FACODI menus.
 5. Confirm the Open2 navigation contains only the theme menus before adding editorial menus in the Website Builder.
 6. Keep `/privacy` and `/terms` unpublished and not indexed.
 
