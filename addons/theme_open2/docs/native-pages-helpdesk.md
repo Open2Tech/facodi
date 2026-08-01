@@ -23,6 +23,12 @@ The Website Builder successfully opened `/contact`, exposed its
 `#wrap.oe_structure` editing zone and listed the Open2 snippets. The editor
 was therefore not the cause of the reported architecture gap.
 
+The first staging E2E exposed a narrower editor-only context error: the
+Contact snippet used the page variable `website`, while
+`ir.ui.view.render_public_asset()` renders snippet previews with
+`request.website`. Version `19.0.1.1.2` uses the latter in the team lookup, so
+the same template now renders both as page content and in the snippet gallery.
+
 ## Root cause
 
 The contact form already used the standard `/website/form/` endpoint, but its

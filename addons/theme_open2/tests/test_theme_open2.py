@@ -51,6 +51,8 @@ class TestOpen2Theme(TransactionCase):
         self.assertIn('name="partner_name"', contact_view.arch)
         self.assertIn('name="partner_email"', contact_view.arch)
         self.assertIn('name="Attachment"', contact_view.arch)
+        self.assertIn("request.website.id", contact_view.arch)
+        self.assertNotIn("website.id", contact_view.arch.replace("request.website.id", ""))
 
         footer_view = self.env.ref("theme_open2.open2_footer")
         self.assertIn("footer_menu.page_id.url or footer_menu.url", footer_view.arch)
