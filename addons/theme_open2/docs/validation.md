@@ -150,3 +150,14 @@ not affected because it does not render the `.open2-site` theme root.
 The browser preview was captured at `docs/evidence/portal-before.png` and
 `docs/evidence/portal-preview.png`; the latter uses the exact scoped rules
 before the Odoo.sh build and is retained as a visual comparison artifact.
+
+Production verification after merge `270b0f2`:
+
+- desktop and mobile cards render with dark readable titles and descriptions;
+- 14 native portal cards remain available to the authenticated account;
+- mobile viewport 390px has no horizontal overflow (`scrollWidth == 390`);
+- the Open2 mobile menu remains available;
+- no browser console errors were emitted during reload.
+
+Production captures: `docs/evidence/portal-after-desktop.png` and
+`docs/evidence/portal-after-mobile.png`.
