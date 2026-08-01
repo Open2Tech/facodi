@@ -11,7 +11,7 @@
                 <div class="open2-container open2-footer__grid">
                     <div class="open2-footer__brand">
                         <a href="/" aria-label="Open2 Technology home">
-                            <img src="/theme_open2/static/src/icons/open2-logo.svg" alt="Open2 Technology" width="192" height="64" loading="lazy"/>
+                            <img src="/theme_open2/static/src/img/branding/logos/open2-logo-vertical.svg" alt="Open2 Technology" width="160" height="183" loading="lazy"/>
                         </a>
                         <p>A modern software studio focused on accessibility, inclusion, and useful digital products for real people.</p>
                         <span>Portugal · Remote first</span>

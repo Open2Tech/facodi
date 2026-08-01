@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 220" role="img" aria-labelledby="title">
+  <title id="title">Open2 reduced logo</title>
+  <defs>
+    <linearGradient id="arc" x1="44" y1="20" x2="212" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D3DF6"/>
+      <stop offset=".52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#00C2FF"/>
+    </linearGradient>
+  </defs>
+  <path d="M48 150a80 80 0 1 1 160 0" fill="none" stroke="url(#arc)" stroke-width="20"/>
+  <text x="128" y="172" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="136" font-weight="700" letter-spacing="-7">2</text>
+  <text x="62" y="212" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="500" letter-spacing="8">OPEN2</text>
+</svg>

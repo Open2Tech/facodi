@@ -15,6 +15,31 @@
         <field name="name">Open2 partner — Universidade do Algarve</field>
         <field name="url">/theme_open2/static/src/img/logo-ualg-white.svg</field>
     </record>
+    <record id="open2_brand_logo_horizontal" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_brand_logo_horizontal</field>
+        <field name="name">Open2 brand — horizontal logo</field>
+        <field name="url">/theme_open2/static/src/img/branding/logos/open2-logo-horizontal.svg</field>
+    </record>
+    <record id="open2_brand_logo_vertical" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_brand_logo_vertical</field>
+        <field name="name">Open2 brand — vertical logo</field>
+        <field name="url">/theme_open2/static/src/img/branding/logos/open2-logo-vertical.svg</field>
+    </record>
+    <record id="open2_brand_symbol" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_brand_symbol</field>
+        <field name="name">Open2 brand — symbol</field>
+        <field name="url">/theme_open2/static/src/img/branding/logos/open2-symbol.svg</field>
+    </record>
+    <record id="open2_brand_app_icon" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_brand_app_icon</field>
+        <field name="name">Open2 brand — app icon</field>
+        <field name="url">/theme_open2/static/src/img/branding/icons/open2-app-icon.png</field>
+    </record>
+    <record id="open2_brand_social_image" model="theme.ir.attachment">
+        <field name="key">theme_open2.open2_brand_social_image</field>
+        <field name="name">Open2 brand — Open Graph image</field>
+        <field name="url">/theme_open2/static/src/img/branding/social/open2-og.png</field>
+    </record>
     <record id="open2_logo_sea_eu" model="theme.ir.attachment">
         <field name="key">theme_open2.open2_logo_sea_eu</field>
         <field name="name">Open2 partner — SEA-EU</field>

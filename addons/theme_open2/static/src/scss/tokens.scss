@@ -20,16 +20,21 @@
 }
 
 .open2-site {
-    --open2-black: #05070a;
-    --open2-surface: #0c1016;
-    --open2-surface-raised: #151b24;
-    --open2-violet: #8b5cf6;
-    --open2-blue: #3c83f6;
-    --open2-teal: #0d9488;
-    --open2-white: #f8fafc;
+    --open2-black: #0d1117;
+    --open2-deep: #05070a;
+    --open2-surface: #111827;
+    --open2-surface-raised: #1b2130;
+    --open2-line: rgba(229, 231, 235, .16);
+    --open2-line-strong: rgba(229, 231, 235, .34);
+    --open2-violet: #6d3df6;
+    --open2-blue: #3b82f6;
+    --open2-teal: #00c2ff;
+    --open2-brand-gradient: linear-gradient(135deg, #6d3df6 0%, #3b82f6 52%, #00c2ff 100%);
+    --open2-brand-gradient-soft: linear-gradient(135deg, rgba(109, 61, 246, .2), rgba(0, 194, 255, .12));
+    --open2-white: #ffffff;
     --open2-ink-muted: #475569;
-    --open2-slate-300: #cbd5e1;
-    --open2-slate-400: #94a3b8;
+    --open2-slate-300: #e5e7eb;
+    --open2-slate-400: #64748b;
     --open2-error: #ef4444;
     --open2-space-xs: .5rem;
     --open2-space-sm: .75rem;
@@ -38,7 +43,9 @@
     --open2-space-xl: Clamp(4rem, 8vw, 8rem);
     --open2-space-2xl: Clamp(5rem, 10vw, 10rem);
     --open2-container: 100rem;
-    --open2-border: .25rem;
+    --open2-border: 1px;
+    --open2-radius-sm: .25rem;
+    --open2-radius: .5rem;
     --open2-ease: cubic-bezier(.22, 1, .36, 1);
     --open2-z-sticky: 30;
     --open2-z-overlay: 1100;

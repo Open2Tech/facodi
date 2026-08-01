@@ -1,10 +1,10 @@
-$open2-black: #05070a;
-$open2-violet: #8b5cf6;
-$open2-blue: #3c83f6;
-$open2-teal: #0d9488;
-$open2-white: #f8fafc;
-$open2-slate-300: #cbd5e1;
-$open2-slate-400: #94a3b8;
+$open2-black: #0d1117;
+$open2-violet: #6d3df6;
+$open2-blue: #3b82f6;
+$open2-teal: #00c2ff;
+$open2-white: #ffffff;
+$open2-slate-300: #e5e7eb;
+$open2-slate-400: #64748b;
 
 $o-color-palettes: map-merge($o-color-palettes, (
     "open2": (
@@ -24,7 +24,7 @@ $o-theme-color-palettes: map-merge($o-theme-color-palettes, (
     "open2": (
         "alpha": $open2-violet, "beta": $open2-blue, "gamma": $open2-teal,
         "delta": $open2-white, "epsilon": $open2-black,
-        "success": #16a085, "info": $open2-blue, "warning": #f59e0b, "danger": #ef4444,
+        "success": #22c55e, "info": $open2-blue, "warning": #f59e0b, "danger": #ef4444,
     ),
 ));
 $o-theme-font-configs: map-merge($o-theme-font-configs, (

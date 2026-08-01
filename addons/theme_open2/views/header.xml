@@ -11,7 +11,7 @@
                 <nav class="navbar navbar-expand-xl" aria-label="Primary navigation">
                     <div id="o_main_nav" class="container-fluid open2-nav-shell">
                         <a href="/" class="navbar-brand open2-brand" aria-label="Open2 Technology home">
-                            <img src="/theme_open2/static/src/icons/open2-logo.svg" alt="Open2 Technology" width="192" height="64"/>
+                            <img src="/theme_open2/static/src/img/branding/logos/open2-logo-horizontal.svg" alt="Open2 Technology" width="210" height="70"/>
                         </a>
                         <button class="navbar-toggler open2-menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#top_menu_collapse" aria-controls="top_menu_collapse" aria-expanded="false" aria-label="Open navigation">
                             <span aria-hidden="true"/>

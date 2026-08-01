@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Open2 app icon</title>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="40" x2="448" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1B2130"/>
+      <stop offset="1" stop-color="#0D1117"/>
+    </linearGradient>
+    <linearGradient id="arc" x1="96" y1="76" x2="416" y2="396" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D3DF6"/>
+      <stop offset=".52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#00C2FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="48" y="48" width="416" height="416" rx="80" fill="url(#bg)"/>
+  <path d="M112 330a144 144 0 1 1 288 0" fill="none" stroke="url(#arc)" stroke-width="38"/>
+  <text x="256" y="368" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="238" font-weight="700" letter-spacing="-12">2</text>
+</svg>

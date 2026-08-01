@@ -64,6 +64,30 @@ class TestOpen2Theme(TransactionCase):
         self.assertIn(".open2-site .o_portal_my_home .o_portal_index_card > a", stylesheet)
         self.assertNotIn(".o_portal_wrap {", stylesheet.replace(".open2-site .o_portal_wrap {", ""))
 
+    def test_brand_refresh_assets_are_available(self):
+        module_path = Path(get_module_path("theme_open2"))
+        expected_assets = [
+            "static/src/img/branding/logos/open2-logo-horizontal.svg",
+            "static/src/img/branding/logos/open2-logo-vertical.svg",
+            "static/src/img/branding/logos/open2-symbol.svg",
+            "static/src/img/branding/favicons/favicon.svg",
+            "static/src/img/branding/favicons/favicon.ico",
+            "static/src/img/branding/favicons/apple-touch-icon.png",
+            "static/src/img/branding/social/open2-og.png",
+            "static/src/img/branding/social/open2-twitter-card.png",
+            "static/src/img/branding/icons/open2-odoo-app-icon.png",
+            "static/src/img/branding/splash/open2-splash-logo.svg",
+        ]
+        for asset in expected_assets:
+            self.assertTrue((module_path / asset).is_file(), asset)
+
+        header_view = self.env.ref("theme_open2.open2_header")
+        footer_view = self.env.ref("theme_open2.open2_footer")
+        layout_view = self.env.ref("theme_open2.open2_layout")
+        self.assertIn("/static/src/img/branding/logos/open2-logo-horizontal.svg", header_view.arch)
+        self.assertIn("/static/src/img/branding/logos/open2-logo-vertical.svg", footer_view.arch)
+        self.assertIn("/static/src/img/branding/social/open2-og.png", layout_view.arch)
+
     def test_legal_pages_are_unpublished_and_not_indexed(self):
         for xmlid in ("theme_open2.page_privacy", "theme_open2.page_terms"):
             page = self.env.ref(xmlid)

@@ -2,15 +2,21 @@
 <odoo>
     <record id="s_open2_hero" model="theme.ir.ui.view"><field name="name">Open2 Hero</field><field name="key">theme_open2.s_open2_hero</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_hero open2-section" data-snippet="s_open2_hero" data-name="Open2 Hero">
-            <div class="open2-container">
-                <p class="open2-label">Inclusive technology</p>
-                <h1>Democratizing <span class="open2-accent-violet">access to</span> <span class="open2-outline">technology</span></h1>
-                <div class="open2-hero__footer">
-                    <p>We build digital products that break barriers, making technology accessible, inclusive, and truly useful for everyone.</p>
-                    <div class="open2-actions">
-                        <a class="btn open2-button open2-button--light" href="/contact">Start a project</a>
-                        <a class="btn open2-button open2-button--outline" href="/partnerships">Partnerships</a>
+            <div class="open2-container open2-hero__stage">
+                <div>
+                    <p class="open2-label">Open minds · Open source · Open future</p>
+                    <h1>Building open solutions for a better tomorrow</h1>
+                    <div class="open2-hero__footer">
+                        <p>We combine Odoo, AI, and open source to create accessible digital products that real people can understand, use, and trust.</p>
+                        <div class="open2-actions">
+                            <a class="btn open2-button open2-button--violet" href="/solutions">Our solutions</a>
+                            <a class="btn open2-button open2-button--outline" href="/contact">Let's talk</a>
+                        </div>
                     </div>
+                </div>
+                <div class="open2-hero__visual" aria-hidden="true">
+                    <img src="/theme_open2/static/src/img/branding/logos/open2-symbol.svg" alt="" loading="eager"/>
+                    <span>Open2 Technology</span>
                 </div>
             </div>
         </section>
