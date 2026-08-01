@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="open2_layout" inherit_id="website.layout" name="Open2 global layout">
+    <record id="open2_layout" model="theme.ir.ui.view">
+        <field name="name">Open2 global layout</field>
+        <field name="key">theme_open2.open2_layout</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website.layout"/>
+        <field name="arch" type="xml">
         <xpath expr="//div[@id='wrapwrap']" position="attributes">
             <attribute name="t-attf-class" add="open2-site" separator=" "/>
         </xpath>
@@ -29,5 +34,6 @@
         <xpath expr="//t[@t-set='default_title']" position="after">
             <t t-if="main_object and 'url' in main_object and main_object.url == '/'" t-set="default_title" t-value="'Open2 Technology — Democratizing access to technology'"/>
         </xpath>
-    </template>
+        </field>
+    </record>
 </odoo>

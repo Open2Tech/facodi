@@ -9,9 +9,13 @@ class TestOpen2Theme(TransactionCase):
     def test_theme_templates_and_assets_are_declared(self):
         module = self.env["ir.module.module"].search([("name", "=", "theme_open2")], limit=1)
         self.assertEqual(module.state, "installed")
+        self.assertFalse(module.auto_install)
+        self.assertFalse(module.application)
         self.assertTrue(self.env.ref("theme_open2.open2_homepage"))
         self.assertTrue(self.env.ref("theme_open2.page_solutions"))
         self.assertTrue(self.env.ref("theme_open2.menu_contact"))
+        self.assertFalse(self.env["ir.ui.view"].search([("key", "like", "theme_open2.%")]))
+        self.assertFalse(self.env["website.page"].search([("url", "in", ["/solutions", "/partnerships", "/open-source", "/contact"])]))
         asset_paths = self.env["theme.ir.asset"].search([
             ("path", "=like", "theme_open2/%"),
         ]).mapped("path")

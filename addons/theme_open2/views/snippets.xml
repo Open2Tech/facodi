@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="open2_snippets" inherit_id="website.snippets" name="Open2 snippets">
+    <record id="open2_snippets" model="theme.ir.ui.view">
+        <field name="name">Open2 snippets</field>
+        <field name="key">theme_open2.open2_snippets</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website.snippets"/>
+        <field name="arch" type="xml">
         <xpath expr="//snippets[@id='snippet_groups']/t[@id='installed_snippets_hook']" position="before">
             <t snippet-group="open2" t-snippet="website.s_snippet_group" string="Open2 Technology" t-thumbnail="/theme_open2/static/description/theme_open2.svg"/>
         </xpath>
@@ -22,5 +27,6 @@
             <t t-snippet="website.s_faq_collapse" string="Open2 FAQ" group="open2" t-thumbnail="/website/static/src/img/snippets_thumbs/s_accordion.svg"/>
             <t t-snippet="website_mass_mailing.s_newsletter_block" string="Open2 Newsletter" group="open2" t-thumbnail="/website_mass_mailing/static/src/img/snippets_thumbs/s_newsletter_block.svg"/>
         </xpath>
-    </template>
+        </field>
+    </record>
 </odoo>

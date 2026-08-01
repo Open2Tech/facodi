@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="open2_footer" inherit_id="website.layout" name="Open2 footer">
+    <record id="open2_footer" model="theme.ir.ui.view">
+        <field name="name">Open2 footer</field>
+        <field name="key">theme_open2.open2_footer</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website.layout"/>
+        <field name="arch" type="xml">
         <xpath expr="//div[@id='footer']" position="replace">
             <div id="footer" class="open2-footer" data-name="Open2 Footer" t-if="not no_footer">
                 <div class="open2-container open2-footer__grid">
@@ -39,5 +44,6 @@
             </div>
         </xpath>
         <xpath expr="//div[hasclass('o_footer_copyright')]" position="replace"/>
-    </template>
+        </field>
+    </record>
 </odoo>

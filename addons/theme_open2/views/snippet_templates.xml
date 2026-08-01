@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="s_open2_hero" name="Open2 Hero">
+    <record id="s_open2_hero" model="theme.ir.ui.view"><field name="name">Open2 Hero</field><field name="key">theme_open2.s_open2_hero</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_hero open2-section" data-snippet="s_open2_hero" data-name="Open2 Hero">
             <div class="open2-container">
                 <p class="open2-label">Inclusive technology</p>
@@ -14,9 +14,9 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_intro" name="Open2 Introduction">
+    <record id="s_open2_intro" model="theme.ir.ui.view"><field name="name">Open2 Introduction</field><field name="key">theme_open2.s_open2_intro</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_intro open2-section open2-section--compact" data-snippet="s_open2_intro" data-name="Open2 Introduction">
             <div class="open2-container open2-split">
                 <h2>Technology should make participation possible.</h2>
@@ -26,9 +26,9 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_services" name="Open2 Services">
+    <record id="s_open2_services" model="theme.ir.ui.view"><field name="name">Open2 Services</field><field name="key">theme_open2.s_open2_services</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_services open2-section" data-snippet="s_open2_services" data-name="Open2 Services">
             <div class="open2-service open2-service--dark">
                 <div class="open2-container open2-service__grid">
@@ -61,9 +61,9 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_ai" name="Open2 AI">
+    <record id="s_open2_ai" model="theme.ir.ui.view"><field name="name">Open2 AI</field><field name="key">theme_open2.s_open2_ai</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_ai open2-section" data-snippet="s_open2_ai" data-name="Open2 AI">
             <div class="open2-container">
                 <div class="open2-ai__heading">
@@ -78,9 +78,9 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_partners" name="Open2 Partners">
+    <record id="s_open2_partners" model="theme.ir.ui.view"><field name="name">Open2 Partners</field><field name="key">theme_open2.s_open2_partners</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_partners open2-section" data-snippet="s_open2_partners" data-name="Open2 Partners">
             <div class="open2-container">
                 <div class="open2-section-heading">
@@ -107,9 +107,9 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_projects" name="Open2 Projects">
+    <record id="s_open2_projects" model="theme.ir.ui.view"><field name="name">Open2 Projects</field><field name="key">theme_open2.s_open2_projects</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_projects open2-section" data-snippet="s_open2_projects" data-name="Open2 Projects">
             <div class="open2-project">
                 <div class="open2-project__content">
@@ -138,9 +138,9 @@
                 <span class="open2-project__number" aria-hidden="true">02</span>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_team" name="Open2 Team">
+    <record id="s_open2_team" model="theme.ir.ui.view"><field name="name">Open2 Team</field><field name="key">theme_open2.s_open2_team</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_team open2-section" data-snippet="s_open2_team" data-name="Open2 Team">
             <div class="open2-container">
                 <div class="open2-section-heading"><h2>People-first technology.</h2><p>You work directly with the people designing and building the system.</p></div>
@@ -156,33 +156,33 @@
                 </div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_text_image" name="Open2 Text and Image">
+    <record id="s_open2_text_image" model="theme.ir.ui.view"><field name="name">Open2 Text and Image</field><field name="key">theme_open2.s_open2_text_image</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_text_image open2-section" data-snippet="s_open2_text_image" data-name="Open2 Text and Image">
             <div class="open2-container open2-media-split">
                 <div><h2>Build around the real context.</h2><p class="open2-lead">Good software becomes part of how people work. We start by understanding the barriers, then design the clearest path through them.</p><a class="open2-text-link" href="/contact">Start a conversation</a></div>
                 <img src="/theme_open2/static/src/img/marcelo.jpg" alt="Open2 team member working on accessible software" loading="lazy"/>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_quote" name="Open2 Quote">
+    <record id="s_open2_quote" model="theme.ir.ui.view"><field name="name">Open2 Quote</field><field name="key">theme_open2.s_open2_quote</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_quote open2-section open2-section--compact" data-snippet="s_open2_quote" data-name="Open2 Quote">
             <div class="open2-container"><blockquote>“The best technology is built by people who are not afraid to share their work.”</blockquote></div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_cta" name="Open2 Call to Action">
+    <record id="s_open2_cta" model="theme.ir.ui.view"><field name="name">Open2 Call to Action</field><field name="key">theme_open2.s_open2_cta</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_cta open2-section" data-snippet="s_open2_cta" data-name="Open2 Call to Action">
             <div class="open2-container open2-cta__grid">
                 <h2>Ready to <span>open access?</span></h2>
                 <div><p>Let's build something people can actually use. No pressure, just a conversation about the barriers you want to remove.</p><a class="btn open2-button open2-button--ink" href="/contact">Let's build access</a></div>
             </div>
         </section>
-    </template>
+    </field></record>
 
-    <template id="s_open2_contact" name="Open2 Contact">
+    <record id="s_open2_contact" model="theme.ir.ui.view"><field name="name">Open2 Contact</field><field name="key">theme_open2.s_open2_contact</field><field name="type">qweb</field><field name="arch" type="xml">
         <section class="s_open2_contact open2-section" data-snippet="s_open2_contact" data-name="Open2 Contact Form">
             <div class="open2-container open2-contact__grid">
                 <div>
@@ -213,5 +213,5 @@
                 </aside>
             </div>
         </section>
-    </template>
+    </field></record>
 </odoo>

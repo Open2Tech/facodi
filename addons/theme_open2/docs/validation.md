@@ -7,6 +7,7 @@ Validation date: 2026-08-01. All writes described below were made against dispos
 - Clean module install on `codoo_theme_open2_final_20260801`: passed.
 - Module upgrade on `codoo_theme_open2_test_20260801`: passed.
 - Odoo test suite: 5 test methods, 9 assertions, 0 failures, 0 errors.
+- Theme overlap regression: after installing the module on a website with no selected theme, zero `ir.ui.view`/`website.page` copies are created; all templates remain in `theme.*` records until the administrator selects the theme.
 - Two-website isolation: theme records copied only to the selected website; the control website was unchanged.
 - Theme unload: the website and a non-theme editorial page survived unload.
 - XML/QWeb loading and SCSS/JS asset compilation: passed during install, upgrade, and HTTP rendering.
