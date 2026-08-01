@@ -32,7 +32,7 @@
 .open2-footer h2 { margin-bottom: 1.25rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
 .open2-footer nav, .open2-footer__contact { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
 .open2-site .open2-footer nav a:not(.btn),
-.open2-site .open2-footer .open2-footer__contact a:not(.btn) { color: var(--open2-slate-300); text-decoration: none; }
+.open2-site .open2-footer .open2-footer__contact a:not(.btn) { min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--open2-slate-300); text-decoration: none; }
 .open2-site .open2-footer .open2-footer__contact > a:first-of-type:not(.btn) { color: var(--open2-white); }
 .open2-site .open2-footer nav a:not(.btn):hover,
 .open2-site .open2-footer .open2-footer__contact a:not(.btn):hover { color: var(--open2-violet); }
@@ -54,13 +54,19 @@
 .open2-form-success { padding: Clamp(2rem, 5vw, 4rem); border: var(--open2-border) solid var(--open2-teal); background: var(--open2-surface); }
 .open2-form-success h2 { margin-bottom: 1rem; color: var(--open2-white); font-size: Clamp(2rem, 5vw, 4rem); text-transform: uppercase; }
 .open2-form-success p { color: var(--open2-slate-300); }
+.open2-form-unavailable { padding: Clamp(1.5rem, 4vw, 3rem); border: var(--open2-border) solid var(--open2-error); background: var(--open2-surface); }
+.open2-form-unavailable h2 { font-size: Clamp(1.5rem, 3vw, 2.5rem); }
+.open2-form-unavailable p { margin-bottom: 0; color: var(--open2-slate-300); }
+.open2-form-unavailable a { color: var(--open2-white); font-weight: 700; text-decoration: underline; text-underline-offset: .25rem; }
+.open2-ticket-reference { margin-block: 2rem; padding-block: 1rem; border-block: 1px solid var(--open2-surface-raised); color: var(--open2-slate-300); }
+.open2-ticket-reference strong { color: var(--open2-white); }
 
 @media (min-width: 48rem) {
     .open2-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
     .open2-form-grid__wide { grid-column: 1 / -1; }
     .open2-footer__grid { grid-template-columns: minmax(18rem, 2fr) repeat(3, minmax(10rem, 1fr)); }
 }
-@media (max-width: 61.98rem) {
+@media (max-width: 74.98rem) {
     .open2-header .navbar-collapse { margin-inline: -1rem; padding: 1rem; border-top: 2px solid var(--open2-white); background: var(--open2-black); }
     .open2-header .nav-link { min-height: 3.25rem; font-size: 1rem; }
     .open2-header .open2-button { width: 100%; margin-top: .75rem; }
