@@ -3,12 +3,12 @@
     "summary": "Accessible, people-first technology website for Open2 Technology",
     "description": "A reusable Odoo 19 website theme for Open2 Technology.",
     "category": "Theme/Corporate",
-    "version": "19.0.1.0.3",
+    "version": "19.0.1.1.3",
     "sequence": 130,
     "author": "Open2 Technology",
     "website": "https://open2.tech",
     "license": "LGPL-3",
-    "depends": ["website", "website_mass_mailing"],
+    "depends": ["website", "website_helpdesk", "website_mass_mailing"],
     "data": [
         "data/generate_primary_template.xml",
         "data/ir_asset.xml",
@@ -45,4 +45,5 @@
     "installable": True,
     "auto_install": False,
     "application": False,
+    "post_init_hook": "post_init_hook",
 }

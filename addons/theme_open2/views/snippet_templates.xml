@@ -186,24 +186,24 @@
         <section class="s_open2_contact open2-section" data-snippet="s_open2_contact" data-name="Open2 Contact Form">
             <div class="open2-container open2-contact__grid">
                 <div>
-                    <form action="/website/form/" method="post" enctype="multipart/form-data" class="s_website_form o_mark_required" data-mark="*" data-pre-fill="true" data-model_name="mail.mail" data-success-mode="message">
-                        <input type="hidden" name="email_to" value="hello@open2.tech"/>
-                        <input type="hidden" name="subject" value="New Open2 website enquiry"/>
+                    <t t-set="open2_current_website" t-value="request.env['website'].get_current_website()"/>
+                    <t t-set="open2_helpdesk_team" t-value="request.env['helpdesk.team'].sudo().search([('website_id', '=', open2_current_website.id), ('company_id', '=', open2_current_website.company_id.id), ('active', '=', True), ('use_website_helpdesk_form', '=', True)], order='sequence, id', limit=1)"/>
+                    <form t-if="open2_helpdesk_team" id="open2_helpdesk_ticket_form" action="/website/form/" method="post" enctype="multipart/form-data" class="s_website_form o_mark_required" data-mark="*" data-pre-fill="true" data-model_name="helpdesk.ticket" data-success-mode="redirect" data-success-page="/contact/thank-you" hide-change-model="true">
+                        <input type="hidden" class="s_website_form_input" name="team_id" t-att-value="open2_helpdesk_team.id"/>
                         <div class="open2-form-grid">
-                            <div class="s_website_form_field s_website_form_custom s_website_form_required" data-type="char"><label for="open2-contact-name">What is your name? *</label><input id="open2-contact-name" class="form-control s_website_form_input" type="text" name="name" required="required" autocomplete="name"/></div>
-                            <div class="s_website_form_field s_website_form_model_required" data-type="email"><label for="open2-contact-email">Where can we reach you? *</label><input id="open2-contact-email" class="form-control s_website_form_input" type="email" name="email_from" required="required" autocomplete="email"/></div>
-                            <div class="s_website_form_field s_website_form_custom" data-type="tel"><label for="open2-contact-phone">Phone number <span>Optional</span></label><input id="open2-contact-phone" class="form-control s_website_form_input" type="tel" name="phone" autocomplete="tel"/></div>
-                            <div class="s_website_form_field s_website_form_custom" data-type="char"><label for="open2-contact-company">Company or project <span>Optional</span></label><input id="open2-contact-company" class="form-control s_website_form_input" type="text" name="company" autocomplete="organization"/></div>
-                            <div class="s_website_form_field s_website_form_custom s_website_form_required open2-form-grid__wide" data-type="text"><label for="open2-contact-message">What are you trying to build? *</label><textarea id="open2-contact-message" class="form-control s_website_form_input" name="description" rows="6" required="required" placeholder="Tell us about the barriers you want to remove."/></div>
-                            <div class="s_website_form_submit open2-form-grid__wide"><span id="s_website_form_result" role="status" aria-live="polite"/><button type="submit" class="btn open2-button open2-button--violet s_website_form_send">Start conversation</button></div>
+                            <div class="s_website_form_field s_website_form_required" data-type="char"><label for="open2-contact-name">What is your name? *</label><input id="open2-contact-name" class="form-control s_website_form_input" type="text" name="partner_name" required="required" autocomplete="name" data-fill-with="name"/></div>
+                            <div class="s_website_form_field s_website_form_required" data-type="email"><label for="open2-contact-email">Where can we reach you? *</label><input id="open2-contact-email" class="form-control s_website_form_input" type="email" name="partner_email" required="required" autocomplete="email" data-fill-with="email"/></div>
+                            <div class="s_website_form_field" data-type="char"><label for="open2-contact-phone">Phone number <span>Optional</span></label><input id="open2-contact-phone" class="form-control s_website_form_input" type="tel" name="partner_phone" autocomplete="tel" data-fill-with="phone"/></div>
+                            <div class="s_website_form_field" data-type="char"><label for="open2-contact-company">Company or project <span>Optional</span></label><input id="open2-contact-company" class="form-control s_website_form_input" type="text" name="partner_company_name" autocomplete="organization" data-fill-with="commercial_company_name"/></div>
+                            <div class="s_website_form_field s_website_form_model_required s_website_form_required open2-form-grid__wide" data-type="char"><label for="open2-contact-subject">What can we help with? *</label><input id="open2-contact-subject" class="form-control s_website_form_input" type="text" name="name" required="required" autocomplete="off" placeholder="A short subject for your request."/></div>
+                            <div class="s_website_form_field s_website_form_required open2-form-grid__wide" data-type="char"><label for="open2-contact-message">What are you trying to build? *</label><textarea id="open2-contact-message" class="form-control s_website_form_input" name="description" rows="6" required="required" placeholder="Tell us about the barriers you want to remove."/></div>
+                            <div class="s_website_form_field s_website_form_custom open2-form-grid__wide" data-type="binary"><label for="open2-contact-attachment">Attachment <span>Optional</span></label><input id="open2-contact-attachment" class="form-control s_website_form_input" type="file" name="Attachment"/></div>
+                            <div class="s_website_form_submit open2-form-grid__wide"><span id="s_website_form_result" role="status" aria-live="polite"/><button type="submit" class="btn open2-button open2-button--violet s_website_form_send">Create request</button></div>
                         </div>
                     </form>
-                    <div class="s_website_form_end_message d-none" role="status" aria-live="polite">
-                        <div class="open2-form-success">
-                            <h2>Message received.</h2>
-                            <p>Thank you. Our team will reply as soon as possible.</p>
-                            <a class="open2-text-link" href="/">Return to the homepage</a>
-                        </div>
+                    <div t-else="" class="open2-form-unavailable" role="status">
+                        <h2>Contact form temporarily unavailable.</h2>
+                        <p>Please email <a href="mailto:hello@open2.tech">hello@open2.tech</a>. No request submitted here will be silently lost.</p>
                     </div>
                 </div>
                 <aside>
