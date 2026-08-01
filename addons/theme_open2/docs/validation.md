@@ -161,3 +161,53 @@ Production verification after merge `270b0f2`:
 
 Production captures: `docs/evidence/portal-after-desktop.png` and
 `docs/evidence/portal-after-mobile.png`.
+
+## Production brand identity refresh
+
+Date: 2026-08-01
+
+PRs:
+
+- #138 `feat(theme-open2): refresh Open2 brand identity`
+- #139 `fix(theme-open2): align brand copy with refreshed identity`
+
+Production module state after upgrade:
+
+- `theme_open2` ID 1465;
+- state `installed`;
+- installed version `19.0.1.1.5`;
+- latest version `19.0.1.1.5`.
+
+Production multiwebsite state after upgrade:
+
+- website 1: `FACODI`, domain `https://facodi.odoo.com`, theme `FACODI Theme`;
+- website 2: `Open2 Technology`, domain unset, theme `Open2 Technology Theme`.
+
+Materialized Open2 website views were verified through the Odoo API. The
+website-scoped copies for `theme_open2.open2_header`,
+`theme_open2.open2_footer`, `theme_open2.open2_layout`, and
+`theme_open2.s_open2_hero` all belong to website 2 and contain the new
+branding asset paths. The homepage, layout, and hero contain the refreshed
+headline `Building open solutions for a better tomorrow`; the footer contains
+`Open minds. Open source. Open future.`
+
+Public production assets verified:
+
+- `/theme_open2/static/src/img/branding/favicons/favicon.svg`
+- `/theme_open2/static/description/theme_open2.svg`
+- `/theme_open2/static/src/img/branding/social/open2-og.png`
+
+Captured production asset evidence:
+
+- `docs/evidence/open2-brand-preview-production-desktop.png`
+- `docs/evidence/open2-brand-preview-production-mobile.png`
+- `docs/evidence/open2-brand-og-production.png`
+
+Browser page screenshot limitation: Open2 intentionally has no dedicated
+domain in production. Public requests to `facodi.odoo.com` resolve to the
+FACODI website, and `/website/force/2` requires an authenticated Website Editor
+session. The available production credentials authenticate through JSON-RPC for
+module upgrade and verification, but `/web/session/authenticate` returns
+`Access Denied`, so an authenticated screenshot of the Open2 page could not be
+captured without changing users, domains, or website configuration. No such
+production configuration changes were made.
