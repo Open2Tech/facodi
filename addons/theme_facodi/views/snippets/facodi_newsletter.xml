@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI newsletter snippet for the Website Builder.
+        Wraps the standard mass_mailing subscription form with FACODI styling.
+    -->
+    <template id="s_facodi_newsletter" name="FACODI Newsletter">
+        <section class="facodi-newsletter">
+            <div class="container">
+                <div class="facodi-newsletter-inner">
+                    <div>
+                        <p class="facodi-kicker"><i class="fa fa-paper-plane" aria-hidden="true"/> Newsletter</p>
+                        <h2>Receba novidades da FACODI.</h2>
+                        <p>Cursos novos, eventos e atualizacoes da comunidade diretamente no seu email.</p>
+                    </div>
+                    <div class="s_newsletter_subscribe_form"
+                         data-list-id="0"
+                         data-success-message="Obrigado por subscrever!">
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control facodi-input"
+                                   placeholder="O seu email" required="required"/>
+                            <button type="submit" class="btn facodi-button facodi-button-primary">Subscrever</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="facodi_newsletter_snippet" inherit_id="website.snippets">
+        <xpath expr="//snippets[@id='snippet_content']" position="inside">
+            <t t-snippet="theme_facodi.s_facodi_newsletter"
+               t-thumbnail="/theme_facodi/static/description/facodi_theme_preview.svg"
+               string="Newsletter FACODI"/>
+        </xpath>
+    </template>
+</odoo>

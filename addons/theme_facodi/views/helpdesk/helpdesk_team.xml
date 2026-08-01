@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI support landing page.
+        Lists the FACODI helpdesk teams and links to each team's form.
+    -->
+    <template id="facodi_helpdesk_teams" inherit_id="website_helpdesk.helpdesk_all_team"
+              name="FACODI Support" priority="20">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure">
+                <section class="facodi-hero facodi-hero--compact">
+                    <div class="container">
+                        <p class="facodi-kicker"><i class="fa fa-life-ring" aria-hidden="true"/> Suporte</p>
+                        <h1>Como podemos ajudar?</h1>
+                        <p class="facodi-lead">Escolha a area mais adequada e envie o seu pedido. Responderemos assim que possivel.</p>
+                    </div>
+                </section>
+
+                <section class="container py-5">
+                    <div t-if="not teams" class="facodi-empty-state">
+                        <i class="fa fa-envelope-o" aria-hidden="true"/>
+                        <h2>Nenhuma equipa de suporte disponivel.</h2>
+                        <p>Entre em contacto diretamente atraves da pagina de contato.</p>
+                        <a href="/contactus" class="btn facodi-button facodi-button-primary">Contacto</a>
+                    </div>
+
+                    <div t-if="teams" class="facodi-helpdesk-grid">
+                        <t t-foreach="teams" t-as="team">
+                            <a t-attf-href="/helpdesk/#{slug(team)}" class="facodi-helpdesk-card">
+                                <h3 t-field="team.name"/>
+                                <p t-field="team.description"/>
+                                <span class="facodi-text-link">Abrir pedido <i class="fa fa-arrow-right" aria-hidden="true"/></span>
+                            </a>
+                        </t>
+                    </div>
+                </section>
+
+                <section class="facodi-open-section">
+                    <div>
+                        <p class="facodi-kicker">Comunidade</p>
+                        <h2>Prefere uma resposta da comunidade?</h2>
+                    </div>
+                    <div class="facodi-open-actions">
+                        <p>Outros estudantes e colaboradores podem ja ter respondido a questoes semelhantes no forum.</p>
+                        <a class="btn facodi-button facodi-button-secondary" href="/comunidade">Visitar comunidade <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>

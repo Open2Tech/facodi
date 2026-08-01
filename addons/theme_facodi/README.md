@@ -19,30 +19,41 @@ SCSS tokens in `static/src/scss/primary_variables.scss`; layout and components i
 
 ```
 theme_facodi/
-├── __manifest__.py                     # depends: website, website_slides
-├── controllers/
-│   └── main.py                         # empty placeholder (kept for extensibility)
+├── __manifest__.py                     # depends: website, website_slides, website_forum, website_helpdesk, website_mass_mailing
 ├── data/
 │   ├── generate_primary_template.xml   # generates configurator snippet templates
-│   └── ir_asset.xml                    # registers SCSS bundles
+│   ├── ir_asset.xml                    # registers SCSS bundles
+│   ├── forum.xml                       # initial FACODI forums
+│   ├── helpdesk.xml                    # helpdesk teams and support page
+│   └── mass_mailing.xml                # newsletter mailing list
 ├── models/
-│   ├── theme_facodi.py                 # theme.utils post-copy hook
+│   ├── theme_facodi.py                 # theme.utils post-copy hook and per-website setup
 │   └── website_page.py                 # injects facodi_channels into homepage context
 ├── static/
 │   ├── description/
 │   │   ├── facodi_theme_preview.svg    # shown in Apps list
 │   │   ├── theme_facodi.svg            # used by Website Configurator preview
 │   │   └── evidence/                  # local E2E screenshots (not shipped)
-│   └── src/scss/
-│       ├── primary_variables.scss
-│       ├── bootstrap_overridden.scss
-│       └── facodi_frontend.scss
-└── views/
-    ├── header.xml                      # inherits website.layout, dynamic menu
-    ├── footer.xml                      # replaces div#footer with FACODI footer
-    ├── homepage.xml                    # extends website.homepage wrap
-    └── snippets/
-        └── facodi_learning_hub.xml     # Website Builder snippet
+│   └── src/
+│       ├── js/
+│       │   └── facodi_theme_editor.js  # editor tour
+│       └── scss/
+│           ├── primary_variables.scss  # palette, fonts, tokens
+│           ├── bootstrap_overridden.scss
+│           └── facodi_frontend.scss    # layout and components
+├── views/
+│   ├── header.xml                      # inherits website.layout, dynamic menu
+│   ├── footer.xml                      # replaces div#footer with FACODI footer
+│   ├── homepage.xml                    # extends website.homepage wrap
+│   ├── pages.xml                       # institutional pages and menus
+│   ├── forum/                          # forum templates overrides
+│   ├── helpdesk/                       # helpdesk templates overrides
+│   ├── slides/                         # eLearning templates overrides
+│   └── snippets/
+│       └── facodi_learning_hub.xml     # Website Builder snippet
+└── i18n/
+    ├── theme_facodi.pot                # translation template
+    └── pt_BR.po                        # Brazilian Portuguese translation
 ```
 
 ## Install or upgrade
@@ -73,11 +84,26 @@ The former `custom_theme` module used a non-standard technical name and could no
 3. Update the Apps list and install **FACODI Theme**.
 4. Reapply the theme from Website configuration.
 
+## Operational notes
+
+- **Multiwebsite isolation**: all theme-specific data (forums, helpdesk teams, mailing lists, menus, pages) is created with `website_id` set to the FACODI website during `_theme_facodi_post_copy`.
+- **Helpdesk**: requires Odoo 19 Enterprise (`website_helpdesk`).
+- **Staged activation**: do not enable forum/helpdesk features in production before validating them in staging.
+- **i18n**: run `python odoo-bin -d <db> --i18n-export=theme_facodi.po -l pt_BR -m theme_facodi` to refresh translations after content changes.
+
 ## Course integration (website_slides)
 
 The homepage displays up to 6 published courses from the `slide.channel` model. The `FacodiWebsitePage` mixin in `models/website_page.py` injects them as `facodi_channels` into the QWeb rendering context. No additional configuration is required — courses become visible automatically once they are published in the Odoo eLearning backend.
 
 To link a course card to a specific channel, set its URL under `/slides` in the backend and ensure `is_published = True`.
+
+## Community and support
+
+- **Forum**: the `/comunidade` page lists FACODI forums created during theme application. Forums are scoped to the FACODI website (`website_id`) so they do not leak to other websites.
+- **Helpdesk**: the `/suporte` page lists support teams for common requests (access issues, suggestions, content reports, partnerships, technical support, institutional requests). Tickets capture the originating website and are routed to the appropriate team.
+- **Newsletter**: a FACODI mailing list is created on theme application and can be subscribed via the Website Builder newsletter snippet.
+
+All community and support flows are built on native Odoo 19 modules (`website_forum`, `website_helpdesk`, `website_mass_mailing`) and styled with FACODI tokens.
 
 ## Delivery notes
 

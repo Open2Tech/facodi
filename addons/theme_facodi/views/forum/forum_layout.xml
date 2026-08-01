@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI forum layout overrides.
+        Applies FACODI header/footer styling tokens to the forum wrapper.
+    -->
+    <template id="facodi_forum_layout" inherit_id="website_forum.header"
+              name="FACODI Forum Layout" priority="20">
+        <xpath expr="//div[@id='wrap' and hasclass('o_wforum_wrapper')]" position="attributes">
+            <attribute name="class">o_wforum_wrapper position-relative container row mx-auto px-0 py-4 facodi-forum-wrapper</attribute>
+        </xpath>
+    </template>
+</odoo>

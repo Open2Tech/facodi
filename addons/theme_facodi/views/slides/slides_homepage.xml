@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI /slides catalog overrides.
+        Minimal adjustments to keep the native Odoo catalog functional while
+        applying FACODI spacing and empty states.
+    -->
+    <template id="facodi_courses_home" inherit_id="website_slides.courses_home"
+              name="FACODI Courses Catalog" priority="20">
+        <xpath expr="//div[hasclass('o_wslides_body')]/div[hasclass('container')]" position="before">
+            <section class="facodi-hero facodi-hero--compact">
+                <div class="container">
+                    <p class="facodi-kicker"><i class="fa fa-graduation-cap" aria-hidden="true"/> Catalogo</p>
+                    <h1>Explore cursos e trilhas de aprendizagem.</h1>
+                    <p class="facodi-lead">Conteudos abertos organizados para aprender no seu ritmo, com a comunidade FACODI.</p>
+                </div>
+            </section>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_wslides_home_main') and @t-if='not channels']" position="replace">
+            <div t-if="not channels" class="container py-5">
+                <div class="facodi-empty-state">
+                    <i class="fa fa-book" aria-hidden="true"/>
+                    <h2>Nenhum curso publicado.</h2>
+                    <p>Os primeiros cursos estarao disponiveis em breve.</p>
+                    <a href="/comunidade" class="btn facodi-button facodi-button-primary">Juntar-se a comunidade</a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

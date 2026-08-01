@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI course page overrides.
+        Keeps the native Odoo course structure and applies FACODI spacing.
+    -->
+    <template id="facodi_course_main" inherit_id="website_slides.course_main"
+              name="FACODI Course Page" priority="20">
+        <xpath expr="//div[hasclass('o_wslides_course_header')]" position="attributes">
+            <attribute name="class">o_wslides_course_header facodi-wslides-header</attribute>
+        </xpath>
+    </template>
+</odoo>
