@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("/theme_open2/static/src/fonts/inter-latin.woff2") format("woff2");
+    unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc, U+2000-206f, U+20ac, U+2122, U+2191, U+2193, U+2212, U+2215, U+feff, U+fffd;
+}
+@font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("/theme_open2/static/src/fonts/inter-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02ba, U+02bd-02c5, U+02c7-02cc, U+02ce-02d7, U+02dd-02ff, U+0304, U+0308, U+0329, U+1e00-1e9f, U+1ef2-1eff, U+20a0-20ab;
+}
+@font-face {
+    font-family: "Space Grotesk"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("/theme_open2/static/src/fonts/space-grotesk-latin.woff2") format("woff2");
+    unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc, U+2000-206f, U+20ac, U+2122, U+2191, U+2193, U+2212, U+2215, U+feff, U+fffd;
+}
+@font-face {
+    font-family: "Space Grotesk"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("/theme_open2/static/src/fonts/space-grotesk-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02ba, U+02bd-02c5, U+02c7-02cc, U+02ce-02d7, U+02dd-02ff, U+0304, U+0308, U+0329, U+1e00-1e9f, U+1ef2-1eff, U+20a0-20ab;
+}
+
+.open2-site {
+    --open2-black: #05070a;
+    --open2-surface: #0c1016;
+    --open2-surface-raised: #151b24;
+    --open2-violet: #8b5cf6;
+    --open2-blue: #3c83f6;
+    --open2-teal: #0d9488;
+    --open2-white: #f8fafc;
+    --open2-slate-300: #cbd5e1;
+    --open2-slate-400: #94a3b8;
+    --open2-error: #ef4444;
+    --open2-space-xs: .5rem;
+    --open2-space-sm: .75rem;
+    --open2-space-md: 1.5rem;
+    --open2-space-lg: Clamp(2rem, 4vw, 4rem);
+    --open2-space-xl: Clamp(4rem, 8vw, 8rem);
+    --open2-space-2xl: Clamp(5rem, 10vw, 10rem);
+    --open2-container: 100rem;
+    --open2-border: .25rem;
+    --open2-ease: cubic-bezier(.22, 1, .36, 1);
+    --open2-z-sticky: 30;
+    --open2-z-overlay: 1100;
+}

@@ -1,0 +1,75 @@
+# Validation record
+
+Validation date: 2026-08-01. All writes described below were made against disposable local PostgreSQL databases, except the explicitly identified native theme selection on Odoo.sh staging. No FACODI or production record was changed.
+
+## Automated validation completed
+
+- Clean module install on `codoo_theme_open2_final_20260801` and, after this
+  correction, `codoo_theme_open2_fix_20260801`: passed.
+- Module upgrade on `codoo_theme_open2_test_20260801` and
+  `codoo_theme_open2_fix_20260801`: passed.
+- Odoo test suite: 5 test methods, 9 assertions, 0 failures, 0 errors.
+- Theme overlap regression: after installing the module on a website with no selected theme, zero `ir.ui.view`/`website.page` copies are created; all templates remain in `theme.*` records until the administrator selects the theme.
+- Two-website isolation: theme records copied only to the selected website; the control website was unchanged.
+- Theme unload: the website and a non-theme editorial page survived unload.
+- Navigation isolation: selecting Open2 removes only default-menu clones from the target website; Open2 theme menus and later editorial menus remain. The FACODI root menu is unchanged.
+- XML/QWeb loading and SCSS/JS asset compilation: passed during install, upgrade, and HTTP rendering.
+- Gettext catalogs (`pt_PT`, `fr_FR`, `es_ES`): loaded without errors and contain no empty translations.
+- Retired-brand scan: passed case-insensitively; the regression test constructs the retired phrase without storing it literally in the repository.
+- Public routes `/`, `/solutions`, `/partnerships`, `/open-source`, and `/contact`: HTTP 200, exactly one H1, non-empty meta description, and route-specific title.
+- `/privacy` and `/terms`: HTTP 404 to public visitors while unpublished; their records are also marked not indexed.
+- Structured data: `Organization` only on the homepage and `ItemList` only on partnerships.
+- Contact form: required-field browser validation passed; a valid local submission created the success state. The resulting test mail was inspected and deleted immediately without external delivery.
+
+## Browser and visual validation completed
+
+- Chromium at 1440 × 1000 and 390 × 844.
+- No horizontal overflow at either viewport.
+- Desktop and mobile navigation, headings, CTA links, footer, focus styling, and responsive card stacking inspected.
+- Loader visible above the sticky header on the first visit, hidden after about 1.45 seconds, and absent on subsequent navigation in the same session.
+- `prefers-reduced-motion: reduce`: loader remained inactive and did not write the session flag.
+- Browser error log: empty on homepage, mobile homepage, and reduced-motion run.
+- Homepage SEO title: `Open2 Technology — Democratizing access to technology`.
+
+Evidence:
+
+- `docs/evidence/home-desktop.png`
+- `docs/evidence/home-mobile.png`
+- `docs/evidence/loader-desktop.png`
+
+## Odoo.sh staging gate
+
+## Odoo.sh staging validation
+
+Validated on the Odoo.sh staging database after build commit `2132d12`, with
+module version `19.0.1.0.2` installed and current.
+
+- The native theme refresh was run in the Open2 website context. Its direct
+  root navigation now contains only `Solutions`, `Partnerships`, `Open Source`,
+  and `Contact`; each has an Open2 `theme_template_id`.
+- The FACODI snapshot is unchanged: website ID 1 still uses `theme_facodi`,
+  retains its root menu and seven child menus, and retains the same language
+  assignments.
+- Open2 page records are website ID 2 only. `/solutions`, `/partnerships`,
+  `/open-source`, and `/contact` are published; `/privacy` and `/terms` remain
+  unpublished and non-indexed.
+- Authenticated browser checks at 1440 × 1000 and 390 × 844 found one H1 per
+  public route, zero horizontal overflow, Open2 layout classes, working mobile
+  collapse navigation, and no browser console errors.
+- Desktop and mobile evidence: `docs/evidence/staging-open2-desktop.png` and
+  `docs/evidence/staging-open2-mobile.png`.
+- The splash element and its assets load on staging without console errors. A
+  public, first-session activation cannot be exercised against the branch URL
+  while Open2 has no dedicated staging domain: the Odoo force-website endpoint
+  requires authentication, and the loader intentionally disables itself for
+  authenticated editor/backend sessions. Its first-session, reduced-motion,
+  and JavaScript-fallback behaviours remain covered by the local browser run.
+
+Remaining release checks are editorial or environment-dependent:
+
+- [ ] Exercise Website Builder insertion, editing, duplication, reordering, and saving while authenticated.
+- [ ] Route contact mail to a staging-safe sink and verify delivery without contacting the public recipient.
+- [ ] Validate all four languages using the staging website language selector.
+- [ ] Add 1920, 1280, 768, and 360 pixel evidence runs.
+- [ ] Complete keyboard, 200% zoom, contrast, and screen-reader checks on staging.
+- [ ] Review final Privacy and Terms copy before publishing either page.

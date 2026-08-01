@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#05070a"/>
+  <rect x="0" y="0" width="1600" height="92" fill="#05070a" stroke="#f8fafc" stroke-width="4"/>
+  <text x="70" y="61" fill="#f8fafc" font-family="Arial" font-size="34" font-weight="700">Open2</text>
+  <text x="1140" y="57" fill="#cbd5e1" font-family="Arial" font-size="18">SOLUTIONS  PARTNERSHIPS  OPEN SOURCE</text>
+  <text x="70" y="330" fill="#f8fafc" font-family="Arial" font-size="122" font-weight="700">DEMOCRATIZING</text>
+  <text x="70" y="455" fill="#8b5cf6" font-family="Arial" font-size="122" font-weight="700">ACCESS TO</text>
+  <text x="70" y="580" fill="none" stroke="#f8fafc" stroke-width="3" font-family="Arial" font-size="122" font-weight="700">TECHNOLOGY</text>
+  <text x="70" y="690" fill="#cbd5e1" font-family="Arial" font-size="28">Accessible, inclusive digital products for real people.</text>
+  <rect x="70" y="757" width="286" height="82" fill="#f8fafc"/>
+  <text x="112" y="809" fill="#05070a" font-family="Arial" font-size="22" font-weight="700">START A PROJECT</text>
+  <rect x="380" y="757" width="286" height="82" fill="#05070a" stroke="#f8fafc" stroke-width="4"/>
+  <text x="427" y="809" fill="#f8fafc" font-family="Arial" font-size="22" font-weight="700">PARTNERSHIPS</text>
+</svg>

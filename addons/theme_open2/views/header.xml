@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="open2_header" model="theme.ir.ui.view">
+        <field name="name">Open2 header</field>
+        <field name="key">theme_open2.open2_header</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="website.layout"/>
+        <field name="arch" type="xml">
+        <xpath expr="//header" position="replace">
+            <header id="top" data-name="Open2 Header" class="o_header_standard open2-header">
+                <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+                    <div id="o_main_nav" class="container-fluid open2-nav-shell">
+                        <a href="/" class="navbar-brand open2-brand" aria-label="Open2 Technology home">
+                            <img src="/theme_open2/static/src/icons/open2-logo.svg" alt="Open2 Technology" width="192" height="64"/>
+                        </a>
+                        <button class="navbar-toggler open2-menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#top_menu_collapse" aria-controls="top_menu_collapse" aria-expanded="false" aria-label="Open navigation">
+                            <span aria-hidden="true"/>
+                            <span aria-hidden="true"/>
+                        </button>
+                        <div id="top_menu_collapse" class="collapse navbar-collapse">
+                            <ul class="navbar-nav top_menu ms-auto align-items-lg-center">
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu" item_class.f="nav-item" link_class.f="nav-link"/>
+                                </t>
+                                <t t-call="website.placeholder_header_language_selector" _item_class.f="nav-item open2-language" _link_class.f="nav-link"/>
+                                <li class="nav-item open2-account">
+                                    <t t-call="portal.user_dropdown" _item_class.f="nav-item dropdown" _link_class.f="nav-link" _dropdown_menu_class.f="dropdown-menu-end"/>
+                                </li>
+                                <li class="nav-item ms-lg-3">
+                                    <a class="btn open2-button open2-button--light" href="/contact">Build with us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </xpath>
+        </field>
+    </record>
+</odoo>

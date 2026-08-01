@@ -1,0 +1,8 @@
+.open2-loader { position: fixed; inset: 0; z-index: var(--open2-z-overlay, 100); display: none; place-items: center; background: #05070a; color: #f8fafc; opacity: 0; pointer-events: none; }
+.open2-loader.is-open2-loader-active { display: grid; opacity: 1; pointer-events: auto; }
+.open2-loader.is-open2-loader-leaving { opacity: 0; filter: blur(.75rem); transform: scale(1.03); transition: opacity .35s ease, filter .35s ease, transform .35s ease; }
+.open2-loader__mark { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; clip-path: inset(0 100% 0 0); animation: open2-mark-reveal .65s var(--open2-ease, ease-out) forwards; }
+.open2-loader__mark img { width: Min(15rem, 60vw); }
+.open2-loader__mark span { color: #cbd5e1; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+@keyframes open2-mark-reveal { to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .open2-loader { display: none !important; } }

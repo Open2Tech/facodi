@@ -1,0 +1,61 @@
+.open2-site .o_skip_to_content { z-index: 110; background: var(--open2-white); color: var(--open2-black); font-weight: 700; }
+
+.open2-header { position: sticky; top: 0; z-index: var(--open2-z-sticky); border-bottom: var(--open2-border) solid var(--open2-white); background: rgba(5, 7, 10, .96); color: var(--open2-white); }
+.open2-nav-shell { min-height: 5.25rem; padding-inline: Clamp(1rem, 3vw, 3rem); }
+.open2-brand { display: inline-flex; align-items: center; margin: 0; padding: .5rem 0; }
+.open2-brand img { width: 9.75rem; height: auto; }
+.open2-header .navbar-nav { gap: .25rem; }
+.open2-header .nav-link { min-height: 2.75rem; display: flex; align-items: center; padding: .65rem .8rem !important; color: var(--open2-slate-300) !important; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .2s ease, background-color .2s ease; }
+.open2-header .nav-link:hover, .open2-header .nav-link.active { color: var(--open2-white) !important; background: var(--open2-surface-raised); }
+.open2-header .dropdown-menu { border: 2px solid var(--open2-white); border-radius: 0; background: var(--open2-black); color: var(--open2-white); }
+.open2-header .dropdown-item { color: var(--open2-white); }
+.open2-header .dropdown-item:hover { background: var(--open2-violet); color: var(--open2-white); }
+.open2-menu-button { width: 3rem; height: 3rem; padding: .65rem; border: 2px solid var(--open2-white); border-radius: 0; }
+.open2-menu-button span { display: block; width: 100%; height: 2px; margin-block: .35rem; background: var(--open2-white); }
+
+.open2-button { min-height: 3.25rem; display: inline-flex; align-items: center; justify-content: center; padding: .8rem 1.4rem; border: var(--open2-border) solid transparent; border-radius: 0; font-size: .78rem; font-weight: 700; letter-spacing: .1em; line-height: 1.1; text-transform: uppercase; transition: transform .2s var(--open2-ease), background-color .2s ease, color .2s ease, border-color .2s ease; }
+.open2-button:hover { transform: translateY(-2px); }
+.open2-button--light { border-color: var(--open2-white); background: var(--open2-white); color: var(--open2-black) !important; }
+.open2-button--light:hover { background: var(--open2-black); color: var(--open2-white) !important; }
+.open2-button--outline { border-color: var(--open2-white); background: transparent; color: var(--open2-white); }
+.open2-button--outline:hover { background: var(--open2-white); color: var(--open2-black); }
+.open2-button--ink { border-color: var(--open2-black); background: var(--open2-black); color: var(--open2-white); }
+.open2-button--ink:hover { background: transparent; color: var(--open2-black); }
+.open2-button--violet { border-color: var(--open2-violet); background: var(--open2-violet); color: var(--open2-white); }
+.open2-button--violet:hover { border-color: var(--open2-white); background: var(--open2-white); color: var(--open2-black); }
+
+.open2-footer { padding-top: var(--open2-space-xl); background: var(--open2-black); color: var(--open2-white); border-top: var(--open2-border) solid var(--open2-white); }
+.open2-footer__grid { display: grid; gap: 3rem; padding-bottom: var(--open2-space-lg); }
+.open2-footer h2 { margin-bottom: 1.25rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+.open2-footer nav, .open2-footer__contact { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
+.open2-footer nav a, .open2-footer__contact a { color: var(--open2-slate-300); text-decoration: none; }
+.open2-footer nav a:hover, .open2-footer__contact a:hover { color: var(--open2-violet); }
+.open2-footer__brand img { width: 10rem; margin-bottom: 1.5rem; }
+.open2-footer__brand p { max-width: 28rem; color: var(--open2-slate-300); }
+.open2-footer__brand span { color: var(--open2-slate-400); }
+.open2-footer__contact > a:first-of-type { font-family: "Space Grotesk", sans-serif; font-size: Clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; }
+.open2-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: 1.5rem; border-top: 1px solid var(--open2-surface-raised); color: var(--open2-slate-400); font-size: .8rem; }
+.open2-footer__bottom p { margin: 0; }
+
+.open2-form-grid { display: grid; gap: 1.5rem; }
+.open2-form-grid label { display: block; margin-bottom: .6rem; color: var(--open2-white); font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.open2-form-grid label span { color: var(--open2-slate-400); font-size: .72rem; text-transform: none; }
+.open2-form-grid .form-control { min-height: 3.5rem; padding: .85rem 1rem; border: 2px solid var(--open2-slate-400); border-radius: 0; background: var(--open2-surface); color: var(--open2-white); font-size: 1rem; }
+.open2-form-grid textarea.form-control { min-height: 10rem; }
+.open2-form-grid .form-control::placeholder { color: var(--open2-slate-400); opacity: 1; }
+.open2-form-grid .form-control:focus { border-color: var(--open2-violet); box-shadow: 0 0 0 3px rgba(139, 92, 246, .3); background: var(--open2-surface); color: var(--open2-white); }
+.open2-form-grid .is-invalid { border-color: var(--open2-error); }
+.open2-form-success { padding: Clamp(2rem, 5vw, 4rem); border: var(--open2-border) solid var(--open2-teal); background: var(--open2-surface); }
+.open2-form-success h2 { margin-bottom: 1rem; color: var(--open2-white); font-size: Clamp(2rem, 5vw, 4rem); text-transform: uppercase; }
+.open2-form-success p { color: var(--open2-slate-300); }
+
+@media (min-width: 48rem) {
+    .open2-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+    .open2-form-grid__wide { grid-column: 1 / -1; }
+    .open2-footer__grid { grid-template-columns: minmax(18rem, 2fr) repeat(3, minmax(10rem, 1fr)); }
+}
+@media (max-width: 61.98rem) {
+    .open2-header .navbar-collapse { margin-inline: -1rem; padding: 1rem; border-top: 2px solid var(--open2-white); background: var(--open2-black); }
+    .open2-header .nav-link { min-height: 3.25rem; font-size: 1rem; }
+    .open2-header .open2-button { width: 100%; margin-top: .75rem; }
+}
