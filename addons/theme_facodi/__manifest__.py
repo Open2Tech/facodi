@@ -7,7 +7,7 @@
     'sequence': 120,
     'author': 'Open2 Technology (open2.tech)',
     'license': 'LGPL-3',
-    'depends': ['website', 'website_slides'],
+    'depends': ['facodi_content', 'website', 'website_slides'],
     'data': [
         'data/generate_primary_template.xml',
         'data/ir_asset.xml',

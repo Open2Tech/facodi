@@ -1,0 +1,13 @@
+services:
+  facodi-pipeline:
+    build: .
+    environment:
+      PIPELINE_TOKEN: ${PIPELINE_TOKEN:?set PIPELINE_TOKEN in the environment}
+      DATABASE_PATH: /data/facodi-pipeline.sqlite3
+    ports:
+      - "8000:8000"
+    volumes:
+      - facodi_pipeline_data:/data
+
+volumes:
+  facodi_pipeline_data:
