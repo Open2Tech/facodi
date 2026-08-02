@@ -32,6 +32,14 @@ class JobStore:
                 WHERE state IN ('queued', 'processing')
                 '''
             )
+            connection.execute(
+                '''
+                UPDATE enrichment_job
+                SET state = 'queued', updated_at = ?
+                WHERE state = 'processing'
+                ''',
+                (self._timestamp(),),
+            )
 
     def create_or_reuse(self, source_url: str) -> dict[str, str | None]:
         timestamp = self._timestamp()
@@ -75,6 +83,44 @@ class JobStore:
                 (job_id,),
             ).fetchone()
             return dict(row) if row else None
+
+    def claim(self, job_id: str) -> bool:
+        timestamp = self._timestamp()
+        with self._connect() as connection:
+            cursor = connection.execute(
+                '''
+                UPDATE enrichment_job
+                SET state = 'processing', updated_at = ?, error = NULL
+                WHERE id = ? AND state = 'queued'
+                ''',
+                (timestamp, job_id),
+            )
+            return cursor.rowcount == 1
+
+    def mark_ready(self, job_id: str, *, title: str, summary: str) -> None:
+        self._update_terminal_state(job_id, state='ready', title=title, summary=summary, error=None)
+
+    def mark_failed(self, job_id: str, error: str) -> None:
+        self._update_terminal_state(job_id, state='failed', title=None, summary=None, error=error)
+
+    def _update_terminal_state(
+        self,
+        job_id: str,
+        *,
+        state: str,
+        title: str | None,
+        summary: str | None,
+        error: str | None,
+    ) -> None:
+        with self._connect() as connection:
+            connection.execute(
+                '''
+                UPDATE enrichment_job
+                SET state = ?, updated_at = ?, title = ?, summary = ?, error = ?
+                WHERE id = ?
+                ''',
+                (state, self._timestamp(), title, summary, error, job_id),
+            )
 
     def _connect(self) -> sqlite3.Connection:
         connection = sqlite3.connect(self.database_path)

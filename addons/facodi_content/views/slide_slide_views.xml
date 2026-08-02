@@ -7,6 +7,11 @@
         <field name="arch" type="xml">
             <notebook position="inside">
                 <page name="facodi_enrichment" string="Enrichment">
+                    <group groups="website_slides.group_website_slides_officer">
+                        <button name="action_queue_enrichment" type="object" string="Queue Enrichment" class="btn-primary" invisible="enrichment_state not in ['new', 'failed', 'applied']"/>
+                        <button name="action_refresh_enrichment" type="object" string="Refresh Enrichment" invisible="enrichment_state not in ['queued', 'processing']"/>
+                        <button name="action_apply_enrichment" type="object" string="Apply Suggestion" class="btn-primary" invisible="enrichment_state != 'ready'"/>
+                    </group>
                     <group>
                         <group>
                             <field name="enrichment_state"/>

@@ -1,11 +1,12 @@
 from contextlib import asynccontextmanager
 from urllib.parse import urlparse
 
-from fastapi import Depends, FastAPI, Header, HTTPException, status
+from fastapi import BackgroundTasks, Depends, FastAPI, Header, HTTPException, status
 from pydantic import BaseModel, HttpUrl
 
 from .config import Settings, get_settings
 from .jobs import JobStore
+from .processor import process_enrichment_job
 
 
 class EnrichmentRequest(BaseModel):
@@ -54,13 +55,17 @@ def health_check() -> dict[str, str]:
 @app.post('/v1/videos/enrich', response_model=EnrichmentJob, dependencies=[Depends(require_token)])
 def create_enrichment_job(
     request: EnrichmentRequest,
+    background_tasks: BackgroundTasks,
     settings: Settings = Depends(get_settings),
     job_store: JobStore = Depends(get_job_store),
 ) -> dict[str, str | None]:
     host = (urlparse(str(request.source_url)).hostname or '').lower()
     if host not in settings.allowed_video_hosts:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail='Unsupported video host')
-    return job_store.create_or_reuse(str(request.source_url))
+    source_url = str(request.source_url)
+    job = job_store.create_or_reuse(source_url)
+    background_tasks.add_task(process_enrichment_job, str(job['id']), source_url, settings.database_path)
+    return job
 
 
 @app.get('/v1/jobs/{job_id}', response_model=EnrichmentJob, dependencies=[Depends(require_token)])
