@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        FACODI auth styling.
+        Inherits the standard Odoo login layout and applies the FACODI
+        visual tokens without replacing the functional form markup.
+    -->
+
+    <template id="facodi_login_layout" inherit_id="web.login_layout" name="FACODI login layout">
+        <xpath expr="//div[hasclass('container')]/div[hasclass('card')]" position="attributes">
+            <attribute name="class">card border-0 mx-auto bg-transparent o_database_list facodi-auth-card</attribute>
+            <attribute name="style"/>
+        </xpath>
+        <xpath expr="//div[hasclass('card-body')]" position="attributes">
+            <attribute name="class">card-body facodi-auth-card-body</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('text-center')][contains(@class, 'pb-3') and contains(@class, 'border-bottom')]" position="replace">
+            <div class="text-center pb-4 mb-4">
+                <a href="/" class="facodi-wordmark d-inline-block" aria-label="FACODI home">FACODI<span>.</span></a>
+                <p class="facodi-auth-lead mt-3 mb-0">Faculdade Comunitaria Digital</p>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('text-center')][contains(@class, 'small') and contains(@class, 'mt-4')]" position="replace">
+            <div class="text-center small mt-4 pt-3 border-top-0 facodi-auth-footer" t-if="not disable_footer">
+                <span t-esc="datetime.datetime.now().year"/> FACODI · Criado por <a href="https://open2.tech" target="_blank" rel="noopener noreferrer">Open2 Technology</a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="facodi_login_form" inherit_id="web.login" name="FACODI login form">
+        <xpath expr="//form[hasclass('oe_login_form')]" position="attributes">
+            <attribute name="class">oe_login_form facodi-auth-form</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_login_form')]//button[@type='submit']" position="attributes">
+            <attribute name="class">btn facodi-button facodi-button-primary w-100</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_login_form')]//input[contains(@class, 'form-control')]" position="attributes">
+            <attribute name="class">form-control facodi-form-control</attribute>
+        </xpath>
+    </template>
+
+    <template id="facodi_signup_form" inherit_id="auth_signup.signup" name="FACODI signup form">
+        <xpath expr="//form[hasclass('oe_signup_form')]" position="attributes">
+            <attribute name="class">oe_signup_form facodi-auth-form</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_signup_form')]//button[@type='submit']" position="attributes">
+            <attribute name="class">btn facodi-button facodi-button-primary w-100 mb-1</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_signup_form')]//input[contains(@class, 'form-control')]" position="attributes">
+            <attribute name="class">form-control facodi-form-control</attribute>
+        </xpath>
+    </template>
+
+    <template id="facodi_reset_password_form" inherit_id="auth_signup.reset_password" name="FACODI reset password form">
+        <xpath expr="//form[hasclass('oe_reset_password_form')]" position="attributes">
+            <attribute name="class">oe_reset_password_form facodi-auth-form</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_reset_password_form')]//button[@type='submit']" position="attributes">
+            <attribute name="class">btn facodi-button facodi-button-primary w-100</attribute>
+        </xpath>
+        <xpath expr="//form[hasclass('oe_reset_password_form')]//input[contains(@class, 'form-control')]" position="attributes">
+            <attribute name="class">form-control facodi-form-control</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('oe_login_form')][contains(@class, 'clearfix')]" position="attributes">
+            <attribute name="class">oe_login_form clearfix facodi-auth-form</attribute>
+        </xpath>
+    </template>
+
+    <template id="facodi_auth_links" inherit_id="auth_signup.login" name="FACODI auth links">
+        <xpath expr="//div[hasclass('oe_login_buttons')]/a[@t-if='signup_enabled']" position="attributes">
+            <attribute name="class">btn btn-link btn-sm mt-2 facodi-auth-link</attribute>
+        </xpath>
+        <xpath expr="//label[@for='password']/a[@t-if='reset_password_enabled']" position="attributes">
+            <attribute name="class">btn btn-link btn-sm facodi-auth-link</attribute>
+        </xpath>
+    </template>
+</odoo>

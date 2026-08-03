@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI user profile / portal styling -->
+
+    <template id="facodi_portal_layout" inherit_id="portal.frontend_layout" name="FACODI portal layout">
+        <xpath expr="//div[@id='wrapwrap']//main" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_my_home" inherit_id="portal.portal_my_home" name="FACODI portal home">
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="attributes">
+            <attribute name="class" add="facodi-portal-home" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_my_details" inherit_id="portal.portal_my_details" name="FACODI portal details">
+        <xpath expr="//div[hasclass('o_portal_details')]" position="attributes">
+            <attribute name="class" add="facodi-portal-details" separator=" "/>
+        </xpath>
+        <xpath expr="//input[contains(@class, 'form-control')]" position="attributes">
+            <attribute name="class">form-control facodi-form-control</attribute>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class">btn facodi-button facodi-button-primary</attribute>
+        </xpath>
+    </template>
+</odoo>
