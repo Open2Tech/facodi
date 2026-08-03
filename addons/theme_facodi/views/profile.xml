@@ -13,16 +13,4 @@
             <attribute name="class" add="facodi-portal-home" separator=" "/>
         </xpath>
     </template>
-
-    <template id="facodi_portal_my_details" inherit_id="portal.portal_my_details" name="FACODI portal details">
-        <xpath expr="//div[hasclass('o_portal_details')]" position="attributes">
-            <attribute name="class" add="facodi-portal-details" separator=" "/>
-        </xpath>
-        <xpath expr="//input[contains(@class, 'form-control')]" position="attributes">
-            <attribute name="class">form-control facodi-form-control</attribute>
-        </xpath>
-        <xpath expr="//button[@type='submit']" position="attributes">
-            <attribute name="class">btn facodi-button facodi-button-primary</attribute>
-        </xpath>
-    </template>
 </odoo>

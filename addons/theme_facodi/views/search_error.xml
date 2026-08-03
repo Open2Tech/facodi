@@ -1,38 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- FACODI search, empty, error and restricted access states -->
+    <!-- FACODI error and empty states -->
 
-    <template id="facodi_http_error_page" inherit_id="http_routing.http_error_page" name="FACODI HTTP error page">
+    <template id="facodi_http_error_4xx" inherit_id="http_routing.4xx" name="FACODI HTTP 4xx error page">
         <xpath expr="//div[@id='wrap']" position="attributes">
             <attribute name="class" add="facodi-app-shell" separator=" "/>
         </xpath>
-        <xpath expr="//div[contains(@class, 'text-center') and contains(@class, 'oe_structure')]" position="attributes">
-            <attribute name="class" add="facodi-empty-state" separator=" "/>
+        <xpath expr="//div[hasclass('container')][h1[contains(text(), 'Oops')]]" position="attributes">
+            <attribute name="class">container facodi-empty-state text-start align-items-start</attribute>
         </xpath>
     </template>
 
-    <template id="facodi_website_search_results" inherit_id="website.website_search_results" name="FACODI search results">
+    <template id="facodi_http_error_403" inherit_id="http_routing.403" name="FACODI HTTP 403 error page">
         <xpath expr="//div[@id='wrap']" position="attributes">
             <attribute name="class" add="facodi-app-shell" separator=" "/>
         </xpath>
-        <xpath expr="//input[@name='search']" position="attributes">
-            <attribute name="class">form-control facodi-form-control facodi-search-input</attribute>
+        <xpath expr="//div[hasclass('container')][h1[contains(text(), 'Forbidden')]]" position="attributes">
+            <attribute name="class">container facodi-empty-state text-start align-items-start</attribute>
         </xpath>
     </template>
 
-    <template id="facodi_slide_access_denied" inherit_id="website_slides.slide_access_denied" name="FACODI slide access denied">
+    <template id="facodi_http_error_404" inherit_id="http_routing.404" name="FACODI HTTP 404 error page">
         <xpath expr="//div[@id='wrap']" position="attributes">
             <attribute name="class" add="facodi-app-shell" separator=" "/>
-        </xpath>
-        <xpath expr="//div[hasclass('alert')][contains(@class, 'alert-warning')]" position="attributes">
-            <attribute name="class">alert alert-warning border-2</attribute>
-            <attribute name="style">border-color: var(--facodi-ink); box-shadow: 3px 3px 0 var(--facodi-ink);</attribute>
-        </xpath>
-    </template>
-
-    <template id="facodi_courses_home_empty" inherit_id="website_slides.courses_home" name="FACODI courses home empty">
-        <xpath expr="//div[hasclass('o_wslides_home_empty') or contains(@class, 'o_wslides_home_empty')]" position="attributes">
-            <attribute name="class" add="facodi-empty-state" separator=" "/>
         </xpath>
     </template>
 </odoo>

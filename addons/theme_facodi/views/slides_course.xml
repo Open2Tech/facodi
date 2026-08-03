@@ -3,26 +3,17 @@
     <!-- FACODI course page styling -->
 
     <template id="facodi_course_main" inherit_id="website_slides.course_main" name="FACODI course main">
-        <xpath expr="//div[@id='o_wslides_course_main']" position="attributes">
-            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class">wrap mt-0 facodi-app-shell</attribute>
         </xpath>
-    </template>
-
-    <template id="facodi_course_main_left_column" inherit_id="website_slides.course_main_left_column" name="FACODI course left column">
-        <xpath expr="//div[@id='o_wslides_course_main_left_column']" position="attributes">
-            <attribute name="class">col-lg-8 col-12 facodi-course-main</attribute>
+        <xpath expr="//div[contains(@class, 'o_wslides_course_main')]" position="attributes">
+            <attribute name="class" add="facodi-course-main" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_course_sidebar" inherit_id="website_slides.course_sidebar" name="FACODI course sidebar">
-        <xpath expr="//div[@id='o_wslides_course_sidebar']" position="attributes">
-            <attribute name="class" add="facodi-course-sidebar" separator=" "/>
-        </xpath>
-    </template>
-
-    <template id="facodi_course_header" inherit_id="website_slides.course_header" name="FACODI course header">
-        <xpath expr="//div[hasclass('o_wslides_course_header')]" position="attributes">
-            <attribute name="class" add="facodi-course-header" separator=" "/>
+        <xpath expr="//div[hasclass('o_wslides_course_sidebar')]" position="attributes">
+            <attribute name="class">o_wslides_course_sidebar bg-white px-3 py-2 py-md-3 mb-3 mb-md-5 facodi-course-sidebar</attribute>
         </xpath>
     </template>
 </odoo>
