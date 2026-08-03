@@ -16,3 +16,38 @@ body { background: var(--facodi-paper); color: var(--facodi-ink); }
 @media (max-width: 720px) { .facodi-nav-shell { padding: 0 18px; }.facodi-header .navbar-collapse { padding: 12px 0; }.facodi-hero { gap: 34px; padding: 48px 24px; }.facodi-hero h1 { font-size: 2.75rem; }.facodi-dashboard { display: block; }.facodi-side-nav { border-bottom: 2px solid var(--facodi-ink); border-right: 0; display: flex; gap: 6px; overflow-x: auto; padding: 14px 18px; }.facodi-side-nav p { display: none; }.facodi-side-nav a { flex: 0 0 auto; margin: 0; }.facodi-dashboard-main { padding: 32px 20px; }.facodi-stat-row, .facodi-course-grid, .facodi-resource-grid, .facodi-insights, .facodi-footer-inner { grid-template-columns: 1fr; }.facodi-course-card:last-child { grid-column: auto; }.facodi-insights { display: grid; padding: 24px 20px; }.facodi-section-heading { align-items: flex-start; flex-direction: column; }.facodi-open-section { padding: 56px 24px; }.facodi-footer-meta { text-align: left; }.facodi-hero-board { padding: 18px; transform: none; } }
 @media (prefers-color-scheme: dark) { body, .facodi-app-shell { background: #15233B; color: #F2F5F8; }.facodi-header { background: #15233B; border-color: #F2F5F8; }.facodi-wordmark, .facodi-header .nav-link { color: #F2F5F8; }.facodi-header .nav-link:hover, .facodi-text-link { color: var(--facodi-cyan); }.facodi-hero, .facodi-side-nav { border-color: #F2F5F8; }.facodi-dashboard-main, .facodi-insights { background: #1B2B45; }.facodi-side-nav a { color: #F2F5F8; }.facodi-section-heading h2, .facodi-course-content h3 { color: #F2F5F8; }.facodi-course-card, .facodi-roadmap-card, .facodi-resource-grid article { background: #263953; color: #F2F5F8; }.facodi-course-card, .facodi-stat-card, .facodi-insights article, .facodi-resource-grid article { box-shadow: 3px 3px 0 #F2F5F8; }.facodi-button-secondary { background: #F2F5F8; }.facodi-footer { border-color: #F2F5F8; } }
 @media (prefers-reduced-motion: reduce) { .facodi-button, .facodi-course-card { transition: none; } }
+/* Auth pages */
+.facodi-auth-card { background: white; border: 2px solid var(--facodi-ink) !important; border-radius: 12px; box-shadow: var(--facodi-shadow); max-width: 420px; width: 100%; }
+.facodi-auth-card-body { padding: 32px; }
+.facodi-auth-lead { color: var(--facodi-line); font-size: .85rem; font-weight: 500; }
+.facodi-auth-form .form-label { color: var(--facodi-ink); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+.facodi-form-control { border: 2px solid var(--facodi-ink); border-radius: 8px; color: var(--facodi-ink); font-size: .95rem; padding: .6rem .85rem; }
+.facodi-form-control:focus { border-color: var(--facodi-blue); box-shadow: 0 0 0 3px rgba(55, 190, 210, .25); }
+.facodi-auth-form .input-group .facodi-form-control { border-right: 0; }
+.facodi-auth-form .input-group .o_show_password { background: white; border: 2px solid var(--facodi-ink); border-left: 0; color: var(--facodi-ink); }
+.facodi-auth-link { color: var(--facodi-blue) !important; font-size: .82rem; font-weight: 600; text-decoration: none; }
+.facodi-auth-link:hover { color: var(--facodi-ink) !important; text-decoration: underline; }
+.facodi-auth-footer { color: var(--facodi-line); font-size: .75rem; }
+.facodi-auth-footer a { color: var(--facodi-blue); font-weight: 600; text-decoration: none; }
+.facodi-auth-footer a:hover { text-decoration: underline; }
+
+/* Empty and error states */
+.facodi-empty-state { align-items: center; display: flex; flex-direction: column; padding: 64px 24px; text-align: center; }
+.facodi-empty-state .fa { color: var(--facodi-blue); font-size: 3rem; margin-bottom: 18px; }
+.facodi-empty-state h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+.facodi-empty-state p { color: var(--facodi-line); max-width: 460px; }
+
+/* Search */
+.facodi-search-input { border: 2px solid var(--facodi-ink); border-radius: 8px; box-shadow: 2px 2px 0 var(--facodi-ink); }
+.facodi-search-input:focus { border-color: var(--facodi-blue); box-shadow: 0 0 0 3px rgba(55, 190, 210, .25); }
+
+/* eLearning refinements */
+.o_wslides_body .o_wslides_course_nav { background: var(--facodi-ink) !important; }
+.o_wslides_body .o_wslides_course_nav .breadcrumb-item, .o_wslides_body .o_wslides_course_nav .breadcrumb-item a, .o_wslides_body .o_wslides_course_nav .o_wslides_course_nav_search .form-control { color: white; }
+.o_wslides_body .o_wslides_course_nav .breadcrumb-item a:hover { color: var(--facodi-cyan); }
+.o_wslides_body .o_wslides_course_header h1, .o_wslides_body .o_wslides_lesson_header h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.o_wslides_body .o_wslides_course_sidebar { background: white; border: 2px solid var(--facodi-ink); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-ink); }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_chapter { background: #F1F4F7; color: var(--facodi-ink); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link { color: var(--facodi-ink); font-weight: 500; }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link:hover { background: var(--facodi-mint); color: var(--facodi-ink); }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link.active { background: var(--facodi-cyan); color: var(--facodi-ink); font-weight: 700; }

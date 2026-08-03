@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI lesson / video page styling -->
+
+    <template id="facodi_lesson_main" inherit_id="website_slides.lesson_main" name="FACODI lesson main">
+        <xpath expr="//div[@id='o_wslides_lesson_main']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_lesson_content" inherit_id="website_slides.lesson_content" name="FACODI lesson content">
+        <xpath expr="//div[hasclass('o_wslides_lesson_content')]" position="attributes">
+            <attribute name="class" add="facodi-lesson-content" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_lesson_sidebar" inherit_id="website_slides.lesson_sidebar" name="FACODI lesson sidebar">
+        <xpath expr="//div[@id='o_wslides_lesson_sidebar']" position="attributes">
+            <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_slide_fullscreen" inherit_id="website_slides.slide_fullscreen" name="FACODI slide fullscreen">
+        <xpath expr="//div[@id='o_wslides_fs_main']" position="attributes">
+            <attribute name="class" add="facodi-fullscreen" separator=" "/>
+        </xpath>
+    </template>
+</odoo>
