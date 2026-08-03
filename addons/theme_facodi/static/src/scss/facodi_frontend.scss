@@ -51,3 +51,77 @@ body { background: var(--facodi-paper); color: var(--facodi-ink); }
 .o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link { color: var(--facodi-ink); font-weight: 500; }
 .o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link:hover { background: var(--facodi-mint); color: var(--facodi-ink); }
 .o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link.active { background: var(--facodi-cyan); color: var(--facodi-ink); font-weight: 700; }
+
+/* eLearning FACODI overhaul */
+.o_wslides_body { background: var(--facodi-paper); color: var(--facodi-ink); }
+.o_wslides_body .wrap { background: var(--facodi-paper); }
+
+/* Course header / cover */
+.o_wslides_body .o_record_cover_container[data-res-model="slide.channel"],
+.o_wslides_body .o_wslides_lesson_header,
+.o_wslides_body .o_wslides_course_header { background: var(--facodi-ink) !important; background-image: none !important; color: white; }
+.o_wslides_body .o_wslides_lesson_header a, .o_wslides_body .o_wslides_course_header a { color: white; }
+.o_wslides_body .o_wslides_lesson_header a:hover, .o_wslides_body .o_wslides_course_header a:hover { color: var(--facodi-cyan); }
+.o_wslides_body .o_wslides_course_header h1, .o_wslides_body .o_wslides_lesson_header h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+/* Nav tabs inside course */
+.o_wslides_body .o_wslides_nav_tabs { border-bottom: 2px solid var(--facodi-ink); }
+.o_wslides_body .o_wslides_nav_tabs .nav-link { color: var(--facodi-line); font-family: 'Space Grotesk', sans-serif; font-weight: 600; border: 0; border-bottom: 3px solid transparent; }
+.o_wslides_body .o_wslides_nav_tabs .nav-link.active { border-bottom-color: var(--facodi-sun); color: var(--facodi-ink); }
+.o_wslides_body .o_wslides_nav_tabs .nav-link:hover { color: var(--facodi-blue); }
+
+/* Course sidebar */
+.o_wslides_body .o_wslides_course_sidebar { background: white; border: 2px solid var(--facodi-ink); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-ink); }
+.o_wslides_body .o_wslides_sidebar_top .btn-primary { background: var(--facodi-sun); border-color: var(--facodi-ink); box-shadow: 2px 2px 0 var(--facodi-ink); color: var(--facodi-ink); }
+.o_wslides_body .o_wslides_sidebar_top .btn-primary:hover { background: var(--facodi-cyan); }
+
+/* Slide list */
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_chapter { background: #F1F4F7; color: var(--facodi-ink); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link { color: var(--facodi-ink); font-weight: 500; border-radius: 6px; }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link:hover { background: var(--facodi-mint); color: var(--facodi-ink); }
+.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link.active { background: var(--facodi-cyan); color: var(--facodi-ink); font-weight: 700; }
+
+/* Catalog cards */
+.o_wslides_body .o_wslides_course_card { background: white; border: 2px solid var(--facodi-ink); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-ink); transition: transform 180ms ease, box-shadow 180ms ease; }
+.o_wslides_body .o_wslides_course_card:hover { box-shadow: 2px 2px 0 var(--facodi-ink); transform: translate(2px, 2px); }
+.o_wslides_body .o_wslides_course_card .card-title { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-ink); }
+
+/* Catalog search bar */
+.o_wslides_body .facodi-course-search-bar h1 { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-ink); }
+
+/* Lesson page */
+.o_wslides_body .o_wslides_lesson_main { padding-top: 40px; padding-bottom: 60px; }
+.o_wslides_body .o_wslides_lesson_content { background: white; border: 2px solid var(--facodi-ink); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-ink); padding: 24px; }
+.o_wslides_body .o_wslides_lesson_content h1, .o_wslides_body .o_wslides_lesson_content h2 { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-ink); }
+
+/* Lesson sidebar */
+.o_wslides_body .o_wslides_lesson_aside_list { background: white; border: 2px solid var(--facodi-ink); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-ink); overflow: hidden; }
+.o_wslides_body .o_wslides_lesson_aside_list .bg-100 { background: #F1F4F7; color: var(--facodi-ink); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.o_wslides_body .o_wslides_lesson_aside_list_link { color: var(--facodi-ink); }
+.o_wslides_body .o_wslides_lesson_aside_list_link.active { background: var(--facodi-cyan); color: var(--facodi-ink); font-weight: 700; }
+.o_wslides_body .o_wslides_lesson_aside_list_link:hover { background: var(--facodi-mint); }
+
+/* Fullscreen lesson */
+.o_wslides_fs_main { background: var(--facodi-ink); color: white; }
+.o_wslides_fs_main .o_wslides_slide_fs_header { background: var(--facodi-ink); border-bottom: 2px solid rgba(255,255,255,.15); }
+.o_wslides_fs_main .o_wslides_fs_sidebar { background: var(--facodi-ink); border-right: 2px solid rgba(255,255,255,.15); }
+.o_wslides_fs_main .o_wslides_fs_sidebar_section { border-bottom: 1px solid rgba(255,255,255,.1); }
+.o_wslides_fs_main .o_wslides_fs_sidebar_section a { color: white; }
+.o_wslides_fs_main .o_wslides_fs_sidebar_section a:hover { color: var(--facodi-cyan); }
+.o_wslides_fs_main .o_wslides_fs_sidebar_list_item.active { background: var(--facodi-blue); }
+.o_wslides_fs_main .progress-bar { background: var(--facodi-cyan); }
+.o_wslides_fs_main .o_wslides_fs_toggle_sidebar, .o_wslides_fs_main .o_wslides_fs_share, .o_wslides_fs_main .o_wslides_fs_exit_fullscreen { color: white; }
+.o_wslides_fs_main .o_wslides_fs_toggle_sidebar:hover, .o_wslides_fs_main .o_wslides_fs_share:hover, .o_wslides_fs_main .o_wslides_fs_exit_fullscreen:hover { color: var(--facodi-cyan); }
+
+/* Generic eLearning buttons */
+.o_wslides_body .btn-primary { background: var(--facodi-sun); border-color: var(--facodi-ink); box-shadow: 2px 2px 0 var(--facodi-ink); color: var(--facodi-ink); font-weight: 700; }
+.o_wslides_body .btn-primary:hover { background: var(--facodi-cyan); color: var(--facodi-ink); }
+.o_wslides_body .btn-light { background: white; border: 2px solid var(--facodi-ink); color: var(--facodi-ink); }
+.o_wslides_body .btn-light:hover { background: var(--facodi-mint); }
+
+/* eLearning forms/inputs */
+.o_wslides_body .form-control, .o_wslides_body .form-select { border: 2px solid var(--facodi-ink); border-radius: 8px; color: var(--facodi-ink); }
+.o_wslides_body .form-control:focus, .o_wslides_body .form-select:focus { border-color: var(--facodi-blue); box-shadow: 0 0 0 3px rgba(55, 190, 210, .25); }
+
+/* Badges/tags */
+.o_wslides_body .o_wslides_channel_tag { border: 1px solid var(--facodi-ink); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; text-transform: uppercase; }
