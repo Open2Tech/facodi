@@ -13,9 +13,9 @@ As correções implementadas até agora estão limitadas a heranças QWeb do add
 | Estado | Quantidade | Escopo atual |
 | --- | ---: | --- |
 | Total | 50 | Itens AUD-001 a AUD-050. |
-| Open | 45 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| Open | 44 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
 | In progress | 0 | Nenhuma correção parcialmente aplicada. |
-| Fixed | 3 | AUD-003, AUD-004 e AUD-005 corrigidos no addon em `6db6eff`. |
+| Fixed | 4 | AUD-003, AUD-004, AUD-005 e AUD-012 corrigidos no addon. |
 | Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
 | Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
 | Deferred | 0 | Nenhum item adiado formalmente. |
@@ -135,7 +135,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 ### Catálogo `/slides`
 
 - **AUD-011 — título, busca e filtros standard em inglês:** P2; snapshot mostra `Courses`, `All Courses`, `Search courses`, `New Content` e `steps`.
-- **AUD-012 — classes específicas e estilos genéricos:** P2; `facodi-search-result-card` é colocado no XML, mas regras usam em grande parte `.o_search_result_item` e estruturas Odoo.
+- **AUD-012 — classes específicas e estilos genéricos:** P2, `fixed` localmente; resultados de pesquisa usam agora `facodi-search-result-card`, a classe adicionada pela herança QWeb, em vez do seletor global `.o_search_result_item`. XML e escopo SCSS validados; staging pendente de propagação.
 - **AUD-013 — filtros, paginação e zero resultados sem evidência responsiva:** P2; estados precisam de screenshots e métricas nos cinco breakpoints.
 - **AUD-014 — badges e metadados dependem do comprimento real:** P3; títulos, duração e número de passos precisam de teste com conteúdo longo.
 
