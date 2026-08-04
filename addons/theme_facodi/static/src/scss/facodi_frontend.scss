@@ -73,6 +73,26 @@ body {
     }
 }
 
+.facodi-header .facodi-mega-menu {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 0 0 10px 10px;
+    box-shadow: var(--facodi-shadow);
+    min-width: min(680px, calc(100vw - 32px));
+    padding: 24px;
+
+    a {
+        color: var(--facodi-black);
+        font-weight: 600;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--facodi-primary);
+            color: var(--facodi-black);
+        }
+    }
+}
+
 .facodi-icon-button {
     border: 2px solid var(--facodi-black);
     border-radius: 8px;
@@ -659,7 +679,21 @@ body {
 
 .facodi-footer-links {
     display: grid;
-    gap: 9px;
+    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    .facodi-footer-group {
+        display: grid;
+        gap: 9px;
+        align-content: start;
+    }
+
+    strong {
+        color: var(--facodi-primary);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .68rem;
+        text-transform: uppercase;
+    }
 
     a {
         color: white;
@@ -2198,6 +2232,10 @@ body {
     .facodi-resource-grid,
     .facodi-insights,
     .facodi-footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .facodi-footer-links {
         grid-template-columns: 1fr;
     }
 

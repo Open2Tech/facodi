@@ -14,8 +14,9 @@
                                 <!-- Dynamic menu items from Website backend -->
                                 <t t-foreach="website.menu_id.child_id" t-as="submenu">
                                     <t t-call="website.submenu"
-                                        item_class.f="nav-item"
-                                        link_class.f="nav-link"/>
+                                        item_class.f="nav-item facodi-menu-item"
+                                        link_class.f="nav-link"
+                                        _extra_megamenu_classes.f="facodi-mega-menu"/>
                                 </t>
                                 <!-- Sign-in / user dropdown -->
                                 <li class="nav-item ms-lg-2">
