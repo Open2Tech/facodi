@@ -1,127 +1,2267 @@
-:root { --facodi-primary: #EFFF00; --facodi-black: #000000; --facodi-white: #FFFFFF; --facodi-muted: #F2F2F2; --facodi-gray: #666666; --facodi-dark-bg: #0b0b0b; --facodi-dark-muted: #1a1a1a; --facodi-shadow: 5px 5px 0 var(--facodi-black); }
-body { background: var(--facodi-white); color: var(--facodi-black); }
-.facodi-header { background: var(--facodi-white); border-bottom: 2px solid var(--facodi-black); position: relative; z-index: 10; }
-.facodi-nav-shell { min-height: 72px; max-width: 1440px; padding: 0 32px; }
-.facodi-wordmark { color: var(--facodi-black); font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; letter-spacing: 0; text-decoration: none; }.facodi-wordmark span { color: var(--facodi-black); }
-.facodi-header .nav-link { color: var(--facodi-black); font-size: .9rem; font-weight: 600; padding: .5rem .8rem !important; }.facodi-header .nav-link:hover { color: var(--facodi-black); }
-.facodi-icon-button { border: 2px solid var(--facodi-black); border-radius: 8px; box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black); }
-.facodi-button { align-items: center; border: 2px solid var(--facodi-black); border-radius: 8px; box-shadow: 3px 3px 0 var(--facodi-black); display: inline-flex; font-size: .875rem; font-weight: 700; gap: 6px; justify-content: center; min-height: 42px; padding: 9px 16px; transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease; }.facodi-button:hover { box-shadow: 1px 1px 0 var(--facodi-black); color: inherit; transform: translate(2px, 2px); }.facodi-button:focus-visible, .facodi-header a:focus-visible { outline: 3px solid var(--facodi-primary); outline-offset: 3px; }.facodi-button-primary { background: var(--facodi-primary); color: var(--facodi-black); }.facodi-button-primary:hover { background: var(--facodi-primary); color: var(--facodi-black); }.facodi-button-secondary { background: white; color: var(--facodi-black); }
-.facodi-app-shell { background: var(--facodi-white); font-family: 'Inter', sans-serif; overflow: hidden; }.facodi-hero { align-items: stretch; border-bottom: 2px solid var(--facodi-black); display: grid; gap: 48px; grid-template-columns: minmax(0, 1.1fr) minmax(390px, .9fr); margin: 0 auto; max-width: 1440px; padding: 72px 8vw; }.facodi-kicker { color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .69rem; font-weight: 700; letter-spacing: 0; margin-bottom: 16px; text-transform: uppercase; }.facodi-kicker .fa { font-size: .5rem; margin-right: 7px; }.facodi-hero h1, .facodi-open-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.8rem, 5.2vw, 5.5rem); font-weight: 700; letter-spacing: 0; line-height: .98; margin: 0; max-width: 760px; text-wrap: balance; }.facodi-lead { font-size: 1.08rem; line-height: 1.55; margin: 24px 0 28px; max-width: 570px; }.facodi-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-.facodi-hero-board { align-self: center; background: var(--facodi-black); border: 2px solid var(--facodi-black); border-radius: 12px; box-shadow: var(--facodi-shadow); color: white; overflow: hidden; padding: 24px; transform: rotate(1deg); }.facodi-board-top, .facodi-panel-label, .facodi-card-bottom { display: flex; font-family: 'JetBrains Mono', monospace; font-size: .68rem; font-weight: 700; justify-content: space-between; letter-spacing: 0; text-transform: uppercase; }.facodi-live-dot { color: var(--facodi-muted); }.facodi-live-dot::before { background: var(--facodi-muted); border-radius: 50%; content: ''; display: inline-block; height: 7px; margin-right: 5px; width: 7px; }.facodi-board-path { align-items: center; display: flex; justify-content: space-between; margin: 36px 12px 28px; }.facodi-path-node { align-items: center; background: white; border: 2px solid white; border-radius: 50%; color: var(--facodi-black); display: flex; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; height: 38px; justify-content: center; width: 38px; }.facodi-path-node.is-complete { background: var(--facodi-muted); border-color: var(--facodi-muted); }.facodi-path-node.is-current { background: var(--facodi-primary); border-color: var(--facodi-primary); }.facodi-path-line { background: white; height: 2px; opacity: .4; width: 28%; }.facodi-path-line.is-complete { background: var(--facodi-muted); opacity: 1; }.facodi-board-cards { display: grid; gap: 8px; }.facodi-board-cards div { align-items: center; background: rgba(255, 255, 255, .10); border: 1px solid rgba(255, 255, 255, .25); border-radius: 7px; display: flex; justify-content: space-between; padding: 11px; }.facodi-board-cards .is-selected { background: var(--facodi-black); border-color: var(--facodi-primary); }.facodi-board-cards span { font-size: .78rem; }.facodi-board-cards strong { font-family: 'JetBrains Mono', monospace; font-size: .65rem; text-transform: uppercase; }
-.facodi-dashboard { display: grid; grid-template-columns: 190px minmax(0, 1fr) 290px; margin: 0 auto; max-width: 1440px; min-height: 700px; }.facodi-side-nav { border-right: 2px solid var(--facodi-black); padding: 32px 20px; }.facodi-side-nav p { font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; margin: 0 0 12px; }.facodi-side-nav a { align-items: center; border-radius: 7px; color: var(--facodi-black); display: flex; font-size: .82rem; font-weight: 600; gap: 10px; margin-bottom: 4px; padding: 10px; text-decoration: none; }.facodi-side-nav a.is-active, .facodi-side-nav a:hover { background: var(--facodi-muted); }.facodi-side-nav .fa { width: 15px; }.facodi-dashboard-main { min-width: 0; padding: 40px; }.facodi-section-heading { align-items: end; display: flex; gap: 18px; justify-content: space-between; margin-bottom: 26px; }.facodi-section-heading h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.65rem; font-weight: 700; margin: 0; text-wrap: balance; }.facodi-section-heading .facodi-kicker { margin: 0 0 5px; }.facodi-text-link { color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .71rem; font-weight: 700; text-decoration: none; }.facodi-text-link:hover { color: var(--facodi-black); text-decoration: underline; }.facodi-stat-row { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); margin-bottom: 42px; }.facodi-stat-card { border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-black); min-height: 148px; padding: 17px; position: relative; }.facodi-stat-card span, .facodi-stat-card small { display: block; font-family: 'JetBrains Mono', monospace; font-size: .64rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }.facodi-stat-card strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; line-height: 1; margin: 18px 0 5px; }.facodi-stat-card .fa { font-size: 1.1rem; position: absolute; right: 16px; top: 16px; }.facodi-mint { background: var(--facodi-muted); }.facodi-sky { background: #F2F2F2; }.facodi-sun { background: var(--facodi-primary); }.facodi-compact-heading { align-items: center; margin-bottom: 18px; }.facodi-compact-heading h2 { font-size: 1.2rem; }.facodi-course-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }.facodi-course-card { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-black); min-width: 0; overflow: hidden; transition: transform 180ms ease, box-shadow 180ms ease; }.facodi-course-card:hover { box-shadow: 2px 2px 0 var(--facodi-black); transform: translate(2px, 2px); }.facodi-course-art { align-items: center; display: flex; height: 115px; justify-content: space-between; padding: 18px; }.facodi-course-art span { border: 2px solid currentColor; border-radius: 50%; font-family: 'JetBrains Mono', monospace; font-size: .74rem; font-weight: 700; padding: 9px 6px; }.facodi-course-art .fa { font-size: 2.4rem; }.facodi-course-cyan .facodi-course-art { background: var(--facodi-primary); }.facodi-course-blue .facodi-course-art { background: var(--facodi-black); color: white; }.facodi-course-ink .facodi-course-art { background: var(--facodi-black); color: white; }.facodi-course-content { padding: 16px; }.facodi-course-content p { color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .61rem; font-weight: 700; letter-spacing: 0; margin-bottom: 8px; text-transform: uppercase; }.facodi-course-content h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.2; margin: 0; min-height: 58px; }.facodi-progress { background: #F2F2F2; border: 1px solid var(--facodi-black); border-radius: 20px; height: 8px; margin: 22px 0 11px; overflow: hidden; }.facodi-progress span { background: var(--facodi-muted); display: block; height: 100%; }.facodi-card-bottom span { font-size: .58rem; }.facodi-card-bottom a { align-items: center; background: var(--facodi-black); border-radius: 50%; color: white; display: flex; height: 25px; justify-content: center; text-decoration: none; width: 25px; }.facodi-card-bottom a:hover { background: var(--facodi-black); }
-.facodi-insights { background: #F2F2F2; border-left: 2px solid var(--facodi-black); padding: 24px 18px; }.facodi-insights article { border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-black); margin-bottom: 18px; padding: 16px; }.facodi-roadmap-card h3, .facodi-community-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; margin: 22px 0 8px; }.facodi-community-card p { font-size: .78rem; line-height: 1.5; margin-bottom: 17px; }.facodi-roadmap-card { background: white; }.facodi-roadmap-card .facodi-panel-label, .facodi-community-card .facodi-panel-label { color: var(--facodi-black); }.facodi-timeline { list-style: none; margin: 16px 0 0; padding: 0; }.facodi-timeline li { align-items: flex-start; display: flex; font-size: .76rem; gap: 10px; margin: 0; padding: 0 0 15px; }.facodi-timeline li .fa { color: #666666; font-size: .85rem; padding-top: 2px; }.facodi-timeline li.is-done .fa { color: #23A660; }.facodi-timeline li.is-current .fa { color: var(--facodi-black); }.facodi-timeline strong, .facodi-timeline small { display: block; }.facodi-timeline small { color: #666666; font-size: .68rem; margin-top: 3px; }.facodi-community-card { background: var(--facodi-muted); }.facodi-contribution-grid { display: grid; gap: 4px; grid-template-columns: repeat(10, 1fr); margin-top: 16px; }.facodi-contribution-grid i { aspect-ratio: 1; background: rgba(255, 255, 255, .40); border: 1px solid rgba(0, 0, 0, .15); }.facodi-contribution-grid i:nth-child(3n), .facodi-contribution-grid i:nth-child(7n) { background: #23A660; }
-.facodi-open-section { align-items: end; background: var(--facodi-muted); border-top: 2px solid var(--facodi-black); display: grid; gap: 50px; grid-template-columns: 1.2fr .8fr; margin: 0 auto; max-width: 1440px; padding: 80px 8vw; }.facodi-open-section h2 { font-size: clamp(2.1rem, 3.8vw, 4rem); }.facodi-open-actions p { font-size: 1.02rem; line-height: 1.55; max-width: 480px; }.facodi-open-actions .facodi-button { margin-top: 18px; }.facodi-learning-hub { border-top: 2px solid var(--facodi-black); padding: 80px 0; }.facodi-resource-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }.facodi-resource-grid article { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-black); padding: 24px; }.facodi-resource-grid .fa { color: var(--facodi-black); font-size: 1.6rem; }.facodi-resource-grid h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; margin: 28px 0 8px; }.facodi-resource-grid p { font-size: .9rem; margin: 0; }.facodi-footer { background: var(--facodi-black); border-top: 2px solid var(--facodi-black); color: white; }.facodi-footer-inner { display: grid; gap: 30px; grid-template-columns: 1.3fr 1fr 1fr; margin: 0 auto; max-width: 1440px; padding: 48px 8vw; }.facodi-footer .facodi-wordmark { color: white; }.facodi-footer p { color: #666666; font-size: .82rem; line-height: 1.5; margin: 14px 0 0; max-width: 350px; }.facodi-footer-links { display: grid; gap: 9px; }.facodi-footer-links a { color: white; font-size: .84rem; font-weight: 600; text-decoration: none; }.facodi-footer-links a:hover { color: var(--facodi-primary); }.facodi-footer-meta { font-family: 'JetBrains Mono', monospace; font-size: .65rem !important; text-align: right; }
-.o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] { background-color: var(--facodi-black) !important; background-image: none !important; }.o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] .o_wslides_course_nav, .o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] .o_wslides_course_nav_search { background-color: rgba(0, 0, 0, .72); border-color: rgba(255, 255, 255, .28); }.o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] .o_wslides_course_header, .o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] .o_wslides_lesson_header { color: white; }.o_wslides_body .o_wslides_js_course_join_link.btn-primary, .o_wslides_body .o_wslides_done_button.btn-primary { background-color: var(--facodi-black); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); }.o_wslides_body .o_wslides_js_course_join_link.btn-primary:hover, .o_wslides_body .o_wslides_done_button.btn-primary:hover { background-color: var(--facodi-primary); color: var(--facodi-black); }.facodi-footer a.facodi-wordmark, .facodi-footer .facodi-footer-links a, .facodi-footer .facodi-footer-meta a { color: white !important; }.facodi-footer .facodi-footer-meta a:hover { color: var(--facodi-primary) !important; }
-@media (max-width: 1100px) { .facodi-hero { grid-template-columns: 1fr; }.facodi-hero-board { max-width: 600px; width: 100%; }.facodi-dashboard { grid-template-columns: 170px minmax(0, 1fr); }.facodi-insights { border-left: 0; border-top: 2px solid var(--facodi-black); display: grid; gap: 16px; grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }.facodi-insights article { margin: 0; }.facodi-course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.facodi-course-card:last-child { grid-column: span 2; }.facodi-open-section { grid-template-columns: 1fr; } }
-@media (max-width: 720px) { .facodi-nav-shell { padding: 0 18px; }.facodi-header .navbar-collapse { padding: 12px 0; }.facodi-hero { gap: 34px; padding: 48px 24px; }.facodi-hero h1 { font-size: 2.75rem; }.facodi-dashboard { display: block; }.facodi-side-nav { border-bottom: 2px solid var(--facodi-black); border-right: 0; display: flex; gap: 6px; overflow-x: auto; padding: 14px 18px; }.facodi-side-nav p { display: none; }.facodi-side-nav a { flex: 0 0 auto; margin: 0; }.facodi-dashboard-main { padding: 32px 20px; }.facodi-stat-row, .facodi-course-grid, .facodi-resource-grid, .facodi-insights, .facodi-footer-inner { grid-template-columns: 1fr; }.facodi-course-card:last-child { grid-column: auto; }.facodi-insights { display: grid; padding: 24px 20px; }.facodi-section-heading { align-items: flex-start; flex-direction: column; }.facodi-open-section { padding: 56px 24px; }.facodi-footer-meta { text-align: left; }.facodi-hero-board { padding: 18px; transform: none; } }
-@media (prefers-color-scheme: dark) { body, .facodi-app-shell { background: #0b0b0b; color: #F2F2F2; }.facodi-header { background: #0b0b0b; border-color: #F2F2F2; }.facodi-wordmark, .facodi-header .nav-link { color: #F2F2F2; }.facodi-header .nav-link:hover, .facodi-text-link { color: var(--facodi-primary); }.facodi-hero, .facodi-side-nav { border-color: #F2F2F2; }.facodi-dashboard-main, .facodi-insights { background: #1a1a1a; }.facodi-side-nav a { color: #F2F2F2; }.facodi-section-heading h2, .facodi-course-content h3 { color: #F2F2F2; }.facodi-course-card, .facodi-roadmap-card, .facodi-resource-grid article { background: #1a1a1a; color: #F2F2F2; }.facodi-course-card, .facodi-stat-card, .facodi-insights article, .facodi-resource-grid article { box-shadow: 3px 3px 0 #F2F2F2; }.facodi-button-secondary { background: #F2F2F2; }.facodi-footer { border-color: #F2F2F2; } }
-@media (prefers-reduced-motion: reduce) { .facodi-button, .facodi-course-card { transition: none; } }
-/* Auth pages */
-.facodi-auth-card { background: white; border: 2px solid var(--facodi-black) !important; border-radius: 12px; box-shadow: var(--facodi-shadow); max-width: 420px; width: 100%; }
-.facodi-auth-card-body { padding: 32px; }
-.facodi-auth-lead { color: var(--facodi-gray); font-size: .85rem; font-weight: 500; }
-.facodi-auth-form .form-label { color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
-.facodi-form-control { border: 2px solid var(--facodi-black); border-radius: 8px; color: var(--facodi-black); font-size: .95rem; padding: .6rem .85rem; }
-.facodi-form-control:focus { border-color: var(--facodi-black); box-shadow: 0 0 0 3px rgba(239, 255, 0, .25); }
-.facodi-auth-form .input-group .facodi-form-control { border-right: 0; }
-.facodi-auth-form .input-group .o_show_password { background: white; border: 2px solid var(--facodi-black); border-left: 0; color: var(--facodi-black); }
-.facodi-auth-link { color: var(--facodi-black) !important; font-size: .82rem; font-weight: 600; text-decoration: none; }
-.facodi-auth-link:hover { color: var(--facodi-black) !important; text-decoration: underline; }
-.facodi-auth-footer { color: var(--facodi-gray); font-size: .75rem; }
-.facodi-auth-footer a { color: var(--facodi-black); font-weight: 600; text-decoration: none; }
-.facodi-auth-footer a:hover { text-decoration: underline; }
+// FACODI frontend theme — global identity propagation.
+// Recovered palette: primary #EFFF00, black #000000, white #FFFFFF,
+// muted #F2F2F2, gray #666666.
 
-/* Empty and error states */
-.facodi-empty-state { align-items: center; display: flex; flex-direction: column; padding: 64px 24px; text-align: center; }
-.facodi-empty-state .fa { color: var(--facodi-black); font-size: 3rem; margin-bottom: 18px; }
-.facodi-empty-state h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
-.facodi-empty-state p { color: var(--facodi-gray); max-width: 460px; }
+// ============================================================================
+// 1. CSS custom properties
+// ============================================================================
+:root {
+    --facodi-primary: #EFFF00;
+    --facodi-black: #000000;
+    --facodi-white: #FFFFFF;
+    --facodi-muted: #F2F2F2;
+    --facodi-gray: #666666;
+    --facodi-dark-bg: #0b0b0b;
+    --facodi-dark-muted: #1a1a1a;
+    --facodi-shadow: 5px 5px 0 var(--facodi-black);
+    --facodi-shadow-sm: 2px 2px 0 var(--facodi-black);
+    --facodi-shadow-lg: 6px 6px 0 var(--facodi-black);
+}
 
-/* Search */
-.facodi-search-input { border: 2px solid var(--facodi-black); border-radius: 8px; box-shadow: 2px 2px 0 var(--facodi-black); }
-.facodi-search-input:focus { border-color: var(--facodi-black); box-shadow: 0 0 0 3px rgba(239, 255, 0, .25); }
+// ============================================================================
+// 2. Base page chrome
+// ============================================================================
+body {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+}
 
-/* eLearning refinements */
-.o_wslides_body .o_wslides_course_nav { background: var(--facodi-black) !important; }
-.o_wslides_body .o_wslides_course_nav .breadcrumb-item, .o_wslides_body .o_wslides_course_nav .breadcrumb-item a, .o_wslides_body .o_wslides_course_nav .o_wslides_course_nav_search .form-control { color: white; }
-.o_wslides_body .o_wslides_course_nav .breadcrumb-item a:hover { color: var(--facodi-primary); }
-.o_wslides_body .o_wslides_course_header h1, .o_wslides_body .o_wslides_lesson_header h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-.o_wslides_body .o_wslides_course_sidebar { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-black); }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_chapter { background: #F2F2F2; color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link { color: var(--facodi-black); font-weight: 500; }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link:hover { background: var(--facodi-muted); color: var(--facodi-black); }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link.active { background: var(--facodi-primary); color: var(--facodi-black); font-weight: 700; }
+// ============================================================================
+// 3. FACODI layout components
+// ============================================================================
+.facodi-app-shell {
+    background: var(--facodi-white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
 
-/* eLearning FACODI overhaul */
-.o_wslides_body { background: var(--facodi-white); color: var(--facodi-black); }
-.o_wslides_body .wrap { background: var(--facodi-white); }
+// Header
+.facodi-header {
+    background: var(--facodi-white);
+    border-bottom: 2px solid var(--facodi-black);
+    position: relative;
+    z-index: 10;
+}
 
-/* Course header / cover */
+.facodi-nav-shell {
+    min-height: 72px;
+    max-width: 1440px;
+    padding: 0 32px;
+}
+
+.facodi-wordmark {
+    color: var(--facodi-black);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-decoration: none;
+
+    span {
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-header .nav-link {
+    color: var(--facodi-black);
+    font-size: .9rem;
+    font-weight: 600;
+    padding: .5rem .8rem !important;
+
+    &:hover {
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-icon-button {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    box-shadow: var(--facodi-shadow-sm);
+    color: var(--facodi-black);
+}
+
+// Hero
+.facodi-hero {
+    align-items: stretch;
+    border-bottom: 2px solid var(--facodi-black);
+    display: grid;
+    gap: 48px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(390px, .9fr);
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 72px 8vw;
+}
+
+.facodi-kicker {
+    color: var(--facodi-black);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+
+    .fa {
+        font-size: .5rem;
+        margin-right: 7px;
+    }
+}
+
+.facodi-hero h1,
+.facodi-open-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 5.2vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: .98;
+    margin: 0;
+    max-width: 760px;
+    text-wrap: balance;
+}
+
+.facodi-lead {
+    font-size: 1.08rem;
+    line-height: 1.55;
+    margin: 24px 0 28px;
+    max-width: 570px;
+}
+
+.facodi-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+// Hero board
+.facodi-hero-board {
+    align-self: center;
+    background: var(--facodi-black);
+    border: 2px solid var(--facodi-black);
+    border-radius: 12px;
+    box-shadow: var(--facodi-shadow);
+    color: white;
+    overflow: hidden;
+    padding: 24px;
+    transform: rotate(1deg);
+}
+
+.facodi-board-top,
+.facodi-panel-label,
+.facodi-card-bottom {
+    display: flex;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem;
+    font-weight: 700;
+    justify-content: space-between;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.facodi-live-dot {
+    color: var(--facodi-muted);
+
+    &::before {
+        background: var(--facodi-muted);
+        border-radius: 50%;
+        content: '';
+        display: inline-block;
+        height: 7px;
+        margin-right: 5px;
+        width: 7px;
+    }
+}
+
+.facodi-board-path {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 36px 12px 28px;
+}
+
+.facodi-path-node {
+    align-items: center;
+    background: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: var(--facodi-black);
+    display: flex;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    font-weight: 700;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+
+    &.is-complete {
+        background: var(--facodi-muted);
+        border-color: var(--facodi-muted);
+    }
+
+    &.is-current {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-primary);
+    }
+}
+
+.facodi-path-line {
+    background: white;
+    height: 2px;
+    opacity: .4;
+    width: 28%;
+
+    &.is-complete {
+        background: var(--facodi-muted);
+        opacity: 1;
+    }
+}
+
+.facodi-board-cards {
+    display: grid;
+    gap: 8px;
+
+    div {
+        align-items: center;
+        background: rgba(255, 255, 255, .10);
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 7px;
+        display: flex;
+        justify-content: space-between;
+        padding: 11px;
+    }
+
+    .is-selected {
+        background: var(--facodi-black);
+        border-color: var(--facodi-primary);
+    }
+
+    span {
+        font-size: .78rem;
+    }
+
+    strong {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .65rem;
+        text-transform: uppercase;
+    }
+}
+
+// Dashboard
+.facodi-dashboard {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr) 290px;
+    margin: 0 auto;
+    max-width: 1440px;
+    min-height: 700px;
+}
+
+.facodi-side-nav {
+    border-right: 2px solid var(--facodi-black);
+    padding: 32px 20px;
+
+    p {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .65rem;
+        font-weight: 700;
+        margin: 0 0 12px;
+    }
+
+    a {
+        align-items: center;
+        border-radius: 7px;
+        color: var(--facodi-black);
+        display: flex;
+        font-size: .82rem;
+        font-weight: 600;
+        gap: 10px;
+        margin-bottom: 4px;
+        padding: 10px;
+        text-decoration: none;
+
+        &.is-active,
+        &:hover {
+            background: var(--facodi-muted);
+        }
+    }
+
+    .fa {
+        width: 15px;
+    }
+}
+
+.facodi-dashboard-main {
+    min-width: 0;
+    padding: 40px;
+}
+
+.facodi-section-heading {
+    align-items: end;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    margin-bottom: 26px;
+
+    h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.65rem;
+        font-weight: 700;
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    .facodi-kicker {
+        margin: 0 0 5px;
+    }
+}
+
+.facodi-text-link {
+    color: var(--facodi-black);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .71rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--facodi-black);
+        text-decoration: underline;
+    }
+}
+
+.facodi-stat-row {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 42px;
+}
+
+.facodi-stat-card {
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--facodi-black);
+    min-height: 148px;
+    padding: 17px;
+    position: relative;
+
+    span,
+    small {
+        display: block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .64rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    strong {
+        display: block;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.4rem;
+        line-height: 1;
+        margin: 18px 0 5px;
+    }
+
+    .fa {
+        font-size: 1.1rem;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+    }
+}
+
+.facodi-course-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.facodi-course-card {
+    background: white;
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+
+    &:hover {
+        box-shadow: 2px 2px 0 var(--facodi-black);
+        transform: translate(2px, 2px);
+    }
+
+    .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .card-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: var(--facodi-gray);
+        font-size: .82rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
+    }
+
+    .facodi-card-bottom {
+        margin-top: auto;
+    }
+}
+
+.facodi-insights {
+    background: var(--facodi-muted);
+    border-left: 2px solid var(--facodi-black);
+    padding: 24px 18px;
+
+    article {
+        background: white;
+        border: 2px solid var(--facodi-black);
+        border-radius: 10px;
+        box-shadow: 3px 3px 0 var(--facodi-black);
+        margin-bottom: 18px;
+        padding: 16px;
+    }
+}
+
+.facodi-roadmap-card,
+.facodi-community-card {
+    h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 22px 0 8px;
+    }
+
+    p {
+        font-size: .78rem;
+        line-height: 1.5;
+        margin-bottom: 17px;
+    }
+
+    .facodi-panel-label {
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-roadmap-card {
+    background: white;
+}
+
+.facodi-community-card {
+    background: var(--facodi-muted);
+}
+
+.facodi-timeline {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+
+    li {
+        align-items: flex-start;
+        display: flex;
+        font-size: .76rem;
+        gap: 10px;
+        margin: 0;
+        padding: 0 0 15px;
+
+        .fa {
+            color: var(--facodi-gray);
+            font-size: .85rem;
+            padding-top: 2px;
+        }
+
+        &.is-done .fa {
+            color: #23A660;
+        }
+
+        &.is-current .fa {
+            color: var(--facodi-black);
+        }
+    }
+
+    strong,
+    small {
+        display: block;
+    }
+
+    small {
+        color: var(--facodi-gray);
+        font-size: .68rem;
+        margin-top: 3px;
+    }
+}
+
+.facodi-contribution-grid {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(10, 1fr);
+    margin-top: 16px;
+
+    i {
+        aspect-ratio: 1;
+        background: rgba(255, 255, 255, .40);
+        border: 1px solid rgba(0, 0, 0, .15);
+
+        &:nth-child(3n),
+        &:nth-child(7n) {
+            background: #23A660;
+        }
+    }
+}
+
+// Open section
+.facodi-open-section {
+    align-items: end;
+    background: var(--facodi-muted);
+    border-top: 2px solid var(--facodi-black);
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 1.2fr .8fr;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 80px 8vw;
+
+    h2 {
+        font-size: clamp(2.1rem, 3.8vw, 4rem);
+    }
+}
+
+.facodi-open-actions p {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    max-width: 480px;
+}
+
+.facodi-open-actions .facodi-button {
+    margin-top: 18px;
+}
+
+// Learning Hub snippet
+.facodi-learning-hub {
+    border-top: 2px solid var(--facodi-black);
+    padding: 80px 0;
+}
+
+.facodi-resource-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+
+    article {
+        background: white;
+        border: 2px solid var(--facodi-black);
+        border-radius: 10px;
+        box-shadow: 4px 4px 0 var(--facodi-black);
+        padding: 24px;
+    }
+
+    .fa {
+        color: var(--facodi-black);
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2rem;
+        margin: 28px 0 8px;
+    }
+
+    p {
+        font-size: .9rem;
+        margin: 0;
+    }
+}
+
+// Footer
+.facodi-footer {
+    background: var(--facodi-black);
+    border-top: 2px solid var(--facodi-black);
+    color: white;
+}
+
+.facodi-footer-inner {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 48px 8vw;
+}
+
+.facodi-footer .facodi-wordmark {
+    color: white;
+}
+
+.facodi-footer p {
+    color: var(--facodi-gray);
+    font-size: .82rem;
+    line-height: 1.5;
+    margin: 14px 0 0;
+    max-width: 350px;
+}
+
+.facodi-footer-links {
+    display: grid;
+    gap: 9px;
+
+    a {
+        color: white;
+        font-size: .84rem;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+}
+
+.facodi-footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem !important;
+    text-align: right;
+}
+
+.facodi-footer a.facodi-wordmark,
+.facodi-footer .facodi-footer-links a,
+.facodi-footer .facodi-footer-meta a {
+    color: white !important;
+}
+
+.facodi-footer .facodi-footer-meta a:hover {
+    color: var(--facodi-primary) !important;
+}
+
+// ============================================================================
+// 4. Buttons
+// ============================================================================
+.facodi-button {
+    align-items: center;
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 var(--facodi-black);
+    display: inline-flex;
+    font-size: .875rem;
+    font-weight: 700;
+    gap: 6px;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 16px;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+
+    &:hover {
+        box-shadow: 1px 1px 0 var(--facodi-black);
+        color: inherit;
+        transform: translate(2px, 2px);
+    }
+
+    &:focus-visible,
+    .facodi-header a:focus-visible {
+        outline: 3px solid var(--facodi-primary);
+        outline-offset: 3px;
+    }
+}
+
+.facodi-button-primary {
+    background: var(--facodi-primary);
+    color: var(--facodi-black);
+
+    &:hover {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-button-secondary {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+}
+
+// Bootstrap buttons — make the default Odoo CTA look like FACODI everywhere.
+.btn-primary {
+    background: var(--facodi-primary);
+    border-color: var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:not(.disabled):active {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+.btn-secondary,
+.btn-light {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:hover {
+        background: var(--facodi-muted);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+.btn-outline-primary {
+    background: transparent;
+    border: 2px solid var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:hover {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    border: 2px solid var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+
+    &:hover {
+        background: var(--facodi-muted);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+.btn-link {
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:hover {
+        color: var(--facodi-black);
+    }
+}
+
+.btn:focus-visible,
+.btn:focus {
+    box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+}
+
+// ============================================================================
+// 5. Forms
+// ============================================================================
+.form-control,
+.form-select {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    color: var(--facodi-black);
+
+    &:focus {
+        border-color: var(--facodi-black);
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.form-label {
+    color: var(--facodi-black);
+    font-weight: 600;
+}
+
+.form-check-input {
+    border: 2px solid var(--facodi-black);
+
+    &:checked {
+        background-color: var(--facodi-primary);
+        border-color: var(--facodi-black);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.input-group-text {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    color: var(--facodi-black);
+    font-weight: 600;
+}
+
+.o_show_password {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    color: var(--facodi-black);
+}
+
+// Website Builder form snippet
+.s_website_form {
+    .form-control,
+    .form-select {
+        border: 2px solid var(--facodi-black);
+    }
+
+    .form-label {
+        color: var(--facodi-black);
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+    }
+}
+
+// ============================================================================
+// 6. Cards
+// ============================================================================
+.card {
+    background: var(--facodi-white);
+    border: 1px solid rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+}
+
+.card-header,
+.card-footer {
+    background: var(--facodi-white);
+    border-color: rgba(0, 0, 0, .16);
+}
+
+.list-group {
+    border: 1px solid rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+}
+
+.list-group-item {
+    background: var(--facodi-white);
+    border-color: var(--facodi-black);
+    color: var(--facodi-black);
+
+    &:hover {
+        background: var(--facodi-muted);
+    }
+
+    &.active {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+// ============================================================================
+// 7. Navs, tabs, pills, breadcrumbs, pagination
+// ============================================================================
+.nav-tabs {
+    border-bottom: 2px solid var(--facodi-black);
+
+    .nav-link {
+        border: 0;
+        border-bottom: 3px solid transparent;
+        color: var(--facodi-gray);
+        font-weight: 600;
+
+        &:hover {
+            border-color: var(--facodi-muted);
+            color: var(--facodi-black);
+        }
+
+        &.active {
+            background: transparent;
+            border-bottom-color: var(--facodi-primary);
+            color: var(--facodi-black);
+        }
+    }
+}
+
+.nav-pills {
+    .nav-link {
+        color: var(--facodi-black);
+        font-weight: 600;
+
+        &.active {
+            background: var(--facodi-primary);
+            color: var(--facodi-black);
+        }
+    }
+}
+
+.breadcrumb {
+    .breadcrumb-item {
+        a {
+            color: var(--facodi-black);
+            font-weight: 600;
+
+            &:hover {
+                color: var(--facodi-primary);
+            }
+        }
+
+        &.active {
+            color: var(--facodi-gray);
+        }
+    }
+}
+
+.pagination {
+    .page-link {
+        background: var(--facodi-white);
+        border: 2px solid var(--facodi-black);
+        box-shadow: 2px 2px 0 var(--facodi-black);
+        color: var(--facodi-black);
+        font-weight: 600;
+        margin: 0 4px;
+
+        &:hover {
+            background: var(--facodi-muted);
+            color: var(--facodi-black);
+        }
+    }
+
+    .page-item.active .page-link {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+
+    .page-item.disabled .page-link {
+        background: var(--facodi-muted);
+        color: var(--facodi-gray);
+    }
+}
+
+// ============================================================================
+// 8. Dropdowns, modals, accordions, alerts, badges, progress
+// ============================================================================
+.dropdown-menu {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+}
+
+.dropdown-item {
+    color: var(--facodi-black);
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+    }
+
+    &.active,
+    &:active {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+}
+
+.modal-content {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 12px;
+    box-shadow: 6px 6px 0 var(--facodi-black);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--facodi-black);
+}
+
+.btn-close {
+    color: var(--facodi-black);
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.accordion-item {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:not(.collapsed) {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+        box-shadow: inset 0 -2px 0 var(--facodi-black);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.alert {
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--facodi-black);
+}
+
+.alert-primary {
+    background: var(--facodi-primary);
+    color: var(--facodi-black);
+}
+
+.alert-secondary {
+    background: var(--facodi-muted);
+    color: var(--facodi-black);
+}
+
+.alert-light {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+}
+
+.badge {
+    border: 1px solid var(--facodi-black);
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.text-bg-primary,
+.bg-primary {
+    background: var(--facodi-primary) !important;
+    color: var(--facodi-black) !important;
+}
+
+.text-bg-secondary,
+.bg-secondary {
+    background: var(--facodi-muted) !important;
+    color: var(--facodi-black) !important;
+}
+
+.text-bg-info,
+.bg-info {
+    background: var(--facodi-black) !important;
+    color: var(--facodi-white) !important;
+}
+
+.progress {
+    background: var(--facodi-muted);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background: var(--facodi-primary);
+    color: var(--facodi-black);
+    font-weight: 700;
+}
+
+// ============================================================================
+// 9. Odoo color combinations (o_cc*) — used by Website Builder snippets
+// ============================================================================
+.o_cc1 {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-black);
+    }
+
+    a {
+        color: var(--facodi-black);
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+}
+
+.o_cc2 {
+    background: var(--facodi-black);
+    color: var(--facodi-white);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-white);
+    }
+
+    a {
+        color: var(--facodi-primary);
+
+        &:hover {
+            color: var(--facodi-white);
+        }
+    }
+}
+
+.o_cc3 {
+    background: var(--facodi-primary);
+    color: var(--facodi-black);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-black);
+    }
+
+    a {
+        color: var(--facodi-black);
+
+        &:hover {
+            color: var(--facodi-black);
+        }
+    }
+}
+
+.o_cc4 {
+    background: var(--facodi-muted);
+    color: var(--facodi-black);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-black);
+    }
+
+    a {
+        color: var(--facodi-black);
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+}
+
+.o_cc5 {
+    background: var(--facodi-gray);
+    color: var(--facodi-white);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-white);
+    }
+
+    a {
+        color: var(--facodi-primary);
+
+        &:hover {
+            color: var(--facodi-white);
+        }
+    }
+}
+
+// ============================================================================
+// 10. Website Builder snippets (token-only styling)
+// ============================================================================
+// Hero / cover snippets
+.s_banner,
+.s_cover,
+.s_text_cover,
+.s_carousel,
+.s_carousel_intro,
+.s_adventure,
+.s_kickoff,
+.s_split_intro,
+.s_intro_pill {
+    .btn-primary {
+        background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+    }
+}
+
+// Column / content snippets
+.s_three_columns,
+.s_features,
+.s_features_grid,
+.s_features_wall,
+.s_cards_grid,
+.s_card,
+.s_text_image,
+.s_image_text,
+.s_call_to_action,
+.s_cta_box,
+.s_cta_card,
+.s_color_blocks_2,
+.s_bento_grid,
+.s_quadrant {
+    .card,
+    .s_card {
+        border: 2px solid var(--facodi-black);
+        border-radius: 10px;
+        box-shadow: 4px 4px 0 var(--facodi-black);
+    }
+
+    .btn-primary {
+        background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+    }
+}
+
+// FAQ / text snippets
+.s_text_block,
+.s_title,
+.s_faq_collapse,
+.s_faq_list,
+.s_accordion,
+.s_tabs,
+.s_table_of_content {
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--facodi-black);
+    }
+
+    .accordion-item {
+        border: 2px solid var(--facodi-black);
+    }
+
+    .nav-tabs {
+        border-bottom: 2px solid var(--facodi-black);
+
+        .nav-link.active {
+            border-bottom-color: var(--facodi-primary);
+        }
+    }
+}
+
+// People / social proof snippets
+.s_company_team,
+.s_quotes_carousel,
+.s_references,
+.s_reviews_wall {
+    .card {
+        border: 2px solid var(--facodi-black);
+        box-shadow: 4px 4px 0 var(--facodi-black);
+    }
+}
+
+// Media snippets
+.s_image,
+.s_picture,
+.s_image_gallery,
+.s_video,
+.s_parallax,
+.s_masonry_block {
+    img {
+        border-radius: 10px;
+    }
+}
+
+// Form / contact snippets
+.s_website_form,
+.s_title_form,
+.s_contact_info,
+.s_form_aside {
+    .form-control,
+    .form-select {
+        border: 2px solid var(--facodi-black);
+    }
+
+    .btn-primary {
+        background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+    }
+}
+
+// UI atom snippets
+.s_button .btn,
+.s_badge .badge,
+.s_cta_badge .badge,
+.s_alert .alert,
+.s_rating,
+.s_progress_bar,
+.s_searchbar,
+.s_searchbar_input,
+.s_share,
+.s_social_media,
+.s_popup {
+    border-color: var(--facodi-black);
+}
+
+.s_alert .alert {
+    box-shadow: 3px 3px 0 var(--facodi-black);
+}
+
+.s_progress_bar .progress {
+    border: 2px solid var(--facodi-black);
+}
+
+// eCommerce snippets (defensive)
+.s_product_list,
+.s_product_catalog,
+.s_banner_product,
+.s_ecomm_categories_showcase,
+.s_attributes_horizontal,
+.s_attributes_vertical,
+.s_bento_banner,
+.s_bento_block {
+    .card,
+    .s_card {
+        border: 2px solid var(--facodi-black);
+        box-shadow: 4px 4px 0 var(--facodi-black);
+    }
+
+    .btn-primary {
+        background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+    }
+}
+
+// ============================================================================
+// 11. Auth pages
+// ============================================================================
+.facodi-auth-card {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black) !important;
+    border-radius: 12px;
+    box-shadow: var(--facodi-shadow);
+    max-width: 420px;
+    width: 100%;
+}
+
+.facodi-auth-card-body {
+    padding: 32px;
+}
+
+.facodi-auth-lead {
+    color: var(--facodi-gray);
+    font-size: .85rem;
+    font-weight: 500;
+}
+
+.facodi-auth-form .form-label {
+    color: var(--facodi-black);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.facodi-form-control {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    color: var(--facodi-black);
+    font-size: .95rem;
+    padding: .6rem .85rem;
+
+    &:focus {
+        border-color: var(--facodi-black);
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.facodi-auth-form .input-group .facodi-form-control {
+    border-right: 0;
+}
+
+.facodi-auth-form .input-group .o_show_password {
+    background: white;
+    border: 2px solid var(--facodi-black);
+    border-left: 0;
+    color: var(--facodi-black);
+}
+
+.facodi-auth-link {
+    color: var(--facodi-black) !important;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--facodi-black) !important;
+        text-decoration: underline;
+    }
+}
+
+.facodi-auth-footer {
+    color: var(--facodi-gray);
+    font-size: .75rem;
+
+    a {
+        color: var(--facodi-black);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// ============================================================================
+// 12. Empty and error states
+// ============================================================================
+.facodi-empty-state {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 24px;
+    text-align: center;
+
+    .fa {
+        color: var(--facodi-black);
+        font-size: 3rem;
+        margin-bottom: 18px;
+    }
+
+    h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: var(--facodi-gray);
+        max-width: 460px;
+    }
+}
+
+// ============================================================================
+// 13. Search
+// ============================================================================
+.facodi-search-input {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    box-shadow: 2px 2px 0 var(--facodi-black);
+
+    &:focus {
+        border-color: var(--facodi-black);
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+.o_search_result_item {
+    background: var(--facodi-white);
+    border: 1px solid rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+    margin-bottom: 16px;
+    padding: 20px;
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+        transform: translateY(-2px);
+    }
+
+    a {
+        color: var(--facodi-black);
+        font-weight: 700;
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+}
+
+// ============================================================================
+// 14. eLearning overrides
+// ============================================================================
+.o_wslides_body {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+
+    .wrap {
+        background: var(--facodi-white);
+    }
+}
+
+// Course header / cover
 .o_wslides_body .o_record_cover_container[data-res-model="slide.channel"],
 .o_wslides_body .o_wslides_lesson_header,
-.o_wslides_body .o_wslides_course_header { background: var(--facodi-black) !important; background-image: none !important; color: white; }
-.o_wslides_body .o_wslides_lesson_header a, .o_wslides_body .o_wslides_course_header a { color: white; }
-.o_wslides_body .o_wslides_lesson_header a:hover, .o_wslides_body .o_wslides_course_header a:hover { color: var(--facodi-primary); }
-.o_wslides_body .o_wslides_course_header h1, .o_wslides_body .o_wslides_lesson_header h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.o_wslides_body .o_wslides_course_header {
+    background: var(--facodi-black) !important;
+    background-image: none !important;
+    color: white;
+}
 
-/* Nav tabs inside course */
-.o_wslides_body .o_wslides_nav_tabs { border-bottom: 2px solid var(--facodi-black); }
-.o_wslides_body .o_wslides_nav_tabs .nav-link { color: var(--facodi-gray); font-family: 'Space Grotesk', sans-serif; font-weight: 600; border: 0; border-bottom: 3px solid transparent; }
-.o_wslides_body .o_wslides_nav_tabs .nav-link.active { border-bottom-color: var(--facodi-primary); color: var(--facodi-black); }
-.o_wslides_body .o_wslides_nav_tabs .nav-link:hover { color: var(--facodi-black); }
+.o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] {
+    .o_wslides_course_nav,
+    .o_wslides_course_nav_search {
+        background-color: rgba(0, 0, 0, .72);
+        border-color: rgba(255, 255, 255, .28);
+    }
 
-/* Course sidebar */
-.o_wslides_body .o_wslides_course_sidebar { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-black); }
-.o_wslides_body .o_wslides_sidebar_top .btn-primary { background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black); }
-.o_wslides_body .o_wslides_sidebar_top .btn-primary:hover { background: var(--facodi-primary); }
+    .o_wslides_course_header,
+    .o_wslides_lesson_header {
+        color: white;
+    }
+}
 
-/* Slide list */
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_chapter { background: #F2F2F2; color: var(--facodi-black); font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link { color: var(--facodi-black); font-weight: 500; border-radius: 6px; }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link:hover { background: var(--facodi-muted); color: var(--facodi-black); }
-.o_wslides_body .o_wslides_slide_list .o_wslides_slide_list_link.active { background: var(--facodi-primary); color: var(--facodi-black); font-weight: 700; }
+.o_wslides_body .o_wslides_lesson_header a,
+.o_wslides_body .o_wslides_course_header a {
+    color: white;
 
-/* Catalog cards */
-.o_wslides_body .o_wslides_course_card { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-black); transition: transform 180ms ease, box-shadow 180ms ease; }
-.o_wslides_body .o_wslides_course_card:hover { box-shadow: 2px 2px 0 var(--facodi-black); transform: translate(2px, 2px); }
-.o_wslides_body .o_wslides_course_card .card-title { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-black); }
+    &:hover {
+        color: var(--facodi-primary);
+    }
+}
 
-/* Catalog search bar */
-.o_wslides_body .facodi-course-search-bar h1 { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-black); }
+.o_wslides_body .o_wslides_course_header h1,
+.o_wslides_body .o_wslides_lesson_header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+}
 
-/* Lesson page */
-.o_wslides_body .o_wslides_lesson_main { padding-top: 40px; padding-bottom: 60px; }
-.o_wslides_body .o_wslides_lesson_content { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 4px 4px 0 var(--facodi-black); padding: 24px; }
-.o_wslides_body .o_wslides_lesson_content h1, .o_wslides_body .o_wslides_lesson_content h2 { font-family: 'Space Grotesk', sans-serif; color: var(--facodi-black); }
+// Course nav
+.o_wslides_body .o_wslides_course_nav {
+    background: var(--facodi-black) !important;
 
-/* Lesson sidebar */
-.o_wslides_body .o_wslides_lesson_aside_list { background: white; border: 2px solid var(--facodi-black); border-radius: 10px; box-shadow: 3px 3px 0 var(--facodi-black); overflow: hidden; }
-.o_wslides_body .o_wslides_lesson_aside_list .bg-100 { background: #F2F2F2; color: var(--facodi-black); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-.o_wslides_body .o_wslides_lesson_aside_list_link { color: var(--facodi-black); }
-.o_wslides_body .o_wslides_lesson_aside_list_link.active { background: var(--facodi-primary); color: var(--facodi-black); font-weight: 700; }
-.o_wslides_body .o_wslides_lesson_aside_list_link:hover { background: var(--facodi-muted); }
+    .breadcrumb-item,
+    .breadcrumb-item a,
+    .o_wslides_course_nav_search .form-control {
+        color: white;
+    }
 
-/* Fullscreen lesson */
-.o_wslides_fs_main { background: var(--facodi-black); color: white; }
-.o_wslides_fs_main .o_wslides_slide_fs_header { background: var(--facodi-black); border-bottom: 2px solid rgba(255,255,255,.15); }
-.o_wslides_fs_main .o_wslides_fs_sidebar { background: var(--facodi-black); border-right: 2px solid rgba(255,255,255,.15); }
-.o_wslides_fs_main .o_wslides_fs_sidebar_section { border-bottom: 1px solid rgba(255,255,255,.1); }
-.o_wslides_fs_main .o_wslides_fs_sidebar_section a { color: white; }
-.o_wslides_fs_main .o_wslides_fs_sidebar_section a:hover { color: var(--facodi-primary); }
-.o_wslides_fs_main .o_wslides_fs_sidebar_list_item.active { background: var(--facodi-black); }
-.o_wslides_fs_main .progress-bar { background: var(--facodi-primary); }
-.o_wslides_fs_main .o_wslides_fs_toggle_sidebar, .o_wslides_fs_main .o_wslides_fs_share, .o_wslides_fs_main .o_wslides_fs_exit_fullscreen { color: white; }
-.o_wslides_fs_main .o_wslides_fs_toggle_sidebar:hover, .o_wslides_fs_main .o_wslides_fs_share:hover, .o_wslides_fs_main .o_wslides_fs_exit_fullscreen:hover { color: var(--facodi-primary); }
+    .breadcrumb-item a:hover {
+        color: var(--facodi-primary);
+    }
+}
 
-/* Generic eLearning buttons */
-.o_wslides_body .btn-primary { background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black); font-weight: 700; }
-.o_wslides_body .btn-primary:hover { background: var(--facodi-primary); color: var(--facodi-black); }
-.o_wslides_body .btn-light { background: white; border: 2px solid var(--facodi-black); color: var(--facodi-black); }
-.o_wslides_body .btn-light:hover { background: var(--facodi-muted); }
+// Nav tabs inside course
+.o_wslides_body .o_wslides_nav_tabs {
+    border-bottom: 2px solid var(--facodi-black);
 
-/* eLearning forms/inputs */
-.o_wslides_body .form-control, .o_wslides_body .form-select { border: 2px solid var(--facodi-black); border-radius: 8px; color: var(--facodi-black); }
-.o_wslides_body .form-control:focus, .o_wslides_body .form-select:focus { border-color: var(--facodi-black); box-shadow: 0 0 0 3px rgba(239, 255, 0, .25); }
+    .nav-link {
+        color: var(--facodi-gray);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        border: 0;
+        border-bottom: 3px solid transparent;
 
-/* Badges/tags */
-.o_wslides_body .o_wslides_channel_tag { border: 1px solid var(--facodi-black); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; text-transform: uppercase; }
+        &.active {
+            border-bottom-color: var(--facodi-primary);
+            color: var(--facodi-black);
+        }
+
+        &:hover {
+            color: var(--facodi-black);
+        }
+    }
+}
+
+// Course sidebar
+.o_wslides_body .o_wslides_course_sidebar {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--facodi-black);
+}
+
+.o_wslides_body .o_wslides_sidebar_top .btn-primary {
+    background: var(--facodi-primary);
+    border-color: var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+
+    &:hover {
+        background: var(--facodi-primary);
+    }
+}
+
+// Slide list
+.o_wslides_body .o_wslides_slide_list {
+    .o_wslides_slide_list_chapter {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .7rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    .o_wslides_slide_list_link {
+        color: var(--facodi-black);
+        font-weight: 500;
+        border-radius: 6px;
+
+        &:hover {
+            background: var(--facodi-muted);
+            color: var(--facodi-black);
+        }
+
+        &.active {
+            background: var(--facodi-primary);
+            color: var(--facodi-black);
+            font-weight: 700;
+        }
+    }
+}
+
+// Catalog cards
+.o_wslides_body .o_wslides_course_card {
+    background: var(--facodi-white);
+    border: 1px solid rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+        transform: translateY(-2px);
+    }
+
+    .card-title {
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--facodi-black);
+    }
+}
+
+// Catalog search bar
+.o_wslides_body .facodi-course-search-bar h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--facodi-black);
+}
+
+// Lesson page
+.o_wslides_body .o_wslides_lesson_main {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.o_wslides_body .o_wslides_lesson_content {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+    padding: 24px;
+
+    h1, h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--facodi-black);
+    }
+}
+
+// Lesson sidebar
+.o_wslides_body .o_wslides_lesson_aside_list {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--facodi-black);
+    overflow: hidden;
+
+    .bg-100 {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+    }
+}
+
+.o_wslides_body .o_wslides_lesson_aside_list_link {
+    color: var(--facodi-black);
+
+    &.active {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+        font-weight: 700;
+    }
+
+    &:hover {
+        background: var(--facodi-muted);
+    }
+}
+
+// Fullscreen lesson
+.o_wslides_fs_main {
+    background: var(--facodi-black);
+    color: white;
+
+    .o_wslides_slide_fs_header {
+        background: var(--facodi-black);
+        border-bottom: 2px solid rgba(255, 255, 255, .15);
+    }
+
+    .o_wslides_fs_sidebar {
+        background: var(--facodi-black);
+        border-right: 2px solid rgba(255, 255, 255, .15);
+    }
+
+    .o_wslides_fs_sidebar_section {
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+
+        a {
+            color: white;
+
+            &:hover {
+                color: var(--facodi-primary);
+            }
+        }
+    }
+
+    .o_wslides_fs_sidebar_list_item.active {
+        background: var(--facodi-black);
+    }
+
+    .progress-bar {
+        background: var(--facodi-primary);
+    }
+
+    .o_wslides_fs_toggle_sidebar,
+    .o_wslides_fs_share,
+    .o_wslides_fs_exit_fullscreen {
+        color: white;
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+}
+
+// Generic eLearning buttons
+.o_wslides_body .btn-primary {
+    background: var(--facodi-primary);
+    border-color: var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+    color: var(--facodi-black);
+    font-weight: 700;
+
+    &:hover {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+}
+
+.o_wslides_body .btn-light {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    color: var(--facodi-black);
+
+    &:hover {
+        background: var(--facodi-muted);
+    }
+}
+
+.o_wslides_body .o_wslides_js_course_join_link.btn-primary,
+.o_wslides_body .o_wslides_done_button.btn-primary {
+    background-color: var(--facodi-black);
+    border-color: var(--facodi-black);
+    box-shadow: 2px 2px 0 var(--facodi-black);
+
+    &:hover {
+        background-color: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+}
+
+// eLearning forms/inputs
+.o_wslides_body .form-control,
+.o_wslides_body .form-select {
+    border: 2px solid var(--facodi-black);
+    border-radius: 8px;
+    color: var(--facodi-black);
+
+    &:focus {
+        border-color: var(--facodi-black);
+        box-shadow: 0 0 0 3px rgba(239, 255, 0, .25);
+    }
+}
+
+// Badges/tags
+.o_wslides_body .o_wslides_channel_tag {
+    border: 1px solid var(--facodi-black);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+// Quiz
+.o_wslides_body .o_wslides_js_lesson_quiz,
+.o_wslides_body .o_wslides_quiz_container {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+    padding: 24px;
+}
+
+.o_wslides_body .o_wslides_quiz_question {
+    border-bottom: 2px solid var(--facodi-black);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+// Comments and share
+.o_wslides_body .o_wslides_slide_comment,
+.o_wslides_body .o_wslides_js_slide_share,
+.o_wslides_body .o_wslides_js_slide_share_modal .modal-content {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+}
+
+// ============================================================================
+// 15. Portal overrides
+// ============================================================================
+.o_portal {
+    background: var(--facodi-white);
+    color: var(--facodi-black);
+
+    .breadcrumb-item a {
+        color: var(--facodi-black);
+        font-weight: 600;
+
+        &:hover {
+            color: var(--facodi-primary);
+        }
+    }
+
+    .o_portal_my_home {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .o_portal_index_card,
+    .o_portal_contact_details {
+        background: var(--facodi-white);
+        border: 1px solid rgba(0, 0, 0, .16);
+        border-radius: 10px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+    }
+
+    .o_portal_index_card {
+        &:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+            transform: translateY(-2px);
+        }
+
+        a {
+            color: var(--facodi-black);
+
+            &:hover {
+                color: var(--facodi-primary);
+            }
+        }
+    }
+
+    .form-control,
+    .form-select {
+        border: 2px solid var(--facodi-black);
+    }
+
+    .btn-primary {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+
+    .pagination .page-link {
+        background: var(--facodi-white);
+        border: 2px solid var(--facodi-black);
+        color: var(--facodi-black);
+
+        &:hover {
+            background: var(--facodi-muted);
+        }
+    }
+
+    .pagination .page-item.active .page-link {
+        background: var(--facodi-primary);
+        border-color: var(--facodi-black);
+        color: var(--facodi-black);
+    }
+}
+
+// ============================================================================
+// 16. Cookie / GDPR banner
+// ============================================================================
+.o_cookies_bar,
+.o_cookies_discrete {
+    background: var(--facodi-black);
+    border-top: 2px solid var(--facodi-black);
+    color: var(--facodi-white);
+
+    a {
+        color: var(--facodi-primary);
+
+        &:hover {
+            color: var(--facodi-white);
+        }
+    }
+
+    .btn {
+        border: 2px solid var(--facodi-black);
+        box-shadow: 2px 2px 0 var(--facodi-black);
+        font-weight: 700;
+    }
+
+    .btn-primary,
+    .js_cookies_accept {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+
+    .btn-secondary,
+    .js_cookies_discard,
+    .js_cookies_refuse {
+        background: var(--facodi-white);
+        color: var(--facodi-black);
+    }
+}
+
+// ============================================================================
+// 17. Optional apps: blog / events / forum (defensive CSS)
+// ============================================================================
+// Blog
+.o_wblog_post_card,
+.o_wblog_post_page_cover,
+.o_wblog_index {
+    background: var(--facodi-white);
+}
+
+.o_wblog_post_card {
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+
+    &:hover {
+        box-shadow: 2px 2px 0 var(--facodi-black);
+        transform: translate(2px, 2px);
+    }
+}
+
+.o_wblog_post_title a,
+.o_wblog_read_text {
+    color: var(--facodi-black);
+
+    &:hover {
+        color: var(--facodi-primary);
+    }
+}
+
+// Events
+.o_wevent_index,
+.o_wevent_event_card,
+.o_wevent_bordered_block {
+    background: var(--facodi-white);
+}
+
+.o_wevent_event_card {
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--facodi-black);
+
+    &:hover {
+        box-shadow: 2px 2px 0 var(--facodi-black);
+        transform: translate(2px, 2px);
+    }
+}
+
+.o_wevent_badge {
+    background: var(--facodi-primary);
+    border: 1px solid var(--facodi-black);
+    color: var(--facodi-black);
+}
+
+.o_wevent_sidebar_block {
+    background: var(--facodi-white);
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+}
+
+// Forum
+.o_wforum_table,
+.o_wforum_post,
+.o_wforum_answer,
+.o_wforum_ask_btn {
+    background: var(--facodi-white);
+}
+
+.o_wforum_table {
+    border: 2px solid var(--facodi-black);
+
+    th,
+    td {
+        border-color: var(--facodi-black);
+    }
+}
+
+.o_wforum_ask_btn {
+    background: var(--facodi-primary); border-color: var(--facodi-black); box-shadow: 2px 2px 0 var(--facodi-black); color: var(--facodi-black);
+}
+
+.o_wforum_post_comment,
+.o_wforum_post_answer {
+    border: 2px solid var(--facodi-black);
+    border-radius: 10px;
+}
+
+// ============================================================================
+// 18. Responsive
+// ============================================================================
+@media (max-width: 1100px) {
+    .facodi-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .facodi-hero-board {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .facodi-dashboard {
+        grid-template-columns: 170px minmax(0, 1fr);
+    }
+
+    .facodi-insights {
+        border-left: 0;
+        border-top: 2px solid var(--facodi-black);
+        display: grid;
+        gap: 16px;
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, 1fr);
+
+        article {
+            margin: 0;
+        }
+    }
+
+    .facodi-course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .facodi-course-card:last-child {
+        grid-column: span 2;
+    }
+
+    .facodi-open-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .facodi-nav-shell {
+        padding: 0 18px;
+    }
+
+    .facodi-header .navbar-collapse {
+        padding: 12px 0;
+    }
+
+    .facodi-hero {
+        gap: 34px;
+        padding: 48px 24px;
+    }
+
+    .facodi-hero h1 {
+        font-size: 2.75rem;
+    }
+
+    .facodi-dashboard {
+        display: block;
+    }
+
+    .facodi-side-nav {
+        border-bottom: 2px solid var(--facodi-black);
+        border-right: 0;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 14px 18px;
+
+        p {
+            display: none;
+        }
+
+        a {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+    }
+
+    .facodi-dashboard-main {
+        padding: 32px 20px;
+    }
+
+    .facodi-stat-row,
+    .facodi-course-grid,
+    .facodi-resource-grid,
+    .facodi-insights,
+    .facodi-footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .facodi-course-card:last-child {
+        grid-column: auto;
+    }
+
+    .facodi-insights {
+        display: grid;
+        padding: 24px 20px;
+    }
+
+    .facodi-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .facodi-open-section {
+        padding: 56px 24px;
+    }
+
+    .facodi-footer-meta {
+        text-align: left;
+    }
+
+    .facodi-hero-board {
+        padding: 18px;
+        transform: none;
+    }
+}
+
+// ============================================================================
+// 19. Dark mode
+// ============================================================================
+@media (prefers-color-scheme: dark) {
+    :root {
+        --facodi-shadow: 3px 3px 0 #F2F2F2;
+        --facodi-shadow-sm: 2px 2px 0 #F2F2F2;
+        --facodi-shadow-lg: 4px 4px 0 #F2F2F2;
+    }
+
+    body,
+    .facodi-app-shell {
+        background: var(--facodi-dark-bg);
+        color: var(--facodi-muted);
+    }
+
+    .facodi-header {
+        background: var(--facodi-dark-bg);
+        border-color: var(--facodi-muted);
+    }
+
+    .facodi-wordmark,
+    .facodi-header .nav-link {
+        color: var(--facodi-muted);
+    }
+
+    .facodi-header .nav-link:hover,
+    .facodi-text-link {
+        color: var(--facodi-primary);
+    }
+
+    .facodi-hero,
+    .facodi-side-nav {
+        border-color: var(--facodi-muted);
+    }
+
+    .facodi-dashboard-main,
+    .facodi-insights {
+        background: var(--facodi-dark-muted);
+    }
+
+    .facodi-side-nav a {
+        color: var(--facodi-muted);
+    }
+
+    .facodi-section-heading h2,
+    .facodi-course-content h3 {
+        color: var(--facodi-muted);
+    }
+
+    .facodi-course-card,
+    .facodi-roadmap-card,
+    .facodi-resource-grid article,
+    .facodi-stat-card,
+    .facodi-insights article {
+        background: var(--facodi-dark-muted);
+        color: var(--facodi-muted);
+        box-shadow: 3px 3px 0 var(--facodi-muted);
+    }
+
+    .facodi-button-secondary {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+    }
+
+    .facodi-footer {
+        background: var(--facodi-black);
+        border-color: var(--facodi-muted);
+    }
+
+    .card,
+    .list-group,
+    .modal-content,
+    .accordion-item,
+    .alert,
+    .o_wslides_body .o_wslides_course_sidebar,
+    .o_wslides_body .o_wslides_lesson_content,
+    .o_wslides_body .o_wslides_lesson_aside_list,
+    .o_wslides_body .o_wslides_course_card,
+    .o_portal .o_portal_my_home,
+    .o_portal .o_portal_index_card {
+        background: var(--facodi-dark-muted);
+        border-color: var(--facodi-muted);
+        color: var(--facodi-muted);
+        box-shadow: 3px 3px 0 var(--facodi-muted);
+    }
+
+    .form-control,
+    .form-select,
+    .input-group-text {
+        background: var(--facodi-dark-muted);
+        border-color: var(--facodi-muted);
+        color: var(--facodi-muted);
+    }
+
+    .btn-primary {
+        box-shadow: 2px 2px 0 var(--facodi-muted);
+    }
+
+    .btn-secondary,
+    .btn-light {
+        background: var(--facodi-muted);
+        color: var(--facodi-black);
+        box-shadow: 2px 2px 0 var(--facodi-muted);
+    }
+
+    .dropdown-menu {
+        background: var(--facodi-dark-muted);
+        border-color: var(--facodi-muted);
+        box-shadow: 4px 4px 0 var(--facodi-muted);
+    }
+
+    .dropdown-item {
+        color: var(--facodi-muted);
+
+        &:hover {
+            background: var(--facodi-black);
+            color: var(--facodi-primary);
+        }
+    }
+
+    .o_cc1,
+    .o_cc4 {
+        background: var(--facodi-dark-muted);
+        color: var(--facodi-muted);
+    }
+
+    .o_cc4 {
+        background: var(--facodi-black);
+    }
+
+    .o_wblog_post_card,
+    .o_wevent_event_card {
+        background: var(--facodi-dark-muted);
+        border-color: var(--facodi-muted);
+        box-shadow: 3px 3px 0 var(--facodi-muted);
+    }
+}
+
+// ============================================================================
+// 20. Reduced motion
+// ============================================================================
+@media (prefers-reduced-motion: reduce) {
+    .facodi-button,
+    .facodi-course-card,
+    .o_wslides_body .o_wslides_course_card,
+    .o_wblog_post_card,
+    .o_wevent_event_card,
+    .o_portal .o_portal_index_card {
+        transition: none;
+    }
+}

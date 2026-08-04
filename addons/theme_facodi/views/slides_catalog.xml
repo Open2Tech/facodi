@@ -22,4 +22,16 @@
             <attribute name="class">card o_wslides_course_card w-100 h-100 text-decoration-none facodi-course-card</attribute>
         </xpath>
     </template>
+
+    <template id="facodi_courses_search_results" inherit_id="website_slides.courses_search_results" name="FACODI courses search results">
+        <xpath expr="//div[hasclass('o_wslides_home_content_section')]" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_card_information" inherit_id="website_slides.course_card_information" name="FACODI course card information">
+        <xpath expr="//div[hasclass('card-footer')]" position="attributes">
+            <attribute name="class" add="facodi-card-bottom" separator=" "/>
+        </xpath>
+    </template>
 </odoo>

@@ -8,6 +8,7 @@ $facodi-gray: #666666;
 $facodi-dark-bg: #0b0b0b;
 $facodi-dark-muted: #1a1a1a;
 
+// Map the FACODI palette to Odoo's Website Builder color system.
 $o-color-palettes: map-merge($o-color-palettes, (
     'facodi': (
         'o-color-1': $facodi-primary,
@@ -15,20 +16,110 @@ $o-color-palettes: map-merge($o-color-palettes, (
         'o-color-3': $facodi-muted,
         'o-color-4': $facodi-white,
         'o-color-5': $facodi-gray,
-        'o-cc1-bg': 'o-color-4', 'o-cc1-text': 'o-color-2', 'o-cc1-headings': 'o-color-2', 'o-cc1-link': 'o-color-2', 'o-cc1-btn-primary': 'o-color-1', 'o-cc1-btn-primary-border': 'o-color-2',
-        'o-cc2-bg': 'o-color-2', 'o-cc2-text': 'o-color-4', 'o-cc2-headings': 'o-color-4', 'o-cc2-link': 'o-color-1', 'o-cc2-btn-primary': 'o-color-1', 'o-cc2-btn-primary-border': 'o-color-4',
-        'o-cc3-bg': 'o-color-1', 'o-cc3-text': 'o-color-2', 'o-cc3-headings': 'o-color-2', 'o-cc3-link': 'o-color-2', 'o-cc3-btn-primary': 'o-color-2', 'o-cc3-btn-primary-border': 'o-color-2',
-        'menu': 1, 'menu-border-color': 'o-color-2', 'footer': 1, 'copyright': 1,
+
+        // Light combination (default sections / cards / pages)
+        'o-cc1-bg': 'o-color-4',
+        'o-cc1-text': 'o-color-2',
+        'o-cc1-headings': 'o-color-2',
+        'o-cc1-link': 'o-color-2',
+        'o-cc1-btn-primary': 'o-color-1',
+        'o-cc1-btn-primary-border': 'o-color-2',
+        'o-cc1-btn-primary-text': 'o-color-2',
+
+        // Dark combination (contrast sections)
+        'o-cc2-bg': 'o-color-2',
+        'o-cc2-text': 'o-color-4',
+        'o-cc2-headings': 'o-color-4',
+        'o-cc2-link': 'o-color-1',
+        'o-cc2-btn-primary': 'o-color-1',
+        'o-cc2-btn-primary-border': 'o-color-4',
+        'o-cc2-btn-primary-text': 'o-color-2',
+
+        // Primary accent combination
+        'o-cc3-bg': 'o-color-1',
+        'o-cc3-text': 'o-color-2',
+        'o-cc3-headings': 'o-color-2',
+        'o-cc3-link': 'o-color-2',
+        'o-cc3-btn-primary': 'o-color-2',
+        'o-cc3-btn-primary-border': 'o-color-2',
+        'o-cc3-btn-primary-text': 'o-color-4',
+
+        // Muted combination (secondary surfaces)
+        'o-cc4-bg': 'o-color-3',
+        'o-cc4-text': 'o-color-2',
+        'o-cc4-headings': 'o-color-2',
+        'o-cc4-link': 'o-color-2',
+        'o-cc4-btn-primary': 'o-color-1',
+        'o-cc4-btn-primary-border': 'o-color-2',
+        'o-cc4-btn-primary-text': 'o-color-2',
+
+        // Gray combination (subtle sections)
+        'o-cc5-bg': 'o-color-5',
+        'o-cc5-text': 'o-color-4',
+        'o-cc5-headings': 'o-color-4',
+        'o-cc5-link': 'o-color-1',
+        'o-cc5-btn-primary': 'o-color-1',
+        'o-cc5-btn-primary-border': 'o-color-4',
+        'o-cc5-btn-primary-text': 'o-color-2',
+
+        'menu': 1,
+        'menu-border-color': 'o-color-2',
+        'footer': 1,
+        'copyright': 1,
     ),
 ));
 $o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'facodi');
-$o-theme-color-palettes: map-merge($o-theme-color-palettes, ('facodi': ('alpha': $facodi-primary, 'beta': $facodi-black, 'gamma': $facodi-muted, 'delta': $facodi-white, 'epsilon': $facodi-gray, 'success': #23A660, 'info': $facodi-black, 'warning': $facodi-primary, 'danger': #C83248)));
+
+// Semantic theme colors used by Bootstrap and Odoo status components.
+$o-theme-color-palettes: map-merge($o-theme-color-palettes, (
+    'facodi': (
+        'alpha': $facodi-primary,
+        'beta': $facodi-black,
+        'gamma': $facodi-muted,
+        'delta': $facodi-white,
+        'epsilon': $facodi-gray,
+        'success': #23A660,
+        'info': $facodi-black,
+        'warning': $facodi-primary,
+        'danger': #C83248,
+    )
+));
+
+// Map Bootstrap semantic colors to FACODI-compatible tones.
+$primary: $facodi-primary !default;
+$secondary: $facodi-muted !default;
+$success: #23A660 !default;
+$info: $facodi-black !default;
+$warning: $facodi-primary !default;
+$danger: #C83248 !default;
+$light: $facodi-white !default;
+$dark: $facodi-black !default;
+
+// Override the Odoo brand tint used by default frontend chrome.
+$o-brand-odoo: $facodi-primary;
+
 $o-theme-font-configs: map-merge($o-theme-font-configs, (
     'Space Grotesk': ('family': ('Space Grotesk', sans-serif), 'url': 'Space+Grotesk:400,500,600,700'),
     'Inter': ('family': ('Inter', sans-serif), 'url': 'Inter:400,500,600,700'),
     'JetBrains Mono': ('family': ('JetBrains Mono', monospace), 'url': 'JetBrains+Mono:400,500,700'),
 ));
-$o-website-values-palettes: append($o-website-values-palettes, ('color-palettes-name': 'facodi', 'font': 'Inter', 'headings-font': 'Space Grotesk', 'navbar-font': 'Inter', 'buttons-font': 'Inter', 'font-size-base': 1rem, 'body-line-height': 1.5, 'headings-line-height': 1.05, 'btn-border-width': 2px, 'btn-border-radius': .5rem, 'btn-border-radius-sm': .5rem, 'btn-border-radius-lg': .5rem, 'input-border-width': 2px, 'input-border-radius': .5rem, 'logo-height': 2rem));
+$o-website-values-palettes: append($o-website-values-palettes, (
+    'color-palettes-name': 'facodi',
+    'font': 'Inter',
+    'headings-font': 'Space Grotesk',
+    'navbar-font': 'Inter',
+    'buttons-font': 'Inter',
+    'font-size-base': 1rem,
+    'body-line-height': 1.5,
+    'headings-line-height': 1.05,
+    'btn-border-width': 2px,
+    'btn-border-radius': .5rem,
+    'btn-border-radius-sm': .5rem,
+    'btn-border-radius-lg': .5rem,
+    'input-border-width': 2px,
+    'input-border-radius': .5rem,
+    'logo-height': 2rem,
+));
 $o-color-palettes-compatibility-indexes: (
     1: 'facodi',
 );
