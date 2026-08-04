@@ -402,9 +402,17 @@ body,
     }
 }
 
-.facodi-stat-card-primary {
+.facodi-stat-card-primary,
+section[data-name="FACODI Journey"] .row > .col-lg-4:nth-child(2) .facodi-stat-card {
     background: var(--facodi-primary);
     color: var(--facodi-black);
+
+    span,
+    strong,
+    small,
+    .fa {
+        color: var(--facodi-black);
+    }
 }
 
 .facodi-course-grid {
