@@ -13,9 +13,9 @@ As correções implementadas até agora estão limitadas ao addon FACODI, nas he
 | Estado | Quantidade | Escopo atual |
 | --- | ---: | --- |
 | Total | 50 | Itens AUD-001 a AUD-050. |
-| Open | 41 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| Open | 40 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
 | In progress | 0 | Nenhuma correção parcialmente aplicada. |
-| Fixed | 7 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-009, AUD-012 e AUD-018 corrigidos no addon. |
+| Fixed | 8 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-009, AUD-012, AUD-018 e AUD-035 corrigidos no addon. |
 | Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
 | Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
 | Deferred | 0 | Nenhum item adiado formalmente. |
@@ -173,7 +173,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 - **AUD-032 — risco de regras globais:** P2; seletores `.o_portal`, `.o_wslides_body`, `.card-body`, `.card-title` e outros estruturais podem afetar páginas não pretendidas.
 - **AUD-033 — ausência de catálogo i18n do tema:** P2; não foram encontrados ficheiros de tradução no `theme_facodi`.
 - **AUD-034 — legado `theme_open2` instalável:** P1; contém menus, páginas, copy e traduções Open2; ativação real no banco ainda precisa ser confirmada.
-- **AUD-035 — hooks Python aparentemente mortos:** P2; `custom_theme.py` e `ir_http.py` não são importados por `models/__init__.py`, embora contenham lógica sobreposta.
+- **AUD-035 — hooks Python aparentemente mortos:** P2, `fixed` localmente; removidos `custom_theme.py` e `ir_http.py`, que não eram importados por `models/__init__.py` e duplicavam a lógica ativa em `theme_facodi.py` e `website_page.py`. Validação de imports/compilação pendente de runtime Odoo; staging pendente.
 - **AUD-036 — asset/editor dependency coupling:** P2; bundle de editor e ordem de primary variables/Bootstrap/frontend precisam de validação no bundle real, não apenas no SCSS isolado.
 
 ## Problemas de responsividade
