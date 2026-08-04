@@ -2071,6 +2071,15 @@ body {
         }
     }
 
+    .facodi-course-cyan {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+
+        .facodi-course-art {
+            background: var(--facodi-primary);
+        }
+    }
+
     .facodi-course-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
