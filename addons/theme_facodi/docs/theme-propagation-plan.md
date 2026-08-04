@@ -80,12 +80,15 @@ The theme already covers:
 
 ## Tokens to reuse
 
-- Ink: `#142846`
-- Cyan: `#37BED2`
-- Blue: `#3979C8`
-- Mint: `#A7E8BE`
-- Sun: `#EFFF00`
-- Paper: `#F9FAFB`
+Palette recovered from the legacy React SPA on branch `prod`:
+
+- Primary: `#EFFF00`
+- Black: `#000000`
+- White: `#FFFFFF`
+- Muted: `#F2F2F2`
+- Gray: `#666666`
+- Dark mode background: `#0b0b0b`
+- Dark mode surface: `#1a1a1a`
 - Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (labels)
-- Shadow/border: 2px solid ink, 4px offset shadow
+- Shadow/border: 2px solid black, 4px offset shadow
 - Radius: 8px / 0.5rem

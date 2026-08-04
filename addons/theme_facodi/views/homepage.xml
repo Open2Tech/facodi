@@ -171,7 +171,7 @@
                             </article>
                         </div>
                         <div class="col-lg-4">
-                            <article class="facodi-stat-card h-100" style="background:var(--facodi-blue);color:white;border-color:var(--facodi-ink);">
+                            <article class="facodi-stat-card h-100" style="background:var(--facodi-primary);color:var(--facodi-black);border-color:var(--facodi-black);">
                                 <span>Passo 02</span>
                                 <strong>Aprenda</strong>
                                 <small>Siga o percurso ao seu ritmo, com videos e materiais curados para cada etapa.</small>

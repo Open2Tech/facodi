@@ -9,7 +9,7 @@ It delivers the public learning experience: a hero, learner dashboard, responsiv
 ## Design system
 
 - **Fonts**: `Space Grotesk` for headings, `Inter` for body text, `JetBrains Mono` for code labels and metadata.
-- **Palette**: FACODI cyan `#37BED2`, blue `#3979C8`, mint `#A7E8BE`, sun `#FFD45F`, ink `#142846`.
+- **Palette**: recovered from the legacy React SPA — primary `#EFFF00`, black `#000000`, white `#FFFFFF`, muted `#F2F2F2`, gray `#666666`.
 - **Style**: neo-brutalist — 8 px rhythm, 2 px solid borders, defined box shadows, minimal border radius.
 - **Dark mode**: automatic via `prefers-color-scheme: dark`; motion reduced via `prefers-reduced-motion`.
 
