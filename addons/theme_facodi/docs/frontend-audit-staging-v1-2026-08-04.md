@@ -134,7 +134,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### Catálogo `/slides`
 
-- **AUD-011 — título, busca e filtros standard em inglês:** P2, `in progress`; o heading do catálogo e o placeholder de pesquisa foram traduzidos para `Cursos` e `Pesquisar cursos` através de heranças com âncoras estáveis. `New Content`, `steps` e restantes filtros continuam pendentes; staging aguarda propagação.
+- **AUD-011 — título, busca e filtros standard em inglês:** P2, `in progress`; o heading do catálogo e o placeholder de pesquisa foram traduzidos para `Cursos` e `Pesquisar cursos`, e os cards agora usam `Novo conteúdo` e `etapas` através de heranças com âncoras estáveis. Filtros, ações e estados vazios continuam pendentes; staging aguarda propagação.
 - **AUD-012 — classes específicas e estilos genéricos:** P2, `fixed` localmente; resultados de pesquisa usam agora `facodi-search-result-card`, a classe adicionada pela herança QWeb, em vez do seletor global `.o_search_result_item`. XML e escopo SCSS validados; staging pendente de propagação.
 - **AUD-013 — filtros, paginação e zero resultados sem evidência responsiva:** P2; estados precisam de screenshots e métricas nos cinco breakpoints.
 - **AUD-014 — badges e metadados dependem do comprimento real:** P3; títulos, duração e número de passos precisam de teste com conteúdo longo.
