@@ -78,8 +78,10 @@ body {
     border: 2px solid var(--facodi-black);
     border-radius: 0 0 10px 10px;
     box-shadow: var(--facodi-shadow);
-    min-width: min(680px, calc(100vw - 32px));
+    max-width: 680px;
+    min-width: 0;
     padding: 24px;
+    width: calc(100vw - 32px);
 
     a {
         color: var(--facodi-black);
