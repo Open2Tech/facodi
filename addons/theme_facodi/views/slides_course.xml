@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI course page styling -->
+
+    <template id="facodi_course_main" inherit_id="website_slides.course_main" name="FACODI course main">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class">wrap mt-0 facodi-app-shell</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'o_wslides_course_main')]" position="attributes">
+            <attribute name="class" add="facodi-course-main" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_sidebar" inherit_id="website_slides.course_sidebar" name="FACODI course sidebar">
+        <xpath expr="//div[hasclass('o_wslides_course_sidebar')]" position="attributes">
+            <attribute name="class">o_wslides_course_sidebar bg-white px-3 py-2 py-md-3 mb-3 mb-md-5 facodi-course-sidebar</attribute>
+        </xpath>
+    </template>
+</odoo>

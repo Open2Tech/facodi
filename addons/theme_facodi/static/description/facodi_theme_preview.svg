@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="FACODI learning platform preview">
-  <rect width="1200" height="630" fill="#f7f9fb"/>
-  <rect x="46" y="46" width="1108" height="538" rx="20" fill="#ffffff" stroke="#203455" stroke-width="8"/>
-  <text x="100" y="150" fill="#203455" font-family="sans-serif" font-size="68" font-weight="700">FACODI.</text>
-  <text x="100" y="230" fill="#203455" font-family="sans-serif" font-size="42" font-weight="700">Aprenda em comunidade.</text>
-  <rect x="100" y="280" width="520" height="220" rx="12" fill="#64d8ed" stroke="#203455" stroke-width="7"/>
-  <rect x="670" y="280" width="360" height="110" rx="12" fill="#b9edcc" stroke="#203455" stroke-width="7"/>
-  <rect x="670" y="420" width="360" height="80" rx="12" fill="#74a9ee" stroke="#203455" stroke-width="7"/>
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="46" y="46" width="1108" height="538" rx="20" fill="#ffffff" stroke="#000000" stroke-width="8"/>
+  <text x="100" y="150" fill="#000000" font-family="sans-serif" font-size="68" font-weight="700">FACODI.</text>
+  <text x="100" y="230" fill="#000000" font-family="sans-serif" font-size="42" font-weight="700">Aprenda em comunidade.</text>
+  <rect x="100" y="280" width="520" height="220" rx="12" fill="#EFFF00" stroke="#000000" stroke-width="7"/>
+  <rect x="670" y="280" width="360" height="110" rx="12" fill="#F2F2F2" stroke="#000000" stroke-width="7"/>
+  <rect x="670" y="420" width="360" height="80" rx="12" fill="#F2F2F2" stroke="#000000" stroke-width="7"/>
 </svg>

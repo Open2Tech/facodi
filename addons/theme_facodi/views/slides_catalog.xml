@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI course catalog styling -->
+
+    <template id="facodi_courses_home" inherit_id="website_slides.courses_home" name="FACODI courses home">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class">wrap o_wslides_wrap facodi-app-shell</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('container')][hasclass('o_wslides_home_content_section') and contains(@class, 'mb-3')]" position="attributes">
+            <attribute name="class">container o_wslides_home_content_section mb-3 facodi-empty-state d-none</attribute>
+        </xpath>
+    </template>
+
+    <template id="facodi_courses_search_bar" inherit_id="website_slides.courses_search_bar" name="FACODI courses search bar">
+        <xpath expr="//div[contains(@class, 'd-flex') and contains(@class, 'flex-wrap') and contains(@class, 'align-items-md-center') and contains(@class, 'gap-2')]" position="attributes">
+            <attribute name="class">d-flex flex-wrap align-items-md-center gap-2 mt-4 mb-3 facodi-course-search-bar</attribute>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_card" inherit_id="website_slides.course_card" name="FACODI course card">
+        <xpath expr="//a[hasclass('o_wslides_course_card')]" position="attributes">
+            <attribute name="class">card o_wslides_course_card w-100 h-100 text-decoration-none facodi-course-card</attribute>
+        </xpath>
+    </template>
+</odoo>

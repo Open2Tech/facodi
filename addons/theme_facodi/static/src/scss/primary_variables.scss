@@ -1,27 +1,28 @@
-// FACODI theme tokens. Keep values in one place so the Open2Tech palette can evolve safely.
-$facodi-ink: #142846;
-$facodi-cyan: #37BED2;
-$facodi-blue: #3979C8;
-$facodi-mint: #A7E8BE;
-$facodi-sun: #EFFF00; // brand primary accent (matches prod)
-$facodi-paper: #F9FAFB;
-$facodi-line: #40536D;
+// FACODI theme tokens — recovered from the legacy React SPA on branch `prod`.
+// Original palette: primary #EFFF00, black #000000, white #FFFFFF, muted #F2F2F2, gray #666666.
+$facodi-primary: #EFFF00;
+$facodi-black: #000000;
+$facodi-white: #FFFFFF;
+$facodi-muted: #F2F2F2;
+$facodi-gray: #666666;
+$facodi-dark-bg: #0b0b0b;
+$facodi-dark-muted: #1a1a1a;
 
 $o-color-palettes: map-merge($o-color-palettes, (
     'facodi': (
-        'o-color-1': $facodi-cyan,
-        'o-color-2': $facodi-blue,
-        'o-color-3': $facodi-mint,
-        'o-color-4': $facodi-paper,
-        'o-color-5': $facodi-ink,
-        'o-cc1-bg': 'o-color-4', 'o-cc1-text': 'o-color-5', 'o-cc1-headings': 'o-color-5', 'o-cc1-link': 'o-color-2', 'o-cc1-btn-primary': 'o-color-2', 'o-cc1-btn-primary-border': 'o-color-5',
-        'o-cc2-bg': 'o-color-5', 'o-cc2-text': 'o-color-4', 'o-cc2-headings': 'o-color-4', 'o-cc2-link': 'o-color-1', 'o-cc2-btn-primary': 'o-color-1', 'o-cc2-btn-primary-border': 'o-color-4',
-        'o-cc3-bg': 'o-color-1', 'o-cc3-text': 'o-color-5', 'o-cc3-headings': 'o-color-5', 'o-cc3-link': 'o-color-5', 'o-cc3-btn-primary': 'o-color-5', 'o-cc3-btn-primary-border': 'o-color-5',
-        'menu': 1, 'menu-border-color': 'o-color-5', 'footer': 1, 'copyright': 1,
+        'o-color-1': $facodi-primary,
+        'o-color-2': $facodi-black,
+        'o-color-3': $facodi-muted,
+        'o-color-4': $facodi-white,
+        'o-color-5': $facodi-gray,
+        'o-cc1-bg': 'o-color-4', 'o-cc1-text': 'o-color-2', 'o-cc1-headings': 'o-color-2', 'o-cc1-link': 'o-color-2', 'o-cc1-btn-primary': 'o-color-1', 'o-cc1-btn-primary-border': 'o-color-2',
+        'o-cc2-bg': 'o-color-2', 'o-cc2-text': 'o-color-4', 'o-cc2-headings': 'o-color-4', 'o-cc2-link': 'o-color-1', 'o-cc2-btn-primary': 'o-color-1', 'o-cc2-btn-primary-border': 'o-color-4',
+        'o-cc3-bg': 'o-color-1', 'o-cc3-text': 'o-color-2', 'o-cc3-headings': 'o-color-2', 'o-cc3-link': 'o-color-2', 'o-cc3-btn-primary': 'o-color-2', 'o-cc3-btn-primary-border': 'o-color-2',
+        'menu': 1, 'menu-border-color': 'o-color-2', 'footer': 1, 'copyright': 1,
     ),
 ));
 $o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'facodi');
-$o-theme-color-palettes: map-merge($o-theme-color-palettes, ('facodi': ('alpha': $facodi-cyan, 'beta': $facodi-blue, 'gamma': $facodi-mint, 'delta': $facodi-paper, 'epsilon': $facodi-ink, 'success': #23A660, 'info': $facodi-blue, 'warning': $facodi-sun, 'danger': #C83248)));
+$o-theme-color-palettes: map-merge($o-theme-color-palettes, ('facodi': ('alpha': $facodi-primary, 'beta': $facodi-black, 'gamma': $facodi-muted, 'delta': $facodi-white, 'epsilon': $facodi-gray, 'success': #23A660, 'info': $facodi-black, 'warning': $facodi-primary, 'danger': #C83248)));
 $o-theme-font-configs: map-merge($o-theme-font-configs, (
     'Space Grotesk': ('family': ('Space Grotesk', sans-serif), 'url': 'Space+Grotesk:400,500,600,700'),
     'Inter': ('family': ('Inter', sans-serif), 'url': 'Inter:400,500,600,700'),
