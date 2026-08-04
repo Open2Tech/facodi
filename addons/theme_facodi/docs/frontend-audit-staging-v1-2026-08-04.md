@@ -2,11 +2,23 @@
 
 ## Resumo executivo
 
-Esta auditoria ampliou a verificação da primeira auditoria da homepage para a superfície pública do FACODI: shell do website, homepage, catálogo, pesquisa, páginas institucionais, autenticação anônima, erros públicos e os templates protegidos de curso, aula, perfil e portal.
+Esta auditoria ampliou a verificação da primeira auditoria da homepage para a superfície pública do FACODI: shell do website, homepage, catálogo, pesquisa, páginas institucionais, autenticação anônima, erros públicos e os templates protegidos de curso, aula, perfil e portal. A implementação dos P1 já começou na `staging-v1`.
 
 O resultado confirma uma customização visual forte na homepage e no shell, mas cobertura incompleta nos componentes nativos do Odoo 19. Os maiores riscos são a propagação incompleta do commit da homepage, estados standard Odoo em inglês, possível renderização incompleta do login, heranças QWeb frágeis e drift entre classes XML e SCSS.
 
-Esta entrega é somente documental. Nenhum template, SCSS, JS, dado, configuração ou código do Odoo foi alterado.
+As correções implementadas até agora estão limitadas a heranças QWeb do addon. Nenhum código do Odoo core, dado ou configuração externa foi alterado.
+
+### Resumo de progresso
+
+| Estado | Quantidade | Escopo atual |
+| --- | ---: | --- |
+| Total | 50 | Itens AUD-001 a AUD-050. |
+| Open | 45 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| In progress | 0 | Nenhuma correção parcialmente aplicada. |
+| Fixed | 3 | AUD-003, AUD-004 e AUD-005 corrigidos no addon em `6db6eff`. |
+| Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
+| Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
+| Deferred | 0 | Nenhum item adiado formalmente. |
 
 ### Contagem inicial por severidade
 
@@ -48,6 +60,8 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-001 — staging não propagou a correção da homepage
 
+**Estado:** `blocked` — commit `6db6eff` publicado, mas a propagação/atualização do módulo no staging ainda não foi observada.
+
 - **Página/componente:** `/`, homepage completa.
 - **Descrição:** O staging ainda apresenta copy sem acentos e o comportamento anterior, incluindo `Seu proximo capitulo comeca em rede`, `Visao geral`, `Explore os cursos disponiveis` e `Tres passos para comecar a aprender`.
 - **Evidência:** snapshot público de 2026-08-04; o branch contém `7019759`, mas a página não reflete o conteúdo corrigido.
@@ -59,16 +73,20 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-002 — login público aparenta renderização incompleta
 
+**Estado:** `verified` funcionalmente no staging — o DOM público contém formulário, email, password, submit e reset; a confirmação visual das classes FACODI aguarda a propagação do branch.
+
 - **Página/componente:** `/web/login`, formulário de autenticação.
-- **Descrição:** O snapshot mostra shell FACODI e apenas glifos de ícones no conteúdo principal; não mostra campos, labels, botão, links de registo ou recuperação.
-- **Evidência:** snapshot público de `/web/login`; requer confirmação por DOM e screenshot.
+- **Descrição:** O snapshot inicial não mostrava o conteúdo por não aguardar a renderização completa. A inspeção DOM posterior confirmou os campos, labels, botão, reset e passkey.
+- **Evidência:** inspeção Playwright de `/web/login` em 2026-08-04; formulário `oe_login_form` com campos `login`/`password`, submit e `/web/reset_password`.
 - **Causa provável:** XPath da herança de `web.login` não aplicado, template copiado pelo Website Builder divergente, ou bundle/estado de formulário sem markup.
 - **Ficheiros relacionados:** `views/auth.xml`, `static/src/scss/facodi_frontend.scss`, templates Odoo `web.login`.
-- **Severidade:** P1. **Impacto:** pode bloquear autenticação. **Esforço:** M. **Risco:** alto. **Dependências:** teste anônimo de login e reset.
+- **Severidade:** P1. **Impacto:** styling incompleto ainda pode degradar a experiência, mas a autenticação anônima não está bloqueada. **Esforço:** M. **Risco:** alto. **Dependências:** teste anônimo de login e reset após deploy.
 - **Correção recomendada:** verificar HTML servido, heranças efetivamente aplicadas e console errors antes de alterar o template.
 - **Critério de aceitação:** campos acessíveis de email/password, submit, registo e recuperação aparecem em todos os viewports e não há erro de asset.
 
 ### AUD-003 — estados de erro públicos permanecem standard Odoo em inglês
+
+**Estado:** `fixed` localmente em `6db6eff`; `verified` no staging pendente da propagação.
 
 - **Página/componente:** `/404`, 403, 500 e estado de pesquisa vazio.
 - **Descrição:** `/404` apresenta `Error 404`, `We couldn't find the page you're looking for!` e texto de ajuda em inglês; a pesquisa vazia apresenta `Search Results` e `Your search ... did not match anything.`.
@@ -81,6 +99,8 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-004 — ID QWeb duplicado no portal
 
+**Estado:** `fixed` localmente em `6db6eff`; upgrade/install no staging pendente.
+
 - **Página/componente:** portal layout.
 - **Descrição:** `facodi_portal_layout` aparece duas vezes em `views/profile.xml` com alvos de herança diferentes.
 - **Evidência:** análise estática de `views/profile.xml`.
@@ -91,6 +111,8 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 - **Critério de aceitação:** cada `ir.ui.view` tem XML ID único e todas as heranças carregam sem warning ou `ValidationError`.
 
 ### AUD-005 — heranças frágeis em superfícies nativas
+
+**Estado:** `fixed` localmente em `6db6eff`; carregamento real em português/inglês pendente de upgrade no staging.
 
 - **Página/componente:** erros, curso, header, footer e homepage.
 - **Descrição:** Há XPath dependente de texto (`Oops`/`Forbidden`), predicado de igualdade exata de classe e substituições integrais de nós centrais.
