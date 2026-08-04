@@ -363,6 +363,41 @@ Confirmados ou fortemente indicados:
 - Os testes Odoo de `theme_open2` não coletaram porque o runtime Odoo não está disponível neste ambiente (`ImportError: cannot import name 'models' from 'odoo'`).
 - AUD-018 foi corrigido localmente nesta execução; a confirmação visual e a propagação dos ativos continuam pendentes de autenticação e upgrade no staging.
 
+## Auditoria visual follow-up — 2026-08-04
+
+Foi feita uma nova passagem visual na homepage e no catálogo público, com inspeção adicional das rotas institucionais, pesquisa vazia e login nos viewports de referência. O staging continua a servir uma versão anterior do tema, por isso os resultados abaixo distinguem problemas do produto de problemas de propagação.
+
+### Bloqueador visual
+
+- A captura de edição mostra `Erro de estilo` e o ribbon `A css error occured, using an old style to render this page`. A causa foi identificada no mega menu: `min(680px, calc(100vw - 32px))` era interpretado pelo Sass do Odoo como função numérica inválida. O commit local `a2cbb2e` substitui a expressão por `max-width`, `min-width` e `width: calc(...)`; a compilação com o Sass do ambiente virtual passou. O staging ainda precisa servir esse commit.
+
+### Homepage
+
+- A composição principal mantém boa hierarquia entre hero, mapa e CTAs.
+- A versão servida ainda apresenta copy sem acentos (`Seu proximo...`, `Curriculos`, `catalogo`) e navegação híbrida.
+- No mobile auditado, o menu ocupa uma coluna alta antes do conteúdo principal; deve ser confirmado após a reconstrução do bundle, com o collapse fechado por defeito.
+
+### Catálogo `/slides`
+
+- O catálogo permanece visualmente dominado por componentes standard: `Courses`, `My courses`, `All Courses`, `Start now`, `Level` e `View`.
+- A sidebar de gamificação ocupa peso visual semelhante ao catálogo e reduz a clareza do objetivo primário, que é descobrir e iniciar cursos.
+- Os cartões têm imagens e ações consistentes, mas ficam pequenos em relação ao espaço vazio da página e não seguem ainda a hierarquia visual da homepage.
+- A tradução QWeb local de `Cursos`/`Pesquisar cursos` não está refletida no staging observado.
+
+### Shell, footer e acessibilidade
+
+- O footer visível no staging ainda é a versão anterior, sem os grupos `Aprender`, `Conhecer` e `Participar`.
+- Ícones continuam a aparecer como glifos Font Awesome na árvore acessível em alguns controles; precisam de nome acessível ou `aria-hidden` consistente após a propagação.
+- Login contém campos e ações funcionais, mas ainda usa labels e copy standard em inglês.
+
+### Próximas correções visuais
+
+1. Propagar `a2cbb2e` e repetir a auditoria sem o fallback CSS.
+2. Confirmar collapse do menu em `390x844` e `768x1024`.
+3. Redesenhar a prioridade do catálogo: pesquisa/filtros/cursos primeiro; gamificação como painel secundário.
+4. Aplicar a nova estrutura do footer e validar wrapping, foco e contraste.
+5. Repetir a matriz nos cinco breakpoints e guardar screenshots de homepage, catálogo, pesquisa, login e erro.
+
 ## Estado da auditoria e páginas não auditadas
 
 A superfície pública anônima principal foi acessada, mas não foi possível concluir a matriz visual completa dos cinco viewports nem validar superfícies protegidas sem sessão/fixtures. Permanecem não confirmados: dashboard/portal autenticado, curso/aula em todos os estados, perfil, signup/reset, cookies interativos, 403/500, loading, ausência total de cursos, fullscreen, quiz, transcrição e notas.
