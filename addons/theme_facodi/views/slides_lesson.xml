@@ -50,8 +50,8 @@
         </xpath>
     </template>
 
-    <template id="facodi_slide_comment" inherit_id="website_slides.slide_comment" name="FACODI slide comment">
-        <xpath expr="//div[hasclass('o_wslides_slide_comment')]" position="attributes">
+    <template id="facodi_slide_comments_tab" inherit_id="website_slides.slide_content_detailed" name="FACODI slide comments tab">
+        <xpath expr="//div[@id='discuss']" position="attributes">
             <attribute name="class" add="facodi-lesson-comment" separator=" "/>
         </xpath>
     </template>

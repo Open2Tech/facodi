@@ -49,7 +49,7 @@ The theme now covers:
 - `website_slides.slide_fullscreen`
 - `website_slides.lesson_content_quiz`
 - `website_slides.lesson_content_quiz_question`
-- `website_slides.slide_comment`
+- `#discuss` dentro de `website_slides.slide_content_detailed`
 - `website_slides.slide_share_modal`
 
 ### Profile / user area
