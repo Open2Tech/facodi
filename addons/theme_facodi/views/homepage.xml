@@ -112,7 +112,7 @@
 
                 <section class="facodi-open-section" data-name="FACODI Open Learning">
                     <div><p class="facodi-kicker">Conhecimento que circula</p><h2>Uma faculdade aberta para quem quer construir o futuro.</h2></div>
-                    <div class="facodi-open-actions"><p>Estude com roteiros claros. Contribua com recursos revisados. Transforme seu percurso em algo que outras pessoas tambem podem seguir.</p><a class="btn facodi-button facodi-button-secondary" href="/sobre">Conhecer a FACODI <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a></div>
+                    <div class="facodi-open-actions"><p>Estude com roteiros claros. Contribua com recursos revisados. Transforme seu percurso em algo que outras pessoas também podem seguir.</p><a class="btn facodi-button facodi-button-secondary" href="/sobre">Conhecer a FACODI <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a></div>
                 </section>
 
                 <!-- Features -->
@@ -206,7 +206,7 @@
                     <div class="row g-3 align-items-stretch">
                         <div class="col-lg-4 col-sm-6">
                             <article class="facodi-stat-card h-100">
-                                <span>Alianca</span>
+                                <span>Aliança</span>
                                 <strong>SEA-EU</strong>
                                 <small>Projeto selecionado nos SEA-EU Student-Led Projects 2026 para educação digital aberta.</small>
                                 <i class="fa fa-globe" aria-hidden="true"/>

@@ -2,39 +2,22 @@
 <odoo>
     <!-- FACODI public profile / eLearning profile styling -->
 
-    <template id="facodi_website_profile_user_profile_content" inherit_id="website_profile.user_profile_content" name="FACODI website profile content">
+    <template id="facodi_website_profile_user_profile_content" inherit_id="website_profile.user_profile_main" name="FACODI website profile content">
         <xpath expr="//div[@id='wrap']" position="attributes">
             <attribute name="class" add="facodi-app-shell" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_website_profile_profile_access_denied" inherit_id="website_profile.profile_access_denied" name="FACODI website profile access denied">
-        <xpath expr="//div[@id='wrap']" position="attributes">
-            <attribute name="class" add="facodi-app-shell" separator=" "/>
-        </xpath>
         <xpath expr="//div[hasclass('container')]" position="attributes">
-            <attribute name="class" add="facodi-empty-state text-start align-items-start" separator=" "/>
-        </xpath>
-    </template>
-
-    <template id="facodi_website_slides_user_profile_content" inherit_id="website_slides.user_profile_content" name="FACODI slides user profile content">
-        <xpath expr="//div[@id='wrap']" position="attributes">
-            <attribute name="class" add="facodi-app-shell" separator=" "/>
+            <attribute name="class" add="facodi-app-shell facodi-empty-state text-start align-items-start" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_website_slides_display_course" inherit_id="website_slides.display_course" name="FACODI slides display course">
-        <xpath expr="//div[hasclass('o_wslides_profile_course')]" position="attributes">
-            <attribute name="class" add="facodi-course-card" separator=" "/>
+        <xpath expr="//div[hasclass('o_wprofile_slides_course_card_body')]" position="attributes">
+            <attribute name="class" add="facodi-profile-course-card" separator=" "/>
         </xpath>
     </template>
 
-    <template id="facodi_website_slides_profile_access_denied" inherit_id="website_slides.profile_access_denied" name="FACODI slides profile access denied">
-        <xpath expr="//div[@id='wrap']" position="attributes">
-            <attribute name="class" add="facodi-app-shell" separator=" "/>
-        </xpath>
-        <xpath expr="//div[hasclass('container')]" position="attributes">
-            <attribute name="class" add="facodi-empty-state text-start align-items-start" separator=" "/>
-        </xpath>
-    </template>
 </odoo>

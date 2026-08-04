@@ -6,35 +6,32 @@
         <xpath expr="//div[@id='wrap']" position="attributes">
             <attribute name="class">wrap o_wslides_wrap facodi-app-shell</attribute>
         </xpath>
-    </template>
-
-    <template id="facodi_slide_content_detailed" inherit_id="website_slides.slide_content_detailed" name="FACODI slide content detailed">
-        <xpath expr="//div[hasclass('o_wslides_slide_content')]" position="attributes">
+        <xpath expr="//div[contains(@t-attf-class, 'o_wslides_lesson_content')]" position="attributes">
             <attribute name="class" add="facodi-lesson-content" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_slide_aside_training" inherit_id="website_slides.slide_aside_training" name="FACODI slide aside training">
-        <xpath expr="//div[hasclass('o_wslides_slide_aside')]" position="attributes">
+        <xpath expr="//div[hasclass('o_wslides_lesson_aside_list')]" position="attributes">
             <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_slide_fullscreen" inherit_id="website_slides.slide_fullscreen" name="FACODI slide fullscreen">
-        <xpath expr="//div[@id='o_wslides_fs_main']" position="attributes">
+        <xpath expr="//div[hasclass('o_wslides_fs_main')]" position="attributes">
             <attribute name="class" add="facodi-fullscreen" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_slide_aside_documentation" inherit_id="website_slides.slide_aside_documentation" name="FACODI slide aside documentation">
-        <xpath expr="//div[hasclass('o_wslides_slide_aside')]" position="attributes">
+        <xpath expr="//div[hasclass('o_wslides_lesson_aside_doc')]" position="attributes">
             <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
         </xpath>
     </template>
 
     <template id="facodi_slide_aside_training_category" inherit_id="website_slides.slide_aside_training_category" name="FACODI slide aside training category">
-        <xpath expr="//div[hasclass('o_wslides_slide_aside')]" position="attributes">
-            <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
+        <xpath expr="//li[hasclass('o_wslides_fs_sidebar_section')]" position="attributes">
+            <attribute name="class" add="facodi-lesson-sidebar-section" separator=" "/>
         </xpath>
     </template>
 
@@ -45,7 +42,7 @@
     </template>
 
     <template id="facodi_lesson_content_quiz_question" inherit_id="website_slides.lesson_content_quiz_question" name="FACODI lesson quiz question">
-        <xpath expr="//div[hasclass('o_wslides_quiz_question') and hasclass('mb-2')]" position="attributes">
+        <xpath expr="//div[contains(@t-att-class, 'o_wslides_js_lesson_quiz_question')]" position="attributes">
             <attribute name="class" add="facodi-quiz-question" separator=" "/>
         </xpath>
     </template>

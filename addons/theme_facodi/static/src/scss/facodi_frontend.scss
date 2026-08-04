@@ -11,6 +11,7 @@
     --facodi-white: #FFFFFF;
     --facodi-muted: #F2F2F2;
     --facodi-gray: #666666;
+    --facodi-border: rgba(0, 0, 0, .16);
     --facodi-dark-bg: #0b0b0b;
     --facodi-dark-muted: #1a1a1a;
     --facodi-shadow: 5px 5px 0 var(--facodi-black);
@@ -1709,8 +1710,8 @@ body,
 }
 
 // Slide list
-.o_wslides_body .o_wslides_slide_list {
-    .o_wslides_slide_list_chapter {
+.o_wslides_body .facodi-slide-list {
+    .o_wslides_slide_list_category_header {
         background: var(--facodi-muted);
         color: var(--facodi-black);
         font-family: 'JetBrains Mono', monospace;
@@ -1720,7 +1721,7 @@ body,
         text-transform: uppercase;
     }
 
-    .o_wslides_slide_list_link {
+    .facodi-slide-list-link {
         color: var(--facodi-black);
         font-weight: 500;
         border-radius: 6px;
@@ -1945,10 +1946,21 @@ body,
     padding: 24px;
 }
 
-.o_wslides_body .o_wslides_quiz_question {
+.o_wslides_body .o_wslides_quiz_question,
+.o_wslides_body .facodi-quiz-question {
     border-bottom: 2px solid var(--facodi-black);
     padding-bottom: 16px;
     margin-bottom: 16px;
+}
+
+.o_wslides_body .o_wslides_js_lesson_quiz_question {
+    border-bottom: 2px solid var(--facodi-black);
+    padding-bottom: 16px;
+}
+
+.o_wslides_body .facodi-lesson-sidebar-section {
+    border-top: 1px solid var(--facodi-border);
+    padding-top: 4px;
 }
 
 // Comments and share
@@ -2034,6 +2046,27 @@ body,
     }
 }
 
+.facodi-profile-course-card {
+    min-width: 0;
+
+    h5,
+    .o_wslides_channel_tag {
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-portal-card-link,
+.facodi-signin-link,
+.facodi-user-dropdown {
+    transition: color 160ms ease, background-color 160ms ease;
+}
+
+.facodi-portal-sidebar,
+.facodi-address-card {
+    border: 1px solid var(--facodi-border);
+    border-radius: 8px;
+}
+
 // ============================================================================
 // 16. Cookie / GDPR banner
 // ============================================================================
@@ -2066,6 +2099,18 @@ body,
     .btn-secondary,
     .js_cookies_discard,
     .js_cookies_refuse {
+        background: var(--facodi-white);
+        color: var(--facodi-black);
+    }
+}
+
+.facodi-cookie-bar {
+    .btn-primary {
+        background: var(--facodi-primary);
+        color: var(--facodi-black);
+    }
+
+    .btn-secondary {
         background: var(--facodi-white);
         color: var(--facodi-black);
     }

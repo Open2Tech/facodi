@@ -6,7 +6,7 @@
                 <div class="container-fluid facodi-footer-inner">
                     <div>
                         <a href="/" class="facodi-wordmark">FACODI<span>.</span></a>
-                        <p>Faculdade Comunitaria Digital. Educacao superior aberta, colaborativa e acessivel.</p>
+                        <p>Faculdade Comunitária Digital. Educação superior aberta, colaborativa e acessível.</p>
                     </div>
                     <div class="facodi-footer-links">
                         <div class="facodi-footer-group">
@@ -28,7 +28,7 @@
                             <a href="/contactus">Contato</a>
                         </div>
                     </div>
-                    <p class="facodi-footer-meta">Open source para aprender em publico.<br/><span t-esc="datetime.datetime.now().year"/> FACODI<br/>Criado por <a href="https://open2.tech" target="_blank" rel="noopener noreferrer">Open2 Technology</a></p>
+                    <p class="facodi-footer-meta">Open source para aprender em público.<br/><span t-esc="datetime.datetime.now().year"/> FACODI<br/>Criado por <a href="https://open2.tech" target="_blank" rel="noopener noreferrer">Open2 Technology</a></p>
                 </div>
             </div>
         </xpath>
