@@ -825,21 +825,21 @@ body {
 // ============================================================================
 .card {
     background: var(--facodi-white);
-    border: 2px solid var(--facodi-black);
+    border: 1px solid rgba(0, 0, 0, .16);
     border-radius: 10px;
-    box-shadow: 4px 4px 0 var(--facodi-black);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
 }
 
 .card-header,
 .card-footer {
     background: var(--facodi-white);
-    border-color: var(--facodi-black);
+    border-color: rgba(0, 0, 0, .16);
 }
 
 .list-group {
-    border: 2px solid var(--facodi-black);
+    border: 1px solid rgba(0, 0, 0, .16);
     border-radius: 10px;
-    box-shadow: 4px 4px 0 var(--facodi-black);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
 }
 
 .list-group-item {
@@ -1432,15 +1432,15 @@ body {
 
 .o_search_result_item {
     background: var(--facodi-white);
-    border: 2px solid var(--facodi-black);
+    border: 1px solid rgba(0, 0, 0, .16);
     border-radius: 10px;
-    box-shadow: 3px 3px 0 var(--facodi-black);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
     margin-bottom: 16px;
     padding: 20px;
 
     &:hover {
-        box-shadow: 2px 2px 0 var(--facodi-black);
-        transform: translate(1px, 1px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+        transform: translateY(-2px);
     }
 
     a {
@@ -1591,14 +1591,14 @@ body {
 // Catalog cards
 .o_wslides_body .o_wslides_course_card {
     background: var(--facodi-white);
-    border: 2px solid var(--facodi-black);
+    border: 1px solid rgba(0, 0, 0, .16);
     border-radius: 10px;
-    box-shadow: 4px 4px 0 var(--facodi-black);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
     transition: transform 180ms ease, box-shadow 180ms ease;
 
     &:hover {
-        box-shadow: 2px 2px 0 var(--facodi-black);
-        transform: translate(2px, 2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+        transform: translateY(-2px);
     }
 
     .card-title {
@@ -1808,19 +1808,25 @@ body {
         }
     }
 
-    .o_portal_my_home,
+    .o_portal_my_home {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
     .o_portal_index_card,
     .o_portal_contact_details {
         background: var(--facodi-white);
-        border: 2px solid var(--facodi-black);
+        border: 1px solid rgba(0, 0, 0, .16);
         border-radius: 10px;
-        box-shadow: 4px 4px 0 var(--facodi-black);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
     }
 
     .o_portal_index_card {
         &:hover {
-            box-shadow: 2px 2px 0 var(--facodi-black);
-            transform: translate(2px, 2px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+            transform: translateY(-2px);
         }
 
         a {
