@@ -6,16 +6,16 @@ Esta auditoria ampliou a verificação da primeira auditoria da homepage para a 
 
 O resultado confirma uma customização visual forte na homepage e no shell, mas cobertura incompleta nos componentes nativos do Odoo 19. Os maiores riscos são a propagação incompleta do commit da homepage, estados standard Odoo em inglês, possível renderização incompleta do login, heranças QWeb frágeis e drift entre classes XML e SCSS.
 
-As correções implementadas até agora estão limitadas a heranças QWeb do addon. Nenhum código do Odoo core, dado ou configuração externa foi alterado.
+As correções implementadas até agora estão limitadas ao addon FACODI, nas heranças QWeb e no SCSS de apresentação. Nenhum código do Odoo core, dado ou configuração externa foi alterado.
 
 ### Resumo de progresso
 
 | Estado | Quantidade | Escopo atual |
 | --- | ---: | --- |
 | Total | 50 | Itens AUD-001 a AUD-050. |
-| Open | 43 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| Open | 42 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
 | In progress | 0 | Nenhuma correção parcialmente aplicada. |
-| Fixed | 5 | AUD-003, AUD-004, AUD-005, AUD-008 e AUD-012 corrigidos no addon. |
+| Fixed | 6 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-012 e AUD-018 corrigidos no addon. |
 | Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
 | Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
 | Deferred | 0 | Nenhum item adiado formalmente. |
