@@ -35,6 +35,14 @@ body {
     overflow: hidden;
 }
 
+body,
+#wrap,
+.facodi-app-shell {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+}
+
 // Header
 .facodi-header {
     background: var(--facodi-white);
@@ -100,6 +108,10 @@ body {
     border-radius: 8px;
     box-shadow: var(--facodi-shadow-sm);
     color: var(--facodi-black);
+}
+
+.facodi-header .navbar-collapse {
+    min-width: 0;
 }
 
 // Hero
@@ -1743,6 +1755,24 @@ body {
         font-family: 'Space Grotesk', sans-serif;
         color: var(--facodi-black);
     }
+
+    .facodi-course-steps {
+        color: var(--facodi-gray);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .facodi-new-content-badge {
+        background: var(--facodi-primary);
+        border: 1px solid var(--facodi-black);
+        color: var(--facodi-black);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
 }
 
 // Catalog search bar
@@ -2186,7 +2216,31 @@ body {
     }
 
     .facodi-header .navbar-collapse {
+        background: var(--facodi-white);
+        border-top: 1px solid var(--facodi-black);
+        max-width: 100%;
+        overflow-x: clip;
         padding: 12px 0;
+    }
+
+    .facodi-header .navbar-nav {
+        align-items: stretch !important;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .facodi-header .nav-item,
+    .facodi-header .nav-link {
+        max-width: 100%;
+    }
+
+    .facodi-header .facodi-mega-menu {
+        box-shadow: none;
+        margin: 0 16px;
+        max-width: calc(100% - 32px);
+        padding: 16px;
+        position: static;
+        width: auto;
     }
 
     .facodi-hero {
