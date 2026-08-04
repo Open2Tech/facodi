@@ -1117,6 +1117,13 @@ body {
     font-weight: 700;
 }
 
+.facodi-progress > span {
+    background: var(--facodi-primary);
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+}
+
 // ============================================================================
 // 9. Odoo color combinations (o_cc*) — used by Website Builder snippets
 // ============================================================================

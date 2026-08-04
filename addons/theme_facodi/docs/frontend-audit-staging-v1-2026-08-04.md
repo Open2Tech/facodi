@@ -13,9 +13,9 @@ As correções implementadas até agora estão limitadas ao addon FACODI, nas he
 | Estado | Quantidade | Escopo atual |
 | --- | ---: | --- |
 | Total | 50 | Itens AUD-001 a AUD-050. |
-| Open | 42 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| Open | 41 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
 | In progress | 0 | Nenhuma correção parcialmente aplicada. |
-| Fixed | 6 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-012 e AUD-018 corrigidos no addon. |
+| Fixed | 7 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-009, AUD-012 e AUD-018 corrigidos no addon. |
 | Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
 | Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
 | Deferred | 0 | Nenhum item adiado formalmente. |
@@ -129,7 +129,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 - **AUD-006 — copy antiga ainda servida:** P1, confirmado no staging; dependente de AUD-001.
 - **AUD-007 — navegação híbrida:** P2; `Courses`/`Contact us` no header convivem com links em português.
 - **AUD-008 — fallback de curso sem token explícito:** P2, `fixed` localmente; `facodi-course-cyan` usa agora `--facodi-primary` e `--facodi-black`, com regra dedicada para o cartão e a sua arte. Validação estrutural passou; staging pendente de propagação.
-- **AUD-009 — progresso via inline style:** P2; largura dinâmica não tem contrato documentado de intervalo nem variante de estado.
+- **AUD-009 — progresso via inline style:** P2, `fixed` localmente; o preenchimento inline recebe contenção visual com `display: block`, `max-width: 100%` e `min-width: 0`, sem alterar a lógica de conclusão do Odoo. Validação estrutural passou; staging pendente.
 - **AUD-010 — estados sem dados não confirmados:** P2; fallback sem cursos, imagem ausente e progresso zero dependem de fixtures.
 
 ### Catálogo `/slides`
