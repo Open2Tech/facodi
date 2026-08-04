@@ -9,6 +9,12 @@
         <xpath expr="//div[hasclass('container')][hasclass('o_wslides_home_content_section') and contains(@class, 'mb-3')]" position="attributes">
             <attribute name="class">container o_wslides_home_content_section mb-3 facodi-empty-state d-none</attribute>
         </xpath>
+        <xpath expr="//h2[hasclass('h5') and hasclass('mb-3')]" position="replace">
+            <h2 t-if="not search_term and not search_slide_category and not search_my and not search_tags and channels" class="h5 mb-3">Cursos</h2>
+        </xpath>
+        <xpath expr="//t[@t-set='placeholder']" position="replace">
+            <t t-set="placeholder">Pesquisar cursos</t>
+        </xpath>
     </template>
 
     <template id="facodi_courses_search_bar" inherit_id="website_slides.courses_search_bar" name="FACODI courses search bar">
