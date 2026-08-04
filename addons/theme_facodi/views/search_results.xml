@@ -12,7 +12,7 @@
     </template>
 
     <template id="facodi_website_search_box_input" inherit_id="website.website_search_box_input" name="FACODI website search box input">
-        <xpath expr="//input[@type='text']" position="attributes">
+        <xpath expr="//input[@name='search']" position="attributes">
             <attribute name="class" add="facodi-search-input" separator=" "/>
         </xpath>
         <xpath expr="//button[@type='submit']" position="attributes">
