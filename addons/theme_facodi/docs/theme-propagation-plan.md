@@ -87,7 +87,6 @@ The theme now covers:
 - `website.protected_403`
 
 ### Cookies
-- `website.cookie_banner`
 - `website.cookies_bar`
 
 ## Implementation strategy
