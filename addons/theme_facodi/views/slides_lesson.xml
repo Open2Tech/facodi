@@ -25,4 +25,40 @@
             <attribute name="class" add="facodi-fullscreen" separator=" "/>
         </xpath>
     </template>
+
+    <template id="facodi_slide_aside_documentation" inherit_id="website_slides.slide_aside_documentation" name="FACODI slide aside documentation">
+        <xpath expr="//div[hasclass('o_wslides_slide_aside')]" position="attributes">
+            <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_slide_aside_training_category" inherit_id="website_slides.slide_aside_training_category" name="FACODI slide aside training category">
+        <xpath expr="//div[hasclass('o_wslides_slide_aside')]" position="attributes">
+            <attribute name="class" add="facodi-lesson-sidebar" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_lesson_content_quiz" inherit_id="website_slides.lesson_content_quiz" name="FACODI lesson quiz container">
+        <xpath expr="//div[hasclass('o_wslides_js_lesson_quiz')]" position="attributes">
+            <attribute name="class" add="facodi-quiz" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_lesson_content_quiz_question" inherit_id="website_slides.lesson_content_quiz_question" name="FACODI lesson quiz question">
+        <xpath expr="//div[hasclass('o_wslides_quiz_question') and hasclass('mb-2')]" position="attributes">
+            <attribute name="class" add="facodi-quiz-question" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_slide_comment" inherit_id="website_slides.slide_comment" name="FACODI slide comment">
+        <xpath expr="//div[hasclass('o_wslides_slide_comment')]" position="attributes">
+            <attribute name="class" add="facodi-lesson-comment" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_slide_share_modal" inherit_id="website_slides.slide_share_modal" name="FACODI slide share modal">
+        <xpath expr="//div[hasclass('modal-content')]" position="attributes">
+            <attribute name="class" add="facodi-modal" separator=" "/>
+        </xpath>
+    </template>
 </odoo>

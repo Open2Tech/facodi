@@ -16,4 +16,34 @@
             <attribute name="class">o_wslides_course_sidebar bg-white px-3 py-2 py-md-3 mb-3 mb-md-5 facodi-course-sidebar</attribute>
         </xpath>
     </template>
+
+    <template id="facodi_course_nav" inherit_id="website_slides.course_nav" name="FACODI course nav">
+        <xpath expr="//div[hasclass('o_wslides_course_nav')]" position="attributes">
+            <attribute name="class" add="facodi-course-nav" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_join" inherit_id="website_slides.course_join" name="FACODI course join">
+        <xpath expr="//div[hasclass('o_wslides_js_course_join_link') or @class='o_wslides_js_course_join_link']" position="attributes">
+            <attribute name="class" add="facodi-button facodi-button-primary" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_slides_list" inherit_id="website_slides.course_slides_list" name="FACODI course slides list">
+        <xpath expr="//div[hasclass('o_wslides_slide_list') and hasclass('mb-3')]" position="attributes">
+            <attribute name="class" add="facodi-slide-list" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_slides_list_slide" inherit_id="website_slides.course_slides_list_slide" name="FACODI course slides list slide">
+        <xpath expr="//a[hasclass('o_wslides_slide_list_link')]" position="attributes">
+            <attribute name="class" add="facodi-slide-list-link" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_slides_cards" inherit_id="website_slides.course_slides_cards" name="FACODI course slides cards">
+        <xpath expr="//div[hasclass('row') and contains(@class, 'o_wslides_lesson_aside')]" position="attributes">
+            <attribute name="class" add="facodi-slide-cards" separator=" "/>
+        </xpath>
+    </template>
 </odoo>

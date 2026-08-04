@@ -34,13 +34,23 @@ theme_facodi/
 │   │   ├── theme_facodi.svg            # used by Website Configurator preview
 │   │   └── evidence/                  # local E2E screenshots (not shipped)
 │   └── src/scss/
-│       ├── primary_variables.scss
-│       ├── bootstrap_overridden.scss
-│       └── facodi_frontend.scss
+│       ├── primary_variables.scss      # Odoo palette + FACODI tokens
+│       ├── bootstrap_overridden.scss   # Bootstrap variable overrides
+│       └── facodi_frontend.scss        # layout, components, snippets, eLearning, portal
 └── views/
-    ├── header.xml                      # inherits website.layout, dynamic menu
+    ├── auth.xml                        # login / signup / reset password styling
+    ├── cookies.xml                     # cookie / GDPR banner styling
     ├── footer.xml                      # replaces div#footer with FACODI footer
+    ├── header.xml                      # inherits website.layout, dynamic menu
     ├── homepage.xml                    # extends website.homepage wrap
+    ├── pages.xml                       # static about/manifesto/community/roadmap/contribute
+    ├── profile.xml                     # portal dashboard, details, security, addresses
+    ├── search_error.xml                # 4xx/403/404/500 and restricted page styling
+    ├── search_results.xml              # global search results styling
+    ├── slides_catalog.xml              # course catalog styling
+    ├── slides_course.xml               # course detail page styling
+    ├── slides_lesson.xml               # lesson / video page styling
+    ├── slides_profile.xml              # public profile / eLearning profile styling
     └── snippets/
         └── facodi_learning_hub.xml     # Website Builder snippet
 ```

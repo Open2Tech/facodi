@@ -13,4 +13,88 @@
             <attribute name="class" add="facodi-portal-home" separator=" "/>
         </xpath>
     </template>
+
+    <template id="facodi_portal_layout" inherit_id="portal.portal_layout" name="FACODI portal layout wrapper">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_docs_entry" inherit_id="portal.portal_docs_entry" name="FACODI portal docs entry">
+        <xpath expr="//div[hasclass('o_portal_docs_entry')]/a" position="attributes">
+            <attribute name="class" add="facodi-portal-card-link" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_side_content" inherit_id="portal.side_content" name="FACODI portal side content">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="attributes">
+            <attribute name="class" add="facodi-portal-sidebar" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_my_details" inherit_id="portal.portal_my_details" name="FACODI portal my details">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_my_security" inherit_id="portal.portal_my_security" name="FACODI portal my security">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_searchbar" inherit_id="portal.portal_searchbar" name="FACODI portal searchbar">
+        <xpath expr="//input[@type='search']" position="attributes">
+            <attribute name="class" add="facodi-search-input" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs" name="FACODI portal breadcrumbs">
+        <xpath expr="//ol[hasclass('breadcrumb')]" position="attributes">
+            <attribute name="class" add="facodi-breadcrumb" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_pager" inherit_id="portal.pager" name="FACODI portal pager">
+        <xpath expr="//ul[hasclass('pagination')]" position="attributes">
+            <attribute name="class" add="facodi-pagination" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_user_dropdown" inherit_id="portal.user_dropdown" name="FACODI portal user dropdown">
+        <xpath expr="//a[@id='o-dropdown-user']" position="attributes">
+            <attribute name="class" add="facodi-user-dropdown" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_portal_user_sign_in" inherit_id="portal.user_sign_in" name="FACODI portal user sign in">
+        <xpath expr="//a[contains(@href, '/web/login')]" position="attributes">
+            <attribute name="class" add="facodi-signin-link" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_address_management" inherit_id="portal.address_management" name="FACODI address management">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_my_addresses" inherit_id="portal.my_addresses" name="FACODI my addresses">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_address_card" inherit_id="portal.address_card" name="FACODI address card">
+        <xpath expr="//div[hasclass('card')]" position="attributes">
+            <attribute name="class" add="facodi-address-card" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_address_form_fields" inherit_id="portal.address_form_fields" name="FACODI address form fields">
+        <xpath expr="//input[hasclass('form-control')]" position="attributes">
+            <attribute name="class" add="facodi-form-control" separator=" "/>
+        </xpath>
+    </template>
 </odoo>

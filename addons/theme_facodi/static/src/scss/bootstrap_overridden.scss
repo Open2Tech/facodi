@@ -1,3 +1,8 @@
+// FACODI Bootstrap variable overrides
+// Applied before Bootstrap is compiled so every native component inherits the
+// neo-brutalist identity automatically.
+
+// Border & shadow
 $border-radius: .5rem !default;
 $border-radius-sm: .5rem !default;
 $border-radius-lg: .5rem !default;
@@ -5,3 +10,110 @@ $border-width: 2px !default;
 $box-shadow: 4px 4px 0 $facodi-black !default;
 $box-shadow-sm: 2px 2px 0 $facodi-black !default;
 $box-shadow-lg: 6px 6px 0 $facodi-black !default;
+
+// Buttons — hard offsets + sharp borders keep the FACODI look.
+$btn-font-weight: 700 !default;
+$btn-border-width: 2px !default;
+$btn-border-radius: .5rem !default;
+$btn-border-radius-sm: .5rem !default;
+$btn-border-radius-lg: .5rem !default;
+$btn-padding-y: .55rem !default;
+$btn-padding-x: 1rem !default;
+$btn-focus-width: 3px !default;
+$btn-focus-color: rgba($facodi-primary, .25) !default;
+
+// Forms
+$input-border-width: 2px !default;
+$input-border-radius: .5rem !default;
+$input-border-color: $facodi-black !default;
+$input-focus-border-color: $facodi-black !default;
+$input-focus-box-shadow: 0 0 0 3px rgba($facodi-primary, .25) !default;
+$input-placeholder-color: $facodi-gray !default;
+$form-check-input-checked-bg-color: $facodi-primary !default;
+$form-check-input-checked-border-color: $facodi-black !default;
+$form-check-input-focus-box-shadow: 0 0 0 3px rgba($facodi-primary, .25) !default;
+
+// Dropdowns
+$dropdown-border-width: 2px !default;
+$dropdown-border-color: $facodi-black !default;
+$dropdown-border-radius: .5rem !default;
+$dropdown-box-shadow: 4px 4px 0 $facodi-black !default;
+$dropdown-link-hover-bg: $facodi-muted !default;
+$dropdown-link-active-bg: $facodi-primary !default;
+$dropdown-link-active-color: $facodi-black !default;
+
+// Modals
+$modal-content-border-width: 2px !default;
+$modal-content-border-color: $facodi-black !default;
+$modal-content-border-radius: .75rem !default;
+$modal-content-box-shadow-xs: 4px 4px 0 $facodi-black !default;
+$modal-content-box-shadow-sm-up: 6px 6px 0 $facodi-black !default;
+
+// Cards
+$card-border-width: 2px !default;
+$card-border-color: $facodi-black !default;
+$card-border-radius: .5rem !default;
+$card-box-shadow: 4px 4px 0 $facodi-black !default;
+
+// List groups
+$list-group-border-width: 2px !default;
+$list-group-border-color: $facodi-black !default;
+$list-group-border-radius: .5rem !default;
+$list-group-hover-bg: $facodi-muted !default;
+$list-group-active-bg: $facodi-primary !default;
+$list-group-active-color: $facodi-black !default;
+$list-group-active-border-color: $facodi-black !default;
+
+// Navs / tabs / pills
+$nav-tabs-border-width: 2px !default;
+$nav-tabs-border-color: $facodi-black !default;
+$nav-tabs-link-hover-border-color: $facodi-muted !default;
+$nav-tabs-link-active-color: $facodi-black !default;
+$nav-tabs-link-active-bg: $facodi-white !default;
+$nav-tabs-link-active-border-color: $facodi-black $facodi-black $facodi-white !default;
+$nav-pills-border-radius: .5rem !default;
+$nav-pills-link-active-bg: $facodi-primary !default;
+$nav-pills-link-active-color: $facodi-black !default;
+
+// Accordions
+$accordion-border-width: 2px !default;
+$accordion-border-color: $facodi-black !default;
+$accordion-border-radius: .5rem !default;
+$accordion-button-active-bg: $facodi-muted !default;
+$accordion-button-active-color: $facodi-black !default;
+$accordion-button-focus-box-shadow: 0 0 0 3px rgba($facodi-primary, .25) !default;
+
+// Breadcrumbs
+$breadcrumb-divider-color: $facodi-gray !default;
+$breadcrumb-active-color: $facodi-gray !default;
+
+// Pagination
+$pagination-border-width: 2px !default;
+$pagination-border-color: $facodi-black !default;
+$pagination-hover-bg: $facodi-muted !default;
+$pagination-active-bg: $facodi-primary !default;
+$pagination-active-color: $facodi-black !default;
+$pagination-active-border-color: $facodi-black !default;
+$pagination-focus-box-shadow: 0 0 0 3px rgba($facodi-primary, .25) !default;
+
+// Badges
+$badge-border-radius: .5rem !default;
+$badge-font-weight: 700 !default;
+
+// Alerts
+$alert-border-width: 2px !default;
+$alert-border-radius: .5rem !default;
+
+// Progress bars
+$progress-border-radius: .5rem !default;
+$progress-bar-bg: $facodi-primary !default;
+$progress-bar-color: $facodi-black !default;
+$progress-height: 1rem !default;
+
+// Tooltips / popovers
+$tooltip-bg: $facodi-black !default;
+$tooltip-border-radius: .5rem !default;
+$popover-border-width: 2px !default;
+$popover-border-color: $facodi-black !default;
+$popover-border-radius: .5rem !default;
+$popover-box-shadow: 4px 4px 0 $facodi-black !default;

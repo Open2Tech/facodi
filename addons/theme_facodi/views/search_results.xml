@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FACODI global search results and search input styling -->
+
+    <template id="facodi_website_search_box" inherit_id="website.website_search_box" name="FACODI website search box">
+        <xpath expr="//input[@name='search']" position="attributes">
+            <attribute name="class" add="facodi-search-input" separator=" "/>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class" add="btn-primary" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_website_search_box_input" inherit_id="website.website_search_box_input" name="FACODI website search box input">
+        <xpath expr="//input[@type='text']" position="attributes">
+            <attribute name="class" add="facodi-search-input" separator=" "/>
+        </xpath>
+        <xpath expr="//button[@type='submit']" position="attributes">
+            <attribute name="class" add="btn-primary" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_list_hybrid" inherit_id="website.list_hybrid" name="FACODI search results list">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="facodi-app-shell" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_one_hybrid" inherit_id="website.one_hybrid" name="FACODI search result item">
+        <xpath expr="//div[hasclass('o_search_result_item')]" position="attributes">
+            <attribute name="class" add="facodi-search-result-card" separator=" "/>
+        </xpath>
+    </template>
+</odoo>

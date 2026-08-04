@@ -19,8 +19,11 @@
         'views/slides_catalog.xml',
         'views/slides_course.xml',
         'views/slides_lesson.xml',
+        'views/slides_profile.xml',
         'views/profile.xml',
+        'views/search_results.xml',
         'views/search_error.xml',
+        'views/cookies.xml',
         'views/snippets/facodi_learning_hub.xml',
     ],
     'assets': {
