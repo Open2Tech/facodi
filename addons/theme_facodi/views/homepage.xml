@@ -95,17 +95,17 @@
                             <t t-else="">
                                 <article class="facodi-course-card facodi-course-cyan">
                                     <div class="facodi-course-art"><span>+</span><i class="fa fa-book" aria-hidden="true"/></div>
-                                    <div class="facodi-course-content"><p>Catalogo</p><h3>Nenhum curso publicado ainda</h3><div class="facodi-card-bottom"><a href="/slides" aria-label="Abrir catalogo"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
+                                    <div class="facodi-course-content"><p>Catálogo</p><h3>Nenhum curso publicado ainda</h3><div class="facodi-card-bottom"><a href="/slides" aria-label="Abrir catálogo"><i class="fa fa-arrow-right" aria-hidden="true"/></a></div></div>
                                 </article>
                             </t>
                         </div>
                     </div>
                     <aside class="facodi-insights" aria-label="Learning insights">
                         <article class="facodi-roadmap-card">
-                            <div class="facodi-panel-label"><span>PROXIMO ESTUDO</span></div>
+                            <div class="facodi-panel-label"><span>PRÓXIMO ESTUDO</span></div>
                             <h3>Explore os cursos disponíveis</h3>
                             <p>Acesse o catálogo de cursos e encontre o próximo tópico para sua jornada de aprendizagem.</p>
-                            <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catalogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
+                            <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catálogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                         </article>
                     </aside>
                 </section>
@@ -124,7 +124,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <article class="facodi-stat-card h-100">
                                 <span>01 — Percursos</span>
-                                <strong>Curriculos</strong>
+                                <strong>Currículos</strong>
                                 <small>Trilhas organizadas por areas de conhecimento com objetivos de aprendizagem claros.</small>
                                 <i class="fa fa-compass" aria-hidden="true"/>
                             </article>
@@ -133,7 +133,7 @@
                             <article class="facodi-stat-card h-100">
                                 <span>02 — Recursos</span>
                                 <strong>Playlists</strong>
-                                <small>Videos, artigos e materiais curados e revisados pela comunidade FACODI.</small>
+                                <small>Vídeos, artigos e materiais curados e revisados pela comunidade FACODI.</small>
                                 <i class="fa fa-play-circle" aria-hidden="true"/>
                             </article>
                         </div>
@@ -141,7 +141,7 @@
                             <article class="facodi-stat-card h-100">
                                 <span>03 — Acompanhar</span>
                                 <strong>Progresso</strong>
-                                <small>Registo dos cursos inscritos, conteudos assistidos e percurso completo.</small>
+                                <small>Registo dos cursos inscritos, conteúdos assistidos e percurso completo.</small>
                                 <i class="fa fa-check-circle" aria-hidden="true"/>
                             </article>
                         </div>
@@ -149,7 +149,7 @@
                             <article class="facodi-stat-card h-100">
                                 <span>04 — Participar</span>
                                 <strong>Curadoria</strong>
-                                <small>A comunidade propoe, revê e valida os recursos publicados na plataforma.</small>
+                                <small>A comunidade propõe, revê e valida os recursos publicados na plataforma.</small>
                                 <i class="fa fa-users" aria-hidden="true"/>
                             </article>
                         </div>
@@ -159,14 +159,14 @@
                 <!-- Journey steps -->
                 <section class="container py-5" data-name="FACODI Journey">
                     <div class="facodi-section-heading">
-                        <div><p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Como funciona</p><h2>Tres passos para comecar a aprender.</h2></div>
+                        <div><p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Como funciona</p><h2>Três passos para começar a aprender.</h2></div>
                     </div>
                     <div class="row g-3">
                         <div class="col-lg-4">
                             <article class="facodi-stat-card h-100">
                                 <span>Passo 01</span>
                                 <strong>Descubra</strong>
-                                <small>Explore o catalogo e encontre um curso ou trilha que se alinhe com os seus objetivos.</small>
+                                <small>Explore o catálogo e encontre um curso ou trilha que se alinhe com os seus objetivos.</small>
                                 <i class="fa fa-search" aria-hidden="true"/>
                             </article>
                         </div>
@@ -174,7 +174,7 @@
                             <article class="facodi-stat-card facodi-stat-card-primary h-100">
                                 <span>Passo 02</span>
                                 <strong>Aprenda</strong>
-                                <small>Siga o percurso ao seu ritmo, com videos e materiais curados para cada etapa.</small>
+                                <small>Siga o percurso ao seu ritmo, com vídeos e materiais curados para cada etapa.</small>
                                 <i class="fa fa-book" aria-hidden="true"/>
                             </article>
                         </div>
@@ -193,10 +193,10 @@
                 <section class="facodi-open-section" data-name="FACODI Manifesto Callout">
                     <div>
                         <p class="facodi-kicker"><i class="fa fa-flag" aria-hidden="true"/> Manifesto</p>
-                        <h2>Aprender em publico e construir com outras pessoas.</h2>
+                        <h2>Aprender em público e construir com outras pessoas.</h2>
                     </div>
                     <div class="facodi-open-actions">
-                        <p>O FACODI entende a educacao aberta como infraestrutura comunitaria: organizada, acessivel, verificavel e orientada a quem precisa de percursos reais para continuar a aprender.</p>
+                        <p>O FACODI entende a educação aberta como infraestrutura comunitária: organizada, acessível, verificável e orientada a quem precisa de percursos reais para continuar a aprender.</p>
                         <a class="btn facodi-button facodi-button-secondary" href="/manifesto">Ler manifesto <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                     </div>
                 </section>
@@ -208,7 +208,7 @@
                             <article class="facodi-stat-card h-100">
                                 <span>Alianca</span>
                                 <strong>SEA-EU</strong>
-                                <small>Projeto selecionado nos SEA-EU Student-Led Projects 2026 para educacao digital aberta.</small>
+                                <small>Projeto selecionado nos SEA-EU Student-Led Projects 2026 para educação digital aberta.</small>
                                 <i class="fa fa-globe" aria-hidden="true"/>
                             </article>
                         </div>
@@ -216,7 +216,7 @@
                             <article class="facodi-stat-card h-100">
                                 <span>Universidade</span>
                                 <strong>UAlg</strong>
-                                <small>Associado a Universidade do Algarve no ambito da chamada SEA-EU Student-Led Projects.</small>
+                                <small>Associado à Universidade do Algarve no âmbito da chamada SEA-EU Student-Led Projects.</small>
                                 <i class="fa fa-university" aria-hidden="true"/>
                             </article>
                         </div>
@@ -224,7 +224,7 @@
                             <article class="facodi-community-card facodi-stat-card h-100">
                                 <div class="facodi-panel-label"><span>Projeto</span></div>
                                 <h3>Conhecer a FACODI.</h3>
-                                <p>Saiba mais sobre a missao, o enquadramento institucional e as prioridades do projeto.</p>
+                                <p>Saiba mais sobre a missão, o enquadramento institucional e as prioridades do projeto.</p>
                                 <a class="btn facodi-button facodi-button-secondary" href="/sobre">Sobre a FACODI <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                             </article>
                         </div>
