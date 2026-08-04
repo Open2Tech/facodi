@@ -60,7 +60,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-001 — staging não propagou a correção da homepage
 
-**Estado:** `blocked` — commit `6db6eff` publicado, mas a propagação/atualização do módulo no staging ainda não foi observada.
+**Estado:** `blocked` — commit `6db6eff` publicado, mas a propagação/atualização do módulo no staging ainda não foi observada. Em cache-busting após `244af44`, a homepage manteve `Seu proximo capitulo comeca em rede.`; o CSS novo de cards, incluindo `padding: 18px`, já aparece servido.
 
 - **Página/componente:** `/`, homepage completa.
 - **Descrição:** O staging ainda apresenta copy sem acentos e o comportamento anterior, incluindo `Seu proximo capitulo comeca em rede`, `Visao geral`, `Explore os cursos disponiveis` e `Tres passos para comecar a aprender`.
@@ -73,7 +73,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-002 — login público aparenta renderização incompleta
 
-**Estado:** `verified` funcionalmente no staging — o DOM público contém formulário, email, password, submit e reset; a confirmação visual das classes FACODI aguarda a propagação do branch.
+**Estado:** `verified` funcionalmente no staging — o DOM público contém formulário, email, password, submit e reset; a confirmação visual das classes FACODI aguarda a propagação do branch. A forma servida continua `oe_login_form`, sem `facodi-auth-form`.
 
 - **Página/componente:** `/web/login`, formulário de autenticação.
 - **Descrição:** O snapshot inicial não mostrava o conteúdo por não aguardar a renderização completa. A inspeção DOM posterior confirmou os campos, labels, botão, reset e passkey.
@@ -86,7 +86,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### AUD-003 — estados de erro públicos permanecem standard Odoo em inglês
 
-**Estado:** `fixed` localmente em `6db6eff`; `verified` no staging pendente da propagação.
+**Estado:** `fixed` localmente em `6db6eff`; `verified` no staging pendente da propagação. A rota `/404?audit=244af44` ainda não apresenta `#wrap.facodi-app-shell`, portanto o upgrade do módulo não ocorreu.
 
 - **Página/componente:** `/404`, 403, 500 e estado de pesquisa vazio.
 - **Descrição:** `/404` apresenta `Error 404`, `We couldn't find the page you're looking for!` e texto de ajuda em inglês; a pesquisa vazia apresenta `Search Results` e `Your search ... did not match anything.`.
