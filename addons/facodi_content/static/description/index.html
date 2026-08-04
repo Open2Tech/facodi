@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FACODI Content</title>
+  <style>
+    :root { --yellow: #efff00; --ink: #000; --paper: #fff; --muted: #f2f2f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.55 Inter, Arial, sans-serif; }
+    main { max-width: 1000px; margin: auto; padding: 40px 24px 72px; }
+    header { padding: 42px; background: var(--ink); color: var(--paper); border-bottom: 8px solid var(--yellow); }
+    h1, h2, h3 { font-family: "Space Grotesk", Arial, sans-serif; line-height: 1.05; }
+    h1 { margin: 0; color: var(--yellow); font-size: clamp(2.5rem, 7vw, 5.2rem); }
+    .eyebrow { color: var(--yellow); font: 700 .72rem/1.2 monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
+    article { padding: 24px; background: var(--muted); border-left: 4px solid var(--ink); }
+    article strong { font-family: "Space Grotesk", Arial, sans-serif; font-size: 1.15rem; }
+    pre { overflow: auto; padding: 20px; background: var(--ink); color: var(--yellow); }
+    @media (max-width: 640px) { header { padding: 28px; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">Odoo 19 / website_slides</p><h1>FACODI Content</h1><p>Editorial metadata and controlled enrichment for FACODI learning collections.</p></header>
+    <h2>What it adds</h2>
+    <section class="grid">
+      <article><strong>Stable source identity</strong><p>Unique keys keep imported video content traceable across systems.</p></article>
+      <article><strong>Editorial workflow</strong><p>Queue, refresh, review and apply summaries without automatic publication.</p></article>
+      <article><strong>Collection taxonomy</strong><p>Courses, curricular units, topics, playlists and learning paths are explicit.</p></article>
+      <article><strong>Secure integration</strong><p>HTTPS-only pipeline calls, bounded timeouts and officer-only actions.</p></article>
+    </section>
+    <h2>Flow</h2>
+    <pre>video URL → queue → FACODI pipeline → review → apply to slide</pre>
+  </main>
+</body>
+</html>
