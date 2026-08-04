@@ -407,3 +407,25 @@ O ribbon de neutralização do banco é ambiente de teste. Não deve ser tratado
 ## Critério de encerramento da próxima etapa
 
 A auditoria será considerada operacionalmente fechada quando o staging servir a revisão atual, as áreas autenticadas forem testadas com contas/fixtures descartáveis, a matriz de cinco viewports tiver screenshots e métricas, os P1 tiverem critérios de aceitação verificados e a documentação registrar o resultado pós-implementação.
+
+## Correções estruturais locais — 2026-08-04
+
+O lote seguinte corrigiu os bloqueios QWeb encontrados durante o upgrade local do tema:
+
+- cookies agora herdam a barra nativa `website.cookies_bar`, usando os links de consentimento reais;
+- aula, quiz, sidebar, fullscreen, curso e catálogo usam as classes presentes no markup Odoo 19, incluindo atributos `t-att-class`/`t-attf-class`;
+- autenticação e portal usam âncoras estáveis, e heranças redundantes sem markup próprio foram removidas;
+- páginas 500/404 não recebem replacements frágeis; a página 500 permanece no template mínimo do `http_routing` para preservar o tratamento de exceções;
+- copy pública sem acentuação foi normalizada em homepage, footer e páginas institucionais;
+- foi adicionado o token `--facodi-border` e estilos para as novas classes de portal, cookies, quiz e perfil.
+
+### Validação local
+
+- Instalação Odoo 19 de `theme_facodi` em base PostgreSQL descartável: passou (`ODOO_STATUS=0`).
+- Auditoria local de heranças QWeb materializadas: nenhum XPath vazio.
+- Parse de todos os XML do addon: passou.
+- Compilação do SCSS com libsass: passou.
+- Pipeline FACODI: `3 passed`.
+- `git diff --check`: passou.
+
+A confirmação visual e o upgrade do banco de staging continuam dependentes da propagação do branch `staging-v1` no Odoo.sh.
