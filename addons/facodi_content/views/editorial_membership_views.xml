@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_facodi_editorial_membership_list" model="ir.ui.view">
+        <field name="name">facodi.editorial.membership.list</field>
+        <field name="model">facodi.editorial.membership</field>
+        <field name="arch" type="xml">
+            <list string="Editorial Memberships">
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <field name="role"/>
+                <field name="active"/>
+                <field name="valid_from"/>
+                <field name="valid_until"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_facodi_editorial_membership_form" model="ir.ui.view">
+        <field name="name">facodi.editorial.membership.form</field>
+        <field name="model">facodi.editorial.membership</field>
+        <field name="arch" type="xml">
+            <form string="Editorial Membership">
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="partner_id"/>
+                        <field name="role"/>
+                        <field name="active"/>
+                        <field name="valid_from"/>
+                        <field name="valid_until"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

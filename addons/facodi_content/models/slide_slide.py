@@ -10,6 +10,16 @@ from odoo.exceptions import AccessError, UserError
 _logger = logging.getLogger(__name__)
 
 PIPELINE_STATES = {'queued', 'processing', 'ready', 'failed'}
+ENRICHMENT_FIELD_GROUPS = ','.join(
+    [
+        'website_slides.group_website_slides_officer',
+        'website_slides.group_website_slides_manager',
+        'facodi_content.group_facodi_editorial_reviewer',
+        'facodi_content.group_facodi_publisher',
+        'facodi_content.group_facodi_pipeline_operator',
+        'facodi_content.group_facodi_auditor',
+    ]
+)
 
 
 class FacodiSlideSlide(models.Model):
@@ -24,6 +34,7 @@ class FacodiSlideSlide(models.Model):
         string='FACODI Source Key',
         copy=False,
         index=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
         help='Stable source identity used by the FACODI content importer.',
     )
     enrichment_state = fields.Selection(
@@ -40,27 +51,32 @@ class FacodiSlideSlide(models.Model):
         required=True,
         copy=False,
         index=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
     )
     enrichment_job_ref = fields.Char(
         string='Enrichment Job Reference',
         copy=False,
         readonly=True,
         index=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
     )
     enrichment_summary = fields.Html(
         string='Suggested Summary',
         copy=False,
         sanitize_overridable=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
     )
     enrichment_error = fields.Text(
         string='Enrichment Error',
         copy=False,
         readonly=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
     )
     enrichment_updated_at = fields.Datetime(
         string='Enrichment Updated At',
         copy=False,
         readonly=True,
+        groups=ENRICHMENT_FIELD_GROUPS,
     )
 
     def action_queue_enrichment(self):

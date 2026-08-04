@@ -21,7 +21,10 @@ automatically: editors review and apply suggestions explicitly.
     'depends': ['website_slides'],
     'external_dependencies': {'python': ['requests']},
     'data': [
+        'data/editorial_groups.xml',
+        'security/ir.model.access.csv',
         'data/ir_cron.xml',
+        'views/editorial_membership_views.xml',
         'views/slide_channel_views.xml',
         'views/slide_slide_views.xml',
     ],
