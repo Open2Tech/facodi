@@ -24,7 +24,7 @@
     </template>
 
     <template id="facodi_course_join" inherit_id="website_slides.course_join" name="FACODI course join">
-        <xpath expr="//div[hasclass('o_wslides_js_course_join_link') or @class='o_wslides_js_course_join_link']" position="attributes">
+        <xpath expr="//div[hasclass('o_wslides_js_course_join_link')]" position="attributes">
             <attribute name="class" add="facodi-button facodi-button-primary" separator=" "/>
         </xpath>
     </template>
