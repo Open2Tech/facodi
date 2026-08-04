@@ -15,8 +15,8 @@
                 <section class="facodi-hero" data-name="FACODI Welcome">
                     <div class="facodi-hero-copy">
                         <p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Aprenda em comunidade</p>
-                        <h1>Seu proximo capitulo comeca em rede.</h1>
-                        <p class="facodi-lead">Curriculos oficiais, recursos abertos e uma comunidade que transforma conhecimento em possibilidade.</p>
+                        <h1>Seu próximo capítulo começa em rede.</h1>
+                        <p class="facodi-lead">Currículos oficiais, recursos abertos e uma comunidade que transforma conhecimento em possibilidade.</p>
                         <div class="facodi-actions">
                             <a class="btn facodi-button facodi-button-primary" href="/slides">Explorar cursos <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                             <a class="btn facodi-button facodi-button-secondary" href="/web/login">Continuar aprendendo</a>
@@ -42,7 +42,7 @@
                 <section class="facodi-dashboard" data-name="FACODI Dashboard">
                     <aside class="facodi-side-nav" aria-label="Learning navigation">
                         <p>MINHA JORNADA</p>
-                        <a class="is-active" href="/sobre"><i class="fa fa-th-large" aria-hidden="true"/>Visao geral</a>
+                        <a class="is-active" href="/sobre"><i class="fa fa-th-large" aria-hidden="true"/>Visão geral</a>
                         <a href="/slides"><i class="fa fa-book" aria-hidden="true"/>Cursos</a>
                         <a href="/website/search"><i class="fa fa-compass" aria-hidden="true"/>Descobrir</a>
                         <a href="/web/login"><i class="fa fa-bookmark-o" aria-hidden="true"/>Salvos</a>
@@ -50,7 +50,7 @@
                     </aside>
                     <div class="facodi-dashboard-main">
                         <div class="facodi-section-heading">
-                            <div><p class="facodi-kicker">Catalogo de aprendizagem</p><h2>Cursos publicados</h2></div>
+                            <div><p class="facodi-kicker">Catálogo de aprendizagem</p><h2>Cursos publicados</h2></div>
                             <a href="/slides" class="facodi-text-link">Ver todos os cursos <i class="fa fa-arrow-right" aria-hidden="true"/></a>
                         </div>
                         <!-- Real published channels are injected by the website.page mixin. -->
@@ -103,8 +103,8 @@
                     <aside class="facodi-insights" aria-label="Learning insights">
                         <article class="facodi-roadmap-card">
                             <div class="facodi-panel-label"><span>PROXIMO ESTUDO</span></div>
-                            <h3>Explore os cursos disponveis</h3>
-                            <p>Acesse o catalogo de cursos e encontre o proximo topico para sua jornada de aprendizagem.</p>
+                            <h3>Explore os cursos disponíveis</h3>
+                            <p>Acesse o catálogo de cursos e encontre o próximo tópico para sua jornada de aprendizagem.</p>
                             <a class="btn facodi-button facodi-button-secondary" href="/slides">Ver catalogo <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                         </article>
                     </aside>
@@ -171,7 +171,7 @@
                             </article>
                         </div>
                         <div class="col-lg-4">
-                            <article class="facodi-stat-card h-100" style="background:var(--facodi-primary);color:var(--facodi-black);border-color:var(--facodi-black);">
+                            <article class="facodi-stat-card facodi-stat-card-primary h-100">
                                 <span>Passo 02</span>
                                 <strong>Aprenda</strong>
                                 <small>Siga o percurso ao seu ritmo, com videos e materiais curados para cada etapa.</small>
