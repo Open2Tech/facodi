@@ -1514,6 +1514,50 @@ body {
     .wrap {
         background: var(--facodi-white);
     }
+
+    .facodi-course-main,
+    .facodi-lesson-content {
+        min-width: 0;
+    }
+
+    .facodi-course-nav {
+        border-bottom: 1px solid var(--facodi-border);
+    }
+
+    .facodi-course-sidebar,
+    .facodi-lesson-sidebar {
+        border: 1px solid var(--facodi-border);
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
+    }
+
+    .facodi-slide-list,
+    .facodi-slide-cards {
+        min-width: 0;
+    }
+
+    .facodi-slide-list-link {
+        transition: background-color 160ms ease, color 160ms ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--facodi-gray);
+            color: var(--facodi-black);
+        }
+    }
+
+    .facodi-lesson-content {
+        background: var(--facodi-white);
+        border-radius: 0.5rem;
+        padding: clamp(1rem, 2vw, 2rem);
+    }
+
+    .facodi-quiz,
+    .facodi-lesson-comment {
+        border-top: 1px solid var(--facodi-border);
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
 }
 
 // Course header / cover
