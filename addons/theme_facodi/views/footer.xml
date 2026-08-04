@@ -9,12 +9,24 @@
                         <p>Faculdade Comunitaria Digital. Educacao superior aberta, colaborativa e acessivel.</p>
                     </div>
                     <div class="facodi-footer-links">
-                        <a href="/slides">Cursos</a>
-                        <a href="/sobre">Sobre a FACODI</a>
-                        <a href="/comunidade">Comunidade</a>
-                        <a href="/roadmap">Roadmap</a>
-                        <a href="/contactus">Contato</a>
-                        <a href="/web/login">Minha conta</a>
+                        <div class="facodi-footer-group">
+                            <strong>Aprender</strong>
+                            <a href="/slides">Cursos</a>
+                            <a href="/website/search">Descobrir</a>
+                            <a href="/web/login">Minha conta</a>
+                        </div>
+                        <div class="facodi-footer-group">
+                            <strong>Conhecer</strong>
+                            <a href="/sobre">Sobre a FACODI</a>
+                            <a href="/manifesto">Manifesto</a>
+                            <a href="/roadmap">Roadmap</a>
+                        </div>
+                        <div class="facodi-footer-group">
+                            <strong>Participar</strong>
+                            <a href="/comunidade">Comunidade</a>
+                            <a href="/como-contribuir">Como contribuir</a>
+                            <a href="/contactus">Contato</a>
+                        </div>
                     </div>
                     <p class="facodi-footer-meta">Open source para aprender em publico.<br/><span t-esc="datetime.datetime.now().year"/> FACODI<br/>Criado por <a href="https://open2.tech" target="_blank" rel="noopener noreferrer">Open2 Technology</a></p>
                 </div>

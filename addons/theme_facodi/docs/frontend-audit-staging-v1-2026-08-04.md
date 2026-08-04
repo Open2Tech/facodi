@@ -13,8 +13,8 @@ As correções implementadas até agora estão limitadas ao addon FACODI, nas he
 | Estado | Quantidade | Escopo atual |
 | --- | ---: | --- |
 | Total | 50 | Itens AUD-001 a AUD-050. |
-| Open | 39 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
-| In progress | 1 | AUD-011 tem heading e placeholder traduzidos; labels restantes ainda estão por corrigir. |
+| Open | 37 | Itens ainda sem correção iniciada ou sem decisão de implementação. |
+| In progress | 3 | AUD-007, AUD-011 e AUD-026 têm implementação parcial; validação e acabamento continuam pendentes. |
 | Fixed | 8 | AUD-003, AUD-004, AUD-005, AUD-008, AUD-009, AUD-012, AUD-018 e AUD-035 corrigidos no addon. |
 | Verified | 1 | AUD-002 confirmado funcionalmente no DOM público; styling pós-deploy ainda pendente. |
 | Blocked | 1 | AUD-001 depende do pipeline/atualização do staging. |
@@ -127,7 +127,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 ### Homepage
 
 - **AUD-006 — copy antiga ainda servida:** P1, confirmado no staging; dependente de AUD-001.
-- **AUD-007 — navegação híbrida:** P2; `Courses`/`Contact us` no header convivem com links em português.
+- **AUD-007 — navegação híbrida:** P2, `in progress`; o header recebeu hooks para mega menus geridos pelo Website backend, preservando menus/submenus dinâmicos. A configuração dos grupos no backend e a validação visual continuam pendentes.
 - **AUD-008 — fallback de curso sem token explícito:** P2, `fixed` localmente; `facodi-course-cyan` usa agora `--facodi-primary` e `--facodi-black`, com regra dedicada para o cartão e a sua arte. Validação estrutural passou; staging pendente de propagação.
 - **AUD-009 — progresso via inline style:** P2, `fixed` localmente; o preenchimento inline recebe contenção visual com `display: block`, `max-width: 100%` e `min-width: 0`, sem alterar a lógica de conclusão do Odoo. Validação estrutural passou; staging pendente.
 - **AUD-010 — estados sem dados não confirmados:** P2; fallback sem cursos, imagem ausente e progresso zero dependem de fixtures.
@@ -161,7 +161,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### Shell, cookies e Website Builder
 
-- **AUD-026 — footer com idioma e copy incompletos:** P2; `Faculdade Comunitaria Digital`, `Educacao superior aberta e acessivel` e `Open source para aprender em publico` precisam de normalização editorial.
+- **AUD-026 — footer com idioma e copy incompletos:** P2, `in progress`; links foram agrupados em `Aprender`, `Conhecer` e `Participar`, com layout responsivo e novas rotas manifesto/contribuição. A normalização editorial de acentos continua pendente.
 - **AUD-027 — ícones expostos como glifos em snapshots de acessibilidade:** P3; Font Awesome pode estar visualmente correto, mas labels/semântica precisam de teste.
 - **AUD-028 — cookies e snippets não confirmados:** P2; banner, rejeição, consentimento e snippet `facodi_learning_hub` precisam de browser/editor validation.
 - **AUD-029 — fallback de Website Builder e COW não confirmados:** P2; replacements integrais podem divergir por website.
