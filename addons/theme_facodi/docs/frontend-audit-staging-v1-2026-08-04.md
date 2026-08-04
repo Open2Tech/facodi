@@ -147,7 +147,7 @@ As contagens são itens de auditoria, não tarefas já implementadas.
 
 ### Curso e aula
 
-- **AUD-018 — grande parte da superfície não tem classe FACODI dedicada:** P2; classes XML como `facodi-course-main`, `facodi-course-nav`, `facodi-course-sidebar`, `facodi-slide-list`, `facodi-slide-cards`, `facodi-lesson-content` e `facodi-lesson-sidebar` não possuem seletor dedicado identificável.
+- **AUD-018 — grande parte da superfície não tem classe FACODI dedicada:** P2, `fixed` localmente nesta execução; `facodi-course-main`, `facodi-course-nav`, `facodi-course-sidebar`, `facodi-slide-list`, `facodi-slide-cards`, `facodi-lesson-content`, `facodi-lesson-sidebar`, `facodi-quiz` e `facodi-lesson-comment` agora possuem regras SCSS dedicadas. Manifest, XML e SCSS passaram validação local; propagação no staging continua pendente de autenticação/upgrade.
 - **AUD-019 — estados de progresso/join/preview/bloqueado não confirmados:** P1; risco funcional alto por depender de `website_slides`.
 - **AUD-020 — lesson sidebar, quiz, comentários, tabs e fullscreen sem evidência browser:** P2; somente templates foram mapeados.
 - **AUD-021 — compatibilidade com markup Odoo 19:** P2; heranças amplas precisam de instalação e curso real.
@@ -354,6 +354,14 @@ Confirmados ou fortemente indicados:
 - **Testes:** `python3 odoo-bin -u theme_facodi --stop-after-init`, `button_choose_theme()`, bundle sem erro CSS, Website Builder editável, smoke browser e `git diff --check`.
 - **Risco:** baixo, mas gate obrigatório.
 - **Commit sugerido:** `docs(theme): record frontend audit verification`.
+
+## Execução de 2026-08-04
+
+- `theme_facodi` permanece em `staging-v1` no commit `40ad3c1`; a autenticação XML-RPC target-aware falhou (`auth_ok: False`), portanto nenhum upgrade remoto foi executado.
+- Smoke HTTP anônimo: `/`, `/slides`, `/website/search?search=zzzzzz` e `/web/login` responderam `200`; `/404` respondeu `404` conforme esperado.
+- Validação local do tema: manifest e caminhos declarados, XML e SCSS passaram; o SCSS compilou com libsass. A suíte `facodi-pipeline` passou com `3 passed` no diretório de serviço.
+- Os testes Odoo de `theme_open2` não coletaram porque o runtime Odoo não está disponível neste ambiente (`ImportError: cannot import name 'models' from 'odoo'`).
+- AUD-018 foi corrigido localmente nesta execução; a confirmação visual e a propagação dos ativos continuam pendentes de autenticação e upgrade no staging.
 
 ## Estado da auditoria e páginas não auditadas
 
