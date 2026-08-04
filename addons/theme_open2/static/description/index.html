@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open2 Technology Theme</title>
+  <style>
+    :root { --ink: #05070a; --violet: #8b5cf6; --blue: #3c83f6; --paper: #f8fafc; --muted: #cbd5e1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--paper); background: var(--ink); font: 16px/1.55 Inter, Arial, sans-serif; }
+    main { max-width: 1120px; margin: auto; padding: 40px 24px 72px; }
+    .hero { padding: 44px; background: linear-gradient(120deg, var(--violet), var(--blue)); border-radius: 4px; }
+    h1, h2, h3 { font-family: "Space Grotesk", Arial, sans-serif; line-height: 1.05; }
+    h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); }
+    .eyebrow { font: 700 .72rem/1.2 monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); margin-top: 32px; }
+    article { padding: 24px; background: #10151d; border: 1px solid #334155; }
+    article strong { color: var(--muted); font-family: "Space Grotesk", Arial, sans-serif; font-size: 1.15rem; }
+    @media (max-width: 720px) { .hero { padding: 28px; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero"><p class="eyebrow">Odoo 19 / corporate website</p><h1>Open2 Technology Theme</h1><p>A reusable, accessible foundation for people-first technology websites.</p></section>
+    <section class="grid"><article><strong>Accessible by default</strong><p>Explicit focus states, responsive layouts and readable contrast guide the interface.</p></article><article><strong>Composable snippets</strong><p>Website Builder components expose density, contrast and alignment options.</p></article><article><strong>Multi-website ready</strong><p>Theme utilities preserve per-website behavior and native Odoo configuration.</p></article></section>
+  </main>
+</body>
+</html>

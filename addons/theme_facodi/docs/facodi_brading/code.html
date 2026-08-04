@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Course Interface - FACODI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#e8e8e8",
+                        "primary-fixed-dim": "#c3d000",
+                        "surface": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "on-tertiary-container": "#6d6f6f",
+                        "on-secondary-fixed-variant": "#474747",
+                        "tertiary-container": "#f3f3f3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#1b1d00",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-container": "#646464",
+                        "surface-dim": "#dadada",
+                        "primary-fixed": "#deed00",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-on-surface": "#f0f1f1",
+                        "outline": "#78795f",
+                        "surface-tint": "#5c6300",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-container": "#e2e2e2",
+                        "on-background": "#1a1c1c",
+                        "dark-bg": "#0B0B0B",
+                        "primary": "#5c6300",
+                        "outline-variant": "#c8c8ab",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "inverse-surface": "#2f3131",
+                        "on-primary-container": "#6d7400",
+                        "error": "#ba1a1a",
+                        "primary-container": "#efff00",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-variant": "#e2e2e2",
+                        "text-secondary": "#666666",
+                        "background": "#f9f9f9",
+                        "inverse-primary": "#c3d000",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#474832",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary-fixed-variant": "#454a00",
+                        "surface-container": "#eeeeee",
+                        "tertiary": "#5d5f5f",
+                        "dark-surface": "#1A1A1A",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "card-padding": "20px",
+                        "button-padding-y": "9px",
+                        "grid-gap-lg": "24px",
+                        "grid-gap-sm": "14px",
+                        "section-gap-top": "40px",
+                        "section-gap-bottom": "32px",
+                        "page-padding": "40px",
+                        "nav-height": "64px",
+                        "button-padding-x": "20px"
+                    },
+                    fontFamily: {
+                        "headline-h2": ["JetBrains Mono", "monospace"],
+                        "display-hero": ["Space Grotesk", "sans-serif"],
+                        "stat-value": ["Space Grotesk", "sans-serif"],
+                        "headline-h1": ["Space Grotesk", "sans-serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "metadata": ["JetBrains Mono", "monospace"],
+                        "button-text": ["Space Grotesk", "sans-serif"],
+                        "body-lead": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-h2": ["17.6px", { lineHeight: "1.4", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "display-hero": ["38.4px", { lineHeight: "1", fontWeight: "700" }],
+                        "stat-value": ["25.6px", { lineHeight: "1", fontWeight: "700" }],
+                        "headline-h1": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "label-caps": ["11px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "metadata": ["10.4px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "button-text": ["14px", { lineHeight: "1", fontWeight: "700" }],
+                        "body-lead": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "body-md": ["14.4px", { lineHeight: "1.5", fontWeight: "400" }]
+                    },
+                    boxShadow: {
+                        'neo-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'neo-md': '3px 3px 0px 0px rgba(0,0,0,1)',
+                        'neo-lg': '5px 5px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        .neo-border { border: 2px solid #000000; }
+        .neo-interactive:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,1) !important;
+        }
+        .neo-interactive-active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,1) !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 border-b-2 border-on-surface z-50 sticky">
+<div class="flex justify-between items-center h-nav-height px-page-padding w-full max-w-[1280px] mx-auto">
+<div class="text-headline-h1 font-headline-h1 text-on-surface">FACODI.</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-button-text font-button-text" href="#">Courses</a>
+<a class="text-on-surface font-button-text hover:bg-surface-container rounded-lg transition-all duration-200 px-2 py-1" href="#">Community</a>
+<a class="text-on-surface font-button-text hover:bg-surface-container rounded-lg transition-all duration-200 px-2 py-1" href="#">About</a>
+</nav>
+<button class="bg-primary-container text-on-primary-fixed neo-border shadow-neo-md rounded-lg px-button-padding-x py-button-padding-y font-button-text text-button-text hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all">Login</button>
+</div>
+</header>
+<!-- Main Layout Grid -->
+<div class="flex flex-1 w-full max-w-[1280px] mx-auto">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col bg-surface h-screen w-64 border-r-2 border-on-surface p-card-padding gap-grid-gap-sm sticky top-[64px] rounded-br-2xl">
+<div class="mb-4">
+<p class="font-metadata text-metadata text-secondary mb-1">Web Development Mastery</p>
+<h2 class="font-headline-h2 text-headline-h2 text-on-surface">Module 2: Advanced CSS</h2>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 p-2 bg-primary-container text-on-primary-container border-2 border-on-surface rounded-lg shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                    Modules
+                </a>
+<a class="flex items-center gap-3 p-2 text-on-surface-variant rounded-lg hover:bg-tertiary-container hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all font-label-caps text-label-caps border-2 border-transparent hover:border-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+                    Resources
+                </a>
+<a class="flex items-center gap-3 p-2 text-on-surface-variant rounded-lg hover:bg-tertiary-container hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all font-label-caps text-label-caps border-2 border-transparent hover:border-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+                    Discussion
+                </a>
+<a class="flex items-center gap-3 p-2 text-on-surface-variant rounded-lg hover:bg-tertiary-container hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all font-label-caps text-label-caps border-2 border-transparent hover:border-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    Progress
+                </a>
+</nav>
+<button class="mt-auto bg-primary-container text-on-primary-fixed neo-border rounded-lg shadow-neo-md px-button-padding-x py-button-padding-y font-button-text text-button-text hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all">Resume Lesson</button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-page-padding bg-surface flex flex-col gap-section-gap-top">
+<!-- Video Section -->
+<section class="flex flex-col gap-grid-gap-sm">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-metadata text-metadata text-secondary uppercase tracking-widest block mb-1">Lesson 4.2</span>
+<h1 class="font-headline-h1 text-headline-h1 text-on-surface">Intro to Neo-Brutalism</h1>
+</div>
+<span class="font-label-caps text-label-caps bg-primary-container neo-border px-3 py-1 rounded-lg">IN PROGRESS</span>
+</div>
+<div class="w-full aspect-video bg-inverse-surface neo-border rounded-xl shadow-neo-lg relative group cursor-pointer overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A stylized digital illustration of a brutalist architectural structure mixed with modern UI elements, heavy black outlines, bright neon yellow accents, high contrast lighting, technical and raw aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCC5q4GJH_YvOr34em5gT1eqcwNAecpHSoaIbb_-o2ht44-7V3ONKzcSa6jkJUfPW0Y_5wbG7qcDuDy4kkw68ZnlhTO-bxISeBvKES99FLCrhp_klx9IY3TmjSfSb9l5NOAEC9iyhnQ6kYUJ3Dq7nL3rXb9bX1H71L6IksmWgQSLM1hOqZFL6x-A1iYRJopIgmz93Pve_dY296Q2q1iZ3YT5xqjKyZJsNnp3k5YG5Vc0GUKqaAueGdUIA')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 bg-primary-container neo-border shadow-neo-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+<!-- Video Controls Overlay (Mock) -->
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col gap-2">
+<div class="h-1 bg-surface-container-high w-full border border-black rounded-full"><div class="h-full bg-primary-container w-[45%] rounded-full"></div></div>
+<div class="flex justify-between items-center text-on-tertiary font-metadata text-metadata">
+<span>04:12 / 12:45</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[16px] cursor-pointer" data-icon="volume_up">volume_up</span>
+<span class="material-symbols-outlined text-[16px] cursor-pointer" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-[16px] cursor-pointer" data-icon="fullscreen">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-4">
+<p>In this lesson, we explore the structural and visual characteristics of Neo-Brutalism in modern web design. We'll examine how raw borders, hard shadows, and high-contrast typography create an energetic, developer-centric interface that prioritizes functionality and impact over subtle aesthetics.</p>
+</div>
+</section>
+<!-- Tabs & Discussion -->
+<section class="mt-8 flex flex-col gap-grid-gap-lg">
+<div class="flex gap-4 border-b-2 border-on-surface pb-0">
+<button class="font-button-text text-button-text px-4 py-2 bg-on-surface text-on-tertiary neo-border border-b-0 rounded-t-xl translate-y-[2px]">Discussion (24)</button>
+<button class="font-button-text text-button-text px-4 py-2 bg-surface text-on-surface hover:bg-surface-container neo-border border-b-0 rounded-t-xl border-transparent hover:border-on-surface transition-colors">Transcript</button>
+<button class="font-button-text text-button-text px-4 py-2 bg-surface text-on-surface hover:bg-surface-container neo-border border-b-0 rounded-t-xl border-transparent hover:border-on-surface transition-colors">Notes</button>
+</div>
+<!-- Discussion Area -->
+<div class="flex flex-col gap-grid-gap-lg bg-surface-container-lowest p-card-padding neo-border shadow-neo-md rounded-xl">
+<!-- Comment Input -->
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-secondary-fixed neo-border rounded-full flex-shrink-0 flex items-center justify-center">
+<span class="font-label-caps text-label-caps">YOU</span>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<textarea class="w-full neo-border rounded-lg p-3 font-body-md text-body-md bg-surface focus:outline-none focus:ring-2 focus:ring-primary-container min-h-[100px] resize-y" placeholder="Ask a question or share your thoughts..."></textarea>
+<div class="flex justify-end">
+<button class="bg-primary-container text-on-primary-fixed neo-border rounded-lg shadow-neo-sm px-button-padding-x py-button-padding-y font-button-text text-button-text neo-interactive">Post Comment</button>
+</div>
+</div>
+</div>
+<hr class="border-t-2 border-on-surface"/>
+<!-- Comment List -->
+<div class="flex flex-col gap-6">
+<!-- Comment 1 -->
+<div class="flex gap-4">
+<img class="w-10 h-10 neo-border rounded-full flex-shrink-0 object-cover" data-alt="Avatar of a student, minimalist geometric vector art, high contrast colors, raw digital style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiJKHuamQ3rjTEj9hHPKZLnbEXwnYH0dwxSgrb-me0eDK-BSFqSwCXIES5yv25VwEX_OH6JdLggqldybGuMEYcMWRKapJW7CiYeY5e-eNUzOj2beBbPQ3cboa4tFmSSHwWlcQUsJ8qKsCxOzUy3DmW62Z81jChvXocG5iunRpeXw2M0J4uxZRErgK_vJ4OWzSWww81OMJKQ7ojffHd5rxYYyrATQfV1qnpNMcs1n-JTyNj4ZsJCc31UQ"/>
+<div class="flex-1">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-button-text text-button-text">Sarah J.</span>
+<span class="font-metadata text-metadata text-secondary">2 hours ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-2">I really struggle with getting the offset shadows to feel consistent across different components. Do we always use the exact same pixel offset, or should it scale with the component size?</p>
+<div class="flex gap-4 text-secondary font-metadata text-metadata">
+<button class="flex items-center gap-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[14px]" data-icon="thumb_up">thumb_up</span> 12</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[14px]" data-icon="reply">reply</span> Reply</button>
+</div>
+</div>
+</div>
+<!-- Nested Reply -->
+<div class="flex gap-4 ml-14">
+<div class="w-8 h-8 bg-surface-tint text-on-primary neo-border rounded-full flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="school">school</span>
+</div>
+<div class="flex-1 bg-tertiary-container p-4 neo-border rounded-lg">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-button-text text-button-text">Instructor Mark</span>
+<span class="font-label-caps text-label-caps bg-primary-container px-2 py-0.5 border border-black rounded-md text-[9px]">AUTHOR</span>
+<span class="font-metadata text-metadata text-secondary">1 hour ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-2">Great question! In this specific design system, we stick to strict tokens: 3px for standard elements (buttons, cards) and 5px for large structural containers. Avoid scaling it dynamically to maintain the mechanical, rigid feel.</p>
+<div class="flex gap-4 text-secondary font-metadata text-metadata">
+<button class="flex items-center gap-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[14px]" data-icon="thumb_up">thumb_up</span> 8</button>
+<button class="flex items-center gap-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[14px]" data-icon="reply">reply</span> Reply</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface w-full mt-section-gap-top border-t-2 border-on-surface">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gap-lg px-page-padding py-section-gap-bottom max-w-[1280px] mx-auto">
+<div>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface block mb-2">FACODI.</span>
+<p class="font-metadata text-metadata text-secondary">© 2024 FACODI E-Learning Platform. SEA-EU 2026 Partner.</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-secondary font-metadata hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-secondary font-metadata hover:text-primary transition-colors" href="#">Open-Source Resources</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="text-secondary font-metadata hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="text-secondary font-metadata hover:text-primary transition-colors" href="#">Discord</a>
+</div>
+</div>
+</footer>
+</body></html>

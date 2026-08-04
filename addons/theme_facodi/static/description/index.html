@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FACODI Theme</title>
+  <style>
+    :root { --yellow: #efff00; --ink: #000; --paper: #fff; --muted: #f2f2f2; --gray: #666; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.55 Inter, Arial, sans-serif; }
+    .wrap { max-width: 1120px; margin: auto; padding: 40px 24px 72px; }
+    .hero { display: grid; gap: 28px; grid-template-columns: 1.4fr .6fr; align-items: end; padding: 44px; background: var(--yellow); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+    h1, h2, h3 { font-family: "Space Grotesk", Arial, sans-serif; line-height: 1.02; }
+    h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.8rem); }
+    h2 { margin-top: 56px; font-size: 2rem; }
+    .eyebrow { font: 700 .72rem/1.2 monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .mark { background: var(--ink); color: var(--yellow); padding: 28px; font: 700 2.8rem/1 monospace; text-align: center; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    .card { padding: 22px; background: var(--muted); border: 1px solid #aaa; }
+    .card strong { display: block; margin-bottom: 8px; font-family: "Space Grotesk", Arial, sans-serif; font-size: 1.15rem; }
+    .flow { padding: 20px; background: var(--ink); color: var(--paper); font-family: monospace; }
+    .flow span { color: var(--yellow); }
+    @media (max-width: 720px) { .hero, .grid { grid-template-columns: 1fr; } .hero { padding: 28px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div><p class="eyebrow">Odoo 19 / Website + eLearning</p><h1>FACODI Theme</h1><p>A focused public learning experience for Faculdade Comunitaria Digital.</p></div>
+      <div class="mark">FACODI.</div>
+    </section>
+    <h2>Built for open learning</h2>
+    <div class="grid">
+      <article class="card"><strong>Learning first</strong><p>Course discovery, progress, profiles and portal surfaces share one visual language.</p></article>
+      <article class="card"><strong>Native Odoo</strong><p>Template inheritance and asset bundles preserve standard Website and eLearning behavior.</p></article>
+      <article class="card"><strong>Responsive</strong><p>Navigation, catalog, lesson, authentication and portal layouts adapt to small screens.</p></article>
+    </div>
+    <h2>Workflow</h2>
+    <div class="flow"><span>01</span> Discover a course &nbsp;→&nbsp; <span>02</span> Learn at your pace &nbsp;→&nbsp; <span>03</span> Contribute to the community</div>
+  </main>
+</body>
+</html>

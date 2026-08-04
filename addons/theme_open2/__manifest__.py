@@ -1,12 +1,21 @@
 {
     "name": "Open2 Technology Theme",
     "summary": "Accessible, people-first technology website for Open2 Technology",
-    "description": "A reusable Odoo 19 website theme for Open2 Technology.",
+    "description": """
+Reusable Odoo 19 corporate Website theme for Open2 Technology. Provides native
+Website Builder snippets, responsive site chrome, accessible interaction
+states, multi-website utilities, and Helpdesk/Mass Mailing integrations.
+""",
+    "keywords": ["Open2", "corporate", "Website", "accessibility", "snippets"],
     "category": "Theme/Corporate",
     "version": "19.0.1.1.3",
     "sequence": 130,
     "author": "Open2 Technology",
+    "maintainer": "Open2 Technology",
     "website": "https://open2.tech",
+    "support": "https://github.com/Open2Tech/facodi/issues",
+    "repository": "https://github.com/Open2Tech/facodi",
+    "development_status": "Beta",
     "license": "LGPL-3",
     "depends": ["website", "website_helpdesk", "website_mass_mailing"],
     "data": [
@@ -31,7 +40,10 @@
             "theme_open2/static/tests/tours/theme_open2_editor.js",
         ],
     },
-    "images": ["static/description/open2_theme_preview.svg"],
+    "images": [
+        "static/description/open2_theme_preview.svg",
+        "static/description/theme_open2.svg",
+    ],
     "images_preview_theme": {},
     "configurator_snippets": {
         "homepage": [
