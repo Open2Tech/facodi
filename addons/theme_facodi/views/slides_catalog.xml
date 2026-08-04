@@ -42,7 +42,7 @@
     </template>
 
     <template id="facodi_course_card_metadata" inherit_id="website_slides.course_card" name="FACODI course card metadata">
-        <xpath expr="//small[t-out='channel.total_slides']" position="replace">
+        <xpath expr="//small[t[@t-out='channel.total_slides']]" position="replace">
             <small class="facodi-course-steps"><t t-out="channel.total_slides"/> etapas</small>
         </xpath>
     </template>
