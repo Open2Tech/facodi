@@ -26,14 +26,14 @@ from codoo.odoo import AsyncOdooClient
 CONFIRMATION = "APPLY-EDU-OPEN2"
 SOURCE_RELATIVE = Path("addons/theme_facodi")
 MENU_SPECS = (
-    ("Home", "/", 10),
-    ("Cursos", "/slides", 20),
-    ("Sobre a FACODI", "/sobre", 30),
-    ("Manifesto", "/manifesto", 40),
-    ("Comunidade", "/comunidade", 50),
-    ("Roadmap", "/roadmap", 60),
-    ("Como contribuir", "/como-contribuir", 70),
-    ("Contato", "/contactus", 80),
+    ("Home", "/", 10, None),
+    ("Cursos", "/slides", 20, None),
+    ("Sobre a FACODI", "/sobre", 30, None),
+    ("Manifesto", "/manifesto", 10, "/sobre"),
+    ("Roadmap", "/roadmap", 20, "/sobre"),
+    ("Comunidade", "/comunidade", 50, None),
+    ("Como contribuir", "/como-contribuir", 10, "/comunidade"),
+    ("Contato", "/contactus", 80, None),
 )
 
 
@@ -46,6 +46,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--env", type=Path, default=Path(".env"))
     parser.add_argument("--website-id", type=int)
     parser.add_argument("--confirm", default="")
+    parser.add_argument(
+        "--scope",
+        choices=("all", "text", "menus"),
+        default="all",
+        help="Restrict the apply/dry-run to text/page content or menu hierarchy.",
+    )
     parser.add_argument(
         "--remove-extra-menus",
         action="store_true",
@@ -211,6 +217,7 @@ async def build_plan(  # noqa: C901
     source: dict[str, Any],
     *,
     remove_extra_menus: bool = False,
+    scope: str = "all",
 ) -> dict[str, Any]:
     website_id = website["id"]
     pages = await existing_by_url(client, website_id)
@@ -232,179 +239,200 @@ async def build_plan(  # noqa: C901
     extension_by_key = {view["key"]: view for view in extension_views}
     operations: list[dict[str, Any]] = []
 
-    homepage = pages.get("/")
-    if not homepage:
-        raise RuntimeError("FACODI homepage record not found for the selected website")
-    operations.append(
-        summary(
-            "website.page",
-            "homepage",
-            "write",
-            homepage["id"],
-            {"arch": source["homepage_arch"], "website_published": True},
-        )
-    )
-
-    for page in source["pages"]:
-        url = page["url"]
-        values = {name: page[name] for name in ("name", "url", "key", "arch") if name in page}
-        values.update(
-            {
-                "website_id": website_id,
-                "is_published": True,
-                "website_published": True,
-                "type": "qweb",
-            }
-        )
-        existing = pages.get(url)
+    if scope in {"all", "text"}:
+        homepage = pages.get("/")
+        if not homepage:
+            raise RuntimeError("FACODI homepage record not found for the selected website")
         operations.append(
             summary(
                 "website.page",
-                url,
-                "write" if existing else "create",
-                existing["id"] if existing else None,
-                values,
+                "homepage",
+                "write",
+                homepage["id"],
+                {"arch": source["homepage_arch"], "website_published": True},
             )
         )
-
-    root_menus = await client.search_read(
-        "website.menu",
-        [("website_id", "=", website_id), ("parent_id", "=", False)],
-        ["id", "name", "url", "website_id"],
-        limit=50,
-        order="id",
-    )
-    root = next(
-        (
-            menu
-            for menu in root_menus
-            if menu.get("name", "").startswith("Menu superior") or menu.get("name") == "FACODI"
-        ),
-        None,
-    )
-    root_values = {
-        "name": "FACODI",
-        "url": "#",
-        "website_id": website_id,
-        "sequence": 0,
-    }
-    operations.append(
-        summary(
-            "website.menu",
-            "facodi-root",
-            "write" if root else "create",
-            root["id"] if root else None,
-            root_values,
+        page_fields = await fields(client, "website.page")
+        page_field_names = (
+            "name",
+            "url",
+            "key",
+            "arch",
+            "website_meta_title",
+            "website_meta_description",
         )
-    )
-    parent_id = root["id"] if root else None
-    children = await client.search_read(
-        "website.menu",
-        [("website_id", "=", website_id)],
-        ["id", "name", "url", "parent_id", "sequence"],
-        limit=200,
-        order="id",
-    )
-    for name, url, sequence in MENU_SPECS:
-        existing = next(
+        for page in source["pages"]:
+            url = page["url"]
+            values = {
+                name: page[name]
+                for name in page_field_names
+                if name in page and name in page_fields
+            }
+            values.update(
+                {
+                    "website_id": website_id,
+                    "is_published": True,
+                    "website_published": True,
+                    "type": "qweb",
+                }
+            )
+            existing = pages.get(url)
+            operations.append(
+                summary(
+                    "website.page",
+                    url,
+                    "write" if existing else "create",
+                    existing["id"] if existing else None,
+                    values,
+                )
+            )
+
+    if scope in {"all", "menus"}:
+        root_menus = await client.search_read(
+            "website.menu",
+            [("website_id", "=", website_id), ("parent_id", "=", False)],
+            ["id", "name", "url", "website_id"],
+            limit=50,
+            order="id",
+        )
+        root = next(
             (
                 menu
-                for menu in children
-                if menu.get("url") == url and menu.get("parent_id", [None])[0] == parent_id
+                for menu in root_menus
+                if menu.get("name", "").startswith("Menu superior") or menu.get("name") == "FACODI"
             ),
             None,
         )
-        values = {
-            "name": name,
-            "url": url,
-            "sequence": sequence,
+        root_values = {
+            "name": "FACODI",
+            "url": "#",
             "website_id": website_id,
+            "sequence": 0,
         }
-        if parent_id:
-            values["parent_id"] = parent_id
         operations.append(
             summary(
                 "website.menu",
-                url,
-                "write" if existing else "create",
-                existing["id"] if existing else None,
-                values,
+                "facodi-root",
+                "write" if root else "create",
+                root["id"] if root else None,
+                root_values,
             )
         )
-    if remove_extra_menus and parent_id:
-        for menu in children:
-            if menu.get("url") == "/appointment" and menu.get("parent_id"):
-                if menu["parent_id"][0] == parent_id:
-                    operations.append(
-                        summary(
-                            "website.menu",
-                            f"remove-extra:{menu['id']}",
-                            "unlink",
-                            menu["id"],
-                            {
-                                "url": menu["url"],
-                                "name": menu["name"],
-                                "website_id": website_id,
-                            },
-                        )
-                    )
-
-    for view in source["extension_views"]:
-        values = {
-            "name": view["name"],
-            "key": view["key"],
-            "type": "qweb",
-            "mode": "extension",
-            "inherit_id": layout_id,
-            "website_id": website_id,
-            "active": True,
-            "arch": view["arch"],
-        }
-        existing = extension_by_key.get(view["key"])
-        operations.append(
-            summary(
-                "ir.ui.view",
-                view["key"],
-                "write" if existing else "create",
-                existing["id"] if existing else None,
-                values,
-            )
+        parent_id = root["id"] if root else None
+        children = await client.search_read(
+            "website.menu",
+            [("website_id", "=", website_id)],
+            ["id", "name", "url", "parent_id", "page_id", "sequence"],
+            limit=200,
+            order="id",
         )
-
-    css_bytes = source["css"].encode("utf-8")
-    operations.append(
-        summary(
-            "ir.attachment",
-            "facodi-online.css",
-            "create-or-update",
-            None,
-            {
-                "name": "facodi-online.css",
-                "mimetype": "text/css",
-                "public": True,
+        menu_by_url = {menu.get("url"): menu for menu in children if menu.get("url")}
+        menu_by_page = {menu["page_id"][0]: menu for menu in children if menu.get("page_id")}
+        for name, url, sequence, parent_url in MENU_SPECS:
+            page_id = pages.get(url, {}).get("id")
+            existing = menu_by_page.get(page_id) if page_id else menu_by_url.get(url)
+            parent_menu = (
+                {"id": parent_id}
+                if parent_url is None
+                else menu_by_page.get(pages.get(parent_url, {}).get("id"))
+                or menu_by_url.get(parent_url)
+            )
+            expected_parent = parent_menu.get("id") if parent_menu else None
+            values = {
+                "name": name,
+                "url": url,
+                "sequence": sequence,
                 "website_id": website_id,
-                "datas": base64.b64encode(css_bytes).decode("ascii"),
-            },
-        )
-    )
-    operations.append(
-        summary(
-            "ir.ui.view",
-            "codoo.facodi_online.assets",
-            "create-or-update",
-            None,
-            {
-                "name": "FACODI Online Assets",
-                "key": "codoo.facodi_online.assets",
+            }
+            if expected_parent:
+                values["parent_id"] = expected_parent
+            if page_id:
+                values["page_id"] = page_id
+            operations.append(
+                summary(
+                    "website.menu",
+                    url,
+                    "write" if existing else "create",
+                    existing["id"] if existing else None,
+                    values,
+                )
+            )
+        if remove_extra_menus and parent_id:
+            for menu in children:
+                if menu.get("url") == "/appointment" and menu.get("parent_id"):
+                    if menu["parent_id"][0] == parent_id:
+                        operations.append(
+                            summary(
+                                "website.menu",
+                                f"remove-extra:{menu['id']}",
+                                "unlink",
+                                menu["id"],
+                                {
+                                    "url": menu["url"],
+                                    "name": menu["name"],
+                                    "website_id": website_id,
+                                },
+                            )
+                        )
+
+    if scope in {"all", "text"}:
+        for view in source["extension_views"]:
+            values = {
+                "name": view["name"],
+                "key": view["key"],
                 "type": "qweb",
                 "mode": "extension",
                 "inherit_id": layout_id,
                 "website_id": website_id,
                 "active": True,
-                "arch": '<data><xpath expr="//head" position="inside"><link rel="stylesheet" href="/web/content/FACODI_ATTACHMENT_ID"/></xpath></data>',
-            },
+                "arch": view["arch"],
+            }
+            existing = extension_by_key.get(view["key"])
+            operations.append(
+                summary(
+                    "ir.ui.view",
+                    view["key"],
+                    "write" if existing else "create",
+                    existing["id"] if existing else None,
+                    values,
+                )
+            )
+
+    if scope == "all":
+        css_bytes = source["css"].encode("utf-8")
+        operations.append(
+            summary(
+                "ir.attachment",
+                "facodi-online.css",
+                "create-or-update",
+                None,
+                {
+                    "name": "facodi-online.css",
+                    "mimetype": "text/css",
+                    "public": True,
+                    "website_id": website_id,
+                    "datas": base64.b64encode(css_bytes).decode("ascii"),
+                },
+            )
         )
-    )
+        operations.append(
+            summary(
+                "ir.ui.view",
+                "codoo.facodi_online.assets",
+                "create-or-update",
+                None,
+                {
+                    "name": "FACODI Online Assets",
+                    "key": "codoo.facodi_online.assets",
+                    "type": "qweb",
+                    "mode": "extension",
+                    "inherit_id": layout_id,
+                    "website_id": website_id,
+                    "active": True,
+                    "arch": '<data><xpath expr="//head" position="inside"><link rel="stylesheet" href="/web/content/FACODI_ATTACHMENT_ID"/></xpath></data>',
+                },
+            )
+        )
     return {
         "website": website,
         "operations": operations,
@@ -473,7 +501,10 @@ async def read_existing(client: AsyncOdooClient, operation: dict[str, Any]) -> d
 
 
 async def apply_plan(  # noqa: C901
-    client: AsyncOdooClient, plan: dict[str, Any], source: dict[str, Any], state_dir: Path
+    client: AsyncOdooClient,
+    plan: dict[str, Any],
+    source: dict[str, Any],
+    state_dir: Path,
 ) -> dict[str, Any]:
     state_dir.mkdir(parents=True, exist_ok=True)
     rollback = {
@@ -490,6 +521,15 @@ async def apply_plan(  # noqa: C901
     results = []
     website_id = plan["website"]["id"]
     pages = await existing_by_url(client, website_id)
+    page_fields = await fields(client, "website.page")
+    page_field_names = (
+        "name",
+        "url",
+        "key",
+        "arch",
+        "website_meta_title",
+        "website_meta_description",
+    )
     layout_views = await client.search_read(
         "ir.ui.view", [("key", "=", "website.layout")], ["id"], limit=10
     )
@@ -516,7 +556,11 @@ async def apply_plan(  # noqa: C901
             )
         elif model == "website.page" and key not in {"homepage"}:
             page = next((item for item in source["pages"] if item["url"] == key), None)
-            values = {name: page[name] for name in ("name", "url", "key", "arch") if name in page}
+            values = {
+                name: page[name]
+                for name in page_field_names
+                if name in page and name in page_fields
+            }
             values.update(
                 {
                     "website_id": website_id,
@@ -540,7 +584,7 @@ async def apply_plan(  # noqa: C901
             menus = await client.search_read(
                 "website.menu",
                 [("website_id", "=", website_id)],
-                ["id", "name", "url", "parent_id", "sequence"],
+                ["id", "name", "url", "parent_id", "page_id", "sequence"],
                 limit=500,
                 order="id",
             )
@@ -575,14 +619,29 @@ async def apply_plan(  # noqa: C901
                 menu_values = next((spec for spec in MENU_SPECS if spec[1] == key), None)
                 if not menu_values:
                     raise RuntimeError(f"Unknown menu operation: {key}")
-                name, url, sequence = menu_values
+                name, url, sequence, parent_url = menu_values
+                expected_parent = (
+                    root
+                    if parent_url is None
+                    else next(
+                        (
+                            menu
+                            for menu in menus
+                            if menu.get("page_id")
+                            and menu["page_id"][0] == pages.get(parent_url, {}).get("id")
+                        ),
+                        None,
+                    )
+                )
+                if not expected_parent:
+                    raise RuntimeError(f"Parent menu is missing for {key}: {parent_url}")
+                page_id = pages.get(key, {}).get("id")
                 existing = next(
                     (
                         menu
                         for menu in menus
-                        if menu.get("url") == url
-                        and menu.get("parent_id")
-                        and menu["parent_id"][0] == root["id"]
+                        if (page_id and menu.get("page_id") and menu["page_id"][0] == page_id)
+                        or (not page_id and menu.get("url") == url)
                     ),
                     None,
                 )
@@ -591,10 +650,10 @@ async def apply_plan(  # noqa: C901
                     "url": url,
                     "sequence": sequence,
                     "website_id": website_id,
-                    "parent_id": root["id"],
+                    "parent_id": expected_parent["id"],
                 }
-                if key in pages:
-                    values["page_id"] = pages[key]["id"]
+                if page_id:
+                    values["page_id"] = page_id
                 if existing:
                     await client.write(model, [existing["id"]], values)
                     menu_id = existing["id"]
@@ -792,6 +851,7 @@ async def main() -> None:
             website,
             source,
             remove_extra_menus=args.remove_extra_menus,
+            scope=args.scope,
         )
         args.state_dir.mkdir(parents=True, exist_ok=True)
         (args.state_dir / "migration-plan.json").write_text(
@@ -802,6 +862,7 @@ async def main() -> None:
                 json.dumps(
                     {
                         "mode": args.mode,
+                        "scope": args.scope,
                         "website": website,
                         "operation_count": len(plan["operations"]),
                         "operations": plan["operations"],

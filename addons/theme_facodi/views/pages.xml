@@ -9,27 +9,27 @@
         <field name="url">/sobre</field>
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_about</field>
-        <field name="website_meta_title">Sobre a FACODI — Faculdade Comunitaria Digital</field>
-        <field name="website_meta_description">O FACODI nasceu para aproximar pessoas, comunidades e conhecimento. Curriculos, percursos e materiais abertos para aprender com contexto e comunidade.</field>
+        <field name="website_meta_title">Sobre a FACODI — Faculdade Comunitária Digital</field>
+        <field name="website_meta_description">O FACODI nasceu para aproximar pessoas, comunidades e conhecimento. Currículos, percursos e materiais abertos para aprender com contexto e comunidade.</field>
         <field name="arch" type="xml">
             <t name="Sobre a FACODI" t-name="theme_facodi.page_about">
                 <t t-call="website.layout">
                     <div id="wrap" class="oe_structure facodi-app-shell">
                         <section class="facodi-hero" data-name="FACODI About Hero">
                             <div class="facodi-hero-copy">
-                                <p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Faculdade Comunitaria Digital</p>
+                                <p class="facodi-kicker"><i class="fa fa-circle" aria-hidden="true"/> Faculdade Comunitária Digital</p>
                                 <h1>Conhecimento aberto, percursos claros e comunidade ativa.</h1>
-                                <p class="facodi-lead">O FACODI nasceu para aproximar pessoas, comunidades e conhecimento, organizando curriculos, unidades curriculares, playlists educacionais e materiais publicos em trilhas de estudo acessiveis.</p>
+                                <p class="facodi-lead">O FACODI nasceu para aproximar pessoas, comunidades e conhecimento, organizando currículos, unidades curriculares, playlists educacionais e materiais públicos em trilhas de estudo acessíveis.</p>
                                 <div class="facodi-actions">
                                     <a class="btn facodi-button facodi-button-primary" href="/slides">Explorar cursos <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                                     <a class="btn facodi-button facodi-button-secondary" href="/comunidade">Conhecer a comunidade</a>
                                 </div>
                             </div>
-                            <div class="facodi-hero-board" aria-label="Principios do projeto">
+                            <div class="facodi-hero-board" aria-label="Princípios do projeto">
                                 <div class="facodi-board-top"><span>Base institucional</span><span class="facodi-live-dot">Ativo</span></div>
                                 <div class="facodi-board-cards">
-                                    <div><span>Aberto</span><strong>Recursos acessiveis</strong></div>
-                                    <div class="is-selected"><span>Comunitario</span><strong>Curadoria coletiva</strong></div>
+                                    <div><span>Aberto</span><strong>Recursos acessíveis</strong></div>
+                                    <div class="is-selected"><span>Comunitário</span><strong>Curadoria coletiva</strong></div>
                                     <div><span>Estruturado</span><strong>Percursos orientados</strong></div>
                                 </div>
                             </div>
@@ -41,14 +41,14 @@
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Reconhecimento institucional</span>
                                         <strong>SEA-EU 2026</strong>
-                                        <p class="mb-0">O projeto "Digital Learning and Skills Recognition Platform for the SEA-EU Alliance / FACODI - Digital Community College" foi selecionado para financiamento na chamada SEA-EU Student-Led Projects 2026, reforcando o potencial do FACODI como iniciativa de educacao digital aberta e colaboracao universitaria europeia.</p>
+                                        <p class="mb-0">O projeto "Digital Learning and Skills Recognition Platform for the SEA-EU Alliance / FACODI - Digital Community College" foi selecionado para financiamento na chamada SEA-EU Student-Led Projects 2026, reforçando o potencial do FACODI como iniciativa de educação digital aberta e colaboração universitária europeia.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Ligacao institucional</span>
+                                        <span>Ligação institucional</span>
                                         <strong>UAlg</strong>
-                                        <p class="mb-0">A iniciativa tem lideranca associada a Universidade do Algarve, fortalecendo o compromisso com inovacao educacional, participacao estudantil e impacto comunitario.</p>
+                                        <p class="mb-0">A iniciativa tem liderança associada à Universidade do Algarve, fortalecendo o compromisso com inovação educacional, participação estudantil e impacto comunitário.</p>
                                     </article>
                                 </div>
                             </div>
@@ -58,18 +58,18 @@
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>O que queremos construir</span>
                                         <ul class="mb-0 ps-3">
-                                            <li>Trilhas de estudo abertas baseadas em curriculos e unidades curriculares.</li>
-                                            <li>Curadoria comunitaria de videos, artigos e materiais educacionais.</li>
-                                            <li>Ferramentas para acompanhar progresso, cursos inscritos e conteudos assistidos.</li>
-                                            <li>Base para futuro reconhecimento de competencias e percursos formativos.</li>
+                                            <li>Trilhas de estudo abertas baseadas em currículos e unidades curriculares.</li>
+                                            <li>Curadoria comunitária de vídeos, artigos e materiais educacionais.</li>
+                                            <li>Ferramentas para acompanhar progresso, cursos inscritos e conteúdos assistidos.</li>
+                                            <li>Base para futuro reconhecimento de competências e percursos formativos.</li>
                                         </ul>
                                     </article>
                                 </div>
                                 <div class="col-lg-6">
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Posicionamento</span>
-                                        <p>O FACODI alinha aprendizagem aberta, tecnologia e colaboracao universitaria para apoiar percursos acessiveis, verificaveis e comunitarios.</p>
-                                        <p class="mb-0">A plataforma existe para que mais pessoas encontrem contexto, direcao e comunidade no processo de aprender.</p>
+                                        <p>O FACODI alinha aprendizagem aberta, tecnologia e colaboração universitária para apoiar percursos acessíveis, verificáveis e comunitários.</p>
+                                        <p class="mb-0">A plataforma existe para que mais pessoas encontrem contexto, direção e comunidade no processo de aprender.</p>
                                     </article>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_manifesto</field>
         <field name="website_meta_title">Manifesto — FACODI</field>
-        <field name="website_meta_description">Aprender em publico, construir com outras pessoas e manter o conhecimento em circulacao. Os principios que orientam o FACODI.</field>
+        <field name="website_meta_description">Aprender em público, construir com outras pessoas e manter o conhecimento em circulação. Os princípios que orientam o FACODI.</field>
         <field name="arch" type="xml">
             <t name="Manifesto FACODI" t-name="theme_facodi.page_manifesto">
                 <t t-call="website.layout">
@@ -95,10 +95,10 @@
                         <section class="facodi-open-section" data-name="FACODI Manifesto Hero">
                             <div>
                                 <p class="facodi-kicker">Manifesto</p>
-                                <h2>Aprender em publico, construir com outras pessoas e manter o conhecimento em circulacao.</h2>
+                                <h2>Aprender em público, construir com outras pessoas e manter o conhecimento em circulação.</h2>
                             </div>
                             <div class="facodi-open-actions">
-                                <p>O FACODI entende a educacao aberta como infraestrutura comunitaria: organizada, acessivel, verificavel e orientada a quem precisa de percursos reais para continuar a aprender.</p>
+                                <p>O FACODI entende a educação aberta como infraestrutura comunitária: organizada, acessível, verificável e orientada a quem precisa de percursos reais para continuar a aprender.</p>
                                 <a class="btn facodi-button facodi-button-secondary" href="/como-contribuir">Como contribuir <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                             </div>
                         </section>
@@ -107,23 +107,23 @@
                             <div class="row g-4">
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Principio 01</span>
+                                        <span>Princípio 01</span>
                                         <strong>Acesso</strong>
-                                        <p class="mb-0">Materiais, curriculos e caminhos de aprendizagem devem ser visiveis, compreensiveis e financeiramente acessiveis.</p>
+                                        <p class="mb-0">Materiais, currículos e caminhos de aprendizagem devem ser visíveis, compreensíveis e financeiramente acessíveis.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Principio 02</span>
+                                        <span>Princípio 02</span>
                                         <strong>Comunidade</strong>
-                                        <p class="mb-0">Quem aprende tambem pode rever, contextualizar e melhorar recursos para quem vem a seguir.</p>
+                                        <p class="mb-0">Quem aprende também pode rever, contextualizar e melhorar recursos para quem vem a seguir.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Principio 03</span>
+                                        <span>Princípio 03</span>
                                         <strong>Continuidade</strong>
-                                        <p class="mb-0">O objetivo nao e publicar conteudo solto, mas estruturar percursos que ajudem a avancar com confianca.</p>
+                                        <p class="mb-0">O objetivo não é publicar conteúdo solto, mas estruturar percursos que ajudem a avançar com confiança.</p>
                                     </article>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_community</field>
         <field name="website_meta_title">Comunidade — FACODI</field>
-        <field name="website_meta_description">Uma rede aberta de estudantes, curadores e parceiros. Conheca o ecossistema FACODI e como participar.</field>
+        <field name="website_meta_description">Uma rede aberta de estudantes, curadores e parceiros. Conheça o ecossistema FACODI e como participar.</field>
         <field name="arch" type="xml">
             <t name="Comunidade FACODI" t-name="theme_facodi.page_community">
                 <t t-call="website.layout">
@@ -150,13 +150,13 @@
                             <div class="facodi-hero-copy">
                                 <p class="facodi-kicker"><i class="fa fa-users" aria-hidden="true"/> Comunidade</p>
                                 <h1>Uma rede aberta de estudantes, curadores e parceiros.</h1>
-                                <p class="facodi-lead">A identidade do FACODI nasceu do encontro entre educacao aberta, tecnologia inclusiva e uma comunidade que acredita em percursos formativos com mais contexto, cuidado e colaboracao.</p>
+                                <p class="facodi-lead">A identidade do FACODI nasceu do encontro entre educação aberta, tecnologia inclusiva e uma comunidade que acredita em percursos formativos com mais contexto, cuidado e colaboração.</p>
                             </div>
                             <div class="facodi-hero-board" aria-label="Ecossistema FACODI">
                                 <div class="facodi-board-top"><span>Ecossistema</span><span class="facodi-live-dot">Em rede</span></div>
                                 <div class="facodi-board-cards">
-                                    <div><span>Open2 Technology</span><strong>Infraestrutura e visao</strong></div>
-                                    <div class="is-selected"><span>Universidade</span><strong>Ligacao academica</strong></div>
+                                    <div><span>Open2 Technology</span><strong>Infraestrutura e visão</strong></div>
+                                    <div class="is-selected"><span>Universidade</span><strong>Ligação académica</strong></div>
                                     <div><span>Comunidade</span><strong>Curadoria e apoio</strong></div>
                                 </div>
                             </div>
@@ -168,21 +168,21 @@
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Contributo</span>
                                         <strong>Curadoria</strong>
-                                        <p class="mb-0">A comunidade ajuda a localizar, rever e contextualizar videos, artigos e outros recursos para fortalecer cada percurso de aprendizagem.</p>
+                                        <p class="mb-0">A comunidade ajuda a localizar, rever e contextualizar vídeos, artigos e outros recursos para fortalecer cada percurso de aprendizagem.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Parceiros</span>
-                                        <strong>Alianzas</strong>
-                                        <p class="mb-0">Open2 Technology, Universidade do Algarve e SEA-EU formam o contexto institucional mais visivel desta fase do projeto.</p>
+                                        <strong>Alianças</strong>
+                                        <p class="mb-0">Open2 Technology, Universidade do Algarve e SEA-EU formam o contexto institucional mais visível desta fase do projeto.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Participacao</span>
+                                        <span>Participação</span>
                                         <strong>Contribuir</strong>
-                                        <p class="mb-0">O objetivo e manter uma porta de entrada clara para quem quer estudar, colaborar, propor conteudo ou apoiar a evolucao da plataforma.</p>
+                                        <p class="mb-0">O objetivo é manter uma porta de entrada clara para quem quer estudar, colaborar, propor conteúdo ou apoiar a evolução da plataforma.</p>
                                     </article>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_roadmap</field>
         <field name="website_meta_title">Roadmap — FACODI</field>
-        <field name="website_meta_description">Prioridades do FACODI para consolidar conteudo, percursos e reconhecimento de aprendizagens.</field>
+        <field name="website_meta_description">Prioridades do FACODI para consolidar conteúdo, percursos e reconhecimento de aprendizagens.</field>
         <field name="arch" type="xml">
             <t name="Roadmap FACODI" t-name="theme_facodi.page_roadmap">
                 <t t-call="website.layout">
@@ -209,7 +209,7 @@
                             <div class="facodi-section-heading">
                                 <div>
                                     <p class="facodi-kicker">Roadmap</p>
-                                    <h2>Prioridades para consolidar conteudo, percursos e reconhecimento.</h2>
+                                    <h2>Prioridades para consolidar conteúdo, percursos e reconhecimento.</h2>
                                 </div>
                             </div>
                             <div class="row g-4">
@@ -217,17 +217,17 @@
                                     <article class="facodi-roadmap-card facodi-stat-card h-100 bg-white">
                                         <div class="facodi-panel-label"><span>Em curso</span></div>
                                         <ul class="facodi-timeline">
-                                            <li class="is-current"><i class="fa fa-circle" aria-hidden="true"/><div><strong>Consolidar o catalogo</strong><small>Organizar cursos e unidades curriculares com melhor contexto.</small></div></li>
-                                            <li><i class="fa fa-circle-o" aria-hidden="true"/><div><strong>Expandir paginas institucionais</strong><small>Dar mais clareza a narrativa publica do projeto.</small></div></li>
-                                            <li><i class="fa fa-circle-o" aria-hidden="true"/><div><strong>Preparar multilingue</strong><small>Estruturar traducao para ingles e outros idiomas.</small></div></li>
+                                            <li class="is-current"><i class="fa fa-circle" aria-hidden="true"/><div><strong>Consolidar o catálogo</strong><small>Organizar cursos e unidades curriculares com melhor contexto.</small></div></li>
+                                            <li><i class="fa fa-circle-o" aria-hidden="true"/><div><strong>Expandir páginas institucionais</strong><small>Dar mais clareza à narrativa pública do projeto.</small></div></li>
+                                            <li><i class="fa fa-circle-o" aria-hidden="true"/><div><strong>Preparar multilingue</strong><small>Estruturar tradução para inglês e outros idiomas.</small></div></li>
                                         </ul>
                                     </article>
                                 </div>
                                 <div class="col-lg-6">
                                     <article class="facodi-community-card facodi-stat-card h-100">
-                                        <div class="facodi-panel-label"><span>Proximas capacidades</span></div>
-                                        <h3>Do percurso aberto ao reconhecimento de competencias.</h3>
-                                        <p>As proximas iteracoes devem reforcar percursos verificaveis, ligacoes entre conteudo e curadoria comunitaria, e bases para reconhecimento futuro de aprendizagens.</p>
+                                        <div class="facodi-panel-label"><span>Próximas capacidades</span></div>
+                                        <h3>Do percurso aberto ao reconhecimento de competências.</h3>
+                                        <p>As próximas iterações devem reforçar percursos verificáveis, ligações entre conteúdo e curadoria comunitária, e bases para reconhecimento futuro de aprendizagens.</p>
                                         <a class="btn facodi-button facodi-button-secondary" href="/manifesto">Ler manifesto <i class="fa fa-arrow-right ms-1" aria-hidden="true"/></a>
                                     </article>
                                 </div>
@@ -246,7 +246,7 @@
         <field name="is_published">True</field>
         <field name="key">theme_facodi.page_contribute</field>
         <field name="website_meta_title">Como contribuir — FACODI</field>
-        <field name="website_meta_description">Formas de participar na evolucao do FACODI: curadoria de conteudo, parcerias academicas e colaboracao tecnica.</field>
+        <field name="website_meta_description">Formas de participar na evolução do FACODI: curadoria de conteúdo, parcerias académicas e colaboração técnica.</field>
         <field name="arch" type="xml">
             <t name="Como contribuir" t-name="theme_facodi.page_contribute">
                 <t t-call="website.layout">
@@ -254,30 +254,30 @@
                         <section class="container py-5" data-name="FACODI Contribute">
                             <div class="facodi-section-heading">
                                 <div>
-                                    <p class="facodi-kicker">Contribuicao</p>
-                                    <h2>Formas de participar na evolucao do FACODI.</h2>
+                                    <p class="facodi-kicker">Contribuição</p>
+                                    <h2>Formas de participar na evolução do FACODI.</h2>
                                 </div>
                             </div>
                             <div class="row g-4">
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
-                                        <span>Conteudo</span>
+                                        <span>Conteúdo</span>
                                         <strong>Recursos</strong>
-                                        <p class="mb-0">Sugerir videos, artigos, playlists e materiais que reforcem os percursos existentes.</p>
+                                        <p class="mb-0">Sugerir vídeos, artigos, playlists e materiais que reforcem os percursos existentes.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Comunidade</span>
                                         <strong>Curadoria</strong>
-                                        <p class="mb-0">Ajudar a rever, contextualizar e manter a qualidade do conteudo publicado.</p>
+                                        <p class="mb-0">Ajudar a rever, contextualizar e manter a qualidade do conteúdo publicado.</p>
                                     </article>
                                 </div>
                                 <div class="col-lg-4">
                                     <article class="facodi-stat-card h-100 bg-white">
                                         <span>Parcerias</span>
-                                        <strong>Colaboracao</strong>
-                                        <p class="mb-0">Apoiar a plataforma com enquadramento academico, estrategico ou operacional.</p>
+                                        <strong>Colaboração</strong>
+                                        <p class="mb-0">Apoiar a plataforma com enquadramento académico, estratégico ou operacional.</p>
                                     </article>
                                 </div>
                             </div>

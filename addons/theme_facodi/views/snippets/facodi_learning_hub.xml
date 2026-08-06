@@ -15,9 +15,9 @@
             <div class="container">
                 <div class="facodi-section-heading"><div><p class="facodi-kicker">CURADORIA ABERTA</p><h2>Aprenda com contexto.</h2></div><a href="/slides" class="facodi-text-link">Explorar recursos <i class="fa fa-arrow-right" aria-hidden="true"/></a></div>
                 <div class="facodi-resource-grid">
-                    <article><i class="fa fa-play-circle" aria-hidden="true"/><h3>Videoaulas</h3><p>Explicacoes curtas para acompanhar cada unidade curricular.</p></article>
+                    <article><i class="fa fa-play-circle" aria-hidden="true"/><h3>Videoaulas</h3><p>Explicações curtas para acompanhar cada unidade curricular.</p></article>
                     <article><i class="fa fa-book" aria-hidden="true"/><h3>Leituras abertas</h3><p>Livros, artigos e documentos selecionados pela comunidade.</p></article>
-                    <article><i class="fa fa-comments" aria-hidden="true"/><h3>Estude junto</h3><p>Troque anotacoes, perguntas e caminhos de estudo.</p></article>
+                    <article><i class="fa fa-comments" aria-hidden="true"/><h3>Estude junto</h3><p>Troque anotações, perguntas e caminhos de estudo.</p></article>
                 </div>
             </div>
         </section>
