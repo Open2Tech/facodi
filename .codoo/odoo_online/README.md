@@ -128,6 +128,11 @@ approving proposals. Both actions record reviewer, version, decision history,
 and follow-up activity without converting or publishing. See
 `reports/curation-decisions-2026-08-06.md`.
 
+The queue is now complete with state menus for all, validation, AI, review,
+changes, rejection, approval, conversion, and duplicates. Rejection records a
+reason and history without touching eLearning. See
+`reports/curation-queue-completion-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
