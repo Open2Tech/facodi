@@ -11,11 +11,27 @@
                         </button>
                         <div id="top_menu_collapse" class="collapse navbar-collapse">
                             <ul class="navbar-nav top_menu ms-auto align-items-lg-center gap-lg-1">
-                                <!-- Dynamic menu items from Website backend -->
+                                <!-- Dynamic backend menus: parent labels are links, toggles open nested items. -->
                                 <t t-foreach="website.menu_id.child_id" t-as="submenu">
-                                    <t t-call="website.submenu"
-                                        item_class.f="nav-item"
-                                        link_class.f="nav-link"/>
+                                    <li t-if="submenu.is_visible and submenu.child_id" class="nav-item dropdown facodi-menu-item" role="presentation">
+                                        <a t-att-href="submenu.page_id.url if submenu.page_id else submenu._clean_url()" class="nav-link facodi-menu-parent-link" role="menuitem" aria-haspopup="true">
+                                            <span t-field="submenu.name"/>
+                                        </a>
+                                        <ul class="dropdown-menu facodi-dropdown-menu" role="menu">
+                                            <t t-foreach="submenu.child_id" t-as="child">
+                                                <li t-if="child.is_visible" role="presentation">
+                                                    <a t-att-href="child._clean_url()" class="dropdown-item" role="menuitem">
+                                                        <span t-field="child.name"/>
+                                                    </a>
+                                                </li>
+                                            </t>
+                                        </ul>
+                                    </li>
+                                    <li t-elif="submenu.is_visible" class="nav-item facodi-menu-item" role="presentation">
+                                        <a t-att-href="submenu._clean_url()" class="nav-link" role="menuitem">
+                                            <span t-field="submenu.name"/>
+                                        </a>
+                                    </li>
                                 </t>
                                 <!-- Sign-in / user dropdown -->
                                 <li class="nav-item ms-lg-2">

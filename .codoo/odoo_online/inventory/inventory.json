@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T01:31:26.117097+00:00",
+  "generated_at": "2026-08-06T01:39:42.998717+00:00",
   "connection": {
     "target": "online",
     "host": "https://edu-open2.odoo.com",
@@ -134,8 +134,8 @@
       },
       {
         "path": "addons/theme_facodi/static/src/scss/facodi_frontend.scss",
-        "sha256": "44d9daff5611b8b4b3711a2e9e771599f027b91aa146a9d05399ae8e9763f091",
-        "bytes": 16178
+        "sha256": "2ae1c99cb022a78faff6481efe15b669896782bec775047467af27afa758b0ef",
+        "bytes": 16683
       },
       {
         "path": "addons/theme_facodi/static/src/scss/primary_variables.scss",
@@ -149,8 +149,8 @@
       },
       {
         "path": "addons/theme_facodi/views/header.xml",
-        "sha256": "fa7b436eb77eed49a4a94ba671055163c17e9b39bdc96369f3e398c2060fd440",
-        "bytes": 2350
+        "sha256": "7b7a7dbd400f785c59600b627abe54f14affc5829f5e24205a62b228cec82f3a",
+        "bytes": 3804
       },
       {
         "path": "addons/theme_facodi/views/homepage.xml",
@@ -946,8 +946,8 @@
             ],
             "active": true,
             "priority": 16,
-            "arch_sha256": "2f30bf62546e106475bfae2691e40bb57444f10c5afdc1d1594df8dc2766c519",
-            "arch_bytes": 1967
+            "arch_sha256": "89d2a92a562cacc0f7962ecdab718b01f92cd24e3baee9ddca71d37c089ac00c",
+            "arch_bytes": 3501
           },
           {
             "id": 2478,
@@ -1946,7 +1946,7 @@
               2,
               "FACODI"
             ],
-            "checksum": "43ae8ae86d631742f9104ba821f0aecfd4b97d00",
+            "checksum": "9d05d17c8a46ee8696d79864ebc313f09910c773",
             "res_model": false,
             "res_id": 0
           },

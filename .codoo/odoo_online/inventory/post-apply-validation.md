@@ -41,6 +41,13 @@ The CSS attachment returned HTTP 200 and was served as CSS.
 | 1440x1000 | No | Visible | No | No |
 | 1920x1080 | No | Visible | No | No |
 
+## Parent menu navigation
+
+- `Sobre a FACODI` renders as a real link to `/sobre`.
+- `Comunidade` renders as a real link to `/comunidade`.
+- `Manifesto`, `Roadmap`, and `Como contribuir` remain available as nested links.
+- Desktop nested links open on hover/focus; mobile nested links remain visible without requiring Bootstrap JavaScript.
+
 ## Boundary
 
 This validates the public visual frontend and API-managed website records. The
