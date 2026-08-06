@@ -118,6 +118,11 @@ The pilot also added reusable playlist/classification provenance fields to both
 proposals and `slide.slide`. Conversion copies this provenance and remains
 approval-gated. See `reports/lcmaquino-pilot-implementation-2026-08-06.md`.
 
+The published Matemateca content was reviewed against LESTI: four slides remain
+in Análise Matemática I and the Jacobian slide was moved to Análise Matemática
+II. Public descriptions were revised while original source descriptions were
+preserved. See `reports/content-review-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
