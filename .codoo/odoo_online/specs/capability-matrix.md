@@ -16,11 +16,12 @@ Inventory date: 2026-08-06. All observations are read-only API facts.
 | Surveys | Installed | Optional assessments after course content exists. |
 | Dashboards | Installed | Use native dashboard/filter views; no custom frontend. |
 | `x_studio_*` on slide models | None observed | Create only after field matrix review. |
-| `approval.category` API model | Not available in probe | Do not assume approval API; validate in Studio UI or use explicit approval field/activity. |
+| `approval.category` API model | Not available in probe | Not used. Approval rules are exposed through `studio.approval.rule`; publication binding remains unproven. |
+| `studio.approval.rule` | Available; create/write rights observed | Candidate for Studio button approvals; do not bind it to publication without a UI/API proof. |
 | `base.automation` records | Empty in probe | Configure only after Studio capability confirmation. |
 | Python custom addons | Not supported on target | Keep source repo for migration/docs only. |
 | External pipeline | Not part of target | Do not reintroduce for Online architecture. |
 
 ## Required next gate
 
-Create one Studio field and one workflow proof-of-concept on a disposable/test record, export the Studio customization, then verify the real publication action and access behavior before bulk field creation.
+The current proof created namespaced manual fields and a backend menu shell through JSON-RPC. These are not an exported Studio customization. The next required gate is a disposable Studio UI proof: create one field and one approval rule, export the customization, then verify the real publication action and access behavior before calling the Studio layer complete.

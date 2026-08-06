@@ -67,3 +67,25 @@ inheritance cannot be installed on Odoo Online. The migration therefore maps:
 
 No other remote write is allowed without a reviewed plan and rollback mapping for
 every operation.
+
+## Content Studio configuration
+
+Capability discovery and the redacted pre-write snapshot are generated with:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/inventory_site.py \
+  --target online --env .env
+```
+
+The guarded configuration runners default to read-only dry-runs:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/configure_content_studio.py dry-run --batch core --target online --env .env
+.venv/bin/python odoo/facodi/.codoo/odoo_online/configure_ai_content.py dry-run --target online --env .env
+.venv/bin/python odoo/facodi/.codoo/odoo_online/configure_app_shell.py dry-run --target online --env .env
+```
+
+Each runner supports `snapshot`, `apply`, `verify`, and `rollback`. Apply and
+rollback require `--confirm APPLY-EDU-OPEN2`. See
+`reports/content-studio-capability-2026-08-06.md` for the current evidence and
+unsupported API surfaces.

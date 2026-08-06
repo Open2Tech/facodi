@@ -23,7 +23,7 @@ Do not introduce FastAPI, Docker, Redis, Celery, SQLite workers, custom controll
 
 - Installed capabilities include `website_slides`, `web_studio`, `website_studio`, `ai`, `ai_fields`, `ai_server_actions`, `ai_documents`, `ai_knowledge`, `documents`, `knowledge`, `survey`, and dashboards.
 - No `x_studio_*` fields currently exist on `slide.channel` or `slide.slide`.
-- The API exposes `studio.approval.entry` and `studio.approval.request` fields, but `approval.category` is not available through the current API model registry. Approval configuration must be confirmed through Studio UI/API behavior before implementation.
+- The API exposes `studio.approval.rule`, `studio.approval.entry`, and `studio.approval.request`. The standard eLearning publication button has not been safely bound to a rule through the public API, so publication remains restricted to the standard eLearning Manager permission until that binding is proven in Studio.
 - The old external enrichment service is not part of the Online runtime. AI suggestions must use fields, source documents, Knowledge, and explicitly supplied transcript/description data.
 
 ## Delivery order

@@ -21,7 +21,7 @@
     "homepage_page_count": 3,
     "menu_count": 20,
     "facodi_qweb_view_count": 11,
-    "studio_field_count": 0
+    "studio_field_count": 23
   },
   "constraints": [
     "Odoo Online cannot install the Python theme/content addons or their controllers, cron, ACLs, and QWeb inheritance files.",

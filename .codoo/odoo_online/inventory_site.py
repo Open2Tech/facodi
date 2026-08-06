@@ -47,6 +47,38 @@ REMOTE_MODELS = (
     "slide.slide",
 )
 
+CAPABILITY_PROBES = (
+    "ir.model",
+    "ir.model.fields",
+    "ir.ui.menu",
+    "ir.actions.actions",
+    "ir.actions.act_window",
+    "ir.actions.server",
+    "ir.cron",
+    "base.automation",
+    "res.groups",
+    "mail.activity",
+    "documents.document",
+    "knowledge.article",
+    "approval.category",
+    "approval.request",
+    "ai.agent",
+    "ai.agent.source",
+    "ai.topic",
+    "ai.prompt.button",
+    "ai.composer",
+    "studio.approval.rule",
+    "studio.approval.entry",
+    "studio.approval.request",
+    "ai.tool",
+    "ai.source",
+    "ai.llm",
+    "ai.provider",
+    "ai.model",
+    "ai.field",
+    "ai.server.action",
+)
+
 PLAN = [
     {
         "id": "ONLINE-001",
@@ -198,6 +230,95 @@ async def available_fields(client: AsyncOdooClient, model: str) -> set[str]:
         return {"_error": f"{type(exc).__name__}: {exc}"}
 
 
+def summarize_field_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
+    summary = {}
+    for name, definition in metadata.items():
+        if not isinstance(definition, dict):
+            summary[name] = json_value(definition)
+            continue
+        item = {
+            key: json_value(definition[key])
+            for key in ("type", "readonly", "required", "relation", "store")
+            if key in definition
+        }
+        if "selection" in definition:
+            item["selection"] = json_value(definition["selection"])
+        summary[name] = item
+    return summary
+
+
+async def capability_probe(client: AsyncOdooClient, model: str, limit: int) -> dict[str, Any]:
+    try:
+        metadata = await client.fields_get(model)
+    except Exception as exc:
+        return {
+            "available": False,
+            "error": f"{type(exc).__name__}: {exc}",
+            "fields": {},
+            "rights": {},
+            "records": [],
+        }
+    rights = {}
+    for operation in ("read", "write", "create", "unlink"):
+        try:
+            rights[operation] = bool(
+                await client.call(
+                    model,
+                    "check_access_rights",
+                    [operation],
+                    {"raise_exception": False},
+                )
+            )
+        except Exception as exc:
+            rights[operation] = f"{type(exc).__name__}: {exc}"
+    record_fields = [
+        name
+        for name in ("id", "name", "display_name", "active", "state", "model", "provider_id")
+        if name in metadata
+    ]
+    records = []
+    if record_fields and rights.get("read") is True:
+        try:
+            records = json_value(
+                await client.search_read(model, [], record_fields, limit=min(limit, 20), order="id")
+            )
+        except Exception as exc:
+            records = [{"error": f"{type(exc).__name__}: {exc}"}]
+    return {
+        "available": True,
+        "field_count": len(metadata),
+        "fields": summarize_field_metadata(metadata),
+        "rights_as_current_user": rights,
+        "records": records,
+    }
+
+
+async def capability_discovery(client: AsyncOdooClient, limit: int) -> dict[str, Any]:
+    catalog = await read_model(
+        client,
+        "ir.model",
+        [
+            "|",
+            "|",
+            ("model", "ilike", "ai"),
+            ("model", "ilike", "studio"),
+            ("model", "ilike", "approval"),
+        ],
+        ["id", "name", "model", "state", "transient"],
+        limit,
+    )
+    return {
+        "catalog": catalog,
+        "probes": {model: await capability_probe(client, model, limit) for model in CAPABILITY_PROBES},
+        "interpretation": {
+            "available_models_are_api_facts": True,
+            "unavailable_candidates_are_not_supported": True,
+            "approval_category_must_not_be_assumed": True,
+            "writes_performed": False,
+        },
+    }
+
+
 async def read_model(
     client: AsyncOdooClient,
     model: str,
@@ -257,6 +378,7 @@ async def remote_inventory(client: AsyncOdooClient, limit: int) -> dict[str, Any
     website_id = website_records[0]["id"] if website_records else 2
     inventory: dict[str, Any] = {
         "access": await access_inventory(client),
+        "capabilities": await capability_discovery(client, limit),
         "models": {},
     }
     requests = {
