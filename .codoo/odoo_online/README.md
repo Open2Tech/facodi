@@ -155,6 +155,10 @@ the single full-queue entry, while state-specific menus remain distinct. The
 underlying action remains preserved for compatibility. See
 `reports/menu-deduplication-2026-08-06.md`.
 
+The consolidated application now groups its menus under `Propostas`,
+`Operações`, and `IA`, with configuration and help at root. See
+`reports/menu-submenus-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
