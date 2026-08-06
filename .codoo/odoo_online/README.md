@@ -123,6 +123,11 @@ in Análise Matemática I and the Jacobian slide was moved to Análise Matemáti
 II. Public descriptions were revised while original source descriptions were
 preserved. See `reports/content-review-2026-08-06.md`.
 
+Curator decisions now have explicit Studio actions for requesting changes and
+approving proposals. Both actions record reviewer, version, decision history,
+and follow-up activity without converting or publishing. See
+`reports/curation-decisions-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
