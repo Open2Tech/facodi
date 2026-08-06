@@ -1,0 +1,69 @@
+# FACODI Odoo Online migration kit
+
+This directory contains the API-only migration inventory for `edu-open2.odoo.com`.
+It is deliberately hidden so it does not become an Odoo addon or a Website Builder asset.
+
+## Read-only inventory
+
+Run from the Codoo workspace:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/inventory_site.py \
+  --target online --env .env
+```
+
+The script writes:
+
+- `inventory/inventory.json`: redacted source and remote facts;
+- `inventory/migration-plan.json`: structured implementation backlog;
+- `inventory/migration-plan.md`: reviewable plan and acceptance gates.
+
+The inventory script only calls `fields_get`, `check_access_rights`, `search`,
+`search_count`, and `search_read`. It never calls `create`, `write`, `unlink`,
+or server actions.
+
+## API migration
+
+The migration script defaults to a dry-run:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/migrate_site.py \
+  dry-run --target online --env .env
+```
+
+After reviewing the generated plan, the approved API apply is:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/migrate_site.py \
+  apply --target online --env .env --confirm APPLY-EDU-OPEN2 \
+  --remove-extra-menus
+```
+
+The apply creates local snapshots under `state/`, updates the FACODI homepage,
+institutional pages, menus, COW header/footer views, and a public CSS attachment.
+It never deletes records except the explicitly requested extra appointment menu
+when `--remove-extra-menus` is supplied. Rollback requires the same confirmation:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/migrate_site.py \
+  rollback --target online --env .env --confirm APPLY-EDU-OPEN2
+```
+
+The current state was verified through API and browser smoke tests at five
+breakpoints. Content models from `facodi_content` remain outside Odoo Online;
+the Online frontend uses native Website/eLearning models and API-managed pages.
+
+## Odoo Online boundary
+
+The original `theme_facodi` and `facodi_content` addons are the visual and data
+source of truth, but their Python models, controllers, cron, ACLs, and QWeb
+inheritance cannot be installed on Odoo Online. The migration therefore maps:
+
+- homepage and public pages to `website.page` / Website Builder architecture;
+- menus to `website.menu`;
+- permitted visual assets to `ir.attachment`, `ir.asset`, or Website custom CSS;
+- data-only fields to reviewed Studio fields (`x_studio_*`);
+- verification to API snapshots plus browser screenshots.
+
+No other remote write is allowed without a reviewed plan and rollback mapping for
+every operation.

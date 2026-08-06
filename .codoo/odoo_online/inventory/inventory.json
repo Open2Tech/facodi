@@ -1,0 +1,1996 @@
+{
+  "generated_at": "2026-08-06T01:19:20.367348+00:00",
+  "connection": {
+    "target": "online",
+    "host": "https://edu-open2.odoo.com",
+    "db": "edu-open2"
+  },
+  "source": {
+    "repo": "/home/marcelo/Workspace/Corvanis/Codoo/odoo/facodi",
+    "branch": "odoo-online",
+    "module": "theme_facodi",
+    "manifest": {
+      "version": "19.0.1.1.0",
+      "depends": [
+        "facodi_content",
+        "website",
+        "website_slides"
+      ],
+      "data": [
+        "data/generate_primary_template.xml",
+        "data/ir_asset.xml",
+        "views/header.xml",
+        "views/footer.xml",
+        "views/homepage.xml",
+        "views/pages.xml",
+        "views/snippets/facodi_learning_hub.xml"
+      ],
+      "assets": {
+        "website.assets_editor": [
+          "theme_facodi/static/src/js/facodi_theme_editor.js"
+        ]
+      }
+    },
+    "files": [
+      {
+        "path": "addons/theme_facodi/README.md",
+        "sha256": "db1dff13fb76d6819f0a9681cbc09bad227cfa33f48e48f806361724522c6406",
+        "bytes": 4590
+      },
+      {
+        "path": "addons/theme_facodi/__init__.py",
+        "sha256": "065855d0ccfec1d9a6dad92bcc826c8c2adeb313a9e59b3cb1bca366880f9b10",
+        "bytes": 46
+      },
+      {
+        "path": "addons/theme_facodi/__manifest__.py",
+        "sha256": "068d64664c9558c73235d5382afea509b761fe4bd798b76b629142ef214d1e50",
+        "bytes": 1142
+      },
+      {
+        "path": "addons/theme_facodi/controllers/__init__.py",
+        "sha256": "e0a16a10fd901c56cf37ae9e40931d1ac98dcf6bfbcb05affc5475a56fe490b9",
+        "bytes": 19
+      },
+      {
+        "path": "addons/theme_facodi/controllers/main.py",
+        "sha256": "b6728e353df56ba8ea6bb1714902d47fdcaa6c71e3e468a078c0da543830b189",
+        "bytes": 168
+      },
+      {
+        "path": "addons/theme_facodi/data/generate_primary_template.xml",
+        "sha256": "005280f3f5c2fb53a03ed6e11f0b095cf05cda4997b483c7a5d4ecdf3bc99bac",
+        "bytes": 210
+      },
+      {
+        "path": "addons/theme_facodi/data/ir_asset.xml",
+        "sha256": "f82c0610b04d4d1bdb0a5a7e211b3385f845bb6e03c3e7e979a36f6b8152b27f",
+        "bytes": 885
+      },
+      {
+        "path": "addons/theme_facodi/docs/content-management.md",
+        "sha256": "d22b1f5046df139f7485c9c39f34ca4904bd3621222aca2608ec7fc09b8754d4",
+        "bytes": 30876
+      },
+      {
+        "path": "addons/theme_facodi/models/__init__.py",
+        "sha256": "8b1997fd754a01b8172788cc91113260491e88d65c81de90d21c21fd1abd9927",
+        "bytes": 53
+      },
+      {
+        "path": "addons/theme_facodi/models/custom_theme.py",
+        "sha256": "55ee88e6301e9f38d67234d4b38d1fb6e1651431b1cfd5c74ab0249bccd91a07",
+        "bytes": 259
+      },
+      {
+        "path": "addons/theme_facodi/models/ir_http.py",
+        "sha256": "591a46b3d36c8345980add592f0231a91b8e9d49da9b4fa15f4d41d85c53a543",
+        "bytes": 1269
+      },
+      {
+        "path": "addons/theme_facodi/models/theme_facodi.py",
+        "sha256": "4cf357ebe4066576638b35f3636ec2ff95bd95a61f6e0fbc6af9a2953013f764",
+        "bytes": 340
+      },
+      {
+        "path": "addons/theme_facodi/models/website_page.py",
+        "sha256": "b2e9bd68dcadc11c3640274de7ea9efafe0deefcc568b1cd8f6c5d49a73c8811",
+        "bytes": 1244
+      },
+      {
+        "path": "addons/theme_facodi/static/description/evidence/course-desktop.png",
+        "sha256": "509b6c1f9c72e7bb3802f382f80aa357fc10e5198b9c9c09de723cdecb3888fc",
+        "bytes": 138335
+      },
+      {
+        "path": "addons/theme_facodi/static/description/evidence/footer-open2-desktop.png",
+        "sha256": "0bce65d2a2ce3d347d96eb51c8e5ecc14e0759f192187cee827a6f28a1486ea1",
+        "bytes": 62011
+      },
+      {
+        "path": "addons/theme_facodi/static/description/evidence/homepage-desktop.png",
+        "sha256": "c80c49ba5af14e31385f7db6e600c7e73006529b81d5e162859e50c3f5090385",
+        "bytes": 83491
+      },
+      {
+        "path": "addons/theme_facodi/static/description/facodi_theme_preview.svg",
+        "sha256": "b7a46e8266b3f002daa299e41e93ab569f599a3ebd42a3e26a72dd4cb2e4fe60",
+        "bytes": 873
+      },
+      {
+        "path": "addons/theme_facodi/static/description/theme_facodi.svg",
+        "sha256": "b7a46e8266b3f002daa299e41e93ab569f599a3ebd42a3e26a72dd4cb2e4fe60",
+        "bytes": 873
+      },
+      {
+        "path": "addons/theme_facodi/static/src/js/facodi_theme_editor.js",
+        "sha256": "fbfd0c11660a4cf2b4e8d64bf3d512d23125bfaa592300563fce02568bb5f39a",
+        "bytes": 372
+      },
+      {
+        "path": "addons/theme_facodi/static/src/scss/bootstrap_overridden.scss",
+        "sha256": "a1fba18dd4285140b2d1cbe24ae7bf13cd48544931def530b4f6824506d97159",
+        "bytes": 259
+      },
+      {
+        "path": "addons/theme_facodi/static/src/scss/facodi_frontend.scss",
+        "sha256": "44d9daff5611b8b4b3711a2e9e771599f027b91aa146a9d05399ae8e9763f091",
+        "bytes": 16178
+      },
+      {
+        "path": "addons/theme_facodi/static/src/scss/primary_variables.scss",
+        "sha256": "f82c59fe31865d1e040c43516ba82856cbd6c02be7f4d8e2d236dbf9c225851c",
+        "bytes": 2518
+      },
+      {
+        "path": "addons/theme_facodi/views/footer.xml",
+        "sha256": "257e9249f1fd062a57400987d096d9fa2268e952854be84895339d07b45c0718",
+        "bytes": 1389
+      },
+      {
+        "path": "addons/theme_facodi/views/header.xml",
+        "sha256": "a3f7962a7a07c94b651663f0b1dc88f58cb740d87c234add26f04c5938893e80",
+        "bytes": 2348
+      },
+      {
+        "path": "addons/theme_facodi/views/homepage.xml",
+        "sha256": "d5b48d5e5a0377129760f5418e99be78e9dc71d6090da4cc39a91eb33a27080f",
+        "bytes": 16240
+      },
+      {
+        "path": "addons/theme_facodi/views/pages.xml",
+        "sha256": "8ec143039c26c55fa70a1ba6e38e4335bf19f59a764d8df2f771c87a3d44380b",
+        "bytes": 21440
+      },
+      {
+        "path": "addons/theme_facodi/views/snippets/facodi_learning_hub.xml",
+        "sha256": "ebac51db2ef9720e575198e961278dcc937e6657c783309da3f4081af2b72585",
+        "bytes": 1872
+      }
+    ],
+    "homepage_sections": [
+      "FACODI Welcome",
+      "FACODI Dashboard",
+      "FACODI Open Learning",
+      "FACODI Features",
+      "FACODI Journey",
+      "FACODI Manifesto Callout",
+      "FACODI Institutional"
+    ],
+    "frontend_tokens": [
+      "facodi-ink",
+      "facodi-cyan",
+      "facodi-blue",
+      "facodi-mint",
+      "facodi-sun",
+      "facodi-paper",
+      "facodi-line",
+      "facodi-shadow"
+    ],
+    "source_contract": {
+      "homepage_contains_builder_zone": true,
+      "homepage_contains_dashboard": true,
+      "homepage_contains_journey": true,
+      "homepage_contains_footer_routes": [
+        "/slides",
+        "/sobre",
+        "/manifesto",
+        "/comunidade",
+        "/roadmap",
+        "/como-contribuir"
+      ]
+    }
+  },
+  "remote": {
+    "access": {
+      "website": {
+        "field_count": 52,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "website.page": {
+        "field_count": 64,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "website.menu": {
+        "field_count": 22,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "ir.ui.view": {
+        "field_count": 43,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "ir.asset": {
+        "field_count": 16,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "ir.attachment": {
+        "field_count": 37,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "ir.model.fields": {
+        "field_count": 53,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "slide.channel": {
+        "field_count": 126,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      },
+      "slide.slide": {
+        "field_count": 103,
+        "has_fields_get": true,
+        "rights_as_current_user": {
+          "read": true,
+          "write": true,
+          "create": true,
+          "unlink": true
+        }
+      }
+    },
+    "models": {
+      "website": {
+        "model": "website",
+        "fields": [
+          "id",
+          "name",
+          "domain",
+          "theme_id",
+          "homepage_url",
+          "company_id"
+        ],
+        "records": [
+          {
+            "id": 1,
+            "name": "edu-open2",
+            "domain": false,
+            "theme_id": false,
+            "homepage_url": false,
+            "company_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 2,
+            "name": "FACODI",
+            "domain": "https://edu-open2.odoo.com",
+            "theme_id": [
+              1343,
+              "Default Theme"
+            ],
+            "homepage_url": false,
+            "company_id": [
+              1,
+              "edu-open2"
+            ]
+          }
+        ]
+      },
+      "website.page": {
+        "model": "website.page",
+        "fields": [
+          "id",
+          "name",
+          "url",
+          "key",
+          "is_published",
+          "view_id",
+          "website_id"
+        ],
+        "records": [
+          {
+            "id": 1,
+            "name": "Thanks (Contact us)",
+            "url": "/contactus-thank-you",
+            "key": "website.contactus_thanks",
+            "is_published": true,
+            "view_id": [
+              1265,
+              "Thanks (Contact us)"
+            ],
+            "website_id": false
+          },
+          {
+            "id": 2,
+            "name": "Home",
+            "url": "/",
+            "key": "website.homepage",
+            "is_published": true,
+            "view_id": [
+              1263,
+              "Home"
+            ],
+            "website_id": false
+          },
+          {
+            "id": 3,
+            "name": "Contact Us",
+            "url": "/contactus",
+            "key": "website.contactus",
+            "is_published": true,
+            "view_id": [
+              1264,
+              "Contact Us"
+            ],
+            "website_id": false
+          },
+          {
+            "id": 4,
+            "name": "Home",
+            "url": "/",
+            "key": "website.homepage",
+            "is_published": true,
+            "view_id": [
+              1271,
+              "Home"
+            ],
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Ticket Received",
+            "url": "/your-ticket-has-been-submitted",
+            "key": "website_helpdesk.ticket_submited",
+            "is_published": true,
+            "view_id": [
+              2154,
+              "Ticket Received"
+            ],
+            "website_id": false
+          },
+          {
+            "id": 6,
+            "name": "Task Submitted",
+            "url": "/your-task-has-been-submitted",
+            "key": "website_project.task_submitted",
+            "is_published": true,
+            "view_id": [
+              2176,
+              "Task Submitted"
+            ],
+            "website_id": false
+          },
+          {
+            "id": 7,
+            "name": "Home",
+            "url": "/",
+            "key": "website.homepage",
+            "is_published": true,
+            "view_id": [
+              2467,
+              "Home"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 8,
+            "name": "Sobre a FACODI",
+            "url": "/sobre",
+            "key": "theme_facodi.page_about",
+            "is_published": true,
+            "view_id": [
+              2472,
+              "Sobre a FACODI"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 9,
+            "name": "Manifesto FACODI",
+            "url": "/manifesto",
+            "key": "theme_facodi.page_manifesto",
+            "is_published": true,
+            "view_id": [
+              2473,
+              "Manifesto FACODI"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 10,
+            "name": "Comunidade FACODI",
+            "url": "/comunidade",
+            "key": "theme_facodi.page_community",
+            "is_published": true,
+            "view_id": [
+              2474,
+              "Comunidade FACODI"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 11,
+            "name": "Roadmap FACODI",
+            "url": "/roadmap",
+            "key": "theme_facodi.page_roadmap",
+            "is_published": true,
+            "view_id": [
+              2475,
+              "Roadmap FACODI"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 12,
+            "name": "Como contribuir",
+            "url": "/como-contribuir",
+            "key": "theme_facodi.page_contribute",
+            "is_published": true,
+            "view_id": [
+              2476,
+              "Como contribuir"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          }
+        ]
+      },
+      "website.menu": {
+        "model": "website.menu",
+        "fields": [
+          "id",
+          "name",
+          "url",
+          "parent_id",
+          "sequence",
+          "website_id"
+        ],
+        "records": [
+          {
+            "id": 1,
+            "name": "Default Main Menu",
+            "url": "#",
+            "parent_id": false,
+            "sequence": 0,
+            "website_id": false
+          },
+          {
+            "id": 2,
+            "name": "Home",
+            "url": "/",
+            "parent_id": [
+              1,
+              "Default Main Menu"
+            ],
+            "sequence": 10,
+            "website_id": false
+          },
+          {
+            "id": 3,
+            "name": "Contact us",
+            "url": "/contactus",
+            "parent_id": [
+              1,
+              "Default Main Menu"
+            ],
+            "sequence": 60,
+            "website_id": false
+          },
+          {
+            "id": 4,
+            "name": "Top Menu for Website 1",
+            "url": "#",
+            "parent_id": false,
+            "sequence": 0,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Home",
+            "url": "/",
+            "parent_id": [
+              4,
+              "Top Menu for Website 1 [edu-open2]"
+            ],
+            "sequence": 10,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 6,
+            "name": "Contact us",
+            "url": "/contactus",
+            "parent_id": [
+              4,
+              "Top Menu for Website 1 [edu-open2]"
+            ],
+            "sequence": 60,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 7,
+            "name": "Help",
+            "url": "/helpdesk",
+            "parent_id": [
+              4,
+              "Top Menu for Website 1 [edu-open2]"
+            ],
+            "sequence": 50,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 8,
+            "name": "Appointment",
+            "url": "/appointment",
+            "parent_id": [
+              4,
+              "Top Menu for Website 1 [edu-open2]"
+            ],
+            "sequence": 55,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 9,
+            "name": "Appointment",
+            "url": "/appointment",
+            "parent_id": [
+              1,
+              "Default Main Menu"
+            ],
+            "sequence": 55,
+            "website_id": false
+          },
+          {
+            "id": 10,
+            "name": "Courses",
+            "url": "/slides",
+            "parent_id": [
+              4,
+              "Top Menu for Website 1 [edu-open2]"
+            ],
+            "sequence": 50,
+            "website_id": [
+              1,
+              "edu-open2"
+            ]
+          },
+          {
+            "id": 11,
+            "name": "Courses",
+            "url": "/slides",
+            "parent_id": [
+              1,
+              "Default Main Menu"
+            ],
+            "sequence": 50,
+            "website_id": false
+          },
+          {
+            "id": 12,
+            "name": "FACODI",
+            "url": "#",
+            "parent_id": false,
+            "sequence": 0,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 13,
+            "name": "Home",
+            "url": "/",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 10,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 14,
+            "name": "Cursos",
+            "url": "/slides",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 20,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 16,
+            "name": "Contato",
+            "url": "/contactus",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 80,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 17,
+            "name": "Sobre a FACODI",
+            "url": "/sobre",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 30,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 18,
+            "name": "Manifesto",
+            "url": "/manifesto",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 40,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 19,
+            "name": "Comunidade",
+            "url": "/comunidade",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 50,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 20,
+            "name": "Roadmap",
+            "url": "/roadmap",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 60,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 21,
+            "name": "Como contribuir",
+            "url": "/como-contribuir",
+            "parent_id": [
+              12,
+              "FACODI [FACODI]"
+            ],
+            "sequence": 70,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          }
+        ]
+      },
+      "ir.ui.view": {
+        "model": "ir.ui.view",
+        "fields": [
+          "id",
+          "name",
+          "key",
+          "type",
+          "mode",
+          "inherit_id",
+          "website_id",
+          "active",
+          "priority",
+          "arch_db"
+        ],
+        "records": [
+          {
+            "id": 2467,
+            "name": "Home",
+            "key": "website.homepage",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "0714b1dd2cd30420a7651330825ce0b458ec9c8f308eb565661a5e308784126d",
+            "arch_bytes": 15548
+          },
+          {
+            "id": 2468,
+            "name": "Template Header Default",
+            "key": "website.template_header_default",
+            "type": "qweb",
+            "mode": "extension",
+            "inherit_id": [
+              1274,
+              "Main layout"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "2453dbc68d7184849bd3db8d31e9adc353c4df8969db85f0442ae0375f478e59",
+            "arch_bytes": 2358
+          },
+          {
+            "id": 2471,
+            "name": "Default",
+            "key": "website.footer_custom",
+            "type": "qweb",
+            "mode": "extension",
+            "inherit_id": [
+              1274,
+              "Main layout"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "c5efd1b5ef088273a12292f63083203812499db54c6bd087a02c1d4c86225c75",
+            "arch_bytes": 4031
+          },
+          {
+            "id": 2472,
+            "name": "Sobre a FACODI",
+            "key": "theme_facodi.page_about",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "212addbbce0562d8bceb674095e5072a12c9d5978a52d08fdd1b58af1e39fad7",
+            "arch_bytes": 5278
+          },
+          {
+            "id": 2473,
+            "name": "Manifesto FACODI",
+            "key": "theme_facodi.page_manifesto",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "7427b2f7e335e952b1cf1d3e2be04a6d88897414259c6cd1a4a8a976550a5455",
+            "arch_bytes": 2928
+          },
+          {
+            "id": 2474,
+            "name": "Comunidade FACODI",
+            "key": "theme_facodi.page_community",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "55a8c63e16ea6f22f88e1d5b2ce976f41aac573acea83920278770675efa63dd",
+            "arch_bytes": 3492
+          },
+          {
+            "id": 2475,
+            "name": "Roadmap FACODI",
+            "key": "theme_facodi.page_roadmap",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "569ca6a631568e1cb12c3b0fe5bb31fea5fcbff1d7ee6be8a25ac7ff65eda367",
+            "arch_bytes": 2795
+          },
+          {
+            "id": 2476,
+            "name": "Como contribuir",
+            "key": "theme_facodi.page_contribute",
+            "type": "qweb",
+            "mode": "primary",
+            "inherit_id": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "1faad2f3ca2b8858ff6aa8d853f3ac0a8511ae7164afa2a7eb3f6830397917ad",
+            "arch_bytes": 2287
+          },
+          {
+            "id": 2477,
+            "name": "FACODI Online Header",
+            "key": "codoo.facodi_online.header",
+            "type": "qweb",
+            "mode": "extension",
+            "inherit_id": [
+              1274,
+              "Main layout"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "fa92b7a386486a66987fafec302ac9144adeab6169c7c0412fc1540e341ba313",
+            "arch_bytes": 1965
+          },
+          {
+            "id": 2478,
+            "name": "FACODI Online Footer",
+            "key": "codoo.facodi_online.footer",
+            "type": "qweb",
+            "mode": "extension",
+            "inherit_id": [
+              1274,
+              "Main layout"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "95a41819b05dc0b886c3af4be117524ba0011c7955b936d259923581c878f862",
+            "arch_bytes": 1246
+          },
+          {
+            "id": 2479,
+            "name": "FACODI Online Assets",
+            "key": "codoo.facodi_online.assets",
+            "type": "qweb",
+            "mode": "extension",
+            "inherit_id": [
+              1274,
+              "Main layout"
+            ],
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "active": true,
+            "priority": 16,
+            "arch_sha256": "ba7303ac02c91311717c2ceecceef14059761ac0adbc5886ba402e6b6466eddd",
+            "arch_bytes": 108
+          }
+        ]
+      },
+      "ir.asset": {
+        "model": "ir.asset",
+        "fields": [
+          "id",
+          "name",
+          "bundle",
+          "directive",
+          "path",
+          "active",
+          "website_id"
+        ],
+        "records": [
+          {
+            "id": 1,
+            "name": "User custom bootstrap overridden SCSS",
+            "bundle": "web._assets_frontend_helpers",
+            "directive": "prepend",
+            "path": "website/static/src/scss/user_custom_bootstrap_overridden.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 2,
+            "name": "User custom rules SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/scss/user_custom_rules.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 6,
+            "name": "Announcement Scroll 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_announcement_scroll/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 8,
+            "name": "Text cover 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_text_cover/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 9,
+            "name": "Instagram Page 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_instagram_page/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 10,
+            "name": "Features 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_features/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 13,
+            "name": "Carousel 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_carousel/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 14,
+            "name": "Carousel Intro 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_carousel_intro/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 15,
+            "name": "Carousel Intro 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_carousel_cards/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 17,
+            "name": "Alert 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_alert/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 18,
+            "name": "Card 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_card/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 19,
+            "name": "Share 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_share/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 20,
+            "name": "SocialMedia 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_social_media/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 22,
+            "name": "Rating 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_rating/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 23,
+            "name": "Hr 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_hr/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 26,
+            "name": "Image gallery 002 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_image_gallery/002.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 28,
+            "name": "Image gallery 001 XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_image_gallery/001.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 29,
+            "name": "Countdown 000 XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_countdown/000.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 32,
+            "name": "Company team 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_company_team/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 33,
+            "name": "References 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_references/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 35,
+            "name": "Popup 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_popup/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 38,
+            "name": "Features grid 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_features_grid/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 41,
+            "name": "Tabs 003 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_tabs/003.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 42,
+            "name": "Tabs Images 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_tabs_images/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 43,
+            "name": "Table of content 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_table_of_content/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 46,
+            "name": "Quotes carousel 002 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_quotes_carousel/002.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 48,
+            "name": "Masonry block 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_masonry_block/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 51,
+            "name": "Media list 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_media_list/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 55,
+            "name": "Showcase 003 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_showcase/003.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 56,
+            "name": "Floating Blocks 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_floating_blocks/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 59,
+            "name": "Timeline 002 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_timeline/002.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 60,
+            "name": "Timeline List 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_timeline_list/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 63,
+            "name": "Process steps 002 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_process_steps/002.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 64,
+            "name": "Accordion 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_accordion/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 65,
+            "name": "Text highlight 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_text_highlight/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 66,
+            "name": "Pricelist Cafe 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_pricelist_cafe/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 67,
+            "name": "Progress bar 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_progress_bar/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 68,
+            "name": "Blockquote 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_blockquote/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 70,
+            "name": "Badge 000 variables SCSS",
+            "bundle": "web._assets_primary_variables",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_badge/000_variables.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 71,
+            "name": "Badge 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_badge/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 72,
+            "name": "Color blocks 2 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_color_blocks_2/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 73,
+            "name": "Horizontal Attributes 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_attributes_horizontal/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 74,
+            "name": "Vertical Attributes 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_attributes_vertical/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 77,
+            "name": "Menu - Little icons 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_little_icons/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 78,
+            "name": "Menu - images & subtitles 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_images_subtitles/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 79,
+            "name": "Menus & logos 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_menus_logos/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 80,
+            "name": "Odoo Menu 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_odoo_menu/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 81,
+            "name": "Menu - Big icons & subtitles 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_big_icons_subtitles/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 82,
+            "name": "Menu - Cards 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_mega_menu_cards/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 83,
+            "name": "Google map 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_google_map/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 84,
+            "name": "Map 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_map/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 85,
+            "name": "Dynamic snippet 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_dynamic_snippet/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 86,
+            "name": "Dynamic snippet 000 XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_dynamic_snippet/000.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 87,
+            "name": "Dynamic snippet carousel 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_dynamic_snippet_carousel/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 88,
+            "name": "Dynamic snippet carousel 000 XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_dynamic_snippet_carousel/000.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 89,
+            "name": "Embed Code 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_embed_code/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 91,
+            "name": "Website form 001 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_website_form/001.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 92,
+            "name": "Website form XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/xml/website_form.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 93,
+            "name": "Searchbar 000 XML",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_searchbar/000.xml",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 94,
+            "name": "Quadrant 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_quadrant/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 95,
+            "name": "Website Form Cover 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_website_form_cover/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 96,
+            "name": "Categories Grid 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_ecomm_categories_showcase/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 97,
+            "name": "Banner Categories 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website/static/src/snippets/s_banner_categories/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 98,
+            "name": "Appointments 000 SCSS",
+            "bundle": "web.assets_frontend",
+            "directive": "append",
+            "path": "website_appointment/static/src/snippets/s_appointments/000.scss",
+            "active": true,
+            "website_id": false
+          },
+          {
+            "id": 99,
+            "name": "web.assets_frontend: replace user_theme_color_palette.scss",
+            "bundle": "web._assets_primary_variables",
+            "directive": "replace",
+            "path": "/_custom/web.assets_frontend/website/static/src/scss/options/colors/user_theme_color_palette.scss",
+            "active": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          },
+          {
+            "id": 100,
+            "name": "web.assets_frontend: replace user_values.scss",
+            "bundle": "web._assets_primary_variables",
+            "directive": "replace",
+            "path": "/_custom/web.assets_frontend/website/static/src/scss/options/user_values.scss",
+            "active": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ]
+          }
+        ]
+      },
+      "ir.attachment": {
+        "model": "ir.attachment",
+        "fields": [
+          "id",
+          "name",
+          "url",
+          "mimetype",
+          "public",
+          "website_id",
+          "checksum",
+          "res_model",
+          "res_id"
+        ],
+        "records": [
+          {
+            "id": 13,
+            "name": "res.company.scss",
+            "url": "web/static/asset_styles_company_report.scss",
+            "mimetype": "text/scss",
+            "public": false,
+            "website_id": false,
+            "checksum": "542922906caac0fe5d253e2c7d913758eb0a7f6e",
+            "res_model": false,
+            "res_id": 0
+          },
+          {
+            "id": 81,
+            "name": "Sample Contract.pdf",
+            "url": false,
+            "mimetype": "application/pdf",
+            "public": false,
+            "website_id": false,
+            "checksum": "5ea1d67ae498d5dcfc04e535c60bea9dd037b7ae",
+            "res_model": "sign.document",
+            "res_id": 1
+          },
+          {
+            "id": 400,
+            "name": "web.assets_web.min.css",
+            "url": "/web/assets/1113ab8/web.assets_web.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "fe9d6df23a1486040dbd9c3d20e61124c0f5f499",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 401,
+            "name": "web.assets_web.min.js",
+            "url": "/web/assets/196556d/web.assets_web.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "ac93f5433346788ee316505bc68033d6a1e58982",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 402,
+            "name": "web.assets_web_print.min.css",
+            "url": "/web/assets/38c52c7/web.assets_web_print.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "433d65ee06cb6243e7bb2c38f5399e7bed1fb107",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 403,
+            "name": "bus.websocket_worker_assets.min.js",
+            "url": "/web/assets/b96a7b5/bus.websocket_worker_assets.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "59b10eca2aeaa9606525678ad6eada985481ba39",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 404,
+            "name": "web_tour.interactive.min.js",
+            "url": "/web/assets/e74cf9f/web_tour.interactive.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "76d3e83be95386c7ce766993023b5302ac0f7d11",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 405,
+            "name": "web_studio.studio_assets.min.css",
+            "url": "/web/assets/7a7cf11/web_studio.studio_assets.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "573f07d2a6c09300c3feb3845f0e970a0176d8a9",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 406,
+            "name": "web_studio.studio_assets.min.js",
+            "url": "/web/assets/28c30f6/web_studio.studio_assets.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "864a66b9f1c290e6870517aaa50d643453838cc2",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 407,
+            "name": "web.assets_frontend_minimal.min.js",
+            "url": "/web/assets/1/a37afd3/web.assets_frontend_minimal.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "93c20cebe8687c47256755c8456bdfe6535dc3f9",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 408,
+            "name": "web.assets_frontend.min.css",
+            "url": "/web/assets/1/d924417/web.assets_frontend.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "8375f67e23d6a750822a65d6cc8ba31a0e70ab38",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 409,
+            "name": "web.assets_frontend_lazy.min.js",
+            "url": "/web/assets/1/6e31e03/web.assets_frontend_lazy.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "f01eac9e6a893198d411b2f78c04ace01454e1cd",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 410,
+            "name": "website.assets_wysiwyg.min.css",
+            "url": "/web/assets/1/73d7f9a/website.assets_wysiwyg.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "9f04d3c3af99726c425b0c952ec2bbe338ff3255",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 411,
+            "name": "website.website_builder_assets.min.css",
+            "url": "/web/assets/956c5b7/website.website_builder_assets.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": false,
+            "checksum": "06ada343f3ebc4b7edcaa08ae065907d62d6ff07",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 412,
+            "name": "website.website_builder_assets.min.js",
+            "url": "/web/assets/365f8ce/website.website_builder_assets.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": false,
+            "checksum": "97fac7fd9ee562624f17dfb825be1b6cb55aef9b",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 420,
+            "name": "web.assets_web.min.js",
+            "url": "/web/assets/2/196556d/web.assets_web.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "ac93f5433346788ee316505bc68033d6a1e58982",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 421,
+            "name": "web.assets_web.min.css",
+            "url": "/web/assets/2/1113ab8/web.assets_web.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "fe9d6df23a1486040dbd9c3d20e61124c0f5f499",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 422,
+            "name": "web.assets_web_print.min.css",
+            "url": "/web/assets/2/38c52c7/web.assets_web_print.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "433d65ee06cb6243e7bb2c38f5399e7bed1fb107",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 423,
+            "name": "user_theme_color_palette.scss",
+            "url": "/_custom/web.assets_frontend/website/static/src/scss/options/colors/user_theme_color_palette.scss",
+            "mimetype": "text/scss",
+            "public": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "7d491f0c640169793527b37932c246f99e4a1f5b",
+            "res_model": false,
+            "res_id": 0
+          },
+          {
+            "id": 424,
+            "name": "user_values.scss",
+            "url": "/_custom/web.assets_frontend/website/static/src/scss/options/user_values.scss",
+            "mimetype": "text/plain",
+            "public": false,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "c9be62822c7006e6596573e6390cd12409e27f07",
+            "res_model": false,
+            "res_id": 0
+          },
+          {
+            "id": 425,
+            "name": "website.website_builder_assets.min.js",
+            "url": "/web/assets/2/365f8ce/website.website_builder_assets.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "97fac7fd9ee562624f17dfb825be1b6cb55aef9b",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 426,
+            "name": "website.assets_wysiwyg.min.css",
+            "url": "/web/assets/2/8162291/website.assets_wysiwyg.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "f347155278afb6c867ed2e74acb89cf4e9dc03ca",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 427,
+            "name": "website.website_builder_assets.min.css",
+            "url": "/web/assets/2/99c2f75/website.website_builder_assets.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "25f0a17884c78020ea3c5da8a1b051d7be55b24a",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 428,
+            "name": "web.assets_frontend_minimal.min.js",
+            "url": "/web/assets/2/a37afd3/web.assets_frontend_minimal.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "93c20cebe8687c47256755c8456bdfe6535dc3f9",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 429,
+            "name": "web.assets_frontend.min.css",
+            "url": "/web/assets/2/25bbc80/web.assets_frontend.min.css",
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "470eda0bead8ab4231ac65ea6e64f9b106ad74a3",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 430,
+            "name": "web.assets_frontend_lazy.min.js",
+            "url": "/web/assets/2/6e31e03/web.assets_frontend_lazy.min.js",
+            "mimetype": "application/javascript",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "f01eac9e6a893198d411b2f78c04ace01454e1cd",
+            "res_model": "ir.ui.view",
+            "res_id": 0
+          },
+          {
+            "id": 431,
+            "name": "facodi-online.css",
+            "url": false,
+            "mimetype": "text/css",
+            "public": true,
+            "website_id": [
+              2,
+              "FACODI"
+            ],
+            "checksum": "43ae8ae86d631742f9104ba821f0aecfd4b97d00",
+            "res_model": false,
+            "res_id": 0
+          }
+        ]
+      },
+      "ir.model.fields": {
+        "model": "ir.model.fields",
+        "fields": [
+          "id",
+          "name",
+          "field_description",
+          "model",
+          "ttype",
+          "required",
+          "readonly"
+        ],
+        "records": []
+      },
+      "slide.channel": {
+        "model": "slide.channel",
+        "fields": [
+          "id",
+          "name",
+          "website_published",
+          "visibility",
+          "channel_type",
+          "total_slides",
+          "description_short"
+        ],
+        "records": []
+      },
+      "slide.slide": {
+        "model": "slide.slide",
+        "fields": [
+          "id",
+          "name",
+          "channel_id",
+          "slide_category",
+          "website_published",
+          "url",
+          "is_preview"
+        ],
+        "records": []
+      }
+    }
+  }
+}
