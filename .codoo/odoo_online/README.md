@@ -160,6 +160,11 @@ kept as one idempotent automation. The unsuccessful nested post-write state
 automation was disabled to avoid misleading complexity. See
 `reports/curation-simplification-2026-08-06.md`.
 
+Critical proposal actions remain in the standard Actions menu. Header-button
+experiments were rejected by the Online view validator because dynamic Studio
+XML IDs are not accepted for `type="action"` in this view context; the form was
+restored valid. See `reports/curation-actions-ux-2026-08-06.md`.
+
 The consolidated application now groups its menus under `Propostas`,
 `Operações`, and `IA`, with configuration and help at root. See
 `reports/menu-submenus-2026-08-06.md`.
