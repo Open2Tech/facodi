@@ -103,6 +103,11 @@ eLearning`: it requires `approved`, creates an unpublished `slide.slide`, stores
 the proposal relation, and is idempotent. See
 `reports/proposal-conversion-2026-08-06.md`.
 
+The Matemateca playlist pilot is kept separate from `Análise Matemática I`.
+Five proposals were created and enriched under the suggested area
+`Geometria Analítica`, all awaiting human review. No eLearning content was
+created automatically. See `reports/playlist-geometria-analitica-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:

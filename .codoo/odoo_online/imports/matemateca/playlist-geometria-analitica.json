@@ -1,0 +1,25 @@
+{
+  "playlist": {
+    "id": "PLa_2246N48_rf74nIZn-5XAo53nfz7QxB",
+    "url": "https://www.youtube.com/playlist?list=PLa_2246N48_rf74nIZn-5XAo53nfz7QxB",
+    "title": "Exercícios de Geometria Analítica",
+    "source_channel": "LCMAquino",
+    "source_channel_url": "https://www.youtube.com/user/LCMAquino",
+    "discovered_at": "2026-08-06",
+    "transcripts": false,
+    "authorization": "provided in FACODI curation request"
+  },
+  "curricular_classification": {
+    "suggested_area": "Geometria Analítica",
+    "not_analyse_mathematics_i": true,
+    "reason": "The selected videos address vectors, scalar products, and analytic geometry exercises; they should not be forced into Análise Matemática I."
+  },
+  "pilot_videos": [
+    {"external_id":"o7BCi3UELao","canonical_url":"https://www.youtube.com/watch?v=o7BCi3UELao","title":"Soma de Vetores. | 01 - Exercícios de Geometria Analítica.","description":"Nesta videoaula vamos resolver dois exercícios envolvendo a soma de vetores."},
+    {"external_id":"ZIkdmLJ_z2A","canonical_url":"https://www.youtube.com/watch?v=ZIkdmLJ_z2A","title":"Soma de Vetores. | 02 - Exercícios de Geometria Analítica.","description":"Nesta videoaula vamos resolver dois exercícios envolvendo a soma de vetores."},
+    {"external_id":"r8fqGIGYFXA","canonical_url":"https://www.youtube.com/watch?v=r8fqGIGYFXA","title":"Soma de Vetores. | 03 - Exercícios de Geometria Analítica.","description":"Nesta videoaula vamos resolver dois exercícios envolvendo a soma de vetores."},
+    {"external_id":"muVSHd-4WfI","canonical_url":"https://www.youtube.com/watch?v=muVSHd-4WfI","title":"Produto por Escalar. | 04 - Exercícios de Geometria Analítica.","description":"Nesta videoaula vamos resolver dois exercícios envolvendo o produto por escalar."},
+    {"external_id":"0x0GlvW4hro","canonical_url":"https://www.youtube.com/watch?v=0x0GlvW4hro","title":"Produto por Escalar. | 05 - Exercícios de Geometria Analítica.","description":"Nesta videoaula vamos resolver dois exercícios envolvendo produto por escalar."}
+  ],
+  "publication_policy": "Create proposals only; validate, enrich, review, approve, and convert separately. Do not publish automatically."
+}
