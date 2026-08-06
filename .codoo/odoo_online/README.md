@@ -59,15 +59,13 @@ The original `theme_facodi` and `facodi_content` addons are the visual and data
 source of truth, but their Python models, controllers, cron, ACLs, and QWeb
 inheritance cannot be installed on Odoo Online. The migration therefore maps:
 
-- homepage and public pages to `website.page` / Website Builder architecture;
-- menus to `website.menu`;
-- permitted visual assets to `ir.attachment`, `ir.asset`, or Website custom CSS;
-- data-only fields to reviewed Studio fields (`x_studio_*`);
-- verification to API snapshots plus browser screenshots.
 
 No other remote write is allowed without a reviewed plan and rollback mapping for
 every operation.
 
+The final delivery report consolidates the implemented architecture, real
+pilots, validation gates, and confirmed Online limitations:
+`reports/final-delivery-2026-08-06.md`.
 ## Content Studio configuration
 
 Capability discovery and the redacted pre-write snapshot are generated with:
