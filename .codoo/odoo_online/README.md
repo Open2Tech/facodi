@@ -133,6 +133,11 @@ changes, rejection, approval, conversion, and duplicates. Rejection records a
 reason and history without touching eLearning. See
 `reports/curation-queue-completion-2026-08-06.md`.
 
+Kanban stages are synchronized with editorial states so pending proposals show
+as `Em andamento` rather than `Novo`; the validation action also assigns stages
+for valid, incomplete, and duplicate outcomes. See
+`reports/curation-state-sync-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
