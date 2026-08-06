@@ -98,6 +98,10 @@ The existing dynamic fields can be made exportable without recreating them:
 .venv/bin/python odoo/facodi/.codoo/odoo_online/reconcile_studio_fields.py \
   dry-run --target online --env .env
 ```
+The guarded conversion action is active as `FACODI — Converter proposta em
+eLearning`: it requires `approved`, creates an unpublished `slide.slide`, stores
+the proposal relation, and is idempotent. See
+`reports/proposal-conversion-2026-08-06.md`.
 
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
