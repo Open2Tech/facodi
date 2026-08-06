@@ -1,6 +1,13 @@
 {
-  "course_key": "facodi.matematica-i",
-  "name": "Matemática I",
+  "course_key": "facodi.analise-matematica-i",
+  "name": "Análise Matemática I",
+  "curriculum": {
+    "program": "Engenharia de Sistemas e Tecnologias Informáticas",
+    "institution": "Universidade do Algarve",
+    "code": "19411002",
+    "ects": 5,
+    "source": "https://www.ualg.pt/curso/1941/plano"
+  },
   "description": "Fundamentos de funções, álgebra, limites, derivadas e integração para apoiar percursos introdutórios de matemática.",
   "sequence": 10,
   "source_policy": {

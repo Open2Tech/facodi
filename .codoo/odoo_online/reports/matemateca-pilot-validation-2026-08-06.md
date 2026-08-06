@@ -7,7 +7,9 @@ Date: 2026-08-06
 ## Import
 
 - Contact: `Matemateca - Ester Velasquez`, id `11`.
-- Collection: `Matemateca — Piloto de Cálculo`, id `2`.
+- Collection: `Análise Matemática I`, id `2`.
+- Curriculum: LESTI, Universidade do Algarve; code `19411002`; `5` ECTS.
+- Official plan: `https://www.ualg.pt/curso/1941/plano`.
 - Pilot slides: ids `44`, `45`, `46`, `47`, `48`.
 - Identity: canonical YouTube URL and video id.
 - First import: five created.
@@ -53,6 +55,6 @@ Activities and chatter notes were created for all five slides. The responsible p
 ## Public verification
 
 - `/slides` returned HTTP 200 and listed the collection.
-- `/slides/matemateca-piloto-de-calculo-2` returned HTTP 200.
+- `/slides/analise-matematica-i-2` returned HTTP 200.
 - All five slide routes returned HTTP 200 without `Internal Server Error` or CSS error markers.
 - A transient RPC `ConnectTimeout` occurred during a reimport attempt; it happened before authentication and performed no write. A retry with a 90-second timeout confirmed five published slides and zero duplicate canonical URLs.

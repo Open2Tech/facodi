@@ -224,7 +224,7 @@ async def main() -> None:
             raise SystemExit("Pass --confirm APPLY-FACODI-COURSES to modify course records")
         if args.mode == "publish":
             approved = [video for video in catalog.videos if video.approved_for_import]
-            course_names = {"Matemática I", "Probabilidade e Estatística"}
+            course_names = {"Análise Matemática I", "Probabilidade e Estatística"}
             courses = await client.search_read(
                 "slide.channel", [["name", "in", list(course_names)]], ["id", "name"], limit=20
             )

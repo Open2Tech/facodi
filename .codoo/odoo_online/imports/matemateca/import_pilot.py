@@ -17,7 +17,9 @@ CONFIRMATION = "APPLY-EDU-OPEN2"
 MANIFEST_DEFAULT = Path("odoo/facodi/.codoo/odoo_online/imports/matemateca/manifest-2026-08-06.json")
 STATE_DEFAULT = Path("odoo/facodi/.codoo/odoo_online/state")
 PARTNER_NAME = "Matemateca - Ester Velasquez"
-CHANNEL_NAME = "Matemateca — Piloto de Cálculo"
+CHANNEL_NAME = "Análise Matemática I"
+CURRICULUM_CODE = "19411002"
+CURRICULUM_ECTS = 5
 
 
 def parse_args() -> argparse.Namespace:
@@ -108,13 +110,15 @@ async def main() -> None:  # noqa: C901
                 "slide.channel",
                 {
                     "name": CHANNEL_NAME,
-                    "description_short": "Piloto de vídeos públicos do canal Matemateca. Fonte: Matemateca; curadoria: FACODI. Autorização institucional não presumida.",
+                    "description_short": "Coleção FACODI de conteúdos Matemateca alinhada com Análise Matemática I (19411002, 5 ECTS) da Licenciatura em Engenharia de Sistemas e Tecnologias Informáticas da Universidade do Algarve. Fonte: Matemateca; curadoria: FACODI.",
                     "website_published": False,
                     "is_published": False,
                     "x_studio_publisher_id": partner_id,
                     "x_studio_collection_type": "topic_collection",
                     "x_studio_editorial_state": "preparing",
                     "x_studio_approved_for_publication": False,
+                    "x_studio_curriculum_code": CURRICULUM_CODE,
+                    "x_studio_curriculum_ects": CURRICULUM_ECTS,
                 },
             )
             created_channel = not bool(plan["channel"])

@@ -5,7 +5,7 @@
       "source": "odoo_staging",
       "source_key": "youtube:example-id",
       "source_url": "https://www.youtube.com/watch?v=example-id",
-      "course_key": "facodi.matematica-i",
+      "course_key": "facodi.analise-matematica-i",
       "module_key": "m1",
       "title": "Título aprovado do vídeo",
       "sequence": 10,

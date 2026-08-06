@@ -11,6 +11,14 @@
     "license_status": "not_stated",
     "authorization_status": "authorized_by_project_request"
   },
+  "curriculum": {
+    "program": "Engenharia de Sistemas e Tecnologias Informáticas",
+    "institution": "Universidade do Algarve",
+    "unit_name": "Análise Matemática I",
+    "code": "19411002",
+    "ects": 5,
+    "official_plan": "https://www.ualg.pt/curso/1941/plano"
+  },
   "selection_policy": "Pilot of long-form mathematics videos; Shorts and promotional videos excluded.",
   "videos": [
     {

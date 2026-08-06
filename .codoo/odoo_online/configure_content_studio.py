@@ -34,6 +34,8 @@ CORE_FIELDS = PROOF_FIELDS + (
     {"model": "slide.channel", "name": "x_studio_editorial_state", "label": "Estado editorial", "ttype": "selection", "selection": "[(\'draft\', \'Draft\'), (\'preparing\', \'Preparing\'), (\'under_review\', \'Under review\'), (\'changes_requested\', \'Changes requested\'), (\'approved\', \'Approved\'), (\'ready_to_publish\', \'Ready to publish\'), (\'published\', \'Published\'), (\'archived\', \'Archived\')]"},
     {"model": "slide.channel", "name": "x_studio_review_notes", "label": "Notas de revisao", "ttype": "text"},
     {"model": "slide.channel", "name": "x_studio_approved_for_publication", "label": "Aprovado para publicacao", "ttype": "boolean"},
+    {"model": "slide.channel", "name": "x_studio_curriculum_code", "label": "Codigo curricular oficial", "ttype": "char"},
+    {"model": "slide.channel", "name": "x_studio_curriculum_ects", "label": "ECTS curriculares", "ttype": "integer"},
     {"model": "slide.slide", "name": "x_studio_source_url", "label": "URL da fonte", "ttype": "char"},
     {"model": "slide.slide", "name": "x_studio_source_platform", "label": "Plataforma", "ttype": "selection", "selection": "[(\'youtube\', \'YouTube\'), (\'vimeo\', \'Vimeo\'), (\'other\', \'Other approved source\')]"},
     {"model": "slide.slide", "name": "x_studio_source_author", "label": "Autor da fonte", "ttype": "char"},
