@@ -1,0 +1,46 @@
+{
+  "source": {
+    "channel": "LCMAquino",
+    "channel_url": "https://www.youtube.com/@LCMAquino/playlists",
+    "discovered_at": "2026-08-06",
+    "metadata_policy": "public playlist/video metadata only; no video downloads; transcripts only when authorized"
+  },
+  "curriculum_source": "https://www.ualg.pt/curso/1941/plano",
+  "curriculum": [
+    {"name":"Análise Matemática I","code":"19411002","ects":5},
+    {"name":"Álgebra Linear e Geometria Analítica","code":"19411003","ects":5},
+    {"name":"Análise Matemática II","code":"19411008","ects":7}
+  ],
+  "playlists": [
+    {"title":"Equação Diferencial Parcial","id":"PLa_2246N48_p86WdABCUJjOeU2LokVY9D","uc":"Análise Matemática II","code":"19411008","confidence":"low","reason":"Equações diferenciais parciais são cálculo avançado; confirmar se há correspondência curricular LESTI."},
+    {"title":"Integral dupla - Massa - Exercício de Cálculo","id":"PLa_2246N48_p3C2e6mRVmj1whXn3XjMp_","uc":"Análise Matemática II","code":"19411008","confidence":"high","reason":"Integrais duplas e massa são tópicos de cálculo multivariável."},
+    {"title":"Integral dupla - Volume do sólido - Exercício de Cálculo","id":"PLa_2246N48_obPzOETxgalAYVbCa0Iy5M","uc":"Análise Matemática II","code":"19411008","confidence":"high","reason":"Volume por integral dupla é cálculo multivariável."},
+    {"title":"Integral dupla - Coordenadas Polares - Exercício de Cálculo","id":"PLa_2246N48_pgVondYQ_ICVH5d8FTKlIP","uc":"Análise Matemática II","code":"19411008","confidence":"high","reason":"Coordenadas polares aplicadas a integrais duplas."},
+    {"title":"Integral dupla - Inversão de ordem - Exercício de Cálculo","id":"PLa_2246N48_p5fvKgdZmBFPEWoPs2fIFJ","uc":"Análise Matemática II","code":"19411008","confidence":"high","reason":"Inversão da ordem de integração é cálculo multivariável."},
+    {"title":"Derivadas Parciais - Módulo IV - Cálculo II","id":"PLa_2246N48_rIF_47zeqCcKvyRcsNW-Fr","uc":"Análise Matemática II","code":"19411008","confidence":"high","reason":"Derivadas parciais são cálculo de várias variáveis."},
+    {"title":"Função vetorial - Módulo III - Cálculo II","id":"PLa_2246N48_qgz2lMXrW4_An7M_vnG-4M","uc":"Análise Matemática II","code":"19411008","confidence":"medium","reason":"Funções vetoriais sugerem cálculo multivariável; validar conteúdo."},
+    {"title":"Sequência e Séries - Módulo II - Cálculo II","id":"PLa_2246N48_risPrNTSXFR_IofcJCTybu","uc":"Análise Matemática II","code":"19411008","confidence":"medium","reason":"Sequências e séries podem integrar cálculo avançado; validar programa."},
+    {"title":"Produto Interno - Módulo VII - Álgebra Linear","id":"PLa_2246N48_rD3qJ_eQuVBneiUfe4P5P4","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Produto interno é explicitamente Álgebra Linear."},
+    {"title":"Equação Diferencial Ordinária - Exercício de Cálculo","id":"PLa_2246N48_r9Tvw27h9HjuZ2rG5rg0q5","uc":"Análise Matemática II","code":"19411008","confidence":"medium","reason":"EDO é cálculo avançado; validar correspondência com a unidade."},
+    {"title":"Diagonalização de Matrizes - Álgebra Linear","id":"PLa_2246N48_rrlx9iBDpkOjeevy9-qjwo","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Diagonalização de matrizes é Álgebra Linear."},
+    {"title":"Transformação Linear - Álgebra Linear","id":"PLa_2246N48_o_q_7deL1UldkO_voyajdi","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Transformações lineares são Álgebra Linear."},
+    {"title":"Base e Dimensão - Álgebra Linear","id":"PLa_2246N48_rtOf_eOTjKDF6OrHYWTdUF","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Base e dimensão são conceitos centrais de Álgebra Linear."},
+    {"title":"Espaço Vetorial - Álgebra Linear","id":"PLa_2246N48_raWBtO-QGc3Xgdd4AXIaib","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Espaços vetoriais são Álgebra Linear."},
+    {"title":"Introdução ao Pensamento Matemático","id":"PLa_2246N48_pq6LfZsbUuwGuJicAUL8sb","uc":null,"code":null,"confidence":"low","reason":"Não há evidência suficiente no título para associar a uma UC LESTI específica."},
+    {"title":"Matriz Inversa e Determinante - Álgebra Linear","id":"PLa_2246N48_qQa5lgalOu5z5yf1186zeF","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Matriz inversa e determinante são Álgebra Linear."},
+    {"title":"Integral - Exercício de Cálculo","id":"PLa_2246N48_p0x1yk1eXwXQFYpWc8qT5a","uc":"Análise Matemática I","code":"19411002","confidence":"high","reason":"Integração de uma variável é conteúdo de Análise Matemática I."},
+    {"title":"Derivada - Exercício de Cálculo","id":"PLa_2246N48_pSCqVoALs-8rA-dvRphAkS","uc":"Análise Matemática I","code":"19411002","confidence":"high","reason":"Derivação de uma variável é conteúdo de Análise Matemática I."},
+    {"title":"Matrizes e Sistema de Equações Lineares - Álgebra Linear","id":"PLa_2246N48_pxRNmfMtG3BaOGYBIXL2l0","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"Sistemas lineares e matrizes são Álgebra Linear."},
+    {"title":"Palestras","id":"PLa_2246N48_rRQwdVZ9zFVgb4My-i2hdR","uc":null,"code":null,"confidence":"low","reason":"Playlist heterogénea; requer análise vídeo a vídeo."},
+    {"title":"YouTubeEduCon 2018 - YouTubeEdu - Fundação Lemann","id":"PLa_2246N48_qeCOse6tOJloRpd6sdJQJg","uc":null,"code":null,"confidence":"low","reason":"Evento/arquivo externo, não uma UC matemática identificável."},
+    {"title":"Pré-cálculo (Curso Completo)","id":"PLa_2246N48_rIbheR_al4oqeFCP8dHoQR","uc":"Análise Matemática I","code":"19411002","confidence":"medium","reason":"Pré-cálculo prepara funções e limites; validar nível e sobreposição."},
+    {"title":"Exercícios de Geometria Analítica","id":"PLa_2246N48_rf74nIZn-5XAo53nfz7QxB","uc":"Álgebra Linear e Geometria Analítica","code":"19411003","confidence":"high","reason":"A playlist é explicitamente de Geometria Analítica."},
+    {"title":"Limite - Exercício de Cálculo","id":"PLa_2246N48_rsE1hYOSFtxb5llx6ooaKm","uc":"Análise Matemática I","code":"19411002","confidence":"high","reason":"Limites são conteúdo central de Análise Matemática I."},
+    {"title":"Curso de Git (Curso Completo)","id":"PLa_2246N48_rF_D5YgW2niCQ6J8RmaoXu","uc":null,"code":null,"confidence":"high","reason":"Conteúdo técnico, não uma UC matemática LESTI."},
+    {"title":"Curso de Produção de Videoaula (Curso Completo)","id":"PLa_2246N48_p0fRfgy2NAKFkRS25SXNcU","uc":null,"code":null,"confidence":"high","reason":"Metodologia de produção, não conteúdo curricular matemático."},
+    {"title":"Balaio de Ideias","id":"PLa_2246N48_ojRUKf7rMSpW3EYnuKG_XV","uc":null,"code":null,"confidence":"low","reason":"Playlist não curricular; analisar apenas se houver proposta específica."},
+    {"title":"Curso de BEAMER (Curso Completo)","id":"PLa_2246N48_rk8nzKg6VDykSEU6svwv4r","uc":null,"code":null,"confidence":"high","reason":"Ferramenta de apresentação, não UC matemática."},
+    {"title":"Introdução ao LaTeX (Curso Completo)","id":"PLa_2246N48_p9ndUHlO255uvKtSR8mshE","uc":null,"code":null,"confidence":"high","reason":"Ferramenta de escrita científica, não UC matemática."},
+    {"title":"Curso Básico de LaTeX no Moodle (Curso Completo)","id":"PLa_2246N48_oAEVgyLU_Vagr0AVMdoGIU","uc":null,"code":null,"confidence":"high","reason":"Ferramenta de publicação, não UC matemática."}
+  ]
+}

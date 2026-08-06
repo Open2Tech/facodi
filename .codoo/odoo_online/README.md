@@ -108,6 +108,16 @@ Five proposals were created and enriched under the suggested area
 `Geometria Analítica`, all awaiting human review. No eLearning content was
 created automatically. See `reports/playlist-geometria-analitica-2026-08-06.md`.
 
+The LCM Aquino channel audit maps 30 playlists to official LESTI units with
+confidence and rationale. The source-neutral importer
+`imports/import_channel_manifest.py` uses canonical URL plus playlist
+fingerprints, reuses existing proposals, and never creates eLearning records.
+See `reports/lcmaquino-curriculum-audit-2026-08-06.md`.
+
+The pilot also added reusable playlist/classification provenance fields to both
+proposals and `slide.slide`. Conversion copies this provenance and remains
+approval-gated. See `reports/lcmaquino-pilot-implementation-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
