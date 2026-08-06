@@ -29,6 +29,7 @@ Snapshot: `inventory/inventory.json`
 | AI agent/topic apply and read-back | Pass | `configure_ai_content.py verify` |
 | Backend menu/action apply and read-back | Pass | `configure_app_shell.py verify` |
 | AI execution latency/format/quality | Blocked | No public JSON-RPC execution method exposed by `ai.agent`; UI execution requires an authenticated Odoo session |
+| AI field execution | Pass on temporary record | `slide.slide.get_ai_field_value` returned a Portuguese European summary after the prompt used `data-ai-field` references; the result remained in a suggestion field and the record stayed unpublished |
 | AI source indexing | Not configured | No approved Documents/Knowledge source records supplied |
 | Approval workflow | Not configured | `studio.approval.rule`, `studio.approval.entry`, and `studio.approval.request` exist, but a safe binding to the standard eLearning publication button was not proven |
 
@@ -38,4 +39,4 @@ Rollback commands require `--confirm APPLY-EDU-OPEN2` and only remove IDs record
 
 ## Objective blocker
 
-The authenticated JSON-RPC surface exposes agent configuration and topics but no callable agent execution method, AI tool model, AI server-action model, or provider/model registry. The browser probe reached the login page without an authenticated session. Therefore the Gemini benchmark, source indexing, AI field execution, Studio export, role matrix, and end-to-end publish test remain unexecuted. No success is claimed for those gates.
+The authenticated JSON-RPC surface exposes agent configuration and topics but no callable `ai.agent` execution method, AI tool model, AI server-action model, or provider/model registry. A direct AI Fields execution is now proven, but the installed Odoo 19 implementation uses the OpenAI Responses API with fixed model `gpt-4.1`; it does not use the configured Gemini agent. The browser session expired during the final reload, so Gemini benchmarking, source indexing, Studio export, role matrix, and end-to-end publish approval remain unexecuted. No success is claimed for those gates.
