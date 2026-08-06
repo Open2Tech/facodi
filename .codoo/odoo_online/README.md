@@ -150,6 +150,11 @@ Proposal search now includes lifecycle, quality, source, UC, and playlist
 filters plus groupings. The `Sem licença` filter is backed by a real proposal
 field. See `reports/proposal-search-filters-2026-08-06.md`.
 
+The duplicate generic proposal menu was archived; `Propostas — Todas` is now
+the single full-queue entry, while state-specific menus remain distinct. The
+underlying action remains preserved for compatibility. See
+`reports/menu-deduplication-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
