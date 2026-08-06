@@ -123,3 +123,8 @@ without creating a `slide.slide` on proposal creation. The authenticated form
 is organized into source, context, processing, AI suggestions, curation,
 submitter, and chatter sections. See
 `reports/content-submission-architecture-2026-08-06.md`.
+
+The first validation increment is now active: the Studio action and
+`base.automation` validate new proposals, detect duplicate canonical source
+URLs, create `ready_for_ai`/`duplicate` outcomes, and never create eLearning
+records. See `reports/proposal-validation-2026-08-06.md`.
