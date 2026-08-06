@@ -128,3 +128,8 @@ The first validation increment is now active: the Studio action and
 `base.automation` validate new proposals, detect duplicate canonical source
 URLs, create `ready_for_ai`/`duplicate` outcomes, and never create eLearning
 records. See `reports/proposal-validation-2026-08-06.md`.
+
+The Gemini proposal action is also active: it only accepts `ready_for_ai`, writes
+AI suggestions on the proposal, moves it to `waiting_review`, and creates a
+review activity. It does not create or publish `slide.slide`. See
+`reports/proposal-enrichment-2026-08-06.md`.
