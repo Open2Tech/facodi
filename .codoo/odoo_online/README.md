@@ -113,3 +113,13 @@ preserves workflow/publication fields when reusing existing records:
 The authenticated Studio export is stored as
 `addons/theme_facodi/customizations2.zip`. Its contents and the remaining
 export warning are documented in `reports/studio-export-2026-08-06.md`.
+
+## Separate content proposals
+
+The first submission increment is a Studio-created application named
+`FACODI Propostas`, technical model `x_propostas_de_conteud`. It stores source,
+submitter, workflow, AI suggestions, review, and optional eLearning relation
+without creating a `slide.slide` on proposal creation. The authenticated form
+is organized into source, context, processing, AI suggestions, curation,
+submitter, and chatter sections. See
+`reports/content-submission-architecture-2026-08-06.md`.
