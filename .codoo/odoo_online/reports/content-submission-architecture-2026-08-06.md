@@ -5,7 +5,7 @@ Date: 2026-08-06
 
 ## Model
 
-Studio created the separate application `FACODI Propostas` with menu `Propostas de conteúdo` and technical model `x_propostas_de_conteud`.
+Studio created the technical model `x_propostas_de_conteud`; its menu and configuration are now consolidated under the canonical `FACODI Content Studio` application as `Propostas de conteúdo`.
 
 The first record is proposal id `1`, created from a controlled Matemateca submission. It is in `received`, stage `Novo`, and has no related `slide.slide`.
 

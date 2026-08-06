@@ -145,8 +145,8 @@ export warning are documented in `reports/studio-export-2026-08-06.md`.
 
 ## Separate content proposals
 
-The first submission increment is a Studio-created application named
-`FACODI Propostas`, technical model `x_propostas_de_conteud`. It stores source,
+The submission workspace is consolidated under the `FACODI Content Studio`
+application. Its technical model is `x_propostas_de_conteud`. It stores source,
 submitter, workflow, AI suggestions, review, and optional eLearning relation
 without creating a `slide.slide` on proposal creation. The authenticated form
 is organized into source, context, processing, AI suggestions, curation,
