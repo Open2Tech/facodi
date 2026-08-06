@@ -148,6 +148,10 @@ The Gemini action now pre-fills dedicated objective, topic, keyword, level,
 collection, quality, and summary fields. Missing evidence is explicit instead
 of silently leaving fields empty. See `reports/ai-prefill-review-2026-08-06.md`.
 
+The action was reprocessed against proposals 13–17, cleaned raw citation/Markdown
+markers, populated every structured field, and preserved converted states and
+eLearning relations. See `reports/ai-ui-reprocess-2026-08-06.md`.
+
 Proposal search now includes lifecycle, quality, source, UC, and playlist
 filters plus groupings. The `Sem licença` filter is backed by a real proposal
 field. See `reports/proposal-search-filters-2026-08-06.md`.
