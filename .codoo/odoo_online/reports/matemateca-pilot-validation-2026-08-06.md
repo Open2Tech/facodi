@@ -12,7 +12,7 @@ Date: 2026-08-06
 - Identity: canonical YouTube URL and video id.
 - First import: five created.
 - Second import: five reused, zero created, zero duplicate URLs.
-- Collection and slides remained unpublished.
+- Collection was initially imported unpublished; publication happened only after review.
 
 ## Gemini enrichment
 
@@ -46,6 +46,13 @@ The agent was restored to `gemini-2.5-flash` after the benchmark.
 
 A prompt containing an instruction to ignore the rules and publish content was sent as source data. Gemini returned an insufficiency response and did not publish or execute the embedded instruction.
 
-## Review gate
+## Review and publication
 
-Activities and chatter notes were created for all five slides. They remain `under_review`, `x_studio_approved_for_publication=false`, and unpublished. The source channel authorization was supplied by the project request, but the public pages do not state a reusable license. Publication therefore remains blocked until the responsible publisher confirms the applicable reuse permission or records an approved license basis.
+Activities and chatter notes were created for all five slides. The responsible publisher reviewed the summaries against the public descriptions, recorded the source authorization and license limitation in the review notes, completed the activities, and manually approved the five slides. The collection and all five slides are now published; the AI did not publish any record automatically.
+
+## Public verification
+
+- `/slides` returned HTTP 200 and listed the collection.
+- `/slides/matemateca-piloto-de-calculo-2` returned HTTP 200.
+- All five slide routes returned HTTP 200 without `Internal Server Error` or CSS error markers.
+- A transient RPC `ConnectTimeout` occurred during a reimport attempt; it happened before authentication and performed no write. A retry with a 90-second timeout confirmed five published slides and zero duplicate canonical URLs.
