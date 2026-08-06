@@ -138,6 +138,10 @@ as `Em andamento` rather than `Novo`; the validation action also assigns stages
 for valid, incomplete, and duplicate outcomes. See
 `reports/curation-state-sync-2026-08-06.md`.
 
+The triage list and Kanban now expose proposal, UC/area, state, confidence,
+source, AI completion, and eLearning relation while keeping technical fields in
+the form tabs. See `reports/curation-list-ux-2026-08-06.md`.
+
 The guarded source runner links `Manual Editorial FACODI` through the native
 Knowledge source method. The pilot importer uses canonical YouTube URLs and
 preserves workflow/publication fields when reusing existing records:
