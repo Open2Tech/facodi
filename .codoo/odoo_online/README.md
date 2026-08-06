@@ -144,6 +144,10 @@ The application now includes eight Knowledge guides, an `Ajuda FACODI` menu, a
 short `Como fazer a curadoria` form tab, and contextual field tooltips. See
 `reports/help-onboarding-2026-08-06.md`.
 
+The Gemini action now pre-fills dedicated objective, topic, keyword, level,
+collection, quality, and summary fields. Missing evidence is explicit instead
+of silently leaving fields empty. See `reports/ai-prefill-review-2026-08-06.md`.
+
 Proposal search now includes lifecycle, quality, source, UC, and playlist
 filters plus groupings. The `Sem licença` filter is backed by a real proposal
 field. See `reports/proposal-search-filters-2026-08-06.md`.
