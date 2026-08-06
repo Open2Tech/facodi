@@ -53,6 +53,55 @@ class Catalog(BaseModel):
     videos: list[Video]
 
 
+def load_catalog(path: Path) -> Catalog:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if "videos" not in data:
+        raise ValueError("catalog must contain a videos list")
+    if all("course_key" in video for video in data["videos"]):
+        return Catalog.model_validate(data)
+
+    # Adapt the existing FACODI production catalog without changing its source
+    # records. The module mapping is deterministic and based on its approved topics.
+    module_by_topic = {
+        "Fundamentos de Estatística": "m1",
+        "Estatística Descritiva": "m1",
+        "Probabilidade": "m2",
+        "Combinatória": "m2",
+        "Teorema de Bayes": "m2",
+        "Variáveis Aleatórias": "m3",
+        "Distribuições de Probabilidade": "m3",
+        "Distribuição Normal": "m3",
+        "Amostragem": "m4",
+        "Estatística Inferencial": "m4",
+        "Intervalos de Confiança": "m4",
+        "Testes de Hipótese": "m5",
+        "Correlação e Regressão": "m6",
+        "Aplicações": "m6",
+        "Revisão": "m6",
+        "Avaliações": "m6",
+    }
+    videos = []
+    for video in data["videos"]:
+        topics = video.get("topics", [])
+        module_key = next(
+            (module_by_topic[topic] for topic in topics if topic in module_by_topic), "m1"
+        )
+        videos.append(
+            {
+                "source": "approved_catalog",
+                "source_key": video["source_key"],
+                "source_url": video["source_url"],
+                "course_key": "facodi.probabilidade-estatistica",
+                "module_key": module_key,
+                "title": video["title"],
+                "sequence": len(videos) * 10 + 10,
+                "rights_note": video["rights_note"],
+                "approved_for_import": video.get("approved_for_import", False),
+            }
+        )
+    return Catalog.model_validate({"videos": videos})
+
+
 class CourseImporter:
     def __init__(self, client: AsyncOdooClient, courses_dir: Path, catalog: Catalog):
         self.client = client
@@ -99,7 +148,12 @@ class CourseImporter:
 
         course_ids: dict[str, int] = {}
         created = {"courses": 0, "videos": 0}
+        included_course_keys = {
+            video.course_key for video in self.catalog.videos if video.approved_for_import
+        }
         for spec in self.course_specs:
+            if spec["course_key"] not in included_course_keys:
+                continue
             records = await self.client.search_read(
                 "slide.channel", [["name", "=", spec["name"]]], ["id"], limit=1
             )
@@ -145,7 +199,9 @@ class CourseImporter:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("dry-run", "apply"), nargs="?", default="dry-run")
+    parser.add_argument(
+        "mode", choices=("dry-run", "apply", "publish"), nargs="?", default="dry-run"
+    )
     parser.add_argument("--catalog", type=Path, required=True)
     parser.add_argument("--courses-dir", type=Path, default=DEFAULT_COURSES)
     parser.add_argument("--target", default="staging")
@@ -156,7 +212,7 @@ def parse_args() -> argparse.Namespace:
 
 async def main() -> None:
     args = parse_args()
-    catalog = Catalog.model_validate_json(args.catalog.read_text(encoding="utf-8"))
+    catalog = load_catalog(args.catalog)
     config = load_config(args.target, args.env)
     async with AsyncOdooClient(config) as client:
         importer = CourseImporter(client, args.courses_dir, catalog)
@@ -165,7 +221,48 @@ async def main() -> None:
             print(json.dumps(plan, ensure_ascii=False, indent=2))
             return
         if args.confirm != "APPLY-FACODI-COURSES":
-            raise SystemExit("Pass --confirm APPLY-FACODI-COURSES to create unpublished courses")
+            raise SystemExit("Pass --confirm APPLY-FACODI-COURSES to modify course records")
+        if args.mode == "publish":
+            approved = [video for video in catalog.videos if video.approved_for_import]
+            course_names = {"Matemática I", "Probabilidade e Estatística"}
+            courses = await client.search_read(
+                "slide.channel", [["name", "in", list(course_names)]], ["id", "name"], limit=20
+            )
+            course_ids = {record["name"]: int(record["id"]) for record in courses}
+            if "Probabilidade e Estatística" not in course_ids:
+                raise RuntimeError("Probabilidade e Estatística must be created before publishing")
+            videos = await client.search_read(
+                "slide.slide",
+                [["channel_id", "=", course_ids["Probabilidade e Estatística"]]],
+                ["id", "is_published"],
+                limit=200,
+            )
+            for record in courses:
+                if record["name"] == "Probabilidade e Estatística":
+                    await client.write(
+                        "slide.channel",
+                        [int(record["id"])],
+                        {"website_published": True, "is_published": True},
+                    )
+            for record in videos:
+                await client.write(
+                    "slide.slide",
+                    [int(record["id"])],
+                    {"website_published": True, "is_published": True},
+                )
+            print(
+                json.dumps(
+                    {
+                        "ok": True,
+                        "published_course": "Probabilidade e Estatística",
+                        "published_videos": len(videos),
+                        "source_video_count": len(approved),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return
         print(json.dumps(await importer.apply(), ensure_ascii=False, indent=2))
 
 
