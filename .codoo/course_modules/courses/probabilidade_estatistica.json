@@ -1,0 +1,20 @@
+{
+  "course_key": "facodi.probabilidade-estatistica",
+  "name": "Probabilidade e Estatística",
+  "description": "Conceitos de probabilidade, variáveis aleatórias, estatística descritiva, inferência e leitura crítica de dados.",
+  "sequence": 20,
+  "source_policy": {
+    "required_sources": ["odoo_staging", "supabase"],
+    "approved_hosts": ["youtube.com", "www.youtube.com", "youtu.be", "vimeo.com", "www.vimeo.com"],
+    "publish_automatically": false
+  },
+  "modules": [
+    {"key": "m1", "name": "Dados e estatística descritiva", "sequence": 10},
+    {"key": "m2", "name": "Probabilidade e eventos", "sequence": 20},
+    {"key": "m3", "name": "Variáveis aleatórias e distribuições", "sequence": 30},
+    {"key": "m4", "name": "Amostragem e estimação", "sequence": 40},
+    {"key": "m5", "name": "Testes de hipóteses", "sequence": 50},
+    {"key": "m6", "name": "Regressão e comunicação de resultados", "sequence": 60}
+  ],
+  "videos": []
+}

@@ -1,0 +1,20 @@
+{
+  "course_key": "facodi.matematica-i",
+  "name": "Matemática I",
+  "description": "Fundamentos de funções, álgebra, limites, derivadas e integração para apoiar percursos introdutórios de matemática.",
+  "sequence": 10,
+  "source_policy": {
+    "required_sources": ["odoo_staging", "supabase"],
+    "approved_hosts": ["youtube.com", "www.youtube.com", "youtu.be", "vimeo.com", "www.vimeo.com"],
+    "publish_automatically": false
+  },
+  "modules": [
+    {"key": "m1", "name": "Fundamentos e linguagem matemática", "sequence": 10},
+    {"key": "m2", "name": "Funções e gráficos", "sequence": 20},
+    {"key": "m3", "name": "Álgebra e equações", "sequence": 30},
+    {"key": "m4", "name": "Limites e continuidade", "sequence": 40},
+    {"key": "m5", "name": "Derivadas e aplicações", "sequence": 50},
+    {"key": "m6", "name": "Integrais e aplicações", "sequence": 60}
+  ],
+  "videos": []
+}
