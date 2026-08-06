@@ -89,3 +89,27 @@ Each runner supports `snapshot`, `apply`, `verify`, and `rollback`. Apply and
 rollback require `--confirm APPLY-EDU-OPEN2`. See
 `reports/content-studio-capability-2026-08-06.md` for the current evidence and
 unsupported API surfaces.
+
+## Studio reconciliation and Matemateca pilot
+
+The existing dynamic fields can be made exportable without recreating them:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/reconcile_studio_fields.py \
+  dry-run --target online --env .env
+```
+
+The guarded source runner links `Manual Editorial FACODI` through the native
+Knowledge source method. The pilot importer uses canonical YouTube URLs and
+preserves workflow/publication fields when reusing existing records:
+
+```bash
+.venv/bin/python odoo/facodi/.codoo/odoo_online/configure_ai_sources.py \
+  verify --target online --env .env
+.venv/bin/python odoo/facodi/.codoo/odoo_online/imports/matemateca/import_pilot.py \
+  verify --target online --env .env
+```
+
+The authenticated Studio export is stored as
+`addons/theme_facodi/customizations2.zip`. Its contents and the remaining
+export warning are documented in `reports/studio-export-2026-08-06.md`.

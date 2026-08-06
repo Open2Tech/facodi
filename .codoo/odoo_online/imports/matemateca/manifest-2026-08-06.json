@@ -1,0 +1,87 @@
+{
+  "source": {
+    "platform": "youtube",
+    "channel_name": "Matemateca - Ester Velasquez",
+    "channel_handle": "@Matemateca",
+    "channel_id": "UCfwhmgRZqb1MHNfUHMQNUJg",
+    "channel_url": "https://www.youtube.com/@Matemateca",
+    "discovered_from": "https://www.youtube.com/feeds/videos.xml?channel_id=UCfwhmgRZqb1MHNfUHMQNUJg",
+    "discovered_at": "2026-08-06T08:15:00Z",
+    "license": null,
+    "license_status": "not_stated",
+    "authorization_status": "authorized_by_project_request"
+  },
+  "selection_policy": "Pilot of long-form mathematics videos; Shorts and promotional videos excluded.",
+  "videos": [
+    {
+      "external_id": "uxkh0kgbusQ",
+      "canonical_url": "https://www.youtube.com/watch?v=uxkh0kgbusQ",
+      "title": "Resolvendo uma prova de cálculo passo a passo - Parte 2 | Integrais",
+      "description": "Vamos resolver passo a passo uma prova de cálculo da UFPR, entendendo como podemos raciocinar em cada problema e possíveis erros que podemos evitar na hora da prova. Parte 1: https://www.youtube.com/watch?v=HWXGP-ctgJI",
+      "thumbnail": "https://i.ytimg.com/vi/uxkh0kgbusQ/hqdefault.jpg",
+      "duration_seconds": null,
+      "published_at": "2026-07-20T22:00:13+00:00",
+      "channel": "Matemateca - Ester Velasquez",
+      "language": null,
+      "transcript": null,
+      "import_status": "pilot_pending",
+      "exclusion_reason": null
+    },
+    {
+      "external_id": "hxK7NqWE4CM",
+      "canonical_url": "https://www.youtube.com/watch?v=hxK7NqWE4CM",
+      "title": "Como resolver essa Derivada? | Cálculo",
+      "description": "Como resolver a derivada da função (arcsen(x²))^(tan(pi.x))? Para isso, vamos usar a regra da cadeia e a regra do produto, além das nossas derivadas tabeladas. Venha conferir o passo a passo nessa aula.",
+      "thumbnail": "https://i.ytimg.com/vi/hxK7NqWE4CM/hqdefault.jpg",
+      "duration_seconds": null,
+      "published_at": "2026-07-16T22:00:11+00:00",
+      "channel": "Matemateca - Ester Velasquez",
+      "language": null,
+      "transcript": null,
+      "import_status": "pilot_pending",
+      "exclusion_reason": null
+    },
+    {
+      "external_id": "HWXGP-ctgJI",
+      "canonical_url": "https://www.youtube.com/watch?v=HWXGP-ctgJI",
+      "title": "Resolvendo uma prova de cálculo passo a passo - Parte 1 | Integrais",
+      "description": "Vamos resolver passo a passo uma prova de cálculo da UFPR, entendendo como podemos raciocinar em cada problema e possíveis erros que podemos evitar na hora da prova.",
+      "thumbnail": "https://i.ytimg.com/vi/HWXGP-ctgJI/hqdefault.jpg",
+      "duration_seconds": null,
+      "published_at": "2026-07-13T22:00:21+00:00",
+      "channel": "Matemateca - Ester Velasquez",
+      "language": null,
+      "transcript": null,
+      "import_status": "pilot_pending",
+      "exclusion_reason": null
+    },
+    {
+      "external_id": "HH-4Li6aZuU",
+      "canonical_url": "https://www.youtube.com/watch?v=HH-4Li6aZuU",
+      "title": "Gráficos com Derivadas: Desafios Resolvidos | Cálculo 1",
+      "description": "Seja f(x)=x^5+bx^4+cx^3−2x+1. Que condições b e c devem satisfazer para que 1 seja ponto de inflexão de f? Estude a função dada com relação a máximos e mínimos locais e globais.",
+      "thumbnail": "https://i.ytimg.com/vi/HH-4Li6aZuU/hqdefault.jpg",
+      "published_at": "2026-06-22T22:00:24+00:00",
+      "channel": "Matemateca - Ester Velasquez",
+      "language": null,
+      "transcript": null,
+      "import_status": "pilot_pending",
+      "exclusion_reason": null
+    },
+    {
+      "external_id": "hF_tGFe9tCs",
+      "canonical_url": "https://www.youtube.com/watch?v=hF_tGFe9tCs",
+      "title": "O que é o Jacobiano e como calcular? | Integrais com Mudanças de Variáveis",
+      "description": "O que é o Jacobiano e como usamos ele no cálculo de integrais duplas e triplas? Nessa aula, vamos entender qual a utilidade do Jacobiano e como calcular esse fator de escala.",
+      "thumbnail": "https://i.ytimg.com/vi/hF_tGFe9tCs/hqdefault.jpg",
+      "published_at": "2026-06-15T22:00:26+00:00",
+      "channel": "Matemateca - Ester Velasquez",
+      "language": null,
+      "transcript": null,
+      "import_status": "pilot_pending",
+      "exclusion_reason": null
+    }
+  ],
+  "unselected_recent_entries": 10,
+  "unselected_reason": "Shorts, promotional material, English-study content, or outside the pilot mathematics scope."
+}
