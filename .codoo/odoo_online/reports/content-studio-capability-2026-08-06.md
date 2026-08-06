@@ -25,7 +25,9 @@ Snapshot: `inventory/inventory.json`
 | --- | --- | --- |
 | Field dry-run | Pass | `configure_content_studio.py dry-run` |
 | Field apply and read-back | Pass | `configure_content_studio.py verify` |
-| AI model/agent/topic capability | Pass | `inventory/inventory.json` |
+| AI model/agent/topic capability | Pass | `inventory/inventory.json`; all active agents use `gemini-2.5-flash` |
+| FACODI Gemini execution | Pass | `reports/gemini-model-validation-2026-08-06.md` |
+| Gemini 3.5 Flash experiment | Rejected safely | Odoo returned `No provider found for the selected model`; agent remained on `gemini-2.5-flash` |
 | AI agent/topic apply and read-back | Pass | `configure_ai_content.py verify` |
 | Backend menu/action apply and read-back | Pass | `configure_app_shell.py verify` |
 | AI execution latency/format/quality | Blocked | No public JSON-RPC execution method exposed by `ai.agent`; UI execution requires an authenticated Odoo session |
