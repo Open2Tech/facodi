@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_facodi_editorial_membership_coordinator,facodi.editorial.membership coordinator,model_facodi_editorial_membership,facodi_content.group_facodi_partner_coordinator,1,1,1,0
+access_facodi_editorial_membership_auditor,facodi.editorial.membership auditor,model_facodi_editorial_membership,facodi_content.group_facodi_auditor,1,0,0,0
+access_facodi_editorial_membership_manager,facodi.editorial.membership manager,model_facodi_editorial_membership,website_slides.group_website_slides_manager,1,1,1,1
