@@ -309,6 +309,7 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 }
 
 .facodi-dashboard {
+    display: grid;
     gap: 32px;
     grid-template-columns: 180px minmax(0, 1fr) !important;
     min-height: auto !important;
@@ -848,8 +849,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible {
 }
 
 @media (max-width: 1024px) {
-    .facodi-dashboard { grid-template-columns: 1fr !important; padding: 12px 24px 52px; }
-    .facodi-side-nav { display: none; }
+    .facodi-dashboard {
+        display: block;
+        padding: 12px 24px 52px;
+    }
+    .facodi-side-nav {
+        align-items: center;
+        background: rgba(255, 255, 255, .86);
+        border: 1px solid rgba(106, 75, 255, .08) !important;
+        border-radius: 18px;
+        box-shadow: 0 12px 24px rgba(31, 30, 66, .06);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 6px;
+        margin-bottom: 22px;
+        overflow-x: auto;
+        padding: 10px 12px !important;
+    }
+    .facodi-side-nav p {
+        flex: 0 0 100%;
+        margin: 0 0 2px;
+    }
+    .facodi-side-nav a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 768px) {
@@ -953,6 +977,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible {
     .o_record_cover_container .breadcrumb,
     .o_record_cover_container .o_wslides_course_nav_search { background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 255, 255, 0.16) !important; }
     .facodi-header .navbar-collapse { background: #16162C; border-color: #343452; }
+    .facodi-side-nav { background: #16162C; border-color: #343452 !important; }
+    .facodi-side-nav a { color: #BBBBD2; }
+    .facodi-side-nav a.is-active,
+    .facodi-side-nav a:hover { background: rgba(106, 75, 255, .25) !important; color: #F0F0FB !important; }
     .facodi-timeline strong { color: #F7F7FF !important; }
     .facodi-network-node,
     .facodi-board-note { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.12); }

@@ -22,8 +22,73 @@ footer#bottom{display:none!important;}
 .o_wslides_slides_list .o_wslides_js_list_item::before{align-items:center;background:linear-gradient(135deg,#6A4BFF,#5DC7FF);border:3px solid #FFF;border-radius:999px;box-shadow:0 8px 18px rgba(64,50,143,.18);color:#FFF;content:counter(facodi-lesson);display:inline-flex;font-size:.78rem;font-weight:700;height:28px;justify-content:center;left:4px;position:absolute;top:calc(50% - 14px);width:28px;}
 .o_wslides_slides_list .o_wslides_js_list_item>.fa{color:var(--facodi-primary);margin-right:8px!important;position:relative;z-index:1;}
 @media(max-width:390px){.facodi-course-cover-meta{bottom:12px;}}
+@media(min-width:1025px){.facodi-dashboard{display:grid;}}
+@media(max-width:1024px){.facodi-dashboard{display:block;padding:12px 24px 52px;}.facodi-side-nav{align-items:center;background:rgba(255,255,255,.86);border:1px solid rgba(106,75,255,.08)!important;border-radius:18px;box-shadow:0 12px 24px rgba(31,30,66,.06);display:flex;flex-wrap:wrap;gap:4px 6px;margin-bottom:22px;overflow-x:auto;padding:10px 12px!important;}.facodi-side-nav p{flex:0 0 100%;margin:0 0 2px;}.facodi-side-nav a{flex:0 0 auto;white-space:nowrap;}}
+@media(prefers-color-scheme:dark) and (max-width:1024px){.facodi-side-nav{background:#16162C;border-color:#343452!important;}.facodi-side-nav a{color:#BBBBD2;}.facodi-side-nav a.is-active,.facodi-side-nav a:hover{background:rgba(106,75,255,.25)!important;color:#F0F0FB!important;}}
 @media(prefers-color-scheme:dark){.o_wslides_slides_list .o_wslides_js_list_item::before{border-color:#1A1A31;}}
             ]]></style>
+            <script type="text/javascript"><![CDATA[
+(function () {
+    function prepareYouTubeFrame(frame) {
+        var source = frame.getAttribute('src') || '';
+        if (!/youtube(?:-nocookie)?\.com\/embed\//i.test(source) || frame.dataset.facodiReferrerPolicyApplied) {
+            return;
+        }
+        var embedUrl = new URL(source, window.location.href);
+        if (!embedUrl.searchParams.has('widget_referrer')) {
+            embedUrl.searchParams.set('widget_referrer', window.location.origin);
+            frame.setAttribute('src', embedUrl.toString());
+        }
+        frame.dataset.facodiReferrerPolicyApplied = '1';
+        frame.setAttribute('referrerpolicy', 'origin');
+    }
+
+    function prepareYouTubeNode(root) {
+        if (!root || root.nodeType !== 1) {
+            return;
+        }
+        if (root.matches('iframe')) {
+            prepareYouTubeFrame(root);
+        }
+        root.querySelectorAll('iframe').forEach(prepareYouTubeFrame);
+    }
+
+    var appendChild = Node.prototype.appendChild;
+    Node.prototype.appendChild = function (node) {
+        prepareYouTubeNode(node);
+        return appendChild.call(this, node);
+    };
+
+    var insertBefore = Node.prototype.insertBefore;
+    Node.prototype.insertBefore = function (node, referenceNode) {
+        prepareYouTubeNode(node);
+        return insertBefore.call(this, node, referenceNode);
+    };
+
+    function installJQueryHook() {
+        if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.appendTo || window.jQuery.fn.facodiYouTubeHook) {
+            return;
+        }
+        var appendTo = window.jQuery.fn.appendTo;
+        window.jQuery.fn.appendTo = function (target) {
+            this.each(function () {
+                prepareYouTubeNode(this);
+            });
+            return appendTo.apply(this, arguments);
+        };
+        window.jQuery.fn.facodiYouTubeHook = true;
+    }
+
+    document.addEventListener('DOMContentLoaded', installJQueryHook);
+    installJQueryHook();
+
+    new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            mutation.addedNodes.forEach(prepareYouTubeNode);
+        });
+    }).observe(document.documentElement, {childList: true, subtree: true});
+}());
+            ]]></script>
         </xpath>
     </template>
 </odoo>

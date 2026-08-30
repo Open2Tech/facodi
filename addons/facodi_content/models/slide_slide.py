@@ -1,11 +1,14 @@
 import logging
-from urllib.parse import urlparse
+import re
+from html import unescape as html_unescape
+from urllib.parse import parse_qsl, urlencode, urlparse, urlsplit, urlunsplit
 
 import requests
 from markupsafe import Markup, escape
 
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, UserError
+from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 
@@ -177,3 +180,28 @@ class FacodiSlideSlide(models.Model):
     def _ensure_enrichment_editor(self):
         if not self.env.user.has_group('website_slides.group_website_slides_officer'):
             raise AccessError(_('Only eLearning officers can manage FACODI enrichment.'))
+
+    @api.depends('slide_category', 'google_drive_id', 'video_source_type', 'youtube_id')
+    def _compute_embed_code(self):
+        super()._compute_embed_code()
+        request_base_url = request.httprequest.url_root if request else False
+        for slide in self:
+            if slide.slide_category != 'video' or slide.video_source_type != 'youtube' or not slide.embed_code:
+                continue
+            base_url = (request_base_url or slide.get_base_url()).rstrip('/')
+            embed_code = str(slide.embed_code)
+            source_match = re.search(r'\bsrc="([^"]+)"', embed_code)
+            if not source_match:
+                continue
+            source_url = html_unescape(source_match.group(1))
+            parsed_url = urlsplit(source_url)
+            query_params = parse_qsl(parsed_url.query, keep_blank_values=True)
+            if not any(key == 'widget_referrer' for key, _value in query_params):
+                query_params.append(('widget_referrer', base_url))
+            source_url = urlunsplit(parsed_url._replace(query=urlencode(query_params)))
+            slide.embed_code = Markup(
+                embed_code[:source_match.start(1)]
+                + str(escape(source_url))
+                + embed_code[source_match.end(1):]
+            )
+            slide.embed_code_external = slide.embed_code
