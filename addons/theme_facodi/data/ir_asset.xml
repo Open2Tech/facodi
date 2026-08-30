@@ -15,4 +15,9 @@
         <bundle>web.assets_frontend</bundle>
         <path>theme_facodi/static/src/scss/facodi_frontend.scss</path>
     </asset>
+    <asset id="facodi_refinement_styles" name="FACODI refinement styles">
+        <field name="key">facodi.refinement_styles</field>
+        <bundle>web.assets_frontend</bundle>
+        <path>theme_facodi/static/src/scss/facodi_refinement.scss</path>
+    </asset>
 </odoo>
