@@ -22,20 +22,36 @@
                             <a class="btn facodi-button facodi-button-secondary" href="/web/login">Continuar aprendendo</a>
                         </div>
                     </div>
-                    <div class="facodi-hero-board" aria-label="Mapa de aprendizagem">
-                        <div class="facodi-board-top"><span>Mapa de aprendizagem</span><span class="facodi-live-dot">Aberto</span></div>
-                        <div class="facodi-board-path">
-                            <div class="facodi-path-node is-complete"><i class="fa fa-compass" aria-hidden="true"/></div>
-                            <div class="facodi-path-line is-complete"/>
-                            <div class="facodi-path-node is-current">02</div>
-                            <div class="facodi-path-line"/>
-                            <div class="facodi-path-node">03</div>
+                    <div class="facodi-hero-board" aria-label="Mapa curricular FACODI">
+                        <div class="facodi-board-top"><span>Mapa curricular</span><span class="facodi-live-dot">Aberto</span></div>
+                        <div class="facodi-network-map">
+                            <div class="facodi-network-node facodi-network-node-course is-primary">
+                                <span>Curso</span>
+                                <strong>LESTI</strong>
+                                <small>Licenciatura em Engenharia de Sistemas e Tecnologias Informáticas</small>
+                            </div>
+                            <div class="facodi-network-node facodi-network-node-year">
+                                <span>Ano</span>
+                                <strong>1.º ano</strong>
+                            </div>
+                            <div class="facodi-network-node facodi-network-node-unit">
+                                <span>UC</span>
+                                <strong>Análise Matemática I</strong>
+                            </div>
+                            <div class="facodi-network-node facodi-network-node-topic">
+                                <span>Tópico</span>
+                                <strong>Conteúdos guiados</strong>
+                            </div>
+                            <div class="facodi-network-node facodi-network-node-resource">
+                                <span>Recurso</span>
+                                <strong>Vídeos e materiais abertos</strong>
+                            </div>
+                            <div class="facodi-network-link facodi-network-link-course-year" aria-hidden="true"/>
+                            <div class="facodi-network-link facodi-network-link-course-unit" aria-hidden="true"/>
+                            <div class="facodi-network-link facodi-network-link-unit-topic" aria-hidden="true"/>
+                            <div class="facodi-network-link facodi-network-link-topic-resource" aria-hidden="true"/>
                         </div>
-                        <div class="facodi-board-cards">
-                            <div><span>Descubra</span><strong>Encontre um curso</strong></div>
-                            <div class="is-selected"><span>Aprenda</span><strong>No seu ritmo</strong></div>
-                            <div><span>Contribua</span><strong>Em comunidade</strong></div>
-                        </div>
+                        <p class="facodi-board-note">Curso → ano → unidade curricular → tópico → recurso: o FACODI organiza percursos, não apenas uma lista de aulas.</p>
                     </div>
                 </section>
 

@@ -15,6 +15,8 @@
         'views/footer.xml',
         'views/homepage.xml',
         'views/runtime_refinement.xml',
+        'views/runtime_refinement_patch.xml',
+        'views/slides_refinement.xml',
         'views/pages.xml',
         'views/snippets/facodi_learning_hub.xml',
     ],

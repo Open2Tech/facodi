@@ -130,7 +130,9 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 .facodi-hero {
     align-items: center;
     border: 0 !important;
+    display: grid;
     gap: clamp(28px, 5vw, 72px) !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
     min-height: 520px;
     padding: clamp(48px, 7vw, 88px) 32px !important;
 }
@@ -172,6 +174,139 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 .facodi-board-cards > div { display: flex !important; flex-direction: column; gap: 2px; padding: 10px 12px; }
 .facodi-board-cards div { border-radius: var(--facodi-radius-sm) !important; }
 .facodi-board-cards .is-selected { background: rgba(93, 199, 255, .22) !important; }
+
+.facodi-network-map {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: minmax(0, 1.15fr) 0.75fr;
+    margin-top: 18px;
+    position: relative;
+}
+
+.facodi-network-node,
+.facodi-board-note {
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 1;
+}
+
+.facodi-network-node {
+    display: grid;
+    gap: 5px;
+    padding: 14px 16px;
+}
+
+.facodi-network-node span,
+.facodi-board-note {
+    color: rgba(255, 255, 255, 0.74) !important;
+    font-size: 0.76rem;
+}
+
+.facodi-network-node strong {
+    font-size: 1.02rem;
+    line-height: 1.2;
+}
+
+.facodi-network-node small {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.facodi-network-node-course {
+    background: rgba(255, 255, 255, 0.16);
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-right: 26px;
+}
+
+.facodi-network-node-course::after,
+.facodi-network-node-unit::after,
+.facodi-network-node-topic::after {
+    background: #9F8BFF;
+    border: 4px solid #312866;
+    border-radius: 999px;
+    content: "";
+    height: 14px;
+    position: absolute;
+    right: -8px;
+    top: calc(50% - 7px);
+    width: 14px;
+}
+
+.facodi-network-node-year {
+    align-self: start;
+    background: rgba(93, 199, 255, 0.14);
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.facodi-network-node-unit {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.facodi-network-node-topic {
+    background: rgba(106, 75, 255, 0.18);
+    grid-column: 1;
+    grid-row: 3;
+    padding-left: 24px;
+}
+
+.facodi-network-node-resource {
+    background: rgba(93, 199, 255, 0.14);
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.facodi-network-link {
+    border-top: 3px solid rgba(159, 139, 255, 0.95);
+    border-top-right-radius: 999px;
+    position: absolute;
+}
+
+.facodi-network-link-course-year {
+    height: 104px;
+    left: 54%;
+    top: 38px;
+    width: 31%;
+}
+
+.facodi-network-link-course-unit {
+    border-top-color: rgba(136, 115, 255, 0.85);
+    height: 74px;
+    left: 54%;
+    top: 132px;
+    width: 28%;
+}
+
+.facodi-network-link-unit-topic {
+    border-top-color: rgba(136, 115, 255, 0.85);
+    height: 44px;
+    left: 29%;
+    top: 208px;
+    transform: scaleX(-1);
+    width: 29%;
+}
+
+.facodi-network-link-topic-resource {
+    border-top-color: rgba(93, 199, 255, 0.9);
+    height: 40px;
+    left: 54%;
+    top: 254px;
+    width: 28%;
+}
+
+.facodi-board-note {
+    line-height: 1.45;
+    margin: 14px 0 0;
+    padding: 12px 14px;
+}
 
 .facodi-dashboard {
     gap: 32px;
@@ -221,6 +356,135 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 .facodi-course-card { grid-template-columns: 76px 1fr; padding: 14px; }
 .facodi-course-art { border-radius: 12px; }
 
+.facodi-catalog-toolbar {
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(106, 75, 255, 0.08);
+    border-radius: 22px;
+    box-shadow: 0 12px 24px rgba(31, 30, 66, 0.06);
+    margin-bottom: 24px !important;
+    padding: 18px 20px;
+}
+
+.facodi-catalog-toolbar h1 {
+    font-size: clamp(2rem, 3vw, 3rem) !important;
+    font-weight: 760;
+    letter-spacing: -0.03em;
+}
+
+.o_wslides_wrap .search-query.form-control {
+    background: #FFF !important;
+    border: 1px solid rgba(106, 75, 255, 0.12) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 16px rgba(31, 30, 66, 0.05);
+    min-height: 52px;
+}
+
+.o_wslides_wrap .search-query.form-control::placeholder {
+    color: #7C799B !important;
+}
+
+.o_wslides_course_card > div:first-child {
+    background: linear-gradient(145deg, #151437, #282265 62%, #4A89E7);
+    position: relative;
+}
+
+.o_wslides_course_card > div:first-child::after {
+    background: linear-gradient(180deg, rgba(17, 16, 53, 0.15) 0%, rgba(17, 16, 53, 0.78) 100%);
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.o_wslides_course_card > div:first-child .badge.bg-secondary {
+    left: 14px !important;
+    top: 14px !important;
+    z-index: 2;
+}
+
+.o_wslides_course_card .o_wslides_background_image,
+.o_wslides_course_card .o_wslides_background_image img {
+    height: 100%;
+    width: 100%;
+}
+
+.o_wslides_course_card .o_wslides_background_image img {
+    filter: saturate(0.8) contrast(1.08);
+    object-fit: cover;
+    opacity: 0.72;
+}
+
+.facodi-course-cover-meta {
+    align-items: flex-end;
+    bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    left: 16px;
+    pointer-events: none;
+    position: absolute;
+    right: 16px;
+    z-index: 1;
+}
+
+.facodi-course-pill,
+.facodi-course-mark,
+.facodi-course-meta-pill,
+.facodi-course-meta-row span {
+    align-items: center;
+    border-radius: 999px;
+    display: inline-flex;
+    gap: 6px;
+}
+
+.facodi-course-pill,
+.facodi-course-mark {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #FFF;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 8px 10px;
+    text-transform: uppercase;
+}
+
+.facodi-course-mark {
+    background: rgba(93, 199, 255, 0.18);
+    min-width: 44px;
+    justify-content: center;
+}
+
+.facodi-course-meta-row {
+    color: #676485;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.facodi-course-meta-row span {
+    background: #F2EFFF;
+    border: 1px solid rgba(106, 75, 255, 0.08);
+    color: #4B4771;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 10px;
+}
+
+.facodi-course-meta-pill {
+    background: rgba(17, 16, 53, 0.92) !important;
+    color: #FFF !important;
+}
+
+.facodi-course-cta {
+    color: var(--facodi-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .facodi-course-card:hover,
 .o_wslides_course_card:hover {
     border-color: rgba(106, 75, 255, .55) !important;
@@ -259,9 +523,73 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
     margin-top: 72px;
 }
 
+footer#bottom .o_footer_copyright,
+footer#bottom .o_footer_scrolltop_wrapper {
+    display: none !important;
+}
+
+footer#bottom {
+    display: none !important;
+}
+
 .facodi-footer-inner { max-width: var(--facodi-container); padding: 48px 32px; }
 .facodi-footer p, .facodi-footer a { color: #D8D7E8 !important; }
 .facodi-footer a:hover { color: #8EDBFF !important; }
+
+#wrap .facodi-stat-card {
+    background: var(--facodi-surface) !important;
+    border: 1px solid var(--facodi-line) !important;
+    border-radius: var(--facodi-radius-md) !important;
+    box-shadow: 0 8px 20px rgba(31, 30, 66, 0.07) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 184px;
+    padding: 24px !important;
+}
+
+#wrap .facodi-stat-card > span,
+#wrap .facodi-stat-card > .facodi-panel-label {
+    color: var(--facodi-primary);
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+#wrap .facodi-stat-card > strong,
+#wrap .facodi-stat-card > h3 {
+    color: var(--facodi-heading) !important;
+    font-size: 1.45rem;
+    font-weight: 750;
+    line-height: 1.15;
+    margin: 0;
+}
+
+#wrap .facodi-stat-card > p,
+#wrap .facodi-stat-card > small,
+#wrap .facodi-stat-card > ul {
+    color: var(--facodi-muted) !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+#wrap .facodi-stat-card > ul {
+    padding-left: 1.2rem;
+}
+
+#wrap .facodi-stat-card > .fa {
+    align-self: flex-end;
+    color: var(--facodi-primary);
+    margin-top: auto;
+    position: static;
+}
+
+#wrap .facodi-community-card {
+    background: #EEF0FF !important;
+}
 
 .o_wslides_body .o_record_cover_container[data-res-model="slide.channel"] {
     background-color: #292060 !important;
@@ -272,17 +600,55 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 .o_wslides_lesson_header { padding-bottom: 30px !important; }
 .o_record_cover_container .o_wslides_course_header h1,
 .o_record_cover_container .o_wslides_lesson_header h1 { color: #FFF !important; }
+.o_record_cover_container .o_wslides_course_header p,
+.o_record_cover_container .o_wslides_course_header .text-muted,
+.o_record_cover_container .o_wslides_lesson_header p,
+.o_record_cover_container .o_wslides_lesson_header .text-muted,
+.o_record_cover_container .o_wslides_course_header .fa-star,
+.o_record_cover_container .o_wslides_lesson_header .fa-star {
+    color: rgba(255, 255, 255, 0.84) !important;
+}
 
 .o_wslides_course_main .container,
 .o_wslides_lesson_main { max-width: var(--facodi-container); }
 
 .o_wslides_course_nav,
 .o_wslides_lesson_nav,
-.breadcrumb {
+.o_wslides_body .breadcrumb {
     background: #FFF !important;
     border: 1px solid var(--facodi-line) !important;
     border-radius: var(--facodi-radius-sm) !important;
     box-shadow: none !important;
+}
+
+.o_record_cover_container .breadcrumb,
+.o_record_cover_container .breadcrumb a,
+.o_record_cover_container .breadcrumb-item.active,
+.o_record_cover_container .o_wslides_course_nav_search .input-group-text,
+.o_record_cover_container .o_wslides_course_nav_search .fa,
+.o_record_cover_container .o_wslides_course_nav_search .form-control {
+    color: #FFF !important;
+}
+
+.o_record_cover_container .breadcrumb {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.o_record_cover_container .o_wslides_course_nav_search {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    border-radius: 12px !important;
+}
+
+.o_record_cover_container .o_wslides_course_nav_search .form-control,
+.o_record_cover_container .o_wslides_course_nav_search .input-group-text {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+.o_record_cover_container .o_wslides_course_nav_search .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.72) !important;
 }
 
 .o_wslides_nav_tabs .nav-link,
@@ -310,6 +676,172 @@ p { color: var(--facodi-muted); text-wrap: pretty; }
 .o_wslides_slides_list_slide:hover { border-color: rgba(106, 75, 255, .5) !important; }
 .badge { border-radius: 999px; font-weight: 650; }
 
+.o_wslides_slides_list_slide {
+    gap: 10px;
+}
+
+.o_wslides_slides_list_slide .text-truncate {
+    overflow: visible !important;
+    white-space: normal !important;
+}
+
+.o_wslides_slides_list_slide .text-truncate > span,
+.o_wslides_slides_list_slide .text-truncate span {
+    white-space: normal !important;
+}
+
+.o_wslides_course_card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.o_wslides_course_card .card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 184px;
+}
+
+.o_wslides_course_card .card-footer {
+    gap: 10px;
+}
+
+.o_wslides_course_card .card-title,
+.o_wslides_course_card h3,
+.o_wslides_course_card p,
+.o_wslides_slides_list_slide,
+.facodi-timeline li > div,
+.facodi-timeline strong,
+.facodi-timeline small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.o_wslides_course_card .card-title,
+.o_wslides_course_card h3 {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 1.1rem !important;
+    line-clamp: 3;
+    margin: 0;
+    overflow: hidden;
+    white-space: normal !important;
+}
+
+.o_wslides_course_card p {
+    color: var(--facodi-muted) !important;
+    display: block;
+    flex: 1 1 auto;
+    margin: 0;
+}
+
+.o_wslides_course_card .card-text .o_line_clamp {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important;
+}
+
+.facodi-roadmap-card .facodi-panel-label,
+.facodi-community-card .facodi-panel-label {
+    margin-bottom: 16px;
+}
+
+.facodi-timeline {
+    display: grid;
+    gap: 16px;
+}
+
+.facodi-timeline li {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0;
+}
+
+.facodi-timeline li .fa {
+    flex: 0 0 auto;
+    margin-top: 4px;
+}
+
+.facodi-timeline li > div {
+    display: grid;
+    gap: 4px;
+}
+
+.facodi-timeline strong {
+    color: var(--facodi-heading) !important;
+    display: block;
+    font-family: "Jost", "Inter", "Segoe UI", system-ui, sans-serif !important;
+    font-size: 1.08rem !important;
+    font-weight: 700;
+    line-height: 1.28;
+    margin: 0 !important;
+    text-transform: none;
+}
+
+.facodi-timeline small {
+    color: var(--facodi-muted) !important;
+    display: block;
+    font-family: "Jost", "Inter", "Segoe UI", system-ui, sans-serif !important;
+    font-size: 0.98rem !important;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    text-transform: none;
+}
+
+.o_wslides_slides_list {
+    counter-reset: facodi-lesson;
+    position: relative;
+}
+
+.o_wslides_slides_list::before {
+    background: linear-gradient(180deg, rgba(106, 75, 255, 0.34), rgba(93, 199, 255, 0.18));
+    border-radius: 999px;
+    content: "";
+    left: 18px;
+    position: absolute;
+    top: 18px;
+    bottom: 24px;
+    width: 2px;
+}
+
+.o_wslides_slides_list .o_wslides_js_list_item {
+    counter-increment: facodi-lesson;
+    margin-left: 0 !important;
+    padding-left: 54px !important;
+    position: relative;
+}
+
+.o_wslides_slides_list .o_wslides_js_list_item::before {
+    align-items: center;
+    background: linear-gradient(135deg, #6A4BFF, #5DC7FF);
+    border: 3px solid #FFF;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(64, 50, 143, 0.18);
+    color: #FFF;
+    content: counter(facodi-lesson);
+    display: inline-flex;
+    font-size: 0.78rem;
+    font-weight: 700;
+    height: 28px;
+    justify-content: center;
+    left: 4px;
+    position: absolute;
+    top: calc(50% - 14px);
+    width: 28px;
+}
+
+.o_wslides_slides_list .o_wslides_js_list_item > .fa {
+    color: var(--facodi-primary);
+    margin-right: 8px !important;
+    position: relative;
+    z-index: 1;
+}
+
 a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible {
     outline: 3px solid rgba(93, 199, 255, .75) !important;
     outline-offset: 2px;
@@ -322,18 +854,90 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible {
 
 @media (max-width: 768px) {
     .facodi-nav-shell { padding: 0 16px !important; }
+    .facodi-header .navbar-collapse {
+        background: #FFF;
+        border: 1px solid var(--facodi-line);
+        border-radius: 22px;
+        box-shadow: 0 16px 30px rgba(31, 30, 66, .10);
+        margin-top: 14px;
+        padding: 12px 16px;
+    }
+    .facodi-header .navbar-nav { gap: 8px; }
     .facodi-hero { grid-template-columns: 1fr !important; min-height: auto; padding: 42px 20px !important; }
     .facodi-hero h1 { max-width: 11ch; }
     .facodi-hero-board { max-width: none; }
+    .facodi-network-map { grid-template-columns: 1fr; }
+    .facodi-network-node-course,
+    .facodi-network-node-year,
+    .facodi-network-node-unit,
+    .facodi-network-node-topic,
+    .facodi-network-node-resource {
+        grid-column: auto;
+        grid-row: auto;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .facodi-network-node-course::after,
+    .facodi-network-node-unit::after,
+    .facodi-network-node-topic::after {
+        left: calc(50% - 7px);
+        right: auto;
+        top: auto;
+        bottom: -8px;
+    }
+    .facodi-network-link {
+        border-left: 3px solid rgba(159, 139, 255, 0.95);
+        border-top: 0;
+        border-top-right-radius: 0;
+        left: 18px;
+        width: 0;
+    }
+    .facodi-network-link-course-year { height: 38px; top: 94px; }
+    .facodi-network-link-course-unit { height: 38px; top: 186px; transform: none; }
+    .facodi-network-link-unit-topic { height: 38px; top: 278px; transform: none; }
+    .facodi-network-link-topic-resource { height: 38px; top: 370px; }
     .facodi-course-grid { grid-template-columns: 1fr; }
+    .facodi-catalog-toolbar {
+        border-radius: 18px;
+        padding: 14px 16px;
+    }
+    .facodi-catalog-toolbar h1 {
+        font-size: 1.85rem !important;
+    }
     .facodi-open-section { border-radius: var(--facodi-radius-md); margin-left: 16px; margin-right: 16px; }
     .facodi-footer-inner { grid-template-columns: 1fr; padding: 42px 20px; }
+    .o_wslides_course_card .card-body { min-height: 0; }
+    .o_wslides_course_nav,
+    .o_wslides_lesson_nav { padding: 8px !important; }
+    .o_record_cover_container .o_wslides_course_nav_search { margin-top: 10px; }
 }
 
 @media (max-width: 390px) {
     .facodi-actions { display: grid; }
     .facodi-actions .btn { justify-content: center; width: 100%; }
     .facodi-dashboard { padding-left: 16px; padding-right: 16px; }
+    .facodi-timeline strong { font-size: 1rem !important; }
+    .facodi-timeline small { font-size: .92rem !important; }
+    .facodi-course-cover-meta {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+    .facodi-course-pill,
+    .facodi-course-mark {
+        font-size: 0.7rem;
+        padding: 6px 8px;
+    }
+    .facodi-course-cta {
+        display: none;
+    }
+    .o_wslides_wrap > .container > .row,
+    .o_wslides_course_header .container > .row,
+    .o_wslides_course_main .container > .row,
+    .o_wslides_lesson_main .container > .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -343,9 +947,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible {
     .facodi-header { background: rgba(13, 13, 32, .86) !important; }
     .facodi-wordmark, .facodi-header .nav-link { color: #F0F0FB !important; }
     .facodi-header .nav-link:hover { background: rgba(106, 75, 255, .25); }
-    .facodi-course-card, .o_wslides_course_card, .o_wslides_slides_list_slide, .o_wslides_slide_list_category_header, .o_wslides_lesson_card, .o_wslides_course_nav, .o_wslides_lesson_nav, .breadcrumb { background: #1A1A31 !important; border-color: #343452 !important; color: #F0F0FB !important; }
+    .facodi-course-card, .o_wslides_course_card, .o_wslides_slides_list_slide, .o_wslides_slide_list_category_header, .o_wslides_lesson_card, .o_wslides_course_nav, .o_wslides_lesson_nav, .o_wslides_body .breadcrumb { background: #1A1A31 !important; border-color: #343452 !important; color: #F0F0FB !important; }
     .facodi-open-section { background: #211E48 !important; }
     .o_wslides_course_card .card-footer { border-color: #343452; }
+    .o_record_cover_container .breadcrumb,
+    .o_record_cover_container .o_wslides_course_nav_search { background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 255, 255, 0.16) !important; }
+    .facodi-header .navbar-collapse { background: #16162C; border-color: #343452; }
+    .facodi-timeline strong { color: #F7F7FF !important; }
+    .facodi-network-node,
+    .facodi-board-note { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.12); }
+    .facodi-catalog-toolbar { background: rgba(18, 18, 41, 0.64); border-color: rgba(255, 255, 255, 0.08); }
+    .o_wslides_wrap .search-query.form-control { background: rgba(255, 255, 255, 0.05) !important; border-color: rgba(255, 255, 255, 0.12) !important; color: #F0F0FB !important; }
+    .o_wslides_wrap .search-query.form-control::placeholder { color: #B8B7CF !important; }
+    .facodi-course-meta-row span { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.09); color: #E1E0F3; }
+    .o_wslides_slides_list .o_wslides_js_list_item::before { border-color: #1A1A31; }
 }
 
 @media (prefers-reduced-motion: reduce) {

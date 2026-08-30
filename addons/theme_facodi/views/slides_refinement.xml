@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="facodi_courses_search_bar_refinement" inherit_id="website_slides.courses_search_bar" name="FACODI courses search bar refinement">
+        <xpath expr="//div[hasclass('d-flex')][1]" position="attributes">
+            <attribute name="class" add="facodi-catalog-toolbar" separator=" "/>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_card_refinement" inherit_id="website_slides.course_card" name="FACODI course card refinement">
+        <xpath expr="//t[@t-set='channel_frontend_tags']" position="after">
+            <t t-set="facodi_card_text" t-value="(channel.description_short or '').replace('&lt;p&gt;', '').replace('&lt;/p&gt;', '').replace('&amp;nbsp;', ' ').strip()"/>
+            <t t-set="facodi_card_code" t-value="facodi_card_text.split('Código oficial:')[-1].split('.')[0].strip() if 'Código oficial:' in facodi_card_text else ''"/>
+            <t t-set="facodi_card_ects" t-value="facodi_card_text.split('ECTS:')[-1].split('.')[0].strip() if 'ECTS:' in facodi_card_text else ''"/>
+            <t t-set="facodi_card_scope" t-value="'LESTI' if 'LESTI' in facodi_card_text or 'Tecnologias Informáticas' in facodi_card_text else ''"/>
+            <t t-set="facodi_card_initials" t-value="''.join([token[0] for token in (channel.name or '').split() if token and token.lower() not in ('e', 'de', 'da', 'do')][:3]).upper()"/>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_wslides_background_image')]" position="after">
+            <div class="facodi-course-cover-meta">
+                <span t-if="facodi_card_initials" class="facodi-course-mark" t-out="facodi_card_initials"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//h3[hasclass('card-title')]" position="after">
+            <div class="facodi-course-meta-row" t-if="facodi_card_scope or facodi_card_code or facodi_card_ects">
+                <span t-if="facodi_card_scope" class="facodi-course-meta-pill" t-out="facodi_card_scope"/>
+                <span t-if="facodi_card_code"><i class="fa fa-hashtag" aria-hidden="true"/> <t t-out="facodi_card_code"/></span>
+                <span t-if="facodi_card_ects"><i class="fa fa-bookmark-o" aria-hidden="true"/> <t t-out="facodi_card_ects"/> ECTS</span>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[contains(@t-attf-class, 'card-footer')]" position="inside">
+            <span t-if="not channel.is_member and not channel.completion and not channel.completed" class="facodi-course-cta ms-auto">Explorar trilha <i class="fa fa-arrow-right" aria-hidden="true"/></span>
+        </xpath>
+    </template>
+
+    <template id="facodi_course_card_new_content_badge" inherit_id="website_slides.course_card_information_badge" name="FACODI course card badge">
+        <xpath expr="//span" position="replace">
+            <span class="position-absolute top-0 badge bg-secondary mt-2 ms-2">Novo conteúdo</span>
+        </xpath>
+    </template>
+</odoo>
