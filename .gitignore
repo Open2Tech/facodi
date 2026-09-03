@@ -22,3 +22,6 @@ filestore/
 # Node tooling (if used for SCSS compilation outside Odoo)
 node_modules/
 package-lock.json
+
+# Local isolated feature worktrees
+.worktrees/
