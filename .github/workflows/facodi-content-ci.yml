@@ -1,0 +1,39 @@
+name: FACODI Content CI
+
+on:
+  push:
+    branches:
+      - feat/facodi-addon-v1
+    paths:
+      - "addons/facodi_content/**"
+      - "docker/**"
+      - "scripts/**"
+      - "compose.yaml"
+      - ".github/workflows/facodi-content-ci.yml"
+  pull_request:
+    paths:
+      - "addons/facodi_content/**"
+      - "docker/**"
+      - "scripts/**"
+      - "compose.yaml"
+      - ".github/workflows/facodi-content-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/validate_facodi_content.py
+
+  odoo-fresh-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/test_facodi_content.sh --fresh

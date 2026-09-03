@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-odoo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-odoo} -d ${POSTGRES_DB:-postgres}"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - facodi_postgres_data:/var/lib/postgresql/data
+
+  odoo:
+    build:
+      context: .
+      dockerfile: docker/odoo/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOST: db
+      USER: ${POSTGRES_USER:-odoo}
+      PASSWORD: ${POSTGRES_PASSWORD:-odoo}
+    ports:
+      - "${FACODI_ODOO_PORT:-8069}:8069"
+    volumes:
+      - ./addons:/mnt/extra-addons:ro
+      - ./docker/odoo/odoo.conf:/etc/odoo/odoo.conf:ro
+      - facodi_odoo_data:/var/lib/odoo
+
+volumes:
+  facodi_postgres_data:
+  facodi_odoo_data:
