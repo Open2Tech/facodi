@@ -30,6 +30,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/validate_facodi_content.py
+      - run: python -m unittest discover -s tests -p "test_*.py"
 
   odoo-fresh-install:
     runs-on: ubuntu-latest
