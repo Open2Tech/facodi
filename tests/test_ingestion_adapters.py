@@ -1,5 +1,6 @@
 import hashlib
 import importlib.util
+import json
 import sys
 from pathlib import Path
 from unittest import TestCase
@@ -33,6 +34,36 @@ class FakePage:
 class FakePdfReader:
     def __init__(self, _stream):
         self.pages = [FakePage("First page"), FakePage("Second page")]
+
+
+class FakeHttpResponse:
+    def __init__(self, body, *, url, content_type="application/json", status_code=200):
+        self.status_code = status_code
+        self.headers = {"Content-Type": content_type}
+        self.url = url
+        self._body = body
+        self.closed = False
+
+    def iter_content(self, chunk_size):
+        del chunk_size
+        yield self._body
+
+    def close(self):
+        self.closed = True
+
+
+class FakeHttpSession:
+    def __init__(self, responses):
+        self.responses = list(responses)
+        self.urls = []
+
+    def get(self, url, **_kwargs):
+        self.urls.append(url)
+        return self.responses.pop(0)
+
+
+def public_dns(*_args, **_kwargs):
+    return [(2, 1, 6, "", ("93.184.216.34", 443))]
 
 
 class TestIngestionAdapters(TestCase):
@@ -152,3 +183,89 @@ class TestIngestionAdapters(TestCase):
         self.assertEqual(result["snapshot_payload"]["sha256"], digest)
         self.assertEqual(result["snapshot_payload"]["byte_size"], len(payload))
 
+    def test_client_dispatches_youtube_to_oembed_through_safe_fetch(self):
+        ingestion = load_ingestion()
+        response_url = (
+            "https://www.youtube.com/oembed?"
+            "url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dabc123DEF45&format=json"
+        )
+        response = FakeHttpResponse(
+            b'{"title":"Vectors","author_name":"Open Lecturer","version":"1.0"}',
+            url=response_url,
+        )
+        session = FakeHttpSession([response])
+        client = ingestion.IngestionClient(session=session, resolver=public_dns)
+
+        result = client.ingest_url("https://youtu.be/abc123DEF45")
+
+        self.assertEqual(result["external_key"], "youtube:abc123DEF45")
+        self.assertEqual(result["name"], "Vectors")
+        self.assertEqual(session.urls, [response_url])
+        self.assertTrue(response.closed)
+
+    def test_client_dispatches_html_and_pdf_by_verified_content_type(self):
+        ingestion = load_ingestion()
+        html_url = "https://example.org/open-lesson"
+        pdf_url = "https://example.org/notes.pdf"
+        html_response = FakeHttpResponse(
+            b"<html><head><title>Open lesson</title></head><body>Vectors</body></html>",
+            url=html_url,
+            content_type="text/html; charset=utf-8",
+        )
+        pdf_response = FakeHttpResponse(
+            b"%PDF educational bytes",
+            url=pdf_url,
+            content_type="application/pdf",
+        )
+        session = FakeHttpSession([html_response, pdf_response])
+        client = ingestion.IngestionClient(
+            session=session,
+            resolver=public_dns,
+            pdf_reader_factory=FakePdfReader,
+        )
+
+        html_result = client.ingest_url(html_url)
+        pdf_result = client.ingest_url(pdf_url)
+
+        self.assertEqual(html_result["resource_type"], "article")
+        self.assertEqual(html_result["name"], "Open lesson")
+        self.assertEqual(pdf_result["resource_type"], "document")
+        self.assertEqual(pdf_result["content_text"], "First page\n\nSecond page")
+        self.assertEqual(session.urls, [html_url, pdf_url])
+
+    def test_client_discovers_one_youtube_page_without_returning_api_key(self):
+        ingestion = load_ingestion()
+        api_url = (
+            "https://www.googleapis.com/youtube/v3/playlistItems?"
+            "part=snippet%2CcontentDetails&maxResults=50&playlistId=PL_OPEN&"
+            "key=very-secret&pageToken=CURSOR"
+        )
+        payload = {
+            "nextPageToken": "NEXT",
+            "items": [
+                {
+                    "snippet": {
+                        "title": "Lesson",
+                        "resourceId": {"videoId": "aaa111BBB22"},
+                    }
+                }
+            ],
+        }
+        response = FakeHttpResponse(
+            json.dumps(payload).encode(),
+            url=api_url,
+        )
+        session = FakeHttpSession([response])
+        client = ingestion.IngestionClient(session=session, resolver=public_dns)
+
+        items, cursor = client.discover_youtube_page(
+            listing_type="playlist",
+            listing_id="PL_OPEN",
+            api_key="very-secret",
+            page_token="CURSOR",
+        )
+
+        self.assertEqual(cursor, "NEXT")
+        self.assertEqual(items[0]["external_key"], "youtube:aaa111BBB22")
+        self.assertNotIn("very-secret", json.dumps({"items": items, "cursor": cursor}))
+        self.assertEqual(session.urls, [api_url])

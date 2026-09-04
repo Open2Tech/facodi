@@ -1,10 +1,16 @@
 import hashlib
 import json
 import re
+import socket
 from html.parser import HTMLParser
 from io import BytesIO
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+try:
+    from .url_safety import fetch_url, redact_url
+except ImportError:  # Loaded directly by the dependency-free unit tests.
+    from url_safety import fetch_url, redact_url
 
 
 TRACKING_QUERY_KEYS = {
@@ -20,6 +26,10 @@ YOUTUBE_HOSTS = {
     "m.youtube.com",
 }
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
+
+
+class IngestionError(ValueError):
+    """Raised when a supported source cannot produce a normalised result."""
 
 
 def canonicalise_source_url(url):
@@ -331,3 +341,125 @@ def normalise_pdf(filename, payload, *, source_url="", reader_factory):
             "page_count": len(reader.pages),
         },
     )
+
+
+class IngestionClient:
+    """Network boundary for source adapters; it never writes Odoo records."""
+
+    def __init__(
+        self,
+        *,
+        session=None,
+        resolver=socket.getaddrinfo,
+        timeout=20,
+        max_bytes=10 * 1024 * 1024,
+        pdf_reader_factory=None,
+    ):
+        if session is None:
+            import requests
+
+            session = requests.Session()
+        self.session = session
+        self.resolver = resolver
+        self.timeout = timeout
+        self.max_bytes = max_bytes
+        self.pdf_reader_factory = pdf_reader_factory
+
+    def _fetch(self, url):
+        fetched = fetch_url(
+            url,
+            session=self.session,
+            resolver=self.resolver,
+            timeout=self.timeout,
+            max_bytes=self.max_bytes,
+        )
+        if not 200 <= fetched.status_code < 300:
+            raise IngestionError(
+                f"Source {redact_url(fetched.url)} returned HTTP {fetched.status_code}"
+            )
+        return fetched
+
+    @staticmethod
+    def _json_object(fetched):
+        try:
+            payload = json.loads(fetched.body.decode("utf-8"))
+        except (UnicodeDecodeError, ValueError) as error:
+            raise IngestionError("The source returned invalid JSON") from error
+        if not isinstance(payload, dict):
+            raise IngestionError("The source JSON root must be an object")
+        return payload
+
+    def ingest_url(self, source_url, *, language_code=""):
+        try:
+            video_id = youtube_video_id(source_url)
+        except ValueError:
+            video_id = ""
+        if video_id:
+            canonical_url = f"https://www.youtube.com/watch?v={video_id}"
+            endpoint = "https://www.youtube.com/oembed?" + urlencode(
+                [("url", canonical_url), ("format", "json")]
+            )
+            fetched = self._fetch(endpoint)
+            return normalise_youtube_oembed(
+                canonical_url,
+                self._json_object(fetched),
+                language_code=language_code,
+            )
+
+        canonical_url = canonicalise_source_url(source_url)
+        fetched = self._fetch(canonical_url)
+        content_type = (fetched.content_type or "").split(";", 1)[0].lower()
+        if content_type == "application/pdf" or fetched.body.startswith(b"%PDF"):
+            reader_factory = self.pdf_reader_factory
+            if reader_factory is None:
+                from odoo.tools.pdf import PdfFileReader
+
+                reader_factory = PdfFileReader
+            return normalise_pdf(
+                Path(urlsplit(fetched.url).path).name or "document.pdf",
+                fetched.body,
+                source_url=fetched.url,
+                reader_factory=reader_factory,
+            )
+        if content_type in {"text/html", "application/xhtml+xml"}:
+            return normalise_html(
+                fetched.url,
+                fetched.body,
+                headers=fetched.headers,
+            )
+        raise IngestionError(
+            f"Source {redact_url(fetched.url)} has unsupported content type"
+        )
+
+    def discover_youtube_page(
+        self,
+        *,
+        listing_type,
+        listing_id,
+        api_key,
+        page_token="",
+    ):
+        if listing_type == "playlist":
+            endpoint = "https://www.googleapis.com/youtube/v3/playlistItems"
+            parameters = [
+                ("part", "snippet,contentDetails"),
+                ("maxResults", "50"),
+                ("playlistId", str(listing_id)),
+                ("key", str(api_key)),
+            ]
+        elif listing_type == "channel":
+            endpoint = "https://www.googleapis.com/youtube/v3/search"
+            parameters = [
+                ("part", "snippet"),
+                ("maxResults", "50"),
+                ("channelId", str(listing_id)),
+                ("type", "video"),
+                ("order", "date"),
+                ("key", str(api_key)),
+            ]
+        else:
+            raise IngestionError("YouTube listing type must be playlist or channel")
+        if page_token:
+            parameters.append(("pageToken", str(page_token)))
+        fetched = self._fetch(endpoint + "?" + urlencode(parameters))
+        return normalise_youtube_listing_page(self._json_object(fetched))
