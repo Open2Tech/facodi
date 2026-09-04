@@ -1,4 +1,5 @@
 import json
+import base64
 
 from psycopg2 import IntegrityError
 
@@ -189,3 +190,36 @@ class TestFacodiCurriculum(FacodiCase):
                 filename="lei-2026.json",
             )
 
+    def test_import_wizard_creates_draft_and_returns_its_form(self):
+        payload = json.dumps(
+            {
+                "program": {"code": "BIO", "name": "Biology"},
+                "curriculum": {"version": "2026", "name": "Biology 2026"},
+                "periods": [
+                    {
+                        "year": 1,
+                        "semester": 1,
+                        "units": [
+                            {"code": "BIO101", "name": "Cell Biology", "ects": 6}
+                        ],
+                    }
+                ],
+            }
+        ).encode()
+        wizard = self.env["facodi.curriculum.import.wizard"].create(
+            {
+                "source_id": self.curriculum_source.id,
+                "institution_partner_id": self.institution.id,
+                "filename": "biology.json",
+                "payload_file": base64.b64encode(payload),
+            }
+        )
+
+        action = wizard.action_import()
+
+        plan = self.env["facodi.curriculum"].browse(action["res_id"])
+        self.assertTrue(plan.exists())
+        self.assertEqual(plan.state, "draft")
+        self.assertEqual(plan.program_id.code, "BIO")
+        self.assertEqual(plan.unit_ids.code, "BIO101")
+        self.assertEqual(action["res_model"], "facodi.curriculum")
