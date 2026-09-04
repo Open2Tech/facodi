@@ -32,3 +32,4 @@ access_facodi_unit_manager,facodi.course.unit manager,model_facodi_course_unit,g
 access_facodi_unit_concept_viewer,facodi.unit.concept viewer,model_facodi_unit_concept,group_facodi_viewer,1,0,0,0
 access_facodi_unit_concept_curator,facodi.unit.concept curator,model_facodi_unit_concept,group_facodi_curator,1,1,1,0
 access_facodi_unit_concept_manager,facodi.unit.concept manager,model_facodi_unit_concept,group_facodi_manager,1,1,1,1
+access_facodi_curriculum_import_wizard_curator,facodi.curriculum.import.wizard curator,model_facodi_curriculum_import_wizard,group_facodi_curator,1,1,1,1

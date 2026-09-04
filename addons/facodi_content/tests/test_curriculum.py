@@ -223,3 +223,4 @@ class TestFacodiCurriculum(FacodiCase):
         self.assertEqual(plan.program_id.code, "BIO")
         self.assertEqual(plan.unit_ids.code, "BIO101")
         self.assertEqual(action["res_model"], "facodi.curriculum")
+        self.assertEqual(plan.source_snapshot_id.attachment_id.name, "biology.json")

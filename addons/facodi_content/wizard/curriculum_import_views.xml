@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facodi_curriculum_import_wizard_form" model="ir.ui.view">
+        <field name="name">facodi.curriculum.import.wizard.form</field>
+        <field name="model">facodi.curriculum.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import university curriculum">
+                <group>
+                    <field name="source_id"/>
+                    <field name="institution_partner_id"/>
+                    <field name="filename" invisible="1"/>
+                    <field name="payload_file" filename="filename"/>
+                </group>
+                <footer>
+                    <button name="action_import" string="Import draft" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="facodi_curriculum_import_wizard_action" model="ir.actions.act_window">
+        <field name="name">Import Curriculum</field>
+        <field name="res_model">facodi.curriculum.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
