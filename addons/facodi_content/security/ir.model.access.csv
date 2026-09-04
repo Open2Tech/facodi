@@ -10,3 +10,6 @@ access_facodi_resource_manager,facodi.resource manager,model_facodi_resource,gro
 access_facodi_snapshot_viewer,facodi.resource.snapshot viewer,model_facodi_resource_snapshot,group_facodi_viewer,1,0,0,0
 access_facodi_snapshot_curator,facodi.resource.snapshot curator,model_facodi_resource_snapshot,group_facodi_curator,1,0,1,0
 access_facodi_snapshot_manager,facodi.resource.snapshot manager,model_facodi_resource_snapshot,group_facodi_manager,1,0,1,0
+access_facodi_job_viewer,facodi.job viewer,model_facodi_job,group_facodi_viewer,1,0,0,0
+access_facodi_job_curator,facodi.job curator,model_facodi_job,group_facodi_curator,1,1,1,0
+access_facodi_job_manager,facodi.job manager,model_facodi_job,group_facodi_manager,1,1,1,1
