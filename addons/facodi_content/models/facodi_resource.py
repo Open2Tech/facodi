@@ -54,6 +54,11 @@ class FacodiResource(models.Model):
     institution_partner_id = fields.Many2one("res.partner", ondelete="set null")
     publication_date = fields.Date()
     duration_minutes = fields.Float()
+    source_author_name = fields.Char(readonly=True)
+    source_institution_name = fields.Char(readonly=True)
+    mime_type = fields.Char(readonly=True)
+    content_text = fields.Text(readonly=True)
+    last_ingested_at = fields.Datetime(copy=False, readonly=True, index=True)
     state = fields.Selection(
         [
             ("discovered", "Discovered"),
@@ -227,6 +232,81 @@ class FacodiResource(models.Model):
         if self.current_snapshot_id != snapshot:
             self.current_snapshot_id = snapshot
         return snapshot
+
+    @api.model
+    def ingest_result(
+        self,
+        source,
+        result,
+        *,
+        attachment=None,
+        enqueue_enrichment=False,
+    ):
+        """Atomically materialise one normalised adapter result."""
+        source.ensure_one()
+        if not isinstance(result, dict):
+            raise ValidationError(_("An ingestion result must be a JSON object."))
+        external_key = str(result.get("external_key") or "").strip()
+        name = str(result.get("name") or "").strip()
+        snapshot_payload = result.get("snapshot_payload")
+        if not external_key or not name or not isinstance(snapshot_payload, dict):
+            raise ValidationError(
+                _("The ingestion result needs an identity, title and snapshot payload.")
+            )
+        resource = self.search(
+            [("source_id", "=", source.id), ("external_key", "=", external_key)],
+            limit=1,
+        )
+        common_values = {
+            "name": name,
+            "source_url": result.get("source_url") or False,
+            "resource_type": result.get("resource_type") or "external",
+            "source_language_code": result.get("source_language_code") or False,
+            "description": result.get("description") or False,
+            "publication_date": result.get("publication_date") or False,
+            "duration_minutes": float(result.get("duration_minutes") or 0.0),
+            "source_author_name": result.get("author_name") or False,
+            "source_institution_name": result.get("institution_name") or False,
+            "mime_type": result.get("mime_type") or False,
+            "content_text": result.get("content_text") or False,
+            "last_ingested_at": fields.Datetime.now(),
+        }
+        if not resource:
+            resource = self.create(
+                {
+                    **common_values,
+                    "company_id": source.company_id.id,
+                    "source_id": source.id,
+                    "external_key": external_key,
+                }
+            )
+        previous_snapshot = resource.current_snapshot_id
+        snapshot = resource.record_snapshot(
+            snapshot_payload,
+            source_version=result.get("source_version") or False,
+            attachment=attachment,
+        )
+        changed = not previous_snapshot or previous_snapshot != snapshot
+        values = {"last_ingested_at": common_values["last_ingested_at"]}
+        if changed:
+            values.update(common_values)
+            values["state"] = (
+                "stale" if resource.state == "published" else "rights_review"
+            )
+        resource.write(values)
+        if enqueue_enrichment:
+            self.env["facodi.job"].enqueue(
+                "enrich",
+                f"enrich:{resource.id}:{snapshot.checksum}",
+                {
+                    "resource_id": resource.id,
+                    "snapshot_id": snapshot.id,
+                    "snapshot_checksum": snapshot.checksum,
+                },
+                company=resource.company_id,
+                resource=resource,
+            )
+        return resource, snapshot, bool(changed)
 
     def _ensure_curator(self):
         if not self.env.is_superuser() and not self.env.user.has_group(
