@@ -216,6 +216,10 @@ class FacodiJob(models.Model):
             return self.env["facodi.resource"]._run_ingest_job(self.payload_json or {})
         if self.kind == "discover":
             return self.env["facodi.source"]._run_discovery_job(self.payload_json or {})
+        if self.kind == "enrich":
+            return self.env["facodi.analysis.run"]._run_enrichment_job(
+                self.payload_json or {}
+            )
         raise UserError(_("No handler is registered for job kind %s.", self.kind))
 
     @api.model

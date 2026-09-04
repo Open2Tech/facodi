@@ -33,3 +33,15 @@ access_facodi_unit_concept_viewer,facodi.unit.concept viewer,model_facodi_unit_c
 access_facodi_unit_concept_curator,facodi.unit.concept curator,model_facodi_unit_concept,group_facodi_curator,1,1,1,0
 access_facodi_unit_concept_manager,facodi.unit.concept manager,model_facodi_unit_concept,group_facodi_manager,1,1,1,1
 access_facodi_curriculum_import_wizard_curator,facodi.curriculum.import.wizard curator,model_facodi_curriculum_import_wizard,group_facodi_curator,1,1,1,1
+access_facodi_analysis_viewer,facodi.analysis.run viewer,model_facodi_analysis_run,group_facodi_viewer,1,0,0,0
+access_facodi_analysis_curator,facodi.analysis.run curator,model_facodi_analysis_run,group_facodi_curator,1,1,1,0
+access_facodi_analysis_manager,facodi.analysis.run manager,model_facodi_analysis_run,group_facodi_manager,1,1,1,1
+access_facodi_assertion_viewer,facodi.assertion viewer,model_facodi_assertion,group_facodi_viewer,1,0,0,0
+access_facodi_assertion_curator,facodi.assertion curator,model_facodi_assertion,group_facodi_curator,1,1,1,0
+access_facodi_assertion_manager,facodi.assertion manager,model_facodi_assertion,group_facodi_manager,1,1,1,1
+access_facodi_resource_concept_viewer,facodi.resource.concept viewer,model_facodi_resource_concept,group_facodi_viewer,1,0,0,0
+access_facodi_resource_concept_curator,facodi.resource.concept curator,model_facodi_resource_concept,group_facodi_curator,1,1,1,0
+access_facodi_resource_concept_manager,facodi.resource.concept manager,model_facodi_resource_concept,group_facodi_manager,1,1,1,1
+access_facodi_review_viewer,facodi.review viewer,model_facodi_review,group_facodi_viewer,1,0,0,0
+access_facodi_review_curator,facodi.review curator,model_facodi_review,group_facodi_curator,1,0,1,0
+access_facodi_review_manager,facodi.review manager,model_facodi_review,group_facodi_manager,1,0,1,0

@@ -61,6 +61,15 @@ class FacodiResource(models.Model):
     institution_partner_id = fields.Many2one("res.partner", ondelete="set null")
     publication_date = fields.Date()
     duration_minutes = fields.Float()
+    difficulty_level = fields.Selection(
+        [
+            ("beginner", "Beginner"),
+            ("intermediate", "Intermediate"),
+            ("advanced", "Advanced"),
+            ("expert", "Expert"),
+        ],
+        copy=False,
+    )
     source_author_name = fields.Char(readonly=True)
     source_institution_name = fields.Char(readonly=True)
     mime_type = fields.Char(readonly=True)
@@ -425,6 +434,46 @@ class FacodiResource(models.Model):
             "snapshot_id": snapshot.id,
             "changed": bool(changed),
         }
+
+    def queue_enrichment(self, *, requested_language_code=""):
+        self.ensure_one()
+        self._ensure_curator()
+        if not self.current_snapshot_id:
+            raise ValidationError(_("Ingest a resource snapshot before enrichment."))
+        parameters = self.env["ir.config_parameter"].sudo()
+        model_name = parameters.get_param("facodi.ai.model") or ""
+        prompt_version = parameters.get_param("facodi.ai.prompt_version") or "facodi-v1"
+        if not model_name:
+            raise ValidationError(_("Configure the FACODI AI model first."))
+        input_payload = {
+            "resource": {
+                "name": self.name,
+                "description": str(self.description or ""),
+                "resource_type": self.resource_type,
+                "source_language_code": self.source_language_code or "",
+            },
+            "snapshot": self.current_snapshot_id.payload_json,
+        }
+        run = self.env["facodi.analysis.run"].get_or_create(
+            resource=self,
+            snapshot=self.current_snapshot_id,
+            provider="openai_compatible",
+            model_name=model_name,
+            prompt_version=prompt_version,
+            source_language_code=self.source_language_code or "",
+            requested_language_code=requested_language_code or "",
+            input_payload=input_payload,
+        )
+        job = self.env["facodi.job"].enqueue(
+            "enrich",
+            f"enrich:{run.id}:{run.input_hash}",
+            {"analysis_run_id": run.id},
+            company=self.company_id,
+            resource=self,
+        )
+        if self.state not in {"published", "stale", "rejected"}:
+            self.state = "enrichment"
+        return run, job
 
     def _ensure_curator(self):
         if not self.env.is_superuser() and not self.env.user.has_group(
