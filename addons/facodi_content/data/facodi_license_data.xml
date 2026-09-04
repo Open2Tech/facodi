@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="license_cc0_1_0" model="facodi.license">
+        <field name="name">Creative Commons CC0 1.0</field>
+        <field name="code">CC0-1.0</field>
+        <field name="url">https://creativecommons.org/publicdomain/zero/1.0/</field>
+        <field name="allows_redistribution">True</field>
+        <field name="attribution_required">False</field>
+    </record>
+    <record id="license_cc_by_4_0" model="facodi.license">
+        <field name="name">Creative Commons Attribution 4.0</field>
+        <field name="code">CC-BY-4.0</field>
+        <field name="url">https://creativecommons.org/licenses/by/4.0/</field>
+        <field name="allows_redistribution">True</field>
+    </record>
+    <record id="license_cc_by_sa_4_0" model="facodi.license">
+        <field name="name">Creative Commons Attribution-ShareAlike 4.0</field>
+        <field name="code">CC-BY-SA-4.0</field>
+        <field name="url">https://creativecommons.org/licenses/by-sa/4.0/</field>
+        <field name="allows_redistribution">True</field>
+        <field name="share_alike">True</field>
+    </record>
+    <record id="license_public_domain" model="facodi.license">
+        <field name="name">Public Domain</field>
+        <field name="code">PUBLIC-DOMAIN</field>
+        <field name="allows_redistribution">True</field>
+        <field name="attribution_required">False</field>
+    </record>
+    <record id="license_external_link" model="facodi.license">
+        <field name="name">External Link Only</field>
+        <field name="code">EXTERNAL-LINK</field>
+        <field name="allows_redistribution">False</field>
+    </record>
+    <record id="license_metadata_only" model="facodi.license">
+        <field name="name">Metadata Only</field>
+        <field name="code">METADATA-ONLY</field>
+        <field name="allows_redistribution">False</field>
+        <field name="allows_embed">False</field>
+        <field name="metadata_only">True</field>
+    </record>
+    <record id="license_unknown" model="facodi.license">
+        <field name="name">Unknown — Review Required</field>
+        <field name="code">UNKNOWN</field>
+        <field name="allows_redistribution">False</field>
+        <field name="allows_embed">False</field>
+        <field name="allows_link">False</field>
+    </record>
+</odoo>

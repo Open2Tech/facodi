@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_facodi_source_viewer,facodi.source viewer,model_facodi_source,group_facodi_viewer,1,0,0,0
+access_facodi_source_curator,facodi.source curator,model_facodi_source,group_facodi_curator,1,1,1,0
+access_facodi_source_manager,facodi.source manager,model_facodi_source,group_facodi_manager,1,1,1,1
+access_facodi_license_viewer,facodi.license viewer,model_facodi_license,group_facodi_viewer,1,0,0,0
+access_facodi_license_manager,facodi.license manager,model_facodi_license,group_facodi_manager,1,1,1,1
+access_facodi_resource_viewer,facodi.resource viewer,model_facodi_resource,group_facodi_viewer,1,0,0,0
+access_facodi_resource_curator,facodi.resource curator,model_facodi_resource,group_facodi_curator,1,1,1,0
+access_facodi_resource_manager,facodi.resource manager,model_facodi_resource,group_facodi_manager,1,1,1,1
+access_facodi_snapshot_viewer,facodi.resource.snapshot viewer,model_facodi_resource_snapshot,group_facodi_viewer,1,0,0,0
+access_facodi_snapshot_curator,facodi.resource.snapshot curator,model_facodi_resource_snapshot,group_facodi_curator,1,0,1,0
+access_facodi_snapshot_manager,facodi.resource.snapshot manager,model_facodi_resource_snapshot,group_facodi_manager,1,0,1,0

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_groups_privilege_facodi" model="res.groups.privilege">
+        <field name="name">FACODI</field>
+        <field name="sequence">22</field>
+        <field name="category_id" ref="base.module_category_website"/>
+    </record>
+
+    <record id="group_facodi_viewer" model="res.groups">
+        <field name="name">Viewer</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_facodi"/>
+    </record>
+
+    <record id="group_facodi_curator" model="res.groups">
+        <field name="name">Curator</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_facodi"/>
+        <field name="implied_ids" eval="[(4, ref('group_facodi_viewer')), (4, ref('website_slides.group_website_slides_officer'))]"/>
+    </record>
+
+    <record id="group_facodi_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="sequence">30</field>
+        <field name="privilege_id" ref="res_groups_privilege_facodi"/>
+        <field name="implied_ids" eval="[(4, ref('group_facodi_curator')), (4, ref('website_slides.group_website_slides_manager'))]"/>
+    </record>
+
+    <data noupdate="1">
+        <record id="rule_facodi_source_company" model="ir.rule">
+            <field name="name">FACODI source: allowed companies</field>
+            <field name="model_id" ref="model_facodi_source"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_resource_company" model="ir.rule">
+            <field name="name">FACODI resource: allowed companies</field>
+            <field name="model_id" ref="model_facodi_resource"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_snapshot_company" model="ir.rule">
+            <field name="name">FACODI snapshot: allowed companies</field>
+            <field name="model_id" ref="model_facodi_resource_snapshot"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>
