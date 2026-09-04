@@ -4,6 +4,13 @@ import json
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, ValidationError
 
+from ..services.ingestion import (
+    IngestionClient,
+    canonicalise_source_url,
+    normalise_pdf,
+    youtube_video_id,
+)
+
 
 class FacodiResource(models.Model):
     _name = "facodi.resource"
@@ -307,6 +314,117 @@ class FacodiResource(models.Model):
                 resource=resource,
             )
         return resource, snapshot, bool(changed)
+
+    @api.model
+    def enqueue_url_ingestion(
+        self,
+        source,
+        url,
+        *,
+        language_code="",
+        enqueue_enrichment=False,
+    ):
+        source.ensure_one()
+        try:
+            video_id = youtube_video_id(url)
+        except ValueError:
+            canonical_url = canonicalise_source_url(url)
+        else:
+            canonical_url = f"https://www.youtube.com/watch?v={video_id}"
+        digest = hashlib.sha256(canonical_url.encode("utf-8")).hexdigest()
+        return self.env["facodi.job"].enqueue(
+            "ingest",
+            f"ingest:url:{source.id}:{digest}",
+            {
+                "source_id": source.id,
+                "url": canonical_url,
+                "language_code": str(language_code or ""),
+                "enqueue_enrichment": bool(enqueue_enrichment),
+            },
+            company=source.company_id,
+        )
+
+    @api.model
+    def enqueue_attachment_ingestion(
+        self,
+        source,
+        attachment,
+        *,
+        enqueue_enrichment=False,
+    ):
+        source.ensure_one()
+        attachment.ensure_one()
+        digest = attachment.checksum or hashlib.sha256(attachment.raw or b"").hexdigest()
+        return self.env["facodi.job"].enqueue(
+            "ingest",
+            f"ingest:attachment:{source.id}:{digest}",
+            {
+                "source_id": source.id,
+                "attachment_id": attachment.id,
+                "enqueue_enrichment": bool(enqueue_enrichment),
+            },
+            company=source.company_id,
+        )
+
+    @api.model
+    def _ingestion_client(self):
+        parameters = self.env["ir.config_parameter"].sudo()
+        try:
+            timeout = int(parameters.get_param("facodi.connector.timeout") or 20)
+        except (TypeError, ValueError):
+            timeout = 20
+        try:
+            max_bytes = int(
+                parameters.get_param("facodi.connector.max_bytes")
+                or 10 * 1024 * 1024
+            )
+        except (TypeError, ValueError):
+            max_bytes = 10 * 1024 * 1024
+        return IngestionClient(
+            timeout=max(1, min(timeout, 60)),
+            max_bytes=max(1024, min(max_bytes, 50 * 1024 * 1024)),
+        )
+
+    @api.model
+    def _run_ingest_job(self, payload):
+        source = self.env["facodi.source"].browse(
+            int(payload.get("source_id") or 0)
+        ).exists()
+        if not source:
+            raise ValidationError(_("The ingestion source no longer exists."))
+        source.ensure_one()
+        attachment = self.env["ir.attachment"]
+        if payload.get("attachment_id"):
+            attachment = self.env["ir.attachment"].browse(
+                int(payload["attachment_id"])
+            ).exists()
+            if not attachment:
+                raise ValidationError(_("The uploaded document no longer exists."))
+            from odoo.tools.pdf import PdfFileReader
+
+            result = normalise_pdf(
+                attachment.name,
+                attachment.raw or b"",
+                reader_factory=PdfFileReader,
+            )
+        elif payload.get("url"):
+            result = self._ingestion_client().ingest_url(
+                payload["url"],
+                language_code=payload.get("language_code") or "",
+            )
+        else:
+            raise ValidationError(_("The ingestion job has no URL or attachment."))
+        resource, snapshot, changed = self.ingest_result(
+            source,
+            result,
+            attachment=attachment or None,
+            enqueue_enrichment=bool(payload.get("enqueue_enrichment")),
+        )
+        return {
+            "resource_id": resource.id,
+            "snapshot_id": snapshot.id,
+            "changed": bool(changed),
+        }
 
     def _ensure_curator(self):
         if not self.env.is_superuser() and not self.env.user.has_group(

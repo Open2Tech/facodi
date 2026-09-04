@@ -6,6 +6,7 @@ from markupsafe import Markup, escape
 
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, UserError
+from odoo.tools import html2plaintext
 
 _logger = logging.getLogger(__name__)
 
@@ -18,6 +19,14 @@ class FacodiSlideSlide(models.Model):
     _facodi_source_key_unique = models.Constraint(
         'UNIQUE(facodi_source_key)',
         'The FACODI source key must be unique.',
+    )
+
+    facodi_resource_id = fields.Many2one(
+        "facodi.resource",
+        string="FACODI Resource",
+        copy=False,
+        index=True,
+        ondelete="set null",
     )
 
     facodi_source_key = fields.Char(
@@ -89,6 +98,63 @@ class FacodiSlideSlide(models.Model):
                 'enrichment_updated_at': fields.Datetime.now(),
             })
         return True
+
+    def action_sync_facodi_resource(self):
+        self.ensure_one()
+        self._ensure_enrichment_editor()
+        company = self.env.company
+        source = self.env["facodi.source"].search(
+            [("code", "=", "odoo-elearning"), ("company_id", "=", company.id)],
+            limit=1,
+        )
+        if not source:
+            source = self.env["facodi.source"].create(
+                {
+                    "name": "Odoo eLearning",
+                    "code": "odoo-elearning",
+                    "source_type": "odoo",
+                    "company_id": company.id,
+                }
+            )
+        resource_type = {
+            "video": "video",
+            "document": "document",
+            "article": "article",
+            "quiz": "quiz",
+            "infographic": "document",
+        }.get(self.slide_category, "external")
+        result = {
+            "external_key": f"slide:{self.id}",
+            "source_url": self.url or "",
+            "resource_type": resource_type,
+            "name": self.name,
+            "description": str(self.description or self.html_content or ""),
+            "content_text": html2plaintext(
+                str(self.html_content or self.description or "")
+            ),
+            "mime_type": "text/html",
+            "source_version": fields.Datetime.to_string(self.write_date),
+            "snapshot_payload": {
+                "schema_version": 1,
+                "provider": "odoo",
+                "model": self._name,
+                "record_id": self.id,
+                "facts": {
+                    "name": self.name,
+                    "slide_category": self.slide_category,
+                    "url": self.url or "",
+                    "html_content": str(self.html_content or ""),
+                    "channel_id": self.channel_id.id,
+                },
+            },
+        }
+        resource, _snapshot, _changed = self.env["facodi.resource"].ingest_result(
+            source,
+            result,
+        )
+        if self.facodi_resource_id != resource:
+            self.facodi_resource_id = resource
+        return resource
 
     @api.model
     def _cron_refresh_enrichment(self):

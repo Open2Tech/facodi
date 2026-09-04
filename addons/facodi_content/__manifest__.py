@@ -27,6 +27,7 @@ automatically: editors review and apply suggestions explicitly.
         'data/ir_cron.xml',
         'views/slide_channel_views.xml',
         'views/slide_slide_views.xml',
+        'wizard/ingest_resource_views.xml',
     ],
     'images': ['static/description/facodi_content_preview.svg'],
     'application': True,

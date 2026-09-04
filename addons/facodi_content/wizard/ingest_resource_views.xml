@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facodi_ingest_resource_wizard_form" model="ir.ui.view">
+        <field name="name">facodi.ingest.resource.wizard.form</field>
+        <field name="model">facodi.ingest.resource.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Ingest educational resources">
+                <group>
+                    <field name="source_id"/>
+                    <field name="source_url" placeholder="https://…"/>
+                    <field name="batch_urls" placeholder="One HTTPS URL per line"/>
+                    <field name="attachment_id"/>
+                    <field name="source_language_code"/>
+                    <field name="enqueue_enrichment"/>
+                </group>
+                <footer>
+                    <button name="action_enqueue" string="Queue ingestion" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="facodi_ingest_resource_wizard_action" model="ir.actions.act_window">
+        <field name="name">Ingest Resources</field>
+        <field name="res_model">facodi.ingest.resource.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_ids" eval="[(4, ref('facodi_content.group_facodi_curator'))]"/>
+    </record>
+</odoo>
