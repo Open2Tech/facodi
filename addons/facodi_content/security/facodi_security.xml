@@ -51,5 +51,41 @@
             <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
             <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         </record>
+        <record id="rule_facodi_concept_company" model="ir.rule">
+            <field name="name">FACODI concept: allowed companies</field>
+            <field name="model_id" ref="model_facodi_concept"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_program_company" model="ir.rule">
+            <field name="name">FACODI programme: allowed companies</field>
+            <field name="model_id" ref="model_facodi_program"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_curriculum_company" model="ir.rule">
+            <field name="name">FACODI curriculum: allowed companies</field>
+            <field name="model_id" ref="model_facodi_curriculum"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_period_company" model="ir.rule">
+            <field name="name">FACODI period: allowed companies</field>
+            <field name="model_id" ref="model_facodi_curriculum_period"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_unit_company" model="ir.rule">
+            <field name="name">FACODI unit: allowed companies</field>
+            <field name="model_id" ref="model_facodi_course_unit"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_unit_concept_company" model="ir.rule">
+            <field name="name">FACODI unit concept: allowed companies</field>
+            <field name="model_id" ref="model_facodi_unit_concept"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
     </data>
 </odoo>

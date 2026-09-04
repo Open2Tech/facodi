@@ -1,3 +1,5 @@
+from . import facodi_concept
+from . import facodi_curriculum
 from . import facodi_license
 from . import facodi_job
 from . import facodi_resource
