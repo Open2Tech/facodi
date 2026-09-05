@@ -1,5 +1,5 @@
-from odoo import _, fields, models
-from odoo.exceptions import UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 
 class FacodiReview(models.Model):
@@ -9,22 +9,29 @@ class FacodiReview(models.Model):
 
     assertion_id = fields.Many2one(
         "facodi.assertion",
-        required=True,
+        ondelete="restrict",
+        index=True,
+    )
+    match_id = fields.Many2one(
+        "facodi.resource.unit.match",
         ondelete="restrict",
         index=True,
     )
     analysis_run_id = fields.Many2one(
-        related="assertion_id.analysis_run_id",
+        "facodi.analysis.run",
+        compute="_compute_subject_context",
         store=True,
         index=True,
     )
     resource_id = fields.Many2one(
-        related="assertion_id.resource_id",
+        "facodi.resource",
+        compute="_compute_subject_context",
         store=True,
         index=True,
     )
     company_id = fields.Many2one(
-        related="assertion_id.company_id",
+        "res.company",
+        compute="_compute_subject_context",
         store=True,
         index=True,
     )
@@ -48,6 +55,33 @@ class FacodiReview(models.Model):
         "UNIQUE(assertion_id)",
         "An AI assertion can receive only one terminal human decision.",
     )
+    _match_review_unique = models.Constraint(
+        "UNIQUE(match_id)",
+        "A match can receive only one terminal human decision.",
+    )
+
+    @api.depends(
+        "assertion_id.analysis_run_id",
+        "assertion_id.resource_id",
+        "assertion_id.company_id",
+        "match_id.analysis_run_id",
+        "match_id.resource_id",
+        "match_id.company_id",
+    )
+    def _compute_subject_context(self):
+        for review in self:
+            subject = review.assertion_id or review.match_id
+            review.analysis_run_id = subject.analysis_run_id if subject else False
+            review.resource_id = subject.resource_id if subject else False
+            review.company_id = subject.company_id if subject else False
+
+    @api.constrains("assertion_id", "match_id")
+    def _check_subject(self):
+        for review in self:
+            if bool(review.assertion_id) == bool(review.match_id):
+                raise ValidationError(
+                    _("A human review must target exactly one assertion or match.")
+                )
 
     def write(self, values):
         raise UserError(_("Human review records are immutable."))

@@ -430,6 +430,14 @@ class FacodiCourseUnit(models.Model):
     name = fields.Char(required=True, translate=True, tracking=True)
     description = fields.Html(translate=True, sanitize_overridable=True)
     ects = fields.Float(string="ECTS", default=0.0)
+    difficulty_level = fields.Selection(
+        [
+            ("beginner", "Beginner"),
+            ("intermediate", "Intermediate"),
+            ("advanced", "Advanced"),
+            ("expert", "Expert"),
+        ],
+    )
     native_channel_id = fields.Many2one(
         "slide.channel",
         string="Odoo eLearning Course",
@@ -478,6 +486,32 @@ class FacodiCourseUnit(models.Model):
         for unit in self:
             if unit.ects < 0 or unit.ects > 60:
                 raise ValidationError(_("ECTS must be between 0 and 60."))
+
+    def action_generate_match_candidates(self):
+        self.ensure_one()
+        return self.env["facodi.resource.unit.match"].generate_for_unit(self)
+
+    def action_queue_matching(self):
+        self.ensure_one()
+        return self.env["facodi.job"].enqueue(
+            "match",
+            f"match:unit:{self.id}:{fields.Datetime.now()}",
+            {"unit_id": self.id},
+            company=self.company_id,
+        )
+
+    def action_compute_coverage(self):
+        self.ensure_one()
+        return self.env["facodi.coverage"].compute_for_unit(self)
+
+    def action_queue_coverage(self):
+        self.ensure_one()
+        return self.env["facodi.job"].enqueue(
+            "coverage",
+            f"coverage:unit:{self.id}:{fields.Datetime.now()}",
+            {"unit_id": self.id},
+            company=self.company_id,
+        )
 
 
 class FacodiUnitConcept(models.Model):

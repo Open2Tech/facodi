@@ -45,3 +45,12 @@ access_facodi_resource_concept_manager,facodi.resource.concept manager,model_fac
 access_facodi_review_viewer,facodi.review viewer,model_facodi_review,group_facodi_viewer,1,0,0,0
 access_facodi_review_curator,facodi.review curator,model_facodi_review,group_facodi_curator,1,0,1,0
 access_facodi_review_manager,facodi.review manager,model_facodi_review,group_facodi_manager,1,0,1,0
+access_facodi_match_viewer,facodi.resource.unit.match viewer,model_facodi_resource_unit_match,group_facodi_viewer,1,0,0,0
+access_facodi_match_curator,facodi.resource.unit.match curator,model_facodi_resource_unit_match,group_facodi_curator,1,1,1,0
+access_facodi_match_manager,facodi.resource.unit.match manager,model_facodi_resource_unit_match,group_facodi_manager,1,1,1,1
+access_facodi_coverage_viewer,facodi.coverage viewer,model_facodi_coverage,group_facodi_viewer,1,0,0,0
+access_facodi_coverage_curator,facodi.coverage curator,model_facodi_coverage,group_facodi_curator,1,1,1,0
+access_facodi_coverage_manager,facodi.coverage manager,model_facodi_coverage,group_facodi_manager,1,1,1,1
+access_facodi_coverage_line_viewer,facodi.coverage.line viewer,model_facodi_coverage_line,group_facodi_viewer,1,0,0,0
+access_facodi_coverage_line_curator,facodi.coverage.line curator,model_facodi_coverage_line,group_facodi_curator,1,1,1,0
+access_facodi_coverage_line_manager,facodi.coverage.line manager,model_facodi_coverage_line,group_facodi_manager,1,1,1,1
