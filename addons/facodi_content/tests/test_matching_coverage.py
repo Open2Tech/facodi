@@ -117,6 +117,7 @@ class TestFacodiMatchingCoverage(FacodiCase):
 
     def test_shared_concept_identity_supports_cross_language_matching(self):
         resource, relation = self._resource_with_concept("english", self.vectors)
+        self.env["res.lang"]._activate_lang("pt_PT")
         self.vectors.with_context(lang="pt_PT").name = "Vetores"
         resource.source_language_code = "en"
 
@@ -170,4 +171,3 @@ class TestFacodiMatchingCoverage(FacodiCase):
         self.assertAlmostEqual(covered.overall_score, 0.324)
         self.assertEqual(covered.resource_count, 3)
         self.assertTrue(covered.input_fingerprint)
-
