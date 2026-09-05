@@ -1,4 +1,5 @@
 from . import test_ai_curation
+from . import test_composition_publication
 from . import test_resource_provenance
 from . import test_security
 from . import test_job_queue
