@@ -22,6 +22,11 @@ class FacodiReview(models.Model):
         ondelete="restrict",
         index=True,
     )
+    update_id = fields.Many2one(
+        "facodi.resource.update",
+        ondelete="restrict",
+        index=True,
+    )
     analysis_run_id = fields.Many2one(
         "facodi.analysis.run",
         compute="_compute_subject_context",
@@ -74,26 +79,38 @@ class FacodiReview(models.Model):
         "match_id.company_id",
         "composition_id.analysis_run_id",
         "composition_id.company_id",
+        "update_id.resource_id",
+        "update_id.company_id",
     )
     def _compute_subject_context(self):
         for review in self:
-            subject = review.assertion_id or review.match_id
-            review.analysis_run_id = (
-                subject.analysis_run_id
-                if subject
-                else review.composition_id.analysis_run_id
-            )
-            review.resource_id = subject.resource_id if subject else False
-            review.company_id = (
-                subject.company_id if subject else review.composition_id.company_id
-            )
+            if review.assertion_id:
+                review.analysis_run_id = review.assertion_id.analysis_run_id
+                review.resource_id = review.assertion_id.resource_id
+                review.company_id = review.assertion_id.company_id
+            elif review.match_id:
+                review.analysis_run_id = review.match_id.analysis_run_id
+                review.resource_id = review.match_id.resource_id
+                review.company_id = review.match_id.company_id
+            elif review.update_id:
+                review.analysis_run_id = False
+                review.resource_id = review.update_id.resource_id
+                review.company_id = review.update_id.company_id
+            else:
+                review.analysis_run_id = review.composition_id.analysis_run_id
+                review.resource_id = False
+                review.company_id = review.composition_id.company_id
 
     _composition_review_unique = models.Constraint(
         "UNIQUE(composition_id)",
         "A composition can receive only one terminal human decision.",
     )
+    _update_review_unique = models.Constraint(
+        "UNIQUE(update_id)",
+        "A resource update can receive only one terminal human decision.",
+    )
 
-    @api.constrains("assertion_id", "match_id", "composition_id")
+    @api.constrains("assertion_id", "match_id", "composition_id", "update_id")
     def _check_subject(self):
         for review in self:
             subject_count = sum(
@@ -102,13 +119,14 @@ class FacodiReview(models.Model):
                     review.assertion_id,
                     review.match_id,
                     review.composition_id,
+                    review.update_id,
                 )
             )
             if subject_count != 1:
                 raise ValidationError(
                     _(
-                        "A human review must target exactly one assertion, match or "
-                        "composition."
+                        "A human review must target exactly one assertion, match, "
+                        "composition or resource update."
                     )
                 )
 

@@ -18,4 +18,13 @@
         <field name="interval_type">minutes</field>
         <field name="active">True</field>
     </record>
+    <record id="ir_cron_schedule_facodi_refresh" model="ir.cron">
+        <field name="name">FACODI: Schedule resource refresh</field>
+        <field name="model_id" ref="model_facodi_resource"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_queue_due_refresh()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
 </odoo>

@@ -11,5 +11,6 @@ from . import facodi_resource
 from . import facodi_review
 from . import facodi_snapshot
 from . import facodi_source
+from . import facodi_update
 from . import slide_channel
 from . import slide_slide

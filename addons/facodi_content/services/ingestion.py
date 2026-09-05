@@ -365,15 +365,17 @@ class IngestionClient:
         self.max_bytes = max_bytes
         self.pdf_reader_factory = pdf_reader_factory
 
-    def _fetch(self, url):
+    def _fetch(self, url, *, request_headers=None, accepted_statuses=None):
         fetched = fetch_url(
             url,
             session=self.session,
             resolver=self.resolver,
             timeout=self.timeout,
             max_bytes=self.max_bytes,
+            headers=request_headers,
         )
-        if not 200 <= fetched.status_code < 300:
+        accepted_statuses = set(accepted_statuses or ())
+        if not 200 <= fetched.status_code < 300 and fetched.status_code not in accepted_statuses:
             raise IngestionError(
                 f"Source {redact_url(fetched.url)} returned HTTP {fetched.status_code}"
             )
@@ -430,6 +432,83 @@ class IngestionClient:
         raise IngestionError(
             f"Source {redact_url(fetched.url)} has unsupported content type"
         )
+
+    def refresh_url(
+        self,
+        source_url,
+        *,
+        etag="",
+        last_modified="",
+        language_code="",
+    ):
+        """Conditionally fetch one canonical source without writing any model."""
+
+        request_headers = {}
+        if etag:
+            request_headers["If-None-Match"] = str(etag)
+        if last_modified:
+            request_headers["If-Modified-Since"] = str(last_modified)
+        try:
+            video_id = youtube_video_id(source_url)
+        except ValueError:
+            video_id = ""
+        if video_id:
+            canonical_url = f"https://www.youtube.com/watch?v={video_id}"
+            endpoint = "https://www.youtube.com/oembed?" + urlencode(
+                [("url", canonical_url), ("format", "json")]
+            )
+        else:
+            canonical_url = canonicalise_source_url(source_url)
+            endpoint = canonical_url
+        fetched = self._fetch(
+            endpoint,
+            request_headers=request_headers,
+            accepted_statuses={304, 404, 410},
+        )
+        response_headers = {
+            str(key).lower(): value for key, value in fetched.headers.items()
+        }
+        validators = {
+            "etag": str(response_headers.get("etag") or etag or ""),
+            "last_modified": str(
+                response_headers.get("last-modified") or last_modified or ""
+            ),
+        }
+        if fetched.status_code == 304:
+            return {"status": "not_modified", **validators}
+        if fetched.status_code in {404, 410}:
+            return {"status": "missing", **validators}
+        if video_id:
+            result = normalise_youtube_oembed(
+                canonical_url,
+                self._json_object(fetched),
+                language_code=language_code,
+            )
+        else:
+            content_type = (fetched.content_type or "").split(";", 1)[0].lower()
+            if content_type == "application/pdf" or fetched.body.startswith(b"%PDF"):
+                reader_factory = self.pdf_reader_factory
+                if reader_factory is None:
+                    from odoo.tools.pdf import PdfFileReader
+
+                    reader_factory = PdfFileReader
+                result = normalise_pdf(
+                    Path(urlsplit(fetched.url).path).name or "document.pdf",
+                    fetched.body,
+                    source_url=fetched.url,
+                    reader_factory=reader_factory,
+                )
+            elif content_type in {"text/html", "application/xhtml+xml"}:
+                result = normalise_html(
+                    fetched.url,
+                    fetched.body,
+                    headers=fetched.headers,
+                )
+            else:
+                raise IngestionError(
+                    f"Source {redact_url(fetched.url)} has unsupported content type"
+                )
+        return {"status": "changed", "result": result, **validators}
 
     def discover_youtube_page(
         self,

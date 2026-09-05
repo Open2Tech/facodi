@@ -1,5 +1,6 @@
 import hashlib
 import json
+from datetime import timedelta
 
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, ValidationError
@@ -75,6 +76,30 @@ class FacodiResource(models.Model):
     mime_type = fields.Char(readonly=True)
     content_text = fields.Text(readonly=True)
     last_ingested_at = fields.Datetime(copy=False, readonly=True, index=True)
+    refresh_enabled = fields.Boolean(default=False)
+    refresh_interval_days = fields.Integer(default=7)
+    last_checked_at = fields.Datetime(copy=False, readonly=True, index=True)
+    next_check_at = fields.Datetime(copy=False, index=True)
+    etag = fields.Char(copy=False)
+    last_modified = fields.Char(copy=False)
+    availability_status = fields.Selection(
+        [
+            ("unknown", "Unknown"),
+            ("available", "Available"),
+            ("missing", "Missing"),
+            ("unreachable", "Unreachable"),
+        ],
+        required=True,
+        default="unknown",
+        copy=False,
+        index=True,
+    )
+    refresh_error = fields.Text(copy=False, readonly=True)
+    update_ids = fields.One2many(
+        "facodi.resource.update",
+        "resource_id",
+        copy=False,
+    )
     state = fields.Selection(
         [
             ("discovered", "Discovered"),
@@ -193,6 +218,14 @@ class FacodiResource(models.Model):
         for resource in self:
             if resource.source_id.company_id != resource.company_id:
                 raise ValidationError(_("The resource and source must belong to the same company."))
+
+    @api.constrains("refresh_interval_days")
+    def _check_refresh_interval(self):
+        for resource in self:
+            if resource.refresh_interval_days < 1 or resource.refresh_interval_days > 365:
+                raise ValidationError(
+                    _("Refresh interval must be between 1 and 365 days.")
+                )
 
     def action_confirm_rights(self):
         self._ensure_curator()
@@ -474,6 +507,174 @@ class FacodiResource(models.Model):
         if self.state not in {"published", "stale", "rejected"}:
             self.state = "enrichment"
         return run, job
+
+    def queue_refresh(self):
+        self.ensure_one()
+        self._ensure_curator()
+        if not self.source_url:
+            raise ValidationError(_("Only resources with a source URL can be refreshed."))
+        if not self.current_snapshot_id:
+            raise ValidationError(_("A resource needs a snapshot before refresh."))
+        due_at = self.next_check_at or fields.Datetime.now()
+        identity = fields.Datetime.to_string(due_at)
+        return self.env["facodi.job"].enqueue(
+            "refresh",
+            f"refresh:{self.id}:{self.current_snapshot_id.checksum}:{identity}",
+            {"resource_id": self.id},
+            company=self.company_id,
+            resource=self,
+        )
+
+    @api.model
+    def _cron_queue_due_refresh(self, limit=100):
+        due = self.search(
+            [
+                ("refresh_enabled", "=", True),
+                ("source_url", "!=", False),
+                ("current_snapshot_id", "!=", False),
+                "|",
+                ("next_check_at", "=", False),
+                ("next_check_at", "<=", fields.Datetime.now()),
+            ],
+            order="next_check_at, id",
+            limit=limit,
+        )
+        for resource in due:
+            resource.queue_refresh()
+        return len(due)
+
+    @api.model
+    def _run_refresh_job(self, payload):
+        resource = self.browse(int(payload.get("resource_id") or 0)).exists()
+        if not resource:
+            raise ValidationError(_("The refresh resource no longer exists."))
+        resource.ensure_one()
+        checked_at = fields.Datetime.now()
+        next_check_at = checked_at + timedelta(days=resource.refresh_interval_days)
+        try:
+            result = resource._ingestion_client().refresh_url(
+                resource.source_url,
+                etag=resource.etag or "",
+                last_modified=resource.last_modified or "",
+                language_code=resource.source_language_code or "",
+            )
+        except Exception as error:
+            safe_error = str(error)[:2000]
+            resource.write(
+                {
+                    "availability_status": "unreachable",
+                    "refresh_error": safe_error,
+                    "last_checked_at": checked_at,
+                    "next_check_at": next_check_at,
+                    "state": (
+                        "stale"
+                        if resource.state in {"published", "stale"}
+                        else "error"
+                    ),
+                }
+            )
+            raise
+        status = result.get("status")
+        common_values = {
+            "etag": result.get("etag") or resource.etag or False,
+            "last_modified": (
+                result.get("last_modified") or resource.last_modified or False
+            ),
+            "last_checked_at": checked_at,
+            "next_check_at": next_check_at,
+            "refresh_error": False,
+        }
+        if status == "not_modified":
+            common_values["availability_status"] = "available"
+            resource.write(common_values)
+            return {
+                "resource_id": resource.id,
+                "snapshot_id": resource.current_snapshot_id.id,
+                "status": status,
+                "changed": False,
+            }
+        if status == "missing":
+            common_values.update(
+                {
+                    "availability_status": "missing",
+                    "state": (
+                        "stale"
+                        if resource.state in {"published", "stale"}
+                        else "error"
+                    ),
+                }
+            )
+            resource.write(common_values)
+            return {
+                "resource_id": resource.id,
+                "snapshot_id": resource.current_snapshot_id.id,
+                "status": status,
+                "changed": False,
+            }
+        if status != "changed" or not isinstance(result.get("result"), dict):
+            raise ValidationError(_("The refresh adapter returned an invalid result."))
+        previous_snapshot = resource.current_snapshot_id
+        resource, snapshot, changed = self.ingest_result(
+            resource.source_id,
+            result["result"],
+        )
+        common_values["availability_status"] = "available"
+        resource.write(common_values)
+        update = self.env["facodi.resource.update"]
+        if changed and previous_snapshot and previous_snapshot != snapshot:
+            update = update.search(
+                [
+                    ("resource_id", "=", resource.id),
+                    ("previous_snapshot_id", "=", previous_snapshot.id),
+                    ("proposed_snapshot_id", "=", snapshot.id),
+                ],
+                limit=1,
+            )
+            if not update:
+                published_impact = bool(
+                    self.env["facodi.publication.item"].search_count(
+                        [
+                            ("resource_id", "=", resource.id),
+                            ("snapshot_id", "=", previous_snapshot.id),
+                            ("publication_id.state", "=", "published"),
+                        ],
+                        limit=1,
+                    )
+                )
+                update = self.env["facodi.resource.update"].create(
+                    {
+                        "resource_id": resource.id,
+                        "previous_snapshot_id": previous_snapshot.id,
+                        "proposed_snapshot_id": snapshot.id,
+                        "published_impact": published_impact,
+                    }
+                )
+        return {
+            "resource_id": resource.id,
+            "snapshot_id": snapshot.id,
+            "status": status,
+            "changed": bool(changed),
+            "update_id": update.id or False,
+        }
+
+    def native_feedback_signals(self):
+        """Read native eLearning usage without creating a parallel progress store."""
+
+        self.ensure_one()
+        slides = self.env["slide.slide"].search(
+            [("facodi_resource_id", "=", self.id)]
+        )
+        completions = self.env["slide.slide.partner"].search_count(
+            [("slide_id", "in", slides.ids), ("completed", "=", True)]
+        ) if slides else 0
+        return {
+            "slide_ids": slides.ids,
+            "channel_ids": slides.mapped("channel_id").ids,
+            "total_views": sum(slides.mapped("total_views")),
+            "likes": sum(slides.mapped("likes")),
+            "dislikes": sum(slides.mapped("dislikes")),
+            "completion_count": completions,
+        }
 
     def _ensure_curator(self):
         if not self.env.is_superuser() and not self.env.user.has_group(

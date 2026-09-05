@@ -70,6 +70,35 @@ class FacodiPublication(models.Model):
     )
 
     @api.model
+    def _native_slide_values(self, resource, snapshot):
+        values = slide_values_for_resource(
+            {
+                "name": resource.name,
+                "resource_type": resource.resource_type,
+                "source_url": resource.source_url,
+                "description": resource.description,
+                "author": resource.author_partner_id.name
+                or resource.source_author_name,
+                "institution": resource.institution_partner_id.name
+                or resource.source_institution_name,
+            }
+        )
+        if (
+            resource.resource_type == "document"
+            and snapshot.attachment_id
+            and resource.usage_mode == "redistribute"
+        ):
+            values.update(
+                {
+                    "slide_category": "document",
+                    "source_type": "local_file",
+                    "html_content": False,
+                    "binary_content": snapshot.attachment_id.datas,
+                }
+            )
+        return values
+
+    @api.model
     def prepare_for_composition(self, composition):
         composition.ensure_one()
         self._ensure_curator()
@@ -163,34 +192,7 @@ class FacodiPublication(models.Model):
                 sequence += 10
                 continue
             resource = item.resource_id
-            values = slide_values_for_resource(
-                {
-                    "name": resource.name,
-                    "resource_type": resource.resource_type,
-                    "source_url": resource.source_url,
-                    "description": resource.description,
-                    "author": (
-                        resource.author_partner_id.name or resource.source_author_name
-                    ),
-                    "institution": (
-                        resource.institution_partner_id.name
-                        or resource.source_institution_name
-                    ),
-                }
-            )
-            if (
-                resource.resource_type == "document"
-                and item.snapshot_id.attachment_id
-                and resource.usage_mode == "redistribute"
-            ):
-                values.update(
-                    {
-                        "slide_category": "document",
-                        "source_type": "local_file",
-                        "html_content": False,
-                        "binary_content": item.snapshot_id.attachment_id.datas,
-                    }
-                )
+            values = self._native_slide_values(resource, item.snapshot_id)
             values.update(
                 {
                     "channel_id": channel.id,
@@ -215,6 +217,82 @@ class FacodiPublication(models.Model):
             slide.facodi_publication_item_id = receipt
             sequence += 10
         return publication
+
+    @api.model
+    def revise_for_update(self, update):
+        """Apply an accepted snapshot only to native slides that used its predecessor."""
+
+        update.ensure_one()
+        receipts = self.env["facodi.publication.item"].search(
+            [
+                ("resource_id", "=", update.resource_id.id),
+                ("snapshot_id", "=", update.previous_snapshot_id.id),
+                ("publication_id.state", "=", "published"),
+            ]
+        )
+        revised = self.browse()
+        for previous in receipts.mapped("publication_id"):
+            fingerprint = hashlib.sha256(
+                (
+                    f"update:{previous.input_fingerprint}:"
+                    f"{update.proposed_snapshot_id.checksum}"
+                ).encode("utf-8")
+            ).hexdigest()
+            existing = self.search(
+                [
+                    ("composition_id", "=", previous.composition_id.id),
+                    ("input_fingerprint", "=", fingerprint),
+                ],
+                limit=1,
+            )
+            if existing:
+                revised |= existing
+                continue
+            now = fields.Datetime.now()
+            publication = self.create(
+                {
+                    "composition_id": previous.composition_id.id,
+                    "revision": previous.revision + 1,
+                    "input_fingerprint": fingerprint,
+                    "channel_id": previous.channel_id.id,
+                    "state": "published",
+                    "prepared_by_id": self.env.user.id,
+                    "prepared_at": now,
+                    "published_by_id": self.env.user.id,
+                    "published_at": now,
+                }
+            )
+            for prior_receipt in previous.item_ids:
+                is_target = (
+                    prior_receipt.resource_id == update.resource_id
+                    and prior_receipt.snapshot_id == update.previous_snapshot_id
+                )
+                snapshot = (
+                    update.proposed_snapshot_id
+                    if is_target
+                    else prior_receipt.snapshot_id
+                )
+                if is_target:
+                    values = self._native_slide_values(update.resource_id, snapshot)
+                    values["facodi_snapshot_id"] = snapshot.id
+                    prior_receipt.slide_id.with_context(
+                        website_slides_skip_fetch_metadata=True
+                    ).write(values)
+                new_receipt = self.env["facodi.publication.item"].create(
+                    {
+                        "publication_id": publication.id,
+                        "composition_item_id": prior_receipt.composition_item_id.id,
+                        "resource_id": prior_receipt.resource_id.id,
+                        "snapshot_id": snapshot.id,
+                        "slide_id": prior_receipt.slide_id.id,
+                        "source_update_id": update.id if is_target else False,
+                        "published_at": now,
+                    }
+                )
+                prior_receipt.slide_id.facodi_publication_item_id = new_receipt
+            previous.state = "superseded"
+            revised |= publication
+        return revised
 
     @api.model
     def _publication_entries(self, composition, seen=None):
@@ -338,16 +416,16 @@ class FacodiPublicationItem(models.Model):
         index=True,
     )
     published_at = fields.Datetime(copy=False, readonly=True)
+    source_update_id = fields.Many2one(
+        "facodi.resource.update",
+        ondelete="restrict",
+        index=True,
+    )
 
     _publication_item_unique = models.Constraint(
         "UNIQUE(publication_id, composition_item_id)",
         "A composition item can receive only one receipt per publication revision.",
     )
-    _publication_slide_unique = models.Constraint(
-        "UNIQUE(slide_id)",
-        "A native slide can belong to only one FACODI publication receipt.",
-    )
-
     @api.constrains(
         "publication_id",
         "composition_item_id",
@@ -360,8 +438,15 @@ class FacodiPublicationItem(models.Model):
             item = receipt.composition_item_id
             if item.resource_id != receipt.resource_id:
                 raise ValidationError(_("The receipt resource must match its composition item."))
-            if item.snapshot_id != receipt.snapshot_id:
+            if not receipt.source_update_id and item.snapshot_id != receipt.snapshot_id:
                 raise ValidationError(_("The receipt snapshot must match its composition item."))
+            if receipt.source_update_id and (
+                receipt.source_update_id.resource_id != receipt.resource_id
+                or receipt.source_update_id.proposed_snapshot_id != receipt.snapshot_id
+            ):
+                raise ValidationError(
+                    _("An update receipt must use its proposed resource snapshot.")
+                )
             if receipt.snapshot_id.resource_id != receipt.resource_id:
                 raise ValidationError(_("The receipt snapshot must belong to its resource."))
             if receipt.slide_id.channel_id != receipt.publication_id.channel_id:

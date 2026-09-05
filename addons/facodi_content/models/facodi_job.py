@@ -228,6 +228,10 @@ class FacodiJob(models.Model):
             return self.env["facodi.coverage"]._run_coverage_job(
                 self.payload_json or {}
             )
+        if self.kind == "refresh":
+            return self.env["facodi.resource"]._run_refresh_job(
+                self.payload_json or {}
+            )
         raise UserError(_("No handler is registered for job kind %s.", self.kind))
 
     @api.model

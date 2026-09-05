@@ -95,17 +95,20 @@ def fetch_url(
     timeout=20,
     max_bytes=10 * 1024 * 1024,
     max_redirects=5,
+    headers=None,
 ):
     """Fetch one bounded public HTTPS resource, validating every redirect hop."""
     current_url = validate_outbound_url(url, resolver=resolver)
 
     for redirect_count in range(max_redirects + 1):
-        response = session.get(
-            current_url,
-            allow_redirects=False,
-            stream=True,
-            timeout=timeout,
-        )
+        request_values = {
+            "allow_redirects": False,
+            "stream": True,
+            "timeout": timeout,
+        }
+        if headers:
+            request_values["headers"] = dict(headers)
+        response = session.get(current_url, **request_values)
         try:
             response_url = validate_outbound_url(
                 response.url or current_url,

@@ -66,3 +66,6 @@ access_facodi_publication_manager,facodi.publication manager,model_facodi_public
 access_facodi_publication_item_viewer,facodi.publication.item viewer,model_facodi_publication_item,group_facodi_viewer,1,0,0,0
 access_facodi_publication_item_curator,facodi.publication.item curator,model_facodi_publication_item,group_facodi_curator,1,1,1,0
 access_facodi_publication_item_manager,facodi.publication.item manager,model_facodi_publication_item,group_facodi_manager,1,1,1,1
+access_facodi_resource_update_viewer,facodi.resource.update viewer,model_facodi_resource_update,group_facodi_viewer,1,0,0,0
+access_facodi_resource_update_curator,facodi.resource.update curator,model_facodi_resource_update,group_facodi_curator,1,0,1,0
+access_facodi_resource_update_manager,facodi.resource.update manager,model_facodi_resource_update,group_facodi_manager,1,1,1,1
