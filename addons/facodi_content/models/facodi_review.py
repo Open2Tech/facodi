@@ -17,6 +17,11 @@ class FacodiReview(models.Model):
         ondelete="restrict",
         index=True,
     )
+    composition_id = fields.Many2one(
+        "facodi.composition",
+        ondelete="restrict",
+        index=True,
+    )
     analysis_run_id = fields.Many2one(
         "facodi.analysis.run",
         compute="_compute_subject_context",
@@ -67,20 +72,44 @@ class FacodiReview(models.Model):
         "match_id.analysis_run_id",
         "match_id.resource_id",
         "match_id.company_id",
+        "composition_id.analysis_run_id",
+        "composition_id.company_id",
     )
     def _compute_subject_context(self):
         for review in self:
             subject = review.assertion_id or review.match_id
-            review.analysis_run_id = subject.analysis_run_id if subject else False
+            review.analysis_run_id = (
+                subject.analysis_run_id
+                if subject
+                else review.composition_id.analysis_run_id
+            )
             review.resource_id = subject.resource_id if subject else False
-            review.company_id = subject.company_id if subject else False
+            review.company_id = (
+                subject.company_id if subject else review.composition_id.company_id
+            )
 
-    @api.constrains("assertion_id", "match_id")
+    _composition_review_unique = models.Constraint(
+        "UNIQUE(composition_id)",
+        "A composition can receive only one terminal human decision.",
+    )
+
+    @api.constrains("assertion_id", "match_id", "composition_id")
     def _check_subject(self):
         for review in self:
-            if bool(review.assertion_id) == bool(review.match_id):
+            subject_count = sum(
+                bool(value)
+                for value in (
+                    review.assertion_id,
+                    review.match_id,
+                    review.composition_id,
+                )
+            )
+            if subject_count != 1:
                 raise ValidationError(
-                    _("A human review must target exactly one assertion or match.")
+                    _(
+                        "A human review must target exactly one assertion, match or "
+                        "composition."
+                    )
                 )
 
     def write(self, values):

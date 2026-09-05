@@ -129,5 +129,29 @@
             <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
             <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         </record>
+        <record id="rule_facodi_composition_company" model="ir.rule">
+            <field name="name">FACODI composition: allowed companies</field>
+            <field name="model_id" ref="model_facodi_composition"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_composition_item_company" model="ir.rule">
+            <field name="name">FACODI composition item: allowed companies</field>
+            <field name="model_id" ref="model_facodi_composition_item"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_publication_company" model="ir.rule">
+            <field name="name">FACODI publication: allowed companies</field>
+            <field name="model_id" ref="model_facodi_publication"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+        <record id="rule_facodi_publication_item_company" model="ir.rule">
+            <field name="name">FACODI publication item: allowed companies</field>
+            <field name="model_id" ref="model_facodi_publication_item"/>
+            <field name="groups" eval="[(4, ref('group_facodi_viewer'))]"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
     </data>
 </odoo>

@@ -28,6 +28,20 @@ class FacodiSlideSlide(models.Model):
         index=True,
         ondelete="set null",
     )
+    facodi_snapshot_id = fields.Many2one(
+        "facodi.resource.snapshot",
+        string="FACODI Published Snapshot",
+        copy=False,
+        index=True,
+        ondelete="set null",
+    )
+    facodi_publication_item_id = fields.Many2one(
+        "facodi.publication.item",
+        string="FACODI Publication Receipt",
+        copy=False,
+        index=True,
+        ondelete="set null",
+    )
 
     facodi_source_key = fields.Char(
         string='FACODI Source Key',
