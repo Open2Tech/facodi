@@ -166,6 +166,37 @@ class TestFacodiCompositionPublication(FacodiCase):
         self.assertNotEqual(slides[0].channel_id, slides[1].channel_id)
         self.assertEqual(slides.mapped("facodi_resource_id"), resource)
 
+    def test_approved_module_becomes_native_section_with_ordered_content(self):
+        resource, snapshot = self._approved_resource()
+        module = self._composition("Vectors module", composition_type="module")
+        self.env["facodi.composition.item"].create(
+            {
+                "composition_id": module.id,
+                "resource_id": resource.id,
+                "snapshot_id": snapshot.id,
+            }
+        )
+        module.action_submit_review()
+        module.action_approve()
+        course = self._composition()
+        self.env["facodi.composition.item"].create(
+            {
+                "composition_id": course.id,
+                "child_composition_id": module.id,
+            }
+        )
+        course.action_submit_review()
+        course.action_approve()
+
+        publication = self.env["facodi.publication"].prepare_for_composition(course)
+
+        section = publication.channel_id.slide_ids.filtered("is_category")
+        content = publication.item_ids.slide_id
+        self.assertEqual(section.name, "Vectors module")
+        self.assertLess(section.sequence, content.sequence)
+        self.assertEqual(content.facodi_resource_id, resource)
+        self.assertFalse(publication.channel_id.is_published)
+
     def test_only_manager_can_publish_prepared_native_records(self):
         resource, snapshot = self._approved_resource()
         composition = self._composition()
@@ -200,4 +231,3 @@ class TestFacodiCompositionPublication(FacodiCase):
         self.assertTrue(publication.channel_id.is_published)
         self.assertTrue(all(publication.item_ids.mapped("slide_id.is_published")))
         self.assertTrue(all(publication.item_ids.mapped("published_at")))
-
