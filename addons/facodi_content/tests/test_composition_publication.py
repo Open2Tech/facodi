@@ -57,13 +57,16 @@ class TestFacodiCompositionPublication(FacodiCase):
 
         self.assertEqual(course.item_ids, first | second)
         exclusive_resource, exclusive_snapshot = self._approved_resource("exclusive")
+        exclusive_module = self._composition(
+            "Exclusive module", composition_type="module"
+        )
         with self.assertRaises(ValidationError):
             self.env["facodi.composition.item"].create(
                 {
                     "composition_id": course.id,
                     "resource_id": exclusive_resource.id,
                     "snapshot_id": exclusive_snapshot.id,
-                    "child_composition_id": module.id,
+                    "child_composition_id": exclusive_module.id,
                 }
             )
         with self.assertRaises(ValidationError):
