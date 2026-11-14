@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, X, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, X, type LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
@@ -19,7 +19,7 @@ export default function FacodiLayout() {
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
   const dark = resolvedTheme === 'dark';
-  const privateRoute = ['/dashboard', '/profile', '/notes', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
+  const privateRoute = ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
     window.scrollTo(0, 0);
@@ -36,6 +36,7 @@ export default function FacodiLayout() {
     { to: '/units', title: t('nav.units'), icon: Layers },
     { to: '/resources', title: t('nav.resources'), icon: PlayCircle },
     { to: '/about', title: t('nav.about'), icon: Info },
+    ...(user ? [{ to: '/suggest', title: t('suggest.nav'), icon: Lightbulb, compact: true }] : []),
     ...(user ? [{ to: '/playlists/submit', title: t('playlistSubmit.nav'), icon: ListVideo, compact: true }] : []),
     ...(user ? [{ to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard, compact: true }] : []),
     ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare, compact: true }] : []),
@@ -43,7 +44,7 @@ export default function FacodiLayout() {
   ];
   const footer = [
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }] },
-    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/about#contribute', title: t('footer.contribute') }] },
+    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/about#contribute', title: t('footer.contribute') }, ...(user ? [{ to: '/suggest', title: t('suggest.nav') }] : [])] },
     { title: t('footer.account'), links: user
       ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
       : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },

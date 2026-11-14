@@ -11,6 +11,7 @@ const SWATCHES: Record<string, string> = {
   completed: 'bg-foreground',
   partial: 'bg-foreground/55',
   rejected: 'bg-muted-foreground/30',
+  duplicate: 'bg-brand-coral',
 };
 
 export function stateSwatch(status: string) {

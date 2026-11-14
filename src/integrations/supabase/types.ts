@@ -463,6 +463,54 @@ export type Database = {
           },
         ]
       }
+      editorial_playlist_progress: {
+        Row: {
+          completed_at: string | null
+          completion_source: string
+          created_at: string
+          last_position_seconds: number
+          playlist_id: string
+          updated_at: string
+          user_id: string
+          video_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          completion_source?: string
+          created_at?: string
+          last_position_seconds?: number
+          playlist_id: string
+          updated_at?: string
+          user_id: string
+          video_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          completion_source?: string
+          created_at?: string
+          last_position_seconds?: number
+          playlist_id?: string
+          updated_at?: string
+          user_id?: string
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "editorial_playlist_progress_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "editorial_playlist_progress_video_id_fkey"
+            columns: ["video_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_outbox: {
         Row: {
           attempts: number
@@ -1160,6 +1208,102 @@ export type Database = {
           },
         ]
       }
+      resource_suggestions: {
+        Row: {
+          attribution_declared: boolean
+          author: string | null
+          canonical_url: string
+          created_at: string
+          curricular_unit_id: string | null
+          id: string
+          language: string | null
+          learning_object_id: string | null
+          license: string | null
+          license_declared: boolean
+          note: string | null
+          object_type: string
+          provider: string
+          review_note: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          screening: Json
+          status: string
+          submitted_by: string
+          tags: string[]
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          attribution_declared: boolean
+          author?: string | null
+          canonical_url: string
+          created_at?: string
+          curricular_unit_id?: string | null
+          id?: string
+          language?: string | null
+          learning_object_id?: string | null
+          license?: string | null
+          license_declared: boolean
+          note?: string | null
+          object_type?: string
+          provider?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          screening?: Json
+          status?: string
+          submitted_by?: string
+          tags?: string[]
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          attribution_declared?: boolean
+          author?: string | null
+          canonical_url?: string
+          created_at?: string
+          curricular_unit_id?: string | null
+          id?: string
+          language?: string | null
+          learning_object_id?: string | null
+          license?: string | null
+          license_declared?: boolean
+          note?: string | null
+          object_type?: string
+          provider?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          screening?: Json
+          status?: string
+          submitted_by?: string
+          tags?: string[]
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resource_suggestions_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "resource_suggestions_learning_object_id_fkey"
+            columns: ["learning_object_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       semantic_matches: {
         Row: {
           algorithm_version: string | null
@@ -1499,6 +1643,53 @@ export type Database = {
           },
         ]
       }
+      youtube_video_metadata_checks: {
+        Row: {
+          checked_at: string
+          id: string
+          metadata: Json
+          method: string
+          observed_thumbnail_url: string | null
+          observed_title: string
+          reviewer_notes: string | null
+          source_url: string
+          verification_result: string
+          youtube_video_id: string
+        }
+        Insert: {
+          checked_at?: string
+          id?: string
+          metadata?: Json
+          method: string
+          observed_thumbnail_url?: string | null
+          observed_title: string
+          reviewer_notes?: string | null
+          source_url: string
+          verification_result: string
+          youtube_video_id: string
+        }
+        Update: {
+          checked_at?: string
+          id?: string
+          metadata?: Json
+          method?: string
+          observed_thumbnail_url?: string | null
+          observed_title?: string
+          reviewer_notes?: string | null
+          source_url?: string
+          verification_result?: string
+          youtube_video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "youtube_video_metadata_checks_youtube_video_id_fkey"
+            columns: ["youtube_video_id"]
+            isOneToOne: false
+            referencedRelation: "youtube_videos"
+            referencedColumns: ["youtube_video_id"]
+          },
+        ]
+      }
       youtube_videos: {
         Row: {
           canonical_url: string
@@ -1581,6 +1772,10 @@ export type Database = {
       }
     }
     Functions: {
+      classify_resource_license: {
+        Args: { p_license: string }
+        Returns: string
+      }
       create_course_structure: {
         Args: {
           p_child_object_ids?: string[]
@@ -1809,6 +2004,31 @@ export type Database = {
           relation_type: string
         }[]
       }
+      get_my_editorial_playlist_progress_v1: {
+        Args: { p_slug: string }
+        Returns: {
+          completed_items: number
+          completion_pct: number
+          playlist_id: string
+          playlist_title: string
+          started_items: number
+          total_items: number
+        }[]
+      }
+      get_public_editorial_playlist_v2: {
+        Args: { p_slug: string }
+        Returns: {
+          curricular_units: Json
+          item_count: number
+          items: Json
+          language: string
+          playlist_description: string
+          playlist_id: string
+          playlist_slug: string
+          playlist_title: string
+          verified_metadata_count: number
+        }[]
+      }
       is_facodi_editor: { Args: never; Returns: boolean }
       link_learning_objects: {
         Args: {
@@ -1843,6 +2063,18 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      list_editor_youtube_review_queue_v1: {
+        Args: { p_limit?: number; p_offset?: number }
+        Returns: {
+          channel_title: string
+          course_unit_links: number
+          metadata_checked: boolean
+          reason: string
+          source_url: string
+          video_title: string
+          youtube_id: string
+        }[]
+      }
       list_public_editorial_playlist_items_v1: {
         Args: { p_limit?: number; p_playlist_slug: string }
         Returns: {
@@ -1866,6 +2098,7 @@ export type Database = {
           unit_code: string
         }[]
       }
+      normalize_resource_url: { Args: { p_url: string }; Returns: string }
       queue_analysis_job: {
         Args: {
           p_current_step?: string
@@ -1982,6 +2215,14 @@ export type Database = {
           p_decision: string
           p_playlist_id: string
           p_review_note?: string
+        }
+        Returns: string
+      }
+      review_resource_suggestion: {
+        Args: {
+          p_decision: string
+          p_review_note?: string
+          p_suggestion_id: string
         }
         Returns: string
       }

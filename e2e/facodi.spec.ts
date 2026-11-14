@@ -422,7 +422,7 @@ test('study notebook keeps private, timed notes beside the video and exports the
 
   await drawer.getByLabel('Title or concept').fill('Chain rule');
   await expect(drawer.getByRole('button', { name: 'Remove the 03:20 mark' })).toBeVisible();
-  await drawer.getByLabel('Tags').fill('#Exam rules');
+  await drawer.getByLabel('Tags', { exact: true }).fill('#Exam rules');
   await drawer.getByLabel('Note', { exact: true }).fill('Use the chain rule on f(g(x))');
   await drawer.getByLabel('Note', { exact: true }).selectText();
   await drawer.getByRole('button', { name: 'Inline code' }).click();
@@ -682,4 +682,107 @@ test('editor reviews study paths and playlists through the review RPCs with stat
   await page.getByRole('button', { name: 'Confirm' }).click();
   await expect(page.getByText('Playlist decision saved.')).toBeVisible();
   expect(decisions).toContainEqual({ fn: 'review_playlist', p_playlist_id: 'p1', p_decision: 'rejected', p_review_note: null });
+});
+
+test('learner suggests a resource: recognition, unit match, declarations and the screening verdict', async ({ page }) => {
+  await mockAuth(page);
+  const posted: Record<string, unknown>[] = [];
+  const unit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e01', code: '19411006', title: 'Programação Orientada a Objetos', slug: 'poo', courses: { code: 'LESTI', title: 'Systems Engineering', slug: 'lesti' } };
+  await page.route('**/rest/v1/**', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    expect(request.headers()['accept-profile'] ?? request.headers()['content-profile']).toBe('facodi');
+    expect(url.pathname).not.toContain('/rpc/');
+    if (url.pathname.endsWith('/curricular_units')) return route.fulfill({ json: [unit] });
+    if (url.pathname.endsWith('/resource_suggestions') && request.method() === 'POST') {
+      const body = request.postDataJSON() as Record<string, unknown>;
+      posted.push(body);
+      return route.fulfill({ status: 201, json: {
+        ...body, id: 's1', provider: 'youtube', status: 'pending', review_note: null, reviewed_at: null, learning_object_id: null,
+        created_at: '2026-11-14T10:00:00Z', curricular_units: { code: unit.code, title: unit.title, slug: unit.slug, courses: { code: 'LESTI', slug: 'lesti' } },
+        screening: { provider_recognized: true, secure_source: true, license: 'open', unit_selected: true, duplicate: null, recommendation: 'fast_track' },
+      } });
+    }
+    return route.fulfill({ json: [] });
+  });
+  await page.route('https://www.youtube.com/oembed**', route => route.fulfill({ json: { title: 'Programação orientada a objetos em Java', author_name: 'Canal Aberto' } }));
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+
+  await page.goto('/login?next=/suggest');
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Suggest a resource' })).toBeVisible();
+  await expect(page.getByText('You have not suggested any resources yet.')).toBeVisible();
+
+  await page.getByLabel('Resource address').fill('javascript:alert(1)');
+  await page.getByRole('button', { name: 'Analyse' }).click();
+  await expect(page.getByText('Enter a valid HTTP or HTTPS address.')).toBeVisible();
+
+  await page.getByLabel('Resource address').fill('https://youtu.be/dQw4w9WgXcQ?si=share');
+  await page.getByRole('button', { name: 'Analyse' }).click();
+  await expect(page.getByText('https://www.youtube.com/watch?v=dQw4w9WgXcQ')).toBeVisible();
+  await expect(page.getByText('Title and authorship read from the source.')).toBeVisible();
+  await expect(page.getByLabel('Title *')).toHaveValue('Programação orientada a objetos em Java');
+  await expect(page.getByLabel('Author or channel')).toHaveValue('Canal Aberto');
+  await expect(page.getByRole('radio', { name: /Programação Orientada a Objetos/ })).toBeChecked();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+  await page.getByLabel('Licence', { exact: true }).fill('CC BY-NC 4.0');
+  await expect(page.getByText('Restricted', { exact: true })).toBeVisible();
+  await page.getByLabel('Licence', { exact: true }).fill('CC BY 4.0');
+  await page.getByLabel('Tags', { exact: true }).fill('#Java, java, OOP');
+  await page.getByRole('button', { name: 'Send for curation' }).click();
+  await expect(page.getByText('Confirm both declarations to send.')).toBeVisible();
+  expect(posted).toHaveLength(0);
+  await page.getByLabel('I confirm the licence allows educational use of this resource.').check();
+  await page.getByLabel('I confirm the authorship stated is that of the original source.').check();
+  await page.getByRole('button', { name: 'Send for curation' }).click();
+
+  await expect(page.getByRole('heading', { name: 'Suggestion received' })).toBeVisible();
+  await expect(page.getByRole('status').getByText('Fast track')).toBeVisible();
+  await expect(page.getByText('Recognised source: YouTube.')).toBeVisible();
+  expect(posted).toEqual([expect.objectContaining({
+    url: 'https://youtu.be/dQw4w9WgXcQ?si=share', canonical_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    title: 'Programação orientada a objetos em Java', license: 'CC BY 4.0', object_type: 'video', tags: ['java', 'oop'],
+    curricular_unit_id: unit.id, license_declared: true, attribution_declared: true,
+  })]);
+  expect(posted[0]).not.toHaveProperty('status');
+});
+
+test('editor approves a suggestion as a draft through the review RPC', async ({ page }) => {
+  await mockAuth(page, 'editor');
+  const decisions: unknown[] = [];
+  const suggestion = {
+    id: 's1', url: 'https://github.com/numpy/numpy', canonical_url: 'https://github.com/numpy/numpy', provider: 'github', title: 'numpy',
+    author: 'numpy', thumbnail_url: null, license: 'BSD-3-Clause', object_type: 'external_resource', language: 'en', tags: ['python'],
+    note: 'Great for the arrays chapter', status: 'pending', review_note: null, reviewed_at: null, learning_object_id: null,
+    created_at: '2026-11-14T10:00:00Z', curricular_units: { code: '101', title: 'Scientific Computing', slug: 'sc', courses: { code: 'LESTI', slug: 'lesti' } },
+    screening: { provider_recognized: true, secure_source: true, license: 'open', unit_selected: true, duplicate: null, recommendation: 'fast_track' },
+  };
+  await page.route('**/rest/v1/**', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    if (url.pathname.endsWith('/rpc/review_resource_suggestion')) {
+      decisions.push(request.postDataJSON());
+      return route.fulfill({ json: 'lo-1' });
+    }
+    expect(url.pathname).not.toContain('/rpc/');
+    if (url.pathname.endsWith('/resource_suggestions')) return route.fulfill({ json: decisions.length ? [] : [suggestion] });
+    return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+  });
+
+  await page.goto('/login?next=/editor/suggestions');
+  await page.getByLabel('Email', { exact: true }).fill('editor@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 2, name: 'numpy' })).toBeVisible();
+  await expect(page.getByText('Recognised source: GitHub.')).toBeVisible();
+  await expect(page.getByText('Great for the arrays chapter')).toBeVisible();
+  await page.getByRole('button', { name: 'Approve as draft' }).click();
+  await page.getByLabel('Editorial reasoning (optional)').fill('Linked to arrays');
+  await page.getByRole('button', { name: 'Confirm' }).click();
+  await expect(page.getByText('Draft created. Review and publish it in the editor.')).toBeVisible();
+  expect(decisions).toEqual([{ p_suggestion_id: 's1', p_decision: 'approved', p_review_note: 'Linked to arrays' }]);
+  await expect(page.getByRole('heading', { name: 'No pending suggestions' })).toBeVisible();
 });
