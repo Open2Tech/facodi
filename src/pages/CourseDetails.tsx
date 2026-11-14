@@ -45,6 +45,7 @@ export default function CourseDetails() {
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
   const { course, units, resource } = query.data;
+  const otherLabel = course.code === 'UFES-LETRAS-ING-83-2019' ? t('course.availableElectives') : t('course.otherUnits');
   const plan = safeExternalUrl(course.plan_url);
   const facts = [
     ['code', course.code], ['degree', course.degree_type ? t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type }) : null],
@@ -84,16 +85,17 @@ export default function CourseDetails() {
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
-          {year.year != null ? t('catalog.year', { value: year.year }) : t('course.otherUnits')}
+          {year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}
         </a>)}
       </nav>}
       {years.map(year => <section key={year.key} id={`year-${year.key}`} aria-labelledby={`year-${year.key}-title`} className="mt-12 scroll-mt-28">
-        <h3 id={`year-${year.key}-title`} className="text-2xl font-semibold">{year.year != null ? t('catalog.year', { value: year.year }) : t('course.otherUnits')}</h3>
+        <h3 id={`year-${year.key}-title`} className="text-2xl font-semibold">{year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}</h3>
+        {year.year == null && course.code === 'UFES-LETRAS-ING-83-2019' && <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('course.ufesElectiveNotice')}</p>}
         <div className="mt-5 grid gap-8 xl:grid-cols-2">
           {year.groups.map(group => {
-            return <section key={`${group.year}:${group.semester}`} aria-label={group.semester != null ? t('catalog.semester', { value: group.semester }) : t('course.otherUnits')} className="min-w-0">
+            return <section key={`${group.year}:${group.semester}`} aria-label={group.semester != null ? t('catalog.semester', { value: group.semester }) : otherLabel} className="min-w-0">
               <div className="flex items-baseline justify-between gap-4 border-b border-foreground pb-2">
-                <h4 className="font-semibold">{group.semester != null ? t('catalog.semester', { value: group.semester }) : t('course.otherUnits')}</h4>
+                <h4 className="font-semibold">{group.semester != null ? t('catalog.semester', { value: group.semester }) : otherLabel}</h4>
                 <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('course.termSummary', { count: group.units.length })}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
