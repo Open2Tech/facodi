@@ -200,7 +200,9 @@
     "account": "Actualiza el nombre, el email y la contraseña de tu cuenta.",
     "editor": "Prepara, publica y archiva contenidos educativos.",
     "admin": "Consulta los estados y las cifras del catálogo.",
-    "shortcuts": "Tus accesos directos"
+    "shortcuts": "Tus accesos directos",
+    "welcomeAnonymous": "Hola.",
+    "addName": "Añade tu nombre en el perfil"
   },
   "profile": {
     "description": "Los datos de tu cuenta se gestionan con Supabase Auth.",

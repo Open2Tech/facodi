@@ -183,6 +183,7 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
   await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Active', { exact: true })).toBeVisible();
   await expect(page.getByText('published=true · pt')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Publish', exact: true })).toBeDisabled();
   await page.getByRole('button', { name: 'Archive', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
   await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Archived', { exact: true })).toBeVisible();
