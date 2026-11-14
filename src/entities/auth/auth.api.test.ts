@@ -32,7 +32,6 @@ beforeEach(() => {
 describe('FACODI email authentication flows', () => {
   it('tags FACODI signup and preserves a safe PKCE callback', async () => {
     await signUpWithEmail('student@example.com', 'secure-pass', 'Estudante', '/playlists/submit');
-    const [,] = signUp.mock.calls;
     expect(signUp).toHaveBeenCalledWith({
       email: 'student@example.com',
       password: 'secure-pass',
