@@ -143,6 +143,15 @@ Deno.serve(async (req: Request) => {
     return response(req, 503, { error: "facodi_email_transport_not_configured" });
   }
 
+  // Recover a worker killed during dispatch. The provider idempotency key
+  // prevents unnecessary duplicate acceptance when retrying the same event.
+  const now = new Date().toISOString();
+  await admin.schema("facodi").from("email_outbox")
+    .update({ state: "retry", locked_at: null, next_attempt_at: now,
+      failure_code: "stale_email_worker", updated_at: now })
+    .eq("playlist_id", playlistId).eq("state", "processing")
+    .lt("locked_at", new Date(Date.now() - 15 * 60 * 1000).toISOString());
+
   const { data: queued, error: queueError } = await admin.schema("facodi")
     .from("email_outbox")
     .select("id,event_key,recipient_user_id,template_name,event_payload,attempts,state,created_at")
