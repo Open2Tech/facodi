@@ -451,7 +451,9 @@
       "postgraduate": "Postgraduate"
     },
     "videosTitle": "Videos in this course",
-    "videosText": "Opening videos from the curated trails across the {{count}} curricular units in this plan."
+    "videosText": "Opening videos from the curated trails across the {{count}} curricular units in this plan.",
+    "availableElectives": "Available elective courses",
+    "ufesElectiveNotice": "These 45 subjects are choices across four groups in the UFES curriculum. A student selects 10 required electives (720 hours), not all listed options."
   },
   "resource": {
     "objectives": "Learning objectives",
