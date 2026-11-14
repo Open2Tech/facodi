@@ -4,6 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
+import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -21,6 +22,7 @@ export default function UnitDetails() {
   const contribute = useContributePath();
   const videos = useUnitVideos(query.data?.unit.learning_object_id);
   const outcomesQuery = useUnitOutcomes(query.data?.unit.learning_object_id);
+  const readingsQuery = useUnitReadings(query.data?.unit.learning_object_id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
@@ -86,6 +88,27 @@ export default function UnitDetails() {
                   </li>)}
                 </ol>
                 : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
+        </section>
+        <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
+          <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
+          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitReadings.notice')}</p>
+          {readingsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : readingsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{readingsQuery.error.message}</p>
+                  <button type="button" onClick={() => void readingsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
+                    <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input p-5 transition-colors hover:border-foreground">
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
+                      {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
         </section>
         <section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
