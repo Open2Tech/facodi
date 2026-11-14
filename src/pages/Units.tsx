@@ -102,9 +102,9 @@ export default function Units() {
                   </h2>
                 </div>
                 <dl className="flex flex-wrap items-start gap-2 text-sm sm:max-w-56 sm:justify-end">
-                  {unit.year != null && <div className="rounded-full border border-input px-3 py-1"><dt className="sr-only">{t('course.yearLabel')}</dt><dd>{t('catalog.year', { value: unit.year })}</dd></div>}
-                  {unit.semester != null && <div className="rounded-full border border-input px-3 py-1"><dt className="sr-only">{t('course.semesterLabel')}</dt><dd>{t('catalog.semester', { value: unit.semester })}</dd></div>}
-                  {unit.ects != null && <div className="rounded-full bg-muted px-3 py-1"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
+                  {unit.year != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.yearLabel')}</dt><dd>{t('catalog.year', { value: unit.year })}</dd></div>}
+                  {unit.semester != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.semesterLabel')}</dt><dd>{t('catalog.semester', { value: unit.semester })}</dd></div>}
+                  {unit.ects != null && <div className="bg-brand-orange px-3 py-1 text-ink"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
                 </dl>
               </li>;
             })}

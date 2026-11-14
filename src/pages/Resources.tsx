@@ -5,6 +5,7 @@ import { useResources, useResourceTypes } from '@/features/courses/queries/useCo
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader, CatalogToolbar } from '@/components/catalog/CatalogToolbar';
+import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
 import { videoInfo } from '@/entities/course/video';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
@@ -35,7 +36,7 @@ export default function Resources() {
           return <li key={resource.id} className="relative -ml-px -mt-px flex flex-col border border-input transition-colors hover:z-10 hover:border-foreground">
             {isVideo && <Link to={`/resources/${resource.slug}`} tabIndex={-1} aria-hidden="true" className="block"><VideoThumbnail info={info} /></Link>}
             <div className="flex flex-1 flex-col p-6">
-              <p className="mb-3 flex flex-wrap gap-x-3 font-mono text-xs uppercase text-muted-foreground"><span>{typeLabel(resource.object_type)}</span><span lang={resource.language}>{resource.language}</span></p>
+              <p className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase text-muted-foreground"><TypeBadge type={resource.object_type} label={typeLabel(resource.object_type)} /><span lang={resource.language}>{resource.language}</span></p>
               <h2 className="text-lg font-semibold"><Link to={`/resources/${resource.slug}`} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h2>
               {isVideo && info.channel && <p className="mt-2 truncate text-sm text-muted-foreground">{info.channel}</p>}
               {excerpt && <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{excerpt}</p>}

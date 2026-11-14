@@ -199,7 +199,8 @@
     "catalog": "Discover published courses and educational resources.",
     "account": "Update your account name, email and password.",
     "editor": "Prepare, publish and archive educational content.",
-    "admin": "View catalogue states and counts."
+    "admin": "View catalogue states and counts.",
+    "shortcuts": "Your shortcuts"
   },
   "profile": {
     "description": "Your account details are managed by Supabase Auth.",
@@ -403,13 +404,17 @@
     "videoCount_one": "{{count}} published video, in the suggested study order.",
     "videoCount_many": "{{count}} published videos, in the suggested study order.",
     "videoCount_other": "{{count}} published videos, in the suggested study order.",
-    "openVideoPage": "Open video page"
+    "openVideoPage": "Open video page",
+    "videoChip_one": "{{count}} video",
+    "videoChip_many": "{{count}} videos",
+    "videoChip_other": "{{count}} videos"
   },
   "objectTypes": {
     "video": "Video",
     "document": "Document",
     "course": "Course",
-    "curricular_unit": "Curricular unit"
+    "curricular_unit": "Curricular unit",
+    "external_resource": "External reference"
   },
   "video": {
     "play": "Play video: {{title}}",

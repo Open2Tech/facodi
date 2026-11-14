@@ -199,7 +199,8 @@
     "catalog": "Découvrez les cours et ressources éducatives publiés.",
     "account": "Modifiez le nom, l'email et le mot de passe du compte.",
     "editor": "Préparez, publiez et archivez les contenus éducatifs.",
-    "admin": "Consultez les états et les chiffres du catalogue."
+    "admin": "Consultez les états et les chiffres du catalogue.",
+    "shortcuts": "Vos raccourcis"
   },
   "profile": {
     "description": "Les données de votre compte sont gérées par Supabase Auth.",
@@ -403,13 +404,17 @@
     "videoCount_one": "{{count}} vidéo publiée, dans l’ordre d’étude suggéré.",
     "videoCount_many": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
     "videoCount_other": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
-    "openVideoPage": "Ouvrir la page de la vidéo"
+    "openVideoPage": "Ouvrir la page de la vidéo",
+    "videoChip_one": "{{count}} vidéo",
+    "videoChip_many": "{{count}} vidéos",
+    "videoChip_other": "{{count}} vidéos"
   },
   "objectTypes": {
     "video": "Vidéo",
     "document": "Document",
     "course": "Formation",
-    "curricular_unit": "Unité d’enseignement"
+    "curricular_unit": "Unité d’enseignement",
+    "external_resource": "Référence externe"
   },
   "video": {
     "play": "Lire la vidéo : {{title}}",

@@ -7,8 +7,8 @@ export function CourseList({ courses, headingLevel = 'h2' }: { courses: Course[]
   const { t } = useTranslation();
   const Heading = headingLevel;
   return <div className="divide-y divide-input border-y border-input">
-    {courses.map(course => <article key={course.id} className="group grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:items-start">
-      <BookOpen className="mt-1 h-8 w-8 text-muted-foreground transition-colors group-hover:text-foreground" strokeWidth={1.4} aria-hidden="true" />
+    {courses.map(course => <article key={course.id} className="group grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-6 sm:items-start">
+      <span className="grid h-12 w-12 place-items-center border border-foreground bg-primary text-primary-foreground" aria-hidden="true"><BookOpen className="h-6 w-6" strokeWidth={1.75} /></span>
       <div className="min-w-0">
         <p className="mb-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase text-muted-foreground">
           {course.code && <span>{course.code}</span>}
