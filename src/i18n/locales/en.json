@@ -391,5 +391,13 @@
     "document": "Document",
     "course": "Course",
     "curricular_unit": "Curricular unit"
+  },
+  "unitVideos": {
+    "title": "Video lessons ({{count}})",
+    "note": "Supplementary resources selected by the topics indicated in their titles and channels. They do not replace the official syllabus or a full review of the lessons.",
+    "empty": "There are no sufficiently relevant video lessons for this unit yet.",
+    "channel": "Channel",
+    "openSource": "Watch original video on YouTube",
+    "playlist": "Video lessons for this unit"
   }
 }
