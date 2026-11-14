@@ -924,7 +924,8 @@
     "groups": {
       "context": "Universidad y programa",
       "collaboration": "Tecnología y código abierto",
-      "inspiration": "Inspiración creativa"
+      "inspiration": "Inspiración creativa",
+      "contributors": "Colaboradores personales verificados"
     },
     "boundary": "Los créditos públicos tienen fuentes verificables. Las propuestas y colaboraciones pendientes no aparecen como socios confirmados.",
     "communityEyebrow": "FACODI también es tuya",
@@ -974,5 +975,34 @@
     "ctaTitle": "Forma parte del próximo capítulo.",
     "ctaDescription": "Una pequeña idea puede ayudar mucho a otra persona.",
     "ctaButton": "Compartir una idea"
+  },
+  "projectCredits": {
+    "open": "Créditos de colaboradores",
+    "back": "Volver al editor",
+    "title": "¿Quién aportó qué?",
+    "lead": "Los créditos públicos necesitan contexto. Verifique el papel, la autorización y una fuente pública independiente antes de publicar.",
+    "count": "{{count}} créditos pendientes",
+    "pending": "Por verificar",
+    "draft": "Sin permiso público confirmado",
+    "unverified": "Este nombre aparece en documentación interna, lo que no demuestra autoría ni permiso para publicarlo.",
+    "role": "Función verificada",
+    "headline": "Presentación breve",
+    "description": "Contribución realizada",
+    "publicSource": "Fuente pública verificable",
+    "sourceHint": "Una página pública que acredite el papel. No utilice correos ni documentos privados.",
+    "consent": "Cómo se verificó el permiso",
+    "written": "Confirmación escrita directa",
+    "publicIdentification": "Identificación pública de la persona",
+    "reviewNote": "Justificación interna",
+    "reviewNoteHint": "Explique la verificación sin copiar datos privados.",
+    "privateNote": "La nota es privada y no se muestra en el sitio.",
+    "ack": "Confirmo la función, una fuente pública y el permiso para identificar a esta persona.",
+    "ackRequired": "Confirme los requisitos.",
+    "saved": "Crédito aprobado para publicación.",
+    "saving": "Guardando...",
+    "publish": "Verificar y publicar",
+    "empty": "Sin créditos pendientes",
+    "emptyDescription": "No quedan candidatos por revisar.",
+    "footer": "Referencias académicas, aliados tecnológicos y colaboradores individuales son categorías diferentes. Una reunión no autoriza a publicar un nombre."
   }
 }
