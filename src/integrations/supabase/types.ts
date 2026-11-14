@@ -598,6 +598,9 @@ export type Database = {
           prompt: Json
           result: Json
           root_object_id: string | null
+          reviewed_by: string | null
+          reviewed_at: string | null
+          review_note: string | null
           status: string
           structure_type: string
           updated_at: string
@@ -610,6 +613,9 @@ export type Database = {
           prompt?: Json
           result?: Json
           root_object_id?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_note?: string | null
           status?: string
           structure_type: string
           updated_at?: string
@@ -622,6 +628,9 @@ export type Database = {
           prompt?: Json
           result?: Json
           root_object_id?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_note?: string | null
           status?: string
           structure_type?: string
           updated_at?: string
