@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Clock, Graduatio
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
+import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { PageState } from '@/components/layout/PageState';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
@@ -114,5 +115,6 @@ export default function CourseDetails() {
         </div>
       </section>)}
     </section>
+    {course.code === 'LGEST' && <CurriculumArchive courseId={course.id} />}
   </article>;
 }
