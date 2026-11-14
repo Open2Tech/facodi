@@ -50,6 +50,18 @@ bun run db:types > src/integrations/supabase/types.ts
 
 Os tipos foram gerados do schema real, não de uma reprodução local.
 
+## Identidade, comunidade e créditos editoriais
+
+A FACODI assume a sua própria identidade: um campus digital aberto, nascido de uma experiência estudantil e apresentado no programa SEA-EU Student-Led Projects 2026. A comunicação usa uma voz mais humana, curiosa e criativa — inspirada na Monynha, sem confundir as duas iniciativas.
+
+A página **/about** apresenta a história, o autor, os marcos e o ecossistema com fontes públicas. Em **/community**, estudantes e colaboradores encontram formas claras de participar. Em **/editor/project-credits**, apenas editores podem validar créditos pessoais com consentimento explícito e rasto de auditoria. As traduções PT/EN/ES/FR e os dados públicos vêm do schema FACODI no Supabase.
+
+Foram criados oito perfis públicos e três marcos verificados; os três perfis de potenciais colaboradores permanecem privados até confirmação do papel e autorização. Não são usados dados de mensagens privadas para publicação automática.
+
+[Auditoria de identidade, fontes, curadoria e política de consentimento](docs/facodi-project-identity-community-2026-11-14.md).
+
+**Nota de publicação:** a versão em GitHub pode estar mais recente do que o último deploy Vercel READY, por limite diário de builds. Verificar sempre o commit realmente publicado antes de anunciar as rotas como disponíveis em produção.
+
 ## Catálogo académico publicado (14/11/2026)
 
 A FACODI mantém **três cursos públicos da Universidade do Algarve**, incluindo o novo **CTeSP em Sistemas e Tecnologias de Informação (curso oficial 1812, Faro)**. São **101 UCs públicas** e **733 objetos educativos públicos**: **564 vídeos externos**, **65 referências de leitura/planeamento**, **101 UCs** e **3 cursos**.
