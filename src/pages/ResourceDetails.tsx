@@ -21,7 +21,7 @@ export default function ResourceDetails() {
   return <article>
     <Link to="/resources" className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4"><ArrowLeft className="h-4 w-4" />{t('nav.resources')}</Link>
     <header className="border-b border-foreground pb-10">
-      <p className="mb-5 flex flex-wrap gap-x-4 font-mono text-xs uppercase text-muted-foreground"><span>{resource.object_type}</span><span lang={resource.language}>{resource.language}</span></p>
+      <p className="mb-5 flex flex-wrap gap-x-4 font-mono text-xs uppercase text-muted-foreground"><span>{t(`objectTypes.${resource.object_type}`, { defaultValue: resource.object_type })}</span><span lang={resource.language}>{resource.language}</span></p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{resource.title}</h1>
     </header>
     <div className="grid gap-12 py-10 lg:grid-cols-[1fr_20rem]">

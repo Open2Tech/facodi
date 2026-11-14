@@ -232,7 +232,12 @@
     "flagUnpublished": "published=false",
     "updated": "Estado do conteúdo atualizado.",
     "empty": "Sem conteúdo nesta lista.",
-    "emptyDescription": "Cria um rascunho ou ajusta a pesquisa para continuar."
+    "emptyDescription": "Cria um rascunho ou ajusta a pesquisa para continuar.",
+    "statusFilter": "Estado",
+    "allStates": "Todos",
+    "typeFilter": "Tipo de recurso",
+    "allTypes": "Todos os tipos",
+    "origin": "origem: {{source}}"
   },
   "admin": {
     "heading": "O catálogo, em perspetiva.",
@@ -380,5 +385,11 @@
     "sequence": "Sequência do plano",
     "previous": "UC anterior",
     "next": "UC seguinte"
+  },
+  "objectTypes": {
+    "video": "Vídeo",
+    "document": "Documento",
+    "course": "Curso",
+    "curricular_unit": "Unidade curricular"
   }
 }

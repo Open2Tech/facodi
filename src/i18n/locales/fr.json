@@ -232,7 +232,12 @@
     "flagUnpublished": "published=false",
     "updated": "État du contenu mis à jour.",
     "empty": "Aucun contenu dans cette liste.",
-    "emptyDescription": "Créez un brouillon ou ajustez la recherche pour continuer."
+    "emptyDescription": "Créez un brouillon ou ajustez la recherche pour continuer.",
+    "statusFilter": "Statut",
+    "allStates": "Tous",
+    "typeFilter": "Type de ressource",
+    "allTypes": "Tous les types",
+    "origin": "origine : {{source}}"
   },
   "admin": {
     "heading": "Le catalogue, en perspective.",
@@ -380,5 +385,11 @@
     "sequence": "Séquence du plan",
     "previous": "Unité précédente",
     "next": "Unité suivante"
+  },
+  "objectTypes": {
+    "video": "Vidéo",
+    "document": "Document",
+    "course": "Formation",
+    "curricular_unit": "Unité d’enseignement"
   }
 }

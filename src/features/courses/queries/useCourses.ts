@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { changePublication, findContentOptions, getCatalogCounts, getCourse, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -38,6 +38,14 @@ export function useEditorial(kind: ContentKind, params: CatalogParams) {
     queryKey: courseKeys.editor(user?.id ?? '', kind, params),
     queryFn: ({ signal }) => listEditorial(kind, params, signal),
     enabled: !!user && canAccessFacodiRoute(role, 'editor'),
+  });
+}
+export function useObjectTypeFacets(enabled: boolean) {
+  const { user, role } = useAuth();
+  return useQuery({
+    queryKey: courseKeys.objectTypes(user?.id ?? ''),
+    queryFn: ({ signal }) => getObjectTypeFacets(signal),
+    enabled: enabled && !!user && canAccessFacodiRoute(role, 'editor'),
   });
 }
 export function useContentOptions(kind: ContentKind, search: string, enabled: boolean) {

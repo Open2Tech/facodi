@@ -16,5 +16,8 @@ export type UnitSort = 'curriculum' | 'title' | 'ects';
 export interface CatalogParams {
   search: string; language: string; page: number; tag?: string;
   course?: string; year?: number; semester?: number; sort?: UnitSort;
+  status?: EditorialStatus; objectType?: string;
 }
+export const EDITORIAL_STATUSES = ['draft', 'active', 'published', 'archived'] as const;
+export type EditorialStatus = typeof EDITORIAL_STATUSES[number];
 export const PAGE_SIZE = 12;
