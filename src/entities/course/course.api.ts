@@ -2,7 +2,7 @@ import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { videoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
-import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert } from '@/entities/course/course.types';
+import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert, type LearningObject } from '@/entities/course/course.types';
 
 export function searchPattern(search: string) {
   return `%${search.trim().replace(/[\\%_]/g, '\\$&')}%`;
