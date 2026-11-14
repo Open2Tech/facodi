@@ -2,11 +2,13 @@ import { useState, useEffect, createContext, useContext, ReactNode } from 'react
 import { User, Session, AuthResponse } from '@supabase/supabase-js';
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { signInWithEmail, signOutUser, signUpWithEmail } from './auth.api';
+import { facodiRole, type FacodiRole } from '@/entities/facodi/access';
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  role: FacodiRole;
   signUp: (email: string, password: string, username?: string) => Promise<{ data: AuthResponse['data'] | null; error: Error | null }>;
   signIn: (email: string, password: string) => Promise<{ data: AuthResponse['data'] | null; error: Error | null }>;
   signOut: () => Promise<void>;
@@ -44,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, session, loading, role: facodiRole(user?.app_metadata), signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
