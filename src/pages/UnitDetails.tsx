@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
-import { VideoCard } from '@/components/resource/VideoCard';
-import { Button } from '@/components/ui/button';
+import { VideoThumbnail } from '@/components/resource/VideoCard';
+import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
 import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
-
-const VIDEO_PREVIEW = 9;
+import { formatDuration, videoInfo } from '@/entities/course/video';
+import { cn } from '@/lib/utils';
 
 export default function UnitDetails() {
   const { slug = '', unit: unitSlug = '' } = useParams();
@@ -19,7 +19,8 @@ export default function UnitDetails() {
   const query = useUnit(slug, unitSlug);
   const contribute = useContributePath();
   const videos = useUnitVideos(query.data?.unit.learning_object_id);
-  const [showAll, setShowAll] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
   const ready = Boolean(query.data);
   useEffect(() => {
@@ -37,7 +38,8 @@ export default function UnitDetails() {
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
   const siblings = outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
   const videoList = videos.data ?? [];
-  const visibleVideos = showAll ? videoList : videoList.slice(0, VIDEO_PREVIEW);
+  const selected = videoList.find(video => video.id === selectedId) ?? videoList[0];
+  const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const facts = [
     ['code', unit.code],
     ['ects', unit.ects != null ? `${unit.ects} ECTS` : null],
@@ -73,15 +75,47 @@ export default function UnitDetails() {
               <p>{videos.error.message}</p>
               <button type="button" className="mt-3 font-semibold underline underline-offset-4" onClick={() => void videos.refetch()}>{t('common.retry')}</button>
             </div>
-            : videoList.length ? <>
+            : selected && selectedInfo ? <>
               <p className="mt-2 text-sm text-muted-foreground">{t('unit.videoCount', { count: videoList.length })}</p>
-              <ol className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{visibleVideos.map(video => <li key={video.id}><VideoCard video={video} /></li>)}</ol>
-              {videoList.length > VIDEO_PREVIEW && <Button variant="outline" className="mt-5" aria-expanded={showAll} onClick={() => setShowAll(value => !value)}>
-                {showAll ? t('unit.showFewer') : t('unit.showAllVideos', { count: videoList.length })}
-              </Button>}
+              <p className="mt-1 max-w-prose text-sm text-muted-foreground">{t('unitVideos.note')}</p>
+              <div className="mt-6 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+                <div className="min-w-0">
+                  <div className="border border-foreground">
+                    {selectedInfo.youtubeId
+                      ? <YouTubePlayer key={selected.id} videoId={selectedInfo.youtubeId} title={selected.title} thumbnail={selectedInfo.thumbnail} autoPlay={engaged} onPlay={() => setEngaged(true)} />
+                      : <VideoThumbnail info={selectedInfo} />}
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold leading-snug"><Link to={`/resources/${selected.slug}`} className="decoration-2 underline-offset-4 hover:underline">{selected.title}</Link></h3>
+                  <p className="mt-1 flex flex-wrap gap-x-3 text-sm text-muted-foreground">
+                    {selectedInfo.channel && <span>{selectedInfo.channel}</span>}
+                    {selectedInfo.durationSeconds && <span className="font-mono tabular-nums">{formatDuration(selectedInfo.durationSeconds)}</span>}
+                  </p>
+                  <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+                    <Link to={`/resources/${selected.slug}`} className="inline-flex items-center gap-2 underline underline-offset-4">{t('unit.openVideoPage')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+                    {selected.source_url && <a href={selected.source_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 underline underline-offset-4">{t('unitVideos.openSource')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>}
+                  </p>
+                </div>
+                <ol aria-label={t('unitVideos.playlist')} className="max-h-[32rem] divide-y divide-input overflow-y-auto border-y border-input">
+                  {videoList.map((video, position) => {
+                    const info = videoInfo(video.metadata, video.source_url);
+                    const active = video.id === selected.id;
+                    return <li key={video.id}>
+                      <button type="button" aria-pressed={active} onClick={() => setSelectedId(video.id)}
+                        className={cn('flex w-full gap-3 px-3 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
+                        <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
+                        <span className="w-24 shrink-0"><VideoThumbnail info={info} /></span>
+                        <span className="min-w-0 flex-1">
+                          <span className="line-clamp-2 font-medium leading-snug">{video.title}</span>
+                          {info.channel && <span className={cn('mt-1 block truncate text-xs', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{info.channel}</span>}
+                        </span>
+                      </button>
+                    </li>;
+                  })}
+                </ol>
+              </div>
             </>
             : <div className="mt-4 border border-input bg-muted/40 p-6">
-              <p className="font-semibold">{t('unit.noResources')}</p>
+              <p className="font-semibold">{t('unitVideos.empty')}</p>
               <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
               <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
             </div>}

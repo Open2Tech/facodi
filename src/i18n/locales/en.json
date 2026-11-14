@@ -381,7 +381,6 @@
   "unit": {
     "breadcrumb": "Breadcrumb",
     "resources": "Open resources",
-    "noResources": "No resources are published for this unit yet.",
     "noResourcesText": "Suggested videos and materials stay in review until the editorial team confirms they match the unit’s objectives.",
     "sameTerm": "Also in year {{year}}, semester {{semester}}",
     "facts": "Unit facts",
@@ -392,8 +391,7 @@
     "videoCount_one": "{{count}} published video, in the suggested study order.",
     "videoCount_many": "{{count}} published videos, in the suggested study order.",
     "videoCount_other": "{{count}} published videos, in the suggested study order.",
-    "showAllVideos": "Show all {{count}} videos",
-    "showFewer": "Show fewer"
+    "openVideoPage": "Open video page"
   },
   "objectTypes": {
     "video": "Video",
@@ -441,5 +439,13 @@
     "licenseVerified": "Licence verified",
     "rights": "Video rights belong to its author on YouTube. FACODI neither hosts nor alters the content.",
     "moreFromChannel": "More from {{channel}}"
+  },
+  "unitVideos": {
+    "title": "Video lessons ({{count}})",
+    "note": "Supplementary resources selected by the topics indicated in their titles and channels. They do not replace the official syllabus or a full review of the lessons.",
+    "empty": "There are no sufficiently relevant video lessons for this unit yet.",
+    "channel": "Channel",
+    "openSource": "Watch original video on YouTube",
+    "playlist": "Video lessons for this unit"
   }
 }

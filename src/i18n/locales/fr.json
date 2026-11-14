@@ -381,7 +381,6 @@
   "unit": {
     "breadcrumb": "Fil d’Ariane",
     "resources": "Ressources ouvertes",
-    "noResources": "Aucune ressource n’est encore publiée pour cette unité.",
     "noResourcesText": "Les vidéos et supports suggérés restent en relecture jusqu’à ce que l’équipe éditoriale confirme qu’ils correspondent aux objectifs de l’unité.",
     "sameTerm": "Aussi en année {{year}}, semestre {{semester}}",
     "facts": "Fiche de l’unité",
@@ -392,8 +391,7 @@
     "videoCount_one": "{{count}} vidéo publiée, dans l’ordre d’étude suggéré.",
     "videoCount_many": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
     "videoCount_other": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
-    "showAllVideos": "Afficher les {{count}} vidéos",
-    "showFewer": "Afficher moins"
+    "openVideoPage": "Ouvrir la page de la vidéo"
   },
   "objectTypes": {
     "video": "Vidéo",
@@ -441,5 +439,13 @@
     "licenseVerified": "Licence vérifiée",
     "rights": "Les droits de la vidéo appartiennent à son auteur sur YouTube. FACODI n’héberge ni ne modifie le contenu.",
     "moreFromChannel": "Plus de {{channel}}"
+  },
+  "unitVideos": {
+    "title": "Cours vidéo ({{count}})",
+    "note": "Ressources complémentaires sélectionnées d'après les sujets de leurs titres et de leurs chaînes. Elles ne remplacent ni le programme officiel ni une vérification complète.",
+    "empty": "Aucune vidéo suffisamment pertinente n'est encore disponible pour cette unité.",
+    "channel": "Chaîne",
+    "openSource": "Voir la vidéo originale sur YouTube",
+    "playlist": "Vidéos de cette unité"
   }
 }

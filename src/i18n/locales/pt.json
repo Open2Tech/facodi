@@ -381,7 +381,6 @@
   "unit": {
     "breadcrumb": "Localização",
     "resources": "Recursos abertos",
-    "noResources": "Ainda não há recursos publicados para esta UC.",
     "noResourcesText": "Os vídeos e materiais sugeridos ficam em revisão até a equipa editorial confirmar que correspondem aos objetivos da unidade.",
     "sameTerm": "Também no ano {{year}}, semestre {{semester}}",
     "facts": "Ficha da UC",
@@ -392,8 +391,7 @@
     "videoCount_one": "{{count}} vídeo publicado, pela ordem de estudo sugerida.",
     "videoCount_many": "{{count}} vídeos publicados, pela ordem de estudo sugerida.",
     "videoCount_other": "{{count}} vídeos publicados, pela ordem de estudo sugerida.",
-    "showAllVideos": "Mostrar todos os {{count}} vídeos",
-    "showFewer": "Mostrar menos"
+    "openVideoPage": "Abrir página do vídeo"
   },
   "objectTypes": {
     "video": "Vídeo",
@@ -441,5 +439,13 @@
     "licenseVerified": "Licença verificada",
     "rights": "Os direitos do vídeo pertencem ao respetivo autor no YouTube. A FACODI não aloja nem altera o conteúdo.",
     "moreFromChannel": "Mais de {{channel}}"
+  },
+  "unitVideos": {
+    "title": "Aulas em vídeo ({{count}})",
+    "note": "Recursos complementares selecionados pelo tema dos títulos e canais. Não substituem o programa oficial nem a revisão integral das aulas.",
+    "empty": "Ainda não há vídeos com correspondência temática suficiente para esta UC.",
+    "channel": "Canal",
+    "openSource": "Ver vídeo original no YouTube",
+    "playlist": "Lista de vídeos desta unidade curricular"
   }
 }
