@@ -89,7 +89,7 @@ export default function UnitDetails() {
                 </ol>
                 : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
         </section>
-        <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
+        {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
           <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitReadings.notice')}</p>
           {readingsQuery.isPending
@@ -109,7 +109,7 @@ export default function UnitDetails() {
                     </Link>
                   </li>)}
                 </ul>}
-        </section>
+        </section>}
         <section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
