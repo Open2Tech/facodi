@@ -22,7 +22,8 @@
     "about": "À propos",
     "themeLight": "Passer au thème clair",
     "themeDark": "Passer au thème sombre",
-    "notes": "Carnet"
+    "notes": "Carnet",
+    "sequences": "Séquences"
   },
   "common": {
     "loading": "Chargement…",
@@ -480,7 +481,8 @@
     "document": "Document",
     "course": "Formation",
     "curricular_unit": "Unité d’enseignement",
-    "external_resource": "Référence externe"
+    "external_resource": "Référence externe",
+    "playlist": "Séquence"
   },
   "video": {
     "play": "Lire la vidéo : {{title}}",
@@ -1004,5 +1006,50 @@
     "empty": "Aucun crédit en attente",
     "emptyDescription": "Aucun profil à valider.",
     "footer": "Les références universitaires, les partenaires techniques et les personnes ont des rôles distincts. Une réunion ne suffit pas pour publier un nom."
+  },
+  "sequences": {
+    "title": "Séquences d’étude",
+    "description": "Parcours éditoriaux de cours YouTube, ordonnés par FACODI pour étudier un sujet du début à la fin.",
+    "notice": "Collections éditoriales de liens vers des vidéos externes. FACODI n’a ni hébergé ni téléchargé les vidéos ; la correspondance thématique a été vérifiée d’après les titres et les sources.",
+    "empty": "Aucune séquence publiée pour l’instant.",
+    "emptyText": "Les séquences apparaissent ici dès que l’équipe éditoriale les publie.",
+    "lessons_one": "{{count}} cours",
+    "lessons_many": "{{count}} cours",
+    "lessons_other": "{{count}} cours",
+    "unitCount_one": "{{count}} unité",
+    "unitCount_many": "{{count}} unités",
+    "unitCount_other": "{{count}} unités",
+    "yourProgress": "Ta progression",
+    "guest": "Connecte-toi pour marquer les cours comme terminés et reprendre là où tu t’es arrêté. La progression reste privée sur ton compte.",
+    "signIn": "Se connecter pour enregistrer",
+    "loadFailed": "Impossible de charger ta progression.",
+    "saveFailed": "Impossible d’enregistrer la progression. Réessaie.",
+    "progressCount": "{{completed}} sur {{total}} terminés",
+    "progressLabel": "Progression dans {{title}}",
+    "selfReported": "C’est toi qui marques les cours terminés ; toi seul vois cette progression.",
+    "finished": "Tu as terminé tous les cours de cette séquence.",
+    "continue": "Continuer : {{title}}",
+    "reset": "Recommencer la séquence",
+    "resetConfirm": "Efface les cours terminés et les positions enregistrées de cette séquence. Action irréversible.",
+    "lessonsHeading": "Cours de la séquence",
+    "position": "Cours {{current}} sur {{total}}",
+    "resumeAt": "Reprise à {{time}}",
+    "completed": "Terminé",
+    "markComplete": "Marquer comme terminé",
+    "started": "Commencé",
+    "next": "Cours suivant",
+    "markItem": "Marquer « {{title}} » comme terminé",
+    "unmarkItem": "Marquer « {{title}} » comme non terminé",
+    "noLessons": "Cette séquence n’a pas encore de cours visibles.",
+    "noLessonsText": "Les cours apparaissent après la révision éditoriale.",
+    "units": "Unités curriculaires liées",
+    "forUnit": "Séquences d’étude",
+    "forUnitText": "Parcours ordonnés de cours pour étudier les sujets de cette unité.",
+    "overviewTitle": "Séquences en cours",
+    "overviewTotal_one": "{{count}} séquence commencée",
+    "overviewTotal_many": "{{count}} séquences commencées",
+    "overviewTotal_other": "{{count}} séquences commencées",
+    "overviewEmpty": "Tu n’as pas encore commencé de séquence. Choisis un parcours et marque les cours au fur et à mesure.",
+    "browse": "Voir les séquences d’étude"
   }
 }

@@ -1213,120 +1213,155 @@ export type Database = {
           },
         ]
       }
-      project_milestones: {
+      project_credit_approvals: {
         Row: {
+          consent_basis: string
           id: string
-          slug: string
-          event_date: string | null
-          date_label: string
-          title: string
-          summary: string
-          public_source_url: string
-          publication_state: string
-          verification_state: string
-          translations: Json
-          sort_order: number
-          created_at: string
-          updated_at: string
+          profile_id: string
+          review_note: string
+          reviewed_at: string
+          reviewed_by: string
         }
         Insert: {
+          consent_basis: string
           id?: string
-          slug: string
-          event_date?: string | null
-          date_label: string
-          title: string
-          summary: string
-          public_source_url: string
-          publication_state?: string
-          verification_state?: string
-          translations?: Json
-          sort_order?: number
-          created_at?: string
-          updated_at?: string
+          profile_id: string
+          review_note: string
+          reviewed_at?: string
+          reviewed_by: string
         }
         Update: {
+          consent_basis?: string
           id?: string
-          slug?: string
+          profile_id?: string
+          review_note?: string
+          reviewed_at?: string
+          reviewed_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_credit_approvals_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "project_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_milestones: {
+        Row: {
+          created_at: string
+          date_label: string
+          event_date: string | null
+          id: string
+          public_source_url: string
+          publication_state: string
+          slug: string
+          sort_order: number
+          summary: string
+          title: string
+          translations: Json
+          updated_at: string
+          verification_state: string
+        }
+        Insert: {
+          created_at?: string
+          date_label: string
           event_date?: string | null
+          id?: string
+          public_source_url: string
+          publication_state?: string
+          slug: string
+          sort_order?: number
+          summary: string
+          title: string
+          translations?: Json
+          updated_at?: string
+          verification_state?: string
+        }
+        Update: {
+          created_at?: string
           date_label?: string
-          title?: string
-          summary?: string
+          event_date?: string | null
+          id?: string
           public_source_url?: string
           publication_state?: string
-          verification_state?: string
-          translations?: Json
+          slug?: string
           sort_order?: number
-          created_at?: string
+          summary?: string
+          title?: string
+          translations?: Json
           updated_at?: string
+          verification_state?: string
         }
         Relationships: []
       }
       project_profiles: {
         Row: {
-          id: string
-          slug: string
-          entity_kind: string
-          relationship_kind: string
-          display_name: string
-          role_label: string
-          headline: string
-          description: string
-          website_url: string | null
-          public_source_url: string | null
-          verification_state: string
-          publication_state: string
           consent_for_public_credit: boolean
-          translations: Json
-          editorial_metadata: Json
-          sort_order: number
           created_at: string
-          updated_at: string
-          reviewed_by: string | null
+          description: string
+          display_name: string
+          editorial_metadata: Json
+          entity_kind: string
+          headline: string
+          id: string
+          public_source_url: string | null
+          publication_state: string
+          relationship_kind: string
           reviewed_at: string | null
+          reviewed_by: string | null
+          role_label: string
+          slug: string
+          sort_order: number
+          translations: Json
+          updated_at: string
+          verification_state: string
+          website_url: string | null
         }
         Insert: {
-          id?: string
-          slug: string
-          entity_kind: string
-          relationship_kind: string
-          display_name: string
-          role_label: string
-          headline: string
-          description: string
-          website_url?: string | null
-          public_source_url?: string | null
-          verification_state?: string
-          publication_state?: string
           consent_for_public_credit?: boolean
-          translations?: Json
-          editorial_metadata?: Json
-          sort_order?: number
           created_at?: string
-          updated_at?: string
-          reviewed_by?: string | null
+          description: string
+          display_name: string
+          editorial_metadata?: Json
+          entity_kind: string
+          headline: string
+          id?: string
+          public_source_url?: string | null
+          publication_state?: string
+          relationship_kind: string
           reviewed_at?: string | null
+          reviewed_by?: string | null
+          role_label: string
+          slug: string
+          sort_order?: number
+          translations?: Json
+          updated_at?: string
+          verification_state?: string
+          website_url?: string | null
         }
         Update: {
-          id?: string
-          slug?: string
-          entity_kind?: string
-          relationship_kind?: string
-          display_name?: string
-          role_label?: string
-          headline?: string
-          description?: string
-          website_url?: string | null
-          public_source_url?: string | null
-          verification_state?: string
-          publication_state?: string
           consent_for_public_credit?: boolean
-          translations?: Json
-          editorial_metadata?: Json
-          sort_order?: number
           created_at?: string
-          updated_at?: string
-          reviewed_by?: string | null
+          description?: string
+          display_name?: string
+          editorial_metadata?: Json
+          entity_kind?: string
+          headline?: string
+          id?: string
+          public_source_url?: string | null
+          publication_state?: string
+          relationship_kind?: string
           reviewed_at?: string | null
+          reviewed_by?: string | null
+          role_label?: string
+          slug?: string
+          sort_order?: number
+          translations?: Json
+          updated_at?: string
+          verification_state?: string
+          website_url?: string | null
         }
         Relationships: []
       }
@@ -1945,18 +1980,6 @@ export type Database = {
       }
     }
     Functions: {
-      review_project_credit: {
-        Args: {
-          p_profile_id: string
-          p_role_label: string
-          p_headline: string
-          p_description: string
-          p_public_source_url: string
-          p_consent_basis: string
-          p_review_note: string
-        }
-        Returns: string
-      }
       classify_resource_license: {
         Args: { p_license: string }
         Returns: string
@@ -2214,6 +2237,23 @@ export type Database = {
           verified_metadata_count: number
         }[]
       }
+      get_public_unit_learning_path_v1: {
+        Args: { p_course_code: string; p_unit_code: string }
+        Returns: {
+          course_code: string
+          course_title: string
+          editorial_info: Json
+          individual_videos: Json
+          learning_goals: Json
+          reading_references: Json
+          unit_code: string
+          unit_ects: number
+          unit_semester: number
+          unit_title: string
+          unit_year: number
+          video_playlists: Json
+        }[]
+      }
       is_facodi_editor: { Args: never; Returns: boolean }
       link_learning_objects: {
         Args: {
@@ -2260,6 +2300,20 @@ export type Database = {
           youtube_id: string
         }[]
       }
+      list_public_course_resource_coverage_v1: {
+        Args: { p_course_code?: string; p_limit?: number }
+        Returns: {
+          course_code: string
+          course_title: string
+          playlist_count: number
+          reading_count: number
+          semester: number
+          unit_code: string
+          unit_title: string
+          video_count: number
+          year: number
+        }[]
+      }
       list_public_editorial_playlist_items_v1: {
         Args: { p_limit?: number; p_playlist_slug: string }
         Returns: {
@@ -2281,6 +2335,19 @@ export type Database = {
           playlist_slug: string
           playlist_title: string
           unit_code: string
+        }[]
+      }
+      list_public_editorial_sequences_v1: {
+        Args: { p_unit_code?: string }
+        Returns: {
+          cover_youtube_id: string
+          item_count: number
+          language: string
+          playlist_description: string
+          playlist_id: string
+          playlist_slug: string
+          playlist_title: string
+          unit_codes: string[]
         }[]
       }
       normalize_resource_url: { Args: { p_url: string }; Returns: string }
@@ -2400,6 +2467,18 @@ export type Database = {
           p_decision: string
           p_playlist_id: string
           p_review_note?: string
+        }
+        Returns: string
+      }
+      review_project_credit: {
+        Args: {
+          p_consent_basis: string
+          p_description: string
+          p_headline: string
+          p_profile_id: string
+          p_public_source_url: string
+          p_review_note: string
+          p_role_label: string
         }
         Returns: string
       }

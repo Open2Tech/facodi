@@ -1,0 +1,113 @@
+import { supabase } from '@/shared/api/supabase/supabaseClient';
+import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
+import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence, type SequenceProgressSummary, type SequenceSummary, type VideoProgress } from './sequence';
+
+const PROGRESS_FIELDS = 'video_id, completed_at, last_position_seconds, updated_at';
+const MAX_POSITION = 10_000_000;
+
+type ProgressRow = { video_id: string; completed_at: string | null; last_position_seconds: number; updated_at: string };
+const toProgress = (row: ProgressRow): VideoProgress => ({
+  videoId: row.video_id, completedAt: row.completed_at, lastPosition: row.last_position_seconds, updatedAt: row.updated_at,
+});
+
+export async function listSequences(unitCode: string | null, signal?: AbortSignal): Promise<SequenceSummary[]> {
+  const { data, error } = await supabase.rpc('list_public_editorial_sequences_v1', unitCode ? { p_unit_code: unitCode } : {}).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return (data ?? []).map(row => ({
+    id: row.playlist_id, slug: row.playlist_slug, title: row.playlist_title, description: row.playlist_description ?? '',
+    language: row.language || null, itemCount: row.item_count, unitCodes: row.unit_codes ?? [], cover: youtubeThumbnail(row.cover_youtube_id),
+  }));
+}
+
+/** Public sequence with its reviewed lessons; null when it is unpublished, unknown or not editorial. */
+export async function getSequence(slug: string, signal?: AbortSignal): Promise<Sequence | null> {
+  const { data, error } = await supabase.rpc('get_public_editorial_playlist_v2', { p_slug: slug }).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const row = data?.[0];
+  if (!row) return null;
+  const items = parseSequenceItems(row.items);
+  const slugs = new Map<string, string>();
+  if (items.length) {
+    // The RPC returns object ids; resolve the catalogue pages the learner may open (RLS hides the rest).
+    const { data: videos, error: slugError } = await supabase.from('learning_objects').select('id, slug')
+      .in('id', items.map(item => item.videoId)).abortSignal(signal);
+    if (slugError) throw new Error(getSupabaseErrorMessage(slugError));
+    for (const video of videos) slugs.set(video.id, video.slug);
+  }
+  return {
+    id: row.playlist_id, slug: row.playlist_slug, title: row.playlist_title, description: row.playlist_description ?? '',
+    language: row.language || null, verifiedCount: row.verified_metadata_count,
+    items: items.map(item => ({ ...item, slug: slugs.get(item.videoId) ?? null })),
+    units: parseSequenceUnits(row.curricular_units),
+  };
+}
+
+export async function listMyProgress(userId: string, playlistId: string, signal?: AbortSignal) {
+  const { data, error } = await supabase.from('editorial_playlist_progress').select(PROGRESS_FIELDS)
+    .eq('user_id', userId).eq('playlist_id', playlistId).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data.map(toProgress);
+}
+
+/** Records that the learner opened a lesson, without touching progress that already exists. */
+export async function markStarted(userId: string, playlistId: string, videoId: string) {
+  const { error } = await supabase.from('editorial_playlist_progress')
+    .upsert({ user_id: userId, playlist_id: playlistId, video_id: videoId }, { onConflict: 'user_id,playlist_id,video_id', ignoreDuplicates: true });
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+}
+
+/**
+ * Self-reported progress. Learners may only update the position and completion columns, so this
+ * updates first and inserts only when the row is new, instead of an upsert that would rewrite the key.
+ */
+export async function saveProgress(userId: string, playlistId: string, videoId: string, patch: { completed?: boolean; position?: number }): Promise<VideoProgress> {
+  const values: { completed_at?: string | null; last_position_seconds?: number } = {};
+  if (patch.completed !== undefined) values.completed_at = patch.completed ? new Date().toISOString() : null;
+  if (patch.position !== undefined) values.last_position_seconds = Math.min(MAX_POSITION, Math.max(0, Math.floor(patch.position)));
+  const update = () => supabase.from('editorial_playlist_progress').update(values)
+    .eq('user_id', userId).eq('playlist_id', playlistId).eq('video_id', videoId).select(PROGRESS_FIELDS);
+  const updated = await update();
+  if (updated.error) throw new Error(getSupabaseErrorMessage(updated.error));
+  if (updated.data[0]) return toProgress(updated.data[0]);
+  const inserted = await supabase.from('editorial_playlist_progress')
+    .insert({ user_id: userId, playlist_id: playlistId, video_id: videoId, ...values }).select(PROGRESS_FIELDS);
+  if (inserted.error?.code === '23505') {
+    // Another tab created the row between both requests.
+    const retried = await update();
+    if (retried.error) throw new Error(getSupabaseErrorMessage(retried.error));
+    if (retried.data[0]) return toProgress(retried.data[0]);
+  }
+  if (inserted.error) throw new Error(getSupabaseErrorMessage(inserted.error));
+  if (!inserted.data[0]) throw new Error('progress_not_saved');
+  return toProgress(inserted.data[0]);
+}
+
+export async function resetProgress(userId: string, playlistId: string) {
+  const { error } = await supabase.from('editorial_playlist_progress').delete().eq('user_id', userId).eq('playlist_id', playlistId);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+}
+
+/** Sequences the learner has started, most recent activity first, with server-computed totals. */
+export async function listMySequences(userId: string, limit: number, signal?: AbortSignal): Promise<{ items: SequenceProgressSummary[]; total: number }> {
+  const { data, error } = await supabase.from('editorial_playlist_progress').select('playlist_id, updated_at')
+    .eq('user_id', userId).order('updated_at', { ascending: false }).limit(1000).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const latest = new Map<string, string>();
+  for (const row of data) if (!latest.has(row.playlist_id)) latest.set(row.playlist_id, row.updated_at);
+  const recent = [...latest.keys()].slice(0, limit);
+  if (!recent.length) return { items: [], total: 0 };
+  const { data: playlists, error: playlistError } = await supabase.from('learning_objects').select('id, slug')
+    .in('id', recent).abortSignal(signal);
+  if (playlistError) throw new Error(getSupabaseErrorMessage(playlistError));
+  const slugs = new Map(playlists.map(playlist => [playlist.id, playlist.slug]));
+  const items = await Promise.all(recent.flatMap(id => {
+    const slug = slugs.get(id);
+    if (!slug) return [];
+    return [supabase.rpc('get_my_editorial_playlist_progress_v1', { p_slug: slug }).abortSignal(signal).then(({ data: rows, error: rpcError }) => {
+      if (rpcError) throw new Error(getSupabaseErrorMessage(rpcError));
+      const row = rows?.[0];
+      return row ? [{ slug, title: row.playlist_title, total: Number(row.total_items), started: Number(row.started_items), completed: Number(row.completed_items), updatedAt: latest.get(id)! }] : [];
+    })];
+  }));
+  return { items: items.flat(), total: latest.size };
+}

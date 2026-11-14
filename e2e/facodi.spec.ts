@@ -325,6 +325,13 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
     if (url.searchParams.has('offset')) listRequests.push(url);
     await route.fulfill({ json: units, headers });
   });
+  const sequenceUnits: unknown[] = [];
+  await page.route('**/rest/v1/rpc/list_public_editorial_sequences_v1', route => {
+    expect(route.request().headers()['content-profile']).toBe('facodi');
+    sequenceUnits.push(route.request().postDataJSON());
+    return route.fulfill({ json: [{ playlist_id: 'p1', playlist_slug: 'logic-path', playlist_title: 'Logic in practice', playlist_description: null,
+      language: 'en', item_count: 3, unit_codes: ['1001'], cover_youtube_id: null }] });
+  });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/units');
   await page.getByRole('button', { name: /^TST/ }).click();
@@ -337,6 +344,8 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
   await expect(page.getByRole('heading', { level: 1, name: 'Logic I' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' })).toBeVisible();
   await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Logic in practice/ })).toHaveAttribute('href', '/sequences/logic-path');
+  expect(sequenceUnits).toEqual([{ p_unit_code: '1001' }]);
 });
 
 test('video page loads YouTube only on demand and places the video in its unit trail', async ({ page }) => {
@@ -785,4 +794,46 @@ test('editor approves a suggestion as a draft through the review RPC', async ({ 
   await expect(page.getByText('Draft created. Review and publish it in the editor.')).toBeVisible();
   expect(decisions).toEqual([{ p_suggestion_id: 's1', p_decision: 'approved', p_review_note: 'Linked to arrays' }]);
   await expect(page.getByRole('heading', { name: 'No pending suggestions' })).toBeVisible();
+});
+
+test('guest browses study sequences, picks a lesson through the URL and is invited to save progress', async ({ page }) => {
+  const item = (position: number, id: string, title: string) => ({
+    position, video_id: id, youtube_id: `abcdefghij${position}`, title, channel: 'Canal Aberto', language: 'pt',
+    youtube_url: `https://www.youtube.com/watch?v=abcdefghij${position}`, thumbnail_url: null, metadata_verified: true,
+  });
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+  await page.route('**/rest/v1/**', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    expect(request.headers()['accept-profile'] ?? request.headers()['content-profile']).toBe('facodi');
+    if (url.pathname.endsWith('/rpc/list_public_editorial_sequences_v1')) return route.fulfill({ json: [{
+      playlist_id: 'p1', playlist_slug: 'python-basics', playlist_title: 'Python from scratch', playlist_description: 'Variables to functions.',
+      language: 'pt', item_count: 2, unit_codes: ['101', '102'], cover_youtube_id: 'abcdefghij1',
+    }] });
+    if (url.pathname.endsWith('/rpc/get_public_editorial_playlist_v2')) {
+      expect(request.postDataJSON()).toEqual({ p_slug: 'python-basics' });
+      return route.fulfill({ json: [{
+        playlist_id: 'p1', playlist_slug: 'python-basics', playlist_title: 'Python from scratch', playlist_description: 'Variables to functions.',
+        language: 'pt', verified_metadata_count: 2, items: [item(1, 'v1', 'Variables'), item(2, 'v2', 'Functions')],
+        curricular_units: [{ unit_code: '101', unit_slug: 'programming-i', unit_title: 'Programming I', course_code: 'LESTI', course_slug: 'lesti' }],
+      }] });
+    }
+    expect(url.pathname).not.toContain('/rpc/');
+    if (url.pathname.endsWith('/learning_objects')) return route.fulfill({ json: [{ id: 'v1', slug: 'variables' }, { id: 'v2', slug: 'functions' }] });
+    return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+  });
+
+  await page.goto('/sequences');
+  await expect(page.getByRole('heading', { level: 1, name: 'Study sequences' })).toBeVisible();
+  await expect(page.getByText('2 lessons')).toBeVisible();
+  await page.getByRole('link', { name: /Python from scratch/ }).click();
+  await expect(page).toHaveURL(/\/sequences\/python-basics$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Python from scratch' })).toBeVisible();
+  await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await page.getByRole('list', { name: 'Lessons in this sequence' }).getByRole('button', { name: /Functions/ }).click();
+  await expect(page).toHaveURL(/\?v=v2$/);
+  await expect(page.getByText('Lesson 2 of 2')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Sign in to save progress' })).toHaveAttribute('href', '/login?next=%2Fsequences%2Fpython-basics');
+  await expect(page.getByRole('link', { name: /Programming I/ })).toHaveAttribute('href', '/courses/lesti/units/programming-i');
+  await expect(page.getByRole('checkbox')).toHaveCount(0);
 });

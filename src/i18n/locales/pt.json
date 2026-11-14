@@ -22,7 +22,8 @@
     "about": "Sobre",
     "themeLight": "Mudar para tema claro",
     "themeDark": "Mudar para tema escuro",
-    "notes": "Caderno"
+    "notes": "Caderno",
+    "sequences": "Sequências"
   },
   "common": {
     "loading": "A carregar…",
@@ -480,7 +481,8 @@
     "document": "Documento",
     "course": "Curso",
     "curricular_unit": "Unidade curricular",
-    "external_resource": "Referência externa"
+    "external_resource": "Referência externa",
+    "playlist": "Sequência"
   },
   "video": {
     "play": "Reproduzir vídeo: {{title}}",
@@ -1004,5 +1006,50 @@
     "empty": "Tudo por validar? Nada pendente.",
     "emptyDescription": "Não existem candidatos à espera de verificação.",
     "footer": "As referências académicas, os parceiros tecnológicos e as pessoas não são a mesma categoria. Nunca publique nomes apenas porque surgiram numa reunião ou orçamento."
+  },
+  "sequences": {
+    "title": "Sequências de estudo",
+    "description": "Percursos editoriais de aulas do YouTube, ordenados pela FACODI para estudar um tema do princípio ao fim.",
+    "notice": "Coleções editoriais de ligações para vídeos externos. A FACODI não alojou nem descarregou os vídeos; a correspondência temática foi revista por títulos e fontes.",
+    "empty": "Ainda não há sequências publicadas.",
+    "emptyText": "Quando a equipa editorial publicar uma sequência, ela aparece aqui.",
+    "lessons_one": "{{count}} aula",
+    "lessons_many": "{{count}} aulas",
+    "lessons_other": "{{count}} aulas",
+    "unitCount_one": "{{count}} unidade",
+    "unitCount_many": "{{count}} unidades",
+    "unitCount_other": "{{count}} unidades",
+    "yourProgress": "O teu progresso",
+    "guest": "Inicia sessão para marcares aulas como concluídas e retomares onde ficaste. O progresso fica privado na tua conta.",
+    "signIn": "Entrar para guardar progresso",
+    "loadFailed": "Não foi possível carregar o teu progresso.",
+    "saveFailed": "Não foi possível guardar o progresso. Tenta novamente.",
+    "progressCount": "{{completed}} de {{total}} concluídas",
+    "progressLabel": "Progresso em {{title}}",
+    "selfReported": "Marcas tu as aulas concluídas; só tu vês este progresso.",
+    "finished": "Concluíste todas as aulas desta sequência.",
+    "continue": "Continuar: {{title}}",
+    "reset": "Recomeçar sequência",
+    "resetConfirm": "Apaga as aulas concluídas e as posições guardadas nesta sequência. Não é possível desfazer.",
+    "lessonsHeading": "Aulas da sequência",
+    "position": "Aula {{current}} de {{total}}",
+    "resumeAt": "Retoma em {{time}}",
+    "completed": "Concluída",
+    "markComplete": "Marcar como concluída",
+    "started": "Iniciada",
+    "next": "Aula seguinte",
+    "markItem": "Marcar «{{title}}» como concluída",
+    "unmarkItem": "Desmarcar «{{title}}» como concluída",
+    "noLessons": "Esta sequência ainda não tem aulas visíveis.",
+    "noLessonsText": "As aulas aparecem depois da revisão editorial.",
+    "units": "Unidades curriculares relacionadas",
+    "forUnit": "Sequências de estudo",
+    "forUnitText": "Percursos ordenados de aulas para estudar os temas desta unidade.",
+    "overviewTitle": "Sequências em curso",
+    "overviewTotal_one": "{{count}} sequência iniciada",
+    "overviewTotal_many": "{{count}} sequências iniciadas",
+    "overviewTotal_other": "{{count}} sequências iniciadas",
+    "overviewEmpty": "Ainda não começaste nenhuma sequência. Escolhe um percurso e marca as aulas à medida que avanças.",
+    "browse": "Ver sequências de estudo"
   }
 }

@@ -3,6 +3,7 @@ import { courseKeys } from '@/entities/course/course.keys';
 import { contributionKeys } from '@/entities/contribution/contribution.keys';
 import { notesKeys } from '@/entities/notes/notes.keys';
 import { suggestionKeys } from '@/entities/suggestion/suggestion.keys';
+import { sequenceKeys } from '@/entities/sequence/sequence.keys';
 
 describe('FACODI query isolation', () => {
   it('separates public filters and pagination', () => {
@@ -31,5 +32,9 @@ describe('FACODI query isolation', () => {
     expect(suggestionKeys.mine('alice')).not.toEqual(suggestionKeys.mine('bob'));
     expect(suggestionKeys.queue('alice').slice(0, 4)).toEqual(suggestionKeys.all('alice'));
     expect(suggestionKeys.mine('alice').slice(0, 3)).toEqual(['facodi', 'private', 'alice']);
+    expect(sequenceKeys.progress('alice', 'p1')).not.toEqual(sequenceKeys.progress('bob', 'p1'));
+    expect(sequenceKeys.progress('alice', 'p1').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));
+    expect(sequenceKeys.overview('alice').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));
+    expect(sequenceKeys.list(null).slice(0, 3)).toEqual(['facodi', 'sequences', 'public']);
   });
 });
