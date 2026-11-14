@@ -891,5 +891,19 @@
     "rejected": "Sugerencia rechazada.",
     "confirmApproveExisting": "El recurso ya existe: aprobar lo reutiliza (y lo vincula a la unidad, si la hay) sin crear uno nuevo.",
     "approvedExisting": "Recurso existente reutilizado, sin nuevo borrador."
+  },
+  "courseArchive": {
+    "title": "Planes de estudios anteriores",
+    "notice": "Los planes históricos se conservan por separado. Coincidir en códigos no implica equivalencia académica ni derecho a reconocimiento de créditos.",
+    "unitCount": "{{count}} asignaturas/opciones",
+    "credits": "Plan de grado: {{count}} ECTS, eligiendo las optativas correspondientes",
+    "codeOverlap": "{{count}} códigos también aparecen en el plan actual",
+    "equivalenceNotice": "Estas asignaturas son históricas. Consulte a la UAlg las normas de equivalencia y reconocimiento. Las asignaturas de un mismo grupo optativo son alternativas.",
+    "officialSource": "Verificar el plan oficial de UAlg",
+    "unit": "Asignatura",
+    "term": "Semestre",
+    "elective": "Optativa {{group}}",
+    "annual": "Anual",
+    "error": "No se pudo cargar el plan histórico."
   }
 }
