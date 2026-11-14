@@ -1,0 +1,49 @@
+name: FACODI validation
+
+on:
+  push:
+    branches: [facodi]
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - "supabase/**"
+      - "package.json"
+      - "bun.lock"
+      - "vite.config.*"
+      - "tsconfig*.json"
+      - ".github/workflows/facodi-validation.yml"
+  pull_request:
+    branches: [facodi]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: facodi-validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, types, tests and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install pinned dependencies
+        run: bun install --frozen-lockfile
+      - name: Lint
+        run: bun run lint
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Unit tests
+        run: bun run test
+      - name: Validate FACODI email templates
+        run: bun scripts/validate-facodi-email-templates.mjs
+      - name: Build production bundle without network credentials
+        env:
+          VITE_SUPABASE_URL: https://wvkjainfwsyiyfcmbtid.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: ci-placeholder-not-a-real-api-key
+        run: bun run build
