@@ -451,7 +451,9 @@
       "postgraduate": "Posgrado"
     },
     "videosTitle": "Vídeos de este curso",
-    "videosText": "Primeros vídeos de las rutas curadas en las {{count}} unidades curriculares de este plan."
+    "videosText": "Primeros vídeos de las rutas curadas en las {{count}} unidades curriculares de este plan.",
+    "availableElectives": "Asignaturas optativas disponibles",
+    "ufesElectiveNotice": "Las 45 asignaturas son alternativas distribuidas en cuatro grupos del plan UFES. Cada estudiante elige 10 optativas (720 horas), no todas las alternativas."
   },
   "resource": {
     "objectives": "Objetivos de aprendizaje",
