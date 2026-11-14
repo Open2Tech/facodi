@@ -598,6 +598,9 @@ export type Database = {
           prompt: Json
           result: Json
           root_object_id: string | null
+          reviewed_by: string | null
+          reviewed_at: string | null
+          review_note: string | null
           status: string
           structure_type: string
           updated_at: string
@@ -610,6 +613,9 @@ export type Database = {
           prompt?: Json
           result?: Json
           root_object_id?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_note?: string | null
           status?: string
           structure_type: string
           updated_at?: string
@@ -622,6 +628,9 @@ export type Database = {
           prompt?: Json
           result?: Json
           root_object_id?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_note?: string | null
           status?: string
           structure_type?: string
           updated_at?: string
@@ -1454,6 +1463,21 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      review_study_blueprint: {
+        Args: { p_id: string; p_decision: string; p_note?: string | null }
+        Returns: string
+      }
+      search_public_resources_v2: {
+        Args: {
+          p_search?: string
+          p_language?: string | null
+          p_object_type?: string | null
+          p_tag?: string | null
+          p_page?: number
+          p_page_size?: number
+        }
+        Returns: Json
+      }
       create_course_structure: {
         Args: {
           p_child_object_ids?: string[]

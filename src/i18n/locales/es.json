@@ -242,7 +242,7 @@
     "findRelation": "Buscar: {{name}}",
     "noRelation": "Sin asociación",
     "relationLimit": "Se muestran hasta 50 resultados. Refina la búsqueda para encontrar otros contenidos.",
-    "unitVisibility": "Atención: una unidad activa de un curso publicado y activo puede ser pública incluso con published=false. Para retirarla del catálogo, cambia el estado a borrador o archivado.",
+    "unitVisibility": "La visibilidad pública exige published=true y status=active tanto en la unidad como en su curso, respetando RLS.",
     "publish": "Publicar",
     "archive": "Archivar",
     "unpublish": "Volver a borrador",
@@ -491,5 +491,33 @@
   "authPanel": {
     "title": "El catálogo sigue abierto.",
     "text": "No necesitas una cuenta para leer. La cuenta sirve para gestionar tus datos y, con el rol adecuado, contribuir."
+  },
+  "studyReview": {
+    "open": "Revisar itinerarios",
+    "back": "Volver al editor",
+    "title": "Revisión de itinerarios y planes",
+    "description": "Evalúa las rutas de estudio creadas a partir de contenido existente. Aceptar un borrador solo registra una decisión editorial interna.",
+    "filter": "Estado de revisión",
+    "status": {
+      "draft": "Pendiente",
+      "accepted": "Aceptado",
+      "rejected": "Rechazado"
+    },
+    "count": "{{count}} registros",
+    "itemCount": "{{count}} elementos",
+    "courseMap": "Plan curricular",
+    "unitPlan": "Itinerario de unidad",
+    "untitled": "Documento sin título",
+    "previousNote": "Nota anterior",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "empty": "Sin registros",
+    "emptyDescription": "No hay itinerarios en este estado.",
+    "additional": "{{count}} elementos más no mostrados",
+    "disclaimer": "Plan editorial, no es el programa oficial de la universidad.",
+    "saved": "Decisión guardada.",
+    "confirmDescription": "La decisión se registra con identidad y fecha. No publica el material automáticamente.",
+    "note": "Notas de revisión",
+    "notePlaceholder": "Motivo o cambios necesarios (opcional)"
   }
 }

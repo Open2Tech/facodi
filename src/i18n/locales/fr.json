@@ -242,7 +242,7 @@
     "findRelation": "Rechercher : {{name}}",
     "noRelation": "Aucune association",
     "relationLimit": "Jusqu'à 50 résultats sont affichés. Affinez la recherche pour trouver d'autres contenus.",
-    "unitVisibility": "Attention : une unité active d'un cours publié et actif peut être publique même avec published=false. Pour la retirer du catalogue, passez son état à brouillon ou archivé.",
+    "unitVisibility": "La visibilité publique exige published=true et status=active pour l'unité et le cursus, avec contrôle RLS.",
     "publish": "Publier",
     "archive": "Archiver",
     "unpublish": "Repasser en brouillon",
@@ -491,5 +491,33 @@
   "authPanel": {
     "title": "Le catalogue reste ouvert.",
     "text": "Aucun compte n’est nécessaire pour lire. Le compte sert à gérer tes informations et, avec le bon rôle, à contribuer."
+  },
+  "studyReview": {
+    "open": "Réviser les parcours",
+    "back": "Retour à l'éditeur",
+    "title": "Révision des parcours et cursus",
+    "description": "Évaluez les parcours élaborés à partir de contenus existants. L'acceptation n'est qu'une décision éditoriale interne, sans publication automatique.",
+    "filter": "Statut de révision",
+    "status": {
+      "draft": "À vérifier",
+      "accepted": "Accepté",
+      "rejected": "Rejeté"
+    },
+    "count": "{{count}} documents",
+    "itemCount": "{{count}} éléments",
+    "courseMap": "Carte du cursus",
+    "unitPlan": "Parcours d'unité",
+    "untitled": "Document sans titre",
+    "previousNote": "Note précédente",
+    "accept": "Accepter",
+    "reject": "Rejeter",
+    "empty": "Aucun document",
+    "emptyDescription": "Aucun parcours avec ce statut.",
+    "additional": "{{count}} éléments supplémentaires",
+    "disclaimer": "Plan éditorial, et non programme officiel de l'université.",
+    "saved": "Décision enregistrée.",
+    "confirmDescription": "La décision est associée à votre identité et à la date. Elle ne publie rien automatiquement.",
+    "note": "Remarques",
+    "notePlaceholder": "Motif ou modifications requises (facultatif)"
   }
 }

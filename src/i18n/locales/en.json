@@ -242,7 +242,7 @@
     "findRelation": "Search: {{name}}",
     "noRelation": "No association",
     "relationLimit": "Up to 50 results are shown. Refine your search to find other content.",
-    "unitVisibility": "Important: an active unit in a published, active course may be public even with published=false. To remove it from the catalogue, change its state to draft or archived.",
+    "unitVisibility": "Public visibility requires published=true and status=active on both the curricular unit and its course, subject to RLS.",
     "publish": "Publish",
     "archive": "Archive",
     "unpublish": "Return to draft",
@@ -491,5 +491,33 @@
   "authPanel": {
     "title": "The catalogue stays open.",
     "text": "You do not need an account to read. An account lets you manage your details and, with the right role, contribute."
+  },
+  "studyReview": {
+    "open": "Review study paths",
+    "back": "Back to editor",
+    "title": "Study-path and curriculum review",
+    "description": "Assess draft study paths built from existing content. Accepting a draft records an internal editorial decision; it does not publish material or imply university approval.",
+    "filter": "Review status",
+    "status": {
+      "draft": "Awaiting review",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    },
+    "count": "{{count}} records",
+    "itemCount": "{{count}} elements",
+    "courseMap": "Curriculum map",
+    "unitPlan": "Curricular unit study path",
+    "untitled": "Untitled document",
+    "previousNote": "Previous note",
+    "accept": "Accept",
+    "reject": "Reject",
+    "empty": "No records",
+    "emptyDescription": "No study paths match this status.",
+    "additional": "{{count}} more items not shown",
+    "disclaimer": "Editorial study outline, not an official university syllabus.",
+    "saved": "Review decision saved.",
+    "confirmDescription": "The decision is recorded with your identity and date. It does not automatically publish this material.",
+    "note": "Review notes",
+    "notePlaceholder": "Reason or changes needed (optional)"
   }
 }
