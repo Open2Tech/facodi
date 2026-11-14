@@ -52,11 +52,20 @@ Os tipos foram gerados do schema real, não de uma reprodução local.
 
 ## Catálogo académico publicado (14/11/2026)
 
-O schema remoto `facodi` contém **2 cursos da UAlg**, **84 UCs públicas** com guias de estudo originais FACODI, **519 vídeos educativos externos** publicados e **523 associações UC–vídeo** por correspondência temática, totalizando **605 objetos educativos públicos**. Existem **22 UCs com vídeos**; 62 possuem roteiro de estudo mas ainda aguardam conteúdos audiovisuais pertinentes. As cinco UCs antigas ausentes do plano oficial 2026/27 permanecem privadas.
+O schema remoto `facodi` contém **2 cursos da Universidade do Algarve**, **84 unidades curriculares públicas** e **684 objetos educativos públicos**: **564 vídeos do YouTube**, **34 referências de leitura externas**, **84 roteiros de UC** e **2 fichas de curso**. Existem **568 associações UC–vídeo** em **29 UCs com vídeos**, além de **62 ligações de leitura distribuídas por 47 UCs**.
 
-Os vídeos são **ligações aos uploads originais no YouTube**, e a área «Aulas em vídeo» nas páginas de UC usa o embed `youtube-nocookie.com`. A curadoria teve por base os títulos e canais, **não** a visualização integral das aulas. A FACODI não afirma ter verificado licenças, disponibilidade ou transcrições de todos os vídeos.
+Cada UC publicada tem três objetivos de estudo e três competências temáticas propostos pela FACODI (**252 + 252** no total). São materiais editoriais, **não** resultados de aprendizagem ou fichas curriculares oficialmente aprovados pela UAlg. Cinco UCs de edições anteriores, não confirmadas no plano de 2026/27, permanecem em rascunho. Os ECTS das opções alternativas não devem ser somados indiscriminadamente.
 
-Consultar a [auditoria completa de publicação, proveniência, testes RLS e limitações](docs/facodi-publication-audit-2026-11-14.md), bem como a [auditoria curricular da importação inicial](docs/facodi-data-enrichment-2026-11-14.md). As somas indiscriminadas de ECTS incluem opções alternativas e **não** representam o percurso de 180 ECTS de cada aluno. `facodi.playlists` permanece à espera de submissões reais autenticadas.
+Os vídeos permanecem alojados no YouTube; os livros e documentos são **links para os sítios originais**. A pertinência dos vídeos foi avaliada com base em títulos e canais, sem afirmar revisão integral, disponibilidade regional ou licenciamento. As 34 referências foram selecionadas pelas páginas de origem e enquadramento temático; nenhum conteúdo de terceiros foi copiado.
+
+- [Auditoria detalhada da ampliação, RLS e histórico](docs/facodi-enrichment-and-email-review-2026-11-14.md)
+- [Primeira auditoria curricular e referências UAlg](docs/facodi-data-enrichment-2026-11-14.md)
+- [Histórico da primeira publicação de vídeos](docs/facodi-publication-audit-2026-11-14.md)
+- [13 templates HTML FACODI e plano de isolamento de Auth](docs/facodi-auth-email-templates.md)
+
+**Emails:** os templates FACODI foram preparados e validados no repositório, mas **não foram ativados globalmente no Auth Supabase alojado**. O projeto partilha Auth com o Tube O2; a aplicação de emails de marca exclusiva requer roteamento seguro ou Auth FACODI separado. O ficheiro `supabase/config.toml` continua a ser configuração local de referência; não foi executado `config push`.
+
+`facodi.playlists` permanece à espera de submissões autenticadas reais.
 
 ## Dados e permissões
 
