@@ -36,7 +36,8 @@
     "notFound": "This path does not lead anywhere yet.",
     "notFoundDescription": "This content does not exist or is unavailable. Explore the catalogue to find another starting point.",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "notFoundPaths": "Other starting points"
   },
   "home": {
     "campus": "An open digital campus",
@@ -263,7 +264,13 @@
     "archived": "Archived",
     "other": "Other states",
     "flag": "published=true",
-    "visibility": "The published flag alone does not guarantee visibility: state, associated course and RLS policies also apply."
+    "visibility": "The published flag alone does not guarantee visibility: state, associated course and RLS policies also apply.",
+    "composition": "Composition by state",
+    "table": "Detailed counts",
+    "empty": "No content",
+    "items_one": "{{count}} item",
+    "items_many": "{{count}} items",
+    "items_other": "{{count}} items"
   },
   "validation": {
     "required": "Complete this field.",

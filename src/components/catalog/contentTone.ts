@@ -1,4 +1,5 @@
 import { BookOpen, ExternalLink, FileText, Layers, PlayCircle, Shapes, type LucideIcon } from 'lucide-react';
+import type { ContentKind } from '@/entities/course/course.types';
 
 export interface ContentTone { icon: LucideIcon; fill: string }
 
@@ -13,4 +14,11 @@ const TONES: Record<string, ContentTone> = {
 
 export function contentTone(objectType: string): ContentTone {
   return TONES[objectType] ?? { icon: Shapes, fill: 'bg-brand-coral' };
+}
+
+const KIND_TYPES: Record<ContentKind, string> = { courses: 'course', curricular_units: 'curricular_unit', learning_objects: 'learning_object' };
+
+/** Tone for an editorial table; learning objects as a whole use the fallback "mixed types" tone. */
+export function kindTone(kind: ContentKind): ContentTone {
+  return contentTone(KIND_TYPES[kind]);
 }

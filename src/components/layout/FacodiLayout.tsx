@@ -30,14 +30,14 @@ export default function FacodiLayout() {
     catch (error) { toast.error(error instanceof Error ? error.message : t('common.error')); }
     finally { setSigningOut(false); }
   }
-  const links: { to: string; title: string; icon: LucideIcon }[] = [
+  const links: { to: string; title: string; icon: LucideIcon; compact?: boolean }[] = [
     { to: '/courses', title: t('nav.courses'), icon: BookOpen },
     { to: '/units', title: t('nav.units'), icon: Layers },
     { to: '/resources', title: t('nav.resources'), icon: PlayCircle },
     { to: '/about', title: t('nav.about'), icon: Info },
-    ...(user ? [{ to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard }] : []),
-    ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare }] : []),
-    ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck }] : []),
+    ...(user ? [{ to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard, compact: true }] : []),
+    ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare, compact: true }] : []),
+    ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck, compact: true }] : []),
   ];
   const footer = [
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }] },
@@ -63,8 +63,9 @@ export default function FacodiLayout() {
         </Button>
         <nav id="navigation" aria-label={t('nav.main')} className={cn('w-full flex-col gap-5 pb-5 xl:flex xl:w-auto xl:flex-row xl:items-center xl:pb-0', open ? 'flex' : 'hidden')}>
           <div className="flex flex-col gap-1 xl:flex-row">
-            {links.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
-              <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />{title}
+            {/* Account links collapse to icons on narrow desktops so the signed-in bar stays on one line. */}
+            {links.map(({ to, title, icon: Icon, compact }) => <NavLink key={to} to={to} title={compact ? title : undefined} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
+              <Icon className="h-4 w-4 shrink-0" aria-hidden="true" /><span className={cn(compact && 'xl:sr-only 2xl:not-sr-only')}>{title}</span>
             </NavLink>)}
           </div>
           <div className="flex items-center gap-2">

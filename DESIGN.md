@@ -16,6 +16,14 @@ animated social feed.
   unknown types coral. The colour is decorative; the label always names the type.
 - Chips, facets and badges are square like everything else; an active facet
   uses the sun fill.
+- Editorial states use a neutral ramp (`src/components/editorial/statusTone.ts`,
+  `StatusBadge`) so they never compete with content-type colours: active solid
+  ink, published translucent ink, draft sun (pending work), archived muted,
+  unknown coral. The same swatches drive the admin distribution bars, whose
+  exact counts stay available as text and in the table.
+- With a signed-in session, account links (personal area, editor, admin)
+  collapse to icon links between `xl` and `2xl` so the header keeps one line;
+  their name stays as the accessible label and tooltip.
 - Ink surfaces (`bg-ink text-ink-foreground`): footer, method band and
   thumbnail banners, opened by a 4px sun top rule. Sun text is allowed on ink.
   Never use `bg-black`, `neutral-*` or `text-white` directly.

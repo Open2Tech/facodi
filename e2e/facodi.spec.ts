@@ -181,10 +181,12 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
   await expect(page.getByRole('heading', { name: 'Edited test course', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Publish', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
-  await expect(page.getByText('Active · published=true · pt')).toBeVisible();
+  await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Active', { exact: true })).toBeVisible();
+  await expect(page.getByText('published=true · pt')).toBeVisible();
   await page.getByRole('button', { name: 'Archive', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
-  await expect(page.getByText('Archived · published=false · pt')).toBeVisible();
+  await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Archived', { exact: true })).toBeVisible();
+  await expect(page.getByText('published=false · pt')).toBeVisible();
   await page.getByRole('radio', { name: /^Archived/ }).click();
   await expect.poll(() => listStatuses.at(-1)).toBe('eq.archived');
   expect(methods).not.toContain('DELETE');

@@ -4,11 +4,14 @@ import { Plus } from 'lucide-react';
 import { EDITORIAL_STATUSES, type Content, type ContentKind, type EditorialStatus } from '@/entities/course/course.types';
 import { useContentMutations, useEditorial, useObjectTypeFacets } from '@/features/courses/queries/useCourses';
 import { ContentForm } from '@/components/editorial/ContentForm';
+import { StateSwatch, StatusBadge } from '@/components/editorial/StatusBadge';
+import { kindTone } from '@/components/catalog/contentTone';
+import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
@@ -36,8 +39,11 @@ export default function Editor() {
       const selectedKind = kinds.find(kind => kind === value);
       if (selectedKind) { setKind(selectedKind); setPage(1); setSearch(''); setStatus(undefined); setObjectType(undefined); resetForm(); publish.reset(); }
     }}>
-      <TabsList className="h-auto flex-wrap justify-start gap-1">{kinds.map(item => <TabsTrigger key={item} value={item} disabled={save.isPending || publish.isPending}>{t(`content.${item}`)}</TabsTrigger>)}</TabsList>
-    </Tabs>
+      <TabsList className="h-auto flex-wrap justify-start gap-1">{kinds.map(item => {
+        const { icon: Icon } = kindTone(item);
+        return <TabsTrigger key={item} value={item} className="gap-2" disabled={save.isPending || publish.isPending}><Icon className="h-4 w-4" aria-hidden="true" />{t(`content.${item}`)}</TabsTrigger>;
+      })}</TabsList>
+    <TabsContent value={kind} className="mt-0 focus-visible:ring-offset-4">
     {editing ? <ContentForm key={`${kind}:${editing === 'new' ? 'new' : editing.id}`} kind={kind} content={editing === 'new' ? undefined : editing} saving={save.isPending} error={save.error?.message} onCancel={resetForm} onSave={async input => {
       try { await save.mutateAsync(input); resetForm(); }
       catch { /* The mutation error is rendered beside the form. */ }
@@ -64,7 +70,7 @@ export default function Editor() {
         }}>
           <ToggleGroupItem value="all">{t('editor.allStates')}</ToggleGroupItem>
           {EDITORIAL_STATUSES.map(state => <ToggleGroupItem key={state} value={state} className="gap-2">
-            {t(`states.${state}`)}
+            <StateSwatch status={state} />{t(`states.${state}`)}
             {query.data && <span className="font-mono text-xs tabular-nums text-muted-foreground">{query.data.statusCounts[state]}</span>}
           </ToggleGroupItem>)}
         </ToggleGroup>
@@ -74,7 +80,16 @@ export default function Editor() {
       {query.isPending ? <PageState loading /> : query.error ? <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} /> : <>
         {!query.data.items.length ? <PageState title={t('editor.empty')} description={t('editor.emptyDescription')} /> : <ul className="divide-y divide-input border-y border-input">
           {query.data.items.map(item => <li key={item.id} className="flex flex-col justify-between gap-5 py-6 lg:flex-row lg:items-center">
-            <div className="min-w-0"><h2 className="break-words text-xl font-semibold">{item.title}</h2><p className="mt-2 text-sm text-muted-foreground">{t(`states.${item.status}`, { defaultValue: item.status })} · {t(item.published ? 'editor.flagPublished' : 'editor.flagUnpublished')} · {item.language}{'source_type' in item && <> · {t(`objectTypes.${item.object_type}`, { defaultValue: item.object_type })} · {t('editor.origin', { source: item.source_type })}</>}</p></div>
+            <div className="min-w-0">
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                {'object_type' in item
+                  ? <TypeBadge type={item.object_type} label={t(`objectTypes.${item.object_type}`, { defaultValue: item.object_type })} />
+                  : <TypeBadge type={kind === 'courses' ? 'course' : 'curricular_unit'} label={t(`objectTypes.${kind === 'courses' ? 'course' : 'curricular_unit'}`)} />}
+                <StatusBadge status={item.status} label={t(`states.${item.status}`, { defaultValue: item.status })} />
+              </div>
+              <h2 className="break-words text-xl font-semibold">{item.title}</h2>
+              <p className="mt-2 text-sm text-muted-foreground">{t(item.published ? 'editor.flagPublished' : 'editor.flagUnpublished')} · {item.language}{'source_type' in item && <> · {t('editor.origin', { source: item.source_type })}</>}</p>
+            </div>
             <div className="flex shrink-0 flex-wrap gap-2">
               <Button variant="outline" onClick={() => { save.reset(); setEditing(item); }}>{t('common.edit')}</Button>
               <Button variant="outline" disabled={publish.isPending} onClick={() => setConfirmation({ item, action: 'publish' })}>{t('editor.publish')}</Button>
@@ -86,6 +101,8 @@ export default function Editor() {
         <Pagination page={page} total={query.data.total} onChange={setPage} />
       </>}
     </>}
+    </TabsContent>
+    </Tabs>
     <AlertDialog open={!!confirmation} onOpenChange={open => { if (!open) setConfirmation(null); }}>
       <AlertDialogContent><AlertDialogHeader><AlertDialogTitle>{t(`editor.${confirmation?.action === 'draft' ? 'unpublish' : confirmation?.action ?? 'publish'}`)}</AlertDialogTitle><AlertDialogDescription>{confirmation?.item.title}. {t(kind === 'curricular_units' ? 'editor.unitVisibility' : 'editor.confirmChange')}</AlertDialogDescription></AlertDialogHeader>
         <AlertDialogFooter><AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel><AlertDialogAction onClick={() => { if (confirmation) publish.mutate({ kind, id: confirmation.item.id, action: confirmation.action }); }}>{t('common.confirm')}</AlertDialogAction></AlertDialogFooter>
