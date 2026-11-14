@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate, Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { authErrorKey } from '@/entities/auth/authErrors';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { z } from 'zod';
@@ -48,7 +49,7 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
     <PageState title={t('auth.checkEmail')} description={t('auth.confirmDescription')} />
     <p className="break-all text-center text-sm text-muted-foreground">{form.getValues('email')}</p>
     {resent && <p role="status" className="text-sm">{t('auth.resendSent')}</p>}
-    {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+    {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
     <Button type="button" variant="outline" className="w-full" disabled={resending}
       onClick={async () => {
         setError('');
@@ -58,7 +59,7 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
           await resendSignupConfirmation(form.getValues('email'), next);
           setResent(true);
         } catch (reason) {
-          setError(reason instanceof Error ? reason.message : t('common.error'));
+          setError(authErrorKey(reason));
         } finally {
           setResending(false);
         }
@@ -70,16 +71,16 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
     setError('');
     try {
       const result = signup ? await signUp(values.email, values.password, values.name, next) : await signIn(values.email, values.password);
-      if (result.error) setError(result.error.message);
+      if (result.error) setError(authErrorKey(result.error));
       else if (signup && !result.data?.session) setSent(true);
     } catch (error) {
-      setError(error instanceof Error ? error.message : t('common.error'));
+      setError(authErrorKey(error));
     }
   })}>
     {signup && <FormField label={t('auth.name')} error={form.formState.errors.name?.message}>{props => <Input {...props} {...form.register('name')} autoComplete="name" />}</FormField>}
     <FormField label={t('auth.email')} error={form.formState.errors.email?.message}>{props => <Input {...props} {...form.register('email')} type="email" autoComplete="email" />}</FormField>
     <FormField label={t('auth.password')} error={form.formState.errors.password?.message}>{props => <Input {...props} {...form.register('password')} type="password" autoComplete={signup ? 'new-password' : 'current-password'} />}</FormField>
-    {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+    {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
     <Button className="w-full" disabled={form.formState.isSubmitting}>{t(form.formState.isSubmitting ? 'common.working' : signup ? 'auth.signup' : 'auth.login')}</Button>
   </form>;
 }

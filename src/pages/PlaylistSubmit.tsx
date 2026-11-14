@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CheckCircle2, ListVideo, ShieldCheck } from 'lucide-react';
 import { isYoutubePlaylistUrl } from '@/entities/facodi-playlists/playlistUtils';
 import type { PlaylistSubmission } from '@/entities/contribution/contribution.types';
-import { useCourseOptions, useMyPlaylists, useSubmitPlaylist, useUnitOptions } from '@/features/contributions/queries/useContributions';
+import { useCourseOptions, useSubmitPlaylist, useUnitOptions } from '@/features/contributions/queries/useContributions';
 import { LANGUAGES } from '@/components/catalog/CatalogToolbar';
-import { StatusBadge } from '@/components/editorial/StatusBadge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PageState } from '@/components/layout/PageState';
+import { PlaylistHistory } from '@/components/contribution/PlaylistHistory';
 
 const SELECT = 'h-11 w-full border border-input bg-background px-3 text-sm disabled:cursor-not-allowed disabled:opacity-50';
 
@@ -27,12 +27,10 @@ export default function PlaylistSubmit() {
   const [response, setResponse] = useState<PlaylistSubmission | null>(null);
   const courses = useCourseOptions();
   const units = useUnitOptions(courseId);
-  const mine = useMyPlaylists();
   const submit = useSubmitPlaylist();
   const busy = submit.isPending;
   const errorCode = submit.error?.message ?? '';
   const urlValid = isYoutubePlaylistUrl(url.trim());
-  const dateFormat = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'medium' });
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -131,24 +129,7 @@ export default function PlaylistSubmit() {
     </div>}
     <section className="mt-12 border-t border-input pt-8" aria-labelledby="playlist-history">
       <h2 id="playlist-history" className="text-xl font-semibold">{t('playlistSubmit.history')}</h2>
-      {mine.isPending ? <PageState loading /> : mine.error
-        ? <PageState level="h3" title={t('common.error')} description={mine.error.message} retry={() => void mine.refetch()} />
-        : !mine.data.length ? <p className="mt-4 text-sm text-muted-foreground">{t('playlistSubmit.historyEmpty')}</p>
-        : <ul className="mt-5 divide-y divide-input border-y border-input">
-          {mine.data.map(item => <li key={item.id} className="flex flex-wrap items-start justify-between gap-3 py-4">
-            <div className="min-w-0 flex-1">
-              <p className="break-words font-medium">{item.title}</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {[item.courses?.code, item.curricular_units?.title].filter(Boolean).join(' · ')}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                <time dateTime={item.submitted_at}>{t('playlistSubmit.submittedOn', { date: dateFormat.format(new Date(item.submitted_at)) })}</time>
-              </p>
-              {item.review_note && <p className="mt-2 max-w-prose text-sm">{t('studyReview.previousNote')}: {item.review_note}</p>}
-            </div>
-            <StatusBadge status={item.status} label={t(`playlistSubmit.status.${item.status}`, { defaultValue: item.status })} />
-          </li>)}
-        </ul>}
+      <PlaylistHistory />
     </section>
   </div>;
 }

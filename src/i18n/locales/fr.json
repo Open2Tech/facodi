@@ -184,7 +184,15 @@
       "passwordMinLength": "Le mot de passe doit comporter au moins 6 caractères.",
       "usernameMinLength": "Utilisez au moins 3 caractères.",
       "sessionRequired": "La session a expiré. Reconnectez-vous.",
-      "invalidLink": "Lien d'authentification invalide ou expiré."
+      "invalidLink": "Lien d'authentification invalide ou expiré.",
+      "invalidCredentials": "Email ou mot de passe incorrect.",
+      "emailNotConfirmed": "Confirmez votre email avant de vous connecter. Cherchez le lien dans votre boîte de réception.",
+      "emailExists": "Un compte existe déjà avec cet email.",
+      "weakPassword": "Ce mot de passe est trop faible. Choisissez-en un plus long ou moins courant.",
+      "samePassword": "Le nouveau mot de passe doit être différent de l’actuel.",
+      "reauthenticationNeeded": "Par sécurité, confirmez votre identité avec un lien de récupération avant de changer le mot de passe.",
+      "rateLimited": "Trop de demandes d’affilée. Patientez quelques minutes et réessayez.",
+      "signupDisabled": "La création de comptes est temporairement indisponible."
     },
     "resetPassword": {
       "error": {
@@ -192,7 +200,10 @@
       }
     },
     "resendConfirmation": "Renvoyer la confirmation",
-    "resendSent": "Si le renvoi est possible, un nouveau lien sera envoyé par email."
+    "resendSent": "Si le renvoi est possible, un nouveau lien sera envoyé par email.",
+    "passwordHint": "Au moins 6 caractères. Une longue phrase est plus sûre et plus facile à retenir.",
+    "showPasswords": "Afficher les mots de passe",
+    "hidePasswords": "Masquer les mots de passe"
   },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
@@ -207,12 +218,50 @@
     "addName": "Ajoute ton nom dans ton profil"
   },
   "profile": {
-    "description": "Les données de votre compte sont gérées par Supabase Auth.",
-    "saved": "Modifications enregistrées. Si vous avez changé d'email, confirmez les liens envoyés aux adresses concernées avant d'utiliser le nouvel email.",
+    "description": "Gérez vos informations, la sécurité du compte, les préférences de ce navigateur et vos contributions.",
+    "saved": "Modifications enregistrées.",
     "summary": "Résumé du compte",
     "memberSince": "Membre depuis",
     "emailConfirmed": "Confirmé",
-    "emailPending": "En attente de confirmation"
+    "emailPending": "En attente de confirmation",
+    "newEmail": "Nouvel email",
+    "signInMethod": "Méthode de connexion",
+    "lastSignIn": "Dernière connexion",
+    "provider": {
+      "email": "Email et mot de passe",
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "onThisPage": "Sur cette page",
+    "emailChangePending": "La demande de passage à {{email}} attend une confirmation. D’ici là, vous continuez à vous connecter avec {{current}}.",
+    "resendEmailChange": "Renvoyer le lien de confirmation",
+    "emailChangeResent": "Nous avons envoyé un nouveau lien de confirmation.",
+    "emailChangeSent": "Nom enregistré. Pour terminer le changement d’email, ouvrez les liens de confirmation envoyés.",
+    "nameHint": "Affiché dans votre espace personnel.",
+    "emailHint": "Lorsque vous changez d’email, nous envoyons des liens de confirmation. L’email actuel reste actif jusqu’à confirmation.",
+    "theme": "Thème",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "preferencesDevice": "Ces préférences sont enregistrées dans ce navigateur.",
+    "sessionsTitle": "Sessions",
+    "sessionsDescription": "Si vous vous êtes connecté sur un ordinateur partagé ou avez perdu un appareil, fermez les autres sessions. Cette session reste active.",
+    "signOutOthers": "Fermer les autres sessions",
+    "signOutOthersConfirm": "Toutes les sessions sur d’autres navigateurs et appareils seront fermées. Vous devrez vous reconnecter sur ces appareils.",
+    "signOutHere": "Se déconnecter de cet appareil",
+    "signedOutOthers": "Les autres sessions ont été fermées.",
+    "reviewQueues": "Files de révision",
+    "pendingCount_one": "{{count}} en attente",
+    "pendingCount_other": "{{count}} en attente",
+    "proposePlaylist": "Proposer une playlist",
+    "detailsTitle": "Informations du compte",
+    "detailsDescription": "Le nom et l’email associés à votre compte FACODI.",
+    "securityTitle": "Sécurité",
+    "securityDescription": "Changez le mot de passe et contrôlez où votre compte est ouvert.",
+    "preferencesTitle": "Préférences",
+    "preferencesDescription": "Langue et apparence de l’interface.",
+    "contributionsTitle": "Contributions",
+    "contributionsDescription": "Les playlists que vous avez proposées et l’état de leur révision éditoriale.",
+    "pendingCount_zero": "Aucun en attente"
   },
   "content": {
     "courses": "Cours",

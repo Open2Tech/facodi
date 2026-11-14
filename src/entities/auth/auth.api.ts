@@ -41,14 +41,31 @@ export async function requestPasswordReset(email: string) {
   if (error) throw error;
 }
 
+const profileCallback = () => `${window.location.origin}/auth/callback?next=/profile`;
+
+/** Saves the display name and, when it differs, starts a Supabase email change. */
 export async function updateAccount(values: { name: string; email: string }) {
   const { data: { user }, error: userError } = await supabase.auth.getUser();
   if (userError) throw userError;
   if (!user) throw new Error('auth.error.sessionRequired');
+  const email = values.email.trim();
+  const emailChanged = email.toLowerCase() !== (user.email ?? '').toLowerCase();
   const { error } = await supabase.auth.updateUser(
-    { data: { full_name: values.name }, ...(values.email !== user.email ? { email: values.email } : {}) },
-    { emailRedirectTo: `${window.location.origin}/auth/callback?next=/profile` },
+    { data: { full_name: values.name.trim() }, ...(emailChanged ? { email } : {}) },
+    { emailRedirectTo: profileCallback() },
   );
+  if (error) throw error;
+  return { emailChangeRequested: emailChanged };
+}
+
+export async function resendEmailChange(email: string) {
+  const { error } = await supabase.auth.resend({ type: 'email_change', email, options: { emailRedirectTo: profileCallback() } });
+  if (error) throw error;
+}
+
+/** Revokes every refresh token except the one held by this browser. */
+export async function signOutOtherSessions() {
+  const { error } = await supabase.auth.signOut({ scope: 'others' });
   if (error) throw error;
 }
 

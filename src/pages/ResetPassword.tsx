@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { authErrorKey } from '@/entities/auth/authErrors';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'react-router-dom';
@@ -31,11 +32,11 @@ export default function ResetPassword() {
       <form className="space-y-5" noValidate onSubmit={form.handleSubmit(async values => {
         setError(''); setSent(false);
         try { await requestPasswordReset.mutateAsync(values.email); setSent(true); }
-        catch (error) { setError(error instanceof Error ? error.message : t('common.error')); }
+        catch (error) { setError(authErrorKey(error)); }
         finally { requestPasswordReset.reset(); }
       })}>
         <FormField label={t('auth.email')} error={form.formState.errors.email?.message}>{props => <Input {...props} {...form.register('email')} type="email" autoComplete="email" />}</FormField>
-        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+        {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
         {sent && <p role="status" className="text-sm">{t('auth.resetSent')}</p>}
         <Button disabled={form.formState.isSubmitting}>{t(form.formState.isSubmitting ? 'common.working' : 'auth.sendReset')}</Button>
       </form>

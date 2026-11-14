@@ -33,4 +33,16 @@ i18n
     },
   });
 
+export const INTERFACE_LANGUAGES = [
+  { code: 'pt', label: 'Português' },
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+] as const;
+
+export function setInterfaceLanguage(code: string) {
+  localStorage.setItem('i18nextLng', code);
+  void i18n.changeLanguage(code);
+}
+
 export default i18n;

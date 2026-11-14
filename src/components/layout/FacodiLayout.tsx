@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { cn } from '@/lib/utils';
+import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
 
 export default function FacodiLayout() {
   const { t, i18n } = useTranslation();
@@ -72,12 +73,8 @@ export default function FacodiLayout() {
           <div className="flex items-center gap-2">
             <label className="flex items-center gap-2 text-sm">
               <span className="sr-only">{t('common.language')}</span>
-              <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => {
-                const language = event.target.value;
-                localStorage.setItem('i18nextLng', language);
-                void i18n.changeLanguage(language);
-              }}>
-                <option value="pt">Português</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option>
+              <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => setInterfaceLanguage(event.target.value)}>
+                {INTERFACE_LANGUAGES.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
               </select>
             </label>
             <Button type="button" variant="outline" size="icon" className="shrink-0" aria-label={t(dark ? 'nav.themeLight' : 'nav.themeDark')} title={t(dark ? 'nav.themeLight' : 'nav.themeDark')}

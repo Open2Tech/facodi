@@ -184,7 +184,15 @@
       "passwordMinLength": "A senha deve ter pelo menos 6 caracteres.",
       "usernameMinLength": "Usa pelo menos 3 caracteres.",
       "sessionRequired": "A sessão expirou. Inicia sessão novamente.",
-      "invalidLink": "Link de autenticação inválido ou expirado."
+      "invalidLink": "Link de autenticação inválido ou expirado.",
+      "invalidCredentials": "Email ou senha incorretos.",
+      "emailNotConfirmed": "Confirma o teu email antes de entrar. Procura o link na tua caixa de correio.",
+      "emailExists": "Já existe uma conta com este email.",
+      "weakPassword": "Esta senha é demasiado fraca. Escolhe uma mais longa ou menos comum.",
+      "samePassword": "A nova senha tem de ser diferente da atual.",
+      "reauthenticationNeeded": "Por segurança, confirma a tua identidade com um link de recuperação antes de alterar a senha.",
+      "rateLimited": "Demasiados pedidos seguidos. Aguarda alguns minutos e tenta novamente.",
+      "signupDisabled": "O registo de novas contas está temporariamente indisponível."
     },
     "resetPassword": {
       "error": {
@@ -192,7 +200,10 @@
       }
     },
     "resendConfirmation": "Reenviar confirmação",
-    "resendSent": "Se for possível reenviar a confirmação, receberás um novo link no teu email."
+    "resendSent": "Se for possível reenviar a confirmação, receberás um novo link no teu email.",
+    "passwordHint": "Pelo menos 6 caracteres. Uma frase longa é mais segura e fácil de lembrar.",
+    "showPasswords": "Mostrar senhas",
+    "hidePasswords": "Ocultar senhas"
   },
   "dashboard": {
     "welcome": "Olá, {{name}}.",
@@ -207,12 +218,50 @@
     "addName": "Acrescenta o teu nome no perfil"
   },
   "profile": {
-    "description": "Os dados da tua conta são geridos pelo Supabase Auth.",
-    "saved": "Alterações guardadas. Se alteraste o email, confirma os links enviados para os endereços envolvidos antes de usar o novo email.",
+    "description": "Gere os teus dados, a segurança da conta, as preferências deste navegador e as tuas contribuições.",
+    "saved": "Alterações guardadas.",
     "summary": "Resumo da conta",
     "memberSince": "Membro desde",
     "emailConfirmed": "Confirmado",
-    "emailPending": "Por confirmar"
+    "emailPending": "Por confirmar",
+    "newEmail": "Novo email",
+    "signInMethod": "Método de entrada",
+    "lastSignIn": "Última entrada",
+    "provider": {
+      "email": "Email e senha",
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "onThisPage": "Nesta página",
+    "emailChangePending": "O pedido para mudar para {{email}} aguarda confirmação. Até lá, continuas a entrar com {{current}}.",
+    "resendEmailChange": "Reenviar link de confirmação",
+    "emailChangeResent": "Enviámos um novo link de confirmação.",
+    "emailChangeSent": "Nome guardado. Para concluir a mudança de email, abre os links de confirmação que enviámos.",
+    "nameHint": "Aparece na tua área pessoal.",
+    "emailHint": "Ao alterar o email, enviamos links de confirmação. O email atual mantém-se até confirmares.",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "preferencesDevice": "Estas preferências ficam guardadas neste navegador.",
+    "sessionsTitle": "Sessões",
+    "sessionsDescription": "Se entraste num computador partilhado ou perdeste um dispositivo, termina as outras sessões. Esta sessão continua ativa.",
+    "signOutOthers": "Terminar outras sessões",
+    "signOutOthersConfirm": "Todas as sessões noutros navegadores e dispositivos serão terminadas. Terás de voltar a entrar nesses dispositivos.",
+    "signOutHere": "Sair deste dispositivo",
+    "signedOutOthers": "As outras sessões foram terminadas.",
+    "reviewQueues": "Filas de revisão",
+    "pendingCount_one": "{{count}} pendente",
+    "pendingCount_other": "{{count}} pendentes",
+    "proposePlaylist": "Propor playlist",
+    "detailsTitle": "Dados da conta",
+    "detailsDescription": "O nome e o email associados à tua conta FACODI.",
+    "securityTitle": "Segurança",
+    "securityDescription": "Altera a senha e controla onde a tua conta está aberta.",
+    "preferencesTitle": "Preferências",
+    "preferencesDescription": "Idioma e aparência da interface.",
+    "contributionsTitle": "Contribuições",
+    "contributionsDescription": "As playlists que propuseste e o estado da revisão editorial.",
+    "pendingCount_zero": "Nenhum pendente"
   },
   "content": {
     "courses": "Cursos",
@@ -549,7 +598,7 @@
     "received": "Playlist recebida para revisão",
     "receivedCounts": "{{count}} vídeos propostos · {{linked}} identificados · {{missing}} por completar",
     "history": "As minhas submissões",
-    "historyEmpty": "Ainda não enviou playlists.",
+    "historyEmpty": "Ainda não enviaste playlists.",
     "status": {
       "pending": "Pendente de revisão",
       "approved": "Aprovada",

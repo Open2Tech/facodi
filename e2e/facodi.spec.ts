@@ -125,6 +125,52 @@ test('signup confirmation, safe return path, profile and logout', async ({ page 
   await expect(page).toHaveURL(/\/login\?next=%2Fadmin$/);
 });
 
+test('profile account centre: pending email change, translated errors, sessions and preferences', async ({ page }) => {
+  await mockAuth(page);
+  const session = authFixture();
+  const calls: string[] = [];
+  await page.route('**/auth/v1/{user,resend,logout}*', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    calls.push(`${request.method()} ${url.pathname.split('/').pop()}${url.search}`);
+    if (url.pathname.endsWith('/logout')) return route.fulfill({ status: 204, body: '' });
+    if (url.pathname.endsWith('/resend')) return route.fulfill({ json: {} });
+    const body = request.method() === 'PUT' ? request.postDataJSON() as { email?: string; password?: string } : {};
+    if (body.password) return route.fulfill({ status: 422, json: { code: 'same_password', error_code: 'same_password', msg: 'New password should be different from the old password.' } });
+    return route.fulfill({ json: { ...session.user, ...(body.email ? { new_email: body.email } : {}) } });
+  });
+  await page.goto('/login?next=/profile');
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.locator('main form').getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Profile', level: 1 })).toBeVisible();
+  const save = page.getByRole('button', { name: 'Save changes', exact: true });
+  await expect(save).toBeDisabled();
+  await page.getByLabel('Email', { exact: true }).fill('new@example.test');
+  await save.click();
+  await expect(page.getByText('Name saved. To finish changing your email, open the confirmation links we sent.')).toBeVisible();
+  await expect(page.getByText('The request to change to new@example.test is waiting for confirmation.', { exact: false })).toBeVisible();
+  await expect(page.getByLabel('Email', { exact: true })).toHaveValue('learner@example.test');
+  await page.getByRole('button', { name: 'Resend confirmation link' }).click();
+  await expect(page.getByText('We sent a new confirmation link.')).toBeVisible();
+
+  await page.getByLabel('New password', { exact: true }).fill('test-password-123');
+  await page.getByLabel('Confirm new password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Change password', exact: true }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'The new password must be different from the current one.' })).toBeVisible();
+
+  await page.getByRole('button', { name: 'End other sessions' }).click();
+  await page.getByRole('alertdialog').getByRole('button', { name: 'Confirm' }).click();
+  await expect(page.getByText('The other sessions have ended.')).toBeVisible();
+  expect(calls).toContain('POST logout?scope=others');
+  expect(calls.some(call => call.startsWith('POST resend'))).toBe(true);
+
+  await page.locator('#preferences').getByText('Português').click();
+  await expect(page.getByRole('heading', { name: 'Perfil', level: 1 })).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem('i18nextLng'))).toBe('pt');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
 test('password recovery exchanges PKCE code once and handles expired links', async ({ page }) => {
   await mockAuth(page);
   await page.goto('/auth/reset-password');
