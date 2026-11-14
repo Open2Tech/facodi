@@ -81,6 +81,33 @@ Teste de leitura com papel `anon` após enriquecimento: **1 curso, 41 UCs, 123 o
 - `20261114211050_facodi_gestao_three_editorial_video_learning_paths.sql`
 - `20261114211126_facodi_gestao_portuguese_institutional_video_lectures.sql`
 
+## Enriquecimento curricular complementar (14/11/2026, 21h–22h)
+
+### Competências e atividades
+
+- Foram registadas **123 competências propostas pela FACODI** (três por UC), ligadas uma a uma aos **123 objetivos de estudo** existentes.
+- Cada competência tem identificador `FACODI-GESTAO-<codigo-UC>-<ordem>`, título, nível introdutório, fonte de metadados e `official_curriculum_outcome=false`; não é um resultado acreditado oficialmente.
+- As **41 atividades práticas** passaram a ter quatro orientações adicionais específicas: preparação, execução, verificação do resultado e erro frequente. Estas orientações são originais da FACODI e constam no HTML público das UCs.
+- Os conteúdos anteriores de títulos, descrições, vídeos, leituras e exercícios foram preservados; não foram criados progressos de estudantes nem submissões de avaliação fictícias.
+
+### Arquivo do ano letivo 2025/26
+
+- Criada `facodi.course_curriculum_archives`, com RLS ativada, política pública apenas para arquivo publicado de curso ativo e política de escrita restrita a editores FACODI.
+- Importado e publicado o **plano oficial 2025/26** com **46 UCs/ofertas distintas**, incluindo uma UC anual e duas famílias de alternativas. O percurso académico de referência continua a somar **180 ECTS**, escolhendo as opções, não todas as alternativas.
+- **Comparação estritamente por código:** 10 códigos comuns, 36 encontrados apenas em 2025/26 e 31 encontrados apenas em 2026/27. Não implica equivalência, substituição ou creditação académica.
+- A página pública de Gestão apresenta a tabela histórica por ano e semestre, expandível, com fonte UAlg e nota expressa sobre equivalências.
+- O plano corrente 2026/27 mantém as suas **41 UCs**, sem incorporação dos códigos antigos como unidades ativas.
+
+### Acesso ao curso 2026/27
+
+A página oficial do Concurso Nacional de Acesso da UAlg [publica para o ano letivo 2026/27](https://www.ualg.pt/curso/1418/candidaturas?tipo=concurso-nacional) **76 vagas**, propina anual **697 €**, mínimos de **100 pontos na candidatura** e **95 pontos nas provas de ingresso**, com ponderação 50% secundário e 50% provas. Estes dados foram guardados em `courses.metadata.admissions_2026_27` com a fonte, ano e aviso de possível alteração nos concursos seguintes. **Não se assume que se aplicam a 2027/28.**
+
+### Segurança e fontes
+
+A nova tabela não expõe escrita ao público, e os objetivos/competências continuam marcados como material editorial. Com o papel `anon`, foram verificados **123 registos de competências**, **123 objetivos ligados** e **um arquivo histórico** visível. Os 46 registos históricos estão encapsulados num snapshot, sem misturar créditos e UCs dos diferentes anos.
+
+---
+
 ## Limitações assumidas
 
 1. A posição semestral de Fiscalidade I carece de confirmação devido à duplicação existente no portal oficial.
