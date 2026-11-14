@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
+import { useSequences } from '@/features/sequences/useSequences';
+import { SequenceList } from '@/components/sequence/SequenceList';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -28,6 +30,8 @@ export default function UnitDetails() {
   const videos = useUnitVideos(query.data?.unit.learning_object_id);
   const outcomesQuery = useUnitOutcomes(query.data?.unit.learning_object_id);
   const readingsQuery = useUnitReadings(query.data?.unit.learning_object_id);
+  const unitCode = query.data?.unit.code ?? null;
+  const sequences = useSequences(unitCode, !!unitCode);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
@@ -174,6 +178,11 @@ export default function UnitDetails() {
               <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
             </div>}
         </section>
+        {!!sequences.data?.length && <section aria-labelledby="unit-sequences">
+          <h2 id="unit-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.forUnit')}</h2>
+          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('sequences.forUnitText')}</p>
+          <div className="mt-5"><SequenceList sequences={sequences.data} headingLevel={3} showUnits={false} /></div>
+        </section>}
         {!!siblings.length && <section aria-labelledby="unit-siblings">
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>
           <ul className="mt-4 divide-y divide-input border-y border-input">

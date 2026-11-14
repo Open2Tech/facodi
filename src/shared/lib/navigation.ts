@@ -1,9 +1,11 @@
-const privateDestinations = ['/dashboard', '/profile', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/playlists', '/editor/suggestions', '/admin'];
+const privateDestinations = ['/dashboard', '/profile', '/notes', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/playlists', '/editor/suggestions', '/admin'];
+/** Public pages that invite signing in to save something (notes, sequence progress) and expect the learner back. */
+const contentDestination = /^\/(?:resources|sequences)\/[\w.-]+$/;
 
 export function safeReturnPath(value: string | null | undefined): string {
   if (!value || /[\\\s]/.test(value) || [...value].some(char => char.charCodeAt(0) < 32) || !value.startsWith('/') || value.startsWith('//')) return '/dashboard';
   const url = new URL(value, 'https://internal.invalid');
-  return url.origin === 'https://internal.invalid' && privateDestinations.includes(url.pathname)
+  return url.origin === 'https://internal.invalid' && (privateDestinations.includes(url.pathname) || contentDestination.test(url.pathname))
     ? `${url.pathname}${url.search}`
     : '/dashboard';
 }

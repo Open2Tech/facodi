@@ -114,7 +114,7 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 
 | Rota | Acesso |
 |---|---|
-| `/`, `/courses`, `/courses/:slug`, `/courses/:slug/units/:unit`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
+| `/`, `/courses`, `/courses/:slug`, `/courses/:slug/units/:unit`, `/units`, `/resources`, `/resources/:slug`, `/sequences`, `/sequences/:slug`, `/about` | Público |
 | `/login`, `/auth/callback`, `/auth/reset-password` | Público |
 | `/notes` | Público (caderno do navegador para visitantes, da conta após login; `noindex`) |
 | `/dashboard`, `/profile`, `/suggest` | Autenticado |
@@ -123,7 +123,8 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 
 `/auth` redireciona para `/login`; `/facodi` para `/courses`. Rotas sociais
 antigas apresentam conteúdo não encontrado, sem resolução de nomes públicos.
-O destino após login é validado contra uma lista de rotas internas.
+O destino após login é validado contra uma lista de rotas internas
+(incluindo páginas de detalhe `/resources/:slug` e `/sequences/:slug`).
 As rotas privadas aguardam a hidratação. Logout, troca de identidade e
 alteração de papel cancelam consultas e limpam caches de queries/mutações.
 As respostas Supabase não são guardadas pelo service worker.
@@ -168,6 +169,17 @@ classifica a licença e grava uma recomendação (`fast_track`, `review`,
 `reject`) que apenas ordena a fila. Em `/editor/suggestions`, a RPC
 `review_resource_suggestion` aprova (cria um objeto em rascunho ou reutiliza o
 existente e liga-o à unidade) ou recusa. Nada é publicado automaticamente.
+
+### Sequências de estudo
+
+`/sequences` lista as playlists editoriais da FACODI (RPC
+`list_public_editorial_sequences_v1`, uma linha por sequência, com as UCs
+associadas e a capa da primeira aula) e a página da UC mostra as que lhe estão
+ligadas. `/sequences/:slug` usa `get_public_editorial_playlist_v2`; `?v=`
+escolhe a aula. Com sessão iniciada, o progresso é autodeclarado e privado
+(`facodi.editorial_playlist_progress`, RLS só do dono): marcar aulas
+concluídas, retomar a posição guardada no vídeo e recomeçar a sequência. O
+dashboard resume as sequências em curso.
 
 ## Auth: pré-requisitos antes de disponibilizar cadastro
 

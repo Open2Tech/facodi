@@ -12,6 +12,8 @@ const ResourceDetails = lazy(() => import('@/pages/ResourceDetails'));
 const UnitDetails = lazy(() => import('@/pages/UnitDetails'));
 const Units = lazy(() => import('@/pages/Units'));
 const Resources = lazy(() => import('@/pages/Resources'));
+const Sequences = lazy(() => import('@/pages/Sequences'));
+const SequenceDetails = lazy(() => import('@/pages/SequenceDetails'));
 const About = lazy(() => import('@/pages/About'));
 const Community = lazy(() => import('@/pages/Community'));
 const Notebook = lazy(() => import('@/pages/Notebook'));
@@ -43,6 +45,8 @@ export function AppRoutes() {
       <Route path="/units" element={<Units key={sessionKey} />} />
       <Route path="/resources" element={<Resources key={sessionKey} />} />
       <Route path="/resources/:slug" element={<ResourceDetails key={sessionKey} />} />
+      <Route path="/sequences" element={<Sequences key={sessionKey} />} />
+      <Route path="/sequences/:slug" element={<SequenceDetails key={sessionKey} />} />
       <Route path="/notes" element={<Notebook key={sessionKey} />} />
       <Route path="/about" element={<About />} />
       <Route path="/community" element={<Community />} />

@@ -22,7 +22,8 @@
     "about": "About",
     "themeLight": "Switch to light theme",
     "themeDark": "Switch to dark theme",
-    "notes": "Notebook"
+    "notes": "Notebook",
+    "sequences": "Sequences"
   },
   "common": {
     "loading": "Loading…",
@@ -480,7 +481,8 @@
     "document": "Document",
     "course": "Course",
     "curricular_unit": "Curricular unit",
-    "external_resource": "External reference"
+    "external_resource": "External reference",
+    "playlist": "Sequence"
   },
   "video": {
     "play": "Play video: {{title}}",
@@ -1004,5 +1006,50 @@
     "empty": "No pending credits",
     "emptyDescription": "All pending candidates have been resolved.",
     "footer": "Academic references, technology partners and individual contributors are separate categories. A meeting or quotation does not grant permission to publish a name."
+  },
+  "sequences": {
+    "title": "Study sequences",
+    "description": "Editorial paths of YouTube lessons, ordered by FACODI so you can study a topic from start to finish.",
+    "notice": "Editorial collections of links to external videos. FACODI did not host or download the videos; topical fit was reviewed by titles and sources.",
+    "empty": "No sequences have been published yet.",
+    "emptyText": "Sequences appear here once the editorial team publishes them.",
+    "lessons_one": "{{count}} lesson",
+    "lessons_many": "{{count}} lessons",
+    "lessons_other": "{{count}} lessons",
+    "unitCount_one": "{{count}} unit",
+    "unitCount_many": "{{count}} units",
+    "unitCount_other": "{{count}} units",
+    "yourProgress": "Your progress",
+    "guest": "Sign in to mark lessons as done and pick up where you left off. Progress stays private to your account.",
+    "signIn": "Sign in to save progress",
+    "loadFailed": "Could not load your progress.",
+    "saveFailed": "Could not save your progress. Try again.",
+    "progressCount": "{{completed}} of {{total}} done",
+    "progressLabel": "Progress in {{title}}",
+    "selfReported": "You mark lessons as done; only you can see this progress.",
+    "finished": "You finished every lesson in this sequence.",
+    "continue": "Continue: {{title}}",
+    "reset": "Restart sequence",
+    "resetConfirm": "Clears the completed lessons and saved positions in this sequence. This cannot be undone.",
+    "lessonsHeading": "Lessons in this sequence",
+    "position": "Lesson {{current}} of {{total}}",
+    "resumeAt": "Resumes at {{time}}",
+    "completed": "Done",
+    "markComplete": "Mark as done",
+    "started": "Started",
+    "next": "Next lesson",
+    "markItem": "Mark “{{title}}” as done",
+    "unmarkItem": "Mark “{{title}}” as not done",
+    "noLessons": "This sequence has no visible lessons yet.",
+    "noLessonsText": "Lessons appear after editorial review.",
+    "units": "Related curricular units",
+    "forUnit": "Study sequences",
+    "forUnitText": "Ordered lesson paths for studying this unit’s topics.",
+    "overviewTitle": "Sequences in progress",
+    "overviewTotal_one": "{{count}} sequence started",
+    "overviewTotal_many": "{{count}} sequences started",
+    "overviewTotal_other": "{{count}} sequences started",
+    "overviewEmpty": "You have not started a sequence yet. Pick a path and mark lessons as you go.",
+    "browse": "Browse study sequences"
   }
 }

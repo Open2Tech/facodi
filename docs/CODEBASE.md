@@ -32,6 +32,15 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
   devolve `null` em falha (preenchimento manual). A revisão usa a RPC
   `review_resource_suggestion`.
+- [src/entities/sequence](../src/entities/sequence): sequências de estudo
+  (playlists editoriais). Leitura pública pelas RPCs
+  `list_public_editorial_sequences_v1` e `get_public_editorial_playlist_v2`;
+  progresso privado em `facodi.editorial_playlist_progress`. O papel
+  `authenticated` só pode atualizar `last_position_seconds`/`completed_at`, por
+  isso a gravação faz update e, sem linha, insert (sem upsert que reescreva a
+  chave). As capas usam `hqdefault` do YouTube.
+- [src/features/sequences](../src/features/sequences): consultas públicas e
+  `useSequenceProgress` (alternância otimista, posição best-effort, reset).
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
