@@ -199,6 +199,8 @@
         "passwordMismatch": "Les mots de passe ne correspondent pas."
       }
     },
+    "resendConfirmation": "Renvoyer la confirmation",
+    "resendSent": "Si le renvoi est possible, un nouveau lien sera envoyé par email.",
     "passwordHint": "Au moins 6 caractères. Une longue phrase est plus sûre et plus facile à retenir.",
     "showPasswords": "Afficher les mots de passe",
     "hidePasswords": "Masquer les mots de passe"

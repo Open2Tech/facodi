@@ -199,6 +199,8 @@
         "passwordMismatch": "The passwords do not match."
       }
     },
+    "resendConfirmation": "Resend confirmation",
+    "resendSent": "If confirmation can be resent, a new link will arrive by email.",
     "passwordHint": "At least 6 characters. A long phrase is safer and easier to remember.",
     "showPasswords": "Show passwords",
     "hidePasswords": "Hide passwords"

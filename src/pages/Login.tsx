@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { z } from 'zod';
 import { useAuth } from '@/features/auth/useAuth';
+import { resendSignupConfirmation } from '@/entities/auth/auth.api';
 import { signupSchema, signInFormSchema } from '@/shared/lib/validation';
 import { safeReturnPath } from '@/shared/lib/navigation';
 import { Button } from '@/components/ui/button';
@@ -38,11 +39,34 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
   const { signIn, signUp } = useAuth();
   const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [resent, setResent] = useState(false);
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signup ? signupSchema : signInFormSchema),
     defaultValues: { name: '', email: '', password: '' },
   });
-  if (sent) return <PageState title={t('auth.checkEmail')} description={t('auth.confirmDescription')} />;
+  if (sent) return <div className="space-y-5">
+    <PageState title={t('auth.checkEmail')} description={t('auth.confirmDescription')} />
+    <p className="break-all text-center text-sm text-muted-foreground">{form.getValues('email')}</p>
+    {resent && <p role="status" className="text-sm">{t('auth.resendSent')}</p>}
+    {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
+    <Button type="button" variant="outline" className="w-full" disabled={resending}
+      onClick={async () => {
+        setError('');
+        setResent(false);
+        setResending(true);
+        try {
+          await resendSignupConfirmation(form.getValues('email'), next);
+          setResent(true);
+        } catch (reason) {
+          setError(authErrorKey(reason));
+        } finally {
+          setResending(false);
+        }
+      }}>
+      {t(resending ? 'common.working' : 'auth.resendConfirmation')}
+    </Button>
+  </div>;
   return <form className="space-y-5" noValidate onSubmit={form.handleSubmit(async values => {
     setError('');
     try {

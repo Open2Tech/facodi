@@ -199,6 +199,8 @@
         "passwordMismatch": "As senhas não coincidem."
       }
     },
+    "resendConfirmation": "Reenviar confirmação",
+    "resendSent": "Se for possível reenviar a confirmação, receberás um novo link no teu email.",
     "passwordHint": "Pelo menos 6 caracteres. Uma frase longa é mais segura e fácil de lembrar.",
     "showPasswords": "Mostrar senhas",
     "hidePasswords": "Ocultar senhas"

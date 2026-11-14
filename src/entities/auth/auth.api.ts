@@ -12,6 +12,19 @@ export async function signUpWithEmail(email: string, password: string, name?: st
   });
 }
 
+/** Request a new confirmation email using the same PKCE callback as signup.
+ * Delivery and rate limits are enforced by Supabase Auth, not the browser. */
+export async function resendSignupConfirmation(email: string, next?: string) {
+  const { error } = await supabase.auth.resend({
+    type: 'signup',
+    email,
+    options: {
+      emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturnPath(next))}`,
+    },
+  });
+  if (error) throw error;
+}
+
 export async function signInWithEmail(email: string, password: string) {
   return supabase.auth.signInWithPassword({ email, password });
 }
