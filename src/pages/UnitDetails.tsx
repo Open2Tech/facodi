@@ -75,7 +75,7 @@ export default function UnitDetails() {
             ? <p className="mt-6 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
             : videoQuery.error
               ? <p role="alert" className="mt-6 text-sm text-destructive">{videoQuery.error.message}</p>
-              : !videos.length
+              : !videos.length || !selectedVideo
                 ? <p className="mt-6 border border-input bg-muted/40 p-5 text-sm text-muted-foreground">{t('unitVideos.empty')}</p>
                 : <div className="mt-7 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
                   <div className="min-w-0">
