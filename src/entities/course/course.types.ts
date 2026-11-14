@@ -12,5 +12,5 @@ export type ResourceInsert = Tables['learning_objects']['Insert'];
 export type ResourceUpdate = Tables['learning_objects']['Update'];
 export type ContentKind = 'courses' | 'curricular_units' | 'learning_objects';
 export type Content = Course | CurricularUnit | LearningObject;
-export interface CatalogParams { search: string; language: string; page: number }
+export interface CatalogParams { search: string; language: string; page: number; tag?: string }
 export const PAGE_SIZE = 12;

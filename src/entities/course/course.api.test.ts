@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCourse, getResource, listCourses, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, listCourses, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -47,6 +47,50 @@ describe('FACODI Data API contract', () => {
       return HttpResponse.json(null);
     }));
     expect(await getResource('missing')).toBeNull();
+  });
+  it('lists only active units whose parent course is public', async () => {
+    server.use(http.get(`${endpoint}/curricular_units`, ({ request }) => {
+      const url = new URL(request.url);
+      expect(request.headers.get('Accept-Profile')).toBe('facodi');
+      expect(url.searchParams.get('select')).toContain('courses!inner(');
+      expect(url.searchParams.get('status')).toBe('eq.active');
+      expect(url.searchParams.get('courses.published')).toBe('eq.true');
+      expect(url.searchParams.get('courses.status')).toBe('eq.active');
+      expect(url.searchParams.has('published')).toBe(false);
+      return HttpResponse.json([], { headers: { 'Content-Range': '0-0/0' } });
+    }));
+    expect(await listUnits({ search: '', language: '', page: 1 })).toEqual({ items: [], total: 0 });
+  });
+  it('filters public resources by language and tag', async () => {
+    server.use(http.get(`${endpoint}/learning_objects`, ({ request }) => {
+      const url = new URL(request.url);
+      expect(url.searchParams.get('published')).toBe('eq.true');
+      expect(url.searchParams.get('status')).toBe('in.(active,published)');
+      expect(url.searchParams.get('language')).toBe('eq.en');
+      expect(url.searchParams.get('tags')).toBe('cs.{"data, \\"science\\""}');
+      return HttpResponse.json([], { headers: { 'Content-Range': '0-0/0' } });
+    }));
+    expect(await listResources({ search: '', language: 'en', page: 1, tag: 'data, "science"' })).toEqual({ items: [], total: 0 });
+  });
+  it('counts public content with the same visibility rules and no RPC', async () => {
+    const seen: string[] = [];
+    server.use(http.head(`${endpoint}/:table`, ({ request, params }) => {
+      const url = new URL(request.url);
+      seen.push(String(params.table));
+      expect(url.pathname).not.toContain('/rpc/');
+      if (params.table === 'curricular_units') expect(url.searchParams.get('courses.published')).toBe('eq.true');
+      else expect(url.searchParams.get('published')).toBe('eq.true');
+      const totals: Record<string, number> = { courses: 2, curricular_units: 5, learning_objects: 9 };
+      return new HttpResponse(null, { headers: { 'Content-Range': `*/${totals[String(params.table)]}` } });
+    }));
+    expect(await getCatalogCounts()).toEqual({ courses: 2, units: 5, resources: 9 });
+    expect(seen.sort()).toEqual(['courses', 'curricular_units', 'learning_objects']);
+  });
+  it('ranks topics by frequency, ignoring blanks', async () => {
+    server.use(http.get(`${endpoint}/learning_objects`, () => HttpResponse.json([
+      { tags: ['Logic', 'Ethics'] }, { tags: ['Logic', ' '] }, { tags: ['Algebra'] },
+    ])));
+    expect(await listTopics(2)).toEqual([{ tag: 'Logic', count: 2 }, { tag: 'Algebra', count: 1 }]);
   });
   it.each(['courses', 'curricular_units', 'learning_objects'] as const)('creates manual drafts in %s, never auto-publishing', async kind => {
     server.use(http.post(`${endpoint}/${kind}`, async ({ request }) => {

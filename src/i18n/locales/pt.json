@@ -5,8 +5,35 @@
     "home": "FACODI — início",
     "footer": "Conhecimento aberto. Ligações com contexto."
   },
-  "nav": { "courses": "Explorar cursos", "dashboard": "Área pessoal", "profile": "Perfil", "editor": "Gestão editorial", "admin": "Administração", "login": "Entrar", "logout": "Sair", "skip": "Saltar para o conteúdo", "menu": "Abrir menu", "close": "Fechar menu", "main": "Navegação principal" },
-  "common": { "loading": "A carregar…", "working": "A processar…", "error": "Não foi possível concluir o pedido", "retry": "Tentar novamente", "language": "Idioma", "save": "Guardar alterações", "edit": "Editar", "cancel": "Cancelar", "confirm": "Confirmar", "notFound": "Este caminho ainda não leva a lado nenhum.", "notFoundDescription": "O conteúdo não existe ou não está disponível. Explora o catálogo para encontrar outro ponto de partida." },
+  "nav": {
+    "courses": "Explorar cursos",
+    "dashboard": "Área pessoal",
+    "profile": "Perfil",
+    "editor": "Gestão editorial",
+    "admin": "Administração",
+    "login": "Entrar",
+    "logout": "Sair",
+    "skip": "Saltar para o conteúdo",
+    "menu": "Abrir menu",
+    "close": "Fechar menu",
+    "main": "Navegação principal",
+    "units": "Unidades",
+    "resources": "Recursos",
+    "about": "Sobre"
+  },
+  "common": {
+    "loading": "A carregar…",
+    "working": "A processar…",
+    "error": "Não foi possível concluir o pedido",
+    "retry": "Tentar novamente",
+    "language": "Idioma",
+    "save": "Guardar alterações",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "notFound": "Este caminho ainda não leva a lado nenhum.",
+    "notFoundDescription": "O conteúdo não existe ou não está disponível. Explora o catálogo para encontrar outro ponto de partida."
+  },
   "home": {
     "campus": "Um campus digital aberto",
     "title": "O conhecimento está em todo o lado. Encontra o teu próximo passo.",
@@ -19,43 +46,284 @@
     "start": "Escolhe o teu ponto de partida",
     "startDescription": "Percursos publicados para transformar curiosidade em aprendizagem.",
     "thread": "Segue o fio. Descobre uma nova ligação.",
-    "threadDescription": "Um curso dá estrutura. Uma unidade curricular oferece contexto. Um recurso abre uma possibilidade. A FACODI aproxima estas peças sem impor um único caminho."
+    "threadDescription": "Um curso dá estrutura. Uma unidade curricular oferece contexto. Um recurso abre uma possibilidade. A FACODI aproxima estas peças sem impor um único caminho.",
+    "howItWorks": "Como funciona",
+    "searchPlaceholder": "Ex.: álgebra, programação, ética…",
+    "searchButton": "Pesquisar no catálogo",
+    "pathsTitle": "Três portas de entrada",
+    "paths": {
+      "published": "Publicados: {{count}}",
+      "courses": {
+        "title": "Cursos",
+        "text": "Percursos completos, com plano de estudos, créditos e unidades organizadas por ano e semestre.",
+        "cta": "Ver cursos"
+      },
+      "units": {
+        "title": "Unidades curriculares",
+        "text": "Peças de um curso que podes explorar por si só: objetivos, créditos e o contexto onde se encaixam.",
+        "cta": "Ver unidades"
+      },
+      "resources": {
+        "title": "Recursos",
+        "text": "Objetos educativos abertos — textos, vídeos e referências — com temas e ligação à fonte original.",
+        "cta": "Ver recursos"
+      }
+    },
+    "steps": {
+      "ask": {
+        "title": "Pergunta",
+        "text": "Começa por aquilo que queres compreender, não por um índice."
+      },
+      "explore": {
+        "title": "Explora",
+        "text": "Pesquisa cursos, unidades e recursos publicados, ao teu ritmo."
+      },
+      "connect": {
+        "title": "Conecta",
+        "text": "Cada recurso aponta para o curso e a unidade onde ganha sentido."
+      },
+      "contribute": {
+        "title": "Contribui",
+        "text": "Propõe melhorias e novos recursos. A equipa editorial revê antes de publicar."
+      }
+    },
+    "contributeLink": "Como contribuir",
+    "topicsTitle": "Temas em destaque",
+    "topicsDescription": "Os temas mais frequentes nos recursos publicados.",
+    "communityTitle": "Um projeto académico, feito por estudantes.",
+    "communityLink": "Conhecer o projeto",
+    "community": {
+      "program": {
+        "label": "Programa",
+        "value": "SEA-EU Student-Led Projects 2026"
+      },
+      "home": {
+        "label": "Instituição",
+        "value": "Universidade do Algarve (UAlg)"
+      },
+      "model": {
+        "label": "Modelo",
+        "value": "Conteúdo aberto, organizado por uma equipa editorial e protegido por regras de acesso na base de dados."
+      }
+    },
+    "ctaTitle": "Conheces um recurso que vale a pena partilhar?",
+    "ctaText": "A FACODI cresce com contributos revistos pela equipa editorial. Descobre como participar.",
+    "ctaButton": "Contribuir"
   },
   "catalog": {
     "title": "Encontra o teu próximo passo.",
     "description": "Explora cursos publicados, descobre unidades curriculares e abre recursos educativos com contexto.",
-    "search": "Pesquisar por título", "searchPlaceholder": "O que queres aprender?", "allLanguages": "Todos os idiomas", "all": "Ver catálogo completo", "open": "Explorar curso",
-    "empty": "Ainda não há cursos para mostrar.", "emptyDescription": "Os cursos aparecem aqui quando a equipa editorial os publica. Volta em breve para descobrir novos caminhos.", "noResults": "Não encontrámos cursos nesta pesquisa ou página. Experimenta outro título, idioma ou regressa à primeira página.",
-    "units": "Unidades curriculares", "noUnits": "Ainda sem unidades disponíveis.", "noUnitsDescription": "As unidades ativas deste curso aparecem aqui à medida que são preparadas.",
-    "semester": "Semestre {{value}}", "source": "Abrir recurso original", "tags": "Temas", "pagination": "Paginação", "page": "Página {{page}} de {{pages}} · {{total}} resultados", "previous": "Anterior", "next": "Seguinte"
+    "search": "Pesquisar por título",
+    "searchPlaceholder": "O que queres aprender?",
+    "allLanguages": "Todos os idiomas",
+    "all": "Ver catálogo completo",
+    "open": "Explorar curso",
+    "empty": "Ainda não há cursos para mostrar.",
+    "emptyDescription": "Os cursos aparecem aqui quando a equipa editorial os publica. Volta em breve para descobrir novos caminhos.",
+    "noResults": "Não encontrámos cursos nesta pesquisa ou página. Experimenta outro título, idioma ou regressa à primeira página.",
+    "units": "Unidades curriculares",
+    "noUnits": "Ainda sem unidades disponíveis.",
+    "noUnitsDescription": "As unidades ativas deste curso aparecem aqui à medida que são preparadas.",
+    "semester": "Semestre {{value}}",
+    "source": "Abrir recurso original",
+    "tags": "Temas",
+    "pagination": "Paginação",
+    "page": "Página {{page}} de {{pages}} · {{total}} resultados",
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "year": "Ano {{value}}",
+    "count": "Total: {{count}}"
   },
-  "access": { "denied": "Não tens permissão para aceder a esta área.", "description": "A tua sessão está ativa, mas esta página exige um papel de acesso diferente. Podes continuar a explorar o catálogo ou a tua área pessoal." },
-  "roles": { "user": "Utilizador", "editor": "Editor", "admin": "Administrador" },
+  "access": {
+    "denied": "Não tens permissão para aceder a esta área.",
+    "description": "A tua sessão está ativa, mas esta página exige um papel de acesso diferente. Podes continuar a explorar o catálogo ou a tua área pessoal."
+  },
+  "roles": {
+    "user": "Utilizador",
+    "editor": "Editor",
+    "admin": "Administrador"
+  },
   "auth": {
     "campus": "A tua ligação à FACODI",
-    "login": "Entrar", "signup": "Criar conta", "loginDescription": "Retoma a exploração com a tua conta.", "signupDescription": "Cria uma conta por email. O catálogo continua aberto a todos.",
-    "email": "Email", "password": "Senha", "name": "Nome", "haveAccount": "Já tenho conta", "createAccount": "Criar uma conta", "forgot": "Esqueci a senha",
-    "checkEmail": "Confirma o teu email.", "confirmDescription": "Se o cadastro puder ser concluído, receberás um link de confirmação. Abre-o neste navegador para terminar o processo.",
+    "login": "Entrar",
+    "signup": "Criar conta",
+    "loginDescription": "Retoma a exploração com a tua conta.",
+    "signupDescription": "Cria uma conta por email. O catálogo continua aberto a todos.",
+    "email": "Email",
+    "password": "Senha",
+    "name": "Nome",
+    "haveAccount": "Já tenho conta",
+    "createAccount": "Criar uma conta",
+    "forgot": "Esqueci a senha",
+    "checkEmail": "Confirma o teu email.",
+    "confirmDescription": "Se o cadastro puder ser concluído, receberás um link de confirmação. Abre-o neste navegador para terminar o processo.",
     "invalidLinkDescription": "Este link pode ter expirado, já ter sido utilizado ou ter sido aberto noutro navegador. Inicia sessão ou pede um novo link.",
-    "reset": "Recuperar a senha", "resetDescription": "Indica o email da conta para pedir um link de recuperação. Abre o link neste navegador.",
-    "sendReset": "Enviar link de recuperação", "resetSent": "Se existir uma conta para este email, receberás as instruções de recuperação.",
-    "newPassword": "Nova senha", "confirmPassword": "Confirmar nova senha", "savePassword": "Alterar senha", "passwordSaved": "A senha foi alterada.",
-    "error": { "invalidEmail": "Indica um email válido.", "passwordMinLength": "A senha deve ter pelo menos 6 caracteres.", "usernameMinLength": "Usa pelo menos 3 caracteres.", "sessionRequired": "A sessão expirou. Inicia sessão novamente.", "invalidLink": "Link de autenticação inválido ou expirado." },
-    "resetPassword": { "error": { "passwordMismatch": "As senhas não coincidem." } }
+    "reset": "Recuperar a senha",
+    "resetDescription": "Indica o email da conta para pedir um link de recuperação. Abre o link neste navegador.",
+    "sendReset": "Enviar link de recuperação",
+    "resetSent": "Se existir uma conta para este email, receberás as instruções de recuperação.",
+    "newPassword": "Nova senha",
+    "confirmPassword": "Confirmar nova senha",
+    "savePassword": "Alterar senha",
+    "passwordSaved": "A senha foi alterada.",
+    "error": {
+      "invalidEmail": "Indica um email válido.",
+      "passwordMinLength": "A senha deve ter pelo menos 6 caracteres.",
+      "usernameMinLength": "Usa pelo menos 3 caracteres.",
+      "sessionRequired": "A sessão expirou. Inicia sessão novamente.",
+      "invalidLink": "Link de autenticação inválido ou expirado."
+    },
+    "resetPassword": {
+      "error": {
+        "passwordMismatch": "As senhas não coincidem."
+      }
+    }
   },
-  "dashboard": { "welcome": "Olá, {{name}}.", "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.", "role": "Acesso FACODI", "catalog": "Descobre cursos e recursos educativos publicados.", "account": "Atualiza o nome, o email e a senha da tua conta.", "editor": "Prepara, publica e arquiva conteúdos educativos.", "admin": "Consulta os estados e as contagens do catálogo." },
-  "profile": { "description": "Os dados da tua conta são geridos pelo Supabase Auth.", "saved": "Alterações guardadas. Se alteraste o email, confirma os links enviados para os endereços envolvidos antes de usar o novo email." },
-  "content": { "courses": "Cursos", "curricular_units": "Unidades curriculares", "learning_objects": "Objetos educativos" },
-  "states": { "draft": "Rascunho", "active": "Ativo", "published": "Publicado", "archived": "Arquivado" },
+  "dashboard": {
+    "welcome": "Olá, {{name}}.",
+    "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.",
+    "role": "Acesso FACODI",
+    "catalog": "Descobre cursos e recursos educativos publicados.",
+    "account": "Atualiza o nome, o email e a senha da tua conta.",
+    "editor": "Prepara, publica e arquiva conteúdos educativos.",
+    "admin": "Consulta os estados e as contagens do catálogo."
+  },
+  "profile": {
+    "description": "Os dados da tua conta são geridos pelo Supabase Auth.",
+    "saved": "Alterações guardadas. Se alteraste o email, confirma os links enviados para os endereços envolvidos antes de usar o novo email."
+  },
+  "content": {
+    "courses": "Cursos",
+    "curricular_units": "Unidades curriculares",
+    "learning_objects": "Objetos educativos"
+  },
+  "states": {
+    "draft": "Rascunho",
+    "active": "Ativo",
+    "published": "Publicado",
+    "archived": "Arquivado"
+  },
   "editor": {
-    "heading": "Dar estrutura ao conhecimento.", "descriptionText": "Gestão manual do catálogo FACODI. As permissões de leitura e escrita continuam a ser aplicadas pela base de dados.",
-    "create": "Criar conteúdo", "newContent": "Novo conteúdo", "editContent": "Editar conteúdo", "manualDraft": "O novo conteúdo é guardado como rascunho, com origem manual.",
-    "title": "Título", "slug": "Identificador na URL", "languageCode": "Código do idioma", "objectType": "Tipo do objeto (valor aceite pelo schema)", "summary": "Resumo", "description": "Descrição (HTML permitido e sanitizado na apresentação)", "sourceUrl": "URL do recurso original",
-    "course": "Curso associado", "resource": "Objeto educativo associado", "findRelation": "Pesquisar: {{name}}", "noRelation": "Sem associação", "relationLimit": "São mostrados até 50 resultados. Refina a pesquisa para encontrar outros conteúdos.",
+    "heading": "Dar estrutura ao conhecimento.",
+    "descriptionText": "Gestão manual do catálogo FACODI. As permissões de leitura e escrita continuam a ser aplicadas pela base de dados.",
+    "create": "Criar conteúdo",
+    "newContent": "Novo conteúdo",
+    "editContent": "Editar conteúdo",
+    "manualDraft": "O novo conteúdo é guardado como rascunho, com origem manual.",
+    "title": "Título",
+    "slug": "Identificador na URL",
+    "languageCode": "Código do idioma",
+    "objectType": "Tipo do objeto (valor aceite pelo schema)",
+    "summary": "Resumo",
+    "description": "Descrição (HTML permitido e sanitizado na apresentação)",
+    "sourceUrl": "URL do recurso original",
+    "course": "Curso associado",
+    "resource": "Objeto educativo associado",
+    "findRelation": "Pesquisar: {{name}}",
+    "noRelation": "Sem associação",
+    "relationLimit": "São mostrados até 50 resultados. Refina a pesquisa para encontrar outros conteúdos.",
     "unitVisibility": "Atenção: uma unidade ativa de um curso publicado e ativo pode ser pública mesmo com published=false. Para a retirar do catálogo, muda o estado para rascunho ou arquivado.",
-    "publish": "Publicar", "archive": "Arquivar", "unpublish": "Voltar a rascunho", "confirmChange": "Esta alteração pode mudar a visibilidade pública do conteúdo e das unidades associadas.",
-    "flagPublished": "published=true", "flagUnpublished": "published=false", "updated": "Estado do conteúdo atualizado.", "empty": "Sem conteúdo nesta lista.", "emptyDescription": "Cria um rascunho ou ajusta a pesquisa para continuar."
+    "publish": "Publicar",
+    "archive": "Arquivar",
+    "unpublish": "Voltar a rascunho",
+    "confirmChange": "Esta alteração pode mudar a visibilidade pública do conteúdo e das unidades associadas.",
+    "flagPublished": "published=true",
+    "flagUnpublished": "published=false",
+    "updated": "Estado do conteúdo atualizado.",
+    "empty": "Sem conteúdo nesta lista.",
+    "emptyDescription": "Cria um rascunho ou ajusta a pesquisa para continuar."
   },
-  "admin": { "heading": "O catálogo, em perspetiva.", "description": "Contagens reais do conteúdo acessível à tua sessão. Esta área não gere utilizadores nem promove papéis.", "content": "Conteúdo", "total": "Total", "draft": "Rascunho", "active": "Ativo", "published": "Estado publicado", "archived": "Arquivado", "other": "Outros estados", "flag": "published=true", "visibility": "O indicador published, por si só, não garante visibilidade: aplicam-se também o estado, o curso associado e as políticas RLS." },
-  "validation": { "required": "Preenche este campo.", "tooLong": "O valor excede o tamanho permitido.", "slug": "Usa letras minúsculas sem acentos, números e hífenes entre palavras.", "url": "Indica uma URL HTTP ou HTTPS válida." }
+  "admin": {
+    "heading": "O catálogo, em perspetiva.",
+    "description": "Contagens reais do conteúdo acessível à tua sessão. Esta área não gere utilizadores nem promove papéis.",
+    "content": "Conteúdo",
+    "total": "Total",
+    "draft": "Rascunho",
+    "active": "Ativo",
+    "published": "Estado publicado",
+    "archived": "Arquivado",
+    "other": "Outros estados",
+    "flag": "published=true",
+    "visibility": "O indicador published, por si só, não garante visibilidade: aplicam-se também o estado, o curso associado e as políticas RLS."
+  },
+  "validation": {
+    "required": "Preenche este campo.",
+    "tooLong": "O valor excede o tamanho permitido.",
+    "slug": "Usa letras minúsculas sem acentos, números e hífenes entre palavras.",
+    "url": "Indica uma URL HTTP ou HTTPS válida."
+  },
+  "units": {
+    "title": "Unidades curriculares",
+    "description": "Explora as unidades dos cursos publicados e descobre o contexto em que cada uma se insere.",
+    "inCourse": "Curso: {{course}}",
+    "empty": "Ainda não há unidades para mostrar.",
+    "emptyDescription": "As unidades aparecem quando os cursos a que pertencem são publicados.",
+    "noResults": "Não encontrámos unidades nesta pesquisa ou página. Experimenta outro título."
+  },
+  "resources": {
+    "title": "Recursos educativos",
+    "description": "Objetos educativos publicados, com temas, idioma e ligação à fonte original.",
+    "open": "Abrir recurso",
+    "empty": "Ainda não há recursos para mostrar.",
+    "emptyDescription": "Os recursos aparecem aqui quando a equipa editorial os publica.",
+    "noResults": "Não encontrámos recursos com estes filtros. Experimenta outro título, idioma ou tema.",
+    "taggedWith": "Tema:",
+    "clearTag": "Remover tema"
+  },
+  "about": {
+    "title": "Um campus aberto para seguir o fio do conhecimento.",
+    "lead": "A FACODI reúne cursos, unidades curriculares e recursos educativos num só lugar, com o contexto que os torna úteis.",
+    "seaeuTitle": "SEA-EU e Universidade do Algarve",
+    "seaeuText": "A FACODI integra os SEA-EU Student-Led Projects 2026 e nasce na Universidade do Algarve (UAlg).",
+    "seaeuScope": "O objetivo é simples: tornar mais fácil encontrar material académico de qualidade e perceber onde cada peça encaixa num percurso de aprendizagem.",
+    "principlesTitle": "Princípios",
+    "principles": {
+      "open": {
+        "title": "Aberto",
+        "text": "O catálogo publicado pode ser consultado sem conta e sem paywall."
+      },
+      "context": {
+        "title": "Com contexto",
+        "text": "Um recurso vale mais quando sabes a que curso e unidade pertence."
+      },
+      "curated": {
+        "title": "Com curadoria",
+        "text": "Só é publicado o que a equipa editorial reviu. As regras de acesso são aplicadas pela base de dados."
+      }
+    },
+    "contributeTitle": "Como contribuir",
+    "contributeText": "As contribuições passam pela equipa editorial: nada é publicado automaticamente.",
+    "flow": {
+      "account": "Cria uma conta FACODI com o teu email.",
+      "review": "Partilha a tua proposta com a equipa editorial, que prepara o conteúdo como rascunho.",
+      "publish": "Depois de revisto, o conteúdo é publicado no catálogo aberto."
+    },
+    "openEditor": "Abrir gestão editorial",
+    "openDashboard": "Ir para a área pessoal",
+    "createAccount": "Criar conta ou entrar"
+  },
+  "footer": {
+    "learn": "Aprender",
+    "project": "Projeto",
+    "account": "Conta",
+    "contribute": "Contribuir",
+    "note": "FACODI · SEA-EU Student-Led Projects 2026 · Universidade do Algarve"
+  },
+  "course": {
+    "facts": "Ficha do curso",
+    "code": "Código",
+    "degree": "Grau",
+    "ects": "Créditos",
+    "duration": "Duração",
+    "institution": "Instituição",
+    "school": "Escola",
+    "language": "Idioma",
+    "units": "Unidades",
+    "plan": "Plano de estudos oficial",
+    "semesters": "{{count}} sem."
+  },
+  "resource": {
+    "objectives": "Objetivos de aprendizagem",
+    "keywords": "Palavras-chave"
+  }
 }

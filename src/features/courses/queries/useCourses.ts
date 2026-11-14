@@ -1,12 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { changePublication, findContentOptions, getCourse, getOverview, getResource, listCourses, listEditorial, saveContent } from '@/entities/course/course.api';
+import { changePublication, findContentOptions, getCatalogCounts, getCourse, getOverview, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 
 export function useCourses(params: CatalogParams) {
   return useQuery({ queryKey: courseKeys.catalog(params), queryFn: ({ signal }) => listCourses(params, signal) });
+}
+export function useUnits(params: CatalogParams) {
+  return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal) });
+}
+export function useResources(params: CatalogParams) {
+  return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal) });
+}
+export function useCatalogCounts() {
+  return useQuery({ queryKey: courseKeys.counts(), queryFn: ({ signal }) => getCatalogCounts(signal) });
+}
+export function useTopics() {
+  return useQuery({ queryKey: courseKeys.topics(), queryFn: ({ signal }) => listTopics(6, signal) });
 }
 export function useCourse(slug: string) {
   return useQuery({ queryKey: courseKeys.detail(slug), queryFn: ({ signal }) => getCourse(slug, signal) });

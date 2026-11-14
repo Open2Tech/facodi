@@ -3,6 +3,10 @@ import type { CatalogParams, ContentKind } from '@/entities/course/course.types'
 export const courseKeys = {
   all: ['facodi'] as const,
   catalog: (params: CatalogParams) => ['facodi', 'courses', 'public', params] as const,
+  units: (params: CatalogParams) => ['facodi', 'units', 'public', params] as const,
+  resources: (params: CatalogParams) => ['facodi', 'resources', 'public', params] as const,
+  counts: () => ['facodi', 'counts', 'public'] as const,
+  topics: () => ['facodi', 'topics', 'public'] as const,
   detail: (slug: string) => ['facodi', 'course', slug] as const,
   resource: (slug: string) => ['facodi', 'resource', slug] as const,
   editor: (userId: string, kind: ContentKind, params: CatalogParams) => ['facodi', 'private', userId, kind, params] as const,
