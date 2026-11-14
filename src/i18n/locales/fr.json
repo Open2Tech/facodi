@@ -891,5 +891,19 @@
     "rejected": "Suggestion refusée.",
     "confirmApproveExisting": "La ressource existe déjà : l’approbation la réutilise (et la lie à l’unité, le cas échéant) sans en créer une nouvelle.",
     "approvedExisting": "Ressource existante réutilisée, sans nouveau brouillon."
+  },
+  "courseArchive": {
+    "title": "Anciens plans d’études",
+    "notice": "Les anciens cursus sont conservés séparément. Des codes communs ne prouvent pas une équivalence académique ou une possibilité de validation des crédits.",
+    "unitCount": "{{count}} unités/options",
+    "credits": "Parcours du diplôme : {{count}} ECTS, avec choix des options requises",
+    "codeOverlap": "{{count}} codes communs au plan actuel",
+    "equivalenceNotice": "Ces unités sont historiques. Consultez l’UAlg pour les équivalences et validations d’acquis. Les options d’un même groupe sont alternatives, et non cumulatives.",
+    "officialSource": "Consulter le plan officiel de l’UAlg",
+    "unit": "Unité d’enseignement",
+    "term": "Semestre",
+    "elective": "Option {{group}}",
+    "annual": "Annuel",
+    "error": "Impossible de charger l’ancien plan d’études."
   }
 }
