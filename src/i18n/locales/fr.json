@@ -924,7 +924,8 @@
     "groups": {
       "context": "Université et programme",
       "collaboration": "Technologie et open source",
-      "inspiration": "Inspiration créative"
+      "inspiration": "Inspiration créative",
+      "contributors": "Contributeurs nommés et vérifiés"
     },
     "boundary": "Les crédits publics reposent sur des sources vérifiées. Les propositions non confirmées ne sont pas affichées comme partenariats.",
     "communityEyebrow": "FACODI t'appartient aussi",
@@ -974,5 +975,34 @@
     "ctaTitle": "Écris le prochain chapitre avec nous.",
     "ctaDescription": "Une petite contribution peut changer beaucoup pour quelqu'un.",
     "ctaButton": "Partager une idée"
+  },
+  "projectCredits": {
+    "open": "Crédits des contributeurs",
+    "back": "Retour à l'éditeur",
+    "title": "Qui a fait quoi ?",
+    "lead": "Un crédit public exige du contexte. Vérifiez le rôle, le consentement et une source publique avant publication.",
+    "count": "{{count}} crédits en attente",
+    "pending": "À vérifier",
+    "draft": "Consentement public non confirmé",
+    "unverified": "Ce nom figure dans des documents internes. Cela ne prouve ni la contribution ni l'autorisation de le publier.",
+    "role": "Rôle vérifié",
+    "headline": "Présentation courte",
+    "description": "Contribution effectivement réalisée",
+    "publicSource": "Source publique vérifiable",
+    "sourceHint": "Une page publique justifiant le rôle. Ne collez pas de courriel privé ni de document interne.",
+    "consent": "Comment l'accord a été confirmé",
+    "written": "Accord écrit direct",
+    "publicIdentification": "Identification publique par la personne",
+    "reviewNote": "Justification interne",
+    "reviewNoteHint": "Décrivez la vérification sans copier de données privées.",
+    "privateNote": "Cette note reste réservée à l'audit éditorial.",
+    "ack": "Je confirme avoir vérifié le rôle, une source publique et l'accord d'attribution.",
+    "ackRequired": "Confirmez ces conditions.",
+    "saved": "Crédit validé pour affichage public.",
+    "saving": "Enregistrement...",
+    "publish": "Vérifier et publier",
+    "empty": "Aucun crédit en attente",
+    "emptyDescription": "Aucun profil à valider.",
+    "footer": "Les références universitaires, les partenaires techniques et les personnes ont des rôles distincts. Une réunion ne suffit pas pour publier un nom."
   }
 }
