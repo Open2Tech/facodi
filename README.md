@@ -86,7 +86,7 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 
 | Rota | Acesso |
 |---|---|
-| `/`, `/courses`, `/courses/:slug`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
+| `/`, `/courses`, `/courses/:slug`, `/courses/:slug/units/:unit`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
 | `/login`, `/auth/callback`, `/auth/reset-password` | Público |
 | `/dashboard`, `/profile` | Autenticado |
 | `/editor` | Editor ou admin |
@@ -105,6 +105,20 @@ As respostas Supabase não são guardadas pelo service worker.
 `courses!inner`), e `/resources` lista objetos educativos publicados com
 filtros por título, idioma e tema (`tags`). As contagens da página inicial usam
 pedidos `HEAD` com `count=exact` sobre as mesmas regras; não há RPC.
+
+`/units` aceita estado na URL: `search` (título ou código), `course` (slug do
+curso), `year`, `semester` (semestre curricular, 1–6) e `sort`
+(`curriculum`, `title`, `ects`), além de `page`. As facetas são contadas sobre
+as unidades visíveis. Os slugs de unidades só são únicos dentro do curso, por
+isso a página da UC vive em `/courses/:slug/units/:unit`. `/courses/:slug`
+apresenta o plano de estudos por ano e semestre; as somas de ECTS não são
+mostradas porque o plano inclui alternativas opcionais.
+
+A migração `supabase/migrations/20261114160000_facodi_publish_ualg_catalog.sql`
+publica os cursos e unidades UAlg (LESTI, LDCOM) que estavam em rascunho, sem
+alterar políticas. As ligações `unit_videos` continuam em `pending_review`
+(apontam para `public.videos`) e por isso não aparecem publicamente até
+revisão editorial.
 
 Não existe ingestão pública de conteúdos. Os pipelines automáticos FACODI
 (ingestão YouTube, análise e descoberta de metadados) são chamadas

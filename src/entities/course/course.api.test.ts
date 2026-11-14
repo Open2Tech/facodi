@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCatalogCounts, getCourse, getResource, listCourses, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, getUnit, getUnitFacets, listCourses, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -60,6 +60,51 @@ describe('FACODI Data API contract', () => {
       return HttpResponse.json([], { headers: { 'Content-Range': '0-0/0' } });
     }));
     expect(await listUnits({ search: '', language: '', page: 1 })).toEqual({ items: [], total: 0 });
+  });
+  it('filters units by course, year, semester and a quoted title-or-code search in curriculum order', async () => {
+    server.use(http.get(`${endpoint}/curricular_units`, ({ request }) => {
+      const url = new URL(request.url);
+      expect(url.searchParams.get('courses.slug')).toBe('eq.lesti');
+      expect(url.searchParams.get('year')).toBe('eq.2');
+      expect(url.searchParams.get('semester')).toBe('eq.3');
+      expect(url.searchParams.get('or')).toBe('(title.ilike."%a,b\\\\%%",code.ilike."%a,b\\\\%%")');
+      expect(url.searchParams.get('order')).toBe('year.asc.nullslast,semester.asc.nullslast,position.asc.nullslast,title.asc,id.asc');
+      return HttpResponse.json([], { headers: { 'Content-Range': '0-0/0' } });
+    }));
+    expect(await listUnits({ search: 'a,b%', language: '', page: 1, course: 'lesti', year: 2, semester: 3 })).toEqual({ items: [], total: 0 });
+  });
+  it('builds unit facets from public units only', async () => {
+    server.use(http.get(`${endpoint}/curricular_units`, ({ request }) => {
+      const url = new URL(request.url);
+      expect(url.searchParams.get('status')).toBe('eq.active');
+      expect(url.searchParams.get('courses.published')).toBe('eq.true');
+      const course = { slug: 'lesti', code: 'LESTI', title: 'LESTI' };
+      return HttpResponse.json([{ year: 1, semester: 2, courses: course }, { year: 1, semester: 1, courses: course }, { year: 2, semester: 3, courses: course }]);
+    }));
+    const facets = await getUnitFacets();
+    expect(facets.courses).toEqual([{ value: 'lesti', label: 'LESTI', count: 3 }]);
+    expect(facets.years.map(option => [option.value, option.count])).toEqual([[1, 2], [2, 1]]);
+    expect(facets.semesterYears).toEqual({ 1: [1], 2: [1], 3: [2] });
+  });
+  it('resolves a unit only inside its public course', async () => {
+    server.use(
+      http.get(`${endpoint}/courses`, ({ request }) => {
+        const url = new URL(request.url);
+        expect(url.searchParams.get('published')).toBe('eq.true');
+        expect(url.searchParams.get('status')).toBe('eq.active');
+        return HttpResponse.json(url.searchParams.get('slug') === 'eq.lesti' ? { id: 'c1', slug: 'lesti' } : null);
+      }),
+      http.get(`${endpoint}/curricular_units`, ({ request }) => {
+        const url = new URL(request.url);
+        expect(url.searchParams.get('status')).toBe('eq.active');
+        if (url.searchParams.get('id')) return HttpResponse.json({ id: 'u2', slug: 'b', title: 'B' });
+        expect(url.searchParams.get('course_id')).toBe('eq.c1');
+        return HttpResponse.json([{ id: 'u1', slug: 'a' }, { id: 'u2', slug: 'b' }]);
+      }),
+    );
+    expect(await getUnit('other', 'b')).toBeNull();
+    expect(await getUnit('lesti', 'missing')).toBeNull();
+    expect((await getUnit('lesti', 'b'))?.unit.title).toBe('B');
   });
   it('filters public resources by language and tag', async () => {
     server.use(http.get(`${endpoint}/learning_objects`, ({ request }) => {

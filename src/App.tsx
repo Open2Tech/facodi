@@ -9,6 +9,7 @@ const Home = lazy(() => import('@/pages/Home'));
 const Courses = lazy(() => import('@/pages/Courses'));
 const CourseDetails = lazy(() => import('@/pages/CourseDetails'));
 const ResourceDetails = lazy(() => import('@/pages/ResourceDetails'));
+const UnitDetails = lazy(() => import('@/pages/UnitDetails'));
 const Units = lazy(() => import('@/pages/Units'));
 const Resources = lazy(() => import('@/pages/Resources'));
 const About = lazy(() => import('@/pages/About'));
@@ -29,6 +30,7 @@ export function AppRoutes() {
       <Route index element={<Home key={sessionKey} />} />
       <Route path="/courses" element={<Courses key={sessionKey} />} />
       <Route path="/courses/:slug" element={<CourseDetails key={sessionKey} />} />
+      <Route path="/courses/:slug/units/:unit" element={<UnitDetails key={sessionKey} />} />
       <Route path="/units" element={<Units key={sessionKey} />} />
       <Route path="/resources" element={<Resources key={sessionKey} />} />
       <Route path="/resources/:slug" element={<ResourceDetails key={sessionKey} />} />

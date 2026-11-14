@@ -132,7 +132,8 @@
     "previous": "Anterior",
     "next": "Seguinte",
     "year": "Ano {{value}}",
-    "count": "Total: {{count}}"
+    "count": "Total: {{count}}",
+    "goToPage": "Ir para a página {{page}}"
   },
   "access": {
     "denied": "Não tens permissão para aceder a esta área.",
@@ -254,11 +255,33 @@
   },
   "units": {
     "title": "Unidades curriculares",
-    "description": "Explora as unidades dos cursos publicados e descobre o contexto em que cada uma se insere.",
+    "description": "Pesquisa as unidades curriculares das licenciaturas publicadas, filtra por curso, ano ou semestre e abre cada UC para ver o contexto.",
     "inCourse": "Curso: {{course}}",
     "empty": "Ainda não há unidades para mostrar.",
     "emptyDescription": "As unidades aparecem quando os cursos a que pertencem são publicados.",
-    "noResults": "Não encontrámos unidades nesta pesquisa ou página. Experimenta outro título."
+    "noResults": "Nenhuma UC corresponde a esta combinação. Retira um filtro ou experimenta outro título ou código.",
+    "filters": "Filtros",
+    "showFilters": "Mostrar",
+    "hideFilters": "Ocultar",
+    "filtersUnavailable": "Não foi possível carregar os filtros. A pesquisa continua disponível.",
+    "filterCourse": "Curso",
+    "filterYear": "Ano curricular",
+    "filterSemester": "Semestre",
+    "howTitle": "Como funciona este catálogo",
+    "howText": "Cada UC vem do plano de estudos oficial e mantém o código e os créditos da instituição. Os recursos abertos são ligados às UCs depois de revistos pela equipa editorial.",
+    "contribute": "Sugerir recursos",
+    "search": "Pesquisar por título ou código",
+    "searchPlaceholder": "Ex.: Programação, 14541000",
+    "sort": "Ordenar",
+    "sorts": {
+      "curriculum": "Ordem do plano",
+      "title": "Título (A–Z)",
+      "ects": "Mais créditos"
+    },
+    "matching_one": "{{count}} UC encontrada",
+    "matching_many": "{{count}} UCs encontradas",
+    "matching_other": "{{count}} UCs encontradas",
+    "clearFilters": "Limpar filtros"
   },
   "resources": {
     "title": "Recursos educativos",
@@ -320,10 +343,42 @@
     "language": "Idioma",
     "units": "Unidades",
     "plan": "Plano de estudos oficial",
-    "semesters": "{{count}} sem."
+    "semesters": "{{count}} sem.",
+    "yearLabel": "Ano",
+    "semesterLabel": "Semestre",
+    "studyPlan": "Plano de estudos",
+    "filterUnits": "Filtrar estas UCs",
+    "jumpToYear": "Ir para o ano",
+    "otherUnits": "Outras unidades",
+    "termSummary_one": "{{count}} UC",
+    "termSummary_many": "{{count}} UCs",
+    "termSummary_other": "{{count}} UCs",
+    "hasResource": "Com recurso",
+    "planIntro": "O plano reúne {{count}} unidades curriculares ao longo de {{years}} anos, incluindo opções. Abre uma UC para ver o código, os créditos e os recursos ligados.",
+    "browseUnits": "Ver unidades curriculares",
+    "degreeTypes": {
+      "bachelor": "Licenciatura",
+      "master": "Mestrado",
+      "doctorate": "Doutoramento",
+      "integrated_master": "Mestrado integrado",
+      "ctesp": "CTeSP",
+      "postgraduate": "Pós-graduação"
+    }
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",
     "keywords": "Palavras-chave"
+  },
+  "unit": {
+    "breadcrumb": "Localização",
+    "resources": "Recursos abertos",
+    "noResources": "Ainda não há recursos publicados para esta UC.",
+    "noResourcesText": "Os vídeos e materiais sugeridos ficam em revisão até a equipa editorial confirmar que correspondem aos objetivos da unidade.",
+    "sameTerm": "Também no ano {{year}}, semestre {{semester}}",
+    "facts": "Ficha da UC",
+    "allInCourse": "Todas as UCs do curso",
+    "sequence": "Sequência do plano",
+    "previous": "UC anterior",
+    "next": "UC seguinte"
   }
 }
