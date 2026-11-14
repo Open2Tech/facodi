@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { changePublication, findContentOptions, getCatalogCounts, getCourse, getOverview, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, findContentOptions, getCatalogCounts, getCourse, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -10,6 +10,12 @@ export function useCourses(params: CatalogParams) {
 }
 export function useUnits(params: CatalogParams) {
   return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal) });
+}
+export function useUnitFacets() {
+  return useQuery({ queryKey: courseKeys.unitFacets(), queryFn: ({ signal }) => getUnitFacets(signal), staleTime: 5 * 60_000 });
+}
+export function useUnit(courseSlug: string, unitSlug: string) {
+  return useQuery({ queryKey: courseKeys.unit(courseSlug, unitSlug), queryFn: ({ signal }) => getUnit(courseSlug, unitSlug, signal) });
 }
 export function useResources(params: CatalogParams) {
   return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal) });

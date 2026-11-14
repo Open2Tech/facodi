@@ -132,7 +132,8 @@
     "previous": "Previous",
     "next": "Next",
     "year": "Year {{value}}",
-    "count": "Total: {{count}}"
+    "count": "Total: {{count}}",
+    "goToPage": "Go to page {{page}}"
   },
   "access": {
     "denied": "You do not have permission to access this area.",
@@ -254,11 +255,33 @@
   },
   "units": {
     "title": "Curricular units",
-    "description": "Explore the units of published courses and see the context each one belongs to.",
+    "description": "Search the course units of published degrees, filter by course, year or semester, and open each unit for context.",
     "inCourse": "Course: {{course}}",
     "empty": "No units to show yet.",
     "emptyDescription": "Units appear once the courses they belong to are published.",
-    "noResults": "No units match this search or page. Try another title."
+    "noResults": "No units match this combination. Remove a filter or try another title or code.",
+    "filters": "Filters",
+    "showFilters": "Show",
+    "hideFilters": "Hide",
+    "filtersUnavailable": "Filters could not be loaded. Search still works.",
+    "filterCourse": "Course",
+    "filterYear": "Curricular year",
+    "filterSemester": "Semester",
+    "howTitle": "How this catalogue works",
+    "howText": "Each unit comes from the official study plan and keeps the institution’s code and credits. Open resources are linked to units after editorial review.",
+    "contribute": "Suggest resources",
+    "search": "Search by title or code",
+    "searchPlaceholder": "e.g. Programming, 14541000",
+    "sort": "Sort by",
+    "sorts": {
+      "curriculum": "Study plan order",
+      "title": "Title (A–Z)",
+      "ects": "Most credits"
+    },
+    "matching_one": "{{count}} unit found",
+    "matching_many": "{{count}} units found",
+    "matching_other": "{{count}} units found",
+    "clearFilters": "Clear filters"
   },
   "resources": {
     "title": "Educational resources",
@@ -320,10 +343,42 @@
     "language": "Language",
     "units": "Units",
     "plan": "Official study plan",
-    "semesters": "{{count}} sem."
+    "semesters": "{{count}} sem.",
+    "yearLabel": "Year",
+    "semesterLabel": "Semester",
+    "studyPlan": "Study plan",
+    "filterUnits": "Filter these units",
+    "jumpToYear": "Jump to year",
+    "otherUnits": "Other units",
+    "termSummary_one": "{{count}} unit",
+    "termSummary_many": "{{count}} units",
+    "termSummary_other": "{{count}} units",
+    "hasResource": "Has resource",
+    "planIntro": "The plan brings together {{count}} course units across {{years}} years, electives included. Open a unit to see its code, credits and linked resources.",
+    "browseUnits": "Browse course units",
+    "degreeTypes": {
+      "bachelor": "Bachelor’s degree",
+      "master": "Master’s degree",
+      "doctorate": "Doctorate",
+      "integrated_master": "Integrated master’s",
+      "ctesp": "Higher technical course (CTeSP)",
+      "postgraduate": "Postgraduate"
+    }
   },
   "resource": {
     "objectives": "Learning objectives",
     "keywords": "Keywords"
+  },
+  "unit": {
+    "breadcrumb": "Breadcrumb",
+    "resources": "Open resources",
+    "noResources": "No resources are published for this unit yet.",
+    "noResourcesText": "Suggested videos and materials stay in review until the editorial team confirms they match the unit’s objectives.",
+    "sameTerm": "Also in year {{year}}, semester {{semester}}",
+    "facts": "Unit facts",
+    "allInCourse": "All units in this course",
+    "sequence": "Study plan sequence",
+    "previous": "Previous unit",
+    "next": "Next unit"
   }
 }

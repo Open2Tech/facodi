@@ -132,7 +132,8 @@
     "previous": "Anterior",
     "next": "Siguiente",
     "year": "Año {{value}}",
-    "count": "Total: {{count}}"
+    "count": "Total: {{count}}",
+    "goToPage": "Ir a la página {{page}}"
   },
   "access": {
     "denied": "No tienes permiso para acceder a esta área.",
@@ -254,11 +255,33 @@
   },
   "units": {
     "title": "Unidades curriculares",
-    "description": "Explora las unidades de los cursos publicados y descubre el contexto de cada una.",
+    "description": "Busca las unidades curriculares de los grados publicados, filtra por curso, año o semestre y abre cada unidad para ver su contexto.",
     "inCourse": "Curso: {{course}}",
     "empty": "Todavía no hay unidades para mostrar.",
     "emptyDescription": "Las unidades aparecen cuando se publican los cursos a los que pertenecen.",
-    "noResults": "No encontramos unidades en esta búsqueda o página. Prueba con otro título."
+    "noResults": "Ninguna unidad coincide con esta combinación. Quita un filtro o prueba otro título o código.",
+    "filters": "Filtros",
+    "showFilters": "Mostrar",
+    "hideFilters": "Ocultar",
+    "filtersUnavailable": "No se pudieron cargar los filtros. La búsqueda sigue disponible.",
+    "filterCourse": "Curso",
+    "filterYear": "Año curricular",
+    "filterSemester": "Semestre",
+    "howTitle": "Cómo funciona este catálogo",
+    "howText": "Cada unidad procede del plan de estudios oficial y mantiene el código y los créditos de la institución. Los recursos abiertos se vinculan a las unidades tras la revisión editorial.",
+    "contribute": "Sugerir recursos",
+    "search": "Buscar por título o código",
+    "searchPlaceholder": "Ej.: Programación, 14541000",
+    "sort": "Ordenar",
+    "sorts": {
+      "curriculum": "Orden del plan",
+      "title": "Título (A–Z)",
+      "ects": "Más créditos"
+    },
+    "matching_one": "{{count}} unidad encontrada",
+    "matching_many": "{{count}} unidades encontradas",
+    "matching_other": "{{count}} unidades encontradas",
+    "clearFilters": "Quitar filtros"
   },
   "resources": {
     "title": "Recursos educativos",
@@ -320,10 +343,42 @@
     "language": "Idioma",
     "units": "Unidades",
     "plan": "Plan de estudios oficial",
-    "semesters": "{{count}} sem."
+    "semesters": "{{count}} sem.",
+    "yearLabel": "Año",
+    "semesterLabel": "Semestre",
+    "studyPlan": "Plan de estudios",
+    "filterUnits": "Filtrar estas unidades",
+    "jumpToYear": "Ir al año",
+    "otherUnits": "Otras unidades",
+    "termSummary_one": "{{count}} unidad",
+    "termSummary_many": "{{count}} unidades",
+    "termSummary_other": "{{count}} unidades",
+    "hasResource": "Con recurso",
+    "planIntro": "El plan reúne {{count}} unidades curriculares a lo largo de {{years}} años, optativas incluidas. Abre una unidad para ver su código, créditos y recursos vinculados.",
+    "browseUnits": "Ver unidades curriculares",
+    "degreeTypes": {
+      "bachelor": "Grado",
+      "master": "Máster",
+      "doctorate": "Doctorado",
+      "integrated_master": "Máster integrado",
+      "ctesp": "Curso técnico superior (CTeSP)",
+      "postgraduate": "Posgrado"
+    }
   },
   "resource": {
     "objectives": "Objetivos de aprendizaje",
     "keywords": "Palabras clave"
+  },
+  "unit": {
+    "breadcrumb": "Ruta de navegación",
+    "resources": "Recursos abiertos",
+    "noResources": "Todavía no hay recursos publicados para esta unidad.",
+    "noResourcesText": "Los vídeos y materiales sugeridos quedan en revisión hasta que el equipo editorial confirme que corresponden a los objetivos de la unidad.",
+    "sameTerm": "También en el año {{year}}, semestre {{semester}}",
+    "facts": "Ficha de la unidad",
+    "allInCourse": "Todas las unidades del curso",
+    "sequence": "Secuencia del plan",
+    "previous": "Unidad anterior",
+    "next": "Unidad siguiente"
   }
 }

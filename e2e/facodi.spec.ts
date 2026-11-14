@@ -232,9 +232,39 @@ test('home search, entry paths and new public catalogues render without overflow
   await page.goto('/');
   await page.getByRole('searchbox', { name: 'What do you want to understand next?' }).fill('logic');
   await page.getByRole('button', { name: 'Search the catalogue' }).click();
-  await expect(page).toHaveURL(/\/courses\?search=logic$/);
+  await expect(page).toHaveURL(/\/units\?search=logic$/);
   await page.goto('/');
   await page.getByRole('link', { name: /Logic/ }).click();
   await expect(page).toHaveURL(/\/resources\?tag=Logic$/);
   await expect(page.getByRole('heading', { name: 'Introduction to logic' })).toBeVisible();
+});
+
+test('unit catalogue facets drive the URL and open the unit page inside its course', async ({ page }) => {
+  const course = { id: 'c1', slug: 'test-course', code: 'TST', title: 'Test course', institution: 'Test University', published: true, status: 'active' };
+  const units = [
+    { id: 'u1', slug: 'u-1', title: 'Logic I', code: '1001', ects: 6, year: 1, semester: 1, position: 1, language: 'en', courses: course },
+    { id: 'u2', slug: 'u-2', title: 'Logic II', code: '1002', ects: 5, year: 1, semester: 1, position: 2, language: 'en', courses: course },
+  ];
+  const listRequests: URL[] = [];
+  await page.route('**/rest/v1/courses*', route => route.fulfill({ json: course }));
+  await page.route('**/rest/v1/curricular_units*', async route => {
+    const url = new URL(route.request().url());
+    const headers = { 'content-range': `0-1/${units.length}`, 'access-control-expose-headers': 'content-range' };
+    if (url.searchParams.get('id')) return route.fulfill({ json: { ...units[0], summary: 'Test fixture only', description_html: null, learning_objects: null } });
+    if (url.searchParams.get('course_id')) return route.fulfill({ json: units });
+    if (url.searchParams.has('offset')) listRequests.push(url);
+    await route.fulfill({ json: units, headers });
+  });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/units');
+  await page.getByRole('button', { name: /^TST/ }).click();
+  await expect(page).toHaveURL(/course=test-course/);
+  await page.getByRole('button', { name: /^Year 1/ }).click();
+  await expect(page).toHaveURL(/year=1/);
+  await expect.poll(() => listRequests.some(url => url.searchParams.get('courses.slug') === 'eq.test-course' && url.searchParams.get('year') === 'eq.1')).toBe(true);
+  await page.getByRole('link', { name: 'Logic I', exact: true }).click();
+  await expect(page).toHaveURL(/\/courses\/test-course\/units\/u-1$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Logic I' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
 });

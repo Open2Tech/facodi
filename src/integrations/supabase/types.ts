@@ -925,6 +925,119 @@ export type Database = {
           },
         ]
       }
+      playlist_items: {
+        Row: {
+          created_at: string
+          id: string
+          playlist_id: string
+          position: number
+          review_status: string
+          updated_at: string
+          video_id: string | null
+          youtube_video_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          playlist_id: string
+          position: number
+          review_status?: string
+          updated_at?: string
+          video_id?: string | null
+          youtube_video_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          playlist_id?: string
+          position?: number
+          review_status?: string
+          updated_at?: string
+          video_id?: string | null
+          youtube_video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playlist_items_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      playlists: {
+        Row: {
+          course_id: string
+          curricular_unit_id: string
+          description: string | null
+          id: string
+          import_status: string
+          language: string
+          review_note: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          source_url: string | null
+          status: string
+          submitted_at: string
+          submitted_by: string
+          title: string
+          updated_at: string
+          youtube_playlist_id: string
+        }
+        Insert: {
+          course_id: string
+          curricular_unit_id: string
+          description?: string | null
+          id?: string
+          import_status?: string
+          language?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source_url?: string | null
+          status?: string
+          submitted_at?: string
+          submitted_by: string
+          title: string
+          updated_at?: string
+          youtube_playlist_id: string
+        }
+        Update: {
+          course_id?: string
+          curricular_unit_id?: string
+          description?: string | null
+          id?: string
+          import_status?: string
+          language?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source_url?: string | null
+          status?: string
+          submitted_at?: string
+          submitted_by?: string
+          title?: string
+          updated_at?: string
+          youtube_playlist_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "facodi_playlist_course_unit_fk"
+            columns: ["course_id", "curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "curricular_units"
+            referencedColumns: ["course_id", "id"]
+          },
+          {
+            foreignKeyName: "playlists_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       recommendations: {
         Row: {
           created_at: string
@@ -1643,6 +1756,10 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      reconcile_playlist_items: {
+        Args: { p_playlist_id: string }
+        Returns: number
+      }
       record_analysis_result: {
         Args: {
           p_confidence_score?: number
@@ -1709,6 +1826,26 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      review_playlist: {
+        Args: {
+          p_decision: string
+          p_playlist_id: string
+          p_review_note?: string
+        }
+        Returns: string
+      }
+      submit_playlist: {
+        Args: {
+          p_course_id: string
+          p_curricular_unit_id: string
+          p_description?: string
+          p_language?: string
+          p_title: string
+          p_youtube_playlist_id: string
+          p_youtube_video_ids?: string[]
+        }
+        Returns: string
       }
       unlink_learning_objects: {
         Args: {
@@ -1890,3 +2027,4 @@ export const Constants = {
     Enums: {},
   },
 } as const
+

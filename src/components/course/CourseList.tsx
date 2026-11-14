@@ -12,13 +12,14 @@ export function CourseList({ courses, headingLevel = 'h2' }: { courses: Course[]
       <div className="min-w-0">
         <p className="mb-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase text-muted-foreground">
           {course.code && <span>{course.code}</span>}
-          {course.degree_type && <span>{course.degree_type}</span>}
+          {course.degree_type && <span>{t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type })}</span>}
           {course.ects_total != null && <span>{course.ects_total} ECTS</span>}
           {course.language && <span lang={course.language}>{course.language}</span>}
         </p>
         <Heading className="text-xl font-semibold sm:text-2xl"><Link className="decoration-2 underline-offset-4 hover:underline" to={`/courses/${course.slug}`}>{course.title}</Link></Heading>
-        {course.summary && <p className="mt-3 max-w-prose text-muted-foreground">{course.summary}</p>}
+        {course.summary && course.summary.trim() !== course.title.trim() && <p className="mt-3 max-w-prose text-muted-foreground">{course.summary}</p>}
         {course.institution && <p className="mt-3 text-sm">{[course.institution, course.school].filter(Boolean).join(' · ')}</p>}
+        <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="relative mt-3 inline-block text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">{t('course.browseUnits')}</Link>
       </div>
       <Link to={`/courses/${course.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4" aria-label={`${t('catalog.open')}: ${course.title}`}>{t('catalog.open')}<ArrowUpRight className="h-4 w-4" /></Link>
     </article>)}

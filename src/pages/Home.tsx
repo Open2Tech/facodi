@@ -21,7 +21,7 @@ export default function Home() {
   function submit(event: FormEvent) {
     event.preventDefault();
     const term = search.trim();
-    navigate(term ? `/courses?search=${encodeURIComponent(term)}` : '/courses');
+    navigate(term ? `/units?search=${encodeURIComponent(term)}` : '/units');
   }
   const paths = [
     { to: '/courses', key: 'courses', count: counts.data?.courses },
@@ -62,9 +62,9 @@ export default function Home() {
       <ul className="mt-8 grid border-y border-input md:grid-cols-3 md:divide-x md:divide-input">
         {paths.map(({ to, key, count }) => <li key={key} className="border-b border-input last:border-b-0 md:border-b-0">
           <Link to={to} className="group flex h-full flex-col gap-3 py-7 transition-colors hover:bg-muted md:px-6">
-            <span className="flex items-baseline justify-between gap-4">
+            <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <span className="text-2xl font-semibold">{t(`home.paths.${key}.title`)}</span>
-              <span className="font-mono text-sm text-muted-foreground">{count == null ? '—' : t('home.paths.published', { count })}</span>
+              <span className="whitespace-nowrap font-mono text-sm tabular-nums text-muted-foreground">{count == null ? '—' : t('home.paths.published', { count })}</span>
             </span>
             <span className="max-w-sm text-muted-foreground">{t(`home.paths.${key}.text`)}</span>
             <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t(`home.paths.${key}.cta`)}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>

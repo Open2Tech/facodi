@@ -132,7 +132,8 @@
     "previous": "Précédent",
     "next": "Suivant",
     "year": "Année {{value}}",
-    "count": "Total : {{count}}"
+    "count": "Total : {{count}}",
+    "goToPage": "Aller à la page {{page}}"
   },
   "access": {
     "denied": "Vous n'avez pas accès à cet espace.",
@@ -254,11 +255,33 @@
   },
   "units": {
     "title": "Unités d’enseignement",
-    "description": "Explore les unités des cours publiés et découvre le contexte de chacune.",
+    "description": "Recherchez les unités d’enseignement des licences publiées, filtrez par cursus, année ou semestre et ouvrez chaque unité pour voir son contexte.",
     "inCourse": "Cours : {{course}}",
     "empty": "Aucune unité à afficher pour l’instant.",
     "emptyDescription": "Les unités apparaissent lorsque les cours auxquels elles appartiennent sont publiés.",
-    "noResults": "Aucune unité ne correspond à cette recherche ou page. Essaie un autre titre."
+    "noResults": "Aucune unité ne correspond à cette combinaison. Retirez un filtre ou essayez un autre titre ou code.",
+    "filters": "Filtres",
+    "showFilters": "Afficher",
+    "hideFilters": "Masquer",
+    "filtersUnavailable": "Impossible de charger les filtres. La recherche reste disponible.",
+    "filterCourse": "Cursus",
+    "filterYear": "Année du cursus",
+    "filterSemester": "Semestre",
+    "howTitle": "Comment fonctionne ce catalogue",
+    "howText": "Chaque unité provient du plan d’études officiel et conserve le code et les crédits de l’établissement. Les ressources ouvertes sont liées aux unités après relecture éditoriale.",
+    "contribute": "Suggérer des ressources",
+    "search": "Rechercher par titre ou code",
+    "searchPlaceholder": "Ex. : Programmation, 14541000",
+    "sort": "Trier",
+    "sorts": {
+      "curriculum": "Ordre du plan",
+      "title": "Titre (A–Z)",
+      "ects": "Plus de crédits"
+    },
+    "matching_one": "{{count}} unité trouvée",
+    "matching_many": "{{count}} unités trouvées",
+    "matching_other": "{{count}} unités trouvées",
+    "clearFilters": "Effacer les filtres"
   },
   "resources": {
     "title": "Ressources pédagogiques",
@@ -320,10 +343,42 @@
     "language": "Langue",
     "units": "Unités",
     "plan": "Plan d’études officiel",
-    "semesters": "{{count}} sem."
+    "semesters": "{{count}} sem.",
+    "yearLabel": "Année",
+    "semesterLabel": "Semestre",
+    "studyPlan": "Plan d’études",
+    "filterUnits": "Filtrer ces unités",
+    "jumpToYear": "Aller à l’année",
+    "otherUnits": "Autres unités",
+    "termSummary_one": "{{count}} unité",
+    "termSummary_many": "{{count}} unités",
+    "termSummary_other": "{{count}} unités",
+    "hasResource": "Avec ressource",
+    "planIntro": "Le plan réunit {{count}} unités d’enseignement sur {{years}} ans, options comprises. Ouvrez une unité pour voir son code, ses crédits et ses ressources liées.",
+    "browseUnits": "Voir les unités d’enseignement",
+    "degreeTypes": {
+      "bachelor": "Licence",
+      "master": "Master",
+      "doctorate": "Doctorat",
+      "integrated_master": "Master intégré",
+      "ctesp": "Formation technique supérieure (CTeSP)",
+      "postgraduate": "Diplôme de troisième cycle"
+    }
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
     "keywords": "Mots-clés"
+  },
+  "unit": {
+    "breadcrumb": "Fil d’Ariane",
+    "resources": "Ressources ouvertes",
+    "noResources": "Aucune ressource n’est encore publiée pour cette unité.",
+    "noResourcesText": "Les vidéos et supports suggérés restent en relecture jusqu’à ce que l’équipe éditoriale confirme qu’ils correspondent aux objectifs de l’unité.",
+    "sameTerm": "Aussi en année {{year}}, semestre {{semester}}",
+    "facts": "Fiche de l’unité",
+    "allInCourse": "Toutes les unités du cursus",
+    "sequence": "Séquence du plan",
+    "previous": "Unité précédente",
+    "next": "Unité suivante"
   }
 }

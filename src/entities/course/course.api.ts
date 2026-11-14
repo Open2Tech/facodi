@@ -18,16 +18,59 @@ export async function listCourses({ search, language, page }: CatalogParams, sig
 
 const PUBLIC_RESOURCE_STATES = ['active', 'published'];
 
-export async function listUnits({ search, page }: CatalogParams, signal?: AbortSignal) {
+const UNIT_LIST_FIELDS = 'id, slug, title, code, ects, year, semester, position, language, courses!inner(slug, code, title, published, status)';
+
+/** PostgREST `or()` value: quoted so commas, dots or parentheses in user search stay literal. */
+function orIlike(columns: string[], search: string) {
+  const value = searchPattern(search).replace(/["\\]/g, '\\$&');
+  return columns.map(column => `${column}.ilike."${value}"`).join(',');
+}
+
+export async function listUnits({ search, page, course, year, semester, sort = 'curriculum' }: CatalogParams, signal?: AbortSignal) {
   // Mirrors the public RLS rule: active unit inside a published, active course.
   let query = supabase.from('curricular_units')
-    .select('id, slug, title, summary, code, ects, year, semester, language, courses!inner(slug, title, published, status)', { count: 'exact' })
-    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active')
-    .order('title').order('id');
-  if (search.trim()) query = query.ilike('title', searchPattern(search));
-  const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+    .select(UNIT_LIST_FIELDS, { count: 'exact' })
+    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active');
+  if (search.trim()) query = query.or(orIlike(['title', 'code'], search));
+  if (course) query = query.eq('courses.slug', course);
+  if (year) query = query.eq('year', year);
+  if (semester) query = query.eq('semester', semester);
+  if (sort === 'title') query = query.order('title');
+  else if (sort === 'ects') query = query.order('ects', { ascending: false, nullsFirst: false }).order('title');
+  else query = query.order('year', { nullsFirst: false }).order('semester', { nullsFirst: false }).order('position', { nullsFirst: false }).order('title');
+  const { data, count, error } = await query.order('id').range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
   return { items: data, total: count ?? 0 };
+}
+
+export interface FacetOption<T extends string | number = string | number> { value: T; label: string; count: number }
+
+function tally<T extends string | number>(map: Map<T, FacetOption<T>>, value: T | null, label: string) {
+  if (value == null) return;
+  const entry = map.get(value);
+  if (entry) entry.count += 1;
+  else map.set(value, { value, label, count: 1 });
+}
+
+/** Facet counts across every public unit (bounded), so filters only offer values that exist. */
+export async function getUnitFacets(signal?: AbortSignal) {
+  const { data, error } = await supabase.from('curricular_units')
+    .select('year, semester, courses!inner(slug, code, title, published, status)')
+    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active')
+    .limit(2000).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const courses = new Map<string, FacetOption<string>>();
+  const years = new Map<number, FacetOption<number>>();
+  const semesters = new Map<number, FacetOption<number>>();
+  const semesterYears: Record<number, number[]> = {};
+  for (const row of data) {
+    if (row.semester != null && row.year != null && !(semesterYears[row.semester] ??= []).includes(row.year)) semesterYears[row.semester].push(row.year);
+    tally(courses, row.courses.slug, row.courses.code || row.courses.title);
+    tally(years, row.year, String(row.year));
+    tally(semesters, row.semester, String(row.semester));
+  }
+  const byValue = <T extends string | number>(map: Map<T, FacetOption<T>>) => [...map.values()].sort((a, b) => String(a.value).localeCompare(String(b.value), undefined, { numeric: true }));
+  return { total: data.length, courses: byValue(courses), years: byValue(years), semesters: byValue(semesters), semesterYears };
 }
 
 export async function listResources({ search, language, page, tag }: CatalogParams, signal?: AbortSignal) {
@@ -82,6 +125,28 @@ export async function getCourse(slug: string, signal?: AbortSignal) {
   if (unitError) throw new Error(getSupabaseErrorMessage(unitError));
   const resource = course.learning_object_id ? await getPublishedResourceById(course.learning_object_id, signal) : null;
   return { course, units, resource };
+}
+
+/** A public unit inside its public course, plus the course's unit outline for navigation. */
+export async function getUnit(courseSlug: string, unitSlug: string, signal?: AbortSignal) {
+  const { data: course, error } = await supabase.from('courses').select('id, slug, code, title, institution, school, degree_type')
+    .eq('slug', courseSlug).eq('published', true).eq('status', 'active').abortSignal(signal).maybeSingle();
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  if (!course) return null;
+  const { data: outline, error: outlineError } = await supabase.from('curricular_units')
+    .select('id, slug, title, code, ects, year, semester, position')
+    .eq('course_id', course.id).eq('status', 'active')
+    .order('year', { nullsFirst: false }).order('semester', { nullsFirst: false }).order('position', { nullsFirst: false }).order('title').order('id')
+    .abortSignal(signal);
+  if (outlineError) throw new Error(getSupabaseErrorMessage(outlineError));
+  const match = outline.find(item => item.slug === unitSlug);
+  if (!match) return null;
+  const { data: unit, error: unitError } = await supabase.from('curricular_units')
+    .select('*, learning_objects(id, slug, title, published, status)')
+    .eq('id', match.id).eq('status', 'active').abortSignal(signal).maybeSingle();
+  if (unitError) throw new Error(getSupabaseErrorMessage(unitError));
+  if (!unit) return null;
+  return { course, unit, outline };
 }
 
 async function getPublishedResourceById(id: string, signal?: AbortSignal) {
