@@ -379,8 +379,8 @@
     "filterType": "Tipo de recurso"
   },
   "about": {
-    "title": "Um campus aberto para seguir o fio do conhecimento.",
-    "lead": "A FACODI reúne cursos, unidades curriculares e recursos educativos num só lugar, com o contexto que os torna úteis.",
+    "title": "De uma aba aberta nasceu uma ideia maior.",
+    "lead": "A FACODI liga os bons recursos que encontramos por aí aos cursos, às pessoas e às perguntas que nos fazem aprender. Um projeto com raízes estudantis e vontade de ir longe.",
     "seaeuTitle": "SEA-EU e Universidade do Algarve",
     "seaeuText": "A FACODI integra os SEA-EU Student-Led Projects 2026 e nasce na Universidade do Algarve (UAlg).",
     "seaeuScope": "O objetivo é simples: tornar mais fácil encontrar material académico de qualidade e perceber onde cada peça encaixa num percurso de aprendizagem.",
@@ -905,5 +905,74 @@
     "elective": "Opção {{group}}",
     "annual": "Anual",
     "error": "Não foi possível consultar o plano histórico."
+  },
+  "projectStory": {
+    "eyebrow": "FACODI / O COMEÇO",
+    "title": "Uma pergunta. Mil abas. Um campus aberto.",
+    "origin": "Já aconteceu contigo? Precisas de entender uma matéria, abres um vídeo, depois uma documentação, mais uma explicação… e, de repente, tens 37 separadores abertos e nenhum mapa.",
+    "mission": "A FACODI nasceu para dar contexto a essas descobertas: ligar recursos públicos a temas, cursos e unidades curriculares, com espaço para a comunidade melhorar os percursos. Aberta para aprender, séria na curadoria.",
+    "line": "O conhecimento fica ainda melhor quando alguém deixa o caminho mais claro para quem vem a seguir.",
+    "founderEyebrow": "Quem puxou o primeiro fio",
+    "authorSource": "Conhecer a história",
+    "timelineEyebrow": "CAPÍTULOS / 2026",
+    "timelineTitle": "Pequenos passos, horizontes grandes.",
+    "timelineUpdated": "Marcos documentados",
+    "source": "Ver fonte",
+    "ecosystemEyebrow": "LIGAÇÕES COM CONTEXTO",
+    "ecosystemTitle": "Uma rede, vários papéis. Sem confusões.",
+    "ecosystemDescription": "Referência académica não é acreditação. Colaboração técnica não é propriedade do projeto. E inspiração criativa não é parceria formal. Aqui mostramos cada relação pelo que ela realmente é.",
+    "groups": {
+      "context": "Universidade e programa",
+      "collaboration": "Tecnologia e código aberto",
+      "inspiration": "Inspiração criativa"
+    },
+    "boundary": "Os nomes e relações desta secção foram selecionados a partir de fontes públicas. Propostas, conversas e potenciais colaboradores não são apresentados como parcerias confirmadas.",
+    "communityEyebrow": "A FACODI também é tua",
+    "communityTitle": "Gostas de descobrir coisas? A gente precisa de ti.",
+    "communityDescription": "Não precisas de um cargo para ajudar. Uma boa referência, uma correção ou uma ideia bem contextualizada já faz a diferença.",
+    "communityCta": "Conhecer a comunidade"
+  },
+  "projectCommunity": {
+    "nav": "Comunidade",
+    "eyebrow": "FACODI / GENTE QUE CONECTA",
+    "title": "Ninguém aprende sozinho. E ainda bem.",
+    "lead": "A FACODI é um convite para aprender em público, partilhar o que funciona e deixar um percurso mais claro para outra pessoa. Sem gatekeeping, sem pose e com curadoria responsável.",
+    "noteLabel": "NOTA DE CAMPUS",
+    "note": "Uma boa ligação vale mais quando chega a alguém.",
+    "actionsEyebrow": "ENTRA COMO QUISERES",
+    "actionsTitle": "Há mais de uma forma de fazer parte.",
+    "actions": {
+      "explore": {
+        "title": "Vem aprender",
+        "description": "Explora cursos e materiais. A primeira contribuição pode ser uma pergunta.",
+        "cta": "Explorar"
+      },
+      "suggest": {
+        "title": "Encontraste algo bom?",
+        "description": "Partilha um artigo, vídeo ou material com contexto para revisão.",
+        "cta": "Sugerir recurso"
+      },
+      "playlist": {
+        "title": "Tens uma playlist?",
+        "description": "Associa-a a uma unidade curricular. A equipa revê os vídeos antes de publicar.",
+        "cta": "Enviar playlist"
+      },
+      "build": {
+        "title": "Curtes construir?",
+        "description": "Código aberto, melhorias de interface, documentação e acessibilidade: há espaço para mãos na massa.",
+        "cta": "Ver código"
+      }
+    },
+    "rolesEyebrow": "PARTICIPAÇÃO ABERTA",
+    "rolesTitle": "Aprender, rever, construir.",
+    "rolesDescription": "Estas são portas de entrada para a comunidade, não uma lista de membros inscritos. Os créditos pessoais exigem confirmação e consentimento.",
+    "transparencyTitle": "Crédito sim. Confusão não.",
+    "transparencyText": "As propostas da comunidade passam por revisão. Receber um link não significa aprovar o recurso ou atribuir autoria a quem o partilhou.",
+    "consentText": "Não publicamos nomes de colaboradores a partir de emails, reuniões ou propostas sem confirmação de papel e autorização para crédito público.",
+    "degreeText": "A FACODI não concede diplomas, créditos ECTS, equivalências nem validações académicas formais.",
+    "ecosystemCta": "Ver o ecossistema",
+    "ctaTitle": "Faz parte do próximo capítulo.",
+    "ctaDescription": "Começa por uma ideia pequena. Uma referência com contexto pode transformar o estudo de alguém.",
+    "ctaButton": "Partilhar uma ideia"
   }
 }
