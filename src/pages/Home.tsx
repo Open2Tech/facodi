@@ -128,7 +128,7 @@ export default function Home() {
     <section aria-labelledby="community" className="grid gap-8 py-14 sm:py-20 lg:grid-cols-[1fr_1.2fr] lg:gap-14">
       <div>
         <h2 id="community" className="max-w-md text-3xl font-semibold tracking-[-0.02em]">{t('home.communityTitle')}</h2>
-        <Link to="/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('home.communityLink')}<ArrowUpRight className="h-4 w-4" /></Link>
+        <Link to="/community" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('home.communityLink')}<ArrowUpRight className="h-4 w-4" /></Link>
       </div>
       <dl className="divide-y divide-input border-y border-input">
         {(['program', 'home', 'model'] as const).map(item => <div key={item} className="grid gap-1 py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
