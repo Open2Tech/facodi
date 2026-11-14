@@ -212,9 +212,12 @@ O antigo servidor Bun de metadados foi removido; os documentos antigos de Odoo
 são históricos e não fazem parte dos comandos nem da imagem de runtime FACODI.
 Não executar scripts legados de enriquecimento contra este frontend.
 
-Esta entrega não inclui inscrições, progresso académico, uploads, IA, gestão
-de utilizadores/papéis ou deployment em produção. Objetos remotos, integrações
-e histórico de migrações não são alterados.
+Esta aplicação está publicada em **https://facodi.vercel.app**. O catálogo
+académico e os recursos externos foram inseridos no Supabase através de
+migrações versionadas (ver auditoria acima). A aplicação não cria automaticamente
+inscrições, progresso académico, uploads, novas análises por IA ou perfis de
+utilizador. Os conteúdos originais do Tube e as respetivas tabelas `public`
+permanecem preservados.
 
 ## Arquitetura
 
