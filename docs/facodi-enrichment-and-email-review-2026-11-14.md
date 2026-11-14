@@ -100,3 +100,16 @@ Cada migração foi validada por `BEGIN … ROLLBACK` antes da aplicação, depo
 5. Adicionar testes end-to-end de cadastro, confirmação, recuperação e emails de segurança com contas de teste autorizadas.
 
 **Limite de qualidade:** publicação de links e guias editoriais não equivale a currículo homologado ou revisão integral de conteúdo de terceiros.
+
+## 7. Referências de consulta externas — segunda ampliação
+
+Após o lote inicial de 650 objetos, foram publicados **34 novos objetos `external_resource`**, com **62 relações aprovadas para 47 UCs**. A biblioteca totaliza assim **684 objetos educativos públicos** (564 vídeos, 34 leituras, 84 UCs e 2 cursos). As bibliografias são ligações para páginas externas, sem cópia do conteúdo.
+
+As fontes incluem MIT OpenCourseWare, OpenStax, Python, Git, GitHub, MDN, React, TypeScript, PostgreSQL, Docker, Kubernetes, Flutter, scikit-learn, pandas, Arduino, OWASP, W3C WAI, Krita, Blender, Godot e The Metropolitan Museum of Art. Cada recurso contém `content_license_verified=false`, `reference_only=true` e `is_official_ualg_course_material=false`.
+
+- Migração versionada: `supabase/migrations/20261114165415_facodi_publish_34_authoritative_external_learning_references.sql`.
+- Política RLS específica: `facodi_public_external_reading_relations` autoriza apenas referências `verified_external_reading_curation` cujo pai é uma UC publicada, o filho é `external_resource` publicado e a relação está aprovada.
+- Testes SQL: 34 recursos e 62 ligações visíveis como `anon`; zero referências órfãs, zero ligações a rascunhos e zero alegações de licença validada.
+- O frontend possui um bloco `Leituras e documentação` nas páginas de UC, com links para as fichas internas dos recursos e daí para a fonte externa, preservando o aviso de atribuição.
+
+**Nota de atualização:** os números da tabela inicial deste documento correspondem ao lote anterior e foram mantidos como histórico. Os totais correntes são os indicados nesta secção e no README.
