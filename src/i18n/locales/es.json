@@ -518,7 +518,12 @@
     "saved": "Decisión guardada.",
     "confirmDescription": "La decisión se registra con identidad y fecha. No publica el material automáticamente.",
     "note": "Notas de revisión",
-    "notePlaceholder": "Motivo o cambios necesarios (opcional)"
+    "notePlaceholder": "Motivo o cambios necesarios (opcional)",
+    "ects": "{{count}} ECTS",
+    "links": "{{videos}} vídeos · {{readings}} lecturas disponibles",
+    "createdOn": "Generado el {{date}}",
+    "reviewedOn": "Revisado el {{date}}",
+    "officialPlan": "Plan de estudios oficial"
   },
   "playlistSubmit": {
     "nav": "Contribuir",
@@ -558,7 +563,9 @@
       "invalid_session": "Sesión caducada.",
       "playlist_submission_failed": "No se pudo enviar.",
       "youtube_unreachable": "No se pudo consultar YouTube. Use IDs manuales."
-    }
+    },
+    "language": "Idioma de los vídeos",
+    "submittedOn": "Enviada el {{date}}"
   },
   "playlistReview": {
     "open": "Revisar listas",
@@ -580,6 +587,13 @@
     "approve": "Aprobar y publicar enlaces",
     "confirm": "La aprobación crea recursos y relaciones públicas de forma atómica, pero no implica acreditación académica.",
     "note": "Justificación (opcional)",
-    "saved": "Decisión guardada."
+    "saved": "Decisión guardada.",
+    "submitted": "Enviada el",
+    "importStatus": {
+      "pending": "Importación pendiente",
+      "partial": "Importación parcial",
+      "completed": "Importación completa",
+      "failed": "Importación fallida"
+    }
   }
 }

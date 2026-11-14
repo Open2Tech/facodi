@@ -12,10 +12,15 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   incluindo as unidades e os objetos educativos associados.
 - [src/entities/facodi](../src/entities/facodi): autorização por `app_metadata.role`.
 - [src/entities/auth](../src/entities/auth): chamadas ao Supabase Auth nativo.
+- [src/entities/contribution](../src/entities/contribution): submissão de playlists
+  (Edge Function `facodi-submit-playlist`), filas de revisão e RPCs
+  `review_playlist`/`review_study_blueprint`, e normalização dos percursos gerados.
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
   para catálogo público, conteúdo editorial e contagens administrativas.
+- [src/features/contributions/queries](../src/features/contributions/queries):
+  TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
 - [src/components](../src/components): apresentação, formulários e primitivas shadcn.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação

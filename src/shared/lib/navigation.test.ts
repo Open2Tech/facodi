@@ -8,6 +8,8 @@ describe('safe navigation', () => {
   it('preserves approved internal destinations and search', () => {
     expect(safeReturnPath('/editor?view=courses')).toBe('/editor?view=courses');
     expect(safeReturnPath('/profile')).toBe('/profile');
+    expect(safeReturnPath('/editor/study-paths?status=accepted')).toBe('/editor/study-paths?status=accepted');
+    expect(safeReturnPath('/playlists/submit')).toBe('/playlists/submit');
   });
   it('permits HTTP resource links but not executable, local or credentialed URLs', () => {
     expect(safeExternalUrl('https://example.test/lesson')).toBe('https://example.test/lesson');

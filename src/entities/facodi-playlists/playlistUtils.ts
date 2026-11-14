@@ -5,6 +5,10 @@ const YOUTUBE_HOSTS = new Set([
   'music.youtube.com', 'youtu.be',
 ]);
 
+export function isYoutubeVideoId(value: string): boolean {
+  return YOUTUBE_ID.test(value);
+}
+
 /** Exact hostname checks prevent lookalike domains and unsafe URL schemes. */
 export function isYoutubePlaylistUrl(raw: string): boolean {
   try {

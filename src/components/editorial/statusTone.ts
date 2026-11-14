@@ -4,6 +4,13 @@ const SWATCHES: Record<string, string> = {
   published: 'bg-foreground/55',
   draft: 'bg-primary',
   archived: 'bg-muted-foreground/30',
+  // Review and import workflows reuse the ramp; unknown or failed states fall back to coral.
+  pending: 'bg-primary',
+  approved: 'bg-foreground',
+  accepted: 'bg-foreground',
+  completed: 'bg-foreground',
+  partial: 'bg-foreground/55',
+  rejected: 'bg-muted-foreground/30',
 };
 
 export function stateSwatch(status: string) {

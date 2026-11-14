@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { courseKeys } from '@/entities/course/course.keys';
+import { contributionKeys } from '@/entities/contribution/contribution.keys';
 
 describe('FACODI query isolation', () => {
   it('separates public filters and pagination', () => {
@@ -16,5 +17,12 @@ describe('FACODI query isolation', () => {
     expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.editor('bob', 'courses', params));
     expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.editor('alice', 'learning_objects', params));
     expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.catalog(params));
+  });
+  it('scopes contribution and review queues to the signed-in account', () => {
+    expect(contributionKeys.myPlaylists('alice')).not.toEqual(contributionKeys.myPlaylists('bob'));
+    expect(contributionKeys.pendingPlaylists('alice')).not.toEqual(contributionKeys.pendingPlaylists('bob'));
+    expect(contributionKeys.blueprintPage('alice', 'draft', 1)).not.toEqual(contributionKeys.blueprintPage('alice', 'accepted', 1));
+    expect(contributionKeys.blueprintPage('alice', 'draft', 1).slice(0, 4)).toEqual(contributionKeys.blueprints('alice'));
+    expect(contributionKeys.myPlaylists('alice').slice(0, 3)).toEqual(['facodi', 'private', 'alice']);
   });
 });

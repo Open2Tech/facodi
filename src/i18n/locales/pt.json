@@ -518,7 +518,12 @@
     "saved": "Decisão de revisão guardada.",
     "confirmDescription": "Esta decisão fica registada com a sua identidade e data. Não publica automaticamente o documento.",
     "note": "Observações da revisão",
-    "notePlaceholder": "Justificação ou correções necessárias (opcional)"
+    "notePlaceholder": "Justificação ou correções necessárias (opcional)",
+    "ects": "{{count}} ECTS",
+    "links": "{{videos}} vídeos · {{readings}} leituras disponíveis",
+    "createdOn": "Gerado a {{date}}",
+    "reviewedOn": "Revisto a {{date}}",
+    "officialPlan": "Plano de estudos oficial"
   },
   "playlistSubmit": {
     "nav": "Contribuir",
@@ -558,7 +563,9 @@
       "invalid_session": "Sessão expirada. Inicie sessão novamente.",
       "playlist_submission_failed": "Não foi possível registar a playlist. Verifique os dados.",
       "youtube_unreachable": "Não foi possível obter a playlist do YouTube. Tente a importação manual."
-    }
+    },
+    "language": "Idioma dos vídeos",
+    "submittedOn": "Enviada a {{date}}"
   },
   "playlistReview": {
     "open": "Rever playlists",
@@ -580,6 +587,13 @@
     "approve": "Aprovar e publicar ligações",
     "confirm": "Esta decisão é registada. Aprovar cria os recursos e associações públicas numa transação; não significa homologação curricular ou posse dos vídeos.",
     "note": "Justificação editorial (opcional)",
-    "saved": "Decisão sobre a playlist guardada."
+    "saved": "Decisão sobre a playlist guardada.",
+    "submitted": "Enviada a",
+    "importStatus": {
+      "pending": "Importação pendente",
+      "partial": "Importação parcial",
+      "completed": "Importação completa",
+      "failed": "Importação falhou"
+    }
   }
 }
