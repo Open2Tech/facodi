@@ -391,5 +391,13 @@
     "document": "Documento",
     "course": "Curso",
     "curricular_unit": "Unidad curricular"
+  },
+  "unitVideos": {
+    "title": "Vídeos de apoyo ({{count}})",
+    "note": "Recursos complementarios seleccionados por los temas de sus títulos y canales. No sustituyen el programa oficial ni una revisión integral de las clases.",
+    "empty": "Todavía no hay vídeos suficientemente relacionados con esta unidad.",
+    "channel": "Canal",
+    "openSource": "Ver vídeo original en YouTube",
+    "playlist": "Lista de vídeos de esta unidad"
   }
 }
