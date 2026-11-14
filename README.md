@@ -52,34 +52,36 @@ Os tipos foram gerados do schema real, não de uma reprodução local.
 
 ## Catálogo académico publicado (14/11/2026)
 
-O schema remoto `facodi` contém **2 cursos da Universidade do Algarve**, **84 unidades curriculares públicas** e **684 objetos educativos públicos**: **564 vídeos do YouTube**, **34 referências de leitura externas**, **84 roteiros de UC** e **2 fichas de curso**. Existem **568 associações UC–vídeo** em **29 UCs com vídeos**, além de **62 ligações de leitura distribuídas por 47 UCs**.
+O schema `facodi` contém **2 cursos UAlg**, **84 UCs públicas** e **705 objetos educativos públicos**: **564 vídeos externos**, **55 referências de leitura/planeamento**, **84 UCs** e **2 cursos**. Existem **568 ligações UC–vídeo**, **113 associações UC–leitura** e **252 objetivos de estudo + 252 competências temáticas editoriais**.
 
-Cada UC publicada tem três objetivos de estudo e três competências temáticas propostos pela FACODI (**252 + 252** no total). São materiais editoriais, **não** resultados de aprendizagem ou fichas curriculares oficialmente aprovados pela UAlg. Cinco UCs de edições anteriores, não confirmadas no plano de 2026/27, permanecem em rascunho. Os ECTS das opções alternativas não devem ser somados indiscriminadamente.
+**Cobertura:** **77/84 UCs** têm pelo menos uma referência disciplinar relevante; **7/84** são grupos genéricos de opção que apontam para o plano oficial do LESTI, para orientar a escolha do estudante. Em Design de Comunicação, a cobertura disciplinar é 41/41; em LESTI, 36/43. A FACODI **não** atribui conteúdos programáticos fictícios a opções sem disciplina definida.
 
-Os vídeos permanecem alojados no YouTube; os livros e documentos são **links para os sítios originais**. A pertinência dos vídeos foi avaliada com base em títulos e canais, sem afirmar revisão integral, disponibilidade regional ou licenciamento. As 34 referências foram selecionadas pelas páginas de origem e enquadramento temático; nenhum conteúdo de terceiros foi copiado.
+Existem ainda **84 percursos de estudo e 2 mapas curriculares** em `facodi.generated_structures`, todos `draft`, para revisão por editores; não foram produzidos por um modelo de IA nem publicados como currículo da UAlg. A pesquisa textual pública `facodi.search_public_catalog_v1` está disponível com RLS e índice GIN, mas ainda não está integrada na interface de pesquisa.
 
-- [Auditoria detalhada da ampliação, RLS e histórico](docs/facodi-enrichment-and-email-review-2026-11-14.md)
-- [Primeira auditoria curricular e referências UAlg](docs/facodi-data-enrichment-2026-11-14.md)
-- [Histórico da primeira publicação de vídeos](docs/facodi-publication-audit-2026-11-14.md)
-- [13 templates HTML FACODI e plano de isolamento de Auth](docs/facodi-auth-email-templates.md)
+Todos os vídeos e livros são referências aos servidores dos autores. Conteúdos históricos, os 5 códigos legados não confirmados e as 3 transcrições automáticas sem avaliação não foram aprovados indiscriminadamente. Os 180 ECTS de licenciatura excluem a soma cumulativa de escolhas alternativas.
 
-**Emails:** os templates FACODI foram preparados e validados no repositório, mas **não foram ativados globalmente no Auth Supabase alojado**. O projeto partilha Auth com o Tube O2; a aplicação de emails de marca exclusiva requer roteamento seguro ou Auth FACODI separado. O ficheiro `supabase/config.toml` continua a ser configuração local de referência; não foi executado `config push`.
+- [Relatório atualizado: cobertura total, fontes, pesquisa e RLS](docs/facodi-supabase-curriculum-coverage-and-search-2026-11-14.md)
+- [Histórico da curadoria e origem dos materiais](docs/facodi-enrichment-and-email-review-2026-11-14.md)
+- [Auditoria académica do catálogo inicial](docs/facodi-data-enrichment-2026-11-14.md)
+- [Templates FACODI e integração segura do Supabase Auth](docs/facodi-auth-email-templates.md)
 
-`facodi.playlists` permanece à espera de submissões autenticadas reais.
+Os templates FACODI de email foram preparados, mas **não ativados globalmente**: a instância Supabase Auth continua partilhada com o Tube O2. `facodi.playlists` continua sem submissões reais.
 
 ## Dados e permissões
 
-O cliente único usa `db.schema = 'facodi'`. As tabelas da aplicação são
-`courses`, `curricular_units` e `learning_objects`. O Supabase Auth mantém
-as contas no schema gerido `auth`; não há tabelas de autenticação duplicadas.
+O cliente único usa `db.schema = 'facodi'`. A aplicação consulta cursos,
+UCs, recursos, relações curriculares e objetivos editoriais do schema FACODI.
+As contas permanecem no schema gerido `auth`; não há tabelas de autenticação duplicadas.
 
 - Cursos públicos: `published = true AND status = 'active'`.
-- Unidades públicas: `status = 'active'` num curso publicado e ativo.
-  **O campo `published` de uma unidade não é uma fronteira de privacidade.**
+- Unidades públicas: **`published = true AND status = 'active'`** tanto na UC
+  como no curso. A policy RLS foi explicitamente restringida nesta revisão.
 - Objetos educativos: `published = true AND status IN ('active', 'published')`.
-- Não se consultam relações editoriais `learning_object_relations` no catálogo.
-- Novos conteúdos são rascunhos com origem `manual`. Não há sincronização,
-  processamento automático, migração de dados ou catálogo fictício.
+- As relações `learning_object_relations` expõem apenas ligações publicadas
+  aprovadas para leitura, e os objetivos editoriais apenas de UCs públicas.
+- Migrações versionadas enriquecem o catálogo a partir de fontes reais. Percursos
+  automáticos de apoio são rascunhos editoriais determinísticos, não resultados
+  de modelos de IA; não existem alunos ou submissões fictícias.
 - O editor associa unidades a cursos através de `course_id` e associa objetos
   existentes através de `learning_object_id`. As associações respeitam as
   constraints remotas e não criam objetos automaticamente.
@@ -115,7 +117,9 @@ As respostas Supabase não são guardadas pelo service worker.
 `/units` lista unidades ativas cujo curso está publicado e ativo (join
 `courses!inner`), e `/resources` lista objetos educativos publicados com
 filtros por título, idioma e tema (`tags`). As contagens da página inicial usam
-pedidos `HEAD` com `count=exact` sobre as mesmas regras; não há RPC.
+pedidos `HEAD` com `count=exact` sobre as mesmas regras; a RPC adicional
+`search_public_catalog_v1` está disponível no backend, ainda sem ligação
+à pesquisa do frontend.
 
 `/units` aceita estado na URL: `search` (título ou código), `course` (slug do
 curso), `year`, `semester` (semestre curricular, 1–6) e `sort`
@@ -125,11 +129,11 @@ isso a página da UC vive em `/courses/:slug/units/:unit`. `/courses/:slug`
 apresenta o plano de estudos por ano e semestre; as somas de ECTS não são
 mostradas porque o plano inclui alternativas opcionais.
 
-A migração `supabase/migrations/20261114160000_facodi_publish_ualg_catalog.sql`
-publica os cursos e unidades UAlg (LESTI, LDCOM) que estavam em rascunho, sem
-alterar políticas. As ligações `unit_videos` continuam em `pending_review`
-(apontam para `public.videos`) e por isso não aparecem publicamente até
-revisão editorial.
+As migrações em `supabase/migrations/` publicam o catálogo UAlg e as
+associações curriculares de vídeos efetivamente selecionados por título e canal.
+As ligações já aceites são públicas; as ligações antigas com estado de revisão
+pendente ou associações incorretas permanecem ocultas. Ver o relatório de
+cobertura e respetivas condições de proveniência.
 
 Não existe ingestão pública de conteúdos. Os pipelines automáticos FACODI
 (ingestão YouTube, análise e descoberta de metadados) são chamadas
