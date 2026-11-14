@@ -190,7 +190,9 @@
       "error": {
         "passwordMismatch": "Las contraseñas no coinciden."
       }
-    }
+    },
+    "resendConfirmation": "Reenviar confirmación",
+    "resendSent": "Si podemos reenviar la confirmación, recibirás un nuevo enlace por email."
   },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
