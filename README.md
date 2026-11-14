@@ -66,8 +66,9 @@ Os vídeos estão alojados no YouTube e os livros/documentações são **links p
 - [Auditoria da cobertura das licenciaturas e pesquisa Supabase](docs/facodi-supabase-curriculum-coverage-and-search-2026-11-14.md)
 - [Histórico da curadoria e origem dos materiais](docs/facodi-enrichment-and-email-review-2026-11-14.md)
 - [Templates FACODI e integração segura do Supabase Auth](docs/facodi-auth-email-templates.md)
+- [Auditoria funcional de entrega de emails e notificações de playlists](docs/facodi-email-delivery-verification-2026-11-14.md)
 
-Os emails FACODI estão preparados no repositório, mas **não ativados globalmente**: o Auth Supabase ainda é partilhado com o Tube O2. `facodi.playlists` continua sem submissões reais.
+Os 13 emails de autenticação FACODI estão preparados e testados estaticamente, mas **não ativados globalmente**: o Auth Supabase ainda é partilhado com o Tube O2. As notificações de submissão/aprovação/rejeição de playlists usam agora a fila privada `facodi.email_outbox` e a Edge Function `facodi-email-notifications`; o envio externo depende de `FACODI_RESEND_API_KEY` e `FACODI_EMAIL_FROM` com domínio verificado. Não foi comprovada entrega numa caixa de email. `facodi.playlists` continua sem submissões reais.
 
 ## Dados e permissões
 
