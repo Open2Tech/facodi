@@ -59,8 +59,9 @@ A FACODI mantém **três cursos públicos da Universidade do Algarve**, incluind
 
 **Totais atuais:** 303 objetivos editoriais de estudo e 303 competências propostas, com **104 percursos/mapas internos** ainda em `draft`. Os 120 ECTS do CTeSP e os 180 ECTS de cada licenciatura são planos distintos. Os ECTS das opções alternativas das licenciaturas não são somáveis indiscriminadamente.
 
-Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_catalog_v1` está disponível com RLS e índice GIN.
+Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_resources_v2` está integrada em `/resources?search=...`, com RLS, filtros e índice GIN.
 
+- [Ativação da pesquisa, moderação editorial e submissão de playlists](docs/facodi-activation-review-search-playlists-2026-11-14.md)
 - [Auditoria do CTeSP UAlg 1812, fontes e resultados de segurança](docs/facodi-ctesp-sti-1812-ualg-2026-27.md)
 - [Auditoria da cobertura das licenciaturas e pesquisa Supabase](docs/facodi-supabase-curriculum-coverage-and-search-2026-11-14.md)
 - [Histórico da curadoria e origem dos materiais](docs/facodi-enrichment-and-email-review-2026-11-14.md)
@@ -136,12 +137,14 @@ As ligações já aceites são públicas; as ligações antigas com estado de re
 pendente ou associações incorretas permanecem ocultas. Ver o relatório de
 cobertura e respetivas condições de proveniência.
 
-Não existe ingestão pública de conteúdos. Os pipelines automáticos FACODI
-(ingestão YouTube, análise e descoberta de metadados) são chamadas
-servidor-a-servidor com chave secreta e não podem ser invocados pelo browser.
-Por isso, “Contribuir” encaminha para o fluxo editorial: editores vão para
-`/editor`; os restantes utilizadores veem em `/about#contribute` como propor
-conteúdo à equipa editorial.
+Contribuições de playlists YouTube estão disponíveis para **utilizadores
+autenticados** em `/playlists/submit`, por meio da Edge Function
+`facodi-submit-playlist` (JWT obrigatório, RLS, limites e revisão editorial).
+Os vídeos só são publicados após aprovação de um editor em
+`/editor/playlists`, criando relações com a UC numa transação. Outras
+pipelines automáticas continuam sem acesso público direto. A fila de revisão
+dos 104 percursos/mapas editoriais do catálogo atualizado fica em
+`/editor/study-paths`, sem publicação automática ao aceitar um rascunho.
 
 ## Auth: pré-requisitos antes de disponibilizar cadastro
 
