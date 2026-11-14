@@ -924,7 +924,8 @@
     "groups": {
       "context": "Academic and European context",
       "collaboration": "Technology and open source",
-      "inspiration": "Creative inspiration"
+      "inspiration": "Creative inspiration",
+      "contributors": "Verified individual contributors"
     },
     "boundary": "All public credits and relationships are backed by public sources. Unverified proposals and potential contributors are not displayed as confirmed partners.",
     "communityEyebrow": "FACODI is yours too",
@@ -974,5 +975,34 @@
     "ctaTitle": "Help write the next chapter.",
     "ctaDescription": "Start small. One well-contextualized resource may make learning easier for someone.",
     "ctaButton": "Share an idea"
+  },
+  "projectCredits": {
+    "open": "Contributor credits",
+    "back": "Back to editor",
+    "title": "Who contributed what?",
+    "lead": "Public credits deserve context. Verify the person's role, obtain permission and attach an independent public source before publishing.",
+    "count": "{{count}} pending credits",
+    "pending": "Awaiting verification",
+    "draft": "No confirmed public consent",
+    "unverified": "This name appears in internal documentation. That alone does not prove authorship, ongoing involvement or permission.",
+    "role": "Verified contribution role",
+    "headline": "Short introduction",
+    "description": "Work actually contributed",
+    "publicSource": "Verifiable public source",
+    "sourceHint": "A public page supporting the name and role. Never use private emails or internal documents.",
+    "consent": "How consent was verified",
+    "written": "Direct written confirmation",
+    "publicIdentification": "Person's own public identification",
+    "reviewNote": "Internal rationale",
+    "reviewNoteHint": "Describe the verification without copying private messages.",
+    "privateNote": "This note is private to the editorial audit and never displayed publicly.",
+    "ack": "I confirm I verified the contribution, a public source and permission to attribute the person.",
+    "ackRequired": "Please confirm all conditions.",
+    "saved": "Credit approved for public display.",
+    "saving": "Saving...",
+    "publish": "Verify and publish",
+    "empty": "No pending credits",
+    "emptyDescription": "All pending candidates have been resolved.",
+    "footer": "Academic references, technology partners and individual contributors are separate categories. A meeting or quotation does not grant permission to publish a name."
   }
 }
