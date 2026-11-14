@@ -242,7 +242,7 @@
     "findRelation": "Pesquisar: {{name}}",
     "noRelation": "Sem associação",
     "relationLimit": "São mostrados até 50 resultados. Refina a pesquisa para encontrar outros conteúdos.",
-    "unitVisibility": "Atenção: uma unidade ativa de um curso publicado e ativo pode ser pública mesmo com published=false. Para a retirar do catálogo, muda o estado para rascunho ou arquivado.",
+    "unitVisibility": "A visibilidade pública exige published=true e status=active na unidade curricular e no curso, além de satisfazer as políticas RLS.",
     "publish": "Publicar",
     "archive": "Arquivar",
     "unpublish": "Voltar a rascunho",
@@ -490,5 +490,33 @@
   "authPanel": {
     "title": "O catálogo continua aberto.",
     "text": "Não precisas de conta para ler. A conta serve para gerir os teus dados e, com o papel certo, para contribuir."
+  },
+  "studyReview": {
+    "open": "Rever percursos",
+    "back": "Voltar ao editor",
+    "title": "Revisão de percursos e mapas curriculares",
+    "description": "Avalie os roteiros de estudo gerados a partir dos conteúdos existentes. Aceitar um roteiro é apenas uma decisão editorial interna: não publica materiais nem representa validação institucional.",
+    "filter": "Estado da revisão",
+    "status": {
+      "draft": "Por rever",
+      "accepted": "Aceite",
+      "rejected": "Rejeitado"
+    },
+    "count": "{{count}} registos",
+    "itemCount": "{{count}} elementos",
+    "courseMap": "Mapa curricular",
+    "unitPlan": "Roteiro de unidade curricular",
+    "untitled": "Documento sem título",
+    "previousNote": "Observação anterior",
+    "accept": "Aceitar",
+    "reject": "Rejeitar",
+    "empty": "Sem registos",
+    "emptyDescription": "Não existem percursos neste estado.",
+    "additional": "Mais {{count}} unidades não apresentadas",
+    "disclaimer": "Plano de estudo editorial, não constitui ficha oficial da UAlg.",
+    "saved": "Decisão de revisão guardada.",
+    "confirmDescription": "Esta decisão fica registada com a sua identidade e data. Não publica automaticamente o documento.",
+    "note": "Observações da revisão",
+    "notePlaceholder": "Justificação ou correções necessárias (opcional)"
   }
 }
