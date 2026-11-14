@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FormField } from '@/components/auth/FormField';
 import { PageState } from '@/components/layout/PageState';
+import { AuthShell } from '@/components/auth/AuthShell';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -20,8 +21,7 @@ export default function Login() {
   const next = safeReturnPath(params.get('next'));
   if (loading) return <PageState loading />;
   if (user) return <Navigate to={next} replace />;
-  return <section className="mx-auto max-w-md py-5">
-    <p className="mb-4 text-sm text-muted-foreground">{t('auth.campus')}</p>
+  return <AuthShell>
     <h1 className="text-3xl font-semibold">{t(signup ? 'auth.signup' : 'auth.login')}</h1>
     <p className="mb-8 mt-4 text-muted-foreground">{t(signup ? 'auth.signupDescription' : 'auth.loginDescription')}</p>
     <LoginForm key={String(signup)} signup={signup} next={next} />
@@ -29,7 +29,7 @@ export default function Login() {
       <button type="button" className="underline underline-offset-4" onClick={() => setSignup(!signup)}>{t(signup ? 'auth.haveAccount' : 'auth.createAccount')}</button>
       <Link to="/auth/reset-password" className="underline underline-offset-4">{t('auth.forgot')}</Link>
     </div>
-  </section>;
+  </AuthShell>;
 }
 
 function LoginForm({ signup, next }: { signup: boolean; next: string }) {

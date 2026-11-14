@@ -12,6 +12,7 @@ import { PasswordForm } from '@/components/auth/PasswordForm';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { PageState } from '@/components/layout/PageState';
+import { AuthShell } from '@/components/auth/AuthShell';
 
 export default function ResetPassword() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export default function ResetPassword() {
   const [error, setError] = useState('');
   const form = useForm<{ email: string }>({ resolver: zodResolver(resetRequestSchema), defaultValues: { email: '' } });
   if (state === 'pending' || loading) return <PageState loading />;
-  return <section className="mx-auto max-w-md">
+  return <AuthShell>
     <h1 className="mb-7 text-3xl font-semibold">{t('auth.reset')}</h1>
     {hasLink && state === 'ready' && user ? <PasswordForm /> : <>
       {state === 'invalid' && <p role="alert" className="mb-6 text-destructive">{t('auth.error.invalidLink')}</p>}
@@ -39,6 +40,6 @@ export default function ResetPassword() {
         <Button disabled={form.formState.isSubmitting}>{t(form.formState.isSubmitting ? 'common.working' : 'auth.sendReset')}</Button>
       </form>
     </>}
-    <Link className="mt-8 inline-block text-sm underline" to="/login">{t('auth.login')}</Link>
-  </section>;
+    <Link className="mt-8 inline-block text-sm underline underline-offset-4" to="/login">{t('auth.login')}</Link>
+  </AuthShell>;
 }

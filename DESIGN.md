@@ -21,6 +21,10 @@ animated social feed.
   ink, published translucent ink, draft sun (pending work), archived muted,
   unknown coral. The same swatches drive the admin distribution bars, whose
   exact counts stay available as text and in the table.
+- Account pages (login, password recovery, invalid auth links) share
+  `AuthShell`: the form leads and an ink panel with live catalogue counts
+  reminds visitors that reading never needs an account. The profile pairs its
+  forms with an account summary (initials tile, role, email state, join date).
 - With a signed-in session, account links (personal area, editor, admin)
   collapse to icon links between `xl` and `2xl` so the header keeps one line;
   their name stays as the accessible label and tooltip.

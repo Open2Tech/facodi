@@ -158,7 +158,6 @@
     "admin": "Administrador"
   },
   "auth": {
-    "campus": "A tua ligação à FACODI",
     "login": "Entrar",
     "signup": "Criar conta",
     "loginDescription": "Retoma a exploração com a tua conta.",
@@ -205,7 +204,11 @@
   },
   "profile": {
     "description": "Os dados da tua conta são geridos pelo Supabase Auth.",
-    "saved": "Alterações guardadas. Se alteraste o email, confirma os links enviados para os endereços envolvidos antes de usar o novo email."
+    "saved": "Alterações guardadas. Se alteraste o email, confirma os links enviados para os endereços envolvidos antes de usar o novo email.",
+    "summary": "Resumo da conta",
+    "memberSince": "Membro desde",
+    "emailConfirmed": "Confirmado",
+    "emailPending": "Por confirmar"
   },
   "content": {
     "courses": "Cursos",
@@ -481,5 +484,9 @@
     "title": "Leituras e documentação",
     "notice": "Referências complementares de acesso público. As ligações remetem para os sítios dos autores; os conteúdos não foram copiados nem homologados pela UAlg.",
     "openSource": "Explorar referência"
+  },
+  "authPanel": {
+    "title": "O catálogo continua aberto.",
+    "text": "Não precisas de conta para ler. A conta serve para gerir os teus dados e, com o papel certo, para contribuir."
   }
 }
