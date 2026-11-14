@@ -1945,6 +1945,18 @@ export type Database = {
       }
     }
     Functions: {
+      review_project_credit: {
+        Args: {
+          p_profile_id: string
+          p_role_label: string
+          p_headline: string
+          p_description: string
+          p_public_source_url: string
+          p_consent_basis: string
+          p_review_note: string
+        }
+        Returns: string
+      }
       classify_resource_license: {
         Args: { p_license: string }
         Returns: string
