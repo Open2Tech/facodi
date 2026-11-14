@@ -18,15 +18,26 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/entities/contribution](../src/entities/contribution): submissão de playlists
   (Edge Function `facodi-submit-playlist`), filas de revisão e RPCs
   `review_playlist`/`review_study_blueprint`, e normalização dos percursos gerados.
+- [src/entities/notes](../src/entities/notes): caderno de estudo pessoal,
+  local-first. Notas validadas com Zod e guardadas em `localStorage` por conta
+  (`facodi-notes:v1:<user id>` ou `guest`); nada é enviado ao Supabase.
+  Inclui ordenação, timestamps e exportação Markdown.
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
   para catálogo público, conteúdo editorial e contagens administrativas.
 - [src/features/contributions/queries](../src/features/contributions/queries):
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
+- [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`
+  sobre `useSyncExternalStore`, sincronizado entre separadores.
 - [src/components](../src/components): apresentação, formulários e primitivas shadcn.
   [src/components/profile](../src/components/profile) compõe `/profile`: dados da
   conta, segurança e sessões, preferências do navegador e contribuições.
+  [src/components/notes](../src/components/notes) compõe o caderno lateral
+  não modal (`?notes=open`), a linha de marcos sob o vídeo e o resumo no
+  dashboard. [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
+  lê o tempo do embed `youtube-nocookie` via `postMessage` (origem validada) e
+  envia `seekTo`; `?t=<segundos>` define o início do vídeo.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.

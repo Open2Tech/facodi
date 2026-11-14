@@ -378,11 +378,102 @@ test('video page loads YouTube only on demand and places the video in its unit t
   }
   expect(embeds).toHaveLength(0);
   await page.getByRole('button', { name: 'Play video: Derivatives' }).click();
-  await expect(page.locator('iframe[title="Derivatives"]')).toHaveAttribute('src', 'https://www.youtube-nocookie.com/embed/bbbbbbbbbbb?autoplay=1&rel=0');
+  await expect(page.locator('iframe[title="Derivatives"]')).toHaveAttribute('src', /^https:\/\/www\.youtube-nocookie\.com\/embed\/bbbbbbbbbbb\?autoplay=1&rel=0&enablejsapi=1&origin=http/);
   await expect.poll(() => embeds.length).toBe(1);
   await page.getByRole('link', { name: /Next video/ }).click();
   await expect(page).toHaveURL(/\/resources\/integrals$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Integrals' })).toBeVisible();
+});
+
+test('study notebook keeps private, timed notes beside the video and exports them', async ({ page }) => {
+  const current = {
+    id: 'v2', slug: 'derivatives', title: 'Derivatives', object_type: 'video', language: 'en', source_url: 'https://www.youtube.com/watch?v=bbbbbbbbbbb',
+    metadata: { youtube_video_id: 'bbbbbbbbbbb', duration_seconds: 600, channel_name: 'Fixture Channel' },
+    description: '<p>Test fixture only</p>', objectives: [], tags: [], keywords: [], status: 'active', published: true,
+  };
+  // Stand-in for the embed: reports a playback position and records the commands it receives.
+  const embed = `<script>
+    window.commands = [];
+    const send = time => parent.postMessage(JSON.stringify({ event: 'infoDelivery', info: { currentTime: time } }), '*');
+    addEventListener('message', event => {
+      const data = JSON.parse(event.data);
+      if (data.event === 'listening') send(200.4);
+      if (data.event === 'command') window.commands.push([data.func, data.args]);
+    });
+  </script>`;
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+  await page.route('https://www.youtube-nocookie.com/**', route => route.fulfill({ contentType: 'text/html', body: embed }));
+  await page.route('**/rest/v1/learning_objects*', async route => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('slug')) return route.fulfill({ json: current });
+    await route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+  });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/resources/derivatives');
+  await page.getByRole('button', { name: 'Study notebook' }).click();
+  const drawer = page.getByRole('dialog', { name: 'Study notebook' });
+  await expect(drawer.getByText('Start the video to tie each note to the moment you write it.')).toBeVisible();
+  await expect(drawer.getByText('Without signing in, these notes are visible to anyone using this browser.')).toBeVisible();
+
+  // The drawer is non-modal: the player stays usable and the drawer reflects its position.
+  await page.getByRole('button', { name: 'Play video: Derivatives' }).click();
+  await expect(drawer.getByText('Linked to the video at')).toBeVisible();
+  await expect(drawer.getByText('03:20', { exact: true })).toBeVisible();
+
+  await drawer.getByLabel('Title or concept').fill('Chain rule');
+  await expect(drawer.getByRole('button', { name: 'Remove the 03:20 mark' })).toBeVisible();
+  await drawer.getByLabel('Tags').fill('#Exam rules');
+  await drawer.getByLabel('Note', { exact: true }).fill('Use the chain rule on f(g(x))');
+  await drawer.getByLabel('Note', { exact: true }).selectText();
+  await drawer.getByRole('button', { name: 'Inline code' }).click();
+  await drawer.getByLabel('Note', { exact: true }).press('Control+Enter');
+  await expect(drawer.getByRole('status').getByText('Note saved.')).toBeVisible();
+  await expect(drawer.getByRole('heading', { name: 'Chain rule' })).toBeVisible();
+  await expect(drawer.locator('code', { hasText: 'Use the chain rule on f(g(x))' })).toBeVisible();
+
+  await drawer.getByLabel('Title or concept').fill('');
+  await drawer.getByRole('button', { name: 'Save note' }).click();
+  await expect(drawer.getByText('Complete this field.')).toBeVisible();
+  await drawer.getByLabel('Title or concept').fill('General idea');
+  await drawer.getByRole('button', { name: 'Remove the 03:20 mark' }).click();
+  await drawer.getByRole('button', { name: 'Save note' }).click();
+  await expect(drawer.getByText('2 notes')).toBeVisible();
+
+  await drawer.getByRole('button', { name: /With a moment/ }).click();
+  await expect(drawer.getByRole('heading', { name: 'General idea' })).toHaveCount(0);
+  await drawer.getByRole('button', { name: /^All/ }).click();
+  await drawer.getByRole('button', { name: '#exam' }).click();
+  await expect(drawer.getByRole('heading', { name: 'General idea' })).toHaveCount(0);
+  await drawer.getByRole('button', { name: 'Stop filtering by #exam' }).click();
+  await expect(drawer.getByRole('heading', { name: 'General idea' })).toBeVisible();
+
+  await drawer.getByRole('button', { name: 'Go to 03:20 in the video' }).click();
+  const frame = page.frames().find(item => item.url().startsWith('https://www.youtube-nocookie.com/'))!;
+  await expect.poll(() => frame.evaluate(() => (window as unknown as { commands: unknown[] }).commands)).toEqual([['seekTo', [200, true]], ['playVideo', []]]);
+  await expect(page.getByRole('button', { name: 'Go to 03:20: Chain rule' })).toBeVisible();
+
+  const download = page.waitForEvent('download');
+  await drawer.getByRole('button', { name: 'Export Markdown (.md)' }).click();
+  const file = await download;
+  expect(file.suggestedFilename()).toBe('facodi-derivatives.md');
+  const markdown = await (await import('node:fs/promises')).readFile(await file.path(), 'utf8');
+  expect(markdown).toContain('## [03:20](http://');
+  expect(markdown).toContain('/resources/derivatives?t=200) Chain rule');
+  expect(markdown).toContain('#exam #rules');
+
+  await drawer.getByRole('button', { name: 'Delete “General idea”' }).click();
+  await page.getByRole('button', { name: 'Undo' }).click();
+  await expect(drawer.getByRole('heading', { name: 'General idea' })).toBeVisible();
+  await drawer.getByRole('button', { name: 'Close' }).click();
+  await expect(drawer).toBeHidden();
+  await expect(page).not.toHaveURL(/notes=open/);
+
+  // Notes persist in this browser and the URL can reopen the drawer.
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/resources/derivatives?notes=open');
+  await expect(page.getByRole('dialog', { name: 'Study notebook' }).getByRole('heading', { name: 'Chain rule' })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.screenshot({ path: 'test-results/facodi-notebook-375.png' });
 });
 
 test('editor reviews study paths and playlists through the review RPCs with state in the URL', async ({ page }) => {

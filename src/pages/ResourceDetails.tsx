@@ -1,8 +1,9 @@
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { useCallback, useRef, useState } from 'react';
+import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus, NotebookPen } from 'lucide-react';
 import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { unitPath } from '@/entities/course/course.paths';
@@ -11,7 +12,11 @@ import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { VideoCard } from '@/components/resource/VideoCard';
-import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
+import { NoteTimeline } from '@/components/notes/NoteTimeline';
+import { StudyNotebook } from '@/components/notes/StudyNotebook';
+import { formatTimestamp, parseStartParam } from '@/entities/notes/notes';
+import { useResourceNotes } from '@/features/notes/useNotebook';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { safeExternalUrl } from '@/shared/lib/navigation';
@@ -31,6 +36,17 @@ export default function ResourceDetails() {
   const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
   const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
   const contribute = useContributePath();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const playerRef = useRef<YouTubePlayerHandle>(null);
+  const playerSection = useRef<HTMLElement>(null);
+  const [engaged, setEngaged] = useState(false);
+  const [clock, setClock] = useState<{ id: string; time: number } | null>(null);
+  const resourceId = resource?.id ?? '';
+  const { notes } = useResourceNotes(resourceId);
+  const onTime = useCallback((seconds: number) => {
+    const time = Math.floor(seconds);
+    setClock(previous => previous?.id === resourceId && previous.time === time ? previous : { id: resourceId, time });
+  }, [resourceId]);
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
@@ -52,6 +68,25 @@ export default function ResourceDetails() {
   const visibleSequence = sequence.slice(windowStart, windowStart + SEQUENCE_WINDOW);
   const player = isVideo && info.youtubeId;
   const unitHref = primary ? unitPath(primary.courses.slug, primary.slug) : null;
+  const playerTime = player && clock?.id === resource.id ? clock.time : null;
+  const notesOpen = searchParams.get('notes') === 'open';
+
+  // The drawer state lives in the URL so dashboard links can open it, without adding history entries.
+  function setNotesOpen(open: boolean) {
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous);
+      if (open) next.set('notes', 'open');
+      else next.delete('notes');
+      return next;
+    }, { replace: true });
+  }
+
+  function seek(seconds: number) {
+    playerRef.current?.seekTo(seconds);
+    // On phones the drawer covers the player; close it so the learner sees the jump.
+    if (!window.matchMedia('(min-width: 640px)').matches) setNotesOpen(false);
+    playerSection.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
 
   async function copyLink() {
     try {
@@ -101,22 +136,31 @@ export default function ResourceDetails() {
       <div className="flex flex-col gap-3">
         {source ? <Button size="lg" asChild><a href={source} target="_blank" rel="noopener noreferrer">{t(isVideo ? 'video.watchOnYoutube' : 'catalog.source')}<ArrowUpRight /></a></Button>
           : resource.source_url && <p role="alert" className="text-destructive">{t('validation.url')}</p>}
+        <Button variant="outline" onClick={() => setNotesOpen(true)} aria-haspopup="dialog" aria-expanded={notesOpen}>
+          <NotebookPen />{t('notes.open')}
+          {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-xs tabular-nums text-primary-foreground">{notes.length}</span>}
+        </Button>
         <Button variant="outline" onClick={() => void copyLink()}><Link2 />{t('video.copyLink')}</Button>
         <Link to={contribute} className="inline-flex items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
       </div>
     </header>
 
     <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      {player && <section aria-label={t('video.player')} className="min-w-0 lg:col-start-1 lg:row-start-1">
+      {player && <section ref={playerSection} aria-label={t('video.player')} className="min-w-0 scroll-mt-24 lg:col-start-1 lg:row-start-1">
         <div className="border border-foreground">
-          <YouTubePlayer videoId={info.youtubeId!} title={resource.title} thumbnail={info.thumbnail} />
+          <YouTubePlayer key={resource.id} ref={playerRef} videoId={info.youtubeId!} title={resource.title} thumbnail={info.thumbnail}
+            autoPlay={engaged} onPlay={() => setEngaged(true)} start={parseStartParam(searchParams.get('t'))} onTime={onTime} />
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
             <span className="min-w-0 truncate">{info.channel ?? 'YouTube'}</span>
             <span className="flex items-center gap-4">
+              <button type="button" onClick={() => setNotesOpen(true)} className="inline-flex items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                <NotebookPen className="h-3.5 w-3.5" aria-hidden="true" />{playerTime !== null ? t('notes.quickAddAt', { time: formatTimestamp(playerTime) }) : t('notes.quickAdd')}
+              </button>
               {info.durationSeconds && <span className="tabular-nums">{formatDuration(info.durationSeconds)}</span>}
               {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
             </span>
           </div>
+          {info.durationSeconds && <NoteTimeline notes={notes} duration={info.durationSeconds} playerTime={playerTime} onSeek={seek} />}
         </div>
       </section>}
 
@@ -230,5 +274,7 @@ export default function ResourceDetails() {
         </section>}
       </div>
     </div>
+    <StudyNotebook resource={{ id: resource.id, slug: resource.slug, title: resource.title }} timed={Boolean(player)} playerTime={playerTime}
+      onSeek={player ? seek : null} open={notesOpen} onOpenChange={setNotesOpen} />
   </article>;
 }

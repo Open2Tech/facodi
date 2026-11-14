@@ -78,3 +78,10 @@ export const contentSchema = z.object({
   source_url: optionalUrl,
 });
 export type ContentFormValues = z.infer<typeof contentSchema>;
+
+export const noteSchema = z.object({
+  title: z.string().trim().min(1, 'validation.required').max(160, 'validation.tooLong'),
+  tags: z.string().max(400, 'validation.tooLong'),
+  body: z.string().max(8000, 'validation.tooLong'),
+});
+export type NoteFormValues = z.infer<typeof noteSchema>;
