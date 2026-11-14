@@ -50,6 +50,12 @@ bun run db:types > src/integrations/supabase/types.ts
 
 Os tipos foram gerados do schema real, não de uma reprodução local.
 
+## Enriquecimento do catálogo (14/11/2026)
+
+O schema remoto `facodi` inclui um lote editorial **não publicado**: dois cursos, 89 UCs (incluindo opções do plano UAlg 2026/27), 382 vídeos provenientes de `public.videos` e 409 propostas de associação UC/vídeo a rever. Estes dados foram inseridos por migrações versionadas, não por sincronização permanente ou por geração de conteúdos fictícios. Todos os objetos criados neste lote continuam em rascunho.
+
+Consultar [a auditoria de proveniência, a lista de correções curriculares e as regras de aprovação](docs/facodi-data-enrichment-2026-11-14.md). A soma indiscriminada de ECTS inclui opções alternativas e não representa o total para obtenção da licenciatura.
+
 ## Dados e permissões
 
 O cliente único usa `db.schema = 'facodi'`. As tabelas da aplicação são
