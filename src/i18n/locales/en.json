@@ -379,8 +379,8 @@
     "filterType": "Resource type"
   },
   "about": {
-    "title": "An open campus to follow the thread of knowledge.",
-    "lead": "FACODI brings courses, curricular units and educational resources together in one place, with the context that makes them useful.",
+    "title": "One open tab became a bigger idea.",
+    "lead": "FACODI connects useful public resources to the courses, people and questions that make learning happen. Student-born, community-minded and open to the world.",
     "seaeuTitle": "SEA-EU and the University of the Algarve",
     "seaeuText": "FACODI is part of the SEA-EU Student-Led Projects 2026 and was born at the University of the Algarve (UAlg).",
     "seaeuScope": "The goal is simple: make quality academic material easier to find, and make it clear where each piece fits in a learning path.",
@@ -905,5 +905,74 @@
     "elective": "Elective {{group}}",
     "annual": "Full year",
     "error": "Unable to load the historical study plan."
+  },
+  "projectStory": {
+    "eyebrow": "FACODI / HOW IT BEGAN",
+    "title": "One question. Too many tabs. One open campus.",
+    "origin": "Sound familiar? You need to understand something, open a video, find the docs, watch another lesson and suddenly have dozens of tabs with no clear map.",
+    "mission": "FACODI adds context to those discoveries by connecting public resources with topics, courses and curricular units. Everyone can help improve the trail; editorial review keeps it useful.",
+    "line": "Good knowledge gets even better when someone leaves a clearer route behind.",
+    "founderEyebrow": "Who started the thread",
+    "authorSource": "Read the story",
+    "timelineEyebrow": "CHAPTERS / 2026",
+    "timelineTitle": "Small steps. Big horizons.",
+    "timelineUpdated": "Documented milestones",
+    "source": "View source",
+    "ecosystemEyebrow": "CONNECTIONS WITH CONTEXT",
+    "ecosystemTitle": "One network. Different roles. No blurred lines.",
+    "ecosystemDescription": "Academic references are not accreditation. Technical collaborators are not automatically owners. Creative inspiration is not a formal partnership. Each relationship is named for what it is.",
+    "groups": {
+      "context": "Academic and European context",
+      "collaboration": "Technology and open source",
+      "inspiration": "Creative inspiration"
+    },
+    "boundary": "All public credits and relationships are backed by public sources. Unverified proposals and potential contributors are not displayed as confirmed partners.",
+    "communityEyebrow": "FACODI is yours too",
+    "communityTitle": "Curious minds welcome.",
+    "communityDescription": "You don't need a title to contribute. A good reference, a thoughtful correction or a helpful idea can make a difference.",
+    "communityCta": "Meet the community"
+  },
+  "projectCommunity": {
+    "nav": "Community",
+    "eyebrow": "FACODI / PEOPLE CONNECT IDEAS",
+    "title": "Nobody learns alone. Good thing, too.",
+    "lead": "FACODI is an invitation to learn in public, share what works and leave a clearer learning route for someone else. No gatekeeping, no unnecessary fuss, with careful curation.",
+    "noteLabel": "CAMPUS NOTE",
+    "note": "A good connection matters most when it reaches someone.",
+    "actionsEyebrow": "MAKE IT YOURS",
+    "actionsTitle": "There is more than one way in.",
+    "actions": {
+      "explore": {
+        "title": "Come learn",
+        "description": "Explore courses and resources. Your first contribution can be a question.",
+        "cta": "Explore"
+      },
+      "suggest": {
+        "title": "Found something useful?",
+        "description": "Suggest a video, article or document with enough context for review.",
+        "cta": "Suggest a resource"
+      },
+      "playlist": {
+        "title": "Got a playlist?",
+        "description": "Connect it to a curricular unit. Editors review it before publishing.",
+        "cta": "Submit a playlist"
+      },
+      "build": {
+        "title": "Like building things?",
+        "description": "Open source, UX, docs and accessibility: plenty of ways to get involved.",
+        "cta": "Explore the code"
+      }
+    },
+    "rolesEyebrow": "OPEN PARTICIPATION",
+    "rolesTitle": "Learn. Review. Build.",
+    "rolesDescription": "These are ways to participate, not a list of enrolled members. Personal credits require verification and consent.",
+    "transparencyTitle": "Credits matter. So does accuracy.",
+    "transparencyText": "Community suggestions are reviewed. Receiving a link is not the same as approving it or attributing authorship.",
+    "consentText": "We do not publish collaborators' names based on private emails, meeting notes or proposals without confirming their role and permission.",
+    "degreeText": "FACODI does not award degrees, credits or formal academic equivalence.",
+    "ecosystemCta": "Explore our ecosystem",
+    "ctaTitle": "Help write the next chapter.",
+    "ctaDescription": "Start small. One well-contextualized resource may make learning easier for someone.",
+    "ctaButton": "Share an idea"
   }
 }
