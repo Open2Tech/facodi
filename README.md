@@ -50,11 +50,13 @@ bun run db:types > src/integrations/supabase/types.ts
 
 Os tipos foram gerados do schema real, não de uma reprodução local.
 
-## Enriquecimento do catálogo (14/11/2026)
+## Catálogo académico publicado (14/11/2026)
 
-O schema remoto `facodi` inclui um lote editorial **não publicado**: dois cursos, 89 UCs (incluindo opções do plano UAlg 2026/27), 382 vídeos provenientes de `public.videos` e 409 propostas de associação UC/vídeo a rever. Estes dados foram inseridos por migrações versionadas, não por sincronização permanente ou por geração de conteúdos fictícios. Todos os objetos criados neste lote continuam em rascunho.
+O schema remoto `facodi` contém **2 cursos da UAlg**, **84 UCs públicas** com guias de estudo originais FACODI, **519 vídeos educativos externos** publicados e **523 associações UC–vídeo** por correspondência temática, totalizando **605 objetos educativos públicos**. Existem **22 UCs com vídeos**; 62 possuem roteiro de estudo mas ainda aguardam conteúdos audiovisuais pertinentes. As cinco UCs antigas ausentes do plano oficial 2026/27 permanecem privadas.
 
-Consultar [a auditoria de proveniência, a lista de correções curriculares e as regras de aprovação](docs/facodi-data-enrichment-2026-11-14.md). A soma indiscriminada de ECTS inclui opções alternativas e não representa o total para obtenção da licenciatura.
+Os vídeos são **ligações aos uploads originais no YouTube**, e a área «Aulas em vídeo» nas páginas de UC usa o embed `youtube-nocookie.com`. A curadoria teve por base os títulos e canais, **não** a visualização integral das aulas. A FACODI não afirma ter verificado licenças, disponibilidade ou transcrições de todos os vídeos.
+
+Consultar a [auditoria completa de publicação, proveniência, testes RLS e limitações](docs/facodi-publication-audit-2026-11-14.md), bem como a [auditoria curricular da importação inicial](docs/facodi-data-enrichment-2026-11-14.md). As somas indiscriminadas de ECTS incluem opções alternativas e **não** representam o percurso de 180 ECTS de cada aluno. `facodi.playlists` permanece à espera de submissões reais autenticadas.
 
 ## Dados e permissões
 
