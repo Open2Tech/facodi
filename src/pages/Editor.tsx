@@ -92,8 +92,8 @@ export default function Editor() {
             </div>
             <div className="flex shrink-0 flex-wrap gap-2">
               <Button variant="outline" onClick={() => { save.reset(); setEditing(item); }}>{t('common.edit')}</Button>
-              <Button variant="outline" disabled={publish.isPending} onClick={() => setConfirmation({ item, action: 'publish' })}>{t('editor.publish')}</Button>
-              <Button variant="outline" disabled={publish.isPending} onClick={() => setConfirmation({ item, action: 'draft' })}>{t('editor.unpublish')}</Button>
+              <Button variant="outline" disabled={publish.isPending || (item.status === 'active' && item.published)} onClick={() => setConfirmation({ item, action: 'publish' })}>{t('editor.publish')}</Button>
+              <Button variant="outline" disabled={publish.isPending || (item.status === 'draft' && !item.published)} onClick={() => setConfirmation({ item, action: 'draft' })}>{t('editor.unpublish')}</Button>
               <Button variant="outline" disabled={publish.isPending || item.status === 'archived'} onClick={() => setConfirmation({ item, action: 'archive' })}>{t('editor.archive')}</Button>
             </div>
           </li>)}

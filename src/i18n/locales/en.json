@@ -200,7 +200,9 @@
     "account": "Update your account name, email and password.",
     "editor": "Prepare, publish and archive educational content.",
     "admin": "View catalogue states and counts.",
-    "shortcuts": "Your shortcuts"
+    "shortcuts": "Your shortcuts",
+    "welcomeAnonymous": "Hello.",
+    "addName": "Add your name in your profile"
   },
   "profile": {
     "description": "Your account details are managed by Supabase Auth.",

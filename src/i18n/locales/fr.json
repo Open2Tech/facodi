@@ -200,7 +200,9 @@
     "account": "Modifiez le nom, l'email et le mot de passe du compte.",
     "editor": "Préparez, publiez et archivez les contenus éducatifs.",
     "admin": "Consultez les états et les chiffres du catalogue.",
-    "shortcuts": "Vos raccourcis"
+    "shortcuts": "Vos raccourcis",
+    "welcomeAnonymous": "Bonjour.",
+    "addName": "Ajoute ton nom dans ton profil"
   },
   "profile": {
     "description": "Les données de votre compte sont gérées par Supabase Auth.",
