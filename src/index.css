@@ -9,306 +9,59 @@
 
 @layer base {
   :root {
-    /* FACODI-aligned light theme */
-    --background:         0 0% 100%;     /* #ffffff */
-    --foreground:         0 0% 0%;       /* #000000 */
-
-    --card:               0 0% 100%;     /* #ffffff */
-    --card-foreground:    0 0% 0%;
-
-    --popover:            0 0% 100%;     /* #ffffff */
-    --popover-foreground: 0 0% 0%;
-
-    --primary:            64 100% 50%;   /* #efff00 */
-    --primary-foreground: 0 0% 0%;       /* black text on lime */
-    --primary-hover:      64 100% 46%;
-
-    --secondary:          0 0% 96%;      /* subtle surfaces */
-    --secondary-foreground: 0 0% 0%;
-
-    --muted:              0 0% 95%;
-    --muted-foreground:   216 18% 47%;   /* paragraph gray */
-
-    --accent:             64 100% 50%;
-    --accent-foreground:  0 0% 0%;
-
-    --destructive:        6 80% 42%;     /* #c43830 */
-    --destructive-foreground: 0 0% 100%;
-
-    --border:             0 0% 0%;       /* black, as facodi */
-    --input:              0 0% 88%;
-    --ring:               64 100% 50%;
-
-    --radius: 0rem;
-
-    --category-tutorials: 210 80% 48%;
-    --category-recipes:   30 90% 48%;
-    --category-education: 150 70% 38%;
-    --category-memes:     280 80% 52%;
-    --category-music:     320 80% 48%;
-    --category-culture:   50 90% 43%;
-
-    /* Sidebar */
-    --sidebar-background:         0 0% 100%;
-    --sidebar-foreground:         0 0% 0%;
-    --sidebar-primary:            64 100% 50%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent:             0 0% 95%;
-    --sidebar-accent-foreground:  0 0% 0%;
-    --sidebar-border:             0 0% 0%;
-    --sidebar-ring:               64 100% 50%;
-  }
-
-  .dark {
-    /* FACODI-aligned dark theme */
-    --background:         0 0% 6%;
-    --foreground:         0 0% 95%;
-
-    --card:               0 0% 8%;
-    --card-foreground:    0 0% 95%;
-
-    --popover:            0 0% 8%;
-    --popover-foreground: 0 0% 95%;
-
-    --primary:            64 100% 50%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 64 100% 50%;
     --primary-foreground: 0 0% 0%;
-    --primary-hover:      64 100% 56%;
-
-    --secondary:          0 0% 14%;
-    --secondary-foreground: 0 0% 95%;
-
-    --muted:              0 0% 14%;
-    --muted-foreground:   216 10% 72%;
-
-    --accent:             64 100% 50%;
-    --accent-foreground:  0 0% 0%;
-
-    --destructive:        6 100% 84%;    /* #ffb4ab */
-    --destructive-foreground: 354 100% 21%; /* #690005 */
-
-    --border:             0 0% 95%;
-    --input:              0 0% 24%;
-    --ring:               64 100% 50%;
-
-    --radius: 0rem;
-
-    --category-tutorials: 210 80% 60%;
-    --category-recipes:   30 90% 60%;
-    --category-education: 150 70% 50%;
-    --category-memes:     280 80% 65%;
-    --category-music:     320 80% 60%;
-    --category-culture:   50 90% 55%;
-
-    --sidebar-background:         0 0% 6%;
-    --sidebar-foreground:         0 0% 95%;
-    --sidebar-primary:            64 100% 50%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent:             0 0% 14%;
-    --sidebar-accent-foreground:  0 0% 95%;
-    --sidebar-border:             0 0% 95%;
-    --sidebar-ring:               64 100% 50%;
+    --primary-hover: 64 100% 46%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 64 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 6 80% 37%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 83%;
+    --input: 0 0% 55%;
+    --ring: 0 0% 12%;
+    --radius: 0.375rem;
   }
-}
-
-@layer base {
-  * {
-    @apply border-border;
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 96%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 75%;
+    --border: 0 0% 30%;
+    --input: 0 0% 40%;
+    --destructive: 6 100% 80%;
+    --destructive-foreground: 0 0% 0%;
+    --ring: 64 100% 50%;
   }
-
-  body {
-    @apply bg-background text-foreground font-sans antialiased min-h-screen;
-    @apply selection:bg-primary selection:text-primary-foreground;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply uppercase;
-    letter-spacing: 0.04em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  }
-
-  h2, h3, h4, h5, h6 {
-    @apply font-bold;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  h1 {
-    @apply font-black;
-    letter-spacing: -0.05em;
-    line-height: 0.95;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
-  }
-
-  .dark h1 {
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-  }
-
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
-  }
-}
-
-@layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 0.4s ease-out forwards;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.3s ease-out forwards;
-  }
-
-  .animate-signal-pulse {
-    animation: signalPulse 1.8s ease-in-out infinite;
-  }
-
-  .animate-home-hero-item {
-    animation: homeHeroFadeUp 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .animate-home-hero-aside {
-    animation: homeHeroFadeUp 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .animation-delay-0 {
-    animation-delay: 0ms;
-  }
-
-  .animation-delay-70 {
-    animation-delay: 70ms;
-  }
-
-  .animation-delay-140 {
-    animation-delay: 140ms;
-  }
-
-  .animation-delay-210 {
-    animation-delay: 210ms;
-  }
-
-  .video-thumbnail {
-    @apply relative overflow-hidden border border-border;
-  }
-
-  .card-hover {
-    @apply transition-colors border border-border hover:border-primary;
-  }
-
-  /* --- New Utilities for Animations --- */
-  .animate-page-enter {
-    animation: pageEnter 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  /* Splash Screen */
-  .splash-path {
-    stroke: hsl(var(--primary));
-    stroke-width: 8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: splashDraw 1s cubic-bezier(0.8, 0, 0.2, 1) forwards,
-               splashGlow 0.8s ease-in-out 0.8s forwards;
-  }
-
-  .splash-container.zoom-out {
-    animation: splashZoomOut 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-  }
-}
-
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes splashDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes splashGlow {
-  0% { filter: drop-shadow(0 0 0px hsl(var(--primary))); fill: transparent; }
-  100% { filter: drop-shadow(0 0 40px hsl(var(--primary))); fill: hsl(var(--primary)); }
-}
-
-@keyframes splashZoomOut {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(30); opacity: 0; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes homeHeroFadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes signalPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 255, 0, 0.45); }
-  50% { box-shadow: 0 0 0 8px rgba(239, 255, 0, 0); }
+  * { @apply border-border; }
+  body { @apply min-h-screen bg-background font-sans text-foreground antialiased; }
+  h1, h2, h3 { text-wrap: balance; overflow-wrap: anywhere; }
+  p { text-wrap: pretty; }
+  a, button, input, select, textarea { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground; }
+  input::placeholder, textarea::placeholder { color: hsl(var(--muted-foreground)); opacity: 1; }
+  ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-fade-in,
-  .animate-scale-in,
-  .animate-signal-pulse,
-  .animate-home-hero-item,
-  .animate-home-hero-aside,
-  .animate-page-enter,
-  .splash-path,
-  .splash-container.zoom-out {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
   *, *::before, *::after {
-    animation-delay: -1ms !important;
-    animation-duration: 1ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    background-attachment: initial !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-    transition-delay: -1ms !important;
-  }
-
-  /* Reset scale animations/transforms for hover and active states on CTAs and blocks */
-  [class*="hover:scale-"]:hover,
-  [class*="active:scale-"]:active,
-  [class*="hover:scale-["]:hover,
-  [class*="active:scale-["]:active {
-    transform: none !important;
-    transition: none !important;
   }
 }

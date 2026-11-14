@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { safeExternalUrl } from '@/shared/lib/navigation';
 
 /**
  * Shared validation schemas for consistent validation across the application
@@ -49,3 +50,31 @@ export const createPasswordConfirmationSchema = (messageKey = 'auth.resetPasswor
       path: ['confirmPassword'],
     }
   );
+
+export const loginSchema = z.object({ email: emailSchema, password: z.string().min(1, 'validation.required') });
+export const signInFormSchema = loginSchema.extend({ name: z.string() });
+export const signupSchema = z.object({
+  name: z.string().trim().min(1, 'validation.required').max(200, 'validation.tooLong'),
+  email: emailSchema,
+  password: passwordSchema,
+});
+export const resetRequestSchema = z.object({ email: emailSchema });
+export const profileSchema = signupSchema.omit({ password: true });
+
+const optionalUrl = z.string().trim().refine(
+  (value) => !value || !!safeExternalUrl(value),
+  'validation.url',
+);
+export const contentSchema = z.object({
+  title: z.string().trim().min(1, 'validation.required').max(500, 'validation.tooLong'),
+  slug: z.string().trim().min(1, 'validation.required').max(500, 'validation.tooLong')
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'validation.slug'),
+  language: z.string().trim().min(2, 'validation.required').max(16, 'validation.tooLong'),
+  description: z.string().max(100000, 'validation.tooLong'),
+  summary: z.string().max(5000, 'validation.tooLong'),
+  course_id: z.union([z.uuid(), z.literal('')]),
+  learning_object_id: z.union([z.uuid(), z.literal('')]),
+  object_type: z.string().trim().min(1, 'validation.required').max(80, 'validation.tooLong'),
+  source_url: optionalUrl,
+});
+export type ContentFormValues = z.infer<typeof contentSchema>;

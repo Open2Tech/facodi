@@ -27,10 +27,10 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <HelmetProvider>
       <I18nextProvider i18n={i18n}>
         <QueryClientProvider client={queryClient}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="facodi-theme">
             <AuthProvider>
               <TooltipProvider>
-                <Sonner />
+                <Sonner theme="light" />
                 {children}
               </TooltipProvider>
             </AuthProvider>

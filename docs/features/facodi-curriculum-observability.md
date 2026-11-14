@@ -1,3 +1,9 @@
+# Histórico — observabilidade da integração anterior
+
+O frontend FACODI atual não chama Odoo nem a função descrita abaixo.
+Este documento é mantido como histórico, não como procedimento operacional.
+Consultar [README](../../README.md).
+
 # FACODI Curriculum Atlas — observability runbook
 
 **Scope:** only `supabase/functions/facodi-curriculum`. Odoo 19 remains the read-only source of approved/public curriculum data. Supabase Auth JWT, rate limits, CORS and the `ODOO_SECRET` server-side key remain unchanged. No new database table or third-party telemetry destination is required.

@@ -1,384 +1,46 @@
-# Codebase Architecture & Boundaries
-
-This document describes the architectural organization of Tube O2 and the conventions that guide where code belongs.
-
-**For quick start commands and tech stack details, see [AGENTS.md](../AGENTS.md) and [README.md](../README.md).**
-
----
-
-## Runtime, Package Manager, And Deploy
-
-- Bun is the only package manager/runtime used for project installs and scripts.
-- Commit and update `bun.lock`; do not add `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `package-lock.json`, or `yarn.lock`.
-- CI uses `bun install --frozen-lockfile`, then `bun run lint`, `bun run typecheck`, `bun run test`, `bun run test:coverage`, and `bun run build`.
-- Cloudflare static SPA deploys are configured in `wrangler.jsonc` with `assets.directory = "./dist"` and SPA fallback.
-- Docker deploys run `server/server.ts` with Bun when runtime OG/Twitter metadata injection is required.
-
----
-
-## Architecture Boundaries
-
-Use these boundaries when deciding where code belongs:
-
-### Frontend Structure
-
-```
-src/
-├── entities/          # Domain types, query keys, and API functions
-├── features/          # Feature logic, query/mutation hooks, orchestration
-├── components/        # UI components by domain (ui, video, comment, etc.)
-├── shared/           # Cross-domain utilities, validation, API clients, hooks
-├── pages/            # Route-level pages (lazy-loaded)
-├── i18n/             # Localization setup and translation resources
-├── lib/              # Utility functions (minimal; mostly shadcn/ui utils)
-└── app/              # Global providers and app initialization
-```
-
-### Backend & Infrastructure
-
-```
-supabase/
-├── functions/        # Supabase Edge Functions and shared Deno helpers
-├── migrations/       # Postgres schema, RLS, functions, triggers, data fixes
-├── config.toml       # Hosted Supabase settings (Auth, Storage, API config)
-└── email-templates/  # Auth email templates
-
-server/
-└── server.ts         # Bun runtime SSR server for serving dist/ and OG/Twitter tags
-
-wrangler.jsonc        # Cloudflare Workers/Assets config for static SPA deploys
-```
-
----
-
-## Module Responsibilities
-
-### `src/entities/[domain]/`
-
-Domain-focused modules. Responsibilities:
-
-- **Domain types**: TypeScript interfaces and types for the domain
-- **Query keys**: TanStack Query key factories (`[domain].keys.ts`)
-- **API functions**: Direct Supabase calls (`[domain].api.ts`)
-  - Select relations up front (avoid N+1 queries)
-  - Throw or handle errors explicitly
-  - Use `getSupabaseErrorMessage()` for readable errors
-  - Invoke Edge Functions via `invokeEdgeFunction()` helper
-
-**Example files:**
-- `src/entities/video/video.api.ts` — Fetch video, list videos, etc.
-- `src/entities/video/video.keys.ts` — Query key factories
-- `src/entities/video/video.types.ts` — Video domain types
-
-### `src/features/[domain]/`
-
-Feature-level orchestration. Responsibilities:
-
-- **Query/mutation hooks**: Feature-specific uses of entity API (via TanStack Query)
-- **State orchestration**: Multi-entity state coordination
-- **Business logic**: Feature-specific validation, transformation
-
-**Example files:**
-- `src/features/videos/queries/useVideoList.ts` — List videos with filters
-- `src/features/playlists/mutations/useCreatePlaylist.ts` — Create playlist hook
-
-### `src/components/[domain]/`
-
-UI components organized by domain. Responsibilities:
-
-- **Provider-agnostic**: Keep components independent of specific data sources
-- **Domain-specific components**: Group by concern (video, comment, auth, etc.)
-- **Shared UI**: Primitives and base components in `components/ui/`
-
-**Example files:**
-- `src/components/video/VideoCard.tsx` — Video display component
-- `src/components/comment/CommentForm.tsx` — Comment input form
-- `src/components/ui/Dialog.tsx` — shadcn/ui Dialog primitive
-
-### `src/shared/`
-
-Cross-domain utilities. Do not add domain-specific logic here.
-
-**Key modules:**
-- `src/shared/lib/validation.ts` — Centralized Zod schemas (email, password, etc.)
-- `src/shared/lib/format.ts` — Format utilities (dates, durations, numbers)
-- `src/shared/api/supabase/supabaseClient.ts` — Shared Supabase client instance
-- `src/shared/api/supabase/edgeFunctions.ts` — Edge Function invocation helper
-- `src/shared/api/supabase/supabaseErrors.ts` — Error handling utilities
-- `src/shared/test/` — Test setup, MSW handlers, test utilities
-
-### `src/pages/`
-
-Route-level page components. Responsibilities:
-
-- Top-level route layout
-- Connect to feature hooks
-- Pass data to components
-
-**Example files:**
-- `src/pages/Index.tsx` — Home page
-- `src/pages/Favorites.tsx` — Favorites page
-- `src/pages/Auth.tsx` — Authentication page
-
-All routes are lazy-loaded. Register new routes in [src/App.tsx](../src/App.tsx) with `React.lazy()`.
-
-### `src/i18n/`
-
-Internationalization setup and translation resources.
-
-- `src/i18n/config.ts` — i18n initialization
-- `src/i18n/locales/pt.json` — Portuguese translations
-- `src/i18n/locales/en.json` — English translations
-- `src/i18n/locales/{es,fr}.json` — Additional language translations
-
-**Convention:** Keep locale files aligned. When adding a translation key, update all 4 language files.
-
-### `supabase/functions/`
-
-Serverless functions (Deno runtime). Responsibilities:
-
-- Backend compute for expensive operations
-- External API integrations
-- Webhook handlers
-- Rate limiting (after auth, before expensive work)
-
-**Conventions:**
-- Use `verify_jwt = true` for user-triggered functions
-- Use shared helpers from `_shared/http.ts` for CORS/JSON responses
-- Keep service-role operations isolated here (never expose keys to frontend)
-
-### `supabase/migrations/`
-
-Database schema as code. Responsibilities:
-
-- Postgres schema (tables, columns, indexes)
-- Row-Level Security (RLS) policies
-- Triggers, functions, views
-- Data migrations and backfills
-
-**Convention:** Use descriptive names (`20250601000000_add_video_enrichment_table.sql`).
-
----
-
-## Key Patterns & Conventions
-
-### Validation (DRY)
-
-Always reuse schemas from `src/shared/lib/validation.ts`:
-
-```typescript
-import { emailSchema, passwordSchema, usernameSchema } from '@/shared/lib/validation';
-
-// ✓ Reuse
-const form = useForm({ resolver: zodResolver(emailSchema) });
-
-// ✗ Don't define locally
-const localEmailSchema = z.string().email();
-```
-
-### Server State (TanStack Query)
-
-Do not fetch directly in components. Use feature query hooks:
-
-```typescript
-// ✓ Use query hooks
-const { data, isLoading } = useVideoList();
-
-// ✗ Don't fetch in component
-const [video, setVideo] = useState(null);
-useEffect(() => {
-  supabase.from('videos').select().then(setVideo);
-}, []);
-```
-
-### API Calls
-
-Centralize Supabase access in entity API modules:
-
-```typescript
-// src/entities/video/video.api.ts
-export const fetchVideo = async (id: string) => {
-  const { data, error } = await supabase
-    .from('videos')
-    .select('*, category(*)')
-    .eq('id', id)
-    .single();
-
-  if (error) throw new Error(getSupabaseErrorMessage(error));
-  return data;
-};
-
-// src/features/videos/queries/useVideo.ts
-export const useVideo = (id: string) => {
-  return useQuery({
-    queryKey: video.keys.detail(id),
-    queryFn: () => fetchVideo(id),
-  });
-};
-```
-
-### Edge Function Invocation
-
-Use the helper, don't call `supabase.functions.invoke` directly:
-
-```typescript
-import { invokeEdgeFunction } from '@/shared/api/supabase/edgeFunctions';
-
-const result = await invokeEdgeFunction('enrich-video', { videoId: '123' });
-```
-
-### UI & Styling
-
-Prefer shadcn/ui primitives. Use Tailwind utilities for styling:
-
-```typescript
-// ✓ Use primitives + Tailwind
-<Button className={cn('px-4 py-2', isDanger && 'bg-red-600')} />
-
-// ✗ Don't add custom CSS when Tailwind is available
-<button style={{ padding: '8px 16px' }} />
-```
-
-**File convention:**
-- `src/lib/utils.ts` — Only shadcn/ui utilities like `cn()`
-- `src/shared/lib/` — All other shared utilities (format, image, slug, etc.)
-
-### Forms
-
-Use React Hook Form + Zod:
-
-```typescript
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { emailSchema } from '@/shared/lib/validation';
-
-const { register, formState: { errors } } = useForm({
-  resolver: zodResolver(emailSchema),
-});
-```
-
-### Localization
-
-Use i18n keys. Don't hard-code user-facing strings:
-
-```typescript
-// ✓ Use translation keys
-<h1>{t('home.title')}</h1>
-
-// ✗ Don't hard-code
-<h1>Welcome to Tube O2</h1>
-```
-
-Keep all 4 locale files aligned when adding keys.
-
-### Imports
-
-Use alias imports with `@/`:
-
-```typescript
-// ✓ Alias import
-import { emailSchema } from '@/shared/lib/validation';
-
-// ✗ Relative imports (hard to follow when deep)
-import { emailSchema } from '../../../shared/lib/validation';
-```
-
----
-
-## Global Providers
-
-All context providers (QueryClient, Auth, i18n, ThemeProvider, Helmet, Toasts) are initialized in:
-
-**[src/app/providers/AppProviders.tsx](../src/app/providers/AppProviders.tsx)**
-
-Do not add providers to `main.tsx` or component files. Follow the pattern in `AppProviders.tsx`.
-
----
-
-## Frontend Guardrails
-
-- Keep UI components provider-agnostic; put data access in entity/API modules
-- Reuse shared validation instead of redefining schemas
-- Keep locale files aligned when adding user-facing strings
-- Avoid creating extra Supabase clients; use the shared client
-- Do not reintroduce legacy local catalog mock fallbacks
-- Preserve current branding: Tube O2 / Open 2 Technology (not Monynha)
-
-## Supabase Operational Guardrails
-
-- Treat `supabase/config.toml` as deployment-as-code
-- Confirm CLI diff before running `bunx supabase config push`
-- Keep auth settings intact (site_url, redirects, MFA, email confirmations)
-- Edge Functions should use `verify_jwt = true` for user-triggered operations
-- Avoid wildcard CORS unless explicitly needed for public endpoints
-- In Vitest: avoid opening realtime sockets; mock or guard with `import.meta.env.MODE === 'test'`
-
----
-
-## Testing
-
-- **Vitest** + React Testing Library for component and unit tests
-- **Playwright** for E2E tests
-- Tests live alongside source files: `FileName.test.tsx`
-- Shared test setup in `src/shared/test/setup.ts`
-- MSW handlers in `src/shared/test/mswHandlers.ts` for API mocking
-
-Run tests with:
-```bash
-bun run test                 # All tests
-bun run test -- <pattern>    # Targeted tests
-bun run test:coverage        # Coverage report
-bun run test:e2e             # E2E tests
-```
-
----
-
-## Deployment Notes
-
-Cloudflare Workers/Assets deploys should build with Bun and publish the generated `dist/` directory through Wrangler:
-
-```bash
-bun install --frozen-lockfile
-bun run build
-bunx wrangler deploy
-```
-
-Docker deploys use the Bun runtime server in `server/server.ts`. Use this path when the deployment must inject dynamic OG/Twitter metadata into `/videos/:id` HTML before the client app hydrates.
-
----
-
-## Common Pitfalls
-
-| ❌ Pitfall | ✅ Solution |
-|-----------|-----------|
-| Duplicate validation logic | Reuse `src/shared/lib/validation.ts` schemas |
-| Fetch directly in components | Use feature query hooks (TanStack Query) |
-| Add custom CSS | Use Tailwind utilities + shadcn/ui |
-| Forget to invalidate queries | Invalidate related keys after mutations |
-| Mutable query keys | Use key factories from `src/entities/*/` |
-| Bypass RLS in mutations | Respect row-level security constraints |
-| Put utils in `src/lib/` | Use `src/shared/lib/` for business logic |
-| Call `supabase.functions.invoke` directly | Use `invokeEdgeFunction()` helper |
-| Hard-code user strings | Use i18n keys + keep locales aligned |
-| Run `supabase config push --yes` | Inspect diff; confirm each prompt |
-
----
-
-## Adding New Features
-
-1. **Create entity module** — `src/entities/[domain]/` with types, API, query keys
-2. **Create feature module** — `src/features/[domain]/` with query/mutation hooks
-3. **Create components** — `src/components/[domain]/` for UI
-4. **Create page** — `src/pages/FeatureName.tsx` and register in `src/App.tsx`
-5. **Add translations** — Update all 4 locale files in `src/i18n/locales/`
-
----
-
-## For More Information
-
-- **Quick Start & Commands**: [AGENTS.md](../AGENTS.md)
-- **Tech Stack & Runtime**: [README.md](../README.md)
-- **Frontend Rules**: [.github/instructions/frontend.instructions.md](../.github/instructions/frontend.instructions.md)
-- **Backend Rules**: [.github/instructions/backend.instructions.md](../.github/instructions/backend.instructions.md)
-- **Design System**: [docs/visual-elevation.md](./visual-elevation.md)
-- **Team Rules**: [AI_RULES.md](../AI_RULES.md)
+# Frontend FACODI
+
+React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../README.md).
+
+## Camadas
+
+- [src/App.tsx](../src/App.tsx): rotas lazy e guardas de acesso.
+- [src/app/providers](../src/app/providers): QueryClient, i18n, Auth, tema, metadata e notificações.
+- [src/integrations/supabase](../src/integrations/supabase): cliente único e tipos
+  gerados do schema remoto `facodi`, reexportados pelo módulo shared.
+- [src/entities/course](../src/entities/course): tipos, APIs e keys do catálogo,
+  incluindo as unidades e os objetos educativos associados.
+- [src/entities/facodi](../src/entities/facodi): autorização por `app_metadata.role`.
+- [src/entities/auth](../src/entities/auth): chamadas ao Supabase Auth nativo.
+- [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
+  invalidação de cache na mudança de identidade/papel.
+- [src/features/courses/queries](../src/features/courses/queries): TanStack Query
+  para catálogo público, conteúdo editorial e contagens administrativas.
+- [src/components](../src/components): apresentação, formulários e primitivas shadcn.
+- [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
+- [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
+  centralizada com Zod; formulários usam React Hook Form.
+- [src/i18n/locales](../src/i18n/locales): quatro idiomas, um único conjunto de keys.
+
+Consultas públicas têm filtros explícitos mesmo em sessões editoriais.
+Consultas editoriais têm keys com identidade, cancelamento e limpeza de cache.
+Writes exigem uma linha devolvida; uma atualização sem linha não é tratada como
+sucesso. Apenas publicação/arquivamento mudam estados; edição não apaga campos
+avançados que não estejam no formulário.
+
+HTML é sanitizado com DOMPurify e allowlist de elementos de texto, sem scripts,
+frames, estilos ou eventos. Links para recursos externos só aceitam HTTP(S).
+
+## Verificação
+
+Testes co-localizados cobrem rotas/papéis, hidratação e limpeza de cache,
+contratos Data API, validação, navegação e HTML. MSW simula respostas HTTP,
+sem necessidade de utilizadores remotos. Playwright cobre navegação e
+responsividade. Estes testes não substituem a matriz RLS com sessões reais.
+
+## Histórico
+
+O frontend social Tube O2 e o adaptador Odoo foram retirados da árvore ativa.
+Documentos em `docs/features/facodi-curriculum*`, assets antigos e o servidor
+de metadata descrevem a integração anterior, não a arquitetura FACODI atual.
+Não executar/publicar configurações históricas em produção.

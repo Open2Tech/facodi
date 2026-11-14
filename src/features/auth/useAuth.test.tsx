@@ -1,12 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { act, screen, render, renderHook } from '@testing-library/react';
+import { act, screen, render as rtlRender, renderHook } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { ReactNode } from 'react';
 import { AuthProvider, useAuth } from './useAuth';
 
 const signInWithEmailMock = vi.fn();
 const signUpWithEmailMock = vi.fn();
 const signOutUserMock = vi.fn();
 
-vi.mock('./auth.api', () => ({
+vi.mock('@/entities/auth/auth.api', () => ({
   signInWithEmail: (...args: unknown[]) => signInWithEmailMock(...args),
   signUpWithEmail: (...args: unknown[]) => signUpWithEmailMock(...args),
   signOutUser: () => signOutUserMock(),
@@ -14,6 +16,11 @@ vi.mock('./auth.api', () => ({
 
 const onAuthStateChangeMock = vi.fn();
 const getSessionMock = vi.fn();
+let queryClient: QueryClient;
+
+function render(ui: ReactNode) {
+  return rtlRender(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
+}
 
 vi.mock('@/shared/api/supabase/supabaseClient', () => ({
   supabase: {
@@ -25,13 +32,14 @@ vi.mock('@/shared/api/supabase/supabaseClient', () => ({
 }));
 
 function TestConsumer() {
-  const { user, session, loading, signIn } = useAuth();
+  const { user, session, loading, signIn, role } = useAuth();
 
   return (
     <div>
       <span>{loading ? 'loading' : 'ready'}</span>
       <span>{user?.email ?? 'no-user'}</span>
       <span>{session?.access_token ?? 'no-token'}</span>
+      <span>{role}</span>
       <button type="button" onClick={() => signIn('test@example.com', 'secret')}>
         sign-in
       </button>
@@ -40,6 +48,7 @@ function TestConsumer() {
 }
 
 beforeEach(() => {
+  queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   onAuthStateChangeMock.mockReset();
   getSessionMock.mockReset();
   signInWithEmailMock.mockReset();
@@ -148,5 +157,24 @@ describe('useAuth', () => {
 
     unmount();
     expect(unsubscribe).toHaveBeenCalledOnce();
+  });
+
+  it('clears private queries and mutations on logout, identity change and role downgrade, but not token renewal', () => {
+    render(<AuthProvider><TestConsumer /></AuthProvider>);
+    const notify = onAuthStateChangeMock.mock.calls[0][0];
+    act(() => notify('INITIAL_SESSION', { user: { id: 'alice', app_metadata: { role: 'editor' } } }));
+    queryClient.setQueryData(['facodi', 'private', 'alice'], ['draft']);
+    act(() => notify('TOKEN_REFRESHED', { user: { id: 'alice', app_metadata: { role: 'editor' } }, access_token: 'fresh' }));
+    expect(queryClient.getQueryData(['facodi', 'private', 'alice'])).toEqual(['draft']);
+    act(() => notify('USER_UPDATED', { user: { id: 'alice', app_metadata: { role: 'unknown' } } }));
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(0);
+    expect(screen.getByText('user')).toBeInTheDocument();
+    queryClient.setQueryData(['private'], 'alice');
+    act(() => notify('SIGNED_IN', { user: { id: 'bob', app_metadata: {} } }));
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(0);
+    queryClient.setQueryData(['private'], 'bob');
+    act(() => notify('SIGNED_OUT', null));
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(0);
+    expect(queryClient.getMutationCache().getAll()).toHaveLength(0);
   });
 });

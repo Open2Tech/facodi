@@ -1,3 +1,10 @@
+# Histórico — integração Odoo desativada no frontend
+
+Este documento descreve o fluxo anterior. O frontend FACODI atual consulta
+exclusivamente o schema Supabase `facodi`, sem Odoo nem esta Edge Function.
+Não executar os passos de deployment abaixo para a aplicação atual.
+Consultar [README](../../README.md).
+
 # FACODI curriculum frontend (isolated pilot)
 
 The new `/facodi/knowledge` route belongs to the existing Tube O2 React SPA. It is **not** a replacement for `/facodi`, the current playlist experience, or the FACODI Odoo Learning add-on. This feature is isolated on a branch originating from `facodi` and must not be merged/deployed to `marcelo-m7.com` or Tube O2 production without separate regression and operational approval.
