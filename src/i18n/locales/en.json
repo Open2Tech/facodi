@@ -190,7 +190,9 @@
       "error": {
         "passwordMismatch": "The passwords do not match."
       }
-    }
+    },
+    "resendConfirmation": "Resend confirmation",
+    "resendSent": "If confirmation can be resent, a new link will arrive by email."
   },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
