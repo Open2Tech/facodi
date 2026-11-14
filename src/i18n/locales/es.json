@@ -199,7 +199,8 @@
     "catalog": "Descubre cursos y recursos educativos publicados.",
     "account": "Actualiza el nombre, el email y la contraseña de tu cuenta.",
     "editor": "Prepara, publica y archiva contenidos educativos.",
-    "admin": "Consulta los estados y las cifras del catálogo."
+    "admin": "Consulta los estados y las cifras del catálogo.",
+    "shortcuts": "Tus accesos directos"
   },
   "profile": {
     "description": "Los datos de tu cuenta se gestionan con Supabase Auth.",
@@ -403,13 +404,17 @@
     "videoCount_one": "{{count}} vídeo publicado, en el orden de estudio sugerido.",
     "videoCount_many": "{{count}} vídeos publicados, en el orden de estudio sugerido.",
     "videoCount_other": "{{count}} vídeos publicados, en el orden de estudio sugerido.",
-    "openVideoPage": "Abrir página del vídeo"
+    "openVideoPage": "Abrir página del vídeo",
+    "videoChip_one": "{{count}} vídeo",
+    "videoChip_many": "{{count}} vídeos",
+    "videoChip_other": "{{count}} vídeos"
   },
   "objectTypes": {
     "video": "Vídeo",
     "document": "Documento",
     "course": "Curso",
-    "curricular_unit": "Unidad curricular"
+    "curricular_unit": "Unidad curricular",
+    "external_resource": "Referencia externa"
   },
   "video": {
     "play": "Reproducir vídeo: {{title}}",

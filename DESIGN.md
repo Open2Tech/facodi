@@ -10,8 +10,12 @@ animated social feed.
 - Accents (`brand-*` tokens): cyan `#37BED2`, mint `#A7E8BE`, orange `#FFAE33`,
   pink `#FF70A6`, coral `#FF8A7A` are fills that always carry navy text
   (≥5.7:1). Blue `#3979C8` is for non-text marks only (3.3:1 with navy).
-  Content types keep one colour: courses sun, units orange, videos pink,
-  resources cyan, "has resource" mint.
+  Content types keep one colour and icon, defined once in
+  `src/components/catalog/contentTone.ts` and shown with `TypeBadge`: courses
+  sun, units orange, videos pink, external references cyan, documents mint,
+  unknown types coral. The colour is decorative; the label always names the type.
+- Chips, facets and badges are square like everything else; an active facet
+  uses the sun fill.
 - Ink surfaces (`bg-ink text-ink-foreground`): footer, method band and
   thumbnail banners, opened by a 4px sun top rule. Sun text is allowed on ink.
   Never use `bg-black`, `neutral-*` or `text-white` directly.

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
@@ -14,6 +14,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
 import { cn } from '@/lib/utils';
+import { TypeBadge } from '@/components/catalog/TypeBadge';
+
+const FACT_ICONS: Record<string, LucideIcon> = {
+  code: Hash, ects: Award, yearLabel: Calendar, semesterLabel: CalendarRange, language: Languages, institution: Building2,
+};
 
 export default function UnitDetails() {
   const { slug = '', unit: unitSlug = '' } = useParams();
@@ -63,6 +68,12 @@ export default function UnitDetails() {
       </ol>
     </nav>
     <header className="border-b border-foreground pb-10">
+      <p className="mb-5 flex flex-wrap items-center gap-2">
+        <TypeBadge type="curricular_unit" label={t('objectTypes.curricular_unit')} className="border border-foreground" />
+        {!!videoList.length && <a href="#unit-resources" className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
+          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{t('unit.videoChip', { count: videoList.length })}
+        </a>}
+      </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
       <p className="mt-5 text-lg">
         <Link to={`/courses/${course.slug}`} className="font-semibold underline decoration-2 underline-offset-4">{course.title}</Link>
@@ -103,6 +114,7 @@ export default function UnitDetails() {
                   {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
                     <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
                       className="group flex h-full flex-col gap-2 border border-input p-5 transition-colors hover:border-foreground">
+                      <span className="grid h-8 w-8 place-items-center bg-brand-cyan text-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
                       <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
                       {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
                       <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
@@ -175,9 +187,9 @@ export default function UnitDetails() {
         </section>}
       </div>
       <aside aria-labelledby="unit-facts" className="self-start border border-input lg:sticky lg:top-28">
-        <h2 id="unit-facts" className="border-b border-input bg-muted px-5 py-3 text-sm font-semibold">{t('unit.facts')}</h2>
+        <h2 id="unit-facts" className="border-b border-foreground bg-brand-orange px-5 py-3 text-sm font-semibold text-ink">{t('unit.facts')}</h2>
         <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
-          <dt className="text-muted-foreground">{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
+          <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
         </div>)}</dl>
         <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">{t('unit.allInCourse')}<ArrowRight className="h-4 w-4" /></Link>
       </aside>

@@ -7,6 +7,7 @@ import { useChannelVideos, useResource, useResourceContext } from '@/features/co
 import { useContributePath } from '@/features/auth/useContributePath';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video';
+import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { VideoCard } from '@/components/resource/VideoCard';
@@ -89,7 +90,7 @@ export default function ResourceDetails() {
     <header className="grid gap-8 border-b border-foreground pb-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
       <div className="min-w-0">
         <ul className="mb-5 flex flex-wrap gap-2 font-mono text-xs uppercase">
-          <li className="border border-foreground bg-primary px-2 py-1 text-primary-foreground">{typeLabel}</li>
+          <li><TypeBadge type={resource.object_type} label={typeLabel} className="border border-foreground" /></li>
           {info.durationSeconds && <li className="inline-flex items-center gap-1.5 border border-input px-2 py-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" /><time dateTime={isoDuration(info.durationSeconds)}>{formatDuration(info.durationSeconds)}</time></li>}
           {resource.language && <li lang={resource.language} className="border border-input px-2 py-1">{resource.language}</li>}
           {primary?.ects != null && <li className="border border-input px-2 py-1">{primary.ects} ECTS</li>}
