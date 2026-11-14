@@ -61,6 +61,6 @@ As páginas seguem o design FACODI com uma voz mais humana e têm traduções em
 
 O CI do GitHub passou em lint, TypeScript, testes, validação de templates de email e build: https://github.com/Open2Tech/facodi/actions/runs/43643930959 .
 
-Os limites diários de builds da Vercel foram atingidos; a última revisão disponível em produção era anterior aos commits desta implementação. O deploy das páginas atuais deve ser confirmado por SHA de commit, e não presumido.
+**Publicação verificada após as alterações:** a Vercel apresentou o commit a71dc0d8b32cdce6f7e5390d54d628022ddb8142 como READY em produção. Uma leitura independente de https://facodi.vercel.app/about e https://facodi.vercel.app/community confirmou a presença de Marcelo Santos, Corvanis, Monynha, SEA-EU, cronologia e formas de contribuição. O ficheiro README poderá receber commits posteriores; confirmar sempre o SHA efetivamente publicado antes de anunciar alterações futuras. A área /editor/project-credits requer login de editor e ainda não foi testada com uma conta real.
 
 Faltam teste autenticado com editor real, validação responsiva após deploy e confirmação voluntária dos créditos pessoais. **Nenhum contacto foi publicado ou contactado em massa.** A inclusão de futuros logótipos e fotografias exige revisão de direitos de utilização.
