@@ -36,7 +36,8 @@
     "notFound": "Ce chemin ne mène encore nulle part.",
     "notFoundDescription": "Ce contenu n'existe pas ou n'est pas disponible. Explorez le catalogue pour trouver un autre point de départ.",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "notFoundPaths": "Autres points de départ"
   },
   "home": {
     "campus": "Un campus numérique ouvert",
@@ -263,7 +264,13 @@
     "archived": "Archivé",
     "other": "Autres états",
     "flag": "published=true",
-    "visibility": "L'indicateur published ne garantit pas à lui seul la visibilité : l'état, le cours associé et les politiques RLS s'appliquent aussi."
+    "visibility": "L'indicateur published ne garantit pas à lui seul la visibilité : l'état, le cours associé et les politiques RLS s'appliquent aussi.",
+    "composition": "Répartition par état",
+    "table": "Décomptes détaillés",
+    "empty": "Aucun contenu",
+    "items_one": "{{count}} élément",
+    "items_many": "{{count}} éléments",
+    "items_other": "{{count}} éléments"
   },
   "validation": {
     "required": "Remplissez ce champ.",

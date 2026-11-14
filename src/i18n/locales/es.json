@@ -36,7 +36,8 @@
     "notFound": "Este camino todavía no lleva a ninguna parte.",
     "notFoundDescription": "El contenido no existe o no está disponible. Explora el catálogo para encontrar otro punto de partida.",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "notFoundPaths": "Otros puntos de partida"
   },
   "home": {
     "campus": "Un campus digital abierto",
@@ -263,7 +264,13 @@
     "archived": "Archivado",
     "other": "Otros estados",
     "flag": "published=true",
-    "visibility": "El indicador published no garantiza por sí solo la visibilidad: también se aplican el estado, el curso asociado y las políticas RLS."
+    "visibility": "El indicador published no garantiza por sí solo la visibilidad: también se aplican el estado, el curso asociado y las políticas RLS.",
+    "composition": "Composición por estado",
+    "table": "Recuentos detallados",
+    "empty": "Sin contenido",
+    "items_one": "{{count}} elemento",
+    "items_many": "{{count}} elementos",
+    "items_other": "{{count}} elementos"
   },
   "validation": {
     "required": "Completa este campo.",
