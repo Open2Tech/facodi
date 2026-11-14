@@ -95,7 +95,7 @@ Teste de leitura com papel `anon` após enriquecimento: **1 curso, 41 UCs, 123 o
 - Criada `facodi.course_curriculum_archives`, com RLS ativada, política pública apenas para arquivo publicado de curso ativo e política de escrita restrita a editores FACODI.
 - Importado e publicado o **plano oficial 2025/26** com **46 UCs/ofertas distintas**, incluindo uma UC anual e duas famílias de alternativas. O percurso académico de referência continua a somar **180 ECTS**, escolhendo as opções, não todas as alternativas.
 - **Comparação estritamente por código:** 10 códigos comuns, 36 encontrados apenas em 2025/26 e 31 encontrados apenas em 2026/27. Não implica equivalência, substituição ou creditação académica.
-- A página pública de Gestão apresenta a tabela histórica por ano e semestre, expandível, com fonte UAlg e nota expressa sobre equivalências.
+- A componente de consulta do histórico foi **implementada na branch `facodi`** (anos, semestres, opções, créditos e comparação por código). **O novo frontend ainda não foi confirmado em produção**: a Vercel devolveu erro `402 api-deployments-free-per-day`, quota diária de mais de 100 deployments. O arquivo já está publicado na API Supabase e a descrição textual no site é atualizada pela base de dados.
 - O plano corrente 2026/27 mantém as suas **41 UCs**, sem incorporação dos códigos antigos como unidades ativas.
 
 ### Acesso ao curso 2026/27
@@ -115,3 +115,11 @@ A nova tabela não expõe escrita ao público, e os objetivos/competências cont
 3. Há 11 UCs com pelo menos um vídeo selecionado pelo título/canal. As 30 restantes continuam navegáveis com atividade prática, objetivos e leituras externas.
 4. Não foram simuladas inscrições, progresso de alunos, classificações produzidas por IA ou playlists submetidas por utilizadores.
 5. A pertinência dos 56 vídeos distintos foi inferida de metadados de origem: revisão integral, legendas, direitos de incorporação e disponibilidade regional continuam por confirmar.
+
+## Estado de implantação em 14/11/2026
+
+- **Supabase — concluído:** todas as migrações deste lote aplicadas e verificadas. As 41 UCs, 123 competências, 123 objetivos associados e o arquivo 2025/26 passam nos testes RLS anónimos.
+- **GitHub — concluído:** migrations, tipos Supabase, componente React e traduções PT/EN/ES/FR commitados na branch `facodi`.
+- **Vercel — limitador externo:** o pedido de build preview para o commit deste lote foi recusado com `402 payment_required` (`api-deployments-free-per-day`, mais de 100 deployments no dia, `retryAfter=86400`). O último deploy de produção verificado correspondia a commit anterior `f815be51358a5b82680b9d14b18f48eaa7d8545c`.
+- **Não atribuir ao frontend já publicado** a nova tabela histórica até se confirmar um deployment posterior com commit atualizado; a apresentação do curso e o conteúdo HTML das UCs servidos via Supabase são visíveis independentemente do build.
+- **Atenção:** não forçar outro deployment nem alterar plano/faturação sem pedido do utilizador. Fazer deploy após restabelecimento da quota e verificar a página do curso, o carregamento de `course_curriculum_archives` e a tabela histórica.
