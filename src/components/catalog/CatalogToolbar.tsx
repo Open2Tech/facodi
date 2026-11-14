@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Input } from '@/components/ui/input';
+import { SearchInput } from '@/components/catalog/SearchInput';
 
 const LANGUAGES = [['pt', 'Português'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français']] as const;
 
@@ -9,7 +9,7 @@ export function CatalogToolbar({ search, language, onFilter, withLanguage = true
   const { t } = useTranslation();
   return <div className="mb-8 mt-9 flex flex-col gap-5 border-t border-input pt-5 sm:flex-row">
     <label className="flex-1 space-y-2 text-sm font-medium"><span className="block">{t('catalog.search')}</span>
-      <Input type="search" value={search} onChange={e => onFilter('search', e.target.value)} placeholder={t('catalog.searchPlaceholder')} />
+      <SearchInput value={search} onSearch={value => onFilter('search', value)} placeholder={t('catalog.searchPlaceholder')} />
     </label>
     {withLanguage && <label className="space-y-2 text-sm font-medium"><span className="block">{t('common.language')}</span>
       <select className="h-10 w-full rounded-md border border-input bg-background px-3 sm:w-48" value={language} onChange={e => onFilter('language', e.target.value)}>

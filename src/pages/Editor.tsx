@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookOpenCheck, Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowUpRight, BookOpenCheck, Plus } from 'lucide-react';
 import { EDITORIAL_STATUSES, type Content, type ContentKind, type EditorialStatus } from '@/entities/course/course.types';
 import { useContentMutations, useEditorial, useObjectTypeFacets } from '@/features/courses/queries/useCourses';
 import { ContentForm } from '@/components/editorial/ContentForm';
@@ -9,22 +9,43 @@ import { StateSwatch, StatusBadge } from '@/components/editorial/StatusBadge';
 import { kindTone } from '@/components/catalog/contentTone';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { Pagination } from '@/components/course/Pagination';
+import { SearchInput } from '@/components/catalog/SearchInput';
 import { PageState } from '@/components/layout/PageState';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 
 const kinds: ContentKind[] = ['courses', 'curricular_units', 'learning_objects'];
+type EditorParam = 'kind' | 'status' | 'type' | 'search' | 'page';
+
+/** Public route of an item the catalogue already shows; units are reached through their course page. */
+function publicPath(kind: ContentKind, item: Content) {
+  if (!item.published) return null;
+  if (kind === 'courses' && item.status === 'active') return `/courses/${item.slug}`;
+  if (kind === 'learning_objects' && (item.status === 'active' || item.status === 'published')) return `/resources/${item.slug}`;
+  return null;
+}
+
 export default function Editor() {
   const { t } = useTranslation();
-  const [kind, setKind] = useState<ContentKind>('courses');
-  const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
-  const [status, setStatus] = useState<EditorialStatus | undefined>();
-  const [objectType, setObjectType] = useState<string | undefined>();
+  const [params, setParams] = useSearchParams();
+  const kind = kinds.find(value => value === params.get('kind')) ?? 'courses';
+  const status: EditorialStatus | undefined = EDITORIAL_STATUSES.find(value => value === params.get('status'));
+  const objectType = kind === 'learning_objects' ? params.get('type') || undefined : undefined;
+  const search = params.get('search') ?? '';
+  const page = Math.max(1, Math.floor(Number(params.get('page'))) || 1);
+  function update(values: Partial<Record<EditorParam, string | undefined>>, base = params) {
+    const next = new URLSearchParams(base);
+    for (const [key, value] of Object.entries(values)) {
+      if (value) next.set(key, value);
+      else next.delete(key);
+    }
+    if (!('page' in values)) next.delete('page');
+    setParams(next, { replace: true });
+  }
+  const setPage = (value: number) => update({ page: value > 1 ? String(value) : undefined });
   const [editing, setEditing] = useState<Content | 'new' | null>(null);
   const [confirmation, setConfirmation] = useState<{ item: Content; action: 'publish' | 'archive' | 'draft' } | null>(null);
   const query = useEditorial(kind, { page, search, language: '', status, objectType });
@@ -38,7 +59,7 @@ export default function Editor() {
     </div>
     <Tabs value={kind} onValueChange={value => {
       const selectedKind = kinds.find(kind => kind === value);
-      if (selectedKind) { setKind(selectedKind); setPage(1); setSearch(''); setStatus(undefined); setObjectType(undefined); resetForm(); publish.reset(); }
+      if (selectedKind) { update({ kind: selectedKind === 'courses' ? undefined : selectedKind }, new URLSearchParams()); resetForm(); publish.reset(); }
     }}>
       <TabsList className="h-auto flex-wrap justify-start gap-1">{kinds.map(item => {
         const { icon: Icon } = kindTone(item);
@@ -50,10 +71,10 @@ export default function Editor() {
       catch { /* The mutation error is rendered beside the form. */ }
     }} /> : <>
       <div className="mt-7 flex flex-wrap items-end gap-x-6 gap-y-4">
-        <label className="block w-full max-w-lg space-y-2 text-sm font-medium"><span>{t('catalog.search')}</span><Input type="search" value={search} onChange={event => { setSearch(event.target.value); setPage(1); }} /></label>
+        <label className="block w-full max-w-lg space-y-2 text-sm font-medium"><span>{t('catalog.search')}</span><SearchInput value={search} onSearch={value => update({ search: value })} /></label>
         {kind === 'learning_objects' && <div className="w-full space-y-2 text-sm font-medium sm:w-64">
           <span id="editor-type-label">{t('editor.typeFilter')}</span>
-          <Select value={objectType ?? 'all'} onValueChange={value => { setObjectType(value === 'all' ? undefined : value); setPage(1); }}>
+          <Select value={objectType ?? 'all'} onValueChange={value => update({ type: value === 'all' ? undefined : value })}>
             <SelectTrigger aria-labelledby="editor-type-label"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t('editor.allTypes')}</SelectItem>
@@ -66,8 +87,7 @@ export default function Editor() {
         <p id="editor-status-label" className="text-sm font-medium">{t('editor.statusFilter')}</p>
         <ToggleGroup type="single" aria-labelledby="editor-status-label" variant="outline" className="flex-wrap justify-start" value={status ?? 'all'} onValueChange={value => {
           if (!value) return;
-          setStatus(EDITORIAL_STATUSES.find(state => state === value));
-          setPage(1);
+          update({ status: value === 'all' ? undefined : value });
         }}>
           <ToggleGroupItem value="all">{t('editor.allStates')}</ToggleGroupItem>
           {EDITORIAL_STATUSES.map(state => <ToggleGroupItem key={state} value={state} className="gap-2">
@@ -90,6 +110,10 @@ export default function Editor() {
               </div>
               <h2 className="break-words text-xl font-semibold">{item.title}</h2>
               <p className="mt-2 text-sm text-muted-foreground">{t(item.published ? 'editor.flagPublished' : 'editor.flagUnpublished')} · {item.language}{'source_type' in item && <> · {t('editor.origin', { source: item.source_type })}</>}</p>
+              {(() => {
+                const path = publicPath(kind, item);
+                return path && <Link to={path} aria-label={`${t('editor.viewPublic')}: ${item.title}`} className="mt-3 inline-flex items-center gap-1 text-sm font-medium underline decoration-foreground/40 underline-offset-4 hover:decoration-foreground">{t('editor.viewPublic')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>;
+              })()}
             </div>
             <div className="flex shrink-0 flex-wrap gap-2">
               <Button variant="outline" onClick={() => { save.reset(); setEditing(item); }}>{t('common.edit')}</Button>

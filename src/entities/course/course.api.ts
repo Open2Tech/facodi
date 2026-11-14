@@ -191,15 +191,18 @@ export async function getResource(slug: string, signal?: AbortSignal) {
 }
 
 export async function listEditorial(kind: ContentKind, { page, search, status, objectType }: CatalogParams, signal?: AbortSignal) {
-  const pattern = searchPattern(search);
-  const byType = <Q extends { filter: (column: string, operator: string, value: string) => Q }>(query: Q) =>
-    objectType && kind === 'learning_objects' ? query.filter('object_type', 'eq', objectType) : query;
-  let query = byType(supabase.from(kind).select('*', { count: 'exact' }).ilike('title', pattern));
+  // Shared by the list and the per-state counts; an empty search adds no title filter.
+  const scope = <Q extends { filter: (column: string, operator: string, value: string) => Q; ilike: (column: string, pattern: string) => Q }>(query: Q) => {
+    let scoped = search.trim() ? query.ilike('title', searchPattern(search)) : query;
+    if (objectType && kind === 'learning_objects') scoped = scoped.filter('object_type', 'eq', objectType);
+    return scoped;
+  };
+  let query = scope(supabase.from(kind).select('*', { count: 'exact' }));
   if (status) query = query.eq('status', status);
   const [list, ...counts] = await Promise.all([
     query.order('updated_at', { ascending: false }).order('id')
       .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal),
-    ...EDITORIAL_STATUSES.map(state => byType(supabase.from(kind).select('id', { count: 'exact', head: true }).ilike('title', pattern))
+    ...EDITORIAL_STATUSES.map(state => scope(supabase.from(kind).select('id', { count: 'exact', head: true }))
       .eq('status', state).abortSignal(signal)),
   ]);
   for (const result of [list, ...counts]) if (result.error) throw new Error(getSupabaseErrorMessage(result.error));

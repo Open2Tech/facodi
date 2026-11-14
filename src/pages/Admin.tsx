@@ -12,6 +12,16 @@ import { cn } from '@/lib/utils';
 
 const BAR_STATES = ['active', 'published', 'draft', 'archived', 'other'] as const;
 const COLUMNS = ['total', 'draft', 'active', 'published', 'archived', 'other', 'flag'] as const;
+// Columns that map onto an editor filter; "other" and the published flag have no single editor view.
+const COLUMN_STATUS: Partial<Record<typeof COLUMNS[number], string>> = { total: '', draft: 'draft', active: 'active', published: 'published', archived: 'archived' };
+
+function editorPath(kind: string, status = '') {
+  const params = new URLSearchParams();
+  if (kind !== 'courses') params.set('kind', kind);
+  if (status) params.set('status', status);
+  const query = params.toString();
+  return query ? `/editor?${query}` : '/editor';
+}
 
 export default function Admin() {
   const { t } = useTranslation();
@@ -55,7 +65,15 @@ export default function Admin() {
           const values = [row.total, row.draft, row.active, row.publishedState, row.archived, row.other, row.published];
           return <TableRow key={row.kind}>
             <TableCell className="font-semibold"><span className="inline-flex items-center gap-2"><Icon className="h-4 w-4 shrink-0" aria-hidden="true" />{t(`content.${row.kind}`)}</span></TableCell>
-            {values.map((value, index) => <TableCell key={COLUMNS[index]} className="text-right font-mono tabular-nums">{value}</TableCell>)}
+            {values.map((value, index) => {
+              const column = COLUMNS[index];
+              const status = COLUMN_STATUS[column];
+              return <TableCell key={column} className="text-right font-mono tabular-nums">
+                {status !== undefined && value > 0
+                  ? <Link to={editorPath(row.kind, status)} className="underline decoration-foreground/30 underline-offset-4 hover:decoration-foreground" aria-label={`${t(`content.${row.kind}`)} · ${t(`admin.${column}`)}: ${value}`}>{value}</Link>
+                  : value}
+              </TableCell>;
+            })}
           </TableRow>;
         })}</TableBody>
       </Table>
