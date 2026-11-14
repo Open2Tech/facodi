@@ -1,5 +1,6 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
+import { unitPath } from '@/entities/course/course.paths';
 import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert } from '@/entities/course/course.types';
 
 export function searchPattern(search: string) {
@@ -73,12 +74,13 @@ export async function getUnitFacets(signal?: AbortSignal) {
   return { total: data.length, courses: byValue(courses), years: byValue(years), semesters: byValue(semesters), semesterYears };
 }
 
-export async function listResources({ search, language, page, tag }: CatalogParams, signal?: AbortSignal) {
+export async function listResources({ search, language, page, tag, objectType }: CatalogParams, signal?: AbortSignal) {
   let query = supabase.from('learning_objects')
-    .select('id, slug, title, description, object_type, language, tags', { count: 'exact' })
+    .select('id, slug, title, description, object_type, language, tags, metadata, source_url', { count: 'exact' })
     .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('title').order('id');
   if (search.trim()) query = query.ilike('title', searchPattern(search));
   if (language) query = query.eq('language', language);
+  if (objectType) query = query.eq('object_type', objectType);
   // Quote the element so tags with spaces, commas or braces stay a single array item.
   if (tag) query = query.contains('tags', `{"${tag.replace(/["\\]/g, '\\$&')}"}`);
   const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
@@ -180,13 +182,75 @@ export async function listEditorial(kind: ContentKind, { page, search, status, o
   return { items: list.data ?? [], total: list.count ?? 0, statusCounts };
 }
 
-/** Object types in use, with counts, so editors can triage imported resources by kind. */
-export async function getObjectTypeFacets(signal?: AbortSignal) {
-  const { data, error } = await supabase.from('learning_objects').select('object_type').limit(5000).abortSignal(signal);
+/** Object types in use, with counts. Editors see every row RLS allows; the public facet mirrors the catalogue filter. */
+export async function getObjectTypeFacets(signal?: AbortSignal, publicOnly = false) {
+  let query = supabase.from('learning_objects').select('object_type');
+  if (publicOnly) query = query.eq('published', true).in('status', PUBLIC_RESOURCE_STATES);
+  const { data, error } = await query.limit(5000).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
   const counts = new Map<string, number>();
   for (const { object_type } of data) counts.set(object_type, (counts.get(object_type) ?? 0) + 1);
   return [...counts].map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+}
+
+const VIDEO_FIELDS = 'id, slug, title, object_type, language, metadata, source_url';
+const APPROVED = ['metadata->>review_status', 'eq', 'approved'] as const;
+
+/**
+ * Published videos a parent object (a curricular unit's learning object) contains, in curated order.
+ * Filters repeat the public RLS rule so editors, who can read pending links, see the public sequence.
+ */
+export async function listContainedVideos(parentObjectId: string, signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_object_relations')
+    .select(`position, child:learning_objects!learning_object_relations_child_object_id_fkey!inner(${VIDEO_FIELDS})`)
+    .eq('parent_object_id', parentObjectId).eq('relation_type', 'contains').filter(...APPROVED)
+    .eq('child.object_type', 'video').eq('child.published', true).in('child.status', PUBLIC_RESOURCE_STATES)
+    .order('position', { nullsFirst: false }).order('child_object_id').abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data.map(row => row.child);
+}
+
+/**
+ * Academic context for a public resource: the public curricular units that contain it and the
+ * curated video sequence of the first one. Course and unit mirror objects resolve to their own page.
+ */
+export async function getResourceContext(resource: { id: string; object_type: string }, signal?: AbortSignal) {
+  if (resource.object_type === 'course') {
+    const { data, error } = await supabase.from('courses').select('slug')
+      .eq('learning_object_id', resource.id).eq('published', true).eq('status', 'active').abortSignal(signal).maybeSingle();
+    if (error) throw new Error(getSupabaseErrorMessage(error));
+    return { redirect: data ? `/courses/${encodeURIComponent(data.slug)}` : null, units: [], sequence: [] };
+  }
+  const unitFields = 'id, slug, title, code, ects, year, semester, learning_object_id, courses!inner(slug, title, code)';
+  const publicUnits = () => supabase.from('curricular_units').select(unitFields)
+    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active');
+  if (resource.object_type === 'curricular_unit') {
+    const { data, error } = await publicUnits().eq('learning_object_id', resource.id).limit(1).abortSignal(signal);
+    if (error) throw new Error(getSupabaseErrorMessage(error));
+    const unit = data[0];
+    return { redirect: unit ? unitPath(unit.courses.slug, unit.slug) : null, units: [], sequence: [] };
+  }
+  const { data: links, error } = await supabase.from('learning_object_relations').select('parent_object_id')
+    .eq('child_object_id', resource.id).eq('relation_type', 'contains').filter(...APPROVED).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const parents = [...new Set(links.map(link => link.parent_object_id))];
+  if (!parents.length) return { redirect: null, units: [], sequence: [] };
+  const { data: units, error: unitError } = await publicUnits().in('learning_object_id', parents)
+    .order('title').order('id').abortSignal(signal);
+  if (unitError) throw new Error(getSupabaseErrorMessage(unitError));
+  const primary = units.find(unit => unit.learning_object_id);
+  const sequence = primary?.learning_object_id ? await listContainedVideos(primary.learning_object_id, signal) : [];
+  return { redirect: null, units, sequence };
+}
+
+/** Other published videos from the same channel, for "more from this channel". */
+export async function listChannelVideos(channel: string, excludeId: string, signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_objects').select(VIDEO_FIELDS)
+    .eq('object_type', 'video').eq('published', true).in('status', PUBLIC_RESOURCE_STATES)
+    .filter('metadata->>channel_name', 'eq', channel).neq('id', excludeId)
+    .order('title').order('id').limit(4).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data;
 }
 
 export async function findContentOptions(kind: ContentKind, search: string, signal?: AbortSignal) {

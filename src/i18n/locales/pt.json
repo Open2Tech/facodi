@@ -32,7 +32,9 @@
     "cancel": "Cancelar",
     "confirm": "Confirmar",
     "notFound": "Este caminho ainda não leva a lado nenhum.",
-    "notFoundDescription": "O conteúdo não existe ou não está disponível. Explora o catálogo para encontrar outro ponto de partida."
+    "notFoundDescription": "O conteúdo não existe ou não está disponível. Explora o catálogo para encontrar outro ponto de partida.",
+    "yes": "Sim",
+    "no": "Não"
   },
   "home": {
     "campus": "Um campus digital aberto",
@@ -296,7 +298,8 @@
     "emptyDescription": "Os recursos aparecem aqui quando a equipa editorial os publica.",
     "noResults": "Não encontrámos recursos com estes filtros. Experimenta outro título, idioma ou tema.",
     "taggedWith": "Tema:",
-    "clearTag": "Remover tema"
+    "clearTag": "Remover tema",
+    "filterType": "Tipo de recurso"
   },
   "about": {
     "title": "Um campus aberto para seguir o fio do conhecimento.",
@@ -372,7 +375,8 @@
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",
-    "keywords": "Palavras-chave"
+    "keywords": "Palavras-chave",
+    "about": "Sobre este recurso"
   },
   "unit": {
     "breadcrumb": "Localização",
@@ -384,12 +388,58 @@
     "allInCourse": "Todas as UCs do curso",
     "sequence": "Sequência do plano",
     "previous": "UC anterior",
-    "next": "UC seguinte"
+    "next": "UC seguinte",
+    "videoCount_one": "{{count}} vídeo publicado, pela ordem de estudo sugerida.",
+    "videoCount_many": "{{count}} vídeos publicados, pela ordem de estudo sugerida.",
+    "videoCount_other": "{{count}} vídeos publicados, pela ordem de estudo sugerida.",
+    "showAllVideos": "Mostrar todos os {{count}} vídeos",
+    "showFewer": "Mostrar menos"
   },
   "objectTypes": {
     "video": "Vídeo",
     "document": "Documento",
     "course": "Curso",
     "curricular_unit": "Unidade curricular"
+  },
+  "video": {
+    "play": "Reproduzir vídeo: {{title}}",
+    "privacyNote": "O YouTube só é carregado quando carregar em reproduzir.",
+    "player": "Leitor de vídeo",
+    "context": "Contexto curricular",
+    "byChannel": "Canal {{channel}}",
+    "watchOnYoutube": "Ver no YouTube",
+    "copyLink": "Copiar ligação",
+    "linkCopied": "Ligação copiada.",
+    "copyFailed": "Não foi possível copiar a ligação.",
+    "suggest": "Sugerir uma correção",
+    "unit": "Unidade curricular associada",
+    "course": "Curso",
+    "openUnit": "Ver unidade e recursos",
+    "sequence": "Trilha da unidade",
+    "position": "Vídeo {{current}} de {{total}}",
+    "nowViewing": "A ver agora",
+    "allInUnit_one": "Ver {{count}} vídeo da unidade",
+    "allInUnit_many": "Ver os {{count}} vídeos da unidade",
+    "allInUnit_other": "Ver os {{count}} vídeos da unidade",
+    "alsoIn": "Também usado em",
+    "noUnit": "Ainda sem unidade curricular",
+    "noUnitText": "Este vídeo está publicado, mas ainda não foi associado a uma unidade curricular aprovada.",
+    "previous": "Vídeo anterior",
+    "next": "Próximo vídeo",
+    "about": "Sobre este vídeo",
+    "facts": {
+      "channel": "Canal",
+      "duration": "Duração",
+      "language": "Idioma",
+      "type": "Tipo"
+    },
+    "curation": "Estado da curadoria",
+    "curationText": "A FACODI indica vídeos abertos de terceiros. Mostramos aqui o que a equipa editorial já confirmou e o que ainda não.",
+    "selection": "Critério de seleção",
+    "scopeTitleChannel": "Título e canal",
+    "fullReviewed": "Vídeo revisto na íntegra",
+    "licenseVerified": "Licença verificada",
+    "rights": "Os direitos do vídeo pertencem ao respetivo autor no YouTube. A FACODI não aloja nem altera o conteúdo.",
+    "moreFromChannel": "Mais de {{channel}}"
   }
 }

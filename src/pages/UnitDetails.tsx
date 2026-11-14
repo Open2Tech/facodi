@@ -1,17 +1,33 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useUnit } from '@/features/courses/queries/useCourses';
+import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
+import { VideoCard } from '@/components/resource/VideoCard';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
+
+const VIDEO_PREVIEW = 9;
 
 export default function UnitDetails() {
   const { slug = '', unit: unitSlug = '' } = useParams();
   const { t } = useTranslation();
   const query = useUnit(slug, unitSlug);
   const contribute = useContributePath();
+  const videos = useUnitVideos(query.data?.unit.learning_object_id);
+  const [showAll, setShowAll] = useState(false);
+  const { hash } = useLocation();
+  const ready = Boolean(query.data);
+  useEffect(() => {
+    if (!hash || !ready) return;
+    // Runs after the layout's scroll reset so links to #unit-resources land on the section.
+    const frame = requestAnimationFrame(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
+  }, [hash, ready]);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
@@ -20,8 +36,8 @@ export default function UnitDetails() {
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
   const siblings = outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
-  const linked = unit.learning_objects;
-  const resource = linked?.published && ['active', 'published'].includes(linked.status) ? linked : null;
+  const videoList = videos.data ?? [];
+  const visibleVideos = showAll ? videoList : videoList.slice(0, VIDEO_PREVIEW);
   const facts = [
     ['code', unit.code],
     ['ects', unit.ects != null ? `${unit.ects} ECTS` : null],
@@ -51,9 +67,19 @@ export default function UnitDetails() {
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
         <section aria-labelledby="unit-resources">
-          <h2 id="unit-resources" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
-          {resource
-            ? <Link className="mt-4 flex items-center justify-between gap-4 border border-input p-5 font-semibold transition-colors hover:border-foreground" to={`/resources/${resource.slug}`}>{resource.title}<ArrowUpRight className="h-4 w-4 shrink-0" /></Link>
+          <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
+          {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
+            : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
+              <p>{videos.error.message}</p>
+              <button type="button" className="mt-3 font-semibold underline underline-offset-4" onClick={() => void videos.refetch()}>{t('common.retry')}</button>
+            </div>
+            : videoList.length ? <>
+              <p className="mt-2 text-sm text-muted-foreground">{t('unit.videoCount', { count: videoList.length })}</p>
+              <ol className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{visibleVideos.map(video => <li key={video.id}><VideoCard video={video} /></li>)}</ol>
+              {videoList.length > VIDEO_PREVIEW && <Button variant="outline" className="mt-5" aria-expanded={showAll} onClick={() => setShowAll(value => !value)}>
+                {showAll ? t('unit.showFewer') : t('unit.showAllVideos', { count: videoList.length })}
+              </Button>}
+            </>
             : <div className="mt-4 border border-input bg-muted/40 p-6">
               <p className="font-semibold">{t('unit.noResources')}</p>
               <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>

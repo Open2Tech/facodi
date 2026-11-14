@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import type { UnitSort } from '@/entities/course/course.types';
 
-export type CatalogParamKey = 'search' | 'language' | 'page' | 'tag' | 'course' | 'year' | 'semester' | 'sort';
+export type CatalogParamKey = 'search' | 'language' | 'page' | 'tag' | 'course' | 'year' | 'semester' | 'sort' | 'type';
 const SORTS: UnitSort[] = ['curriculum', 'title', 'ects'];
 
 function positive(value: string | null) {
@@ -17,6 +17,7 @@ export function useCatalogParams() {
   const language = params.get('language') ?? '';
   const tag = params.get('tag') ?? '';
   const course = params.get('course') ?? '';
+  const type = params.get('type') ?? '';
   const year = positive(params.get('year'));
   const semester = positive(params.get('semester'));
   const rawSort = params.get('sort') as UnitSort | null;
@@ -38,8 +39,8 @@ export function useCatalogParams() {
   }
   const facets = Boolean(course || year || semester);
   return {
-    page, search, language, tag, course, year, semester, sort, filter, update, reset,
-    filtered: Boolean(search || language || tag || facets || page > 1),
+    page, search, language, tag, type, course, year, semester, sort, filter, update, reset,
+    filtered: Boolean(search || language || tag || type || facets || page > 1),
     faceted: Boolean(search || facets),
   };
 }

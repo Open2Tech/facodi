@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { getResourceContext, listChannelVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -19,6 +19,30 @@ export function useUnit(courseSlug: string, unitSlug: string) {
 }
 export function useResources(params: CatalogParams) {
   return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal) });
+}
+export function useResourceTypes() {
+  return useQuery({ queryKey: courseKeys.resourceTypes(), queryFn: ({ signal }) => getObjectTypeFacets(signal, true), staleTime: 5 * 60_000 });
+}
+export function useResourceContext(resource: { id: string; object_type: string } | null | undefined) {
+  return useQuery({
+    queryKey: courseKeys.resourceContext(resource?.id ?? ''),
+    queryFn: ({ signal }) => getResourceContext(resource!, signal),
+    enabled: !!resource,
+  });
+}
+export function useUnitVideos(learningObjectId: string | null | undefined) {
+  return useQuery({
+    queryKey: courseKeys.unitVideos(learningObjectId ?? ''),
+    queryFn: ({ signal }) => listContainedVideos(learningObjectId!, signal),
+    enabled: !!learningObjectId,
+  });
+}
+export function useChannelVideos(channel: string | null, excludeId: string) {
+  return useQuery({
+    queryKey: courseKeys.channelVideos(channel ?? '', excludeId),
+    queryFn: ({ signal }) => listChannelVideos(channel!, excludeId, signal),
+    enabled: !!channel && !!excludeId,
+  });
 }
 export function useCatalogCounts() {
   return useQuery({ queryKey: courseKeys.counts(), queryFn: ({ signal }) => getCatalogCounts(signal) });
