@@ -12,6 +12,7 @@ export const courseKeys = {
   resourceContext: (id: string) => ['facodi', 'resource-context', id] as const,
   unitVideos: (learningObjectId: string) => ['facodi', 'unit-videos', learningObjectId] as const,
   channelVideos: (channel: string, excludeId: string) => ['facodi', 'channel-videos', channel, excludeId] as const,
+  featuredVideos: (limit: number, parents: string[]) => ['facodi', 'featured-videos', limit, parents] as const,
   topics: () => ['facodi', 'topics', 'public'] as const,
   detail: (slug: string) => ['facodi', 'course', slug] as const,
   resource: (slug: string) => ['facodi', 'resource', slug] as const,

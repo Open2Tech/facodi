@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { getResourceContext, listChannelVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { getResourceContext, listChannelVideos, listFeaturedVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -42,6 +42,14 @@ export function useChannelVideos(channel: string | null, excludeId: string) {
     queryKey: courseKeys.channelVideos(channel ?? '', excludeId),
     queryFn: ({ signal }) => listChannelVideos(channel!, excludeId, signal),
     enabled: !!channel && !!excludeId,
+  });
+}
+export function useFeaturedVideos(limit = 8, parentObjectIds: string[] = [], enabled = true) {
+  return useQuery({
+    queryKey: courseKeys.featuredVideos(limit, parentObjectIds),
+    queryFn: ({ signal }) => listFeaturedVideos(limit, parentObjectIds, signal),
+    enabled,
+    staleTime: 10 * 60_000,
   });
 }
 export function useCatalogCounts() {

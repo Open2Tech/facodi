@@ -77,7 +77,7 @@ export default function UnitDetails() {
             ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
             : outcomesQuery.error
               ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
-              : !!outcomesQuery.data?.length
+              : outcomesQuery.data?.length
                 ? <ol className="mt-5 space-y-3">
                   {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
                     className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">

@@ -109,7 +109,7 @@ export default function ResourceDetails() {
       {player && <section aria-label={t('video.player')} className="min-w-0 lg:col-start-1 lg:row-start-1">
         <div className="border border-foreground">
           <YouTubePlayer videoId={info.youtubeId!} title={resource.title} thumbnail={info.thumbnail} />
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-neutral-950 px-4 py-3 font-mono text-xs text-white/80">
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
             <span className="min-w-0 truncate">{info.channel ?? 'YouTube'}</span>
             <span className="flex items-center gap-4">
               {info.durationSeconds && <span className="tabular-nums">{formatDuration(info.durationSeconds)}</span>}
@@ -128,7 +128,7 @@ export default function ResourceDetails() {
           : primary && unitHref ? <>
             <section aria-labelledby="video-unit" className="border border-foreground bg-primary p-5 text-primary-foreground">
               <h2 id="video-unit" className="text-sm font-semibold">{t('video.unit')}</h2>
-              {primary.code && <p className="mt-4 inline-block bg-neutral-950 px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
+              {primary.code && <p className="mt-4 inline-block bg-ink px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
               <p className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.02em] [text-wrap:balance]"><Link to={unitHref} className="decoration-2 underline-offset-4 hover:underline">{primary.title}</Link></p>
               <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-black/25 pt-4 text-sm">
                 {primary.ects != null && <div><dt className="text-xs">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{primary.ects}</dd></div>}
@@ -136,7 +136,7 @@ export default function ResourceDetails() {
                 {primary.semester != null && <div><dt className="text-xs">{t('course.semesterLabel')}</dt><dd className="font-mono tabular-nums">{primary.semester}</dd></div>}
                 <div className="col-span-3"><dt className="text-xs">{t('video.course')}</dt><dd><Link to={`/courses/${primary.courses.slug}`} className="font-medium underline underline-offset-4">{primary.courses.title}</Link></dd></div>
               </dl>
-              <Link to={`${unitHref}#unit-resources`} className="mt-5 flex items-center justify-between gap-3 bg-neutral-950 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-neutral-800">{t('video.openUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to={`${unitHref}#unit-resources`} className="mt-5 flex items-center justify-between gap-3 bg-ink px-4 py-3 text-sm font-semibold text-ink-foreground transition-colors hover:bg-ink/90">{t('video.openUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </section>
 
             {!!sequence.length && <section aria-labelledby="video-sequence" className="border border-input">

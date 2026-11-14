@@ -63,6 +63,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          foreground: "hsl(var(--ink-foreground))",
+        },
+        brand: {
+          cyan: "hsl(var(--brand-cyan))",
+          mint: "hsl(var(--brand-mint))",
+          orange: "hsl(var(--brand-orange))",
+          pink: "hsl(var(--brand-pink))",
+          coral: "hsl(var(--brand-coral))",
+          blue: "hsl(var(--brand-blue))",
+          ink: "hsl(var(--brand-ink))",
+          paper: "hsl(var(--brand-paper))",
+        },
         category: {
           tutorials: "hsl(var(--category-tutorials))",
           recipes: "hsl(var(--category-recipes))",

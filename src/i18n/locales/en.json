@@ -19,7 +19,9 @@
     "main": "Main navigation",
     "units": "Units",
     "resources": "Resources",
-    "about": "About"
+    "about": "About",
+    "themeLight": "Switch to light theme",
+    "themeDark": "Switch to dark theme"
   },
   "common": {
     "loading": "Loading…",
@@ -38,7 +40,7 @@
   },
   "home": {
     "campus": "An open digital campus",
-    "title": "Knowledge is everywhere. Find your next step.",
+    "title": "Knowledge is everywhere. <mark>Find your next step.</mark>",
     "description": "Learning gets easier when useful resources connect. Explore courses and academic references with context, at your own pace.",
     "explore": "Explore courses",
     "open": "Open resources · No paywall · Context-led curation",
@@ -52,7 +54,7 @@
     "howItWorks": "How it works",
     "searchPlaceholder": "e.g. algebra, programming, ethics…",
     "searchButton": "Search the catalogue",
-    "pathsTitle": "Three ways in",
+    "pathsTitle": "Four ways in",
     "paths": {
       "published": "Published: {{count}}",
       "courses": {
@@ -69,6 +71,11 @@
         "title": "Resources",
         "text": "Open educational objects — texts, videos and references — with topics and a link to the original source.",
         "cta": "See resources"
+      },
+      "videos": {
+        "title": "Videos",
+        "text": "Open lessons and explanations, organised into trails by curricular unit.",
+        "cta": "See videos"
       }
     },
     "steps": {
@@ -110,7 +117,10 @@
     },
     "ctaTitle": "Know a resource worth sharing?",
     "ctaText": "FACODI grows through contributions reviewed by the editorial team. Find out how to take part.",
-    "ctaButton": "Contribute"
+    "ctaButton": "Contribute",
+    "videosTitle": "Lessons to start right away",
+    "videosText": "The opening videos of curated trails, from different channels. Each one opens with its curricular unit context.",
+    "videosCta": "See all videos"
   },
   "catalog": {
     "title": "Find your next step.",
@@ -371,7 +381,9 @@
       "integrated_master": "Integrated master’s",
       "ctesp": "Higher technical course (CTeSP)",
       "postgraduate": "Postgraduate"
-    }
+    },
+    "videosTitle": "Videos in this course",
+    "videosText": "Opening videos from the curated trails across the {{count}} curricular units in this plan."
   },
   "resource": {
     "objectives": "Learning objectives",

@@ -47,7 +47,7 @@ export default function About() {
           <p className="leading-relaxed">{t(`about.flow.${step}`)}</p>
         </li>)}
       </ol>
-      <Button size="lg" className="mt-9 h-auto min-h-11 max-w-full whitespace-normal bg-black py-3 text-left text-primary hover:bg-neutral-800" asChild>
+      <Button size="lg" className="mt-9 h-auto min-h-11 max-w-full whitespace-normal bg-ink py-3 text-left text-primary hover:bg-ink/90" asChild>
         {editor ? <Link to="/editor">{t('about.openEditor')}<ArrowUpRight /></Link>
           : user ? <Link to="/dashboard">{t('about.openDashboard')}<ArrowUpRight /></Link>
           : <Link to="/login">{t('about.createAccount')}<ArrowUpRight /></Link>}
