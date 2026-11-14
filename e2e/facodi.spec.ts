@@ -292,7 +292,7 @@ test('home search, entry paths and new public catalogues render without overflow
     await expect(page.getByRole('link', { name: /Logic/ })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-home-filled-${width}.png`, fullPage: true });
-    for (const [path, heading] of [['/units', 'Curricular units'], ['/resources', 'Educational resources'], ['/about', 'An open campus to follow the thread of knowledge.']]) {
+    for (const [path, heading] of [['/units', 'Curricular units'], ['/resources', 'Educational resources'], ['/about', 'One open tab became a bigger idea.']]) {
       await page.goto(path);
       await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
