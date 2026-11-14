@@ -338,3 +338,70 @@ test('video page loads YouTube only on demand and places the video in its unit t
   await expect(page).toHaveURL(/\/resources\/integrals$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Integrals' })).toBeVisible();
 });
+
+test('editor reviews study paths and playlists through the review RPCs with state in the URL', async ({ page }) => {
+  await mockAuth(page, 'editor');
+  const blueprint = {
+    id: 'b1', status: 'draft', structure_type: 'module', generated_by: 'facodi_deterministic_editorial_blueprint',
+    created_at: '2026-11-14T10:00:00Z', updated_at: '2026-11-14T10:00:00Z', reviewed_at: null, reviewed_by: null, review_note: null,
+    created_by: null, root_object_id: null, prompt: { editorial_kind: 'uc_study_path' },
+    result: { unit_code: '19411006', unit_title: 'Object-Oriented Programming', course_code: 'LESTI', available_video_links: 2, available_reading_links: 1,
+      steps: [{ order: 1, topic: 'Classes and objects', activity: 'Study the vocabulary' }] },
+  };
+  const playlist = {
+    id: 'p1', title: 'OOP lectures', description: null, source_url: 'https://www.youtube.com/playlist?list=PL1234567890', status: 'pending',
+    import_status: 'partial', language: 'en', submitted_at: '2026-11-14T10:00:00Z', review_note: null,
+    courses: { code: 'LESTI', title: 'Systems Engineering' }, curricular_units: { code: '19411006', title: 'Object-Oriented Programming' },
+  };
+  const decisions: unknown[] = [];
+  await page.route('**/rest/v1/**', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    expect(request.headers()['accept-profile'] ?? request.headers()['content-profile']).toBe('facodi');
+    if (url.pathname.endsWith('/rpc/review_study_blueprint') || url.pathname.endsWith('/rpc/review_playlist')) {
+      decisions.push({ fn: url.pathname.split('/').pop(), ...request.postDataJSON() });
+      return route.fulfill({ status: 204, body: '' });
+    }
+    const headers = { 'access-control-expose-headers': 'content-range' };
+    if (url.pathname.endsWith('/generated_structures')) {
+      if (request.method() === 'HEAD') return route.fulfill({ body: '', headers: { ...headers, 'content-range': `*/${url.searchParams.get('status') === 'eq.draft' ? 1 : 0}` } });
+      const draft = url.searchParams.get('status') === 'eq.draft';
+      return route.fulfill({ json: draft ? [blueprint] : [], headers: { ...headers, 'content-range': draft ? '0-0/1' : '*/0' } });
+    }
+    if (url.pathname.endsWith('/playlists')) return route.fulfill({ json: [playlist] });
+    if (url.pathname.endsWith('/playlist_items')) return route.fulfill({ json: [
+      { id: 'i1', position: 0, youtube_video_id: 'dQw4w9WgXcQ', video_id: 'v1', review_status: 'pending' },
+      { id: 'i2', position: 1, youtube_video_id: '9bZkp7q19f0', video_id: null, review_status: 'pending' },
+    ] });
+    return route.fulfill({ json: [], headers: { ...headers, 'content-range': '*/0' } });
+  });
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+
+  await page.goto('/login?next=/editor/study-paths');
+  await page.getByLabel('Email', { exact: true }).fill('editor@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 2, name: 'Object-Oriented Programming' })).toBeVisible();
+  await expect(page.getByText('2 videos · 1 readings available')).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Awaiting review/ })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Accept: Object-Oriented Programming' }).click();
+  await page.getByLabel('Review notes').fill('Clear sequence');
+  await page.getByRole('button', { name: 'Confirm' }).click();
+  await expect(page.getByText('Review decision saved.')).toBeVisible();
+  expect(decisions).toContainEqual({ fn: 'review_study_blueprint', p_id: 'b1', p_decision: 'accepted', p_note: 'Clear sequence' });
+  await page.getByRole('button', { name: /^Accepted/ }).click();
+  await expect(page).toHaveURL(/\/editor\/study-paths\?status=accepted$/);
+  await expect(page.getByRole('heading', { name: 'No records' })).toBeVisible();
+
+  await page.goto('/editor/playlists');
+  await expect(page.getByRole('heading', { level: 2, name: 'OOP lectures' })).toBeVisible();
+  await expect(page.getByText('Partial import')).toBeVisible();
+  await expect(page.getByText('1 video(s) have not been resolved. Approval is blocked.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Approve and publish links' })).toBeDisabled();
+  await page.getByRole('button', { name: /OOP lectures/ }).click();
+  await expect(page).toHaveURL(/\/editor\/playlists\?playlist=p1$/);
+  await page.getByRole('button', { name: 'Reject playlist' }).click();
+  await page.getByRole('button', { name: 'Confirm' }).click();
+  await expect(page.getByText('Playlist decision saved.')).toBeVisible();
+  expect(decisions).toContainEqual({ fn: 'review_playlist', p_playlist_id: 'p1', p_decision: 'rejected', p_review_note: null });
+});

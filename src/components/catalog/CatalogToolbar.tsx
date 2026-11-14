@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { SearchInput } from '@/components/catalog/SearchInput';
 
-const LANGUAGES = [['pt', 'Português'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français']] as const;
+export const LANGUAGES = [['pt', 'Português'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français']] as const;
 
 export function CatalogToolbar({ search, language, onFilter, withLanguage = true }: {
   search: string; language: string; onFilter: (key: 'search' | 'language', value: string) => void; withLanguage?: boolean;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpenCheck, Plus } from 'lucide-react';
+import { ArrowUpRight, BookOpenCheck, ListVideo, Plus } from 'lucide-react';
 import { EDITORIAL_STATUSES, type Content, type ContentKind, type EditorialStatus } from '@/entities/course/course.types';
 import { useContentMutations, useEditorial, useObjectTypeFacets } from '@/features/courses/queries/useCourses';
 import { ContentForm } from '@/components/editorial/ContentForm';

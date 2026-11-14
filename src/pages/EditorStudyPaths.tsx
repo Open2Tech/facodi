@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Check, X } from 'lucide-react';
+import { ArrowLeft, Check, ExternalLink, X } from 'lucide-react';
 import { toast } from 'sonner';
-import { supabase } from '@/shared/api/supabase/supabaseClient';
-import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
-import type { Json, Database } from '@/integrations/supabase/types';
+import type { Blueprint, BlueprintDecision, BlueprintStatus } from '@/entities/contribution/contribution.types';
+import { readBlueprint } from '@/entities/contribution/blueprint';
+import { useBlueprintCounts, useBlueprints, useReviewBlueprint } from '@/features/contributions/queries/useContributions';
+import { TypeBadge } from '@/components/catalog/TypeBadge';
+import { StatusBadge } from '@/components/editorial/StatusBadge';
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import {
@@ -15,159 +17,147 @@ import {
   AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 
-type Blueprint = Database['facodi']['Tables']['generated_structures']['Row'];
-type Decision = 'accepted' | 'rejected';
-type StatusFilter = 'draft' | Decision;
-const PAGE_SIZE = 10;
-const QUEUE_KEY = ['facodi', 'editor-blueprints'];
+const STATES: BlueprintStatus[] = ['draft', 'accepted', 'rejected'];
+const PREVIEW = 12;
 
-function fields(json: Json): Record<string, Json | undefined> {
-  return json && typeof json === 'object' && !Array.isArray(json)
-    ? json as Record<string, Json | undefined>
-    : {};
-}
-function display(value: Json | undefined): string {
-  if (typeof value === 'string') return value;
-  if (typeof value === 'number') return String(value);
-  return '';
-}
-async function fetchBlueprints(status: StatusFilter, page: number) {
-  const { data, count, error } = await supabase.from('generated_structures')
-    .select('*', { count: 'exact' })
-    .eq('generated_by', 'facodi_deterministic_editorial_blueprint')
-    .eq('status', status)
-    .order('created_at', { ascending: false })
-    .order('id')
-    .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
-  if (error) throw new Error(getSupabaseErrorMessage(error));
-  return { items: data ?? [] as Blueprint[], total: count ?? 0 };
+function BlueprintItem({ blueprint, busy, onDecide }: { blueprint: Blueprint; busy: boolean; onDecide: (action: BlueprintDecision) => void }) {
+  const { t, i18n } = useTranslation();
+  const view = readBlueprint(blueprint);
+  const title = view.title || t('studyReview.untitled');
+  const when = blueprint.reviewed_at ?? blueprint.created_at;
+  const date = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'medium' }).format(new Date(when));
+  const meta = [
+    view.courseCode,
+    view.year !== null && t('catalog.year', { value: view.year }),
+    view.semester !== null && t('catalog.semester', { value: view.semester }),
+    view.ects !== null && t('studyReview.ects', { count: view.ects }),
+    t('studyReview.itemCount', { count: view.elements.length }),
+    view.videoLinks !== null && view.readingLinks !== null && t('studyReview.links', { videos: view.videoLinks, readings: view.readingLinks }),
+  ].filter(Boolean);
+  const headingId = `blueprint-${blueprint.id}`;
+
+  return <li className="py-7" aria-labelledby={headingId}>
+    <div className="flex flex-wrap items-center gap-2">
+      <TypeBadge type={view.isCourse ? 'course' : 'curricular_unit'} label={view.isCourse ? t('studyReview.courseMap') : t('studyReview.unitPlan')} />
+      <StatusBadge status={blueprint.status} label={t(`studyReview.status.${blueprint.status}`, { defaultValue: blueprint.status })} />
+      {view.code && <span className="font-mono text-xs text-muted-foreground">{view.code}</span>}
+    </div>
+    <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div className="min-w-0 flex-1">
+        <h2 id={headingId} className="break-words text-xl font-semibold">{title}</h2>
+        <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted-foreground">
+          {meta.map(item => <span key={String(item)}>{item}</span>)}
+          <time dateTime={when}>{blueprint.reviewed_at ? t('studyReview.reviewedOn', { date }) : t('studyReview.createdOn', { date })}</time>
+        </p>
+        {blueprint.review_note && <p className="mt-3 max-w-prose text-sm">{t('studyReview.previousNote')}: {blueprint.review_note}</p>}
+        {view.officialUrl && <a href={view.officialUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+          {t('studyReview.officialPlan')}<ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </a>}
+      </div>
+      {blueprint.status === 'draft' && <div className="flex shrink-0 flex-wrap gap-2">
+        <Button type="button" variant="outline" disabled={busy} onClick={() => onDecide('rejected')}
+          aria-label={`${t('studyReview.reject')}: ${title}`}><X className="h-4 w-4" aria-hidden="true" />{t('studyReview.reject')}</Button>
+        <Button type="button" disabled={busy} onClick={() => onDecide('accepted')}
+          aria-label={`${t('studyReview.accept')}: ${title}`}><Check className="h-4 w-4" aria-hidden="true" />{t('studyReview.accept')}</Button>
+      </div>}
+    </div>
+    {!!view.elements.length && <ol className="mt-5 grid gap-px border border-input bg-input sm:grid-cols-2 lg:grid-cols-3">
+      {view.elements.slice(0, PREVIEW).map((item, index) => {
+        const detail = view.isCourse
+          ? [item.code, item.year !== null && t('catalog.year', { value: item.year }), item.semester !== null && t('catalog.semester', { value: item.semester }), item.ects !== null && t('studyReview.ects', { count: item.ects })].filter(Boolean).join(' · ')
+          : item.activity;
+        return <li key={index} className="flex gap-3 bg-background p-3 text-sm">
+          <span className="w-5 shrink-0 text-right font-mono text-xs tabular-nums text-muted-foreground">{item.order}</span>
+          <span className="min-w-0">
+            <span className="block break-words font-medium">{item.label}</span>
+            {detail && <span className="mt-0.5 block text-xs text-muted-foreground">{detail}</span>}
+          </span>
+        </li>;
+      })}
+    </ol>}
+    {view.elements.length > PREVIEW && <p className="mt-2 text-xs text-muted-foreground">{t('studyReview.additional', { count: view.elements.length - PREVIEW })}</p>}
+    <p className="mt-4 text-xs text-muted-foreground">{t('studyReview.disclaimer')}</p>
+  </li>;
 }
 
 export default function EditorStudyPaths() {
   const { t } = useTranslation();
-  const [status, setStatus] = useState<StatusFilter>('draft');
-  const [page, setPage] = useState(1);
-  const [decision, setDecision] = useState<{ blueprint: Blueprint; action: Decision } | null>(null);
+  const [params, setParams] = useSearchParams();
+  const rawStatus = params.get('status');
+  const status: BlueprintStatus = STATES.includes(rawStatus as BlueprintStatus) ? rawStatus as BlueprintStatus : 'draft';
+  const page = Math.max(1, Number.parseInt(params.get('page') ?? '1', 10) || 1);
+  const [decision, setDecision] = useState<{ blueprint: Blueprint; action: BlueprintDecision } | null>(null);
   const [note, setNote] = useState('');
-  const client = useQueryClient();
-  const queue = useQuery({ queryKey: [...QUEUE_KEY, status, page], queryFn: () => fetchBlueprints(status, page) });
-  const review = useMutation({
-    mutationFn: async ({ id, action, reviewNote }: { id: string; action: Decision; reviewNote: string }) => {
-      const { error } = await supabase.rpc('review_study_blueprint', {
-        p_id: id,
-        p_decision: action,
-        p_note: reviewNote.trim() || null,
-      });
-      if (error) throw new Error(getSupabaseErrorMessage(error));
-    },
-    onSuccess: async () => {
-      await client.invalidateQueries({ queryKey: QUEUE_KEY });
-      toast.success(t('studyReview.saved'));
-    },
-  });
+  const queue = useBlueprints(status, page);
+  const counts = useBlueprintCounts();
+  const review = useReviewBlueprint();
 
-  const startDecision = (blueprint: Blueprint, action: Decision) => {
+  const update = (next: { status?: BlueprintStatus; page?: number }) => setParams(previous => {
+    const result = new URLSearchParams(previous);
+    if (next.status) { result.set('status', next.status); result.delete('page'); }
+    if (next.page) { if (next.page > 1) result.set('page', String(next.page)); else result.delete('page'); }
+    return result;
+  });
+  const startDecision = (blueprint: Blueprint, action: BlueprintDecision) => {
     setNote('');
     review.reset();
     setDecision({ blueprint, action });
   };
+  const confirm = () => {
+    if (!decision) return;
+    review.mutate({ id: decision.blueprint.id, decision: decision.action, note }, {
+      onSuccess: () => {
+        setDecision(null);
+        setNote('');
+        toast.success(t('studyReview.saved'));
+      },
+    });
+  };
 
   return <div>
     <Link to="/editor" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
-      <ArrowLeft className="h-4 w-4" />{t('studyReview.back')}
+      <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('studyReview.back')}
     </Link>
     <header className="mb-7 max-w-3xl">
       <h1 className="text-3xl font-semibold sm:text-4xl">{t('studyReview.title')}</h1>
       <p className="mt-4 text-muted-foreground">{t('studyReview.description')}</p>
     </header>
     <div className="mb-7 flex flex-wrap items-center gap-2" role="group" aria-label={t('studyReview.filter')}>
-      {(['draft', 'accepted', 'rejected'] as StatusFilter[]).map(value =>
-        <Button key={value} type="button" variant={status === value ? 'default' : 'outline'}
-          aria-pressed={status === value}
-          onClick={() => { setStatus(value); setPage(1); }}>
-          {t(`studyReview.status.${value}`)}
-        </Button>)}
+      {STATES.map(value => <Button key={value} type="button" variant={status === value ? 'default' : 'outline'}
+        aria-pressed={status === value} onClick={() => update({ status: value })}>
+        {t(`studyReview.status.${value}`)}
+        {counts.data && <span className="font-mono text-xs tabular-nums opacity-75">{counts.data[value]}</span>}
+      </Button>)}
     </div>
-    {review.error && <p role="alert" className="my-5 text-sm text-destructive">{review.error.message}</p>}
     {queue.isPending ? <PageState loading /> : queue.error
-      ? <PageState title={t('common.error')} description={queue.error.message} retry={() => void queue.refetch()} />
+      ? <PageState level="h2" title={t('common.error')} description={queue.error.message} retry={() => void queue.refetch()} />
       : <>
-        <p className="mb-5 font-mono text-xs text-muted-foreground">
-          {t('studyReview.count', { count: queue.data.total })}
-        </p>
+        <p className="mb-2 font-mono text-xs text-muted-foreground" aria-live="polite">{t('studyReview.count', { count: queue.data.total })}</p>
         {!queue.data.items.length
-          ? <PageState title={t('studyReview.empty')} description={t('studyReview.emptyDescription')} />
-          : <ul className="divide-y divide-input border-y border-input">
-            {queue.data.items.map(blueprint => {
-              const input = fields(blueprint.prompt);
-              const output = fields(blueprint.result);
-              const isCourse = blueprint.structure_type === 'curriculum_mapping';
-              const header = display(output.title) || display(output.unit_title) || display(output.code) || display(output.unit_code);
-              const steps = Array.isArray(output.steps) ? output.steps : [];
-              const units = Array.isArray(output.units) ? output.units : [];
-              const elements = isCourse ? units : steps;
-              return <li key={blueprint.id} className="py-6">
-                <div className="flex flex-wrap items-start justify-between gap-5">
-                  <div className="min-w-0 flex-1">
-                    <p className="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                      {isCourse ? t('studyReview.courseMap') : t('studyReview.unitPlan')}
-                      {' · '}{display(input.unit_id) ? display(output.course_code) : display(output.code)}
-                    </p>
-                    <h2 className="break-words text-xl font-semibold">{header || t('studyReview.untitled')}</h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {t(`studyReview.status.${blueprint.status}`, { defaultValue: blueprint.status })}
-                      {' · '}{t('studyReview.itemCount', { count: elements.length })}
-                    </p>
-                    {blueprint.review_note && <p className="mt-2 max-w-prose text-sm">{t('studyReview.previousNote')}: {blueprint.review_note}</p>}
-                  </div>
-                  {blueprint.status === 'draft' && <div className="flex flex-wrap gap-2">
-                    <Button type="button" variant="outline" disabled={review.isPending}
-                      onClick={() => startDecision(blueprint, 'rejected')}><X className="h-4 w-4" />{t('studyReview.reject')}</Button>
-                    <Button type="button" disabled={review.isPending}
-                      onClick={() => startDecision(blueprint, 'accepted')}><Check className="h-4 w-4" />{t('studyReview.accept')}</Button>
-                  </div>}
-                </div>
-                {!!elements.length && <ol className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                  {elements.slice(0, 12).map((element, idx) => {
-                    const item = fields(element);
-                    const title = display(item.topic) || display(item.title) || display(item.code);
-                    return <li key={idx} className="border border-input bg-muted/30 p-3 text-sm">
-                      <span className="mr-2 font-mono text-xs text-muted-foreground">{idx + 1}.</span>
-                      {title}
-                    </li>;
-                  })}
-                </ol>}
-                {elements.length > 12 && <p className="mt-2 text-xs text-muted-foreground">
-                  {t('studyReview.additional', { count: elements.length - 12 })}
-                </p>}
-                <p className="mt-4 text-xs text-muted-foreground">{t('studyReview.disclaimer')}</p>
-              </li>;
-            })}
+          ? <PageState level="h2" title={t('studyReview.empty')} description={t('studyReview.emptyDescription')} />
+          : <ul className={`divide-y divide-input border-y border-input transition-opacity ${queue.isPlaceholderData ? 'opacity-60' : ''}`}>
+            {queue.data.items.map(blueprint => <BlueprintItem key={blueprint.id} blueprint={blueprint} busy={review.isPending}
+              onDecide={action => startDecision(blueprint, action)} />)}
           </ul>}
-        <Pagination page={page} total={queue.data.total} onChange={setPage} />
+        <Pagination page={page} total={queue.data.total} onChange={next => update({ page: next })} />
       </>}
 
     <AlertDialog open={!!decision} onOpenChange={open => { if (!open && !review.isPending) setDecision(null); }}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{decision ? t(`studyReview.status.${decision.action}`) : ''}</AlertDialogTitle>
+          <AlertDialogTitle>{decision ? `${t(`studyReview.${decision.action === 'accepted' ? 'accept' : 'reject'}`)}: ${readBlueprint(decision.blueprint).title}` : ''}</AlertDialogTitle>
           <AlertDialogDescription>{t('studyReview.confirmDescription')}</AlertDialogDescription>
         </AlertDialogHeader>
         <label className="block space-y-2 text-sm font-medium">
-          <span>{t('studyReview.note')}</span>
-          <textarea className="min-h-24 w-full rounded-md border border-input bg-background px-3 py-2"
-            maxLength={2000} value={note} onChange={event => setNote(event.target.value)}
-            placeholder={t('studyReview.notePlaceholder')} />
+          <span className="block">{t('studyReview.note')}</span>
+          <Textarea rows={3} maxLength={2000} value={note} onChange={event => setNote(event.target.value)} placeholder={t('studyReview.notePlaceholder')} />
         </label>
+        {review.error && <p role="alert" className="border border-destructive p-3 text-sm text-destructive">{review.error.message}</p>}
         <AlertDialogFooter>
           <AlertDialogCancel disabled={review.isPending}>{t('common.cancel')}</AlertDialogCancel>
-          <AlertDialogAction disabled={review.isPending || !decision} onClick={event => {
-            event.preventDefault();
-            if (!decision) return;
-            review.mutate({ id: decision.blueprint.id, action: decision.action, reviewNote: note }, {
-              onSuccess: () => { setDecision(null); setNote(''); },
-            });
-          }}>{t('common.confirm')}</AlertDialogAction>
+          <AlertDialogAction disabled={review.isPending || !decision} onClick={event => { event.preventDefault(); confirm(); }}>
+            {review.isPending ? t('common.working') : t('common.confirm')}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
