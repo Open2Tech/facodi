@@ -30,6 +30,22 @@ O ensino oficial, títulos, códigos, ECTS e grupos de opção foram transcritos
 
 ## Materiais e grafo
 
+### Atualização de 14/11/2026 (21h UTC)
+
+- **41 atividades práticas originais**, uma por UC, publicadas com cenário hipotético e entrega sugerida (não são avaliações UAlg).
+- **123 objetivos de estudo editoriais** de apoio, derivados dos três temas previamente identificados por UC, indexados no catálogo e acessíveis na página da UC; não são resultados de aprendizagem oficiais.
+- **196 relações a referências externas** entre UCs e fontes institucionais, livros, bases de dados e páginas educativas. Todas as 41 UCs têm pelo menos uma referência. A informação foi vinculada por URL e não duplicada por curso.
+- **56 vídeos distintos associados ao curso**: 49 registos históricos reutilizados de `public.videos` e sete vídeos adicionais incorporados apenas no schema `facodi` como URLs YouTube (não houve escrita em `public`). São **58 ligações UC→vídeo** porque dois vídeos complementam mais do que uma UC.
+- **11 UCs com pelo menos um vídeo**, 30 sem aulas selecionadas com pertinência suficiente; estas têm atividades e bibliografia.
+- **Três sequências editoriais FACODI**: Estatística I (25), Estatística II (21), Matemática Financeira (3); 49 relações playlist→vídeo. As listas são objetos editoriais da FACODI, **não playlists criadas em contas do YouTube**.
+- **Quatro portais de aulas institucionais** acrescentados por links externos (FCCN Educast, e-Aulas USP e literacia financeira IPV); não se alojam vídeos na FACODI.
+
+Os recursos recém-adicionados abrangem documentos do Diário da República, OCC, Pordata, Eurostat, BCE, IAPMEI e manuais OpenStax. Os vídeos novos abrangem contabilidade financeira, matemática financeira, economia, marketing e investimento. As decisões de associação por título/canal **não equivalem a revisão integral das aulas, nem a endosso da UAlg**.
+
+O acervo é composto de **links para fontes originais**, sem reprodução de textos de livros. OpenStax e outros titulares reservam direitos e podem restringir a reutilização comercial ou o processamento por IA. A FACODI **não efetuou ingestão** do texto integral externo.
+
+### Lote inicial (preservado)
+
 - **41 objetos** de UC, **um objeto** de curso, **41 relações curso→UC**.
 - **49 vídeos externos** já existentes em `public.videos`, associados a quatro UCs: Estatística I (25), Estatística II (21), Informática para Gestão (2), Matemática I (1).
 - Os vídeos foram reutilizados por UUID, sem criar novos registos em `public.videos` nem duplicar ficheiros multimédia.
@@ -48,7 +64,7 @@ Tabelas utilizadas: `facodi.courses`, `facodi.curricular_units`, `facodi.learnin
 
 Todas as 41 UCs passaram a usar o **código UAlg como slug**, em consistência com LESTI e CTeSP.
 
-Teste de leitura com papel `anon`: curso e 41 UCs visíveis; 41 relações académicas e 84 relações de recursos visíveis; `video_classifications` continua a ser uma tabela privada para a equipa de curadoria. A interface de produção foi validada no navegador remoto: o curso e as páginas de Estadística I e Introdução à Gestão carregam a partir dos dados do Supabase.
+Teste de leitura com papel `anon` após enriquecimento: **1 curso, 41 UCs, 123 objetivos editoriais e 257 relações públicas diretamente a partir das páginas de UCs** (196 referências, 58 associações a vídeo e 3 associações a playlists). Os registos de `video_classifications` continuam privados (0 expostos). O grafo contém adicionalmente as 41 relações curso→UC e as 49 relações playlist→vídeo, todas com proveniência. A interface já consome diretamente os dados do Supabase.
 
 ## Migrações versionadas
 
@@ -57,11 +73,18 @@ Teste de leitura com papel `anon`: curso e 41 UCs visíveis; 41 relações acad�
 - `20261114181516_facodi_gestao_1418_reuse_49_public_youtube_videos.sql`
 - `20261114181637_facodi_gestao_1418_course_taxonomy_and_search.sql`
 - `20261114181901_facodi_gestao_1418_canonical_uc_routes.sql`
+- `20261114210029_facodi_gestao_41_educational_study_goals_and_topic_search.sql`
+- `20261114210443_facodi_gestao_extended_official_and_open_reference_library.sql`
+- `20261114210508_facodi_gestao_reuse_cross_course_reference_library.sql`
+- `20261114210719_facodi_gestao_verified_seven_external_youtube_lessons.sql`
+- `20261114210910_facodi_gestao_41_original_practice_activities.sql`
+- `20261114211050_facodi_gestao_three_editorial_video_learning_paths.sql`
+- `20261114211126_facodi_gestao_portuguese_institutional_video_lectures.sql`
 
 ## Limitações assumidas
 
 1. A posição semestral de Fiscalidade I carece de confirmação devido à duplicação existente no portal oficial.
 2. Os temas educativos e guias introdutórios não são fichas oficiais das UCs.
-3. Só quatro UCs têm vídeos com correspondência de título/canal suficientemente clara dentro do acervo existente. As restantes continuam navegáveis com descrições e, quando aplicável, leituras externas.
+3. Há 11 UCs com pelo menos um vídeo selecionado pelo título/canal. As 30 restantes continuam navegáveis com atividade prática, objetivos e leituras externas.
 4. Não foram simuladas inscrições, progresso de alunos, classificações produzidas por IA ou playlists submetidas por utilizadores.
-5. A pertinência dos 49 vídeos foi avaliada pelos metadados: revisão integral, legendas, direitos e disponibilidade regional continuam por confirmar.
+5. A pertinência dos 56 vídeos distintos foi inferida de metadados de origem: revisão integral, legendas, direitos de incorporação e disponibilidade regional continuam por confirmar.
