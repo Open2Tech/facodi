@@ -334,7 +334,8 @@
     "required": "Complete this field.",
     "tooLong": "The value exceeds the permitted length.",
     "slug": "Use lowercase unaccented letters, numbers and hyphens between words.",
-    "url": "Enter a valid HTTP or HTTPS URL."
+    "url": "Enter a valid HTTP or HTTPS URL.",
+    "tooShort": "The value is too short."
   },
   "units": {
     "title": "Curricular units",
@@ -749,5 +750,146 @@
     "exportAll": "Export all (.md)",
     "openNotebook": "Open with the notebook",
     "openAll": "Open the full notebook"
+  },
+  "suggest": {
+    "nav": "Suggest a resource",
+    "back": "How to contribute",
+    "title": "Suggest a resource",
+    "description": "Paste the address of an open video, repository or document. FACODI recognises the source, reads its public metadata and proposes a curricular unit; the editorial team decides what gets published.",
+    "url": "Resource address",
+    "urlHint": "HTTPS preferred. Only this address is sent to the source’s public APIs, never your session.",
+    "urlInvalid": "Enter a valid HTTP or HTTPS address.",
+    "analyse": "Analyse",
+    "providersLabel": "Recognised sources",
+    "detected": "detected",
+    "providers": {
+      "youtube": "YouTube",
+      "github": "GitHub",
+      "zenodo": "Zenodo",
+      "openstax": "OpenStax",
+      "doaj": "DOAJ",
+      "arxiv": "arXiv",
+      "web": "Other web source"
+    },
+    "recognition": "Recognition",
+    "stages": {
+      "source": "Source",
+      "sourceGeneric": "Generic web source: curators check it more carefully.",
+      "sourceMine": "You have already suggested this address.",
+      "metadata": "Metadata",
+      "metadataFound": "Title and authorship read from the source.",
+      "metadataFailed": "The source did not answer; fill in the details by hand.",
+      "metadataManual": "No public API; fill in the details by hand.",
+      "license": "Licence",
+      "licenseMissing": "The source does not state a licence.",
+      "unit": "Curricular unit",
+      "unitFound": "{{unit}} · {{score}}% shared vocabulary",
+      "unitNone": "No unit shares vocabulary with this resource."
+    },
+    "licenseClass": {
+      "open": "Open",
+      "restricted": "Restricted",
+      "unknown": "To check"
+    },
+    "details": "Confirm the details",
+    "fields": {
+      "title": "Title",
+      "author": "Author or channel",
+      "license": "Licence",
+      "type": "Type",
+      "language": "Language",
+      "tags": "Tags",
+      "note": "Note for curators"
+    },
+    "licenseHint": "E.g. CC BY 4.0, MIT. NC/ND licences are declined.",
+    "languageUnknown": "Not stated",
+    "tagsHint": "Comma-separated, up to 8.",
+    "unit": "Curricular unit",
+    "matches": "Suggested units",
+    "matchScore": "{{score}}% shared vocabulary",
+    "noMatches": "We found no units with shared vocabulary. Pick one from the list or leave it without a unit.",
+    "unitAll": "All units",
+    "noUnit": "No unit (curators decide)",
+    "noteCount": "{{length}}/500 characters",
+    "declarations": "Declarations",
+    "licenseDeclared": "I confirm the licence allows educational use of this resource.",
+    "attributionDeclared": "I confirm the authorship stated is that of the original source.",
+    "errors": {
+      "declaration": "Confirm both declarations to send.",
+      "already_suggested": "You have already suggested this resource.",
+      "daily_limit": "You reached the limit of 20 suggestions per day. Try again tomorrow.",
+      "forbidden": "You are not allowed to do this."
+    },
+    "sending": "Sending…",
+    "send": "Send for curation",
+    "restart": "Start over",
+    "another": "Suggest another resource",
+    "status": {
+      "pending": "In curation",
+      "duplicate": "Duplicate",
+      "approved": "Approved",
+      "rejected": "Declined"
+    },
+    "recommendation": {
+      "fast_track": "Fast track",
+      "review": "Review",
+      "reject": "To decline"
+    },
+    "verdict": {
+      "title": "Suggestion received",
+      "duplicateTitle": "This resource is already on FACODI",
+      "fast_track": "Recognised source, open licence and a chosen unit: it sits at the top of the curation queue.",
+      "review": "Some signals are missing; the editorial team will check the source and licence.",
+      "reject": "The check found a blocker. The editorial team confirms before deciding."
+    },
+    "signals": {
+      "sourceKnown": "Recognised source: {{provider}}.",
+      "sourceGeneric": "Generic web source.",
+      "license": {
+        "open": "Open licence.",
+        "restricted": "Restricted licence (NC/ND or all rights reserved).",
+        "unknown": "Licence to check."
+      },
+      "unitSelected": "Curricular unit chosen.",
+      "unitMissing": "No curricular unit.",
+      "duplicate": "A resource with this address already exists.",
+      "openExisting": "Open resource",
+      "unique": "No duplicates in the catalogue.",
+      "level": {
+        "ok": "Met",
+        "attention": "Attention",
+        "blocked": "Blocker"
+      }
+    },
+    "history": "My suggestions",
+    "historyEmpty": "You have not suggested any resources yet.",
+    "submittedOn": "Sent on {{date}}",
+    "reviewNote": "Curator note",
+    "criteria": {
+      "title": "Curation criteria",
+      "fast_track": "Recognised source, open licence and a chosen curricular unit.",
+      "review": "Generic source, licence to check or no unit.",
+      "reject": "Resource already exists or NC/ND licence.",
+      "manual": "The recommendation orders the queue; publishing is always manual."
+    }
+  },
+  "suggestReview": {
+    "open": "Resource suggestions",
+    "back": "Back to the editor",
+    "title": "Resource suggestions",
+    "description": "Suggestions sent by learners and checked automatically. Approving creates a draft in the editor; nothing is published without review.",
+    "queue": "Pending ({{count}})",
+    "empty": "No pending suggestions",
+    "emptyDescription": "New suggestions appear here in order of arrival.",
+    "screening": "Automatic check",
+    "scope": "Approving creates (or reuses) a draft resource and links it to the chosen unit. Review the licence and publish it in the editor.",
+    "reject": "Decline",
+    "approve": "Approve as draft",
+    "confirmApprove": "The resource stays a draft until it is published in the editor.",
+    "confirmReject": "The note is visible to whoever suggested it.",
+    "approved": "Draft created. Review and publish it in the editor.",
+    "rejected": "Suggestion declined.",
+    "confirmApproveExisting": "The resource already exists: approving reuses it (and links it to the unit, if any) without creating a new one.",
+    "approvedExisting": "Existing resource reused, no new draft."
   }
 }

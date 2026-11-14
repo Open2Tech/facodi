@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, ListPlus, ListVideo, Route } from 'lucide-react';
+import { ArrowUpRight, Lightbulb, ListPlus, ListVideo, Route } from 'lucide-react';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { useAuth } from '@/features/auth/useAuth';
 import { useBlueprintCounts, usePendingPlaylists } from '@/features/contributions/queries/useContributions';
+import { useSuggestionQueue } from '@/features/suggestions/queries/useSuggestions';
+import { SuggestionHistory } from '@/components/suggestion/SuggestionHistory';
 import { PlaylistHistory } from '@/components/contribution/PlaylistHistory';
 import { Button } from '@/components/ui/button';
 
@@ -11,8 +13,10 @@ function ReviewQueues() {
   const { t } = useTranslation();
   const playlists = usePendingPlaylists();
   const blueprints = useBlueprintCounts();
+  const suggestions = useSuggestionQueue();
   const queues = [
     { to: '/editor/playlists', icon: ListVideo, title: t('playlistReview.title'), count: playlists.data?.length },
+    { to: '/editor/suggestions', icon: Lightbulb, title: t('suggestReview.title'), count: suggestions.data?.length },
     { to: '/editor/study-paths?status=draft', icon: Route, title: t('studyReview.title'), count: blueprints.data?.draft },
   ];
   return <div className="mt-10">
@@ -39,6 +43,11 @@ export function ContributionSummary() {
       <Button asChild variant="outline" size="sm"><Link to="/playlists/submit"><ListPlus aria-hidden="true" />{t('profile.proposePlaylist')}</Link></Button>
     </div>
     <PlaylistHistory />
+    <div className="mt-10 flex flex-wrap items-center justify-between gap-3">
+      <h3 className="text-base font-semibold">{t('suggest.history')}</h3>
+      <Button asChild variant="outline" size="sm"><Link to="/suggest"><Lightbulb aria-hidden="true" />{t('suggest.nav')}</Link></Button>
+    </div>
+    <SuggestionHistory />
     {canAccessFacodiRoute(role, 'editor') && <ReviewQueues />}
   </div>;
 }

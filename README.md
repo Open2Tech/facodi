@@ -105,8 +105,8 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 | `/`, `/courses`, `/courses/:slug`, `/courses/:slug/units/:unit`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
 | `/login`, `/auth/callback`, `/auth/reset-password` | Público |
 | `/notes` | Público (caderno do navegador para visitantes, da conta após login; `noindex`) |
-| `/dashboard`, `/profile` | Autenticado |
-| `/editor` | Editor ou admin |
+| `/dashboard`, `/profile`, `/suggest` | Autenticado |
+| `/editor`, `/editor/suggestions` | Editor ou admin |
 | `/admin` | Admin |
 
 `/auth` redireciona para `/login`; `/facodi` para `/courses`. Rotas sociais
@@ -147,6 +147,15 @@ Os vídeos só são publicados após aprovação de um editor em
 pipelines automáticas continuam sem acesso público direto. A fila de revisão
 dos 104 percursos/mapas editoriais do catálogo atualizado fica em
 `/editor/study-paths`, sem publicação automática ao aceitar um rascunho.
+
+Utilizadores autenticados podem **sugerir um recurso** em `/suggest`. O
+navegador lê metadados públicos (oEmbed do YouTube, APIs do GitHub e do Zenodo,
+sem credenciais) e propõe a unidade curricular; o resto é manual. Na base, o
+trigger de `facodi.resource_suggestions` normaliza o URL, deteta duplicados,
+classifica a licença e grava uma recomendação (`fast_track`, `review`,
+`reject`) que apenas ordena a fila. Em `/editor/suggestions`, a RPC
+`review_resource_suggestion` aprova (cria um objeto em rascunho ou reutiliza o
+existente e liga-o à unidade) ou recusa. Nada é publicado automaticamente.
 
 ## Auth: pré-requisitos antes de disponibilizar cadastro
 

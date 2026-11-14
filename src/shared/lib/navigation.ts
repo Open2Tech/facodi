@@ -1,4 +1,4 @@
-const privateDestinations = ['/dashboard', '/profile', '/playlists/submit', '/editor', '/editor/study-paths', '/editor/playlists', '/admin'];
+const privateDestinations = ['/dashboard', '/profile', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/playlists', '/editor/suggestions', '/admin'];
 
 export function safeReturnPath(value: string | null | undefined): string {
   if (!value || /[\\\s]/.test(value) || [...value].some(char => char.charCodeAt(0) < 32) || !value.startsWith('/') || value.startsWith('//')) return '/dashboard';

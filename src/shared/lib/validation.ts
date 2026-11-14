@@ -85,3 +85,18 @@ export const noteSchema = z.object({
   body: z.string().max(8000, 'validation.tooLong'),
 });
 export type NoteFormValues = z.infer<typeof noteSchema>;
+
+/** Limits mirror the facodi.resource_suggestions constraints. */
+export const resourceSuggestionSchema = z.object({
+  title: z.string().trim().min(3, 'validation.tooShort').max(200, 'validation.tooLong'),
+  author: z.string().trim().max(160, 'validation.tooLong'),
+  license: z.string().trim().max(80, 'validation.tooLong'),
+  objectType: z.enum(['video', 'document', 'external_resource']),
+  language: z.union([z.enum(['pt', 'en', 'es', 'fr']), z.literal('')]),
+  tags: z.string().max(400, 'validation.tooLong'),
+  unitId: z.union([z.uuid(), z.literal('')]),
+  note: z.string().max(500, 'validation.tooLong'),
+  licenseDeclared: z.literal(true, 'suggest.errors.declaration'),
+  attributionDeclared: z.literal(true, 'suggest.errors.declaration'),
+});
+export type ResourceSuggestionFormValues = z.infer<typeof resourceSuggestionSchema>;

@@ -334,7 +334,8 @@
     "required": "Preenche este campo.",
     "tooLong": "O valor excede o tamanho permitido.",
     "slug": "Usa letras minúsculas sem acentos, números e hífenes entre palavras.",
-    "url": "Indica uma URL HTTP ou HTTPS válida."
+    "url": "Indica uma URL HTTP ou HTTPS válida.",
+    "tooShort": "O valor é demasiado curto."
   },
   "units": {
     "title": "Unidades curriculares",
@@ -749,5 +750,146 @@
     "exportAll": "Exportar tudo (.md)",
     "openNotebook": "Abrir com o caderno",
     "openAll": "Abrir o caderno completo"
+  },
+  "suggest": {
+    "nav": "Sugerir recurso",
+    "back": "Como contribuir",
+    "title": "Sugerir um recurso",
+    "description": "Cola o endereço de um vídeo, repositório ou documento aberto. A FACODI reconhece a fonte, lê os metadados públicos e propõe a unidade curricular; a equipa editorial decide o que é publicado.",
+    "url": "Endereço do recurso",
+    "urlHint": "HTTPS de preferência. Só este endereço é enviado às APIs públicas da fonte, sem a tua sessão.",
+    "urlInvalid": "Indica um endereço HTTP ou HTTPS válido.",
+    "analyse": "Analisar",
+    "providersLabel": "Fontes reconhecidas",
+    "detected": "detetada",
+    "providers": {
+      "youtube": "YouTube",
+      "github": "GitHub",
+      "zenodo": "Zenodo",
+      "openstax": "OpenStax",
+      "doaj": "DOAJ",
+      "arxiv": "arXiv",
+      "web": "Outra fonte web"
+    },
+    "recognition": "Reconhecimento",
+    "stages": {
+      "source": "Fonte",
+      "sourceGeneric": "Fonte web genérica: a curadoria verifica-a com mais cuidado.",
+      "sourceMine": "Já sugeriste este endereço.",
+      "metadata": "Metadados",
+      "metadataFound": "Título e autoria lidos da fonte.",
+      "metadataFailed": "A fonte não respondeu; preenche os dados à mão.",
+      "metadataManual": "Sem API pública; preenche os dados à mão.",
+      "license": "Licença",
+      "licenseMissing": "Licença não indicada pela fonte.",
+      "unit": "Unidade curricular",
+      "unitFound": "{{unit}} · {{score}}% de vocabulário em comum",
+      "unitNone": "Nenhuma unidade com vocabulário em comum."
+    },
+    "licenseClass": {
+      "open": "Aberta",
+      "restricted": "Restrita",
+      "unknown": "Por verificar"
+    },
+    "details": "Confirma os dados",
+    "fields": {
+      "title": "Título",
+      "author": "Autoria ou canal",
+      "license": "Licença",
+      "type": "Tipo",
+      "language": "Idioma",
+      "tags": "Etiquetas",
+      "note": "Nota para a curadoria"
+    },
+    "licenseHint": "Ex.: CC BY 4.0, MIT. Licenças NC/ND são recusadas.",
+    "languageUnknown": "Não indicado",
+    "tagsHint": "Separadas por vírgulas, até 8.",
+    "unit": "Unidade curricular",
+    "matches": "Unidades sugeridas",
+    "matchScore": "{{score}}% de vocabulário em comum",
+    "noMatches": "Não encontrámos unidades com vocabulário em comum. Escolhe uma na lista ou deixa sem unidade.",
+    "unitAll": "Todas as unidades",
+    "noUnit": "Sem unidade (a curadoria decide)",
+    "noteCount": "{{length}}/500 caracteres",
+    "declarations": "Declarações",
+    "licenseDeclared": "Confirmo que a licença permite usar o recurso em contexto educativo.",
+    "attributionDeclared": "Confirmo que a autoria indicada é a da fonte original.",
+    "errors": {
+      "declaration": "Confirma as duas declarações para enviar.",
+      "already_suggested": "Já sugeriste este recurso.",
+      "daily_limit": "Atingiste o limite de 20 sugestões por dia. Tenta amanhã.",
+      "forbidden": "Não tens permissão para esta ação."
+    },
+    "sending": "A enviar…",
+    "send": "Enviar para curadoria",
+    "restart": "Recomeçar",
+    "another": "Sugerir outro recurso",
+    "status": {
+      "pending": "Em curadoria",
+      "duplicate": "Duplicado",
+      "approved": "Aprovado",
+      "rejected": "Recusado"
+    },
+    "recommendation": {
+      "fast_track": "Via rápida",
+      "review": "Revisão",
+      "reject": "A recusar"
+    },
+    "verdict": {
+      "title": "Sugestão recebida",
+      "duplicateTitle": "Este recurso já existe na FACODI",
+      "fast_track": "Fonte reconhecida, licença aberta e unidade escolhida: está no topo da fila de curadoria.",
+      "review": "Faltam alguns sinais; a equipa editorial vai verificar a fonte e a licença.",
+      "reject": "A verificação encontrou um impedimento. A equipa editorial confirma antes de decidir."
+    },
+    "signals": {
+      "sourceKnown": "Fonte reconhecida: {{provider}}.",
+      "sourceGeneric": "Fonte web genérica.",
+      "license": {
+        "open": "Licença aberta.",
+        "restricted": "Licença restrita (NC/ND ou todos os direitos reservados).",
+        "unknown": "Licença por verificar."
+      },
+      "unitSelected": "Unidade curricular escolhida.",
+      "unitMissing": "Sem unidade curricular.",
+      "duplicate": "Já existe um recurso com este endereço.",
+      "openExisting": "Abrir recurso",
+      "unique": "Sem duplicados no catálogo.",
+      "level": {
+        "ok": "Cumprido",
+        "attention": "Atenção",
+        "blocked": "Impedimento"
+      }
+    },
+    "history": "As minhas sugestões",
+    "historyEmpty": "Ainda não sugeriste recursos.",
+    "submittedOn": "Enviada a {{date}}",
+    "reviewNote": "Nota da curadoria",
+    "criteria": {
+      "title": "Critérios de curadoria",
+      "fast_track": "Fonte reconhecida, licença aberta e unidade curricular escolhida.",
+      "review": "Fonte genérica, licença por verificar ou sem unidade.",
+      "reject": "Recurso já existente ou licença NC/ND.",
+      "manual": "A recomendação orienta a fila; a publicação é sempre manual."
+    }
+  },
+  "suggestReview": {
+    "open": "Sugestões de recursos",
+    "back": "Voltar ao editor",
+    "title": "Sugestões de recursos",
+    "description": "Sugestões enviadas por estudantes, verificadas automaticamente. Aprovar cria um rascunho no editor; nada é publicado sem revisão.",
+    "queue": "Pendentes ({{count}})",
+    "empty": "Sem sugestões pendentes",
+    "emptyDescription": "As novas sugestões aparecem aqui pela ordem de chegada.",
+    "screening": "Verificação automática",
+    "scope": "Aprovar cria (ou reutiliza) um recurso em rascunho e liga-o à unidade escolhida. Revê a licença e publica-o no editor.",
+    "reject": "Recusar",
+    "approve": "Aprovar como rascunho",
+    "confirmApprove": "O recurso fica em rascunho até ser publicado no editor.",
+    "confirmReject": "A nota fica visível para quem sugeriu.",
+    "approved": "Rascunho criado. Revê-o e publica-o no editor.",
+    "rejected": "Sugestão recusada.",
+    "confirmApproveExisting": "O recurso já existe: a aprovação reutiliza-o (e liga-o à unidade, se houver), sem criar um novo.",
+    "approvedExisting": "Recurso existente reutilizado, sem novo rascunho."
   }
 }

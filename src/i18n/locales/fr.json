@@ -334,7 +334,8 @@
     "required": "Remplissez ce champ.",
     "tooLong": "La valeur dépasse la longueur autorisée.",
     "slug": "Utilisez des minuscules sans accents, des chiffres et des tirets entre les mots.",
-    "url": "Indiquez une URL HTTP ou HTTPS valide."
+    "url": "Indiquez une URL HTTP ou HTTPS valide.",
+    "tooShort": "La valeur est trop courte."
   },
   "units": {
     "title": "Unités d’enseignement",
@@ -749,5 +750,146 @@
     "exportAll": "Tout exporter (.md)",
     "openNotebook": "Ouvrir avec le carnet",
     "openAll": "Ouvrir le carnet complet"
+  },
+  "suggest": {
+    "nav": "Suggérer une ressource",
+    "back": "Comment contribuer",
+    "title": "Suggérer une ressource",
+    "description": "Collez l’adresse d’une vidéo, d’un dépôt ou d’un document ouvert. FACODI reconnaît la source, lit ses métadonnées publiques et propose l’unité d’enseignement ; l’équipe éditoriale décide de ce qui est publié.",
+    "url": "Adresse de la ressource",
+    "urlHint": "HTTPS de préférence. Seule cette adresse est envoyée aux API publiques de la source, jamais votre session.",
+    "urlInvalid": "Indiquez une adresse HTTP ou HTTPS valide.",
+    "analyse": "Analyser",
+    "providersLabel": "Sources reconnues",
+    "detected": "détectée",
+    "providers": {
+      "youtube": "YouTube",
+      "github": "GitHub",
+      "zenodo": "Zenodo",
+      "openstax": "OpenStax",
+      "doaj": "DOAJ",
+      "arxiv": "arXiv",
+      "web": "Autre source web"
+    },
+    "recognition": "Reconnaissance",
+    "stages": {
+      "source": "Source",
+      "sourceGeneric": "Source web générique : la curation la vérifie avec plus de soin.",
+      "sourceMine": "Vous avez déjà suggéré cette adresse.",
+      "metadata": "Métadonnées",
+      "metadataFound": "Titre et auteur lus depuis la source.",
+      "metadataFailed": "La source n’a pas répondu ; complétez les données à la main.",
+      "metadataManual": "Pas d’API publique ; complétez les données à la main.",
+      "license": "Licence",
+      "licenseMissing": "La source n’indique pas de licence.",
+      "unit": "Unité d’enseignement",
+      "unitFound": "{{unit}} · {{score}} % de vocabulaire commun",
+      "unitNone": "Aucune unité ne partage de vocabulaire avec cette ressource."
+    },
+    "licenseClass": {
+      "open": "Ouverte",
+      "restricted": "Restreinte",
+      "unknown": "À vérifier"
+    },
+    "details": "Confirmez les données",
+    "fields": {
+      "title": "Titre",
+      "author": "Auteur ou chaîne",
+      "license": "Licence",
+      "type": "Type",
+      "language": "Langue",
+      "tags": "Étiquettes",
+      "note": "Note pour la curation"
+    },
+    "licenseHint": "Ex. : CC BY 4.0, MIT. Les licences NC/ND sont refusées.",
+    "languageUnknown": "Non indiquée",
+    "tagsHint": "Séparées par des virgules, 8 au maximum.",
+    "unit": "Unité d’enseignement",
+    "matches": "Unités suggérées",
+    "matchScore": "{{score}} % de vocabulaire commun",
+    "noMatches": "Aucune unité ne partage de vocabulaire. Choisissez-en une dans la liste ou laissez sans unité.",
+    "unitAll": "Toutes les unités",
+    "noUnit": "Sans unité (la curation décide)",
+    "noteCount": "{{length}}/500 caractères",
+    "declarations": "Déclarations",
+    "licenseDeclared": "Je confirme que la licence permet un usage éducatif de la ressource.",
+    "attributionDeclared": "Je confirme que l’auteur indiqué est celui de la source originale.",
+    "errors": {
+      "declaration": "Confirmez les deux déclarations pour envoyer.",
+      "already_suggested": "Vous avez déjà suggéré cette ressource.",
+      "daily_limit": "Vous avez atteint la limite de 20 suggestions par jour. Réessayez demain.",
+      "forbidden": "Vous n’avez pas l’autorisation pour cette action."
+    },
+    "sending": "Envoi…",
+    "send": "Envoyer à la curation",
+    "restart": "Recommencer",
+    "another": "Suggérer une autre ressource",
+    "status": {
+      "pending": "En curation",
+      "duplicate": "Doublon",
+      "approved": "Approuvée",
+      "rejected": "Refusée"
+    },
+    "recommendation": {
+      "fast_track": "Voie rapide",
+      "review": "Révision",
+      "reject": "À refuser"
+    },
+    "verdict": {
+      "title": "Suggestion reçue",
+      "duplicateTitle": "Cette ressource existe déjà sur FACODI",
+      "fast_track": "Source reconnue, licence ouverte et unité choisie : elle est en tête de la file de curation.",
+      "review": "Certains signaux manquent ; l’équipe éditoriale vérifiera la source et la licence.",
+      "reject": "La vérification a relevé un obstacle. L’équipe éditoriale confirme avant de décider."
+    },
+    "signals": {
+      "sourceKnown": "Source reconnue : {{provider}}.",
+      "sourceGeneric": "Source web générique.",
+      "license": {
+        "open": "Licence ouverte.",
+        "restricted": "Licence restreinte (NC/ND ou tous droits réservés).",
+        "unknown": "Licence à vérifier."
+      },
+      "unitSelected": "Unité d’enseignement choisie.",
+      "unitMissing": "Sans unité d’enseignement.",
+      "duplicate": "Une ressource avec cette adresse existe déjà.",
+      "openExisting": "Ouvrir la ressource",
+      "unique": "Aucun doublon dans le catalogue.",
+      "level": {
+        "ok": "Rempli",
+        "attention": "Attention",
+        "blocked": "Obstacle"
+      }
+    },
+    "history": "Mes suggestions",
+    "historyEmpty": "Vous n’avez encore suggéré aucune ressource.",
+    "submittedOn": "Envoyée le {{date}}",
+    "reviewNote": "Note de la curation",
+    "criteria": {
+      "title": "Critères de curation",
+      "fast_track": "Source reconnue, licence ouverte et unité d’enseignement choisie.",
+      "review": "Source générique, licence à vérifier ou sans unité.",
+      "reject": "Ressource déjà existante ou licence NC/ND.",
+      "manual": "La recommandation ordonne la file ; la publication reste toujours manuelle."
+    }
+  },
+  "suggestReview": {
+    "open": "Suggestions de ressources",
+    "back": "Retour à l’éditeur",
+    "title": "Suggestions de ressources",
+    "description": "Suggestions envoyées par des étudiants et vérifiées automatiquement. Approuver crée un brouillon dans l’éditeur ; rien n’est publié sans révision.",
+    "queue": "En attente ({{count}})",
+    "empty": "Aucune suggestion en attente",
+    "emptyDescription": "Les nouvelles suggestions apparaissent ici par ordre d’arrivée.",
+    "screening": "Vérification automatique",
+    "scope": "Approuver crée (ou réutilise) une ressource en brouillon et la lie à l’unité choisie. Vérifiez la licence et publiez-la dans l’éditeur.",
+    "reject": "Refuser",
+    "approve": "Approuver en brouillon",
+    "confirmApprove": "La ressource reste en brouillon jusqu’à sa publication dans l’éditeur.",
+    "confirmReject": "La note sera visible par la personne qui l’a suggérée.",
+    "approved": "Brouillon créé. Vérifiez-le et publiez-le dans l’éditeur.",
+    "rejected": "Suggestion refusée.",
+    "confirmApproveExisting": "La ressource existe déjà : l’approbation la réutilise (et la lie à l’unité, le cas échéant) sans en créer une nouvelle.",
+    "approvedExisting": "Ressource existante réutilisée, sans nouveau brouillon."
   }
 }

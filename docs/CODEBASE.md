@@ -25,12 +25,21 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   migram uma vez; as de visitante só migram por escolha explícita. Inclui
   ordenação, timestamps, pesquisa sem acentos entre recursos, agrupamento por
   recurso (com `object_type`) e exportação Markdown por recurso ou completa.
+- [src/entities/suggestion](../src/entities/suggestion): sugestões de recursos
+  (`facodi.resource_suggestions`, RLS do dono e editorial). `recognition.ts`
+  replica a normalização de URL e a classificação de licença do trigger SQL só
+  para pré-visualização; o servidor grava o `screening` autoritativo.
+  `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
+  devolve `null` em falha (preenchimento manual). A revisão usa a RPC
+  `review_resource_suggestion`.
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
   para catálogo público, conteúdo editorial e contagens administrativas.
 - [src/features/contributions/queries](../src/features/contributions/queries):
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
+- [src/features/suggestions/queries](../src/features/suggestions/queries):
+  TanStack Query para as sugestões do utilizador e a fila editorial.
 - [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`;
   TanStack Query com escrita otimista e rollback para contas,
   `useSyncExternalStore` entre separadores para visitantes; `useNoteActions`
@@ -44,6 +53,9 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   sem indexação). [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
   lê o tempo do embed `youtube-nocookie` via `postMessage` (origem validada) e
   envia `seekTo`; `?t=<segundos>` define o início do vídeo.
+  [src/components/suggestion](../src/components/suggestion) mostra o
+  reconhecimento por etapas (`useStagedReveal`, sem animação com
+  `prefers-reduced-motion`), os sinais de triagem e a escolha da unidade.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.
