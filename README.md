@@ -60,7 +60,7 @@ Foram criados oito perfis públicos e três marcos verificados; os três perfis 
 
 [Auditoria de identidade, fontes, curadoria e política de consentimento](docs/facodi-project-identity-community-2026-11-14.md).
 
-**Nota de publicação:** a versão em GitHub pode estar mais recente do que o último deploy Vercel READY, por limite diário de builds. Verificar sempre o commit realmente publicado antes de anunciar as rotas como disponíveis em produção.
+**Publicação confirmada:** o commit a71dc0d8b32cdce6f7e5390d54d628022ddb8142 ficou READY na Vercel, e a leitura pública confirmou `/about` e `/community` com os novos conteúdos. A fila `/editor/project-credits` permanece protegida e depende de teste real com conta editorial. Novos commits após essa versão exigem confirmar o respetivo deploy.
 
 ## Catálogo académico publicado (14/11/2026)
 
