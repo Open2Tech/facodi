@@ -7,7 +7,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.0";
  * Data: server-generated facodi.email_outbox only, no arbitrary recipients,
  * templates, HTML, or message body from the request.
  *
- * Requires RESEND_API_KEY and FACODI_EMAIL_FROM from a verified sending domain.
+ * Requires FACODI_RESEND_API_KEY and FACODI_EMAIL_FROM from a verified sending domain.
  * Without both, returns 503 and keeps events pending. Does NOT borrow the
  * shared Tube/Monynha sender address.
  */
@@ -136,7 +136,7 @@ Deno.serve(async (req: Request) => {
     return response(req, 404, { error: "not_found" });
   }
 
-  const resendKey = Deno.env.get("RESEND_API_KEY");
+  const resendKey = Deno.env.get("FACODI_RESEND_API_KEY");
   const sender = Deno.env.get("FACODI_EMAIL_FROM");
   if (!resendKey || !sender || !/^[^<>\r\n]*<[^<>\s@]+@[^<>\s@]+>$/.test(sender)) {
     // Never fall back to another product's sending identity.
