@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit } from '@/features/courses/queries/useCourses';
+import { useUnitVideos } from '@/features/courses/queries/useUnitVideos';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -12,10 +14,14 @@ export default function UnitDetails() {
   const { t } = useTranslation();
   const query = useUnit(slug, unitSlug);
   const contribute = useContributePath();
+  const videoQuery = useUnitVideos(query.data?.unit.learning_object_id);
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
   const { course, unit, outline } = query.data;
+  const videos = videoQuery.data ?? [];
+  const selectedVideo = videos.find(video => video.id === selectedVideoId) ?? videos[0];
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
@@ -59,6 +65,53 @@ export default function UnitDetails() {
               <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
               <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
             </div>}
+        </section>
+        <section aria-labelledby="unit-videos" className="border-t border-input pt-9">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h2 id="unit-videos" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitVideos.title', { count: videos.length })}</h2>
+          </div>
+          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitVideos.note')}</p>
+          {videoQuery.isPending
+            ? <p className="mt-6 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
+            : videoQuery.error
+              ? <p role="alert" className="mt-6 text-sm text-destructive">{videoQuery.error.message}</p>
+              : !videos.length
+                ? <p className="mt-6 border border-input bg-muted/40 p-5 text-sm text-muted-foreground">{t('unitVideos.empty')}</p>
+                : <div className="mt-7 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+                  <div className="min-w-0">
+                    <div className="aspect-video overflow-hidden rounded-md bg-black">
+                      <iframe
+                        key={selectedVideo.youtubeId}
+                        className="h-full w-full"
+                        src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}`}
+                        title={selectedVideo.title}
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold">{selectedVideo.title}</h3>
+                    {selectedVideo.channel && <p className="mt-1 text-sm text-muted-foreground">{t('unitVideos.channel')}: {selectedVideo.channel}</p>}
+                    <a href={`https://www.youtube.com/watch?v=${selectedVideo.youtubeId}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+                      {t('unitVideos.openSource')}<ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                  <ol className="max-h-[30rem] divide-y divide-input overflow-y-auto border-y border-input" aria-label={t('unitVideos.playlist')}>
+                    {videos.map((video, index) => <li key={video.id}>
+                      <button type="button" onClick={() => setSelectedVideoId(video.id)}
+                        aria-pressed={selectedVideo.id === video.id}
+                        className={`flex w-full gap-3 px-3 py-4 text-left text-sm transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-foreground ${selectedVideo.id === video.id ? 'bg-muted font-semibold' : ''}`}>
+                        <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="min-w-0 break-words">{video.title}
+                          {video.channel && <span className="mt-1 block text-xs font-normal text-muted-foreground">{video.channel}</span>}
+                        </span>
+                      </button>
+                    </li>)}
+                  </ol>
+                </div>}
         </section>
         {!!siblings.length && <section aria-labelledby="unit-siblings">
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>
