@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { isPlaylistUrl, listBlueprints, listUnitOptions, parseVideoIds, submitPlaylist } from '@/entities/contribution/contribution.api';
+import { listBlueprints, listUnitOptions, submitPlaylist } from '@/entities/contribution/contribution.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -31,17 +31,7 @@ describe('FACODI contribution API', () => {
     expect(await listBlueprints('accepted', 2)).toEqual({ items: [], total: 86 });
   });
 
-  it('accepts only https YouTube playlist URLs with a list id', () => {
-    expect(isPlaylistUrl(' https://www.youtube.com/playlist?list=PL1234567890 ')).toBe(true);
-    expect(isPlaylistUrl('https://youtu.be/abc?list=PL1234567890')).toBe(true);
-    expect(isPlaylistUrl('http://www.youtube.com/playlist?list=PL1234567890')).toBe(false);
-    expect(isPlaylistUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')).toBe(false);
-    expect(isPlaylistUrl('https://evil.example/playlist?list=PL1234567890')).toBe(false);
-  });
-
-  it('deduplicates manual video IDs and rejects malformed lists before calling the function', async () => {
-    expect(parseVideoIds('dQw4w9WgXcQ, dQw4w9WgXcQ;\n9bZkp7q19f0')).toEqual(['dQw4w9WgXcQ', '9bZkp7q19f0']);
-    expect(() => parseVideoIds('short')).toThrow('invalid_youtube_video_ids');
+  it('rejects malformed manual video IDs before calling the function', async () => {
     await expect(submitPlaylist({
       courseId: 'c', unitId: 'u', url: 'https://www.youtube.com/playlist?list=PL1234567890',
       title: '', description: '', language: 'pt', maxVideos: 50, manualIds: 'not-an-id',

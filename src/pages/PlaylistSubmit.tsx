@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CheckCircle2, ListVideo, ShieldCheck } from 'lucide-react';
-import { isPlaylistUrl } from '@/entities/contribution/contribution.api';
+import { isYoutubePlaylistUrl } from '@/entities/facodi-playlists/playlistUtils';
 import type { PlaylistSubmission } from '@/entities/contribution/contribution.types';
 import { useCourseOptions, useMyPlaylists, useSubmitPlaylist, useUnitOptions } from '@/features/contributions/queries/useContributions';
 import { LANGUAGES } from '@/components/catalog/CatalogToolbar';
@@ -31,7 +31,7 @@ export default function PlaylistSubmit() {
   const submit = useSubmitPlaylist();
   const busy = submit.isPending;
   const errorCode = submit.error?.message ?? '';
-  const urlValid = isPlaylistUrl(url);
+  const urlValid = isYoutubePlaylistUrl(url.trim());
   const dateFormat = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'medium' });
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {

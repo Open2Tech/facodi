@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check, ExternalLink, RefreshCw, X } from 'lucide-react';
 import { toast } from 'sonner';
-import { isPlaylistUrl, isYoutubeVideoId } from '@/entities/contribution/contribution.api';
+import { isYoutubePlaylistUrl, isYoutubeVideoId } from '@/entities/facodi-playlists/playlistUtils';
 import type { PlaylistDecision } from '@/entities/contribution/contribution.types';
 import { usePendingPlaylists, usePlaylistItems, useReviewPlaylist } from '@/features/contributions/queries/useContributions';
 import { LANGUAGES } from '@/components/catalog/CatalogToolbar';
@@ -90,7 +90,7 @@ export default function EditorPlaylists() {
             <div><dt className="text-muted-foreground">{t('playlistReview.submitted')}</dt><dd className="font-medium"><time dateTime={selected.submitted_at}>{dateFormat.format(new Date(selected.submitted_at))}</time></dd></div>
           </dl>
           {selected.description && <p className="mt-4 max-w-prose whitespace-pre-line text-sm text-muted-foreground">{selected.description}</p>}
-          {selected.source_url && isPlaylistUrl(selected.source_url) && <a href={selected.source_url} target="_blank" rel="noopener noreferrer"
+          {selected.source_url && isYoutubePlaylistUrl(selected.source_url) && <a href={selected.source_url} target="_blank" rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
             {t('playlistReview.source')}<ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>}

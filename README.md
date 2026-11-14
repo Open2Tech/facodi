@@ -52,20 +52,22 @@ Os tipos foram gerados do schema real, não de uma reprodução local.
 
 ## Catálogo académico publicado (14/11/2026)
 
-O schema `facodi` contém **2 cursos UAlg**, **84 UCs públicas** e **705 objetos educativos públicos**: **564 vídeos externos**, **55 referências de leitura/planeamento**, **84 UCs** e **2 cursos**. Existem **568 ligações UC–vídeo**, **113 associações UC–leitura** e **252 objetivos de estudo + 252 competências temáticas editoriais**.
+A FACODI mantém **três cursos públicos da Universidade do Algarve**, incluindo o novo **CTeSP em Sistemas e Tecnologias de Informação (curso oficial 1812, Faro)**. São **101 UCs públicas** e **733 objetos educativos públicos**: **564 vídeos externos**, **65 referências de leitura/planeamento**, **101 UCs** e **3 cursos**.
 
-**Cobertura:** **77/84 UCs** têm pelo menos uma referência disciplinar relevante; **7/84** são grupos genéricos de opção que apontam para o plano oficial do LESTI, para orientar a escolha do estudante. Em Design de Comunicação, a cobertura disciplinar é 41/41; em LESTI, 36/43. A FACODI **não** atribui conteúdos programáticos fictícios a opções sem disciplina definida.
+- **[CTeSP em Sistemas e Tecnologias de Informação](https://facodi.vercel.app/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
+- **LESTI + Design de Comunicação:** 84 UCs públicas, 568 ligações UC–vídeo e 113 associações de leitura, além de 252 objetivos editoriais e 86 percursos/mapas internos. Na licenciatura LESTI, sete grupos genéricos de opção têm apenas orientação curricular, não um programa disciplinar fictício.
 
-Existem ainda **84 percursos de estudo e 2 mapas curriculares** em `facodi.generated_structures`, todos `draft`, para revisão por editores; não foram produzidos por um modelo de IA nem publicados como currículo da UAlg. A pesquisa textual pública `facodi.search_public_catalog_v1` está disponível com RLS e índice GIN, mas ainda não está integrada na interface de pesquisa.
+**Totais atuais:** 303 objetivos editoriais de estudo e 303 competências propostas, com **104 percursos/mapas internos** ainda em `draft`. Os 120 ECTS do CTeSP e os 180 ECTS de cada licenciatura são planos distintos. Os ECTS das opções alternativas das licenciaturas não são somáveis indiscriminadamente.
 
-Todos os vídeos e livros são referências aos servidores dos autores. Conteúdos históricos, os 5 códigos legados não confirmados e as 3 transcrições automáticas sem avaliação não foram aprovados indiscriminadamente. Os 180 ECTS de licenciatura excluem a soma cumulativa de escolhas alternativas.
+Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_resources_v2` está integrada em `/resources?search=...`, com RLS, filtros e índice GIN.
 
-- [Relatório atualizado: cobertura total, fontes, pesquisa e RLS](docs/facodi-supabase-curriculum-coverage-and-search-2026-11-14.md)
+- [Ativação da pesquisa, moderação editorial e submissão de playlists](docs/facodi-activation-review-search-playlists-2026-11-14.md)
+- [Auditoria do CTeSP UAlg 1812, fontes e resultados de segurança](docs/facodi-ctesp-sti-1812-ualg-2026-27.md)
+- [Auditoria da cobertura das licenciaturas e pesquisa Supabase](docs/facodi-supabase-curriculum-coverage-and-search-2026-11-14.md)
 - [Histórico da curadoria e origem dos materiais](docs/facodi-enrichment-and-email-review-2026-11-14.md)
-- [Auditoria académica do catálogo inicial](docs/facodi-data-enrichment-2026-11-14.md)
 - [Templates FACODI e integração segura do Supabase Auth](docs/facodi-auth-email-templates.md)
 
-Os templates FACODI de email foram preparados, mas **não ativados globalmente**: a instância Supabase Auth continua partilhada com o Tube O2. `facodi.playlists` continua sem submissões reais.
+Os emails FACODI estão preparados no repositório, mas **não ativados globalmente**: o Auth Supabase ainda é partilhado com o Tube O2. `facodi.playlists` continua sem submissões reais.
 
 ## Dados e permissões
 
@@ -135,12 +137,14 @@ As ligações já aceites são públicas; as ligações antigas com estado de re
 pendente ou associações incorretas permanecem ocultas. Ver o relatório de
 cobertura e respetivas condições de proveniência.
 
-Não existe ingestão pública de conteúdos. Os pipelines automáticos FACODI
-(ingestão YouTube, análise e descoberta de metadados) são chamadas
-servidor-a-servidor com chave secreta e não podem ser invocados pelo browser.
-Por isso, “Contribuir” encaminha para o fluxo editorial: editores vão para
-`/editor`; os restantes utilizadores veem em `/about#contribute` como propor
-conteúdo à equipa editorial.
+Contribuições de playlists YouTube estão disponíveis para **utilizadores
+autenticados** em `/playlists/submit`, por meio da Edge Function
+`facodi-submit-playlist` (JWT obrigatório, RLS, limites e revisão editorial).
+Os vídeos só são publicados após aprovação de um editor em
+`/editor/playlists`, criando relações com a UC numa transação. Outras
+pipelines automáticas continuam sem acesso público direto. A fila de revisão
+dos 104 percursos/mapas editoriais do catálogo atualizado fica em
+`/editor/study-paths`, sem publicação automática ao aceitar um rascunho.
 
 ## Auth: pré-requisitos antes de disponibilizar cadastro
 

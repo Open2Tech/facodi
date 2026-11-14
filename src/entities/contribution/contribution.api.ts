@@ -1,6 +1,7 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { PAGE_SIZE } from '@/entities/course/course.types';
+import { isYoutubePlaylistUrl, parsePlaylistVideoIds } from '@/entities/facodi-playlists/playlistUtils';
 import type {
   Blueprint, BlueprintDecision, BlueprintStatus, CatalogOption, PlaylistDecision,
   PlaylistSubmission, PlaylistSubmissionInput, PlaylistSummary,
@@ -9,30 +10,6 @@ import type {
 const BLUEPRINT_SOURCE = 'facodi_deterministic_editorial_blueprint';
 const BLUEPRINT_STATES: BlueprintStatus[] = ['draft', 'accepted', 'rejected'];
 const PLAYLIST_FIELDS = 'id,title,description,source_url,status,import_status,language,submitted_at,review_note,courses(code,title),curricular_units(code,title)';
-const YOUTUBE_ID = /^[a-zA-Z0-9_-]{11}$/;
-const PLAYLIST_ID = /^[a-zA-Z0-9_-]{10,120}$/;
-const YOUTUBE_HOSTS = new Set(['youtube.com', 'www.youtube.com', 'm.youtube.com', 'music.youtube.com', 'youtu.be']);
-
-export function isYoutubeVideoId(value: string) {
-  return YOUTUBE_ID.test(value);
-}
-
-/** Mirrors the Edge Function check so the form can block obviously invalid URLs before calling it. */
-export function isPlaylistUrl(raw: string) {
-  try {
-    const url = new URL(raw.trim());
-    return url.protocol === 'https:' && YOUTUBE_HOSTS.has(url.hostname.toLowerCase())
-      && PLAYLIST_ID.test(url.searchParams.get('list') ?? '');
-  } catch { return false; }
-}
-
-/** Parses the manual fallback list; throws the Edge Function error code so both paths share one message. */
-export function parseVideoIds(raw: string): string[] {
-  const ids = raw.trim().split(/[\s,;]+/).filter(Boolean);
-  if (ids.length > 100 || ids.some(id => !YOUTUBE_ID.test(id))) throw new Error('invalid_youtube_video_ids');
-  return [...new Set(ids)];
-}
-
 export async function listCourseOptions(signal?: AbortSignal): Promise<CatalogOption[]> {
   const { data, error } = await supabase.from('courses').select('id,code,title')
     .eq('published', true).eq('status', 'active').order('title').abortSignal(signal);
@@ -50,8 +27,8 @@ export async function listUnitOptions(courseId: string, signal?: AbortSignal): P
 }
 
 export async function submitPlaylist(input: PlaylistSubmissionInput): Promise<PlaylistSubmission> {
-  if (!input.courseId || !input.unitId || !isPlaylistUrl(input.url)) throw new Error('invalid_course_unit_or_youtube_playlist');
-  const videoIds = input.manualIds.trim() ? parseVideoIds(input.manualIds) : [];
+  if (!input.courseId || !input.unitId || !isYoutubePlaylistUrl(input.url.trim())) throw new Error('invalid_course_unit_or_youtube_playlist');
+  const videoIds = input.manualIds.trim() ? parsePlaylistVideoIds(input.manualIds) : [];
   const { data, error } = await supabase.functions.invoke<PlaylistSubmission>('facodi-submit-playlist', {
     body: {
       course_id: input.courseId,
