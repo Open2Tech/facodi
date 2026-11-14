@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { useCourse } from '@/features/courses/queries/useCourses';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Clock, GraduationCap, Hash, Languages, Layers, PlayCircle, School, type LucideIcon } from 'lucide-react';
+import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
+import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { safeExternalUrl } from '@/shared/lib/navigation';
@@ -29,10 +30,16 @@ function groupYears(groups: ReturnType<typeof groupUnits>) {
   return [...years.values()];
 }
 
+const FACT_ICONS: Record<string, LucideIcon> = {
+  code: Hash, degree: GraduationCap, ects: Award, duration: Clock, institution: Building2, school: School, language: Languages, units: Layers,
+};
+
 export default function CourseDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
   const query = useCourse(slug);
+  const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
+  const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
@@ -59,21 +66,23 @@ export default function CourseDetails() {
         {resource && <Link className="mt-6 inline-flex items-center gap-2 font-semibold underline underline-offset-4" to={`/resources/${resource.slug}`}>{resource.title}<ArrowUpRight className="h-4 w-4" /></Link>}
       </div>
       <aside aria-labelledby="facts" className="self-start border border-input lg:sticky lg:top-28">
-        <h2 id="facts" className="border-b border-input bg-muted px-5 py-3 text-sm font-semibold">{t('course.facts')}</h2>
+        <h2 id="facts" className="border-b border-foreground bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">{t('course.facts')}</h2>
         <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
-          <dt className="text-muted-foreground">{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
+          <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
         </div>)}</dl>
         {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">{t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
       </aside>
     </div>
+    {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
+      action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{t('course.studyPlan')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     <section aria-labelledby="units" className="border-t border-foreground pt-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 id="units" className="text-3xl font-semibold tracking-[-0.02em]">{t('course.studyPlan')}</h2>
+        <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{t('course.studyPlan')}</h2>
         {!!units.length && <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('course.filterUnits')}<ArrowRight className="h-4 w-4" /></Link>}
       </div>
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
-        {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="rounded-full border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground">
+        {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
           {year.year != null ? t('catalog.year', { value: year.year }) : t('course.otherUnits')}
         </a>)}
       </nav>}
@@ -93,7 +102,7 @@ export default function CourseDetails() {
                   <Link to={unitPath(course.slug, unit.slug)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3">
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
-                      {visible && <span className="ml-2 text-xs font-semibold text-primary">{t('course.hasResource')}</span>}
+                      {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><PlayCircle className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
                     </span>
                     {unit.ects != null && <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}

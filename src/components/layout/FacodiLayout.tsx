@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, X, type LucideIcon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,8 @@ export default function FacodiLayout() {
   const [open, setOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const location = useLocation();
+  const { resolvedTheme, setTheme } = useTheme();
+  const dark = resolvedTheme === 'dark';
   const privateRoute = ['/dashboard', '/profile', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
@@ -27,14 +30,14 @@ export default function FacodiLayout() {
     catch (error) { toast.error(error instanceof Error ? error.message : t('common.error')); }
     finally { setSigningOut(false); }
   }
-  const links = [
-    { to: '/courses', title: t('nav.courses') },
-    { to: '/units', title: t('nav.units') },
-    { to: '/resources', title: t('nav.resources') },
-    { to: '/about', title: t('nav.about') },
-    ...(user ? [{ to: '/dashboard', title: t('nav.dashboard') }] : []),
-    ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor') }] : []),
-    ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin') }] : []),
+  const links: { to: string; title: string; icon: LucideIcon }[] = [
+    { to: '/courses', title: t('nav.courses'), icon: BookOpen },
+    { to: '/units', title: t('nav.units'), icon: Layers },
+    { to: '/resources', title: t('nav.resources'), icon: PlayCircle },
+    { to: '/about', title: t('nav.about'), icon: Info },
+    ...(user ? [{ to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard }] : []),
+    ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare }] : []),
+    ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck }] : []),
   ];
   const footer = [
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }] },
@@ -53,25 +56,33 @@ export default function FacodiLayout() {
     <header className="sticky top-0 z-30 border-b border-input bg-background">
       <div className="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-4 px-5 lg:px-8">
         <Link to="/" aria-label={t('brand.home')} className="flex items-center gap-2 text-2xl font-bold tracking-tight">
-          <img src="/favicon.svg" alt="" width="34" height="34" />FACODI<span className="text-primary" aria-hidden="true">.</span>
+          <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
         </Link>
         <Button type="button" variant="outline" size="icon" className="xl:hidden" aria-label={t(open ? 'nav.close' : 'nav.menu')} aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
         </Button>
         <nav id="navigation" aria-label={t('nav.main')} className={cn('w-full flex-col gap-5 pb-5 xl:flex xl:w-auto xl:flex-row xl:items-center xl:pb-0', open ? 'flex' : 'hidden')}>
           <div className="flex flex-col gap-1 xl:flex-row">
-            {links.map(link => <NavLink key={link.to} to={link.to} className={({ isActive }) => cn('rounded-md px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted', isActive && 'bg-muted underline decoration-primary decoration-[3px] underline-offset-[6px]')}>{link.title}</NavLink>)}
+            {links.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
+              <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />{title}
+            </NavLink>)}
           </div>
-          <label className="flex items-center gap-2 text-sm">
-            <span className="sr-only">{t('common.language')}</span>
-            <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => {
-              const language = event.target.value;
-              localStorage.setItem('i18nextLng', language);
-              void i18n.changeLanguage(language);
-            }}>
-              <option value="pt">Português</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option>
-            </select>
-          </label>
+          <div className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-sm">
+              <span className="sr-only">{t('common.language')}</span>
+              <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => {
+                const language = event.target.value;
+                localStorage.setItem('i18nextLng', language);
+                void i18n.changeLanguage(language);
+              }}>
+                <option value="pt">Português</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option>
+              </select>
+            </label>
+            <Button type="button" variant="outline" size="icon" className="shrink-0" aria-label={t(dark ? 'nav.themeLight' : 'nav.themeDark')} title={t(dark ? 'nav.themeLight' : 'nav.themeDark')}
+              onClick={() => setTheme(dark ? 'light' : 'dark')}>
+              {dark ? <Sun /> : <Moon />}
+            </Button>
+          </div>
           {!loading && (user
             ? <Button variant="outline" disabled={signingOut} onClick={logout}>{t('nav.logout')}</Button>
             : <Button asChild><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>)}
@@ -81,19 +92,19 @@ export default function FacodiLayout() {
     <main id="main" tabIndex={-1} className="mx-auto w-full max-w-7xl flex-1 px-5 py-8 outline-none sm:py-12 lg:px-8">
       <Outlet />
     </main>
-    <footer className="mt-12 border-t border-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 text-sm sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:px-8">
+    <footer className="mt-12 border-t-4 border-primary bg-ink text-ink-foreground">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 text-sm sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] lg:px-8">
         <div>
-          <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight"><img src="/favicon.svg" alt="" width="28" height="28" />FACODI.</Link>
-          <p className="mt-4 max-w-xs leading-relaxed text-muted-foreground">{t('brand.footer')}</p>
+          <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight"><img src="/favicon.svg" alt="" width="28" height="28" /><span>FACODI<span className="text-primary" aria-hidden="true">.</span></span></Link>
+          <p className="mt-4 max-w-xs leading-relaxed text-ink-foreground/75">{t('brand.footer')}</p>
         </div>
         {footer.map(column => <nav key={column.title} aria-label={column.title}>
-          <h2 className="mb-4 font-semibold">{column.title}</h2>
-          <ul className="space-y-3">{column.links.map(link => <li key={link.to}><Link to={link.to} className="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline">{link.title}</Link></li>)}</ul>
+          <h2 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.12em] text-brand-cyan">{column.title}</h2>
+          <ul className="space-y-3">{column.links.map(link => <li key={link.to}><Link to={link.to} className="font-medium text-ink-foreground/85 underline-offset-4 transition-colors hover:text-primary hover:underline">{link.title}</Link></li>)}</ul>
         </nav>)}
       </div>
-      <div className="border-t border-input">
-        <p className="mx-auto max-w-7xl px-5 py-5 text-xs text-muted-foreground lg:px-8">{t('footer.note')}</p>
+      <div className="border-t border-ink-foreground/15">
+        <p className="mx-auto max-w-7xl px-5 py-5 font-mono text-xs text-ink-foreground/70 lg:px-8">{t('footer.note')}</p>
       </div>
     </footer>
   </div>;

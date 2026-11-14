@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCatalogCounts, getCourse, getResource, getResourceContext, getUnit, getUnitFacets, listChannelVideos, listContainedVideos, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, getResourceContext, getUnit, getUnitFacets, listChannelVideos, listContainedVideos, listFeaturedVideos, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -126,10 +126,11 @@ describe('FACODI Data API contract', () => {
       if (params.table === 'curricular_units') expect(url.searchParams.get('courses.published')).toBe('eq.true');
       else expect(url.searchParams.get('published')).toBe('eq.true');
       const totals: Record<string, number> = { courses: 2, curricular_units: 5, learning_objects: 9 };
-      return new HttpResponse(null, { headers: { 'Content-Range': `*/${totals[String(params.table)]}` } });
+      const total = url.searchParams.get('object_type') === 'eq.video' ? 4 : totals[String(params.table)];
+      return new HttpResponse(null, { headers: { 'Content-Range': `*/${total}` } });
     }));
-    expect(await getCatalogCounts()).toEqual({ courses: 2, units: 5, resources: 9 });
-    expect(seen.sort()).toEqual(['courses', 'curricular_units', 'learning_objects']);
+    expect(await getCatalogCounts()).toEqual({ courses: 2, units: 5, resources: 9, videos: 4 });
+    expect(seen.sort()).toEqual(['courses', 'curricular_units', 'learning_objects', 'learning_objects']);
   });
   it('ranks topics by frequency, ignoring blanks', async () => {
     server.use(http.get(`${endpoint}/learning_objects`, () => HttpResponse.json([
@@ -203,6 +204,21 @@ describe('FACODI Data API contract', () => {
       return HttpResponse.json([{ position: 1, child: { id: 'v1', title: 'Limits' } }]);
     }));
     expect(await listContainedVideos('unit-lo')).toEqual([{ id: 'v1', title: 'Limits' }]);
+  });
+
+  it('features one approved trail video per channel globally, and any per video within a course', async () => {
+    const video = (id: string, channel: string) => ({ position: 1, child: { id, metadata: { channel_name: channel }, source_url: null } });
+    const parents: (string | null)[] = [];
+    server.use(http.get(`${endpoint}/learning_object_relations`, ({ request }) => {
+      const url = new URL(request.url);
+      parents.push(url.searchParams.get('parent_object_id'));
+      expect(url.searchParams.get('metadata->>review_status')).toBe('eq.approved');
+      expect(url.searchParams.get('child.published')).toBe('eq.true');
+      return HttpResponse.json([video('a', 'One'), video('b', 'One'), video('a', 'One'), video('c', 'Two')]);
+    }));
+    expect((await listFeaturedVideos(5)).map(item => item.id)).toEqual(['a', 'c']);
+    expect((await listFeaturedVideos(2, ['u1', 'u2'])).map(item => item.id)).toEqual(['a', 'b']);
+    expect(parents).toEqual([null, 'in.(u1,u2)']);
   });
 
   it('resolves a video to its public units and the first unit sequence', async () => {

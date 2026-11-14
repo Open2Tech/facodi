@@ -19,7 +19,9 @@
     "main": "Navegação principal",
     "units": "Unidades",
     "resources": "Recursos",
-    "about": "Sobre"
+    "about": "Sobre",
+    "themeLight": "Mudar para tema claro",
+    "themeDark": "Mudar para tema escuro"
   },
   "common": {
     "loading": "A carregar…",
@@ -38,7 +40,7 @@
   },
   "home": {
     "campus": "Um campus digital aberto",
-    "title": "O conhecimento está em todo o lado. Encontra o teu próximo passo.",
+    "title": "O conhecimento está em todo o lado. <mark>Encontra o teu próximo passo.</mark>",
     "description": "Aprender fica mais simples quando os recursos certos se ligam. Explora cursos e referências académicas com contexto, ao teu ritmo.",
     "explore": "Explorar cursos",
     "open": "Recursos abertos · Sem paywall · Curadoria com contexto",
@@ -52,7 +54,7 @@
     "howItWorks": "Como funciona",
     "searchPlaceholder": "Ex.: álgebra, programação, ética…",
     "searchButton": "Pesquisar no catálogo",
-    "pathsTitle": "Três portas de entrada",
+    "pathsTitle": "Quatro portas de entrada",
     "paths": {
       "published": "Publicados: {{count}}",
       "courses": {
@@ -69,6 +71,11 @@
         "title": "Recursos",
         "text": "Objetos educativos abertos — textos, vídeos e referências — com temas e ligação à fonte original.",
         "cta": "Ver recursos"
+      },
+      "videos": {
+        "title": "Vídeos",
+        "text": "Aulas e explicações abertas, organizadas em trilhas por unidade curricular.",
+        "cta": "Ver vídeos"
       }
     },
     "steps": {
@@ -110,7 +117,10 @@
     },
     "ctaTitle": "Conheces um recurso que vale a pena partilhar?",
     "ctaText": "A FACODI cresce com contributos revistos pela equipa editorial. Descobre como participar.",
-    "ctaButton": "Contribuir"
+    "ctaButton": "Contribuir",
+    "videosTitle": "Aulas para começar já",
+    "videosText": "Os primeiros vídeos das trilhas curadas, de canais diferentes. Cada um abre com o contexto da unidade curricular.",
+    "videosCta": "Ver todos os vídeos"
   },
   "catalog": {
     "title": "Encontra o teu próximo passo.",
@@ -371,7 +381,9 @@
       "integrated_master": "Mestrado integrado",
       "ctesp": "CTeSP",
       "postgraduate": "Pós-graduação"
-    }
+    },
+    "videosTitle": "Vídeos deste curso",
+    "videosText": "Primeiros vídeos das trilhas curadas nas {{count}} unidades curriculares deste plano."
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",

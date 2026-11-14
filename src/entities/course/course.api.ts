@@ -1,5 +1,6 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
+import { videoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
 import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert } from '@/entities/course/course.types';
 
@@ -89,16 +90,18 @@ export async function listResources({ search, language, page, tag, objectType }:
 }
 
 export async function getCatalogCounts(signal?: AbortSignal) {
-  const [courses, units, resources] = await Promise.all([
+  const [courses, units, resources, videos] = await Promise.all([
     supabase.from('courses').select('id', { count: 'exact', head: true })
       .eq('published', true).eq('status', 'active').abortSignal(signal),
     supabase.from('curricular_units').select('id, courses!inner(id)', { count: 'exact', head: true })
       .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active').abortSignal(signal),
     supabase.from('learning_objects').select('id', { count: 'exact', head: true })
       .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).abortSignal(signal),
+    supabase.from('learning_objects').select('id', { count: 'exact', head: true })
+      .eq('object_type', 'video').eq('published', true).in('status', PUBLIC_RESOURCE_STATES).abortSignal(signal),
   ]);
-  for (const result of [courses, units, resources]) if (result.error) throw new Error(getSupabaseErrorMessage(result.error));
-  return { courses: courses.count ?? 0, units: units.count ?? 0, resources: resources.count ?? 0 };
+  for (const result of [courses, units, resources, videos]) if (result.error) throw new Error(getSupabaseErrorMessage(result.error));
+  return { courses: courses.count ?? 0, units: units.count ?? 0, resources: resources.count ?? 0, videos: videos.count ?? 0 };
 }
 
 /** Most frequent tags across a bounded sample of published resources. */
@@ -241,6 +244,32 @@ export async function getResourceContext(resource: { id: string; object_type: st
   const primary = units.find(unit => unit.learning_object_id);
   const sequence = primary?.learning_object_id ? await listContainedVideos(primary.learning_object_id, signal) : [];
   return { redirect: null, units, sequence };
+}
+
+/**
+ * Opening videos of curated unit trails (optionally only the given units' trails), one per channel (globally) so
+ * the selection shows the range of sources. Uses the same approved-and-published rule as unit sequences.
+ */
+export async function listFeaturedVideos(limit = 8, parentObjectIds: string[] = [], signal?: AbortSignal) {
+  let query = supabase.from('learning_object_relations')
+    .select(`position, child:learning_objects!learning_object_relations_child_object_id_fkey!inner(${VIDEO_FIELDS})`)
+    .eq('relation_type', 'contains').filter(...APPROVED);
+  if (parentObjectIds.length) query = query.in('parent_object_id', parentObjectIds);
+  const { data, error } = await query
+    .eq('child.object_type', 'video').eq('child.published', true).in('child.status', PUBLIC_RESOURCE_STATES)
+    .order('position', { nullsFirst: false }).order('child_object_id').limit(120).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const seen = new Set<string>();
+  const picked: (typeof data)[number]['child'][] = [];
+  for (const { child } of data) {
+    // Course banners already share a context, so only the global selection spreads across channels.
+    const channel = parentObjectIds.length ? child.id : videoInfo(child.metadata, child.source_url).channel ?? child.id;
+    if (seen.has(channel) || seen.has(child.id)) continue;
+    seen.add(channel).add(child.id);
+    picked.push(child);
+    if (picked.length === limit) break;
+  }
+  return picked;
 }
 
 /** Other published videos from the same channel, for "more from this channel". */

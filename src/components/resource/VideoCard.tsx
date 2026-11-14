@@ -16,7 +16,7 @@ export function VideoThumbnail({ info, zoom = false }: { info: VideoInfo; zoom?:
       ? <img src={info.thumbnail} alt="" onError={() => setFailed(true)} loading="lazy" decoding="async"
         className={zoom ? 'h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]' : 'h-full w-full object-cover'} />
       : <span className="grid h-full place-items-center text-muted-foreground"><Film className="h-8 w-8" aria-hidden="true" /></span>}
-    {info.durationSeconds && <time dateTime={isoDuration(info.durationSeconds)} className="absolute bottom-2 right-2 bg-neutral-950 px-1.5 py-0.5 font-mono text-xs tabular-nums text-white">{formatDuration(info.durationSeconds)}</time>}
+    {info.durationSeconds && <time dateTime={isoDuration(info.durationSeconds)} className="absolute bottom-2 right-2 bg-ink px-1.5 py-0.5 font-mono text-xs tabular-nums text-ink-foreground">{formatDuration(info.durationSeconds)}</time>}
   </div>;
 }
 

@@ -19,7 +19,9 @@
     "main": "Navigation principale",
     "units": "Unités",
     "resources": "Ressources",
-    "about": "À propos"
+    "about": "À propos",
+    "themeLight": "Passer au thème clair",
+    "themeDark": "Passer au thème sombre"
   },
   "common": {
     "loading": "Chargement…",
@@ -38,7 +40,7 @@
   },
   "home": {
     "campus": "Un campus numérique ouvert",
-    "title": "Le savoir est partout. Trouvez votre prochaine étape.",
+    "title": "Le savoir est partout. <mark>Trouvez votre prochaine étape.</mark>",
     "description": "Apprendre devient plus simple lorsque les bonnes ressources se relient. Explorez cours et références universitaires avec du contexte, à votre rythme.",
     "explore": "Explorer les cours",
     "open": "Ressources ouvertes · Sans péage · Curation contextualisée",
@@ -52,7 +54,7 @@
     "howItWorks": "Comment ça marche",
     "searchPlaceholder": "Ex. : algèbre, programmation, éthique…",
     "searchButton": "Rechercher dans le catalogue",
-    "pathsTitle": "Trois portes d’entrée",
+    "pathsTitle": "Quatre portes d’entrée",
     "paths": {
       "published": "Publiés : {{count}}",
       "courses": {
@@ -69,6 +71,11 @@
         "title": "Ressources",
         "text": "Des objets pédagogiques ouverts — textes, vidéos et références — avec thèmes et lien vers la source d’origine.",
         "cta": "Voir les ressources"
+      },
+      "videos": {
+        "title": "Vidéos",
+        "text": "Cours et explications ouverts, organisés en parcours par unité d’enseignement.",
+        "cta": "Voir les vidéos"
       }
     },
     "steps": {
@@ -110,7 +117,10 @@
     },
     "ctaTitle": "Tu connais une ressource qui mérite d’être partagée ?",
     "ctaText": "FACODI grandit grâce aux contributions relues par l’équipe éditoriale. Découvre comment participer.",
-    "ctaButton": "Contribuer"
+    "ctaButton": "Contribuer",
+    "videosTitle": "Des cours pour commencer tout de suite",
+    "videosText": "Les premières vidéos des parcours sélectionnés, de chaînes différentes. Chacune s’ouvre avec le contexte de son unité d’enseignement.",
+    "videosCta": "Voir toutes les vidéos"
   },
   "catalog": {
     "title": "Trouvez votre prochaine étape.",
@@ -371,7 +381,9 @@
       "integrated_master": "Master intégré",
       "ctesp": "Formation technique supérieure (CTeSP)",
       "postgraduate": "Diplôme de troisième cycle"
-    }
+    },
+    "videosTitle": "Vidéos de cette formation",
+    "videosText": "Premières vidéos des parcours sélectionnés dans les {{count}} unités d’enseignement de ce programme."
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
