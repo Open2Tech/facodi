@@ -11,7 +11,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.0";
  * Without both, returns 503 and keeps events pending. Does NOT borrow the
  * shared Tube/Monynha sender address.
  */
-const UUID = /^[0-9a-f]{8}-[0-9a-f-]{27,36}$/i;
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ALLOWED = new Set(["https://facodi.vercel.app", "https://facodi.com"]);
 const allowedOrigin = (value: string | null) => {
   if (!value) return null;
