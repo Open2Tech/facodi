@@ -447,5 +447,10 @@
     "channel": "Channel",
     "openSource": "Watch original video on YouTube",
     "playlist": "Video lessons for this unit"
+  },
+  "unitOutcomes": {
+    "title": "Suggested study goals",
+    "notice": "FACODI's editorial study proposals, based on this unit's topics. They are not official learning outcomes or a substitute for the university's unit specification.",
+    "empty": "Study goals are not available for this unit yet."
   }
 }
