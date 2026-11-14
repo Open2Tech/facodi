@@ -64,12 +64,13 @@ Foram criados oito perfis públicos e três marcos verificados; os três perfis 
 
 ## Catálogo académico publicado (14/11/2026)
 
-A FACODI mantém **três cursos públicos da Universidade do Algarve**, incluindo o novo **CTeSP em Sistemas e Tecnologias de Informação (curso oficial 1812, Faro)**. São **101 UCs públicas** e **733 objetos educativos públicos**: **564 vídeos externos**, **65 referências de leitura/planeamento**, **101 UCs** e **3 cursos**.
-
+A FACODI reúne percursos de diferentes instituições (UAlg, UFES e Ifes). **Snapshot do catálogo público em 14/11/2026:** 6 cursos publicados, 256 unidades curriculares e 1.076 objetos educativos, incluindo 636 referências de vídeo e 145 leituras externas. Estes totais podem mudar com importações simultâneas; a distribuição por curso está disponível nas consultas Supabase.
 - **[CTeSP em Sistemas e Tecnologias de Informação](https://facodi.vercel.app/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
 - **LESTI + Design de Comunicação:** 84 UCs públicas, 568 ligações UC–vídeo e 113 associações de leitura, além de 252 objetivos editoriais e 86 percursos/mapas internos. Na licenciatura LESTI, sete grupos genéricos de opção têm apenas orientação curricular, não um programa disciplinar fictício.
 
-**Totais atuais:** 303 objetivos editoriais de estudo e 303 competências propostas, com **104 percursos/mapas internos** ainda em `draft`. Os 120 ECTS do CTeSP e os 180 ECTS de cada licenciatura são planos distintos. Os ECTS das opções alternativas das licenciaturas não são somáveis indiscriminadamente.
+- **[Licenciatura em Língua Inglesa e Literaturas de Língua Inglesa — UFES](https://facodi.vercel.app/courses/ufes-letras-ingles):** PPC oficial 2019, 75 componentes catalogados (28 obrigatórios, 2 estágios, 45 optativas alternativas), 3.210 horas de integralização, 225 objetivos editoriais, 36 leituras complementares e 152 associações a UCs, com 76 roteiros/mapas em rascunho interno. O currículo usa créditos brasileiros e não ECTS. [Auditoria UFES](docs/facodi-ufes-letras-ingles-ppc2019-integration.md).
+
+**Notas de interpretação:** as optativas são alternativas de escolha, os 120 ECTS do CTeSP e os 180 ECTS das licenciaturas UAlg pertencem a planos diferentes, e os projetos editoriais FACODI não são fichas homologadas pelas instituições.
 
 Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_resources_v2` está integrada em `/resources?search=...`, com RLS, filtros e índice GIN.
 
