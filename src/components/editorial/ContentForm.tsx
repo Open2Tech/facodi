@@ -11,13 +11,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
+import { useDebouncedValue } from '@/shared/hooks/useDebouncedValue';
 
 function RelationPicker({ kind, value, onChange, label, error }: {
   kind: ContentKind; value: string; onChange: (value: string) => void; label: string; error?: string;
 }) {
   const { t } = useTranslation();
   const [search, setSearch] = useState('');
-  const query = useContentOptions(kind, search, true);
+  const query = useContentOptions(kind, useDebouncedValue(search), true);
   return <div className="space-y-3">
     <FormField label={t('editor.findRelation', { name: label })}>{props => <Input {...props} type="search" value={search} onChange={event => setSearch(event.target.value)} />}</FormField>
     <FormField label={label} error={error}>{props => <select {...props} className="h-11 w-full rounded-md border border-input bg-background px-3" value={value} onChange={event => onChange(event.target.value)}>

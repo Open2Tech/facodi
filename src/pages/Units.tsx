@@ -8,7 +8,7 @@ import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader } from '@/components/catalog/CatalogToolbar';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
-import { Input } from '@/components/ui/input';
+import { SearchInput } from '@/components/catalog/SearchInput';
 import { Button } from '@/components/ui/button';
 import { useCatalogParams } from '@/shared/hooks/useCatalogParams';
 import { unitPath } from '@/entities/course/course.paths';
@@ -75,7 +75,7 @@ export default function Units() {
       <div className="min-w-0">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
           <label className="flex-1 space-y-2 text-sm font-medium"><span className="block">{t('units.search')}</span>
-            <Input type="search" value={search} onChange={event => filter('search', event.target.value)} placeholder={t('units.searchPlaceholder')} />
+            <SearchInput value={search} onSearch={value => filter('search', value)} placeholder={t('units.searchPlaceholder')} />
           </label>
           <label className="space-y-2 text-sm font-medium"><span className="block">{t('units.sort')}</span>
             <select className="h-10 w-full rounded-md border border-input bg-background px-3 sm:w-52" value={sort} onChange={event => filter('sort', event.target.value === 'curriculum' ? '' : event.target.value)}>

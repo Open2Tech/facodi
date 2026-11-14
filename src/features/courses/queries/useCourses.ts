@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
 import { getResourceContext, listChannelVideos, listFeaturedVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
@@ -6,10 +6,10 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 
 export function useCourses(params: CatalogParams) {
-  return useQuery({ queryKey: courseKeys.catalog(params), queryFn: ({ signal }) => listCourses(params, signal) });
+  return useQuery({ queryKey: courseKeys.catalog(params), queryFn: ({ signal }) => listCourses(params, signal), placeholderData: keepPreviousData });
 }
 export function useUnits(params: CatalogParams) {
-  return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal) });
+  return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal), placeholderData: keepPreviousData });
 }
 export function useUnitFacets() {
   return useQuery({ queryKey: courseKeys.unitFacets(), queryFn: ({ signal }) => getUnitFacets(signal), staleTime: 5 * 60_000 });
@@ -18,7 +18,7 @@ export function useUnit(courseSlug: string, unitSlug: string) {
   return useQuery({ queryKey: courseKeys.unit(courseSlug, unitSlug), queryFn: ({ signal }) => getUnit(courseSlug, unitSlug, signal) });
 }
 export function useResources(params: CatalogParams) {
-  return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal) });
+  return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal), placeholderData: keepPreviousData });
 }
 export function useResourceTypes() {
   return useQuery({ queryKey: courseKeys.resourceTypes(), queryFn: ({ signal }) => getObjectTypeFacets(signal, true), staleTime: 5 * 60_000 });
@@ -69,6 +69,8 @@ export function useEditorial(kind: ContentKind, params: CatalogParams) {
   return useQuery({
     queryKey: courseKeys.editor(user?.id ?? '', kind, params),
     queryFn: ({ signal }) => listEditorial(kind, params, signal),
+    // Only bridge refetches within the same kind and account; actions on a row must never target another table.
+    placeholderData: (previous, previousQuery) => previousQuery?.queryKey[2] === (user?.id ?? '') && previousQuery.queryKey[3] === kind ? previous : undefined,
     enabled: !!user && canAccessFacodiRoute(role, 'editor'),
   });
 }

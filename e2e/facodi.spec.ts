@@ -30,8 +30,11 @@ for (const width of [375, 768, 1280, 1440]) {
 }
 
 test('public search, language, pagination and query-state links', async ({ page }) => {
+  const searches: string[] = [];
   await page.route('**/rest/v1/courses*', async route => {
     const url = new URL(route.request().url());
+    const title = url.searchParams.get('title');
+    if (title) searches.push(title);
     const offset = Number(url.searchParams.get('offset') ?? '0');
     const filtered = url.searchParams.has('title') || url.searchParams.has('language');
     const total = filtered ? 1 : 13;
@@ -46,8 +49,10 @@ test('public search, language, pagination and query-state links', async ({ page 
   await page.getByRole('button', { name: 'Next', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Test course 12', exact: true })).toBeVisible();
   await expect(page).toHaveURL(/page=2/);
-  await page.getByRole('searchbox').fill('Test course');
+  await page.getByRole('searchbox').pressSequentially('Test course');
   await expect(page.getByText('Page 1 of 1 · 1 results')).toBeVisible();
+  await expect(page).toHaveURL(/search=Test\+course/);
+  expect(searches).toEqual(['ilike.%Test course%']);
   await expect(page).not.toHaveURL(/page=2/);
   await page.locator('main').getByRole('combobox').selectOption('en');
   await expect(page).toHaveURL(/language=en/);
@@ -184,12 +189,17 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
   await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Active', { exact: true })).toBeVisible();
   await expect(page.getByText('published=true · pt')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Publish', exact: true })).toBeDisabled();
+  await expect(page.getByRole('link', { name: 'View in catalogue: Edited test course' })).toHaveAttribute('href', '/courses/test-educational-course');
   await page.getByRole('button', { name: 'Archive', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
   await expect(page.getByRole('listitem').filter({ hasText: 'Edited test course' }).getByText('Archived', { exact: true })).toBeVisible();
   await expect(page.getByText('published=false · pt')).toBeVisible();
   await page.getByRole('radio', { name: /^Archived/ }).click();
   await expect.poll(() => listStatuses.at(-1)).toBe('eq.archived');
+  await expect(page).toHaveURL(/\/editor\?status=archived$/);
+  await expect(page.getByRole('link', { name: /View in catalogue/ })).toHaveCount(0);
+  await page.reload();
+  await expect(page.getByRole('radio', { name: /^Archived/ })).toBeChecked();
   expect(methods).not.toContain('DELETE');
   await page.goto('/admin');
   await expect(page.getByText('You do not have permission to access this area.')).toBeVisible();
@@ -198,8 +208,11 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
 test('admin can view real-response-shaped counts without user management', async ({ page }) => {
   await mockAuth(page, 'admin');
   await page.route('**/rest/v1/**', async route => {
-    expect(route.request().method()).toBe('HEAD');
-    await route.fulfill({ body: '', headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+    const request = route.request();
+    if (request.method() === 'GET') return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+    expect(request.method()).toBe('HEAD');
+    const drafts = new URL(request.url()).searchParams.get('status') === 'eq.draft';
+    await route.fulfill({ body: '', headers: { 'content-range': `*/${drafts ? 2 : 0}`, 'access-control-expose-headers': 'content-range' } });
   });
   await page.goto('/login?next=/admin');
   await page.getByLabel('Email', { exact: true }).fill('admin@example.test');
@@ -211,6 +224,10 @@ test('admin can view real-response-shaped counts without user management', async
   await expect(page.getByRole('cell', { name: 'Curricular units', exact: true })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Educational objects', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: /promote|delete user|manage user/i })).toHaveCount(0);
+  await page.getByRole('link', { name: 'Educational objects · Draft: 2' }).click();
+  await expect(page).toHaveURL(/\/editor\?kind=learning_objects&status=draft$/);
+  await expect(page.getByRole('tab', { name: 'Educational objects' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('radio', { name: /^Draft/ })).toBeChecked();
 });
 
 test('home search, entry paths and new public catalogues render without overflow', async ({ page }) => {

@@ -256,7 +256,8 @@
     "allStates": "Tous",
     "typeFilter": "Type de ressource",
     "allTypes": "Tous les types",
-    "origin": "origine : {{source}}"
+    "origin": "origine : {{source}}",
+    "viewPublic": "Voir dans le catalogue"
   },
   "admin": {
     "heading": "Le catalogue, en perspective.",
