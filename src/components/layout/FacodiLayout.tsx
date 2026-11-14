@@ -19,7 +19,7 @@ export default function FacodiLayout() {
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
   const dark = resolvedTheme === 'dark';
-  const privateRoute = ['/dashboard', '/profile', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
+  const privateRoute = ['/dashboard', '/profile', '/notes', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
     window.scrollTo(0, 0);
@@ -45,8 +45,8 @@ export default function FacodiLayout() {
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }] },
     { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/about#contribute', title: t('footer.contribute') }] },
     { title: t('footer.account'), links: user
-      ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/profile', title: t('nav.profile') }]
-      : [{ to: '/login', title: t('nav.login') }] },
+      ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
+      : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },
   ];
   return <div className="flex min-h-screen flex-col">
     <Helmet>

@@ -4,10 +4,10 @@ import type { Database } from '@/integrations/supabase/types';
 import type { NoteDraft, StudyNote } from './notes';
 
 type NoteRow = Database['facodi']['Tables']['study_notes']['Row'] & {
-  learning_object: { slug: string; title: string } | null;
+  learning_object: { slug: string; title: string; object_type: string } | null;
 };
 
-const NOTE_FIELDS = 'id,learning_object_id,title,body,tags,timestamp_seconds,pinned,created_at,updated_at,learning_object:learning_objects(slug,title)';
+const NOTE_FIELDS = 'id,learning_object_id,title,body,tags,timestamp_seconds,pinned,created_at,updated_at,learning_object:learning_objects(slug,title,object_type)';
 
 /** A resource hidden by catalogue RLS keeps its notes, with an empty slug the UI treats as unavailable. */
 export function noteFromRow(row: NoteRow): StudyNote {
@@ -16,6 +16,7 @@ export function noteFromRow(row: NoteRow): StudyNote {
     resourceId: row.learning_object_id,
     resourceSlug: row.learning_object?.slug ?? '',
     resourceTitle: row.learning_object?.title ?? '',
+    ...(row.learning_object ? { resourceType: row.learning_object.object_type } : {}),
     title: row.title,
     body: row.body,
     tags: row.tags,

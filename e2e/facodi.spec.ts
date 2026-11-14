@@ -547,6 +547,76 @@ test('signed-in notebook syncs to the account, moves browser notes and rolls bac
   expect(rows).toHaveLength(3);
 });
 
+test('notebook page searches every note across resources with filters kept in the URL', async ({ page }) => {
+  const stored = (id: string, resource: [string, string, string, string?], patch: Record<string, unknown>) => ({
+    id, resourceId: resource[0], resourceSlug: resource[1], resourceTitle: resource[2], ...(resource[3] ? { resourceType: resource[3] } : {}),
+    title: 'Note', body: '', tags: [], timestamp: null, pinned: false, createdAt: '2026-11-01T10:00:00.000Z', updatedAt: '2026-11-01T10:00:00.000Z', ...patch,
+  });
+  const regression: [string, string, string, string] = ['v1', 'linear-regression', 'Regressão linear', 'video'];
+  const pipelines: [string, string, string] = ['d1', 'pipelines', 'Pipelines'];
+  await page.addInitScript(notes => {
+    if (sessionStorage.getItem('seeded')) return;
+    sessionStorage.setItem('seeded', '1');
+    localStorage.setItem('facodi-notes:v1:guest', JSON.stringify(notes));
+  }, [
+    stored('n1', regression, { title: 'Mínimos quadrados', body: 'Função de custo', tags: ['exam'], timestamp: 95, updatedAt: '2026-11-03T10:00:00.000Z' }),
+    stored('n2', pipelines, { title: 'Fit on train only', body: 'Avoid `leakage`', tags: ['exam', 'sklearn'], pinned: true }),
+    stored('n3', pipelines, { title: 'Column transformer', tags: ['sklearn'], timestamp: 12 }),
+  ]);
+
+  await page.goto('/notes');
+  await expect(page.getByRole('heading', { level: 1, name: 'Study notebook' })).toBeVisible();
+  await expect(page.getByText('3 notes · 2 resources')).toBeVisible();
+  const sections = page.locator('main section[aria-labelledby^="group-"]');
+  await expect(sections.first().getByRole('heading', { level: 2 })).toHaveText('Regressão linear');
+  await expect(sections.first().getByText('Video', { exact: true })).toBeVisible();
+  await expect(sections.first().getByRole('link', { name: 'Open the resource at 01:35' })).toHaveAttribute('href', '/resources/linear-regression?t=95');
+
+  // Search ignores accents and case, and survives a reload through the URL.
+  await page.getByLabel('Search your notes').fill('minimos CUSTO');
+  await expect(page).toHaveURL(/q=minimos\+CUSTO/);
+  await expect(page.getByText('1 note · 1 resource')).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel('Search your notes')).toHaveValue('minimos CUSTO');
+  await expect(page.getByRole('heading', { name: 'Mínimos quadrados' })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(page.getByText('3 notes · 2 resources')).toBeVisible();
+
+  const tags = page.getByRole('group', { name: 'Tags' });
+  await tags.getByRole('button', { name: '#sklearn 2' }).click();
+  await expect(page).toHaveURL(/tag=sklearn/);
+  await page.getByRole('group', { name: 'Filter notes' }).getByRole('button', { name: /Pinned/ }).click();
+  await expect(page).toHaveURL(/view=pinned/);
+  await expect(page.getByText('1 note · 1 resource')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Fit on train only' })).toBeVisible();
+  await page.getByRole('group', { name: 'Filter notes' }).getByRole('button', { name: /With code/ }).click();
+  await expect(page.getByRole('heading', { name: 'Fit on train only' })).toBeVisible();
+  await page.getByLabel('Search your notes').fill('nothing like this');
+  await expect(page.getByText('No notes match this filter.')).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export all (.md)' }).click();
+  const file = await download;
+  expect(file.suggestedFilename()).toBe('facodi-notebook.md');
+  const markdown = await (await import('node:fs/promises')).readFile(await file.path(), 'utf8');
+  expect(markdown).toContain('## Regressão linear');
+  expect(markdown).toMatch(/### \[01:35\]\(http:\/\/[^)]+\/resources\/linear-regression\?t=95\) Mínimos quadrados/);
+
+  await page.getByRole('button', { name: 'Delete “Column transformer”' }).click();
+  await expect(page.getByText('2 notes · 2 resources')).toBeVisible();
+  await page.getByRole('button', { name: 'Undo' }).click();
+  await expect(page.getByText('3 notes · 2 resources')).toBeVisible();
+
+  // Editing away from the video keeps the note's moment.
+  await page.getByRole('button', { name: 'Edit “Mínimos quadrados”' }).click();
+  await page.getByLabel('Title or concept').fill('Least squares');
+  await page.getByRole('button', { name: 'Save changes' }).click();
+  await expect(page.getByRole('link', { name: 'Open the resource at 01:35' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Least squares' })).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+});
+
 test('editor reviews study paths and playlists through the review RPCs with state in the URL', async ({ page }) => {
   await mockAuth(page, 'editor');
   const blueprint = {

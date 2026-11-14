@@ -21,7 +21,8 @@
     "resources": "Resources",
     "about": "About",
     "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme"
+    "themeDark": "Switch to dark theme",
+    "notes": "Notebook"
   },
   "common": {
     "loading": "Loading…",
@@ -687,7 +688,8 @@
     "filter": {
       "all": "All",
       "timed": "With a moment",
-      "code": "With code"
+      "code": "With code",
+      "pinned": "Pinned"
     },
     "clearTag": "Stop filtering by #{{tag}}",
     "empty": "No notes here yet. Write the first one above.",
@@ -734,6 +736,18 @@
     "guestImportPartial_one": "{{count}} note stayed in this browser because its resource is no longer available.",
     "guestImportPartial_many": "{{count}} notes stayed in this browser because their resource is no longer available.",
     "guestImportPartial_other": "{{count}} notes stayed in this browser because their resource is no longer available.",
-    "resourceUnavailable": "Resource unavailable"
+    "resourceUnavailable": "Resource unavailable",
+    "openAt": "Open the resource at {{time}}"
+  },
+  "notebookPage": {
+    "title": "Study notebook",
+    "description": "All your notes, from every video and resource, in one place. Search by idea, tag or resource and jump back to the exact moment.",
+    "search": "Search your notes",
+    "searchPlaceholder": "Concept, formula, #tag or resource…",
+    "tags": "Tags",
+    "clear": "Clear filters",
+    "exportAll": "Export all (.md)",
+    "openNotebook": "Open with the notebook",
+    "openAll": "Open the full notebook"
   }
 }

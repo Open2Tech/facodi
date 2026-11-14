@@ -13,6 +13,7 @@ const UnitDetails = lazy(() => import('@/pages/UnitDetails'));
 const Units = lazy(() => import('@/pages/Units'));
 const Resources = lazy(() => import('@/pages/Resources'));
 const About = lazy(() => import('@/pages/About'));
+const Notebook = lazy(() => import('@/pages/Notebook'));
 const Login = lazy(() => import('@/pages/Login'));
 const AuthCallback = lazy(() => import('@/pages/AuthCallback'));
 const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
@@ -38,6 +39,7 @@ export function AppRoutes() {
       <Route path="/units" element={<Units key={sessionKey} />} />
       <Route path="/resources" element={<Resources key={sessionKey} />} />
       <Route path="/resources/:slug" element={<ResourceDetails key={sessionKey} />} />
+      <Route path="/notes" element={<Notebook key={sessionKey} />} />
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/auth/callback" element={<AuthCallback />} />

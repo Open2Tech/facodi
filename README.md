@@ -104,6 +104,7 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 |---|---|
 | `/`, `/courses`, `/courses/:slug`, `/courses/:slug/units/:unit`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
 | `/login`, `/auth/callback`, `/auth/reset-password` | Público |
+| `/notes` | Público (caderno do navegador para visitantes, da conta após login; `noindex`) |
 | `/dashboard`, `/profile` | Autenticado |
 | `/editor` | Editor ou admin |
 | `/admin` | Admin |

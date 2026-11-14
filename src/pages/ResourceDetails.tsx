@@ -274,7 +274,7 @@ export default function ResourceDetails() {
         </section>}
       </div>
     </div>
-    <StudyNotebook resource={{ id: resource.id, slug: resource.slug, title: resource.title }} timed={Boolean(player)} playerTime={playerTime}
+    <StudyNotebook resource={{ id: resource.id, slug: resource.slug, title: resource.title, type: resource.object_type }} timed={Boolean(player)} playerTime={playerTime}
       onSeek={player ? seek : null} open={notesOpen} onOpenChange={setNotesOpen} />
   </article>;
 }
