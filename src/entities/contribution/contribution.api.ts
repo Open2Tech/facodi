@@ -56,6 +56,20 @@ export async function submitPlaylist(input: PlaylistSubmissionInput): Promise<Pl
   return data;
 }
 
+/** Best-effort delivery of an email already queued by a database trigger.
+ * The function never accepts a recipient or arbitrary message from the browser.
+ * Playlist submission/review stays successful if mail transport is temporarily offline. */
+export async function dispatchQueuedPlaylistMail(playlistId: string): Promise<void> {
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(playlistId)) return;
+  try {
+    await supabase.functions.invoke('facodi-email-notifications', {
+      body: { playlist_id: playlistId },
+    });
+  } catch {
+    // The durable facodi.email_outbox record remains pending for later delivery.
+  }
+}
+
 export async function listMyPlaylists(userId: string, signal?: AbortSignal): Promise<PlaylistSummary[]> {
   const { data, error } = await supabase.from('playlists').select(PLAYLIST_FIELDS)
     .eq('submitted_by', userId).order('submitted_at', { ascending: false }).limit(10).abortSignal(signal);
