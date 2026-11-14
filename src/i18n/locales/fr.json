@@ -451,7 +451,9 @@
       "postgraduate": "Diplôme de troisième cycle"
     },
     "videosTitle": "Vidéos de cette formation",
-    "videosText": "Premières vidéos des parcours sélectionnés dans les {{count}} unités d’enseignement de ce programme."
+    "videosText": "Premières vidéos des parcours sélectionnés dans les {{count}} unités d’enseignement de ce programme.",
+    "availableElectives": "Unités optionnelles disponibles",
+    "ufesElectiveNotice": "Ces 45 unités sont des alternatives réparties dans quatre groupes du programme UFES. Chaque étudiant choisit 10 unités optionnelles (720 heures), et non l'ensemble."
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
