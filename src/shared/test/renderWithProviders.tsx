@@ -23,10 +23,6 @@ export function renderWithProviders(ui: ReactElement, { route = '/' }: RenderOpt
       <QueryClientProvider client={queryClient}>
         <MemoryRouter 
           initialEntries={[route]}
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-          }}
         >
           {ui}
         </MemoryRouter>

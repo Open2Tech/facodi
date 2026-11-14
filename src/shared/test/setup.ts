@@ -21,7 +21,11 @@ class IntersectionObserverMock {
           target: document.createElement('div'),
           isIntersecting: true,
           intersectionRatio: 1,
-        } as IntersectionObserverEntry,
+          time: 0,
+          boundingClientRect: new DOMRect(),
+          intersectionRect: new DOMRect(),
+          rootBounds: null,
+        },
       ],
       this as unknown as IntersectionObserver
     );

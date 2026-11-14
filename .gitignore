@@ -34,3 +34,4 @@ test-results
 docker-compose.yml
 skills-lock.json
 .wrangler/
+Archive.zip

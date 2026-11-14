@@ -1,17 +1,11 @@
-export interface CourseCatalogParams {
-  courseCode?: string;
-}
-
-const normalizeCourseCatalogParams = (params: CourseCatalogParams = {}) => ({
-  courseCode: params.courseCode ?? '',
-});
+import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 
 export const courseKeys = {
-  all: ['courses'] as const,
-  summaries: () => [...courseKeys.all, 'summary'] as const,
-  summaryList: () => [...courseKeys.summaries(), 'list'] as const,
-  catalogs: () => [...courseKeys.all, 'catalog'] as const,
-  catalogList: (params?: CourseCatalogParams) => [...courseKeys.catalogs(), normalizeCourseCatalogParams(params)] as const,
-  health: () => [...courseKeys.all, 'health'] as const,
-  healthList: (params?: CourseCatalogParams) => [...courseKeys.health(), normalizeCourseCatalogParams(params)] as const,
+  all: ['facodi'] as const,
+  catalog: (params: CatalogParams) => ['facodi', 'courses', 'public', params] as const,
+  detail: (slug: string) => ['facodi', 'course', slug] as const,
+  resource: (slug: string) => ['facodi', 'resource', slug] as const,
+  editor: (userId: string, kind: ContentKind, params: CatalogParams) => ['facodi', 'private', userId, kind, params] as const,
+  options: (userId: string, kind: ContentKind, search: string) => ['facodi', 'private', userId, 'options', kind, search] as const,
+  overview: (userId: string) => ['facodi', 'private', userId, 'overview'] as const,
 };
