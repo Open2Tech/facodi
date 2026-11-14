@@ -891,5 +891,19 @@
     "rejected": "Suggestion declined.",
     "confirmApproveExisting": "The resource already exists: approving reuses it (and links it to the unit, if any) without creating a new one.",
     "approvedExisting": "Existing resource reused, no new draft."
+  },
+  "courseArchive": {
+    "title": "Previous study plans",
+    "notice": "Past curricula are stored separately. Shared unit codes do not establish academic equivalence or credit-transfer eligibility.",
+    "unitCount": "{{count}} units/options",
+    "credits": "Degree pathway: {{count}} ECTS, including the required elective choices",
+    "codeOverlap": "{{count}} unit codes also in the current plan",
+    "equivalenceNotice": "These are historical units. Refer to UAlg for transfer, equivalence and credit rules. Units in the same elective group are alternatives, not cumulative credits.",
+    "officialSource": "Check the official UAlg plan",
+    "unit": "Curricular unit",
+    "term": "Term",
+    "elective": "Elective {{group}}",
+    "annual": "Full year",
+    "error": "Unable to load the historical study plan."
   }
 }
