@@ -190,7 +190,9 @@
       "error": {
         "passwordMismatch": "Les mots de passe ne correspondent pas."
       }
-    }
+    },
+    "resendConfirmation": "Renvoyer la confirmation",
+    "resendSent": "Si le renvoi est possible, un nouveau lien sera envoyé par email."
   },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
