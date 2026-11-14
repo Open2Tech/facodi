@@ -27,7 +27,7 @@ export function NoteComposer({ note, playerTime, timed, onSubmit, onCancel }: {
   playerTime: number | null;
   /** Whether this resource has a player at all; documents and links never carry stamps. */
   timed: boolean;
-  onSubmit: (draft: NoteDraft) => boolean;
+  onSubmit: (draft: NoteDraft) => Promise<boolean>;
   onCancel?: () => void;
 }) {
   const { t } = useTranslation();
@@ -66,8 +66,8 @@ export function NoteComposer({ note, playerTime, timed, onSubmit, onCancel }: {
     });
   }
 
-  const submit = form.handleSubmit(values => {
-    const saved = onSubmit({ title: values.title.trim(), body: values.body.trim(), tags: parseTags(values.tags), timestamp: timed ? timestamp : null });
+  const submit = form.handleSubmit(async values => {
+    const saved = await onSubmit({ title: values.title.trim(), body: values.body.trim(), tags: parseTags(values.tags), timestamp: timed ? timestamp : null });
     if (saved && !note) {
       form.reset({ title: '', tags: '', body: '' });
       setTimestamp(null);
@@ -116,7 +116,7 @@ export function NoteComposer({ note, playerTime, timed, onSubmit, onCancel }: {
         {justSaved ? <span className="inline-flex items-center gap-1.5 font-medium text-foreground"><Check className="h-3.5 w-3.5" aria-hidden="true" />{t('notes.saved')}</span> : t('notes.shortcut')}
       </p>
       {onCancel && <Button type="button" variant="ghost" onClick={onCancel}>{t('common.cancel')}</Button>}
-      <Button type="submit">{t(note ? 'common.save' : 'notes.save')}</Button>
+      <Button type="submit" disabled={form.formState.isSubmitting}>{t(note ? 'common.save' : 'notes.save')}</Button>
     </div>
   </form>;
 }

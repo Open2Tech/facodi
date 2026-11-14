@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { courseKeys } from '@/entities/course/course.keys';
 import { contributionKeys } from '@/entities/contribution/contribution.keys';
+import { notesKeys } from '@/entities/notes/notes.keys';
 
 describe('FACODI query isolation', () => {
   it('separates public filters and pagination', () => {
@@ -24,5 +25,7 @@ describe('FACODI query isolation', () => {
     expect(contributionKeys.blueprintPage('alice', 'draft', 1)).not.toEqual(contributionKeys.blueprintPage('alice', 'accepted', 1));
     expect(contributionKeys.blueprintPage('alice', 'draft', 1).slice(0, 4)).toEqual(contributionKeys.blueprints('alice'));
     expect(contributionKeys.myPlaylists('alice').slice(0, 3)).toEqual(['facodi', 'private', 'alice']);
+    expect(notesKeys.mine('alice')).not.toEqual(notesKeys.mine('bob'));
+    expect(notesKeys.mine('alice').slice(0, 3)).toEqual(['facodi', 'private', 'alice']);
   });
 });

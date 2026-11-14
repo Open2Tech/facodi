@@ -720,6 +720,20 @@
     "resourceCount_other": "{{count}} recursos",
     "overviewMore_one": "E mais {{count}} recurso com anotações.",
     "overviewMore_many": "E mais {{count}} recursos com anotações.",
-    "overviewMore_other": "E mais {{count}} recursos com anotações."
+    "overviewMore_other": "E mais {{count}} recursos com anotações.",
+    "storedAccount": "Sincronizadas com a tua conta FACODI. Só tu as vês, em qualquer dispositivo.",
+    "saveFailed": "Não foi possível guardar a alteração. Verifica a ligação e tenta novamente.",
+    "loadFailed": "Não foi possível carregar o teu caderno.",
+    "guestPending_one": "Há {{count}} anotação de visitante neste navegador.",
+    "guestPending_many": "Há {{count}} anotações de visitante neste navegador.",
+    "guestPending_other": "Há {{count}} anotações de visitante neste navegador.",
+    "guestImport": "Mover para a minha conta",
+    "guestImported_one": "{{count}} anotação movida para a tua conta.",
+    "guestImported_many": "{{count}} anotações movidas para a tua conta.",
+    "guestImported_other": "{{count}} anotações movidas para a tua conta.",
+    "guestImportPartial_one": "{{count}} anotação ficou neste navegador porque o recurso já não está disponível.",
+    "guestImportPartial_many": "{{count}} anotações ficaram neste navegador porque o recurso já não está disponível.",
+    "guestImportPartial_other": "{{count}} anotações ficaram neste navegador porque o recurso já não está disponível.",
+    "resourceUnavailable": "Recurso indisponível"
   }
 }

@@ -476,6 +476,77 @@ test('study notebook keeps private, timed notes beside the video and exports the
   await page.screenshot({ path: 'test-results/facodi-notebook-375.png' });
 });
 
+test('signed-in notebook syncs to the account, moves browser notes and rolls back failed saves', async ({ page }) => {
+  await mockAuth(page);
+  const userId = authFixture().user.id;
+  const resource = { id: 'v2', slug: 'derivatives', title: 'Derivatives' };
+  const stored = (id: string, title: string) => ({
+    id, resourceId: 'v2', resourceSlug: 'derivatives', resourceTitle: 'Derivatives', title, body: '', tags: [], timestamp: 30,
+    pinned: false, createdAt: '2026-11-01T10:00:00.000Z', updatedAt: '2026-11-01T10:00:00.000Z',
+  });
+  await page.addInitScript(({ userId, account, guest }) => {
+    if (sessionStorage.getItem('seeded')) return;
+    sessionStorage.setItem('seeded', '1');
+    localStorage.setItem(`facodi-notes:v1:${userId}`, JSON.stringify([account]));
+    localStorage.setItem('facodi-notes:v1:guest', JSON.stringify([guest]));
+  }, { userId, account: stored('aaaaaaaa-0000-4000-8000-000000000001', 'Device note'), guest: stored('aaaaaaaa-0000-4000-8000-000000000002', 'Visitor note') });
+
+  type Row = Record<string, unknown> & { id: string };
+  let rows: Row[] = [];
+  let failNextSave = false;
+  await page.route('**/rest/v1/study_notes*', async route => {
+    const request = route.request();
+    const embed = (row: Row) => ({ ...row, learning_object: { slug: resource.slug, title: resource.title } });
+    if (request.method() === 'GET') return route.fulfill({ json: rows.map(embed) });
+    if (request.method() === 'POST') {
+      if (failNextSave) {
+        failNextSave = false;
+        return route.fulfill({ status: 403, json: { code: '42501', message: 'permission denied' } });
+      }
+      const sent = request.postDataJSON() as Row[];
+      expect(sent.every(row => !('owner_id' in row))).toBe(true);
+      rows = [...rows.filter(row => !sent.some(item => item.id === row.id)), ...sent];
+      return route.fulfill({ json: sent.map(embed) });
+    }
+    throw new Error(`Unexpected ${request.method()} on study_notes`);
+  });
+  await page.route('**/rest/v1/learning_objects*', async route => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('slug')) return route.fulfill({ json: { ...resource, object_type: 'article', language: 'en', source_url: null, metadata: {}, description: null, objectives: [], tags: [], keywords: [], status: 'active', published: true } });
+    await route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+  });
+
+  await page.goto('/login?next=/dashboard');
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  const notebook = page.getByRole('region', { name: 'Your notebook' });
+  // Notes this account kept in the browser before sync move to the account on their own.
+  await expect(notebook.getByText('Latest: Device note')).toBeVisible();
+  await expect.poll(() => page.evaluate(id => localStorage.getItem(`facodi-notes:v1:${id}`), userId)).toBeNull();
+  await expect(notebook.getByText('Synced with your FACODI account. Only you can see them, on any device.')).toBeVisible();
+
+  // Visitor notes may belong to someone else on a shared computer, so moving them is a choice.
+  await expect(notebook.getByText('There is 1 visitor note in this browser.')).toBeVisible();
+  await notebook.getByRole('button', { name: 'Move to my account' }).click();
+  await expect(page.getByText('1 note moved to your account.')).toBeVisible();
+  await expect(notebook.getByText('There is 1 visitor note in this browser.')).toBeHidden();
+  expect(rows.map(row => row.title).sort()).toEqual(['Device note', 'Visitor note']);
+
+  await page.goto('/resources/derivatives?notes=open');
+  const drawer = page.getByRole('dialog', { name: 'Study notebook' });
+  await expect(drawer.getByText('2 notes')).toBeVisible();
+  failNextSave = true;
+  await drawer.getByLabel('Title or concept').fill('Lost idea');
+  await drawer.getByRole('button', { name: 'Save note' }).click();
+  await expect(page.getByText('The change could not be saved. Check your connection and try again.')).toBeVisible();
+  await expect(drawer.getByRole('heading', { name: 'Lost idea' })).toHaveCount(0);
+  await expect(drawer.getByLabel('Title or concept')).toHaveValue('Lost idea');
+  await drawer.getByRole('button', { name: 'Save note' }).click();
+  await expect(drawer.getByRole('heading', { name: 'Lost idea' })).toBeVisible();
+  expect(rows).toHaveLength(3);
+});
+
 test('editor reviews study paths and playlists through the review RPCs with state in the URL', async ({ page }) => {
   await mockAuth(page, 'editor');
   const blueprint = {

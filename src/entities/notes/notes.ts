@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 /**
- * Personal study notes live only in this browser, one notebook per account (or `guest`).
- * Nothing is sent to Supabase: there is no notes table in `facodi`, and private study
- * writing should not leave the device until a schema with owner-only RLS exists.
+ * Personal study notes. Signed-in learners keep them in `facodi.study_notes` (owner-only RLS);
+ * visitors keep a `guest` notebook in this browser. Per-account browser notebooks are the
+ * pre-sync format and are moved to the account once.
  */
 export const NOTES_STORAGE_PREFIX = 'facodi-notes:v1:';
 export const NOTE_TAGS_MAX = 12;
