@@ -272,3 +272,49 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
   await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' })).toBeVisible();
   await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
 });
+
+test('video page loads YouTube only on demand and places the video in its unit trail', async ({ page }) => {
+  const video = (id: string, slug: string, title: string, youtube: string, duration: number | null) => ({
+    id, slug, title, object_type: 'video', language: 'pt', source_url: `https://www.youtube.com/watch?v=${youtube}`,
+    metadata: { youtube_video_id: youtube, duration_seconds: duration, channel_name: 'Fixture Channel', review_scope: 'title_and_channel_only', full_video_reviewed: false, content_license_verified: false },
+  });
+  const sequence = [video('v1', 'limits', 'Limits', 'aaaaaaaaaaa', 600), video('v2', 'derivatives', 'Derivatives', 'bbbbbbbbbbb', 867), video('v3', 'integrals', 'Integrals', 'ccccccccccc', null)];
+  const current = { ...sequence[1], description: '<p>Test fixture only</p>', objectives: ['Differentiate polynomials'], tags: ['Calculus'], keywords: [], status: 'active', published: true };
+  const embeds: string[] = [];
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+  await page.route('https://www.youtube-nocookie.com/**', route => { embeds.push(route.request().url()); return route.fulfill({ contentType: 'text/html', body: '<p>player</p>' }); });
+  await page.route('**/rest/v1/learning_objects*', async route => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('slug')) return route.fulfill({ json: url.searchParams.get('slug') === 'eq.derivatives' ? current : { ...current, ...sequence[2] } });
+    if (url.searchParams.has('metadata->>channel_name')) return route.fulfill({ json: [video('v9', 'series', 'Series', 'ddddddddddd', 300)] });
+    await route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+  });
+  await page.route('**/rest/v1/learning_object_relations*', async route => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('child_object_id')) return route.fulfill({ json: [{ parent_object_id: 'unit-lo' }] });
+    await route.fulfill({ json: sequence.map((child, index) => ({ position: index + 1, child })) });
+  });
+  await page.route('**/rest/v1/curricular_units*', route => route.fulfill({ json: [{
+    id: 'u1', slug: 'calculus-1', title: 'Calculus I', code: '1001', ects: 6, year: 1, semester: 1, learning_object_id: 'unit-lo', courses: { slug: 'test-course', title: 'Test course', code: 'TST' },
+  }] }));
+
+  for (const width of [375, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/resources/derivatives');
+    await expect(page.getByRole('heading', { level: 1, name: 'Derivatives' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Calculus I' }).first()).toBeVisible();
+    await expect(page.getByText('Video 2 of 3')).toBeVisible();
+    await expect(page.locator('[aria-current="true"]')).toContainText('Derivatives');
+    await expect(page.getByRole('heading', { name: 'Curation status' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'More from Fixture Channel' })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/facodi-video-${width}.png`, fullPage: true });
+  }
+  expect(embeds).toHaveLength(0);
+  await page.getByRole('button', { name: 'Play video: Derivatives' }).click();
+  await expect(page.locator('iframe[title="Derivatives"]')).toHaveAttribute('src', 'https://www.youtube-nocookie.com/embed/bbbbbbbbbbb?autoplay=1&rel=0');
+  await expect.poll(() => embeds.length).toBe(1);
+  await page.getByRole('link', { name: /Next video/ }).click();
+  await expect(page).toHaveURL(/\/resources\/integrals$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Integrals' })).toBeVisible();
+});

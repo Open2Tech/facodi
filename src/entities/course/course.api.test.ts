@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCatalogCounts, getCourse, getResource, getUnit, getUnitFacets, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, getResourceContext, getUnit, getUnitFacets, listChannelVideos, listContainedVideos, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -187,5 +187,74 @@ describe('FACODI Data API contract', () => {
     await expect(changePublication('courses', 'id', 'archive')).rejects.toThrow('RLS denied');
     server.use(http.patch(`${endpoint}/courses`, () => HttpResponse.json({ message: 'No rows returned', code: 'PGRST116' }, { status: 406 })));
     await expect(changePublication('courses', 'id', 'publish')).rejects.toThrow('No rows returned');
+  });
+
+  it('lists only approved, published videos a unit contains, in curated order', async () => {
+    server.use(http.get(`${endpoint}/learning_object_relations`, ({ request }) => {
+      const url = new URL(request.url);
+      expect(request.headers.get('Accept-Profile')).toBe('facodi');
+      expect(url.searchParams.get('parent_object_id')).toBe('eq.unit-lo');
+      expect(url.searchParams.get('relation_type')).toBe('eq.contains');
+      expect(url.searchParams.get('metadata->>review_status')).toBe('eq.approved');
+      expect(url.searchParams.get('child.object_type')).toBe('eq.video');
+      expect(url.searchParams.get('child.published')).toBe('eq.true');
+      expect(url.searchParams.get('child.status')).toBe('in.(active,published)');
+      expect(url.searchParams.get('order')).toBe('position.asc.nullslast,child_object_id.asc');
+      return HttpResponse.json([{ position: 1, child: { id: 'v1', title: 'Limits' } }]);
+    }));
+    expect(await listContainedVideos('unit-lo')).toEqual([{ id: 'v1', title: 'Limits' }]);
+  });
+
+  it('resolves a video to its public units and the first unit sequence', async () => {
+    server.use(
+      http.get(`${endpoint}/learning_object_relations`, ({ request }) => {
+        const url = new URL(request.url);
+        if (url.searchParams.has('child_object_id')) {
+          expect(url.searchParams.get('child_object_id')).toBe('eq.video');
+          expect(url.searchParams.get('metadata->>review_status')).toBe('eq.approved');
+          return HttpResponse.json([{ parent_object_id: 'unit-lo' }, { parent_object_id: 'unit-lo' }]);
+        }
+        return HttpResponse.json([{ position: 1, child: { id: 'video' } }, { position: 2, child: { id: 'next' } }]);
+      }),
+      http.get(`${endpoint}/curricular_units`, ({ request }) => {
+        const url = new URL(request.url);
+        expect(url.searchParams.get('learning_object_id')).toBe('in.(unit-lo)');
+        expect(url.searchParams.get('status')).toBe('eq.active');
+        expect(url.searchParams.get('courses.published')).toBe('eq.true');
+        return HttpResponse.json([{ id: 'u', slug: 'calc', learning_object_id: 'unit-lo', courses: { slug: 'lei' } }]);
+      }),
+    );
+    const context = await getResourceContext({ id: 'video', object_type: 'video' });
+    expect(context.redirect).toBeNull();
+    expect(context.units).toHaveLength(1);
+    expect(context.sequence.map(item => item.id)).toEqual(['video', 'next']);
+  });
+
+  it('redirects course and unit mirror objects to their own pages, and skips units for unlinked videos', async () => {
+    server.use(
+      http.get(`${endpoint}/courses`, () => HttpResponse.json({ slug: 'lei' })),
+      http.get(`${endpoint}/curricular_units`, () => HttpResponse.json([{ slug: 'calc', courses: { slug: 'lei' } }])),
+      http.get(`${endpoint}/learning_object_relations`, () => HttpResponse.json([])),
+    );
+    expect((await getResourceContext({ id: 'c', object_type: 'course' })).redirect).toBe('/courses/lei');
+    expect((await getResourceContext({ id: 'u', object_type: 'curricular_unit' })).redirect).toBe('/courses/lei/units/calc');
+    expect(await getResourceContext({ id: 'v', object_type: 'video' })).toEqual({ redirect: null, units: [], sequence: [] });
+  });
+
+  it('finds other public videos from the same channel and filters resources by type', async () => {
+    server.use(http.get(`${endpoint}/learning_objects`, ({ request }) => {
+      const url = new URL(request.url);
+      if (url.searchParams.has('metadata->>channel_name')) {
+        expect(url.searchParams.get('metadata->>channel_name')).toBe('eq.Khan Academy');
+        expect(url.searchParams.get('id')).toBe('neq.current');
+        expect(url.searchParams.get('published')).toBe('eq.true');
+        expect(url.searchParams.get('limit')).toBe('4');
+        return HttpResponse.json([]);
+      }
+      expect(url.searchParams.get('object_type')).toBe('eq.video');
+      return HttpResponse.json([], { headers: { 'Content-Range': '*/0' } });
+    }));
+    expect(await listChannelVideos('Khan Academy', 'current')).toEqual([]);
+    expect((await listResources({ search: '', language: '', page: 1, objectType: 'video' })).total).toBe(0);
   });
 });

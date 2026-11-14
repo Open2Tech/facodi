@@ -32,7 +32,9 @@
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "notFound": "Ce chemin ne mène encore nulle part.",
-    "notFoundDescription": "Ce contenu n'existe pas ou n'est pas disponible. Explorez le catalogue pour trouver un autre point de départ."
+    "notFoundDescription": "Ce contenu n'existe pas ou n'est pas disponible. Explorez le catalogue pour trouver un autre point de départ.",
+    "yes": "Oui",
+    "no": "Non"
   },
   "home": {
     "campus": "Un campus numérique ouvert",
@@ -296,7 +298,8 @@
     "emptyDescription": "Les ressources apparaissent ici lorsque l’équipe éditoriale les publie.",
     "noResults": "Aucune ressource ne correspond à ces filtres. Essaie un autre titre, une autre langue ou un autre thème.",
     "taggedWith": "Thème :",
-    "clearTag": "Retirer le thème"
+    "clearTag": "Retirer le thème",
+    "filterType": "Type de ressource"
   },
   "about": {
     "title": "Un campus ouvert pour suivre le fil du savoir.",
@@ -372,25 +375,70 @@
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
-    "keywords": "Mots-clés"
+    "keywords": "Mots-clés",
+    "about": "À propos de cette ressource"
   },
   "unit": {
     "breadcrumb": "Fil d’Ariane",
     "resources": "Ressources ouvertes",
-    "noResources": "Aucune ressource n’est encore publiée pour cette unité.",
     "noResourcesText": "Les vidéos et supports suggérés restent en relecture jusqu’à ce que l’équipe éditoriale confirme qu’ils correspondent aux objectifs de l’unité.",
     "sameTerm": "Aussi en année {{year}}, semestre {{semester}}",
     "facts": "Fiche de l’unité",
     "allInCourse": "Toutes les unités du cursus",
     "sequence": "Séquence du plan",
     "previous": "Unité précédente",
-    "next": "Unité suivante"
+    "next": "Unité suivante",
+    "videoCount_one": "{{count}} vidéo publiée, dans l’ordre d’étude suggéré.",
+    "videoCount_many": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
+    "videoCount_other": "{{count}} vidéos publiées, dans l’ordre d’étude suggéré.",
+    "openVideoPage": "Ouvrir la page de la vidéo"
   },
   "objectTypes": {
     "video": "Vidéo",
     "document": "Document",
     "course": "Formation",
     "curricular_unit": "Unité d’enseignement"
+  },
+  "video": {
+    "play": "Lire la vidéo : {{title}}",
+    "privacyNote": "YouTube ne se charge que lorsque vous lancez la lecture.",
+    "player": "Lecteur vidéo",
+    "context": "Contexte curriculaire",
+    "byChannel": "Chaîne {{channel}}",
+    "watchOnYoutube": "Voir sur YouTube",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié.",
+    "copyFailed": "Impossible de copier le lien.",
+    "suggest": "Suggérer une correction",
+    "unit": "Unité curriculaire associée",
+    "course": "Formation",
+    "openUnit": "Voir l’unité et ses ressources",
+    "sequence": "Parcours de l’unité",
+    "position": "Vidéo {{current}} sur {{total}}",
+    "nowViewing": "En cours",
+    "allInUnit_one": "Voir {{count}} vidéo de l’unité",
+    "allInUnit_many": "Voir les {{count}} vidéos de l’unité",
+    "allInUnit_other": "Voir les {{count}} vidéos de l’unité",
+    "alsoIn": "Également utilisée dans",
+    "noUnit": "Pas encore d’unité curriculaire",
+    "noUnitText": "Cette vidéo est publiée mais n’a pas encore été associée à une unité curriculaire approuvée.",
+    "previous": "Vidéo précédente",
+    "next": "Vidéo suivante",
+    "about": "À propos de cette vidéo",
+    "facts": {
+      "channel": "Chaîne",
+      "duration": "Durée",
+      "language": "Langue",
+      "type": "Type"
+    },
+    "curation": "État de la curation",
+    "curationText": "FACODI renvoie vers des vidéos ouvertes de tiers. Voici ce que l’équipe éditoriale a déjà confirmé, et ce qui ne l’est pas encore.",
+    "selection": "Critère de sélection",
+    "scopeTitleChannel": "Titre et chaîne",
+    "fullReviewed": "Vidéo revue en entier",
+    "licenseVerified": "Licence vérifiée",
+    "rights": "Les droits de la vidéo appartiennent à son auteur sur YouTube. FACODI n’héberge ni ne modifie le contenu.",
+    "moreFromChannel": "Plus de {{channel}}"
   },
   "unitVideos": {
     "title": "Cours vidéo ({{count}})",

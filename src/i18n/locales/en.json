@@ -32,7 +32,9 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "notFound": "This path does not lead anywhere yet.",
-    "notFoundDescription": "This content does not exist or is unavailable. Explore the catalogue to find another starting point."
+    "notFoundDescription": "This content does not exist or is unavailable. Explore the catalogue to find another starting point.",
+    "yes": "Yes",
+    "no": "No"
   },
   "home": {
     "campus": "An open digital campus",
@@ -296,7 +298,8 @@
     "emptyDescription": "Resources appear here once the editorial team publishes them.",
     "noResults": "No resources match these filters. Try another title, language or topic.",
     "taggedWith": "Topic:",
-    "clearTag": "Clear topic"
+    "clearTag": "Clear topic",
+    "filterType": "Resource type"
   },
   "about": {
     "title": "An open campus to follow the thread of knowledge.",
@@ -372,25 +375,70 @@
   },
   "resource": {
     "objectives": "Learning objectives",
-    "keywords": "Keywords"
+    "keywords": "Keywords",
+    "about": "About this resource"
   },
   "unit": {
     "breadcrumb": "Breadcrumb",
     "resources": "Open resources",
-    "noResources": "No resources are published for this unit yet.",
     "noResourcesText": "Suggested videos and materials stay in review until the editorial team confirms they match the unit’s objectives.",
     "sameTerm": "Also in year {{year}}, semester {{semester}}",
     "facts": "Unit facts",
     "allInCourse": "All units in this course",
     "sequence": "Study plan sequence",
     "previous": "Previous unit",
-    "next": "Next unit"
+    "next": "Next unit",
+    "videoCount_one": "{{count}} published video, in the suggested study order.",
+    "videoCount_many": "{{count}} published videos, in the suggested study order.",
+    "videoCount_other": "{{count}} published videos, in the suggested study order.",
+    "openVideoPage": "Open video page"
   },
   "objectTypes": {
     "video": "Video",
     "document": "Document",
     "course": "Course",
     "curricular_unit": "Curricular unit"
+  },
+  "video": {
+    "play": "Play video: {{title}}",
+    "privacyNote": "YouTube only loads when you press play.",
+    "player": "Video player",
+    "context": "Curricular context",
+    "byChannel": "Channel {{channel}}",
+    "watchOnYoutube": "Watch on YouTube",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied.",
+    "copyFailed": "Could not copy the link.",
+    "suggest": "Suggest a correction",
+    "unit": "Linked curricular unit",
+    "course": "Course",
+    "openUnit": "View unit and resources",
+    "sequence": "Unit trail",
+    "position": "Video {{current}} of {{total}}",
+    "nowViewing": "Now viewing",
+    "allInUnit_one": "View {{count}} video in this unit",
+    "allInUnit_many": "View all {{count}} videos in this unit",
+    "allInUnit_other": "View all {{count}} videos in this unit",
+    "alsoIn": "Also used in",
+    "noUnit": "No curricular unit yet",
+    "noUnitText": "This video is published but has not been linked to an approved curricular unit yet.",
+    "previous": "Previous video",
+    "next": "Next video",
+    "about": "About this video",
+    "facts": {
+      "channel": "Channel",
+      "duration": "Duration",
+      "language": "Language",
+      "type": "Type"
+    },
+    "curation": "Curation status",
+    "curationText": "FACODI points to open third-party videos. Here is what the editorial team has confirmed so far, and what it has not.",
+    "selection": "Selection basis",
+    "scopeTitleChannel": "Title and channel",
+    "fullReviewed": "Full video reviewed",
+    "licenseVerified": "Licence verified",
+    "rights": "Video rights belong to its author on YouTube. FACODI neither hosts nor alters the content.",
+    "moreFromChannel": "More from {{channel}}"
   },
   "unitVideos": {
     "title": "Video lessons ({{count}})",

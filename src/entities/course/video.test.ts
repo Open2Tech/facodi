@@ -1,0 +1,35 @@
+import { describe, expect, it } from 'vitest';
+import { formatDuration, isoDuration, videoInfo, youtubeIdFromUrl } from '@/entities/course/video';
+
+describe('video metadata', () => {
+  it('extracts ids from supported YouTube URL shapes and rejects everything else', () => {
+    expect(youtubeIdFromUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=10')).toBe('dQw4w9WgXcQ');
+    expect(youtubeIdFromUrl('https://youtu.be/dQw4w9WgXcQ')).toBe('dQw4w9WgXcQ');
+    expect(youtubeIdFromUrl('https://m.youtube.com/shorts/dQw4w9WgXcQ')).toBe('dQw4w9WgXcQ');
+    expect(youtubeIdFromUrl('https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ')).toBe('dQw4w9WgXcQ');
+    expect(youtubeIdFromUrl('https://evil.example/watch?v=dQw4w9WgXcQ')).toBeNull();
+    expect(youtubeIdFromUrl('https://youtu.be/short')).toBeNull();
+    expect(youtubeIdFromUrl('not a url')).toBeNull();
+  });
+
+  it('prefers a valid stored id, builds the thumbnail from it and reads curation flags strictly', () => {
+    const info = videoInfo({ youtube_video_id: 'abcdefghijk', duration_seconds: 867.4, channel_name: ' Khan ', review_scope: 'title_and_channel_only', full_video_reviewed: 'true' }, 'https://youtu.be/zzzzzzzzzzz');
+    expect(info).toEqual({
+      youtubeId: 'abcdefghijk', thumbnail: 'https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg', durationSeconds: 867,
+      channel: 'Khan', reviewScope: 'title_and_channel_only', fullReviewed: false, licenseVerified: false,
+    });
+  });
+
+  it('falls back to the source URL when the stored id is unsafe, and tolerates missing metadata', () => {
+    expect(videoInfo({ youtube_video_id: '"><script>' }, 'https://youtu.be/zzzzzzzzzzz').youtubeId).toBe('zzzzzzzzzzz');
+    expect(videoInfo(null)).toMatchObject({ youtubeId: null, thumbnail: null, durationSeconds: null, channel: null });
+    expect(videoInfo({ duration_seconds: null }).durationSeconds).toBeNull();
+  });
+
+  it('formats durations for display and for <time dateTime>', () => {
+    expect(formatDuration(867)).toBe('14:27');
+    expect(formatDuration(59)).toBe('0:59');
+    expect(formatDuration(3723)).toBe('1:02:03');
+    expect(isoDuration(867)).toBe('PT0H14M27S');
+  });
+});

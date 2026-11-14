@@ -1,45 +1,233 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import { useResource } from '@/features/courses/queries/useCourses';
+import { Helmet } from 'react-helmet-async';
+import { toast } from 'sonner';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus } from 'lucide-react';
+import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
+import { useContributePath } from '@/features/auth/useContributePath';
+import { unitPath } from '@/entities/course/course.paths';
+import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
-import { safeExternalUrl } from '@/shared/lib/navigation';
-import { stringList } from '@/shared/lib/text';
+import { VideoCard } from '@/components/resource/VideoCard';
+import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { safeExternalUrl } from '@/shared/lib/navigation';
+import { plainText, stringList } from '@/shared/lib/text';
+import { cn } from '@/lib/utils';
+
+const SEQUENCE_WINDOW = 5;
+const MIRRORS = ['course', 'curricular_unit'];
 
 export default function ResourceDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
   const query = useResource(slug);
+  const resource = query.data;
+  const context = useResourceContext(resource);
+  const isVideo = resource?.object_type === 'video';
+  const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
+  const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
+  const contribute = useContributePath();
+
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
-  const resource = query.data;
+  if (!resource || !info) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (context.data?.redirect) return <Navigate to={context.data.redirect} replace />;
+  // Course and unit mirror objects have their own pages; avoid flashing this layout while resolving them.
+  if (MIRRORS.includes(resource.object_type) && context.isPending) return <PageState loading />;
+
   const source = safeExternalUrl(resource.source_url);
   const objectives = stringList(resource.objectives);
+  const typeLabel = t(`objectTypes.${resource.object_type}`, { defaultValue: resource.object_type });
+  const units = context.data?.units ?? [];
+  const primary = units[0];
+  const sequence = context.data?.sequence ?? [];
+  const position = sequence.findIndex(item => item.id === resource.id);
+  const previous = position > 0 ? sequence[position - 1] : null;
+  const next = position >= 0 && position < sequence.length - 1 ? sequence[position + 1] : null;
+  const windowStart = Math.max(0, Math.min(position - 2, sequence.length - SEQUENCE_WINDOW));
+  const visibleSequence = sequence.slice(windowStart, windowStart + SEQUENCE_WINDOW);
+  const player = isVideo && info.youtubeId;
+  const unitHref = primary ? unitPath(primary.courses.slug, primary.slug) : null;
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast.success(t('video.linkCopied'));
+    } catch {
+      toast.error(t('video.copyFailed'));
+    }
+  }
+
+  const facts = [
+    ['channel', info.channel],
+    ['duration', info.durationSeconds ? formatDuration(info.durationSeconds) : null],
+    ['language', resource.language?.toUpperCase()],
+    ['type', typeLabel],
+  ].filter((fact): fact is [string, string] => Boolean(fact[1]));
+
   return <article>
-    <Link to="/resources" className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4"><ArrowLeft className="h-4 w-4" />{t('nav.resources')}</Link>
-    <header className="border-b border-foreground pb-10">
-      <p className="mb-5 flex flex-wrap gap-x-4 font-mono text-xs uppercase text-muted-foreground"><span>{t(`objectTypes.${resource.object_type}`, { defaultValue: resource.object_type })}</span><span lang={resource.language}>{resource.language}</span></p>
-      <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{resource.title}</h1>
-    </header>
-    <div className="grid gap-12 py-10 lg:grid-cols-[1fr_20rem]">
+    <Helmet>
+      <title>{`${resource.title} — FACODI`}</title>
+      <meta name="description" content={plainText(resource.description).slice(0, 160) || resource.title} />
+      {info.thumbnail && <meta property="og:image" content={info.thumbnail} />}
+    </Helmet>
+    <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to="/resources">{t('nav.resources')}</Link></li>
+        <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/resources?type=${encodeURIComponent(resource.object_type)}`}>{typeLabel}</Link></li>
+        {primary && unitHref && <>
+          <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+          <li><Link className="underline underline-offset-4 hover:text-foreground" to={unitHref}>{primary.code || primary.title}</Link></li>
+        </>}
+      </ol>
+    </nav>
+
+    <header className="grid gap-8 border-b border-foreground pb-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
       <div className="min-w-0">
-        <SafeHtml html={resource.description} />
-        {!!objectives.length && <section aria-labelledby="objectives" className="mt-10">
-          <h2 id="objectives" className="text-2xl font-semibold">{t('resource.objectives')}</h2>
+        <ul className="mb-5 flex flex-wrap gap-2 font-mono text-xs uppercase">
+          <li className="border border-foreground bg-primary px-2 py-1 text-primary-foreground">{typeLabel}</li>
+          {info.durationSeconds && <li className="inline-flex items-center gap-1.5 border border-input px-2 py-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" /><time dateTime={isoDuration(info.durationSeconds)}>{formatDuration(info.durationSeconds)}</time></li>}
+          {resource.language && <li lang={resource.language} className="border border-input px-2 py-1">{resource.language}</li>}
+          {primary?.ects != null && <li className="border border-input px-2 py-1">{primary.ects} ECTS</li>}
+        </ul>
+        <h1 className="max-w-4xl text-3xl font-semibold leading-[1.08] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{resource.title}</h1>
+        {info.channel && <p className="mt-4 text-lg text-muted-foreground">{t('video.byChannel', { channel: info.channel })}</p>}
+      </div>
+      <div className="flex flex-col gap-3">
+        {source ? <Button size="lg" asChild><a href={source} target="_blank" rel="noopener noreferrer">{t(isVideo ? 'video.watchOnYoutube' : 'catalog.source')}<ArrowUpRight /></a></Button>
+          : resource.source_url && <p role="alert" className="text-destructive">{t('validation.url')}</p>}
+        <Button variant="outline" onClick={() => void copyLink()}><Link2 />{t('video.copyLink')}</Button>
+        <Link to={contribute} className="inline-flex items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
+      </div>
+    </header>
+
+    <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      {player && <section aria-label={t('video.player')} className="min-w-0 lg:col-start-1 lg:row-start-1">
+        <div className="border border-foreground">
+          <YouTubePlayer videoId={info.youtubeId!} title={resource.title} thumbnail={info.thumbnail} />
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-neutral-950 px-4 py-3 font-mono text-xs text-white/80">
+            <span className="min-w-0 truncate">{info.channel ?? 'YouTube'}</span>
+            <span className="flex items-center gap-4">
+              {info.durationSeconds && <span className="tabular-nums">{formatDuration(info.durationSeconds)}</span>}
+              {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
+            </span>
+          </div>
+        </div>
+      </section>}
+
+      <aside aria-label={t('video.context')} className="space-y-6 self-start lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        {context.isPending ? <div className="space-y-3"><Skeleton className="h-56 w-full" /><Skeleton className="h-64 w-full" /></div>
+          : context.error ? <div role="alert" className="border border-input p-5 text-sm">
+            <p>{context.error.message}</p>
+            <button type="button" className="mt-3 font-semibold underline underline-offset-4" onClick={() => void context.refetch()}>{t('common.retry')}</button>
+          </div>
+          : primary && unitHref ? <>
+            <section aria-labelledby="video-unit" className="border border-foreground bg-primary p-5 text-primary-foreground">
+              <h2 id="video-unit" className="text-sm font-semibold">{t('video.unit')}</h2>
+              {primary.code && <p className="mt-4 inline-block bg-neutral-950 px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
+              <p className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.02em] [text-wrap:balance]"><Link to={unitHref} className="decoration-2 underline-offset-4 hover:underline">{primary.title}</Link></p>
+              <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-black/25 pt-4 text-sm">
+                {primary.ects != null && <div><dt className="text-xs">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{primary.ects}</dd></div>}
+                {primary.year != null && <div><dt className="text-xs">{t('course.yearLabel')}</dt><dd className="font-mono tabular-nums">{primary.year}</dd></div>}
+                {primary.semester != null && <div><dt className="text-xs">{t('course.semesterLabel')}</dt><dd className="font-mono tabular-nums">{primary.semester}</dd></div>}
+                <div className="col-span-3"><dt className="text-xs">{t('video.course')}</dt><dd><Link to={`/courses/${primary.courses.slug}`} className="font-medium underline underline-offset-4">{primary.courses.title}</Link></dd></div>
+              </dl>
+              <Link to={`${unitHref}#unit-resources`} className="mt-5 flex items-center justify-between gap-3 bg-neutral-950 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-neutral-800">{t('video.openUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </section>
+
+            {!!sequence.length && <section aria-labelledby="video-sequence" className="border border-input">
+              <div className="flex items-baseline justify-between gap-3 border-b border-input bg-muted px-5 py-3">
+                <h2 id="video-sequence" className="text-sm font-semibold">{t('video.sequence')}</h2>
+                {position >= 0 && <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('video.position', { current: position + 1, total: sequence.length })}</p>}
+              </div>
+              {position >= 0 && <div aria-hidden="true" className="h-1 bg-muted"><div className="h-full bg-foreground" style={{ width: `${((position + 1) / sequence.length) * 100}%` }} /></div>}
+              <ol className="divide-y divide-input">
+                {visibleSequence.map((item, offset) => {
+                  const current = item.id === resource.id;
+                  const itemInfo = videoInfo(item.metadata, item.source_url);
+                  const body = <>
+                    <span className="w-7 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(windowStart + offset + 1).padStart(2, '0')}</span>
+                    <span className="min-w-0 flex-1">
+                      <span className="line-clamp-2 text-sm font-medium leading-snug">{item.title}</span>
+                      <span className={cn('mt-1 block font-mono text-xs', current ? 'text-primary-foreground' : 'text-muted-foreground')}>
+                        {current ? t('video.nowViewing') : itemInfo.durationSeconds ? formatDuration(itemInfo.durationSeconds) : itemInfo.channel}
+                      </span>
+                    </span>
+                  </>;
+                  return <li key={item.id}>
+                    {current
+                      ? <div aria-current="true" className="flex gap-3 bg-primary px-5 py-3 text-primary-foreground">{body}</div>
+                      : <Link to={`/resources/${item.slug}`} className="flex gap-3 px-5 py-3 transition-colors hover:bg-muted">{body}</Link>}
+                  </li>;
+                })}
+              </ol>
+              {sequence.length > SEQUENCE_WINDOW && <Link to={`${unitHref}#unit-resources`} className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-primary-foreground">{t('video.allInUnit', { count: sequence.length })}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>}
+            </section>}
+
+            {units.length > 1 && <section aria-labelledby="video-also" className="border border-input p-5">
+              <h2 id="video-also" className="text-sm font-semibold">{t('video.alsoIn')}</h2>
+              <ul className="mt-3 space-y-2 text-sm">{units.slice(1).map(unit => <li key={unit.id}>
+                <Link to={unitPath(unit.courses.slug, unit.slug)} className="underline underline-offset-4 hover:text-foreground">{unit.title}</Link>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">{unit.courses.code}</span>
+              </li>)}</ul>
+            </section>}
+          </>
+          : isVideo && <section aria-labelledby="video-no-unit" className="border border-input bg-muted/40 p-5 text-sm">
+            <h2 id="video-no-unit" className="font-semibold">{t('video.noUnit')}</h2>
+            <p className="mt-2 text-muted-foreground">{t('video.noUnitText')}</p>
+          </section>}
+      </aside>
+
+      <div className={cn('min-w-0 space-y-12 lg:col-start-1', player ? 'lg:row-start-2' : 'lg:row-start-1')}>
+        {(previous || next) && <nav aria-label={t('video.sequence')} className="grid gap-4 sm:grid-cols-2">
+          {previous ? <Link to={`/resources/${previous.slug}`} className="group flex flex-col gap-1 border border-input p-4 transition-colors hover:border-foreground">
+            <span className="inline-flex items-center gap-2 text-sm text-muted-foreground"><ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('video.previous')}</span>
+            <span className="line-clamp-2 font-semibold group-hover:underline group-hover:underline-offset-4">{previous.title}</span>
+          </Link> : <span className="hidden sm:block" />}
+          {next && <Link to={`/resources/${next.slug}`} className="group flex flex-col gap-1 border border-input p-4 text-right transition-colors hover:border-foreground">
+            <span className="inline-flex items-center justify-end gap-2 text-sm text-muted-foreground">{t('video.next')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+            <span className="line-clamp-2 font-semibold group-hover:underline group-hover:underline-offset-4">{next.title}</span>
+          </Link>}
+        </nav>}
+
+        <section aria-labelledby="resource-about">
+          <h2 id="resource-about" className="text-2xl font-semibold tracking-[-0.02em]">{t(isVideo ? 'video.about' : 'resource.about')}</h2>
+          {resource.description && <div className="mt-4"><SafeHtml html={resource.description} /></div>}
+          <dl className="mt-6 grid border-t border-input sm:grid-cols-2">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 border-b border-input py-3 text-sm sm:odd:pr-6 sm:even:pl-6">
+            <dt className="text-muted-foreground">{t(`video.facts.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
+          </div>)}</dl>
+          {!!resource.tags.length && <ul className="mt-6 flex flex-wrap gap-2">{resource.tags.map(tag => <li key={tag}>
+            <Link to={`/resources?tag=${encodeURIComponent(tag)}`} className="inline-block border border-input px-3 py-1 text-sm transition-colors hover:border-foreground hover:bg-primary hover:text-primary-foreground">{tag}</Link>
+          </li>)}</ul>}
+          {!!resource.keywords.length && <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">{t('resource.keywords')}:</span> {resource.keywords.join(' · ')}</p>}
+        </section>
+
+        {!!objectives.length && <section aria-labelledby="objectives">
+          <h2 id="objectives" className="text-2xl font-semibold tracking-[-0.02em]">{t('resource.objectives')}</h2>
           <ol className="mt-4 space-y-3">{objectives.map((objective, index) => <li key={objective} className="flex gap-4"><span className="font-mono text-sm text-muted-foreground">{String(index + 1).padStart(2, '0')}</span><span>{objective}</span></li>)}</ol>
         </section>}
-        {source ? <Button size="lg" className="mt-10" asChild><a href={source} target="_blank" rel="noopener noreferrer">{t('catalog.source')}<ArrowUpRight /></a></Button>
-          : resource.source_url && <p role="alert" className="mt-6 text-destructive">{t('validation.url')}</p>}
+
+        {isVideo && <section aria-labelledby="video-curation" className="border border-input bg-muted/40 p-6">
+          <h2 id="video-curation" className="text-lg font-semibold">{t('video.curation')}</h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('video.curationText')}</p>
+          <dl className="mt-5 divide-y divide-input border-y border-input text-sm">
+            {info.reviewScope && <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.selection')}</dt><dd className="text-right">{info.reviewScope === 'title_and_channel_only' ? t('video.scopeTitleChannel') : info.reviewScope}</dd></div>}
+            <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.fullReviewed')}</dt><dd className="text-right">{t(info.fullReviewed ? 'common.yes' : 'common.no')}</dd></div>
+            <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.licenseVerified')}</dt><dd className="text-right">{t(info.licenseVerified ? 'common.yes' : 'common.no')}</dd></div>
+          </dl>
+          <p className="mt-4 max-w-prose text-sm leading-relaxed">{t('video.rights')}</p>
+          <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('video.suggest')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+        </section>}
+
+        {!!channelVideos.data?.length && <section aria-labelledby="video-channel">
+          <h2 id="video-channel" className="text-2xl font-semibold tracking-[-0.02em]">{t('video.moreFromChannel', { channel: info.channel })}</h2>
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2">{channelVideos.data.map(video => <li key={video.id}><VideoCard video={video} /></li>)}</ul>
+        </section>}
       </div>
-      {(!!resource.tags.length || !!resource.keywords.length) && <aside className="space-y-8 self-start">
-        {!!resource.tags.length && <section aria-labelledby="tags"><h2 id="tags" className="mb-3 text-sm font-semibold">{t('catalog.tags')}</h2>
-          <ul className="flex flex-wrap gap-2">{resource.tags.map(tag => <li key={tag}><Link to={`/resources?tag=${encodeURIComponent(tag)}`} className="inline-block border border-input px-3 py-1 text-sm hover:border-foreground hover:bg-primary hover:text-primary-foreground">{tag}</Link></li>)}</ul></section>}
-        {!!resource.keywords.length && <section aria-labelledby="keywords"><h2 id="keywords" className="mb-3 text-sm font-semibold">{t('resource.keywords')}</h2>
-          <p className="text-sm leading-relaxed text-muted-foreground">{resource.keywords.join(' · ')}</p></section>}
-      </aside>}
     </div>
   </article>;
 }
