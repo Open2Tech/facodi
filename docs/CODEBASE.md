@@ -18,18 +18,21 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/entities/contribution](../src/entities/contribution): submissão de playlists
   (Edge Function `facodi-submit-playlist`), filas de revisão e RPCs
   `review_playlist`/`review_study_blueprint`, e normalização dos percursos gerados.
-- [src/entities/notes](../src/entities/notes): caderno de estudo pessoal,
-  local-first. Notas validadas com Zod e guardadas em `localStorage` por conta
-  (`facodi-notes:v1:<user id>` ou `guest`); nada é enviado ao Supabase.
-  Inclui ordenação, timestamps e exportação Markdown.
+- [src/entities/notes](../src/entities/notes): caderno de estudo pessoal.
+  Contas guardam as notas em `facodi.study_notes` (RLS só do dono, sem acesso
+  `anon`, ids gerados no cliente para upsert idempotente); visitantes usam
+  `localStorage` (`facodi-notes:v1:guest`). Notas antigas por conta no navegador
+  migram uma vez; as de visitante só migram por escolha explícita. Inclui
+  ordenação, timestamps e exportação Markdown.
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
   para catálogo público, conteúdo editorial e contagens administrativas.
 - [src/features/contributions/queries](../src/features/contributions/queries):
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
-- [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`
-  sobre `useSyncExternalStore`, sincronizado entre separadores.
+- [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`;
+  TanStack Query com escrita otimista e rollback para contas,
+  `useSyncExternalStore` entre separadores para visitantes.
 - [src/components](../src/components): apresentação, formulários e primitivas shadcn.
   [src/components/profile](../src/components/profile) compõe `/profile`: dados da
   conta, segurança e sessões, preferências do navegador e contribuições.

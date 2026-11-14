@@ -30,6 +30,11 @@ export function writeNotebook(owner: string, notes: StudyNote[]) {
   listeners.forEach(listener => listener());
 }
 
+export function clearNotebook(owner: string) {
+  localStorage.removeItem(notesStorageKey(owner));
+  listeners.forEach(listener => listener());
+}
+
 /** Same-tab writes notify directly; other tabs arrive through the `storage` event. */
 export function subscribeNotebooks(listener: () => void) {
   listeners.add(listener);

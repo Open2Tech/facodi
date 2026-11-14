@@ -720,6 +720,20 @@
     "resourceCount_other": "{{count}} resources",
     "overviewMore_one": "And {{count}} more resource with notes.",
     "overviewMore_many": "And {{count}} more resources with notes.",
-    "overviewMore_other": "And {{count}} more resources with notes."
+    "overviewMore_other": "And {{count}} more resources with notes.",
+    "storedAccount": "Synced with your FACODI account. Only you can see them, on any device.",
+    "saveFailed": "The change could not be saved. Check your connection and try again.",
+    "loadFailed": "Your notebook could not be loaded.",
+    "guestPending_one": "There is {{count}} visitor note in this browser.",
+    "guestPending_many": "There are {{count}} visitor notes in this browser.",
+    "guestPending_other": "There are {{count}} visitor notes in this browser.",
+    "guestImport": "Move to my account",
+    "guestImported_one": "{{count}} note moved to your account.",
+    "guestImported_many": "{{count}} notes moved to your account.",
+    "guestImported_other": "{{count}} notes moved to your account.",
+    "guestImportPartial_one": "{{count}} note stayed in this browser because its resource is no longer available.",
+    "guestImportPartial_many": "{{count}} notes stayed in this browser because their resource is no longer available.",
+    "guestImportPartial_other": "{{count}} notes stayed in this browser because their resource is no longer available.",
+    "resourceUnavailable": "Resource unavailable"
   }
 }

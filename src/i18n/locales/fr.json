@@ -720,6 +720,20 @@
     "resourceCount_other": "{{count}} ressources",
     "overviewMore_one": "Et {{count}} autre ressource avec des notes.",
     "overviewMore_many": "Et {{count}} autres ressources avec des notes.",
-    "overviewMore_other": "Et {{count}} autres ressources avec des notes."
+    "overviewMore_other": "Et {{count}} autres ressources avec des notes.",
+    "storedAccount": "Synchronisées avec votre compte FACODI. Vous seul les voyez, sur tous vos appareils.",
+    "saveFailed": "La modification n’a pas pu être enregistrée. Vérifiez votre connexion et réessayez.",
+    "loadFailed": "Votre carnet n’a pas pu être chargé.",
+    "guestPending_one": "Il y a {{count}} note de visiteur dans ce navigateur.",
+    "guestPending_many": "Il y a {{count}} notes de visiteur dans ce navigateur.",
+    "guestPending_other": "Il y a {{count}} notes de visiteur dans ce navigateur.",
+    "guestImport": "Déplacer vers mon compte",
+    "guestImported_one": "{{count}} note déplacée vers votre compte.",
+    "guestImported_many": "{{count}} notes déplacées vers votre compte.",
+    "guestImported_other": "{{count}} notes déplacées vers votre compte.",
+    "guestImportPartial_one": "{{count}} note est restée dans ce navigateur car sa ressource n’est plus disponible.",
+    "guestImportPartial_many": "{{count}} notes sont restées dans ce navigateur car leur ressource n’est plus disponible.",
+    "guestImportPartial_other": "{{count}} notes sont restées dans ce navigateur car leur ressource n’est plus disponible.",
+    "resourceUnavailable": "Ressource indisponible"
   }
 }

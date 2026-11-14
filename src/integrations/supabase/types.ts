@@ -463,6 +463,68 @@ export type Database = {
           },
         ]
       }
+      email_outbox: {
+        Row: {
+          attempts: number
+          created_at: string
+          event_key: string
+          event_payload: Json
+          failure_code: string | null
+          id: string
+          locked_at: string | null
+          next_attempt_at: string
+          playlist_id: string
+          provider_message_id: string | null
+          recipient_user_id: string
+          sent_at: string | null
+          state: string
+          template_name: string
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          created_at?: string
+          event_key: string
+          event_payload?: Json
+          failure_code?: string | null
+          id?: string
+          locked_at?: string | null
+          next_attempt_at?: string
+          playlist_id: string
+          provider_message_id?: string | null
+          recipient_user_id: string
+          sent_at?: string | null
+          state?: string
+          template_name: string
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          created_at?: string
+          event_key?: string
+          event_payload?: Json
+          failure_code?: string | null
+          id?: string
+          locked_at?: string | null
+          next_attempt_at?: string
+          playlist_id?: string
+          provider_message_id?: string | null
+          recipient_user_id?: string
+          sent_at?: string | null
+          state?: string
+          template_name?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_outbox_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       embeddings: {
         Row: {
           content_hash: string | null
@@ -597,10 +659,10 @@ export type Database = {
           id: string
           prompt: Json
           result: Json
-          root_object_id: string | null
-          reviewed_by: string | null
-          reviewed_at: string | null
           review_note: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          root_object_id: string | null
           status: string
           structure_type: string
           updated_at: string
@@ -612,10 +674,10 @@ export type Database = {
           id?: string
           prompt?: Json
           result?: Json
-          root_object_id?: string | null
-          reviewed_by?: string | null
-          reviewed_at?: string | null
           review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          root_object_id?: string | null
           status?: string
           structure_type: string
           updated_at?: string
@@ -627,10 +689,10 @@ export type Database = {
           id?: string
           prompt?: Json
           result?: Json
-          root_object_id?: string | null
-          reviewed_by?: string | null
-          reviewed_at?: string | null
           review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          root_object_id?: string | null
           status?: string
           structure_type?: string
           updated_at?: string
@@ -1161,6 +1223,53 @@ export type Database = {
           },
         ]
       }
+      study_notes: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          learning_object_id: string
+          owner_id: string
+          pinned: boolean
+          tags: string[]
+          timestamp_seconds: number | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          id?: string
+          learning_object_id: string
+          owner_id?: string
+          pinned?: boolean
+          tags?: string[]
+          timestamp_seconds?: number | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          learning_object_id?: string
+          owner_id?: string
+          pinned?: boolean
+          tags?: string[]
+          timestamp_seconds?: number | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_notes_learning_object_id_fkey"
+            columns: ["learning_object_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       tags: {
         Row: {
           created_at: string
@@ -1460,24 +1569,18 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_youtube_creator_catalog_v1: {
+        Row: {
+          catalogued_public_videos: number | null
+          channel_title: string | null
+          creator_source: string | null
+          newly_verified_creator_videos: number | null
+          verified_channel_handle: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      review_study_blueprint: {
-        Args: { p_id: string; p_decision: string; p_note?: string | null }
-        Returns: string
-      }
-      search_public_resources_v2: {
-        Args: {
-          p_search?: string
-          p_language?: string | null
-          p_object_type?: string | null
-          p_tag?: string | null
-          p_page?: number
-          p_page_size?: number
-        }
-        Returns: Json
-      }
       create_course_structure: {
         Args: {
           p_child_object_ids?: string[]
@@ -1740,6 +1843,29 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      list_public_editorial_playlist_items_v1: {
+        Args: { p_limit?: number; p_playlist_slug: string }
+        Returns: {
+          channel_title: string
+          item_position: number
+          video_language: string
+          video_object_id: string
+          video_title: string
+          youtube_id: string
+          youtube_url: string
+        }[]
+      }
+      list_public_editorial_playlists_v1: {
+        Args: { p_limit?: number; p_unit_code?: string }
+        Returns: {
+          item_count: number
+          playlist_description: string
+          playlist_id: string
+          playlist_slug: string
+          playlist_title: string
+          unit_code: string
+        }[]
+      }
       queue_analysis_job: {
         Args: {
           p_current_step?: string
@@ -1858,6 +1984,39 @@ export type Database = {
           p_review_note?: string
         }
         Returns: string
+      }
+      review_study_blueprint: {
+        Args: { p_decision: string; p_id: string; p_note?: string }
+        Returns: string
+      }
+      search_public_catalog_v1: {
+        Args: {
+          p_limit?: number
+          p_offset?: number
+          p_query?: string
+          p_types?: string[]
+        }
+        Returns: {
+          id: string
+          language: string
+          object_type: string
+          relevance: number
+          slug: string
+          source_url: string
+          summary: string
+          title: string
+        }[]
+      }
+      search_public_resources_v2: {
+        Args: {
+          p_language?: string
+          p_object_type?: string
+          p_page?: number
+          p_page_size?: number
+          p_search?: string
+          p_tag?: string
+        }
+        Returns: Json
       }
       submit_playlist: {
         Args: {
@@ -2051,4 +2210,3 @@ export const Constants = {
     Enums: {},
   },
 } as const
-

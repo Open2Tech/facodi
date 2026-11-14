@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { Download, HardDrive, NotebookPen, X } from 'lucide-react';
+import { Download, NotebookPen, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { formatTimestamp, hasCode, notesToMarkdown, type NoteDraft, type NoteResource } from '@/entities/notes/notes';
@@ -10,6 +10,7 @@ import { useResourceNotes } from '@/features/notes/useNotebook';
 import { cn } from '@/lib/utils';
 import { NoteCard } from './NoteCard';
 import { NoteComposer } from './NoteComposer';
+import { GuestImport, NotebookStorage } from './NotebookStorage';
 
 type Filter = 'all' | 'timed' | 'code';
 // Keep feedback clear of the drawer, which owns the right edge while open.
@@ -43,21 +44,21 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
     && (!tag || note.tags.includes(tag)));
   const filters: Filter[] = timed ? ['all', 'timed', 'code'] : ['all', 'code'];
 
-  function persist(action: () => void, success?: string) {
+  async function persist(action: () => Promise<unknown>, success?: string) {
     try {
-      action();
+      await action();
       if (success) toast.success(success, { position: TOAST_POSITION });
       return true;
     } catch {
-      toast.error(t('notes.storageFailed'), { position: TOAST_POSITION });
+      toast.error(t(notebook.isGuest ? 'notes.storageFailed' : 'notes.saveFailed'), { position: TOAST_POSITION });
       return false;
     }
   }
 
-  function remove(id: string) {
+  async function remove(id: string) {
     const note = notes.find(item => item.id === id);
-    if (!note || !persist(() => notebook.remove(id))) return;
-    toast(t('notes.deleted'), { position: TOAST_POSITION, action: { label: t('notes.undo'), onClick: () => persist(() => notebook.restore(note)) } });
+    if (!note || !await persist(() => notebook.remove(id))) return;
+    toast(t('notes.deleted'), { position: TOAST_POSITION, action: { label: t('notes.undo'), onClick: () => void persist(() => notebook.restore(note)) } });
   }
 
   function exportMarkdown() {
@@ -114,7 +115,11 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
             </button>}
           </div>}
 
-          {!notebook.ready ? <p className="mt-6 text-sm text-muted-foreground">{t('common.loading')}</p>
+          {notebook.failed ? <div role="alert" className="mt-4 border border-destructive px-4 py-4 text-sm">
+            <p>{t('notes.loadFailed')}</p>
+            <Button type="button" variant="outline" size="sm" className="mt-3" onClick={() => void notebook.retry()}>{t('common.retry')}</Button>
+          </div>
+            : !notebook.ready ? <p className="mt-6 text-sm text-muted-foreground">{t('common.loading')}</p>
             : notes.length === 0 ? <p className="mt-4 border border-dashed border-input px-4 py-6 text-sm text-muted-foreground">{t('notes.empty')}</p>
               : visible.length === 0 ? <p className="mt-4 text-sm text-muted-foreground">{t('notes.emptyFiltered')}</p>
                 : <ul className="mt-4 space-y-3">{visible.map(note => <li key={note.id}>
@@ -122,8 +127,8 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
                     ? <div className="border border-foreground p-4">
                       <h4 className="mb-4 text-sm font-semibold">{t('notes.composerEdit')}</h4>
                       <NoteComposer note={note} playerTime={playerTime} timed={timed} onCancel={() => setEditing(null)}
-                        onSubmit={draft => {
-                          const saved = persist(() => notebook.update(note.id, draft), t('notes.updated'));
+                        onSubmit={async draft => {
+                          const saved = await persist(() => notebook.update(note.id, draft), t('notes.updated'));
                           if (saved) setEditing(null);
                           return saved;
                         }} />
@@ -131,14 +136,15 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
                     : <NoteCard note={note} onSeek={timed ? onSeek : null} activeTag={tag}
                       onTag={value => setTag(current => current === value ? null : value)}
                       onEdit={() => setEditing(note.id)}
-                      onTogglePin={() => persist(() => notebook.togglePin(note.id))}
-                      onDelete={() => remove(note.id)} />}
+                      onTogglePin={() => void persist(() => notebook.togglePin(note.id))}
+                      onDelete={() => void remove(note.id)} />}
                 </li>)}</ul>}
         </section>
       </div>
 
       <footer className="space-y-3 border-t border-foreground bg-muted/40 px-5 py-4">
-        <p className="flex items-start gap-2 text-xs text-muted-foreground"><HardDrive className="mt-px h-3.5 w-3.5 shrink-0" aria-hidden="true" />{t('notes.storedLocally')}</p>
+        <NotebookStorage isGuest={notebook.isGuest} />
+        <GuestImport />
         {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(`/resources/${resource.slug}`)}`} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
         <Button type="button" variant="outline" className="w-full" disabled={!notes.length} onClick={exportMarkdown}><Download />{t('notes.export')}</Button>
       </footer>
