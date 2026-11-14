@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCatalogCounts, getCourse, getResource, getUnit, getUnitFacets, listCourses, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, getUnit, getUnitFacets, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -150,6 +150,34 @@ describe('FACODI Data API contract', () => {
     if (kind === 'courses') await saveContent({ kind, values });
     else if (kind === 'curricular_units') await saveContent({ kind, values: { ...values, course_id: 'course-id' } });
     else await saveContent({ kind, values: { ...values, object_type: 'document' } });
+  });
+  it('filters the editorial list by status and object type and counts each status with the same scope', async () => {
+    const seen: URLSearchParams[] = [];
+    server.use(http.all(`${endpoint}/learning_objects`, ({ request }) => {
+      const url = new URL(request.url);
+      seen.push(url.searchParams);
+      expect(url.searchParams.get('object_type')).toBe('eq.video');
+      expect(url.searchParams.get('title')).toBe('ilike.%algebra%');
+      if (request.method === 'HEAD') {
+        const total = url.searchParams.get('status') === 'eq.draft' ? 380 : 2;
+        return new HttpResponse(null, { headers: { 'Content-Range': `*/${total}` } });
+      }
+      expect(url.searchParams.get('status')).toBe('eq.draft');
+      return HttpResponse.json([], { headers: { 'Content-Range': '0-0/380' } });
+    }));
+    const result = await listEditorial('learning_objects', { search: 'algebra', language: '', page: 1, status: 'draft', objectType: 'video' });
+    expect(result.total).toBe(380);
+    expect(result.statusCounts).toEqual({ draft: 380, active: 2, published: 2, archived: 2 });
+    expect(seen).toHaveLength(5);
+  });
+  it('ignores the object type filter outside educational objects', async () => {
+    server.use(http.all(`${endpoint}/courses`, ({ request }) => {
+      expect(new URL(request.url).searchParams.has('object_type')).toBe(false);
+      return request.method === 'HEAD'
+        ? new HttpResponse(null, { headers: { 'Content-Range': '*/0' } })
+        : HttpResponse.json([], { headers: { 'Content-Range': '*/0' } });
+    }));
+    expect((await listEditorial('courses', { search: '', language: '', page: 1, objectType: 'video' })).total).toBe(0);
   });
   it('archives without deleting and surfaces RLS-denied or zero-row writes', async () => {
     server.use(http.patch(`${endpoint}/courses`, async ({ request }) => {

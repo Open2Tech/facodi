@@ -232,7 +232,12 @@
     "flagUnpublished": "published=false",
     "updated": "Content state updated.",
     "empty": "No content in this list.",
-    "emptyDescription": "Create a draft or adjust your search to continue."
+    "emptyDescription": "Create a draft or adjust your search to continue.",
+    "statusFilter": "Status",
+    "allStates": "All",
+    "typeFilter": "Resource type",
+    "allTypes": "All types",
+    "origin": "source: {{source}}"
   },
   "admin": {
     "heading": "The catalogue, in perspective.",
@@ -380,5 +385,11 @@
     "sequence": "Study plan sequence",
     "previous": "Previous unit",
     "next": "Next unit"
+  },
+  "objectTypes": {
+    "video": "Video",
+    "document": "Document",
+    "course": "Course",
+    "curricular_unit": "Curricular unit"
   }
 }

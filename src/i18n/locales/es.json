@@ -232,7 +232,12 @@
     "flagUnpublished": "published=false",
     "updated": "Estado del contenido actualizado.",
     "empty": "No hay contenido en esta lista.",
-    "emptyDescription": "Crea un borrador o ajusta la búsqueda para continuar."
+    "emptyDescription": "Crea un borrador o ajusta la búsqueda para continuar.",
+    "statusFilter": "Estado",
+    "allStates": "Todos",
+    "typeFilter": "Tipo de recurso",
+    "allTypes": "Todos los tipos",
+    "origin": "origen: {{source}}"
   },
   "admin": {
     "heading": "El catálogo, en perspectiva.",
@@ -380,5 +385,11 @@
     "sequence": "Secuencia del plan",
     "previous": "Unidad anterior",
     "next": "Unidad siguiente"
+  },
+  "objectTypes": {
+    "video": "Vídeo",
+    "document": "Documento",
+    "course": "Curso",
+    "curricular_unit": "Unidad curricular"
   }
 }

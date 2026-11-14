@@ -22,7 +22,7 @@ export default function Resources() {
         {query.data.items.map(resource => {
           const excerpt = plainText(resource.description);
           return <li key={resource.id} className="-ml-px -mt-px flex flex-col border border-input p-6 transition-colors hover:border-foreground hover:z-10 relative">
-            <p className="mb-3 flex flex-wrap gap-x-3 font-mono text-xs uppercase text-muted-foreground"><span>{resource.object_type}</span><span lang={resource.language}>{resource.language}</span></p>
+            <p className="mb-3 flex flex-wrap gap-x-3 font-mono text-xs uppercase text-muted-foreground"><span>{t(`objectTypes.${resource.object_type}`, { defaultValue: resource.object_type })}</span><span lang={resource.language}>{resource.language}</span></p>
             <h2 className="text-lg font-semibold"><Link to={`/resources/${resource.slug}`} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h2>
             {excerpt && <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{excerpt}</p>}
             {!!resource.tags.length && <p className="mt-4 text-sm">{resource.tags.slice(0, 3).join(' · ')}</p>}

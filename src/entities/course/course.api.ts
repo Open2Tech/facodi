@@ -1,6 +1,6 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
-import { PAGE_SIZE, type CatalogParams, type ContentKind, type CourseInsert, type UnitInsert, type ResourceInsert } from '@/entities/course/course.types';
+import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert } from '@/entities/course/course.types';
 
 export function searchPattern(search: string) {
   return `%${search.trim().replace(/[\\%_]/g, '\\$&')}%`;
@@ -163,12 +163,30 @@ export async function getResource(slug: string, signal?: AbortSignal) {
   return data;
 }
 
-export async function listEditorial(kind: ContentKind, { page, search }: CatalogParams, signal?: AbortSignal) {
-  const { data, count, error } = await supabase.from(kind).select('*', { count: 'exact' })
-    .ilike('title', searchPattern(search)).order('updated_at', { ascending: false }).order('id')
-    .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+export async function listEditorial(kind: ContentKind, { page, search, status, objectType }: CatalogParams, signal?: AbortSignal) {
+  const pattern = searchPattern(search);
+  const byType = <Q extends { filter: (column: string, operator: string, value: string) => Q }>(query: Q) =>
+    objectType && kind === 'learning_objects' ? query.filter('object_type', 'eq', objectType) : query;
+  let query = byType(supabase.from(kind).select('*', { count: 'exact' }).ilike('title', pattern));
+  if (status) query = query.eq('status', status);
+  const [list, ...counts] = await Promise.all([
+    query.order('updated_at', { ascending: false }).order('id')
+      .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal),
+    ...EDITORIAL_STATUSES.map(state => byType(supabase.from(kind).select('id', { count: 'exact', head: true }).ilike('title', pattern))
+      .eq('status', state).abortSignal(signal)),
+  ]);
+  for (const result of [list, ...counts]) if (result.error) throw new Error(getSupabaseErrorMessage(result.error));
+  const statusCounts = Object.fromEntries(EDITORIAL_STATUSES.map((state, index) => [state, counts[index].count ?? 0])) as Record<EditorialStatus, number>;
+  return { items: list.data ?? [], total: list.count ?? 0, statusCounts };
+}
+
+/** Object types in use, with counts, so editors can triage imported resources by kind. */
+export async function getObjectTypeFacets(signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_objects').select('object_type').limit(5000).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  return { items: data, total: count ?? 0 };
+  const counts = new Map<string, number>();
+  for (const { object_type } of data) counts.set(object_type, (counts.get(object_type) ?? 0) + 1);
+  return [...counts].map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
 export async function findContentOptions(kind: ContentKind, search: string, signal?: AbortSignal) {

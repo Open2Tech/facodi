@@ -143,10 +143,12 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
   await mockAuth(page, 'editor');
   let content: Record<string, unknown> | null = null;
   const methods: string[] = [];
+  const listStatuses: (string | null)[] = [];
   await page.route('**/rest/v1/courses*', async route => {
     const request = route.request();
     const method = request.method();
     methods.push(method);
+    if (method === 'GET') listStatuses.push(new URL(request.url()).searchParams.get('status'));
     if (method === 'POST') {
       content = { ...request.postDataJSON(), id: '22222222-2222-4222-8222-222222222222' };
       expect(content.status).toBe('draft');
@@ -183,6 +185,8 @@ test('editor creates a manual draft, validates, edits, publishes and archives wi
   await page.getByRole('button', { name: 'Archive', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm', exact: true }).click();
   await expect(page.getByText('Archived · published=false · pt')).toBeVisible();
+  await page.getByRole('radio', { name: /^Archived/ }).click();
+  await expect.poll(() => listStatuses.at(-1)).toBe('eq.archived');
   expect(methods).not.toContain('DELETE');
   await page.goto('/admin');
   await expect(page.getByText('You do not have permission to access this area.')).toBeVisible();

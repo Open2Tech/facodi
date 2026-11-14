@@ -13,5 +13,6 @@ export const courseKeys = {
   resource: (slug: string) => ['facodi', 'resource', slug] as const,
   editor: (userId: string, kind: ContentKind, params: CatalogParams) => ['facodi', 'private', userId, kind, params] as const,
   options: (userId: string, kind: ContentKind, search: string) => ['facodi', 'private', userId, 'options', kind, search] as const,
+  objectTypes: (userId: string) => ['facodi', 'private', userId, 'object-types'] as const,
   overview: (userId: string) => ['facodi', 'private', userId, 'overview'] as const,
 };
