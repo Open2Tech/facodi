@@ -452,5 +452,10 @@
     "title": "Objetivos de estudo sugeridos",
     "notice": "Propostas pedagógicas elaboradas pela FACODI a partir dos temas desta UC. Não são resultados de aprendizagem oficiais nem substituem a ficha da instituição.",
     "empty": "Os objetivos de estudo desta unidade curricular ainda estão em preparação."
+  },
+  "unitReadings": {
+    "title": "Leituras e documentação",
+    "notice": "Referências complementares de acesso público. As ligações remetem para os sítios dos autores; os conteúdos não foram copiados nem homologados pela UAlg.",
+    "openSource": "Explorar referência"
   }
 }
