@@ -891,5 +891,19 @@
     "rejected": "Sugestão recusada.",
     "confirmApproveExisting": "O recurso já existe: a aprovação reutiliza-o (e liga-o à unidade, se houver), sem criar um novo.",
     "approvedExisting": "Recurso existente reutilizado, sem novo rascunho."
+  },
+  "courseArchive": {
+    "title": "Arquivo de planos anteriores",
+    "notice": "Os planos de anos diferentes são preservados separadamente. A coincidência de códigos não determina equivalência académica nem a possibilidade de obter creditação de UCs.",
+    "unitCount": "{{count}} UCs/ofertas",
+    "credits": "Percurso do curso: {{count}} ECTS, escolhendo as alternativas previstas",
+    "codeOverlap": "{{count}} códigos comuns ao plano atual",
+    "equivalenceNotice": "As UCs indicadas são históricas. Consulte a UAlg para regras de transição de plano, equivalências e creditações. As opções do mesmo grupo são alternativas, não créditos acumuláveis.",
+    "officialSource": "Conferir no plano oficial UAlg",
+    "unit": "Unidade curricular",
+    "term": "Período",
+    "elective": "Opção {{group}}",
+    "annual": "Anual",
+    "error": "Não foi possível consultar o plano histórico."
   }
 }
