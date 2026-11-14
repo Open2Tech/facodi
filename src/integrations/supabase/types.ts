@@ -228,6 +228,62 @@ export type Database = {
           },
         ]
       }
+      course_curriculum_archives: {
+        Row: {
+          academic_year: string
+          comparison: Json
+          course_id: string
+          created_at: string
+          id: string
+          metadata: Json
+          official_source_url: string
+          plan: Json
+          programme_ects: number
+          published: boolean
+          status: string
+          unique_unit_count: number
+          updated_at: string
+        }
+        Insert: {
+          academic_year: string
+          comparison?: Json
+          course_id: string
+          created_at?: string
+          id: string
+          metadata?: Json
+          official_source_url: string
+          plan?: Json
+          programme_ects: number
+          published?: boolean
+          status: string
+          unique_unit_count: number
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string
+          comparison?: Json
+          course_id?: string
+          created_at?: string
+          id?: string
+          metadata?: Json
+          official_source_url?: string
+          plan?: Json
+          programme_ects?: number
+          published?: boolean
+          status?: string
+          unique_unit_count?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_curriculum_archives_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
           code: string | null
