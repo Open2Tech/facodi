@@ -452,5 +452,10 @@
     "title": "Suggested study goals",
     "notice": "FACODI's editorial study proposals, based on this unit's topics. They are not official learning outcomes or a substitute for the university's unit specification.",
     "empty": "Study goals are not available for this unit yet."
+  },
+  "unitReadings": {
+    "title": "Readings and documentation",
+    "notice": "Supplementary public references. Links open the publishers' original sites; these resources were neither copied nor approved by the university.",
+    "openSource": "Explore reference"
   }
 }
