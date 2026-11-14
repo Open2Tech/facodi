@@ -447,5 +447,10 @@
     "channel": "Canal",
     "openSource": "Ver vídeo original en YouTube",
     "playlist": "Lista de vídeos de esta unidad"
+  },
+  "unitOutcomes": {
+    "title": "Objetivos de estudio sugeridos",
+    "notice": "Propuestas pedagógicas de FACODI basadas en los temas de esta unidad. No son resultados de aprendizaje oficiales ni sustituyen la ficha académica.",
+    "empty": "Aún no hay objetivos de estudio disponibles para esta unidad."
   }
 }
