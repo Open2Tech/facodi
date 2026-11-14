@@ -35,4 +35,4 @@ describe('FACODI explicit YouTube IDs', () => {
     const ids = Array.from({ length: 101 }, (_, i) => String(i).padStart(11, '0')).join('\n');
     expect(() => parsePlaylistVideoIds(ids)).toThrow('invalid_youtube_video_ids');
   });
-}
+});
