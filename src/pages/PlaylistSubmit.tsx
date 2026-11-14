@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PageState } from '@/components/layout/PageState';
+import { isYoutubePlaylistUrl, parsePlaylistVideoIds } from '@/entities/facodi-playlists/playlistUtils';
 
 type Submission = {
   playlist_id: string;
@@ -20,23 +21,6 @@ type Submission = {
   missing_video_count: number;
   title: string;
 };
-const YOUTUBE_ID = /^[a-zA-Z0-9_-]{11}$/;
-const PLAYLIST_ID = /^[a-zA-Z0-9_-]{10,120}$/;
-const YOUTUBE_HOSTS = new Set(['youtube.com', 'www.youtube.com', 'm.youtube.com', 'music.youtube.com', 'youtu.be']);
-function validPlaylistUrl(raw: string): boolean {
-  try {
-    const url = new URL(raw);
-    return url.protocol === 'https:' && YOUTUBE_HOSTS.has(url.hostname.toLowerCase())
-      && PLAYLIST_ID.test(url.searchParams.get('list') ?? '');
-  } catch { return false; }
-}
-function optionalIds(raw: string): string[] {
-  const ids = raw.trim().split(/[\s,;]+/).filter(Boolean);
-  if (ids.length > 100 || ids.some(id => !YOUTUBE_ID.test(id))) {
-    throw new Error('invalid_youtube_video_ids');
-  }
-  return [...new Set(ids)];
-}
 async function submitPlaylist(body: Record<string, unknown>): Promise<Submission> {
   const { data, error } = await supabase.functions.invoke<Submission>('facodi-submit-playlist', { body });
   if (error) {
@@ -101,8 +85,8 @@ export default function PlaylistSubmit() {
   });
   const submit = useMutation({
     mutationFn: async () => {
-      if (!courseId || !unitId || !validPlaylistUrl(url.trim())) throw new Error('invalid_course_unit_or_youtube_playlist');
-      const ids = idsText.trim() ? optionalIds(idsText) : [];
+      if (!courseId || !unitId || !isYoutubePlaylistUrl(url.trim())) throw new Error('invalid_course_unit_or_youtube_playlist');
+      const ids = idsText.trim() ? parsePlaylistVideoIds(idsText) : [];
       return submitPlaylist({
         course_id: courseId,
         curricular_unit_id: unitId,
@@ -194,7 +178,7 @@ export default function PlaylistSubmit() {
       {submit.error && <p role="alert" className="border border-destructive p-3 text-sm text-destructive">
         {t(`playlistSubmit.errors.${errorCode}`, { defaultValue: errorCode || t('common.error') })}
       </p>}
-      <Button type="submit" disabled={busy || !courseId || !unitId || !validPlaylistUrl(url.trim())}>
+      <Button type="submit" disabled={busy || !courseId || !unitId || !isYoutubePlaylistUrl(url.trim())}>
         {busy ? t('playlistSubmit.sending') : t('playlistSubmit.send')}
       </Button>
     </form>
