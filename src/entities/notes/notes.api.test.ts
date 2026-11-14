@@ -15,11 +15,11 @@ describe('FACODI study notes API', () => {
   it('reads the owner notebook from facodi and keeps notes whose resource the catalogue hides', async () => {
     server.use(http.get(endpoint, ({ request }) => {
       expect(request.headers.get('Accept-Profile')).toBe('facodi');
-      expect(new URL(request.url).searchParams.get('select')).toContain('learning_object:learning_objects(slug,title)');
-      return HttpResponse.json([{ ...row, learning_object: { slug: 'video', title: 'Video' } }, { ...row, id: 'n2', learning_object: null }]);
+      expect(new URL(request.url).searchParams.get('select')).toContain('learning_object:learning_objects(slug,title,object_type)');
+      return HttpResponse.json([{ ...row, learning_object: { slug: 'video', title: 'Video', object_type: 'video' } }, { ...row, id: 'n2', learning_object: null }]);
     }));
     const notes = await listMyNotes();
-    expect(notes.map(note => [note.id, note.resourceSlug, note.timestamp])).toEqual([['n1', 'video', 42], ['n2', '', 42]]);
+    expect(notes.map(note => [note.id, note.resourceSlug, note.resourceType, note.timestamp])).toEqual([['n1', 'video', 'video', 42], ['n2', '', undefined, 42]]);
   });
 
   it('upserts by client id without sending an owner, and rejects when RLS saves nothing', async () => {

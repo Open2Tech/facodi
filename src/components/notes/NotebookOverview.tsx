@@ -56,7 +56,10 @@ export function NotebookOverview() {
             </OptionalLink>
           </li>)}
         </ul>}
-    {groups.length > LIMIT && <p className="mt-3 text-sm text-muted-foreground">{t('notes.overviewMore', { count: groups.length - LIMIT })}</p>}
+    {groups.length > 0 && <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      {groups.length > LIMIT && <span className="text-muted-foreground">{t('notes.overviewMore', { count: groups.length - LIMIT })}</span>}
+      <Link to="/notes" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4">{t('notebookPage.openAll')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+    </p>}
     <div className="mt-4 space-y-3"><NotebookStorage isGuest={isGuest} /><GuestImport /></div>
   </section>;
 }

@@ -21,7 +21,8 @@
     "resources": "Recursos",
     "about": "Sobre",
     "themeLight": "Mudar para tema claro",
-    "themeDark": "Mudar para tema escuro"
+    "themeDark": "Mudar para tema escuro",
+    "notes": "Caderno"
   },
   "common": {
     "loading": "A carregar…",
@@ -687,7 +688,8 @@
     "filter": {
       "all": "Todas",
       "timed": "Com momento",
-      "code": "Com código"
+      "code": "Com código",
+      "pinned": "Fixadas"
     },
     "clearTag": "Deixar de filtrar por #{{tag}}",
     "empty": "Ainda não há anotações aqui. Escreve a primeira acima.",
@@ -734,6 +736,18 @@
     "guestImportPartial_one": "{{count}} anotação ficou neste navegador porque o recurso já não está disponível.",
     "guestImportPartial_many": "{{count}} anotações ficaram neste navegador porque o recurso já não está disponível.",
     "guestImportPartial_other": "{{count}} anotações ficaram neste navegador porque o recurso já não está disponível.",
-    "resourceUnavailable": "Recurso indisponível"
+    "resourceUnavailable": "Recurso indisponível",
+    "openAt": "Abrir o recurso em {{time}}"
+  },
+  "notebookPage": {
+    "title": "Caderno de estudo",
+    "description": "Todas as tuas notas, de todos os vídeos e recursos, num só lugar. Pesquisa por ideia, etiqueta ou recurso e volta ao momento exato.",
+    "search": "Pesquisar nas notas",
+    "searchPlaceholder": "Conceito, fórmula, #etiqueta ou recurso…",
+    "tags": "Etiquetas",
+    "clear": "Limpar filtros",
+    "exportAll": "Exportar tudo (.md)",
+    "openNotebook": "Abrir com o caderno",
+    "openAll": "Abrir o caderno completo"
   }
 }

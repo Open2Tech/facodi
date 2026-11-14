@@ -23,7 +23,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `anon`, ids gerados no cliente para upsert idempotente); visitantes usam
   `localStorage` (`facodi-notes:v1:guest`). Notas antigas por conta no navegador
   migram uma vez; as de visitante só migram por escolha explícita. Inclui
-  ordenação, timestamps e exportação Markdown.
+  ordenação, timestamps, pesquisa sem acentos entre recursos, agrupamento por
+  recurso (com `object_type`) e exportação Markdown por recurso ou completa.
 - [src/features/auth](../src/features/auth): Auth nativo, hidratação, PKCE e
   invalidação de cache na mudança de identidade/papel.
 - [src/features/courses/queries](../src/features/courses/queries): TanStack Query
@@ -32,13 +33,15 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
 - [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`;
   TanStack Query com escrita otimista e rollback para contas,
-  `useSyncExternalStore` entre separadores para visitantes.
+  `useSyncExternalStore` entre separadores para visitantes; `useNoteActions`
+  partilha o feedback de gravação e a eliminação com desfazer.
 - [src/components](../src/components): apresentação, formulários e primitivas shadcn.
   [src/components/profile](../src/components/profile) compõe `/profile`: dados da
   conta, segurança e sessões, preferências do navegador e contribuições.
   [src/components/notes](../src/components/notes) compõe o caderno lateral
-  não modal (`?notes=open`), a linha de marcos sob o vídeo e o resumo no
-  dashboard. [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
+  não modal (`?notes=open`), a linha de marcos sob o vídeo, o resumo no
+  dashboard e a página `/notes` (pesquisa `?q=`, `?tag=` e `?view=` no URL,
+  sem indexação). [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
   lê o tempo do embed `youtube-nocookie` via `postMessage` (origem validada) e
   envia `seekTo`; `?t=<segundos>` define o início do vídeo.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.

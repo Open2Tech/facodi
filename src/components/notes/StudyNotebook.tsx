@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'sonner';
 import { Download, NotebookPen, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { formatTimestamp, hasCode, notesToMarkdown, type NoteDraft, type NoteResource } from '@/entities/notes/notes';
 import { useResourceNotes } from '@/features/notes/useNotebook';
+import { useNoteActions } from '@/features/notes/useNoteActions';
 import { cn } from '@/lib/utils';
 import { NoteCard } from './NoteCard';
 import { NoteComposer } from './NoteComposer';
@@ -44,22 +44,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
     && (!tag || note.tags.includes(tag)));
   const filters: Filter[] = timed ? ['all', 'timed', 'code'] : ['all', 'code'];
 
-  async function persist(action: () => Promise<unknown>, success?: string) {
-    try {
-      await action();
-      if (success) toast.success(success, { position: TOAST_POSITION });
-      return true;
-    } catch {
-      toast.error(t(notebook.isGuest ? 'notes.storageFailed' : 'notes.saveFailed'), { position: TOAST_POSITION });
-      return false;
-    }
-  }
-
-  async function remove(id: string) {
-    const note = notes.find(item => item.id === id);
-    if (!note || !await persist(() => notebook.remove(id))) return;
-    toast(t('notes.deleted'), { position: TOAST_POSITION, action: { label: t('notes.undo'), onClick: () => void persist(() => notebook.restore(note)) } });
-  }
+  const { persist, remove } = useNoteActions(notebook, TOAST_POSITION);
 
   function exportMarkdown() {
     const url = `${window.location.origin}/resources/${resource.slug}`;
@@ -137,7 +122,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
                       onTag={value => setTag(current => current === value ? null : value)}
                       onEdit={() => setEditing(note.id)}
                       onTogglePin={() => void persist(() => notebook.togglePin(note.id))}
-                      onDelete={() => void remove(note.id)} />}
+                      onDelete={() => void remove(note)} />}
                 </li>)}</ul>}
         </section>
       </div>

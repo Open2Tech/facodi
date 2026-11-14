@@ -21,7 +21,8 @@
     "resources": "Ressources",
     "about": "À propos",
     "themeLight": "Passer au thème clair",
-    "themeDark": "Passer au thème sombre"
+    "themeDark": "Passer au thème sombre",
+    "notes": "Carnet"
   },
   "common": {
     "loading": "Chargement…",
@@ -687,7 +688,8 @@
     "filter": {
       "all": "Toutes",
       "timed": "Avec repère",
-      "code": "Avec code"
+      "code": "Avec code",
+      "pinned": "Épinglées"
     },
     "clearTag": "Ne plus filtrer par #{{tag}}",
     "empty": "Aucune note ici pour l’instant. Écrivez la première ci-dessus.",
@@ -734,6 +736,18 @@
     "guestImportPartial_one": "{{count}} note est restée dans ce navigateur car sa ressource n’est plus disponible.",
     "guestImportPartial_many": "{{count}} notes sont restées dans ce navigateur car leur ressource n’est plus disponible.",
     "guestImportPartial_other": "{{count}} notes sont restées dans ce navigateur car leur ressource n’est plus disponible.",
-    "resourceUnavailable": "Ressource indisponible"
+    "resourceUnavailable": "Ressource indisponible",
+    "openAt": "Ouvrir la ressource à {{time}}"
+  },
+  "notebookPage": {
+    "title": "Carnet d’étude",
+    "description": "Toutes tes notes, de chaque vidéo et ressource, au même endroit. Cherche par idée, étiquette ou ressource et reviens au moment exact.",
+    "search": "Rechercher dans les notes",
+    "searchPlaceholder": "Concept, formule, #étiquette ou ressource…",
+    "tags": "Étiquettes",
+    "clear": "Effacer les filtres",
+    "exportAll": "Tout exporter (.md)",
+    "openNotebook": "Ouvrir avec le carnet",
+    "openAll": "Ouvrir le carnet complet"
   }
 }

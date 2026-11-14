@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Pencil, Pin, PinOff, Timer, Trash2 } from 'lucide-react';
 import { formatTimestamp, type StudyNote } from '@/entities/notes/notes';
@@ -6,9 +7,13 @@ import { NoteBody } from './NoteBody';
 
 const iconButton = 'grid h-8 w-8 place-items-center border border-transparent text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
 
-export function NoteCard({ note, onSeek, onEdit, onTogglePin, onDelete, onTag, activeTag }: {
+const stamp = 'inline-flex shrink-0 items-center gap-1 border border-foreground bg-primary px-2 py-1 font-mono text-xs tabular-nums text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
+
+/** `onSeek` drives a player on the same page; `seekHref` opens the resource at the note's moment instead. */
+export function NoteCard({ note, onSeek, seekHref, onEdit, onTogglePin, onDelete, onTag, activeTag }: {
   note: StudyNote;
   onSeek: ((seconds: number) => void) | null;
+  seekHref?: string;
   onEdit: () => void;
   onTogglePin: () => void;
   onDelete: () => void;
@@ -20,10 +25,11 @@ export function NoteCard({ note, onSeek, onEdit, onTogglePin, onDelete, onTag, a
   const edited = new Intl.DateTimeFormat(i18n.language, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(note.updatedAt));
   return <article aria-labelledby={`note-${note.id}`} className={cn('border bg-card', note.pinned ? 'border-foreground' : 'border-input')}>
     <header className="flex items-start gap-3 px-4 pt-4">
-      {time && <button type="button" disabled={!onSeek} onClick={() => onSeek?.(note.timestamp!)} aria-label={t('notes.jumpAria', { time })}
-        className="inline-flex shrink-0 items-center gap-1 border border-foreground bg-primary px-2 py-1 font-mono text-xs tabular-nums text-primary-foreground transition-colors enabled:hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60">
-        <Timer className="h-3.5 w-3.5" aria-hidden="true" />{time}
-      </button>}
+      {time && (seekHref && !onSeek
+        ? <Link to={seekHref} aria-label={t('notes.openAt', { time })} className={cn(stamp, 'hover:bg-primary/80')}><Timer className="h-3.5 w-3.5" aria-hidden="true" />{time}</Link>
+        : <button type="button" disabled={!onSeek} onClick={() => onSeek?.(note.timestamp!)} aria-label={t('notes.jumpAria', { time })} className={cn(stamp, 'enabled:hover:bg-primary/80 disabled:opacity-60')}>
+          <Timer className="h-3.5 w-3.5" aria-hidden="true" />{time}
+        </button>)}
       <div className="min-w-0 flex-1">
         <h3 id={`note-${note.id}`} className="break-words font-semibold leading-snug">{note.title}</h3>
         <p className="mt-1 text-xs text-muted-foreground">

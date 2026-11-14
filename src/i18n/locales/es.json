@@ -21,7 +21,8 @@
     "resources": "Recursos",
     "about": "Acerca de",
     "themeLight": "Cambiar al tema claro",
-    "themeDark": "Cambiar al tema oscuro"
+    "themeDark": "Cambiar al tema oscuro",
+    "notes": "Cuaderno"
   },
   "common": {
     "loading": "Cargando…",
@@ -687,7 +688,8 @@
     "filter": {
       "all": "Todas",
       "timed": "Con momento",
-      "code": "Con código"
+      "code": "Con código",
+      "pinned": "Fijadas"
     },
     "clearTag": "Dejar de filtrar por #{{tag}}",
     "empty": "Aún no hay notas aquí. Escribe la primera arriba.",
@@ -734,6 +736,18 @@
     "guestImportPartial_one": "{{count}} nota se quedó en este navegador porque el recurso ya no está disponible.",
     "guestImportPartial_many": "{{count}} notas se quedaron en este navegador porque el recurso ya no está disponible.",
     "guestImportPartial_other": "{{count}} notas se quedaron en este navegador porque el recurso ya no está disponible.",
-    "resourceUnavailable": "Recurso no disponible"
+    "resourceUnavailable": "Recurso no disponible",
+    "openAt": "Abrir el recurso en {{time}}"
+  },
+  "notebookPage": {
+    "title": "Cuaderno de estudio",
+    "description": "Todas tus notas, de todos los vídeos y recursos, en un solo lugar. Busca por idea, etiqueta o recurso y vuelve al momento exacto.",
+    "search": "Buscar en las notas",
+    "searchPlaceholder": "Concepto, fórmula, #etiqueta o recurso…",
+    "tags": "Etiquetas",
+    "clear": "Borrar filtros",
+    "exportAll": "Exportar todo (.md)",
+    "openNotebook": "Abrir con el cuaderno",
+    "openAll": "Abrir el cuaderno completo"
   }
 }
