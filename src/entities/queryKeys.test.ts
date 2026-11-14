@@ -7,6 +7,9 @@ describe('FACODI query isolation', () => {
     expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, page: 2 }));
     expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, search: 'math' }));
     expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, language: 'en' }));
+    expect(courseKeys.resources(base)).not.toEqual(courseKeys.resources({ ...base, tag: 'logic' }));
+    expect(courseKeys.units(base)).not.toEqual(courseKeys.resources(base));
+    expect(courseKeys.units(base)).not.toEqual(courseKeys.catalog(base));
   });
   it('separates identities and editorial domains from public results', () => {
     const params = { page: 1, search: '', language: '' };

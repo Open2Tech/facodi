@@ -20,7 +20,7 @@ for (const width of [375, 768, 1280, 1440]) {
     await expect(page.getByText('No courses to show yet.')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-home-${width}.png`, fullPage: true });
-    if (width < 1024) await page.getByRole('button', { name: 'Open menu' }).click();
+    if (width < 1280) await page.getByRole('button', { name: 'Open menu' }).click();
     await expect(page.locator('header').getByRole('link', { name: 'Explore courses' })).toBeVisible();
     await page.locator('header').getByRole('link', { name: 'Explore courses' }).click();
     await expect(page).toHaveURL(/\/courses$/);
@@ -204,4 +204,37 @@ test('admin can view real-response-shaped counts without user management', async
   await expect(page.getByRole('cell', { name: 'Curricular units', exact: true })).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Educational objects', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: /promote|delete user|manage user/i })).toHaveCount(0);
+});
+
+test('home search, entry paths and new public catalogues render without overflow', async ({ page }) => {
+  const resource = { id: 'r1', slug: 'intro-logic', title: 'Introduction to logic', description: '<p>Test fixture only</p>', object_type: 'article', language: 'en', tags: ['Logic', 'Ethics'] };
+  await page.route('**/rest/v1/learning_objects*', async route => {
+    const head = route.request().method() === 'HEAD';
+    await route.fulfill({ status: 200, json: head ? undefined : [resource], headers: { 'content-range': head ? '*/1' : '0-0/1', 'access-control-expose-headers': 'content-range' } });
+  });
+  await page.route('**/rest/v1/curricular_units*', async route => {
+    const unit = { id: 'u1', slug: 'logic-1', title: 'Logic I', summary: 'Test fixture only', code: 'L1', ects: 6, year: 1, semester: 1, language: 'en', courses: { slug: 'test-course', title: 'Test course', published: true, status: 'active' } };
+    await route.fulfill({ json: [unit], headers: { 'content-range': '0-0/1', 'access-control-expose-headers': 'content-range' } });
+  });
+  for (const width of [375, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await expect(page.getByRole('link', { name: /Logic/ })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/facodi-home-filled-${width}.png`, fullPage: true });
+    for (const [path, heading] of [['/units', 'Curricular units'], ['/resources', 'Educational resources'], ['/about', 'An open campus to follow the thread of knowledge.']]) {
+      await page.goto(path);
+      await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+      await page.screenshot({ path: `test-results/facodi${path.replace('/', '-')}-${width}.png`, fullPage: true });
+    }
+  }
+  await page.goto('/');
+  await page.getByRole('searchbox', { name: 'What do you want to understand next?' }).fill('logic');
+  await page.getByRole('button', { name: 'Search the catalogue' }).click();
+  await expect(page).toHaveURL(/\/courses\?search=logic$/);
+  await page.goto('/');
+  await page.getByRole('link', { name: /Logic/ }).click();
+  await expect(page).toHaveURL(/\/resources\?tag=Logic$/);
+  await expect(page.getByRole('heading', { name: 'Introduction to logic' })).toBeVisible();
 });

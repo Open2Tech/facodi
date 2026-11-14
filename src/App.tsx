@@ -9,6 +9,9 @@ const Home = lazy(() => import('@/pages/Home'));
 const Courses = lazy(() => import('@/pages/Courses'));
 const CourseDetails = lazy(() => import('@/pages/CourseDetails'));
 const ResourceDetails = lazy(() => import('@/pages/ResourceDetails'));
+const Units = lazy(() => import('@/pages/Units'));
+const Resources = lazy(() => import('@/pages/Resources'));
+const About = lazy(() => import('@/pages/About'));
 const Login = lazy(() => import('@/pages/Login'));
 const AuthCallback = lazy(() => import('@/pages/AuthCallback'));
 const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
@@ -26,7 +29,10 @@ export function AppRoutes() {
       <Route index element={<Home key={sessionKey} />} />
       <Route path="/courses" element={<Courses key={sessionKey} />} />
       <Route path="/courses/:slug" element={<CourseDetails key={sessionKey} />} />
+      <Route path="/units" element={<Units key={sessionKey} />} />
+      <Route path="/resources" element={<Resources key={sessionKey} />} />
       <Route path="/resources/:slug" element={<ResourceDetails key={sessionKey} />} />
+      <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/auth/reset-password" element={<ResetPassword />} />

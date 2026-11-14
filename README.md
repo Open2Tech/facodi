@@ -80,7 +80,7 @@ Os papéis só ficam atualizados na sessão após renovação do JWT.
 
 | Rota | Acesso |
 |---|---|
-| `/`, `/courses`, `/courses/:slug`, `/resources/:slug` | Público |
+| `/`, `/courses`, `/courses/:slug`, `/units`, `/resources`, `/resources/:slug`, `/about` | Público |
 | `/login`, `/auth/callback`, `/auth/reset-password` | Público |
 | `/dashboard`, `/profile` | Autenticado |
 | `/editor` | Editor ou admin |
@@ -92,6 +92,20 @@ O destino após login é validado contra uma lista de rotas internas.
 As rotas privadas aguardam a hidratação. Logout, troca de identidade e
 alteração de papel cancelam consultas e limpam caches de queries/mutações.
 As respostas Supabase não são guardadas pelo service worker.
+
+### Catálogos públicos e contribuições
+
+`/units` lista unidades ativas cujo curso está publicado e ativo (join
+`courses!inner`), e `/resources` lista objetos educativos publicados com
+filtros por título, idioma e tema (`tags`). As contagens da página inicial usam
+pedidos `HEAD` com `count=exact` sobre as mesmas regras; não há RPC.
+
+Não existe ingestão pública de conteúdos. Os pipelines automáticos FACODI
+(ingestão YouTube, análise e descoberta de metadados) são chamadas
+servidor-a-servidor com chave secreta e não podem ser invocados pelo browser.
+Por isso, “Contribuir” encaminha para o fluxo editorial: editores vão para
+`/editor`; os restantes utilizadores veem em `/about#contribute` como propor
+conteúdo à equipa editorial.
 
 ## Auth: pré-requisitos antes de disponibilizar cadastro
 

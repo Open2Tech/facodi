@@ -16,6 +16,59 @@ export async function listCourses({ search, language, page }: CatalogParams, sig
   return { items: data, total: count ?? 0 };
 }
 
+const PUBLIC_RESOURCE_STATES = ['active', 'published'];
+
+export async function listUnits({ search, page }: CatalogParams, signal?: AbortSignal) {
+  // Mirrors the public RLS rule: active unit inside a published, active course.
+  let query = supabase.from('curricular_units')
+    .select('id, slug, title, summary, code, ects, year, semester, language, courses!inner(slug, title, published, status)', { count: 'exact' })
+    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active')
+    .order('title').order('id');
+  if (search.trim()) query = query.ilike('title', searchPattern(search));
+  const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return { items: data, total: count ?? 0 };
+}
+
+export async function listResources({ search, language, page, tag }: CatalogParams, signal?: AbortSignal) {
+  let query = supabase.from('learning_objects')
+    .select('id, slug, title, description, object_type, language, tags', { count: 'exact' })
+    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('title').order('id');
+  if (search.trim()) query = query.ilike('title', searchPattern(search));
+  if (language) query = query.eq('language', language);
+  // Quote the element so tags with spaces, commas or braces stay a single array item.
+  if (tag) query = query.contains('tags', `{"${tag.replace(/["\\]/g, '\\$&')}"}`);
+  const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return { items: data, total: count ?? 0 };
+}
+
+export async function getCatalogCounts(signal?: AbortSignal) {
+  const [courses, units, resources] = await Promise.all([
+    supabase.from('courses').select('id', { count: 'exact', head: true })
+      .eq('published', true).eq('status', 'active').abortSignal(signal),
+    supabase.from('curricular_units').select('id, courses!inner(id)', { count: 'exact', head: true })
+      .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active').abortSignal(signal),
+    supabase.from('learning_objects').select('id', { count: 'exact', head: true })
+      .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).abortSignal(signal),
+  ]);
+  for (const result of [courses, units, resources]) if (result.error) throw new Error(getSupabaseErrorMessage(result.error));
+  return { courses: courses.count ?? 0, units: units.count ?? 0, resources: resources.count ?? 0 };
+}
+
+/** Most frequent tags across a bounded sample of published resources. */
+export async function listTopics(limit = 6, signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_objects').select('tags')
+    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('updated_at', { ascending: false }).limit(200).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  const counts = new Map<string, number>();
+  for (const row of data) for (const tag of row.tags) {
+    const label = tag.trim();
+    if (label) counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, limit).map(([tag, count]) => ({ tag, count }));
+}
+
 export async function getCourse(slug: string, signal?: AbortSignal) {
   const { data: course, error } = await supabase.from('courses').select('*')
     .eq('slug', slug).eq('published', true).eq('status', 'active').abortSignal(signal).maybeSingle();
@@ -33,14 +86,14 @@ export async function getCourse(slug: string, signal?: AbortSignal) {
 
 async function getPublishedResourceById(id: string, signal?: AbortSignal) {
   const { data, error } = await supabase.from('learning_objects').select('*').eq('id', id)
-    .eq('published', true).in('status', ['active', 'published']).abortSignal(signal).maybeSingle();
+    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).abortSignal(signal).maybeSingle();
   if (error) throw new Error(getSupabaseErrorMessage(error));
   return data;
 }
 
 export async function getResource(slug: string, signal?: AbortSignal) {
   const { data, error } = await supabase.from('learning_objects').select('*')
-    .eq('slug', slug).eq('published', true).in('status', ['active', 'published']).abortSignal(signal).maybeSingle();
+    .eq('slug', slug).eq('published', true).in('status', PUBLIC_RESOURCE_STATES).abortSignal(signal).maybeSingle();
   if (error) throw new Error(getSupabaseErrorMessage(error));
   return data;
 }
