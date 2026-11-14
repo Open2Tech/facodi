@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { cn } from '@/lib/utils';
+import ProjectStorySections from '@/components/project/ProjectStorySections';
 
 const PRINCIPLES: { key: 'open' | 'context' | 'curated'; icon: LucideIcon; fill: string }[] = [
   { key: 'open', icon: LockOpen, fill: 'bg-brand-cyan' },
@@ -32,6 +33,8 @@ export default function About() {
       <h2 id="seaeu" className="text-3xl font-semibold tracking-[-0.02em]">{t('about.seaeuTitle')}</h2>
       <div className="space-y-4 text-lg leading-relaxed text-muted-foreground"><p>{t('about.seaeuText')}</p><p>{t('about.seaeuScope')}</p></div>
     </section>
+
+    <ProjectStorySections />
 
     <section aria-labelledby="principles" className="border-t border-input py-12">
       <h2 id="principles" className="text-3xl font-semibold tracking-[-0.02em]">{t('about.principlesTitle')}</h2>
