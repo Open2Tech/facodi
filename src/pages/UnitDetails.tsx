@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
+import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -19,6 +20,7 @@ export default function UnitDetails() {
   const query = useUnit(slug, unitSlug);
   const contribute = useContributePath();
   const videos = useUnitVideos(query.data?.unit.learning_object_id);
+  const outcomesQuery = useUnitOutcomes(query.data?.unit.learning_object_id);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
