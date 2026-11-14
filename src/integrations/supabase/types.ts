@@ -1213,6 +1213,123 @@ export type Database = {
           },
         ]
       }
+      project_milestones: {
+        Row: {
+          id: string
+          slug: string
+          event_date: string | null
+          date_label: string
+          title: string
+          summary: string
+          public_source_url: string
+          publication_state: string
+          verification_state: string
+          translations: Json
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          slug: string
+          event_date?: string | null
+          date_label: string
+          title: string
+          summary: string
+          public_source_url: string
+          publication_state?: string
+          verification_state?: string
+          translations?: Json
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          slug?: string
+          event_date?: string | null
+          date_label?: string
+          title?: string
+          summary?: string
+          public_source_url?: string
+          publication_state?: string
+          verification_state?: string
+          translations?: Json
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      project_profiles: {
+        Row: {
+          id: string
+          slug: string
+          entity_kind: string
+          relationship_kind: string
+          display_name: string
+          role_label: string
+          headline: string
+          description: string
+          website_url: string | null
+          public_source_url: string | null
+          verification_state: string
+          publication_state: string
+          consent_for_public_credit: boolean
+          translations: Json
+          editorial_metadata: Json
+          sort_order: number
+          created_at: string
+          updated_at: string
+          reviewed_by: string | null
+          reviewed_at: string | null
+        }
+        Insert: {
+          id?: string
+          slug: string
+          entity_kind: string
+          relationship_kind: string
+          display_name: string
+          role_label: string
+          headline: string
+          description: string
+          website_url?: string | null
+          public_source_url?: string | null
+          verification_state?: string
+          publication_state?: string
+          consent_for_public_credit?: boolean
+          translations?: Json
+          editorial_metadata?: Json
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+        }
+        Update: {
+          id?: string
+          slug?: string
+          entity_kind?: string
+          relationship_kind?: string
+          display_name?: string
+          role_label?: string
+          headline?: string
+          description?: string
+          website_url?: string | null
+          public_source_url?: string | null
+          verification_state?: string
+          publication_state?: string
+          consent_for_public_credit?: boolean
+          translations?: Json
+          editorial_metadata?: Json
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+        }
+        Relationships: []
+      }
       recommendations: {
         Row: {
           created_at: string
