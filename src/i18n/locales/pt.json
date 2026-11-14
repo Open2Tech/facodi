@@ -924,7 +924,8 @@
     "groups": {
       "context": "Universidade e programa",
       "collaboration": "Tecnologia e código aberto",
-      "inspiration": "Inspiração criativa"
+      "inspiration": "Inspiração criativa",
+      "contributors": "Pessoas com crédito confirmado"
     },
     "boundary": "Os nomes e relações desta secção foram selecionados a partir de fontes públicas. Propostas, conversas e potenciais colaboradores não são apresentados como parcerias confirmadas.",
     "communityEyebrow": "A FACODI também é tua",
@@ -974,5 +975,34 @@
     "ctaTitle": "Faz parte do próximo capítulo.",
     "ctaDescription": "Começa por uma ideia pequena. Uma referência com contexto pode transformar o estudo de alguém.",
     "ctaButton": "Partilhar uma ideia"
+  },
+  "projectCredits": {
+    "open": "Créditos e colaboradores",
+    "back": "Voltar ao editor",
+    "title": "Quem fez o quê?",
+    "lead": "Créditos públicos merecem contexto. Analisa o papel da pessoa, confirma a sua autorização e identifica uma fonte pública independente antes de publicar.",
+    "count": "{{count}} créditos pendentes",
+    "pending": "Por validar",
+    "draft": "Sem autorização de publicação confirmada",
+    "unverified": "Este nome foi identificado em documentação interna. Não é prova suficiente de autoria, participação ativa ou autorização pública.",
+    "role": "Função real e confirmada",
+    "headline": "Apresentação curta",
+    "description": "Contributo efetivamente prestado",
+    "publicSource": "Fonte pública verificável",
+    "sourceHint": "Uma página pública que sustente o nome e o papel. Não utilize links privados, emails ou documentos internos.",
+    "consent": "Como foi confirmada a autorização",
+    "written": "Confirmação escrita direta",
+    "publicIdentification": "Autodescrição pública da pessoa",
+    "reviewNote": "Justificação interna",
+    "reviewNoteHint": "Registe como confirmou o papel, sem copiar dados privados de emails.",
+    "privateNote": "Esta observação é guardada em auditoria privada e não aparece no site.",
+    "ack": "Confirmo que verifiquei o contributo, uma fonte pública e a autorização da pessoa para ser identificada.",
+    "ackRequired": "Confirme os critérios antes de publicar.",
+    "saved": "Crédito validado. Agora pode aparecer no site público.",
+    "saving": "A guardar...",
+    "publish": "Validar e publicar",
+    "empty": "Tudo por validar? Nada pendente.",
+    "emptyDescription": "Não existem candidatos à espera de verificação.",
+    "footer": "As referências académicas, os parceiros tecnológicos e as pessoas não são a mesma categoria. Nunca publique nomes apenas porque surgiram numa reunião ou orçamento."
   }
 }
