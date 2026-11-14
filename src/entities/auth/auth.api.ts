@@ -7,7 +7,7 @@ export async function signUpWithEmail(email: string, password: string, name?: st
     password,
     options: {
       emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturnPath(next))}`,
-      data: { full_name: name ?? '' },
+      data: { full_name: name ?? '', client_app: 'facodi' },
     },
   });
 }
