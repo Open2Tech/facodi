@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { contributionKeys } from '@/entities/contribution/contribution.keys';
 import {
   countBlueprints, listBlueprints, listCourseOptions, listMyPlaylists, listPendingPlaylists,
-  listPlaylistItems, listUnitOptions, reviewBlueprint, reviewPlaylist, submitPlaylist,
+  listPlaylistItems, listUnitOptions, reviewBlueprint, reviewPlaylist, submitPlaylist, dispatchQueuedPlaylistMail,
 } from '@/entities/contribution/contribution.api';
 import type { BlueprintDecision, BlueprintStatus, PlaylistDecision } from '@/entities/contribution/contribution.types';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -38,7 +38,10 @@ export function useSubmitPlaylist() {
   const client = useQueryClient();
   return useMutation({
     mutationFn: submitPlaylist,
-    onSuccess: () => client.invalidateQueries({ queryKey: contributionKeys.playlists(user?.id ?? '') }),
+    onSuccess: (result) => {
+      void client.invalidateQueries({ queryKey: contributionKeys.playlists(user?.id ?? '') });
+      void dispatchQueuedPlaylistMail(result.playlist_id);
+    },
   });
 }
 
@@ -59,7 +62,10 @@ export function useReviewPlaylist() {
   return useMutation({
     mutationFn: ({ id, decision, note }: { id: string; decision: PlaylistDecision; note: string }) => reviewPlaylist(id, decision, note),
     // Approval publishes catalogue resources, so public lists are refreshed too.
-    onSuccess: () => client.invalidateQueries({ queryKey: courseKeys.all }),
+    onSuccess: (_result, variables) => {
+      void client.invalidateQueries({ queryKey: courseKeys.all });
+      void dispatchQueuedPlaylistMail(variables.id);
+    },
   });
 }
 
