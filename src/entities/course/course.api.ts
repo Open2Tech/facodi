@@ -76,6 +76,28 @@ export async function getUnitFacets(signal?: AbortSignal) {
 }
 
 export async function listResources({ search, language, page, tag, objectType }: CatalogParams, signal?: AbortSignal) {
+  if (search.trim()) {
+    // Use the published-only, SECURITY INVOKER search API for relevance ranking.
+    // The existing list query below remains the stable alphabetical fallback when
+    // there is no search text, preserving its exact pagination and facet behavior.
+    const { data, error } = await supabase.rpc('search_public_resources_v2', {
+      p_search: search.trim(),
+      p_language: language || null,
+      p_object_type: objectType || null,
+      p_tag: tag || null,
+      p_page: page,
+      p_page_size: PAGE_SIZE,
+    });
+    if (error) throw new Error(getSupabaseErrorMessage(error));
+    const payload = data as { total?: unknown; items?: unknown } | null;
+    if (!payload || typeof payload.total !== 'number' || !Array.isArray(payload.items)) {
+      throw new Error('Formato de resposta de pesquisa inválido.');
+    }
+    type ResourceRow = Pick<LearningObject,
+      'id' | 'slug' | 'title' | 'description' | 'object_type' |
+      'language' | 'tags' | 'metadata' | 'source_url'>;
+    return { items: payload.items as ResourceRow[], total: payload.total };
+  }
   let query = supabase.from('learning_objects')
     .select('id, slug, title, description, object_type, language, tags, metadata, source_url', { count: 'exact' })
     .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('title').order('id');
