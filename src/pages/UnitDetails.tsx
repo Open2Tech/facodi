@@ -68,6 +68,23 @@ export default function UnitDetails() {
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
+        <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
+          <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
+          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitOutcomes.notice')}</p>
+          {outcomesQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : outcomesQuery.error
+              ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
+              : !!outcomesQuery.data?.length
+                ? <ol className="mt-5 space-y-3">
+                  {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
+                    className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{outcome.statement}</span>
+                  </li>)}
+                </ol>
+                : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
+        </section>
         <section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
