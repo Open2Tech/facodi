@@ -452,5 +452,10 @@
     "title": "Objectifs d'étude suggérés",
     "notice": "Propositions pédagogiques de FACODI fondées sur les sujets de cette unité. Ce ne sont pas des acquis officiels et elles ne remplacent pas la fiche universitaire.",
     "empty": "Les objectifs d'étude ne sont pas encore disponibles pour cette unité."
+  },
+  "unitReadings": {
+    "title": "Lectures et documentation",
+    "notice": "Références publiques complémentaires. Les liens renvoient aux sites d'origine ; leur contenu n'a été ni copié ni homologué par l'université.",
+    "openSource": "Consulter la référence"
   }
 }
