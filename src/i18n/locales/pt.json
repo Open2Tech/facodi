@@ -451,7 +451,9 @@
       "postgraduate": "Pós-graduação"
     },
     "videosTitle": "Vídeos deste curso",
-    "videosText": "Primeiros vídeos das trilhas curadas nas {{count}} unidades curriculares deste plano."
+    "videosText": "Primeiros vídeos das trilhas curadas nas {{count}} unidades curriculares deste plano.",
+    "availableElectives": "Disciplinas optativas disponíveis",
+    "ufesElectiveNotice": "Estas 45 disciplinas são alternativas de escolha em quatro blocos do PPC da UFES. Cada estudante cursa apenas as 10 optativas exigidas (720 horas), e não todas as opções listadas."
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",
@@ -540,7 +542,7 @@
   },
   "unitReadings": {
     "title": "Leituras e documentação",
-    "notice": "Referências complementares de acesso público. As ligações remetem para os sítios dos autores; os conteúdos não foram copiados nem homologados pela UAlg.",
+    "notice": "Referências complementares de acesso público. As ligações remetem para os sítios dos autores; os conteúdos não foram copiados nem homologados pela instituição de origem.",
     "openSource": "Explorar referência"
   },
   "authPanel": {
