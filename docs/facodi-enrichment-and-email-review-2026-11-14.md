@@ -113,3 +113,11 @@ As fontes incluem MIT OpenCourseWare, OpenStax, Python, Git, GitHub, MDN, React,
 - O frontend possui um bloco `Leituras e documentação` nas páginas de UC, com links para as fichas internas dos recursos e daí para a fonte externa, preservando o aviso de atribuição.
 
 **Nota de atualização:** os números da tabela inicial deste documento correspondem ao lote anterior e foram mantidos como histórico. Os totais correntes são os indicados nesta secção e no README.
+
+### Cobertura curricular sem duplicar UCs
+
+A união entre UCs com vídeo e UCs com documentação externa atinge **53 das 84 UCs públicas**: 30/43 no LESTI e 23/41 em Design de Comunicação. Há sobreposição entre os dois conjuntos (29 UCs com vídeo e 47 com leitura); **31 UCs** dispõem atualmente apenas do roteiro pedagógico FACODI e dos três objetivos sugeridos. Não foram importados links genericamente irrelevantes para inflacionar a cobertura.
+
+### Avisos de segurança preexistentes
+
+O Supabase Security Advisor ainda assinala avisos do schema partilhado, nomeadamente a extensão `vector` em `public`, 16 funções `SECURITY DEFINER` acessíveis a `anon`, 26 acessíveis a `authenticated` e a proteção de passwords comprometidas não configurada. Estes achados não foram introduzidos por este lote e **não foram corrigidos em nome do Tube**, para evitar alterações transversais sem auditoria de impacto. A listagem de funções e recomendações está disponível em https://supabase.com/dashboard/project/wvkjainfwsyiyfcmbtid/advisors/security.
