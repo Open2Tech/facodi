@@ -391,5 +391,13 @@
     "document": "Document",
     "course": "Formation",
     "curricular_unit": "Unité d’enseignement"
+  },
+  "unitVideos": {
+    "title": "Cours vidéo ({{count}})",
+    "note": "Ressources complémentaires sélectionnées d'après les sujets de leurs titres et de leurs chaînes. Elles ne remplacent ni le programme officiel ni une vérification complète.",
+    "empty": "Aucune vidéo suffisamment pertinente n'est encore disponible pour cette unité.",
+    "channel": "Chaîne",
+    "openSource": "Voir la vidéo originale sur YouTube",
+    "playlist": "Vidéos de cette unité"
   }
 }
