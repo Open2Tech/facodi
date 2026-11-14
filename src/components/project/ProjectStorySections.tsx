@@ -10,11 +10,13 @@ const relationship: Record<string, { icon: LucideIcon; tone: string }> = {
   technology_collaboration: { icon: HeartHandshake, tone: 'bg-brand-orange' },
   code_repository: { icon: Compass, tone: 'bg-brand-pink' },
   creative_influence: { icon: Sparkles, tone: 'bg-primary' },
+  candidate_contributor: { icon: HeartHandshake, tone: 'bg-brand-mint' },
 };
 const groups = [
   { id: 'context', kinds: ['academic_reference', 'student_led_program'] },
   { id: 'collaboration', kinds: ['technology_collaboration', 'code_repository'] },
   { id: 'inspiration', kinds: ['creative_influence'] },
+  { id: 'contributors', kinds: ['candidate_contributor'] },
 ] as const;
 
 function ExternalSource({ url, label }: { url: string | null; label: string }) {
