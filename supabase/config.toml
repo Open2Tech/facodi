@@ -9,7 +9,7 @@ enabled = false
 
 [auth]
 site_url = "https://tube.open2.tech"
-additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com"]
+additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com", "https://facodi.vercel.app", "https://facodi.vercel.app/auth/callback**", "https://facodi.vercel.app/auth/reset-password**"]
 enable_manual_linking = true
 
 [auth.mfa.totp]
