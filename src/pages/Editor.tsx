@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus } from 'lucide-react';
+import { BookOpenCheck, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { EDITORIAL_STATUSES, type Content, type ContentKind, type EditorialStatus } from '@/entities/course/course.types';
 import { useContentMutations, useEditorial, useObjectTypeFacets } from '@/features/courses/queries/useCourses';
 import { ContentForm } from '@/components/editorial/ContentForm';
@@ -33,7 +34,7 @@ export default function Editor() {
   return <>
     <div className="mb-8 flex flex-wrap items-start justify-between gap-5">
       <div><h1 className="text-3xl font-semibold">{t('editor.heading')}</h1><p className="mt-3 max-w-prose text-muted-foreground">{t('editor.descriptionText')}</p></div>
-      {!editing && <Button onClick={() => { save.reset(); setEditing('new'); }}><Plus />{t('editor.create')}</Button>}
+      {!editing && <div className="flex flex-wrap gap-2"><Button variant="outline" asChild><Link to="/editor/study-paths"><BookOpenCheck className="h-4 w-4" />{t('studyReview.open')}</Link></Button><Button onClick={() => { save.reset(); setEditing('new'); }}><Plus />{t('editor.create')}</Button></div>}
     </div>
     <Tabs value={kind} onValueChange={value => {
       const selectedKind = kinds.find(kind => kind === value);
