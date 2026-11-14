@@ -4,7 +4,7 @@
 
 ## Inventário
 
-Os templates estão em `supabase/email-templates/facodi/` e usam HTML de tabelas com estilos inline, sem scripts, ficheiros de fontes ou imagens externas. Identidade visual FACODI: azul `#142846`, ciano `#37BED2`, verde-claro `#A7E8BE`, fundo `#F9FAFB`.
+Os templates estão em `supabase/email-templates/facodi/` e usam HTML de tabelas com estilos inline, sem scripts, ficheiros de fontes ou imagens externas. Identidade visual FACODI atual: azul Ink `#142846`, amarelo Sun `#EFFF00`, com tons de papel `#F9FAFB`; os estilos são incorporados para compatibilidade com clientes de email.
 
 | Tipo Supabase | Ficheiro | Variável essencial |
 | --- | --- | --- |
