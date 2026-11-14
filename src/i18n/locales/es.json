@@ -158,7 +158,6 @@
     "admin": "Administrador"
   },
   "auth": {
-    "campus": "Tu conexión con FACODI",
     "login": "Entrar",
     "signup": "Crear cuenta",
     "loginDescription": "Continúa explorando con tu cuenta.",
@@ -205,7 +204,11 @@
   },
   "profile": {
     "description": "Los datos de tu cuenta se gestionan con Supabase Auth.",
-    "saved": "Cambios guardados. Si cambiaste el email, confirma los enlaces enviados a las direcciones implicadas antes de usar el nuevo email."
+    "saved": "Cambios guardados. Si cambiaste el email, confirma los enlaces enviados a las direcciones implicadas antes de usar el nuevo email.",
+    "summary": "Resumen de la cuenta",
+    "memberSince": "Miembro desde",
+    "emailConfirmed": "Confirmado",
+    "emailPending": "Pendiente de confirmación"
   },
   "content": {
     "courses": "Cursos",
@@ -481,5 +484,9 @@
     "title": "Lecturas y documentación",
     "notice": "Referencias públicas complementarias. Los enlaces llevan a los sitios originales; los contenidos no se han copiado ni homologado por la universidad.",
     "openSource": "Explorar referencia"
+  },
+  "authPanel": {
+    "title": "El catálogo sigue abierto.",
+    "text": "No necesitas una cuenta para leer. La cuenta sirve para gestionar tus datos y, con el rol adecuado, contribuir."
   }
 }

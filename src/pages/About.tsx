@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, Link2, LockOpen, type LucideIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
+import { cn } from '@/lib/utils';
 
-const PRINCIPLES = ['open', 'context', 'curated'] as const;
+const PRINCIPLES: { key: 'open' | 'context' | 'curated'; icon: LucideIcon; fill: string }[] = [
+  { key: 'open', icon: LockOpen, fill: 'bg-brand-cyan' },
+  { key: 'context', icon: Link2, fill: 'bg-brand-orange' },
+  { key: 'curated', icon: BadgeCheck, fill: 'bg-brand-mint' },
+];
 const FLOW = ['account', 'review', 'publish'] as const;
 
 export default function About() {
@@ -31,9 +36,12 @@ export default function About() {
     <section aria-labelledby="principles" className="border-t border-input py-12">
       <h2 id="principles" className="text-3xl font-semibold tracking-[-0.02em]">{t('about.principlesTitle')}</h2>
       <dl className="mt-8 grid gap-px bg-input md:grid-cols-3">
-        {PRINCIPLES.map(item => <div key={item} className="bg-background py-6 md:px-6 md:first:pl-0">
-          <dt className="text-xl font-semibold">{t(`about.principles.${item}.title`)}</dt>
-          <dd className="mt-3 leading-relaxed text-muted-foreground">{t(`about.principles.${item}.text`)}</dd>
+        {PRINCIPLES.map(({ key: item, icon: Icon, fill }) => <div key={item} className="bg-background py-6 md:px-6 md:first:pl-0">
+          <dt className="flex items-center gap-3 text-xl font-semibold">
+            <span className={cn('flex h-10 w-10 shrink-0 items-center justify-center border border-foreground text-ink', fill)}><Icon className="h-5 w-5" aria-hidden="true" /></span>
+            {t(`about.principles.${item}.title`)}
+          </dt>
+          <dd className="mt-4 leading-relaxed text-muted-foreground">{t(`about.principles.${item}.text`)}</dd>
         </div>)}
       </dl>
     </section>
@@ -41,7 +49,7 @@ export default function About() {
     <section id="contribute" aria-labelledby="contribute-title" className="scroll-mt-28 border border-foreground bg-primary px-6 py-10 text-primary-foreground sm:px-10">
       <h2 id="contribute-title" className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t('about.contributeTitle')}</h2>
       <p className="mt-4 max-w-prose leading-relaxed">{t('about.contributeText')}</p>
-      <ol className="mt-8 grid gap-6 border-t border-black/25 pt-6 md:grid-cols-3">
+      <ol className="mt-8 grid gap-6 border-t border-ink/25 pt-6 md:grid-cols-3">
         {FLOW.map((step, index) => <li key={step} className="flex gap-4">
           <span className="font-mono text-sm">{String(index + 1).padStart(2, '0')}</span>
           <p className="leading-relaxed">{t(`about.flow.${step}`)}</p>

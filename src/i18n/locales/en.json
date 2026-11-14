@@ -158,7 +158,6 @@
     "admin": "Administrator"
   },
   "auth": {
-    "campus": "Your connection to FACODI",
     "login": "Sign in",
     "signup": "Create account",
     "loginDescription": "Continue exploring with your account.",
@@ -205,7 +204,11 @@
   },
   "profile": {
     "description": "Your account details are managed by Supabase Auth.",
-    "saved": "Changes saved. If you changed your email, confirm the links sent to the relevant addresses before using the new email."
+    "saved": "Changes saved. If you changed your email, confirm the links sent to the relevant addresses before using the new email.",
+    "summary": "Account summary",
+    "memberSince": "Member since",
+    "emailConfirmed": "Confirmed",
+    "emailPending": "Awaiting confirmation"
   },
   "content": {
     "courses": "Courses",
@@ -481,5 +484,9 @@
     "title": "Readings and documentation",
     "notice": "Supplementary public references. Links open the publishers' original sites; these resources were neither copied nor approved by the university.",
     "openSource": "Explore reference"
+  },
+  "authPanel": {
+    "title": "The catalogue stays open.",
+    "text": "You do not need an account to read. An account lets you manage your details and, with the right role, contribute."
   }
 }
