@@ -11,7 +11,10 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/entities/course](../src/entities/course): tipos, APIs e keys do catálogo,
   incluindo as unidades e os objetos educativos associados.
 - [src/entities/facodi](../src/entities/facodi): autorização por `app_metadata.role`.
-- [src/entities/auth](../src/entities/auth): chamadas ao Supabase Auth nativo.
+- [src/entities/auth](../src/entities/auth): chamadas ao Supabase Auth nativo
+  (conta, mudança de email com reenvio, sessões noutros dispositivos) e
+  `authErrorKey()`, que converte códigos de erro Auth em keys i18n; mensagens
+  em inglês da API nunca chegam à interface.
 - [src/entities/contribution](../src/entities/contribution): submissão de playlists
   (Edge Function `facodi-submit-playlist`), filas de revisão e RPCs
   `review_playlist`/`review_study_blueprint`, e normalização dos percursos gerados.
@@ -22,6 +25,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/features/contributions/queries](../src/features/contributions/queries):
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
 - [src/components](../src/components): apresentação, formulários e primitivas shadcn.
+  [src/components/profile](../src/components/profile) compõe `/profile`: dados da
+  conta, segurança e sessões, preferências do navegador e contribuições.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.

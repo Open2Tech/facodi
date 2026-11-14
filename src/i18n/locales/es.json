@@ -184,13 +184,24 @@
       "passwordMinLength": "La contraseña debe tener al menos 6 caracteres.",
       "usernameMinLength": "Usa al menos 3 caracteres.",
       "sessionRequired": "La sesión ha caducado. Inicia sesión de nuevo.",
-      "invalidLink": "Enlace de autenticación inválido o caducado."
+      "invalidLink": "Enlace de autenticación inválido o caducado.",
+      "invalidCredentials": "Email o contraseña incorrectos.",
+      "emailNotConfirmed": "Confirma tu email antes de entrar. Busca el enlace en tu bandeja de entrada.",
+      "emailExists": "Ya existe una cuenta con este email.",
+      "weakPassword": "Esta contraseña es demasiado débil. Elige una más larga o menos común.",
+      "samePassword": "La nueva contraseña debe ser distinta de la actual.",
+      "reauthenticationNeeded": "Por seguridad, confirma tu identidad con un enlace de recuperación antes de cambiar la contraseña.",
+      "rateLimited": "Demasiadas solicitudes seguidas. Espera unos minutos y vuelve a intentarlo.",
+      "signupDisabled": "El registro de nuevas cuentas no está disponible temporalmente."
     },
     "resetPassword": {
       "error": {
         "passwordMismatch": "Las contraseñas no coinciden."
       }
-    }
+    },
+    "passwordHint": "Al menos 6 caracteres. Una frase larga es más segura y fácil de recordar.",
+    "showPasswords": "Mostrar contraseñas",
+    "hidePasswords": "Ocultar contraseñas"
   },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
@@ -205,12 +216,50 @@
     "addName": "Añade tu nombre en el perfil"
   },
   "profile": {
-    "description": "Los datos de tu cuenta se gestionan con Supabase Auth.",
-    "saved": "Cambios guardados. Si cambiaste el email, confirma los enlaces enviados a las direcciones implicadas antes de usar el nuevo email.",
+    "description": "Gestiona tus datos, la seguridad de la cuenta, las preferencias de este navegador y tus contribuciones.",
+    "saved": "Cambios guardados.",
     "summary": "Resumen de la cuenta",
     "memberSince": "Miembro desde",
     "emailConfirmed": "Confirmado",
-    "emailPending": "Pendiente de confirmación"
+    "emailPending": "Pendiente de confirmación",
+    "newEmail": "Nuevo email",
+    "signInMethod": "Método de acceso",
+    "lastSignIn": "Último acceso",
+    "provider": {
+      "email": "Email y contraseña",
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "onThisPage": "En esta página",
+    "emailChangePending": "La solicitud para cambiar a {{email}} espera confirmación. Hasta entonces, sigues entrando con {{current}}.",
+    "resendEmailChange": "Reenviar enlace de confirmación",
+    "emailChangeResent": "Hemos enviado un nuevo enlace de confirmación.",
+    "emailChangeSent": "Nombre guardado. Para completar el cambio de email, abre los enlaces de confirmación que hemos enviado.",
+    "nameHint": "Aparece en tu área personal.",
+    "emailHint": "Al cambiar el email, enviamos enlaces de confirmación. El email actual se mantiene hasta que confirmes.",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "preferencesDevice": "Estas preferencias se guardan en este navegador.",
+    "sessionsTitle": "Sesiones",
+    "sessionsDescription": "Si entraste en un ordenador compartido o perdiste un dispositivo, cierra las demás sesiones. Esta sesión sigue activa.",
+    "signOutOthers": "Cerrar las demás sesiones",
+    "signOutOthersConfirm": "Se cerrarán todas las sesiones en otros navegadores y dispositivos. Tendrás que volver a entrar en ellos.",
+    "signOutHere": "Salir de este dispositivo",
+    "signedOutOthers": "Las demás sesiones se han cerrado.",
+    "reviewQueues": "Colas de revisión",
+    "pendingCount_one": "{{count}} pendiente",
+    "pendingCount_other": "{{count}} pendientes",
+    "proposePlaylist": "Proponer playlist",
+    "detailsTitle": "Datos de la cuenta",
+    "detailsDescription": "El nombre y el email asociados a tu cuenta FACODI.",
+    "securityTitle": "Seguridad",
+    "securityDescription": "Cambia la contraseña y controla dónde está abierta tu cuenta.",
+    "preferencesTitle": "Preferencias",
+    "preferencesDescription": "Idioma y apariencia de la interfaz.",
+    "contributionsTitle": "Contribuciones",
+    "contributionsDescription": "Las playlists que propusiste y el estado de la revisión editorial.",
+    "pendingCount_zero": "Ninguno pendiente"
   },
   "content": {
     "courses": "Cursos",

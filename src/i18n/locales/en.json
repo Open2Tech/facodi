@@ -184,13 +184,24 @@
       "passwordMinLength": "Your password must have at least 6 characters.",
       "usernameMinLength": "Use at least 3 characters.",
       "sessionRequired": "Your session has expired. Sign in again.",
-      "invalidLink": "Invalid or expired authentication link."
+      "invalidLink": "Invalid or expired authentication link.",
+      "invalidCredentials": "Incorrect email or password.",
+      "emailNotConfirmed": "Confirm your email before signing in. Look for the link in your inbox.",
+      "emailExists": "An account with this email already exists.",
+      "weakPassword": "This password is too weak. Choose a longer or less common one.",
+      "samePassword": "The new password must be different from the current one.",
+      "reauthenticationNeeded": "For your security, confirm your identity with a recovery link before changing the password.",
+      "rateLimited": "Too many requests in a row. Wait a few minutes and try again.",
+      "signupDisabled": "New account registration is temporarily unavailable."
     },
     "resetPassword": {
       "error": {
         "passwordMismatch": "The passwords do not match."
       }
-    }
+    },
+    "passwordHint": "At least 6 characters. A long phrase is safer and easier to remember.",
+    "showPasswords": "Show passwords",
+    "hidePasswords": "Hide passwords"
   },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
@@ -205,12 +216,50 @@
     "addName": "Add your name in your profile"
   },
   "profile": {
-    "description": "Your account details are managed by Supabase Auth.",
-    "saved": "Changes saved. If you changed your email, confirm the links sent to the relevant addresses before using the new email.",
+    "description": "Manage your details, account security, preferences for this browser and your contributions.",
+    "saved": "Changes saved.",
     "summary": "Account summary",
     "memberSince": "Member since",
     "emailConfirmed": "Confirmed",
-    "emailPending": "Awaiting confirmation"
+    "emailPending": "Awaiting confirmation",
+    "newEmail": "New email",
+    "signInMethod": "Sign-in method",
+    "lastSignIn": "Last sign-in",
+    "provider": {
+      "email": "Email and password",
+      "google": "Google",
+      "github": "GitHub"
+    },
+    "onThisPage": "On this page",
+    "emailChangePending": "The request to change to {{email}} is waiting for confirmation. Until then, you keep signing in with {{current}}.",
+    "resendEmailChange": "Resend confirmation link",
+    "emailChangeResent": "We sent a new confirmation link.",
+    "emailChangeSent": "Name saved. To finish changing your email, open the confirmation links we sent.",
+    "nameHint": "Shown in your personal area.",
+    "emailHint": "When you change your email, we send confirmation links. Your current email stays active until you confirm.",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "preferencesDevice": "These preferences are saved in this browser.",
+    "sessionsTitle": "Sessions",
+    "sessionsDescription": "If you signed in on a shared computer or lost a device, end the other sessions. This session stays active.",
+    "signOutOthers": "End other sessions",
+    "signOutOthersConfirm": "Every session in other browsers and devices will end. You will need to sign in again on those devices.",
+    "signOutHere": "Sign out of this device",
+    "signedOutOthers": "The other sessions have ended.",
+    "reviewQueues": "Review queues",
+    "pendingCount_one": "{{count}} pending",
+    "pendingCount_other": "{{count}} pending",
+    "proposePlaylist": "Propose a playlist",
+    "detailsTitle": "Account details",
+    "detailsDescription": "The name and email linked to your FACODI account.",
+    "securityTitle": "Security",
+    "securityDescription": "Change your password and control where your account is signed in.",
+    "preferencesTitle": "Preferences",
+    "preferencesDescription": "Interface language and appearance.",
+    "contributionsTitle": "Contributions",
+    "contributionsDescription": "The playlists you proposed and their editorial review status.",
+    "pendingCount_zero": "None pending"
   },
   "content": {
     "courses": "Courses",
