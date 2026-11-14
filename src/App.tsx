@@ -20,6 +20,8 @@ const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Profile = lazy(() => import('@/pages/Profile'));
 const Editor = lazy(() => import('@/pages/Editor'));
 const EditorStudyPaths = lazy(() => import('@/pages/EditorStudyPaths'));
+const PlaylistSubmit = lazy(() => import('@/pages/PlaylistSubmit'));
+const EditorPlaylists = lazy(() => import('@/pages/EditorPlaylists'));
 
 const Admin = lazy(() => import('@/pages/Admin'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
@@ -45,10 +47,12 @@ export function AppRoutes() {
       <Route element={<ProtectedRoute key={sessionKey} />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/playlists/submit" element={<PlaylistSubmit />} />
       </Route>
       <Route element={<ProtectedRoute key={sessionKey} required="editor" />}>
         <Route path="/editor" element={<Editor />} />
         <Route path="/editor/study-paths" element={<EditorStudyPaths />} />
+        <Route path="/editor/playlists" element={<EditorPlaylists />} />
       </Route>
       <Route element={<ProtectedRoute key={sessionKey} required="admin" />}><Route path="/admin" element={<Admin />} /></Route>
       <Route path="*" element={<NotFound />} />
