@@ -31,17 +31,22 @@ const client = createClient(url, serviceKey, {
 });
 const now = Date.now();
 const db = client.schema('facodi');
-const { data, error } = await db.from('youtube_videos')
-  .select('id,youtube_video_id,description,duration_seconds,published_at,channel_id,channel_title,language,metadata,updated_at,status')
-  .order('youtube_video_id')
-  .limit(1000);
-if (error) throw new Error('Supabase read failed: ' + error.message);
-
-const pending = (data || []).filter(row => {
+const rows = [];
+for (let offset = 0; ; offset += 1000) {
+  const { data, error } = await db.from('youtube_videos')
+    .select('id,youtube_video_id,description,duration_seconds,published_at,channel_id,channel_title,language,metadata,updated_at,status')
+    .order('youtube_video_id')
+    .range(offset, offset + 999);
+  if (error) throw new Error('Supabase read failed: ' + error.message);
+  rows.push(...(data || []));
+  if (!data || data.length < 1000) break;
+}
+// Refresh based on the source-check date rather than repeating every run
+// solely because a publisher omitted a particular metadata field.
+const pending = rows.filter(row => {
   const previous = row.metadata?.youtube_data_api_v3;
   const last = previous?.checked_at ? Date.parse(previous.checked_at) : 0;
-  const stale = !Number.isFinite(last) || now - last > 25 * 86400000;
-  return stale || !row.duration_seconds || !row.published_at || !row.description;
+  return !Number.isFinite(last) || now - last > 25 * 86400000;
 }).slice(0, limit);
 
 let checked = 0, filled = 0, conflicted = 0, unavailable = 0;
