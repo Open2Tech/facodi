@@ -35,6 +35,20 @@ export default function CommunityJoin() {
       return data ?? [];
     },
   });
+  const [withdrawId, setWithdrawId] = useState<string | null>(null);
+  const withdrawal = useMutation({
+    mutationFn: async (id: string) => {
+      if (!user) throw new Error(t('communityJoin.consentRequired'));
+      const { data, error } = await supabase.from('community_participation_requests')
+        .delete().eq('id', id).eq('submitted_by', user.id).select('id');
+      if (error) throw new Error(getSupabaseErrorMessage(error));
+      if (!data || data.length !== 1) throw new Error(t('communityJoin.withdrawUnavailable'));
+    },
+    onSuccess: async () => {
+      setWithdrawId(null);
+      await client.invalidateQueries({ queryKey: ['facodi','community-participation'] });
+    },
+  });
   const submit = useMutation({
     mutationFn: async () => {
       if (!user || !consent) throw new Error(t('communityJoin.consentRequired'));
@@ -127,6 +141,21 @@ export default function CommunityJoin() {
             <p className="font-semibold">{t(`communityJoin.interests.${item.interest}`)}</p>
             <p className="mt-1 font-mono text-xs text-muted-foreground">{new Date(item.created_at).toLocaleDateString()}</p>
             {item.review_note && <p className="mt-2 text-sm text-muted-foreground">{item.review_note}</p>}
+            <div className="mt-3">
+              {withdrawId === item.id ? <div className="space-y-3 border border-input p-3">
+                <p className="text-sm">{t('communityJoin.withdrawConfirm')}</p>
+                {withdrawal.error && <p role="alert" className="text-sm text-destructive">{withdrawal.error.message}</p>}
+                <div className="flex flex-wrap gap-2">
+                  <Button size="sm" type="button" disabled={withdrawal.isPending}
+                    onClick={() => withdrawal.mutate(item.id)}>{t('communityJoin.withdrawConfirmButton')}</Button>
+                  <Button size="sm" variant="outline" type="button" disabled={withdrawal.isPending}
+                    onClick={() => setWithdrawId(null)}>{t('common.cancel')}</Button>
+                </div>
+              </div> : <Button type="button" size="sm" variant="outline"
+                onClick={() => {withdrawal.reset();setWithdrawId(item.id);}}>
+                  {t('communityJoin.withdraw')}
+              </Button>}
+            </div>
           </div>
           <span className="font-mono text-xs uppercase">{t(`communityJoin.status.${item.review_status}`)}</span>
         </li>)}
