@@ -4,6 +4,37 @@ Um campus digital aberto: cursos, unidades curriculares e objetos educativos.
 Frontend React + Vite, TypeScript, Tailwind/shadcn, TanStack Query e Supabase.
 Usa Bun como único gestor de pacotes.
 
+## Frontend em desenvolvimento — Cloudflare Workers (15/11/2026)
+
+O endereço de **desenvolvimento e validação ativo** é
+**https://facodi.marcelo-0d6.workers.dev/**, ligado à branch `facodi` do
+repositório `Open2Tech/facodi`. As alterações no frontend devem ser
+validadas primeiramente neste endereço; **não realizar deploys na Vercel
+para cada alteração**, evitando os limites do plano atual.
+
+O domínio canónico `https://www.facodi.com` continua separado do ambiente
+de desenvolvimento. O Worker serve os assets estáticos de `dist/` através
+de [`wrangler.jsonc`](wrangler.jsonc), com fallback para as rotas SPA e
+cabeçalho `X-Robots-Tag: noindex` no preview. Requer apenas as variáveis
+públicas de build `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`;
+nunca incluir uma chave `service_role` no frontend.
+
+Verificações recomendadas depois de um commit:
+```sh
+bun install --frozen-lockfile
+bun run lint
+bun run typecheck
+bun run test
+bun run build
+bun run test:workers:smoke
+```
+
+O teste de Workers verifica disponibilidade, fallback SPA e cabeçalhos,
+**mas não substitui um teste em navegador** que confirme os dados da API
+e a navegação efetiva. A documentação de configuração e o estado de builds
+na Cloudflare devem ser consultados diretamente no painel de Workers & Pages;
+este repositório não contém uma chave de gestão Cloudflare.
+
 ## Executar
 
 ```sh
