@@ -82,7 +82,7 @@ assert.equal(wrangler.assets?.directory, './dist', 'Cloudflare must serve the Vi
 assert.equal(wrangler.assets?.not_found_handling, 'single-page-application',
   'Client-side routes and Auth callbacks require Cloudflare SPA fallback');
 assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
-  /X-Robots-Tag:\\s*noindex/i.test(workerHeaders),
+  workerHeaders.includes('X-Robots-Tag: noindex, nofollow, noarchive'),
   'Cloudflare Workers preview host must not be indexed');
 for (const rule of ['X-Content-Type-Options: nosniff','X-Frame-Options: DENY',
   'Referrer-Policy: strict-origin-when-cross-origin']) {
