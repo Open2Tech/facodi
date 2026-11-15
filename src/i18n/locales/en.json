@@ -1033,7 +1033,19 @@
     "publish": "Verify and publish",
     "empty": "No pending credits",
     "emptyDescription": "All pending candidates have been resolved.",
-    "footer": "Academic references, technology partners and individual contributors are separate categories. A meeting or quotation does not grant permission to publish a name."
+    "footer": "Academic references, technology partners and individual contributors are separate categories. A meeting or quotation does not grant permission to publish a name.",
+    "approvedTitle": "Published contributor credits",
+    "approvedDescription": "If consent is withdrawn or a public credit needs correcting, hide it immediately while keeping a private audit trail.",
+    "loadingApproved": "Loading published credits…",
+    "noneApproved": "No individual contributor credits have been approved.",
+    "withdrawAction": "Withdraw credit",
+    "withdrawConfirm": "The person's name will disappear from the public contributor section immediately, without deleting the approval history.",
+    "withdrawReason": "Reason for withdrawal (private)",
+    "withdrawReasonHint": "E.g. Explicit request from the person or a documented attribution correction.",
+    "withdrawAcknowledge": "I confirm the withdrawal is necessary and the private reasoning is documented. The credit will not reactivate automatically.",
+    "withdrawConfirmButton": "Confirm withdrawal",
+    "withdrawValidation": "Confirm the action and enter at least 25 characters of reasoning.",
+    "withdrawSuccess": "Public credit withdrawn. Audit history preserved."
   },
   "sequences": {
     "title": "Study sequences",
