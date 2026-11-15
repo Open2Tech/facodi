@@ -1153,5 +1153,20 @@
     "withdrawConfirm": "Queres retirar esta proposta e apagar o seu histórico privado? Esta ação não pode ser anulada.",
     "withdrawConfirmButton": "Sim, retirar e apagar",
     "withdrawUnavailable": "Esta proposta já não está disponível ou não te pertence."
+  },
+  "editorEmails": {
+    "open": "Modelos de email",
+    "back": "Voltar ao editor",
+    "title": "Emails FACODI, sem misturas.",
+    "lead": "Os modelos estão preparados no Supabase, versionados e com o domínio www.facodi.com. Aqui podes rever o aspeto antes de qualquer integração com o Auth.",
+    "isolationLabel": "Separação de autenticação",
+    "isolationTitle": "Pré-visualização, não envio",
+    "isolationDescription": "Estes modelos pertencem ao catálogo FACODI. O serviço de autenticação do Supabase continua partilhado com o Tube O2; a configuração global de emails não foi substituída. Esta página não envia mensagens.",
+    "count": "{{count}} modelos preparados",
+    "empty": "Ainda não há modelos no catálogo.",
+    "enabled": "Envio ativado",
+    "previewOnly": "Sem envio",
+    "placeholders": "As ligações e os códigos aparecem como variáveis {{ .ConfirmationURL }} ou {{ .Token }} na pré-visualização. O Supabase substitui-as apenas num email real de autenticação.",
+    "previewTitle": "Pré-visualização de {{subject}}"
   }
 }
