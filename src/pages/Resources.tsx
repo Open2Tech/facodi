@@ -5,6 +5,7 @@ import { staticPageMeta } from '@/shared/seo/seo';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useResources } from '@/features/courses/queries/useCourses';
+import { usePublicResourceTopics } from '@/features/courses/queries/usePublicResourceTopics';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader, CatalogToolbar } from '@/components/catalog/CatalogToolbar';
@@ -25,6 +26,7 @@ export default function Resources() {
   const { t } = useTranslation();
   const { page, search, language, tag, area, type, filter, reset } = useCatalogParams();
   const query = useResources({ page, search, language, tag, area, objectType: type });
+  const topicFacets = usePublicResourceTopics({ search, language, objectType: type, area });
   const results = useRef<HTMLDivElement>(null);
   const moduleOnly = type === 'module';
   const typeLabel = (value: string) => t('objectTypes.' + value, { defaultValue: value });
@@ -56,6 +58,18 @@ export default function Resources() {
     {!!options.length && <div className="mb-8">
       <FacetGroup title={t('resources.filterType')} value={type} onChange={value => filter('type', value)} scroll
         allLabel={t('resources.allTypes')} allCount={facets.reduce((sum, item) => sum + item.count, 0)} options={options} />
+    </div>}
+    {!!topicFacets.data?.length && <div className="mb-7">
+      <FacetGroup
+        title={t('resources.filterTopic')}
+        value={tag}
+        onChange={value => filter('tag', value)}
+        scroll
+        options={topicFacets.data.map(option => ({
+          ...option,
+          label: t('resourceTopics.' + option.value, { defaultValue: option.value }),
+        }))}
+      />
     </div>}
     <ActiveFilters count={query.isPlaceholderData ? undefined : query.data?.total} filters={chips}
       onRemove={key => filter(key as CatalogParamKey, '')} onReset={reset} />
