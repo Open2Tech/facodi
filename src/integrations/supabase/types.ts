@@ -184,87 +184,45 @@ export type Database = {
           },
         ]
       }
-      email_template_catalog: {
-        Row: {
-          template_key: string
-          locale: string
-          audience: string
-          subject: string
-          body_html: string
-          template_source_path: string
-          site_origin: string
-          delivery_enabled: boolean
-          review_status: string
-          version: number
-          updated_at: string
-        }
-        Insert: {
-          template_key: string
-          locale?: string
-          audience?: string
-          subject: string
-          body_html: string
-          template_source_path: string
-          site_origin?: string
-          delivery_enabled?: boolean
-          review_status?: string
-          version?: number
-          updated_at?: string
-        }
-        Update: {
-          template_key?: string
-          locale?: string
-          audience?: string
-          subject?: string
-          body_html?: string
-          template_source_path?: string
-          site_origin?: string
-          delivery_enabled?: boolean
-          review_status?: string
-          version?: number
-          updated_at?: string
-        }
-        Relationships: []
-      }
       community_participation_requests: {
         Row: {
+          consent_to_contact: boolean
+          created_at: string
           id: string
-          submitted_by: string
           interest: string
           motivation: string
           portfolio_url: string | null
-          consent_to_contact: boolean
-          review_status: string
           review_note: string | null
-          reviewed_by: string | null
+          review_status: string
           reviewed_at: string | null
-          created_at: string
+          reviewed_by: string | null
+          submitted_by: string
         }
         Insert: {
+          consent_to_contact?: boolean
+          created_at?: string
           id?: string
-          submitted_by: string
           interest: string
           motivation: string
           portfolio_url?: string | null
-          consent_to_contact?: boolean
-          review_status?: string
           review_note?: string | null
-          reviewed_by?: string | null
+          review_status?: string
           reviewed_at?: string | null
-          created_at?: string
+          reviewed_by?: string | null
+          submitted_by: string
         }
         Update: {
+          consent_to_contact?: boolean
+          created_at?: string
           id?: string
-          submitted_by?: string
           interest?: string
           motivation?: string
           portfolio_url?: string | null
-          consent_to_contact?: boolean
-          review_status?: string
           review_note?: string | null
-          reviewed_by?: string | null
+          review_status?: string
           reviewed_at?: string | null
-          created_at?: string
+          reviewed_by?: string | null
+          submitted_by?: string
         }
         Relationships: []
       }
@@ -322,7 +280,7 @@ export type Database = {
           metadata: Json
           official_source_url: string
           plan: Json
-          programme_ects: number
+          programme_ects: number | null
           published: boolean
           status: string
           unique_unit_count: number
@@ -337,7 +295,7 @@ export type Database = {
           metadata?: Json
           official_source_url: string
           plan?: Json
-          programme_ects: number
+          programme_ects?: number | null
           published?: boolean
           status: string
           unique_unit_count: number
@@ -352,7 +310,7 @@ export type Database = {
           metadata?: Json
           official_source_url?: string
           plan?: Json
-          programme_ects?: number
+          programme_ects?: number | null
           published?: boolean
           status?: string
           unique_unit_count?: number
@@ -363,7 +321,75 @@ export type Database = {
             foreignKeyName: "course_curriculum_archives_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "course_curriculum_archives_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
             referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_editorial_review_decisions: {
+        Row: {
+          course_id: string
+          decision: string
+          id: string
+          issue_key: string
+          issue_kind: string
+          metadata: Json
+          review_note: string
+          reviewed_at: string
+          reviewed_by: string
+          target_object_id: string
+        }
+        Insert: {
+          course_id: string
+          decision: string
+          id?: string
+          issue_key: string
+          issue_kind: string
+          metadata?: Json
+          review_note: string
+          reviewed_at?: string
+          reviewed_by: string
+          target_object_id: string
+        }
+        Update: {
+          course_id?: string
+          decision?: string
+          id?: string
+          issue_key?: string
+          issue_kind?: string
+          metadata?: Json
+          review_note?: string
+          reviewed_at?: string
+          reviewed_by?: string
+          target_object_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_editorial_review_decisions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "course_editorial_review_decisions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_editorial_review_decisions_target_object_id_fkey"
+            columns: ["target_object_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
             referencedColumns: ["id"]
           },
         ]
@@ -541,6 +567,13 @@ export type Database = {
             foreignKeyName: "curricular_units_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "curricular_units_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
           },
@@ -713,6 +746,48 @@ export type Database = {
           },
         ]
       }
+      email_template_catalog: {
+        Row: {
+          audience: string
+          body_html: string
+          delivery_enabled: boolean
+          locale: string
+          review_status: string
+          site_origin: string
+          subject: string
+          template_key: string
+          template_source_path: string
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          audience?: string
+          body_html: string
+          delivery_enabled?: boolean
+          locale?: string
+          review_status?: string
+          site_origin?: string
+          subject: string
+          template_key: string
+          template_source_path: string
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          audience?: string
+          body_html?: string
+          delivery_enabled?: boolean
+          locale?: string
+          review_status?: string
+          site_origin?: string
+          subject?: string
+          template_key?: string
+          template_source_path?: string
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
       embeddings: {
         Row: {
           content_hash: string | null
@@ -787,6 +862,13 @@ export type Database = {
             foreignKeyName: "enrollments_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "enrollments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
           },
@@ -832,6 +914,47 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "external_sources_learning_object_id_fkey"
+            columns: ["learning_object_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      external_url_checks: {
+        Row: {
+          check_method: string
+          check_status: string
+          checked_at: string
+          id: string
+          learning_object_id: string
+          metadata: Json
+          notes: string
+          observed_title: string | null
+        }
+        Insert: {
+          check_method: string
+          check_status: string
+          checked_at?: string
+          id?: string
+          learning_object_id: string
+          metadata?: Json
+          notes?: string
+          observed_title?: string | null
+        }
+        Update: {
+          check_method?: string
+          check_status?: string
+          checked_at?: string
+          id?: string
+          learning_object_id?: string
+          metadata?: Json
+          notes?: string
+          observed_title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "external_url_checks_learning_object_id_fkey"
             columns: ["learning_object_id"]
             isOneToOne: false
             referencedRelation: "learning_objects"
@@ -1292,6 +1415,13 @@ export type Database = {
             foreignKeyName: "playlists_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "playlists_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
           },
@@ -1325,6 +1455,38 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "project_credit_approvals_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "project_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_credit_revocations: {
+        Row: {
+          id: string
+          profile_id: string
+          reason: string
+          revoked_at: string
+          revoked_by: string
+        }
+        Insert: {
+          id?: string
+          profile_id: string
+          reason: string
+          revoked_at?: string
+          revoked_by: string
+        }
+        Update: {
+          id?: string
+          profile_id?: string
+          reason?: string
+          revoked_at?: string
+          revoked_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_credit_revocations_profile_id_fkey"
             columns: ["profile_id"]
             isOneToOne: false
             referencedRelation: "project_profiles"
@@ -1584,6 +1746,13 @@ export type Database = {
             foreignKeyName: "resource_suggestions_curricular_unit_id_fkey"
             columns: ["curricular_unit_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["curricular_unit_id"]
+          },
+          {
+            foreignKeyName: "resource_suggestions_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
             referencedRelation: "curricular_units"
             referencedColumns: ["id"]
           },
@@ -1653,6 +1822,44 @@ export type Database = {
           {
             foreignKeyName: "semantic_matches_target_object_id_fkey"
             columns: ["target_object_id"]
+            isOneToOne: false
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_module_progress: {
+        Row: {
+          completed_at: string | null
+          completion_source: string
+          module_id: string
+          started_at: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          completion_source?: string
+          module_id: string
+          started_at?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          completion_source?: string
+          module_id?: string
+          started_at?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_module_progress_module_id_fkey"
+            columns: ["module_id"]
             isOneToOne: false
             referencedRelation: "learning_objects"
             referencedColumns: ["id"]
@@ -1772,6 +1979,13 @@ export type Database = {
             foreignKeyName: "unit_videos_curricular_unit_id_fkey"
             columns: ["curricular_unit_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["curricular_unit_id"]
+          },
+          {
+            foreignKeyName: "unit_videos_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
             referencedRelation: "curricular_units"
             referencedColumns: ["id"]
           },
@@ -1837,8 +2051,22 @@ export type Database = {
             foreignKeyName: "video_classifications_course_id_fkey"
             columns: ["course_id"]
             isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "video_classifications_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
             referencedRelation: "courses"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_classifications_curricular_unit_id_fkey"
+            columns: ["curricular_unit_id"]
+            isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["curricular_unit_id"]
           },
           {
             foreignKeyName: "video_classifications_curricular_unit_id_fkey"
@@ -2054,23 +2282,31 @@ export type Database = {
     Views: {
       course_unit_content_coverage: {
         Row: {
-          course_id: string
-          course_code: string
-          curricular_unit_id: string
-          curricular_unit_object_id: string | null
-          curricular_unit_code: string | null
-          curricular_unit_title: string
-          year: number | null
-          semester: number | null
+          collection_count: number | null
+          course_code: string | null
+          course_id: string | null
+          coverage_status: string | null
           curricular_category: string | null
+          curricular_unit_code: string | null
+          curricular_unit_id: string | null
+          curricular_unit_object_id: string | null
+          curricular_unit_title: string | null
           elective_group: string | null
           official_hours: number | null
-          video_count: number
-          reading_count: number
-          collection_count: number
-          coverage_status: string
+          reading_count: number | null
+          semester: number | null
+          video_count: number | null
+          year: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "curricular_units_learning_object_id_fkey"
+            columns: ["curricular_unit_object_id"]
+            isOneToOne: true
+            referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       public_youtube_creator_catalog_v1: {
         Row: {
@@ -2268,6 +2504,24 @@ export type Database = {
           video_id: string
         }[]
       }
+      get_editor_ifes_course_quality_v1: {
+        Args: { p_course_code?: string }
+        Returns: {
+          course_code: string
+          curricular_discrepancies_open: number
+          curriculum_units: number
+          distinct_youtube_videos: number
+          editorial_playlists: number
+          editorial_reviews_pending: number
+          external_reading_relations: number
+          published_study_modules: number
+          published_topics: number
+          recorded_editorial_decisions: number
+          source_pages_checked: number
+          source_pages_recheck: number
+          teacher_validations_recorded: number
+        }[]
+      }
       get_learning_object_children: {
         Args: { p_parent_object_id: string; p_relation_type?: string }
         Returns: {
@@ -2316,6 +2570,26 @@ export type Database = {
           relation_type: string
         }[]
       }
+      get_my_course_study_modules_v1: {
+        Args: { p_course_code: string }
+        Returns: {
+          completed_at: string
+          module_slug: string
+          school_year: number
+          status: string
+          unit_slug: string
+        }[]
+      }
+      get_my_course_study_progress_v1: {
+        Args: { p_course_code: string }
+        Returns: {
+          by_year: Json
+          completed_modules: number
+          completion_pct: number
+          course_code: string
+          total_modules: number
+        }[]
+      }
       get_my_editorial_playlist_progress_v1: {
         Args: { p_slug: string }
         Returns: {
@@ -2325,6 +2599,60 @@ export type Database = {
           playlist_title: string
           started_items: number
           total_items: number
+        }[]
+      }
+      get_public_course_creator_video_study_v1: {
+        Args: { p_youtube_id: string }
+        Returns: {
+          creator_handle: string
+          creator_name: string
+          editorial_playlists: Json
+          full_video_reviewed: boolean
+          guiding_question: string
+          original_youtube_url: string
+          practice_activity: string
+          self_review_criteria: string
+          source_metadata_verified: boolean
+          study_topic_slug: string
+          syllabus_links: Json
+          teacher_approved: boolean
+          thumbnail_url: string
+          video_id: string
+          video_title: string
+        }[]
+      }
+      get_public_course_year_journey_v1: {
+        Args: { p_course_code: string; p_school_year?: number }
+        Returns: {
+          course_code: string
+          interdisciplinary_projects: Json
+          mandatory_hours: number
+          public_playlist_count: number
+          school_year: number
+          teacher_review_pending: boolean
+          unit_count: number
+          units: Json
+          year_description: string
+          year_title: string
+        }[]
+      }
+      get_public_editorial_playlist_study_guide_v1: {
+        Args: { p_playlist_slug: string }
+        Returns: {
+          curricular_units: Json
+          guide_slug: string
+          guide_title: string
+          guiding_questions: Json
+          item_count: number
+          learning_goal: string
+          playlist_description: string
+          playlist_id: string
+          playlist_title: string
+          practical_activity: string
+          self_review_criteria: string
+          suggested_deliverable: string
+          teacher_approved: boolean
+          videos: Json
         }[]
       }
       get_public_editorial_playlist_v2: {
@@ -2339,6 +2667,23 @@ export type Database = {
           playlist_slug: string
           playlist_title: string
           verified_metadata_count: number
+        }[]
+      }
+      get_public_study_module_v1: {
+        Args: { p_module_slug: string }
+        Returns: {
+          module_description: string
+          module_id: string
+          module_title: string
+          playlists: Json
+          practical_activity: string
+          readings: Json
+          self_review_criteria: string
+          source_url: string
+          suggested_deliverable: string
+          teacher_reviewed: boolean
+          topics: Json
+          videos: Json
         }[]
       }
       get_public_unit_learning_path_v1: {
@@ -2392,6 +2737,35 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      list_editor_course_review_queue_v1: {
+        Args: { p_course_code?: string; p_limit?: number; p_offset?: number }
+        Returns: {
+          description: string
+          issue_key: string
+          issue_kind: string
+          item_title: string
+          last_reviewed_at: string
+          latest_editorial_decision: string
+          latest_editorial_note: string
+          priority: number
+          school_year: number
+          target_object_id: string
+          teacher_approved: boolean
+          verification_scope: string
+        }[]
+      }
+      list_editor_ifes_source_quality_issues_v1: {
+        Args: { p_limit?: number }
+        Returns: {
+          affected_curricular_units: number
+          check_status: string
+          checked_at: string
+          reason: string
+          source_id: string
+          source_title: string
+          source_url: string
+        }[]
+      }
       list_editor_youtube_review_queue_v1: {
         Args: { p_limit?: number; p_offset?: number }
         Returns: {
@@ -2402,6 +2776,75 @@ export type Database = {
           source_url: string
           video_title: string
           youtube_id: string
+        }[]
+      }
+      list_public_course_creator_channels_v1: {
+        Args: { p_course_code: string }
+        Returns: {
+          annual_curricular_unit_count: number
+          channel_handle: string
+          channel_id: string
+          channel_title: string
+          channel_url: string
+          faculty_endorsement_claimed: boolean
+          published_video_count: number
+        }[]
+      }
+      list_public_course_creator_playlists_v1: {
+        Args: {
+          p_course_code: string
+          p_creator_handle?: string
+          p_year?: number
+        }
+        Returns: {
+          connected_curricular_units: Json
+          guide_questions: number
+          guide_slug: string
+          guide_title: string
+          item_count: number
+          playlist_description: string
+          playlist_id: string
+          playlist_slug: string
+          playlist_title: string
+          teacher_approved: boolean
+          thumbnail_url: string
+          video_creators: Json
+        }[]
+      }
+      list_public_course_creator_videos_v1: {
+        Args: {
+          p_channel_handle?: string
+          p_course_code: string
+          p_limit?: number
+          p_offset?: number
+          p_year?: number
+        }
+        Returns: {
+          applicable_units: Json
+          channel_handle: string
+          channel_title: string
+          metadata_verified_from_og: boolean
+          source_scope: string
+          thumbnail_url: string
+          title: string
+          youtube_id: string
+          youtube_url: string
+        }[]
+      }
+      list_public_course_projects_v1: {
+        Args: { p_course_code: string }
+        Returns: {
+          connected_study_modules: Json
+          course_code: string
+          practical_challenge: string
+          project_description: string
+          project_slug: string
+          project_steps: Json
+          project_title: string
+          resource_count: number
+          school_year: number
+          suggested_deliverable: string
+          teacher_reviewed: boolean
         }[]
       }
       list_public_course_resource_coverage_v1: {
@@ -2416,6 +2859,24 @@ export type Database = {
           unit_title: string
           video_count: number
           year: number
+        }[]
+      }
+      list_public_course_study_map_v1: {
+        Args: { p_course_code: string; p_limit?: number; p_year?: number }
+        Returns: {
+          course_code: string
+          module_slug: string
+          module_title: string
+          playlist_links: number
+          practical_activity: string
+          reference_links: number
+          school_year: number
+          study_topics: number
+          suggested_deliverable: string
+          teacher_reviewed: boolean
+          unit_code: string
+          unit_title: string
+          video_links: number
         }[]
       }
       list_public_editorial_playlist_items_v1: {
@@ -2452,6 +2913,16 @@ export type Database = {
           playlist_slug: string
           playlist_title: string
           unit_codes: string[]
+        }[]
+      }
+      list_public_sequences_for_video_v1: {
+        Args: { p_video_id: string }
+        Returns: {
+          item_count: number
+          lesson_position: number
+          playlist_id: string
+          playlist_slug: string
+          playlist_title: string
         }[]
       }
       normalize_resource_url: { Args: { p_url: string }; Returns: string }
@@ -2531,6 +3002,10 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      record_editor_course_review_v1: {
+        Args: { p_decision: string; p_issue_key: string; p_review_note: string }
+        Returns: string
+      }
       record_semantic_match: {
         Args: {
           p_algorithm_version?: string
@@ -2574,13 +3049,6 @@ export type Database = {
         }
         Returns: string
       }
-      revoke_project_credit: {
-        Args: {
-          p_profile_id: string
-          p_reason: string
-        }
-        Returns: string
-      }
       review_project_credit: {
         Args: {
           p_consent_basis: string
@@ -2603,6 +3071,10 @@ export type Database = {
       }
       review_study_blueprint: {
         Args: { p_decision: string; p_id: string; p_note?: string }
+        Returns: string
+      }
+      revoke_project_credit: {
+        Args: { p_profile_id: string; p_reason: string }
         Returns: string
       }
       search_public_catalog_v1: {
@@ -2633,6 +3105,14 @@ export type Database = {
           p_tag?: string
         }
         Returns: Json
+      }
+      set_my_study_module_completion_v1: {
+        Args: { p_completed: boolean; p_module_slug: string }
+        Returns: {
+          completed: boolean
+          module_id: string
+          updated_at: string
+        }[]
       }
       submit_playlist: {
         Args: {

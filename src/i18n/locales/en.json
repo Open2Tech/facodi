@@ -1095,7 +1095,10 @@
     "overviewTotal_many": "{{count}} sequences started",
     "overviewTotal_other": "{{count}} sequences started",
     "overviewEmpty": "You have not started a sequence yet. Pick a path and mark lessons as you go.",
-    "browse": "Browse study sequences"
+    "browse": "Browse study sequences",
+    "inSequences": "In study sequences",
+    "videoSequencesLoadFailed": "Could not load the study sequences for this video.",
+    "videoProgressLoadFailed": "Could not load your progress in these sequences."
   },
   "projectSeo": {
     "about": {

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
 import { getEnv } from '@/shared/config/env';
-import { getSequence, listSequences, saveProgress } from '@/entities/sequence/sequence.api';
+import { getSequence, listMyCompletedSequencesForVideo, listSequences, listSequencesForVideo, saveProgress } from '@/entities/sequence/sequence.api';
 import { completionPercent, nextItem, type SequenceItem, type VideoProgress } from '@/entities/sequence/sequence';
 
 const base = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
@@ -12,6 +12,25 @@ const item = (videoId: string): SequenceItem => ({
 });
 
 describe('FACODI editorial sequences', () => {
+  it('maps the sequences containing a video and the learner\'s completed ones', async () => {
+    let progressQuery: URLSearchParams | null = null;
+    server.use(
+      http.post(`${base}/rpc/list_public_sequences_for_video_v1`, async ({ request }) => {
+        expect(await request.json()).toEqual({ p_video_id: 'v1' });
+        return HttpResponse.json([{ playlist_id: 'p1', playlist_slug: 'a', playlist_title: 'A', lesson_position: 3, item_count: 8 }]);
+      }),
+      http.get(`${base}/editorial_playlist_progress`, ({ request }) => {
+        progressQuery = new URL(request.url).searchParams;
+        return HttpResponse.json([{ playlist_id: 'p1' }]);
+      }),
+    );
+    expect(await listSequencesForVideo('v1')).toEqual([{ id: 'p1', slug: 'a', title: 'A', position: 3, total: 8 }]);
+    expect(await listMyCompletedSequencesForVideo('u1', 'v1')).toEqual(new Set(['p1']));
+    expect(progressQuery!.get('user_id')).toBe('eq.u1');
+    expect(progressQuery!.get('video_id')).toBe('eq.v1');
+    expect(progressQuery!.get('completed_at')).toBe('not.is.null');
+  });
+
   it('lists one row per sequence with a lightweight cover and the unit filter only when asked', async () => {
     const bodies: unknown[] = [];
     server.use(http.post(`${base}/rpc/list_public_editorial_sequences_v1`, async ({ request }) => {

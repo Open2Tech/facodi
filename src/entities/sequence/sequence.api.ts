@@ -1,6 +1,6 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
-import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence, type SequenceProgressSummary, type SequenceSummary, type VideoProgress } from './sequence';
+import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence, type SequenceProgressSummary, type SequenceSummary, type VideoProgress, type VideoSequence } from './sequence';
 
 const PROGRESS_FIELDS = 'video_id, completed_at, last_position_seconds, updated_at';
 const MAX_POSITION = 10_000_000;
@@ -47,6 +47,21 @@ export async function listMyProgress(userId: string, playlistId: string, signal?
     .eq('user_id', userId).eq('playlist_id', playlistId).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
   return data.map(toProgress);
+}
+
+/** Sequences the learner can reach from a video page; same visibility rules as the sequence page. */
+export async function listSequencesForVideo(videoId: string, signal?: AbortSignal): Promise<VideoSequence[]> {
+  const { data, error } = await supabase.rpc('list_public_sequences_for_video_v1', { p_video_id: videoId }).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return (data ?? []).map(row => ({ id: row.playlist_id, slug: row.playlist_slug, title: row.playlist_title, position: row.lesson_position, total: row.item_count }));
+}
+
+/** Ids of the learner's sequences in which this lesson is marked as done. */
+export async function listMyCompletedSequencesForVideo(userId: string, videoId: string, signal?: AbortSignal) {
+  const { data, error } = await supabase.from('editorial_playlist_progress').select('playlist_id')
+    .eq('user_id', userId).eq('video_id', videoId).not('completed_at', 'is', null).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return new Set(data.map(row => row.playlist_id));
 }
 
 /** Records that the learner opened a lesson, without touching progress that already exists. */
