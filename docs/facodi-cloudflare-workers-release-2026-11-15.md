@@ -1,5 +1,7 @@
 # FACODI — Cloudflare Workers: branch `facodi`
 
+> **Nota de estado (15/11/2026, após PR #31):** este documento preserva o histórico de implementação do Workers. As referências abaixo a `www.facodi.com`, `auth.site_url=https://tube.open2.tech` e templates Auth não alterados descrevem um estado anterior, **não** a configuração atual. O domínio canónico é `https://facodi.com`, e os seis templates globais de autenticação são agora FACODI (Auth continua partilhado). Ver [estado atual dos templates](facodi-auth-email-templates.md) e [atualização dos assets](facodi-brand-media-and-email-canonical-2026-11-15.md). A verificação técnica das rotas e dos previews foi feita em 15/11/2026; o envio de emails não foi testado.
+
 **Data:** 15 de novembro de 2026  
 **Repositório:** https://github.com/Open2Tech/facodi/tree/facodi  
 **Ambiente associado pelo responsável:** https://facodi.marcelo-0d6.workers.dev/  
