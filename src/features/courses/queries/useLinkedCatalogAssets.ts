@@ -72,8 +72,9 @@ export function useLinkedCatalogAssets(parentId: string | null | undefined, type
 async function loadModuleProgression(moduleId: string, signal?: AbortSignal): Promise<{
   prerequisites: LinkedCatalogAsset[];
   nextModules: LinkedCatalogAsset[];
+  relatedModules: LinkedCatalogAsset[];
 }> {
-  const [incoming, outgoing] = await Promise.all([
+  const [incoming, outgoing, relatedIncoming, relatedOutgoing] = await Promise.all([
     supabase.from('learning_object_relations')
       .select('parent_object_id')
       .eq('relation_type', 'prerequisite_of')
@@ -84,14 +85,30 @@ async function loadModuleProgression(moduleId: string, signal?: AbortSignal): Pr
       .eq('relation_type', 'prerequisite_of')
       .eq('parent_object_id', moduleId)
       .limit(30).abortSignal(signal),
+    supabase.from('learning_object_relations')
+      .select('parent_object_id')
+      .eq('relation_type', 'correlates_with')
+      .eq('child_object_id', moduleId)
+      .limit(30).abortSignal(signal),
+    supabase.from('learning_object_relations')
+      .select('child_object_id')
+      .eq('relation_type', 'correlates_with')
+      .eq('parent_object_id', moduleId)
+      .limit(30).abortSignal(signal),
   ]);
   if (incoming.error) throw new Error(getSupabaseErrorMessage(incoming.error));
   if (outgoing.error) throw new Error(getSupabaseErrorMessage(outgoing.error));
+  if (relatedIncoming.error) throw new Error(getSupabaseErrorMessage(relatedIncoming.error));
+  if (relatedOutgoing.error) throw new Error(getSupabaseErrorMessage(relatedOutgoing.error));
 
   const incomingIds = [...new Set((incoming.data ?? []).map(item => item.parent_object_id))];
   const outgoingIds = [...new Set((outgoing.data ?? []).map(item => item.child_object_id))];
-  const ids = [...new Set([...incomingIds, ...outgoingIds])];
-  if (!ids.length) return { prerequisites: [], nextModules: [] };
+  const relatedIds = [...new Set([
+    ...(relatedIncoming.data ?? []).map(item => item.parent_object_id),
+    ...(relatedOutgoing.data ?? []).map(item => item.child_object_id),
+  ])].filter(id => id !== moduleId);
+  const ids = [...new Set([...incomingIds, ...outgoingIds, ...relatedIds])];
+  if (!ids.length) return { prerequisites: [], nextModules: [], relatedModules: [] };
 
   const { data, error } = await supabase.from('learning_objects')
     .select('id, slug, title, description, source_url')
@@ -109,7 +126,7 @@ async function loadModuleProgression(moduleId: string, signal?: AbortSignal): Pr
     const item = byId.get(id);
     return item ? [item] : [];
   });
-  return { prerequisites: resolve(incomingIds), nextModules: resolve(outgoingIds) };
+  return { prerequisites: resolve(incomingIds), nextModules: resolve(outgoingIds), relatedModules: resolve(relatedIds) };
 }
 
 export function useModuleProgression(moduleId: string | null | undefined) {
