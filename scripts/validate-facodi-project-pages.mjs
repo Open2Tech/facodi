@@ -14,7 +14,6 @@ const required = [
   'https://www.facodi.com/',
   'https://www.facodi.com/courses',
   'https://www.facodi.com/units',
-  'https://www.facodi.com/modules',
   'https://www.facodi.com/how-it-works',
   'https://www.facodi.com/resources',
   'https://www.facodi.com/sequences',
@@ -111,7 +110,7 @@ assert.ok(!JSON.stringify(wrangler).match(/service.role|secret|SUPABASE_SERVICE/
 
 // Learning organization: public-first, accessible, localized and not misleading.
 const moduleApi = read('src/entities/module/module.api.ts');
-const moduleCatalog = read('src/pages/Modules.tsx');
+const moduleCatalog = read('src/pages/Resources.tsx');
 const moduleDetails = read('src/pages/ModuleDetails.tsx');
 const learningGuide = read('src/components/learning/LearningPathGuide.tsx');
 const unitDetails = read('src/pages/UnitDetails.tsx');
@@ -125,8 +124,12 @@ assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('published', true)
   'Module catalog must query only public active modules');
 assert.ok(moduleApi.includes(".eq('published', true).eq('status', 'active')"),
   'Module children must be published and active under RLS');
-assert.ok(moduleCatalog.includes('<LearningContext focus="module"'),
-  'Module catalog needs contextual navigation guidance');
+assert.ok(moduleCatalog.includes('moduleOnly') && moduleCatalog.includes('moduleResourcePath(') &&
+  moduleCatalog.includes('<LearningContext focus="resource"'),
+  'Unified resource catalog must filter modules and route to module details');
+assert.ok(routes.includes('LegacyModulesRedirect') && learningGuide.includes('/resources?type=module'),
+  'Legacy module listing must redirect while learning guidance points to the unified catalog');
+assert.ok(!layout.includes("to: '/modules'"), 'Primary navigation must not link to the retired listing');
 assert.ok(moduleDetails.includes('moduleResourcePath(') &&
   moduleDetails.includes('linkedUnits') &&
   moduleDetails.includes('activity_prompt'),
