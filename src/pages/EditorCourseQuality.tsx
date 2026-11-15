@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ClipboardCheck, ExternalLink, RefreshCcw } from 
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
+import { safeExternalUrl } from '@/shared/lib/navigation';
 import { Button } from '@/components/ui/button';
 import { PageState } from '@/components/layout/PageState';
 import {
@@ -126,6 +127,17 @@ export default function EditorCourseQuality() {
   ), [all, kind, status, year]);
   const maxPage = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const visible = filtered.slice((Math.min(page, maxPage) - 1) * PAGE_SIZE, Math.min(page, maxPage) * PAGE_SIZE);
+  const targetIds = visible.map(item => item.target_object_id);
+  const targets = useQuery({
+    queryKey: ['facodi', 'ifes-editorial-resource-links', userId, targetIds.join(',')],
+    enabled: allowed && targetIds.length > 0,
+    queryFn: async () => {
+      const { data, error } = await supabase.from('learning_objects')
+        .select('id,slug,source_url').in('id', targetIds);
+      if (error) throw new Error(error.message);
+      return new Map(data.map(row => [row.id, row]));
+    },
+  });
   const kinds = [...new Set(all.map(item => item.issue_kind))];
   const stats = quality.data?.[0];
 
@@ -203,7 +215,11 @@ export default function EditorCourseQuality() {
       </p>}
 
       <ul className="mt-3 divide-y divide-input border-y border-input">
-        {visible.map(item => <li key={item.issue_key} className="py-5">
+        {visible.map(item => {
+          const target = targets.data?.get(item.target_object_id);
+          const href = resourceHref(item) ?? (target?.slug ? `/resources/${encodeURIComponent(target.slug)}` : null);
+          const originalSource = item.issue_kind === 'external_reading' ? safeExternalUrl(target?.source_url) : null;
+          return <li key={item.issue_key} className="py-5">;
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
               <p className="font-mono text-xs uppercase text-muted-foreground">
@@ -216,9 +232,10 @@ export default function EditorCourseQuality() {
               {item.latest_editorial_note && <blockquote className="mt-3 border-l-2 border-input pl-3 text-sm">
                 Revisão anterior: {item.latest_editorial_note}
               </blockquote>}
-              {resourceHref(item) && <Link to={resourceHref(item)!} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold underline underline-offset-4">
+              {href && <Link to={href} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold underline underline-offset-4">
                 Abrir recurso <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>}
+              {originalSource && <a href={originalSource} target="_blank" rel="noopener noreferrer" className="ml-4 mt-3 inline-flex items-center gap-1 text-sm font-semibold underline underline-offset-4">Fonte original <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></a>}
             </div>
             <Button variant="outline" size="sm" disabled={review.isPending} onClick={() => {
               review.reset(); setSelected(item); setDecision('revision_required'); setNote('');
@@ -226,7 +243,7 @@ export default function EditorCourseQuality() {
               {item.latest_editorial_decision ? 'Nova revisão' : 'Rever'}
             </Button>
           </div>
-        </li>)}
+        </li>; })}
       </ul>
       {queue.isSuccess && !filtered.length && <p className="mt-5 text-sm text-muted-foreground">Nenhum item corresponde aos filtros escolhidos.</p>}
       {maxPage > 1 && <nav className="mt-5 flex items-center justify-end gap-3" aria-label="Paginação da fila">
