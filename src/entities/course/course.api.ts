@@ -83,16 +83,17 @@ type ResourceRow = Pick<LearningObject,
 export interface ResourceTypeFacet { value: string; count: number }
 
 /**
- * Public resource catalogue through one SECURITY INVOKER RPC: accent-insensitive ranked search,
+ * Public resource catalogue through one SECURITY INVOKER RPC: accent-insensitive ranked search and thematic area filtering,
  * base-language matching (pt includes pt-BR) and exact type counts for the current search,
  * language and tag (the type filter itself is excluded so every type stays reachable).
  */
-export async function listResources({ search, language, page, tag, objectType }: CatalogParams, signal?: AbortSignal) {
-  const { data, error } = await supabase.rpc('search_public_resources_v3', {
+export async function listResources({ search, language, page, tag, area, objectType }: CatalogParams, signal?: AbortSignal) {
+  const { data, error } = await supabase.rpc('search_public_resources_v4', {
     p_search: search.trim(),
     p_language: language || undefined,
     p_object_type: objectType || undefined,
     p_tag: tag || undefined,
+    p_area: area || undefined,
     p_page: page,
     p_page_size: PAGE_SIZE,
   }).abortSignal(signal);

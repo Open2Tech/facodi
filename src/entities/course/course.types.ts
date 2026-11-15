@@ -16,7 +16,7 @@ export type ContentKind = 'courses' | 'curricular_units' | 'learning_objects';
 export type Content = Course | CurricularUnit | LearningObject;
 export type UnitSort = 'curriculum' | 'title' | 'ects';
 export interface CatalogParams {
-  search: string; language: string; page: number; tag?: string;
+  search: string; language: string; page: number; tag?: string; area?: string;
   course?: string; year?: number; semester?: number; sort?: UnitSort;
   status?: EditorialStatus; objectType?: string;
 }
