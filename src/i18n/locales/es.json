@@ -1178,5 +1178,10 @@
     "title": "Listas externas recomendadas",
     "notice": "Enlaces a listas de YouTube. Se verificaron el título y la URL, pero no se auditó la propiedad ni la totalidad de los vídeos.",
     "openDetails": "Consultar lista"
+  },
+  "collectionVideos": {
+    "title": "Vídeos de esta colección",
+    "notice": "Secuencia propuesta por FACODI a partir de vídeos públicos de sus canales originales. No es necesariamente una playlist oficial del creador.",
+    "empty": "Todavía no hay vídeos públicos vinculados a esta colección."
   }
 }
