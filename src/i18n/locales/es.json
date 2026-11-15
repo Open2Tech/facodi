@@ -1153,5 +1153,20 @@
     "withdrawConfirm": "¿Retirar y borrar el registro privado de esta propuesta? No se puede deshacer.",
     "withdrawConfirmButton": "Sí, retirar y borrar",
     "withdrawUnavailable": "Esta propuesta ya no está disponible o no te pertenece."
+  },
+  "editorEmails": {
+    "open": "Plantillas de correo",
+    "back": "Volver al editor",
+    "title": "Correos FACODI, sin mezclar servicios.",
+    "lead": "Los modelos están preparados en Supabase con www.facodi.com y control de versiones.",
+    "isolationLabel": "Separación de autenticación",
+    "isolationTitle": "Solo vista previa, sin envío",
+    "isolationDescription": "Estos modelos pertenecen al catálogo FACODI. Supabase Auth sigue compartido con Tube O2 y su configuración global no se ha modificado. Esta página no envía correos.",
+    "count": "{{count}} plantillas preparadas",
+    "empty": "Aún no hay plantillas.",
+    "enabled": "Envío activo",
+    "previewOnly": "Sin envío",
+    "placeholders": "Los enlaces y códigos aparecen como variables {{ .ConfirmationURL }} o {{ .Token }} hasta que Supabase los procese en una autenticación real.",
+    "previewTitle": "Vista previa: {{subject}}"
   }
 }
