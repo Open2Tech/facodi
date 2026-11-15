@@ -23,7 +23,8 @@
     "themeLight": "Switch to light theme",
     "themeDark": "Switch to dark theme",
     "notes": "Notebook",
-    "sequences": "Sequences"
+    "sequences": "Sequences",
+    "modules": "Study modules"
   },
   "common": {
     "loading": "Loading…",
@@ -494,7 +495,9 @@
     "course": "Course",
     "curricular_unit": "Curricular unit",
     "external_resource": "External reference",
-    "playlist": "Sequence"
+    "playlist": "Sequence",
+    "module": "Study module",
+    "topic": "Topics"
   },
   "video": {
     "play": "Play video: {{title}}",
@@ -1183,5 +1186,89 @@
     "title": "Videos in this collection",
     "notice": "A FACODI-curated sequence of public videos from their original channels. These items and their order do not necessarily match an official creator playlist.",
     "empty": "No public videos are linked to this collection yet."
+  },
+  "learningGuide": {
+    "nav": "How it works",
+    "eyebrow": "FACODI / LEARNING MAP",
+    "title": "Each piece has a purpose. You choose the route.",
+    "lead": "A course follows a curriculum. A unit gives each subject context. A module focuses on a topic. A sequence orders learning material. You don't have to follow every step.",
+    "more": "Understand the structure",
+    "explore": "Explore",
+    "contextLabel": "How this fits into learning at FACODI",
+    "reuseNote": "Sequences and resources can be reused across several units or modules. This is a learning map, not a rigid hierarchy.",
+    "parts": {
+      "course": {
+        "title": "Course",
+        "short": "The academic plan: subjects, years, terms and institutional references.",
+        "example": "Example: Bachelor's Degree in Management."
+      },
+      "unit": {
+        "title": "Curricular unit (subject)",
+        "short": "A subject within a course, with objectives and linked learning material.",
+        "example": "Example: Statistics for Management I."
+      },
+      "module": {
+        "title": "Study module",
+        "short": "Focused learning on a topic, with suggested activities and selected resources.",
+        "example": "Example: Introduction to Probability."
+      },
+      "sequence": {
+        "title": "Study sequence",
+        "short": "External videos in a suggested order, with private progress where available.",
+        "example": "Example: Probability step by step."
+      },
+      "resource": {
+        "title": "Resource",
+        "short": "A video, document, topic or link you can explore on its own."
+      }
+    },
+    "context": {
+      "course": "Explore the study plan and subjects here. Modules and sequences are complementary study resources, not extra subjects or credits.",
+      "unit": "A curricular unit belongs to a course. It may have modules, videos, readings and sequences; these do not replace its official syllabus.",
+      "module": "A module brings together resources and sometimes practice activities. It can support a subject and reuse material from different areas.",
+      "sequence": "A sequence suggests an order for external videos. It isn't a course, a subject or an official assessment; explore at your pace.",
+      "resource": "A resource is one learning asset, not a complete qualification. Check its academic context and original source when available."
+    },
+    "pageTitle": "How learning works at FACODI",
+    "pageDescription": "Start with an entire course or a single video. Understand the difference between academic structures and editorial resources designed to help you learn.",
+    "modulesTitle": "Modules: focus on one topic",
+    "modulesText": "A module connects materials and learning goals. Where activities exist, they are self-study suggestions rather than official institutional assignments.",
+    "modulesCta": "Browse modules",
+    "sequencesTitle": "Sequences: follow the lesson trail",
+    "sequencesText": "Sequences arrange external videos in a suggested learning order. They may be reused in several modules and curricular units. Progress is personal.",
+    "sequencesCta": "Browse sequences",
+    "resourcesTitle": "Where do resources fit?",
+    "resourcesText": "A resource can be a video, reading, document, topic or reference. It can support different learning paths without belonging to one course.",
+    "resourcesCta": "Explore resources",
+    "disclaimerTitle": "Open learning, clear credentials",
+    "disclaimerText": "FACODI organizes open educational materials. Academic references do not make modules and sequences official subjects or award degrees, ECTS credits or certified assessments. Editorial curation does not imply every full video has been reviewed."
+  },
+  "studyModules": {
+    "title": "Study modules",
+    "description": "Topic-focused FACODI guides linking resources and, in some cases, suggested practice activities.",
+    "open": "Explore module",
+    "empty": "No published modules yet.",
+    "emptyDescription": "Modules appear after editorial preparation and publication.",
+    "disclaimer": "Modules are editorial resources for independent study. They are not official subjects, grant no ECTS credits and their activities are not formal assessments.",
+    "resourceCount": "{{count}} linked materials",
+    "linkedUnits": "Related curricular units",
+    "linkedUnitsDescription": "These modules support the linked subjects but do not replace their official syllabus.",
+    "practice": "Try it yourself",
+    "practiceNotice": "Independent learning activity, not an official assessment or teacher-graded work.",
+    "activity": "Suggested activity",
+    "deliverable": "What you can create",
+    "selfReview": "How to review your work",
+    "materials": "Materials in this module",
+    "materialsDescription": "Public resources connected to this module. Editorial ordering does not guarantee full review; check each source and usage rights.",
+    "groupTitles": {
+      "module": "Related modules",
+      "topic": "Topics",
+      "playlist": "Sequences and playlists",
+      "video": "Videos",
+      "document": "Documents",
+      "external_resource": "Readings and references"
+    },
+    "noMaterials": "No available resources",
+    "noMaterialsText": "This module has no public materials linked yet."
   }
 }
