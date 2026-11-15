@@ -10,6 +10,28 @@
 https://facodi.marcelo-0d6.workers.dev/*
   X-Robots-Tag: noindex, nofollow, noarchive
 
+# Private and authentication routes must remain unindexed even for crawlers that do not run the SPA.
+/login*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/auth*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/dashboard*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/profile*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/editor*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/admin*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/notes*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/suggest*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/playlists*
+  X-Robots-Tag: noindex, nofollow, noarchive
+/community/join*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
 # Vite fingerprints JS/CSS assets. They can be cached until their names change.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

@@ -8,7 +8,7 @@ Disallow: /editor
 Disallow: /admin
 Disallow: /notes
 Disallow: /suggest
-Disallow: /playlists/submit
+Disallow: /playlists
 Disallow: /community/join
 
 Sitemap: https://facodi.com/sitemap.xml

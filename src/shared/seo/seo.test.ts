@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import pt from '@/i18n/locales/pt.json';
 import indexHtml from '../../../index.html?raw';
-import { headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, unitMeta } from './seo';
+import { headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, sequenceMeta, unitMeta } from './seo';
 
 const find = (tags: ReturnType<typeof headTags>, key: string) =>
   tags.find(tag => (tag.tag === 'meta' && (tag.name === key || tag.property === key)) || (tag.tag === 'link' && tag.rel === key));
@@ -33,6 +33,16 @@ describe('page metadata', () => {
     const module = resourceMeta({ slug: 'm 1', title: 'Módulo', object_type: 'module' }, null, { resources: 'Recursos', type: 'Módulo' });
     expect(module.path).toBe('/modules/m%201');
     expect(module.image).toBeNull();
+  });
+
+  it('uses the sequence list count and reviewed cover without inventing item names', () => {
+    const page = sequenceMeta({
+      slug: 'study-path', title: 'Study path', description: 'Public sequence.',
+      language: 'en', items: [], itemCount: 7, coverYoutubeId: 'abcdefghijk',
+    }, { sequences: 'Study sequences' });
+    expect(page.image?.url).toBe('https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg');
+    expect(page.jsonLd?.[0]).toMatchObject({ '@type': 'ItemList', numberOfItems: 7 });
+    expect(page.jsonLd?.[0]).not.toHaveProperty('itemListElement');
   });
 
   it('never lets catalogue text close the JSON-LD script', () => {

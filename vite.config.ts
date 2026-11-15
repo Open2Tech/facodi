@@ -24,7 +24,13 @@ export default defineConfig(({ mode }) => {
           navigateFallback: '/index.html',
           cleanupOutdatedCaches: true,
           globPatterns: ['**/*.{js,css,html,svg,woff2}'],
-          globIgnores: ['stats.html'],
+          globIgnores: [
+            'stats.html',
+            'courses/**/*.html',
+            'resources/**/*.html',
+            'modules/**/*.html',
+            'sequences/**/*.html',
+          ],
           // Auth and database responses must never be persisted in an HTTP cache.
           runtimeCaching: [],
         },

@@ -44,6 +44,6 @@ jobs:
         run: bun scripts/validate-facodi-email-templates.mjs
       - name: Build production bundle without network credentials
         env:
-          VITE_SUPABASE_URL: https://wvkjainfwsyiyfcmbtid.supabase.co
-          VITE_SUPABASE_PUBLISHABLE_KEY: ci-placeholder-not-a-real-api-key
+          VITE_SUPABASE_URL: https://ci-build-only.invalid
+          VITE_SUPABASE_PUBLISHABLE_KEY: ci-build-only-not-a-real-key
         run: bun run build
