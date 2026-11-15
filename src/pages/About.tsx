@@ -7,6 +7,7 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { cn } from '@/lib/utils';
 import ProjectStorySections from '@/components/project/ProjectStorySections';
+import ProjectPageSeo from '@/components/project/ProjectPageSeo';
 
 const PRINCIPLES: { key: 'open' | 'context' | 'curated'; icon: LucideIcon; fill: string }[] = [
   { key: 'open', icon: LockOpen, fill: 'bg-brand-cyan' },
@@ -24,6 +25,7 @@ export default function About() {
   }, [hash]);
   const editor = canAccessFacodiRoute(role, 'editor');
   return <article>
+    <ProjectPageSeo page="about" />
     <header className="grid gap-8 border-b border-foreground pb-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
       <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-6xl">{t('about.title')}</h1>
       <p className="max-w-prose text-lg leading-relaxed text-muted-foreground">{t('about.lead')}</p>
