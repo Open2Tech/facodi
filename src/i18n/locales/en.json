@@ -1272,5 +1272,21 @@
     "noMaterialsText": "This module has no public materials linked yet.",
     "forUnit": "Study modules for this subject",
     "forUnitText": "Topic-based guides linked to this curricular unit, with resources and practice for independent learning."
+  },
+  "ifesProgress": {
+    "title": "Your pace, your progress",
+    "summary": "{{completed}} of {{total}} guides completed · this year: {{yearCompleted}} of {{yearTotal}}",
+    "loading": "Loading your progress…",
+    "overallProgress": "Overall guide progress",
+    "disclaimer": "Private, optional and self-reported. This is not an official Ifes grade, assessment or certificate.",
+    "guest": "Explore the guides freely. Sign in to mark what you have studied and pick up whenever you're ready.",
+    "signIn": "Sign in to save progress",
+    "resources": "{{topics}} topics · {{videos}} videos · {{readings}} readings",
+    "openGuide": "Open study guide",
+    "complete": "Mark as completed",
+    "reopen": "Continue studying",
+    "saved": "Progress saved. Keep your own pace!",
+    "saveError": "Could not save your progress. Please retry.",
+    "loadError": "Could not load your progress."
   }
 }
