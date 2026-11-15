@@ -62,6 +62,16 @@ Foram criados oito perfis públicos e três marcos verificados; os três perfis 
 
 **Publicação confirmada:** o commit a71dc0d8b32cdce6f7e5390d54d628022ddb8142 ficou READY na Vercel, e a leitura pública confirmou `/about` e `/community` com os novos conteúdos. A fila `/editor/project-credits` permanece protegida e depende de teste real com conta editorial. Novos commits após essa versão exigem confirmar o respetivo deploy.
 
+### Participação voluntária e proteção de créditos
+
+A FACODI possui um novo fluxo **privado e sem envio de emails** para interessados em contribuir: `/community/join` (submissão autenticada, consentimento explícito, histórico próprio e eliminação da proposta) e `/editor/community` (revisão editorial, sem concessão automática de funções ou publicação de nomes). A base limita pedidos a três por utilizador em sete dias, protege os dados por RLS e não grava contactos pessoais adicionais.
+
+Os créditos individuais só podem ser publicados ou retirados pelas funções auditadas `facodi.review_project_credit` e `facodi.revoke_project_credit`. As alterações diretas à tabela pública de perfis e aos registos privados de aprovação foram revogadas para os papéis da API.
+
+O fluxo de participação inclui PT/EN/ES/FR, testes transacionais de segurança e verificações estáticas no build. **Não foram criadas inscrições falsas nem disparados emails**. A versão funcional no site depende da confirmação de um deploy Vercel `READY` contendo os commits mais recentes.
+
+[Auditoria de colaboração, consentimento, RLS e zero-email](docs/facodi-community-participation-security-2026-11-15.md)
+
 ## Catálogo académico publicado (14/11/2026)
 
 A FACODI reúne percursos de diferentes instituições (UAlg, UFES e Ifes). **Snapshot do catálogo público em 14/11/2026:** 6 cursos publicados, 256 unidades curriculares e 1.076 objetos educativos, incluindo 636 referências de vídeo e 145 leituras externas. Estes totais podem mudar com importações simultâneas; a distribuição por curso está disponível nas consultas Supabase.
