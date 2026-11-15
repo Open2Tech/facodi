@@ -1014,7 +1014,7 @@
     "count": "{{count}} créditos pendientes",
     "pending": "Por verificar",
     "draft": "Sin permiso público confirmado",
-    "unverified": "Este nombre aparece en documentación interna, lo que no demuestra autoría ni permiso para publicarlo.",
+    "unverified": "Esta posible atribución fue propuesta por la dirección del proyecto o identificada en documentación de colaboración. Verifica el nombre, la contribución, una fuente pública y el permiso antes de publicar.",
     "role": "Función verificada",
     "headline": "Presentación breve",
     "description": "Contribución realizada",
