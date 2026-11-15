@@ -1091,5 +1091,15 @@
     "overviewTotal_other": "{{count}} sequences started",
     "overviewEmpty": "You have not started a sequence yet. Pick a path and mark lessons as you go.",
     "browse": "Browse study sequences"
+  },
+  "projectSeo": {
+    "about": {
+      "title": "About FACODI | From one question to an open campus",
+      "description": "Meet FACODI's founder Marcelo Santos, the SEA-EU student-led journey, technical collaborators and the story behind our open learning initiative."
+    },
+    "community": {
+      "title": "FACODI Community | Learn, share and build",
+      "description": "Explore FACODI's open learning community, share educational resources and playlists, or contribute to the project as a developer."
+    }
   }
 }
