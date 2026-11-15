@@ -1,87 +1,416 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-05T00:00:00.000Z",
-  "title": "Design System: Tube O2",
+  "generatedAt": "2026-11-15T18:46:32+00:00",
+  "title": "Design System: FACODI",
   "extensions": {
     "colorMeta": {
-      "neon-lime-core": {
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "hsl(50 60% 98%)",
+        "hex": "#FDFCF7",
+        "tonalRamp": [
+          "#332F1A",
+          "#5E5421",
+          "#8F7D24",
+          "#C4AB31",
+          "#D6C25C",
+          "#E2D48D",
+          "#EAE3C3",
+          "#F6F5EE"
+        ]
+      },
+      "navy-ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "hsl(216 56% 18%)",
+        "hex": "#142948",
+        "tonalRamp": [
+          "#1A2432",
+          "#233A5C",
+          "#274F8B",
+          "#366DBF",
+          "#608ED2",
+          "#90B0E0",
+          "#C4D3E8",
+          "#EEF1F6"
+        ]
+      },
+      "sun-marker": {
         "role": "primary",
-        "displayName": "Neon Lime Core",
-        "canonical": "oklch(96.2% 0.242 109)",
-        "tonalRamp": ["#2b2e00", "#4a5000", "#697100", "#899300", "#a9b500", "#c9d700", "#dfee00", "#eeff00"]
+        "displayName": "Sun Marker",
+        "canonical": "hsl(64 100% 50%)",
+        "hex": "#EEFF00",
+        "tonalRamp": [
+          "#383B11",
+          "#6C730D",
+          "#A7B200",
+          "#E4F500",
+          "#F1FF33",
+          "#F5FF70",
+          "#F2F7B6",
+          "#F8F9EB"
+        ]
       },
-      "neon-lime-hover": {
+      "sun-marker-pressed": {
         "role": "primary",
-        "displayName": "Neon Lime Hover",
-        "canonical": "oklch(92.4% 0.218 109)",
-        "tonalRamp": ["#262900", "#414700", "#5d6500", "#788300", "#94a200", "#afc000", "#c8da00", "#dbeb00"]
+        "displayName": "Sun Marker Pressed",
+        "canonical": "hsl(64 100% 46%)",
+        "hex": "#DBEB00",
+        "tonalRamp": [
+          "#383B11",
+          "#6C730D",
+          "#A7B200",
+          "#E4F500",
+          "#F1FF33",
+          "#F5FF70",
+          "#F2F7B6",
+          "#F8F9EB"
+        ]
       },
-      "absolute-ink": {
+      "white-sheet": {
         "role": "neutral",
-        "displayName": "Absolute Ink",
-        "canonical": "oklch(0% 0 0)",
-        "tonalRamp": ["#000000", "#101010", "#202020", "#303030", "#4a4a4a", "#6b6b6b", "#9a9a9a", "#cdcdcd"]
+        "displayName": "White Sheet",
+        "canonical": "hsl(0 0% 100%)",
+        "hex": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#7A7A7A",
+          "#999999",
+          "#B8B8B8",
+          "#D6D6D6",
+          "#F2F2F2"
+        ]
       },
-      "signal-white": {
+      "ruled-grey": {
         "role": "neutral",
-        "displayName": "Signal White",
-        "canonical": "oklch(100% 0 0)",
-        "tonalRamp": ["#222222", "#3c3c3c", "#565656", "#707070", "#8b8b8b", "#a8a8a8", "#d1d1d1", "#ffffff"]
+        "displayName": "Ruled Grey",
+        "canonical": "hsl(214 26% 95%)",
+        "hex": "#EFF2F6",
+        "tonalRamp": [
+          "#21262C",
+          "#323E4D",
+          "#425670",
+          "#5B769A",
+          "#7E95B4",
+          "#A5B5CA",
+          "#CED5DF",
+          "#F0F2F4"
+        ]
       },
-      "steel-mist": {
+      "pencil-grey": {
         "role": "neutral",
-        "displayName": "Steel Mist",
-        "canonical": "oklch(58.8% 0.043 250)",
-        "tonalRamp": ["#1e2733", "#2d394a", "#3d4b61", "#4c5f78", "#62748d", "#7f8fa1", "#a0acbb", "#c4ccd6"]
+        "displayName": "Pencil Grey",
+        "canonical": "hsl(219 21% 37%)",
+        "hex": "#4B5872",
+        "tonalRamp": [
+          "#22252B",
+          "#353D4A",
+          "#47546C",
+          "#617394",
+          "#8493AE",
+          "#A9B3C7",
+          "#CFD4DD",
+          "#F1F2F4"
+        ]
       },
-      "soft-panel": {
+      "hairline": {
         "role": "neutral",
-        "displayName": "Soft Panel",
-        "canonical": "oklch(96.9% 0 0)",
-        "tonalRamp": ["#272727", "#404040", "#595959", "#737373", "#8d8d8d", "#aaaaaa", "#d2d2d2", "#f5f5f5"]
+        "displayName": "Hairline",
+        "canonical": "hsl(216 22% 86%)",
+        "hex": "#D3DAE3",
+        "tonalRamp": [
+          "#22252B",
+          "#353E4B",
+          "#46556D",
+          "#5F7595",
+          "#8395AF",
+          "#A8B4C7",
+          "#CFD5DD",
+          "#F1F2F4"
+        ]
       },
-      "low-contrast-fill": {
+      "field-edge": {
         "role": "neutral",
-        "displayName": "Low Contrast Fill",
-        "canonical": "oklch(95.9% 0 0)",
-        "tonalRamp": ["#252525", "#3d3d3d", "#565656", "#6f6f6f", "#898989", "#a6a6a6", "#cfcfcf", "#f2f2f2"]
+        "displayName": "Field Edge",
+        "canonical": "hsl(219 15% 49%)",
+        "hex": "#6A7790",
+        "tonalRamp": [
+          "#232529",
+          "#383D47",
+          "#4C5567",
+          "#68758D",
+          "#8A94A8",
+          "#ADB4C2",
+          "#D1D5DB",
+          "#F1F2F3"
+        ]
       },
-      "field-border": {
+      "ink-foreground": {
         "role": "neutral",
-        "displayName": "Field Border",
-        "canonical": "oklch(90.7% 0 0)",
-        "tonalRamp": ["#202020", "#383838", "#505050", "#686868", "#808080", "#9c9c9c", "#c6c6c6", "#e0e0e0"]
+        "displayName": "Ink Foreground",
+        "canonical": "hsl(210 7% 95%)",
+        "hex": "#F1F2F3",
+        "tonalRamp": [
+          "#252628",
+          "#3C4043",
+          "#53595F",
+          "#727A83",
+          "#9299A0",
+          "#B3B8BD",
+          "#D4D6D8",
+          "#F2F2F3"
+        ]
       },
-      "alert-red": {
+      "correction-red": {
+        "role": "error",
+        "displayName": "Correction Red",
+        "canonical": "hsl(0 75% 42%)",
+        "hex": "#BB1B1B",
+        "tonalRamp": [
+          "#361616",
+          "#661919",
+          "#9C1616",
+          "#D61F1F",
+          "#E64C4C",
+          "#ED8282",
+          "#EFBEBE",
+          "#F8EDED"
+        ]
+      },
+      "tab-cyan": {
+        "role": "secondary",
+        "displayName": "Cyan Tab",
+        "canonical": "hsl(188 63% 52%)",
+        "hex": "#37BDD2",
+        "tonalRamp": [
+          "#193034",
+          "#205760",
+          "#218291",
+          "#2DB3C8",
+          "#59C8D9",
+          "#8BD9E5",
+          "#C2E5EB",
+          "#EEF5F7"
+        ]
+      },
+      "tab-mint": {
+        "role": "secondary",
+        "displayName": "Mint Tab",
+        "canonical": "hsl(141 59% 78%)",
+        "hex": "#A6E8BD",
+        "tonalRamp": [
+          "#1A3323",
+          "#225E37",
+          "#258E49",
+          "#32C365",
+          "#5DD587",
+          "#8DE2AB",
+          "#C3E9D0",
+          "#EEF6F1"
+        ]
+      },
+      "tab-orange": {
+        "role": "secondary",
+        "displayName": "Orange Tab",
+        "canonical": "hsl(36 100% 60%)",
+        "hex": "#FFAD33",
+        "tonalRamp": [
+          "#3B2A11",
+          "#734A0D",
+          "#B26B00",
+          "#F59300",
+          "#FFAD33",
+          "#FFC670",
+          "#F7DDB6",
+          "#F9F4EB"
+        ]
+      },
+      "tab-pink": {
+        "role": "secondary",
+        "displayName": "Pink Tab",
+        "canonical": "hsl(337 100% 72%)",
+        "hex": "#FF70A7",
+        "tonalRamp": [
+          "#3B1121",
+          "#730D34",
+          "#B20044",
+          "#F5005E",
+          "#FF3381",
+          "#FF70A7",
+          "#F7B6CF",
+          "#F9EBF1"
+        ]
+      },
+      "tab-coral": {
+        "role": "secondary",
+        "displayName": "Coral Tab",
+        "canonical": "hsl(7 100% 74%)",
+        "hex": "#FF8A7A",
+        "tonalRamp": [
+          "#3B1611",
+          "#73190D",
+          "#B21500",
+          "#F51D00",
+          "#FF4B33",
+          "#FF8170",
+          "#F7BDB6",
+          "#F9EDEB"
+        ]
+      },
+      "margin-blue": {
         "role": "tertiary",
-        "displayName": "Alert Red",
-        "canonical": "oklch(55.2% 0.181 30)",
-        "tonalRamp": ["#2b0802", "#4a0e05", "#6a1308", "#8a1a0d", "#a92011", "#c12715", "#d84f42", "#ee7f75"]
+        "displayName": "Margin Blue",
+        "canonical": "hsl(213 57% 50%)",
+        "hex": "#3778C8",
+        "tonalRamp": [
+          "#1A2532",
+          "#233D5D",
+          "#26548C",
+          "#3573C0",
+          "#5F93D3",
+          "#8FB4E0",
+          "#C4D4E9",
+          "#EEF2F6"
+        ]
+      },
+      "night-desk": {
+        "role": "neutral",
+        "displayName": "Night Desk",
+        "canonical": "hsl(222 54% 9%)",
+        "hex": "#0B1223",
+        "tonalRamp": [
+          "#1B2232",
+          "#24355B",
+          "#294689",
+          "#3860BC",
+          "#6283D0",
+          "#91A8DE",
+          "#C5CFE8",
+          "#EEF1F6"
+        ]
+      },
+      "night-sheet": {
+        "role": "neutral",
+        "displayName": "Night Sheet",
+        "canonical": "hsl(219 52% 14%)",
+        "hex": "#111E36",
+        "tonalRamp": [
+          "#1B2331",
+          "#25385A",
+          "#2B4B88",
+          "#3B67BA",
+          "#6489CE",
+          "#92ACDD",
+          "#C5D1E7",
+          "#EFF1F6"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "hsl(222 60% 6%)",
+        "hex": "#060C18",
+        "tonalRamp": [
+          "#1A2133",
+          "#21345E",
+          "#24448F",
+          "#315DC4",
+          "#5C81D6",
+          "#8DA6E2",
+          "#C3CEEA",
+          "#EEF1F6"
+        ]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero statements and major sectional pivots." },
-      "headline": { "displayName": "Headline", "purpose": "Section leaders and major content framing." },
-      "title": { "displayName": "Title", "purpose": "Card and module titles." },
-      "body": { "displayName": "Body", "purpose": "Readable narrative text and descriptions." },
-      "label": { "displayName": "Label", "purpose": "Buttons, chips, and utility metadata." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero only; 2.6rem on phones up to 4.5rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles and major sections."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, list rows, panel headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading prose capped at 65–75 characters."
+      },
+      "body-ui": {
+        "displayName": "Body UI",
+        "purpose": "Controls, tables, dense editorial lists."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Badges, eyebrows, counts and metadata; uppercase with tabular figures."
+      }
     },
     "shadows": [
-      { "name": "resting-surface", "value": "0 2px 4px rgba(0, 0, 0, 0.08)", "purpose": "Default card and control baseline." },
-      { "name": "interactive-lift", "value": "0 4px 8px rgba(0, 0, 0, 0.12)", "purpose": "Hover/focus confirmation for interactive components." },
-      { "name": "emphasis-lift", "value": "0 8px 16px rgba(0, 0, 0, 0.16)", "purpose": "Priority modules and strong emphasis containers." }
+      {
+        "name": "soft-sm",
+        "value": "0 2px 4px rgba(0,0,0,0.08)",
+        "purpose": "Focused input lift."
+      },
+      {
+        "name": "soft-md",
+        "value": "0 4px 8px rgba(0,0,0,0.12)",
+        "purpose": "Filled buttons and popovers."
+      },
+      {
+        "name": "soft-lg",
+        "value": "0 8px 16px rgba(0,0,0,0.16)",
+        "purpose": "Button hover and dialogs."
+      }
     ],
     "motion": [
-      { "name": "ease-product", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Entry and reveal transitions." },
-      { "name": "duration-fast", "value": "150ms", "purpose": "Control interaction feedback." },
-      { "name": "duration-standard", "value": "220ms", "purpose": "Section-level transitions and state changes." }
+      {
+        "name": "state",
+        "value": "150ms ease",
+        "purpose": "Colour, border and shadow state transitions."
+      },
+      {
+        "name": "rise",
+        "value": "320ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Sparing entrance for revealed content."
+      },
+      {
+        "name": "accordion",
+        "value": "200ms ease-out",
+        "purpose": "Disclosure height."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion overrides every duration."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "xl", "value": "1280px" },
-      { "name": "2xl", "value": "1400px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1536px"
+      }
     ]
   },
   "components": [
@@ -89,81 +418,143 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "High-priority action control with uppercase command tone.",
-      "html": "<button class=\"ds-btn-primary\">Explore Videos</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; border: 1.5px solid #000000; outline: 1px solid rgba(0,0,0,0.2); outline-offset: 0; background: #eeff00; color: #000000; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; transition: background-color 150ms, box-shadow 150ms, transform 150ms; box-shadow: 0 2px 4px rgba(0,0,0,0.08); cursor: pointer; } .ds-btn-primary:hover { background: #dbeb00; box-shadow: 0 4px 8px rgba(0,0,0,0.12); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { box-shadow: 0 0 0 2px #eeff00, 0 0 0 4px rgba(0,0,0,0.2); outline: none; }"
+      "description": "Sun-filled main action; one per view.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Explorar cursos</button>",
+      "css": ".ds-btn-primary{font-family:'Space Grotesk',system-ui,sans-serif;display:inline-flex;align-items:center;gap:8px;height:40px;padding:8px 20px;border:0;border-radius:0;background:hsl(var(--primary));color:hsl(var(--primary-foreground));font-size:.875rem;font-weight:600;box-shadow:0 4px 8px rgba(0,0,0,.12);cursor:pointer;transition:background-color .15s,box-shadow .15s,transform .15s}.ds-btn-primary:hover{background:hsl(var(--primary-hover));box-shadow:0 8px 16px rgba(0,0,0,.16)}.ds-btn-primary:active{transform:scale(.98)}.ds-btn-primary:focus-visible{outline:2px solid hsl(var(--foreground));outline-offset:4px}"
     },
     {
       "name": "Outline Button",
       "kind": "button",
       "refersTo": "button-outline",
-      "description": "Secondary action with transparent fill and structural border.",
-      "html": "<button class=\"ds-btn-outline\">Submit Video</button>",
-      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; border: 1.5px solid #000000; outline: 1px solid rgba(0,0,0,0.2); outline-offset: 0; background: transparent; color: #000000; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; transition: background-color 150ms, color 150ms, box-shadow 150ms; cursor: pointer; } .ds-btn-outline:hover { background: #eeff00; color: #000000; box-shadow: 0 4px 8px rgba(0,0,0,0.12); } .ds-btn-outline:focus-visible { box-shadow: 0 0 0 2px #eeff00, 0 0 0 4px rgba(0,0,0,0.2); outline: none; }"
+      "description": "Secondary action on paper; fills with sun on hover.",
+      "html": "<button class=\"ds-btn-outline\" type=\"button\">Ver unidades</button>",
+      "css": ".ds-btn-outline{font-family:'Space Grotesk',system-ui,sans-serif;display:inline-flex;align-items:center;height:40px;padding:8px 20px;border:2px solid hsl(var(--input));border-radius:0;background:hsl(var(--background));color:hsl(var(--foreground));font-size:.875rem;font-weight:600;cursor:pointer;transition:background-color .15s,border-color .15s}.ds-btn-outline:hover{background:hsl(var(--accent));border-color:hsl(var(--accent));color:hsl(var(--accent-foreground))}.ds-btn-outline:focus-visible{outline:2px solid hsl(var(--foreground));outline-offset:4px}"
     },
     {
-      "name": "Default Input",
+      "name": "Search Input",
       "kind": "input",
-      "refersTo": "input-default",
-      "description": "Hard-edge text field with high legibility and strong focus signal.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Search</span><input class=\"ds-input\" placeholder=\"Find videos\" /></label>",
-      "css": ".ds-field { display: grid; gap: 6px; max-width: 320px; } .ds-field-label { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #62748d; } .ds-input { width: 100%; height: 40px; border: 1.5px solid #e0e0e0; outline: 1px solid rgba(0,0,0,0.2); outline-offset: 0; background: #ffffff; color: #000000; padding: 0 12px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 14px; font-weight: 500; transition: border-color 150ms, box-shadow 150ms; } .ds-input::placeholder { color: #62748d; opacity: 1; } .ds-input:hover { border-color: #000000; } .ds-input:focus-visible { border-color: #eeff00; box-shadow: 0 2px 4px rgba(0,0,0,0.08); outline: none; }"
+      "refersTo": "input-text",
+      "description": "Square white field with a visible edge; sun border on focus.",
+      "html": "<label class=\"ds-search\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input class=\"ds-input\" type=\"search\" placeholder=\"Pesquisar cursos e unidades\" aria-label=\"Pesquisar\"></label>",
+      "css": ".ds-search{position:relative;display:flex;align-items:center;max-width:360px;color:hsl(var(--muted-foreground))}.ds-search svg{position:absolute;left:12px}.ds-input{font-family:'Space Grotesk',system-ui,sans-serif;width:100%;height:40px;padding:8px 12px 8px 36px;border:1.5px solid hsl(var(--input));border-radius:0;background:hsl(var(--card));color:hsl(var(--foreground));font-size:.875rem;transition:border-color .15s,box-shadow .15s}.ds-input::placeholder{color:hsl(var(--muted-foreground));opacity:1}.ds-input:focus-visible{outline:2px solid hsl(var(--foreground));outline-offset:4px;border-color:hsl(var(--primary));box-shadow:0 2px 4px rgba(0,0,0,.08)}"
     },
     {
-      "name": "Navigation Link",
+      "name": "Header Navigation",
       "kind": "nav",
-      "refersTo": "button-outline",
-      "description": "Header navigation item with muted default and tinted active state.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Videos</a><a class=\"ds-nav-link\" href=\"#\">Community</a><a class=\"ds-nav-link\" href=\"#\">Playlists</a></nav>",
-      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 4px; background: #ffffff; } .ds-nav-link { display: inline-flex; align-items: center; height: 36px; padding: 0 12px; border-radius: 6px; color: #62748d; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav-link:hover { background: #f2f2f2; color: #000000; } .ds-nav-link--active { background: rgba(238,255,0,0.12); color: #000000; }"
+      "refersTo": "nav-link-active",
+      "description": "Wordmark with cyan full stop; icon-and-label links, active link as a sun block.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a class=\"ds-brand\" href=\"#\">FACODI<span>.</span></a><a class=\"ds-nav-link is-active\" href=\"#\" aria-current=\"page\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"/><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"/></svg>Cursos</a><a class=\"ds-nav-link\" href=\"#\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10 8 16 12 10 16 10 8\"/></svg>Recursos</a></nav>",
+      "css": ".ds-nav{font-family:'Space Grotesk',system-ui,sans-serif;display:flex;align-items:center;gap:4px;padding:12px 20px;border-bottom:1px solid hsl(var(--input));background:hsl(var(--background))}.ds-brand{margin-right:16px;font-size:1.5rem;font-weight:700;letter-spacing:-.025em;color:hsl(var(--foreground));text-decoration:none}.ds-brand span{color:hsl(var(--brand-cyan))}.ds-nav-link{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;font-size:.875rem;font-weight:600;color:hsl(var(--foreground));text-decoration:none;transition:background-color .15s}.ds-nav-link:hover{background:hsl(var(--muted))}.ds-nav-link.is-active{background:hsl(var(--primary));color:hsl(var(--primary-foreground))}.ds-nav-link:focus-visible{outline:2px solid hsl(var(--foreground));outline-offset:4px}"
     },
     {
-      "name": "Default Card",
-      "kind": "card",
-      "refersTo": "card-default",
-      "description": "Border-led container for content modules and previews.",
-      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Featured Curation</h3><p class=\"ds-card-text\">Human context and quality signals surface what matters now.</p></article>",
-      "css": ".ds-card { background: #ffffff; color: #000000; border: 1.5px solid #000000; outline: 1px solid rgba(0,0,0,0.2); outline-offset: 0; padding: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: box-shadow 150ms; max-width: 420px; } .ds-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.12); } .ds-card-title { margin: 0 0 10px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 24px; line-height: 1.1; letter-spacing: -0.01em; font-weight: 700; text-transform: uppercase; } .ds-card-text { margin: 0; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #62748d; max-width: 65ch; }"
-    },
-    {
-      "name": "Signal Chip",
+      "name": "Type Badge",
       "kind": "chip",
-      "refersTo": "button-primary",
-      "description": "Compact status marker for metrics and rail metadata.",
-      "html": "<span class=\"ds-chip\">Live Signal</span>",
-      "css": ".ds-chip { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border: 1.5px solid #000000; background: #eeff00; color: #000000; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; }"
+      "refersTo": "type-badge",
+      "description": "Marker-tab fill per content type, navy mono label and icon.",
+      "html": "<span class=\"ds-badge ds-badge-video\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polygon points=\"10 8 16 12 10 16 10 8\"/></svg>Vídeo</span> <span class=\"ds-badge ds-badge-unit\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"/><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"/></svg>Unidade</span>",
+      "css": ".ds-badge{font-family:'IBM Plex Mono',ui-monospace,monospace;display:inline-flex;align-items:center;gap:6px;padding:4px 8px;font-size:.75rem;font-weight:500;text-transform:uppercase;color:hsl(var(--ink))}.ds-badge-video{background:hsl(var(--brand-pink))}.ds-badge-unit{background:hsl(var(--brand-orange))}"
+    },
+    {
+      "name": "Active Filter Chip",
+      "kind": "chip",
+      "refersTo": "nav-link-active",
+      "description": "Square removable chip for an applied facet.",
+      "html": "<button class=\"ds-chip\" type=\"button\" aria-label=\"Remover filtro idioma: Português\">Idioma: Português <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg></button>",
+      "css": ".ds-chip{font-family:'Space Grotesk',system-ui,sans-serif;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid hsl(var(--foreground));border-radius:0;background:hsl(var(--primary));color:hsl(var(--primary-foreground));font-size:.8125rem;font-weight:500;cursor:pointer;transition:background-color .15s}.ds-chip:hover{background:hsl(var(--primary-hover))}.ds-chip:focus-visible{outline:2px solid hsl(var(--foreground));outline-offset:4px}"
+    },
+    {
+      "name": "Video Card",
+      "kind": "card",
+      "refersTo": "video-card",
+      "description": "Bordered card with a real 16:9 thumbnail, mono duration tag and two-line title.",
+      "html": "<a class=\"ds-video-card\" href=\"#\"><span class=\"ds-thumb\"><span class=\"ds-duration\">12:48</span></span><span class=\"ds-video-body\"><strong>Introdução à contabilidade financeira</strong><span>Canal do autor original</span></span></a>",
+      "css": ".ds-video-card{font-family:'Space Grotesk',system-ui,sans-serif;display:flex;flex-direction:column;max-width:300px;border:1px solid hsl(var(--input));background:hsl(var(--background));color:hsl(var(--foreground));text-decoration:none;transition:border-color .15s}.ds-video-card:hover{border-color:hsl(var(--foreground))}.ds-video-card:hover strong{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}.ds-video-card:focus-visible{outline:none;box-shadow:0 0 0 2px hsl(var(--background)),0 0 0 4px hsl(var(--ring))}.ds-thumb{position:relative;display:block;aspect-ratio:16/9;background:hsl(var(--muted))}.ds-duration{font-family:'IBM Plex Mono',ui-monospace,monospace;position:absolute;right:8px;bottom:8px;padding:2px 6px;background:hsl(var(--ink));color:hsl(var(--ink-foreground));font-size:.75rem;font-variant-numeric:tabular-nums}.ds-video-body{display:flex;flex-direction:column;gap:8px;padding:16px}.ds-video-body strong{font-weight:600;line-height:1.35}.ds-video-body span{font-size:.875rem;color:hsl(var(--muted-foreground))}"
+    },
+    {
+      "name": "Ink Panel",
+      "kind": "custom",
+      "refersTo": "ink-panel",
+      "description": "Navy band opened by a 4px sun rule; footer, AuthShell aside and legal related block.",
+      "html": "<aside class=\"ds-ink-panel\"><p class=\"ds-eyebrow\">Campus aberto</p><h3>Estudar nunca exige conta.</h3><p><span class=\"ds-count\">1718</span> objetos educativos publicados.</p></aside>",
+      "css": ".ds-ink-panel{font-family:'Space Grotesk',system-ui,sans-serif;max-width:420px;padding:32px 40px;border-top:4px solid hsl(var(--primary));background:hsl(var(--ink));color:hsl(var(--ink-foreground))}.ds-ink-panel h3{margin:8px 0;font-size:1.5rem;font-weight:600;letter-spacing:-.02em}.ds-eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;margin:0;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:hsl(var(--primary))}.ds-count{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;color:hsl(var(--primary))}"
+    },
+    {
+      "name": "Marked Headline",
+      "kind": "custom",
+      "refersTo": "typography.display",
+      "description": "Headline with a sun <mark> on the key words, never gradient text.",
+      "html": "<h1 class=\"ds-marked\">Estude com o <mark>plano curricular</mark> real.</h1>",
+      "css": ".ds-marked{font-family:'Space Grotesk',system-ui,sans-serif;max-width:16ch;margin:0;font-size:2.6rem;font-weight:600;line-height:1.12;letter-spacing:-.04em;color:hsl(var(--foreground));text-wrap:balance}.ds-marked mark{-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 4px;background:hsl(var(--primary));color:hsl(var(--primary-foreground))}"
     }
   ],
   "narrative": {
-    "northStar": "Curation Grid Reactor",
-    "overview": "Tube O2 presents curation as an active system, not a passive catalog. The interface is strict, geometric, and high-contrast: hard edges, uppercase labels, dense visual hierarchy, and immediate interaction feedback. The product voice should read as engineered and alive, with clear directional momentum in every route. This system rejects enterprise blandness and static minimalism by design. Saturated accent is used as a high-value signal, not decoration; most surfaces stay monochrome so important actions and live metrics hit with precision. Motion should preserve velocity and state legibility, never become ornamental choreography.",
+    "northStar": "O caderno marcado",
+    "overview": "FACODI reads like a student's annotated notebook, not a streaming feed. The page is warm paper, the text is navy ink, and the sun-yellow marker is the one loud gesture: it highlights the word that matters, the active filter and the next action. Coloured tabs, like index stickers on a binder, tell content types apart without competing with the marker.\n\nLearners mostly arrive on a phone, wanting to find a unit and start studying, so the interface is calm, high-contrast and flat. Editorial and account pages use the same world with denser lists and typed forms. Real thumbnails of curated videos are the only imagery; the curriculum itself is the hero.",
     "keyCharacteristics": [
-      "Hard-edge geometry with zero-radius surfaces and controls.",
-      "High contrast baseline (ink on white, lime as command accent).",
-      "Uppercase, heavy-weight labels for action framing and scan speed.",
-      "Fast, purposeful transitions with reduced-motion parity.",
-      "Editorial data density without enterprise dashboard blandness."
+      "Warm paper canvas with navy ink, light by default and with a deep-navy dark mode.",
+      "One sun-yellow marker for emphasis, active state and primary actions.",
+      "Square geometry everywhere; borders separate, shadows barely exist.",
+      "Coloured tabs encode content type, always with an icon and a written label.",
+      "Navy ink bands opened by a 4px sun rule mark the footer and key panels.",
+      "Space Grotesk for reading, IBM Plex Mono for labels, counts and metadata."
     ],
     "rules": [
-      { "name": "Signal Scarcity Rule", "body": "Neon lime is reserved for actions, active state, and live emphasis. If lime starts feeling ambient, the screen is over-accented.", "section": "colors" },
-      { "name": "Contrast Floor Rule", "body": "Body copy on neutral surfaces must stay at or above a 4.5:1 contrast ratio; muted text cannot collapse into decorative gray.", "section": "colors" },
-      { "name": "One Family Rule", "body": "Space Grotesk carries display, body, and labels; consistency is preferred over decorative font pairing in product flows.", "section": "typography" },
-      { "name": "Uppercase Intent Rule", "body": "Uppercase is reserved for controls, labels, and structural headings; long-form body text must remain mixed case.", "section": "typography" },
-      { "name": "Flat-Until-Action Rule", "body": "Surfaces do not float by default; elevation appears only to confirm affordance or state change.", "section": "elevation" }
+      {
+        "name": "The One Marker Rule",
+        "body": "Sun yellow means \"look here\" or \"act here\". Never use it as a section background or a decorative wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Navy-on-Fill Rule",
+        "body": "Sun and every marker tab carry navy text, at least 5.7:1. White text never sits on a light fill; sun text is allowed only on ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Label Names It Rule",
+        "body": "Content-type and status colours are decoration. The badge text always names the type or state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral Status Rule",
+        "body": "Editorial states use a neutral ramp (`src/components/editorial/statusTone.ts`, `StatusBadge`) so they never compete with content-type tabs: active is solid ink, published translucent ink, draft sun, archived muted, unknown coral.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mixed-Case Rule",
+        "body": "Headings stay mixed case; uppercase belongs to mono labels only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Count Rule",
+        "body": "Every count, duration and statistic uses mono with tabular figures so columns line up.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Offset Rule",
+        "body": "No hard offset or \"brutalist\" shadows, no glass, no glows on surfaces. When a surface needs separation, give it a border.",
+        "section": "elevation & depth"
+      },
+      {
+        "name": "The Sun Rule",
+        "body": "Ink surfaces (footer, method band, thumbnail banners, `AuthShell` panel, legal related-policies block) open with a 4px sun top rule.",
+        "section": "elevation & depth"
+      }
     ],
     "dos": [
-      "Do keep core surfaces geometric and hard-edged (0px radius) to preserve the engineered brand signature.",
-      "Do reserve neon lime for command, active, and live-signal states; keep passive areas neutral.",
-      "Do use uppercase heavy labels for controls and operational metadata.",
-      "Do keep motion responsive and state-driven, with full reduced-motion parity.",
-      "Do maintain WCAG 2.2 AA contrast and keyboard-visible focus in all primary flows."
+      "**Do** use the sun marker for the one thing that matters on a view: the primary action, the active state or the emphasised word.",
+      "**Do** pair every content-type colour with its icon and written label.",
+      "**Do** separate surfaces with borders and ink bands.",
+      "**Do** show honest empty states, loading placeholders, explicit errors and retry controls.",
+      "**Do** keep focus visible on every interactive element, and let reduced-motion override all animation and transition durations.",
+      "**Do** use short, state-driven colour transitions (about 150ms) and the `rise` entrance (320ms) sparingly."
     ],
     "donts": [
-      "Don't make this feel like a traditional corporate enterprise UX (SAP/Oracle/Microsoft 365 style visual language).",
-      "Don't reduce the experience to a minimal static website aesthetic with low motion and low visual personality.",
-      "Don't drift into generic blog-like or business-dashboard visual identity.",
-      "Don't use decorative motion that does not communicate state.",
-      "Don't use side-stripe border accents or gradient text treatments."
+      "**Don't** round corners or add offset shadows, glassmorphism or glows.",
+      "**Don't** use gradient text, side-stripe alerts or decorative card grids.",
+      "**Don't** use `bg-black`, `neutral-*` or `text-white` directly; use the ink and foreground tokens.",
+      "**Don't** put white text on sun or marker tabs, or text in Margin Blue.",
+      "**Don't** use placeholder, stock or AI-generated imagery; use only real thumbnails of curated videos.",
+      "**Don't** change generated shadcn primitives casually; compose domain UI under `src/components`."
     ]
   }
 }

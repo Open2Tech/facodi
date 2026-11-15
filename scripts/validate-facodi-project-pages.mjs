@@ -89,6 +89,8 @@ const supabaseConfig = read('supabase/config.toml');
 const facodiPlaylistFunction = read('supabase/functions/facodi-submit-playlist/index.ts');
 assert.equal(wrangler.name, 'facodi', 'Cloudflare must deploy the FACODI Worker');
 assert.equal(wrangler.assets?.directory, './dist', 'Cloudflare must serve the Vite dist assets');
+assert.ok(wrangler.previews && typeof wrangler.previews === 'object',
+  'Workers Builds branch previews (`wrangler preview`) require a previews block');
 assert.equal(wrangler.assets?.not_found_handling, 'single-page-application',
   'Client-side routes and Auth callbacks require Cloudflare SPA fallback');
 assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
@@ -101,8 +103,8 @@ for (const rule of ['X-Content-Type-Options: nosniff','X-Frame-Options: DENY',
 assert.ok(workerHeaders.includes('/assets/*') &&
   workerHeaders.includes('max-age=31536000, immutable'),
   'Hashed Vite assets must have durable cache behavior');
-assert.ok(supabaseConfig.includes('site_url = "https://tube.open2.tech"'),
-  'Shared Auth Site URL must remain unchanged without a separate Auth setup');
+assert.ok(supabaseConfig.includes('site_url = "https://facodi.com"'),
+  'Shared Auth Site URL must mirror the hosted FACODI origin');
 for (const route of ['/auth/callback**','/auth/reset-password**']) {
   assert.ok(supabaseConfig.includes(`https://facodi.marcelo-0d6.workers.dev${route}`),
     `Workers preview missing versioned Auth redirect: ${route}`);

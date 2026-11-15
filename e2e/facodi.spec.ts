@@ -136,7 +136,7 @@ test('legal pages deep-link to sections and stay usable on mobile', async ({ pag
   await expect(page.getByRole('heading', { name: 'Your rights' })).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.goto('/legal');
-  await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(4);
+  await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(3);
 });
 
 test('language and theme persist across visits only after opting in, and withdrawing deletes them', async ({ page }) => {

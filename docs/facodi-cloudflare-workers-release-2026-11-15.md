@@ -14,7 +14,8 @@ A configuração existente `wrangler.jsonc` já define:
 - `name=facodi`;
 - `assets.directory=./dist`, correspondente ao resultado Vite;
 - `assets.not_found_handling=single-page-application`, permitindo o fallback de rotas React Router;
-- observabilidade ligada.
+- observabilidade ligada;
+- `previews: {}`, exigido por `npx wrangler preview`, o comando de deploy dos Workers Builds para branches que não são de produção (sem ele, o build conclui mas o deploy falha com "missing a `previews` block").
 
 Portanto, não foi introduzido outro runtime de servidor, D1, KV, R2 ou secrets em `wrangler.jsonc`.
 

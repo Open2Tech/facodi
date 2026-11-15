@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<title>FACODI — um campus digital aberto</title><desc>Identidade FACODI: fundo Ink, lettering claro, destaques Sun e Cyan, símbolo F geométrico e facodi.com.</desc>
+<rect width="1200" height="630" fill="#142846"/>
+<rect x="24" y="24" width="1152" height="582" rx="18" fill="none" stroke="#3979C8" stroke-width="2" opacity=".36"/>
+<g opacity=".22" stroke="#37BED2" stroke-width="1"><path d="M740 80H1155"/><path d="M740 110H1155"/><path d="M740 140H1155"/><path d="M740 170H1155"/><path d="M740 200H1155"/><path d="M740 230H1155"/><path d="M740 260H1155"/><path d="M740 290H1155"/><path d="M740 320H1155"/><path d="M740 350H1155"/><path d="M740 380H1155"/><path d="M740 410H1155"/><path d="M740 440H1155"/><path d="M740 470H1155"/><path d="M740 500H1155"/><path d="M740 530H1155"/><path d="M740 560H1155"/><path d="M740 590H1155"/><path d="M730 38V592"/><path d="M760 38V592"/><path d="M790 38V592"/><path d="M820 38V592"/><path d="M850 38V592"/><path d="M880 38V592"/><path d="M910 38V592"/><path d="M940 38V592"/><path d="M970 38V592"/><path d="M1000 38V592"/><path d="M1030 38V592"/><path d="M1060 38V592"/><path d="M1090 38V592"/><path d="M1120 38V592"/><path d="M1150 38V592"/><path d="M1180 38V592"/></g>
+<g transform="translate(72 66)"><rect width="75" height="75" rx="12" fill="#efff00"/><path d="M20 16h39v11H31v12h23v10H31v15H20z" fill="#142846"/><circle cx="59" cy="58" r="6" fill="#142846"/></g>
+<text x="167" y="122" font-family="Inter,Arial,sans-serif" font-size="43" font-weight="800" letter-spacing="1.3" fill="#f9fafb">FACODI<tspan fill="#efff00">.</tspan></text>
+<text x="74" y="244" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="3" fill="#37BED2">UM CAMPUS DIGITAL ABERTO</text>
+<text x="72" y="344" font-family="Inter,Arial,sans-serif" font-size="67" font-weight="800" letter-spacing="-1.5" fill="#f9fafb">Conhecimento</text>
+<text x="72" y="425" font-family="Inter,Arial,sans-serif" font-size="67" font-weight="800" letter-spacing="-1.5" fill="#efff00">com contexto.</text>
+<path d="M73 463H619" stroke="#37BED2" stroke-width="3"/>
+<text x="74" y="515" font-family="Inter,Arial,sans-serif" font-size="22" fill="#f9fafb">Cursos · Unidades · Recursos · Sequências</text>
+<text x="74" y="565" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="650" fill="#a7e8be">facodi.com</text>
+<g transform="translate(780 145)"><rect x="15" y="10" width="300" height="300" rx="28" transform="rotate(-7 165 160)" fill="#3979C8" opacity=".88"/><rect x="28" y="26" width="298" height="298" rx="28" transform="rotate(5 177 175)" fill="#37BED2"/><rect x="37" y="38" width="298" height="298" rx="28" fill="#efff00"/><path d="M116 104h157v30H146v48h109v30H146v108h-30z" fill="#142846"/><circle cx="262" cy="287" r="23" fill="#142846"/></g>
+<g opacity=".92"><circle cx="1066" cy="90" r="7" fill="#a7e8be"/><circle cx="1110" cy="120" r="4" fill="#efff00"/><circle cx="779" cy="551" r="6" fill="#37bed2"/></g>
+</svg>

@@ -12,7 +12,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.110.0";
  * shared Tube/Monynha sender address.
  */
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const ALLOWED = new Set(["https://facodi.vercel.app", "https://facodi.com"]);
+const ALLOWED = new Set(["https://facodi.com", "https://facodi.marcelo-0d6.workers.dev", "https://facodi.vercel.app"]);
 const allowedOrigin = (value: string | null) => {
   if (!value) return null;
   try {
@@ -77,13 +77,13 @@ function buildMail(event: Event) {
 <p style="font-size:15px;line-height:1.65">${detail}</p>
 <p style="font-size:15px;line-height:1.65"><strong>Playlist:</strong> ${escape(title)}</p>
 ${noteMarkup}
-<p style="margin:26px 0 12px"><a href="https://facodi.vercel.app/playlists/submit" style="display:inline-block;padding:13px 19px;background:#efff00;color:#142846;font-weight:700;text-decoration:none">Consultar as minhas submissões</a></p>
+<p style="margin:26px 0 12px"><a href="https://facodi.com/playlists/submit" style="display:inline-block;padding:13px 19px;background:#efff00;color:#142846;font-weight:700;text-decoration:none">Consultar as minhas submissões</a></p>
 <p style="font-size:12px;color:#526173;line-height:1.6">Mensagem transacional associada a uma submissão feita na FACODI. Não partilhe códigos ou palavras-passe por email.</p>
 </td></tr></table></td></tr></table></body></html>`;
   return {
     subject: `FACODI · ${heading}`,
     html: content,
-    text: `${heading}\n\n${detail}\n\nPlaylist: ${title}${note && kind !== "playlist_received" ? `\nObservação: ${note}` : ""}\n\nhttps://facodi.vercel.app/playlists/submit`,
+    text: `${heading}\n\n${detail}\n\nPlaylist: ${title}${note && kind !== "playlist_received" ? `\nObservação: ${note}` : ""}\n\nhttps://facodi.com/playlists/submit`,
   };
 }
 
