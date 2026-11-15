@@ -1790,8 +1790,7 @@
             "Al cerrar sesión, la sesión se elimina del navegador.",
             "Puedes cambiar el idioma y el tema en la cabecera o en tu perfil. Por defecto, la elección dura hasta que cierres la pestaña.",
             "Para recordar el idioma y el tema entre visitas, activa la opción siguiente, también disponible en tu perfil. Al desactivarla, borramos las preferencias guardadas; el idioma y el tema actuales se mantienen hasta que cierres la pestaña.",
-            "Si bloqueas el almacenamiento del navegador, algunas preferencias pueden no guardarse y el inicio de sesión puede fallar. Para consultar el catálogo público no necesitas una sesión iniciada.",
-            "Si bloqueas el almacenamiento local, no podrás iniciar sesión, pero podrás seguir leyendo el catálogo."
+            "Si bloqueas el almacenamiento del navegador, algunas preferencias pueden no guardarse y el inicio de sesión puede fallar. Para consultar el catálogo público no necesitas una sesión iniciada."
           ]
         }
       ]
