@@ -64,6 +64,17 @@ export default function ResourceDetails() {
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!resource || !info) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
+  // A previous study sequence may remain public as a historical URL alias.
+  // Redirect only verified canonical slugs; keep the user's query parameters.
+  const aliasMetadata = resource?.object_type === 'playlist' && resource.metadata
+    && typeof resource.metadata === 'object' && !Array.isArray(resource.metadata)
+    ? resource.metadata as Record<string, unknown> : null;
+  const canonicalSlug = typeof aliasMetadata?.canonical_playlist_slug === 'string'
+    ? aliasMetadata.canonical_playlist_slug : null;
+  if (canonicalSlug && canonicalSlug !== slug) {
+    return <Navigate to={`/sequences/${encodeURIComponent(canonicalSlug)}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`} replace />;
+  }
+
   if (context.data?.redirect) return <Navigate to={context.data.redirect} replace />;
   // Course and unit mirror objects have their own pages; avoid flashing this layout while resolving them.
   if (MIRRORS.includes(resource.object_type) && context.isPending) return <PageState loading />;
