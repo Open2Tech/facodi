@@ -1014,7 +1014,7 @@
     "count": "{{count}} pending credits",
     "pending": "Awaiting verification",
     "draft": "No confirmed public consent",
-    "unverified": "This name appears in internal documentation. That alone does not prove authorship, ongoing involvement or permission.",
+    "unverified": "This potential credit was nominated by the project lead or identified in collaboration records. Confirm the person's name, actual contribution, public source and permission before publication.",
     "role": "Verified contribution role",
     "headline": "Short introduction",
     "description": "Work actually contributed",
