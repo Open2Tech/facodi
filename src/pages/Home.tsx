@@ -3,6 +3,8 @@ import { ArrowRight, ArrowUpRight, BookOpen, CircleHelp, Compass, HandHeart, Lay
 import { Link, useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { homeMeta } from '@/shared/seo/seo';
 import { useCatalogCounts, usePublicCourses, useFeaturedVideos, useTopics } from '@/features/courses/queries/useCourses';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { cn } from '@/lib/utils';
@@ -36,6 +38,7 @@ export default function Home() {
     { to: '/resources', key: 'resources', count: counts.data?.resources, icon: Shapes, tone: 'bg-brand-cyan' },
   ] as const;
   return <>
+    <PageSeo {...homeMeta({ title: `FACODI — ${t('brand.tagline')}`, description: t('brand.description') })} />
     <section className="grid gap-10 pb-14 pt-4 lg:grid-cols-[1.35fr_1fr] lg:gap-14 lg:pb-20">
       <div className="flex flex-col">
         <h1 className="max-w-3xl text-balance text-[2.6rem] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-6xl lg:text-7xl">

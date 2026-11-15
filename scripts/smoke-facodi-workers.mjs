@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 const origin = (process.env.FACODI_WORKERS_ORIGIN ?? 'https://facodi.marcelo-0d6.workers.dev').replace(/\/$/, '');
-const canonical = 'https://www.facodi.com';
+const canonical = 'https://facodi.com';
 const routes = ['/', '/about', '/community', '/courses', '/modules', '/how-it-works', '/community/join',
   '/editor/email-templates', '/auth/callback', '/auth/reset-password',
   // The Workers build must support the real FACODI SPA deep links, not just its home page.

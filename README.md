@@ -12,7 +12,7 @@ repositório `Open2Tech/facodi`. As alterações no frontend devem ser
 validadas primeiramente neste endereço; **não realizar deploys na Vercel
 para cada alteração**, evitando os limites do plano atual.
 
-O domínio canónico `https://www.facodi.com` continua separado do ambiente
+O domínio canónico `https://facodi.com` (apex; `www.facodi.com` não tem DNS) continua separado do ambiente
 de desenvolvimento. O Worker serve os assets estáticos de `dist/` através
 de [`wrangler.jsonc`](wrangler.jsonc), com fallback para as rotas SPA e
 cabeçalho `X-Robots-Tag: noindex` no preview. Requer apenas as variáveis
@@ -106,10 +106,10 @@ O fluxo de participação inclui PT/EN/ES/FR, testes transacionais de segurança
 ## Catálogo académico publicado (14/11/2026)
 
 A FACODI reúne percursos de diferentes instituições (UAlg, UFES e Ifes). **Snapshot do catálogo público em 14/11/2026:** 6 cursos publicados, 256 unidades curriculares e 1.076 objetos educativos, incluindo 636 referências de vídeo e 145 leituras externas. Estes totais podem mudar com importações simultâneas; a distribuição por curso está disponível nas consultas Supabase.
-- **[CTeSP em Sistemas e Tecnologias de Informação](https://www.facodi.com/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
+- **[CTeSP em Sistemas e Tecnologias de Informação](https://facodi.com/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
 - **LESTI + Design de Comunicação:** 84 UCs públicas, 568 ligações UC–vídeo e 113 associações de leitura, além de 252 objetivos editoriais e 86 percursos/mapas internos. Na licenciatura LESTI, sete grupos genéricos de opção têm apenas orientação curricular, não um programa disciplinar fictício.
 
-- **[Licenciatura em Língua Inglesa e Literaturas de Língua Inglesa — UFES](https://www.facodi.com/courses/ufes-letras-ingles):** PPC oficial 2019, 75 componentes catalogados (28 obrigatórios, 2 estágios, 45 optativas alternativas), 3.210 horas de integralização, 225 objetivos editoriais, 36 leituras complementares e 152 associações a UCs, com 76 roteiros/mapas em rascunho interno. O currículo usa créditos brasileiros e não ECTS. **Enriquecimento de 15/11:** 87 vídeos educacionais externos verificados por origem (48 Crash Course, 23 British Council, 16 UNIVESP), 291 relações a 60 UCs e 8 coleções FACODI; arquivo do PPC 2006 com 67 componentes e 232 pares históricos de equivalência, sem reconhecimento automático de créditos. [Auditoria UFES 2019](docs/facodi-ufes-letras-ingles-ppc2019-integration.md) · [Vídeos e histórico 2006](docs/facodi-ufes-english-videos-history-2026-11-15.md) · [Qualidade curricular e 15 guias de estudo](docs/facodi-ufes-quality-and-study-guides-2026-11-15.md).
+- **[Licenciatura em Língua Inglesa e Literaturas de Língua Inglesa — UFES](https://facodi.com/courses/ufes-letras-ingles):** PPC oficial 2019, 75 componentes catalogados (28 obrigatórios, 2 estágios, 45 optativas alternativas), 3.210 horas de integralização, 225 objetivos editoriais, 36 leituras complementares e 152 associações a UCs, com 76 roteiros/mapas em rascunho interno. O currículo usa créditos brasileiros e não ECTS. **Enriquecimento de 15/11:** 87 vídeos educacionais externos verificados por origem (48 Crash Course, 23 British Council, 16 UNIVESP), 291 relações a 60 UCs e 8 coleções FACODI; arquivo do PPC 2006 com 67 componentes e 232 pares históricos de equivalência, sem reconhecimento automático de créditos. [Auditoria UFES 2019](docs/facodi-ufes-letras-ingles-ppc2019-integration.md) · [Vídeos e histórico 2006](docs/facodi-ufes-english-videos-history-2026-11-15.md) · [Qualidade curricular e 15 guias de estudo](docs/facodi-ufes-quality-and-study-guides-2026-11-15.md).
 - **[Curadoria YouTube de oito canais](docs/facodi-eight-channel-youtube-curation-2026-11-15.md):** 63 vídeos distintos identificados (59 novos e 4 reutilizados), 152 associações curriculares propostas (149 novas), oito coleções editoriais e quatro playlists externas com fonte e título verificados. Sem cópia de vídeos, vínculo institucional presumido ou importação automática de membros das playlists.
 
 **Notas de interpretação:** as optativas são alternativas de escolha, os 120 ECTS do CTeSP e os 180 ECTS das licenciaturas UAlg pertencem a planos diferentes, e os projetos editoriais FACODI não são fichas homologadas pelas instituições.
@@ -238,7 +238,7 @@ Não publicar o cadastro sem verificar estes pontos no projeto de destino:
    `http://localhost:8080/auth/callback**` e
    `http://localhost:8080/auth/reset-password`.
    A origem de preview é normalmente `http://localhost:4173`, não HTTPS.
-   Não inferir um domínio de produção a partir de `facodi.com`.
+   O callback usa sempre a origem visitada; não fixar um domínio no código de Auth.
 3. Confirmar que os templates de confirmação, recuperação e alteração de email
    seguem o `ConfirmationURL`/`RedirectTo` e não fixam rotas do frontend antigo.
 4. Verificar triggers partilhados de `auth.users` com uma conta de teste:
@@ -310,13 +310,17 @@ os caminhos `/auth/*`. Cloudflare usa [wrangler.jsonc](wrangler.jsonc).
 Docker serve o build estático com nginx e aceita apenas as duas variáveis públicas
 como build arguments. Não necessita de segredos no runtime.
 
-Não há canonical/sitemap com domínio inventado. O manifesto e o favicon são
-FACODI; antigos assets de imagem não são usados pela aplicação.
+Os metadados de página (título, descrição, canonical em `https://facodi.com`,
+Open Graph, Twitter Card e JSON-LD) vêm de [`src/shared/seo/seo.ts`](src/shared/seo/seo.ts)
+e são aplicados com `PageSeo`; rotas privadas e páginas inexistentes usam
+`noindex`. Como a aplicação é uma SPA, crawlers que não executam JavaScript só
+veem o bloco `seo:start/end` do `index.html` (metadados da página inicial, sem
+canonical). O manifesto, os ícones PNG e o favicon são FACODI.
 O antigo servidor Bun de metadados foi removido; os documentos antigos de Odoo
 são históricos e não fazem parte dos comandos nem da imagem de runtime FACODI.
 Não executar scripts legados de enriquecimento contra este frontend.
 
-Esta aplicação está publicada em **https://www.facodi.com**. O catálogo
+Esta aplicação está publicada em **https://facodi.com**. O catálogo
 académico e os recursos externos foram inseridos no Supabase através de
 migrações versionadas (ver auditoria acima). A aplicação não cria automaticamente
 inscrições, progresso académico, uploads, novas análises por IA ou perfis de
@@ -324,7 +328,7 @@ utilizador. Os conteúdos originais do Tube e as respetivas tabelas `public`
 permanecem preservados.
 
 ## Domínio FACODI, templates de email e créditos
-O frontend FACODI está associado na Vercel aos domínios verificados `facodi.com` e `www.facodi.com`, com URL canónico `https://www.facodi.com`. Os metadados, o sitemap e os 13 templates FACODI foram atualizados. O código de autenticação usa `window.location.origin` para o callback, pelo que o domínio visitado é mantido.
+O domínio `facodi.com` (apex, Cloudflare) serve o mesmo build do Worker e é o URL canónico usado em metadados, `robots.txt` e `sitemap.xml`. `www.facodi.com` não tem registo DNS. **Atenção:** os 13 templates em `supabase/email-templates/facodi/` ainda apontam para `https://www.facodi.com` e precisam de revisão antes de serem ativados. O código de autenticação usa `window.location.origin` para o callback, pelo que o domínio visitado é mantido.
 
 **Atenção:** `supabase/config.toml` mantém `auth.site_url=https://tube.open2.tech` porque Supabase Auth é compartilhado. Os 13 templates com identidade FACODI estão guardados em `facodi.email_template_catalog` como catálogo privado e também em `supabase/email-templates/facodi/`. **Esse catálogo não altera os templates globais do Supabase Auth e não envia mensagens.** O editor pode rever os templates sem envio em `/editor/email-templates`.
 

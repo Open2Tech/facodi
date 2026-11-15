@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
+import { useSeoClaims } from '@/components/layout/seoClaims';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
@@ -19,6 +20,7 @@ export default function FacodiLayout() {
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
   const dark = resolvedTheme === 'dark';
+  const seoClaims = useSeoClaims();
   const isWorkersPreview = window.location.hostname === 'facodi.marcelo-0d6.workers.dev';
   const privateRoute = location.pathname.startsWith('/community/join') || ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
@@ -54,9 +56,9 @@ export default function FacodiLayout() {
   ];
   return <div className="flex min-h-screen flex-col">
     <Helmet>
-      <title>{`FACODI — ${t('brand.tagline')}`}</title>
-      <meta name="description" content={t('brand.description')} />
-      {(privateRoute || isWorkersPreview) && <meta name="robots" content="noindex, nofollow, noarchive" />}
+      {!seoClaims.page && <title>{`FACODI — ${t('brand.tagline')}`}</title>}
+      {!seoClaims.page && <meta name="description" content={t('brand.description')} />}
+      {(privateRoute || isWorkersPreview) && !seoClaims.robots && <meta name="robots" content="noindex, nofollow, noarchive" />}
     </Helmet>
     <a href="#main" className="sr-only z-50 bg-primary p-4 text-primary-foreground focus:not-sr-only focus:absolute">{t('nav.skip')}</a>
     <header className="sticky top-0 z-30 border-b border-input bg-background">

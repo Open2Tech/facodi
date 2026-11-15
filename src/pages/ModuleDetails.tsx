@@ -1,5 +1,4 @@
 import { ArrowLeft, ArrowRight, BookOpenCheck, ChevronRight, ClipboardList, Link2 } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useModule } from '@/features/modules/useModules';
@@ -7,6 +6,8 @@ import { moduleResourcePath, type StudyModuleDetail } from '@/entities/module/mo
 import { unitPath } from '@/entities/course/course.paths';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
+import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
+import { resourceMeta } from '@/shared/seo/seo';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { plainText } from '@/shared/lib/text';
 
@@ -26,7 +27,7 @@ export default function ModuleDetails() {
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
 
   const { module, units, items } = query.data;
   const activity = metaText(module.metadata,'activity_prompt');
@@ -40,10 +41,7 @@ export default function ModuleDetails() {
   if (other.length) grouped.push({ type: 'external_resource', items: other });
 
   return <article>
-    <Helmet>
-      <title>{`${module.title} — FACODI`}</title>
-      <meta name="description" content={plainText(module.description ?? '').slice(0,155) || t('studyModules.description')} />
-    </Helmet>
+    <PageSeo {...resourceMeta({ ...module, object_type: 'module' }, null, { resources: t('nav.resources'), type: t('objectTypes.module') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-2 text-muted-foreground">
         <li><Link to="/resources?type=module" className="inline-flex items-center gap-1 underline underline-offset-4">

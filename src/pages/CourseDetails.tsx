@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
+import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
+import { courseMeta } from '@/shared/seo/seo';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { useCourseCoverage } from '@/features/courses/queries/useCourseCoverage';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
@@ -51,7 +53,7 @@ export default function CourseDetails() {
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   const { course, units, resource } = query.data;
   const isEditorialStudyPath = course.code === 'FACODI-GACS-ASTRO-2018';
   const studyPlanLabel = isEditorialStudyPath ? t('course.editorialPath') : t('course.studyPlan');
@@ -68,6 +70,7 @@ export default function CourseDetails() {
   const years = groupYears(groupUnits(units));
   const coverageById = new Map((coverage.data ?? []).map(row => [row.curricular_unit_id, row]));
   return <article>
+    <PageSeo {...courseMeta(course, { courses: t('nav.courses') })} />
     <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
     <header className="border-b border-foreground pb-10">
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{course.title}</h1>

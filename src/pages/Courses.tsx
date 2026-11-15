@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { staticPageMeta } from '@/shared/seo/seo';
 import { useTranslation } from 'react-i18next';
 import { usePublicCourses } from '@/features/courses/queries/useCourses';
 import { CourseList } from '@/components/course/CourseList';
@@ -39,10 +40,7 @@ export default function Courses() {
   const showFacet = (options: unknown[], value: string) => options.length > 1 || Boolean(value);
 
   return <>
-    <Helmet>
-      <title>{`${t('nav.courses')} — FACODI`}</title>
-      <meta name="description" content={t('catalog.description')} />
-    </Helmet>
+    <PageSeo {...staticPageMeta('/courses', { title: t('nav.courses'), description: t('catalog.description') })} />
     <CatalogHeader title={t('catalog.title')} description={t('catalog.description')} total={chips.length ? undefined : query.data?.length} />
     <LearningContext focus="course" />
     <CatalogToolbar search={search} language={language} onFilter={filter}

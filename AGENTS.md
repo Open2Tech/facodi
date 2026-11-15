@@ -86,7 +86,7 @@ Never expose service-role or other secrets through `VITE_*`.
 
 ## Deployment
 
-Static SPA: `bun run build` → `dist/` with SPA fallback. Cloudflare uses [wrangler.jsonc](wrangler.jsonc); Docker serves `dist/` via nginx ([Dockerfile](Dockerfile)). There is no runtime metadata server. Do not invent a canonical FACODI domain; Auth callbacks use the app origin.
+Static SPA: `bun run build` → `dist/` with SPA fallback. Cloudflare uses [wrangler.jsonc](wrangler.jsonc); Docker serves `dist/` via nginx ([Dockerfile](Dockerfile)). There is no runtime metadata server. The canonical origin is `https://facodi.com` (`SITE_ORIGIN` in [src/shared/seo/seo.ts](src/shared/seo/seo.ts)); Auth callbacks use the app origin.
 
 ## Generated Artifacts
 

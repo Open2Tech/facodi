@@ -4,31 +4,31 @@ import { readFileSync } from 'node:fs';
 const read = path => readFileSync(path, 'utf8');
 const sitemap = read('public/sitemap.xml');
 const robots = read('public/robots.txt');
-const projectSeo = read('src/components/project/ProjectPageSeo.tsx');
+const pageSeo = read('src/shared/seo/seo.ts');
 const about = read('src/pages/About.tsx');
 const community = read('src/pages/Community.tsx');
 const admin = read('src/pages/EditorProjectCredits.tsx');
 
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
 const required = [
-  'https://www.facodi.com/',
-  'https://www.facodi.com/courses',
-  'https://www.facodi.com/units',
-  'https://www.facodi.com/how-it-works',
-  'https://www.facodi.com/resources',
-  'https://www.facodi.com/sequences',
-  'https://www.facodi.com/about',
-  'https://www.facodi.com/community',
+  'https://facodi.com/',
+  'https://facodi.com/courses',
+  'https://facodi.com/units',
+  'https://facodi.com/how-it-works',
+  'https://facodi.com/resources',
+  'https://facodi.com/sequences',
+  'https://facodi.com/about',
+  'https://facodi.com/community',
 ];
 assert.deepEqual(urls, required, 'Public sitemap must not include private or unverified routes');
-assert.match(robots, /Sitemap: https:\/\/www\.facodi\.com\/sitemap\.xml/);
-for (const prefix of ['/login', '/auth', '/editor', '/admin', '/profile', '/dashboard', '/suggest']) {
+assert.match(robots, /Sitemap: https:\/\/facodi\.com\/sitemap\.xml/);
+for (const prefix of ['/login', '/auth', '/editor', '/admin', '/profile', '/dashboard', '/suggest', '/notes', '/community/join']) {
   assert.ok(robots.includes(`Disallow: ${prefix}`), `Private route missing from robots: ${prefix}`);
 }
-assert.ok(projectSeo.includes('rel="canonical"'), 'Project SEO requires canonical URLs');
-assert.ok(projectSeo.includes('application/ld+json'), 'Project SEO must include structured metadata');
-assert.ok(about.includes('<ProjectPageSeo page="about"'), 'About must install route-specific SEO');
-assert.ok(community.includes('<ProjectPageSeo page="community"'), 'Community must install route-specific SEO');
+assert.ok(pageSeo.includes("rel: 'canonical'"), 'Page SEO requires canonical URLs');
+assert.ok(pageSeo.includes('application/ld+json'), 'Page SEO must include structured metadata');
+assert.ok(about.includes("staticPageMeta('/about'"), 'About must install route-specific SEO');
+assert.ok(community.includes("staticPageMeta('/community'"), 'Community must install route-specific SEO');
 assert.ok(admin.includes("supabase.rpc('revoke_project_credit'"), 'Editor must offer revocation workflow');
 
 for (const lang of ['pt', 'en', 'es', 'fr']) {

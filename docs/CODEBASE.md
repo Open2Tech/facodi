@@ -102,6 +102,23 @@ avançados que não estejam no formulário.
 HTML é sanitizado com DOMPurify e allowlist de elementos de texto, sem scripts,
 frames, estilos ou eventos. Links para recursos externos só aceitam HTTP(S).
 
+## SEO e partilha
+
+[src/shared/seo/seo.ts](../src/shared/seo/seo.ts) é a fonte única de metadados:
+descritores por página (`homeMeta`, `courseMeta`, `unitMeta`, `resourceMeta`,
+`sequenceMeta`, `staticPageMeta`), builders JSON-LD (`Organization`, `WebSite`,
+`BreadcrumbList`, `Course`, `LearningResource`, `VideoObject`, `ItemList`) e
+`headTags()`. O módulo é puro (sem `@/` nem APIs do browser) para poder ser
+reutilizado por scripts de build. As páginas usam
+[PageSeo](../src/components/layout/PageSeo.tsx); estados inexistentes usam
+`NoIndex`. O canonical é sempre `https://facodi.com`; o bloco `seo:start/end`
+do `index.html` tem de corresponder a `homeMeta` (teste em `seo.test.ts`).
+No React 19, o `react-helmet-async` só delega o hoisting ao React e não
+deduplica tags: `PageSeo`/`NoIndex` reclamam o head através de `SeoScope`, e o
+`FacodiLayout` só emite título, descrição e `robots` por defeito quando nenhuma
+página o fez. As tags estáticas da shell (`data-seo-shell`) são removidas no
+arranque, em `main.tsx`.
+
 ## Verificação
 
 Testes co-localizados cobrem rotas/papéis, hidratação e limpeza de cache,

@@ -1,4 +1,5 @@
-import { Helmet } from 'react-helmet-async';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { staticPageMeta } from '@/shared/seo/seo';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActiveFilters } from '@/components/catalog/ActiveFilters';
@@ -27,10 +28,7 @@ export default function Sequences() {
   const matching = filterSequences(query.data ?? [], search, language);
   const pageItems = matching.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   return <>
-    <Helmet>
-      <title>{`${t('sequences.title')} — FACODI`}</title>
-      <meta name="description" content={t('sequences.description')} />
-    </Helmet>
+    <PageSeo {...staticPageMeta('/sequences', { title: t('sequences.title'), description: t('sequences.description') })} />
     <CatalogHeader title={t('sequences.title')} description={t('sequences.description')} total={query.data?.length} />
     <LearningContext focus="sequence" />
     <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t('sequences.notice')}</p>

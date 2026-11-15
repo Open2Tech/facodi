@@ -1,7 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
+import { resourceMeta } from '@/shared/seo/seo';
 import { toast } from 'sonner';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus, NotebookPen } from 'lucide-react';
 import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
@@ -55,7 +56,7 @@ export default function ResourceDetails() {
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!resource || !info) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (!resource || !info) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   if (context.data?.redirect) return <Navigate to={context.data.redirect} replace />;
   // Course and unit mirror objects have their own pages; avoid flashing this layout while resolving them.
   if (MIRRORS.includes(resource.object_type) && context.isPending) return <PageState loading />;
@@ -110,11 +111,7 @@ export default function ResourceDetails() {
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
 
   return <article>
-    <Helmet>
-      <title>{`${resource.title} — FACODI`}</title>
-      <meta name="description" content={plainText(resource.description).slice(0, 160) || resource.title} />
-      {info.thumbnail && <meta property="og:image" content={info.thumbnail} />}
-    </Helmet>
+    <PageSeo {...resourceMeta(resource, info, { resources: t('nav.resources'), type: typeLabel })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
         <li><Link className="underline underline-offset-4 hover:text-foreground" to="/resources">{t('nav.resources')}</Link></li>
