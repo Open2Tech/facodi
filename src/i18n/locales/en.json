@@ -1269,6 +1269,8 @@
       "external_resource": "Readings and references"
     },
     "noMaterials": "No available resources",
-    "noMaterialsText": "This module has no public materials linked yet."
+    "noMaterialsText": "This module has no public materials linked yet.",
+    "forUnit": "Study modules for this subject",
+    "forUnitText": "Topic-based guides linked to this curricular unit, with resources and practice for independent learning."
   }
 }
