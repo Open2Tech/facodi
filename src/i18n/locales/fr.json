@@ -1178,5 +1178,10 @@
     "title": "Playlists externes suggérées",
     "notice": "Liens vers des playlists YouTube. Les titres et les URL ont été vérifiés, mais ni la propriété ni l'intégralité des vidéos n'ont été auditées.",
     "openDetails": "Consulter la playlist"
+  },
+  "collectionVideos": {
+    "title": "Vidéos de cette collection",
+    "notice": "Séquence proposée par FACODI à partir des vidéos publiques des chaînes d'origine. Il ne s'agit pas nécessairement d'une playlist officielle du créateur.",
+    "empty": "Aucune vidéo publique n'est encore associée à cette collection."
   }
 }
