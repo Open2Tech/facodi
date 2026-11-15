@@ -1631,7 +1631,7 @@
           "title": "Contribuições",
           "body": [
             "Podes sugerir recursos, submeter playlists do YouTube e propor colaboração. Cada envio fica privado entre ti e a equipa editorial até ser revisto, e nada é publicado automaticamente.",
-            "Ao sugerir um recurso, declaras que a licença indicada permite o uso em contexto educativo e que a atribuição ao autor está correta. O fluxo de sugestões não aceita recursos com licenças NC (não comercial) ou ND (sem obras derivadas).",
+            "Ao sugerir um recurso, identifica a licença e a fonte com rigor. Recursos com restrições NC (não comercial) ou ND (sem obras derivadas) podem entrar na fila, mas são sinalizados para revisão e podem ser recusados pela equipa editorial; o envio não equivale a aprovação.",
             "Manténs os direitos sobre o que crias. Ao enviar, autorizas a FACODI a guardar e analisar a contribuição e, se for aprovada, a publicar a ligação, o título, a descrição e os metadados no catálogo, com atribuição à fonte original. O teu nome só é publicado como crédito com a tua confirmação.",
             "Existem limites de envio para evitar abusos, por exemplo três propostas de colaboração por cada sete dias."
           ]
@@ -1752,7 +1752,7 @@
               [
                 "facodi-notes:v1:guest",
                 "Armazenamento local",
-                "Guarda as notas que escreves sem sessão iniciada, apenas neste dispositivo. São importadas para a conta quando inicias sessão.",
+                "Guarda as notas que escreves sem sessão iniciada neste dispositivo. Depois de entrares na conta, podes optar por importar essas notas; a importação não é automática.",
                 "Até serem importadas ou apagadas",
                 "Não necessário: guardar a nota neste dispositivo é o próprio serviço que pedes ao escrevê-la, e o aviso junto às notas indica onde ficam."
               ],
@@ -1790,7 +1790,7 @@
             "Terminar sessão remove a sessão do navegador.",
             "Podes mudar o idioma e o tema no cabeçalho ou no perfil. Por omissão, a escolha vale até fechares o separador.",
             "Para lembrar o idioma e o tema entre visitas, liga a opção abaixo, também disponível no perfil. Ao desligá-la, apagamos as preferências guardadas; o idioma e o tema atuais mantêm-se até fechares o separador.",
-            "Para apagar tudo, usa a opção de limpar os dados do site nas definições do navegador. As notas criadas sem conta perdem-se.",
+            "Se bloqueares o armazenamento do navegador, algumas preferências podem não ser guardadas e a autenticação pode ficar indisponível. A leitura do catálogo público não depende de teres uma sessão iniciada.",
             "Se bloqueares o armazenamento local, não consegues iniciar sessão, mas continuas a poder ler o catálogo."
           ]
         }
