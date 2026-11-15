@@ -1033,7 +1033,19 @@
     "publish": "Verificar y publicar",
     "empty": "Sin créditos pendientes",
     "emptyDescription": "No quedan candidatos por revisar.",
-    "footer": "Referencias académicas, aliados tecnológicos y colaboradores individuales son categorías diferentes. Una reunión no autoriza a publicar un nombre."
+    "footer": "Referencias académicas, aliados tecnológicos y colaboradores individuales son categorías diferentes. Una reunión no autoriza a publicar un nombre.",
+    "approvedTitle": "Créditos públicos aprobados",
+    "approvedDescription": "Si se retira el consentimiento o hay un error, puede ocultar el crédito sin borrar el historial privado.",
+    "loadingApproved": "Consultando créditos…",
+    "noneApproved": "Todavía no hay colaboradores personales aprobados.",
+    "withdrawAction": "Retirar crédito",
+    "withdrawConfirm": "El nombre dejará de mostrarse públicamente y se conservará el historial de aprobación.",
+    "withdrawReason": "Motivo de retirada (privado)",
+    "withdrawReasonHint": "Por ejemplo, petición de la persona o corrección documentada.",
+    "withdrawAcknowledge": "Confirmo que se debe retirar el crédito y que he documentado el motivo. No se reactivará automáticamente.",
+    "withdrawConfirmButton": "Confirmar retirada",
+    "withdrawValidation": "Confirme la acción y escriba un motivo de al menos 25 caracteres.",
+    "withdrawSuccess": "Crédito retirado. Se conserva la auditoría."
   },
   "sequences": {
     "title": "Secuencias de estudio",
