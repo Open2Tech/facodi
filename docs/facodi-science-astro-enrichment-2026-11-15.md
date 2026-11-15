@@ -74,3 +74,9 @@ As páginas institucionais da Universidade de São Paulo identificam duas playli
 - ASTRO09 continua com apenas material introdutório sobre ondas e física espacial; nenhuma aula foi rotulada como explicação integral de astrobiologia ou ondas gravitacionais.
 - As sequências não incluem exercícios gerados por IA e não atestam transcrições, licenças de re-hospedagem ou leitura integral de todos os vídeos.
 - A estrutura já é consumida pelo frontend através de `list_public_editorial_sequences_v1` e `get_public_editorial_playlist_v2`; as coleções ligam-se aos cursos pelo grafo `learning_object_relations`.
+
+### Verificação adicional no site público
+
+- [Esfera celeste e orientação astronómica — ASTRO02](https://facodi.com/courses/astronomia-astrofisica-gacs-2018/units/gacs-astro-2018-astro02): página React carregada e referência institucional **Astronomia: Uma Visão Geral I** presente em «Leituras e documentação», juntamente com duas referências históricas INPE já existentes.
+- A página assinala corretamente que **não há vídeos individuais já classificados** para ASTRO02. A playlist institucional funciona como recurso externo para essa lacuna, sem inflacionar a contagem de aulas FACODI.
+- Nenhuma reprodução individual das 66 aulas externas foi testada; apenas a presença e o encaminhamento para a playlist original foram verificados.
