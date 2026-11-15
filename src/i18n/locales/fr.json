@@ -174,7 +174,19 @@
     "unitCount_other": "{{count}} UE",
     "courseResults": "Résultats des formations",
     "noMatches": "Aucune formation ne correspond aux filtres.",
-    "noMatchesText": "Essaie d’autres mots ou une autre langue, ou retire l’un des filtres ci-dessus. La recherche ignore les accents et trouve aussi le code, l’établissement et l’école."
+    "noMatchesText": "Essaie d’autres mots ou une autre langue, ou retire l’un des filtres ci-dessus. La recherche ignore les accents et trouve aussi le code, l’établissement et l’école.",
+    "browseByArea": "Explorer par domaine",
+    "allAreas": "Tous les domaines",
+    "area": "Domaine",
+    "areaHint": "Des regroupements thématiques proposés par FACODI, pas des classements académiques officiels. Une ressource peut couvrir plusieurs domaines.",
+    "studyAreas": {
+      "mathematics": "Mathématiques et statistiques",
+      "technology": "Technologie et informatique",
+      "science": "Sciences et astronomie",
+      "management": "Gestion et entreprise",
+      "languages": "Langues et communication",
+      "education": "Éducation et pédagogie"
+    }
   },
   "access": {
     "denied": "Vous n'avez pas accès à cet espace.",

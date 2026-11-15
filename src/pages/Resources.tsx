@@ -13,6 +13,7 @@ import { useCatalogFilterChips } from '@/components/catalog/useCatalogFilterChip
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
+import { StudyAreaFilters } from '@/components/catalog/StudyAreaFilters';
 import { moduleResourcePath } from '@/entities/module/module.api';
 import { videoInfo } from '@/entities/course/video';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
@@ -22,12 +23,12 @@ import { cn } from '@/lib/utils';
 
 export default function Resources() {
   const { t } = useTranslation();
-  const { page, search, language, tag, type, filter, reset } = useCatalogParams();
-  const query = useResources({ page, search, language, tag, objectType: type });
+  const { page, search, language, tag, area, type, filter, reset } = useCatalogParams();
+  const query = useResources({ page, search, language, tag, area, objectType: type });
   const results = useRef<HTMLDivElement>(null);
   const moduleOnly = type === 'module';
   const typeLabel = (value: string) => t('objectTypes.' + value, { defaultValue: value });
-  const chips = useCatalogFilterChips({ search, language, tag, type: type && typeLabel(type) });
+  const chips = useCatalogFilterChips({ search, language, tag, area, type: type && typeLabel(type) });
   const facets = query.data?.types ?? [];
   // Keep the selected type reachable even when the other filters leave it with no matches.
   const withSelected = type && !facets.some(facet => facet.value === type) ? [...facets, { value: type, count: 0 }] : facets;
@@ -51,7 +52,8 @@ export default function Resources() {
     <CatalogHeader title={t('resources.title')} description={t('resources.description')} total={chips.length ? undefined : query.data?.total} />
     <LearningContext focus="resource" />
     <CatalogToolbar search={search} language={language} onFilter={filter} searchPlaceholder={t('resources.searchPlaceholder')} />
-    {!!options.length && <div className="-mt-2 mb-8">
+    <StudyAreaFilters value={area} onChange={value => filter('area', value)} />
+    {!!options.length && <div className="mb-8">
       <FacetGroup title={t('resources.filterType')} value={type} onChange={value => filter('type', value)} scroll
         allLabel={t('resources.allTypes')} allCount={facets.reduce((sum, item) => sum + item.count, 0)} options={options} />
     </div>}
