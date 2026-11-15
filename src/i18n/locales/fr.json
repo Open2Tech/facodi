@@ -1091,5 +1091,15 @@
     "overviewTotal_other": "{{count}} séquences commencées",
     "overviewEmpty": "Tu n’as pas encore commencé de séquence. Choisis un parcours et marque les cours au fur et à mesure.",
     "browse": "Voir les séquences d’étude"
+  },
+  "projectSeo": {
+    "about": {
+      "title": "FACODI | D'une question à un campus ouvert",
+      "description": "Découvrez l'origine de FACODI, son créateur Marcelo Santos, le parcours SEA-EU et les collaborations au service de l'apprentissage ouvert."
+    },
+    "community": {
+      "title": "Communauté FACODI | Apprendre, partager, créer",
+      "description": "Rejoignez FACODI : explorez des cours, proposez des ressources et des playlists, ou contribuez au code ouvert."
+    }
   }
 }
