@@ -908,7 +908,23 @@
     "term": "Semestre",
     "elective": "Option {{group}}",
     "annual": "Annuel",
-    "error": "Impossible de charger l’ancien plan d’études."
+    "error": "Impossible de charger l’ancien plan d’études.",
+    "brazilianCreditsNotice": "Cursus brésilien : charge horaire exprimée en heures, sans conversion artificielle en ECTS.",
+    "equivalenceNoticeGeneral": "Archive historique. Les équivalences et validations de crédits requièrent l'approbation de l'université. Les options ne sont pas cumulables automatiquement.",
+    "officialSourceGeneral": "Consulter le document officiel de l'établissement",
+    "unscheduled": "Unités historiques sans semestre fixe",
+    "notScheduled": "Sans semestre fixe",
+    "hours": "Heures",
+    "equivalences": "{{count}} relations d'équivalence documentées",
+    "equivalencesWarning": "Liste issue de la section des équivalences du PPC UFES 2019. Les correspondances ne confèrent aucun crédit automatiquement; l'établissement décide de leur applicabilité.",
+    "priorCode": "Code de cursus 2006",
+    "currentCode": "Code de cursus 2019",
+    "categories": {
+      "required": "Obligatoire dans le cursus 2006",
+      "supervised_internship": "Stage supervisé obligatoire (2006)",
+      "credit_use_only": "Uniquement pour la validation d'études",
+      "elective_offering": "Option historique"
+    }
   },
   "projectStory": {
     "eyebrow": "FACODI / L'ORIGINE",
