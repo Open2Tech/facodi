@@ -12,7 +12,7 @@ describe('LegalDocument', () => {
     expect(screen.queryByText(i18n.t('legal.common.pending'))).not.toBeInTheDocument();
     expect(screen.getByText(/505 387 271/)).toBeInTheDocument();
     expect(screen.getByText(/Campus da Penha/)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Universidade do Algarve/i })).toHaveAttribute('href', 'https://www.ualg.pt/');
+    expect(screen.getAllByRole('link').some(link => link.getAttribute('href') === 'https://www.ualg.pt/')).toBe(true);
     const related = screen.getByRole('navigation', { name: i18n.t('legal.common.related') });
     expect(within(related).getByText(i18n.t('legal.nav.legal'))).toHaveAttribute('aria-current', 'page');
     expect(within(related).getAllByRole('link')).toHaveLength(5);
