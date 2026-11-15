@@ -23,7 +23,8 @@
     "themeLight": "Passer au thème clair",
     "themeDark": "Passer au thème sombre",
     "notes": "Carnet",
-    "sequences": "Séquences"
+    "sequences": "Séquences",
+    "modules": "Modules d'étude"
   },
   "common": {
     "loading": "Chargement…",
@@ -494,7 +495,9 @@
     "course": "Formation",
     "curricular_unit": "Unité d’enseignement",
     "external_resource": "Référence externe",
-    "playlist": "Séquence"
+    "playlist": "Séquence",
+    "module": "Module d'étude",
+    "topic": "Thèmes"
   },
   "video": {
     "play": "Lire la vidéo : {{title}}",
@@ -1183,5 +1186,89 @@
     "title": "Vidéos de cette collection",
     "notice": "Séquence proposée par FACODI à partir des vidéos publiques des chaînes d'origine. Il ne s'agit pas nécessairement d'une playlist officielle du créateur.",
     "empty": "Aucune vidéo publique n'est encore associée à cette collection."
+  },
+  "learningGuide": {
+    "nav": "Comment ça marche",
+    "eyebrow": "FACODI / CARTE D'APPRENTISSAGE",
+    "title": "Chaque élément a son rôle. À toi de choisir.",
+    "lead": "Un cursus suit un plan d'études. Une unité donne un contexte. Un module approfondit un thème. Une séquence ordonne des ressources. Tu n'as pas à suivre toutes les étapes.",
+    "more": "Comprendre l'organisation",
+    "explore": "Explorer",
+    "contextLabel": "La place de ce contenu dans FACODI",
+    "reuseNote": "Les séquences et ressources peuvent servir plusieurs unités ou modules. Cette carte aide à apprendre; elle n'est pas une hiérarchie stricte.",
+    "parts": {
+      "course": {
+        "title": "Cursus",
+        "short": "Le programme : matières, années, semestres et références institutionnelles.",
+        "example": "Ex. : Licence en gestion."
+      },
+      "unit": {
+        "title": "Unité d'enseignement (UC)",
+        "short": "Une matière d'un cursus, avec ses objectifs et ressources associées.",
+        "example": "Ex. : Statistiques pour la gestion I."
+      },
+      "module": {
+        "title": "Module d'étude",
+        "short": "Un thème ciblé avec des activités proposées et ressources choisies.",
+        "example": "Ex. : Introduction aux probabilités."
+      },
+      "sequence": {
+        "title": "Séquence d'étude",
+        "short": "Des vidéos externes dans un ordre suggéré, avec suivi personnel possible.",
+        "example": "Ex. : Les probabilités pas à pas."
+      },
+      "resource": {
+        "title": "Ressource",
+        "short": "Une vidéo, un document, un sujet ou un lien consultable indépendamment."
+      }
+    },
+    "context": {
+      "course": "Découvre ici le plan et les matières. Les modules et séquences sont des ressources complémentaires, pas des crédits ou matières supplémentaires.",
+      "unit": "Une unité fait partie d'un cursus. Elle peut réunir modules, vidéos, lectures et séquences sans remplacer le programme officiel.",
+      "module": "Un module rassemble des ressources et parfois des activités. Il peut soutenir une matière et réutiliser des ressources d'autres domaines.",
+      "sequence": "Une séquence propose un ordre pour des vidéos externes. Ce n'est ni un cours diplômant ni une évaluation officielle; avance à ton rythme.",
+      "resource": "Une ressource est un élément pédagogique, pas une formation complète. Vérifie son contexte et sa source d'origine."
+    },
+    "pageTitle": "Comment apprendre avec FACODI ?",
+    "pageDescription": "Commence par un cursus entier ou une seule vidéo. Comprends la différence entre structures académiques et ressources éditoriales.",
+    "modulesTitle": "Modules : approfondir un thème",
+    "modulesText": "Un module relie objectifs et ressources. Les exercices proposés sont des activités autonomes, pas des devoirs officiels.",
+    "modulesCta": "Découvrir les modules",
+    "sequencesTitle": "Séquences : suivre le fil des leçons",
+    "sequencesText": "Les séquences ordonnent des vidéos externes. Elles peuvent être utilisées dans plusieurs unités et modules, avec progression personnelle.",
+    "sequencesCta": "Voir les séquences",
+    "resourcesTitle": "Et les ressources ?",
+    "resourcesText": "Une ressource est une vidéo, un document, une lecture, un thème ou un lien. Elle peut servir plusieurs parcours.",
+    "resourcesCta": "Explorer les ressources",
+    "disclaimerTitle": "Apprentissage ouvert, diplômes distincts",
+    "disclaimerText": "FACODI organise des ressources ouvertes. Les références universitaires ne transforment pas les modules en matières officielles et ne confèrent aucun diplôme, ECTS ou évaluation certifiée. La curation ne garantit pas la vérification intégrale des vidéos."
+  },
+  "studyModules": {
+    "title": "Modules d'étude",
+    "description": "Guides thématiques FACODI avec ressources liées et parfois des activités proposées.",
+    "open": "Explorer un module",
+    "empty": "Aucun module publié pour le moment.",
+    "emptyDescription": "Les modules apparaissent après préparation éditoriale.",
+    "disclaimer": "Ces modules sont des ressources éditoriales d'étude autonome. Ce ne sont pas des matières officielles; ils n'octroient ni ECTS ni évaluation certifiée.",
+    "resourceCount": "{{count}} ressources associées",
+    "linkedUnits": "Unités associées",
+    "linkedUnitsDescription": "Ce module soutient ces matières sans remplacer leur programme officiel.",
+    "practice": "Passe à la pratique",
+    "practiceNotice": "Activité autonome, pas une évaluation officielle ni un travail noté par un enseignant.",
+    "activity": "Activité proposée",
+    "deliverable": "Ce que tu peux produire",
+    "selfReview": "Comment relire ton travail",
+    "materials": "Ressources du module",
+    "materialsDescription": "Ressources publiques associées. Le classement est éditorial; vérifie les sources et leurs droits d'utilisation.",
+    "groupTitles": {
+      "module": "Modules associés",
+      "topic": "Thèmes",
+      "playlist": "Séquences et playlists",
+      "video": "Vidéos",
+      "document": "Documents",
+      "external_resource": "Lectures et références"
+    },
+    "noMaterials": "Aucune ressource disponible",
+    "noMaterialsText": "Ce module n'a pas encore de ressources publiques."
   }
 }
