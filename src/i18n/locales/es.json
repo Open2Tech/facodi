@@ -1287,6 +1287,9 @@
     "reopen": "Volver a estudiar",
     "saved": "Progreso guardado. ¡Sigue a tu ritmo!",
     "saveError": "No se pudo guardar tu progreso. Vuelve a intentarlo.",
-    "loadError": "No se pudo cargar tu progreso."
+    "loadError": "No se pudo cargar tu progreso.",
+    "dashboardTitle": "Retoma donde lo dejaste",
+    "dashboardSummary": "Has completado {{completed}} de {{total}} guías. Sigue aprendiendo a tu ritmo.",
+    "dashboardResume": "Continuar estudiando"
   }
 }
