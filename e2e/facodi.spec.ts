@@ -940,6 +940,12 @@ test('unified resources catalogue searches every type with contextual facets, ta
   };
   const fold = (value: string) => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
   const calls: Record<string, unknown>[] = [];
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'share', {
+      configurable: true,
+      value: async (data: ShareData) => sessionStorage.setItem('test:module-share', JSON.stringify(data)),
+    });
+  });
   await page.route('**/rest/v1/rpc/search_public_resources_v3', async route => {
     expect(route.request().headers()['content-profile']).toBe('facodi');
     const body = route.request().postDataJSON() as Record<string, string | undefined>;
@@ -992,4 +998,14 @@ test('unified resources catalogue searches every type with contextual facets, ta
   await expect(page).toHaveURL(/\/modules\/intro-algebra$/);
   await expect(page.getByRole('heading', { name: 'Introduction to algebra', level: 1 })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Study modules' })).toHaveAttribute('href', '/resources?type=module');
+  await page.goto('/modules/intro-algebra?utm_source=test#practice');
+  for (const width of [375, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+  await page.getByRole('button', { name: 'Share' }).click();
+  await expect.poll(() => page.evaluate(() => sessionStorage.getItem('test:module-share'))).toBe(JSON.stringify({
+    title: 'Introduction to algebra', url: 'https://facodi.com/modules/intro-algebra#practice',
+  }));
 });
