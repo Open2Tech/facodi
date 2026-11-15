@@ -6,7 +6,9 @@ import {
   courseMeta, homeMeta, resourceMeta, sequenceMeta,
   staticPageMeta, unitMeta,
 } from '../src/shared/seo/seo.ts';
-import { renderSitemap, renderSnapshotHtml, snapshotFilePath } from '../src/shared/seo/snapshots.ts';
+import {
+  assertCompleteSequenceSnapshot, exactSnapshotCount, renderSitemap, renderSnapshotHtml, snapshotFilePath,
+} from '../src/shared/seo/snapshots.ts';
 
 const outputDirectory = path.resolve('dist');
 const staticPages = [
@@ -22,16 +24,22 @@ const staticPages = [
 
 const envUrl = process.env.VITE_SUPABASE_URL;
 const publishableKey = process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+if (!envUrl || !publishableKey) {
+  throw new Error('VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY are required for SEO snapshots.');
+}
 let projectUrl;
 try {
-  projectUrl = envUrl ? new URL(envUrl) : null;
+  projectUrl = new URL(envUrl);
 } catch {
-  projectUrl = null;
+  throw new Error('VITE_SUPABASE_URL must be a valid HTTP(S) URL for SEO snapshots.');
+}
+if (!['http:', 'https:'].includes(projectUrl.protocol)) {
+  throw new Error('VITE_SUPABASE_URL must be a valid HTTP(S) URL for SEO snapshots.');
 }
 
-const isBuildPlaceholder = !projectUrl || !publishableKey || projectUrl.hostname.endsWith('.invalid');
+const isBuildPlaceholder = projectUrl.hostname.endsWith('.invalid');
 
-async function request(pathname, { method = 'GET', query = {}, body } = {}) {
+async function request(pathname, { method = 'GET', query = {}, body, count = false } = {}) {
   const url = new URL(`/rest/v1/${pathname}`, projectUrl);
   for (const [key, value] of Object.entries(query)) url.searchParams.set(key, value);
   const headers = {
@@ -43,22 +51,35 @@ async function request(pathname, { method = 'GET', query = {}, body } = {}) {
     headers['Content-Profile'] = 'facodi';
     headers['Content-Type'] = 'application/json';
   }
+  if (count) headers.Prefer = 'count=exact';
   const response = await fetch(url, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) });
   if (!response.ok) {
     const detail = await response.text();
     throw new Error(`SEO snapshot request ${method} ${url.pathname} failed (${response.status}): ${detail.slice(0, 500)}`);
   }
-  return response.json();
+  return { data: await response.json(), contentRange: response.headers.get('content-range') };
 }
 
 async function fetchRows(table, filters) {
   const pageSize = 500;
   const rows = [];
-  for (let offset = 0; ; offset += pageSize) {
-    const page = await request(table, { query: { ...filters, limit: String(pageSize), offset: String(offset) } });
+  let expectedTotal;
+  for (;;) {
+    const { data: page, contentRange } = await request(table, {
+      query: { ...filters, limit: String(pageSize), offset: String(rows.length) },
+      count: true,
+    });
     if (!Array.isArray(page)) throw new Error(`Unexpected response while reading public ${table}.`);
+    const total = exactSnapshotCount(contentRange, `public ${table}`);
+    if (expectedTotal !== undefined && total !== expectedTotal) {
+      throw new Error(`Public ${table} changed during snapshot generation; retry the build.`);
+    }
+    expectedTotal = total;
+    if (rows.length + page.length > total || (!page.length && rows.length < total)) {
+      throw new Error(`Incomplete response while reading public ${table}.`);
+    }
     rows.push(...page);
-    if (page.length < pageSize) return rows;
+    if (rows.length === total) return rows;
   }
 }
 
@@ -77,7 +98,7 @@ const addPage = page => {
 if (isBuildPlaceholder) {
   console.warn('FACODI SEO snapshots: Supabase environment is a CI placeholder; generating static pages only.');
 } else {
-  const [courses, units, resources, sequences] = await Promise.all([
+  const [courses, units, resources, sequenceResponse] = await Promise.all([
     fetchRows('courses', {
       select: 'slug,title,summary,description_html,code,language,institution,ects_total,learning_object_id',
       published: 'eq.true', status: 'eq.active', order: 'slug.asc',
@@ -90,10 +111,11 @@ if (isBuildPlaceholder) {
       select: 'id,slug,title,description,object_type,language,tags,metadata,source_url',
       published: 'eq.true', status: 'in.(active,published)', order: 'slug.asc',
     }),
-    request('rpc/list_public_editorial_sequences_v1', { method: 'POST', body: {} }),
+    request('rpc/list_public_editorial_sequences_v1', { method: 'POST', body: {}, count: true }),
   ]);
 
-  if (!Array.isArray(sequences)) throw new Error('Unexpected response while reading public editorial sequences.');
+  const { data: sequences, contentRange } = sequenceResponse;
+  assertCompleteSequenceSnapshot(sequences, contentRange);
   if (!courses.length && !units.length && !resources.length && !sequences.length) {
     throw new Error('Supabase returned no public catalogue rows; refusing to publish a static-only sitemap for a configured project.');
   }

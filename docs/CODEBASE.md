@@ -127,6 +127,9 @@ alterações de base de dados). Escreve um ficheiro `route.html` por rota em
 continua a hidratar normalmente. O mesmo conjunto de rotas cria
 `dist/sitemap.xml`. O service worker não precacheia snapshots de detalhes. Em
 builds de CI com URL `.invalid`, só são gerados snapshots das páginas estáticas.
+O build falha com variáveis em falta ou URL inválido, e também quando a RPC de
+sequências é truncada ou atinge o limite SQL de 500, pois nesse caso a paginação
+HTTP não garante um sitemap completo.
 Os dados ficam congelados até ao próximo build; o fallback SPA ainda responde
 HTTP 200 a rotas desconhecidas (soft 404).
 
