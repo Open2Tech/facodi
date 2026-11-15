@@ -43,6 +43,10 @@ animated social feed.
   empty states and separated course rows rather than decorative card grids.
 - Editorial pages: typed forms, searchable existing-record associations,
   paginated lists, explicit state labels and confirmation for visibility changes.
+- Legal pages: one `LegalDocument` reading layout — sticky numbered index
+  (a `<details>` on mobile), a bordered review note, optional summary box,
+  numbered sections capped at 68ch, scrollable tables and an ink related-policies
+  block. Unconfirmed institutional data shows a sun "to be confirmed" badge.
 - Components: existing shadcn primitives and Tailwind utilities. No side-stripe
   alerts, gradient text or default glass surfaces.
 - Interaction: short state-driven color transitions, keyboard-visible focus,

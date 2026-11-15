@@ -20,6 +20,8 @@ const staticPages = [
   staticPageMeta('/sequences', { title: pt.sequences.title, description: pt.sequences.description }),
   staticPageMeta('/about', pt.projectSeo.about),
   staticPageMeta('/community', pt.projectSeo.community),
+  ...['privacy', 'terms', 'cookies', 'copyright', 'accessibility', 'legal']
+    .map(document => staticPageMeta(`/${document}`, { title: pt.legal[document].title, description: pt.legal[document].description })),
 ];
 
 const envUrl = process.env.VITE_SUPABASE_URL;

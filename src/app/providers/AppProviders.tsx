@@ -8,7 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SeoScope } from '@/components/layout/PageSeo';
 import i18n from '@/i18n/config';
 import { getEnv } from '@/shared/config/env';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from '@/shared/theme/ThemeProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,7 +29,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       <SeoScope>
         <I18nextProvider i18n={i18n}>
           <QueryClientProvider client={queryClient}>
-            <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="facodi-theme">
+            <ThemeProvider>
               <AuthProvider>
                 <TooltipProvider>
                   <Sonner theme="light" />

@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input';
 import { FormField } from '@/components/auth/FormField';
 import { PageState } from '@/components/layout/PageState';
 import { AuthShell } from '@/components/auth/AuthShell';
+import { LegalRichText } from '@/components/legal/LegalRichText';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -81,6 +82,7 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
     <FormField label={t('auth.email')} error={form.formState.errors.email?.message}>{props => <Input {...props} {...form.register('email')} type="email" autoComplete="email" />}</FormField>
     <FormField label={t('auth.password')} error={form.formState.errors.password?.message}>{props => <Input {...props} {...form.register('password')} type="password" autoComplete={signup ? 'new-password' : 'current-password'} />}</FormField>
     {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
+    {signup && <p className="text-sm text-muted-foreground"><LegalRichText text={t('auth.legalNotice')} /></p>}
     <Button className="w-full" disabled={form.formState.isSubmitting}>{t(form.formState.isSubmitting ? 'common.working' : signup ? 'auth.signup' : 'auth.login')}</Button>
   </form>;
 }

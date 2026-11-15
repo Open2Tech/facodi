@@ -4,6 +4,7 @@ import FacodiLayout from '@/components/layout/FacodiLayout';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { PageState } from '@/components/layout/PageState';
 import { useAuth } from '@/features/auth/useAuth';
+import { LEGAL_DOCUMENTS, legalPath } from '@/components/legal/legalDocuments';
 
 const Home = lazy(() => import('@/pages/Home'));
 const Courses = lazy(() => import('@/pages/Courses'));
@@ -38,6 +39,7 @@ const EditorSuggestions = lazy(() => import('@/pages/EditorSuggestions'));
 
 const Admin = lazy(() => import('@/pages/Admin'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
+const LegalPage = lazy(() => import('@/pages/LegalPage'));
 
 /** Legacy listing URLs keep their filters when moved to the unified catalog. */
 function LegacyModulesRedirect() {
@@ -67,6 +69,7 @@ export function AppRoutes() {
       <Route path="/notes" element={<Notebook key={sessionKey} />} />
       <Route path="/about" element={<About />} />
       <Route path="/community" element={<Community />} />
+      {LEGAL_DOCUMENTS.map(document => <Route key={document} path={legalPath(document)} element={<LegalPage document={document} />} />)}
       <Route path="/login" element={<Login />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/auth/reset-password" element={<ResetPassword />} />

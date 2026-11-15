@@ -19,6 +19,12 @@ const required = [
   'https://facodi.com/sequences',
   'https://facodi.com/about',
   'https://facodi.com/community',
+  'https://facodi.com/privacy',
+  'https://facodi.com/terms',
+  'https://facodi.com/cookies',
+  'https://facodi.com/copyright',
+  'https://facodi.com/accessibility',
+  'https://facodi.com/legal',
 ];
 assert.deepEqual(urls, required, 'Public sitemap must not include private or unverified routes');
 assert.match(robots, /Sitemap: https:\/\/facodi\.com\/sitemap\.xml/);

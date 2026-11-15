@@ -91,6 +91,12 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.
+- [src/shared/lib/preferenceStorage.ts](../src/shared/lib/preferenceStorage.ts):
+  idioma (`i18nextLng`) e tema (`facodi-theme`) ficam em `sessionStorage`; só
+  passam a `localStorage` depois de o visitante ligar «Lembrar idioma e tema»
+  (em `/cookies` e no perfil). Usa sempre este módulo e o `useTheme` de
+  [src/shared/theme](../src/shared/theme) em vez de escrever no `localStorage`;
+  um novo armazenamento no navegador exige atualizar a política de cookies.
 - [src/i18n/locales](../src/i18n/locales): quatro idiomas, um único conjunto de keys.
 
 Consultas públicas têm filtros explícitos mesmo em sessões editoriais.
@@ -101,6 +107,23 @@ avançados que não estejam no formulário.
 
 HTML é sanitizado com DOMPurify e allowlist de elementos de texto, sem scripts,
 frames, estilos ou eventos. Links para recursos externos só aceitam HTTP(S).
+
+## Páginas legais
+
+`/privacy`, `/terms`, `/cookies`, `/copyright`, `/accessibility` e `/legal`
+são rotas públicas renderizadas por
+[LegalDocument](../src/components/legal/LegalDocument.tsx). O conteúdo vive
+nos locales em `legal.<documento>` (`title`, `description`, `lead`, `summary`,
+`sections` com `body`, `items`, `table` ou `facts`); não há CMS nem tabelas
+para textos legais. Links no texto usam a sintaxe `[rótulo](/rota#secção)`,
+interpretada por [LegalRichText](../src/components/legal/LegalRichText.tsx).
+`legalDocuments.test.ts` garante a mesma estrutura nos quatro idiomas e que
+as âncoras internas existem. Ao alterar uma política, atualize
+`LEGAL_LAST_UPDATED` em
+[legalDocuments.ts](../src/components/legal/legalDocuments.ts) e confirme que
+o texto continua a corresponder ao funcionamento real (armazenamento no
+browser, fornecedores, fluxos de conta). Dados institucionais por confirmar
+usam `facts` com `pending: true` e nunca valores provisórios.
 
 ## SEO e partilha
 

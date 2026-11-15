@@ -6,6 +6,7 @@ import { PreferencesForm } from '@/components/profile/PreferencesForm';
 import { ProfileSection } from '@/components/profile/ProfileSection';
 import { ProfileSummary } from '@/components/profile/ProfileSummary';
 import { SessionControls } from '@/components/profile/SessionControls';
+import { LegalRichText } from '@/components/legal/LegalRichText';
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ export default function Profile() {
     </> },
     { id: 'preferences', title: t('profile.preferencesTitle'), description: t('profile.preferencesDescription'), content: <PreferencesForm /> },
     { id: 'contributions', title: t('profile.contributionsTitle'), description: t('profile.contributionsDescription'), content: <ContributionSummary /> },
+    { id: 'data', title: t('profile.dataTitle'), description: t('profile.dataDescription'), content: <p className="max-w-[68ch] text-sm leading-relaxed text-muted-foreground"><LegalRichText text={t('profile.dataText')} /></p> },
   ];
   return <>
     <h1 className="text-3xl font-semibold">{t('nav.profile')}</h1>
