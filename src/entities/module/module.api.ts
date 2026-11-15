@@ -16,8 +16,7 @@ export async function listModules(page: number, search: string, signal?: AbortSi
     .order('title').order('id');
   if (search.trim()) query = query.ilike('title', searchPattern(search));
   if (language) query = query.ilike('language', language + '%');
-  if (tag) query = query.contains('tags', '{"' + tag.replace(/["\\]/g, '\\  if (search.trim()) query = query.ilike('title', searchPattern(search));
-  const { data, count, error } = await query') + '"}');
+  if (tag) query = query.contains('tags', [tag]);
   const { data, count, error } = await query
     .range((safePage - 1) * MODULE_PAGE_SIZE, safePage * MODULE_PAGE_SIZE - 1)
     .abortSignal(signal);
