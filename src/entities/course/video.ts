@@ -48,7 +48,9 @@ export function videoInfo(metadata: Json | null | undefined, sourceUrl?: string 
     // Built from the validated id instead of trusting a stored URL.
     thumbnail: youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : null,
     durationSeconds: typeof duration === 'number' && Number.isFinite(duration) && duration > 0 ? Math.round(duration) : null,
-    channel: text(meta.channel_name),
+    // Source publishers use different metadata keys across legacy imports.
+    // Preserve the creator name when channel_name has not yet been backfilled.
+    channel: text(meta.channel_name) ?? text(meta.publisher_channel) ?? text(meta.source_creator) ?? text(meta.publisher),
     reviewScope: text(meta.review_scope),
     fullReviewed: meta.full_video_reviewed === true,
     licenseVerified: meta.content_license_verified === true,
