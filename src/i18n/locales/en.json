@@ -1287,6 +1287,9 @@
     "reopen": "Continue studying",
     "saved": "Progress saved. Keep your own pace!",
     "saveError": "Could not save your progress. Please retry.",
-    "loadError": "Could not load your progress."
+    "loadError": "Could not load your progress.",
+    "dashboardTitle": "Pick up where you left off",
+    "dashboardSummary": "You've completed {{completed}} of {{total}} guides. Keep learning at your own pace.",
+    "dashboardResume": "Continue learning"
   }
 }
