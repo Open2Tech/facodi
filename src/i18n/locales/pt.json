@@ -908,7 +908,23 @@
     "term": "Período",
     "elective": "Opção {{group}}",
     "annual": "Anual",
-    "error": "Não foi possível consultar o plano histórico."
+    "error": "Não foi possível consultar o plano histórico.",
+    "brazilianCreditsNotice": "Currículo brasileiro: as cargas estão em horas e os créditos locais não são ECTS.",
+    "equivalenceNoticeGeneral": "Arquivo histórico de consulta. As equivalências, transferências e aproveitamentos dependem de validação pela instituição responsável. As optativas e ofertas para aproveitamento não se somam automaticamente.",
+    "officialSourceGeneral": "Conferir documento oficial da instituição",
+    "unscheduled": "Ofertas históricas sem período fixo",
+    "notScheduled": "Sem período fixo",
+    "hours": "Horas",
+    "equivalences": "{{count}} relações de equivalência documentadas",
+    "equivalencesWarning": "Lista transcrita da secção de equivalências do PPC 2019 da UFES. Os pares não são créditos reconhecidos automaticamente: a instituição decide os requisitos e a aplicabilidade a cada aluno.",
+    "priorCode": "Código do currículo 2006",
+    "currentCode": "Código do currículo 2019",
+    "categories": {
+      "required": "Obrigatória no currículo de 2006",
+      "supervised_internship": "Estágio obrigatório em 2006",
+      "credit_use_only": "Oferta utilizada apenas para aproveitamento",
+      "elective_offering": "Oferta optativa histórica"
+    }
   },
   "projectStory": {
     "eyebrow": "FACODI / O COMEÇO",
