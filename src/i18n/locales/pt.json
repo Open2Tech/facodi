@@ -462,7 +462,8 @@
       "opt_english_literature": "Literatura de língua inglesa (11 opções; escolher 3)",
       "opt_general_linguistics": "Linguística — Letras (5 opções; escolher 1)",
       "opt_general_literature": "Literatura — Letras (5 opções; escolher 1)"
-    }
+    },
+    "coverageSummary": "Recursos publicados: {{videos}} de {{units}} UCs com vídeos; {{readings}} com leituras complementares."
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",
