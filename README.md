@@ -130,6 +130,14 @@ Os vídeos estão alojados no YouTube e os livros/documentações são **links p
 
 Os seis emails de autenticação FACODI (confirmação, convite, recuperação, magic link, alteração de email e reautenticação) estão **ativos globalmente** no Supabase Auth desde 15/11/2026; o Auth continua partilhado com o Tube O2. As sete notificações de segurança permanecem apenas versionadas. As notificações de submissão/aprovação/rejeição de playlists usam agora a fila privada `facodi.email_outbox` e a Edge Function `facodi-email-notifications`; o envio externo depende de `FACODI_RESEND_API_KEY` e `FACODI_EMAIL_FROM` com domínio verificado. Não foi comprovada entrega numa caixa de email. `facodi.playlists` continua sem submissões reais.
 
+## Módulos e grafo de aprendizagem (15/11/2026)
+
+**25 módulos novos de estudo** reutilizam 46 sequências de vídeo e 30 leituras/documentos já publicados, com 33 associações às UCs de cinco cursos, 13 relações de progressão conceptual e 9 ligações entre áreas relacionadas. Há **67 módulos públicos** no total. Nas páginas dos módulos, as sequências, leituras, fundamentos prévios e áreas relacionadas aparecem com acesso público controlado por RLS. A publicação foi validada no **Cloudflare (facodi.com)**, sem deploy na Vercel.
+
+Exemplos: [Física — vetores e movimento](https://facodi.com/resources/facodi-modulo-20261115-physics-motion) · [Álgebra Linear — espaços e transformações](https://facodi.com/resources/facodi-modulo-20261115-algebra-vectors).
+
+Os links são **recomendações editoriais**, não equivalências, acreditação ou pré-requisitos académicos oficiais. Nenhum vídeo foi copiado nem foram gerados exercícios. Detalhes, testes e proveniência na [auditoria do grafo de módulos](docs/facodi-study-modules-graph-2026-11-15.md).
+
 ## Dados e permissões
 
 O cliente único usa `db.schema = 'facodi'`. A aplicação consulta cursos,
