@@ -2490,6 +2490,13 @@ export type Database = {
         }
         Returns: string
       }
+      revoke_project_credit: {
+        Args: {
+          p_profile_id: string
+          p_reason: string
+        }
+        Returns: string
+      }
       review_project_credit: {
         Args: {
           p_consent_basis: string
