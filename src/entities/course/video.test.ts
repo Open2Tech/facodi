@@ -26,6 +26,31 @@ describe('video metadata', () => {
     expect(videoInfo({ duration_seconds: null }).durationSeconds).toBeNull();
   });
 
+  it('shows original channels using publisher metadata without claiming a complete review', () => {
+    expect(videoInfo({
+      publisher: 'Programador Lhama',
+      youtube_video_id: '5JzEyB1AOAg',
+      full_video_reviewed: false,
+      source_verification: 'channel_video_index',
+    })).toMatchObject({
+      channel: 'Programador Lhama',
+      youtubeId: '5JzEyB1AOAg',
+      fullReviewed: false,
+      reviewScope: null,
+      licenseVerified: false,
+    });
+
+    expect(videoInfo({
+      channel_name: 'Confirmed Channel',
+      publisher: 'Different Publisher',
+      review_scope: 'title_and_channel_only',
+      full_video_reviewed: false,
+    }).channel).toBe('Confirmed Channel');
+
+    expect(videoInfo({ source_creator: 'Estranha História', channel_name: '  ' }).channel).toBe('Estranha História');
+    expect(videoInfo({ publisher_channel: 'Aline Elias' }).channel).toBe('Aline Elias');
+  });
+
   it('formats durations for display and for <time dateTime>', () => {
     expect(formatDuration(867)).toBe('14:27');
     expect(formatDuration(59)).toBe('0:59');
