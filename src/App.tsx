@@ -16,6 +16,8 @@ const Sequences = lazy(() => import('@/pages/Sequences'));
 const SequenceDetails = lazy(() => import('@/pages/SequenceDetails'));
 const About = lazy(() => import('@/pages/About'));
 const Community = lazy(() => import('@/pages/Community'));
+const CommunityJoin = lazy(() => import('@/pages/CommunityJoin'));
+const EditorCommunity = lazy(() => import('@/pages/EditorCommunity'));
 const Notebook = lazy(() => import('@/pages/Notebook'));
 const Login = lazy(() => import('@/pages/Login'));
 const AuthCallback = lazy(() => import('@/pages/AuthCallback'));
@@ -59,12 +61,14 @@ export function AppRoutes() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/playlists/submit" element={<PlaylistSubmit />} />
+        <Route path="/community/join" element={<CommunityJoin />} />
         <Route path="/suggest" element={<SuggestResource />} />
       </Route>
       <Route element={<ProtectedRoute key={sessionKey} required="editor" />}>
         <Route path="/editor" element={<Editor />} />
         <Route path="/editor/study-paths" element={<EditorStudyPaths />} />
         <Route path="/editor/project-credits" element={<EditorProjectCredits />} />
+        <Route path="/editor/community" element={<EditorCommunity />} />
         <Route path="/editor/playlists" element={<EditorPlaylists />} />
         <Route path="/editor/suggestions" element={<EditorSuggestions />} />
       </Route>
