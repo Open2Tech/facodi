@@ -462,7 +462,8 @@
       "opt_english_literature": "Littérature anglophone (11 options ; choisir 3)",
       "opt_general_linguistics": "Linguistique — Lettres (5 options ; choisir 1)",
       "opt_general_literature": "Littérature — Lettres (5 options ; choisir 1)"
-    }
+    },
+    "coverageSummary": "Ressources publiées : {{videos}} unités sur {{units}} ont des vidéos ; {{readings}} ont des lectures complémentaires."
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
