@@ -1101,5 +1101,53 @@
       "title": "Comunidade FACODI | Aprende, partilha e constrói",
       "description": "Faz parte da comunidade FACODI: descobre cursos, sugere recursos, partilha playlists e contribui para o projeto educativo de código aberto."
     }
+  },
+  "communityJoin": {
+    "cta": "Quero colaborar",
+    "back": "Voltar à comunidade",
+    "title": "Tem uma ideia? Bora fazer acontecer.",
+    "description": "Conta como gostarias de participar na FACODI. Esta proposta fica privada, é revista pela equipa e não te inscreve automaticamente em nenhuma função. Não enviamos emails a partir deste formulário.",
+    "interest": "Como gostarias de contribuir?",
+    "interests": {
+      "learner": "Aprender e ajudar outros estudantes",
+      "educator": "Partilhar experiência como docente",
+      "curator": "Rever e organizar conteúdos",
+      "developer": "Desenvolvimento e código aberto",
+      "designer": "Design e experiência de utilização",
+      "translator": "Tradução e acessibilidade",
+      "organization": "Colaboração institucional"
+    },
+    "motivation": "O que gostarias de fazer?",
+    "motivationPlaceholder": "Fala sobre as tuas ideias, experiência, tempo disponível ou como gostarias de ajudar…",
+    "motivationHint": "Entre 30 e 1.200 caracteres. Não coloques passwords ou informações sensíveis.",
+    "portfolio": "Portefólio ou link público (opcional)",
+    "consent": "Concordo que a equipa FACODI analise esta proposta e utilize a minha conta para comunicar comigo sobre esta colaboração. Este consentimento não autoriza a publicação do meu nome ou trabalho.",
+    "consentRequired": "É preciso autorizar o tratamento desta proposta.",
+    "privacy": "Propostas privadas. Sem listas públicas de membros, sem publicações automáticas de créditos e sem disparos de email. Limite de três propostas por sete dias.",
+    "send": "Enviar proposta",
+    "success": "Recebemos a tua proposta! Ela aguarda revisão editorial. Podes acompanhar o estado aqui.",
+    "history": "As minhas propostas",
+    "historyDescription": "Só tu e os editores autorizados conseguem ver o histórico.",
+    "empty": "Ainda não apresentaste propostas de colaboração.",
+    "status": {
+      "pending": "Por rever",
+      "accepted": "Interesse aceite",
+      "rejected": "Não aprovado nesta fase"
+    },
+    "reviewSaved": "Decisão guardada. Não foi enviado nenhum email.",
+    "reviewNotApplied": "A proposta já foi revista ou não está disponível para esta decisão.",
+    "openEditor": "Propostas da comunidade",
+    "backEditor": "Voltar ao editor",
+    "reviewTitle": "Vamos construir juntos?",
+    "reviewDescription": "Aqui só aparecem propostas privadas de participação. Rever não publica nomes, não atribui automaticamente um papel na equipa e não envia emails.",
+    "reviewEmpty": "Não há propostas pendentes.",
+    "queueCount": "{{count}} propostas pendentes",
+    "reviewPrivacy": "Estes dados foram partilhados para avaliação interna. Não copies os detalhes para páginas públicas, campanhas ou listas externas sem autorização própria.",
+    "reviewNote": "Comentário editorial (visível ao proponente)",
+    "accept": "Aceitar interesse",
+    "reject": "Não aprovar",
+    "confirmReview": "Confirmar decisão sobre esta proposta?",
+    "acceptNote": "A aceitação não cria conta de colaborador, não concede permissões e não dispara mensagens.",
+    "rejectNote": "A decisão fica visível no histórico privado do proponente. Podes explicar o motivo."
   }
 }
