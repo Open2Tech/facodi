@@ -9,9 +9,10 @@ enabled = false
 
 [auth]
 # Auth is shared with Tube O2. Keep its Site URL and global templates unchanged.
-# FACODI canonical domain uses dedicated allow-listed callback and reset-password routes.
+# FACODI canonical domain and the Cloudflare Workers facodi-branch preview use dedicated callback and reset-password routes.
+# Verify these versioned redirect URLs separately in the hosted Supabase Auth dashboard.
 site_url = "https://tube.open2.tech"
-additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://www.facodi.com", "https://facodi.com/auth/callback**", "https://facodi.com/auth/reset-password**", "https://www.facodi.com/auth/callback**", "https://www.facodi.com/auth/reset-password**", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com", "https://facodi.vercel.app", "https://facodi.vercel.app/auth/callback**", "https://facodi.vercel.app/auth/reset-password**"]
+additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://www.facodi.com", "https://facodi.com/auth/callback**", "https://facodi.com/auth/reset-password**", "https://www.facodi.com/auth/callback**", "https://www.facodi.com/auth/reset-password**", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com", "https://facodi.vercel.app", "https://facodi.vercel.app/auth/callback**", "https://facodi.vercel.app/auth/reset-password**", "https://facodi.marcelo-0d6.workers.dev/auth/callback**", "https://facodi.marcelo-0d6.workers.dev/auth/reset-password**"]
 enable_manual_linking = true
 
 [auth.mfa.totp]
