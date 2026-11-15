@@ -74,6 +74,9 @@ for (const lang of ['pt','en','es','fr']) {
 
 
 const wrangler = JSON.parse(read('wrangler.jsonc'));
+const vercelConfig = JSON.parse(read('vercel.json'));
+assert.equal(vercelConfig.git?.deploymentEnabled, false,
+  'FACODI frontend is deployed on Cloudflare Workers; Vercel Git deployments must remain disabled');
 const workerHeaders = read('public/_headers');
 const supabaseConfig = read('supabase/config.toml');
 const facodiPlaylistFunction = read('supabase/functions/facodi-submit-playlist/index.ts');
