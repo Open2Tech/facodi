@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
+import { useCourseCoverage } from '@/features/courses/queries/useCourseCoverage';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
@@ -41,6 +42,7 @@ export default function CourseDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
   const query = useCourse(slug);
+  const coverage = useCourseCoverage(query.data?.course.id);
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   if (query.isPending) return <PageState loading />;
@@ -58,6 +60,7 @@ export default function CourseDetails() {
     ['language', course.language?.toUpperCase()], ['units', String(units.length)],
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
   const years = groupYears(groupUnits(units));
+  const coverageById = new Map((coverage.data ?? []).map(row => [row.curricular_unit_id, row]));
   return <article>
     <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
     <header className="border-b border-foreground pb-10">
@@ -85,6 +88,9 @@ export default function CourseDetails() {
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{t('course.studyPlan')}</h2>
         {!!units.length && <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('course.filterUnits')}<ArrowRight className="h-4 w-4" /></Link>}
       </div>
+      {!!coverage.data?.length && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
+        {t('course.coverageSummary', { videos: coverage.data.filter(unit => unit.video_count > 0).length, units: units.length, readings: coverage.data.filter(unit => unit.reading_count > 0).length })}
+      </p>}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
@@ -105,14 +111,15 @@ export default function CourseDetails() {
                 <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('course.termSummary', { count: group.units.length })}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
-                const linked = unit.learning_objects;
-                const visible = linked?.published && ['active', 'published'].includes(linked.status);
+                const media = coverageById.get(unit.id);
+                const visible = media && (media.video_count > 0 || media.reading_count > 0);
                 return <li key={unit.id}>
                   <Link to={unitPath(course.slug, unit.slug)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3">
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
                       {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
+                      {!!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}
                     </span>
                     {unit.ects != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>
                       : unitHours(unit.metadata) != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unitHours(unit.metadata)} h</span> : null}
