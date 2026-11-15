@@ -21,7 +21,7 @@ for (const [type, entries] of [
     assert.match(html, /<html lang="pt-PT">/, name + ': lang');
     assert.match(html, /<title>[^<]+FACODI<\/title>/, name + ': title');
     assert.match(html, /<table role="presentation"/, name + ': email-safe table');
-    assert.match(html, /https:\/\/facodi\.vercel\.app/, name + ': FACODI origin');
+    assert.match(html, /https:\/\/www\.facodi\.com/, name + ': FACODI origin');
     assert.doesNotMatch(html, /Tube O2|tube\.open2\.tech|<script\b|<iframe\b/i, name + ': isolation');
     if (type === 'link') {
       assert.match(html, /href="{{ \.ConfirmationURL }}"/, name + ': Supabase link');
