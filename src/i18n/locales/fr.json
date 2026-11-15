@@ -427,7 +427,8 @@
     "searchPlaceholder": "Titre, description ou thème",
     "results": "Résultats des ressources",
     "filterByTag": "Filtrer par thème",
-    "noMatches": "Aucune ressource ne correspond aux filtres."
+    "noMatches": "Aucune ressource ne correspond aux filtres.",
+    "filterTopic": "Filtrer par thème"
   },
   "about": {
     "title": "Un onglet ouvert est devenu une grande idée.",
@@ -2108,5 +2109,31 @@
     "confirmTitle": "Publier le nouvel ordre ?",
     "confirmDescription": "Le nouvel ordre modifiera {{count}} positions pour tous les apprenants. Les vidéos et la progression seront conservées.",
     "empty": "Aucun parcours éditorial disponible."
+  },
+  "collectionModules": {
+    "title": "Modules et parcours de cette collection",
+    "notice": "Ouvrez un module pour suivre les séquences vidéo et consulter les ressources associées."
+  },
+  "resourceTopics": {
+    "odoo": "Odoo",
+    "odoo-19": "Odoo 19",
+    "erp": "ERP",
+    "recursos-humanos": "Ressources humaines",
+    "recrutamento": "Recrutement",
+    "avaliacao-desempenho": "Évaluation de performance",
+    "assiduidade": "Présence et congés",
+    "remuneracao": "Paie",
+    "contabilidade": "Comptabilité",
+    "frota": "Flotte",
+    "helpdesk": "Assistance",
+    "inventario": "Inventaire",
+    "redes": "Réseaux informatiques",
+    "dev-containers": "Dev Containers",
+    "low-code": "Low-Code",
+    "python": "Python",
+    "cloud": "Cloud",
+    "react": "React",
+    "gestao": "Gestion",
+    "tecnologia": "Technologie"
   }
 }
