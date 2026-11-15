@@ -489,7 +489,11 @@
       "opt_general_linguistics": "Linguistics — Letters (5 choices; select 1)",
       "opt_general_literature": "Literature — Letters (5 choices; select 1)"
     },
-    "coverageSummary": "Published resources: {{videos}} of {{units}} units have videos; {{readings}} have supplementary readings."
+    "coverageSummary": "Published resources: {{videos}} of {{units}} units have videos; {{readings}} have supplementary readings.",
+    "editorialPath": "Independent study pathway",
+    "editorialSteps": "FACODI suggested learning stages",
+    "editorialStepCount": "{{count}} stages",
+    "sourceMaterials": "INPE source materials and bibliography (2018)"
   },
   "resource": {
     "objectives": "Learning objectives",
@@ -512,7 +516,8 @@
     "openVideoPage": "Open video page",
     "videoChip_one": "{{count}} video",
     "videoChip_many": "{{count}} videos",
-    "videoChip_other": "{{count}} videos"
+    "videoChip_other": "{{count}} videos",
+    "editorialStudyStep": "FACODI study stage"
   },
   "objectTypes": {
     "video": "Video",
