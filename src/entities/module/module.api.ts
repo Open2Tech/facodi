@@ -8,13 +8,16 @@ export const MODULE_PAGE_SIZE = PAGE_SIZE;
 const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,language,tags,metadata';
 const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url';
 
-export async function listModules(page: number, search: string, signal?: AbortSignal) {
+export async function listModules(page: number, search: string, signal?: AbortSignal, language = '', tag = '') {
   const safePage = Math.max(1, Math.floor(page));
   let query = supabase.from('learning_objects')
     .select(PUBLIC_MODULE_FIELDS, { count: 'exact' })
     .eq('object_type', 'module').eq('published', true).eq('status', 'active')
     .order('title').order('id');
   if (search.trim()) query = query.ilike('title', searchPattern(search));
+  if (language) query = query.ilike('language', language + '%');
+  if (tag) query = query.contains('tags', '{"' + tag.replace(/["\\]/g, '\\  if (search.trim()) query = query.ilike('title', searchPattern(search));
+  const { data, count, error } = await query') + '"}');
   const { data, count, error } = await query
     .range((safePage - 1) * MODULE_PAGE_SIZE, safePage * MODULE_PAGE_SIZE - 1)
     .abortSignal(signal);
