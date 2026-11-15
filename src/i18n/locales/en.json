@@ -1790,8 +1790,7 @@
             "Signing out removes the session from your browser.",
             "You can change the language and theme in the header or in your profile. By default, your choice lasts until you close the tab.",
             "To remember your language and theme between visits, turn on the option below, also available in your profile. When you turn it off, we delete the stored preferences; the current language and theme stay until you close the tab.",
-            "If you block browser storage, some preferences may not be saved and sign-in may not work. Browsing the public catalogue does not require an account session.",
-            "If you block local storage, you cannot sign in, but you can still read the catalogue."
+            "If you block browser storage, some preferences may not be saved and sign-in may not work. Browsing the public catalogue does not require an account session."
           ]
         }
       ]
