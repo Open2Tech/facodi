@@ -489,7 +489,11 @@
       "opt_general_linguistics": "Lingüística — Letras (5 opciones; elegir 1)",
       "opt_general_literature": "Literatura — Letras (5 opciones; elegir 1)"
     },
-    "coverageSummary": "Recursos publicados: {{videos}} de {{units}} asignaturas con vídeos; {{readings}} con lecturas complementarias."
+    "coverageSummary": "Recursos publicados: {{videos}} de {{units}} asignaturas con vídeos; {{readings}} con lecturas complementarias.",
+    "editorialPath": "Itinerario de estudio independiente",
+    "editorialSteps": "Etapas temáticas propuestas por FACODI",
+    "editorialStepCount": "{{count}} etapas",
+    "sourceMaterials": "Bibliografía y materiales del INPE (2018)"
   },
   "resource": {
     "objectives": "Objetivos de aprendizaje",
@@ -512,7 +516,8 @@
     "openVideoPage": "Abrir página del vídeo",
     "videoChip_one": "{{count}} vídeo",
     "videoChip_many": "{{count}} vídeos",
-    "videoChip_other": "{{count}} vídeos"
+    "videoChip_other": "{{count}} vídeos",
+    "editorialStudyStep": "Etapa de estudio FACODI"
   },
   "objectTypes": {
     "video": "Vídeo",
