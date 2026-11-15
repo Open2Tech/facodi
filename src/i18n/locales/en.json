@@ -1148,6 +1148,10 @@
     "reject": "Decline for now",
     "confirmReview": "Confirm this editorial decision?",
     "acceptNote": "Acceptance does not create a team role, grant permissions or send messages.",
-    "rejectNote": "The decision appears in the proposer's private history. You can explain why."
+    "rejectNote": "The decision appears in the proposer's private history. You can explain why.",
+    "withdraw": "Withdraw proposal",
+    "withdrawConfirm": "Withdraw this proposal and permanently delete its private record? This action cannot be undone.",
+    "withdrawConfirmButton": "Yes, withdraw and delete",
+    "withdrawUnavailable": "This proposal is unavailable or not owned by your account."
   }
 }
