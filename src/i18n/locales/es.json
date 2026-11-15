@@ -2050,5 +2050,9 @@
         }
       ]
     }
+  },
+  "collectionPlaylists": {
+    "title": "Itinerarios de vídeo de esta colección",
+    "notice": "Secuencias organizadas por FACODI a partir de clases de sus autores originales. Abre un itinerario para ver el orden propuesto."
   }
 }
