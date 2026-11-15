@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Clock, GraduationCap, Hash, Languages, Layers, PlayCircle, School, type LucideIcon } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
@@ -8,17 +8,19 @@ import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { PageState } from '@/components/layout/PageState';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
+import { courseHours, unitHours, ufesElectiveGroup, ufesElectiveGroupOrder, type UfesElectiveGroup } from '@/entities/course/brazilianCurriculum';
 
 type Unit = NonNullable<ReturnType<typeof useCourse>['data']>['units'][number];
 
 function groupUnits(units: Unit[]) {
-  const groups = new Map<string, { year: number | null; semester: number | null; units: Unit[] }>();
+  const groups = new Map<string, { year: number | null; semester: number | null; electiveGroup: UfesElectiveGroup | null; units: Unit[] }>();
   for (const unit of units) {
-    const key = `${unit.year ?? ''}:${unit.semester ?? ''}`;
-    if (!groups.has(key)) groups.set(key, { year: unit.year, semester: unit.semester, units: [] });
+    const electiveGroup = ufesElectiveGroup(unit.metadata);
+    const key = `${unit.year ?? ''}:${unit.semester ?? ''}:${electiveGroup ?? ''}`;
+    if (!groups.has(key)) groups.set(key, { year: unit.year, semester: unit.semester, electiveGroup, units: [] });
     groups.get(key)!.units.push(unit);
   }
-  return [...groups.values()].sort((a, b) => (a.year ?? 99) - (b.year ?? 99) || (a.semester ?? 99) - (b.semester ?? 99));
+  return [...groups.values()].sort((a, b) => (a.year ?? 99) - (b.year ?? 99) || (a.semester ?? 99) - (b.semester ?? 99) || ufesElectiveGroupOrder(a.electiveGroup) - ufesElectiveGroupOrder(b.electiveGroup));
 }
 
 function groupYears(groups: ReturnType<typeof groupUnits>) {
@@ -32,7 +34,7 @@ function groupYears(groups: ReturnType<typeof groupUnits>) {
 }
 
 const FACT_ICONS: Record<string, LucideIcon> = {
-  code: Hash, degree: GraduationCap, ects: Award, duration: Clock, institution: Building2, school: School, language: Languages, units: Layers,
+  code: Hash, degree: GraduationCap, ects: Award, hours: Clock, duration: Clock, institution: Building2, school: School, language: Languages, units: Layers,
 };
 
 export default function CourseDetails() {
@@ -50,6 +52,7 @@ export default function CourseDetails() {
   const facts = [
     ['code', course.code], ['degree', course.degree_type ? t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type }) : null],
     ['ects', course.ects_total != null ? `${course.ects_total} ECTS` : null],
+    ['hours', course.ects_total == null && courseHours(course.metadata) != null ? `${courseHours(course.metadata)} h` : null],
     ['duration', course.duration_semesters != null ? t('course.semesters', { count: course.duration_semesters }) : null],
     ['institution', course.institution], ['school', course.school],
     ['language', course.language?.toUpperCase()], ['units', String(units.length)],
@@ -93,9 +96,12 @@ export default function CourseDetails() {
         {year.year == null && course.code === 'UFES-LETRAS-ING-83-2019' && <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('course.ufesElectiveNotice')}</p>}
         <div className="mt-5 grid gap-8 xl:grid-cols-2">
           {year.groups.map(group => {
-            return <section key={`${group.year}:${group.semester}`} aria-label={group.semester != null ? t('catalog.semester', { value: group.semester }) : otherLabel} className="min-w-0">
+            const groupLabel = group.electiveGroup && course.code === 'UFES-LETRAS-ING-83-2019'
+              ? t(`course.electiveGroups.${group.electiveGroup}`)
+              : group.semester != null ? t('catalog.semester', { value: group.semester }) : otherLabel;
+            return <section key={`${group.year}:${group.semester}:${group.electiveGroup ?? ''}`} aria-label={groupLabel} className="min-w-0">
               <div className="flex items-baseline justify-between gap-4 border-b border-foreground pb-2">
-                <h4 className="font-semibold">{group.semester != null ? t('catalog.semester', { value: group.semester }) : otherLabel}</h4>
+                <h4 className="font-semibold">{groupLabel}</h4>
                 <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('course.termSummary', { count: group.units.length })}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
@@ -105,10 +111,11 @@ export default function CourseDetails() {
                   <Link to={unitPath(course.slug, unit.slug)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3">
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
-                      {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><PlayCircle className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
+                      {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
                     </span>
-                    {unit.ects != null && <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}
+                    {unit.ects != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>
+                      : unitHours(unit.metadata) != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unitHours(unit.metadata)} h</span> : null}
                   </Link>
                 </li>;
               })}</ol>
