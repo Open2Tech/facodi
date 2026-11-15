@@ -427,7 +427,8 @@
     "searchPlaceholder": "Título, descrição ou tema",
     "results": "Resultados de recursos",
     "filterByTag": "Filtrar por tema",
-    "noMatches": "Nenhum recurso corresponde aos filtros."
+    "noMatches": "Nenhum recurso corresponde aos filtros.",
+    "filterTopic": "Filtrar por tema"
   },
   "about": {
     "title": "De uma aba aberta nasceu uma ideia maior.",
@@ -2108,5 +2109,31 @@
     "confirmTitle": "Publicar nova ordem?",
     "confirmDescription": "A nova ordem vai alterar {{count}} posições para todos os leitores. Os vídeos e o progresso individual serão preservados.",
     "empty": "Não há sequências editoriais disponíveis."
+  },
+  "collectionModules": {
+    "title": "Módulos e percursos desta coleção",
+    "notice": "Escolhe um módulo para seguir sequências de vídeo e consultar materiais externos por tema."
+  },
+  "resourceTopics": {
+    "odoo": "Odoo",
+    "odoo-19": "Odoo 19",
+    "erp": "ERP",
+    "recursos-humanos": "Recursos Humanos",
+    "recrutamento": "Recrutamento",
+    "avaliacao-desempenho": "Avaliação de desempenho",
+    "assiduidade": "Assiduidade e férias",
+    "remuneracao": "Remunerações",
+    "contabilidade": "Contabilidade",
+    "frota": "Frota",
+    "helpdesk": "Helpdesk",
+    "inventario": "Inventário",
+    "redes": "Redes de computadores",
+    "dev-containers": "Dev Containers",
+    "low-code": "Low-Code",
+    "python": "Python",
+    "cloud": "Cloud",
+    "react": "React",
+    "gestao": "Gestão",
+    "tecnologia": "Tecnologia"
   }
 }
