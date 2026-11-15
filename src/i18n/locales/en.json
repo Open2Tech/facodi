@@ -462,7 +462,8 @@
       "opt_english_literature": "English literature (11 choices; select 3)",
       "opt_general_linguistics": "Linguistics — Letters (5 choices; select 1)",
       "opt_general_literature": "Literature — Letters (5 choices; select 1)"
-    }
+    },
+    "coverageSummary": "Published resources: {{videos}} of {{units}} units have videos; {{readings}} have supplementary readings."
   },
   "resource": {
     "objectives": "Learning objectives",
