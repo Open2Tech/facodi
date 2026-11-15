@@ -107,8 +107,8 @@ export default function Community() {
         <h2 id="community-cta" className="mt-3 max-w-xl text-3xl font-semibold sm:text-4xl">{t('projectCommunity.ctaTitle')}</h2>
         <p className="mt-4 max-w-2xl">{t('projectCommunity.ctaDescription')}</p>
       </div>
-      <Button size="lg" asChild><Link to={user ? '/suggest' : '/login?next=%2Fsuggest'}>
-        {t('projectCommunity.ctaButton')}<ArrowUpRight className="h-4 w-4" />
+      <Button size="lg" asChild><Link to={user ? '/community/join' : '/login?next=%2Fcommunity%2Fjoin'}>
+        {t('communityJoin.cta')}<ArrowUpRight className="h-4 w-4" />
       </Link></Button>
     </section>
   </article>;
