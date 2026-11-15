@@ -9,6 +9,7 @@ import { completedCount, nextItem, type SequenceItem } from '@/entities/sequence
 import { formatDuration, type VideoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
 import { PageState } from '@/components/layout/PageState';
+import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
@@ -128,6 +129,7 @@ export default function SequenceDetails() {
         </>}
       </section>
     </header>
+    <LearningContext focus="sequence" />
 
     <div className="pt-8"><CreatorLearningPanel kind="playlist" slug={sequence.slug} youtubeId={null} inlineSequence /></div>
     {selected ? <section aria-labelledby="sequence-lessons" className="py-10">
