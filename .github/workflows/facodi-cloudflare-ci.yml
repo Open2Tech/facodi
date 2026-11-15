@@ -34,7 +34,12 @@ jobs:
         run: bun run lint
       - name: Unit tests
         run: bun run test
-      - name: Build and project checks
+      - name: Build and project checks (offline placeholder public env)
+        # CI only: dummy values satisfy Vite validation; no artifact is deployed.
+        # Workers uses its own actual public Supabase environment variables.
+        env:
+          VITE_SUPABASE_URL: https://ci-build-only.invalid
+          VITE_SUPABASE_PUBLISHABLE_KEY: ci-build-only-not-a-real-key
         run: bun run build
       - name: Cloudflare Workers read-only smoke tests
         if: github.event_name == 'workflow_dispatch'
