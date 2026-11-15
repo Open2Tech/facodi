@@ -138,6 +138,12 @@ Exemplos: [Física — vetores e movimento](https://facodi.com/resources/facodi-
 
 Os links são **recomendações editoriais**, não equivalências, acreditação ou pré-requisitos académicos oficiais. Nenhum vídeo foi copiado nem foram gerados exercícios. Detalhes, testes e proveniência na [auditoria do grafo de módulos](docs/facodi-study-modules-graph-2026-11-15.md).
 
+## Editor seguro de ordem das videoaulas (15/11/2026)
+
+O painel editorial inclui a [reordenação de sequências](https://facodi.com/editor/sequence-order): drag-and-drop, botões acessíveis para teclado e mobile, pré-visualização e confirmação. Uma RPC `SECURITY INVOKER` do Supabase limita alterações a editores, valida uma permutação integral de 2–200 vídeos e usa versão otimista com bloqueio transacional; as relações curriculares, vídeos e o progresso dos alunos não são alterados.
+
+A UI foi validada em **facodi.com (Cloudflare)** com uma conta de editor de teste: entrada, movimentação e descarte funcionaram sem modificar aulas publicadas. O teste de backend, incluindo conflito de revisão e permutação inválida, foi executado com `ROLLBACK`. Os testes Vitest foram adicionados ao código, mas não executados nesta sessão. Consultar a [auditoria da funcionalidade](docs/facodi-editorial-sequence-order-2026-11-15.md).
+
 ## Ordenação de vídeos e consolidação segura (15/11/2026)
 
 A auditoria dos objetos educativos normalizou as posições das aulas nas sequências, preservando a progressão dos estudantes. Uma sequência idêntica de Ondas e Luz foi consolidada entre Física e Astronomia, com **URL antigo a redirecionar para o recurso canónico**, sem perda de associações curriculares ou materiais. São agora **102 sequências editoriais distintas** (107 objetos `playlist` físicos, incluindo referências externas e um alias histórico). Foram ainda corrigidos **9 módulos do Ifes**, harmonizadas **11 ligações de vídeo** antes invisíveis na leitura pública e reorganizadas pedagogicamente **35 associações de vídeo** em Git, Python, SQL e Física.
