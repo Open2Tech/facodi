@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { useCourseCoverage } from '@/features/courses/queries/useCourseCoverage';
+import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
@@ -43,6 +44,7 @@ export default function CourseDetails() {
   const { t } = useTranslation();
   const query = useCourse(slug);
   const coverage = useCourseCoverage(query.data?.course.id);
+  const collections = useLinkedCatalogAssets(query.data?.course.learning_object_id, 'collection');
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   if (query.isPending) return <PageState loading />;
@@ -83,6 +85,19 @@ export default function CourseDetails() {
     </div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{t('course.studyPlan')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
+    {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
+      <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
+      <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {collections.data.map(collection => <li key={collection.id}>
+          <Link to={`/resources/${encodeURIComponent(collection.slug)}`} className="group flex h-full flex-col gap-3 border border-input p-5 transition-colors hover:border-foreground">
+            <span className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">{collection.title}</span>
+            {collection.description && <span className="line-clamp-3 text-sm text-muted-foreground">{collection.description}</span>}
+            <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('courseCollections.open')}<ArrowUpRight className="h-4 w-4" /></span>
+          </Link>
+        </li>)}
+      </ul>
+    </section>}
     <section aria-labelledby="units" className="border-t border-foreground pt-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{t('course.studyPlan')}</h2>
