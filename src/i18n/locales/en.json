@@ -1101,5 +1101,53 @@
       "title": "FACODI Community | Learn, share and build",
       "description": "Explore FACODI's open learning community, share educational resources and playlists, or contribute to the project as a developer."
     }
+  },
+  "communityJoin": {
+    "cta": "I'd like to help",
+    "back": "Back to community",
+    "title": "Have an idea? Make it happen.",
+    "description": "Tell us how you'd like to support FACODI. Your proposal stays private and needs editorial review; no role or membership is granted automatically. This form sends no emails.",
+    "interest": "How would you like to contribute?",
+    "interests": {
+      "learner": "Learn and help other students",
+      "educator": "Share teaching expertise",
+      "curator": "Review and curate resources",
+      "developer": "Build open-source software",
+      "designer": "Design and user experience",
+      "translator": "Translation and accessibility",
+      "organization": "Institutional collaboration"
+    },
+    "motivation": "What would you like to contribute?",
+    "motivationPlaceholder": "Tell us about your ideas, background or how you could help…",
+    "motivationHint": "30–1,200 characters. Never include passwords or sensitive information.",
+    "portfolio": "Public portfolio or link (optional)",
+    "consent": "I agree that FACODI editors may review this proposal and use my account to discuss this collaboration. This does not grant permission to publish my name or work.",
+    "consentRequired": "You must opt in to submitting this proposal.",
+    "privacy": "Private proposals; no public member lists, automatic credits or outgoing emails. Maximum three proposals per seven days.",
+    "send": "Submit interest",
+    "success": "We received your proposal. It is awaiting editorial review. You can track its status here.",
+    "history": "My proposals",
+    "historyDescription": "Only you and authorized editors can see your submissions.",
+    "empty": "No collaboration proposals yet.",
+    "status": {
+      "pending": "Pending review",
+      "accepted": "Interest accepted",
+      "rejected": "Not accepted at this stage"
+    },
+    "reviewSaved": "Decision saved. No email was sent.",
+    "reviewNotApplied": "This proposal is no longer available for review.",
+    "openEditor": "Community interests",
+    "backEditor": "Back to editor",
+    "reviewTitle": "Let's build together",
+    "reviewDescription": "Private expressions of interest only. Review does not publicly credit anyone, grant team access or send emails.",
+    "reviewEmpty": "No pending proposals.",
+    "queueCount": "{{count}} pending proposals",
+    "reviewPrivacy": "Information was provided for private editorial assessment. Do not copy it to public pages or external campaigns without separate permission.",
+    "reviewNote": "Editorial note (visible to contributor)",
+    "accept": "Accept interest",
+    "reject": "Decline for now",
+    "confirmReview": "Confirm this editorial decision?",
+    "acceptNote": "Acceptance does not create a team role, grant permissions or send messages.",
+    "rejectNote": "The decision appears in the proposer's private history. You can explain why."
   }
 }
