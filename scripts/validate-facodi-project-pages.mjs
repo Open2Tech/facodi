@@ -20,7 +20,7 @@ const required = [
   'https://www.facodi.com/community',
 ];
 assert.deepEqual(urls, required, 'Public sitemap must not include private or unverified routes');
-assert.match(robots, /Sitemap: https:\/\/facodi\.vercel\.app\/sitemap\.xml/);
+assert.match(robots, /Sitemap: https:\/\/www\.facodi\.com\/sitemap\.xml/);
 for (const prefix of ['/login', '/auth', '/editor', '/admin', '/profile', '/dashboard', '/suggest']) {
   assert.ok(robots.includes(`Disallow: ${prefix}`), `Private route missing from robots: ${prefix}`);
 }
