@@ -13,6 +13,7 @@ import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { VideoCard } from '@/components/resource/VideoCard';
+import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
 import { NoteTimeline } from '@/components/notes/NoteTimeline';
 import { StudyNotebook } from '@/components/notes/StudyNotebook';
@@ -241,6 +242,7 @@ export default function ResourceDetails() {
           </Link>}
         </nav>}
 
+        {(resource.object_type === 'playlist' || isVideo) && <CreatorLearningPanel kind={resource.object_type} slug={resource.slug} youtubeId={isVideo ? info.youtubeId : null} />}
         <section aria-labelledby="resource-about">
           <h2 id="resource-about" className="text-2xl font-semibold tracking-[-0.02em]">{t(isVideo ? 'video.about' : 'resource.about')}</h2>
           {resource.description && <div className="mt-4"><SafeHtml html={resource.description} /></div>}
