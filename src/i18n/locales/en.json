@@ -453,7 +453,16 @@
     "videosTitle": "Videos in this course",
     "videosText": "Opening videos from the curated trails across the {{count}} curricular units in this plan.",
     "availableElectives": "Available elective courses",
-    "ufesElectiveNotice": "These 45 subjects are choices across four groups in the UFES curriculum. A student selects 10 required electives (720 hours), not all listed options."
+    "ufesElectiveNotice": "These 45 subjects are choices across four groups in the UFES curriculum. A student selects 10 required electives (720 hours), not all listed options.",
+    "hours": "Contact hours",
+    "brazilianCredits": "Brazilian credits",
+    "electiveGroup": "Elective group",
+    "electiveGroups": {
+      "opt_english_linguistics": "English linguistics (24 choices; select 5)",
+      "opt_english_literature": "English literature (11 choices; select 3)",
+      "opt_general_linguistics": "Linguistics — Letters (5 choices; select 1)",
+      "opt_general_literature": "Literature — Letters (5 choices; select 1)"
+    }
   },
   "resource": {
     "objectives": "Learning objectives",
