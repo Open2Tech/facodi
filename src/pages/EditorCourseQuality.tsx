@@ -62,7 +62,7 @@ async function editorRpc(name: string, args: Record<string, unknown>) {
 }
 
 function resourceHref(item: Issue): string | null {
-  const suffix = item.issue_key.split(':').slice(3).join(':');
+  const suffix = item.issue_key.split(':').slice(2).join(':');
   if (item.issue_kind === 'curriculum_discrepancy') return `/courses/${COURSE_SLUG}`;
   if (item.issue_kind === 'study_module' || item.issue_kind === 'study_guide' ||
       item.issue_kind === 'editorial_playlist') {
