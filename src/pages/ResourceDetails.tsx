@@ -39,6 +39,7 @@ export default function ResourceDetails() {
   const resource = query.data;
   const context = useResourceContext(resource);
   const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
+  const collectionPlaylists = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'playlist');
   const isVideo = resource?.object_type === 'video';
   const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
   const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
@@ -248,7 +249,35 @@ export default function ResourceDetails() {
           {!!resource.keywords.length && <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">{t('resource.keywords')}:</span> {resource.keywords.join(' · ')}</p>}
         </section>
 
-        {resource.object_type === 'collection' && <section aria-labelledby="collection-videos">
+        {resource.object_type === 'collection' && (collectionPlaylists.isPending || collectionPlaylists.isError || !!collectionPlaylists.data?.length) && (
+          <section aria-labelledby="collection-playlists">
+            <h2 id="collection-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('collectionPlaylists.title')}</h2>
+            <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('collectionPlaylists.notice')}</p>
+            {collectionPlaylists.isPending
+              ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+              : collectionPlaylists.error
+                ? <div role="alert" className="mt-4 text-sm text-destructive">
+                    <p>{collectionPlaylists.error.message}</p>
+                    <button type="button" onClick={() => void collectionPlaylists.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                  </div>
+                : <ol className="mt-5 divide-y divide-input border-y border-input">
+                    {(collectionPlaylists.data ?? []).map((item, index) => <li key={item.id}>
+                      <Link
+                        to={`/sequences/${encodeURIComponent(item.slug)}`}
+                        className="group flex items-start gap-4 py-4 transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                      >
+                        <span className="w-8 shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block font-semibold group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                          {item.description && <span className="mt-1 line-clamp-2 text-sm text-muted-foreground">{item.description}</span>}
+                        </span>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </li>)}
+                  </ol>}
+          </section>
+        )}
+        {resource.object_type === 'collection' && (collectionVideos.isPending || collectionVideos.isError || !!collectionVideos.data?.length || !collectionPlaylists.data?.length) && <section aria-labelledby="collection-videos">
           <h2 id="collection-videos" className="text-2xl font-semibold tracking-[-0.02em]">{t('collectionVideos.title')}</h2>
           <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('collectionVideos.notice')}</p>
           {collectionVideos.isPending
