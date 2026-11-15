@@ -184,6 +184,48 @@ export type Database = {
           },
         ]
       }
+      email_template_catalog: {
+        Row: {
+          template_key: string
+          locale: string
+          audience: string
+          subject: string
+          body_html: string
+          template_source_path: string
+          site_origin: string
+          delivery_enabled: boolean
+          review_status: string
+          version: number
+          updated_at: string
+        }
+        Insert: {
+          template_key: string
+          locale?: string
+          audience?: string
+          subject: string
+          body_html: string
+          template_source_path: string
+          site_origin?: string
+          delivery_enabled?: boolean
+          review_status?: string
+          version?: number
+          updated_at?: string
+        }
+        Update: {
+          template_key?: string
+          locale?: string
+          audience?: string
+          subject?: string
+          body_html?: string
+          template_source_path?: string
+          site_origin?: string
+          delivery_enabled?: boolean
+          review_status?: string
+          version?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       community_participation_requests: {
         Row: {
           id: string
