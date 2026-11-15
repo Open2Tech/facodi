@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import FacodiLayout from '@/components/layout/FacodiLayout';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
@@ -8,7 +8,6 @@ import { useAuth } from '@/features/auth/useAuth';
 
 const Home = lazy(() => import('@/pages/Home'));
 const Courses = lazy(() => import('@/pages/Courses'));
-const Modules = lazy(() => import('@/pages/Modules'));
 const ModuleDetails = lazy(() => import('@/pages/ModuleDetails'));
 const HowItWorks = lazy(() => import('@/pages/HowItWorks'));
 const CourseDetails = lazy(() => import('@/pages/CourseDetails'));
@@ -41,6 +40,14 @@ const EditorSuggestions = lazy(() => import('@/pages/EditorSuggestions'));
 const Admin = lazy(() => import('@/pages/Admin'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 
+/** Legacy listing URLs keep their filters when moved to the unified catalog. */
+function LegacyModulesRedirect() {
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  params.set('type', 'module');
+  return <Navigate to={'/resources?' + params.toString()} replace />;
+}
+
 export function AppRoutes() {
   const { user, role } = useAuth();
   const sessionKey = `${user?.id ?? 'public'}:${role}`;
@@ -51,7 +58,7 @@ export function AppRoutes() {
       <Route path="/courses/:slug" element={<CourseDetails key={sessionKey} />} />
       <Route path="/courses/:slug/units/:unit" element={<UnitDetails key={sessionKey} />} />
       <Route path="/units" element={<Units key={sessionKey} />} />
-      <Route path="/modules" element={<Modules key={sessionKey} />} />
+      <Route path="/modules" element={<LegacyModulesRedirect />} />
       <Route path="/modules/:slug" element={<ModuleDetails key={sessionKey} />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/resources" element={<Resources key={sessionKey} />} />
