@@ -36,5 +36,21 @@ for (const [type, entries] of [
     checked++;
   }
 }
+
+// Protect the intentionally FACODI-branded global Auth configuration.
+// This reads versioned config only; it never pushes settings or sends emails.
+const config = readFileSync(new URL('../supabase/config.toml', import.meta.url), 'utf8');
+assert.match(config, /site_url = "https:\/\/facodi\.com"/,
+  'Auth global site URL must match the FACODI canonical origin');
+for (const type of [...linkTemplates, ...tokenTemplates]) {
+  assert.ok(config.includes('content_path = "supabase/email-templates/facodi/' + type + '.html"'),
+    'Global Auth template must match FACODI file: ' + type);
+}
+for (const redirect of [
+  'https://facodi.com',
+  'https://facodi.marcelo-0d6.workers.dev/auth/callback**',
+  'https://facodi.marcelo-0d6.workers.dev/auth/reset-password**',
+]) assert.ok(config.includes(redirect), 'Auth redirect allowlist missing: ' + redirect);
+
 assert.equal(checked, 13);
 console.log('FACODI: ' + checked + ' email templates validated (static tests only).');
