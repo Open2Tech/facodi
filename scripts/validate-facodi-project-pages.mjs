@@ -72,4 +72,35 @@ for (const lang of ['pt','en','es','fr']) {
   }
 }
 
+
+const wrangler = JSON.parse(read('wrangler.jsonc'));
+const workerHeaders = read('public/_headers');
+const supabaseConfig = read('supabase/config.toml');
+const facodiPlaylistFunction = read('supabase/functions/facodi-submit-playlist/index.ts');
+assert.equal(wrangler.name, 'facodi', 'Cloudflare must deploy the FACODI Worker');
+assert.equal(wrangler.assets?.directory, './dist', 'Cloudflare must serve the Vite dist assets');
+assert.equal(wrangler.assets?.not_found_handling, 'single-page-application',
+  'Client-side routes and Auth callbacks require Cloudflare SPA fallback');
+assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
+  /X-Robots-Tag:\\s*noindex/i.test(workerHeaders),
+  'Cloudflare Workers preview host must not be indexed');
+for (const rule of ['X-Content-Type-Options: nosniff','X-Frame-Options: DENY',
+  'Referrer-Policy: strict-origin-when-cross-origin']) {
+  assert.ok(workerHeaders.includes(rule), `Missing Cloudflare security header: ${rule}`);
+}
+assert.ok(workerHeaders.includes('/assets/*') &&
+  workerHeaders.includes('max-age=31536000, immutable'),
+  'Hashed Vite assets must have durable cache behavior');
+assert.ok(supabaseConfig.includes('site_url = "https://tube.open2.tech"'),
+  'Shared Auth Site URL must remain unchanged without a separate Auth setup');
+for (const route of ['/auth/callback**','/auth/reset-password**']) {
+  assert.ok(supabaseConfig.includes(`https://facodi.marcelo-0d6.workers.dev${route}`),
+    `Workers preview missing versioned Auth redirect: ${route}`);
+}
+assert.ok(facodiPlaylistFunction.includes('"facodi.marcelo-0d6.workers.dev"') &&
+  !facodiPlaylistFunction.includes('".marcelo-0d6.workers.dev"'),
+  'FACODI playlist API must permit only the exact Workers preview origin');
+assert.ok(!JSON.stringify(wrangler).match(/service.role|secret|SUPABASE_SERVICE/i),
+  'Cloudflare configuration must not expose server secrets');
+
 console.log('FACODI project, community, SEO and consent checks passed across four locales.');
