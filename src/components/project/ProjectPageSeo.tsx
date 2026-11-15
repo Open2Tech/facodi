@@ -14,7 +14,7 @@ const localeMap: Record<string, string> = {
 export default function ProjectPageSeo({ page }: { page: ProjectPage }) {
   const { t, i18n } = useTranslation();
   const language = i18n.language.split('-')[0].toLowerCase();
-  const canonical = `https://facodi.vercel.app/${page}`;
+  const canonical = `https://www.facodi.com/${page}`;
   const title = t(`projectSeo.${page}.title`);
   const description = t(`projectSeo.${page}.description`);
   const structuredData = {
@@ -27,7 +27,7 @@ export default function ProjectPageSeo({ page }: { page: ProjectPage }) {
     isPartOf: {
       '@type': 'WebSite',
       name: 'FACODI',
-      url: 'https://facodi.vercel.app/',
+      url: 'https://www.facodi.com/',
     },
   };
   return <Helmet>
