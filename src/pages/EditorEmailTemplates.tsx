@@ -58,7 +58,7 @@ export default function EditorEmailTemplates() {
             <button type="button" aria-pressed={selected?.template_key===item.template_key}
               className="w-full px-3 py-4 text-left hover:bg-muted focus-visible:outline"
               onClick={()=>setSelectedKey(item.template_key)}>
-              <span className="block font-semibold">{item.template_key.replaceAll('_',' ')}</span>
+              <span className="block font-semibold">{item.template_key.replace(/_/g,' ')}</span>
               <span className="mt-1 block text-xs text-muted-foreground">{item.subject}</span>
             </button>
           </li>)}
