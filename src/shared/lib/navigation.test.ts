@@ -12,6 +12,8 @@ describe('safe navigation', () => {
     expect(safeReturnPath('/editor/course-quality')).toBe('/editor/course-quality');
     expect(safeReturnPath('/playlists/submit')).toBe('/playlists/submit');
     expect(safeReturnPath('/sequences/facodi-playlist-git?v=v1')).toBe('/sequences/facodi-playlist-git?v=v1');
+    expect(safeReturnPath('/courses/ifes-cariacica-administracao-integrado-2026')).toBe('/courses/ifes-cariacica-administracao-integrado-2026');
+    expect(safeReturnPath('//example.invalid/courses/ifes-cariacica-administracao-integrado-2026')).toBe('/dashboard');
     expect(safeReturnPath('/resources/intro-to-sql')).toBe('/resources/intro-to-sql');
   });
   it('permits HTTP resource links but not executable, local or credentialed URLs', () => {

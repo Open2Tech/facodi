@@ -1288,6 +1288,9 @@
     "reopen": "Reprendre l'étude",
     "saved": "Progression enregistrée. Avance à ton rythme !",
     "saveError": "Impossible d'enregistrer la progression. Réessaie.",
-    "loadError": "Impossible de charger ta progression."
+    "loadError": "Impossible de charger ta progression.",
+    "dashboardTitle": "Reprends ton parcours",
+    "dashboardSummary": "Tu as terminé {{completed}} guides sur {{total}}. Continue à ton rythme.",
+    "dashboardResume": "Continuer à apprendre"
   }
 }
