@@ -5,11 +5,11 @@ import { renderWithProviders } from '@/shared/test/renderWithProviders';
 import { LegalDocument } from './LegalDocument';
 
 describe('LegalDocument', () => {
-  it('renders the document, its section index and pending institutional data', () => {
+  it('renders the document, its section index and pending legal details', () => {
     renderWithProviders(<LegalDocument id="legal" />, { route: '/legal' });
 
     expect(screen.getByRole('heading', { level: 1, name: i18n.t('legal.legal.title') })).toBeInTheDocument();
-    expect(screen.getAllByText(i18n.t('legal.common.pending')).length).toBe(4);
+    expect(screen.getAllByText(i18n.t('legal.common.pending')).length).toBe(3);
     const related = screen.getByRole('navigation', { name: i18n.t('legal.common.related') });
     expect(within(related).getByText(i18n.t('legal.nav.legal'))).toHaveAttribute('aria-current', 'page');
     expect(within(related).getAllByRole('link')).toHaveLength(5);
