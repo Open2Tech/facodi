@@ -47,7 +47,6 @@ for (const lang of ['pt', 'en', 'es', 'fr']) {
 const join = read('src/pages/CommunityJoin.tsx');
 const editorialCommunity = read('src/pages/EditorCommunity.tsx');
 const routes = read('src/App.tsx');
-const community = read('src/pages/Community.tsx');
 const layout = read('src/components/layout/FacodiLayout.tsx');
 assert.ok(join.includes("supabase.from('community_participation_requests')"), 'Missing Supabase community intake');
 assert.ok(join.includes('consent_to_contact: true'), 'Community intake must require opt-in');
@@ -73,4 +72,4 @@ for (const lang of ['pt','en','es','fr']) {
   }
 }
 
-process.stdout.write('FACODI public project/SEO/consent checks passed (4 locales, 7 public URLs).\n');
+console.log('FACODI project, community, SEO and consent checks passed across four locales.');
