@@ -6,7 +6,7 @@ import { resourceMeta } from '@/shared/seo/seo';
 import { toast } from 'sonner';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, MessageSquarePlus, NotebookPen } from 'lucide-react';
 import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
-import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
+import { useLinkedCatalogAssets, useModuleProgression } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video';
@@ -40,6 +40,11 @@ export default function ResourceDetails() {
   const context = useResourceContext(resource);
   const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
   const collectionPlaylists = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'playlist');
+  const moduleId = resource?.object_type === 'module' ? resource.id : undefined;
+  const moduleSequences = useLinkedCatalogAssets(moduleId, 'playlist');
+  const moduleDocuments = useLinkedCatalogAssets(moduleId, 'document');
+  const moduleReferences = useLinkedCatalogAssets(moduleId, 'external_resource');
+  const moduleProgression = useModuleProgression(moduleId);
   const isVideo = resource?.object_type === 'video';
   const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
   const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
@@ -249,6 +254,90 @@ export default function ResourceDetails() {
           {!!resource.keywords.length && <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">{t('resource.keywords')}:</span> {resource.keywords.join(' · ')}</p>}
         </section>
 
+        {resource.object_type === 'module' && <section aria-labelledby="module-study-sequences">
+          <h2 id="module-study-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('moduleResources.sequences')}</h2>
+          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('moduleResources.sequenceNotice')}</p>
+          {moduleSequences.isPending
+            ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : moduleSequences.isError
+              ? <div role="alert" className="mt-4 text-sm text-destructive">
+                  <p>{moduleSequences.error.message}</p>
+                  <button type="button" className="mt-2 underline underline-offset-4" onClick={() => void moduleSequences.refetch()}>{t('common.retry')}</button>
+                </div>
+              : moduleSequences.data?.length
+                ? <ol className="mt-5 divide-y divide-input border-y border-input">
+                    {moduleSequences.data.map((item, index) => <li key={item.id}>
+                      <Link to={`/sequences/${encodeURIComponent(item.slug)}`}
+                        className="group flex items-start gap-4 py-4 transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
+                        <span className="w-8 shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block font-semibold group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                          {item.description && <span className="mt-1 line-clamp-2 text-sm text-muted-foreground">{item.description}</span>}
+                        </span>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </li>)}
+                  </ol>
+                : <p className="mt-4 text-sm text-muted-foreground">{t('moduleResources.noSequences')}</p>}
+        </section>}
+        {resource.object_type === 'module' && <section aria-labelledby="module-readings">
+          <h2 id="module-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('moduleResources.readings')}</h2>
+          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('moduleResources.readingsNotice')}</p>
+          {(moduleDocuments.isPending || moduleReferences.isPending)
+            ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : (moduleDocuments.isError || moduleReferences.isError)
+              ? <div role="alert" className="mt-4 text-sm text-destructive">
+                  <p>{moduleDocuments.error?.message ?? moduleReferences.error?.message}</p>
+                  <button type="button" className="mt-2 underline underline-offset-4" onClick={() => {
+                    void moduleDocuments.refetch();
+                    void moduleReferences.refetch();
+                  }}>{t('common.retry')}</button>
+                </div>
+              : (moduleDocuments.data?.length || moduleReferences.data?.length)
+                ? <ul className="mt-5 divide-y divide-input border-y border-input">
+                    {[...(moduleDocuments.data ?? []), ...(moduleReferences.data ?? [])].map(item => <li key={item.id}>
+                      <Link to={`/resources/${encodeURIComponent(item.slug)}`}
+                        className="group flex items-start gap-4 py-4 transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
+                        <span className="min-w-0 flex-1">
+                          <span className="block font-medium group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                          {item.description && <span className="mt-1 line-clamp-2 text-sm text-muted-foreground">{item.description}</span>}
+                        </span>
+                        <ArrowUpRight className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </li>)}
+                  </ul>
+                : <p className="mt-4 text-sm text-muted-foreground">{t('moduleResources.noReadings')}</p>}
+        </section>}
+        {resource.object_type === 'module' && (moduleProgression.isPending || moduleProgression.isError ||
+          !!moduleProgression.data?.prerequisites.length || !!moduleProgression.data?.nextModules.length) && (
+          <section aria-labelledby="module-progression">
+            <h2 id="module-progression" className="text-2xl font-semibold tracking-[-0.02em]">{t('moduleResources.progression')}</h2>
+            <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('moduleResources.progressionNotice')}</p>
+            {moduleProgression.isPending
+              ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+              : moduleProgression.isError
+                ? <div role="alert" className="mt-4 text-sm text-destructive">
+                    <p>{moduleProgression.error.message}</p>
+                    <button type="button" className="mt-2 underline underline-offset-4" onClick={() => void moduleProgression.refetch()}>{t('common.retry')}</button>
+                  </div>
+                : <div className="mt-5 grid gap-6 sm:grid-cols-2">
+                    {[{ label: t('moduleResources.before'), items: moduleProgression.data?.prerequisites ?? [] },
+                      { label: t('moduleResources.after'), items: moduleProgression.data?.nextModules ?? [] }].map(group =>
+                      group.items.length > 0 && <div key={group.label}>
+                        <h3 className="mb-2 text-sm font-semibold">{group.label}</h3>
+                        <ul className="divide-y divide-input border-y border-input">
+                          {group.items.map(item => <li key={item.id}>
+                            <Link to={`/resources/${encodeURIComponent(item.slug)}`}
+                              className="group flex items-start gap-2 py-3 text-sm hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
+                              <span className="min-w-0 flex-1 group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                              <ArrowRight className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                            </Link>
+                          </li>)}
+                        </ul>
+                      </div>)}
+                  </div>}
+          </section>
+        )}
         {resource.object_type === 'collection' && (collectionPlaylists.isPending || collectionPlaylists.isError || !!collectionPlaylists.data?.length) && (
           <section aria-labelledby="collection-playlists">
             <h2 id="collection-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('collectionPlaylists.title')}</h2>
