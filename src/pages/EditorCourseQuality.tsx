@@ -118,7 +118,7 @@ export default function EditorCourseQuality() {
     },
   });
 
-  const all = queue.data ?? [];
+  const all = useMemo(() => queue.data ?? [], [queue.data]);
   const filtered = useMemo(() => all.filter(item =>
     (kind === 'all' || item.issue_kind === kind) &&
     (year === 'all' || item.school_year === Number(year)) &&
