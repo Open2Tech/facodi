@@ -114,7 +114,7 @@ A FACODI reúne percursos de diferentes instituições (UAlg, UFES e Ifes). **Sn
 
 **Notas de interpretação:** as optativas são alternativas de escolha, os 120 ECTS do CTeSP e os 180 ECTS das licenciaturas UAlg pertencem a planos diferentes, e os projetos editoriais FACODI não são fichas homologadas pelas instituições.
 
-Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_resources_v2` está integrada em `/resources?search=...`, com RLS, filtros e índice GIN.
+Os vídeos estão alojados no YouTube e os livros/documentações são **links para sítios externos**. A pertinência foi selecionada por títulos e temas; nem todos os vídeos foram revistos integralmente ou têm licenças verificadas. A pesquisa textual pública `facodi.search_public_resources_v3` está integrada em `/resources?search=...`: ignora acentos, cobre todos os tipos publicados, aceita variantes regionais de idioma e devolve contagens exatas por tipo, sempre sob RLS.
 
 - [Ativação da pesquisa, moderação editorial e submissão de playlists](docs/facodi-activation-review-search-playlists-2026-11-14.md)
 - [Auditoria do CTeSP UAlg 1812, fontes e resultados de segurança](docs/facodi-ctesp-sti-1812-ualg-2026-27.md)

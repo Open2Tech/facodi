@@ -75,42 +75,30 @@ export async function getUnitFacets(signal?: AbortSignal) {
   return { total: data.length, courses: byValue(courses), years: byValue(years), semesters: byValue(semesters), semesterYears };
 }
 
+type ResourceRow = Pick<LearningObject,
+  'id' | 'slug' | 'title' | 'description' | 'object_type' | 'language' | 'tags' | 'metadata' | 'source_url'>;
+export interface ResourceTypeFacet { value: string; count: number }
+
+/**
+ * Public resource catalogue through one SECURITY INVOKER RPC: accent-insensitive ranked search,
+ * base-language matching (pt includes pt-BR) and exact type counts for the current search,
+ * language and tag (the type filter itself is excluded so every type stays reachable).
+ */
 export async function listResources({ search, language, page, tag, objectType }: CatalogParams, signal?: AbortSignal) {
-  if (search.trim() && objectType !== 'module') {
-    // Use the published-only, SECURITY INVOKER search API for relevance ranking.
-    // The existing list query below remains the stable alphabetical fallback when
-    // there is no search text, preserving its exact pagination and facet behavior.
-    const { data, error } = await supabase.rpc('search_public_resources_v2', {
-      p_search: search.trim(),
-      p_language: language || null,
-      p_object_type: objectType || null,
-      p_tag: tag || null,
-      p_page: page,
-      p_page_size: PAGE_SIZE,
-    });
-    if (error) throw new Error(getSupabaseErrorMessage(error));
-    const payload = data as { total?: unknown; items?: unknown } | null;
-    if (!payload || typeof payload.total !== 'number' || !Array.isArray(payload.items)) {
-      throw new Error('Formato de resposta de pesquisa inválido.');
-    }
-    type ResourceRow = Pick<LearningObject,
-      'id' | 'slug' | 'title' | 'description' | 'object_type' |
-      'language' | 'tags' | 'metadata' | 'source_url'>;
-    return { items: payload.items as ResourceRow[], total: payload.total };
-  }
-  let query = supabase.from('learning_objects')
-    .select('id, slug, title, description, object_type, language, tags, metadata, source_url', { count: 'exact' })
-    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('title').order('id');
-  if (search.trim()) query = query.ilike('title', searchPattern(search));
-  // Module guides use title-based lookup: the ranked RPC does not reliably return them.
-  // Their locale may include a region (e.g. pt-BR), so the language facet matches that too.
-  if (language) query = objectType === 'module' ? query.ilike('language', language + '%') : query.eq('language', language);
-  if (objectType) query = query.eq('object_type', objectType);
-  // Quote the element so tags with spaces, commas or braces stay a single array item.
-  if (tag) query = query.contains('tags', `{"${tag.replace(/["\\]/g, '\\$&')}"}`);
-  const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+  const { data, error } = await supabase.rpc('search_public_resources_v3', {
+    p_search: search.trim(),
+    p_language: language || undefined,
+    p_object_type: objectType || undefined,
+    p_tag: tag || undefined,
+    p_page: page,
+    p_page_size: PAGE_SIZE,
+  }).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  return { items: data, total: count ?? 0 };
+  const payload = data as { total?: unknown; items?: unknown; types?: unknown } | null;
+  if (!payload || typeof payload.total !== 'number' || !Array.isArray(payload.items) || !Array.isArray(payload.types)) {
+    throw new Error('Formato de resposta de pesquisa inválido.');
+  }
+  return { items: payload.items as ResourceRow[], total: payload.total, types: payload.types as ResourceTypeFacet[] };
 }
 
 export async function getCatalogCounts(signal?: AbortSignal) {
@@ -213,10 +201,8 @@ export async function listEditorial(kind: ContentKind, { page, search, status, o
 }
 
 /** Object types in use, with counts. Editors see every row RLS allows; the public facet mirrors the catalogue filter. */
-export async function getObjectTypeFacets(signal?: AbortSignal, publicOnly = false) {
-  let query = supabase.from('learning_objects').select('object_type');
-  if (publicOnly) query = query.eq('published', true).in('status', PUBLIC_RESOURCE_STATES);
-  const { data, error } = await query.limit(5000).abortSignal(signal);
+export async function getObjectTypeFacets(signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_objects').select('object_type').limit(5000).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
   const counts = new Map<string, number>();
   for (const { object_type } of data) counts.set(object_type, (counts.get(object_type) ?? 0) + 1);

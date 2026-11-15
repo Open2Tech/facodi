@@ -106,16 +106,24 @@ describe('FACODI Data API contract', () => {
     expect(await getUnit('lesti', 'missing')).toBeNull();
     expect((await getUnit('lesti', 'b'))?.unit.title).toBe('B');
   });
-  it('filters public resources by language and tag', async () => {
-    server.use(http.get(`${endpoint}/learning_objects`, ({ request }) => {
-      const url = new URL(request.url);
-      expect(url.searchParams.get('published')).toBe('eq.true');
-      expect(url.searchParams.get('status')).toBe('in.(active,published)');
-      expect(url.searchParams.get('language')).toBe('eq.en');
-      expect(url.searchParams.get('tags')).toBe('cs.{"data, \\"science\\""}');
-      return HttpResponse.json([], { headers: { 'Content-Range': '0-0/0' } });
+  it('searches public resources through the v3 RPC with every filter and exact type facets', async () => {
+    let body: Record<string, unknown> = {};
+    server.use(http.post(`${endpoint}/rpc/search_public_resources_v3`, async ({ request }) => {
+      body = await request.json() as Record<string, unknown>;
+      return HttpResponse.json({ total: 1, items: [{ id: 'r1', slug: 'r1' }], types: [{ value: 'video', count: 849 }] });
     }));
-    expect(await listResources({ search: '', language: 'en', page: 1, tag: 'data, "science"' })).toEqual({ items: [], total: 0 });
+    const result = await listResources({ search: '  análise ', language: 'pt', page: 2, tag: 'data, "science"', objectType: 'video' });
+    expect(body).toEqual({ p_search: 'análise', p_language: 'pt', p_object_type: 'video', p_tag: 'data, "science"', p_page: 2, p_page_size: 12 });
+    expect(result).toEqual({ total: 1, items: [{ id: 'r1', slug: 'r1' }], types: [{ value: 'video', count: 849 }] });
+  });
+  it('omits empty resource filters and rejects malformed search payloads', async () => {
+    let body: Record<string, unknown> = {};
+    server.use(http.post(`${endpoint}/rpc/search_public_resources_v3`, async ({ request }) => {
+      body = await request.json() as Record<string, unknown>;
+      return HttpResponse.json({ total: 0, items: [] });
+    }));
+    await expect(listResources({ search: '', language: '', page: 1 })).rejects.toThrow('inválido');
+    expect(body).toEqual({ p_search: '', p_page: 1, p_page_size: 12 });
   });
   it('counts public content with the same visibility rules and no RPC', async () => {
     const seen: string[] = [];
@@ -257,7 +265,7 @@ describe('FACODI Data API contract', () => {
     expect(await getResourceContext({ id: 'v', object_type: 'video' })).toEqual({ redirect: null, units: [], sequence: [] });
   });
 
-  it('finds other public videos from the same channel and filters resources by type', async () => {
+  it('finds other public videos from the same channel', async () => {
     server.use(http.get(`${endpoint}/learning_objects`, ({ request }) => {
       const url = new URL(request.url);
       if (url.searchParams.has('metadata->>channel_name')) {
@@ -267,10 +275,8 @@ describe('FACODI Data API contract', () => {
         expect(url.searchParams.get('limit')).toBe('4');
         return HttpResponse.json([]);
       }
-      expect(url.searchParams.get('object_type')).toBe('eq.video');
-      return HttpResponse.json([], { headers: { 'Content-Range': '*/0' } });
+      return HttpResponse.json([]);
     }));
     expect(await listChannelVideos('Khan Academy', 'current')).toEqual([]);
-    expect((await listResources({ search: '', language: '', page: 1, objectType: 'video' })).total).toBe(0);
   });
 });

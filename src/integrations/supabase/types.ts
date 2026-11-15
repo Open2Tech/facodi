@@ -3106,6 +3106,17 @@ export type Database = {
         }
         Returns: Json
       }
+      search_public_resources_v3: {
+        Args: {
+          p_language?: string
+          p_object_type?: string
+          p_page?: number
+          p_page_size?: number
+          p_search?: string
+          p_tag?: string
+        }
+        Returns: Json
+      }
       set_my_study_module_completion_v1: {
         Args: { p_completed: boolean; p_module_slug: string }
         Returns: {

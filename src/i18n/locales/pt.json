@@ -149,7 +149,17 @@
     "next": "Seguinte",
     "year": "Ano {{value}}",
     "count": "Total: {{count}}",
-    "goToPage": "Ir para a página {{page}}"
+    "goToPage": "Ir para a página {{page}}",
+    "clearFilters": "Limpar filtros",
+    "results_zero": "Sem resultados",
+    "results_one": "{{count}} resultado",
+    "results_many": "{{count}} resultados",
+    "results_other": "{{count}} resultados",
+    "activeFilters": "Filtros ativos",
+    "removeFilter": "Remover filtro {{label}}: {{value}}",
+    "filterSearch": "Pesquisa",
+    "filterType": "Tipo",
+    "filterTag": "Tema"
   },
   "access": {
     "denied": "Não tens permissão para aceder a esta área.",
@@ -376,11 +386,13 @@
     "open": "Abrir recurso",
     "empty": "Ainda não há recursos para mostrar.",
     "emptyDescription": "Os recursos aparecem aqui quando a equipa editorial os publica.",
-    "noResults": "Não encontrámos recursos com estes filtros. Experimenta outro título, idioma ou tema.",
-    "taggedWith": "Tema:",
-    "clearTag": "Remover tema",
+    "noResults": "Experimenta outras palavras, outro idioma, ou remove um dos filtros acima.",
     "filterType": "Tipo de recurso",
-    "allTypes": "Todos"
+    "allTypes": "Todos",
+    "searchPlaceholder": "Título, descrição ou tema",
+    "results": "Resultados de recursos",
+    "filterByTag": "Filtrar por tema",
+    "noMatches": "Nenhum recurso corresponde aos filtros."
   },
   "about": {
     "title": "De uma aba aberta nasceu uma ideia maior.",
@@ -499,7 +511,8 @@
     "external_resource": "Referência externa",
     "playlist": "Sequência",
     "module": "Módulo de estudo",
-    "topic": "Tópicos"
+    "topic": "Tópicos",
+    "collection": "Coleção"
   },
   "video": {
     "play": "Reproduzir vídeo: {{title}}",
@@ -1058,7 +1071,6 @@
     "search": "Pesquisar sequências",
     "searchPlaceholder": "Título, tema ou código da UC",
     "noMatches": "Nenhuma sequência corresponde à pesquisa.",
-    "clearFilters": "Limpar filtros",
     "notice": "Coleções editoriais de ligações para vídeos externos. A FACODI não alojou nem descarregou os vídeos; a correspondência temática foi revista por títulos e fontes.",
     "empty": "Ainda não há sequências publicadas.",
     "emptyText": "Quando a equipa editorial publicar uma sequência, ela aparece aqui.",
@@ -1102,7 +1114,9 @@
     "browse": "Ver sequências de estudo",
     "inSequences": "Nas sequências de estudo",
     "videoSequencesLoadFailed": "Não foi possível carregar as sequências deste vídeo.",
-    "videoProgressLoadFailed": "Não foi possível carregar o teu progresso nas sequências."
+    "videoProgressLoadFailed": "Não foi possível carregar o teu progresso nas sequências.",
+    "results": "Resultados de sequências",
+    "noMatchesText": "Experimenta outras palavras ou outro idioma. A pesquisa ignora acentos e também procura pelo código da UC."
   },
   "projectSeo": {
     "about": {

@@ -32,6 +32,12 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
   devolve `null` em falha (preenchimento manual). A revisão usa a RPC
   `review_resource_suggestion`.
+- [src/entities/course](../src/entities/course): catálogo público. `/resources`
+  usa só a RPC `search_public_resources_v3` (SECURITY INVOKER): pesquisa sem
+  acentos em título, descrição e temas, com relevância; idioma-base (`pt`
+  inclui `pt-BR`); todos os tipos públicos (`published` e estado `active` ou
+  `published`); e contagens exatas por tipo para a pesquisa, idioma e tema
+  atuais (ignora o filtro de tipo, para manter todos os tipos alcançáveis).
 - [src/entities/sequence](../src/entities/sequence): sequências de estudo
   (playlists editoriais). Leitura pública pelas RPCs
   `list_public_editorial_sequences_v1`, `get_public_editorial_playlist_v2` e
@@ -69,6 +75,10 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   [VideoSequences.tsx](../src/components/sequence/VideoSequences.tsx) mostra
   sequências editoriais que incluem a aula, a posição e o progresso concluído
   privado da conta autenticada.
+  [src/components/catalog](../src/components/catalog) partilha a barra de
+  pesquisa (`SearchInput` com debounce), os grupos de facetas (linha deslizável
+  em mobile com `scroll`) e `ActiveFilters`: total de resultados anunciado e um
+  chip removível por filtro do URL, usado em `/resources` e `/sequences`.
   [src/components/suggestion](../src/components/suggestion) mostra o
   reconhecimento por etapas (`useStagedReveal`, sem animação com
   `prefers-reduced-motion`), os sinais de triagem e a escolha da unidade.

@@ -149,7 +149,17 @@
     "next": "Suivant",
     "year": "Année {{value}}",
     "count": "Total : {{count}}",
-    "goToPage": "Aller à la page {{page}}"
+    "goToPage": "Aller à la page {{page}}",
+    "clearFilters": "Effacer les filtres",
+    "results_zero": "Aucun résultat",
+    "results_one": "{{count}} résultat",
+    "results_many": "{{count}} résultats",
+    "results_other": "{{count}} résultats",
+    "activeFilters": "Filtres actifs",
+    "removeFilter": "Retirer le filtre {{label}} : {{value}}",
+    "filterSearch": "Recherche",
+    "filterType": "Type",
+    "filterTag": "Thème"
   },
   "access": {
     "denied": "Vous n'avez pas accès à cet espace.",
@@ -376,11 +386,13 @@
     "open": "Ouvrir la ressource",
     "empty": "Aucune ressource à afficher pour l’instant.",
     "emptyDescription": "Les ressources apparaissent ici lorsque l’équipe éditoriale les publie.",
-    "noResults": "Aucune ressource ne correspond à ces filtres. Essaie un autre titre, une autre langue ou un autre thème.",
-    "taggedWith": "Thème :",
-    "clearTag": "Retirer le thème",
+    "noResults": "Essaie d’autres mots, une autre langue, ou retire l’un des filtres ci-dessus.",
     "filterType": "Type de ressource",
-    "allTypes": "Tous"
+    "allTypes": "Tous",
+    "searchPlaceholder": "Titre, description ou thème",
+    "results": "Résultats des ressources",
+    "filterByTag": "Filtrer par thème",
+    "noMatches": "Aucune ressource ne correspond aux filtres."
   },
   "about": {
     "title": "Un onglet ouvert est devenu une grande idée.",
@@ -499,7 +511,8 @@
     "external_resource": "Référence externe",
     "playlist": "Séquence",
     "module": "Module d'étude",
-    "topic": "Thèmes"
+    "topic": "Thèmes",
+    "collection": "Collection"
   },
   "video": {
     "play": "Lire la vidéo : {{title}}",
@@ -1058,7 +1071,6 @@
     "search": "Rechercher des séquences",
     "searchPlaceholder": "Titre, thème ou code d’UE",
     "noMatches": "Aucune séquence ne correspond à ta recherche.",
-    "clearFilters": "Effacer les filtres",
     "notice": "Collections éditoriales de liens vers des vidéos externes. FACODI n’a ni hébergé ni téléchargé les vidéos ; la correspondance thématique a été vérifiée d’après les titres et les sources.",
     "empty": "Aucune séquence publiée pour l’instant.",
     "emptyText": "Les séquences apparaissent ici dès que l’équipe éditoriale les publie.",
@@ -1102,7 +1114,9 @@
     "browse": "Voir les séquences d’étude",
     "inSequences": "Dans les séquences d’étude",
     "videoSequencesLoadFailed": "Impossible de charger les séquences de cette vidéo.",
-    "videoProgressLoadFailed": "Impossible de charger ta progression dans ces séquences."
+    "videoProgressLoadFailed": "Impossible de charger ta progression dans ces séquences.",
+    "results": "Résultats des séquences",
+    "noMatchesText": "Essaie d’autres mots ou une autre langue. La recherche ignore les accents et trouve aussi les codes d’UE."
   },
   "projectSeo": {
     "about": {

@@ -149,7 +149,17 @@
     "next": "Siguiente",
     "year": "Año {{value}}",
     "count": "Total: {{count}}",
-    "goToPage": "Ir a la página {{page}}"
+    "goToPage": "Ir a la página {{page}}",
+    "clearFilters": "Limpiar filtros",
+    "results_zero": "Sin resultados",
+    "results_one": "{{count}} resultado",
+    "results_many": "{{count}} resultados",
+    "results_other": "{{count}} resultados",
+    "activeFilters": "Filtros activos",
+    "removeFilter": "Quitar filtro {{label}}: {{value}}",
+    "filterSearch": "Búsqueda",
+    "filterType": "Tipo",
+    "filterTag": "Tema"
   },
   "access": {
     "denied": "No tienes permiso para acceder a esta área.",
@@ -376,11 +386,13 @@
     "open": "Abrir recurso",
     "empty": "Todavía no hay recursos para mostrar.",
     "emptyDescription": "Los recursos aparecen aquí cuando el equipo editorial los publica.",
-    "noResults": "No encontramos recursos con estos filtros. Prueba con otro título, idioma o tema.",
-    "taggedWith": "Tema:",
-    "clearTag": "Quitar tema",
+    "noResults": "Prueba otras palabras, otro idioma o quita uno de los filtros de arriba.",
     "filterType": "Tipo de recurso",
-    "allTypes": "Todos"
+    "allTypes": "Todos",
+    "searchPlaceholder": "Título, descripción o tema",
+    "results": "Resultados de recursos",
+    "filterByTag": "Filtrar por tema",
+    "noMatches": "Ningún recurso coincide con los filtros."
   },
   "about": {
     "title": "Una pestaña abierta se convirtió en una gran idea.",
@@ -499,7 +511,8 @@
     "external_resource": "Referencia externa",
     "playlist": "Secuencia",
     "module": "Módulo de estudio",
-    "topic": "Temas"
+    "topic": "Temas",
+    "collection": "Colección"
   },
   "video": {
     "play": "Reproducir vídeo: {{title}}",
@@ -1058,7 +1071,6 @@
     "search": "Buscar secuencias",
     "searchPlaceholder": "Título, tema o código de asignatura",
     "noMatches": "Ninguna secuencia coincide con tu búsqueda.",
-    "clearFilters": "Limpiar filtros",
     "notice": "Colecciones editoriales de enlaces a vídeos externos. FACODI no alojó ni descargó los vídeos; la correspondencia temática se revisó por títulos y fuentes.",
     "empty": "Todavía no hay secuencias publicadas.",
     "emptyText": "Las secuencias aparecen aquí cuando el equipo editorial las publica.",
@@ -1102,7 +1114,9 @@
     "browse": "Ver secuencias de estudio",
     "inSequences": "En secuencias de estudio",
     "videoSequencesLoadFailed": "No se pudieron cargar las secuencias de este vídeo.",
-    "videoProgressLoadFailed": "No se pudo cargar tu progreso en estas secuencias."
+    "videoProgressLoadFailed": "No se pudo cargar tu progreso en estas secuencias.",
+    "results": "Resultados de secuencias",
+    "noMatchesText": "Prueba otras palabras u otro idioma. La búsqueda ignora los acentos y también busca por código de asignatura."
   },
   "projectSeo": {
     "about": {
