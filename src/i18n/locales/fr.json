@@ -1269,6 +1269,8 @@
       "external_resource": "Lectures et références"
     },
     "noMaterials": "Aucune ressource disponible",
-    "noMaterialsText": "Ce module n'a pas encore de ressources publiques."
+    "noMaterialsText": "Ce module n'a pas encore de ressources publiques.",
+    "forUnit": "Modules associés à cette unité",
+    "forUnitText": "Guides thématiques liés à cette unité, avec ressources et activités pour travailler en autonomie."
   }
 }
