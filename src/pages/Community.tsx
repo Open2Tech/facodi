@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { PageState } from '@/components/layout/PageState';
 import { useAuth } from '@/features/auth/useAuth';
 import { useProjectDirectory, projectText } from '@/entities/project/project.api';
+import ProjectPageSeo from '@/components/project/ProjectPageSeo';
 
 const actions: { id: 'explore'|'suggest'|'playlist'|'build'; icon: LucideIcon; href: string; private: boolean; tone: string }[] = [
   { id:'explore',icon:BookOpen,href:'/courses',private:false,tone:'bg-brand-mint' },
@@ -20,6 +21,7 @@ export default function Community() {
   const community = (query.data?.profiles ?? []).filter(p => p.relationship_kind === 'contribution_path');
 
   return <article className="space-y-14 sm:space-y-20">
+    <ProjectPageSeo page="community" />
     <header className="grid gap-8 border-b border-foreground pb-12 lg:grid-cols-[1fr_0.8fr]">
       <div>
         <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.eyebrow')}</p>
