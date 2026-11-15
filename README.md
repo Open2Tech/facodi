@@ -138,6 +138,14 @@ Exemplos: [Física — vetores e movimento](https://facodi.com/resources/facodi-
 
 Os links são **recomendações editoriais**, não equivalências, acreditação ou pré-requisitos académicos oficiais. Nenhum vídeo foi copiado nem foram gerados exercícios. Detalhes, testes e proveniência na [auditoria do grafo de módulos](docs/facodi-study-modules-graph-2026-11-15.md).
 
+## Metadados e proveniência dos vídeos (15/11/2026)
+
+O catálogo FACODI mantém **940 vídeos YouTube canónicos**, mais dois objetos históricos apresentados somente como referências externas. Uma auditoria de completude normalizou referências à política de licenciamento padrão da plataforma (**sem atribuir licença individual verificada**), criou 155 URLs de thumbnail de fallback, inferiu provisoriamente 87 idiomas e preencheu descrições editoriais e palavras-chave anteriormente ausentes dos objetos de vídeo.
+
+Foram documentadas relações curriculares diretas para **851 vídeos**, caminhos curriculares indiretos por sequências aprovadas para **516**, correspondências exatas à origem `public.videos` para **657** e sugestões de tags de IA não verificadas para **579**. Continuam sem duração original **558** registos e sem descrição original do publicador **762**; os campos mantêm-se nulos até existir fonte fiável. Não houve rehosting ou cópia de conteúdo, nem alterações à publicação de rascunhos.
+
+Consultar [a auditoria técnica de metadados e política de YouTube](docs/facodi-youtube-metadata-enrichment-2026-11-15.md).
+
 ## Percursos Odoo, redes e filtros por tema (15/11/2026)
 
 A FACODI publicou **40 vídeos selecionados** a partir de `public.videos` (31 do canal oficial Odoo e 9 de fontes técnicas), organizando **20 novas sequências**, **10 módulos de estudo** e uma coleção Odoo. Estão agora públicos **933 vídeos**, **122 sequências editoriais** e **77 módulos**. Os conteúdos Odoo são **percursos FACODI independentes**, inspirados na organização por aplicações do [Odoo Learn](https://www.odoo.com/pt_BR/slides), sem acreditação ou certificação Odoo e sem duplicação dos ficheiros originais.
