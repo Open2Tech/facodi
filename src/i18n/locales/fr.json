@@ -1148,6 +1148,10 @@
     "reject": "Refuser pour l'instant",
     "confirmReview": "Confirmer la décision ?",
     "acceptNote": "L'acceptation ne crée pas de rôle, n'accorde aucun accès et n'envoie aucun message.",
-    "rejectNote": "La décision est visible dans l'historique privé du contributeur."
+    "rejectNote": "La décision est visible dans l'historique privé du contributeur.",
+    "withdraw": "Retirer la proposition",
+    "withdrawConfirm": "Retirer la proposition et supprimer son historique privé ? Cette opération est irréversible.",
+    "withdrawConfirmButton": "Confirmer le retrait",
+    "withdrawUnavailable": "Cette proposition n'est plus disponible ou n'appartient pas à votre compte."
   }
 }
