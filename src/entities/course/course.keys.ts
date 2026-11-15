@@ -8,7 +8,6 @@ export const courseKeys = {
   unitFacets: () => ['facodi', 'units', 'facets', 'public'] as const,
   unit: (courseSlug: string, unitSlug: string) => ['facodi', 'unit', courseSlug, unitSlug] as const,
   counts: () => ['facodi', 'counts', 'public'] as const,
-  resourceTypes: () => ['facodi', 'resources', 'types', 'public'] as const,
   resourceContext: (id: string) => ['facodi', 'resource-context', id] as const,
   unitVideos: (learningObjectId: string) => ['facodi', 'unit-videos', learningObjectId] as const,
   channelVideos: (channel: string, excludeId: string) => ['facodi', 'channel-videos', channel, excludeId] as const,

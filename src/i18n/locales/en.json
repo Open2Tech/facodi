@@ -149,7 +149,17 @@
     "next": "Next",
     "year": "Year {{value}}",
     "count": "Total: {{count}}",
-    "goToPage": "Go to page {{page}}"
+    "goToPage": "Go to page {{page}}",
+    "clearFilters": "Clear filters",
+    "results_zero": "No results",
+    "results_one": "{{count}} result",
+    "results_many": "{{count}} results",
+    "results_other": "{{count}} results",
+    "activeFilters": "Active filters",
+    "removeFilter": "Remove filter {{label}}: {{value}}",
+    "filterSearch": "Search",
+    "filterType": "Type",
+    "filterTag": "Topic"
   },
   "access": {
     "denied": "You do not have permission to access this area.",
@@ -376,11 +386,13 @@
     "open": "Open resource",
     "empty": "No resources to show yet.",
     "emptyDescription": "Resources appear here once the editorial team publishes them.",
-    "noResults": "No resources match these filters. Try another title, language or topic.",
-    "taggedWith": "Topic:",
-    "clearTag": "Clear topic",
+    "noResults": "Try different words, another language, or remove one of the filters above.",
     "filterType": "Resource type",
-    "allTypes": "All"
+    "allTypes": "All",
+    "searchPlaceholder": "Title, description or topic",
+    "results": "Resource results",
+    "filterByTag": "Filter by topic",
+    "noMatches": "No resources match these filters."
   },
   "about": {
     "title": "One open tab became a bigger idea.",
@@ -499,7 +511,8 @@
     "external_resource": "External reference",
     "playlist": "Sequence",
     "module": "Study module",
-    "topic": "Topics"
+    "topic": "Topics",
+    "collection": "Collection"
   },
   "video": {
     "play": "Play video: {{title}}",
@@ -1058,7 +1071,6 @@
     "search": "Search sequences",
     "searchPlaceholder": "Title, topic or unit code",
     "noMatches": "No study sequences match your search.",
-    "clearFilters": "Clear filters",
     "notice": "Editorial collections of links to external videos. FACODI did not host or download the videos; topical fit was reviewed by titles and sources.",
     "empty": "No sequences have been published yet.",
     "emptyText": "Sequences appear here once the editorial team publishes them.",
@@ -1102,7 +1114,9 @@
     "browse": "Browse study sequences",
     "inSequences": "In study sequences",
     "videoSequencesLoadFailed": "Could not load the study sequences for this video.",
-    "videoProgressLoadFailed": "Could not load your progress in these sequences."
+    "videoProgressLoadFailed": "Could not load your progress in these sequences.",
+    "results": "Sequence results",
+    "noMatchesText": "Try different words or another language. Search ignores accents and also matches unit codes."
   },
   "projectSeo": {
     "about": {

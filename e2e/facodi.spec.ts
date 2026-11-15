@@ -289,6 +289,8 @@ test('home search, entry paths and new public catalogues render without overflow
     const head = route.request().method() === 'HEAD';
     await route.fulfill({ status: 200, json: head ? undefined : [resource], headers: { 'content-range': head ? '*/1' : '0-0/1', 'access-control-expose-headers': 'content-range' } });
   });
+  await page.route('**/rest/v1/rpc/search_public_resources_v3', route =>
+    route.fulfill({ json: { total: 1, items: [resource], types: [{ value: 'article', count: 1 }] } }));
   await page.route('**/rest/v1/curricular_units*', async route => {
     const unit = { id: 'u1', slug: 'logic-1', title: 'Logic I', summary: 'Test fixture only', code: 'L1', ects: 6, year: 1, semester: 1, language: 'en', courses: { slug: 'test-course', title: 'Test course', published: true, status: 'active' } };
     await route.fulfill({ json: [unit], headers: { 'content-range': '0-0/1', 'access-control-expose-headers': 'content-range' } });
@@ -890,65 +892,77 @@ test('study sequence catalogue searches, filters regional languages and paginate
   await page.getByRole('main').getByRole('combobox').selectOption('pt');
   await expect(page).toHaveURL(/search=analise.*language=pt/);
   await expect(page.getByRole('link', { name: /Análise de dados com Python/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(page.getByText('1 result', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Remove filter Language: Português' }).click();
+  await expect(page).toHaveURL('/sequences?search=analise');
+  await page.getByRole('searchbox', { name: 'Search sequences' }).fill('zzz');
+  await expect(page.getByRole('heading', { name: 'No study sequences match your search.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).first().click();
   await expect(page).toHaveURL('/sequences');
   await expect(page.getByRole('navigation', { name: 'Pagination' })).toBeVisible();
 });
 
-test('unified resources catalogue finds modules and preserves legacy module URLs', async ({ page }) => {
+test('unified resources catalogue searches every type with contextual facets, tag chips and legacy module URLs', async ({ page }) => {
   const module = {
     id: 'module-1', slug: 'intro-algebra', title: 'Introduction to algebra',
     description: 'An independent study guide with practice activities.',
-    language: 'en', object_type: 'module', tags: ['Algebra'], metadata: {},
-    source_url: null, published: true, status: 'active',
+    language: 'en', object_type: 'module', tags: ['Algebra'], metadata: {}, source_url: null,
   };
   const video = {
-    id: 'video-1', slug: 'algebra-video', title: 'Algebra video',
-    description: 'Short video explanation.', language: 'en', object_type: 'video',
-    tags: ['Algebra'], metadata: {}, source_url: 'https://www.youtube.com/watch?v=abc',
-    published: true, status: 'active',
+    id: 'video-1', slug: 'algebra-video', title: 'Álgebra em vídeo',
+    description: 'Short video explanation.', language: 'pt-BR', object_type: 'video',
+    tags: ['Algebra', 'Matemática'], metadata: {}, source_url: 'https://www.youtube.com/watch?v=abc',
   };
-  await page.route('**/rest/v1/learning_objects*', async route => {
-    const url = new URL(route.request().url());
-    if (url.searchParams.get('select') === 'object_type') {
-      return route.fulfill({ json: [{ object_type: 'module' }, { object_type: 'video' }] });
-    }
-    if (url.searchParams.has('slug')) return route.fulfill({ json: module });
-    const type = url.searchParams.get('object_type');
-    const title = url.searchParams.get('title');
-    const rows = [module, video].filter(item =>
-      (!type || type === 'eq.' + item.object_type) &&
-      (!title || item.title.toLowerCase().includes(title.replace(/^ilike\.%|%$/g, '').toLowerCase())));
-    const last = rows.length ? rows.length - 1 : 0;
-    await route.fulfill({ json: rows, headers: {
-      'content-range': rows.length ? '0-' + last + '/' + rows.length : '*/0',
-      'access-control-expose-headers': 'content-range',
-    } });
+  const fold = (value: string) => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  const calls: Record<string, unknown>[] = [];
+  await page.route('**/rest/v1/rpc/search_public_resources_v3', async route => {
+    expect(route.request().headers()['content-profile']).toBe('facodi');
+    const body = route.request().postDataJSON() as Record<string, string | undefined>;
+    calls.push(body);
+    const scoped = [module, video].filter(item =>
+      (!body.p_search || fold(item.title).includes(fold(body.p_search))) &&
+      (!body.p_language || item.language === body.p_language || item.language.startsWith(body.p_language + '-')) &&
+      (!body.p_tag || item.tags.includes(body.p_tag)));
+    const items = scoped.filter(item => !body.p_object_type || item.object_type === body.p_object_type);
+    const types = ['module', 'video'].map(value => ({ value, count: scoped.filter(item => item.object_type === value).length }))
+      .filter(facet => facet.count);
+    await route.fulfill({ json: { total: items.length, items, types } });
   });
+  await page.route('**/rest/v1/learning_objects*', route =>
+    route.fulfill({ json: new URL(route.request().url()).searchParams.has('slug') ? module : [] }));
 
-  // Ranked generic resource search may exclude modules; the catalog still surfaces them.
-  await page.route('**/rest/v1/rpc/search_public_resources_v2', route =>
-    route.fulfill({ json: { total: 0, items: [] } }));
   await page.goto('/resources?search=algebra');
-  await expect(page.getByRole('heading', { name: /Study modules/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'View all modules' }))
-    .toHaveAttribute('href', '/resources?type=module&search=algebra');
-  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
-  await expect(page.getByText('No resources to show yet.')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Introduction to algebra', exact: true })).toHaveAttribute('href', '/modules/intro-algebra');
+  await expect(page.getByRole('link', { name: 'Álgebra em vídeo', exact: true })).toBeVisible();
+  await expect(page.getByText('2 results', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Study module/ })).toContainText('1');
+
+  await page.getByRole('main').getByRole('combobox').selectOption('pt');
+  await expect(page).toHaveURL(/search=algebra&language=pt$/);
+  await expect(page.getByRole('link', { name: 'Introduction to algebra', exact: true })).toHaveCount(0);
+  await expect(page.getByText('1 result', { exact: true })).toBeVisible();
+  // Selecting a card topic narrows the list and shows up as a removable chip.
+  await page.getByRole('button', { name: 'Matemática', exact: true }).click();
+  await expect(page).toHaveURL(/tag=Matem%C3%A1tica/);
+  await expect.poll(() => calls.at(-1)).toMatchObject({ p_search: 'algebra', p_language: 'pt', p_tag: 'Matemática' });
+  await page.getByRole('button', { name: 'Remove filter Language: Português' }).click();
+  await expect(page).toHaveURL(/search=algebra&tag=Matem%C3%A1tica$/);
+
+  await page.getByRole('searchbox').fill('nothing here');
+  await expect(page.getByRole('heading', { name: 'No resources match these filters.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).first().click();
+  await expect(page).toHaveURL('/resources');
+  await expect(page.getByRole('button', { name: /^All/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('list', { name: 'Active filters' })).toHaveCount(0);
+
+  await page.getByRole('button', { name: /^Study module/ }).click();
+  await expect(page).toHaveURL(/\/resources\?type=module$/);
+  await expect(page.getByRole('heading', { name: 'Study modules', level: 2 })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Álgebra em vídeo/ })).toHaveCount(0);
 
   await page.goto('/modules?search=Algebra&language=en&page=2');
   await expect(page).toHaveURL(/\/resources\?search=Algebra&language=en&page=2&type=module$/);
-
-  await page.goto('/resources');
-  await expect(page.getByRole('button', { name: /^All/ })).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('link', { name: 'Introduction to algebra', exact: true })).toHaveAttribute('href', '/modules/intro-algebra');
-  await page.getByRole('button', { name: /Study module/ }).click();
-  await expect(page).toHaveURL(/\/resources\?type=module$/);
-  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Algebra video/ })).toHaveCount(0);
-  await page.getByRole('searchbox').fill('algebra');
-  await expect(page).toHaveURL(/search=algebra/);
-  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
+  await page.goto('/resources?type=module');
   await page.getByRole('link', { name: /Introduction to algebra/ }).click();
   await expect(page).toHaveURL(/\/modules\/intro-algebra$/);
   await expect(page.getByRole('heading', { name: 'Introduction to algebra', level: 1 })).toBeVisible();

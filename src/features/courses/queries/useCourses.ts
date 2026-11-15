@@ -20,9 +20,6 @@ export function useUnit(courseSlug: string, unitSlug: string) {
 export function useResources(params: CatalogParams) {
   return useQuery({ queryKey: courseKeys.resources(params), queryFn: ({ signal }) => listResources(params, signal), placeholderData: keepPreviousData });
 }
-export function useResourceTypes() {
-  return useQuery({ queryKey: courseKeys.resourceTypes(), queryFn: ({ signal }) => getObjectTypeFacets(signal, true), staleTime: 5 * 60_000 });
-}
 export function useResourceContext(resource: { id: string; object_type: string } | null | undefined) {
   return useQuery({
     queryKey: courseKeys.resourceContext(resource?.id ?? ''),

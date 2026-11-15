@@ -1,30 +1,8 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
-import { searchPattern } from '@/entities/course/course.api';
-import { PAGE_SIZE } from '@/entities/course/course.types';
-
-export const MODULE_PAGE_SIZE = PAGE_SIZE;
 
 const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,language,tags,metadata';
 const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url';
-
-export async function listModules(page: number, search: string, signal?: AbortSignal, language = '', tag = '') {
-  const safePage = Math.max(1, Math.floor(page));
-  let query = supabase.from('learning_objects')
-    .select(PUBLIC_MODULE_FIELDS, { count: 'exact' })
-    .eq('object_type', 'module').eq('published', true).eq('status', 'active')
-    .order('title').order('id');
-  if (search.trim()) query = query.ilike('title', searchPattern(search));
-  if (language) query = query.ilike('language', language + '%');
-  if (tag) query = query.contains('tags', [tag]);
-  const { data, count, error } = await query
-    .range((safePage - 1) * MODULE_PAGE_SIZE, safePage * MODULE_PAGE_SIZE - 1)
-    .abortSignal(signal);
-  if (error) throw new Error(getSupabaseErrorMessage(error));
-  return { items: data ?? [], total: count ?? 0 };
-}
-
-export type StudyModuleSummary = Awaited<ReturnType<typeof listModules>>['items'][number];
 
 export function moduleResourcePath(type: string, slug: string): string {
   const encoded = encodeURIComponent(slug);

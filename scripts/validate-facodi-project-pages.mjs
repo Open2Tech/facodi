@@ -120,8 +120,11 @@ const linkedAssets = read('src/features/courses/queries/useLinkedCatalogAssets.t
 for (const path of ['/modules','/modules/:slug','/how-it-works']) {
   assert.ok(routes.includes(`path="${path}"`), `Missing public learning route ${path}`);
 }
-assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('published', true).eq('status', 'active')"),
-  'Module catalog must query only public active modules');
+assert.ok(read('src/entities/course/course.api.ts').includes("rpc('search_public_resources_v3'") &&
+  /published\s+and\s+lo\.status\s+in\s+\('active',\s*'published'\)/i.test(read('supabase/migrations/20261115134358_facodi_search_public_resources_v3.sql')),
+  'Resource catalog (including modules) must use the published-only v3 search RPC');
+assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('slug', slug)"),
+  'Module details must query module objects only');
 assert.ok(moduleApi.includes(".eq('published', true).eq('status', 'active')"),
   'Module children must be published and active under RLS');
 assert.ok(moduleCatalog.includes('moduleOnly') && moduleCatalog.includes('moduleResourcePath(') &&
