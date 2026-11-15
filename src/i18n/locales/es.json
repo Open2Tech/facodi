@@ -378,7 +378,8 @@
     "noResults": "No encontramos recursos con estos filtros. Prueba con otro título, idioma o tema.",
     "taggedWith": "Tema:",
     "clearTag": "Quitar tema",
-    "filterType": "Tipo de recurso"
+    "filterType": "Tipo de recurso",
+    "allTypes": "Todos"
   },
   "about": {
     "title": "Una pestaña abierta se convirtió en una gran idea.",
