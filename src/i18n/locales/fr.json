@@ -378,7 +378,8 @@
     "noResults": "Aucune ressource ne correspond à ces filtres. Essaie un autre titre, une autre langue ou un autre thème.",
     "taggedWith": "Thème :",
     "clearTag": "Retirer le thème",
-    "filterType": "Type de ressource"
+    "filterType": "Type de ressource",
+    "allTypes": "Tous"
   },
   "about": {
     "title": "Un onglet ouvert est devenu une grande idée.",
