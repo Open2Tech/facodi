@@ -108,4 +108,50 @@ assert.ok(facodiPlaylistFunction.includes('"facodi.marcelo-0d6.workers.dev"') &&
 assert.ok(!JSON.stringify(wrangler).match(/service.role|secret|SUPABASE_SERVICE/i),
   'Cloudflare configuration must not expose server secrets');
 
+
+// Learning organization: public-first, accessible, localized and not misleading.
+const moduleApi = read('src/entities/module/module.api.ts');
+const moduleCatalog = read('src/pages/Modules.tsx');
+const moduleDetails = read('src/pages/ModuleDetails.tsx');
+const learningGuide = read('src/components/learning/LearningPathGuide.tsx');
+const unitDetails = read('src/pages/UnitDetails.tsx');
+const home = read('src/pages/Home.tsx');
+const publicSequences = read('src/pages/Sequences.tsx');
+const linkedAssets = read('src/features/courses/queries/useLinkedCatalogAssets.ts');
+for (const path of ['/modules','/modules/:slug','/how-it-works']) {
+  assert.ok(routes.includes(`path="${path}"`), `Missing public learning route ${path}`);
+}
+assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('published', true).eq('status', 'active')"),
+  'Module catalog must query only public active modules');
+assert.ok(moduleApi.includes(".eq('published', true).eq('status', 'active')"),
+  'Module children must be published and active under RLS');
+assert.ok(moduleCatalog.includes('<LearningContext focus="module"'),
+  'Module catalog needs contextual navigation guidance');
+assert.ok(moduleDetails.includes('moduleResourcePath(') &&
+  moduleDetails.includes('linkedUnits') &&
+  moduleDetails.includes('activity_prompt'),
+  'Module details need verified links, curricular context and optional self-study exercises');
+assert.ok(linkedAssets.includes("'module'"), 'UC-linked assets must support module objects');
+assert.ok(unitDetails.includes('modulesQuery') && unitDetails.includes('/modules/'),
+  'Curricular units must display real related study modules');
+assert.ok(home.includes('<LearningPathGuide compact'), 'Homepage must include a concise study map');
+assert.ok(publicSequences.includes('<LearningContext focus="sequence"'),
+  'Editorial sequences must be explained as a distinct feature');
+for (const lang of ['pt','en','es','fr']) {
+  const copy = JSON.parse(read(`src/i18n/locales/${lang}.json`));
+  for (const part of ['course','unit','module','sequence']) {
+    assert.ok(copy.learningGuide?.parts?.[part]?.short &&
+      copy.learningGuide?.context?.[part],
+      `Missing learning hierarchy explanation: ${lang}/${part}`);
+  }
+  for (const key of ['disclaimer','practiceNotice','forUnit','forUnitText',
+      'materialsDescription']) {
+    assert.ok(copy.studyModules?.[key], `Missing module learning disclosure: ${lang}/${key}`);
+  }
+  assert.ok(copy.nav?.modules, `Missing module navigation label in ${lang}`);
+}
+assert.ok(learningGuide.includes('aria-labelledby="learning-path-guide"') &&
+  learningGuide.includes('t(\'learningGuide.reuseNote\')'),
+  'Learning guide needs semantic section heading and reusable-content explanation');
+
 console.log('FACODI project, community, SEO and consent checks passed across four locales.');
