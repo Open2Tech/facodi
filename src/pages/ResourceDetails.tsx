@@ -309,7 +309,7 @@ export default function ResourceDetails() {
                 : <p className="mt-4 text-sm text-muted-foreground">{t('moduleResources.noReadings')}</p>}
         </section>}
         {resource.object_type === 'module' && (moduleProgression.isPending || moduleProgression.isError ||
-          !!moduleProgression.data?.prerequisites.length || !!moduleProgression.data?.nextModules.length) && (
+          !!moduleProgression.data?.prerequisites.length || !!moduleProgression.data?.nextModules.length || !!moduleProgression.data?.relatedModules.length) && (
           <section aria-labelledby="module-progression">
             <h2 id="module-progression" className="text-2xl font-semibold tracking-[-0.02em]">{t('moduleResources.progression')}</h2>
             <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('moduleResources.progressionNotice')}</p>
@@ -322,7 +322,8 @@ export default function ResourceDetails() {
                   </div>
                 : <div className="mt-5 grid gap-6 sm:grid-cols-2">
                     {[{ label: t('moduleResources.before'), items: moduleProgression.data?.prerequisites ?? [] },
-                      { label: t('moduleResources.after'), items: moduleProgression.data?.nextModules ?? [] }].map(group =>
+                      { label: t('moduleResources.after'), items: moduleProgression.data?.nextModules ?? [] },
+                      { label: t('moduleResources.related'), items: moduleProgression.data?.relatedModules ?? [] }].map(group =>
                       group.items.length > 0 && <div key={group.label}>
                         <h3 className="mb-2 text-sm font-semibold">{group.label}</h3>
                         <ul className="divide-y divide-input border-y border-input">
