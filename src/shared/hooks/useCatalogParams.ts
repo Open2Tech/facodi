@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import type { UnitSort } from '@/entities/course/course.types';
 
-export type CatalogParamKey = 'search' | 'language' | 'page' | 'tag' | 'course' | 'year' | 'semester' | 'sort' | 'type' | 'institution' | 'degree';
+export type CatalogParamKey = 'search' | 'language' | 'page' | 'tag' | 'course' | 'year' | 'semester' | 'sort' | 'type' | 'institution' | 'degree' | 'area';
 const SORTS: UnitSort[] = ['curriculum', 'title', 'ects'];
 
 function positive(value: string | null) {
@@ -16,6 +16,7 @@ export function useCatalogParams() {
   const search = params.get('search') ?? '';
   const language = params.get('language') ?? '';
   const tag = params.get('tag') ?? '';
+  const area = params.get('area') ?? '';
   const course = params.get('course') ?? '';
   const type = params.get('type') ?? '';
   const institution = params.get('institution') ?? '';
@@ -41,8 +42,8 @@ export function useCatalogParams() {
   }
   const facets = Boolean(course || year || semester || institution || degree);
   return {
-    page, search, language, tag, type, institution, degree, course, year, semester, sort, filter, update, reset,
-    filtered: Boolean(search || language || tag || type || facets || page > 1),
+    page, search, language, tag, area, type, institution, degree, course, year, semester, sort, filter, update, reset,
+    filtered: Boolean(search || language || tag || area || type || facets || page > 1),
     faceted: Boolean(search || facets),
   };
 }

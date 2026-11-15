@@ -1,4 +1,5 @@
 import type { Json } from '@/integrations/supabase/types';
+import { matchesStudyArea } from '@/shared/catalog/studyAreas';
 import { plainText } from '@/shared/lib/text';
 
 /** A FACODI-owned editorial sequence: an ordered, reviewed list of external YouTube lessons. */
@@ -77,11 +78,12 @@ function foldText(value: string) {
 }
 
 /** Search visible sequence content and unit codes; base-language filters include regional variants. */
-export function filterSequences(sequences: SequenceSummary[], search: string, language: string) {
+export function filterSequences(sequences: SequenceSummary[], search: string, language: string, area = '') {
   const term = foldText(search.trim());
   return sequences.filter(sequence => {
     const baseLanguage = sequence.language?.split('-')[0].toLowerCase();
     if (language && baseLanguage !== language.toLowerCase()) return false;
+    if (area && !matchesStudyArea(sequence.title + ' ' + plainText(sequence.description), area)) return false;
     if (!term) return true;
     return [sequence.title, plainText(sequence.description), ...sequence.unitCodes]
       .some(value => foldText(value).includes(term));

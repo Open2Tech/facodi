@@ -174,7 +174,19 @@
     "unitCount_other": "{{count}} asignaturas",
     "courseResults": "Resultados de cursos",
     "noMatches": "Ningún curso coincide con los filtros.",
-    "noMatchesText": "Prueba otras palabras u otro idioma, o quita uno de los filtros de arriba. La búsqueda ignora los acentos y también busca en el código, la institución y la escuela."
+    "noMatchesText": "Prueba otras palabras u otro idioma, o quita uno de los filtros de arriba. La búsqueda ignora los acentos y también busca en el código, la institución y la escuela.",
+    "browseByArea": "Explorar por área",
+    "allAreas": "Todas las áreas",
+    "area": "Área",
+    "areaHint": "Sugerencias temáticas de FACODI, no clasificaciones académicas oficiales. Un recurso puede tratar varias áreas.",
+    "studyAreas": {
+      "mathematics": "Matemáticas y estadística",
+      "technology": "Tecnología e informática",
+      "science": "Ciencias y astronomía",
+      "management": "Gestión y negocios",
+      "languages": "Lenguas y comunicación",
+      "education": "Educación y enseñanza"
+    }
   },
   "access": {
     "denied": "No tienes permiso para acceder a esta área.",

@@ -174,7 +174,19 @@
     "unitCount_other": "{{count}} units",
     "courseResults": "Course results",
     "noMatches": "No courses match these filters.",
-    "noMatchesText": "Try different words or another language, or remove one of the filters above. Search ignores accents and also matches the code, institution and school."
+    "noMatchesText": "Try different words or another language, or remove one of the filters above. Search ignores accents and also matches the code, institution and school.",
+    "browseByArea": "Browse by area",
+    "allAreas": "All areas",
+    "area": "Area",
+    "areaHint": "FACODI's thematic suggestions, not official academic classifications. A resource can cover more than one area.",
+    "studyAreas": {
+      "mathematics": "Mathematics and statistics",
+      "technology": "Technology and computing",
+      "science": "Science and astronomy",
+      "management": "Management and business",
+      "languages": "Languages and communication",
+      "education": "Education and teaching"
+    }
   },
   "access": {
     "denied": "You do not have permission to access this area.",
