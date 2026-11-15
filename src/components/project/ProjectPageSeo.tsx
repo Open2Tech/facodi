@@ -15,6 +15,7 @@ export default function ProjectPageSeo({ page }: { page: ProjectPage }) {
   const { t, i18n } = useTranslation();
   const language = i18n.language.split('-')[0].toLowerCase();
   const canonical = `https://www.facodi.com/${page}`;
+  const isWorkersPreview = window.location.hostname === 'facodi.marcelo-0d6.workers.dev';
   const title = t(`projectSeo.${page}.title`);
   const description = t(`projectSeo.${page}.description`);
   const structuredData = {
@@ -33,7 +34,7 @@ export default function ProjectPageSeo({ page }: { page: ProjectPage }) {
   return <Helmet>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={isWorkersPreview ? "noindex, nofollow, noarchive" : "index, follow, max-image-preview:large"} />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="FACODI" />
