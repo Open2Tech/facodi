@@ -11,6 +11,7 @@ import { SequenceList } from '@/components/sequence/SequenceList';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
+import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -91,6 +92,7 @@ export default function UnitDetails() {
       </p>
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
     </header>
+    <LearningContext focus="unit" />
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
