@@ -34,6 +34,7 @@ export default function UnitDetails() {
   const outcomesQuery = useUnitOutcomes(query.data?.unit.learning_object_id);
   const readingsQuery = useUnitReadings(query.data?.unit.learning_object_id);
   const playlistsQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'playlist');
+  const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -134,6 +135,26 @@ export default function UnitDetails() {
                     </Link>
                   </li>)}
                 </ul>}
+        </section>}
+        {(modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
+          <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
+          {modulesQuery.isPending
+            ? <p className="mt-5 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
+            : modulesQuery.error
+              ? <div className="mt-4 text-sm text-destructive" role="alert"><p>{modulesQuery.error.message}</p>
+                  <button type="button" onClick={() => void modulesQuery.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!modulesQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {modulesQuery.data.map(module => <li key={module.id}>
+                  <Link to={`/modules/${encodeURIComponent(module.slug)}`}
+                    className="group flex h-full flex-col gap-2 border border-input p-5 hover:border-foreground">
+                    <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
+                    {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
+                    <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                  </Link>
+                </li>)}
+              </ul>}
         </section>}
         {(playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
           <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
