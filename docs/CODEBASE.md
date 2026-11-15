@@ -32,7 +32,13 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
   devolve `null` em falha (preenchimento manual). A revisão usa a RPC
   `review_resource_suggestion`.
-- [src/entities/course](../src/entities/course): catálogo público. `/resources`
+- [src/entities/course](../src/entities/course): catálogo público. `/courses`
+  carrega uma vez os cursos públicos (`listPublicCourses`, até 500, com a
+  contagem de UCs ativas via embed `curricular_units(count)`) e filtra no
+  cliente com `course.catalog.ts`: pesquisa sem acentos em título, código,
+  resumo, instituição e escola; idioma-base; e facetas de instituição e tipo de
+  curso contadas com os restantes filtros. `degree_type` é texto livre e é
+  mostrado tal como está. `/resources`
   usa só a RPC `search_public_resources_v3` (SECURITY INVOKER): pesquisa sem
   acentos em título, descrição e temas, com relevância; idioma-base (`pt`
   inclui `pt-BR`); todos os tipos públicos (`published` e estado `active` ou

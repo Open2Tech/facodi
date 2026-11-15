@@ -2,7 +2,7 @@ import type { CatalogParams, ContentKind } from '@/entities/course/course.types'
 
 export const courseKeys = {
   all: ['facodi'] as const,
-  catalog: (params: CatalogParams) => ['facodi', 'courses', 'public', params] as const,
+  publicCourses: () => ['facodi', 'courses', 'public'] as const,
   units: (params: CatalogParams) => ['facodi', 'units', 'public', params] as const,
   resources: (params: CatalogParams) => ['facodi', 'resources', 'public', params] as const,
   unitFacets: () => ['facodi', 'units', 'facets', 'public'] as const,

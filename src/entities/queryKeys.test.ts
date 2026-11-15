@@ -8,18 +8,17 @@ import { sequenceKeys } from '@/entities/sequence/sequence.keys';
 describe('FACODI query isolation', () => {
   it('separates public filters and pagination', () => {
     const base = { page: 1, search: '', language: '' };
-    expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, page: 2 }));
-    expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, search: 'math' }));
-    expect(courseKeys.catalog(base)).not.toEqual(courseKeys.catalog({ ...base, language: 'en' }));
+    expect(courseKeys.resources(base)).not.toEqual(courseKeys.resources({ ...base, page: 2 }));
+    expect(courseKeys.resources(base)).not.toEqual(courseKeys.resources({ ...base, search: 'math' }));
     expect(courseKeys.resources(base)).not.toEqual(courseKeys.resources({ ...base, tag: 'logic' }));
     expect(courseKeys.units(base)).not.toEqual(courseKeys.resources(base));
-    expect(courseKeys.units(base)).not.toEqual(courseKeys.catalog(base));
+    expect(courseKeys.units(base)).not.toEqual(courseKeys.publicCourses());
   });
   it('separates identities and editorial domains from public results', () => {
     const params = { page: 1, search: '', language: '' };
     expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.editor('bob', 'courses', params));
     expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.editor('alice', 'learning_objects', params));
-    expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.catalog(params));
+    expect(courseKeys.editor('alice', 'courses', params)).not.toEqual(courseKeys.publicCourses());
   });
   it('scopes contribution and review queues to the signed-in account', () => {
     expect(contributionKeys.myPlaylists('alice')).not.toEqual(contributionKeys.myPlaylists('bob'));
