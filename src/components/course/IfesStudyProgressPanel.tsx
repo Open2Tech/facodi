@@ -30,12 +30,11 @@ export type IfesProgressUnit = {
 
 type Props = {
   courseSlug: string;
-  year: number;
   units: IfesProgressUnit[];
 };
 
 /** User-scoped reading, with PostgreSQL RLS as the actual authorization boundary. */
-export function IfesStudyProgressPanel({ courseSlug, year, units }: Props) {
+export function IfesStudyProgressPanel({ courseSlug, units }: Props) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -52,7 +51,10 @@ export function IfesStudyProgressPanel({ courseSlug, year, units }: Props) {
   });
   const save = useMutation({
     mutationFn: async ({ slug, completed }: { slug: string; completed: boolean }) => {
-      const { data, error } = await supabase.rpc('set_my_study_module_completion_v1', {
+      const rpcClient = supabase as unknown as { rpc: (
+        name: string, parameters: Record<string, unknown>
+      ) => Promise<{ data: unknown; error: { message: string } | null }> };
+      const { data, error } = await rpcClient.rpc('set_my_study_module_completion_v1', {
         p_module_slug: slug,
         p_completed: completed,
       });
