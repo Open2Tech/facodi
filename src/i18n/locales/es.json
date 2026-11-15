@@ -23,7 +23,8 @@
     "themeLight": "Cambiar al tema claro",
     "themeDark": "Cambiar al tema oscuro",
     "notes": "Cuaderno",
-    "sequences": "Secuencias"
+    "sequences": "Secuencias",
+    "modules": "Módulos de estudio"
   },
   "common": {
     "loading": "Cargando…",
@@ -494,7 +495,9 @@
     "course": "Curso",
     "curricular_unit": "Unidad curricular",
     "external_resource": "Referencia externa",
-    "playlist": "Secuencia"
+    "playlist": "Secuencia",
+    "module": "Módulo de estudio",
+    "topic": "Temas"
   },
   "video": {
     "play": "Reproducir vídeo: {{title}}",
@@ -1183,5 +1186,89 @@
     "title": "Vídeos de esta colección",
     "notice": "Secuencia propuesta por FACODI a partir de vídeos públicos de sus canales originales. No es necesariamente una playlist oficial del creador.",
     "empty": "Todavía no hay vídeos públicos vinculados a esta colección."
+  },
+  "learningGuide": {
+    "nav": "Cómo funciona",
+    "eyebrow": "FACODI / MAPA DE APRENDIZAJE",
+    "title": "Cada pieza tiene una función. Tú eliges el camino.",
+    "lead": "El curso sigue un plan de estudios. La asignatura da contexto. El módulo profundiza en un tema. La secuencia ordena materiales. No es obligatorio seguir todos los pasos.",
+    "more": "Entender la estructura",
+    "explore": "Explorar",
+    "contextLabel": "Cómo se organiza este contenido en FACODI",
+    "reuseNote": "Las secuencias y los recursos pueden utilizarse en varios módulos o asignaturas. Es un mapa de aprendizaje, no una jerarquía estricta.",
+    "parts": {
+      "course": {
+        "title": "Curso",
+        "short": "El plan académico: asignaturas, años, semestres y referencias.",
+        "example": "Ej.: Grado en Gestión."
+      },
+      "unit": {
+        "title": "Asignatura (UC)",
+        "short": "Una materia de un curso, con objetivos y contenidos relacionados.",
+        "example": "Ej.: Estadística para Gestión I."
+      },
+      "module": {
+        "title": "Módulo de estudio",
+        "short": "Aprendizaje de un tema, con propuestas prácticas y recursos seleccionados.",
+        "example": "Ej.: Introducción a la probabilidad."
+      },
+      "sequence": {
+        "title": "Secuencia de estudio",
+        "short": "Vídeos externos ordenados para estudiar, con progreso personal cuando exista.",
+        "example": "Ej.: Probabilidad paso a paso."
+      },
+      "resource": {
+        "title": "Recurso",
+        "short": "Un vídeo, documento, tema o enlace para consultar de forma independiente."
+      }
+    },
+    "context": {
+      "course": "Aquí encontrarás el plan y las asignaturas. Módulos y secuencias son materiales complementarios, no créditos ni asignaturas adicionales.",
+      "unit": "Una asignatura forma parte de un curso. Puede incluir módulos, vídeos, lecturas y secuencias que no reemplazan el programa oficial.",
+      "module": "Un módulo reúne materiales y, a veces, actividades. Puede apoyar una asignatura y reutilizar recursos de diferentes áreas.",
+      "sequence": "Una secuencia propone un orden para vídeos externos. No es un curso ni una evaluación oficial; estudia a tu ritmo.",
+      "resource": "Un recurso es una pieza educativa, no una titulación completa. Consulta el contexto y la fuente original."
+    },
+    "pageTitle": "¿Cómo se aprende en FACODI?",
+    "pageDescription": "Empieza por un curso completo o por un vídeo. Diferencia la estructura académica de los recursos editoriales que ayudan a estudiar.",
+    "modulesTitle": "Módulos: aprender un tema con propósito",
+    "modulesText": "Un módulo reúne objetivos y materiales. Sus actividades son propuestas de autoaprendizaje, no evaluaciones académicas oficiales.",
+    "modulesCta": "Descubrir módulos",
+    "sequencesTitle": "Secuencias: seguir el hilo de las clases",
+    "sequencesText": "Las secuencias organizan vídeos externos en un orden sugerido. Pueden usarse en varias asignaturas y módulos; el progreso es personal.",
+    "sequencesCta": "Ver secuencias",
+    "resourcesTitle": "¿Y los recursos?",
+    "resourcesText": "Un recurso puede ser un vídeo, una lectura, un documento, un tema o un enlace. Puede apoyar distintos itinerarios.",
+    "resourcesCta": "Explorar recursos",
+    "disclaimerTitle": "Aprendizaje abierto, credenciales claras",
+    "disclaimerText": "FACODI organiza material educativo abierto. Las referencias académicas no convierten módulos y secuencias en asignaturas oficiales ni conceden títulos, ECTS o evaluación certificada. La curaduría no implica revisión completa de cada vídeo."
+  },
+  "studyModules": {
+    "title": "Módulos de estudio",
+    "description": "Guías temáticas FACODI con recursos relacionados y, en algunos casos, actividades sugeridas.",
+    "open": "Explorar módulo",
+    "empty": "Todavía no hay módulos publicados.",
+    "emptyDescription": "Los módulos aparecen después de la revisión editorial.",
+    "disclaimer": "Los módulos son recursos editoriales para estudiar de forma autónoma. No son asignaturas oficiales, no otorgan ECTS y sus actividades no son evaluaciones académicas.",
+    "resourceCount": "{{count}} materiales vinculados",
+    "linkedUnits": "Asignaturas relacionadas",
+    "linkedUnitsDescription": "Este módulo ayuda a estudiar estas asignaturas, pero no sustituye su plan oficial.",
+    "practice": "Ponlo en práctica",
+    "practiceNotice": "Actividad para el estudio independiente, no evaluación oficial ni trabajo calificado por un profesor.",
+    "activity": "Actividad sugerida",
+    "deliverable": "Qué puedes crear",
+    "selfReview": "Cómo revisar tu trabajo",
+    "materials": "Materiales del módulo",
+    "materialsDescription": "Recursos públicos vinculados. El orden es editorial; confirma las fuentes y los derechos de uso.",
+    "groupTitles": {
+      "module": "Módulos relacionados",
+      "topic": "Temas",
+      "playlist": "Secuencias y listas",
+      "video": "Vídeos",
+      "document": "Documentos",
+      "external_resource": "Lecturas y referencias"
+    },
+    "noMaterials": "Sin recursos disponibles",
+    "noMaterialsText": "Este módulo aún no tiene materiales públicos."
   }
 }
