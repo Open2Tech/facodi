@@ -29,6 +29,7 @@ const EditorStudyPaths = lazy(() => import('@/pages/EditorStudyPaths'));
 const PlaylistSubmit = lazy(() => import('@/pages/PlaylistSubmit'));
 const EditorPlaylists = lazy(() => import('@/pages/EditorPlaylists'));
 const EditorProjectCredits = lazy(() => import('@/pages/EditorProjectCredits'));
+const EditorEmailTemplates = lazy(() => import('@/pages/EditorEmailTemplates'));
 const SuggestResource = lazy(() => import('@/pages/SuggestResource'));
 const EditorSuggestions = lazy(() => import('@/pages/EditorSuggestions'));
 
@@ -68,6 +69,7 @@ export function AppRoutes() {
         <Route path="/editor" element={<Editor />} />
         <Route path="/editor/study-paths" element={<EditorStudyPaths />} />
         <Route path="/editor/project-credits" element={<EditorProjectCredits />} />
+        <Route path="/editor/email-templates" element={<EditorEmailTemplates />} />
         <Route path="/editor/community" element={<EditorCommunity />} />
         <Route path="/editor/playlists" element={<EditorPlaylists />} />
         <Route path="/editor/suggestions" element={<EditorSuggestions />} />
