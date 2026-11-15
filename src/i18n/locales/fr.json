@@ -1101,5 +1101,53 @@
       "title": "Communauté FACODI | Apprendre, partager, créer",
       "description": "Rejoignez FACODI : explorez des cours, proposez des ressources et des playlists, ou contribuez au code ouvert."
     }
+  },
+  "communityJoin": {
+    "cta": "Je veux contribuer",
+    "back": "Retour à la communauté",
+    "title": "Une idée ? Construisons-la.",
+    "description": "Dis-nous comment tu aimerais contribuer à FACODI. La proposition reste privée, sous révision éditoriale. Aucun rôle n'est accordé automatiquement et aucun email n'est envoyé.",
+    "interest": "Comment aimerais-tu participer ?",
+    "interests": {
+      "learner": "Apprendre et aider les étudiants",
+      "educator": "Partager mon expérience pédagogique",
+      "curator": "Réviser et organiser les ressources",
+      "developer": "Développer du logiciel libre",
+      "designer": "Design et expérience utilisateur",
+      "translator": "Traduction et accessibilité",
+      "organization": "Collaboration institutionnelle"
+    },
+    "motivation": "Que voudrais-tu faire ?",
+    "motivationPlaceholder": "Décris tes idées, ton expérience et tes envies de participation…",
+    "motivationHint": "Entre 30 et 1 200 caractères. Ne fournis pas d'informations sensibles.",
+    "portfolio": "Portfolio ou lien public (facultatif)",
+    "consent": "J'accepte que les éditeurs FACODI examinent ma proposition et utilisent mon compte pour parler de cette collaboration. Cela n'autorise pas la publication de mon nom ni de mon travail.",
+    "consentRequired": "Un accord explicite est nécessaire.",
+    "privacy": "Propositions privées, sans liste publique, crédits automatiques ni envoi d'email. Trois propositions au maximum en sept jours.",
+    "send": "Envoyer ma proposition",
+    "success": "Proposition reçue ! Suis ici son statut de révision.",
+    "history": "Mes propositions",
+    "historyDescription": "Toi et les éditeurs autorisés êtes les seuls à les voir.",
+    "empty": "Pas encore de proposition.",
+    "status": {
+      "pending": "À vérifier",
+      "accepted": "Intérêt accepté",
+      "rejected": "Non retenu pour le moment"
+    },
+    "reviewSaved": "Décision enregistrée. Aucun email envoyé.",
+    "reviewNotApplied": "Cette proposition n'est plus disponible pour révision.",
+    "openEditor": "Propositions communautaires",
+    "backEditor": "Retour à l'éditeur",
+    "reviewTitle": "Construisons ensemble",
+    "reviewDescription": "Révision privée des intentions de collaboration. Aucune attribution publique, permission d'équipe ou email.",
+    "reviewEmpty": "Aucune proposition en attente.",
+    "queueCount": "{{count}} propositions en attente",
+    "reviewPrivacy": "Ces données servent exclusivement à l'examen privé. Ne les publiez pas sans autorisation distincte.",
+    "reviewNote": "Note éditoriale (visible par le contributeur)",
+    "accept": "Accepter l'intérêt",
+    "reject": "Refuser pour l'instant",
+    "confirmReview": "Confirmer la décision ?",
+    "acceptNote": "L'acceptation ne crée pas de rôle, n'accorde aucun accès et n'envoie aucun message.",
+    "rejectNote": "La décision est visible dans l'historique privé du contributeur."
   }
 }
