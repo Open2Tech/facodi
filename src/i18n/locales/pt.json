@@ -1014,7 +1014,7 @@
     "count": "{{count}} créditos pendentes",
     "pending": "Por validar",
     "draft": "Sem autorização de publicação confirmada",
-    "unverified": "Este nome foi identificado em documentação interna. Não é prova suficiente de autoria, participação ativa ou autorização pública.",
+    "unverified": "Esta candidatura a crédito foi indicada pelo responsável do projeto ou identificada em documentação de colaboração. Antes de publicar, confirma o nome, a função real, uma fonte pública e a autorização da pessoa.",
     "role": "Função real e confirmada",
     "headline": "Apresentação curta",
     "description": "Contributo efetivamente prestado",
