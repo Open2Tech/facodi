@@ -7,6 +7,7 @@ import { useContributePath } from '@/features/auth/useContributePath';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader } from '@/components/catalog/CatalogToolbar';
+import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
 import { SearchInput } from '@/components/catalog/SearchInput';
 import { Button } from '@/components/ui/button';
@@ -56,6 +57,7 @@ export default function Units() {
   }, []);
   return <>
     <CatalogHeader title={t('units.title')} description={t('units.description')} total={query.data?.total} />
+    <LearningContext focus="unit" />
     <div className="mt-10 grid gap-10 border-t border-foreground pt-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
       <aside aria-label={t('units.filters')} className="lg:sticky lg:top-28 lg:self-start">
         <details className="group border-b border-input pb-6 lg:border-0 lg:pb-0" open={filtersOpen} onToggle={event => setFiltersOpen(event.currentTarget.open)}>
