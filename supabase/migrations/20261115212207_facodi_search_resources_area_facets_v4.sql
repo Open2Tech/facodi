@@ -6,6 +6,7 @@ CREATE OR REPLACE FUNCTION facodi.search_public_resources_v4(p_search text DEFAU
  RETURNS jsonb
  LANGUAGE sql
  STABLE
+ SECURITY INVOKER
  SET search_path TO 'facodi', 'pg_temp'
 AS $function$
   with params as (
