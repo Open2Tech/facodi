@@ -1,24 +1,23 @@
 import { describe, expect, it } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
-import { changePublication, getCatalogCounts, getCourse, getResource, getResourceContext, getUnit, getUnitFacets, listChannelVideos, listContainedVideos, listFeaturedVideos, listCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { changePublication, getCatalogCounts, getCourse, getResource, getResourceContext, getUnit, getUnitFacets, listChannelVideos, listContainedVideos, listFeaturedVideos, listPublicCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import { getEnv } from '@/shared/config/env';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
 describe('FACODI Data API contract', () => {
-  it('filters published active courses, escapes search and paginates with a FACODI profile', async () => {
+  it('loads published active courses with their active unit count through the FACODI profile', async () => {
     server.use(http.get(`${endpoint}/courses`, ({ request }) => {
       const url = new URL(request.url);
       expect(request.headers.get('Accept-Profile')).toBe('facodi');
+      expect(url.searchParams.get('select')).toBe('*,curricular_units(count)');
       expect(url.searchParams.get('published')).toBe('eq.true');
       expect(url.searchParams.get('status')).toBe('eq.active');
-      expect(url.searchParams.get('title')).toBe('ilike.%100\\%\\_math%');
-      expect(url.searchParams.get('language')).toBe('eq.pt');
-      expect(url.searchParams.get('offset')).toBe('12');
-      expect(url.searchParams.get('limit')).toBe('12');
-      return HttpResponse.json([], { headers: { 'Content-Range': '12-11/13' } });
+      expect(url.searchParams.get('curricular_units.status')).toBe('eq.active');
+      expect(url.searchParams.get('limit')).toBe('500');
+      return HttpResponse.json([{ id: 'c1', slug: 'lesti', curricular_units: [{ count: 43 }] }, { id: 'c2', slug: 'new', curricular_units: [] }]);
     }));
-    expect(await listCourses({ search: '100%_math', language: 'pt', page: 2 })).toEqual({ items: [], total: 13 });
+    expect(await listPublicCourses()).toEqual([{ id: 'c1', slug: 'lesti', unit_count: 43 }, { id: 'c2', slug: 'new', unit_count: 0 }]);
   });
   it('requires an active public parent but does not misrepresent the unit published flag', async () => {
     server.use(

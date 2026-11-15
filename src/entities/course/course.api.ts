@@ -2,20 +2,23 @@ import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { videoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
-import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert, type LearningObject } from '@/entities/course/course.types';
+import { EDITORIAL_STATUSES, PAGE_SIZE, type CatalogParams, type ContentKind, type EditorialStatus, type CourseInsert, type UnitInsert, type ResourceInsert, type LearningObject, type PublicCourse } from '@/entities/course/course.types';
 
 export function searchPattern(search: string) {
   return `%${search.trim().replace(/[\\%_]/g, '\\$&')}%`;
 }
 
-export async function listCourses({ search, language, page }: CatalogParams, signal?: AbortSignal) {
-  let query = supabase.from('courses').select('*', { count: 'exact' })
-    .eq('published', true).eq('status', 'active').order('title').order('id');
-  if (search.trim()) query = query.ilike('title', searchPattern(search));
-  if (language) query = query.eq('language', language);
-  const { data, count, error } = await query.range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1).abortSignal(signal);
+/** Upper bound for the public degree catalogue, which is filtered client-side (it holds a handful of programmes). */
+export const PUBLIC_COURSE_LIMIT = 500;
+
+/** Every published, active course with its count of publicly visible (active) curricular units. */
+export async function listPublicCourses(signal?: AbortSignal): Promise<PublicCourse[]> {
+  const { data, error } = await supabase.from('courses').select('*, curricular_units(count)')
+    .eq('published', true).eq('status', 'active').eq('curricular_units.status', 'active')
+    .order('title').order('id').limit(PUBLIC_COURSE_LIMIT).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  return { items: data, total: count ?? 0 };
+  return (data ?? []).map(({ curricular_units: units, ...course }) =>
+    ({ ...course, unit_count: Array.isArray(units) ? Number(units[0]?.count ?? 0) : 0 }));
 }
 
 const PUBLIC_RESOURCE_STATES = ['active', 'published'];

@@ -2,6 +2,8 @@ import type { Database } from '@/integrations/supabase/types';
 
 type Tables = Database['facodi']['Tables'];
 export type Course = Tables['courses']['Row'];
+/** Public catalogue row with its number of publicly visible curricular units. */
+export type PublicCourse = Course & { unit_count: number };
 export type CourseInsert = Tables['courses']['Insert'];
 export type CourseUpdate = Tables['courses']['Update'];
 export type CurricularUnit = Tables['curricular_units']['Row'];

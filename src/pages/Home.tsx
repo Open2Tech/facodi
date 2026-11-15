@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, BookOpen, CircleHelp, Compass, HandHeart, Lay
 import { Link, useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { useCatalogCounts, useCourses, useFeaturedVideos, useTopics } from '@/features/courses/queries/useCourses';
+import { useCatalogCounts, usePublicCourses, useFeaturedVideos, useTopics } from '@/features/courses/queries/useCourses';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { cn } from '@/lib/utils';
 import { CourseList } from '@/components/course/CourseList';
@@ -19,7 +19,7 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
-  const courses = useCourses({ page: 1, search: '', language: '' });
+  const courses = usePublicCourses();
   const counts = useCatalogCounts();
   const topics = useTopics();
   const videos = useFeaturedVideos(6);
@@ -93,8 +93,8 @@ export default function Home() {
         <div><h2 id="featured" className="text-3xl font-semibold tracking-[-0.02em]">{t('home.start')}</h2><p className="mt-3 max-w-prose text-muted-foreground">{t('home.startDescription')}</p></div>
         <Link to="/courses" className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('catalog.all')}<ArrowUpRight className="h-4 w-4" /></Link>
       </div>
-      {courses.isPending ? <PageState loading /> : courses.error ? <PageState level="h3" title={t('common.error')} description={courses.error.message} retry={() => void courses.refetch()} /> : courses.data.items.length
-        ? <CourseList courses={courses.data.items.slice(0, 4)} headingLevel="h3" />
+      {courses.isPending ? <PageState loading /> : courses.error ? <PageState level="h3" title={t('common.error')} description={courses.error.message} retry={() => void courses.refetch()} /> : courses.data.length
+        ? <CourseList courses={courses.data.slice(0, 4)} headingLevel="h3" />
         : <PageState level="h3" title={t('catalog.empty')} description={t('catalog.emptyDescription')} />}
     </section>
 

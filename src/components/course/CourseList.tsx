@@ -2,11 +2,12 @@ import { ArrowUpRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { Course } from '@/entities/course/course.types';
+import { cn } from '@/lib/utils';
 
-export function CourseList({ courses, headingLevel = 'h2' }: { courses: Course[]; headingLevel?: 'h2' | 'h3' }) {
+export function CourseList({ courses, headingLevel = 'h2', className }: { courses: (Course & { unit_count?: number })[]; headingLevel?: 'h2' | 'h3'; className?: string }) {
   const { t } = useTranslation();
   const Heading = headingLevel;
-  return <div className="divide-y divide-input border-y border-input">
+  return <div className={cn('divide-y divide-input border-y border-input', className)}>
     {courses.map(course => <article key={course.id} className="group grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-6 sm:items-start">
       <span className="grid h-12 w-12 place-items-center border border-foreground bg-primary text-primary-foreground" aria-hidden="true"><BookOpen className="h-6 w-6" strokeWidth={1.75} /></span>
       <div className="min-w-0">
@@ -14,6 +15,7 @@ export function CourseList({ courses, headingLevel = 'h2' }: { courses: Course[]
           {course.code && <span>{course.code}</span>}
           {course.degree_type && <span>{t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type })}</span>}
           {course.ects_total != null && <span>{course.ects_total} ECTS</span>}
+          {course.unit_count != null && course.unit_count > 0 && <span>{t('catalog.unitCount', { count: course.unit_count })}</span>}
           {course.language && <span lang={course.language}>{course.language}</span>}
         </p>
         <Heading className="text-xl font-semibold sm:text-2xl"><Link className="decoration-2 underline-offset-4 hover:underline" to={`/courses/${course.slug}`}>{course.title}</Link></Heading>

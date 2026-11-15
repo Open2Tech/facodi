@@ -136,7 +136,6 @@
     "open": "Explorar curso",
     "empty": "Todavía no hay cursos para mostrar.",
     "emptyDescription": "Los cursos aparecen aquí cuando el equipo editorial los publica. Vuelve pronto para descubrir nuevos caminos.",
-    "noResults": "No encontramos cursos en esta búsqueda o página. Prueba otro título, idioma o vuelve a la primera página.",
     "units": "Unidades curriculares",
     "noUnits": "Todavía no hay unidades disponibles.",
     "noUnitsDescription": "Las unidades activas de este curso aparecen aquí a medida que se preparan.",
@@ -159,7 +158,19 @@
     "removeFilter": "Quitar filtro {{label}}: {{value}}",
     "filterSearch": "Búsqueda",
     "filterType": "Tipo",
-    "filterTag": "Tema"
+    "filterTag": "Tema",
+    "searchCourses": "Buscar cursos",
+    "searchCoursesPlaceholder": "Curso, código, institución o escuela",
+    "filterInstitution": "Institución",
+    "filterDegree": "Tipo de curso",
+    "allInstitutions": "Todas",
+    "allDegrees": "Todos",
+    "unitCount_one": "{{count}} asignatura",
+    "unitCount_many": "{{count}} asignaturas",
+    "unitCount_other": "{{count}} asignaturas",
+    "courseResults": "Resultados de cursos",
+    "noMatches": "Ningún curso coincide con los filtros.",
+    "noMatchesText": "Prueba otras palabras u otro idioma, o quita uno de los filtros de arriba. La búsqueda ignora los acentos y también busca en el código, la institución y la escuela."
   },
   "access": {
     "denied": "No tienes permiso para acceder a esta área.",

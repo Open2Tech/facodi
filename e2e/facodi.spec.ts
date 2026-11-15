@@ -36,33 +36,49 @@ for (const width of [375, 768, 1280, 1440]) {
   });
 }
 
-test('public search, language, pagination and query-state links', async ({ page }) => {
-  const searches: string[] = [];
+test('course catalogue searches without accents, filters by language, institution and type, and paginates', async ({ page }) => {
+  const requests: URL[] = [];
+  const rows = Array.from({ length: 13 }, (_, index) => ({
+    id: `test-${index}`, slug: `test-course-${index}`, code: `T${index}`, title: index === 0 ? 'Gestão de Sistemas' : `Test course ${String(index).padStart(2, '0')}`,
+    language: index === 0 ? 'pt-BR' : 'en', summary: 'Test fixture only', institution: index < 3 ? 'Universidade do Algarve' : 'Test University',
+    school: null, degree_type: index === 0 ? 'Licenciatura' : 'CTeSP', ects_total: 180, published: true, status: 'active',
+    curricular_units: [{ count: index === 0 ? 43 : 1 }],
+  }));
   await page.route('**/rest/v1/courses*', async route => {
-    const url = new URL(route.request().url());
-    const title = url.searchParams.get('title');
-    if (title) searches.push(title);
-    const offset = Number(url.searchParams.get('offset') ?? '0');
-    const filtered = url.searchParams.has('title') || url.searchParams.has('language');
-    const total = filtered ? 1 : 13;
-    const items = Array.from({ length: filtered || offset ? 1 : 12 }, (_, index) => ({
-      id: `test-${offset + index}`, slug: `test-course-${offset + index}`, title: `Test course ${offset + index}`,
-      language: 'en', summary: 'Test fixture only', published: true, status: 'active',
-    }));
-    await route.fulfill({ json: items, headers: { 'content-range': `${offset}-${offset + items.length - 1}/${total}`, 'access-control-expose-headers': 'content-range' } });
+    requests.push(new URL(route.request().url()));
+    await route.fulfill({ json: rows });
   });
   await page.goto('/courses');
   await expect(page.getByText('Page 1 of 2 · 13 results')).toBeVisible();
+  await expect(page.getByText('43 units')).toBeVisible();
   await page.getByRole('button', { name: 'Next', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Test course 12', exact: true })).toBeVisible();
   await expect(page).toHaveURL(/page=2/);
-  await page.getByRole('searchbox').pressSequentially('Test course');
-  await expect(page.getByText('Page 1 of 1 · 1 results')).toBeVisible();
-  await expect(page).toHaveURL(/search=Test\+course/);
-  expect(searches).toEqual(['ilike.%Test course%']);
-  await expect(page).not.toHaveURL(/page=2/);
-  await page.locator('main').getByRole('combobox').selectOption('en');
-  await expect(page).toHaveURL(/language=en/);
+  await expect(page.getByRole('heading', { name: 'Test course 12', exact: true })).toBeVisible();
+
+  await page.getByRole('searchbox', { name: 'Search courses' }).pressSequentially('gestao');
+  await expect(page).toHaveURL(/\/courses\?search=gestao$/);
+  await expect(page.getByRole('heading', { name: 'Gestão de Sistemas', exact: true })).toBeVisible();
+  await expect(page.getByText('1 result', { exact: true })).toBeVisible();
+  await page.locator('main').getByRole('combobox').selectOption('pt');
+  await expect(page).toHaveURL(/search=gestao&language=pt$/);
+  await expect(page.getByRole('heading', { name: 'Gestão de Sistemas', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(page).toHaveURL('/courses');
+
+  await page.getByRole('button', { name: /^Universidade do Algarve/ }).click();
+  await expect(page).toHaveURL(/institution=Universidade\+do\+Algarve/);
+  await expect(page.getByRole('button', { name: /^Licenciatura/ })).toContainText('1');
+  await page.getByRole('button', { name: /^Licenciatura/ }).click();
+  await expect(page.getByRole('heading', { name: 'Gestão de Sistemas', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Test course/ })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Remove filter Institution: Universidade do Algarve' }).click();
+  await expect(page).toHaveURL(/\/courses\?degree=Licenciatura$/);
+
+  await page.getByRole('searchbox', { name: 'Search courses' }).fill('nothing here');
+  await expect(page.getByRole('heading', { name: 'No courses match these filters.' })).toBeVisible();
+  // Filtering, paging and facets reuse the one public load instead of querying per keystroke.
+  expect(requests).toHaveLength(1);
+  expect(requests[0].searchParams.get('curricular_units.status')).toBe('eq.active');
 });
 
 test('private direct entry retains destination and obsolete social routes do not resolve', async ({ page }) => {

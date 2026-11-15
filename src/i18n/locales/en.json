@@ -136,7 +136,6 @@
     "open": "Explore course",
     "empty": "No courses to show yet.",
     "emptyDescription": "Courses appear here when the editorial team publishes them. Come back soon to discover new paths.",
-    "noResults": "No courses match this search or page. Try another title, language or return to the first page.",
     "units": "Curricular units",
     "noUnits": "No units available yet.",
     "noUnitsDescription": "Active units for this course appear here as they are prepared.",
@@ -159,7 +158,19 @@
     "removeFilter": "Remove filter {{label}}: {{value}}",
     "filterSearch": "Search",
     "filterType": "Type",
-    "filterTag": "Topic"
+    "filterTag": "Topic",
+    "searchCourses": "Search courses",
+    "searchCoursesPlaceholder": "Course, code, institution or school",
+    "filterInstitution": "Institution",
+    "filterDegree": "Course type",
+    "allInstitutions": "All",
+    "allDegrees": "All",
+    "unitCount_one": "{{count}} unit",
+    "unitCount_many": "{{count}} units",
+    "unitCount_other": "{{count}} units",
+    "courseResults": "Course results",
+    "noMatches": "No courses match these filters.",
+    "noMatchesText": "Try different words or another language, or remove one of the filters above. Search ignores accents and also matches the code, institution and school."
   },
   "access": {
     "denied": "You do not have permission to access this area.",
