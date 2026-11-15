@@ -1,0 +1,15 @@
+# FACODI — Cloudflare Workers Static Assets
+# Applied to files served by Workers assets; does not modify Supabase responses.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Workers preview stays accessible for QA but must not compete with the canonical site.
+https://facodi.marcelo-0d6.workers.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+# Vite fingerprints JS/CSS assets. They can be cached until their names change.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
