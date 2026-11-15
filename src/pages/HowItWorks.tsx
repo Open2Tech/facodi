@@ -28,7 +28,7 @@ export default function HowItWorks() {
         </div>
         <h2 className="text-2xl font-semibold">{t('learningGuide.modulesTitle')}</h2>
         <p className="mt-4 leading-relaxed text-muted-foreground">{t('learningGuide.modulesText')}</p>
-        <Link className="mt-6 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4" to="/modules">
+        <Link className="mt-6 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4" to="/resources?type=module">
           {t('learningGuide.modulesCta')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

@@ -837,3 +837,63 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
   await expect(page.getByRole('link', { name: /Programming I/ })).toHaveAttribute('href', '/courses/lesti/units/programming-i');
   await expect(page.getByRole('checkbox')).toHaveCount(0);
 });
+
+test('unified resources catalogue finds modules and preserves legacy module URLs', async ({ page }) => {
+  const module = {
+    id: 'module-1', slug: 'intro-algebra', title: 'Introduction to algebra',
+    description: 'An independent study guide with practice activities.',
+    language: 'en', object_type: 'module', tags: ['Algebra'], metadata: {},
+    source_url: null, published: true, status: 'active',
+  };
+  const video = {
+    id: 'video-1', slug: 'algebra-video', title: 'Algebra video',
+    description: 'Short video explanation.', language: 'en', object_type: 'video',
+    tags: ['Algebra'], metadata: {}, source_url: 'https://www.youtube.com/watch?v=abc',
+    published: true, status: 'active',
+  };
+  await page.route('**/rest/v1/learning_objects*', async route => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get('select') === 'object_type') {
+      return route.fulfill({ json: [{ object_type: 'module' }, { object_type: 'video' }] });
+    }
+    if (url.searchParams.has('slug')) return route.fulfill({ json: module });
+    const type = url.searchParams.get('object_type');
+    const title = url.searchParams.get('title');
+    const rows = [module, video].filter(item =>
+      (!type || type === 'eq.' + item.object_type) &&
+      (!title || item.title.toLowerCase().includes(title.replace(/^ilike\.%|%$/g, '').toLowerCase())));
+    const last = rows.length ? rows.length - 1 : 0;
+    await route.fulfill({ json: rows, headers: {
+      'content-range': rows.length ? '0-' + last + '/' + rows.length : '*/0',
+      'access-control-expose-headers': 'content-range',
+    } });
+  });
+
+  // Ranked generic resource search may exclude modules; the catalog still surfaces them.
+  await page.route('**/rest/v1/rpc/search_public_resources_v2', route =>
+    route.fulfill({ json: { total: 0, items: [] } }));
+  await page.goto('/resources?search=algebra');
+  await expect(page.getByRole('heading', { name: /Study modules/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'View all modules' }))
+    .toHaveAttribute('href', '/resources?type=module&search=algebra');
+  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
+  await expect(page.getByText('No resources to show yet.')).toHaveCount(0);
+
+  await page.goto('/modules?search=Algebra&language=en&page=2');
+  await expect(page).toHaveURL(/\/resources\?search=Algebra&language=en&page=2&type=module$/);
+
+  await page.goto('/resources');
+  await expect(page.getByRole('button', { name: /^All/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('link', { name: 'Introduction to algebra', exact: true })).toHaveAttribute('href', '/modules/intro-algebra');
+  await page.getByRole('button', { name: /Study module/ }).click();
+  await expect(page).toHaveURL(/\/resources\?type=module$/);
+  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Algebra video/ })).toHaveCount(0);
+  await page.getByRole('searchbox').fill('algebra');
+  await expect(page).toHaveURL(/search=algebra/);
+  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
+  await page.getByRole('link', { name: /Introduction to algebra/ }).click();
+  await expect(page).toHaveURL(/\/modules\/intro-algebra$/);
+  await expect(page.getByRole('heading', { name: 'Introduction to algebra', level: 1 })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Study modules' })).toHaveAttribute('href', '/resources?type=module');
+});

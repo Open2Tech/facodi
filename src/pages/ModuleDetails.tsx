@@ -46,7 +46,7 @@ export default function ModuleDetails() {
     </Helmet>
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-2 text-muted-foreground">
-        <li><Link to="/modules" className="inline-flex items-center gap-1 underline underline-offset-4">
+        <li><Link to="/resources?type=module" className="inline-flex items-center gap-1 underline underline-offset-4">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('studyModules.title')}
         </Link></li>
         <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>

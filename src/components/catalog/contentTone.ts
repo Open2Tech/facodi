@@ -1,4 +1,4 @@
-import { BookOpen, ExternalLink, FileText, Layers, ListVideo, PlayCircle, Shapes, type LucideIcon } from 'lucide-react';
+import { BookOpen, BookOpenCheck, ExternalLink, FileText, Layers, ListVideo, PlayCircle, Shapes, type LucideIcon } from 'lucide-react';
 import type { ContentKind } from '@/entities/course/course.types';
 
 export interface ContentTone { icon: LucideIcon; fill: string }
@@ -7,6 +7,7 @@ export interface ContentTone { icon: LucideIcon; fill: string }
 const TONES: Record<string, ContentTone> = {
   course: { icon: BookOpen, fill: 'bg-primary' },
   curricular_unit: { icon: Layers, fill: 'bg-brand-orange' },
+  module: { icon: BookOpenCheck, fill: 'bg-brand-mint' },
   video: { icon: PlayCircle, fill: 'bg-brand-pink' },
   // A sequence is an ordered run of videos, so it shares the video fill with its own icon.
   playlist: { icon: ListVideo, fill: 'bg-brand-pink' },

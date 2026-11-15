@@ -76,7 +76,7 @@ export async function getUnitFacets(signal?: AbortSignal) {
 }
 
 export async function listResources({ search, language, page, tag, objectType }: CatalogParams, signal?: AbortSignal) {
-  if (search.trim()) {
+  if (search.trim() && objectType !== 'module') {
     // Use the published-only, SECURITY INVOKER search API for relevance ranking.
     // The existing list query below remains the stable alphabetical fallback when
     // there is no search text, preserving its exact pagination and facet behavior.
@@ -102,7 +102,9 @@ export async function listResources({ search, language, page, tag, objectType }:
     .select('id, slug, title, description, object_type, language, tags, metadata, source_url', { count: 'exact' })
     .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('title').order('id');
   if (search.trim()) query = query.ilike('title', searchPattern(search));
-  if (language) query = query.eq('language', language);
+  // Module guides use title-based lookup: the ranked RPC does not reliably return them.
+  // Their locale may include a region (e.g. pt-BR), so the language facet matches that too.
+  if (language) query = objectType === 'module' ? query.ilike('language', language + '%') : query.eq('language', language);
   if (objectType) query = query.eq('object_type', objectType);
   // Quote the element so tags with spaces, commas or braces stay a single array item.
   if (tag) query = query.contains('tags', `{"${tag.replace(/["\\]/g, '\\$&')}"}`);

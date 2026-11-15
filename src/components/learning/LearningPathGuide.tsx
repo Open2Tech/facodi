@@ -7,7 +7,7 @@ export type LearningFocus = LearningPart | 'resource';
 const PARTS: { id: LearningPart; to: string; icon: LucideIcon; tone: string }[] = [
   { id: 'course', to: '/courses', icon: BookOpen, tone: 'bg-brand-cyan' },
   { id: 'unit', to: '/units', icon: Layers, tone: 'bg-brand-orange' },
-  { id: 'module', to: '/modules', icon: BookOpenCheck, tone: 'bg-brand-mint' },
+  { id: 'module', to: '/resources?type=module', icon: BookOpenCheck, tone: 'bg-brand-mint' },
   { id: 'sequence', to: '/sequences', icon: ListVideo, tone: 'bg-brand-pink' },
 ];
 
