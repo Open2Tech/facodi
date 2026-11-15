@@ -23,7 +23,8 @@
     "themeLight": "Mudar para tema claro",
     "themeDark": "Mudar para tema escuro",
     "notes": "Caderno",
-    "sequences": "Sequências"
+    "sequences": "Sequências",
+    "modules": "Módulos de estudo"
   },
   "common": {
     "loading": "A carregar…",
@@ -494,7 +495,9 @@
     "course": "Curso",
     "curricular_unit": "Unidade curricular",
     "external_resource": "Referência externa",
-    "playlist": "Sequência"
+    "playlist": "Sequência",
+    "module": "Módulo de estudo",
+    "topic": "Tópicos"
   },
   "video": {
     "play": "Reproduzir vídeo: {{title}}",
@@ -1183,5 +1186,89 @@
     "title": "Vídeos desta coleção",
     "notice": "Sequência sugerida pela FACODI a partir de vídeos públicos dos canais originais. Os conteúdos e a ordem não são necessariamente playlists oficiais dos criadores.",
     "empty": "Ainda não há vídeos públicos associados a esta coleção."
+  },
+  "learningGuide": {
+    "nav": "Como funciona",
+    "eyebrow": "FACODI / MAPA DE APRENDIZAGEM",
+    "title": "Cada peça tem um papel. Tu escolhes o caminho.",
+    "lead": "Um curso organiza o plano curricular. Uma UC situa a disciplina. Um módulo aprofunda um tema. Uma sequência ordena materiais para estudar. Não precisas de seguir sempre todos os passos.",
+    "more": "Entender a organização",
+    "explore": "Explorar",
+    "contextLabel": "Como este conteúdo se organiza na FACODI",
+    "reuseNote": "Importante: as sequências podem servir várias UCs ou módulos; os recursos também podem ser reutilizados. Este mapa explica como aprender, não impõe uma hierarquia rígida.",
+    "parts": {
+      "course": {
+        "title": "Curso",
+        "short": "O plano de formação: disciplinas, anos, semestres e referências institucionais.",
+        "example": "Ex.: Licenciatura em Gestão."
+      },
+      "unit": {
+        "title": "Unidade curricular (UC)",
+        "short": "A disciplina dentro de um curso, com objetivos, contexto e conteúdos associados.",
+        "example": "Ex.: Estatística para Gestão I."
+      },
+      "module": {
+        "title": "Módulo de estudo",
+        "short": "Uma experiência focada num tema, com atividades e recursos selecionados.",
+        "example": "Ex.: Guia de estudo de Probabilidade."
+      },
+      "sequence": {
+        "title": "Sequência de estudo",
+        "short": "Vídeos e aulas numa ordem sugerida, com progresso pessoal quando disponível.",
+        "example": "Ex.: Probabilidade passo a passo."
+      },
+      "resource": {
+        "title": "Recurso",
+        "short": "Vídeo, documento, tópico ou ligação que podes consultar separadamente."
+      }
+    },
+    "context": {
+      "course": "Aqui encontras o plano e as UCs. Os módulos e as sequências são recursos de estudo complementares, não disciplinas ou créditos adicionais.",
+      "unit": "Uma UC integra um curso. Pode reunir módulos, vídeos, leituras e sequências; estes materiais não substituem o plano oficial.",
+      "module": "Um módulo reúne conteúdo e, quando disponível, uma proposta de atividade. Pode pertencer a uma UC e reutilizar materiais de outras áreas.",
+      "sequence": "Uma sequência propõe uma ordem de estudo para vídeos externos. Não é um curso, uma UC ou uma avaliação oficial; podes retomá-la ao teu ritmo.",
+      "resource": "Um recurso é uma peça de conteúdo, não uma formação completa. Consulta o contexto académico e as fontes quando estiverem disponíveis."
+    },
+    "pageTitle": "Como se aprende na FACODI?",
+    "pageDescription": "Podes começar por um curso inteiro ou apenas por um vídeo. O essencial é perceber a diferença entre a estrutura académica e os recursos editoriais que te ajudam a estudar.",
+    "modulesTitle": "Módulos: aprender um tema com intenção",
+    "modulesText": "O módulo liga objetivos, explicações e materiais. Quando existem atividades, são propostas de estudo e autoavaliação, não trabalhos oficiais de uma instituição.",
+    "modulesCta": "Descobrir módulos",
+    "sequencesTitle": "Sequências: seguir o fio das aulas",
+    "sequencesText": "As sequências juntam vídeos externos por uma ordem pedagógica sugerida. Podem aparecer em vários módulos e UCs; o progresso marcado é pessoal.",
+    "sequencesCta": "Abrir sequências",
+    "resourcesTitle": "E os recursos?",
+    "resourcesText": "Um recurso é um vídeo, leitura, documento, tópico ou outra referência. Pode apoiar vários percursos sem pertencer exclusivamente a um curso.",
+    "resourcesCta": "Explorar recursos",
+    "disclaimerTitle": "Aprendizagem aberta, créditos bem identificados",
+    "disclaimerText": "A FACODI organiza recursos educativos abertos. Referências a planos de estudos e instituições não transformam módulos ou sequências em disciplinas oficiais, nem atribuem diplomas, ECTS ou avaliação certificada. A curadoria dos materiais não implica revisão integral de todos os vídeos."
+  },
+  "studyModules": {
+    "title": "Módulos de estudo",
+    "description": "Guias temáticos da FACODI com recursos relacionados e, em alguns casos, atividades sugeridas para praticar.",
+    "open": "Explorar módulo",
+    "empty": "Ainda não existem módulos publicados.",
+    "emptyDescription": "Os módulos surgem depois de serem preparados e disponibilizados no catálogo.",
+    "disclaimer": "Os módulos são recursos editoriais para estudo autónomo. Não são unidades curriculares oficiais, não conferem ECTS e as atividades propostas não equivalem a avaliações académicas.",
+    "resourceCount": "{{count}} materiais associados",
+    "linkedUnits": "Unidades curriculares relacionadas",
+    "linkedUnitsDescription": "Este módulo está associado às UCs abaixo como apoio ao estudo, não como substituto do seu programa oficial.",
+    "practice": "Experimenta na prática",
+    "practiceNotice": "Proposta de estudo autónomo: não se trata de uma avaliação oficial nem de trabalho corrigido por um professor.",
+    "activity": "Atividade sugerida",
+    "deliverable": "O que podes produzir",
+    "selfReview": "Como rever o teu trabalho",
+    "materials": "Materiais deste módulo",
+    "materialsDescription": "Recursos públicos ligados ao módulo. A ordem e a qualidade das ligações são editoriais; confirma sempre a origem e as condições de utilização.",
+    "groupTitles": {
+      "module": "Módulos relacionados",
+      "topic": "Tópicos",
+      "playlist": "Sequências e playlists",
+      "video": "Vídeos",
+      "document": "Documentos",
+      "external_resource": "Leituras e referências"
+    },
+    "noMaterials": "Sem recursos disponíveis",
+    "noMaterialsText": "Este módulo ainda não tem materiais públicos associados."
   }
 }
