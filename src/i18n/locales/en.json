@@ -2054,5 +2054,17 @@
   "collectionPlaylists": {
     "title": "Video learning paths in this collection",
     "notice": "Sequences curated by FACODI using lessons from their original creators. Open a path to follow the proposed lesson order."
+  },
+  "moduleResources": {
+    "sequences": "Video learning sequences",
+    "sequenceNotice": "Lessons grouped by FACODI into a suggested progression. Videos remain with their original creators.",
+    "noSequences": "No video sequences have been linked to this module.",
+    "readings": "Further reading and references",
+    "readingsNotice": "Access documentation and references through their original sources.",
+    "noReadings": "No further reading has been linked to this module.",
+    "progression": "Suggested learning progression",
+    "progressionNotice": "Conceptual recommendations by FACODI, not official academic prerequisites.",
+    "before": "Foundational modules",
+    "after": "Suggested next modules"
   }
 }
