@@ -1,0 +1,818 @@
+{
+  "version": "2026-11-15",
+  "source": "YouTube channel video indexes / creator-linked YouTube search",
+  "channelSources": {
+    "henrique": [
+      "Estranha História — Henrique Caldeira",
+      "henriquecaldeira",
+      "História, fontes e cultura"
+    ],
+    "guto": [
+      "Augusto Galego",
+      "GutoGalego",
+      "Engenharia de software"
+    ],
+    "akita": [
+      "Fabio Akita",
+      "Akitando",
+      "Fundamentos da computação"
+    ],
+    "ciencia": [
+      "Ciência Sem Fim",
+      "CiênciaSemFim",
+      "Física, ciência e tecnologia"
+    ],
+    "plano": [
+      "Plano Piloto",
+      "PlanoPiloto",
+      "Geografia e história"
+    ],
+    "aline": [
+      "Professora Aline Elias",
+      "prof.alineelias",
+      "Excel e produtividade"
+    ],
+    "lhama": [
+      "Programador Lhama",
+      "ProgramadorLhama",
+      "Python e arquitetura de software"
+    ],
+    "imagem": [
+      "O Algoritmo da Imagem",
+      "oalgoritmodaimagem",
+      "Semiótica e cultura visual"
+    ]
+  },
+  "courseAliases": {
+    "L": "LESTI",
+    "C": "CTESP-STI",
+    "I": "IFES-CAR-ADM-INT-2026",
+    "G": "LGEST",
+    "D": "LDCOM",
+    "U": "UFES-LETRAS-ING-83-2019"
+  },
+  "videos": [
+    {
+      "id": "OUPJa5XD5hc",
+      "title": "Como estava o mundo no ano 1000?",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "I/IFESCAR-ADM26-2-HISTORIA",
+        "U/LET13961"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 1
+    },
+    {
+      "id": "4qvG8MKBBnw",
+      "title": "O Turco Mecânico e o lado oculto da IA",
+      "units": [
+        "L/19411022",
+        "I/IFESCAR-ADM26-1-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 2
+    },
+    {
+      "id": "en_GTv0o96Y",
+      "title": "Cidade perdida na Amazônia: fato ou boato?",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "I/IFESCAR-ADM26-2-GEOGRAFIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 3
+    },
+    {
+      "id": "xZ5IDXms7bE",
+      "title": "Arca de Noé na Turquia: fato ou boato?",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 4
+    },
+    {
+      "id": "nNHR_0gKp7M",
+      "title": "O rei que mudou o rumo da História (sem existir)",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "I/IFESCAR-ADM26-2-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 5
+    },
+    {
+      "id": "Mp8ATV9LLt8",
+      "title": "O mito que resume a história de Roma",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "U/LET13923"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 6
+    },
+    {
+      "id": "iLI0jWuYoeQ",
+      "title": "A família macabra por trás da Guerra de Troia",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "U/LET13923"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 7
+    },
+    {
+      "id": "F-OBgD_vmCo",
+      "title": "A história original da Odisseia (ponto a ponto)",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "U/LET13923"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 8
+    },
+    {
+      "id": "H0Honyy7Aaw",
+      "title": "A História do Zodíaco (+ mitos dos 12 signos)",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 9
+    },
+    {
+      "id": "m4NTMvjCdcw",
+      "title": "Guerra de Troia: o Mito e a História",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "U/LET13923"
+      ],
+      "verification": "channel_video_index",
+      "channel": "henrique",
+      "order": 10
+    },
+    {
+      "id": "v7z2856g1A0",
+      "title": "Introdução a Quality Gates Automatizados",
+      "units": [
+        "L/19411016",
+        "L/19411001",
+        "C/18121017"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 1
+    },
+    {
+      "id": "tXlxnIqQF2E",
+      "title": "Você Ainda Precisa Saber SQL",
+      "units": [
+        "L/19411012",
+        "L/19411017",
+        "C/18121019",
+        "C/18121020"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 2
+    },
+    {
+      "id": "KtBLoiGbk1c",
+      "title": "10 Conceitos de Backend Que Toda Entrevista Cobra",
+      "units": [
+        "L/19411021",
+        "C/18121018"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 3
+    },
+    {
+      "id": "h-Q889Ro07w",
+      "title": "Do DNS ao HTML: O Caminho Para Abrir um Site",
+      "units": [
+        "L/19411007",
+        "L/19411014",
+        "C/18121014",
+        "C/18121018"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 4
+    },
+    {
+      "id": "YXSIvbL4ZRA",
+      "title": "A Nova Realidade de Segurança e Vulnerabilidades",
+      "units": [
+        "L/19411049",
+        "C/18121014"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 5
+    },
+    {
+      "id": "ecev-RuuKVg",
+      "title": "Quando Vale a Pena Desacoplar Seu Código?",
+      "units": [
+        "L/19411016",
+        "L/19411006",
+        "C/18121006"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 6
+    },
+    {
+      "id": "9lzHhnstv-c",
+      "title": "Como Fazer um Bom Design de APIs",
+      "units": [
+        "L/19411021",
+        "L/19411016",
+        "C/18121018"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 7
+    },
+    {
+      "id": "2Ls_uc0fo-Y",
+      "title": "System Design para Aplicações com IA",
+      "units": [
+        "L/19411022",
+        "L/19411016",
+        "L/19411029"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 8
+    },
+    {
+      "id": "9sI8KHEjs0M",
+      "title": "5 Design Patterns Que Todo Dev Deveria Conhecer",
+      "units": [
+        "L/19411016",
+        "L/19411006",
+        "C/18121006"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 9
+    },
+    {
+      "id": "5vKcNaWXtCY",
+      "title": "Como Uma Requisição Contamina Outra",
+      "units": [
+        "L/19411021",
+        "L/19411049"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 10
+    },
+    {
+      "id": "pc-5CmdvjJk",
+      "title": "Erros Que Matam Seu Primeiro SaaS",
+      "units": [
+        "G/14181168",
+        "C/18121012",
+        "I/IFESCAR-ADM26-2-EMPREENDEDORISMO"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 11
+    },
+    {
+      "id": "PIn19jLub2U",
+      "title": "Clean Code ESTRAGOU a Cabeça dos Devs?",
+      "units": [
+        "L/19411016"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 12
+    },
+    {
+      "id": "6YoPkUvlCdM",
+      "title": "Automatize o Claude Code com Hooks",
+      "units": [
+        "L/19411022",
+        "L/19411001"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 13
+    },
+    {
+      "id": "F5IliRRcIck",
+      "title": "Fluxos de Desenvolvimento com IA. Ft. Sam",
+      "units": [
+        "L/19411022",
+        "L/19411016"
+      ],
+      "verification": "channel_video_index",
+      "channel": "guto",
+      "order": 14
+    },
+    {
+      "id": "8G80nuEyDN4",
+      "title": "O Guia +Hardcore de Introdução à COMPUTAÇÃO",
+      "units": [
+        "L/19411005",
+        "L/19411000",
+        "C/18121001"
+      ],
+      "verification": "original_video_search",
+      "channel": "akita",
+      "order": 1
+    },
+    {
+      "id": "G4MvFT8TGII",
+      "title": "O Computador de Turing e Von Neumann | Por que calculadoras não são computadores?",
+      "units": [
+        "L/19411005",
+        "C/18121001",
+        "I/IFESCAR-ADM26-1-TECNOLOGIA-INFORMATICA"
+      ],
+      "verification": "independent_academic_reference",
+      "channel": "akita",
+      "order": 2
+    },
+    {
+      "id": "oEorhw5r2Do",
+      "title": "A História de Ruby on Rails | Por que deu certo?",
+      "units": [
+        "L/19411021",
+        "C/18121018"
+      ],
+      "verification": "existing_facodi_verified",
+      "channel": "akita",
+      "order": 3
+    },
+    {
+      "id": "KyqFXVVgvIs",
+      "title": "Tornando sua App Web Mais Rápida! | 4 Técnicas de Otimização",
+      "units": [
+        "L/19411021",
+        "C/18121018"
+      ],
+      "verification": "existing_facodi_verified",
+      "channel": "akita",
+      "order": 4
+    },
+    {
+      "id": "gpJgtED36U4",
+      "title": "A Forma Ideal de Projetos Web | Os 12 Fatores",
+      "units": [
+        "L/19411029",
+        "L/19411016",
+        "C/18121018"
+      ],
+      "verification": "existing_facodi_verified",
+      "channel": "akita",
+      "order": 5
+    },
+    {
+      "id": "NuIOO5VWmXc",
+      "title": "RANT: Empreendendo com Software do JEITO ERRADO!",
+      "units": [
+        "G/14181168",
+        "C/18121012",
+        "I/IFESCAR-ADM26-2-EMPREENDEDORISMO"
+      ],
+      "verification": "existing_facodi_verified",
+      "channel": "akita",
+      "order": 6
+    },
+    {
+      "id": "rXt6H-WypYM",
+      "title": "MISTÉRIOS DO UNIVERSO [com Dr. Cherman] - TDAH #8",
+      "units": [
+        "I/IFESCAR-ADM26-1-FISICA",
+        "I/IFESCAR-ADM26-2-FISICA",
+        "L/19411004"
+      ],
+      "verification": "channel_video_index",
+      "channel": "ciencia",
+      "order": 1
+    },
+    {
+      "id": "SraCw6iqu3E",
+      "title": "ENERGIA - SACANI RESPONDE",
+      "units": [
+        "I/IFESCAR-ADM26-1-FISICA",
+        "I/IFESCAR-ADM26-2-FISICA",
+        "L/19411004"
+      ],
+      "verification": "channel_video_index",
+      "channel": "ciencia",
+      "order": 2
+    },
+    {
+      "id": "lNB8x2k0YNg",
+      "title": "SACANI RESPONDE: TUDO SOBRE A MISSÃO APOLLO 13",
+      "units": [
+        "I/IFESCAR-ADM26-1-FISICA",
+        "L/19411004",
+        "I/IFESCAR-ADM26-1-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "ciencia",
+      "order": 3
+    },
+    {
+      "id": "aGBvv4DPXK8",
+      "title": "GABRIELA BAILAS [FÍSICA E AFINS] - Ciência Sem Fim #75",
+      "units": [
+        "I/IFESCAR-ADM26-1-FISICA",
+        "I/IFESCAR-ADM26-2-FISICA",
+        "L/19411004"
+      ],
+      "verification": "original_video_search",
+      "channel": "ciencia",
+      "order": 4
+    },
+    {
+      "id": "mbykpkwPSws",
+      "title": "FÍSICA ESPACIAL - Ciência Sem Fim #297",
+      "units": [
+        "I/IFESCAR-ADM26-1-FISICA",
+        "I/IFESCAR-ADM26-2-FISICA",
+        "L/19411004"
+      ],
+      "verification": "original_video_search",
+      "channel": "ciencia",
+      "order": 5
+    },
+    {
+      "id": "E82wXFm-Jx8",
+      "title": "A INTELIGÊNCIA ARTIFICIAL EM 2025 [ÁLVARO MACHADO DIAS] - Ciência Sem Fim #292",
+      "units": [
+        "L/19411022",
+        "L/19411013"
+      ],
+      "verification": "original_video_search",
+      "channel": "ciencia",
+      "order": 6
+    },
+    {
+      "id": "8HfbBKRYEvc",
+      "title": "Novo mapa aprovado pela ONU #geografia #mapa",
+      "units": [
+        "I/IFESCAR-ADM26-2-GEOGRAFIA",
+        "I/IFESCAR-ADM26-3-GEOGRAFIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "plano",
+      "order": 1
+    },
+    {
+      "id": "ZgG030O8FlM",
+      "title": "4 países que NÃO existem!",
+      "units": [
+        "I/IFESCAR-ADM26-2-GEOGRAFIA",
+        "I/IFESCAR-ADM26-3-GEOGRAFIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "plano",
+      "order": 2
+    },
+    {
+      "id": "3EIuCzEVkRQ",
+      "title": "Namíbia e o Hitler #geografia #africa #histoira",
+      "units": [
+        "I/IFESCAR-ADM26-2-GEOGRAFIA",
+        "I/IFESCAR-ADM26-2-HISTORIA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "plano",
+      "order": 3
+    },
+    {
+      "id": "PaIzefYCwEc",
+      "title": "A estranha lei de Zipf em TODOS idiomas! #idiomas #curiosidades #matemática",
+      "units": [
+        "U/LET13917",
+        "I/IFESCAR-ADM26-1-ESTATISTICA",
+        "L/19411018"
+      ],
+      "verification": "indexed_video_detail",
+      "channel": "plano",
+      "order": 4
+    },
+    {
+      "id": "_CQFbWmHDJk",
+      "title": "Como surgiram as letras minúsculas? #historia #curiosidades",
+      "units": [
+        "I/IFESCAR-ADM26-1-HISTORIA",
+        "I/IFESCAR-ADM26-1-LINGUA-PORTUGUESA-LITERATURA",
+        "U/LET13917"
+      ],
+      "verification": "indexed_video_detail",
+      "channel": "plano",
+      "order": 5
+    },
+    {
+      "id": "0B4LZP4Vx4U",
+      "title": "Brasil MUDOU de capital? #brasil #geografia #curiosidades",
+      "units": [
+        "I/IFESCAR-ADM26-2-GEOGRAFIA",
+        "I/IFESCAR-ADM26-3-GEOGRAFIA"
+      ],
+      "verification": "original_short_search",
+      "channel": "plano",
+      "order": 6
+    },
+    {
+      "id": "4a3fILFyYiw",
+      "title": "Eu não uso a função =SOMASES. #planilhas #excel",
+      "units": [
+        "C/18121003",
+        "C/18121007",
+        "G/14181177",
+        "I/IFESCAR-ADM26-1-TECNOLOGIA-INFORMATICA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 1
+    },
+    {
+      "id": "SJsjG3BHEE8",
+      "title": "Esse gráfico aqui ⬇️ é ruim! #gráficos #excel",
+      "units": [
+        "L/19411020",
+        "C/18121015",
+        "G/14181177"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 2
+    },
+    {
+      "id": "0BS9Q-o3A88",
+      "title": "Não apague linha por linha no Excel.",
+      "units": [
+        "C/18121003",
+        "G/14181177",
+        "I/IFESCAR-ADM26-1-TECNOLOGIA-INFORMATICA"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 3
+    },
+    {
+      "id": "UBvYVhafU4k",
+      "title": "Seu nível de Excel aparece nos detalhes ⬇️",
+      "units": [
+        "C/18121003",
+        "G/14181177"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 4
+    },
+    {
+      "id": "UNJNiz1-6k8",
+      "title": "❌Não use filtro manual no Excel!",
+      "units": [
+        "C/18121003",
+        "C/18121007",
+        "G/14181177"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 5
+    },
+    {
+      "id": "7MfGRexS5W8",
+      "title": "❌ Pare de fazer gambiarra no Excel!",
+      "units": [
+        "C/18121003",
+        "G/14181177"
+      ],
+      "verification": "channel_video_index",
+      "channel": "aline",
+      "order": 6
+    },
+    {
+      "id": "0fWlMrmIWbQ",
+      "title": "Estão colocando Rust no PYTHON!!",
+      "units": [
+        "L/19411000",
+        "L/19411006"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 1
+    },
+    {
+      "id": "nH1vbRwCByc",
+      "title": "JIT no Python VOLTOU!!!",
+      "units": [
+        "L/19411005",
+        "L/19411000"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 2
+    },
+    {
+      "id": "-UStMKzQfvI",
+      "title": "🔥 O MELHOR PROJETO DE DADOS QUE EU JÁ FIZ !!!",
+      "units": [
+        "L/19411020",
+        "C/18121015"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 3
+    },
+    {
+      "id": "RmEhr3b0gtU",
+      "title": "🐍 PYTHON EM 2025 - O QUE ACONTECEU ???",
+      "units": [
+        "L/19411000",
+        "C/18121001"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 4
+    },
+    {
+      "id": "5JzEyB1AOAg",
+      "title": "FASTAPI É REALMENTE PERFORMÁTICO ASSIM!",
+      "units": [
+        "L/19411021",
+        "L/19411029",
+        "C/18121018"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 5
+    },
+    {
+      "id": "V0RulzPQt6M",
+      "title": "PYTHON 3.14 - ISSO É REVOLUCIONÁRIO!",
+      "units": [
+        "L/19411000"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 6
+    },
+    {
+      "id": "XKnQl0oNxJ8",
+      "title": "Design Patterns em Python - Decorador",
+      "units": [
+        "L/19411006",
+        "L/19411016",
+        "C/18121006"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 7
+    },
+    {
+      "id": "j4JdtGFffgM",
+      "title": "VOCÊ NÃO SABE MEXER EM CÓDIGO LEGADO",
+      "units": [
+        "L/19411016",
+        "L/19411001"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 8
+    },
+    {
+      "id": "3DLhJZ8F0TE",
+      "title": "ESSE É O FUTURO DA PROGRAMAÇÃO COM IA",
+      "units": [
+        "L/19411022",
+        "L/19411016"
+      ],
+      "verification": "channel_video_index",
+      "channel": "lhama",
+      "order": 9
+    },
+    {
+      "id": "2nvbgwFE_0Y",
+      "title": "Clean Architecture Python (Remake) - 1 Introdução",
+      "units": [
+        "L/19411016",
+        "C/18121006"
+      ],
+      "verification": "playlist_video_search",
+      "channel": "lhama",
+      "order": 10
+    },
+    {
+      "id": "3Zt3XpAjCHc",
+      "title": "Clean Architecture Python (Remake) - 2 Entendendo a Arquitetura",
+      "units": [
+        "L/19411016",
+        "C/18121006"
+      ],
+      "verification": "playlist_video_search",
+      "channel": "lhama",
+      "order": 11
+    },
+    {
+      "id": "kKI1mMRZIvg",
+      "title": "A IMAGEM DE UM MITO",
+      "units": [
+        "D/14541156",
+        "D/14541026"
+      ],
+      "verification": "original_video_search",
+      "channel": "imagem",
+      "order": 1
+    },
+    {
+      "id": "BWm-7FO2OK8",
+      "title": "A GAIOLA DE OURO",
+      "units": [
+        "D/14541156",
+        "D/14541026"
+      ],
+      "verification": "original_video_search",
+      "channel": "imagem",
+      "order": 2
+    },
+    {
+      "id": "rZU0DadU9MI",
+      "title": "QUE COMAM BRIOCHE | PARTE 1: Os Clubes",
+      "units": [
+        "D/14541026",
+        "D/14541156"
+      ],
+      "verification": "original_video_search",
+      "channel": "imagem",
+      "order": 3
+    },
+    {
+      "id": "4AQn_YNwD7A",
+      "title": "A ILUSÃO DA ESCOLHA",
+      "units": [
+        "D/14541156",
+        "D/14541026",
+        "G/14181198"
+      ],
+      "verification": "original_video_search",
+      "channel": "imagem",
+      "order": 4
+    }
+  ],
+  "playlists": [
+    {
+      "channel": "akita",
+      "title": "Como Computadores Funcionam?",
+      "id": "PLdsnXVqbHDUcQIuiH9b-i9A85H3A2ZW5W",
+      "units": [
+        "L/19411005",
+        "C/18121001",
+        "I/IFESCAR-ADM26-1-TECNOLOGIA-INFORMATICA"
+      ]
+    },
+    {
+      "channel": "lhama",
+      "title": "Clean Architecture em Python (Remake)",
+      "id": "PLAgbpJQADBGK0opZ8ZuDX3zDjQck_QKMy",
+      "units": [
+        "L/19411016",
+        "L/19411006",
+        "C/18121006"
+      ]
+    },
+    {
+      "channel": "aline",
+      "title": "Dicas rápidas: Excel",
+      "id": "PLLPRg8ARati5iIt6F6lgaRrqBogN6X_KD",
+      "units": [
+        "C/18121003",
+        "G/14181177",
+        "I/IFESCAR-ADM26-1-TECNOLOGIA-INFORMATICA"
+      ]
+    },
+    {
+      "channel": "aline",
+      "title": "Excel na Prática",
+      "id": "PLLPRg8ARati6JGVlsQq24b--fqz6CFzax",
+      "units": [
+        "C/18121003",
+        "C/18121007",
+        "G/14181177"
+      ]
+    }
+  ],
+  "notes": "Creator channel videos and source playlist titles checked against public creator indexes or creator-linked search. A playlist URL does not prove owner or all members. FACODI editorial topical associations are not a university's official syllabus."
+}
