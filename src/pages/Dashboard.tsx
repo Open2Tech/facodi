@@ -6,6 +6,7 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { NotebookOverview } from '@/components/notes/NotebookOverview';
 import { SequenceOverview } from '@/components/sequence/SequenceOverview';
+import { IfesProgressOverview } from '@/components/course/IfesProgressOverview';
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ export default function Dashboard() {
         </Link>
       </li>)}
     </ul>
+    <IfesProgressOverview />
     <SequenceOverview />
     <NotebookOverview />
   </>;
