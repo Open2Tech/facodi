@@ -908,7 +908,23 @@
     "term": "Semestre",
     "elective": "Optativa {{group}}",
     "annual": "Anual",
-    "error": "No se pudo cargar el plan histórico."
+    "error": "No se pudo cargar el plan histórico.",
+    "brazilianCreditsNotice": "Plan brasileño: las cargas se expresan en horas; los créditos locales no son ECTS.",
+    "equivalenceNoticeGeneral": "Archivo histórico. Las equivalencias y reconocimientos requieren validación institucional; las optativas no se suman automáticamente.",
+    "officialSourceGeneral": "Consultar el documento oficial de la institución",
+    "unscheduled": "Ofertas históricas sin periodo fijo",
+    "notScheduled": "Sin periodo fijo",
+    "hours": "Horas",
+    "equivalences": "{{count}} relaciones de equivalencia documentadas",
+    "equivalencesWarning": "Relaciones registradas en el PPC 2019 de la UFES. No conceden reconocimiento automático; la universidad determina la elegibilidad de cada estudiante.",
+    "priorCode": "Código curricular 2006",
+    "currentCode": "Código curricular 2019",
+    "categories": {
+      "required": "Obligatoria en el plan de 2006",
+      "supervised_internship": "Prácticas supervisadas obligatorias (2006)",
+      "credit_use_only": "Solo para aprovechamiento de estudios",
+      "elective_offering": "Optativa histórica"
+    }
   },
   "projectStory": {
     "eyebrow": "FACODI / EL ORIGEN",
