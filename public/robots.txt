@@ -10,4 +10,4 @@ Disallow: /notes
 Disallow: /suggest
 Disallow: /playlists/submit
 
-Sitemap: https://facodi.vercel.app/sitemap.xml
+Sitemap: https://www.facodi.com/sitemap.xml
