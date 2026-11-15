@@ -1272,5 +1272,21 @@
     "noMaterialsText": "Ce module n'a pas encore de ressources publiques.",
     "forUnit": "Modules associés à cette unité",
     "forUnitText": "Guides thématiques liés à cette unité, avec ressources et activités pour travailler en autonomie."
+  },
+  "ifesProgress": {
+    "title": "Ton rythme, ta progression",
+    "summary": "{{completed}} guides sur {{total}} terminés · cette année : {{yearCompleted}} sur {{yearTotal}}",
+    "loading": "Chargement de ta progression…",
+    "overallProgress": "Progression globale des guides",
+    "disclaimer": "Progression facultative, privée et auto-déclarée. Ce n'est ni une note, ni une évaluation, ni un certificat officiel de l'Ifes.",
+    "guest": "Explore librement les guides. Connecte-toi pour noter ce que tu as étudié et reprendre quand tu veux.",
+    "signIn": "Se connecter pour sauvegarder",
+    "resources": "{{topics}} sujets · {{videos}} vidéos · {{readings}} lectures",
+    "openGuide": "Ouvrir le guide pratique",
+    "complete": "Marquer comme terminé",
+    "reopen": "Reprendre l'étude",
+    "saved": "Progression enregistrée. Avance à ton rythme !",
+    "saveError": "Impossible d'enregistrer la progression. Réessaie.",
+    "loadError": "Impossible de charger ta progression."
   }
 }
