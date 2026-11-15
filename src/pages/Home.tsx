@@ -7,6 +7,7 @@ import { useCatalogCounts, useCourses, useFeaturedVideos, useTopics } from '@/fe
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { cn } from '@/lib/utils';
 import { CourseList } from '@/components/course/CourseList';
+import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
 import { useContributePath } from '@/features/auth/useContributePath';
 
@@ -43,7 +44,7 @@ export default function Home() {
         <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">{t('home.description')}</p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Button size="lg" asChild><Link to="/courses">{t('home.explore')}<ArrowUpRight /></Link></Button>
-          <Button size="lg" variant="outline" asChild><Link to="/about">{t('home.howItWorks')}</Link></Button>
+          <Button size="lg" variant="outline" asChild><Link to="/how-it-works">{t('home.howItWorks')}</Link></Button>
         </div>
         <p className="mt-auto pt-10 text-sm text-muted-foreground">{t('home.open')}</p>
       </div>
@@ -81,6 +82,8 @@ export default function Home() {
         </li>)}
       </ul>
     </section>
+
+    <div className="mt-14 sm:mt-20"><LearningPathGuide compact /></div>
 
     {!!videos.data?.length && <VideoMosaic id="featured-videos" className="mt-14 sm:mt-20" title={t('home.videosTitle')} description={t('home.videosText')} videos={videos.data}
       action={<Button size="lg" asChild><Link to="/resources?type=video">{t('home.videosCta')}<ArrowUpRight /></Link></Button>} />}
