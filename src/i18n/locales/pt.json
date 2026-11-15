@@ -453,7 +453,16 @@
     "videosTitle": "Vídeos deste curso",
     "videosText": "Primeiros vídeos das trilhas curadas nas {{count}} unidades curriculares deste plano.",
     "availableElectives": "Disciplinas optativas disponíveis",
-    "ufesElectiveNotice": "Estas 45 disciplinas são alternativas de escolha em quatro blocos do PPC da UFES. Cada estudante cursa apenas as 10 optativas exigidas (720 horas), e não todas as opções listadas."
+    "ufesElectiveNotice": "Estas 45 disciplinas são alternativas de escolha em quatro blocos do PPC da UFES. Cada estudante cursa apenas as 10 optativas exigidas (720 horas), e não todas as opções listadas.",
+    "hours": "Carga horária",
+    "brazilianCredits": "Créditos (Brasil)",
+    "electiveGroup": "Grupo optativo",
+    "electiveGroups": {
+      "opt_english_linguistics": "Linguística da língua inglesa (24 opções; escolher 5)",
+      "opt_english_literature": "Literatura de língua inglesa (11 opções; escolher 3)",
+      "opt_general_linguistics": "Linguística — Letras (5 opções; escolher 1)",
+      "opt_general_literature": "Literatura — Letras (5 opções; escolher 1)"
+    }
   },
   "resource": {
     "objectives": "Objetivos de aprendizagem",
