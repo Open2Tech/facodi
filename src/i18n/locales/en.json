@@ -1153,5 +1153,20 @@
     "withdrawConfirm": "Withdraw this proposal and permanently delete its private record? This action cannot be undone.",
     "withdrawConfirmButton": "Yes, withdraw and delete",
     "withdrawUnavailable": "This proposal is unavailable or not owned by your account."
+  },
+  "editorEmails": {
+    "open": "Email templates",
+    "back": "Back to editor",
+    "title": "FACODI emails, kept separate.",
+    "lead": "Templates are staged in Supabase, versioned, and use www.facodi.com. Review their appearance before any Auth integration.",
+    "isolationLabel": "Authentication separation",
+    "isolationTitle": "Preview only, no delivery",
+    "isolationDescription": "These templates belong to the FACODI catalog. Supabase Auth is shared with Tube O2; its global email configuration is unchanged. This page cannot send messages.",
+    "count": "{{count}} prepared templates",
+    "empty": "No prepared templates yet.",
+    "enabled": "Sending enabled",
+    "previewOnly": "No sending",
+    "placeholders": "Authentication links and codes remain as {{ .ConfirmationURL }} or {{ .Token }} placeholders until Supabase processes a real Auth message.",
+    "previewTitle": "Preview: {{subject}}"
   }
 }
