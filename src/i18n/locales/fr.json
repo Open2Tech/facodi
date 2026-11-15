@@ -1631,7 +1631,7 @@
           "title": "Contributions",
           "body": [
             "Vous pouvez suggérer des ressources, envoyer des playlists YouTube et proposer une collaboration. Chaque envoi reste privé entre vous et l’équipe éditoriale jusqu’à son examen, et rien n’est publié automatiquement.",
-            "En suggérant une ressource, vous déclarez que la licence indiquée permet un usage éducatif et que l’attribution est correcte. Le flux de suggestion n’accepte pas les ressources sous licence NC (pas d’utilisation commerciale) ou ND (pas de modification).",
+            "Lorsque vous suggérez une ressource, indiquez avec précision sa licence et sa source. Les ressources soumises à des restrictions NC (non commercial) ou ND (pas de modification) peuvent entrer dans la file, mais sont signalées pour examen éditorial et peuvent être refusées ; la soumission ne vaut pas approbation.",
             "Vous conservez vos droits sur ce que vous créez. En envoyant, vous autorisez FACODI à conserver et examiner la contribution et, si elle est approuvée, à publier le lien, le titre, la description et les métadonnées dans le catalogue, avec attribution à la source d’origine. Votre nom n’est publié comme crédit qu’avec votre confirmation.",
             "Des limites d’envoi existent pour éviter les abus, par exemple trois propositions de collaboration tous les sept jours."
           ]
@@ -1752,7 +1752,7 @@
               [
                 "facodi-notes:v1:guest",
                 "Stockage local",
-                "Conserve les notes écrites sans être connecté, uniquement sur cet appareil. Elles sont importées dans votre compte à la connexion.",
+                "Conserve sur cet appareil les notes rédigées sans connexion. Après connexion, vous pouvez choisir de les importer ; l’importation n’est pas automatique.",
                 "Jusqu’à leur importation ou effacement",
                 "Non requis : stocker la note sur cet appareil est le service même que vous demandez en l’écrivant, et l’avis à côté des notes indique où elles sont conservées."
               ],
@@ -1790,7 +1790,7 @@
             "La déconnexion supprime la session du navigateur.",
             "Vous pouvez changer la langue et le thème dans l’en-tête ou dans votre profil. Par défaut, votre choix reste actif jusqu’à la fermeture de l’onglet.",
             "Pour mémoriser la langue et le thème d’une visite à l’autre, activez l’option ci-dessous, également disponible dans votre profil. Lorsque vous la désactivez, nous supprimons les préférences stockées ; la langue et le thème actuels restent actifs jusqu’à la fermeture de l’onglet.",
-            "Pour tout effacer, utilisez l’option d’effacement des données du site dans les paramètres du navigateur. Les notes écrites sans compte seront perdues.",
+            "Si vous bloquez le stockage du navigateur, certaines préférences peuvent ne pas être conservées et la connexion peut échouer. La consultation du catalogue public ne nécessite pas de session ouverte.",
             "Si vous bloquez le stockage local, vous ne pourrez pas vous connecter, mais vous pourrez continuer à lire le catalogue."
           ]
         }
