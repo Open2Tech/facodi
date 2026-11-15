@@ -1272,5 +1272,21 @@
     "noMaterialsText": "Este módulo aún no tiene materiales públicos.",
     "forUnit": "Módulos de esta asignatura",
     "forUnitText": "Guías temáticas vinculadas a esta asignatura, con recursos y actividades para estudiar a tu ritmo."
+  },
+  "ifesProgress": {
+    "title": "A tu ritmo, a tu manera",
+    "summary": "{{completed}} de {{total}} guías completadas · este año: {{yearCompleted}} de {{yearTotal}}",
+    "loading": "Cargando tu progreso…",
+    "overallProgress": "Progreso general de las guías",
+    "disclaimer": "Seguimiento privado, voluntario y declarado por ti. No es una nota, evaluación ni certificado oficial del Ifes.",
+    "guest": "Explora las guías libremente. Inicia sesión para marcar lo que has estudiado y retomarlo cuando quieras.",
+    "signIn": "Iniciar sesión y guardar progreso",
+    "resources": "{{topics}} temas · {{videos}} vídeos · {{readings}} lecturas",
+    "openGuide": "Abrir guía práctica",
+    "complete": "Marcar como completada",
+    "reopen": "Volver a estudiar",
+    "saved": "Progreso guardado. ¡Sigue a tu ritmo!",
+    "saveError": "No se pudo guardar tu progreso. Vuelve a intentarlo.",
+    "loadError": "No se pudo cargar tu progreso."
   }
 }
