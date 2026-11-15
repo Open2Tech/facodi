@@ -31,6 +31,19 @@ describe('legal documents', () => {
     }
   });
 
+  it('identifies the personal project accurately without leaking infrastructure identifiers', () => {
+    for (const [locale, messages] of Object.entries(locales)) {
+      const legal = messages.legal;
+      const facts = legal.legal.sections[0].facts ?? [];
+      expect(facts.find(fact => fact.value === 'Marcelo Santos'), locale).toBeDefined();
+      expect(JSON.stringify(facts), locale).toContain('https://github.com/marcelo-m7');
+      expect(JSON.stringify(facts), locale).toContain('https://www.linkedin.com/in/marcelo-m7/');
+      const publicCopy = JSON.stringify(legal);
+      expect(publicCopy, locale).not.toMatch(/Open 2 Technology|Open2 \\/ O2T|us-east-2|wvkjainfwsyiyfcmbtid/);
+      expect(legal.cookies.sections.find(section => section.id === 'manage')?.items).toHaveLength(4);
+    }
+  });
+
   it('only link to existing legal sections or known routes', () => {
     const anchors = new Map(LEGAL_DOCUMENTS.map(id => [`/${id}`, new Set((pt.legal[id] as LegalDocumentContent).sections.map(s => s.id))]));
     for (const [locale, messages] of Object.entries(locales)) {
