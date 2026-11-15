@@ -1,0 +1,37 @@
+name: FACODI Cloudflare Workers smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [facodi]
+    paths:
+      - "src/**"
+      - "scripts/smoke-facodi-workers.mjs"
+      - "wrangler.jsonc"
+      - ".github/workflows/facodi-workers-smoke.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: facodi-workers-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    name: Check Cloudflare Workers preview (read-only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Smoke test SPA deep links and security headers
+        env:
+          FACODI_WORKERS_ORIGIN: https://facodi.marcelo-0d6.workers.dev
+        run: node scripts/smoke-facodi-workers.mjs
+      - name: Note scope
+        run: |
+          echo "This checks deployed Worker shell routes only."
+          echo "It does not mutate Supabase, authenticate users, or verify live client-side data."
