@@ -139,11 +139,11 @@ através de `useLinkedCatalogAssets(id, 'module')`, com navegação para
   duas aulas visíveis.
 - [Filtro Odoo](https://facodi.com/resources?tag=odoo): 104 recursos encontrados;
   botão de Recrutamento reduz a pesquisa para 16 recursos.
-- **Pendência de apresentação na primeira execução do browser:** a secção
-  "Módulos" não apareceu ainda na página da coleção. O grafo e as 7 associações
-  estavam acessíveis sob `anon`, e o componente frontend foi atualizado na
-  branch `facodi`. Verificar publicação da revisão correspondente no Cloudflare
-  antes de considerar esta parte validada visualmente.
+- **Validação de módulos concluída numa segunda passagem Cloudflare:** a secção
+  "Módulos e percursos desta coleção" apresentou **7 módulos**, além das **14
+  sequências**. O módulo [Gestão de Pessoas, Recrutamento e Avaliação](https://facodi.com/resources/facodi-modulo-odoo19-rh-selecao)
+  abriu sem autenticação, mostrando três sequências e a referência externa
+  "Odoo Learn — Human Resources". Não foram detetados erros de navegação.
 
 Nenhum vídeo foi reproduzido integralmente nem foram auditadas as licenças de
 reutilização dos 40 vídeos. Nenhum exercício automático, progresso fictício,
