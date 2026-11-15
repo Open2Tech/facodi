@@ -1,8 +1,9 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { searchPattern } from '@/entities/course/course.api';
+import { PAGE_SIZE } from '@/entities/course/course.types';
 
-export const MODULE_PAGE_SIZE = 12;
+export const MODULE_PAGE_SIZE = PAGE_SIZE;
 
 const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,language,tags,metadata';
 const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url';
