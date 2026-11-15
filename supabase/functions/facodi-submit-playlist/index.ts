@@ -25,9 +25,9 @@ function permittedOrigin(value: string | null): string | null {
     if (u.protocol === "http:" && (h === "localhost" || h === "127.0.0.1") &&
         ["3000", "8080", "4173"].includes(u.port)) return value;
     if (u.protocol !== "https:") return null;
-    if (["facodi.vercel.app", "facodi.com", "tube.open2.tech", "open2.tech", "marcelo-m7.com",
+    if (["facodi.vercel.app", "facodi.com", "facodi.marcelo-0d6.workers.dev", "tube.open2.tech", "open2.tech", "marcelo-m7.com",
          "marcelo-m7.me"].includes(h) || [".facodi.com", ".open2.tech",
-         ".marcelo-m7.com", ".marcelo-m7.me", ".marcelo-0d6.workers.dev"]
+         ".marcelo-m7.com", ".marcelo-m7.me"]
          .some((suffix) => h.endsWith(suffix))) return value;
   } catch { /* invalid origin */ }
   return null;
