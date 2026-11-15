@@ -310,6 +310,7 @@
     "allStates": "Todos",
     "typeFilter": "Tipo de recurso",
     "allTypes": "Todos os tipos",
+    "viewAllModules": "Ver todos os módulos",
     "origin": "origem: {{source}}",
     "viewPublic": "Ver no catálogo"
   },
