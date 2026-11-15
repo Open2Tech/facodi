@@ -1,4 +1,4 @@
-const privateDestinations = ['/dashboard', '/profile', '/notes', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/playlists', '/editor/suggestions', '/admin'];
+const privateDestinations = ['/dashboard', '/profile', '/notes', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/course-quality', '/editor/playlists', '/editor/suggestions', '/admin'];
 /** Public pages that invite signing in to save something (notes, sequence progress) and expect the learner back. */
 const contentDestination = /^\/(?:resources|sequences)\/[\w.-]+$/;
 
