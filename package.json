@@ -18,7 +18,8 @@
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview",
     "test:email": "node scripts/validate-facodi-email-templates.mjs",
-    "test:project": "node scripts/validate-facodi-project-pages.mjs"
+    "test:project": "node scripts/validate-facodi-project-pages.mjs",
+    "test:workers:smoke": "node scripts/smoke-facodi-workers.mjs"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5",
