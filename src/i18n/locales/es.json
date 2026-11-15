@@ -2054,5 +2054,17 @@
   "collectionPlaylists": {
     "title": "Itinerarios de vídeo de esta colección",
     "notice": "Secuencias organizadas por FACODI a partir de clases de sus autores originales. Abre un itinerario para ver el orden propuesto."
+  },
+  "moduleResources": {
+    "sequences": "Secuencias de vídeo",
+    "sequenceNotice": "Clases organizadas por FACODI en una progresión sugerida. Los vídeos pertenecen a sus autores originales.",
+    "noSequences": "Aún no hay secuencias asociadas a este módulo.",
+    "readings": "Lecturas y referencias complementarias",
+    "readingsNotice": "Consulta la documentación y las referencias en sus fuentes originales.",
+    "noReadings": "Aún no hay lecturas asociadas a este módulo.",
+    "progression": "Progresión de estudio sugerida",
+    "progressionNotice": "Recomendaciones conceptuales de FACODI, no requisitos académicos oficiales.",
+    "before": "Módulos de base",
+    "after": "Siguientes módulos sugeridos"
   }
 }
