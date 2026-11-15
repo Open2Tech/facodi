@@ -119,6 +119,17 @@ deduplica tags: `PageSeo`/`NoIndex` reclamam o head através de `SeoScope`, e o
 página o fez. As tags estáticas da shell (`data-seo-shell`) são removidas no
 arranque, em `main.tsx`.
 
+Depois do Vite, `scripts/generate-seo-snapshots.mjs` consulta apenas cursos,
+unidades, learning objects e sequências públicos no schema `facodi`, usando
+`VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` (sem service key nem
+alterações de base de dados). Escreve um ficheiro `route.html` por rota em
+`dist/`; Workers Assets serve `/route` sem redirecionar e a aplicação React
+continua a hidratar normalmente. O mesmo conjunto de rotas cria
+`dist/sitemap.xml`. O service worker não precacheia snapshots de detalhes. Em
+builds de CI com URL `.invalid`, só são gerados snapshots das páginas estáticas.
+Os dados ficam congelados até ao próximo build; o fallback SPA ainda responde
+HTTP 200 a rotas desconhecidas (soft 404).
+
 ## Verificação
 
 Testes co-localizados cobrem rotas/papéis, hidratação e limpeza de cache,

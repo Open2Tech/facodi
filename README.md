@@ -312,10 +312,14 @@ como build arguments. Não necessita de segredos no runtime.
 
 Os metadados de página (título, descrição, canonical em `https://facodi.com`,
 Open Graph, Twitter Card e JSON-LD) vêm de [`src/shared/seo/seo.ts`](src/shared/seo/seo.ts)
-e são aplicados com `PageSeo`; rotas privadas e páginas inexistentes usam
-`noindex`. Como a aplicação é uma SPA, crawlers que não executam JavaScript só
-veem o bloco `seo:start/end` do `index.html` (metadados da página inicial, sem
-canonical). O manifesto, os ícones PNG e o favicon são FACODI.
+e são aplicados com `PageSeo`. O build gera snapshots HTML por página pública a
+partir das linhas visíveis pela chave publicável e pelas políticas RLS do schema
+`facodi`, além do sitemap completo. Não é SSR: a SPA continua a arrancar nos
+snapshots; os metadados são atualizados a cada build/deploy. Sem credenciais de
+build reais (por exemplo, o placeholder `.invalid` do CI), são geradas apenas as
+páginas estáticas e o sitemap básico. Conteúdos privados e inexistentes não
+entram no sitemap; o fallback SPA mantém o comportamento de soft 404 (HTTP 200).
+O manifesto, os ícones PNG e o favicon são FACODI.
 O antigo servidor Bun de metadados foi removido; os documentos antigos de Odoo
 são históricos e não fazem parte dos comandos nem da imagem de runtime FACODI.
 Não executar scripts legados de enriquecimento contra este frontend.
