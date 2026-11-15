@@ -2065,6 +2065,7 @@
     "progression": "Suggested learning progression",
     "progressionNotice": "Conceptual recommendations by FACODI, not official academic prerequisites.",
     "before": "Foundational modules",
-    "after": "Suggested next modules"
+    "after": "Suggested next modules",
+    "related": "Related study areas"
   }
 }
