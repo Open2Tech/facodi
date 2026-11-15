@@ -1095,7 +1095,10 @@
     "overviewTotal_many": "{{count}} séquences commencées",
     "overviewTotal_other": "{{count}} séquences commencées",
     "overviewEmpty": "Tu n’as pas encore commencé de séquence. Choisis un parcours et marque les cours au fur et à mesure.",
-    "browse": "Voir les séquences d’étude"
+    "browse": "Voir les séquences d’étude",
+    "inSequences": "Dans les séquences d’étude",
+    "videoSequencesLoadFailed": "Impossible de charger les séquences de cette vidéo.",
+    "videoProgressLoadFailed": "Impossible de charger ta progression dans ces séquences."
   },
   "projectSeo": {
     "about": {

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { sequenceKeys } from '@/entities/sequence/sequence.keys';
-import { getSequence, listMyProgress, listMySequences, listSequences, markStarted, resetProgress, saveProgress } from '@/entities/sequence/sequence.api';
+import { getSequence, listMyCompletedSequencesForVideo, listMyProgress, listMySequences, listSequences, listSequencesForVideo, markStarted, resetProgress, saveProgress } from '@/entities/sequence/sequence.api';
 import type { VideoProgress } from '@/entities/sequence/sequence';
 import { useAuth } from '@/features/auth/useAuth';
 
@@ -10,6 +10,23 @@ export function useSequences(unitCode: string | null = null, enabled = true) {
 
 export function useSequence(slug: string) {
   return useQuery({ queryKey: sequenceKeys.detail(slug), queryFn: ({ signal }) => getSequence(slug, signal) });
+}
+
+/** Public sequences containing a video, plus (signed in) which of them already count it as done. */
+export function useVideoSequences(videoId: string | null) {
+  const { user } = useAuth();
+  const sequences = useQuery({
+    queryKey: sequenceKeys.forVideo(videoId ?? ''),
+    queryFn: ({ signal }) => listSequencesForVideo(videoId!, signal),
+    enabled: !!videoId,
+    staleTime: 5 * 60_000,
+  });
+  const completed = useQuery({
+    queryKey: sequenceKeys.videoCompletion(user?.id ?? '', videoId ?? ''),
+    queryFn: ({ signal }) => listMyCompletedSequencesForVideo(user!.id, videoId!, signal),
+    enabled: !!user && !!videoId && !!sequences.data?.length,
+  });
+  return { sequences, completed };
 }
 
 export function useMySequences(limit: number) {
@@ -34,7 +51,10 @@ export function useSequenceProgress(playlistId: string | null | undefined) {
     select: rows => new Map(rows.map(row => [row.videoId, row])),
   });
   const merge = (row: VideoProgress) => client.setQueryData<VideoProgress[]>(key, rows => [...(rows ?? []).filter(item => item.videoId !== row.videoId), row]);
-  const settle = () => client.invalidateQueries({ queryKey: sequenceKeys.overview(userId) });
+  const settle = () => Promise.all([
+    client.invalidateQueries({ queryKey: sequenceKeys.overview(userId) }),
+    client.invalidateQueries({ queryKey: [...sequenceKeys.progressAll(userId), 'video'] }),
+  ]);
 
   const toggle = useMutation({
     mutationFn: ({ videoId, completed }: { videoId: string; completed: boolean }) => saveProgress(userId, playlistId!, videoId, { completed }),

@@ -9,6 +9,13 @@ test.beforeEach(async ({ page }) => {
     expect(route.request().url()).not.toContain('/rpc/');
     await route.fulfill({ json: [], headers: { 'content-range': '0-0/0', 'access-control-expose-headers': 'content-range' } });
   });
+  // Read-only side panels call these on every visit; tests that need rows route them themselves.
+  for (const rpc of ['list_public_sequences_for_video_v1', 'get_public_course_creator_video_study_v1', 'get_my_course_study_modules_v1']) {
+    await page.route(`**/rest/v1/rpc/${rpc}`, async route => {
+      expect(route.request().headers()['content-profile']).toBe('facodi');
+      await route.fulfill({ json: [] });
+    });
+  }
 });
 
 for (const width of [375, 768, 1280, 1440]) {
@@ -372,6 +379,12 @@ test('video page loads YouTube only on demand and places the video in its unit t
   await page.route('**/rest/v1/curricular_units*', route => route.fulfill({ json: [{
     id: 'u1', slug: 'calculus-1', title: 'Calculus I', code: '1001', ects: 6, year: 1, semester: 1, learning_object_id: 'unit-lo', courses: { slug: 'test-course', title: 'Test course', code: 'TST' },
   }] }));
+  const sequenceLookups: unknown[] = [];
+  await page.route('**/rest/v1/rpc/list_public_sequences_for_video_v1', route => {
+    sequenceLookups.push(route.request().postDataJSON());
+    if (sequenceLookups.length <= 2) return route.fulfill({ status: 500, json: { message: 'temporarily unavailable' } });
+    return route.fulfill({ json: [{ playlist_id: 'p1', playlist_slug: 'calculus-path', playlist_title: 'Calculus step by step', lesson_position: 4, item_count: 9 }] });
+  });
 
   for (const width of [375, 1280]) {
     await page.setViewportSize({ width, height: 900 });
@@ -382,10 +395,19 @@ test('video page loads YouTube only on demand and places the video in its unit t
     await expect(page.locator('[aria-current="true"]')).toContainText('Derivatives');
     await expect(page.getByRole('heading', { name: 'Curation status' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'More from Fixture Channel' })).toBeVisible();
+    if (width === 375) {
+      await expect(page.getByRole('alert')).toContainText('Could not load the study sequences for this video.');
+      await page.getByRole('button', { name: 'Try again' }).click();
+    }
+    const inSequences = page.getByRole('region', { name: 'In study sequences' });
+    await expect(inSequences.getByRole('link', { name: /Calculus step by step/ })).toHaveAttribute('href', '/sequences/calculus-path?v=v2');
+    await expect(inSequences).toContainText('Lesson 4 of 9');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-video-${width}.png`, fullPage: true });
   }
   expect(embeds).toHaveLength(0);
+  expect(sequenceLookups.length).toBeGreaterThanOrEqual(3);
+  expect(sequenceLookups[2]).toEqual({ p_video_id: 'v2' });
   await page.getByRole('button', { name: 'Play video: Derivatives' }).click();
   await expect(page.locator('iframe[title="Derivatives"]')).toHaveAttribute('src', /^https:\/\/www\.youtube-nocookie\.com\/embed\/bbbbbbbbbbb\?autoplay=1&rel=0&enablejsapi=1&origin=http/);
   await expect.poll(() => embeds.length).toBe(1);
@@ -623,7 +645,7 @@ test('notebook page searches every note across resources with filters kept in th
   await page.getByRole('button', { name: 'Save changes' }).click();
   await expect(page.getByRole('link', { name: 'Open the resource at 01:35' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Least squares' })).toBeVisible();
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow, noarchive');
 });
 
 test('editor reviews study paths and playlists through the review RPCs with state in the URL', async ({ page }) => {

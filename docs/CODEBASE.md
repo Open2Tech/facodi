@@ -34,8 +34,10 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `review_resource_suggestion`.
 - [src/entities/sequence](../src/entities/sequence): sequências de estudo
   (playlists editoriais). Leitura pública pelas RPCs
-  `list_public_editorial_sequences_v1` e `get_public_editorial_playlist_v2`;
-  progresso privado em `facodi.editorial_playlist_progress`. O papel
+  `list_public_editorial_sequences_v1`, `get_public_editorial_playlist_v2` e
+  `list_public_sequences_for_video_v1`; a página de vídeo usa a última para
+  ligar à sequência na aula correspondente. Progresso privado em
+  `facodi.editorial_playlist_progress`. O papel
   `authenticated` só pode atualizar `last_position_seconds`/`completed_at`, por
   isso a gravação faz update e, sem linha, insert (sem upsert que reescreva a
   chave). As capas usam `hqdefault` do YouTube.
@@ -62,6 +64,9 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   sem indexação). [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
   lê o tempo do embed `youtube-nocookie` via `postMessage` (origem validada) e
   envia `seekTo`; `?t=<segundos>` define o início do vídeo.
+  [VideoSequences.tsx](../src/components/sequence/VideoSequences.tsx) mostra
+  sequências editoriais que incluem a aula, a posição e o progresso concluído
+  privado da conta autenticada.
   [src/components/suggestion](../src/components/suggestion) mostra o
   reconhecimento por etapas (`useStagedReveal`, sem animação com
   `prefers-reduced-motion`), os sinais de triagem e a escolha da unidade.

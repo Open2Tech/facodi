@@ -15,6 +15,7 @@ import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { VideoCard } from '@/components/resource/VideoCard';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
+import { VideoSequences } from '@/components/sequence/VideoSequences';
 import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
 import { NoteTimeline } from '@/components/notes/NoteTimeline';
 import { StudyNotebook } from '@/components/notes/StudyNotebook';
@@ -230,6 +231,7 @@ export default function ResourceDetails() {
             <h2 id="video-no-unit" className="font-semibold">{t('video.noUnit')}</h2>
             <p className="mt-2 text-muted-foreground">{t('video.noUnitText')}</p>
           </section>}
+        {isVideo && <VideoSequences videoId={resource.id} />}
       </aside>
 
       <div className={cn('min-w-0 space-y-12 lg:col-start-1', player ? 'lg:row-start-2' : 'lg:row-start-1')}>

@@ -124,3 +124,12 @@ export function completionPercent(completed: number, total: number) {
   if (total <= 0) return 0;
   return completed >= total ? 100 : Math.min(99, Math.floor((completed / total) * 100));
 }
+
+/** A public sequence that contains a given lesson, with that lesson's place in it. */
+export interface VideoSequence {
+  id: string;
+  slug: string;
+  title: string;
+  position: number;
+  total: number;
+}

@@ -1095,7 +1095,10 @@
     "overviewTotal_many": "{{count}} secuencias iniciadas",
     "overviewTotal_other": "{{count}} secuencias iniciadas",
     "overviewEmpty": "Todavía no empezaste ninguna secuencia. Elige un recorrido y marca las clases a medida que avanzas.",
-    "browse": "Ver secuencias de estudio"
+    "browse": "Ver secuencias de estudio",
+    "inSequences": "En secuencias de estudio",
+    "videoSequencesLoadFailed": "No se pudieron cargar las secuencias de este vídeo.",
+    "videoProgressLoadFailed": "No se pudo cargar tu progreso en estas secuencias."
   },
   "projectSeo": {
     "about": {
