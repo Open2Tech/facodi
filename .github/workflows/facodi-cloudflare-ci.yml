@@ -1,0 +1,41 @@
+# Validate the Cloudflare Workers frontend without deploying to Vercel.
+# Cloudflare's Git integration deploys the facodi branch independently.
+name: FACODI / Cloudflare frontend quality
+
+on:
+  push:
+    branches: [facodi]
+  pull_request:
+    branches: [facodi]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: facodi-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: TypeScript, lint, tests and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - name: Install locked dependencies
+        run: bun install --frozen-lockfile
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Lint
+        run: bun run lint
+      - name: Unit tests
+        run: bun run test
+      - name: Build and project checks
+        run: bun run build
+      - name: Cloudflare Workers read-only smoke tests
+        if: github.event_name == 'workflow_dispatch'
+        run: bun run test:workers:smoke
