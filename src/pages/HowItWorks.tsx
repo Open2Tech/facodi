@@ -1,4 +1,5 @@
-import { Helmet } from 'react-helmet-async';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { staticPageMeta } from '@/shared/seo/seo';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpenCheck, FolderOpen, ListVideo, ShieldCheck } from 'lucide-react';
@@ -7,10 +8,7 @@ import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
 export default function HowItWorks() {
   const { t } = useTranslation();
   return <article className="space-y-14 pb-10 sm:space-y-20">
-    <Helmet>
-      <title>{`${t('learningGuide.pageTitle')} — FACODI`}</title>
-      <meta name="description" content={t('learningGuide.pageDescription')} />
-    </Helmet>
+    <PageSeo {...staticPageMeta('/how-it-works', { title: t('learningGuide.pageTitle'), description: t('learningGuide.pageDescription') })} />
     <header className="grid gap-6 border-b border-foreground pb-11 lg:grid-cols-[1fr_0.8fr]">
       <div>
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{t('learningGuide.eyebrow')}</p>

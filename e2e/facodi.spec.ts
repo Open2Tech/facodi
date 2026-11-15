@@ -300,6 +300,8 @@ test('admin can view real-response-shaped counts without user management', async
 });
 
 test('home search, entry paths and new public catalogues render without overflow', async ({ page }) => {
+  // Eight full-page loads at two widths: give the walk-through room on busy CI runners.
+  test.slow();
   const resource = { id: 'r1', slug: 'intro-logic', title: 'Introduction to logic', description: '<p>Test fixture only</p>', object_type: 'article', language: 'en', tags: ['Logic', 'Ethics'] };
   await page.route('**/rest/v1/learning_objects*', async route => {
     const head = route.request().method() === 'HEAD';

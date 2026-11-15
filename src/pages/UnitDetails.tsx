@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
+import { unitMeta } from '@/shared/seo/seo';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
@@ -49,7 +51,7 @@ export default function UnitDetails() {
   }, [hash, ready]);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   const { course, unit, outline } = query.data;
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
@@ -71,6 +73,7 @@ export default function UnitDetails() {
     ['institution', course.institution],
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
   return <article>
+    <PageSeo {...unitMeta(unit, course, { courses: t('nav.courses') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
         <li><Link className="underline underline-offset-4 hover:text-foreground" to="/units">{t('nav.units')}</Link></li>

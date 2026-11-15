@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
+import { sequenceMeta } from '@/shared/seo/seo';
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, LogIn, RotateCcw } from 'lucide-react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -40,7 +41,7 @@ export default function SequenceDetails() {
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
+  if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
 
   const sequence = query.data;
   const items = sequence.items;
@@ -74,11 +75,7 @@ export default function SequenceDetails() {
 
   const description = plainText(sequence.description);
   return <article>
-    <Helmet>
-      <title>{`${sequence.title} — FACODI`}</title>
-      <meta name="description" content={description.slice(0, 160) || sequence.title} />
-      {items[0]?.thumbnail && <meta property="og:image" content={items[0].thumbnail} />}
-    </Helmet>
+    <PageSeo {...sequenceMeta(sequence, { sequences: t('sequences.title') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
         <li><Link className="underline underline-offset-4 hover:text-foreground" to="/sequences">{t('sequences.title')}</Link></li>

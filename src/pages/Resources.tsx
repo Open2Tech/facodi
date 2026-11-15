@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { ArrowUpRight, BookOpenCheck } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { staticPageMeta } from '@/shared/seo/seo';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useResources } from '@/features/courses/queries/useCourses';
@@ -46,10 +47,7 @@ export default function Resources() {
   </button>;
 
   return <>
-    <Helmet>
-      <title>{t('resources.title') + ' — FACODI'}</title>
-      <meta name="description" content={t('resources.description')} />
-    </Helmet>
+    <PageSeo {...staticPageMeta('/resources', { title: t('resources.title'), description: t('resources.description') })} />
     <CatalogHeader title={t('resources.title')} description={t('resources.description')} total={chips.length ? undefined : query.data?.total} />
     <LearningContext focus="resource" />
     <CatalogToolbar search={search} language={language} onFilter={filter} searchPlaceholder={t('resources.searchPlaceholder')} />

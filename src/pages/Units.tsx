@@ -6,6 +6,8 @@ import { useUnitFacets, useUnits } from '@/features/courses/queries/useCourses';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
+import { PageSeo } from '@/components/layout/PageSeo';
+import { staticPageMeta } from '@/shared/seo/seo';
 import { CatalogHeader } from '@/components/catalog/CatalogToolbar';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
@@ -56,6 +58,7 @@ export default function Units() {
     return () => media?.removeEventListener('change', sync);
   }, []);
   return <>
+    <PageSeo {...staticPageMeta('/units', { title: t('units.title'), description: t('units.description') })} />
     <CatalogHeader title={t('units.title')} description={t('units.description')} total={query.data?.total} />
     <LearningContext focus="unit" />
     <div className="mt-10 grid gap-10 border-t border-foreground pt-8 lg:grid-cols-[17rem_minmax(0,1fr)]">

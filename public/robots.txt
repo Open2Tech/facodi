@@ -9,5 +9,6 @@ Disallow: /admin
 Disallow: /notes
 Disallow: /suggest
 Disallow: /playlists/submit
+Disallow: /community/join
 
-Sitemap: https://www.facodi.com/sitemap.xml
+Sitemap: https://facodi.com/sitemap.xml

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import { contentTone } from '@/components/catalog/contentTone';
 import { PageState } from '@/components/layout/PageState';
+import { NoIndex } from '@/components/layout/PageSeo';
 import { cn } from '@/lib/utils';
 
 const PATHS = [
@@ -14,6 +15,7 @@ const PATHS = [
 export default function NotFound() {
   const { t } = useTranslation();
   return <>
+    <NoIndex />
     <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />
     <nav aria-label={t('common.notFoundPaths')}>
       <ul className="grid gap-px border border-input bg-input sm:grid-cols-3">
