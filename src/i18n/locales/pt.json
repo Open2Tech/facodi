@@ -1148,6 +1148,10 @@
     "reject": "Não aprovar",
     "confirmReview": "Confirmar decisão sobre esta proposta?",
     "acceptNote": "A aceitação não cria conta de colaborador, não concede permissões e não dispara mensagens.",
-    "rejectNote": "A decisão fica visível no histórico privado do proponente. Podes explicar o motivo."
+    "rejectNote": "A decisão fica visível no histórico privado do proponente. Podes explicar o motivo.",
+    "withdraw": "Retirar proposta",
+    "withdrawConfirm": "Queres retirar esta proposta e apagar o seu histórico privado? Esta ação não pode ser anulada.",
+    "withdrawConfirmButton": "Sim, retirar e apagar",
+    "withdrawUnavailable": "Esta proposta já não está disponível ou não te pertence."
   }
 }
