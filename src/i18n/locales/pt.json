@@ -1269,6 +1269,8 @@
       "external_resource": "Leituras e referências"
     },
     "noMaterials": "Sem recursos disponíveis",
-    "noMaterialsText": "Este módulo ainda não tem materiais públicos associados."
+    "noMaterialsText": "Este módulo ainda não tem materiais públicos associados.",
+    "forUnit": "Módulos de estudo desta UC",
+    "forUnitText": "Guias temáticos associados a esta disciplina, com recursos e atividades para estudar ao teu ritmo."
   }
 }
