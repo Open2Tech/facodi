@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { PREFERENCE_KEYS, readPreference, writePreference } from '@/shared/lib/preferenceStorage';
 
 import translation_en from './locales/en.json';
 import translation_es from './locales/es.json';
@@ -25,7 +26,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: localStorage.getItem('i18nextLng') || 'pt', // default language
+    lng: readPreference(PREFERENCE_KEYS.language) || 'pt', // default language
     fallbackLng: 'en', // fallback language if translation is not found
 
     interpolation: {
@@ -41,7 +42,7 @@ export const INTERFACE_LANGUAGES = [
 ] as const;
 
 export function setInterfaceLanguage(code: string) {
-  localStorage.setItem('i18nextLng', code);
+  writePreference(PREFERENCE_KEYS.language, code);
   void i18n.changeLanguage(code);
 }
 

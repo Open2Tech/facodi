@@ -1,12 +1,12 @@
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/shared/theme/theme";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
 export const ThemeToggle = () => {
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
-  const isDark = (theme === "system" ? resolvedTheme : theme) === "dark";
+  const isDark = theme === "dark";
 
   const handleToggle = () => {
     setTheme(isDark ? "light" : "dark");

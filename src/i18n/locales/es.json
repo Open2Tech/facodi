@@ -271,7 +271,6 @@
     "theme": "Tema",
     "themeLight": "Claro",
     "themeDark": "Oscuro",
-    "preferencesDevice": "Estas preferencias se guardan en este navegador.",
     "sessionsTitle": "Sesiones",
     "sessionsDescription": "Si entraste en un ordenador compartido o perdiste un dispositivo, cierra las demás sesiones. Esta sesión sigue activa.",
     "signOutOthers": "Cerrar las demás sesiones",
@@ -294,6 +293,11 @@
     "dataTitle": "Tus datos",
     "dataDescription": "Acceso, copia y eliminación de la cuenta.",
     "dataText": "Para pedir una copia de tus datos o eliminar la cuenta, escribe a [hello@open2.tech](mailto:hello@open2.tech) desde el email de esta cuenta. La aplicación todavía no ofrece eliminación automática. Consulta qué se borra en la [Política de privacidad](/privacy#deletion)."
+  },
+  "preferences": {
+    "rememberLabel": "Recordar idioma y tema en este navegador",
+    "rememberOff": "Desactivado: el idioma y el tema que elijas duran hasta que cierres la pestaña.",
+    "rememberOn": "Activado: el idioma y el tema se guardan en este navegador hasta que desactives esta opción o borres los datos del sitio."
   },
   "content": {
     "courses": "Cursos",
@@ -1391,7 +1395,7 @@
             "Contribuciones: sugerencias de recursos (enlace, metadatos, nota opcional y declaraciones de licencia), listas de reproducción enviadas, propuestas de colaboración (interés, motivación y portafolio opcional) y las decisiones y notas de la revisión editorial.",
             "Notificaciones: una cola de emails sobre el estado de las listas que envías, que guarda el identificador de la cuenta destinataria y no la dirección de email.",
             "Datos técnicos: dirección IP, fecha y hora, navegador y páginas solicitadas, tratados por los proveedores de alojamiento y base de datos en sus registros de funcionamiento y seguridad.",
-            "Solo en tu dispositivo: idioma, tema y notas escritas sin sesión iniciada. No se envían a FACODI hasta que inicias sesión. Consulta [Cookies y almacenamiento](/cookies)."
+            "Solo en tu dispositivo: idioma y tema (solo durante la sesión, salvo que pidas recordarlos) y notas escritas sin sesión iniciada. No se envían a FACODI hasta que inicias sesión. Consulta [Cookies y almacenamiento](/cookies)."
           ]
         },
         {
@@ -1679,11 +1683,11 @@
     },
     "cookies": {
       "title": "Cookies y almacenamiento",
-      "description": "FACODI no usa cookies propias, analítica ni publicidad. Lista completa de lo que se guarda en tu navegador y de cuándo se carga YouTube.",
-      "lead": "FACODI no instala cookies propias ni usa herramientas de analítica o publicidad. En tu navegador solo guardamos lo necesario para que el servicio funcione y las opciones que eliges.",
+      "description": "FACODI no usa cookies propias, analítica ni publicidad. Qué se guarda en tu navegador, por qué, y cuándo hace falta tu consentimiento.",
+      "lead": "FACODI no instala cookies propias ni usa herramientas de analítica o publicidad. En tu navegador solo guardamos lo necesario para lo que pides y, si lo autorizas, el idioma y el tema entre visitas.",
       "summary": [
         "Sin cookies de analítica, publicidad ni redes sociales.",
-        "Sin banner de consentimiento, porque no hay nada no esencial que autorizar.",
+        "El idioma y el tema solo se recuerdan entre visitas si activas esa opción. Por defecto, duran hasta que cierres la pestaña.",
         "El reproductor de YouTube solo se carga cuando pulsas reproducir."
       ],
       "sections": [
@@ -1692,8 +1696,8 @@
           "title": "Nuestro enfoque",
           "body": [
             "La ley portuguesa (artículo 5 de la [Ley 41/2004](https://diariodarepublica.pt/dr/detalhe/modificacoes/41-2004-480710)) exige consentimiento previo para guardar o leer información en tu dispositivo, salvo cuando sea estrictamente necesario para prestar un servicio que has pedido expresamente. La norma se aplica a las cookies y también al almacenamiento local del navegador.",
-            "Todo lo que FACODI guarda en tu navegador entra en esa excepción: mantiene la sesión que iniciaste, recuerda el idioma y el tema que elegiste y guarda las notas que escribes. Por eso no mostramos un banner de consentimiento.",
-            "Si algún día añadimos herramientas no esenciales, como estadísticas de uso, solo se activarán después de que las autorices, con las opciones de aceptar y rechazar igual de visibles y una forma sencilla de cambiar de opinión."
+            "Evaluamos cada elemento por separado, en la tabla siguiente. La sesión, el código de seguridad del inicio de sesión y las notas de visitante son estrictamente necesarios para hacer lo que pides. El idioma y el tema que eliges se guardan, por defecto, solo durante la sesión de la pestaña: el Grupo de Trabajo del Artículo 29 considera exentas las preferencias de interfaz solicitadas por el usuario cuando duran solo la sesión ([Dictamen 04/2012](https://ec.europa.eu/justice/article-29/documentation/opinion-recommendation/files/2012/wp194_en.pdf), apartado 3.6). Recordarlas entre visitas requiere tu consentimiento, que das al activar la opción «Recordar idioma y tema en este navegador» y retiras al desactivarla.",
+            "Como no se guarda nada que dependa del consentimiento antes de esa elección, no mostramos un banner. Si algún día añadimos herramientas no esenciales, como estadísticas de uso, solo se activarán después de que las autorices, con las opciones de aceptar y rechazar igual de visibles y una forma sencilla de cambiar de opinión."
           ]
         },
         {
@@ -1715,42 +1719,49 @@
                 "Almacenamiento local",
                 "Mantiene la sesión iniciada y la renueva automáticamente. Solo existe con la sesión iniciada.",
                 "Hasta que cierres sesión",
-                "No necesario: estrictamente necesario"
+                "No necesario: sin él no es posible mantener la sesión que iniciaste."
               ],
               [
                 "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
                 "Almacenamiento local",
                 "Código de seguridad temporal (PKCE) para iniciar sesión, confirmar el email y recuperar la contraseña.",
                 "Hasta que termine el flujo",
-                "No necesario: estrictamente necesario"
+                "No necesario: protege el inicio de sesión que pides y se borra al terminar el flujo."
               ],
               [
                 "i18nextLng",
-                "Almacenamiento local",
-                "Recuerda el idioma de la interfaz que elegiste.",
-                "Hasta que borres los datos del sitio",
-                "No necesario: preferencia que eliges"
+                "Almacenamiento de sesión; almacenamiento local solo con autorización",
+                "Recuerda el idioma de la interfaz. Solo se crea cuando cambias de idioma.",
+                "Hasta que cierres la pestaña, o hasta que retires la autorización",
+                "No necesario en la sesión. Necesario para recordar entre visitas (opción «Recordar idioma y tema»)."
               ],
               [
                 "facodi-theme",
+                "Almacenamiento de sesión; almacenamiento local solo con autorización",
+                "Recuerda el tema claro u oscuro. Solo se crea cuando cambias de tema.",
+                "Hasta que cierres la pestaña, o hasta que retires la autorización",
+                "No necesario en la sesión. Necesario para recordar entre visitas (opción «Recordar idioma y tema»)."
+              ],
+              [
+                "facodi-remember-preferences",
                 "Almacenamiento local",
-                "Recuerda el tema claro u oscuro.",
-                "Hasta que borres los datos del sitio",
-                "No necesario: preferencia que eliges"
+                "Registra que autorizaste recordar el idioma y el tema. Solo existe mientras esa opción está activada.",
+                "Hasta que desactives la opción o borres los datos del sitio",
+                "No necesario: guarda tu propia elección de consentimiento."
               ],
               [
                 "facodi-notes:v1:guest",
                 "Almacenamiento local",
                 "Guarda las notas que escribes sin sesión iniciada, solo en este dispositivo. Se importan a tu cuenta al iniciar sesión.",
                 "Hasta que se importen o se borren",
-                "No necesario: función que solicitas"
+                "No necesario: guardar la nota en este dispositivo es el propio servicio que pides al escribirla, y el aviso junto a las notas indica dónde se guardan."
               ],
               [
                 "workbox-precache-…",
                 "Caché del navegador (service worker)",
                 "Guarda los archivos de la aplicación para que cargue más rápido y tolere conexiones inestables. No contiene datos personales.",
                 "Se sustituye con cada nueva versión",
-                "No necesario: estrictamente necesario"
+                "No necesario: contiene solo los archivos públicos de la aplicación, sin identificadores ni datos personales, y sirve para entregar la aplicación que abres."
               ]
             ]
           }
@@ -1777,7 +1788,8 @@
           "title": "Cómo gestionarlo o borrarlo",
           "items": [
             "Al cerrar sesión, la sesión se elimina del navegador.",
-            "Puedes cambiar el idioma y el tema en la cabecera o en tu perfil.",
+            "Puedes cambiar el idioma y el tema en la cabecera o en tu perfil. Por defecto, la elección dura hasta que cierres la pestaña.",
+            "Para recordar el idioma y el tema entre visitas, activa la opción siguiente, también disponible en tu perfil. Al desactivarla, borramos las preferencias guardadas; el idioma y el tema actuales se mantienen hasta que cierres la pestaña.",
             "Para borrarlo todo, usa la opción de borrar los datos del sitio en la configuración del navegador. Las notas escritas sin cuenta se pierden.",
             "Si bloqueas el almacenamiento local, no podrás iniciar sesión, pero podrás seguir leyendo el catálogo."
           ]

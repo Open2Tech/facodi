@@ -271,7 +271,6 @@
     "theme": "Theme",
     "themeLight": "Light",
     "themeDark": "Dark",
-    "preferencesDevice": "These preferences are saved in this browser.",
     "sessionsTitle": "Sessions",
     "sessionsDescription": "If you signed in on a shared computer or lost a device, end the other sessions. This session stays active.",
     "signOutOthers": "End other sessions",
@@ -294,6 +293,11 @@
     "dataTitle": "Your data",
     "dataDescription": "Access, copy and account deletion.",
     "dataText": "To request a copy of your data or delete your account, write to [hello@open2.tech](mailto:hello@open2.tech) from this account's email. The app does not offer automatic deletion yet. See what is deleted in the [Privacy Policy](/privacy#deletion)."
+  },
+  "preferences": {
+    "rememberLabel": "Remember language and theme in this browser",
+    "rememberOff": "Off: the language and theme you choose last until you close the tab.",
+    "rememberOn": "On: your language and theme are stored in this browser until you turn this off or clear site data."
   },
   "content": {
     "courses": "Courses",
@@ -1391,7 +1395,7 @@
             "Contributions: resource suggestions (link, metadata, optional note and licence declarations), submitted playlists, collaboration proposals (interest, motivation and optional portfolio) and the related editorial decisions and review notes.",
             "Notifications: an email queue about the status of playlists you submit, which stores the recipient account identifier, not the email address.",
             "Technical data: IP address, date and time, browser and requested pages, processed by our hosting and database providers in their operational and security logs.",
-            "Only on your device: language, theme and notes written while signed out. They are not sent to FACODI until you sign in. See [Cookies and storage](/cookies)."
+            "Only on your device: language and theme (for the session only, unless you ask us to remember them) and notes written while signed out. They are not sent to FACODI until you sign in. See [Cookies and storage](/cookies)."
           ]
         },
         {
@@ -1679,11 +1683,11 @@
     },
     "cookies": {
       "title": "Cookies and storage",
-      "description": "FACODI uses no first-party cookies, analytics or advertising. The full list of what is stored in your browser and when YouTube loads.",
-      "lead": "FACODI sets no first-party cookies and uses no analytics or advertising tools. We only store in your browser what the service needs to work and the choices you make.",
+      "description": "FACODI uses no first-party cookies, analytics or advertising. What is stored in your browser, why, and when your consent is needed.",
+      "lead": "FACODI sets no first-party cookies and uses no analytics or advertising tools. We only store in your browser what is needed for what you ask and, if you allow it, your language and theme between visits.",
       "summary": [
         "No analytics, advertising or social media cookies.",
-        "No consent banner, because there is nothing non-essential to authorise.",
+        "Your language and theme are only remembered between visits if you turn that option on. By default they last until you close the tab.",
         "The YouTube player only loads when you press play."
       ],
       "sections": [
@@ -1692,8 +1696,8 @@
           "title": "Our approach",
           "body": [
             "Portuguese law (Article 5 of [Law 41/2004](https://diariodarepublica.pt/dr/detalhe/modificacoes/41-2004-480710)) requires prior consent to store or read information on your device, except where strictly necessary to provide a service you explicitly requested. The rule covers cookies and also the browser's local storage.",
-            "Everything FACODI stores in your browser falls under that exception: it keeps the session you started, remembers the language and theme you chose and saves the notes you write. That is why we do not show a consent banner.",
-            "If we ever add non-essential tools, such as usage statistics, they will only be switched on after you allow them, with accept and refuse options equally visible and a simple way to change your mind."
+            "We assessed each item separately in the table below. The session, the sign-in security code and guest notes are strictly necessary to do what you ask. The language and theme you choose are kept, by default, only for the tab session: the Article 29 Working Party considers interface preferences requested by the user exempt when they last only for the session ([Opinion 04/2012](https://ec.europa.eu/justice/article-29/documentation/opinion-recommendation/files/2012/wp194_en.pdf), section 3.6). Remembering them between visits requires your consent, which you give by turning on “Remember language and theme in this browser” and withdraw by turning it off.",
+            "Because nothing that depends on consent is stored before you make that choice, we do not show a banner. If we ever add non-essential tools, such as usage statistics, they will only be switched on after you allow them, with accept and refuse options equally visible and a simple way to change your mind."
           ]
         },
         {
@@ -1715,42 +1719,49 @@
                 "Local storage",
                 "Keeps you signed in and renews the session automatically. Only exists while signed in.",
                 "Until you sign out",
-                "Not required: strictly necessary"
+                "Not required: without it, the session you started cannot be kept."
               ],
               [
                 "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
                 "Local storage",
                 "Temporary security code (PKCE) used when signing in, confirming your email and recovering your password.",
                 "Until the flow ends",
-                "Not required: strictly necessary"
+                "Not required: protects the sign-in you request and is deleted when the flow ends."
               ],
               [
                 "i18nextLng",
-                "Local storage",
-                "Remembers the interface language you chose.",
-                "Until you clear site data",
-                "Not required: preference you set"
+                "Session storage; local storage only with your permission",
+                "Remembers the interface language. Only created when you change language.",
+                "Until you close the tab, or until you withdraw permission",
+                "Not required for the session. Required to remember between visits (“Remember language and theme” option)."
               ],
               [
                 "facodi-theme",
+                "Session storage; local storage only with your permission",
+                "Remembers the light or dark theme. Only created when you change theme.",
+                "Until you close the tab, or until you withdraw permission",
+                "Not required for the session. Required to remember between visits (“Remember language and theme” option)."
+              ],
+              [
+                "facodi-remember-preferences",
                 "Local storage",
-                "Remembers the light or dark theme.",
-                "Until you clear site data",
-                "Not required: preference you set"
+                "Records that you allowed us to remember your language and theme. Only exists while that option is on.",
+                "Until you turn the option off or clear site data",
+                "Not required: stores your own consent choice."
               ],
               [
                 "facodi-notes:v1:guest",
                 "Local storage",
                 "Keeps notes you write while signed out, on this device only. They are imported into your account when you sign in.",
                 "Until imported or deleted",
-                "Not required: feature you requested"
+                "Not required: storing the note on this device is the very service you request by writing it, and the notice next to your notes says where they are kept."
               ],
               [
                 "workbox-precache-…",
                 "Browser cache (service worker)",
                 "Stores the application files so it loads faster and copes with unstable connections. Contains no personal data.",
                 "Replaced with each new version",
-                "Not required: strictly necessary"
+                "Not required: holds only the public application files, with no identifiers or personal data, and serves to deliver the application you open."
               ]
             ]
           }
@@ -1777,7 +1788,8 @@
           "title": "How to manage or delete",
           "items": [
             "Signing out removes the session from your browser.",
-            "You can change the language and theme in the header or in your profile.",
+            "You can change the language and theme in the header or in your profile. By default, your choice lasts until you close the tab.",
+            "To remember your language and theme between visits, turn on the option below, also available in your profile. When you turn it off, we delete the stored preferences; the current language and theme stay until you close the tab.",
             "To delete everything, use your browser's option to clear site data. Notes written without an account will be lost.",
             "If you block local storage, you cannot sign in, but you can still read the catalogue."
           ]

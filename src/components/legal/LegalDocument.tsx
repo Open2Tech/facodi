@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, Check, Scale } from 'lucide-react';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { staticPageMeta } from '@/shared/seo/seo';
 import { cn } from '@/lib/utils';
+import { RememberPreferences } from '@/components/profile/RememberPreferences';
 import { LegalRichText } from './LegalRichText';
 import { LEGAL_DOCUMENTS, LEGAL_LAST_UPDATED, legalPath, type LegalDocumentContent, type LegalDocumentId, type LegalSection } from './legalDocuments';
 
@@ -75,7 +76,9 @@ export function LegalDocument({ id }: { id: LegalDocumentId }) {
           </ul>
         </section> : null}
 
-        {doc.sections.map((section, position) => <Section key={section.id} section={section} number={position + 1} pendingLabel={t('legal.common.pending')} />)}
+        {doc.sections.map((section, position) => <Section key={section.id} section={section} number={position + 1} pendingLabel={t('legal.common.pending')}>
+          {id === 'cookies' && section.id === 'manage' ? <RememberPreferences className="mt-6" /> : null}
+        </Section>)}
       </div>
     </div>
 
@@ -94,7 +97,7 @@ export function LegalDocument({ id }: { id: LegalDocumentId }) {
   </article>;
 }
 
-function Section({ section, number, pendingLabel }: { section: LegalSection; number: number; pendingLabel: string }) {
+function Section({ section, number, pendingLabel, children }: { section: LegalSection; number: number; pendingLabel: string; children?: ReactNode }) {
   const headingId = `${section.id}-title`;
   return <section id={section.id} aria-labelledby={headingId} className="scroll-mt-28 border-t border-input pt-8">
     <h2 id={headingId} className="flex gap-4 text-2xl font-semibold leading-snug">
@@ -133,5 +136,6 @@ function Section({ section, number, pendingLabel }: { section: LegalSection; num
         </tbody>
       </table>
     </div> : null}
+    {children}
   </section>;
 }

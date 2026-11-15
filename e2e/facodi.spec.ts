@@ -139,6 +139,30 @@ test('legal pages deep-link to sections and stay usable on mobile', async ({ pag
   await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(4);
 });
 
+test('language and theme persist across visits only after opting in, and withdrawing deletes them', async ({ page }) => {
+  const persisted = () => page.evaluate(() => Object.fromEntries(Object.entries(localStorage)));
+  await page.goto('/cookies#manage');
+  // The language seeded in localStorage by beforeEach predates the opt-in, so it moves to the session.
+  expect(await persisted()).toEqual({});
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click();
+  await expect(page.locator('html')).toHaveClass(/dark/);
+  expect(await persisted()).toEqual({});
+  expect(await page.evaluate(() => sessionStorage.getItem('facodi-theme'))).toBe('dark');
+
+  const remember = page.getByRole('checkbox', { name: 'Remember language and theme in this browser' });
+  await remember.check();
+  expect(await persisted()).toEqual({ 'facodi-remember-preferences': 'true', 'facodi-theme': 'dark', i18nextLng: 'en' });
+  await page.evaluate(() => sessionStorage.clear());
+  await page.reload();
+  await expect(page.locator('html')).toHaveClass(/dark/);
+  await expect(remember).toBeChecked();
+
+  await remember.uncheck();
+  expect(await persisted()).toEqual({});
+  await expect(page.locator('html')).toHaveClass(/dark/);
+  await expect(page.getByText('Off: the language and theme you choose last until you close the tab.')).toBeVisible();
+});
+
 for (const [path] of LEGAL_PAGES.filter(([path]) => ['/privacy', '/cookies', '/legal'].includes(path))) {
   test(`legal page ${path} has no critical accessibility or contrast violations`, async ({ page }) => {
     await page.goto(path);
@@ -236,7 +260,7 @@ test('profile account centre: pending email change, translated errors, sessions 
 
   await page.locator('#preferences').getByText('Português').click();
   await expect(page.getByRole('heading', { name: 'Perfil', level: 1 })).toBeVisible();
-  expect(await page.evaluate(() => localStorage.getItem('i18nextLng'))).toBe('pt');
+  expect(await page.evaluate(() => [sessionStorage.getItem('i18nextLng'), localStorage.getItem('i18nextLng')])).toEqual(['pt', null]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 

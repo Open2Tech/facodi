@@ -91,6 +91,12 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.
+- [src/shared/lib/preferenceStorage.ts](../src/shared/lib/preferenceStorage.ts):
+  idioma (`i18nextLng`) e tema (`facodi-theme`) ficam em `sessionStorage`; só
+  passam a `localStorage` depois de o visitante ligar «Lembrar idioma e tema»
+  (em `/cookies` e no perfil). Usa sempre este módulo e o `useTheme` de
+  [src/shared/theme](../src/shared/theme) em vez de escrever no `localStorage`;
+  um novo armazenamento no navegador exige atualizar a política de cookies.
 - [src/i18n/locales](../src/i18n/locales): quatro idiomas, um único conjunto de keys.
 
 Consultas públicas têm filtros explícitos mesmo em sessões editoriais.

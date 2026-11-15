@@ -271,7 +271,6 @@
     "theme": "Tema",
     "themeLight": "Claro",
     "themeDark": "Escuro",
-    "preferencesDevice": "Estas preferências ficam guardadas neste navegador.",
     "sessionsTitle": "Sessões",
     "sessionsDescription": "Se entraste num computador partilhado ou perdeste um dispositivo, termina as outras sessões. Esta sessão continua ativa.",
     "signOutOthers": "Terminar outras sessões",
@@ -294,6 +293,11 @@
     "dataTitle": "Os teus dados",
     "dataDescription": "Acesso, cópia e eliminação da conta.",
     "dataText": "Para pedir uma cópia dos teus dados ou eliminar a conta, escreve para [hello@open2.tech](mailto:hello@open2.tech) a partir do email desta conta. Ainda não existe eliminação automática na aplicação. Sabe o que é apagado em [Política de Privacidade](/privacy#deletion)."
+  },
+  "preferences": {
+    "rememberLabel": "Lembrar idioma e tema neste navegador",
+    "rememberOff": "Desligado: o idioma e o tema que escolheres valem até fechares o separador.",
+    "rememberOn": "Ligado: o idioma e o tema ficam guardados neste navegador até desligares esta opção ou apagares os dados do site."
   },
   "content": {
     "courses": "Cursos",
@@ -1391,7 +1395,7 @@
             "Contribuições: sugestões de recursos (ligação, metadados, nota opcional e declarações de licença), playlists submetidas, propostas de colaboração (interesse, motivação e portefólio opcional) e as decisões e notas da revisão editorial.",
             "Notificações: uma fila de emails sobre o estado das playlists que submetes, que guarda o identificador da conta destinatária e não o endereço de email.",
             "Dados técnicos: endereço IP, data e hora, navegador e páginas pedidas, tratados pelos fornecedores de alojamento e de base de dados nos seus registos de funcionamento e segurança.",
-            "Apenas no teu dispositivo: idioma, tema e notas criadas sem sessão iniciada. Não são enviados à FACODI enquanto não iniciares sessão. Ver [Cookies e armazenamento](/cookies)."
+            "Apenas no teu dispositivo: idioma e tema (só durante a sessão, salvo se pedires para os lembrar) e notas criadas sem sessão iniciada. Não são enviados à FACODI enquanto não iniciares sessão. Ver [Cookies e armazenamento](/cookies)."
           ]
         },
         {
@@ -1679,11 +1683,11 @@
     },
     "cookies": {
       "title": "Cookies e armazenamento",
-      "description": "A FACODI não usa cookies próprios, analytics nem publicidade. Lista completa do que fica guardado no teu navegador e de quando o YouTube é carregado.",
-      "lead": "A FACODI não define cookies próprios nem usa ferramentas de analytics ou publicidade. No teu navegador guardamos apenas o necessário para o serviço funcionar e as escolhas que fazes.",
+      "description": "A FACODI não usa cookies próprios, analytics nem publicidade. O que fica no teu navegador, porquê, e quando é preciso o teu consentimento.",
+      "lead": "A FACODI não define cookies próprios nem usa ferramentas de analytics ou publicidade. No teu navegador guardamos apenas o necessário para o que pedes e, se o autorizares, o idioma e o tema entre visitas.",
       "summary": [
         "Sem cookies de analytics, publicidade ou redes sociais.",
-        "Sem banner de consentimento, porque não há nada de não essencial para autorizar.",
+        "O idioma e o tema só ficam lembrados entre visitas se ligares essa opção. Por omissão, valem até fechares o separador.",
         "O leitor do YouTube só é carregado quando carregas em reproduzir."
       ],
       "sections": [
@@ -1692,8 +1696,8 @@
           "title": "A nossa abordagem",
           "body": [
             "A lei portuguesa (artigo 5.º da [Lei n.º 41/2004](https://diariodarepublica.pt/dr/detalhe/modificacoes/41-2004-480710)) exige consentimento prévio para guardar ou ler informação no teu equipamento, exceto quando isso é estritamente necessário para prestar um serviço que pediste expressamente. A regra aplica-se a cookies e também ao armazenamento local do navegador.",
-            "Tudo o que a FACODI guarda no teu navegador cabe nessa exceção: mantém a sessão que iniciaste, lembra o idioma e o tema que escolheste e guarda as notas que escreves. Por isso, não mostramos um banner de consentimento.",
-            "Se um dia acrescentarmos ferramentas não essenciais, como estatísticas de utilização, só serão ativadas depois de as autorizares, com as opções de aceitar e recusar igualmente visíveis e uma forma simples de mudar de ideias."
+            "Avaliámos cada elemento em separado, na tabela abaixo. A sessão, o código de segurança do início de sessão e as notas de visitante são estritamente necessários para fazer o que pedes. O idioma e o tema que escolhes ficam, por omissão, só durante a sessão do separador: o Grupo de Trabalho do Artigo 29.º considera isentas as preferências de interface pedidas pelo utilizador quando duram apenas a sessão ([Parecer 04/2012](https://ec.europa.eu/justice/article-29/documentation/opinion-recommendation/files/2012/wp194_en.pdf), secção 3.6). Lembrá-las entre visitas exige o teu consentimento, que dás ao ligar a opção «Lembrar idioma e tema neste navegador» e retiras ao desligá-la.",
+            "Como nada que dependa de consentimento é guardado antes dessa escolha, não mostramos um banner. Se um dia acrescentarmos ferramentas não essenciais, como estatísticas de utilização, só serão ativadas depois de as autorizares, com as opções de aceitar e recusar igualmente visíveis e uma forma simples de mudar de ideias."
           ]
         },
         {
@@ -1715,42 +1719,49 @@
                 "Armazenamento local",
                 "Mantém a sessão iniciada e renova-a automaticamente. Só existe com sessão iniciada.",
                 "Até terminares sessão",
-                "Não necessário: estritamente necessário"
+                "Não necessário: sem ele não é possível manter a sessão que iniciaste."
               ],
               [
                 "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
                 "Armazenamento local",
                 "Código de segurança temporário (PKCE) usado no início de sessão, na confirmação de email e na recuperação da palavra-passe.",
                 "Até o fluxo terminar",
-                "Não necessário: estritamente necessário"
+                "Não necessário: protege o início de sessão que pedes e é apagado no fim do fluxo."
               ],
               [
                 "i18nextLng",
-                "Armazenamento local",
-                "Lembra o idioma da interface que escolheste.",
-                "Até apagares os dados do site",
-                "Não necessário: preferência pedida por ti"
+                "Armazenamento de sessão; armazenamento local só com autorização",
+                "Lembra o idioma da interface. Só é criado quando mudas de idioma.",
+                "Até fechares o separador, ou até retirares a autorização",
+                "Não necessário na sessão. Necessário para lembrar entre visitas (opção «Lembrar idioma e tema»)."
               ],
               [
                 "facodi-theme",
+                "Armazenamento de sessão; armazenamento local só com autorização",
+                "Lembra o tema claro ou escuro. Só é criado quando mudas de tema.",
+                "Até fechares o separador, ou até retirares a autorização",
+                "Não necessário na sessão. Necessário para lembrar entre visitas (opção «Lembrar idioma e tema»)."
+              ],
+              [
+                "facodi-remember-preferences",
                 "Armazenamento local",
-                "Lembra o tema claro ou escuro.",
-                "Até apagares os dados do site",
-                "Não necessário: preferência pedida por ti"
+                "Regista que autorizaste lembrar o idioma e o tema. Só existe enquanto essa opção estiver ligada.",
+                "Até desligares a opção ou apagares os dados do site",
+                "Não necessário: guarda a tua própria escolha de consentimento."
               ],
               [
                 "facodi-notes:v1:guest",
                 "Armazenamento local",
                 "Guarda as notas que escreves sem sessão iniciada, apenas neste dispositivo. São importadas para a conta quando inicias sessão.",
                 "Até serem importadas ou apagadas",
-                "Não necessário: funcionalidade pedida por ti"
+                "Não necessário: guardar a nota neste dispositivo é o próprio serviço que pedes ao escrevê-la, e o aviso junto às notas indica onde ficam."
               ],
               [
                 "workbox-precache-…",
                 "Cache do navegador (service worker)",
                 "Guarda os ficheiros da aplicação para carregar mais depressa e tolerar ligações instáveis. Não contém dados pessoais.",
                 "Substituído a cada nova versão",
-                "Não necessário: estritamente necessário"
+                "Não necessário: contém apenas os ficheiros públicos da aplicação, sem identificadores nem dados pessoais, e serve para entregar a aplicação que abres."
               ]
             ]
           }
@@ -1777,7 +1788,8 @@
           "title": "Como gerir ou apagar",
           "items": [
             "Terminar sessão remove a sessão do navegador.",
-            "Podes mudar o idioma e o tema no cabeçalho ou no perfil.",
+            "Podes mudar o idioma e o tema no cabeçalho ou no perfil. Por omissão, a escolha vale até fechares o separador.",
+            "Para lembrar o idioma e o tema entre visitas, liga a opção abaixo, também disponível no perfil. Ao desligá-la, apagamos as preferências guardadas; o idioma e o tema atuais mantêm-se até fechares o separador.",
             "Para apagar tudo, usa a opção de limpar os dados do site nas definições do navegador. As notas criadas sem conta perdem-se.",
             "Se bloqueares o armazenamento local, não consegues iniciar sessão, mas continuas a poder ler o catálogo."
           ]

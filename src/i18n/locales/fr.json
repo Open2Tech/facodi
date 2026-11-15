@@ -271,7 +271,6 @@
     "theme": "Thème",
     "themeLight": "Clair",
     "themeDark": "Sombre",
-    "preferencesDevice": "Ces préférences sont enregistrées dans ce navigateur.",
     "sessionsTitle": "Sessions",
     "sessionsDescription": "Si vous vous êtes connecté sur un ordinateur partagé ou avez perdu un appareil, fermez les autres sessions. Cette session reste active.",
     "signOutOthers": "Fermer les autres sessions",
@@ -294,6 +293,11 @@
     "dataTitle": "Vos données",
     "dataDescription": "Accès, copie et suppression du compte.",
     "dataText": "Pour demander une copie de vos données ou supprimer votre compte, écrivez à [hello@open2.tech](mailto:hello@open2.tech) depuis l’adresse e-mail de ce compte. L’application ne propose pas encore de suppression automatique. Voyez ce qui est supprimé dans la [Politique de confidentialité](/privacy#deletion)."
+  },
+  "preferences": {
+    "rememberLabel": "Mémoriser la langue et le thème dans ce navigateur",
+    "rememberOff": "Désactivé : la langue et le thème choisis restent actifs jusqu’à la fermeture de l’onglet.",
+    "rememberOn": "Activé : la langue et le thème sont stockés dans ce navigateur jusqu’à ce que vous désactiviez cette option ou effaciez les données du site."
   },
   "content": {
     "courses": "Cours",
@@ -1391,7 +1395,7 @@
             "Contributions : suggestions de ressources (lien, métadonnées, note facultative et déclarations de licence), playlists envoyées, propositions de collaboration (intérêt, motivation et portfolio facultatif) ainsi que les décisions et notes de la révision éditoriale.",
             "Notifications : une file d’e-mails sur le statut des playlists que vous envoyez, qui conserve l’identifiant du compte destinataire et non l’adresse e-mail.",
             "Données techniques : adresse IP, date et heure, navigateur et pages demandées, traitées par les prestataires d’hébergement et de base de données dans leurs journaux de fonctionnement et de sécurité.",
-            "Uniquement sur votre appareil : langue, thème et notes écrites sans être connecté. Elles ne sont pas envoyées à FACODI avant votre connexion. Voir [Cookies et stockage](/cookies)."
+            "Uniquement sur votre appareil : langue et thème (pendant la session seulement, sauf si vous demandez à les mémoriser) et notes écrites sans être connecté. Elles ne sont pas envoyées à FACODI avant votre connexion. Voir [Cookies et stockage](/cookies)."
           ]
         },
         {
@@ -1679,11 +1683,11 @@
     },
     "cookies": {
       "title": "Cookies et stockage",
-      "description": "FACODI n’utilise ni cookies propres, ni outils d’analyse, ni publicité. Liste complète de ce qui est stocké dans votre navigateur et du moment où YouTube est chargé.",
-      "lead": "FACODI n’installe pas de cookies propres et n’utilise aucun outil d’analyse ou de publicité. Dans votre navigateur, nous ne stockons que ce qui est nécessaire au service et les choix que vous faites.",
+      "description": "FACODI n’utilise ni cookies propres, ni outils d’analyse, ni publicité. Ce qui est stocké dans votre navigateur, pourquoi, et quand votre consentement est nécessaire.",
+      "lead": "FACODI n’installe pas de cookies propres et n’utilise aucun outil d’analyse ou de publicité. Dans votre navigateur, nous ne stockons que ce qui est nécessaire à ce que vous demandez et, si vous l’autorisez, la langue et le thème d’une visite à l’autre.",
       "summary": [
         "Aucun cookie d’analyse, de publicité ou de réseaux sociaux.",
-        "Pas de bannière de consentement, car il n’y a rien de non essentiel à autoriser.",
+        "La langue et le thème ne sont mémorisés d’une visite à l’autre que si vous activez cette option. Par défaut, ils restent actifs jusqu’à la fermeture de l’onglet.",
         "Le lecteur YouTube n’est chargé que lorsque vous lancez la lecture."
       ],
       "sections": [
@@ -1692,8 +1696,8 @@
           "title": "Notre approche",
           "body": [
             "La loi portugaise (article 5 de la [loi 41/2004](https://diariodarepublica.pt/dr/detalhe/modificacoes/41-2004-480710)) exige un consentement préalable pour stocker ou lire des informations sur votre appareil, sauf si c’est strictement nécessaire pour fournir un service que vous avez expressément demandé. La règle couvre les cookies et aussi le stockage local du navigateur.",
-            "Tout ce que FACODI stocke dans votre navigateur relève de cette exception : maintenir la session que vous avez ouverte, mémoriser la langue et le thème choisis et conserver les notes que vous écrivez. C’est pourquoi nous n’affichons pas de bannière de consentement.",
-            "Si nous ajoutons un jour des outils non essentiels, comme des statistiques d’utilisation, ils ne seront activés qu’après votre autorisation, avec des options d’acceptation et de refus aussi visibles l’une que l’autre et un moyen simple de changer d’avis."
+            "Nous avons évalué chaque élément séparément, dans le tableau ci-dessous. La session, le code de sécurité de connexion et les notes de visiteur sont strictement nécessaires pour faire ce que vous demandez. La langue et le thème choisis ne sont conservés, par défaut, que pendant la session de l’onglet : le groupe de travail « Article 29 » considère comme exemptées les préférences d’interface demandées par l’utilisateur lorsqu’elles ne durent que la session ([avis 04/2012](https://ec.europa.eu/justice/article-29/documentation/opinion-recommendation/files/2012/wp194_en.pdf), section 3.6). Les mémoriser d’une visite à l’autre exige votre consentement, que vous donnez en activant l’option « Mémoriser la langue et le thème dans ce navigateur » et retirez en la désactivant.",
+            "Comme rien de ce qui dépend du consentement n’est stocké avant ce choix, nous n’affichons pas de bannière. Si nous ajoutons un jour des outils non essentiels, comme des statistiques d’utilisation, ils ne seront activés qu’après votre autorisation, avec des options d’acceptation et de refus aussi visibles l’une que l’autre et un moyen simple de changer d’avis."
           ]
         },
         {
@@ -1715,42 +1719,49 @@
                 "Stockage local",
                 "Maintient la session ouverte et la renouvelle automatiquement. N’existe que lorsque vous êtes connecté.",
                 "Jusqu’à la déconnexion",
-                "Non requis : strictement nécessaire"
+                "Non requis : sans lui, la session que vous avez ouverte ne peut pas être maintenue."
               ],
               [
                 "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
                 "Stockage local",
                 "Code de sécurité temporaire (PKCE) pour se connecter, confirmer l’e-mail et récupérer le mot de passe.",
                 "Jusqu’à la fin du flux",
-                "Non requis : strictement nécessaire"
+                "Non requis : protège la connexion que vous demandez et est supprimé à la fin du flux."
               ],
               [
                 "i18nextLng",
-                "Stockage local",
-                "Mémorise la langue d’interface que vous avez choisie.",
-                "Jusqu’à l’effacement des données du site",
-                "Non requis : préférence que vous choisissez"
+                "Stockage de session ; stockage local uniquement avec autorisation",
+                "Mémorise la langue d’interface. N’est créé que lorsque vous changez de langue.",
+                "Jusqu’à la fermeture de l’onglet, ou jusqu’au retrait de l’autorisation",
+                "Non requis pendant la session. Requis pour mémoriser d’une visite à l’autre (option « Mémoriser la langue et le thème »)."
               ],
               [
                 "facodi-theme",
+                "Stockage de session ; stockage local uniquement avec autorisation",
+                "Mémorise le thème clair ou sombre. N’est créé que lorsque vous changez de thème.",
+                "Jusqu’à la fermeture de l’onglet, ou jusqu’au retrait de l’autorisation",
+                "Non requis pendant la session. Requis pour mémoriser d’une visite à l’autre (option « Mémoriser la langue et le thème »)."
+              ],
+              [
+                "facodi-remember-preferences",
                 "Stockage local",
-                "Mémorise le thème clair ou sombre.",
-                "Jusqu’à l’effacement des données du site",
-                "Non requis : préférence que vous choisissez"
+                "Enregistre que vous avez autorisé la mémorisation de la langue et du thème. N’existe que tant que cette option est activée.",
+                "Jusqu’à la désactivation de l’option ou l’effacement des données du site",
+                "Non requis : conserve votre propre choix de consentement."
               ],
               [
                 "facodi-notes:v1:guest",
                 "Stockage local",
                 "Conserve les notes écrites sans être connecté, uniquement sur cet appareil. Elles sont importées dans votre compte à la connexion.",
                 "Jusqu’à leur importation ou effacement",
-                "Non requis : fonction que vous demandez"
+                "Non requis : stocker la note sur cet appareil est le service même que vous demandez en l’écrivant, et l’avis à côté des notes indique où elles sont conservées."
               ],
               [
                 "workbox-precache-…",
                 "Cache du navigateur (service worker)",
                 "Conserve les fichiers de l’application pour un chargement plus rapide et une meilleure tolérance aux connexions instables. Ne contient pas de données personnelles.",
                 "Remplacé à chaque nouvelle version",
-                "Non requis : strictement nécessaire"
+                "Non requis : ne contient que les fichiers publics de l’application, sans identifiant ni donnée personnelle, et sert à fournir l’application que vous ouvrez."
               ]
             ]
           }
@@ -1777,7 +1788,8 @@
           "title": "Gérer ou effacer ces données",
           "items": [
             "La déconnexion supprime la session du navigateur.",
-            "Vous pouvez changer la langue et le thème dans l’en-tête ou dans votre profil.",
+            "Vous pouvez changer la langue et le thème dans l’en-tête ou dans votre profil. Par défaut, votre choix reste actif jusqu’à la fermeture de l’onglet.",
+            "Pour mémoriser la langue et le thème d’une visite à l’autre, activez l’option ci-dessous, également disponible dans votre profil. Lorsque vous la désactivez, nous supprimons les préférences stockées ; la langue et le thème actuels restent actifs jusqu’à la fermeture de l’onglet.",
             "Pour tout effacer, utilisez l’option d’effacement des données du site dans les paramètres du navigateur. Les notes écrites sans compte seront perdues.",
             "Si vous bloquez le stockage local, vous ne pourrez pas vous connecter, mais vous pourrez continuer à lire le catalogue."
           ]
