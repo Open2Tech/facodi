@@ -908,7 +908,23 @@
     "term": "Term",
     "elective": "Elective {{group}}",
     "annual": "Full year",
-    "error": "Unable to load the historical study plan."
+    "error": "Unable to load the historical study plan.",
+    "brazilianCreditsNotice": "Brazilian curriculum: workloads are shown in hours; local credits are not ECTS.",
+    "equivalenceNoticeGeneral": "Historical reference. Equivalences and credit transfer require validation by the university. Optional or credit-transfer-only offerings are not automatically cumulative.",
+    "officialSourceGeneral": "Check the university's original document",
+    "unscheduled": "Historical offerings without a fixed term",
+    "notScheduled": "No fixed term",
+    "hours": "Hours",
+    "equivalences": "{{count}} documented equivalence relationships",
+    "equivalencesWarning": "Transcribed from the UFES 2019 PPC equivalence section. These relationships do not automatically award credit; the university decides each student's eligibility.",
+    "priorCode": "2006 curriculum code",
+    "currentCode": "2019 curriculum code",
+    "categories": {
+      "required": "Required in the 2006 curriculum",
+      "supervised_internship": "Required supervised internship (2006)",
+      "credit_use_only": "Available for credit recognition only",
+      "elective_offering": "Historical elective offering"
+    }
   },
   "projectStory": {
     "eyebrow": "FACODI / HOW IT BEGAN",
