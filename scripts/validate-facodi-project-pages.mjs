@@ -43,4 +43,34 @@ for (const lang of ['pt', 'en', 'es', 'fr']) {
       `Missing consent withdrawal copy: ${lang} / ${key}`);
   }
 }
+
+const join = read('src/pages/CommunityJoin.tsx');
+const editorialCommunity = read('src/pages/EditorCommunity.tsx');
+const routes = read('src/App.tsx');
+const community = read('src/pages/Community.tsx');
+const layout = read('src/components/layout/FacodiLayout.tsx');
+assert.ok(join.includes("supabase.from('community_participation_requests')"), 'Missing Supabase community intake');
+assert.ok(join.includes('consent_to_contact: true'), 'Community intake must require opt-in');
+assert.ok(join.includes(".delete().eq('id', id).eq('submitted_by', user.id)"),
+  'Contributors must be able to delete only their own proposals');
+assert.ok(editorialCommunity.includes(".eq('review_status','pending')"),
+  'Editor queue must filter to pending private proposals');
+assert.ok(editorialCommunity.includes("review_status: action"), 'Editor queue needs auditable review');
+assert.ok(routes.includes('path="/community/join"'), 'Missing private join route');
+assert.ok(routes.includes('path="/editor/community"'), 'Missing editor review route');
+assert.ok(community.includes("'/community/join'"), 'Community CTA must lead to opt-in intake');
+assert.ok(layout.includes("location.pathname.startsWith('/community/join')"),
+  'Private join route must not be indexed');
+for (const code of [join,editorialCommunity]) {
+  assert.ok(!/sendEmail|send_draft|supabase.functions.invoke\(['"]send|email_outbox/i.test(code),
+    'Community interest flow must not dispatch any emails');
+}
+for (const lang of ['pt','en','es','fr']) {
+  const dict = JSON.parse(read(`src/i18n/locales/${lang}.json`));
+  for (const key of ['consent','privacy','withdraw','withdrawConfirm','withdrawConfirmButton',
+    'reviewPrivacy','reviewDescription','status']) {
+    assert.ok(dict.communityJoin?.[key], `Community copy missing: ${lang}/${key}`);
+  }
+}
+
 process.stdout.write('FACODI public project/SEO/consent checks passed (4 locales, 7 public URLs).\n');
