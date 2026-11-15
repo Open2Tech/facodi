@@ -75,3 +75,16 @@ Esse smoke test consulta rotas SPA, `robots.txt`, `sitemap.xml` e headers `noind
 7. Os 13 templates FACODI continuam num catálogo isolado de pré-visualização. O Auth partilhado com o Tube e o serviço de email global não foram alterados.
 
 **Estado de publicação:** a acessibilidade das páginas no Workers foi confirmada inicialmente; os novos headers e metadados só estarão ativos depois do build do commit correspondente. A verificação externa final do `noindex` determina se esta atualização entrou efetivamente em produção no Worker.
+
+## 6. Verificação após a publicação
+
+Após o build bem-sucedido **GitHub Actions #248** (lint, TypeScript, testes, validação de email e Vite), foram consultadas as páginas públicas do Workers por URL absoluto:
+
+- `/about`: conteúdo FACODI servido, robots meta `noindex, nofollow, noarchive`, canonical `https://www.facodi.com/about`.
+- `/community`: conteúdo FACODI servido, robots meta `noindex, nofollow, noarchive`, canonical `https://www.facodi.com/community`.
+- `/robots.txt`: devolve texto com sitemap do domínio canónico.
+- `/sitemap.xml`: lista apenas `https://www.facodi.com/` e rotas públicas.
+
+Uma ferramenta de navegação secundária não conseguiu ler os **headers HTTP brutos** e reportou incorretamente 404 em duas navegações relativas. A verificação independente por URLs absolutos devolveu o conteúdo normal dessas rotas. Consequentemente, a meta tag `noindex` foi confirmada em produção, mas `X-Robots-Tag` e os demais headers HTTP ainda dependem do smoke test `bun run test:workers:smoke`, executado num ambiente com acesso de rede. Não declarar esses headers testados apenas com base no código fonte.
+
+O Auth alojado ainda não foi consultado para confirmar que as URLs de callback do Workers estão na allowlist. Nenhum email foi enviado ou agendado. Não se alterou o domínio canónico nem o DNS.
