@@ -2050,5 +2050,9 @@
         }
       ]
     }
+  },
+  "collectionPlaylists": {
+    "title": "Parcours vidéo de cette collection",
+    "notice": "Séquences organisées par FACODI à partir des cours de leurs créateurs. Ouvrez un parcours pour suivre l'ordre proposé."
   }
 }
