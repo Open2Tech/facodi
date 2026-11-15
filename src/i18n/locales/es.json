@@ -427,7 +427,8 @@
     "searchPlaceholder": "Título, descripción o tema",
     "results": "Resultados de recursos",
     "filterByTag": "Filtrar por tema",
-    "noMatches": "Ningún recurso coincide con los filtros."
+    "noMatches": "Ningún recurso coincide con los filtros.",
+    "filterTopic": "Filtrar por tema"
   },
   "about": {
     "title": "Una pestaña abierta se convirtió en una gran idea.",
@@ -2108,5 +2109,31 @@
     "confirmTitle": "¿Publicar el nuevo orden?",
     "confirmDescription": "El nuevo orden modificará {{count}} posiciones para todos los lectores. Los vídeos y el progreso se conservarán.",
     "empty": "No hay secuencias editoriales disponibles."
+  },
+  "collectionModules": {
+    "title": "Módulos e itinerarios de esta colección",
+    "notice": "Abre un módulo para seguir las secuencias de vídeo y consultar material de referencia."
+  },
+  "resourceTopics": {
+    "odoo": "Odoo",
+    "odoo-19": "Odoo 19",
+    "erp": "ERP",
+    "recursos-humanos": "Recursos Humanos",
+    "recrutamento": "Selección de personal",
+    "avaliacao-desempenho": "Evaluación de desempeño",
+    "assiduidade": "Asistencia y ausencias",
+    "remuneracao": "Nóminas",
+    "contabilidade": "Contabilidad",
+    "frota": "Flota",
+    "helpdesk": "Soporte",
+    "inventario": "Inventario",
+    "redes": "Redes informáticas",
+    "dev-containers": "Dev Containers",
+    "low-code": "Low-Code",
+    "python": "Python",
+    "cloud": "Cloud",
+    "react": "React",
+    "gestao": "Gestión",
+    "tecnologia": "Tecnología"
   }
 }
