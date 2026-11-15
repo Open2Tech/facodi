@@ -138,6 +138,14 @@ Exemplos: [Física — vetores e movimento](https://facodi.com/resources/facodi-
 
 Os links são **recomendações editoriais**, não equivalências, acreditação ou pré-requisitos académicos oficiais. Nenhum vídeo foi copiado nem foram gerados exercícios. Detalhes, testes e proveniência na [auditoria do grafo de módulos](docs/facodi-study-modules-graph-2026-11-15.md).
 
+## Percursos Odoo, redes e filtros por tema (15/11/2026)
+
+A FACODI publicou **40 vídeos selecionados** a partir de `public.videos` (31 do canal oficial Odoo e 9 de fontes técnicas), organizando **20 novas sequências**, **10 módulos de estudo** e uma coleção Odoo. Estão agora públicos **933 vídeos**, **122 sequências editoriais** e **77 módulos**. Os conteúdos Odoo são **percursos FACODI independentes**, inspirados na organização por aplicações do [Odoo Learn](https://www.odoo.com/pt_BR/slides), sem acreditação ou certificação Odoo e sem duplicação dos ficheiros originais.
+
+As tags de 81 vídeos e cinco sequências antigas de RH foram enriquecidas, e `/resources` passou a consultar contagens dinâmicas de temas via RPC `SECURITY INVOKER`, traduzidas PT/EN/ES/FR. [Coleção de percursos Odoo](https://facodi.com/resources/facodi-odoo19-percursos-gestao) · [Recrutamento](https://facodi.com/sequences/facodi-odoo19-rh-recrutamento) · [Redes e protocolos](https://facodi.com/sequences/facodi-tecnologia-redes-protocolos). Os novos módulos estão associados às UCs relevantes, incluindo Gestão, Gestão de Pessoas, Redes, Desenvolvimento Colaborativo e Low-Code.
+
+A consulta anónima e o Cloudflare confirmaram a publicação das sequências e dos filtros. A apresentação específica dos **sete módulos dentro da coleção** foi implementada no frontend, mas não apareceu no primeiro teste do browser; requer verificação da revisão publicada no Cloudflare. Detalhes e limitações na [auditoria de publicação](docs/facodi-odoo19-learning-publication-2026-11-15.md). Vercel não foi utilizada.
+
 ## Editor seguro de ordem das videoaulas (15/11/2026)
 
 O painel editorial inclui a [reordenação de sequências](https://facodi.com/editor/sequence-order): drag-and-drop, botões acessíveis para teclado e mobile, pré-visualização e confirmação. Uma RPC `SECURITY INVOKER` do Supabase limita alterações a editores, valida uma permutação integral de 2–200 vídeos e usa versão otimista com bloqueio transacional; as relações curriculares, vídeos e o progresso dos alunos não são alterados.
