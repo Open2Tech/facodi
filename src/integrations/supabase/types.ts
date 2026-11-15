@@ -184,6 +184,48 @@ export type Database = {
           },
         ]
       }
+      community_participation_requests: {
+        Row: {
+          id: string
+          submitted_by: string
+          interest: string
+          motivation: string
+          portfolio_url: string | null
+          consent_to_contact: boolean
+          review_status: string
+          review_note: string | null
+          reviewed_by: string | null
+          reviewed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          submitted_by: string
+          interest: string
+          motivation: string
+          portfolio_url?: string | null
+          consent_to_contact?: boolean
+          review_status?: string
+          review_note?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          submitted_by?: string
+          interest?: string
+          motivation?: string
+          portfolio_url?: string | null
+          consent_to_contact?: boolean
+          review_status?: string
+          review_note?: string | null
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
       competencies: {
         Row: {
           code: string | null
