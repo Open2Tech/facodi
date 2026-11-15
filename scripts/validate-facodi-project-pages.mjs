@@ -89,6 +89,8 @@ const supabaseConfig = read('supabase/config.toml');
 const facodiPlaylistFunction = read('supabase/functions/facodi-submit-playlist/index.ts');
 assert.equal(wrangler.name, 'facodi', 'Cloudflare must deploy the FACODI Worker');
 assert.equal(wrangler.assets?.directory, './dist', 'Cloudflare must serve the Vite dist assets');
+assert.ok(wrangler.previews && typeof wrangler.previews === 'object',
+  'Workers Builds branch previews (`wrangler preview`) require a previews block');
 assert.equal(wrangler.assets?.not_found_handling, 'single-page-application',
   'Client-side routes and Auth callbacks require Cloudflare SPA fallback');
 assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
