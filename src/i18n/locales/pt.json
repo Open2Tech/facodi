@@ -1790,8 +1790,7 @@
             "Terminar sessão remove a sessão do navegador.",
             "Podes mudar o idioma e o tema no cabeçalho ou no perfil. Por omissão, a escolha vale até fechares o separador.",
             "Para lembrar o idioma e o tema entre visitas, liga a opção abaixo, também disponível no perfil. Ao desligá-la, apagamos as preferências guardadas; o idioma e o tema atuais mantêm-se até fechares o separador.",
-            "Se bloqueares o armazenamento do navegador, algumas preferências podem não ser guardadas e a autenticação pode ficar indisponível. A leitura do catálogo público não depende de teres uma sessão iniciada.",
-            "Se bloqueares o armazenamento local, não consegues iniciar sessão, mas continuas a poder ler o catálogo."
+            "Se bloqueares o armazenamento do navegador, algumas preferências podem não ser guardadas e a autenticação pode ficar indisponível. A leitura do catálogo público não depende de teres uma sessão iniciada."
           ]
         }
       ]
