@@ -2504,6 +2504,10 @@ export type Database = {
           video_id: string
         }[]
       }
+      get_editorial_sequence_order_v1: {
+        Args: { p_slug: string }
+        Returns: Json
+      }
       get_editor_ifes_course_quality_v1: {
         Args: { p_course_code?: string }
         Returns: {
@@ -3040,6 +3044,15 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      reorder_editorial_sequence_v1: {
+        Args: {
+          p_playlist_id: string
+          p_expected_revision: number
+          p_expected_order: string[]
+          p_new_order: string[]
+        }
+        Returns: Json
       }
       review_playlist: {
         Args: {
