@@ -378,7 +378,8 @@
     "noResults": "Não encontrámos recursos com estes filtros. Experimenta outro título, idioma ou tema.",
     "taggedWith": "Tema:",
     "clearTag": "Remover tema",
-    "filterType": "Tipo de recurso"
+    "filterType": "Tipo de recurso",
+    "allTypes": "Todos"
   },
   "about": {
     "title": "De uma aba aberta nasceu uma ideia maior.",
