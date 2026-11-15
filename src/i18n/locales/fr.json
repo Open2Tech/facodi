@@ -1790,8 +1790,7 @@
             "La déconnexion supprime la session du navigateur.",
             "Vous pouvez changer la langue et le thème dans l’en-tête ou dans votre profil. Par défaut, votre choix reste actif jusqu’à la fermeture de l’onglet.",
             "Pour mémoriser la langue et le thème d’une visite à l’autre, activez l’option ci-dessous, également disponible dans votre profil. Lorsque vous la désactivez, nous supprimons les préférences stockées ; la langue et le thème actuels restent actifs jusqu’à la fermeture de l’onglet.",
-            "Si vous bloquez le stockage du navigateur, certaines préférences peuvent ne pas être conservées et la connexion peut échouer. La consultation du catalogue public ne nécessite pas de session ouverte.",
-            "Si vous bloquez le stockage local, vous ne pourrez pas vous connecter, mais vous pourrez continuer à lire le catalogue."
+            "Si vous bloquez le stockage du navigateur, certaines préférences peuvent ne pas être conservées et la connexion peut échouer. La consultation du catalogue public ne nécessite pas de session ouverte."
           ]
         }
       ]
