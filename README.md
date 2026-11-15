@@ -75,10 +75,10 @@ O fluxo de participação inclui PT/EN/ES/FR, testes transacionais de segurança
 ## Catálogo académico publicado (14/11/2026)
 
 A FACODI reúne percursos de diferentes instituições (UAlg, UFES e Ifes). **Snapshot do catálogo público em 14/11/2026:** 6 cursos publicados, 256 unidades curriculares e 1.076 objetos educativos, incluindo 636 referências de vídeo e 145 leituras externas. Estes totais podem mudar com importações simultâneas; a distribuição por curso está disponível nas consultas Supabase.
-- **[CTeSP em Sistemas e Tecnologias de Informação](https://facodi.vercel.app/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
+- **[CTeSP em Sistemas e Tecnologias de Informação](https://www.facodi.com/courses/ctesp-sti):** 17 UCs, 120 ECTS, 4 semestres. Curso distinto do CTeSP Tecnologias Informáticas (1932), da variante Portimão (1970) e da Licenciatura LESTI. Foram associados 30 vídeos já existentes e 43 referências de leitura; criados 51 objetivos/competências de estudo editoriais; 17 percursos e 1 mapa curricular em rascunho interno. [Auditoria do CTeSP e plano oficial](docs/facodi-ctesp-sti-1812-ualg-2026-27.md).
 - **LESTI + Design de Comunicação:** 84 UCs públicas, 568 ligações UC–vídeo e 113 associações de leitura, além de 252 objetivos editoriais e 86 percursos/mapas internos. Na licenciatura LESTI, sete grupos genéricos de opção têm apenas orientação curricular, não um programa disciplinar fictício.
 
-- **[Licenciatura em Língua Inglesa e Literaturas de Língua Inglesa — UFES](https://facodi.vercel.app/courses/ufes-letras-ingles):** PPC oficial 2019, 75 componentes catalogados (28 obrigatórios, 2 estágios, 45 optativas alternativas), 3.210 horas de integralização, 225 objetivos editoriais, 36 leituras complementares e 152 associações a UCs, com 76 roteiros/mapas em rascunho interno. O currículo usa créditos brasileiros e não ECTS. **Enriquecimento de 15/11:** 87 vídeos educacionais externos verificados por origem (48 Crash Course, 23 British Council, 16 UNIVESP), 291 relações a 60 UCs e 8 coleções FACODI; arquivo do PPC 2006 com 67 componentes e 232 pares históricos de equivalência, sem reconhecimento automático de créditos. [Auditoria UFES 2019](docs/facodi-ufes-letras-ingles-ppc2019-integration.md) · [Vídeos e histórico 2006](docs/facodi-ufes-english-videos-history-2026-11-15.md) · [Qualidade curricular e 15 guias de estudo](docs/facodi-ufes-quality-and-study-guides-2026-11-15.md).
+- **[Licenciatura em Língua Inglesa e Literaturas de Língua Inglesa — UFES](https://www.facodi.com/courses/ufes-letras-ingles):** PPC oficial 2019, 75 componentes catalogados (28 obrigatórios, 2 estágios, 45 optativas alternativas), 3.210 horas de integralização, 225 objetivos editoriais, 36 leituras complementares e 152 associações a UCs, com 76 roteiros/mapas em rascunho interno. O currículo usa créditos brasileiros e não ECTS. **Enriquecimento de 15/11:** 87 vídeos educacionais externos verificados por origem (48 Crash Course, 23 British Council, 16 UNIVESP), 291 relações a 60 UCs e 8 coleções FACODI; arquivo do PPC 2006 com 67 componentes e 232 pares históricos de equivalência, sem reconhecimento automático de créditos. [Auditoria UFES 2019](docs/facodi-ufes-letras-ingles-ppc2019-integration.md) · [Vídeos e histórico 2006](docs/facodi-ufes-english-videos-history-2026-11-15.md) · [Qualidade curricular e 15 guias de estudo](docs/facodi-ufes-quality-and-study-guides-2026-11-15.md).
 
 **Notas de interpretação:** as optativas são alternativas de escolha, os 120 ECTS do CTeSP e os 180 ECTS das licenciaturas UAlg pertencem a planos diferentes, e os projetos editoriais FACODI não são fichas homologadas pelas instituições.
 
@@ -275,12 +275,19 @@ O antigo servidor Bun de metadados foi removido; os documentos antigos de Odoo
 são históricos e não fazem parte dos comandos nem da imagem de runtime FACODI.
 Não executar scripts legados de enriquecimento contra este frontend.
 
-Esta aplicação está publicada em **https://facodi.vercel.app**. O catálogo
+Esta aplicação está publicada em **https://www.facodi.com**. O catálogo
 académico e os recursos externos foram inseridos no Supabase através de
 migrações versionadas (ver auditoria acima). A aplicação não cria automaticamente
 inscrições, progresso académico, uploads, novas análises por IA ou perfis de
 utilizador. Os conteúdos originais do Tube e as respetivas tabelas `public`
 permanecem preservados.
+
+## Domínio FACODI, templates de email e créditos
+O frontend FACODI está associado na Vercel aos domínios verificados `facodi.com` e `www.facodi.com`, com URL canónico `https://www.facodi.com`. Os metadados, o sitemap e os 13 templates FACODI foram atualizados. O código de autenticação usa `window.location.origin` para o callback, pelo que o domínio visitado é mantido.
+
+**Atenção:** `supabase/config.toml` mantém `auth.site_url=https://tube.open2.tech` porque Supabase Auth é compartilhado. Os 13 templates com identidade FACODI estão guardados em `facodi.email_template_catalog` como catálogo privado e também em `supabase/email-templates/facodi/`. **Esse catálogo não altera os templates globais do Supabase Auth e não envia mensagens.** O editor pode rever os templates sem envio em `/editor/email-templates`.
+
+Créditos individuais indicados pelo responsável do projeto: **Gustavo Cezar Scheidt, Bilal Uddin, Andreia Cirne, Sofia e Tércio**. As cinco candidaturas estão em `facodi.project_profiles` como `draft/pending`; a aplicação só apresenta nomes publicamente depois da aprovação editorial, com fonte pública e consentimento confirmado. `/editor/project-credits` é a fila para essa validação. Nome completo e função de Sofia e Tércio ainda não estão documentados. Não foram enviados emails.
 
 ## Arquitetura
 
