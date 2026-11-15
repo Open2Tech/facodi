@@ -82,7 +82,7 @@ export default function UnitDetails() {
     </nav>
     <header className="border-b border-foreground pb-10">
       <p className="mb-5 flex flex-wrap items-center gap-2">
-        <TypeBadge type="curricular_unit" label={t('objectTypes.curricular_unit')} className="border border-foreground" />
+        <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
         {!!videoList.length && <a href="#unit-resources" className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
           <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{t('unit.videoChip', { count: videoList.length })}
         </a>}
