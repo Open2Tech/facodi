@@ -33,11 +33,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           FACODI_WORKERS_ORIGIN: https://facodi.marcelo-0d6.workers.dev
         run: node scripts/verify-workers-deployment.mjs
-      - name: Smoke test SPA deep links and security headers
+      - name: Smoke test SPA routes, security headers, brand assets and social previews
         env:
           FACODI_WORKERS_ORIGIN: https://facodi.marcelo-0d6.workers.dev
         run: node scripts/smoke-facodi-workers.mjs
       - name: Note scope
         run: |
-          echo "This checks the deployed commit and Worker shell routes only."
+          echo "This checks the deployed commit, Worker shell routes, brand assets, social metadata and legal snapshots."
           echo "It does not mutate Supabase, authenticate users, or verify live client-side data."
