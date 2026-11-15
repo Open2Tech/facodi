@@ -159,6 +159,8 @@ export default function SequenceDetails() {
             {selected.slug && <Link to={`/resources/${encodeURIComponent(selected.slug)}`} className="inline-flex items-center gap-2 underline underline-offset-4">{t('unit.openVideoPage')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>}
             {selected.youtubeUrl && <a href={selected.youtubeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 underline underline-offset-4">{t('video.watchOnYoutube')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>}
           </p>
+          {selected.youtubeId && sequence.slug.startsWith('facodi-playlist-ifes-') &&
+            <div className="mt-7"><CreatorLearningPanel kind="video" slug={selected.slug ?? ''} youtubeId={selected.youtubeId} /></div>}
         </div>
         <ol aria-label={t('sequences.lessonsHeading')} className="max-h-[36rem] divide-y divide-input overflow-y-auto border-y border-input">
           {items.map((item, position) => {
