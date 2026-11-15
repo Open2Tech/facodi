@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
-import { ArrowRight, BookOpen, ListVideo } from 'lucide-react';
+import { ArrowRight, ListVideo } from 'lucide-react';
+import { IfesStudyProgressPanel } from '@/components/course/IfesStudyProgressPanel';
 import { publicLearningRows } from '@/features/learning/publicLearningRpc';
 import { unitPath } from '@/entities/course/course.paths';
 
@@ -93,22 +94,7 @@ export function IfesLearningJourney({ courseSlug }: { courseSlug: string }) {
       <h3 className="text-xl font-semibold">{current.year_title}</h3>
       {current.year_description && <p className="mt-2 max-w-prose text-sm text-muted-foreground">{current.year_description}</p>}
       <p className="mt-2 font-mono text-xs text-muted-foreground">{current.unit_count} disciplinas · 3 tópicos de estudo por guia</p>
-      <ul className="mt-5 grid gap-3 md:grid-cols-2">
-        {current.units.map(unit => <li key={unit.unit_slug}>
-          <div className="flex h-full flex-col border border-input p-4 transition-colors hover:border-foreground">
-            <Link to={unitPath(courseSlug, unit.unit_slug)} className="font-semibold underline-offset-4 hover:underline">
-              {unit.unit_title}
-            </Link>
-            <p className="mt-2 font-mono text-xs tabular-nums text-muted-foreground">
-              {unit.study_topic_count} tópicos · {unit.video_count} vídeos · {unit.reading_count} leituras
-            </p>
-            {unit.study_module_slug && <Link to={`/resources/${encodeURIComponent(unit.study_module_slug)}`}
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4 hover:underline">
-              <BookOpen className="h-4 w-4" aria-hidden="true" /> Abrir guia prático
-            </Link>}
-          </div>
-        </li>)}
-      </ul>
+      <IfesStudyProgressPanel courseSlug={courseSlug} units={current.units} />
       {!!current.interdisciplinary_projects.length && <div className="mt-8 border border-foreground bg-muted/30 p-5">
         <h4 className="font-semibold">Projetos interdisciplinares opcionais</h4>
         <ul className="mt-3 space-y-3">
