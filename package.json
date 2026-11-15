@@ -23,6 +23,7 @@
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5",
     "@fontsource/space-grotesk": "5.2.10",
+    "@vercel/analytics": "^2.0.1",
     "@hookform/resolvers": "^5.4.0",
     "@radix-ui/react-accordion": "^1.2.15",
     "@radix-ui/react-alert-dialog": "^1.1.18",
