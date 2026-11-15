@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
+import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useSequences } from '@/features/sequences/useSequences';
 import { SequenceList } from '@/components/sequence/SequenceList';
 import { useContributePath } from '@/features/auth/useContributePath';
@@ -31,6 +32,7 @@ export default function UnitDetails() {
   const videos = useUnitVideos(query.data?.unit.learning_object_id);
   const outcomesQuery = useUnitOutcomes(query.data?.unit.learning_object_id);
   const readingsQuery = useUnitReadings(query.data?.unit.learning_object_id);
+  const playlistsQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'playlist');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -127,6 +129,27 @@ export default function UnitDetails() {
                       <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
                       {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
                       <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
+        </section>}
+        {(playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
+          <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
+          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitPlaylists.notice')}</p>
+          {playlistsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : playlistsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{playlistsQuery.error.message}</p>
+                  <button type="button" onClick={() => void playlistsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!playlistsQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {playlistsQuery.data.map(playlist => <li key={playlist.id}>
+                    <Link to={`/resources/${encodeURIComponent(playlist.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input p-5 transition-colors hover:border-foreground">
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
+                      {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
                     </Link>
                   </li>)}
                 </ul>}
