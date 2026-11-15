@@ -2050,5 +2050,9 @@
         }
       ]
     }
+  },
+  "collectionPlaylists": {
+    "title": "Percursos de vídeo desta coleção",
+    "notice": "Sequências organizadas pela FACODI com aulas dos canais originais. Abra um percurso para ver as aulas pela ordem proposta."
   }
 }
