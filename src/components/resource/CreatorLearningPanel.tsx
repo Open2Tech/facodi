@@ -30,8 +30,8 @@ const videoSchema = z.object({
 });
 
 export function CreatorLearningPanel({
-  kind, slug, youtubeId,
-}: { kind: string; slug: string; youtubeId: string | null }) {
+  kind, slug, youtubeId, inlineSequence = false,
+}: { kind: string; slug: string; youtubeId: string | null; inlineSequence?: boolean }) {
   const isIfesPlaylist = kind === 'playlist' && slug.startsWith('facodi-playlist-ifes-');
   const isVideo = kind === 'video' && !!youtubeId;
 
@@ -58,10 +58,10 @@ export function CreatorLearningPanel({
     {isIfesPlaylist && <section aria-label="Percurso de aprendizagem" className="border border-foreground p-6">
       <p className="font-mono text-xs uppercase text-muted-foreground">FACODI · Sequência editorial</p>
       <h2 className="mt-2 text-2xl font-semibold">Aprende com esta sequência</h2>
-      <Link to={`/sequences/${encodeURIComponent(slug)}`}
+      {!inlineSequence && <Link to={`/sequences/${encodeURIComponent(slug)}`}
         className="mt-5 inline-flex items-center gap-2 border border-foreground bg-foreground px-4 py-3 text-sm font-semibold text-background hover:opacity-90">
         Ver aulas organizadas <ArrowRight className="h-4 w-4" aria-hidden="true" />
-      </Link>
+      </Link>}
       {playlist.isPending && <p role="status" className="mt-4 text-sm text-muted-foreground">A carregar o guia...</p>}
       {playlist.error && <p role="alert" className="mt-4 text-sm">O guia não está disponível neste momento. A sequência de vídeos continua acessível.</p>}
       {guide && <div className="mt-7 border-t border-input pt-6">
