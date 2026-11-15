@@ -289,6 +289,15 @@ logs ou commits.
 - Fluxos de Auth, editor e admin no Chromium utilizam respostas de teste
   intercetadas; não enviam emails nem criam conteúdo no projeto remoto.
 
+### Percurso histórico independente de Astronomia e Astrofísica (GACS/Ifes, 2018)
+
+Foi publicado um **novo percurso editorial FACODI de 10 etapas** sobre astronomia e astrofísica, inspirado na memória de participação num curso introdutório associado às atividades do GACS (Ifes Cariacica, 2018). Integra 6 referências institucionais externas, 22 associações às fontes, 9 vídeos distintos reutilizados, 14 vínculos vídeo–etapa e 20 objetivos originais.
+
+**Não se trata de uma reedição oficial do curso de extensão de 2018, nem da disciplina de 60 horas/4 créditos da Licenciatura em Física do Ifes, nem da edição de 2018 do INPE**. Os dez temas são reconstrução FACODI publicada em 2026, sem equivalência, certificado ou carga horária formal confirmada.
+
+- [Abrir curso no Cloudflare Workers](https://facodi.marcelo-0d6.workers.dev/courses/astronomia-astrofisica-gacs-2018)
+- [Auditoria técnica, fontes e limitações](docs/facodi-gacs-astronomia-astrofisica-2018.md)
+
 ## Deployment
 
 ```sh
