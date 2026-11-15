@@ -49,3 +49,61 @@ assert.ok(!sitemap.text.includes(origin), 'Preview URL must not appear in sitema
 
 console.log('FACODI Workers SPA-shell smoke checks passed (read-only, no Auth, no email, no data mutation).');
 console.log('Note: HTML-shell checks do not prove that Supabase data rendered; validate representative routes in a browser separately.');
+
+
+// Regression coverage for the FACODI brand asset release. Static resources
+// are checked as bytes rather than only as URLs in rendered React or meta tags.
+const pngCases = [
+  ['/favicon-32x32.png', 32, 32],
+  ['/apple-touch-icon.png', 180, 180],
+  ['/pwa-192x192.png', 192, 192],
+  ['/pwa-512x512.png', 512, 512],
+  ['/social-preview-default.png?v=20261115', 1200, 630],
+];
+const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+for (const [path, width, height] of pngCases) {
+  const response = await fetch(origin + path, {
+    headers: { Accept: 'image/png' },
+    signal: AbortSignal.timeout(15_000),
+  });
+  assert.equal(response.status, 200, 'Brand asset ' + path + ' returned ' + response.status);
+  assert.match(response.headers.get('content-type') ?? '', /image\/png/i,
+    'Brand asset ' + path + ' has the wrong content-type');
+  const data = Buffer.from(await response.arrayBuffer());
+  assert.ok(data.subarray(0, 8).equals(pngSignature), 'Invalid PNG at ' + path);
+  assert.equal(data.readUInt32BE(16), width, 'Wrong width: ' + path);
+  assert.equal(data.readUInt32BE(20), height, 'Wrong height: ' + path);
+  console.log('OK', path, width, '×', height);
+}
+
+const icon = await get('/favicon.svg', 'image/svg+xml');
+assert.equal(icon.response.status, 200, 'FACODI SVG favicon must exist');
+assert.match(icon.response.headers.get('content-type') ?? '', /image\/svg\+xml/i);
+assert.match(icon.text, /<svg\b/i, 'FACODI SVG favicon missing root element');
+assert.doesNotMatch(icon.text, /o2t-logo|tube-o2/i, 'Legacy logo still in FACODI SVG');
+
+const manifestResponse = await get('/site.webmanifest', 'application/manifest+json');
+assert.equal(manifestResponse.response.status, 200);
+const manifest = JSON.parse(manifestResponse.text);
+assert.equal(manifest.name, 'FACODI');
+for (const name of ['/favicon.svg', '/pwa-192x192.png', '/pwa-512x512.png']) {
+  assert.ok(manifest.icons.some(icon => icon.src === name), 'Missing manifest icon ' + name);
+}
+assert.ok(manifest.icons.some(icon => icon.src === '/pwa-512x512.png' && icon.purpose.includes('maskable')),
+  'PWA maskable icon must remain available');
+
+const home = await get('/');
+assert.match(home.text, /https:\/\/facodi\.com\/social-preview-default\.png\?v=20261115/,
+  'Worker home shell does not advertise the current OG image');
+assert.match(home.text, /twitter:card" content="summary_large_image"/,
+  'Worker home shell does not advertise the Twitter summary card');
+
+for (const route of ['/privacy', '/terms', '/cookies', '/copyright', '/accessibility', '/legal']) {
+  const page = await get(route);
+  assert.equal(page.response.status, 200, 'Legal snapshot not served at ' + route);
+  assert.match(page.text, new RegExp('https://facodi[.]com' + route + '["<]'),
+    'Missing canonical URL in static snapshot for ' + route);
+  assert.match(page.response.headers.get('x-robots-tag') ?? '', /noindex/i,
+    'Preview legal page must not be indexed: ' + route);
+}
+console.log('FACODI brand assets, Open Graph metadata, manifest and legal snapshots passed (read-only).');
