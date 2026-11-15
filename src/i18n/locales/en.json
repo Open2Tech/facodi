@@ -1055,6 +1055,10 @@
   "sequences": {
     "title": "Study sequences",
     "description": "Editorial paths of YouTube lessons, ordered by FACODI so you can study a topic from start to finish.",
+    "search": "Search sequences",
+    "searchPlaceholder": "Title, topic or unit code",
+    "noMatches": "No study sequences match your search.",
+    "clearFilters": "Clear filters",
     "notice": "Editorial collections of links to external videos. FACODI did not host or download the videos; topical fit was reviewed by titles and sources.",
     "empty": "No sequences have been published yet.",
     "emptyText": "Sequences appear here once the editorial team publishes them.",

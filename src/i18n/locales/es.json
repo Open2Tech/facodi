@@ -1055,6 +1055,10 @@
   "sequences": {
     "title": "Secuencias de estudio",
     "description": "Recorridos editoriales de clases de YouTube, ordenados por FACODI para estudiar un tema de principio a fin.",
+    "search": "Buscar secuencias",
+    "searchPlaceholder": "Título, tema o código de asignatura",
+    "noMatches": "Ninguna secuencia coincide con tu búsqueda.",
+    "clearFilters": "Limpiar filtros",
     "notice": "Colecciones editoriales de enlaces a vídeos externos. FACODI no alojó ni descargó los vídeos; la correspondencia temática se revisó por títulos y fuentes.",
     "empty": "Todavía no hay secuencias publicadas.",
     "emptyText": "Las secuencias aparecen aquí cuando el equipo editorial las publica.",

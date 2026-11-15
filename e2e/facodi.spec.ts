@@ -860,6 +860,41 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
   await expect(page.getByRole('checkbox')).toHaveCount(0);
 });
 
+test('study sequence catalogue searches, filters regional languages and paginates through the URL', async ({ page }) => {
+  const rows = Array.from({ length: 13 }, (_, index) => ({
+    playlist_id: `p${index + 1}`,
+    playlist_slug: `sequence-${index + 1}`,
+    playlist_title: index === 0 ? 'Análise de dados com Python' : `Study sequence ${index + 1}`,
+    playlist_description: index === 0 ? '<p>Estatística exploratória</p>' : '',
+    language: index === 12 ? 'en' : 'pt-BR',
+    item_count: 3,
+    unit_codes: index === 0 ? ['19411021'] : [],
+    cover_youtube_id: '',
+  }));
+  await page.route('**/rest/v1/rpc/list_public_editorial_sequences_v1', async route => {
+    expect(route.request().headers()['content-profile']).toBe('facodi');
+    return route.fulfill({ json: rows });
+  });
+
+  await page.goto('/sequences');
+  await expect(page.getByRole('heading', { level: 1, name: 'Study sequences' })).toBeVisible();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await expect(page).toHaveURL('/sequences?page=2');
+  await expect(page.getByRole('link', { name: /Study sequence 13/ })).toBeVisible();
+
+  await page.getByRole('searchbox', { name: 'Search sequences' }).fill('analise');
+  await expect(page).toHaveURL(/search=analise/);
+  await expect(page.getByRole('link', { name: /Análise de dados com Python/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Study sequence 13/ })).toHaveCount(0);
+
+  await page.getByRole('main').getByRole('combobox').selectOption('pt');
+  await expect(page).toHaveURL(/search=analise.*language=pt/);
+  await expect(page.getByRole('link', { name: /Análise de dados com Python/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(page).toHaveURL('/sequences');
+  await expect(page.getByRole('navigation', { name: 'Pagination' })).toBeVisible();
+});
+
 test('unified resources catalogue finds modules and preserves legacy module URLs', async ({ page }) => {
   const module = {
     id: 'module-1', slug: 'intro-algebra', title: 'Introduction to algebra',

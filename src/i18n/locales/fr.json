@@ -1055,6 +1055,10 @@
   "sequences": {
     "title": "Séquences d’étude",
     "description": "Parcours éditoriaux de cours YouTube, ordonnés par FACODI pour étudier un sujet du début à la fin.",
+    "search": "Rechercher des séquences",
+    "searchPlaceholder": "Titre, thème ou code d’UE",
+    "noMatches": "Aucune séquence ne correspond à ta recherche.",
+    "clearFilters": "Effacer les filtres",
     "notice": "Collections éditoriales de liens vers des vidéos externes. FACODI n’a ni hébergé ni téléchargé les vidéos ; la correspondance thématique a été vérifiée d’après les titres et les sources.",
     "empty": "Aucune séquence publiée pour l’instant.",
     "emptyText": "Les séquences apparaissent ici dès que l’équipe éditoriale les publie.",

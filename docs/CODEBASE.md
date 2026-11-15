@@ -36,7 +36,9 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   (playlists editoriais). Leitura pública pelas RPCs
   `list_public_editorial_sequences_v1`, `get_public_editorial_playlist_v2` e
   `list_public_sequences_for_video_v1`; a página de vídeo usa a última para
-  ligar à sequência na aula correspondente. Progresso privado em
+  ligar à sequência na aula correspondente. `/sequences` pesquisa título,
+  descrição e código da UC, filtra idioma (incluindo variantes regionais) e
+  pagina com estado na URL. Progresso privado em
   `facodi.editorial_playlist_progress`. O papel
   `authenticated` só pode atualizar `last_position_seconds`/`completed_at`, por
   isso a gravação faz update e, sem linha, insert (sem upsert que reescreva a
