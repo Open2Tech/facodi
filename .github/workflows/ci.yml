@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://ci-placeholder.supabase.co' }}
-      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_ci_placeholder' }}
+      VITE_SUPABASE_URL: https://ci-build-only.invalid
+      VITE_SUPABASE_PUBLISHABLE_KEY: ci-build-only-not-a-real-key
     steps:
       - name: Checkout
         uses: actions/checkout@v4

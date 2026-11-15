@@ -174,13 +174,13 @@ export function videoJsonLd(video: {
   });
 }
 
-export function itemListJsonLd(list: { path: string; title: string; description: string; items: { name: string; path?: string | null }[] }): JsonLd {
+export function itemListJsonLd(list: { path: string; title: string; description: string; items: { name: string; path?: string | null }[]; itemCount?: number }): JsonLd {
   return compact({
     '@context': 'https://schema.org', '@type': 'ItemList', '@id': canonicalUrl(list.path), url: canonicalUrl(list.path),
-    name: list.title, description: list.description, numberOfItems: list.items.length,
-    itemListElement: list.items.map((item, index) => compact({
+    name: list.title, description: list.description, numberOfItems: list.itemCount ?? list.items.length,
+    itemListElement: list.items.length ? list.items.map((item, index) => compact({
       '@type': 'ListItem', position: index + 1, name: item.name, url: item.path ? canonicalUrl(item.path) : undefined,
-    })),
+    })) : undefined,
   });
 }
 
@@ -257,17 +257,24 @@ export function resourceMeta(
 }
 
 export function sequenceMeta(
-  sequence: { slug: string; title: string; description?: string | null; language?: string | null; items: { title: string; slug: string | null; youtubeId: string | null }[] },
+  sequence: {
+    slug: string; title: string; description?: string | null; language?: string | null;
+    items: { title: string; slug: string | null; youtubeId: string | null }[];
+    itemCount?: number; coverYoutubeId?: string | null;
+  },
   labels: { sequences: string },
 ): PageMeta {
   const path = sequencePath(sequence.slug);
   const description = metaDescription(sequence.description, sequence.title);
-  const cover = sequence.items.find(item => item.youtubeId)?.youtubeId;
+  const cover = sequence.coverYoutubeId ?? sequence.items.find(item => item.youtubeId)?.youtubeId;
   return {
     title: sequence.title, description, path, language: sequence.language,
     image: cover ? youtubeImage(cover, sequence.title) : null,
     jsonLd: [
-      itemListJsonLd({ path, title: sequence.title, description, items: sequence.items.map(item => ({ name: item.title, path: item.slug ? resourcePath(item.slug) : null })) }),
+      itemListJsonLd({
+        path, title: sequence.title, description, itemCount: sequence.itemCount,
+        items: sequence.items.map(item => ({ name: item.title, path: item.slug ? resourcePath(item.slug) : null })),
+      }),
       breadcrumbJsonLd([{ name: labels.sequences, path: '/sequences' }, { name: sequence.title, path }]),
     ],
   };
