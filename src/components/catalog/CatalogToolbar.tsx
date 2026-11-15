@@ -3,13 +3,14 @@ import { SearchInput } from '@/components/catalog/SearchInput';
 
 export const LANGUAGES = [['pt', 'Português'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français']] as const;
 
-export function CatalogToolbar({ search, language, onFilter, withLanguage = true }: {
+export function CatalogToolbar({ search, language, onFilter, withLanguage = true, searchLabel, searchPlaceholder }: {
   search: string; language: string; onFilter: (key: 'search' | 'language', value: string) => void; withLanguage?: boolean;
+  searchLabel?: string; searchPlaceholder?: string;
 }) {
   const { t } = useTranslation();
   return <div className="mb-8 mt-9 flex flex-col gap-5 border-t border-input pt-5 sm:flex-row">
-    <label className="flex-1 space-y-2 text-sm font-medium"><span className="block">{t('catalog.search')}</span>
-      <SearchInput value={search} onSearch={value => onFilter('search', value)} placeholder={t('catalog.searchPlaceholder')} />
+    <label className="flex-1 space-y-2 text-sm font-medium"><span className="block">{searchLabel ?? t('catalog.search')}</span>
+      <SearchInput value={search} onSearch={value => onFilter('search', value)} placeholder={searchPlaceholder ?? t('catalog.searchPlaceholder')} />
     </label>
     {withLanguage && <label className="space-y-2 text-sm font-medium"><span className="block">{t('common.language')}</span>
       <select className="h-10 w-full rounded-md border border-input bg-background px-3 sm:w-48" value={language} onChange={e => onFilter('language', e.target.value)}>

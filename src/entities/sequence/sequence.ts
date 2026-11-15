@@ -1,4 +1,5 @@
 import type { Json } from '@/integrations/supabase/types';
+import { plainText } from '@/shared/lib/text';
 
 /** A FACODI-owned editorial sequence: an ordered, reviewed list of external YouTube lessons. */
 export interface SequenceSummary {
@@ -69,6 +70,22 @@ const text = (value: Json | undefined) => (typeof value === 'string' && value.tr
 /** Same size the rest of the catalogue uses; the stored maxres URL is heavy and missing for some videos. */
 export function youtubeThumbnail(youtubeId: string | null) {
   return youtubeId && /^[\w-]{11}$/.test(youtubeId) ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : null;
+}
+
+function foldText(value: string) {
+  return value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+}
+
+/** Search visible sequence content and unit codes; base-language filters include regional variants. */
+export function filterSequences(sequences: SequenceSummary[], search: string, language: string) {
+  const term = foldText(search.trim());
+  return sequences.filter(sequence => {
+    const baseLanguage = sequence.language?.split('-')[0].toLowerCase();
+    if (language && baseLanguage !== language.toLowerCase()) return false;
+    if (!term) return true;
+    return [sequence.title, plainText(sequence.description), ...sequence.unitCodes]
+      .some(value => foldText(value).includes(term));
+  });
 }
 
 export function parseSequenceItems(value: Json): Omit<SequenceItem, 'slug'>[] {

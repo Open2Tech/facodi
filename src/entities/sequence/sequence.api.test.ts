@@ -3,7 +3,7 @@ import { http, HttpResponse } from 'msw';
 import { server } from '@/shared/test/mswServer';
 import { getEnv } from '@/shared/config/env';
 import { getSequence, listMyCompletedSequencesForVideo, listSequences, listSequencesForVideo, saveProgress } from '@/entities/sequence/sequence.api';
-import { completionPercent, nextItem, type SequenceItem, type VideoProgress } from '@/entities/sequence/sequence';
+import { completionPercent, filterSequences, nextItem, type SequenceItem, type SequenceSummary, type VideoProgress } from '@/entities/sequence/sequence';
 
 const base = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
 const progressRow = { video_id: 'v1', completed_at: '2026-11-14T10:00:00Z', last_position_seconds: 0, updated_at: '2026-11-14T10:00:00Z' };
@@ -12,6 +12,17 @@ const item = (videoId: string): SequenceItem => ({
 });
 
 describe('FACODI editorial sequences', () => {
+  it('searches visible sequence text and unit codes without accents and groups regional languages', () => {
+    const sequences: SequenceSummary[] = [
+      { id: 'p1', slug: 'analise', title: 'Análise de dados', description: '<p>Estatística exploratória</p>', language: 'pt-BR', itemCount: 8, unitCodes: ['19411021'], cover: null },
+      { id: 'p2', slug: 'data', title: 'Data methods', description: '', language: 'en', itemCount: 4, unitCodes: ['DATA101'], cover: null },
+    ];
+    expect(filterSequences(sequences, 'analise', 'pt')).toEqual([sequences[0]]);
+    expect(filterSequences(sequences, 'estatistica', '')).toEqual([sequences[0]]);
+    expect(filterSequences(sequences, '19411021', '')).toEqual([sequences[0]]);
+    expect(filterSequences(sequences, '', 'en')).toEqual([sequences[1]]);
+  });
+
   it('maps the sequences containing a video and the learner\'s completed ones', async () => {
     let progressQuery: URLSearchParams | null = null;
     server.use(
