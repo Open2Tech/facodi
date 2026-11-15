@@ -14,6 +14,8 @@ const required = [
   'https://www.facodi.com/',
   'https://www.facodi.com/courses',
   'https://www.facodi.com/units',
+  'https://www.facodi.com/modules',
+  'https://www.facodi.com/how-it-works',
   'https://www.facodi.com/resources',
   'https://www.facodi.com/sequences',
   'https://www.facodi.com/about',
