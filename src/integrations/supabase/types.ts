@@ -1968,6 +1968,26 @@ export type Database = {
       }
     }
     Views: {
+      course_unit_content_coverage: {
+        Row: {
+          course_id: string
+          course_code: string
+          curricular_unit_id: string
+          curricular_unit_object_id: string | null
+          curricular_unit_code: string | null
+          curricular_unit_title: string
+          year: number | null
+          semester: number | null
+          curricular_category: string | null
+          elective_group: string | null
+          official_hours: number | null
+          video_count: number
+          reading_count: number
+          collection_count: number
+          coverage_status: string
+        }
+        Relationships: []
+      }
       public_youtube_creator_catalog_v1: {
         Row: {
           catalogued_public_videos: number | null
