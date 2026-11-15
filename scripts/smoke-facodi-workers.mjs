@@ -5,6 +5,10 @@ const canonical = 'https://www.facodi.com';
 const routes = ['/', '/about', '/community', '/courses', '/community/join',
   '/editor/email-templates', '/auth/callback', '/auth/reset-password',
   // The Workers build must support the real FACODI SPA deep links, not just its home page.
+  '/courses/ifes-cariacica-administracao-integrado-2026',
+  '/sequences/facodi-playlist-ifes-aladim-historia-brasil',
+  '/resources/youtube-I8sRO8QlN4c',
+  '/editor/course-quality',
   '/courses/lesti',
   '/courses/ufes-letras-ingles',
   '/resources/facodi-oito-canais-guto',
