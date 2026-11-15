@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
 import FacodiLayout from '@/components/layout/FacodiLayout';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { PageState } from '@/components/layout/PageState';
@@ -100,7 +99,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <AppRoutes />
-      <Analytics />
     </BrowserRouter>
   );
 }
