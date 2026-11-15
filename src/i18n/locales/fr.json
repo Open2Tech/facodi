@@ -421,7 +421,7 @@
     "title": "Un onglet ouvert est devenu une grande idée.",
     "lead": "FACODI relie ressources publiques, cours, personnes et questions utiles. Né d'une expérience étudiante, ouvert à toute la communauté.",
     "seaeuTitle": "SEA-EU et l’Université de l’Algarve",
-    "seaeuText": "FACODI fait partie des SEA-EU Student-Led Projects 2026 et est né à l’Université de l’Algarve (UAlg).",
+    "seaeuText": "FACODI est un projet personnel de Marcelo Santos, développé dans le contexte des SEA-EU Student-Led Projects 2026 et de l’Université de l’Algarve.",
     "seaeuScope": "L’objectif est simple : rendre le matériel académique de qualité plus facile à trouver et montrer où chaque élément s’inscrit dans un parcours d’apprentissage.",
     "principlesTitle": "Principes",
     "principles": {
@@ -454,7 +454,7 @@
     "project": "Projet",
     "account": "Compte",
     "contribute": "Contribuer",
-    "note": "FACODI · SEA-EU Student-Led Projects 2026 · Université de l’Algarve",
+    "note": "FACODI · projet de Marcelo Santos · campus numérique ouvert",
     "legal": "Informations légales"
   },
   "course": {
@@ -1352,7 +1352,7 @@
       "related": "Politiques et informations légales",
       "pending": "À confirmer",
       "reviewTitle": "Version en cours de révision",
-      "reviewText": "Ce texte décrit le fonctionnement réel de FACODI à la date indiquée, mais la confirmation des données institutionnelles et une révision juridique restent à faire. Les informations marquées « à confirmer » seront complétées avant la publication définitive."
+      "reviewText": "Cette page décrit le fonctionnement de FACODI à la date indiquée. Certaines informations juridiques restent à vérifier ; les données personnelles non publiques et les détails internes d’infrastructure ne sont pas publiés."
     },
     "nav": {
       "privacy": "Confidentialité",
@@ -1378,8 +1378,8 @@
           "id": "controller",
           "title": "Responsable du traitement",
           "body": [
-            "FACODI est un campus numérique ouvert maintenu par Open 2 Technology (Open2 / O2T), dans le cadre des SEA-EU Student-Led Projects 2026, né à l’Université de l’Algarve.",
-            "L’identification juridique complète du responsable du traitement (forme juridique, numéro fiscal et adresse) est à confirmer et sera publiée dans les [Mentions légales](/legal). La mention de l’Université de l’Algarve et de l’alliance SEA-EU décrit l’origine du projet ; elle ne signifie pas que ces institutions sont responsables du traitement de vos données.",
+            "FACODI est un campus numérique ouvert et un projet personnel de Marcelo Santos. Il est né dans le contexte des SEA-EU Student-Led Projects 2026 et de l’Université de l’Algarve, tout en restant géré de manière indépendante.",
+            "Marcelo Santos est responsable du projet et son interlocuteur public. Nous ne publions ni adresse personnelle, ni identifiants fiscaux, ni coordonnées privées, ni détails techniques des serveurs. Les mentions supplémentaires exigées par la loi seront examinées après vérification du cadre applicable. L’origine académique ne fait pas de l’Université de l’Algarve ou de SEA-EU un responsable du traitement.",
             "Contact confidentialité : [hello@open2.tech](mailto:hello@open2.tech). Aucun délégué à la protection des données n’a été désigné ; la nécessité d’en désigner un est en cours d’évaluation."
           ]
         },
@@ -1455,7 +1455,7 @@
           "title": "Authentification et compte",
           "body": [
             "L’authentification utilise Supabase Auth avec e-mail et mot de passe et le flux PKCE. La session est conservée dans le stockage local du navigateur et renouvelée automatiquement jusqu’à votre déconnexion.",
-            "Le service d’authentification est partagé avec une autre application d’Open 2 Technology. Les comptes créés sur FACODI sont identifiés comme tels, mais le registre des utilisateurs est commun.",
+            "L’authentification utilise une infrastructure partagée avec une autre application du même écosystème ; les données éducatives de FACODI restent soumises à des autorisations distinctes. Ces données ne sont pas utilisées à des fins publicitaires.",
             "Les rôles d’éditeur et d’administrateur sont attribués manuellement, jamais automatiquement. L’accès aux données est contrôlé dans la base de données par des règles de sécurité au niveau des lignes : les notes d’étude ne sont visibles que par vous et les contributions seulement par vous et par l’équipe éditoriale qui les examine."
           ]
         },
@@ -1475,7 +1475,7 @@
             "rows": [
               [
                 "Supabase",
-                "Base de données, authentification, e-mails d’authentification et fonctions serveur. Projet hébergé dans la région us-east-2 (États-Unis).",
+                "Base de données, authentification, e-mails de connexion et fonctions serveur. Infrastructure hébergée aux États-Unis.",
                 "Compte, étude, contributions, notifications et journaux techniques"
               ],
               [
@@ -1581,7 +1581,7 @@
           "title": "Qu’est-ce que FACODI",
           "body": [
             "FACODI est un campus numérique ouvert qui organise des cours, des unités d’enseignement, des modules, des séquences d’apprentissage et des ressources externes, afin de faciliter la recherche de matériel académique de qualité et de comprendre la place de chaque élément dans un parcours.",
-            "C’est un projet éducatif maintenu par Open 2 Technology, issu des SEA-EU Student-Led Projects 2026 et de l’Université de l’Algarve. Les structures curriculaires publiées sont des reconstitutions éditoriales de FACODI : ce ne sont pas des programmes approuvés par les établissements d’enseignement et elles ne donnent droit à aucun crédit (ECTS ou autre), diplôme, certificat ou équivalence."
+            "Il s’agit d’une initiative éducative personnelle de Marcelo Santos, développée dans le contexte des SEA-EU Student-Led Projects 2026 et de l’Université de l’Algarve. Les structures de cours de FACODI sont des reconstructions éditoriales, non des programmes homologués, et n’attribuent ni crédits, ni diplômes, ni certificats, ni équivalences."
           ]
         },
         {
@@ -1658,7 +1658,7 @@
           "id": "ip",
           "title": "Propriété intellectuelle",
           "body": [
-            "Le nom et l’identité visuelle de FACODI, les textes éditoriaux, les structures curriculaires, le design et le code de l’application appartiennent à Open 2 Technology et à ses contributeurs. La licence du code et des contenus originaux est à confirmer ; en attendant sa publication, le régime général du droit d’auteur s’applique.",
+            "L’identité FACODI et les contenus originaux ont leurs auteurs et ayants droit respectifs, dont Marcelo Santos et les contributeurs. Le code accessible publiquement n’est pas automatiquement librement réutilisable. Les contenus tiers restent soumis à leurs droits et conditions.",
             "Les détails sur les licences, l’attribution et les contenus de tiers figurent dans [Droit d’auteur](/copyright)."
           ]
         },
@@ -1715,14 +1715,14 @@
             ],
             "rows": [
               [
-                "sb-wvkjainfwsyiyfcmbtid-auth-token",
+                "sb-…-auth-token",
                 "Stockage local",
                 "Maintient la session ouverte et la renouvelle automatiquement. N’existe que lorsque vous êtes connecté.",
                 "Jusqu’à la déconnexion",
                 "Non requis : sans lui, la session que vous avez ouverte ne peut pas être maintenue."
               ],
               [
-                "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
+                "sb-…-auth-token-code-verifier",
                 "Stockage local",
                 "Code de sécurité temporaire (PKCE) pour se connecter, confirmer l’e-mail et récupérer le mot de passe.",
                 "Jusqu’à la fin du flux",
@@ -1811,7 +1811,7 @@
           "id": "original",
           "title": "Contenus originaux de FACODI",
           "body": [
-            "Appartiennent à FACODI les textes éditoriaux, les descriptions, les structures des cours et unités d’enseignement, les objectifs d’étude, la sélection et l’organisation du catalogue, l’identité visuelle et le code de l’application. Leur titularité revient à Open 2 Technology et aux contributeurs qui les ont créés.",
+            "Les textes et contenus éditoriaux créés pour FACODI, la sélection du catalogue, le design et le code peuvent avoir différents auteurs et ayants droit, notamment Marcelo Santos et les contributeurs. FACODI est un projet personnel de Marcelo Santos, et non une personne morale qui détiendrait automatiquement tous les contenus. Toute réutilisation dépend des licences ou autorisations applicables.",
             "La licence de ces contenus est à confirmer. En attendant sa publication, le régime général du Code portugais du droit d’auteur et des droits voisins s’applique : vous pouvez les consulter et les citer, mais la reproduction ou l’adaptation substantielle nécessite une autorisation.",
             "Les programmes de référence s’appuient sur des informations publiques des établissements d’enseignement, qui restent titulaires de leurs documents. Les versions de FACODI ne sont pas des documents officiels."
           ]
@@ -1846,7 +1846,7 @@
           "title": "Attribution et citation",
           "body": [
             "Lorsque vous utilisez une ressource de tiers, citez l’auteur, le titre, la source et la licence, selon les conditions de la source d’origine.",
-            "Pour citer FACODI, indiquez « FACODI — Open 2 Technology », le titre de la page, l’adresse et la date de consultation."
+            "Pour citer FACODI, indiquez « FACODI — projet de Marcelo Santos », le titre de la page, l’URL et la date de consultation."
           ]
         },
         {
@@ -1948,7 +1948,7 @@
           "id": "identity",
           "title": "Identification",
           "body": [
-            "Informations d’identification du prestataire de service au titre de l’article 10 du décret-loi portugais 7/2004 (commerce électronique). Les données manquantes seront publiées après confirmation ; aucune valeur provisoire n’est affichée."
+            "FACODI est un projet personnel de Marcelo Santos. Cette page indique les canaux de contact publics sans divulguer adresse personnelle, identifiant fiscal, identifiants de connexion ou adresses internes des serveurs. Toute identification complémentaire exigée par la loi reste à vérifier."
           ],
           "facts": [
             {
@@ -1957,26 +1957,26 @@
             },
             {
               "label": "Responsable",
-              "value": "Open 2 Technology (Open2 / O2T)"
+              "value": "Marcelo Santos"
             },
             {
-              "label": "Forme juridique",
-              "value": "Pas encore confirmée.",
+              "label": "Nature",
+              "value": "Projet éducatif personnel",
+              "pending": false
+            },
+            {
+              "label": "Identification fiscale",
+              "value": "Les mentions légales complémentaires sont en cours d’examen sans divulgation de données personnelles non publiques.",
               "pending": true
             },
             {
-              "label": "Numéro fiscal (NIF / NIPC)",
-              "value": "Sera publié après confirmation.",
-              "pending": true
-            },
-            {
-              "label": "Adresse",
-              "value": "Sera publiée après confirmation.",
+              "label": "Adresse privée",
+              "value": "Les mentions légales complémentaires sont en cours d’examen sans divulgation de données personnelles non publiques.",
               "pending": true
             },
             {
               "label": "Immatriculation",
-              "value": "Sera indiquée, le cas échéant.",
+              "value": "Les éventuelles obligations d’immatriculation restent à vérifier.",
               "pending": true
             },
             {
@@ -1992,12 +1992,20 @@
               "value": "[github.com/Open2Tech/facodi](https://github.com/Open2Tech/facodi)"
             },
             {
-              "label": "Origine",
+              "label": "Origine du projet",
               "value": "SEA-EU Student-Led Projects 2026 · Université de l’Algarve"
             },
             {
-              "label": "Création du projet",
-              "value": "Marcelo Santos"
+              "label": "Créateur",
+              "value": "Créé et maintenu par Marcelo Santos"
+            },
+            {
+              "label": "Profil public du créateur",
+              "value": "[github.com/marcelo-m7](https://github.com/marcelo-m7)"
+            },
+            {
+              "label": "Profil professionnel du créateur",
+              "value": "[linkedin.com/in/marcelo-m7](https://www.linkedin.com/in/marcelo-m7/)"
             }
           ]
         },
@@ -2012,7 +2020,7 @@
           "id": "institutions",
           "title": "Relation avec les établissements",
           "body": [
-            "FACODI fait partie des SEA-EU Student-Led Projects 2026 et est né à l’Université de l’Algarve. Cela décrit l’origine du projet et ne signifie pas que l’Université de l’Algarve, l’alliance SEA-EU ou les établissements dont les cours figurent au catalogue représentent, cautionnent FACODI ou ses contenus, ou en sont responsables.",
+            "FACODI est une initiative personnelle de Marcelo Santos, développée dans le contexte des SEA-EU Student-Led Projects 2026 et de l’Université de l’Algarve. Ces références ne rendent pas ces institutions responsables du service et ne signifient pas qu’elles approuvent chaque contenu.",
             "Les noms et marques des établissements, plateformes et cours appartiennent à leurs titulaires et ne sont utilisés que pour identifier l’origine de l’information."
           ]
         },
