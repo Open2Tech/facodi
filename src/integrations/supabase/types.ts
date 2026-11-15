@@ -3130,6 +3130,15 @@ export type Database = {
         }
         Returns: Json
       }
+      list_public_resource_topics_v1: {
+        Args: {
+          p_search?: string
+          p_language?: string | null
+          p_object_type?: string | null
+          p_area?: string | null
+        }
+        Returns: { tag: string; item_count: number }[]
+      }
       search_public_resources_v4: {
         Args: {
           p_language?: string
