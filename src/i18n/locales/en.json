@@ -1168,5 +1168,15 @@
     "previewOnly": "No sending",
     "placeholders": "Authentication links and codes remain as {{ .ConfirmationURL }} or {{ .Token }} placeholders until Supabase processes a real Auth message.",
     "previewTitle": "Preview: {{subject}}"
+  },
+  "courseCollections": {
+    "title": "Curated video collections for this course",
+    "notice": "Thematic selections assembled by FACODI from external channels. These are neither creator-managed playlists nor university-endorsed lessons.",
+    "open": "Explore collection"
+  },
+  "unitPlaylists": {
+    "title": "Suggested external playlists",
+    "notice": "Links to YouTube playlists. Titles and URLs were checked, but ownership and complete membership were not fully verified and may change.",
+    "openDetails": "View playlist"
   }
 }
