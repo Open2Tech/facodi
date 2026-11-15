@@ -378,7 +378,8 @@
     "noResults": "No resources match these filters. Try another title, language or topic.",
     "taggedWith": "Topic:",
     "clearTag": "Clear topic",
-    "filterType": "Resource type"
+    "filterType": "Resource type",
+    "allTypes": "All"
   },
   "about": {
     "title": "One open tab became a bigger idea.",
