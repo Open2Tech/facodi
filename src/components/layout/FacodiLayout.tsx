@@ -19,6 +19,7 @@ export default function FacodiLayout() {
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
   const dark = resolvedTheme === 'dark';
+  const isWorkersPreview = window.location.hostname === 'facodi.marcelo-0d6.workers.dev';
   const privateRoute = location.pathname.startsWith('/community/join') || ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
@@ -55,7 +56,7 @@ export default function FacodiLayout() {
     <Helmet>
       <title>{`FACODI — ${t('brand.tagline')}`}</title>
       <meta name="description" content={t('brand.description')} />
-      {privateRoute && <meta name="robots" content="noindex, nofollow" />}
+      {(privateRoute || isWorkersPreview) && <meta name="robots" content="noindex, nofollow, noarchive" />}
     </Helmet>
     <a href="#main" className="sr-only z-50 bg-primary p-4 text-primary-foreground focus:not-sr-only focus:absolute">{t('nav.skip')}</a>
     <header className="sticky top-0 z-30 border-b border-input bg-background">
