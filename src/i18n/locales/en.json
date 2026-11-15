@@ -1364,7 +1364,7 @@
       "related": "Policies and legal information",
       "pending": "To be confirmed",
       "reviewTitle": "Version under review",
-      "reviewText": "This page describes how FACODI operates as of the date shown. Some additional legal details still require verification; non-public personal data and internal infrastructure details are not disclosed."
+      "reviewText": "This page distinguishes the person responsible for FACODI from UAlg's public institutional details. Any additional legal identification obligations applicable to the personal project or its operator remain subject to legal assessment; no non-public personal data or internal infrastructure details are disclosed."
     },
     "nav": {
       "privacy": "Privacy",
@@ -1953,13 +1953,13 @@
     "legal": {
       "title": "Legal notice",
       "description": "Identification of the party responsible for the FACODI website, the nature of the project, its relationship with educational institutions and the applicable law.",
-      "lead": "Who is behind FACODI and how to contact us. Some identification details are still being confirmed and are marked as such.",
+      "lead": "Identification of the person responsible for FACODI and of the University of the Algarve as its academic institution. Public institutional details do not replace the website operator's legal identification.",
       "sections": [
         {
           "id": "identity",
           "title": "Identification",
           "body": [
-            "FACODI is a personal project by Marcelo Santos. This page provides public contact channels without publishing a personal address, tax identifiers, credentials or internal infrastructure addresses. Additional legally required identification remains subject to verification."
+            "FACODI is a personal project by Marcelo Santos, developed in the context of the SEA-EU Student-Led Projects 2026 and academically associated with the University of the Algarve (UAlg). The tax number, registered address and legal status shown below refer exclusively to the University. They are not FACODI's own tax registration, the operator's private address or the operator's legal registration."
           ],
           "facts": [
             {
@@ -1976,19 +1976,19 @@
               "pending": false
             },
             {
-              "label": "Tax identification",
-              "value": "Additional legal identification is being assessed without disclosing non-public personal information.",
-              "pending": true
+              "label": "UAlg tax identification",
+              "value": "NIPC 505 387 271 — the University of the Algarve's public tax identifier, not FACODI's.",
+              "pending": false
             },
             {
-              "label": "Private address",
-              "value": "Additional legal identification is being assessed without disclosing non-public personal information.",
-              "pending": true
+              "label": "UAlg institutional address",
+              "value": "Campus da Penha, Estrada da Penha, 8005-139 Faro, Portugal — the University's address, not FACODI's operator's private address.",
+              "pending": false
             },
             {
-              "label": "Registration",
-              "value": "Registration requirements to be verified, if applicable.",
-              "pending": true
+              "label": "UAlg legal status and registration",
+              "value": "[University of the Algarve](https://www.ualg.pt/) — a public-law legal entity. This does not constitute a separate FACODI registration.",
+              "pending": false
             },
             {
               "label": "Contact",
@@ -2031,7 +2031,7 @@
           "id": "institutions",
           "title": "Relationship with institutions",
           "body": [
-            "FACODI is a personal initiative by Marcelo Santos, developed in the context of the SEA-EU Student-Led Projects 2026 and the University of the Algarve. These references do not make those institutions responsible for the service or imply approval of every resource.",
+            "FACODI is a personal initiative by Marcelo Santos, associated with the University of the Algarve in the context of the SEA-EU Student-Led Projects 2026. In that context, UAlg provides academic institutional support and administrative and financial procedures for eligible programme expenditure. This does not make the University the owner, operator or general legal or tax representative of the FACODI website, nor its personal-data controller. Marcelo Santos remains responsible for coordinating FACODI.",
             "Names and trademarks of institutions, platforms and courses belong to their owners and are used only to identify where information comes from."
           ]
         },
