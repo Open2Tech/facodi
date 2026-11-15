@@ -1153,5 +1153,20 @@
     "withdrawConfirm": "Retirer la proposition et supprimer son historique privé ? Cette opération est irréversible.",
     "withdrawConfirmButton": "Confirmer le retrait",
     "withdrawUnavailable": "Cette proposition n'est plus disponible ou n'appartient pas à votre compte."
+  },
+  "editorEmails": {
+    "open": "Modèles d'email",
+    "back": "Retour à l'éditeur",
+    "title": "Emails FACODI, sans confusion.",
+    "lead": "Les modèles sont préparés dans Supabase, versionnés et utilisent www.facodi.com.",
+    "isolationLabel": "Séparation de l'authentification",
+    "isolationTitle": "Aperçu seulement, aucun envoi",
+    "isolationDescription": "Ces modèles sont propres au catalogue FACODI. Supabase Auth reste partagé avec Tube O2; les paramètres globaux des emails n'ont pas changé. Cette page n'envoie aucun message.",
+    "count": "{{count}} modèles préparés",
+    "empty": "Aucun modèle disponible.",
+    "enabled": "Envoi activé",
+    "previewOnly": "Aucun envoi",
+    "placeholders": "Les liens et codes restent des variables {{ .ConfirmationURL }} ou {{ .Token }} jusqu'au traitement réel par Supabase Auth.",
+    "previewTitle": "Aperçu : {{subject}}"
   }
 }
