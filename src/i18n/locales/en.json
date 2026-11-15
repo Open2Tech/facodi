@@ -427,7 +427,8 @@
     "searchPlaceholder": "Title, description or topic",
     "results": "Resource results",
     "filterByTag": "Filter by topic",
-    "noMatches": "No resources match these filters."
+    "noMatches": "No resources match these filters.",
+    "filterTopic": "Filter by topic"
   },
   "about": {
     "title": "One open tab became a bigger idea.",
@@ -2108,5 +2109,31 @@
     "confirmTitle": "Publish the new order?",
     "confirmDescription": "The new order will change {{count}} positions for all learners. Existing videos and personal progress are preserved.",
     "empty": "No editorial sequences are available."
+  },
+  "collectionModules": {
+    "title": "Modules and learning paths in this collection",
+    "notice": "Open a module to follow its video sequences and browse related source material."
+  },
+  "resourceTopics": {
+    "odoo": "Odoo",
+    "odoo-19": "Odoo 19",
+    "erp": "ERP",
+    "recursos-humanos": "Human Resources",
+    "recrutamento": "Recruitment",
+    "avaliacao-desempenho": "Performance appraisal",
+    "assiduidade": "Attendance & time off",
+    "remuneracao": "Payroll",
+    "contabilidade": "Accounting",
+    "frota": "Fleet",
+    "helpdesk": "Helpdesk",
+    "inventario": "Inventory",
+    "redes": "Computer Networks",
+    "dev-containers": "Dev Containers",
+    "low-code": "Low-Code",
+    "python": "Python",
+    "cloud": "Cloud",
+    "react": "React",
+    "gestao": "Management",
+    "tecnologia": "Technology"
   }
 }
