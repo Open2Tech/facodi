@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, BookOpen, BookOpenCheck, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
@@ -35,6 +35,7 @@ export default function FacodiLayout() {
   const links: { to: string; title: string; icon: LucideIcon; compact?: boolean }[] = [
     { to: '/courses', title: t('nav.courses'), icon: BookOpen },
     { to: '/units', title: t('nav.units'), icon: Layers },
+    { to: '/modules', title: t('nav.modules'), icon: BookOpenCheck },
     { to: '/resources', title: t('nav.resources'), icon: PlayCircle },
     { to: '/sequences', title: t('nav.sequences'), icon: ListOrdered },
     { to: '/about', title: t('nav.about'), icon: Info },
@@ -46,8 +47,8 @@ export default function FacodiLayout() {
     ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck, compact: true }] : []),
   ];
   const footer = [
-    { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }, { to: '/sequences', title: t('nav.sequences') }] },
-    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, ...(user ? [{ to: '/suggest', title: t('suggest.nav') }] : [])] },
+    { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/modules', title: t('nav.modules') }, { to: '/resources', title: t('nav.resources') }, { to: '/sequences', title: t('nav.sequences') }] },
+    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, ...(user ? [{ to: '/suggest', title: t('suggest.nav') }] : [])] },
     { title: t('footer.account'), links: user
       ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
       : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },
