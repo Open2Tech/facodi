@@ -9,6 +9,7 @@ import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { useSequences } from '@/features/sequences/useSequences';
 import { sequenceKeys } from '@/entities/sequence/sequence.keys';
+import { changedPositions, moveVideo } from '@/entities/sequence/sequence-order';
 import { youtubeThumbnail } from '@/entities/sequence/sequence';
 import { PageState } from '@/components/layout/PageState';
 import { Button } from '@/components/ui/button';
@@ -45,15 +46,6 @@ async function getOrder(slug: string, signal?: AbortSignal) {
   return parseSnapshot(data);
 }
 
-function moveVideo(current: string[], from: string, to: string): string[] {
-  const source = current.indexOf(from);
-  const destination = current.indexOf(to);
-  if (source < 0 || destination < 0 || source === destination) return current;
-  const next = current.slice();
-  next.splice(destination, 0, next.splice(source, 1)[0]);
-  return next;
-}
-
 function OrderEditor({ slug }: { slug: string }) {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
@@ -74,7 +66,7 @@ function OrderEditor({ slug }: { slug: string }) {
   const lessonById = useMemo(() => new Map(current.map(item => [item.videoId, item])), [current]);
   const originalPosition = useMemo(() => new Map(original.map((id, i) => [id, i + 1])), [current]);
   const dirty = draft.length === original.length && draft.some((id, index) => id !== original[index]);
-  const movedCount = draft.filter((id, index) => id !== original[index]).length;
+  const movedCount = changedPositions(original, draft);
 
   const mutation = useMutation({
     mutationFn: async () => {
