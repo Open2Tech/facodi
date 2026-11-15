@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { PREFERENCE_KEYS, REMEMBER_PREFERENCES_KEY, isRememberingPreferences, readPreference, setRememberPreferences, writePreference } from './preferenceStorage';
 
 const { language, theme } = PREFERENCE_KEYS;
@@ -7,6 +7,23 @@ describe('preferenceStorage', () => {
   beforeEach(() => {
     localStorage.clear();
     sessionStorage.clear();
+  });
+
+  it('degrades safely when the browser refuses storage access', () => {
+    const get = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new DOMException('Blocked', 'SecurityError'); });
+    const set = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new DOMException('Blocked', 'SecurityError'); });
+    const remove = vi.spyOn(Storage.prototype, 'removeItem').mockImplementation(() => { throw new DOMException('Blocked', 'SecurityError'); });
+    try {
+      expect(readPreference(language)).toBeNull();
+      expect(isRememberingPreferences()).toBe(false);
+      expect(() => writePreference(theme, 'dark')).not.toThrow();
+      expect(() => setRememberPreferences(true)).not.toThrow();
+      expect(() => setRememberPreferences(false)).not.toThrow();
+    } finally {
+      get.mockRestore();
+      set.mockRestore();
+      remove.mockRestore();
+    }
   });
 
   it('keeps choices in the session until the visitor opts in', () => {
