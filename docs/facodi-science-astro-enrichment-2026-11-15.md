@@ -80,3 +80,60 @@ As páginas institucionais da Universidade de São Paulo identificam duas playli
 - [Esfera celeste e orientação astronómica — ASTRO02](https://facodi.com/courses/astronomia-astrofisica-gacs-2018/units/gacs-astro-2018-astro02): página React carregada e referência institucional **Astronomia: Uma Visão Geral I** presente em «Leituras e documentação», juntamente com duas referências históricas INPE já existentes.
 - A página assinala corretamente que **não há vídeos individuais já classificados** para ASTRO02. A playlist institucional funciona como recurso externo para essa lacuna, sem inflacionar a contagem de aulas FACODI.
 - Nenhuma reprodução individual das 66 aulas externas foi testada; apenas a presença e o encaminhamento para a playlist original foram verificados.
+
+## Continuação editorial — 15/11/2026, expansão de observação celeste e astrobiologia
+
+Foram executadas mais **duas migrações de conteúdo**, integradas neste mesmo fluxo e versionadas na branch `facodi`.
+
+### 8 vídeos institucionais novos e 3 sequências
+
+- **UNIVESP / IAG-USP:** 7 vídeos individuais do curso `Astronomia: Uma visão geral I`, com temas de astronomia anterior aos telescópios, história dos instrumentos, observação espacial, espectrógrafos, magnitudes e distâncias, energia estelar e nebulosas.
+- **IAG-USP (aula de Rodrigo Nemmen):** 1 vídeo universitário avançado sobre ondas gravitacionais, com referência explícita ao LIGO.
+
+Foram criadas as sequências próprias FACODI:
+
+| Sequência | Vídeos | UCs |
+| --- | ---: | --- |
+| [Astronomia — história da observação e instrumentos](https://facodi.com/sequences/facodi-astro-sequence-univesp-instrumentos-observacao) | 4 | ASTRO01, ASTRO05 |
+| [Astrofísica — luz, distâncias e energia das estrelas](https://facodi.com/sequences/facodi-astro-sequence-univesp-luz-estrelas) | 4 | ASTRO05, ASTRO06 |
+| [Ondas gravitacionais — fundamentos físicos e aula universitária](https://facodi.com/sequences/facodi-astro-sequence-ondas-gravitacionais-usp) | 3 | ASTRO09 |
+
+São **11 associações sequência–vídeo**. Três são reutilizações de vídeos já catalogados; oito correspondem aos vídeos individuais novos. Não houve cópia de ficheiros, transcrições ou criação de exercícios. As sequências foram ligadas ao percurso de Astronomia e à coleção `facodi-study-astronomy-gacs-2018`, que passou de seis para nove sequências organizadas.
+
+A identificação dos vídeos novos foi cotejada com páginas públicas do YouTube e com o programa do IAG-USP. O estatuto de `approved` refere-se à adequação por título/descrição e **não** a observação integral, validação de licenças de re-hospedagem ou homologação pela instituição.
+
+Fontes institucionais: [IAG-USP — curso em vídeo](https://www.iag.usp.br/cultext/materiais/visao-geral-astronomia), [programa USP com as aulas e playlists](https://uspdigital.usp.br/apolo/apoObterAtividade?cod_oferecimentoatv=81999).
+
+### 9 referências de videoaulas e materiais no e-Aulas USP/NASA
+
+Foram indexados **9 recursos institucionais externos**, com **13 ligações** às UCs e acesso pelo URL original:
+
+- **USP e-Aulas:** Observar sem ver; Esfera Celeste partes 1 e 2; Sistemas de Coordenadas; Tempo e Calendário; Céu Noturno e Coordenadas; Outros, como o nosso (exoplanetas).
+- **NASA:** [Launchpad: Astrobiology](https://science.nasa.gov/eclips/videos/astrobiology/) e [materiais educativos de astrobiologia](https://astrobiology.nasa.gov/classroom-materials/).
+
+Estas referências encontram-se na secção pública **Leituras e documentação**, não em `facodi.youtube_videos`. Isto respeita o facto de os vídeos e-Aulas serem servidos pela USP e terem condições de cópia/redistribuição específicas. Nenhum MP4/legenda foi descarregado ou replicado.
+
+A UC **ASTRO02 — Esfera celeste e orientação astronómica** recebeu seis destes recursos. A UC **ASTRO09 — Ondas gravitacionais e astrobiologia** recebeu três, com uma aula de ondas gravitacionais estruturada como sequência adicional.
+
+Fontes: [USP e-Aulas — Esfera Celeste, parte 1](https://eaulas.usp.br/portal/video.action?idItem=157), [USP e-Aulas — Sistemas de Coordenadas](https://eaulas.usp.br/portal/video.action?idItem=161), [NASA Astrobiology](https://astrobiology.nasa.gov/classroom-materials/).
+
+### Verificações e contagens finais
+
+| Indicador | Antes | Depois |
+| --- | ---: | ---: |
+| Vídeos educativos FACODI publicados | 884 | **892** |
+| Sequências editoriais públicas (consulta `list_public_editorial_sequences_v1`) | 96 | **99** |
+| Objetos `external_resource` publicados | 168 | **177** |
+| Coleções | 24 | 24 (coleção existente enriquecida) |
+| Novas ligações de materiais a UCs | — | 13 |
+| Novas sequências com vídeo | — | 3 |
+
+**SQL + RLS, simulando `anon`:** 99 sequências públicas; 4 sequências associadas à ASTRO05, 3 à ASTRO09; 6 novas referências institucionais na ASTRO02 e 3 na ASTRO09. `get_public_editorial_playlist_v2` devolve respetivamente 4, 4 e 3 aulas ordenadas nas novas sequências. Zero pares duplicados no grafo `learning_object_relations`.
+
+**Navegador no domínio Cloudflare `facodi.com`:** foram abertas as páginas públicas, sem sessão e sem modificações. A [sequência de observação](https://facodi.com/sequences/facodi-astro-sequence-univesp-instrumentos-observacao) apresentou as quatro aulas da UNIVESP e um link do YouTube; a [UC Esfera Celeste](https://facodi.com/courses/astronomia-astrofisica-gacs-2018/units/gacs-astro-2018-astro02) apresentou as videoaulas USP partes 1 e 2 e Sistemas de Coordenadas, entre nove referências da secção. Nenhum erro de interface foi reportado. **Não foi feita reprodução individual de todos os vídeos.**
+
+**Migrações desta continuação:**
+- `20261115204536_facodi_publish_8_usp_univesp_astronomy_videos_three_sequences_20261115.sql`
+- `20261115204814_facodi_astro_2026_9_institutional_eaulas_nasa_video_resources.sql`
+
+Permanecem 10 vídeos em rascunho e 3 documentos por validar: não foram publicados automaticamente por esta intervenção.
