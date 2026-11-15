@@ -12,6 +12,7 @@ import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video'
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
+import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { VideoCard } from '@/components/resource/VideoCard';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
@@ -147,6 +148,7 @@ export default function ResourceDetails() {
         <Link to={contribute} className="inline-flex items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
       </div>
     </header>
+    <LearningContext focus="resource" />
 
     <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
       {player && <section ref={playerSection} aria-label={t('video.player')} className="min-w-0 scroll-mt-24 lg:col-start-1 lg:row-start-1">
