@@ -1168,5 +1168,15 @@
     "previewOnly": "Sin envío",
     "placeholders": "Los enlaces y códigos aparecen como variables {{ .ConfirmationURL }} o {{ .Token }} hasta que Supabase los procese en una autenticación real.",
     "previewTitle": "Vista previa: {{subject}}"
+  },
+  "courseCollections": {
+    "title": "Colecciones de vídeos para este curso",
+    "notice": "Selecciones temáticas organizadas por FACODI a partir de canales externos. No son listas oficiales de los creadores ni clases homologadas por la institución.",
+    "open": "Explorar colección"
+  },
+  "unitPlaylists": {
+    "title": "Listas externas recomendadas",
+    "notice": "Enlaces a listas de YouTube. Se verificaron el título y la URL, pero no se auditó la propiedad ni la totalidad de los vídeos.",
+    "openDetails": "Consultar lista"
   }
 }
