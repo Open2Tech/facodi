@@ -219,7 +219,7 @@ export default function EditorCourseQuality() {
           const target = targets.data?.get(item.target_object_id);
           const href = resourceHref(item) ?? (target?.slug ? `/resources/${encodeURIComponent(target.slug)}` : null);
           const originalSource = item.issue_kind === 'external_reading' ? safeExternalUrl(target?.source_url) : null;
-          return <li key={item.issue_key} className="py-5">;
+          return <li key={item.issue_key} className="py-5">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
               <p className="font-mono text-xs uppercase text-muted-foreground">
