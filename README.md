@@ -138,6 +138,14 @@ Exemplos: [Física — vetores e movimento](https://facodi.com/resources/facodi-
 
 Os links são **recomendações editoriais**, não equivalências, acreditação ou pré-requisitos académicos oficiais. Nenhum vídeo foi copiado nem foram gerados exercícios. Detalhes, testes e proveniência na [auditoria do grafo de módulos](docs/facodi-study-modules-graph-2026-11-15.md).
 
+## Fontes verificadas e sincronização YouTube Data API (15/11/2026)
+
+A auditoria de metadados reconciliou **191 verificações históricas de títulos/thumbnails** com os objetos de vídeo, recuperou **4 IDs de canal** por correspondência inequívoca e preencheu as palavras-chave de **187 recursos não-vídeo** (145 referências externas, 22 playlists, 16 coleções, 3 documentos e 1 curso). Todos os objetos do catálogo passam a ter pelo menos uma palavra-chave; os três documentos em rascunho permaneceram privados.
+
+Foi preparado um sincronizador **seguro e opt-in** para a [YouTube Data API](https://developers.google.com/youtube/data/reference/rest/v3/videos/list), com execução servidor-only, grupos de 50 IDs, pré-visualização obrigatória antes da opção `--apply`, comparação de `updated_at` e preservação de publicação, curadoria e progresso. **O sincronizador não foi executado** nesta sessão: não havia credenciais de API para a execução e a integração externa alternativa estava sem créditos. A execução exige `YOUTUBE_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` configuradas em ambiente servidor e revisão das [políticas YouTube sobre dados em cache](https://developers.google.com/youtube/terms/developer-policies).
+
+Os dados ainda indisponíveis **não foram inventados** (558 durações, 762 descrições oficiais, 940 datas de publicação). O pipeline V2 de extração antiga usa OpenGraph/oEmbed, atribui idioma por defeito e altera `status`; **não deve ser executado em lote** sobre o catálogo público sem correção/testes. Consultar o [relatório técnico e instruções](docs/facodi-youtube-metadata-official-source-pipeline-2026-11-15.md) e o [teste SQL de integridade](scripts/audits/facodi_youtube_metadata_integrity.sql).
+
 ## Metadados e proveniência dos vídeos (15/11/2026)
 
 O catálogo FACODI mantém **940 vídeos YouTube canónicos**, mais dois objetos históricos apresentados somente como referências externas. Uma auditoria de completude normalizou referências à política de licenciamento padrão da plataforma (**sem atribuir licença individual verificada**), criou 155 URLs de thumbnail de fallback, inferiu provisoriamente 87 idiomas e preencheu descrições editoriais e palavras-chave anteriormente ausentes dos objetos de vídeo.
