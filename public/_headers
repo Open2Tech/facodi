@@ -32,6 +32,11 @@ https://facodi.marcelo-0d6.workers.dev/*
 /community/join*
   X-Robots-Tag: noindex, nofollow, noarchive
 
+# The public build revision must reflect the currently deployed assets.
+/build-revision.txt
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
 # Vite fingerprints JS/CSS assets. They can be cached until their names change.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
