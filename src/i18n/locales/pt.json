@@ -1033,7 +1033,19 @@
     "publish": "Validar e publicar",
     "empty": "Tudo por validar? Nada pendente.",
     "emptyDescription": "Não existem candidatos à espera de verificação.",
-    "footer": "As referências académicas, os parceiros tecnológicos e as pessoas não são a mesma categoria. Nunca publique nomes apenas porque surgiram numa reunião ou orçamento."
+    "footer": "As referências académicas, os parceiros tecnológicos e as pessoas não são a mesma categoria. Nunca publique nomes apenas porque surgiram numa reunião ou orçamento.",
+    "approvedTitle": "Créditos já publicados",
+    "approvedDescription": "Se a pessoa retirar a autorização ou o crédito estiver incorreto, podes ocultá-lo imediatamente. A decisão fica registada numa auditoria privada.",
+    "loadingApproved": "A consultar créditos publicados…",
+    "noneApproved": "Ainda não há colaboradores individuais validados.",
+    "withdrawAction": "Retirar crédito",
+    "withdrawConfirm": "Esta ação retira imediatamente o nome da apresentação pública, sem eliminar o histórico de aprovação.",
+    "withdrawReason": "Motivo da retirada (privado)",
+    "withdrawReasonHint": "Ex.: Pedido expresso da pessoa ou correção fundamentada de um crédito publicado.",
+    "withdrawAcknowledge": "Confirmo que a retirada é necessária e que o motivo foi documentado. O registo não será reativado automaticamente.",
+    "withdrawConfirmButton": "Confirmar retirada",
+    "withdrawValidation": "Confirma a retirada e apresenta um motivo com pelo menos 25 caracteres.",
+    "withdrawSuccess": "Crédito retirado do site público. Auditoria preservada."
   },
   "sequences": {
     "title": "Sequências de estudo",
