@@ -136,7 +136,7 @@ export default function EditorCourseQuality() {
 
   if (!allowed) return <PageState title="Acesso reservado" description="Esta área exige o perfil editorial da FACODI." />;
 
-  return <main>
+  return <div>
     <Link to="/editor" className="mb-7 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
       <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Voltar à equipa editorial
     </Link>
@@ -272,5 +272,5 @@ export default function EditorCourseQuality() {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  </main>;
+  </div>;
 }
