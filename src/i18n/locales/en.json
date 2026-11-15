@@ -1631,7 +1631,7 @@
           "title": "Contributions",
           "body": [
             "You can suggest resources, submit YouTube playlists and propose collaboration. Each submission stays private between you and the editorial team until reviewed, and nothing is published automatically.",
-            "When suggesting a resource, you declare that the stated licence allows educational use and that the attribution is correct. The suggestion flow does not accept resources under NC (non-commercial) or ND (no derivatives) licences.",
+            "When suggesting a resource, accurately identify its licence and source. NC (non-commercial) or ND (no derivatives) restrictions can be submitted to the review queue, but are flagged for editorial assessment and may be rejected; submitting is not approval.",
             "You keep the rights to what you create. By sending a contribution, you allow FACODI to store and review it and, if approved, to publish the link, title, description and metadata in the catalogue, attributed to the original source. Your name is only published as a credit with your confirmation.",
             "Submission limits prevent abuse, for example three collaboration proposals every seven days."
           ]
@@ -1752,7 +1752,7 @@
               [
                 "facodi-notes:v1:guest",
                 "Local storage",
-                "Keeps notes you write while signed out, on this device only. They are imported into your account when you sign in.",
+                "Stores notes you write without signing in on this device. After signing in, you can choose to import them; importing is not automatic.",
                 "Until imported or deleted",
                 "Not required: storing the note on this device is the very service you request by writing it, and the notice next to your notes says where they are kept."
               ],
@@ -1790,7 +1790,7 @@
             "Signing out removes the session from your browser.",
             "You can change the language and theme in the header or in your profile. By default, your choice lasts until you close the tab.",
             "To remember your language and theme between visits, turn on the option below, also available in your profile. When you turn it off, we delete the stored preferences; the current language and theme stay until you close the tab.",
-            "To delete everything, use your browser's option to clear site data. Notes written without an account will be lost.",
+            "If you block browser storage, some preferences may not be saved and sign-in may not work. Browsing the public catalogue does not require an account session.",
             "If you block local storage, you cannot sign in, but you can still read the catalogue."
           ]
         }
