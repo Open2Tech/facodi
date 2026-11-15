@@ -25,8 +25,8 @@ function parseSnapshot(raw: Json): Snapshot | null {
   if (raw === null) return null;
   if (!raw || Array.isArray(raw) || typeof raw !== 'object') throw new Error('invalid_sequence_snapshot');
   if (typeof raw.id !== 'string' || typeof raw.slug !== 'string' ||
-      typeof raw.title !== 'string' || !Number.isInteger(raw.revision) ||
-      typeof raw.revision !== 'number' || !Array.isArray(raw.items)) throw new Error('invalid_sequence_snapshot');
+      typeof raw.title !== 'string' || typeof raw.revision !== 'number' ||
+      !Number.isInteger(raw.revision) || !Array.isArray(raw.items)) throw new Error('invalid_sequence_snapshot');
   const items = raw.items.map(entry => {
     if (!entry || typeof entry !== 'object' || Array.isArray(entry) ||
         typeof entry.videoId !== 'string' || typeof entry.title !== 'string' ||
