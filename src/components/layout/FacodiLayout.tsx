@@ -19,7 +19,7 @@ export default function FacodiLayout() {
   const location = useLocation();
   const { resolvedTheme, setTheme } = useTheme();
   const dark = resolvedTheme === 'dark';
-  const privateRoute = ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
+  const privateRoute = location.pathname.startsWith('/community/join') || ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
     window.scrollTo(0, 0);
