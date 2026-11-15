@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
 
 const root = new URL('../public/', import.meta.url);
 const specs = [
@@ -24,7 +23,7 @@ for (const [name,width,height] of specs) {
 for (const filename of ['favicon.svg','social-preview-default.svg']) {
   const xml = readFileSync(publicFile(filename),'utf8');
   assert.match(xml,/<svg\s/,filename+': vector asset');
-  assert.doesNotMatch(xml,/tube[-.]|o2t-logo|<script|https?:\/\//i,filename+': no legacy branding/external loads');
+  assert.doesNotMatch(xml,/tube[-.]|o2t-logo|<script|(?:href|src)=["']https?:\/\//i,filename+': no legacy branding/external loads');
 }
 const manifest = JSON.parse(readFileSync(publicFile('site.webmanifest'),'utf8'));
 for (const icon of manifest.icons) {
