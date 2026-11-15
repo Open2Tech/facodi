@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus, NotebookPen } from 'lucide-react';
 import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
+import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video';
@@ -32,6 +33,7 @@ export default function ResourceDetails() {
   const query = useResource(slug);
   const resource = query.data;
   const context = useResourceContext(resource);
+  const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
   const isVideo = resource?.object_type === 'video';
   const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
   const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
@@ -251,6 +253,31 @@ export default function ResourceDetails() {
           {!!resource.keywords.length && <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">{t('resource.keywords')}:</span> {resource.keywords.join(' · ')}</p>}
         </section>
 
+        {resource.object_type === 'collection' && <section aria-labelledby="collection-videos">
+          <h2 id="collection-videos" className="text-2xl font-semibold tracking-[-0.02em]">{t('collectionVideos.title')}</h2>
+          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('collectionVideos.notice')}</p>
+          {collectionVideos.isPending
+            ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : collectionVideos.error
+              ? <div role="alert" className="mt-4 text-sm text-destructive">
+                  <p>{collectionVideos.error.message}</p>
+                  <button type="button" className="mt-2 underline underline-offset-4" onClick={() => void collectionVideos.refetch()}>{t('common.retry')}</button>
+                </div>
+              : collectionVideos.data?.length
+                ? <ol className="mt-5 divide-y divide-input border-y border-input">
+                    {collectionVideos.data.map((item, i) => <li key={item.id}>
+                      <Link to={`/resources/${encodeURIComponent(item.slug)}`} className="group flex items-start gap-4 py-4 transition-colors hover:bg-muted">
+                        <span className="w-8 shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                        <span className="flex-1">
+                          <span className="block font-semibold group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                          {item.description && <span className="mt-1 line-clamp-2 block text-sm text-muted-foreground">{item.description}</span>}
+                        </span>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </li>)}
+                  </ol>
+                : <p className="mt-4 text-sm text-muted-foreground">{t('collectionVideos.empty')}</p>}
+        </section>}
         {!!objectives.length && <section aria-labelledby="objectives">
           <h2 id="objectives" className="text-2xl font-semibold tracking-[-0.02em]">{t('resource.objectives')}</h2>
           <ol className="mt-4 space-y-3">{objectives.map((objective, index) => <li key={objective} className="flex gap-4"><span className="font-mono text-sm text-muted-foreground">{String(index + 1).padStart(2, '0')}</span><span>{objective}</span></li>)}</ol>
