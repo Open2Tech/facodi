@@ -11,13 +11,13 @@ const admin = read('src/pages/EditorProjectCredits.tsx');
 
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
 const required = [
-  'https://facodi.vercel.app/',
-  'https://facodi.vercel.app/courses',
-  'https://facodi.vercel.app/units',
-  'https://facodi.vercel.app/resources',
-  'https://facodi.vercel.app/sequences',
-  'https://facodi.vercel.app/about',
-  'https://facodi.vercel.app/community',
+  'https://www.facodi.com/',
+  'https://www.facodi.com/courses',
+  'https://www.facodi.com/units',
+  'https://www.facodi.com/resources',
+  'https://www.facodi.com/sequences',
+  'https://www.facodi.com/about',
+  'https://www.facodi.com/community',
 ];
 assert.deepEqual(urls, required, 'Public sitemap must not include private or unverified routes');
 assert.match(robots, /Sitemap: https:\/\/facodi\.vercel\.app\/sitemap\.xml/);
