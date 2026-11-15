@@ -1,9 +1,15 @@
 import assert from 'node:assert/strict';
 
-const origin = 'https://facodi.marcelo-0d6.workers.dev';
+const origin = (process.env.FACODI_WORKERS_ORIGIN ?? 'https://facodi.marcelo-0d6.workers.dev').replace(/\/$/, '');
 const canonical = 'https://www.facodi.com';
 const routes = ['/', '/about', '/community', '/courses', '/community/join',
-  '/editor/email-templates', '/auth/callback', '/auth/reset-password'];
+  '/editor/email-templates', '/auth/callback', '/auth/reset-password',
+  // The Workers build must support the real FACODI SPA deep links, not just its home page.
+  '/courses/lesti',
+  '/courses/ufes-letras-ingles',
+  '/resources/facodi-oito-canais-guto',
+  '/resources/facodi-oito-canais-aline',
+  '/resources/facodi-oito-canais-playlist-PLdsnXVqbHDUcQIuiH9b-i9A85H3A2ZW5W'];
 
 async function get(path, accept = 'text/html') {
   const response = await fetch(origin + path, {
@@ -36,4 +42,5 @@ assert.match(sitemap.text, /<urlset/i);
 assert.ok(sitemap.text.includes(`<loc>${canonical}/about</loc>`));
 assert.ok(!sitemap.text.includes(origin), 'Preview URL must not appear in sitemap');
 
-console.log('FACODI Workers smoke checks passed (read-only: no Auth, no email, no data mutation).');
+console.log('FACODI Workers SPA-shell smoke checks passed (read-only, no Auth, no email, no data mutation).');
+console.log('Note: HTML-shell checks do not prove that Supabase data rendered; validate representative routes in a browser separately.');
