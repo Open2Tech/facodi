@@ -869,6 +869,16 @@ test('unified resources catalogue finds modules and preserves legacy module URLs
     } });
   });
 
+  // Ranked generic resource search may exclude modules; the catalog still surfaces them.
+  await page.route('**/rest/v1/rpc/search_public_resources_v2', route =>
+    route.fulfill({ json: { total: 0, items: [] } }));
+  await page.goto('/resources?search=algebra');
+  await expect(page.getByRole('heading', { name: /Study modules/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'View all modules' }))
+    .toHaveAttribute('href', '/resources?type=module&search=algebra');
+  await expect(page.getByRole('link', { name: /Introduction to algebra/ })).toBeVisible();
+  await expect(page.getByText('No resources to show yet.')).toHaveCount(0);
+
   await page.goto('/modules?search=Algebra&language=en&page=2');
   await expect(page).toHaveURL(/\/resources\?search=Algebra&language=en&page=2&type=module$/);
 
