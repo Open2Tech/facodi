@@ -1631,7 +1631,7 @@
           "title": "Contribuciones",
           "body": [
             "Puedes sugerir recursos, enviar listas de reproducción de YouTube y proponer colaboración. Cada envío es privado entre tú y el equipo editorial hasta su revisión, y nada se publica automáticamente.",
-            "Al sugerir un recurso, declaras que la licencia indicada permite el uso educativo y que la atribución es correcta. El flujo de sugerencias no acepta recursos con licencias NC (no comercial) o ND (sin obras derivadas).",
+            "Al sugerir un recurso, identifica correctamente su licencia y fuente. Los recursos con restricciones NC (no comercial) o ND (sin obras derivadas) pueden entrar en la cola de revisión, pero se señalan para revisión editorial y pueden ser rechazados; enviarlos no equivale a aprobarlos.",
             "Conservas los derechos sobre lo que creas. Al enviar, autorizas a FACODI a guardar y revisar la contribución y, si se aprueba, a publicar el enlace, el título, la descripción y los metadatos en el catálogo, con atribución a la fuente original. Tu nombre solo se publica como crédito con tu confirmación.",
             "Hay límites de envío para evitar abusos, por ejemplo tres propuestas de colaboración cada siete días."
           ]
@@ -1752,7 +1752,7 @@
               [
                 "facodi-notes:v1:guest",
                 "Almacenamiento local",
-                "Guarda las notas que escribes sin sesión iniciada, solo en este dispositivo. Se importan a tu cuenta al iniciar sesión.",
+                "Guarda en este dispositivo las notas que escribes sin iniciar sesión. Después de entrar en la cuenta puedes elegir importarlas; no se importan automáticamente.",
                 "Hasta que se importen o se borren",
                 "No necesario: guardar la nota en este dispositivo es el propio servicio que pides al escribirla, y el aviso junto a las notas indica dónde se guardan."
               ],
@@ -1790,7 +1790,7 @@
             "Al cerrar sesión, la sesión se elimina del navegador.",
             "Puedes cambiar el idioma y el tema en la cabecera o en tu perfil. Por defecto, la elección dura hasta que cierres la pestaña.",
             "Para recordar el idioma y el tema entre visitas, activa la opción siguiente, también disponible en tu perfil. Al desactivarla, borramos las preferencias guardadas; el idioma y el tema actuales se mantienen hasta que cierres la pestaña.",
-            "Para borrarlo todo, usa la opción de borrar los datos del sitio en la configuración del navegador. Las notas escritas sin cuenta se pierden.",
+            "Si bloqueas el almacenamiento del navegador, algunas preferencias pueden no guardarse y el inicio de sesión puede fallar. Para consultar el catálogo público no necesitas una sesión iniciada.",
             "Si bloqueas el almacenamiento local, no podrás iniciar sesión, pero podrás seguir leyendo el catálogo."
           ]
         }
