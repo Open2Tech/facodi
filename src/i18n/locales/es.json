@@ -1101,5 +1101,53 @@
       "title": "Comunidad FACODI | Aprende, comparte y crea",
       "description": "Participa en FACODI: explora cursos, recomienda recursos, comparte listas de vídeos y contribuye al código abierto."
     }
+  },
+  "communityJoin": {
+    "cta": "Quiero colaborar",
+    "back": "Volver a la comunidad",
+    "title": "¿Tienes una idea? Hagámosla realidad.",
+    "description": "Cuéntanos cómo te gustaría ayudar a FACODI. La propuesta queda privada y necesita revisión editorial. No concede funciones automáticamente ni envía correos.",
+    "interest": "¿Cómo te gustaría contribuir?",
+    "interests": {
+      "learner": "Aprender y ayudar a estudiantes",
+      "educator": "Aportar experiencia docente",
+      "curator": "Revisar y organizar recursos",
+      "developer": "Desarrollo y código abierto",
+      "designer": "Diseño y experiencia de usuario",
+      "translator": "Traducción y accesibilidad",
+      "organization": "Colaboración institucional"
+    },
+    "motivation": "¿Qué te gustaría aportar?",
+    "motivationPlaceholder": "Comparte tus ideas, experiencia o cómo te gustaría participar…",
+    "motivationHint": "Entre 30 y 1.200 caracteres. No compartas información sensible.",
+    "portfolio": "Portafolio o enlace público (opcional)",
+    "consent": "Autorizo que los editores de FACODI revisen esta propuesta y usen mi cuenta para hablar de esta colaboración. No autorizo la publicación de mi nombre o trabajo.",
+    "consentRequired": "Es necesario aceptar el tratamiento de la propuesta.",
+    "privacy": "Propuestas privadas, sin listados públicos, créditos automáticos ni envío de correos. Máximo tres por siete días.",
+    "send": "Enviar propuesta",
+    "success": "¡Propuesta recibida! Puedes seguir aquí su revisión.",
+    "history": "Mis propuestas",
+    "historyDescription": "Solo tú y los editores autorizados pueden verlas.",
+    "empty": "Aún no has enviado propuestas.",
+    "status": {
+      "pending": "Pendiente",
+      "accepted": "Interés aceptado",
+      "rejected": "No aceptado por ahora"
+    },
+    "reviewSaved": "Decisión guardada. No se ha enviado correo.",
+    "reviewNotApplied": "La propuesta ya no está disponible para revisión.",
+    "openEditor": "Propuestas de la comunidad",
+    "backEditor": "Volver al editor",
+    "reviewTitle": "Construyamos juntos",
+    "reviewDescription": "Revisión interna. No publica nombres, concede roles ni envía correos.",
+    "reviewEmpty": "No hay propuestas pendientes.",
+    "queueCount": "{{count}} propuestas pendientes",
+    "reviewPrivacy": "Estos datos son para evaluación privada. No los publiques ni uses para campañas sin autorización específica.",
+    "reviewNote": "Nota editorial (visible al participante)",
+    "accept": "Aceptar interés",
+    "reject": "No aceptar",
+    "confirmReview": "¿Confirmar la decisión?",
+    "acceptNote": "Aceptar no crea funciones ni concede permisos y no envía mensajes.",
+    "rejectNote": "La decisión aparece en el historial privado del participante."
   }
 }
