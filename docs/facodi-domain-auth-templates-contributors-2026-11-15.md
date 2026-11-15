@@ -1,4 +1,6 @@
-# FACODI — domínio, templates de autenticação e créditos de equipa
+# FACODI — domínio, templates de autenticação e créditos de equipa 
+
+> **Atualização de 15/11/2026:** os registos e metadados em produção passaram a utilizar o domínio canónico `https://facodi.com` (sem `www`). O catálogo privado de 13 templates do Supabase e os 13 HTML do repositório já foram atualizados; os templates globais do Auth continuam partilhados e inalterados. As informações abaixo documentam o estado histórico anterior à correção.
 
 **Data:** 15 de novembro de 2026  
 **Supabase:** projeto `wvkjainfwsyiyfcmbtid`, schema `facodi`  

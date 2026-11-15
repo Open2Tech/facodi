@@ -338,7 +338,7 @@ utilizador. Os conteúdos originais do Tube e as respetivas tabelas `public`
 permanecem preservados.
 
 ## Domínio FACODI, templates de email e créditos
-O domínio `facodi.com` (apex, Cloudflare) serve o mesmo build do Worker e é o URL canónico usado em metadados, `robots.txt` e `sitemap.xml`. `www.facodi.com` não tem registo DNS. **Atenção:** os 13 templates em `supabase/email-templates/facodi/` ainda apontam para `https://www.facodi.com` e precisam de revisão antes de serem ativados. O código de autenticação usa `window.location.origin` para o callback, pelo que o domínio visitado é mantido.
+O domínio `facodi.com` (apex, Cloudflare) serve o mesmo build do Worker e é o URL canónico usado em metadados, `robots.txt` e `sitemap.xml`. `www.facodi.com` não tem registo DNS. **Atualizado em 15/11/2026:** os 13 templates FACODI versionados apontam para `https://facodi.com`; o catálogo de pré-visualização no Supabase foi atualizado diretamente. Os templates globais do Supabase Auth continuam partilhados com o Tube O2 e não foram alterados. O código de autenticação usa `window.location.origin` para o callback, pelo que o domínio visitado é mantido.
 
 **Atenção:** `supabase/config.toml` mantém `auth.site_url=https://tube.open2.tech` porque Supabase Auth é compartilhado. Os 13 templates com identidade FACODI estão guardados em `facodi.email_template_catalog` como catálogo privado e também em `supabase/email-templates/facodi/`. **Esse catálogo não altera os templates globais do Supabase Auth e não envia mensagens.** O editor pode rever os templates sem envio em `/editor/email-templates`.
 

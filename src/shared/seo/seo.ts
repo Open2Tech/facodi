@@ -5,7 +5,7 @@
 export const SITE_ORIGIN = 'https://facodi.com';
 export const SITE_NAME = 'FACODI';
 export const DEFAULT_IMAGE = {
-  url: `${SITE_ORIGIN}/social-preview-default.png`, width: 1200, height: 630, alt: 'FACODI',
+  url: `${SITE_ORIGIN}/social-preview-default.png?v=20261115`, width: 1200, height: 630, alt: 'FACODI — Um campus digital aberto',
 };
 
 type JsonLd = Record<string, unknown>;
