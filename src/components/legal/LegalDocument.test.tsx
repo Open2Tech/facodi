@@ -5,11 +5,14 @@ import { renderWithProviders } from '@/shared/test/renderWithProviders';
 import { LegalDocument } from './LegalDocument';
 
 describe('LegalDocument', () => {
-  it('renders the document, its section index and pending legal details', () => {
+  it('renders FACODI's responsibility separately from public UAlg institutional identifiers', () => {
     renderWithProviders(<LegalDocument id="legal" />, { route: '/legal' });
 
     expect(screen.getByRole('heading', { level: 1, name: i18n.t('legal.legal.title') })).toBeInTheDocument();
-    expect(screen.getAllByText(i18n.t('legal.common.pending')).length).toBe(3);
+    expect(screen.queryByText(i18n.t('legal.common.pending'))).not.toBeInTheDocument();
+    expect(screen.getByText(/505 387 271/)).toBeInTheDocument();
+    expect(screen.getByText(/Campus da Penha/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Universidade do Algarve/i })).toHaveAttribute('href', 'https://www.ualg.pt/');
     const related = screen.getByRole('navigation', { name: i18n.t('legal.common.related') });
     expect(within(related).getByText(i18n.t('legal.nav.legal'))).toHaveAttribute('aria-current', 'page');
     expect(within(related).getAllByRole('link')).toHaveLength(5);

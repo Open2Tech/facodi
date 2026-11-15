@@ -36,6 +36,11 @@ describe('legal documents', () => {
       const legal = messages.legal;
       const facts = legal.legal.sections[0].facts ?? [];
       expect(facts.find(fact => fact.value === 'Marcelo Santos'), locale).toBeDefined();
+      expect(facts.filter(fact => fact.pending), locale).toHaveLength(0);
+      expect(facts.find(fact => fact.label.includes('UAlg') && fact.value.includes('505 387 271')), locale).toBeDefined();
+      expect(facts.some(fact => fact.value.includes('Campus da Penha')), locale).toBe(true);
+      expect(facts.some(fact => fact.value.includes('https://www.ualg.pt/')), locale).toBe(true);
+      expect(JSON.stringify(facts), locale).not.toContain('Informação de identificação complementar em avaliação');
       expect(JSON.stringify(facts), locale).toContain('https://github.com/marcelo-m7');
       expect(JSON.stringify(facts), locale).toContain('https://www.linkedin.com/in/marcelo-m7/');
       const publicCopy = JSON.stringify(legal);
