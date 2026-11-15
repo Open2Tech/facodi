@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { resourceMeta } from '@/shared/seo/seo';
 import { toast } from 'sonner';
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, Link2, MessageSquarePlus, NotebookPen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Clock, MessageSquarePlus, NotebookPen } from 'lucide-react';
 import { useChannelVideos, useResource, useResourceContext } from '@/features/courses/queries/useCourses';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useContributePath } from '@/features/auth/useContributePath';
@@ -14,6 +14,7 @@ import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
+import { ShareButton } from '@/components/share/ShareButton';
 import { VideoCard } from '@/components/resource/VideoCard';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { VideoSequences } from '@/components/sequence/VideoSequences';
@@ -94,15 +95,6 @@ export default function ResourceDetails() {
     playerSection.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
-  async function copyLink() {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      toast.success(t('video.linkCopied'));
-    } catch {
-      toast.error(t('video.copyFailed'));
-    }
-  }
-
   const facts = [
     ['channel', info.channel],
     ['duration', info.durationSeconds ? formatDuration(info.durationSeconds) : null],
@@ -142,7 +134,7 @@ export default function ResourceDetails() {
           <NotebookPen />{t('notes.open')}
           {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-xs tabular-nums text-primary-foreground">{notes.length}</span>}
         </Button>
-        <Button variant="outline" onClick={() => void copyLink()}><Link2 />{t('video.copyLink')}</Button>
+        <ShareButton title={resource.title} />
         <Link to={contribute} className="inline-flex items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
       </div>
     </header>

@@ -11,6 +11,7 @@ import { formatDuration, type VideoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
+import { ShareButton } from '@/components/share/ShareButton';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
@@ -92,6 +93,7 @@ export default function SequenceDetails() {
         </p>
         <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{sequence.title}</h1>
         {description && <p className="mt-5 max-w-prose leading-relaxed text-muted-foreground">{description}</p>}
+        <div className="mt-6"><ShareButton title={sequence.title} /></div>
       </div>
       <section aria-labelledby="sequence-progress" className="border border-foreground p-5">
         <h2 id="sequence-progress" className="text-sm font-semibold">{t('sequences.yourProgress')}</h2>
