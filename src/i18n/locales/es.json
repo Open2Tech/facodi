@@ -1269,6 +1269,8 @@
       "external_resource": "Lecturas y referencias"
     },
     "noMaterials": "Sin recursos disponibles",
-    "noMaterialsText": "Este módulo aún no tiene materiales públicos."
+    "noMaterialsText": "Este módulo aún no tiene materiales públicos.",
+    "forUnit": "Módulos de esta asignatura",
+    "forUnitText": "Guías temáticas vinculadas a esta asignatura, con recursos y actividades para estudiar a tu ritmo."
   }
 }
