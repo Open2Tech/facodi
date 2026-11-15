@@ -10,7 +10,7 @@ export interface LinkedCatalogAsset {
   sourceUrl: string | null;
 }
 
-type LinkedAssetType = 'playlist' | 'collection' | 'video';
+type LinkedAssetType = 'playlist' | 'collection' | 'video' | 'module';
 
 /** Lists only public linked resources visible under the caller's RLS policies.
  * We do not infer playlist ownership or membership from a YouTube link. */
