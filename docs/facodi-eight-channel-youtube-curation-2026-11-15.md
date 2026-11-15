@@ -3,7 +3,8 @@
 **Data:** 15/11/2026  
 **Supabase:** projeto `wvkjainfwsyiyfcmbtid` / schema `facodi`  
 **Repositório:** `Open2Tech/facodi`, branch `facodi`  
-**Página pública:** https://facodi.vercel.app/courses  
+**Frontend de desenvolvimento validado (Cloudflare Workers):** https://facodi.marcelo-0d6.workers.dev/courses  
+**Domínio canónico separado:** https://www.facodi.com  
 **Importação:** `20261115113410_facodi_eight_creator_channels_63_video_references_and_4_playlists.sql`  
 **Manifesto versionado:** `supabase/seeds/facodi_creator_channels_20261115.json`
 
@@ -91,3 +92,28 @@ A correspondência temática foi feita com os títulos e contexto dos canais, n�
 As referências dependem de o canal original manter cada URL disponível. É conveniente executar revisões editoriais e verificações periódicas de URLs, além de inspeção de acessibilidade, legendas e qualidade antes de as recomendar como componente essencial de um programa académico.
 
 Os vídeos foram inseridos como links públicos e reutilizados entre várias UCs quando pertinente; 63 vídeos identificados **não** significa 63 vídeos inéditos na internet nem 63 aulas completas.
+
+## Validação adicional do frontend Cloudflare Workers (15/11/2026)
+
+**Este é o endereço utilizado para desenvolvimento e testes do frontend**, sem depender de novos deploys na Vercel:
+https://facodi.marcelo-0d6.workers.dev/
+
+Foram visitadas as seis páginas de cursos publicadas na instância Workers, confirmando a exibição das coleções curatoriais para os respetivos percursos. Foram também verificadas no frontend as páginas das coleções Augusto Galego e Professora Aline Elias, das playlists externas e dos vídeos individuais. Exemplos:
+- https://facodi.marcelo-0d6.workers.dev/resources/facodi-oito-canais-guto
+- https://facodi.marcelo-0d6.workers.dev/resources/facodi-oito-canais-video-tXlxnIqQF2E
+- https://facodi.marcelo-0d6.workers.dev/resources/facodi-oito-canais-video-5JzEyB1AOAg
+- https://facodi.marcelo-0d6.workers.dev/resources/facodi-oito-canais-playlist-PLdsnXVqbHDUcQIuiH9b-i9A85H3A2ZW5W
+
+**Correção no Supabase:** a migração
+`20261115120525_facodi_eight_creator_video_channel_and_review_scope_display.sql`
+completou a atribuição de `channel_name` e `review_scope=title_and_channel_only` nos 59 vídeos novos. Uma consulta com `SET LOCAL ROLE anon` confirmou 59/59 canais, 59/59 âmbitos de revisão e 59/59 registos explícitos de que a aula não foi vista na íntegra. As durações e datas de publicação permanecem nulas, pois não foram verificadas. Os quatro vídeos reutilizados do Fabio Akita já tinham o canal correto.
+
+**Robustez do frontend:** `src/entities/course/video.ts` passou a aceitar metadados alternativos de autoria (`publisher_channel`, `source_creator`, `publisher`) quando `channel_name` ainda não está preenchido. O fallback está coberto por testes unitários.
+
+**Automação de qualidade:** `.github/workflows/facodi-workers-smoke.yml` executa verificações read-only após push na branch `facodi` e pode ser iniciado manualmente, sem tokens Cloudflare. O script `scripts/smoke-facodi-workers.mjs` verifica fallback SPA para 13 rotas (incluindo coleções e playlists), cabeçalhos `noindex`/`nosniff`, `robots.txt` e `sitemap.xml`. 
+
+Execuções aprovadas:
+- [Lint, TypeScript, testes e build — GitHub Actions](https://github.com/Open2Tech/facodi/actions/runs/43712334739).
+- [Cloudflare Workers smoke — GitHub Actions](https://github.com/Open2Tech/facodi/actions/runs/43712374172).
+
+**Limitações:** o smoke test HTTP verifica o HTML da SPA, não a execução do JavaScript. Por isso houve uma inspeção adicional das páginas renderizadas com dados públicos do Supabase. Não houve teste autenticado de editor, submissão de playlists ou confirmação por API do número da versão implantada na conta Cloudflare, pois a respetiva conta de gestão não está conectada.
