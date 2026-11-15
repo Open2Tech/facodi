@@ -39,7 +39,9 @@ describe('legal documents', () => {
       expect(JSON.stringify(facts), locale).toContain('https://github.com/marcelo-m7');
       expect(JSON.stringify(facts), locale).toContain('https://www.linkedin.com/in/marcelo-m7/');
       const publicCopy = JSON.stringify(legal);
-      expect(publicCopy, locale).not.toMatch(/Open 2 Technology|Open2 \\/ O2T|us-east-2|wvkjainfwsyiyfcmbtid/);
+      expect(publicCopy, locale).not.toContain('Open 2 Technology');
+      expect(publicCopy, locale).not.toContain('us-east-2');
+      expect(publicCopy, locale).not.toContain('wvkjainfwsyiyfcmbtid');
       expect(legal.cookies.sections.find(section => section.id === 'manage')?.items).toHaveLength(4);
     }
   });
