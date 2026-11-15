@@ -7,6 +7,7 @@ import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCata
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
+import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { PageState } from '@/components/layout/PageState';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
@@ -85,6 +86,7 @@ export default function CourseDetails() {
     </div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{t('course.studyPlan')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
+    {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
     {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
       <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
       <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
