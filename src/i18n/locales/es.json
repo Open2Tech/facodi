@@ -231,7 +231,8 @@
     "resendSent": "Si podemos reenviar la confirmación, recibirás un nuevo enlace por email.",
     "passwordHint": "Al menos 6 caracteres. Una frase larga es más segura y fácil de recordar.",
     "showPasswords": "Mostrar contraseñas",
-    "hidePasswords": "Ocultar contraseñas"
+    "hidePasswords": "Ocultar contraseñas",
+    "legalNotice": "Al crear una cuenta, aceptas los [Términos de uso](/terms) y confirmas que has leído la [Política de privacidad](/privacy)."
   },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
@@ -289,7 +290,10 @@
     "preferencesDescription": "Idioma y apariencia de la interfaz.",
     "contributionsTitle": "Contribuciones",
     "contributionsDescription": "Las playlists que propusiste y el estado de la revisión editorial.",
-    "pendingCount_zero": "Ninguno pendiente"
+    "pendingCount_zero": "Ninguno pendiente",
+    "dataTitle": "Tus datos",
+    "dataDescription": "Acceso, copia y eliminación de la cuenta.",
+    "dataText": "Para pedir una copia de tus datos o eliminar la cuenta, escribe a [hello@open2.tech](mailto:hello@open2.tech) desde el email de esta cuenta. La aplicación todavía no ofrece eliminación automática. Consulta qué se borra en la [Política de privacidad](/privacy#deletion)."
   },
   "content": {
     "courses": "Cursos",
@@ -446,7 +450,8 @@
     "project": "Proyecto",
     "account": "Cuenta",
     "contribute": "Contribuir",
-    "note": "FACODI · SEA-EU Student-Led Projects 2026 · Universidad del Algarve"
+    "note": "FACODI · SEA-EU Student-Led Projects 2026 · Universidad del Algarve",
+    "legal": "Información legal"
   },
   "course": {
     "facts": "Ficha del curso",
@@ -536,7 +541,7 @@
   },
   "video": {
     "play": "Reproducir vídeo: {{title}}",
-    "privacyNote": "YouTube solo se carga cuando pulsas reproducir.",
+    "privacyNote": "YouTube solo se carga cuando pulsas reproducir; a partir de ahí se aplica la política de privacidad de YouTube.",
     "player": "Reproductor de vídeo",
     "context": "Contexto curricular",
     "byChannel": "Canal {{channel}}",
@@ -667,7 +672,8 @@
       "youtube_unreachable": "No se pudo consultar YouTube. Use IDs manuales."
     },
     "language": "Idioma de los vídeos",
-    "submittedOn": "Enviada el {{date}}"
+    "submittedOn": "Enviada el {{date}}",
+    "legalNote": "Al enviar, se aplican las normas sobre [contribuciones](/terms#contributions) y [vídeos incrustados](/copyright#videos)."
   },
   "playlistReview": {
     "open": "Revisar listas",
@@ -920,7 +926,8 @@
       "review": "Fuente genérica, licencia por verificar o sin unidad.",
       "reject": "Recurso ya existente o licencia NC/ND.",
       "manual": "La recomendación ordena la cola; la publicación es siempre manual."
-    }
+    },
+    "legalNote": "Al enviar, se aplican las normas sobre [contribuciones](/terms#contributions) y [derechos de autor](/copyright#contributors)."
   },
   "suggestReview": {
     "open": "Sugerencias de recursos",
@@ -1195,7 +1202,8 @@
     "withdraw": "Retirar propuesta",
     "withdrawConfirm": "¿Retirar y borrar el registro privado de esta propuesta? No se puede deshacer.",
     "withdrawConfirmButton": "Sí, retirar y borrar",
-    "withdrawUnavailable": "Esta propuesta ya no está disponible o no te pertenece."
+    "withdrawUnavailable": "Esta propuesta ya no está disponible o no te pertenece.",
+    "legalNote": "Cómo tratamos estos datos: [Política de privacidad](/privacy#purposes)."
   },
   "editorEmails": {
     "open": "Plantillas de correo",
@@ -1331,5 +1339,697 @@
     "dashboardTitle": "Retoma donde lo dejaste",
     "dashboardSummary": "Has completado {{completed}} de {{total}} guías. Sigue aprendiendo a tu ritmo.",
     "dashboardResume": "Continuar estudiando"
+  },
+  "legal": {
+    "common": {
+      "updated": "Última actualización:",
+      "toc": "En esta página",
+      "summary": "En resumen",
+      "related": "Políticas e información legal",
+      "pending": "Por confirmar",
+      "reviewTitle": "Versión en revisión",
+      "reviewText": "Este texto describe el funcionamiento real de FACODI en la fecha indicada, pero aún faltan la confirmación de los datos institucionales y una revisión jurídica. Los datos marcados como «por confirmar» se completarán antes de la publicación definitiva."
+    },
+    "nav": {
+      "privacy": "Privacidad",
+      "terms": "Términos de uso",
+      "cookies": "Cookies y almacenamiento",
+      "copyright": "Derechos de autor",
+      "accessibility": "Accesibilidad",
+      "legal": "Aviso legal"
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "description": "Qué datos personales trata FACODI, por qué, con qué proveedores, durante cuánto tiempo y cómo ejercer tus derechos según el RGPD.",
+      "lead": "Puedes explorar el catálogo sin cuenta. Cuando creas una, solo tratamos los datos necesarios para guardar tu estudio y revisar tus contribuciones.",
+      "summary": [
+        "Sin publicidad, sin analítica y sin venta de datos.",
+        "El catálogo público funciona sin cuenta y sin cookies propias.",
+        "Con cuenta, guardamos tu email, el nombre que indiques, tus notas, tu progreso y las contribuciones que envías.",
+        "Usamos proveedores fuera del Espacio Económico Europeo, incluida una base de datos en EE. UU. Más abajo explicamos cuáles y por qué.",
+        "Puedes pedir acceso, corrección o eliminación de tus datos en [hello@open2.tech](mailto:hello@open2.tech)."
+      ],
+      "sections": [
+        {
+          "id": "controller",
+          "title": "Responsable del tratamiento",
+          "body": [
+            "FACODI es un campus digital abierto mantenido por Open 2 Technology (Open2 / O2T), dentro de los SEA-EU Student-Led Projects 2026, con origen en la Universidad del Algarve.",
+            "La identificación jurídica completa del responsable del tratamiento (forma jurídica, número fiscal y domicilio) está por confirmar y se publicará en el [Aviso legal](/legal). La referencia a la Universidad del Algarve y a la alianza SEA-EU describe el origen del proyecto; no significa que esas instituciones sean responsables del tratamiento de tus datos.",
+            "Contacto de privacidad: [hello@open2.tech](mailto:hello@open2.tech). No se ha designado un delegado de protección de datos; se está evaluando si es necesario."
+          ]
+        },
+        {
+          "id": "data",
+          "title": "Qué datos tratamos",
+          "body": [
+            "Solo tratamos los datos que resultan del uso real de la plataforma. No recogemos datos de pago, de ubicación ni agendas de contactos, no pedimos categorías especiales de datos y no creamos perfiles publicitarios."
+          ],
+          "items": [
+            "Cuenta: dirección de email, nombre (opcional), contraseña (guardada por Supabase Auth solo en forma cifrada irreversible y nunca visible para el equipo), identificador interno, fechas de registro y último acceso, confirmación del email y, cuando se asigna manualmente, el rol editorial.",
+            "Estudio: notas guardadas en la cuenta, progreso en secuencias de vídeo (vídeo, posición y finalización) y estado de los módulos de estudio.",
+            "Contribuciones: sugerencias de recursos (enlace, metadatos, nota opcional y declaraciones de licencia), listas de reproducción enviadas, propuestas de colaboración (interés, motivación y portafolio opcional) y las decisiones y notas de la revisión editorial.",
+            "Notificaciones: una cola de emails sobre el estado de las listas que envías, que guarda el identificador de la cuenta destinataria y no la dirección de email.",
+            "Datos técnicos: dirección IP, fecha y hora, navegador y páginas solicitadas, tratados por los proveedores de alojamiento y base de datos en sus registros de funcionamiento y seguridad.",
+            "Solo en tu dispositivo: idioma, tema y notas escritas sin sesión iniciada. No se envían a FACODI hasta que inicias sesión. Consulta [Cookies y almacenamiento](/cookies)."
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "Finalidades y bases jurídicas",
+          "body": [
+            "Cada tratamiento se basa en una de las bases del artículo 6 del [Reglamento General de Protección de Datos (RGPD)](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32016R0679)."
+          ],
+          "table": {
+            "caption": "Finalidades, datos y bases jurídicas",
+            "columns": [
+              "Finalidad",
+              "Datos",
+              "Base jurídica"
+            ],
+            "rows": [
+              [
+                "Crear la cuenta, autenticar y mantener la sesión",
+                "Cuenta y datos técnicos",
+                "Ejecución de un contrato, es decir, de los [Términos de uso](/terms) (art. 6.1.b)"
+              ],
+              [
+                "Guardar notas y progreso de estudio",
+                "Estudio",
+                "Ejecución de un contrato (art. 6.1.b)"
+              ],
+              [
+                "Revisar sugerencias y listas y comunicar la decisión",
+                "Contribuciones y notificaciones",
+                "Ejecución de un contrato (art. 6.1.b)"
+              ],
+              [
+                "Revisar propuestas de colaboración en la comunidad",
+                "Contribuciones",
+                "Consentimiento, que puedes retirar en cualquier momento (art. 6.1.a)"
+              ],
+              [
+                "Publicar créditos de colaboración con nombre",
+                "Nombre y rol indicados",
+                "Consentimiento confirmado antes de publicar (art. 6.1.a)"
+              ],
+              [
+                "Proteger el servicio, prevenir abusos y aplicar límites de envío",
+                "Cuenta, contribuciones y datos técnicos",
+                "Interés legítimo en la seguridad del servicio y de sus usuarios (art. 6.1.f)"
+              ],
+              [
+                "Atender solicitudes legítimas de autoridades",
+                "Los datos que requiera cada solicitud",
+                "Obligación legal (art. 6.1.c)"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "accounts",
+          "title": "Autenticación y cuenta",
+          "body": [
+            "La autenticación usa Supabase Auth con email y contraseña y el flujo PKCE. La sesión se guarda en el almacenamiento local del navegador y se renueva automáticamente hasta que cierras sesión.",
+            "El servicio de autenticación se comparte con otra aplicación de Open 2 Technology. Las cuentas creadas en FACODI quedan identificadas como tales, pero el registro de usuarios es común.",
+            "Los roles de editor y administrador se asignan manualmente, nunca de forma automática. El acceso a los datos se controla en la base de datos con reglas de seguridad por fila: las notas de estudio solo son visibles para ti y las contribuciones solo para ti y para el equipo editorial que las revisa."
+          ]
+        },
+        {
+          "id": "processors",
+          "title": "Proveedores y servicios externos",
+          "body": [
+            "Trabajamos con los proveedores siguientes. Algunos tratan datos por cuenta nuestra (encargados del tratamiento); YouTube, GitHub y Zenodo son terceros independientes con sus propias políticas."
+          ],
+          "table": {
+            "caption": "Proveedores y servicios externos",
+            "columns": [
+              "Servicio",
+              "Uso en FACODI",
+              "Datos implicados"
+            ],
+            "rows": [
+              [
+                "Supabase",
+                "Base de datos, autenticación, emails de autenticación y funciones de servidor. Proyecto alojado en la región us-east-2 (EE. UU.).",
+                "Cuenta, estudio, contribuciones, notificaciones y registros técnicos"
+              ],
+              [
+                "Cloudflare",
+                "Alojamiento de la aplicación en facodi.com y entrega de contenidos, con registros de peticiones para funcionamiento y seguridad.",
+                "Dirección IP y datos de la petición"
+              ],
+              [
+                "Resend",
+                "Envío de emails sobre el estado de las listas enviadas.",
+                "Dirección de email y contenido de la notificación"
+              ],
+              [
+                "YouTube (Google)",
+                "Miniaturas y reproducción de vídeos incrustados. El reproductor solo se carga cuando pulsas reproducir.",
+                "Dirección IP y, tras la reproducción, los datos que recoge YouTube"
+              ],
+              [
+                "GitHub, Zenodo y oEmbed de YouTube",
+                "Vista previa de metadatos cuando sugieres un recurso. La petición sale de tu navegador, sin credenciales.",
+                "Dirección IP y enlace sugerido"
+              ],
+              [
+                "Vercel",
+                "Vistas previas técnicas usadas durante el desarrollo.",
+                "Dirección IP de quien las visita"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "transfers",
+          "title": "Transferencias internacionales",
+          "body": [
+            "La base de datos y la autenticación están alojadas en Estados Unidos. Cloudflare opera una red global y Resend y Vercel son empresas con sede en EE. UU. Por ello, tus datos pueden tratarse fuera del Espacio Económico Europeo.",
+            "Estas transferencias deben basarse en un mecanismo del capítulo V del RGPD, como la decisión de adecuación del EU-U.S. Data Privacy Framework cuando el proveedor está certificado, o cláusulas contractuales tipo aprobadas por la Comisión Europea. El mecanismo de cada proveedor está por confirmar y se indicará aquí."
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "Conservación",
+          "items": [
+            "Cuenta, notas, progreso y contribuciones: mientras exista la cuenta. Al eliminar la cuenta, sus notas, sugerencias, propuestas de colaboración y notificaciones se borran automáticamente.",
+            "Las listas y contenidos aprobados que ya forman parte del catálogo pueden conservarse por motivos editoriales. Cuando pidas la eliminación, te indicaremos qué se conserva y por qué.",
+            "Registros técnicos: durante los plazos que fija cada proveedor para funcionamiento y seguridad.",
+            "Datos en tu dispositivo: hasta que los borres en el navegador.",
+            "Los plazos máximos para cuentas inactivas están por definir."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "Tus derechos",
+          "body": [
+            "Según los artículos 15 a 22 del RGPD, puedes solicitar el acceso a tus datos, su rectificación, supresión, la limitación del tratamiento y la portabilidad, y oponerte a los tratamientos basados en interés legítimo. Cuando el tratamiento se basa en el consentimiento, puedes retirarlo en cualquier momento, sin afectar al tratamiento ya realizado.",
+            "Puedes corregir tu nombre, email y contraseña directamente en [tu perfil](/profile). Para otras solicitudes, escribe a [hello@open2.tech](mailto:hello@open2.tech) desde el email asociado a la cuenta. Respondemos en el plazo de un mes, prorrogable en los casos previstos en el artículo 12 del RGPD."
+          ]
+        },
+        {
+          "id": "deletion",
+          "title": "Eliminar la cuenta",
+          "body": [
+            "La aplicación todavía no tiene un botón para eliminar la cuenta. Mientras tanto, envía la solicitud a [hello@open2.tech](mailto:hello@open2.tech) desde el email de la cuenta, con el asunto «Eliminar cuenta FACODI».",
+            "Confirmamos tu identidad antes de actuar, eliminamos la cuenta de autenticación y los datos asociados descritos en «Conservación» y confirmamos la eliminación por email. Las notas guardadas solo en tu dispositivo se borran al limpiar los datos del sitio en el navegador."
+          ]
+        },
+        {
+          "id": "minors",
+          "title": "Menores",
+          "body": [
+            "FACODI no verifica la edad de quien crea una cuenta. En Portugal, el consentimiento de menores para servicios de la sociedad de la información solo es válido a partir de los 13 años (artículo 16 de la Ley 58/2019). La edad mínima para crear una cuenta y las normas para menores están por definir en una revisión jurídica."
+          ]
+        },
+        {
+          "id": "complaints",
+          "title": "Contacto y reclamaciones",
+          "body": [
+            "Para cualquier cuestión de privacidad, escribe a [hello@open2.tech](mailto:hello@open2.tech).",
+            "Tienes derecho a presentar una reclamación ante una autoridad de control (artículo 77 del RGPD). En Portugal, es la Comissão Nacional de Proteção de Dados ([CNPD](https://www.cnpd.pt))."
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Cambios en esta política",
+          "body": [
+            "Actualizamos esta política cuando cambia el funcionamiento de FACODI. La fecha de arriba indica la última revisión. Los cambios que afecten a datos ya recogidos se señalarán en la aplicación antes de aplicarse."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Términos de uso",
+      "description": "Condiciones de acceso y uso de FACODI: catálogo abierto, cuentas, contribuciones, curaduría editorial, contenidos de terceros y límites del servicio.",
+      "lead": "Las normas para usar FACODI, escritas para leerse: qué ofrecemos, qué te pedimos y qué ocurre con tus contribuciones.",
+      "summary": [
+        "Leer el catálogo es gratis y no requiere cuenta.",
+        "FACODI organiza recursos de terceros; no es una institución educativa ni emite certificados.",
+        "Nada de lo que envías se publica sin revisión editorial.",
+        "Los vídeos y sitios enlazados pertenecen a sus autores y tienen sus propias normas."
+      ],
+      "sections": [
+        {
+          "id": "about",
+          "title": "Qué es FACODI",
+          "body": [
+            "FACODI es un campus digital abierto que organiza cursos, unidades curriculares, módulos, secuencias de aprendizaje y recursos externos, para que sea más fácil encontrar material académico de calidad y entender dónde encaja cada pieza en un itinerario.",
+            "Es un proyecto educativo mantenido por Open 2 Technology, nacido en los SEA-EU Student-Led Projects 2026 y en la Universidad del Algarve. Las estructuras curriculares publicadas son reconstrucciones editoriales de FACODI: no son planes aprobados por las instituciones educativas y no otorgan créditos (ECTS u otros), títulos, certificados ni equivalencias."
+          ]
+        },
+        {
+          "id": "acceptance",
+          "title": "Aceptación de estos términos",
+          "body": [
+            "Al crear una cuenta o enviar una contribución, aceptas estos términos. Consultar el catálogo sin cuenta está sujeto a las mismas normas de uso aceptable.",
+            "Podemos actualizar los términos cuando cambie el servicio. La fecha de arriba indica la versión vigente y los cambios relevantes se señalarán en la aplicación."
+          ]
+        },
+        {
+          "id": "access",
+          "title": "Acceso al servicio",
+          "items": [
+            "El catálogo publicado se puede consultar gratis, sin cuenta y sin muro de pago.",
+            "Con una cuenta puedes guardar notas y progreso, sugerir recursos, enviar listas de reproducción y proponer colaboración.",
+            "Usar FACODI no tiene coste. Si eso cambia, será con aviso previo y nuevos términos."
+          ]
+        },
+        {
+          "id": "accounts",
+          "title": "Tu cuenta",
+          "items": [
+            "Usa un email que controles y mantén tu contraseña en secreto. La cuenta es personal.",
+            "Puedes cambiar tu nombre, email y contraseña en el perfil y cerrar sesión en todos los dispositivos.",
+            "Los roles de editor y administrador los asigna manualmente el equipo y pueden retirarse.",
+            "Podemos suspender o cerrar cuentas usadas para abusos, fraude o incumplimiento de estos términos, explicando el motivo siempre que sea posible.",
+            "Puedes dejar de usar FACODI en cualquier momento y pedir la eliminación de la cuenta, según la [Política de privacidad](/privacy#deletion)."
+          ]
+        },
+        {
+          "id": "conduct",
+          "title": "Uso aceptable",
+          "body": [
+            "Al usar FACODI, te comprometes a no:"
+          ],
+          "items": [
+            "enviar contenidos ilegales, engañosos, discriminatorios, que inciten al odio o a la violencia, o que vulneren derechos de terceros;",
+            "sugerir enlaces a material pirata o malicioso, o que no tengas derecho a compartir;",
+            "intentar acceder a datos o áreas sin autorización, eludir límites de envío o perturbar el servicio;",
+            "recopilar datos de otras personas o usar procesos automatizados que sobrecarguen la plataforma;",
+            "hacerte pasar por otra persona o institución."
+          ]
+        },
+        {
+          "id": "contributions",
+          "title": "Contribuciones",
+          "body": [
+            "Puedes sugerir recursos, enviar listas de reproducción de YouTube y proponer colaboración. Cada envío es privado entre tú y el equipo editorial hasta su revisión, y nada se publica automáticamente.",
+            "Al sugerir un recurso, declaras que la licencia indicada permite el uso educativo y que la atribución es correcta. El flujo de sugerencias no acepta recursos con licencias NC (no comercial) o ND (sin obras derivadas).",
+            "Conservas los derechos sobre lo que creas. Al enviar, autorizas a FACODI a guardar y revisar la contribución y, si se aprueba, a publicar el enlace, el título, la descripción y los metadatos en el catálogo, con atribución a la fuente original. Tu nombre solo se publica como crédito con tu confirmación.",
+            "Hay límites de envío para evitar abusos, por ejemplo tres propuestas de colaboración cada siete días."
+          ]
+        },
+        {
+          "id": "moderation",
+          "title": "Curaduría y moderación",
+          "body": [
+            "El equipo editorial decide qué se publica, según la relevancia curricular, la calidad, la licencia y la fuente. Puede aprobar, rechazar o archivar contribuciones y contenidos ya publicados.",
+            "Cuando se rechaza una contribución tuya o se retira un contenido, indicamos el motivo en tu área personal o por email, siempre que sea posible. Puedes pedir una nueva revisión en [hello@open2.tech](mailto:hello@open2.tech).",
+            "Los contenidos se archivan en lugar de borrarse definitivamente, para conservar el historial editorial.",
+            "Para denunciar un contenido ilegal o que vulnere derechos de autor, sigue el procedimiento de [Derechos de autor](/copyright#report)."
+          ]
+        },
+        {
+          "id": "third-party",
+          "title": "Contenidos y enlaces de terceros",
+          "body": [
+            "Gran parte del catálogo son vídeos alojados en YouTube y enlaces a libros, documentación y sitios externos. Esos contenidos pertenecen a sus titulares y están sujetos a sus propias condiciones, incluidos los [Términos de servicio de YouTube](https://www.youtube.com/t/terms).",
+            "Seleccionamos los recursos con cuidado, pero no controlamos los sitios externos: pueden cambiar, dejar de estar disponibles o contener errores. Si encuentras un problema, avísanos."
+          ]
+        },
+        {
+          "id": "ip",
+          "title": "Propiedad intelectual",
+          "body": [
+            "El nombre y la identidad visual de FACODI, los textos editoriales, las estructuras curriculares, el diseño y el código de la aplicación pertenecen a Open 2 Technology y a sus colaboradores. La licencia del código y de los contenidos originales está por confirmar; hasta su publicación, se aplica el régimen general de derechos de autor.",
+            "Los detalles sobre licencias, atribución y contenidos de terceros están en [Derechos de autor](/copyright)."
+          ]
+        },
+        {
+          "id": "availability",
+          "title": "Disponibilidad y responsabilidad",
+          "body": [
+            "FACODI es un proyecto educativo de origen estudiantil que se ofrece tal cual. Trabajamos para que funcione bien, pero no garantizamos disponibilidad continua, ausencia de errores ni que los contenidos estén completos y actualizados. Podemos cambiar, suspender o retirar funciones.",
+            "El material de FACODI apoya el estudio y no sustituye las fuentes oficiales de las instituciones educativas. Confirma siempre planes de estudio, fechas y requisitos con tu institución.",
+            "Nada en estos términos excluye o limita responsabilidades que la ley no permita excluir o limitar."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Comunicación y resolución de problemas",
+          "body": [
+            "Para dudas, problemas técnicos o reclamaciones sobre el servicio, escribe a [hello@open2.tech](mailto:hello@open2.tech). Intentamos resolverlo primero de forma directa.",
+            "Estos términos se rigen por la ley portuguesa, sin perjuicio de las normas imperativas del país de residencia de quien los acepta. El tribunal competente y las posibles entidades de resolución alternativa de litigios están por confirmar."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookies y almacenamiento",
+      "description": "FACODI no usa cookies propias, analítica ni publicidad. Lista completa de lo que se guarda en tu navegador y de cuándo se carga YouTube.",
+      "lead": "FACODI no instala cookies propias ni usa herramientas de analítica o publicidad. En tu navegador solo guardamos lo necesario para que el servicio funcione y las opciones que eliges.",
+      "summary": [
+        "Sin cookies de analítica, publicidad ni redes sociales.",
+        "Sin banner de consentimiento, porque no hay nada no esencial que autorizar.",
+        "El reproductor de YouTube solo se carga cuando pulsas reproducir."
+      ],
+      "sections": [
+        {
+          "id": "approach",
+          "title": "Nuestro enfoque",
+          "body": [
+            "La ley portuguesa (artículo 5 de la [Ley 41/2004](https://diariodarepublica.pt/dr/detalhe/modificacoes/41-2004-480710)) exige consentimiento previo para guardar o leer información en tu dispositivo, salvo cuando sea estrictamente necesario para prestar un servicio que has pedido expresamente. La norma se aplica a las cookies y también al almacenamiento local del navegador.",
+            "Todo lo que FACODI guarda en tu navegador entra en esa excepción: mantiene la sesión que iniciaste, recuerda el idioma y el tema que elegiste y guarda las notas que escribes. Por eso no mostramos un banner de consentimiento.",
+            "Si algún día añadimos herramientas no esenciales, como estadísticas de uso, solo se activarán después de que las autorices, con las opciones de aceptar y rechazar igual de visibles y una forma sencilla de cambiar de opinión."
+          ]
+        },
+        {
+          "id": "storage",
+          "title": "Qué se guarda en tu navegador",
+          "table": {
+            "caption": "Almacenamiento que usa FACODI",
+            "code": true,
+            "columns": [
+              "Nombre",
+              "Tipo",
+              "Finalidad",
+              "Duración",
+              "Consentimiento"
+            ],
+            "rows": [
+              [
+                "sb-wvkjainfwsyiyfcmbtid-auth-token",
+                "Almacenamiento local",
+                "Mantiene la sesión iniciada y la renueva automáticamente. Solo existe con la sesión iniciada.",
+                "Hasta que cierres sesión",
+                "No necesario: estrictamente necesario"
+              ],
+              [
+                "sb-wvkjainfwsyiyfcmbtid-auth-token-code-verifier",
+                "Almacenamiento local",
+                "Código de seguridad temporal (PKCE) para iniciar sesión, confirmar el email y recuperar la contraseña.",
+                "Hasta que termine el flujo",
+                "No necesario: estrictamente necesario"
+              ],
+              [
+                "i18nextLng",
+                "Almacenamiento local",
+                "Recuerda el idioma de la interfaz que elegiste.",
+                "Hasta que borres los datos del sitio",
+                "No necesario: preferencia que eliges"
+              ],
+              [
+                "facodi-theme",
+                "Almacenamiento local",
+                "Recuerda el tema claro u oscuro.",
+                "Hasta que borres los datos del sitio",
+                "No necesario: preferencia que eliges"
+              ],
+              [
+                "facodi-notes:v1:guest",
+                "Almacenamiento local",
+                "Guarda las notas que escribes sin sesión iniciada, solo en este dispositivo. Se importan a tu cuenta al iniciar sesión.",
+                "Hasta que se importen o se borren",
+                "No necesario: función que solicitas"
+              ],
+              [
+                "workbox-precache-…",
+                "Caché del navegador (service worker)",
+                "Guarda los archivos de la aplicación para que cargue más rápido y tolere conexiones inestables. No contiene datos personales.",
+                "Se sustituye con cada nueva versión",
+                "No necesario: estrictamente necesario"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "youtube",
+          "title": "Vídeos de YouTube",
+          "body": [
+            "Antes de pulsar reproducir, solo mostramos la miniatura del vídeo, que tu navegador obtiene directamente de los servidores de imágenes de YouTube (i.ytimg.com). Esta petición no instala cookies a través de FACODI, pero revela tu dirección IP a Google.",
+            "Cuando pulsas reproducir, el reproductor se carga desde youtube-nocookie.com, el modo de privacidad mejorada de YouTube. Desde ese momento, YouTube puede guardar y leer información en tu navegador según la [Política de privacidad de Google](https://policies.google.com/privacy). FACODI no tiene acceso a esos datos."
+          ]
+        },
+        {
+          "id": "others",
+          "title": "Otras peticiones a terceros",
+          "body": [
+            "Al sugerir un recurso, tu navegador consulta el oEmbed de YouTube, la API de GitHub o Zenodo para previsualizar el título y el autor. Estas peticiones se hacen sin credenciales ni cookies.",
+            "La aplicación la sirve Cloudflare. En la comprobación del 15 de noviembre de 2026, las respuestas de facodi.com no instalaban cookies. Si Cloudflare llegara a aplicar cookies técnicas contra abusos, serían estrictamente necesarias y se indicarían aquí.",
+            "Las fuentes tipográficas están alojadas en la propia FACODI y no se piden a servicios externos."
+          ]
+        },
+        {
+          "id": "manage",
+          "title": "Cómo gestionarlo o borrarlo",
+          "items": [
+            "Al cerrar sesión, la sesión se elimina del navegador.",
+            "Puedes cambiar el idioma y el tema en la cabecera o en tu perfil.",
+            "Para borrarlo todo, usa la opción de borrar los datos del sitio en la configuración del navegador. Las notas escritas sin cuenta se pierden.",
+            "Si bloqueas el almacenamiento local, no podrás iniciar sesión, pero podrás seguir leyendo el catálogo."
+          ]
+        }
+      ]
+    },
+    "copyright": {
+      "title": "Derechos de autor y contenidos",
+      "description": "A quién pertenecen los contenidos de FACODI y los recursos enlazados, cómo funcionan las licencias, cómo citar y cómo comunicar una infracción de derechos de autor.",
+      "lead": "FACODI organiza conocimiento creado por muchas personas. Esta página explica qué es nuestro, qué es de terceros y cómo pedir la revisión de un contenido.",
+      "summary": [
+        "Los vídeos y recursos enlazados siguen perteneciendo a sus autores.",
+        "Solo indicamos una licencia cuando la fuente la declara; nunca suponemos una licencia abierta.",
+        "Quien contribuye conserva sus derechos.",
+        "Puedes pedir la revisión o la retirada de un contenido por email."
+      ],
+      "sections": [
+        {
+          "id": "original",
+          "title": "Contenidos originales de FACODI",
+          "body": [
+            "Son de FACODI los textos editoriales, las descripciones, las estructuras de cursos y unidades curriculares, los objetivos de estudio, la selección y organización del catálogo, la identidad visual y el código de la aplicación. Su titularidad corresponde a Open 2 Technology y a los colaboradores que los crearon.",
+            "La licencia de estos contenidos está por confirmar. Hasta su publicación, se aplica el régimen general del Código portugués de Derechos de Autor y Derechos Conexos: puedes consultarlos y citarlos, pero la reproducción o adaptación extensa requiere autorización.",
+            "Los planes curriculares de referencia se basan en información pública de las instituciones educativas, que conservan la titularidad de sus documentos. Las versiones de FACODI no son documentos oficiales."
+          ]
+        },
+        {
+          "id": "third-party",
+          "title": "Materiales de terceros",
+          "body": [
+            "Los vídeos, libros, artículos, documentación y sitios del catálogo pertenecen a sus autores y editores. FACODI no aloja copias de esos materiales: enlaza a la fuente original o incrusta el reproductor oficial de YouTube.",
+            "Las miniaturas, los títulos y las descripciones breves sirven para identificar cada recurso y siempre remiten a la fuente."
+          ]
+        },
+        {
+          "id": "videos",
+          "title": "Vídeos incrustados",
+          "body": [
+            "Los vídeos se reproducen con el reproductor de YouTube, según las condiciones de YouTube y las opciones de inserción elegidas por sus autores. No descargamos, modificamos ni volvemos a alojar vídeos.",
+            "Si el autor retira o bloquea un vídeo, deja de poder reproducirse en FACODI."
+          ]
+        },
+        {
+          "id": "licenses",
+          "title": "Licencias",
+          "body": [
+            "Cada recurso muestra su licencia cuando la fuente la declara. Si no hay indicación, mostramos «La fuente no indica licencia»: significa que no conocemos la licencia, no que el contenido sea libre.",
+            "El sello «Licencia verificada» indica que el equipo editorial confirmó la licencia en la fuente. Las licencias pueden cambiar y prevalece la fuente original.",
+            "Antes de reutilizar un recurso más allá de consultarlo, comprueba las condiciones en la fuente original."
+          ]
+        },
+        {
+          "id": "attribution",
+          "title": "Atribución y citas",
+          "body": [
+            "Al usar un recurso de terceros, cita al autor, el título, la fuente y la licencia, según las condiciones de la fuente original.",
+            "Para citar FACODI, indica «FACODI — Open 2 Technology», el título de la página, la dirección y la fecha de consulta."
+          ]
+        },
+        {
+          "id": "contributors",
+          "title": "Derechos de quien contribuye",
+          "body": [
+            "Al sugerir un recurso o enviar una lista, no transfieres derechos a FACODI. Declaras que el enlace puede compartirse en un contexto educativo y autorizas la publicación del enlace y de sus metadatos si se aprueban.",
+            "Los créditos de colaboración con nombre solo se publican tras confirmar la autorización de la persona.",
+            "Si eres autor de un recurso enlazado y prefieres que no aparezca en FACODI, dínoslo y retiraremos el enlace."
+          ]
+        },
+        {
+          "id": "report",
+          "title": "Comunicar una infracción o pedir una revisión",
+          "body": [
+            "Si crees que un contenido de FACODI vulnera derechos de autor u otros derechos, o que es ilegal, escribe a [hello@open2.tech](mailto:hello@open2.tech) con el asunto «Derechos de autor» e indica:"
+          ],
+          "items": [
+            "la dirección de la página de FACODI y, si procede, el recurso afectado;",
+            "la obra o el derecho que consideras vulnerado y por qué;",
+            "si eres el titular o actúas en su nombre;",
+            "tu nombre y email de contacto;",
+            "una declaración de que la información es exacta y se presenta de buena fe."
+          ]
+        },
+        {
+          "id": "process",
+          "title": "Qué ocurre después",
+          "body": [
+            "Confirmamos la recepción, analizamos la solicitud con diligencia y, cuando está justificado, archivamos el contenido o retiramos el enlace. Informamos a quien hizo la solicitud y, siempre que es posible, a quien aportó el contenido, explicando la decisión.",
+            "Si no estás de acuerdo con la decisión, puedes pedir una nueva revisión por el mismo canal. Este procedimiento sigue los principios de notificación y acción del [Reglamento de Servicios Digitales](https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32022R2065)."
+          ]
+        }
+      ]
+    },
+    "accessibility": {
+      "title": "Accesibilidad",
+      "description": "El compromiso de FACODI con una experiencia inclusiva: medidas aplicadas, limitaciones conocidas y cómo comunicar dificultades.",
+      "lead": "Aprender no debería depender de tu dispositivo, de cómo navegas ni de cómo lees. Esta página describe lo que ya hacemos, lo que aún falla y cómo puedes ayudarnos.",
+      "sections": [
+        {
+          "id": "commitment",
+          "title": "Compromiso",
+          "body": [
+            "Queremos que todas las personas puedan usar FACODI, incluidas quienes navegan solo con teclado o usan lectores de pantalla, ampliación o preferencias de movimiento reducido.",
+            "Tomamos como referencia el nivel AA de las Pautas de Accesibilidad para el Contenido Web ([WCAG 2.2](https://www.w3.org/TR/WCAG22/)). Es un objetivo de trabajo: FACODI aún no ha sido auditada de forma independiente y no declaramos conformidad."
+          ]
+        },
+        {
+          "id": "framework",
+          "title": "Marco legal",
+          "body": [
+            "El [Decreto-Ley portugués 83/2018](https://diariodarepublica.pt/dr/detalhe/modificacoes/83-2018-116734769), que exige una declaración de accesibilidad, se aplica a los sitios web del sector público. Según la información disponible, FACODI no la mantiene una entidad del sector público; esto depende de la forma jurídica del responsable, aún por confirmar.",
+            "El Acta Europea de Accesibilidad, transpuesta en Portugal por el Decreto-Ley 82/2022, cubre determinados productos y servicios, como el comercio electrónico. FACODI es gratuita y no vende productos ni servicios, por lo que es poco probable que se aplique; este punto está sujeto a revisión jurídica.",
+            "Con independencia de la obligación legal, seguimos estas buenas prácticas de forma voluntaria."
+          ]
+        },
+        {
+          "id": "measures",
+          "title": "Medidas aplicadas",
+          "items": [
+            "Enlace para saltar al contenido y estructura con encabezados, regiones y listas semánticas.",
+            "Navegación completa con teclado, con el foco siempre visible.",
+            "Contraste mínimo de 4,5:1 en el texto, en tema claro y oscuro; los colores de tipo de contenido siempre van acompañados de una etiqueta escrita.",
+            "Respeto por la preferencia de movimiento reducido del sistema.",
+            "Formularios con etiquetas, mensajes de error anunciados y validación explicada.",
+            "Botones solo con icono con nombre accesible; imágenes decorativas ignoradas por los lectores de pantalla.",
+            "Interfaz en portugués, inglés, español y francés, con el idioma de la página indicado al navegador.",
+            "Reproductor de vídeo que solo se carga cuando lo pides, con los controles de YouTube, incluidos subtítulos cuando el autor los ofrece.",
+            "Pruebas automáticas con axe-core (criterios WCAG 2.1 A y AA) en páginas públicas, incluidas en el conjunto de pruebas del proyecto."
+          ]
+        },
+        {
+          "id": "limitations",
+          "title": "Limitaciones conocidas",
+          "items": [
+            "Los vídeos y sitios externos no dependen de FACODI: muchos vídeos no tienen subtítulos revisados ni transcripción.",
+            "Algunas páginas editoriales tienen tablas y listas densas que pueden ser difíciles de usar en pantallas pequeñas o con lectores de pantalla.",
+            "Las pruebas automáticas solo cubren parte de las páginas y no sustituyen las pruebas con personas con discapacidad.",
+            "Los documentos externos, como los PDF, pueden no ser accesibles."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Comunicar una dificultad",
+          "body": [
+            "Si algo en FACODI te impide acceder a un contenido o completar una tarea, escribe a [hello@open2.tech](mailto:hello@open2.tech) con el asunto «Accesibilidad». Indica la página, qué intentabas hacer y, si quieres, el dispositivo, el navegador y la tecnología de apoyo que usas.",
+            "Intentamos corregir el problema u ofrecer la información de otra forma, y damos prioridad a estas solicitudes."
+          ]
+        }
+      ]
+    },
+    "legal": {
+      "title": "Aviso legal",
+      "description": "Identificación del responsable del sitio web FACODI, naturaleza del proyecto, relación con instituciones educativas y ley aplicable.",
+      "lead": "Quién está detrás de FACODI y cómo contactarnos. Algunos datos de identificación aún se están confirmando y se indican como tales.",
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Identificación",
+          "body": [
+            "Datos de identificación del prestador del servicio según el artículo 10 del Decreto-Ley portugués 7/2004 (comercio electrónico). Los datos que faltan se publicarán una vez confirmados; no se muestran valores provisionales."
+          ],
+          "facts": [
+            {
+              "label": "Servicio",
+              "value": "FACODI — campus digital abierto"
+            },
+            {
+              "label": "Responsable",
+              "value": "Open 2 Technology (Open2 / O2T)"
+            },
+            {
+              "label": "Forma jurídica",
+              "value": "Aún no confirmada.",
+              "pending": true
+            },
+            {
+              "label": "Número fiscal (NIF / NIPC)",
+              "value": "Se publicará tras su confirmación.",
+              "pending": true
+            },
+            {
+              "label": "Domicilio",
+              "value": "Se publicará tras su confirmación.",
+              "pending": true
+            },
+            {
+              "label": "Registro",
+              "value": "Se indicará, si procede.",
+              "pending": true
+            },
+            {
+              "label": "Contacto",
+              "value": "[hello@open2.tech](mailto:hello@open2.tech)"
+            },
+            {
+              "label": "Sitio web",
+              "value": "[facodi.com](https://facodi.com)"
+            },
+            {
+              "label": "Código fuente",
+              "value": "[github.com/Open2Tech/facodi](https://github.com/Open2Tech/facodi)"
+            },
+            {
+              "label": "Origen",
+              "value": "SEA-EU Student-Led Projects 2026 · Universidad del Algarve"
+            },
+            {
+              "label": "Creación del proyecto",
+              "value": "Marcelo Santos"
+            }
+          ]
+        },
+        {
+          "id": "nature",
+          "title": "Naturaleza del proyecto",
+          "body": [
+            "FACODI es un proyecto educativo gratuito, de origen estudiantil, que organiza recursos de aprendizaje abiertos. No es una institución de educación superior, no imparte formación certificada y no otorga títulos, créditos ni certificados."
+          ]
+        },
+        {
+          "id": "institutions",
+          "title": "Relación con instituciones",
+          "body": [
+            "FACODI forma parte de los SEA-EU Student-Led Projects 2026 y nació en la Universidad del Algarve. Esto describe el origen del proyecto y no significa que la Universidad del Algarve, la alianza SEA-EU o las instituciones cuyos cursos aparecen en el catálogo representen, avalen o sean responsables de FACODI o de sus contenidos.",
+            "Los nombres y marcas de instituciones, plataformas y cursos pertenecen a sus titulares y se usan solo para identificar el origen de la información."
+          ]
+        },
+        {
+          "id": "content",
+          "title": "Contenidos y enlaces",
+          "body": [
+            "La información publicada se prepara con cuidado, pero puede contener errores o quedar desactualizada. Los recursos externos son responsabilidad de sus autores. Las condiciones de uso figuran en los [Términos de uso](/terms)."
+          ]
+        },
+        {
+          "id": "law",
+          "title": "Ley aplicable",
+          "body": [
+            "Este sitio web se rige por la ley portuguesa y por el derecho de la Unión Europea aplicable."
+          ]
+        },
+        {
+          "id": "documents",
+          "title": "Documentos relacionados",
+          "items": [
+            "[Política de privacidad](/privacy): datos personales y derechos.",
+            "[Términos de uso](/terms): normas de uso y contribuciones.",
+            "[Cookies y almacenamiento](/cookies): qué se guarda en el navegador.",
+            "[Derechos de autor](/copyright): licencias, citas y solicitudes de retirada.",
+            "[Accesibilidad](/accessibility): medidas y contacto."
+          ]
+        }
+      ]
+    }
   }
 }

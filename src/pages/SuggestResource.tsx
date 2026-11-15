@@ -23,6 +23,7 @@ import { SuggestionHistory } from '@/components/suggestion/SuggestionHistory';
 import { UnitMatchPicker } from '@/components/suggestion/UnitMatchPicker';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { LegalRichText } from '@/components/legal/LegalRichText';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
@@ -223,6 +224,7 @@ export default function SuggestResource() {
             </label>)}
             {(errors.licenseDeclared || errors.attributionDeclared) && <p role="alert" className="text-sm text-destructive">{t('suggest.errors.declaration')}</p>}
           </fieldset>
+          <p className="text-sm text-muted-foreground"><LegalRichText text={t('suggest.legalNote')} /></p>
           {submit.error && <p role="alert" className="border border-destructive p-3 text-sm text-destructive">
             {t(`suggest.errors.${errorCode}`, { defaultValue: errorCode || t('common.error') })}
           </p>}

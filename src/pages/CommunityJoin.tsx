@@ -9,6 +9,7 @@ import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { LegalRichText } from '@/components/legal/LegalRichText';
 
 const interests = ['learner','educator','curator','developer','designer','translator','organization'] as const;
 type Interest = typeof interests[number];
@@ -117,7 +118,7 @@ export default function CommunityJoin() {
       </label>
       <p className="flex gap-2 text-sm text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-        {t('communityJoin.privacy')}
+        <span>{t('communityJoin.privacy')} <LegalRichText text={t('communityJoin.legalNote')} /></span>
       </p>
       {submit.error && <p role="alert" className="text-sm text-destructive">{submit.error.message}</p>}
       {success && <p role="status" className="border border-input bg-brand-mint p-4 font-semibold text-ink">

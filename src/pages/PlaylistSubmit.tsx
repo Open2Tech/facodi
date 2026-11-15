@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PageState } from '@/components/layout/PageState';
 import { PlaylistHistory } from '@/components/contribution/PlaylistHistory';
+import { LegalRichText } from '@/components/legal/LegalRichText';
 
 const SELECT = 'h-11 w-full border border-input bg-background px-3 text-sm disabled:cursor-not-allowed disabled:opacity-50';
 
@@ -113,6 +114,7 @@ export default function PlaylistSubmit() {
       <p className="flex gap-3 border border-input bg-muted/40 p-4 text-sm text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-foreground" aria-hidden="true" />{t('playlistSubmit.reviewNotice')}
       </p>
+      <p className="text-sm text-muted-foreground"><LegalRichText text={t('playlistSubmit.legalNote')} /></p>
       {submit.error && <p role="alert" className="border border-destructive p-3 text-sm text-destructive">
         {t(`playlistSubmit.errors.${errorCode}`, { defaultValue: errorCode || t('common.error') })}
       </p>}

@@ -106,6 +106,52 @@ test('empty campus has no critical accessibility or contrast violations', async 
   expect(violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) }))).toEqual([]);
 });
 
+const LEGAL_PAGES = [
+  ['/privacy', 'Privacy', 'Privacy Policy'],
+  ['/terms', 'Terms of use', 'Terms of Use'],
+  ['/cookies', 'Cookies and storage', 'Cookies and storage'],
+  ['/copyright', 'Copyright', 'Copyright and content'],
+  ['/accessibility', 'Accessibility', 'Accessibility'],
+  ['/legal', 'Legal notice', 'Legal notice'],
+] as const;
+
+test('legal pages are reachable from the footer and carry their own metadata', async ({ page }) => {
+  await page.goto('/');
+  const footerLegal = page.getByRole('contentinfo').getByRole('navigation', { name: 'Legal information' });
+  for (const [path, label, title] of LEGAL_PAGES) {
+    await footerLegal.getByRole('link', { name: label, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`${path}$`));
+    await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
+    await expect(page).toHaveTitle(new RegExp(title));
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`${path}$`));
+  }
+});
+
+test('legal pages deep-link to sections and stay usable on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/privacy#deletion');
+  await expect(page.getByRole('heading', { name: 'Deleting your account' })).toBeInViewport();
+  await page.locator('summary', { hasText: 'On this page' }).click();
+  await page.locator('details').getByRole('link', { name: /Your rights/ }).click();
+  await expect(page.getByRole('heading', { name: 'Your rights' })).toBeInViewport();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.goto('/legal');
+  await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(4);
+});
+
+for (const [path] of LEGAL_PAGES.filter(([path]) => ['/privacy', '/cookies', '/legal'].includes(path))) {
+  test(`legal page ${path} has no critical accessibility or contrast violations`, async ({ page }) => {
+    await page.goto(path);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+    const violations = await page.evaluate(async () => {
+      const axe = (window as typeof window & { axe: typeof import('axe-core') }).axe;
+      return (await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations;
+    });
+    expect(violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) }))).toEqual([]);
+  });
+}
+
 function authFixture(role?: string) {
   const now = Math.floor(Date.now() / 1000);
   const user = { id: '11111111-1111-4111-8111-111111111111', email: 'learner@example.test', aud: 'authenticated', role: 'authenticated', created_at: '2026-01-01T00:00:00Z', app_metadata: role ? { role } : {}, user_metadata: { full_name: 'Test Learner' }, identities: [] };

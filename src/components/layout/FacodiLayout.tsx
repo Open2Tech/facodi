@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { Helmet } from 'react-helmet-async';
 import { useSeoClaims } from '@/components/layout/seoClaims';
 import { toast } from 'sonner';
+import { LEGAL_DOCUMENTS, legalPath } from '@/components/legal/legalDocuments';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -54,6 +55,7 @@ export default function FacodiLayout() {
       ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
       : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },
   ];
+  const legalLinks = LEGAL_DOCUMENTS.map(document => ({ to: legalPath(document), title: t(`legal.nav.${document}`) }));
   return <div className="flex min-h-screen flex-col">
     <Helmet>
       {!seoClaims.page && <title>{`FACODI — ${t('brand.tagline')}`}</title>}
@@ -109,7 +111,12 @@ export default function FacodiLayout() {
         </nav>)}
       </div>
       <div className="border-t border-ink-foreground/15">
-        <p className="mx-auto max-w-7xl px-5 py-5 font-mono text-xs text-ink-foreground/70 lg:px-8">{t('footer.note')}</p>
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <p className="font-mono text-xs text-ink-foreground/70">{t('footer.note')}</p>
+          <nav aria-label={t('footer.legal')}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs">{legalLinks.map(link => <li key={link.to}><Link to={link.to} className="text-ink-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline">{link.title}</Link></li>)}</ul>
+          </nav>
+        </div>
       </div>
     </footer>
   </div>;

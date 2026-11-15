@@ -102,6 +102,23 @@ avançados que não estejam no formulário.
 HTML é sanitizado com DOMPurify e allowlist de elementos de texto, sem scripts,
 frames, estilos ou eventos. Links para recursos externos só aceitam HTTP(S).
 
+## Páginas legais
+
+`/privacy`, `/terms`, `/cookies`, `/copyright`, `/accessibility` e `/legal`
+são rotas públicas renderizadas por
+[LegalDocument](../src/components/legal/LegalDocument.tsx). O conteúdo vive
+nos locales em `legal.<documento>` (`title`, `description`, `lead`, `summary`,
+`sections` com `body`, `items`, `table` ou `facts`); não há CMS nem tabelas
+para textos legais. Links no texto usam a sintaxe `[rótulo](/rota#secção)`,
+interpretada por [LegalRichText](../src/components/legal/LegalRichText.tsx).
+`legalDocuments.test.ts` garante a mesma estrutura nos quatro idiomas e que
+as âncoras internas existem. Ao alterar uma política, atualize
+`LEGAL_LAST_UPDATED` em
+[legalDocuments.ts](../src/components/legal/legalDocuments.ts) e confirme que
+o texto continua a corresponder ao funcionamento real (armazenamento no
+browser, fornecedores, fluxos de conta). Dados institucionais por confirmar
+usam `facts` com `pending: true` e nunca valores provisórios.
+
 ## SEO e partilha
 
 [src/shared/seo/seo.ts](../src/shared/seo/seo.ts) é a fonte única de metadados:
