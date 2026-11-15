@@ -1033,7 +1033,19 @@
     "publish": "Vérifier et publier",
     "empty": "Aucun crédit en attente",
     "emptyDescription": "Aucun profil à valider.",
-    "footer": "Les références universitaires, les partenaires techniques et les personnes ont des rôles distincts. Une réunion ne suffit pas pour publier un nom."
+    "footer": "Les références universitaires, les partenaires techniques et les personnes ont des rôles distincts. Une réunion ne suffit pas pour publier un nom.",
+    "approvedTitle": "Crédits individuels publiés",
+    "approvedDescription": "Si le consentement est retiré ou si une attribution est incorrecte, le crédit peut être masqué sans effacer l'historique privé.",
+    "loadingApproved": "Chargement des crédits…",
+    "noneApproved": "Aucun contributeur individuel validé pour le moment.",
+    "withdrawAction": "Retirer le crédit",
+    "withdrawConfirm": "Le nom disparaîtra immédiatement de la présentation publique ; l'historique sera conservé.",
+    "withdrawReason": "Motif du retrait (privé)",
+    "withdrawReasonHint": "Par exemple, demande explicite de la personne ou correction justifiée.",
+    "withdrawAcknowledge": "Je confirme la nécessité du retrait et l'existence d'un motif documenté. Le crédit ne sera pas réactivé automatiquement.",
+    "withdrawConfirmButton": "Confirmer le retrait",
+    "withdrawValidation": "Confirmez et renseignez un motif d'au moins 25 caractères.",
+    "withdrawSuccess": "Crédit retiré du site public. Historique conservé."
   },
   "sequences": {
     "title": "Séquences d’étude",
