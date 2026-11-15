@@ -12,6 +12,7 @@ import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
+import { ShareButton } from '@/components/share/ShareButton';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
 import { courseHours, unitHours, ufesElectiveGroup, ufesElectiveGroupOrder, type UfesElectiveGroup } from '@/entities/course/brazilianCurriculum';
@@ -75,6 +76,7 @@ export default function CourseDetails() {
     <header className="border-b border-foreground pb-10">
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{course.title}</h1>
       {course.summary && course.summary.trim() !== course.title.trim() && <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted-foreground">{course.summary}</p>}
+      <div className="mt-6"><ShareButton title={course.title} /></div>
     </header>
     <LearningContext focus="course" />
     <div className="grid gap-12 py-10 lg:grid-cols-[1fr_20rem]">

@@ -369,10 +369,15 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
   await page.getByRole('link', { name: 'Logic I', exact: true }).click();
   await expect(page).toHaveURL(/\/courses\/test-course\/units\/u-1$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Logic I' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' })).toBeVisible();
   await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /Logic in practice/ })).toHaveAttribute('href', '/sequences/logic-path');
   expect(sequenceUnits).toEqual([{ p_unit_code: '1001' }]);
+  await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' }).click();
+  await expect(page).toHaveURL(/\/courses\/test-course$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Test course' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
 });
 
 test('video page loads YouTube only on demand and places the video in its unit trail', async ({ page }) => {
@@ -410,6 +415,7 @@ test('video page loads YouTube only on demand and places the video in its unit t
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/resources/derivatives');
     await expect(page.getByRole('heading', { level: 1, name: 'Derivatives' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Calculus I' }).first()).toBeVisible();
     await expect(page.getByText('Video 2 of 3')).toBeVisible();
     await expect(page.locator('[aria-current="true"]')).toContainText('Derivatives');
@@ -871,6 +877,7 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
   await page.getByRole('link', { name: /Python from scratch/ }).click();
   await expect(page).toHaveURL(/\/sequences\/python-basics$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Python from scratch' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
   await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
   await page.getByRole('list', { name: 'Lessons in this sequence' }).getByRole('button', { name: /Functions/ }).click();
   await expect(page).toHaveURL(/\?v=v2$/);

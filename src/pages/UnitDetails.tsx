@@ -14,6 +14,7 @@ import { useContributePath } from '@/features/auth/useContributePath';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
+import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -95,6 +96,7 @@ export default function UnitDetails() {
         <Link to={`/courses/${course.slug}`} className="font-semibold underline decoration-2 underline-offset-4">{course.title}</Link>
       </p>
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
+      <div className="mt-6"><ShareButton title={unit.title} /></div>
     </header>
     <LearningContext focus="unit" />
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
