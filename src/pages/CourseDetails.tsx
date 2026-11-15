@@ -53,7 +53,9 @@ export default function CourseDetails() {
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <PageState title={t('common.notFound')} description={t('common.notFoundDescription')} />;
   const { course, units, resource } = query.data;
-  const otherLabel = course.code === 'UFES-LETRAS-ING-83-2019' ? t('course.availableElectives') : t('course.otherUnits');
+  const isEditorialStudyPath = course.code === 'FACODI-GACS-ASTRO-2018';
+  const studyPlanLabel = isEditorialStudyPath ? t('course.editorialPath') : t('course.studyPlan');
+  const otherLabel = isEditorialStudyPath ? t('course.editorialSteps') : course.code === 'UFES-LETRAS-ING-83-2019' ? t('course.availableElectives') : t('course.otherUnits');
   const plan = safeExternalUrl(course.plan_url);
   const facts = [
     ['code', course.code], ['degree', course.degree_type ? t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type }) : null],
@@ -83,11 +85,11 @@ export default function CourseDetails() {
         <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
           <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
         </div>)}</dl>
-        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">{t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
+        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground"{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
       </aside>
     </div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
-      action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{t('course.studyPlan')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
+      action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
     {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
       <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
@@ -104,7 +106,7 @@ export default function CourseDetails() {
     </section>}
     <section aria-labelledby="units" className="border-t border-foreground pt-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{t('course.studyPlan')}</h2>
+        <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{studyPlanLabel}</h2>
         {!!units.length && <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('course.filterUnits')}<ArrowRight className="h-4 w-4" /></Link>}
       </div>
       {!!coverage.data?.length && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
@@ -127,7 +129,7 @@ export default function CourseDetails() {
             return <section key={`${group.year}:${group.semester}:${group.electiveGroup ?? ''}`} aria-label={groupLabel} className="min-w-0">
               <div className="flex items-baseline justify-between gap-4 border-b border-foreground pb-2">
                 <h4 className="font-semibold">{groupLabel}</h4>
-                <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('course.termSummary', { count: group.units.length })}</p>
+                <p className="font-mono text-xs tabular-nums text-muted-foreground">{isEditorialStudyPath ? t('course.editorialStepCount', { count: group.units.length }) : t('course.termSummary', { count: group.units.length })}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
                 const media = coverageById.get(unit.id);
