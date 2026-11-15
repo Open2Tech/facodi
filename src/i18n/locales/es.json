@@ -1148,6 +1148,10 @@
     "reject": "No aceptar",
     "confirmReview": "¿Confirmar la decisión?",
     "acceptNote": "Aceptar no crea funciones ni concede permisos y no envía mensajes.",
-    "rejectNote": "La decisión aparece en el historial privado del participante."
+    "rejectNote": "La decisión aparece en el historial privado del participante.",
+    "withdraw": "Retirar propuesta",
+    "withdrawConfirm": "¿Retirar y borrar el registro privado de esta propuesta? No se puede deshacer.",
+    "withdrawConfirmButton": "Sí, retirar y borrar",
+    "withdrawUnavailable": "Esta propuesta ya no está disponible o no te pertenece."
   }
 }
