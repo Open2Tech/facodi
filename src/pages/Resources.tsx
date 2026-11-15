@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useResources, useResourceTypes } from '@/features/courses/queries/useCourses';
+import { useModules } from '@/features/modules/useModules';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader, CatalogToolbar } from '@/components/catalog/CatalogToolbar';
@@ -21,6 +22,11 @@ export default function Resources() {
   const query = useResources({ page, search, language, tag, objectType: type });
   const types = useResourceTypes();
   const moduleOnly = type === 'module';
+  const moduleSearch = Boolean(search.trim()) && !type;
+  const relatedModules = useModules(1, search, moduleSearch, language, tag);
+  const moduleParams = new URLSearchParams({ type: 'module', search });
+  if (language) moduleParams.set('language', language);
+  if (tag) moduleParams.set('tag', tag);
   const typeLabel = (value: string) => t('objectTypes.' + value, { defaultValue: value });
   // Put study modules first, even when videos account for most of the catalogue.
   const options = (types.data ?? []).map(option => ({ ...option, label: typeLabel(option.value) }))
@@ -31,7 +37,7 @@ export default function Resources() {
       <title>{t('resources.title') + ' — FACODI'}</title>
       <meta name="description" content={t('resources.description')} />
     </Helmet>
-    <CatalogHeader title={t('resources.title')} description={t('resources.description')} total={query.data?.total} />
+    <CatalogHeader title={t('resources.title')} description={t('resources.description')} total={moduleSearch ? undefined : query.data?.total} />
     <LearningContext focus="resource" />
     <CatalogToolbar search={search} language={language} onFilter={filter} />
     {!!options.length && <div className="-mt-4 mb-8">
@@ -50,6 +56,31 @@ export default function Resources() {
       <h2 className="text-2xl font-semibold tracking-tight">{t('studyModules.title')}</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t('studyModules.description')}</p>
     </div>}
+    {moduleSearch && !!relatedModules.data?.items.length && <section aria-labelledby="matching-modules" className="mb-8 border-y border-input py-5">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h2 id="matching-modules" className="text-xl font-semibold tracking-tight">
+            {t('studyModules.title')} <span className="font-mono text-sm font-normal text-muted-foreground">({relatedModules.data.total})</span>
+          </h2>
+          <p className="mt-1 max-w-prose text-sm text-muted-foreground">{t('studyModules.description')}</p>
+        </div>
+        <Link to={'/resources?' + moduleParams.toString()} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+          {t('resources.viewAllModules')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
+      <ul className="mt-4 divide-y divide-input">
+        {relatedModules.data.items.slice(0, 3).map(module => <li key={module.id}>
+          <Link to={moduleResourcePath('module', module.slug)}
+            className="group flex items-center justify-between gap-4 py-3 transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <span className="min-w-0">
+              <span className="block font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
+              {module.description && <span className="mt-1 line-clamp-1 block text-sm text-muted-foreground">{plainText(module.description)}</span>}
+            </span>
+            <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+          </Link>
+        </li>)}
+      </ul>
+    </section>}
     {query.isPending
       ? <PageState loading />
       : query.error
@@ -104,7 +135,11 @@ export default function Resources() {
                 </li>;
               })}
             </ul>
-          ) : <PageState title={t('resources.empty')} description={t(filtered ? 'resources.noResults' : 'resources.emptyDescription')} />}
+          ) : moduleSearch && relatedModules.isPending
+            ? <PageState loading />
+            : moduleSearch && !!relatedModules.data?.items.length
+              ? null
+              : <PageState title={t('resources.empty')} description={t(filtered ? 'resources.noResults' : 'resources.emptyDescription')} />}
           <Pagination page={page} total={query.data.total} onChange={value => filter('page', String(value))} />
         </>}
     {moduleOnly && <p className="mt-9 max-w-prose border-t border-input pt-5 text-sm leading-relaxed text-muted-foreground">
