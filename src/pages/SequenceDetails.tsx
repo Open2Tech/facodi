@@ -12,6 +12,7 @@ import { PageState } from '@/components/layout/PageState';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { SequenceProgress } from '@/components/sequence/SequenceProgress';
 import { Button } from '@/components/ui/button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
@@ -128,6 +129,7 @@ export default function SequenceDetails() {
       </section>
     </header>
 
+    <div className="pt-8"><CreatorLearningPanel kind="playlist" slug={sequence.slug} youtubeId={null} inlineSequence /></div>
     {selected ? <section aria-labelledby="sequence-lessons" className="py-10">
       <h2 id="sequence-lessons" className="sr-only">{t('sequences.lessonsHeading')}</h2>
       <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
