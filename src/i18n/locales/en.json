@@ -2050,5 +2050,9 @@
         }
       ]
     }
+  },
+  "collectionPlaylists": {
+    "title": "Video learning paths in this collection",
+    "notice": "Sequences curated by FACODI using lessons from their original creators. Open a path to follow the proposed lesson order."
   }
 }
