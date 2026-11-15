@@ -1,18 +1,17 @@
 project_id = "wvkjainfwsyiyfcmbtid"
 
 [api]
-schemas = ["public", "graphql_public", "facodi"]
-extra_search_path = ["public", "extensions", "facodi"]
+schemas = ["public", "graphql_public", "facodi", "pgmq_public", "tube"]
+extra_search_path = ["public", "facodi", "tube"]
 
 [storage.vector]
 enabled = false
 
 [auth]
-# Auth is shared with Tube O2. Keep its Site URL and global templates unchanged.
-# FACODI canonical domain and the Cloudflare Workers facodi-branch preview use dedicated callback and reset-password routes.
-# Verify these versioned redirect URLs separately in the hosted Supabase Auth dashboard.
-site_url = "https://tube.open2.tech"
-additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://www.facodi.com", "https://facodi.com/auth/callback**", "https://facodi.com/auth/reset-password**", "https://www.facodi.com/auth/callback**", "https://www.facodi.com/auth/reset-password**", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com", "https://facodi.vercel.app", "https://facodi.vercel.app/auth/callback**", "https://facodi.vercel.app/auth/reset-password**", "https://facodi.marcelo-0d6.workers.dev/auth/callback**", "https://facodi.marcelo-0d6.workers.dev/auth/reset-password**"]
+# Auth is shared with Tube O2. Values mirror the hosted project (verified with
+# `supabase config push` diff on 2026-11-15); the global Auth email templates are FACODI-branded.
+site_url = "https://facodi.com"
+additional_redirect_urls = ["https://monynha.fun", "https://monynha.fun/**", "http://localhost:3000", "https://*.monynha.com", "https://monynha.com", "http://localhost:8080", "https://localhost:4173", "https://open2.tech", "https://facodi.com", "https://*.open2.tech", "https://*.facodi.com", "https://tube.open2.tech", "https://facodi.marcelo-m7.com", "https://dev.facodi.com", "https://tube.marcelo-m7.me", "https://facodi.vercel.app", "https://facodi.marcelo-0d6.workers.dev", "https://facodi.marcelo-0d6.workers.dev/auth/callback**", "https://facodi.marcelo-0d6.workers.dev/auth/reset-password**"]
 enable_manual_linking = true
 
 [auth.mfa.totp]
@@ -24,20 +23,28 @@ enable_confirmations = true
 otp_length = 8
 
 [auth.email.template.invite]
-subject = "Convite para o Tube O2"
-content_path = "supabase/email-templates/invite.html"
+subject = "FACODI · Convite de acesso"
+content_path = "supabase/email-templates/facodi/invite.html"
 
 [auth.email.template.confirmation]
-subject = "Confirme seu email - Tube O2"
-content_path = "supabase/email-templates/confirm-signup.html"
+subject = "FACODI · Confirme o seu email"
+content_path = "supabase/email-templates/facodi/confirmation.html"
 
 [auth.email.template.recovery]
-subject = "Redefina sua senha - Tube O2"
-content_path = "supabase/email-templates/recovery.html"
+subject = "FACODI · Redefinir palavra-passe"
+content_path = "supabase/email-templates/facodi/recovery.html"
+
+[auth.email.template.magic_link]
+subject = "FACODI · Ligação para iniciar sessão"
+content_path = "supabase/email-templates/facodi/magic_link.html"
 
 [auth.email.template.email_change]
-subject = "Confirme a alteração de email - Tube O2"
-content_path = "supabase/email-templates/email-change.html"
+subject = "FACODI · Confirmar alteração de email"
+content_path = "supabase/email-templates/facodi/email_change.html"
+
+[auth.email.template.reauthentication]
+subject = "FACODI · Código de verificação"
+content_path = "supabase/email-templates/facodi/reauthentication.html"
 
 [functions.enrich-video]
 verify_jwt = true

@@ -101,8 +101,8 @@ for (const rule of ['X-Content-Type-Options: nosniff','X-Frame-Options: DENY',
 assert.ok(workerHeaders.includes('/assets/*') &&
   workerHeaders.includes('max-age=31536000, immutable'),
   'Hashed Vite assets must have durable cache behavior');
-assert.ok(supabaseConfig.includes('site_url = "https://tube.open2.tech"'),
-  'Shared Auth Site URL must remain unchanged without a separate Auth setup');
+assert.ok(supabaseConfig.includes('site_url = "https://facodi.com"'),
+  'Shared Auth Site URL must mirror the hosted FACODI origin');
 for (const route of ['/auth/callback**','/auth/reset-password**']) {
   assert.ok(supabaseConfig.includes(`https://facodi.marcelo-0d6.workers.dev${route}`),
     `Workers preview missing versioned Auth redirect: ${route}`);
