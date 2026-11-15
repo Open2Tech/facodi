@@ -5,6 +5,7 @@ import { useResources, useResourceTypes } from '@/features/courses/queries/useCo
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { CatalogHeader, CatalogToolbar } from '@/components/catalog/CatalogToolbar';
+import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { FacetGroup } from '@/components/catalog/FacetFilters';
 import { videoInfo } from '@/entities/course/video';
@@ -20,6 +21,7 @@ export default function Resources() {
   const typeLabel = (value: string) => t(`objectTypes.${value}`, { defaultValue: value });
   return <>
     <CatalogHeader title={t('resources.title')} description={t('resources.description')} total={query.data?.total} />
+    <LearningContext focus="resource" />
     <CatalogToolbar search={search} language={language} onFilter={filter} />
     {!!types.data?.length && <div className="-mt-4 mb-8">
       <FacetGroup title={t('resources.filterType')} value={type} onChange={value => filter('type', value)}
