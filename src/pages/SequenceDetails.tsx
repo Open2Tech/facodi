@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { sequenceMeta } from '@/shared/seo/seo';
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, LogIn, RotateCcw } from 'lucide-react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
@@ -45,6 +45,12 @@ export default function SequenceDetails() {
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
 
   const sequence = query.data;
+  // Preserve bookmarks while canonicalizing duplicate video sequences.
+  // The SQL RPC resolves only explicit, public editorial alias metadata.
+  if (sequence.slug !== slug) {
+    const search = params.toString();
+    return <Navigate to={`/sequences/${encodeURIComponent(sequence.slug)}${search ? `?${search}` : ''}`} replace />;
+  }
   const items = sequence.items;
   const rows = progress.data ?? new Map();
   const progressReady = !progress.signedIn || progress.isSuccess;
