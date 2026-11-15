@@ -8,6 +8,9 @@ import { useAuth } from '@/features/auth/useAuth';
 
 const Home = lazy(() => import('@/pages/Home'));
 const Courses = lazy(() => import('@/pages/Courses'));
+const Modules = lazy(() => import('@/pages/Modules'));
+const ModuleDetails = lazy(() => import('@/pages/ModuleDetails'));
+const HowItWorks = lazy(() => import('@/pages/HowItWorks'));
 const CourseDetails = lazy(() => import('@/pages/CourseDetails'));
 const ResourceDetails = lazy(() => import('@/pages/ResourceDetails'));
 const UnitDetails = lazy(() => import('@/pages/UnitDetails'));
@@ -48,6 +51,9 @@ export function AppRoutes() {
       <Route path="/courses/:slug" element={<CourseDetails key={sessionKey} />} />
       <Route path="/courses/:slug/units/:unit" element={<UnitDetails key={sessionKey} />} />
       <Route path="/units" element={<Units key={sessionKey} />} />
+      <Route path="/modules" element={<Modules key={sessionKey} />} />
+      <Route path="/modules/:slug" element={<ModuleDetails key={sessionKey} />} />
+      <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/resources" element={<Resources key={sessionKey} />} />
       <Route path="/resources/:slug" element={<ResourceDetails key={sessionKey} />} />
       <Route path="/sequences" element={<Sequences key={sessionKey} />} />
