@@ -453,7 +453,16 @@
     "videosTitle": "Vídeos de este curso",
     "videosText": "Primeros vídeos de las rutas curadas en las {{count}} unidades curriculares de este plan.",
     "availableElectives": "Asignaturas optativas disponibles",
-    "ufesElectiveNotice": "Las 45 asignaturas son alternativas distribuidas en cuatro grupos del plan UFES. Cada estudiante elige 10 optativas (720 horas), no todas las alternativas."
+    "ufesElectiveNotice": "Las 45 asignaturas son alternativas distribuidas en cuatro grupos del plan UFES. Cada estudiante elige 10 optativas (720 horas), no todas las alternativas.",
+    "hours": "Carga horaria",
+    "brazilianCredits": "Créditos brasileños",
+    "electiveGroup": "Grupo de optativas",
+    "electiveGroups": {
+      "opt_english_linguistics": "Lingüística inglesa (24 opciones; elegir 5)",
+      "opt_english_literature": "Literatura en inglés (11 opciones; elegir 3)",
+      "opt_general_linguistics": "Lingüística — Letras (5 opciones; elegir 1)",
+      "opt_general_literature": "Literatura — Letras (5 opciones; elegir 1)"
+    }
   },
   "resource": {
     "objectives": "Objetivos de aprendizaje",
