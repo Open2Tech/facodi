@@ -9,6 +9,7 @@ describe('safe navigation', () => {
     expect(safeReturnPath('/editor?view=courses')).toBe('/editor?view=courses');
     expect(safeReturnPath('/profile')).toBe('/profile');
     expect(safeReturnPath('/editor/study-paths?status=accepted')).toBe('/editor/study-paths?status=accepted');
+    expect(safeReturnPath('/editor/course-quality')).toBe('/editor/course-quality');
     expect(safeReturnPath('/playlists/submit')).toBe('/playlists/submit');
     expect(safeReturnPath('/sequences/facodi-playlist-git?v=v1')).toBe('/sequences/facodi-playlist-git?v=v1');
     expect(safeReturnPath('/resources/intro-to-sql')).toBe('/resources/intro-to-sql');
