@@ -31,7 +31,10 @@ bun run test:workers:smoke
 
 O teste de Workers verifica disponibilidade, fallback SPA e cabeçalhos,
 **mas não substitui um teste em navegador** que confirme os dados da API
-e a navegação efetiva. A documentação de configuração e o estado de builds
+e a navegação efetiva. No GitHub, o smoke aguarda o deploy do commit e confirma
+a revisão servida antes de testar as rotas; o comando local verifica apenas o
+build atualmente disponível. Ver [detalhes da verificação](docs/CODEBASE.md#verificação).
+A documentação de configuração e o estado de builds
 na Cloudflare devem ser consultados diretamente no painel de Workers & Pages;
 este repositório não contém uma chave de gestão Cloudflare.
 

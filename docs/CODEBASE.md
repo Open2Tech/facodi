@@ -140,6 +140,14 @@ contratos Data API, validação, navegação e HTML. MSW simula respostas HTTP,
 sem necessidade de utilizadores remotos. Playwright cobre navegação e
 responsividade. Estes testes não substituem a matriz RLS com sessões reais.
 
+Após cada push em `facodi`, o workflow de smoke espera pelo check bem-sucedido
+da Cloudflare para o mesmo commit e confirma que `/build-revision.txt` serve
+esse SHA antes de testar as rotas. O ficheiro é gerado apenas em Workers Builds
+com `WORKERS_CI_COMMIT_SHA`, injetado pela própria Cloudflare, e não é guardado
+em cache. Um check ausente, falhado ou uma revisão diferente não são sucesso.
+O comando local `bun run test:workers:smoke` testa apenas o Worker disponível;
+nenhum destes testes substitui a validação de dados no navegador.
+
 ## Histórico
 
 O frontend social Tube O2 e o adaptador Odoo foram retirados da árvore ativa.
