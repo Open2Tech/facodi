@@ -5,7 +5,7 @@ import { renderWithProviders } from '@/shared/test/renderWithProviders';
 import { LegalDocument } from './LegalDocument';
 
 describe('LegalDocument', () => {
-  it('renders FACODI's responsibility separately from public UAlg institutional identifiers', () => {
+  it("renders FACODI responsibility separately from public UAlg institutional identifiers", () => {
     renderWithProviders(<LegalDocument id="legal" />, { route: '/legal' });
 
     expect(screen.getByRole('heading', { level: 1, name: i18n.t('legal.legal.title') })).toBeInTheDocument();
