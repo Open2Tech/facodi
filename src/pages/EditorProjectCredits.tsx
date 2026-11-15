@@ -111,6 +111,101 @@ function CreditForm({ candidate, onReviewed }: { candidate: Candidate; onReviewe
   </form>;
 }
 
+
+type ApprovedContributor = { id: string; display_name: string; role_label: string };
+
+function PublishedCredits() {
+  const { t } = useTranslation();
+  const client = useQueryClient();
+  const [withdrawId, setWithdrawId] = useState<string | null>(null);
+  const [reason, setReason] = useState('');
+  const [acknowledged, setAcknowledged] = useState(false);
+  const query = useQuery({
+    queryKey: ['facodi', 'approved-project-credits'],
+    queryFn: async (): Promise<ApprovedContributor[]> => {
+      const { data, error } = await supabase.from('project_profiles')
+        .select('id,display_name,role_label')
+        .eq('entity_kind', 'person')
+        .eq('relationship_kind', 'candidate_contributor')
+        .eq('publication_state', 'published')
+        .order('display_name');
+      if (error) throw new Error(getSupabaseErrorMessage(error));
+      return data ?? [];
+    },
+  });
+  const revoke = useMutation({
+    mutationFn: async (profileId: string) => {
+      if (!acknowledged || reason.trim().length < 25) {
+        throw new Error(t('projectCredits.withdrawValidation'));
+      }
+      const { error } = await supabase.rpc('revoke_project_credit', {
+        p_profile_id: profileId,
+        p_reason: reason.trim(),
+      });
+      if (error) throw new Error(getSupabaseErrorMessage(error));
+    },
+    onSuccess: async () => {
+      setWithdrawId(null);
+      setReason('');
+      setAcknowledged(false);
+      await Promise.all([
+        client.invalidateQueries({ queryKey: ['facodi', 'approved-project-credits'] }),
+        client.invalidateQueries({ queryKey: ['facodi', 'public-project-directory'] }),
+      ]);
+      toast.success(t('projectCredits.withdrawSuccess'));
+    },
+  });
+  return <section className="mt-12 border-t border-input pt-9" aria-labelledby="approved-credits-title">
+    <h2 id="approved-credits-title" className="text-2xl font-semibold">{t('projectCredits.approvedTitle')}</h2>
+    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+      {t('projectCredits.approvedDescription')}
+    </p>
+    {query.isPending && <p role="status" className="mt-5 text-sm text-muted-foreground">{t('projectCredits.loadingApproved')}</p>}
+    {query.error && <p role="alert" className="mt-5 text-sm text-destructive">{query.error.message}</p>}
+    {!query.isPending && !query.error && !query.data?.length && <p className="mt-5 text-sm text-muted-foreground">
+      {t('projectCredits.noneApproved')}
+    </p>}
+    {!!query.data?.length && <ul className="mt-6 divide-y divide-input border-y border-input">
+      {query.data.map(profile => <li key={profile.id} className="py-5">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div><p className="font-semibold">{profile.display_name}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{profile.role_label}</p></div>
+          <Button type="button" variant="outline" disabled={revoke.isPending}
+            onClick={() => { setWithdrawId(profile.id === withdrawId ? null : profile.id);
+              setReason(''); setAcknowledged(false); revoke.reset(); }}>
+            {t('projectCredits.withdrawAction')}
+          </Button>
+        </div>
+        {withdrawId === profile.id && <form className="mt-5 max-w-2xl space-y-4 border border-input p-5"
+          onSubmit={event => { event.preventDefault(); revoke.mutate(profile.id); }}>
+          <p className="text-sm font-semibold">{t('projectCredits.withdrawConfirm')}</p>
+          <label className="block space-y-2 text-sm font-medium">
+            <span>{t('projectCredits.withdrawReason')}</span>
+            <Textarea required minLength={25} maxLength={600} rows={3}
+              value={reason} onChange={event => setReason(event.target.value)}
+              placeholder={t('projectCredits.withdrawReasonHint')} />
+          </label>
+          <label className="flex items-start gap-3 text-sm">
+            <input type="checkbox" className="mt-1 h-4 w-4 shrink-0"
+              checked={acknowledged} onChange={event => setAcknowledged(event.target.checked)} required />
+            <span>{t('projectCredits.withdrawAcknowledge')}</span>
+          </label>
+          {revoke.error && <p role="alert" className="text-sm text-destructive">{revoke.error.message}</p>}
+          <div className="flex flex-wrap gap-3">
+            <Button type="submit" disabled={revoke.isPending || !acknowledged || reason.trim().length < 25}>
+              {revoke.isPending ? t('projectCredits.saving') : t('projectCredits.withdrawConfirmButton')}
+            </Button>
+            <Button type="button" variant="outline" disabled={revoke.isPending}
+              onClick={() => { setWithdrawId(null); setReason(''); setAcknowledged(false); }}>
+              {t('common.cancel')}
+            </Button>
+          </div>
+        </form>}
+      </li>)}
+    </ul>}
+  </section>;
+}
+
 export default function EditorProjectCredits() {
   const { t } = useTranslation();
   const [selectedId,setSelectedId] = useState('');
@@ -153,6 +248,7 @@ export default function EditorProjectCredits() {
             onReviewed={() => { setSelectedId(''); void client.invalidateQueries({queryKey:queueKey});
               void client.invalidateQueries({queryKey:['facodi','public-project-directory']}); }} />}
         </div>}
+    <PublishedCredits />
     <p className="mt-8 border-t border-input pt-5 text-sm text-muted-foreground">{t('projectCredits.footer')}</p>
   </article>;
 }
