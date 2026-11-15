@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
@@ -17,9 +17,10 @@ import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
 import { cn } from '@/lib/utils';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
+import { brazilianCredits, ufesElectiveGroup, unitHours } from '@/entities/course/brazilianCurriculum';
 
 const FACT_ICONS: Record<string, LucideIcon> = {
-  code: Hash, ects: Award, yearLabel: Calendar, semesterLabel: CalendarRange, language: Languages, institution: Building2,
+  code: Hash, ects: Award, hours: Clock, brazilianCredits: Award, electiveGroup: CalendarRange, yearLabel: Calendar, semesterLabel: CalendarRange, language: Languages, institution: Building2,
 };
 
 export default function UnitDetails() {
@@ -49,13 +50,17 @@ export default function UnitDetails() {
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
-  const siblings = outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
+  // Unscheduled electives are alternatives, not all peers in one academic term.
+  const siblings = unit.year == null || unit.semester == null ? [] : outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
   const videoList = videos.data ?? [];
   const selected = videoList.find(video => video.id === selectedId) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const facts = [
     ['code', unit.code],
     ['ects', unit.ects != null ? `${unit.ects} ECTS` : null],
+    ['hours', unit.ects == null && unitHours(unit.metadata) != null ? `${unitHours(unit.metadata)} h` : null],
+    ['brazilianCredits', course.code === 'UFES-LETRAS-ING-83-2019' && brazilianCredits(unit.metadata) != null ? String(brazilianCredits(unit.metadata)) : null],
+    ['electiveGroup', course.code === 'UFES-LETRAS-ING-83-2019' && ufesElectiveGroup(unit.metadata) ? t(`course.electiveGroups.${ufesElectiveGroup(unit.metadata)}`) : null],
     ['yearLabel', unit.year != null ? String(unit.year) : null],
     ['semesterLabel', unit.semester != null ? String(unit.semester) : null],
     ['language', unit.language?.toUpperCase()],
