@@ -453,7 +453,16 @@
     "videosTitle": "Vidéos de cette formation",
     "videosText": "Premières vidéos des parcours sélectionnés dans les {{count}} unités d’enseignement de ce programme.",
     "availableElectives": "Unités optionnelles disponibles",
-    "ufesElectiveNotice": "Ces 45 unités sont des alternatives réparties dans quatre groupes du programme UFES. Chaque étudiant choisit 10 unités optionnelles (720 heures), et non l'ensemble."
+    "ufesElectiveNotice": "Ces 45 unités sont des alternatives réparties dans quatre groupes du programme UFES. Chaque étudiant choisit 10 unités optionnelles (720 heures), et non l'ensemble.",
+    "hours": "Charge horaire",
+    "brazilianCredits": "Crédits brésiliens",
+    "electiveGroup": "Groupe optionnel",
+    "electiveGroups": {
+      "opt_english_linguistics": "Linguistique anglaise (24 options ; choisir 5)",
+      "opt_english_literature": "Littérature anglophone (11 options ; choisir 3)",
+      "opt_general_linguistics": "Linguistique — Lettres (5 options ; choisir 1)",
+      "opt_general_literature": "Littérature — Lettres (5 options ; choisir 1)"
+    }
   },
   "resource": {
     "objectives": "Objectifs d’apprentissage",
