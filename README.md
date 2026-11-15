@@ -144,7 +144,7 @@ A FACODI publicou **40 vídeos selecionados** a partir de `public.videos` (31 do
 
 As tags de 81 vídeos e cinco sequências antigas de RH foram enriquecidas, e `/resources` passou a consultar contagens dinâmicas de temas via RPC `SECURITY INVOKER`, traduzidas PT/EN/ES/FR. [Coleção de percursos Odoo](https://facodi.com/resources/facodi-odoo19-percursos-gestao) · [Recrutamento](https://facodi.com/sequences/facodi-odoo19-rh-recrutamento) · [Redes e protocolos](https://facodi.com/sequences/facodi-tecnologia-redes-protocolos). Os novos módulos estão associados às UCs relevantes, incluindo Gestão, Gestão de Pessoas, Redes, Desenvolvimento Colaborativo e Low-Code.
 
-A consulta anónima e o Cloudflare confirmaram a publicação das sequências e dos filtros. A apresentação específica dos **sete módulos dentro da coleção** foi implementada no frontend, mas não apareceu no primeiro teste do browser; requer verificação da revisão publicada no Cloudflare. Detalhes e limitações na [auditoria de publicação](docs/facodi-odoo19-learning-publication-2026-11-15.md). Vercel não foi utilizada.
+A consulta anónima e o Cloudflare confirmaram a publicação das sequências e dos filtros. A apresentação dos **sete módulos dentro da coleção** foi também confirmada no Cloudflare numa segunda passagem, com links funcionais para os módulos e sequências. O módulo de RH exibiu três percursos e a referência Odoo Learn correspondente. Detalhes e limitações na [auditoria de publicação](docs/facodi-odoo19-learning-publication-2026-11-15.md). Vercel não foi utilizada.
 
 ## Editor seguro de ordem das videoaulas (15/11/2026)
 
