@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 
 const origin = (process.env.FACODI_WORKERS_ORIGIN ?? 'https://facodi.marcelo-0d6.workers.dev').replace(/\/$/, '');
 const canonical = 'https://www.facodi.com';
-const routes = ['/', '/about', '/community', '/courses', '/community/join',
+const routes = ['/', '/about', '/community', '/courses', '/modules', '/how-it-works', '/community/join',
   '/editor/email-templates', '/auth/callback', '/auth/reset-password',
   // The Workers build must support the real FACODI SPA deep links, not just its home page.
   '/courses/ifes-cariacica-administracao-integrado-2026',
+  '/modules/ifes-adm26-estudo-3-matematica',
   '/sequences/facodi-playlist-ifes-aladim-historia-brasil',
   '/resources/youtube-I8sRO8QlN4c',
   '/editor/course-quality',
