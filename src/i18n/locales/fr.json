@@ -2054,5 +2054,17 @@
   "collectionPlaylists": {
     "title": "Parcours vidéo de cette collection",
     "notice": "Séquences organisées par FACODI à partir des cours de leurs créateurs. Ouvrez un parcours pour suivre l'ordre proposé."
+  },
+  "moduleResources": {
+    "sequences": "Séquences vidéo",
+    "sequenceNotice": "Cours organisés par FACODI selon une progression suggérée. Les vidéos appartiennent à leurs auteurs.",
+    "noSequences": "Aucune séquence n'est encore liée à ce module.",
+    "readings": "Lectures et références complémentaires",
+    "readingsNotice": "Consultez la documentation et les références sur leurs sites d'origine.",
+    "noReadings": "Aucune lecture n'est encore liée à ce module.",
+    "progression": "Progression d'apprentissage suggérée",
+    "progressionNotice": "Recommandations conceptuelles FACODI, non des prérequis universitaires officiels.",
+    "before": "Modules fondamentaux",
+    "after": "Modules suivants suggérés"
   }
 }
