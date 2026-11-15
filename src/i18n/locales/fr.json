@@ -1014,7 +1014,7 @@
     "count": "{{count}} crédits en attente",
     "pending": "À vérifier",
     "draft": "Consentement public non confirmé",
-    "unverified": "Ce nom figure dans des documents internes. Cela ne prouve ni la contribution ni l'autorisation de le publier.",
+    "unverified": "Cette attribution potentielle a été proposée par le responsable du projet ou repérée dans la documentation. Vérifie le nom, la contribution réelle, une source publique et l'accord avant publication.",
     "role": "Rôle vérifié",
     "headline": "Présentation courte",
     "description": "Contribution effectivement réalisée",
