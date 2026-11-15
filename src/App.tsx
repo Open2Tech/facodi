@@ -27,6 +27,7 @@ const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Profile = lazy(() => import('@/pages/Profile'));
 const Editor = lazy(() => import('@/pages/Editor'));
 const EditorStudyPaths = lazy(() => import('@/pages/EditorStudyPaths'));
+const EditorCourseQuality = lazy(() => import('@/pages/EditorCourseQuality'));
 const PlaylistSubmit = lazy(() => import('@/pages/PlaylistSubmit'));
 const EditorPlaylists = lazy(() => import('@/pages/EditorPlaylists'));
 const EditorProjectCredits = lazy(() => import('@/pages/EditorProjectCredits'));
@@ -69,6 +70,7 @@ export function AppRoutes() {
       <Route element={<ProtectedRoute key={sessionKey} required="editor" />}>
         <Route path="/editor" element={<Editor />} />
         <Route path="/editor/study-paths" element={<EditorStudyPaths />} />
+        <Route path="/editor/course-quality" element={<EditorCourseQuality />} />
         <Route path="/editor/project-credits" element={<EditorProjectCredits />} />
         <Route path="/editor/email-templates" element={<EditorEmailTemplates />} />
         <Route path="/editor/community" element={<EditorCommunity />} />
