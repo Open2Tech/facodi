@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
@@ -21,7 +21,7 @@ import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
-import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { StudyVideo } from '@/components/resource/StudyVideo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
@@ -45,7 +45,7 @@ export default function UnitDetails() {
   const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [params, setParams] = useSearchParams();
   const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
   const ready = Boolean(query.data);
@@ -70,7 +70,7 @@ export default function UnitDetails() {
   // Unscheduled electives are alternatives, not all peers in one academic term.
   const siblings = unit.year == null || unit.semester == null ? [] : outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
   const videoList = videos.data ?? [];
-  const selected = videoList.find(video => video.id === selectedId) ?? videoList[0];
+  const selected = videoList.find(video => video.id === params.get('v')) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const facts = [
     ['code', unit.code],
@@ -207,10 +207,11 @@ export default function UnitDetails() {
               <p className="mt-1 max-w-prose text-sm text-muted-foreground">{t('unitVideos.note')}</p>
               <div className="mt-6 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
                 <div className="min-w-0">
-                  <div className="border border-foreground">
+                  <div>
                     {selectedInfo.youtubeId
-                      ? <YouTubePlayer key={selected.id} videoId={selectedInfo.youtubeId} title={selected.title} thumbnail={selectedInfo.thumbnail} autoPlay={engaged} onPlay={() => setEngaged(true)} />
-                      : <VideoThumbnail info={selectedInfo} />}
+                      ? <StudyVideo key={selected.id} resource={{ id: selected.id, slug: selected.slug, title: selected.title, type: 'video' }}
+                        videoId={selectedInfo.youtubeId} info={selectedInfo} autoPlay={engaged} onPlay={() => setEngaged(true)} />
+                      : <div className="border border-foreground"><VideoThumbnail info={selectedInfo} /></div>}
                   </div>
                   <h3 className="mt-4 text-lg font-semibold leading-snug"><Link to={`/resources/${selected.slug}`} className="decoration-2 underline-offset-4 hover:underline">{selected.title}</Link></h3>
                   <p className="mt-1 flex flex-wrap gap-x-3 text-sm text-muted-foreground">
@@ -227,7 +228,12 @@ export default function UnitDetails() {
                     const info = videoInfo(video.metadata, video.source_url);
                     const active = video.id === selected.id;
                     return <li key={video.id}>
-                      <button type="button" aria-pressed={active} onClick={() => setSelectedId(video.id)}
+                      <button type="button" aria-pressed={active} onClick={() => setParams(previous => {
+                        const next = new URLSearchParams(previous);
+                        if (next.get('v') !== video.id) next.delete('t');
+                        next.set('v', video.id);
+                        return next;
+                      }, { replace: true })}
                         className={cn('flex w-full gap-3 px-3 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
                         <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
                         <span className="w-24 shrink-0"><VideoThumbnail info={info} /></span>

@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert/strict';
 import { parseYoutubeDuration, prepareYoutubePatch, youtubeDataApiFields } from './youtube-data-api-utils.mjs';
 

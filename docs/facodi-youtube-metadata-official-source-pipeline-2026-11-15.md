@@ -51,7 +51,7 @@ Tentei criar uma issue de manutenção no repositório, mas a API GitHub devolve
 
 - [`scripts/enrichment/youtube-data-api-sync.mjs`](../scripts/enrichment/youtube-data-api-sync.mjs) — consulta `videos.list(part=snippet,contentDetails,status)`, máximo 50 IDs por chamada, pré-visualização por defeito e gravação somente com `--apply`;
 - [`scripts/enrichment/youtube-data-api-utils.mjs`](../scripts/enrichment/youtube-data-api-utils.mjs) — validação de campos oficiais, duração ISO 8601 e merge seletivo;
-- [`scripts/enrichment/youtube-data-api-utils.test.mjs`](../scripts/enrichment/youtube-data-api-utils.test.mjs) — testes Node de parsing, preservação de descrição/idioma e separação de licença/incorporação;
+- [`scripts/enrichment/youtube-data-api-utils.test.mjs`](../scripts/enrichment/youtube-data-api-utils.test.mjs) — testes Vitest de parsing, preservação de descrição/idioma e separação de licença/incorporação;
 - [`scripts/audits/facodi_youtube_metadata_integrity.sql`](../scripts/audits/facodi_youtube_metadata_integrity.sql) — auditoria SQL de leitura, testada na base.
 
 ### Como executar em ambiente servidor autorizado
@@ -59,7 +59,7 @@ Tentei criar uma issue de manutenção no repositório, mas a API GitHub devolve
 Definir `YOUTUBE_API_KEY`, `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` **apenas em ambiente seguro**, nunca no React/Cloudflare cliente ou no repositório. Utilizar:
 
 ```bash
-node --test scripts/enrichment/youtube-data-api-utils.test.mjs
+bun run test -- scripts/enrichment/youtube-data-api-utils.test.mjs
 node scripts/enrichment/youtube-data-api-sync.mjs --limit=50
 node scripts/enrichment/youtube-data-api-sync.mjs --apply --limit=50
 ```
