@@ -136,7 +136,11 @@ test('legal pages deep-link to sections and stay usable on mobile', async ({ pag
   await expect(page.getByRole('heading', { name: 'Your rights' })).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.goto('/legal');
-  await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(3);
+  const identity = page.getByRole('region', { name: 'Identification', exact: true });
+  await expect(identity.getByText('Personal educational project', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg tax identification', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg institutional address', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg legal status and registration', { exact: true })).toBeVisible();
 });
 
 test('language and theme persist across visits only after opting in, and withdrawing deletes them', async ({ page }) => {
@@ -958,6 +962,103 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
   await expect(page.getByRole('link', { name: /Programming I/ })).toHaveAttribute('href', '/courses/lesti/units/programming-i');
   await expect(page.getByRole('checkbox')).toHaveCount(0);
 });
+
+for (const surface of ['sequence', 'unit'] as const) {
+  for (const width of [375, 1280]) {
+    test(`embedded ${surface} notebook saves to the video and seeks locally at ${width}px`, async ({ page }) => {
+      test.slow();
+      const videos = [
+        { id: 'v1', slug: 'variables', title: 'Variables', object_type: 'video', source_url: 'https://youtu.be/abcdefghij1',
+          metadata: { youtube_video_id: 'abcdefghij1', duration_seconds: 600 }, language: 'en' },
+        { id: 'v2', slug: 'functions', title: 'Functions', object_type: 'video', source_url: 'https://youtu.be/abcdefghij2',
+          metadata: { youtube_video_id: 'abcdefghij2', duration_seconds: 600 }, language: 'en' },
+      ];
+      const course = { id: 'c1', slug: 'test-course', code: 'TST', title: 'Test course', published: true, status: 'active' };
+      const unit = { id: 'u1', slug: 'programming', title: 'Programming', code: '101', learning_object_id: 'unit-lo',
+        course_id: 'c1', year: 1, semester: 1, position: 1, learning_objects: null };
+      const embed = `<script>
+        window.commands = [];
+        addEventListener('message', event => {
+          const data = JSON.parse(event.data);
+          if (data.event === 'listening') parent.postMessage(JSON.stringify({ event: 'infoDelivery', info: { currentTime: 83.7 } }), '*');
+          if (data.event === 'command') window.commands.push([data.func, data.args]);
+        });
+      </script>`;
+      let embeds = 0;
+      await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+      await page.route('https://www.youtube-nocookie.com/**', route => {
+        embeds += 1;
+        return route.fulfill({ contentType: 'text/html', body: embed });
+      });
+      await page.route('**/rest/v1/**', async route => {
+        const url = new URL(route.request().url());
+        if (url.pathname.endsWith('/rpc/get_public_editorial_playlist_v2')) return route.fulfill({ json: [{
+          playlist_id: 'p1', playlist_slug: 'python-basics', playlist_title: 'Python from scratch', language: 'en',
+          items: videos.map((video, index) => ({ position: index + 1, video_id: video.id, title: video.title,
+            youtube_id: video.metadata.youtube_video_id, youtube_url: video.source_url })),
+          curricular_units: [], verified_metadata_count: 2,
+        }] });
+        if (url.pathname.endsWith('/courses')) return route.fulfill({ json: course });
+        if (url.pathname.endsWith('/curricular_units')) {
+          return route.fulfill({ json: url.searchParams.get('id') ? unit : [unit] });
+        }
+        if (url.pathname.endsWith('/learning_objects')) return route.fulfill({
+          json: url.searchParams.get('slug') ? { ...videos[0], published: true, status: 'active', tags: [], keywords: [], objectives: [] } : videos,
+        });
+        if (url.pathname.endsWith('/learning_object_relations')) return route.fulfill({
+          json: url.searchParams.get('child_object_id') ? [] : videos.map(child => ({ child })),
+        });
+        return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
+      });
+      const path = surface === 'sequence' ? '/sequences/python-basics' : '/courses/test-course/units/programming';
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`${path}?v=v1&t=12`);
+      await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
+      const drawer = page.getByRole('dialog', { name: 'Study notebook' });
+      await expect(drawer.getByText('Start the video to tie each note to the moment you write it.')).toBeVisible();
+      expect(embeds).toBe(0);
+      await drawer.getByRole('button', { name: 'Close', exact: true }).click();
+      await page.getByRole('button', { name: 'Play video: Variables' }).click();
+      await expect(page.locator('iframe[title="Variables"]')).toHaveAttribute('src', /start=12/);
+      await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
+      await expect(drawer.getByText('01:23', { exact: true })).toBeVisible();
+      await drawer.getByLabel('Title or concept').focus();
+      await expect(drawer.getByRole('button', { name: 'Remove the 01:23 mark' })).toBeVisible();
+      await drawer.getByLabel('Title or concept').fill('Variable scope');
+      await drawer.getByLabel('Note', { exact: true }).fill('This note belongs to Variables.');
+      await expect(drawer.getByLabel('Title or concept')).toHaveValue('Variable scope');
+      await drawer.getByRole('button', { name: 'Save note', exact: true }).click();
+      await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toBeVisible();
+      await expect(page).toHaveURL(new RegExp(`${path.replaceAll('/', '\\/')}\\?v=v1&t=12&notes=open$`));
+      await expect(drawer.getByRole('link', { name: 'Sign in for your own notebook' }))
+        .toHaveAttribute('href', `/login?next=${encodeURIComponent(`${path}?v=v1&t=12&notes=open`)}`);
+      await page.screenshot({ path: `test-results/notebook-${surface}-${width}.png` });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+      await drawer.getByRole('button', { name: 'Go to 01:23 in the video' }).click();
+      const frame = page.frames().find(item => item.url().startsWith('https://www.youtube-nocookie.com/'))!;
+      await expect.poll(() => frame.evaluate(() => (window as unknown as { commands: unknown[] }).commands))
+        .toEqual([['seekTo', [83, true]], ['playVideo', []]]);
+      if (width === 375) await expect(drawer).toBeHidden();
+      else await drawer.getByRole('button', { name: 'Close', exact: true }).click();
+      await expect(drawer).toBeHidden();
+      const lessons = page.getByRole('list', { name: surface === 'sequence' ? 'Lessons in this sequence' : 'Video lessons for this unit' });
+      await lessons.getByRole('button', { name: /Functions/ }).click();
+      await expect(page).toHaveURL(`${path}?v=v2`);
+      await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
+      await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toHaveCount(0);
+      await expect(drawer.getByLabel('Title or concept')).toHaveValue('');
+      await drawer.getByRole('button', { name: 'Close', exact: true }).click();
+
+      await page.goto(`${path}?v=v1&notes=open`);
+      await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toBeVisible();
+      await page.goto('/resources/variables?notes=open');
+      await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toBeVisible();
+      expect(await page.evaluate(() => JSON.parse(localStorage.getItem('facodi-notes:v1:guest') ?? '[]')))
+        .toEqual([expect.objectContaining({ resourceId: 'v1', resourceSlug: 'variables', resourceType: 'video', timestamp: 83 })]);
+    });
+  }
+}
 
 test('study sequence catalogue searches, filters regional languages and paginates through the URL', async ({ page }) => {
   const rows = Array.from({ length: 13 }, (_, index) => ({

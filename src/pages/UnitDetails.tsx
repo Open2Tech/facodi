@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { parseStudyPath } from '@/entities/course/studyPath';
+import { parseComposedStudyPath, canPresentComposedStudyPath } from '@/entities/course/composedStudyPath';
+import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath';
+import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
@@ -18,7 +21,7 @@ import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
-import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { StudyVideo } from '@/components/resource/StudyVideo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
@@ -42,7 +45,7 @@ export default function UnitDetails() {
   const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [params, setParams] = useSearchParams();
   const [engaged, setEngaged] = useState(false);
   const { hash } = useLocation();
   const ready = Boolean(query.data);
@@ -57,13 +60,17 @@ export default function UnitDetails() {
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   const { course, unit, outline } = query.data;
   const studyPath = parseStudyPath(unit.metadata);
+  const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
+  const composedPath = composedCandidate && sequences.isSuccess && modulesQuery.isSuccess && playlistsQuery.isSuccess
+    && canPresentComposedStudyPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
+    ? composedCandidate : null;
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
   // Unscheduled electives are alternatives, not all peers in one academic term.
   const siblings = unit.year == null || unit.semester == null ? [] : outline.filter(item => item.id !== unit.id && item.year === unit.year && item.semester === unit.semester);
   const videoList = videos.data ?? [];
-  const selected = videoList.find(video => video.id === selectedId) ?? videoList[0];
+  const selected = videoList.find(video => video.id === params.get('v')) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const facts = [
     ['code', unit.code],
@@ -90,8 +97,8 @@ export default function UnitDetails() {
     <header className="border-b border-foreground pb-10">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <a href={studyPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
-          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath ? t('studyPath.title') : t('unit.videoChip', { count: videoList.length })}
+        {!!videoList.length && <a href={studyPath || composedPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
+          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath ? t('studyPath.title') : t('unit.videoChip', { count: videoList.length })}
         </a>}
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
@@ -105,6 +112,7 @@ export default function UnitDetails() {
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
+        {composedPath && <UnitComposedStudyPath config={composedPath} sequences={sequences.data ?? []} modules={modulesQuery.data ?? []} />}
         {studyPath && <UnitStudyPath config={studyPath}
           sequences={sequences.data ?? []} videos={videoList} />}
         <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
@@ -146,7 +154,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && (modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
+        {!studyPath && !composedPath && (modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
           <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
           {modulesQuery.isPending
@@ -166,7 +174,7 @@ export default function UnitDetails() {
                 </li>)}
               </ul>}
         </section>}
-        {!studyPath && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
+        {!studyPath && !composedPath && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
           <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitPlaylists.notice')}</p>
           {playlistsQuery.isPending
@@ -187,7 +195,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && <section aria-labelledby="unit-resources">
+        {!studyPath && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
@@ -199,10 +207,11 @@ export default function UnitDetails() {
               <p className="mt-1 max-w-prose text-sm text-muted-foreground">{t('unitVideos.note')}</p>
               <div className="mt-6 grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
                 <div className="min-w-0">
-                  <div className="border border-foreground">
+                  <div>
                     {selectedInfo.youtubeId
-                      ? <YouTubePlayer key={selected.id} videoId={selectedInfo.youtubeId} title={selected.title} thumbnail={selectedInfo.thumbnail} autoPlay={engaged} onPlay={() => setEngaged(true)} />
-                      : <VideoThumbnail info={selectedInfo} />}
+                      ? <StudyVideo key={selected.id} resource={{ id: selected.id, slug: selected.slug, title: selected.title, type: 'video' }}
+                        videoId={selectedInfo.youtubeId} info={selectedInfo} autoPlay={engaged} onPlay={() => setEngaged(true)} />
+                      : <div className="border border-foreground"><VideoThumbnail info={selectedInfo} /></div>}
                   </div>
                   <h3 className="mt-4 text-lg font-semibold leading-snug"><Link to={`/resources/${selected.slug}`} className="decoration-2 underline-offset-4 hover:underline">{selected.title}</Link></h3>
                   <p className="mt-1 flex flex-wrap gap-x-3 text-sm text-muted-foreground">
@@ -219,7 +228,12 @@ export default function UnitDetails() {
                     const info = videoInfo(video.metadata, video.source_url);
                     const active = video.id === selected.id;
                     return <li key={video.id}>
-                      <button type="button" aria-pressed={active} onClick={() => setSelectedId(video.id)}
+                      <button type="button" aria-pressed={active} onClick={() => setParams(previous => {
+                        const next = new URLSearchParams(previous);
+                        if (next.get('v') !== video.id) next.delete('t');
+                        next.set('v', video.id);
+                        return next;
+                      }, { replace: true })}
                         className={cn('flex w-full gap-3 px-3 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
                         <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
                         <span className="w-24 shrink-0"><VideoThumbnail info={info} /></span>
@@ -238,8 +252,8 @@ export default function UnitDetails() {
               <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
               <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
             </div>}
-        </section>}
-        {!studyPath && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
+        </section></UnitVideoLibraryFrame>}
+        {!studyPath && !composedPath && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
           <h2 id="unit-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.forUnit')}</h2>
           <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('sequences.forUnitText')}</p>
           <div className="mt-5"><SequenceList sequences={sequences.data} headingLevel={3} showUnits={false} /></div>

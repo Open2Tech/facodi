@@ -85,7 +85,13 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   [src/components/notes](../src/components/notes) compõe o caderno lateral
   não modal (`?notes=open`), a linha de marcos sob o vídeo, o resumo no
   dashboard e a página `/notes` (pesquisa `?q=`, `?tag=` e `?view=` no URL,
-  sem indexação). [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
+  sem indexação). [StudyVideo.tsx](../src/components/resource/StudyVideo.tsx)
+  integra o mesmo caderno nos players das unidades e sequências: as notas
+  pertencem ao recurso de vídeo, não à página que o incorpora. `?v=` mantém
+  a aula selecionada; `?t=` inicia o vídeo nesse instante e é removido ao
+  trocar de aula. A troca reinicia o relógio e o formulário; as notas gravadas
+  são partilhadas com a página do recurso. O retorno do login mantém a página,
+  a aula e o estado do caderno. [youtubeBridge.ts](../src/components/resource/youtubeBridge.ts)
   lê o tempo do embed `youtube-nocookie` via `postMessage` (origem validada) e
   envia `seekTo`; `?t=<segundos>` define o início do vídeo.
   [VideoSequences.tsx](../src/components/sequence/VideoSequences.tsx) mostra

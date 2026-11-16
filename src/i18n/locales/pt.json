@@ -2113,6 +2113,7 @@
     "chooseSequence": "Sequência a organizar",
     "notFound": "A sequência não está disponível para edição.",
     "lessonCount": "{{count}} videoaulas",
+    "sequenceCount": "{{count}} sequências",
     "revision": "Revisão {{count}}",
     "viewPublic": "Ver sequência pública",
     "instructions": "Arraste as aulas para reorganizar. No telemóvel ou com teclado, use as setas para subir e descer. As alterações só são publicadas depois da confirmação.",
@@ -2176,5 +2177,18 @@
     "loadFailed": "Não foi possível carregar o percurso de estudo.",
     "unavailable": "O percurso foi atualizado e precisa de validação editorial. A sequência original continua acessível.",
     "openSequence": "Abrir sequência"
+  },
+  "composedPath": {
+    "eyebrow": "FACODI · Estudo independente",
+    "title": "Percurso de estudo recomendado",
+    "description": "Um único roteiro por temas, composto por sequências existentes. Cada sequência mantém as suas aulas e o progresso individual.",
+    "start": "Começar a estudar",
+    "lessonCount": "{{count}} aulas",
+    "guides": "Guias e atividades relacionados",
+    "extra": "Aprofundamento e percursos alternativos",
+    "extraDescription": "Conteúdos opcionais, sem repetição na sequência recomendada.",
+    "progressNotice": "O progresso é guardado em cada sequência quando tens sessão iniciada. Estes materiais são complementares e não constituem aulas oficiais.",
+    "library": "Biblioteca completa de vídeos ({{count}})",
+    "libraryNote": "Inclui vídeos associados diretamente à unidade, mesmo que alguns também façam parte dos percursos acima. Esta lista não foi eliminada nem alterada."
   }
 }
