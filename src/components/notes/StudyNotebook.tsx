@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Download, NotebookPen, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
@@ -29,6 +29,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
   onOpenChange: (open: boolean) => void;
 }) {
   const { t } = useTranslation();
+  const location = useLocation();
   const notebook = useResourceNotes(resource.id);
   const { notes } = notebook;
   const [filter, setFilter] = useState<Filter>('all');
@@ -130,7 +131,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
       <footer className="space-y-3 border-t border-foreground bg-muted/40 px-5 py-4">
         <NotebookStorage isGuest={notebook.isGuest} />
         <GuestImport />
-        {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(`/resources/${resource.slug}`)}`} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
+        {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(`${location.pathname}${location.search}${location.hash}`)}`} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
         <Button type="button" variant="outline" className="w-full" disabled={!notes.length} onClick={exportMarkdown}><Download />{t('notes.export')}</Button>
       </footer>
     </SheetContent>

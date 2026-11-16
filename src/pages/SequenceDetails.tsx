@@ -15,6 +15,7 @@ import { ShareButton } from '@/components/share/ShareButton';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { StudyVideo } from '@/components/resource/StudyVideo';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { SequenceProgress } from '@/components/sequence/SequenceProgress';
 import { Button } from '@/components/ui/button';
@@ -63,7 +64,12 @@ export default function SequenceDetails() {
   const resumeAt = selectedRow && !selectedRow.completedAt && selectedRow.lastPosition >= RESUME_MIN_SECONDS ? selectedRow.lastPosition : null;
 
   function select(videoId: string) {
-    setParams(previous => { const next = new URLSearchParams(previous); next.set('v', videoId); return next; }, { replace: true });
+    setParams(previous => {
+      const next = new URLSearchParams(previous);
+      if (next.get('v') !== videoId) next.delete('t');
+      next.set('v', videoId);
+      return next;
+    }, { replace: true });
   }
   function toggle(item: SequenceItem) {
     const completed = !rows.get(item.videoId)?.completedAt;
@@ -141,11 +147,15 @@ export default function SequenceDetails() {
       <h2 id="sequence-lessons" className="sr-only">{t('sequences.lessonsHeading')}</h2>
       <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <div className="min-w-0">
-          <div className="border border-foreground">
+          <div>
             {selected.youtubeId && progressReady
-              ? <YouTubePlayer key={selected.videoId} videoId={selected.youtubeId} title={selected.title} thumbnail={selected.thumbnail}
-                start={resumeAt} onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
-              : <VideoThumbnail info={infoOf(selected)} />}
+              ? selected.slug
+                ? <StudyVideo key={selected.videoId} resource={{ id: selected.videoId, slug: selected.slug, title: selected.title, type: 'video' }}
+                  videoId={selected.youtubeId} info={infoOf(selected)} start={resumeAt}
+                  onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
+                : <YouTubePlayer key={selected.videoId} videoId={selected.youtubeId} title={selected.title} thumbnail={selected.thumbnail}
+                  start={resumeAt} onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
+              : <div className="border border-foreground"><VideoThumbnail info={infoOf(selected)} /></div>}
           </div>
           <p className="mt-4 font-mono text-xs tabular-nums text-muted-foreground">{t('sequences.position', { current: selectedIndex + 1, total: items.length })}</p>
           <h3 className="mt-1 text-xl font-semibold leading-snug">{selected.title}</h3>
