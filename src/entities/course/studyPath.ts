@@ -12,6 +12,7 @@ export interface StudyPathConfig {
   guideModuleSlug: string;
   sections: StudyPathSection[];
   supplementarySequenceSlugs: string[];
+  standaloneResourceSlugs: string[];
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -29,7 +30,7 @@ export function parseStudyPath(metadata: Json | null): StudyPathConfig | null {
   const raw = metadata.facodi_study_path_v1;
   if (raw.version !== 1 || !isSlug(raw.sequence_slug) || !isSlug(raw.guide_module_slug)
     || !Array.isArray(raw.sections) || raw.sections.length === 0 || raw.sections.length > 12
-    || !Array.isArray(raw.supplementary_sequence_slugs)) return null;
+    || !Array.isArray(raw.supplementary_sequence_slugs) || !Array.isArray(raw.standalone_resource_slugs)) return null;
 
   const sections: StudyPathSection[] = [];
   const seenIds = new Set<string>();
@@ -52,11 +53,13 @@ export function parseStudyPath(metadata: Json | null): StudyPathConfig | null {
   }
   const extras = raw.supplementary_sequence_slugs;
   if (!extras.every(isSlug) || new Set(extras).size !== extras.length || extras.includes(raw.sequence_slug)) return null;
+  if (!raw.standalone_resource_slugs.every(isSlug) || new Set(raw.standalone_resource_slugs).size !== raw.standalone_resource_slugs.length) return null;
   return {
     sequenceSlug: raw.sequence_slug,
     guideModuleSlug: raw.guide_module_slug,
     sections,
     supplementarySequenceSlugs: extras,
+    standaloneResourceSlugs: raw.standalone_resource_slugs,
   };
 }
 
