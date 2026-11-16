@@ -4,18 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
 import { completedCount, nextItem, type SequenceSummary } from '@/entities/sequence/sequence';
 import { groupStudyPathLessons, type StudyPathConfig } from '@/entities/course/studyPath';
-import type { LinkedCatalogAsset } from '@/features/courses/queries/useLinkedCatalogAssets';
 
 interface VideoResource { id: string; slug: string; title: string }
 
 /** One student-facing entry to an existing ordered sequence, not another playlist or module.
  * The playlist continues to own lesson IDs, order and learner progress. */
 export function UnitStudyPath({
-  config, sequences, modules, videos,
+  config, sequences, videos,
 }: {
   config: StudyPathConfig;
   sequences: SequenceSummary[];
-  modules: LinkedCatalogAsset[];
   videos: VideoResource[];
 }) {
   const { t, i18n } = useTranslation();
@@ -23,7 +21,6 @@ export function UnitStudyPath({
     .find(candidate => i18n.language.toLowerCase().startsWith(candidate)) ?? 'pt';
   const sequence = useSequence(config.sequenceSlug);
   const progress = useSequenceProgress(sequence.data?.id);
-  const guide = modules.find(module => module.slug === config.guideModuleSlug);
   const extraSequences = config.supplementarySequenceSlugs
     .flatMap(slug => sequences.find(item => item.slug === slug) ?? []);
   const standalone = config.standaloneResourceSlugs
@@ -92,13 +89,13 @@ export function UnitStudyPath({
         <p className="mt-4 text-xs leading-relaxed text-muted-foreground">{t('studyPath.sourceNotice')}</p>
       </>}
 
-    {guide && <div className="mt-8 border border-input p-5">
+    <div className="mt-8 border border-input p-5">
       <h3 className="flex items-center gap-2 text-lg font-semibold"><BookOpenCheck className="h-5 w-5" aria-hidden="true" />{t('studyPath.practice')}</h3>
       <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('studyPath.practiceDescription')}</p>
-      <Link to={`/modules/${encodeURIComponent(guide.slug)}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+      <Link to={`/modules/${encodeURIComponent(config.guideModuleSlug)}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
         {t('studyPath.openGuide')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
       </Link>
-    </div>}
+    </div>
     {(extraSequences.length > 0 || standalone.length > 0) && <div className="mt-8 border-t border-input pt-6">
       <h3 className="flex items-center gap-2 font-semibold"><ListVideo className="h-5 w-5" aria-hidden="true" />{t('studyPath.extra')}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{t('studyPath.extraDescription')}</p>
