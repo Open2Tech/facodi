@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { unitPath } from '@/entities/course/course.paths';
-import { buildUalgSections, type UalgCurricularUnit, type UalgProgram, type UalgSpecialization, type UalgTrack } from '@/entities/course/ualgCurriculum';
+import { buildUalgSections, completionTrack, ectsVerificationPending, type UalgCurricularUnit, type UalgProgram, type UalgSpecialization } from '@/entities/course/ualgCurriculum';
 
 interface UnitCoverage {
   curricular_unit_id: string;
@@ -12,7 +12,6 @@ interface UnitCoverage {
 }
 
 const SPECIALIZATIONS: UalgSpecialization[] = ['Neurociências Cognitivas', 'Neuropsicologia'];
-const TRACKS: UalgTrack[] = ['investigação', 'profissional'];
 
 /**
  * A programme-specific curricular view; the canonical UC rows, codes and links
@@ -29,8 +28,7 @@ export function UalgCurriculum({
 }) {
   const { t } = useTranslation();
   const [specialization, setSpecialization] = useState<UalgSpecialization>(SPECIALIZATIONS[0]);
-  const [track, setTrack] = useState<UalgTrack>('investigação');
-  const sections = buildUalgSections(units, program, specialization, track);
+  const sections = buildUalgSections(units, program, specialization);
   const years = [...new Set(sections.map(section => section.year))];
   const coverageById = new Map(coverage.map(item => [item.curricular_unit_id, item]));
   const isMaster = program === 'MNCN';
@@ -47,23 +45,19 @@ export function UalgCurriculum({
             className={specialization === value
               ? 'border border-foreground bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground'
               : 'border border-input px-4 py-2 text-sm font-semibold hover:border-foreground'}
-            onClick={() => { setSpecialization(value); setTrack('investigação'); }}>
+            onClick={() => setSpecialization(value)}>
             {t(value === 'Neurociências Cognitivas' ? 'ualgCurriculum.cognitiveNeuroscience' : 'ualgCurriculum.neuropsychology')}
           </button>)}
         </div>
       </div>
-      {specialization === 'Neuropsicologia' && <div className="mt-5">
-        <h3 id="ualg-track" className="text-sm font-semibold">{t('ualgCurriculum.track')}</h3>
-        <div role="group" aria-labelledby="ualg-track" className="mt-3 flex flex-wrap gap-2">
-          {TRACKS.map(value => <button key={value} type="button" aria-pressed={track === value}
-            className={track === value
-              ? 'border border-foreground bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground'
-              : 'border border-input px-4 py-2 text-sm font-semibold hover:border-foreground'}
-            onClick={() => setTrack(value)}>
-            {t(value === 'investigação' ? 'ualgCurriculum.researchTrack' : 'ualgCurriculum.professionalTrack')}
-          </button>)}
-        </div>
-      </div>}
+      <p className="mt-4 max-w-prose text-sm text-muted-foreground" aria-live="polite">
+        {t('ualgCurriculum.verifiedTrack')}:{' '}
+        <strong className="text-foreground">
+          {t(completionTrack(specialization) === 'investigação'
+            ? 'ualgCurriculum.researchTrack'
+            : 'ualgCurriculum.professionalTrack')}
+        </strong>
+      </p>
     </>}
     {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
       {years.map(year => <a key={year} href={`#ualg-${program}-year-${year}`}
@@ -117,7 +111,9 @@ export function UalgCurriculum({
                       </span>}
                     </span>
                     <span className="shrink-0 text-right">
-                      {unit.ects !== null && <span className="block font-mono text-xs tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}
+                      {ectsVerificationPending(unit.metadata)
+                        ? <span className="block text-xs text-muted-foreground">{t('ualgCurriculum.ectsPending')}</span>
+                        : unit.ects !== null && <span className="block font-mono text-xs tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}
                       <ArrowRight className="ml-auto mt-1 h-4 w-4 text-muted-foreground" aria-hidden="true" />
                     </span>
                   </Link>
