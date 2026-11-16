@@ -35,9 +35,7 @@ export function UnitComposedStudyPath({
           <span className="grid h-9 w-9 shrink-0 place-items-center border border-foreground font-mono text-sm">{index + 1}</span>
           <div>
             <h3 className="text-lg font-semibold">{section.labels[locale]}</h3>
-            <p className="mt-1 text-xs text-muted-foreground">{t('composedPath.lessonCount', {
-              count: section.sequenceSlugs.reduce((total, slug) => total + (bySlug.get(slug)?.itemCount ?? 0), 0),
-            })}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{t('composedPath.sequenceCount', { count: section.sequenceSlugs.length })}</p>
           </div>
         </div>
         <ul className="mt-4 divide-y divide-input border-t border-input">
