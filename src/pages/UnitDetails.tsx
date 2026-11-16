@@ -195,7 +195,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length}><section aria-labelledby="unit-resources">
+        {!studyPath && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
