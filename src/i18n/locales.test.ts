@@ -25,4 +25,11 @@ describe('i18n locales', () => {
       expect(leafKeys(messages).sort(), locale).toEqual(reference);
     }
   });
+  it('has localized labels for composed study-path section counts', () => {
+    for (const messages of [pt, en, es, fr]) {
+      expect(messages.composedPath.sequenceCount).toContain('{{count}}');
+      expect(messages.composedPath.lessonCount).toContain('{{count}}');
+    }
+  });
+
 });
