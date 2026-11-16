@@ -9,9 +9,11 @@ import { useSequence, useSequenceProgress } from '@/features/sequences/useSequen
 import { completedCount, nextItem, type SequenceItem } from '@/entities/sequence/sequence';
 import { formatDuration, type VideoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
+import { safeExternalUrl } from '@/shared/lib/navigation';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
+import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
@@ -37,6 +39,7 @@ export default function SequenceDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
   const query = useSequence(slug);
+  const readings = useLinkedCatalogAssets(query.data?.id, 'external_resource');
   const progress = useSequenceProgress(query.data?.id);
   const [params, setParams] = useSearchParams();
   const saved = useRef(new Map<string, number>());
@@ -207,6 +210,30 @@ export default function SequenceDetails() {
         </ol>
       </div>
     </section> : <PageState level="h2" title={t('sequences.noLessons')} description={t('sequences.noLessonsText')} />}
+
+    {!!readings.data?.length && <section aria-labelledby="sequence-readings" className="mt-10 border-t border-foreground pt-8">
+      <h2 id="sequence-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
+      <ul className="mt-4 divide-y divide-input border-y border-input">
+        {readings.data.map(reading => {
+          const externalUrl = safeExternalUrl(reading.sourceUrl);
+          return <li key={reading.id} className="flex flex-wrap items-start justify-between gap-3 py-4">
+            <div className="min-w-0 flex-1">
+              <p className="font-semibold">{reading.title}</p>
+              {reading.description && <p className="mt-1 line-clamp-3 max-w-prose text-sm text-muted-foreground">{reading.description}</p>}
+            </div>
+            {externalUrl
+              ? <a href={externalUrl} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold underline underline-offset-4">
+                  {t('resources.open')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              : <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
+                  className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold underline underline-offset-4">
+                  {t('resources.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>}
+          </li>;
+        })}
+      </ul>
+    </section>}
 
     {!!sequence.units.length && <section aria-labelledby="sequence-units" className="border-t border-foreground pt-8">
       <h2 id="sequence-units" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.units')}</h2>
