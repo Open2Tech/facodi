@@ -519,7 +519,7 @@ test('video page loads YouTube only on demand and places the video in its unit t
 test('study notebook keeps private, timed notes beside the video and exports them', async ({ page }) => {
   const current = {
     id: 'v2', slug: 'derivatives', title: 'Derivatives', object_type: 'video', language: 'en', source_url: 'https://www.youtube.com/watch?v=bbbbbbbbbbb',
-    metadata: { youtube_video_id: 'bbbbbbbbbbb', duration_seconds: 600, channel_name: 'Fixture Channel' },
+    metadata: { youtube_video_id: 'bbbbbbbbbbb', duration_seconds: 600, channel_name: 'Fixture Channel', facodi_review_scope: 'canonical_watch_url_and_og_presence_not_content' },
     description: '<p>Test fixture only</p>', objectives: [], tags: [], keywords: [], status: 'active', published: true,
   };
   // Stand-in for the embed: reports a playback position and records the commands it receives.
