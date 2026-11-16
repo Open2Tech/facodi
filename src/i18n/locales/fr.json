@@ -2135,5 +2135,24 @@
     "react": "React",
     "gestao": "Gestion",
     "tecnologia": "Technologie"
+  },
+  "studyPath": {
+    "eyebrow": "FACODI · Parcours d’étude",
+    "title": "Parcours d’apprentissage recommandé",
+    "intro": "Un seul parcours structuré en sections thématiques. Les vidéos appartiennent à leurs auteurs et complètent les cours sans remplacer l’enseignement institutionnel.",
+    "lessons": "{{count}} leçons",
+    "completed": "{{completed}} sur {{total}} terminées",
+    "progressNote": "Connectez-vous pour suivre votre progression.",
+    "continue": "Continuer à apprendre",
+    "done": "Leçon terminée",
+    "sourceNotice": "Séquence éditoriale complémentaire : FACODI ne présente pas ces vidéos comme des cours officiels ni comme intégralement vérifiées.",
+    "practice": "Activité pratique",
+    "practiceDescription": "Mettez vos connaissances en pratique avec l’activité et les critères d’autoévaluation du guide existant.",
+    "openGuide": "Ouvrir l’activité et le guide",
+    "extra": "Pour approfondir",
+    "extraDescription": "Séquences avancées et ressources facultatives, distinctes du parcours principal.",
+    "loadFailed": "Impossible de charger le parcours.",
+    "unavailable": "Ce parcours a changé et nécessite une vérification éditoriale. La séquence d’origine reste accessible.",
+    "openSequence": "Ouvrir la séquence"
   }
 }
