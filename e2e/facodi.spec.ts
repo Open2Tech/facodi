@@ -883,15 +883,18 @@ test('learner suggests a resource: recognition, unit match, declarations and the
   expect(posted[0]).not.toHaveProperty('status');
 });
 
-test('editor approves a suggestion as a draft through the review RPC', async ({ page }) => {
+test('editor reads the advisory analysis and approves a suggestion as a draft with a proposed unit', async ({ page }) => {
   await mockAuth(page, 'editor');
   const decisions: unknown[] = [];
   const suggestion = {
     id: 's1', url: 'https://github.com/numpy/numpy', canonical_url: 'https://github.com/numpy/numpy', provider: 'github', title: 'numpy',
     author: 'numpy', thumbnail_url: null, license: 'BSD-3-Clause', object_type: 'external_resource', language: 'en', tags: ['python'],
     note: 'Great for the arrays chapter', status: 'pending', review_note: null, reviewed_at: null, learning_object_id: null,
-    created_at: '2026-11-14T10:00:00Z', curricular_units: { code: '101', title: 'Scientific Computing', slug: 'sc', courses: { code: 'LESTI', slug: 'lesti' } },
+    created_at: '2026-11-14T10:00:00Z', curricular_units: { id: 'u1', code: '101', title: 'Scientific Computing', slug: 'sc', courses: { code: 'LESTI', slug: 'lesti' } },
     screening: { provider_recognized: true, secure_source: true, license: 'open', unit_selected: true, duplicate: null, recommendation: 'fast_track' },
+    analysis_jobs: [{ status: 'succeeded', error_code: null, result_payload: { matching: { topics: ['Arrays'], matches: [
+      { unit_id: 'u2', code: '102', title: 'Numerical Methods', slug: 'nm', course_code: 'LESTI', course_slug: 'lesti', fit: 'strong', reason: 'Trata vetores e matrizes.' },
+    ] } } }],
   };
   await page.route('**/rest/v1/**', async route => {
     const request = route.request();
@@ -912,11 +915,17 @@ test('editor approves a suggestion as a draft through the review RPC', async ({ 
   await expect(page.getByRole('heading', { level: 2, name: 'numpy' })).toBeVisible();
   await expect(page.getByText('Recognised source: GitHub.')).toBeVisible();
   await expect(page.getByText('Great for the arrays chapter')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Numerical Methods' })).toHaveAttribute('href', '/courses/lesti/units/nm');
+  await expect(page.getByText('Trata vetores e matrizes.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Analyse again' })).toBeVisible();
   await page.getByRole('button', { name: 'Approve as draft' }).click();
+  const dialog = page.getByRole('alertdialog');
+  await expect(dialog.getByRole('radio', { name: /Scientific Computing/ })).toBeChecked();
+  await dialog.getByRole('radio', { name: /Numerical Methods/ }).check();
   await page.getByLabel('Editorial reasoning (optional)').fill('Linked to arrays');
   await page.getByRole('button', { name: 'Confirm' }).click();
   await expect(page.getByText('Draft created. Review and publish it in the editor.')).toBeVisible();
-  expect(decisions).toEqual([{ p_suggestion_id: 's1', p_decision: 'approved', p_review_note: 'Linked to arrays' }]);
+  expect(decisions).toEqual([{ p_suggestion_id: 's1', p_decision: 'approved', p_review_note: 'Linked to arrays', p_curricular_unit_id: 'u2' }]);
   await expect(page.getByRole('heading', { name: 'No pending suggestions' })).toBeVisible();
 });
 

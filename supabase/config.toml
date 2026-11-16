@@ -60,3 +60,7 @@ verify_jwt = true
 
 [functions.facodi-curriculum]
 verify_jwt = true
+
+# Called only by pg_cron/pg_net with x-facodi-worker-secret; there is no user JWT.
+[functions.facodi-suggestion-analysis]
+verify_jwt = false

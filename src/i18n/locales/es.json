@@ -935,7 +935,8 @@
       "duplicateTitle": "Este recurso ya existe en FACODI",
       "fast_track": "Fuente reconocida, licencia abierta y unidad elegida: está al principio de la cola de curaduría.",
       "review": "Faltan algunas señales; el equipo editorial verificará la fuente y la licencia.",
-      "reject": "La verificación encontró un impedimento. El equipo editorial lo confirma antes de decidir."
+      "reject": "La verificación encontró un impedimento. El equipo editorial lo confirma antes de decidir.",
+      "analysis": "Un análisis automático empieza en alrededor de un minuto; síguelo en tu historial."
     },
     "signals": {
       "sourceKnown": "Fuente reconocida: {{provider}}.",
@@ -967,7 +968,20 @@
       "reject": "Recurso ya existente o licencia NC/ND.",
       "manual": "La recomendación ordena la cola; la publicación es siempre manual."
     },
-    "legalNote": "Al enviar, se aplican las normas sobre [contribuciones](/terms#contributions) y [derechos de autor](/copyright#contributors)."
+    "legalNote": "Al enviar, se aplican las normas sobre [contribuciones](/terms#contributions) y [derechos de autor](/copyright#contributors).",
+    "analysis": {
+      "title": "Análisis automático",
+      "pending": "Analizando los metadatos… suele tardar alrededor de un minuto.",
+      "waiting": "En cola: se alcanzó el límite diario de análisis. Se reanuda automáticamente mañana.",
+      "failed": "No se pudo completar el análisis. El equipo editorial puede repetirlo.",
+      "none": "Ninguna unidad curricular coincide con los metadatos de este recurso.",
+      "fit": {
+        "strong": "Coincidencia fuerte",
+        "partial": "Coincidencia parcial"
+      },
+      "topics": "Temas",
+      "disclaimer": "Basado solo en metadatos públicos, no en el contenido. Son indicaciones para el equipo editorial: nada se aprueba ni se publica automáticamente. Las explicaciones están escritas en portugués."
+    }
   },
   "suggestReview": {
     "open": "Sugerencias de recursos",
@@ -986,7 +1000,14 @@
     "approved": "Borrador creado. Revísalo y publícalo en el editor.",
     "rejected": "Sugerencia rechazada.",
     "confirmApproveExisting": "El recurso ya existe: aprobar lo reutiliza (y lo vincula a la unidad, si la hay) sin crear uno nuevo.",
-    "approvedExisting": "Recurso existente reutilizado, sin nuevo borrador."
+    "approvedExisting": "Recurso existente reutilizado, sin nuevo borrador.",
+    "analyse": "Analizar",
+    "reanalyse": "Analizar de nuevo",
+    "analysisQueued": "Análisis en cola. El resultado aparece en alrededor de un minuto.",
+    "unitChoice": "Unidad que vincular",
+    "unitLearner": "Elegida por quien la sugirió",
+    "unitAnalysis": "Propuesta por el análisis",
+    "unitNone": "Sin unidad"
   },
   "courseArchive": {
     "title": "Planes de estudios anteriores",
@@ -1535,6 +1556,11 @@
                 "Dirección IP y enlace sugerido"
               ],
               [
+                "Google Gemini API",
+                "Análisis automático de los recursos sugeridos: propone unidades curriculares al equipo editorial. Nada se publica automáticamente.",
+                "Título, etiquetas, idioma y tipo del recurso sugerido, título y canal públicos de YouTube y nombres públicos de las unidades; sin datos de la cuenta"
+              ],
+              [
                 "Vercel",
                 "Vistas previas técnicas usadas durante el desarrollo.",
                 "Dirección IP de quien las visita"
@@ -1546,7 +1572,7 @@
           "id": "transfers",
           "title": "Transferencias internacionales",
           "body": [
-            "La base de datos y la autenticación están alojadas en Estados Unidos. Cloudflare opera una red global y Resend y Vercel son empresas con sede en EE. UU. Por ello, tus datos pueden tratarse fuera del Espacio Económico Europeo.",
+            "La base de datos y la autenticación están alojadas en Estados Unidos. Cloudflare opera una red global y Resend, Vercel y Google son empresas con sede en EE. UU. Por ello, tus datos pueden tratarse fuera del Espacio Económico Europeo.",
             "Estas transferencias deben basarse en un mecanismo del capítulo V del RGPD, como la decisión de adecuación del EU-U.S. Data Privacy Framework cuando el proveedor está certificado, o cláusulas contractuales tipo aprobadas por la Comisión Europea. El mecanismo de cada proveedor está por confirmar y se indicará aquí."
           ]
         },

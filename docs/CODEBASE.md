@@ -31,7 +31,18 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   para pré-visualização; o servidor grava o `screening` autoritativo.
   `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
   devolve `null` em falha (preenchimento manual). A revisão usa a RPC
-  `review_resource_suggestion`.
+  `review_resource_suggestion` (4.º parâmetro opcional: UC escolhida pelo
+  editor). `parseAnalysis` lê, de forma defensiva, o job consultivo
+  `analysis_jobs` (`analyze_resource_suggestion`).
+- Análise consultiva de sugestões: um trigger enfileira um job por sugestão;
+  o pg_cron (`facodi-suggestion-analysis`, a cada minuto) chama, via pg_net e
+  Vault, a Edge Function homónima. Esta lê só metadados públicos (oEmbed do
+  YouTube), pede ao Gemini uma escolha estruturada entre até 12 UCs
+  pré-filtradas em SQL e grava `result_payload`, com lease, 3 tentativas e
+  limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`). Nada é associado ou
+  publicado automaticamente. Parar: `select cron.unschedule('facodi-suggestion-analysis')`;
+  desativar só a IA: limite `0`. Detalhes em
+  [suggest-ai-analysis-plan.md](suggest-ai-analysis-plan.md).
 - [src/entities/course](../src/entities/course): catálogo público. `/courses`
   carrega uma vez os cursos públicos (`listPublicCourses`, até 500, com a
   contagem de UCs ativas via embed `curricular_units(count)`) e filtra no
@@ -103,7 +114,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   chip removível por filtro do URL, usado em `/resources` e `/sequences`.
   [src/components/suggestion](../src/components/suggestion) mostra o
   reconhecimento por etapas (`useStagedReveal`, sem animação com
-  `prefers-reduced-motion`), os sinais de triagem e a escolha da unidade.
+  `prefers-reduced-motion`), os sinais de triagem, a escolha da unidade e o
+  resultado da análise consultiva (`SuggestionAnalysis`).
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.

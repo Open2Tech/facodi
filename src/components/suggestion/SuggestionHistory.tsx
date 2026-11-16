@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { parseScreening } from '@/entities/suggestion/suggestion.api';
+import { parseAnalysis, parseScreening } from '@/entities/suggestion/suggestion.api';
 import { useMySuggestions } from '@/features/suggestions/queries/useSuggestions';
 import { StatusBadge } from '@/components/editorial/StatusBadge';
 import { PageState } from '@/components/layout/PageState';
 import { RecommendationBadge } from '@/components/suggestion/RecommendationBadge';
+import { SuggestionAnalysis } from '@/components/suggestion/SuggestionAnalysis';
 
 /** The signed-in learner's latest suggestions; only they and editors can read them. */
 export function SuggestionHistory() {
@@ -18,6 +19,8 @@ export function SuggestionHistory() {
     {mine.data.map(item => {
       const screening = parseScreening(item.screening);
       const unit = item.curricular_units;
+      const open = item.status === 'pending' || item.status === 'duplicate';
+      const analysis = open ? parseAnalysis(item.analysis_jobs) : null;
       return <li key={item.id} className="py-4">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <p className="min-w-0 flex-1 break-words font-medium">{item.title}</p>
@@ -30,9 +33,10 @@ export function SuggestionHistory() {
             : unit.title}</>}
         </p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          {(item.status === 'pending' || item.status === 'duplicate') && <RecommendationBadge recommendation={screening.recommendation} />}
+          {open && <RecommendationBadge recommendation={screening.recommendation} />}
           <time dateTime={item.created_at} className="text-xs text-muted-foreground">{t('suggest.submittedOn', { date: dateFormat.format(new Date(item.created_at)) })}</time>
         </div>
+        {analysis && <section className="mt-3" aria-label={t('suggest.analysis.title')}><SuggestionAnalysis analysis={analysis} /></section>}
         {item.review_note && <p className="mt-2 max-w-prose text-sm">{t('suggest.reviewNote')}: {item.review_note}</p>}
       </li>;
     })}

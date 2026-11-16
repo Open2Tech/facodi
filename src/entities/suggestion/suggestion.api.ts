@@ -3,10 +3,12 @@ import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import type { Json } from '@/integrations/supabase/types';
 import { canonicalResourceUrl } from '@/entities/suggestion/recognition';
 import type {
-  LicenseClass, Recommendation, Screening, SuggestionDecision, SuggestionInput, SuggestionSummary, UnitOption,
+  AnalysisMatch, LicenseClass, Recommendation, Screening, SuggestionAnalysis, SuggestionDecision, SuggestionInput,
+  SuggestionSummary, UnitOption,
 } from '@/entities/suggestion/suggestion.types';
 
-const SUMMARY_FIELDS = 'id,url,canonical_url,provider,title,author,thumbnail_url,license,object_type,language,tags,note,status,screening,review_note,reviewed_at,created_at,learning_object_id,curricular_units(code,title,slug,courses(code,slug))';
+// RLS shows analysis jobs to the learner who suggested the resource and to editors.
+const SUMMARY_FIELDS = 'id,url,canonical_url,provider,title,author,thumbnail_url,license,object_type,language,tags,note,status,screening,review_note,reviewed_at,created_at,learning_object_id,curricular_units(id,code,title,slug,courses(code,slug)),analysis_jobs(status,error_code,result_payload)';
 /** Database error codes raised by the screening trigger and constraints, mapped to locale keys. */
 const ERROR_CODES: Record<string, string> = { '23505': 'already_suggested', '54000': 'daily_limit', '42501': 'forbidden' };
 
@@ -59,13 +61,20 @@ export async function listSuggestionQueue(signal?: AbortSignal): Promise<Suggest
   return data;
 }
 
-/** Approval returns the draft learning object created (or reused) for the suggestion. */
-export async function reviewSuggestion(id: string, decision: SuggestionDecision, note: string): Promise<string> {
+/** Approval returns the draft learning object created (or reused) for the suggestion; `unitId` overrides the learner's unit. */
+export async function reviewSuggestion(id: string, decision: SuggestionDecision, note: string, unitId?: string): Promise<string> {
   const { data, error } = await supabase.rpc('review_resource_suggestion', {
     p_suggestion_id: id, p_decision: decision, p_review_note: note.trim() || undefined,
+    ...(unitId ? { p_curricular_unit_id: unitId } : {}),
   });
   if (error) throw suggestionError(error);
   return data;
+}
+
+/** Editors queue a fresh analysis, e.g. after a failure or for suggestions made before the feature existed. */
+export async function retrySuggestionAnalysis(id: string): Promise<void> {
+  const { error } = await supabase.rpc('retry_resource_suggestion_analysis', { p_suggestion_id: id });
+  if (error) throw suggestionError(error);
 }
 
 const LICENSES: LicenseClass[] = ['open', 'restricted', 'unknown'];
@@ -85,4 +94,31 @@ export function parseScreening(value: Json): Screening {
       ? { learningObjectId: duplicate.learning_object_id, slug: duplicate.slug, objectType: typeof duplicate.object_type === 'string' ? duplicate.object_type : '' }
       : null,
   };
+}
+
+const record = (value: unknown): Record<string, unknown> =>
+  value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
+const text = (value: unknown) => typeof value === 'string' ? value : null;
+
+/** Reads the worker's job defensively; no job (older suggestions) or a cancelled one shows nothing. */
+export function parseAnalysis(jobs: SuggestionSummary['analysis_jobs']): SuggestionAnalysis | null {
+  const job = jobs?.[0];
+  if (!job) return null;
+  if (job.status === 'failed') return { state: 'failed', matches: [], topics: [] };
+  if (job.status !== 'succeeded') {
+    if (!['queued', 'running', 'retrying'].includes(job.status)) return null;
+    const waiting = job.status === 'queued' && (job.error_code === 'budget_exhausted' || job.error_code === 'ai_quota');
+    return { state: waiting ? 'waiting' : 'pending', matches: [], topics: [] };
+  }
+  const matching = record(record(job.result_payload).matching);
+  const matches = (Array.isArray(matching.matches) ? matching.matches : []).flatMap((item): AnalysisMatch[] => {
+    const match = record(item);
+    const unitId = text(match.unit_id), title = text(match.title), unitSlug = text(match.slug);
+    const courseSlug = text(match.course_slug), reason = text(match.reason);
+    if (!unitId || !title || !unitSlug || !courseSlug || !reason) return [];
+    return [{ unitId, title, unitSlug, courseSlug, reason, code: text(match.code), courseCode: text(match.course_code),
+      fit: match.fit === 'strong' ? 'strong' : 'partial' }];
+  }).slice(0, 3);
+  const topics = (Array.isArray(matching.topics) ? matching.topics : []).filter((topic): topic is string => typeof topic === 'string').slice(0, 5);
+  return { state: 'done', matches, topics };
 }

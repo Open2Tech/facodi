@@ -935,7 +935,8 @@
       "duplicateTitle": "Cette ressource existe déjà sur FACODI",
       "fast_track": "Source reconnue, licence ouverte et unité choisie : elle est en tête de la file de curation.",
       "review": "Certains signaux manquent ; l’équipe éditoriale vérifiera la source et la licence.",
-      "reject": "La vérification a relevé un obstacle. L’équipe éditoriale confirme avant de décider."
+      "reject": "La vérification a relevé un obstacle. L’équipe éditoriale confirme avant de décider.",
+      "analysis": "Une analyse automatique commence dans environ une minute ; suivez-la dans votre historique."
     },
     "signals": {
       "sourceKnown": "Source reconnue : {{provider}}.",
@@ -967,7 +968,20 @@
       "reject": "Ressource déjà existante ou licence NC/ND.",
       "manual": "La recommandation ordonne la file ; la publication reste toujours manuelle."
     },
-    "legalNote": "En envoyant, les règles sur les [contributions](/terms#contributions) et le [droit d’auteur](/copyright#contributors) s’appliquent."
+    "legalNote": "En envoyant, les règles sur les [contributions](/terms#contributions) et le [droit d’auteur](/copyright#contributors) s’appliquent.",
+    "analysis": {
+      "title": "Analyse automatique",
+      "pending": "Analyse des métadonnées… cela prend généralement environ une minute.",
+      "waiting": "En file d’attente : la limite quotidienne d’analyses est atteinte. Reprise automatique demain.",
+      "failed": "L’analyse n’a pas pu aboutir. L’équipe éditoriale peut la relancer.",
+      "none": "Aucune unité d’enseignement ne correspond aux métadonnées de cette ressource.",
+      "fit": {
+        "strong": "Correspondance forte",
+        "partial": "Correspondance partielle"
+      },
+      "topics": "Thèmes",
+      "disclaimer": "Fondée uniquement sur des métadonnées publiques, pas sur le contenu. Ce sont des pistes pour l’équipe éditoriale : rien n’est approuvé ni publié automatiquement. Les explications sont rédigées en portugais."
+    }
   },
   "suggestReview": {
     "open": "Suggestions de ressources",
@@ -986,7 +1000,14 @@
     "approved": "Brouillon créé. Vérifiez-le et publiez-le dans l’éditeur.",
     "rejected": "Suggestion refusée.",
     "confirmApproveExisting": "La ressource existe déjà : l’approbation la réutilise (et la lie à l’unité, le cas échéant) sans en créer une nouvelle.",
-    "approvedExisting": "Ressource existante réutilisée, sans nouveau brouillon."
+    "approvedExisting": "Ressource existante réutilisée, sans nouveau brouillon.",
+    "analyse": "Analyser",
+    "reanalyse": "Analyser à nouveau",
+    "analysisQueued": "Analyse en file d’attente. Le résultat apparaît dans environ une minute.",
+    "unitChoice": "Unité à associer",
+    "unitLearner": "Choisie par la personne qui l’a suggérée",
+    "unitAnalysis": "Proposée par l’analyse",
+    "unitNone": "Aucune unité"
   },
   "courseArchive": {
     "title": "Anciens plans d’études",
@@ -1535,6 +1556,11 @@
                 "Adresse IP et lien suggéré"
               ],
               [
+                "Google Gemini API",
+                "Analyse automatique des ressources suggérées : propose des unités d’enseignement à l’équipe éditoriale. Rien n’est publié automatiquement.",
+                "Titre, étiquettes, langue et type de la ressource suggérée, titre et chaîne publics sur YouTube et noms publics des unités ; aucune donnée de compte"
+              ],
+              [
                 "Vercel",
                 "Aperçus techniques utilisés pendant le développement.",
                 "Adresse IP des visiteurs de ces aperçus"
@@ -1546,7 +1572,7 @@
           "id": "transfers",
           "title": "Transferts internationaux",
           "body": [
-            "La base de données et l’authentification sont hébergées aux États-Unis. Cloudflare exploite un réseau mondial, et Resend et Vercel sont des entreprises établies aux États-Unis. Vos données peuvent donc être traitées hors de l’Espace économique européen.",
+            "La base de données et l’authentification sont hébergées aux États-Unis. Cloudflare exploite un réseau mondial, et Resend, Vercel et Google sont des entreprises établies aux États-Unis. Vos données peuvent donc être traitées hors de l’Espace économique européen.",
             "Ces transferts doivent reposer sur un mécanisme du chapitre V du RGPD, comme la décision d’adéquation EU-U.S. Data Privacy Framework lorsque le prestataire est certifié, ou des clauses contractuelles types approuvées par la Commission européenne. Le mécanisme de chaque prestataire est à confirmer et sera indiqué ici."
           ]
         },
