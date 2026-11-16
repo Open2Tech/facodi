@@ -8,8 +8,9 @@ const sequence = (id: string, title: string, description = '', language = 'pt-BR
 
 describe('FACODI thematic study areas', () => {
   it('accepts only supported shareable area IDs', () => {
-    expect(STUDY_AREAS).toHaveLength(6);
+    expect(STUDY_AREAS).toHaveLength(7);
     expect(isStudyArea('mathematics')).toBe(true);
+    expect(isStudyArea('psychology')).toBe(true);
     expect(isStudyArea('fictional-area')).toBe(false);
   });
 
@@ -20,6 +21,10 @@ describe('FACODI thematic study areas', () => {
     expect(matchesStudyArea('Contabilidade e Gestão', 'management')).toBe(true);
     expect(matchesStudyArea('Língua Inglesa e Literatura', 'languages')).toBe(true);
     expect(matchesStudyArea('Didática de Ensino', 'education')).toBe(true);
+    expect(matchesStudyArea('Psicologia Cognitiva e Neurociências', 'psychology')).toBe(true);
+    expect(matchesStudyArea('Neurofarmacologia e Psiquiatria', 'psychology')).toBe(true);
+    expect(matchesStudyArea('Psychological research on the brain', 'psychology')).toBe(true);
+    expect(matchesStudyArea('Fundamentos de Cálculo', 'psychology')).toBe(false);
     expect(matchesStudyArea('Álgebra', 'unknown')).toBe(false);
     expect(matchesStudyArea('No matching topic', 'mathematics')).toBe(false);
   });
@@ -35,6 +40,7 @@ describe('FACODI thematic study areas', () => {
     expect(filterSequences(list, '', 'en', 'science').map(s => s.id)).toEqual(['tech']);
     expect(filterSequences(list, '', 'fr', 'mathematics')).toEqual([]);
     expect(filterSequences(list, '', '', 'nonexistent')).toEqual([]);
+    expect(filterSequences([sequence('neuro', 'Neurociências Cognitivas')], '', '', 'psychology').map(s => s.id)).toEqual(['neuro']);
   });
 
   it('shows area counts across the full matching list and allows overlapping areas', () => {
