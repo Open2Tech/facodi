@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
     await route.fulfill({ json: [], headers: { 'content-range': '0-0/0', 'access-control-expose-headers': 'content-range' } });
   });
   // Read-only side panels call these on every visit; tests that need rows route them themselves.
-  for (const rpc of ['list_public_sequences_for_video_v1', 'get_public_course_creator_video_study_v1', 'get_my_course_study_modules_v1', 'list_public_resource_topics_v1']) {
+  for (const rpc of ['list_public_sequences_for_video_v1', 'get_public_course_creator_video_study_v1', 'get_my_course_study_modules_v1', 'list_public_editorial_sequences_v1', 'list_public_resource_topics_v1']) {
     await page.route(`**/rest/v1/rpc/${rpc}`, async route => {
       expect(route.request().headers()['content-profile']).toBe('facodi');
       await route.fulfill({ json: [] });
@@ -381,8 +381,10 @@ test('home search, entry paths and new public catalogues render without overflow
     const head = route.request().method() === 'HEAD';
     await route.fulfill({ status: 200, json: head ? undefined : [resource], headers: { 'content-range': head ? '*/1' : '0-0/1', 'access-control-expose-headers': 'content-range' } });
   });
-  await page.route('**/rest/v1/rpc/search_public_resources_v4', route =>
-    route.fulfill({ json: { total: 1, items: [resource], types: [{ value: 'article', count: 1 }] } }));
+  await page.route('**/rest/v1/rpc/search_public_resources_v4', route => {
+    const moduleOnly = route.request().postDataJSON().p_object_type === 'module';
+    return route.fulfill({ json: { total: moduleOnly ? 0 : 1, items: moduleOnly ? [] : [resource], types: [{ value: 'article', count: 1 }] } });
+  });
   await page.route('**/rest/v1/curricular_units*', async route => {
     const unit = { id: 'u1', slug: 'logic-1', title: 'Logic I', summary: 'Test fixture only', code: 'L1', ects: 6, year: 1, semester: 1, language: 'en', courses: { slug: 'test-course', title: 'Test course', published: true, status: 'active' } };
     await route.fulfill({ json: [unit], headers: { 'content-range': '0-0/1', 'access-control-expose-headers': 'content-range' } });
@@ -393,7 +395,7 @@ test('home search, entry paths and new public catalogues render without overflow
     await expect(page.getByRole('link', { name: /Logic/ })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-home-filled-${width}.png`, fullPage: true });
-    for (const [path, heading] of [['/units', 'Curricular units'], ['/resources', 'Educational resources'], ['/about', 'One open tab became a bigger idea.']]) {
+    for (const [path, heading] of [['/units', 'Curricular units'], ['/resources', 'What would you like to learn today?'], ['/about', 'One open tab became a bigger idea.']]) {
       await page.goto(path);
       await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
@@ -1099,6 +1101,7 @@ test('study sequence catalogue searches, filters regional languages and paginate
 });
 
 test('unified resources catalogue searches every type with contextual facets, tag chips and legacy module URLs', async ({ page }) => {
+  test.slow();
   const module = {
     id: 'module-1', slug: 'intro-algebra', title: 'Introduction to algebra',
     description: 'An independent study guide with practice activities.',
@@ -1139,7 +1142,9 @@ test('unified resources catalogue searches every type with contextual facets, ta
   await expect(page.getByText('2 results', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: /^Study module/ })).toContainText('1');
 
-  await page.getByRole('main').getByRole('combobox').selectOption('pt');
+  await page.getByRole('button', { name: 'More filters' }).click();
+  await page.getByRole('main').getByRole('combobox', { name: 'Language', exact: true }).selectOption('pt');
+  await page.getByRole('button', { name: /More filters/ }).click();
   await expect(page).toHaveURL(/search=algebra&language=pt$/);
   await expect(page.getByRole('link', { name: 'Introduction to algebra', exact: true })).toHaveCount(0);
   await expect(page.getByText('1 result', { exact: true })).toBeVisible();

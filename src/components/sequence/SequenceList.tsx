@@ -7,9 +7,9 @@ import { plainText } from '@/shared/lib/text';
 
 /** Ruled list of editorial sequences; the lesson count and linked unit codes are the scanning cues. */
 /** `showUnits` is off inside a unit page, where the list is already filtered to that unit. */
-export function SequenceList({ sequences, headingLevel = 2, showUnits = true }: { sequences: SequenceSummary[]; headingLevel?: 2 | 3; showUnits?: boolean }) {
+export function SequenceList({ sequences, headingLevel = 2, showUnits = true }: { sequences: SequenceSummary[]; headingLevel?: 2 | 3 | 4; showUnits?: boolean }) {
   const { t } = useTranslation();
-  const Heading = headingLevel === 2 ? 'h2' : 'h3';
+  const Heading = headingLevel === 2 ? 'h2' : headingLevel === 3 ? 'h3' : 'h4';
   return <ul className="divide-y divide-input border-y border-input">
     {sequences.map(sequence => <li key={sequence.id}>
       <Link to={`/sequences/${encodeURIComponent(sequence.slug)}`}

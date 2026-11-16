@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 
 export function PageState({ loading, title, description, retry, level = 'h1' }: {
-  loading?: boolean; title?: string; description?: string; retry?: () => void; level?: 'h1' | 'h2' | 'h3';
+  loading?: boolean; title?: string; description?: string; retry?: () => void; level?: 'h1' | 'h2' | 'h3' | 'h4';
 }) {
   const Heading = level;
   const { t } = useTranslation();

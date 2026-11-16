@@ -136,7 +136,8 @@ assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('slug', slug)"),
 assert.ok(moduleApi.includes(".eq('published', true).eq('status', 'active')"),
   'Module children must be published and active under RLS');
 assert.ok(moduleCatalog.includes('moduleOnly') && moduleCatalog.includes('moduleResourcePath(') &&
-  moduleCatalog.includes('<LearningContext focus="resource"'),
+  moduleCatalog.includes('<ResourceDiscovery') &&
+  read('src/components/catalog/ResourceDiscovery.tsx').includes("t('resourceExplorer.guidedDescription')"),
   'Unified resource catalog must filter modules and route to module details');
 assert.ok(routes.includes('LegacyModulesRedirect') && learningGuide.includes('/resources?type=module'),
   'Legacy module listing must redirect while learning guidance points to the unified catalog');

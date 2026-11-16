@@ -39,11 +39,21 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   resumo, instituição e escola; idioma-base; e facetas de instituição e tipo de
   curso contadas com os restantes filtros. `degree_type` é texto livre e é
   mostrado tal como está. `/resources`
-  usa só a RPC `search_public_resources_v3` (SECURITY INVOKER): pesquisa sem
+  usa a RPC `search_public_resources_v4` (SECURITY INVOKER): pesquisa sem
   acentos em título, descrição e temas, com relevância; idioma-base (`pt`
   inclui `pt-BR`); todos os tipos públicos (`published` e estado `active` ou
   `published`); e contagens exatas por tipo para a pesquisa, idioma e tema
-  atuais (ignora o filtro de tipo, para manter todos os tipos alcançáveis).
+  atuais, incluindo a área temática (ignora o filtro de tipo, para manter
+  todos os tipos alcançáveis). A página começa pela pesquisa, com atalhos para
+  os formatos mais usados; todos os tipos continuam disponíveis em «Mais
+  filtros». Idioma, área e temas pesquisáveis ficam nesse painel recolhido;
+  os filtros ativos mantêm chips removíveis mesmo quando o painel está
+  fechado. A consulta de temas só é montada ao abrir o painel.
+  Na primeira página sem filtros, `ResourceDiscovery` reutiliza os hooks
+  públicos de módulos e sequências para mostrar uma entrada de cada tipo,
+  com erros e estados vazios independentes da biblioteca. Esta descoberta
+  deixa de ocupar espaço ao pesquisar, filtrar ou paginar.
+  Ver [proposta e limites do explorador](resources-learning-explorer.md).
 - [src/entities/sequence](../src/entities/sequence): sequências de estudo
   (playlists editoriais). Leitura pública pelas RPCs
   `list_public_editorial_sequences_v1`, `get_public_editorial_playlist_v2` e
