@@ -2135,5 +2135,24 @@
     "react": "React",
     "gestao": "Management",
     "tecnologia": "Technology"
+  },
+  "studyPath": {
+    "eyebrow": "FACODI · Study journey",
+    "title": "Recommended learning path",
+    "intro": "One learning path with thematic sections. Videos belong to their original creators and supplement rather than replace institutional teaching.",
+    "lessons": "{{count}} lessons",
+    "completed": "{{completed}} of {{total}} completed",
+    "progressNote": "Sign in to track your progress.",
+    "continue": "Continue learning",
+    "done": "Lesson completed",
+    "sourceNotice": "This is a supplementary editorial sequence. FACODI does not claim these are official lectures or that every video has been fully reviewed.",
+    "practice": "Practical activity",
+    "practiceDescription": "Apply your knowledge using the existing study guide's practical task and self-assessment criteria.",
+    "openGuide": "Open activity and guide",
+    "extra": "Explore further",
+    "extraDescription": "Optional advanced sequences and resources, separate from the main path.",
+    "loadFailed": "Unable to load the learning path.",
+    "unavailable": "This learning path has changed and needs editorial review. The original sequence is still available.",
+    "openSequence": "Open sequence"
   }
 }
