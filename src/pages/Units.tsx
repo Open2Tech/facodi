@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { useCatalogParams } from '@/shared/hooks/useCatalogParams';
 import { unitPath } from '@/entities/course/course.paths';
 import type { UnitSort } from '@/entities/course/course.types';
+import { ectsVerificationPending } from '@/entities/course/ualgCurriculum';
 
 const DESKTOP = '(min-width: 1024px)';
 const SORTS: UnitSort[] = ['curriculum', 'title', 'ects'];
@@ -109,7 +110,9 @@ export default function Units() {
                 <dl className="flex flex-wrap items-start gap-2 text-sm sm:max-w-56 sm:justify-end">
                   {unit.year != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.yearLabel')}</dt><dd>{t('catalog.year', { value: unit.year })}</dd></div>}
                   {unit.semester != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.semesterLabel')}</dt><dd>{t('catalog.semester', { value: unit.semester })}</dd></div>}
-                  {unit.ects != null && <div className="bg-brand-orange px-3 py-1 text-ink"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
+                  {ectsVerificationPending(unit.metadata)
+                    ? <div className="border border-input px-3 py-1 text-muted-foreground"><dt className="sr-only">{t('course.ects')}</dt><dd>{t('ualgCurriculum.ectsPending')}</dd></div>
+                    : unit.ects != null && <div className="bg-brand-orange px-3 py-1 text-ink"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
                 </dl>
               </li>;
             })}
