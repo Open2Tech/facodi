@@ -18,7 +18,14 @@ BEGIN
     FROM facodi.curricular_units u
     JOIN facodi.courses c ON c.id=u.course_id
     WHERE u.code=v_entry->>'unit_code' AND c.code=v_entry->>'course_code'
-      AND u.status='active' AND c.status='active' AND c.published;
+      AND u.status='active' AND u.published AND c.status='active' AND c.published;
+
+    IF v_unit.metadata ? 'facodi_study_path_v1' THEN
+      RAISE EXCEPTION 'Existing legacy study path must be reviewed for %', v_unit.code;
+    END IF;
+    IF v_cfg->>'version' <> '2' OR jsonb_array_length(v_cfg->'sections') <> 3 THEN
+      RAISE EXCEPTION 'Unexpected Gestão path structure for %', v_unit.code;
+    END IF;
 
     SELECT array_agg(slug ORDER BY slug) INTO v_expected FROM (
       SELECT jsonb_array_elements_text(section.value->'sequence_slugs') AS slug
@@ -64,7 +71,7 @@ BEGIN
 
     UPDATE facodi.curricular_units
       SET metadata=jsonb_set(coalesce(metadata,'{}'::jsonb),'{facodi_study_path_v2}',v_cfg,true)
-      WHERE id=v_unit.id;
+      WHERE id=v_unit.id AND v_unit.metadata->'facodi_study_path_v2' IS DISTINCT FROM v_cfg;
   END LOOP;
 END;
 $$;
