@@ -47,7 +47,7 @@ describe('optional curricular study path', () => {
     const root = structuredClone(meta);
     root.facodi_study_path_v1.sections[1].youtube_ids = ['XE4UHson59Y'];
     expect(parseStudyPath(root)).toBeNull();
-    root.facodi_study_path_v1.sections[1].youtube_ids = ['not-youtube'];
+    root.facodi_study_path_v1.sections[1].youtube_ids = ['bad!'];
     expect(parseStudyPath(root)).toBeNull();
   });
 
