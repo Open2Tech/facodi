@@ -2091,6 +2091,7 @@
     "chooseSequence": "Sequence to reorder",
     "notFound": "This sequence is not available for editing.",
     "lessonCount": "{{count}} video lessons",
+    "sequenceCount": "{{count}} sequences",
     "revision": "Revision {{count}}",
     "viewPublic": "View public sequence",
     "instructions": "Drag lessons into order, or use the up and down buttons with a keyboard or on mobile. Changes are published only after confirmation.",
@@ -2154,5 +2155,18 @@
     "loadFailed": "Unable to load the learning path.",
     "unavailable": "This learning path has changed and needs editorial review. The original sequence is still available.",
     "openSequence": "Open sequence"
+  },
+  "composedPath": {
+    "eyebrow": "FACODI · Independent learning",
+    "title": "Recommended study journey",
+    "description": "One thematic roadmap composed of existing sequences. Each sequence retains its lessons and individual progress.",
+    "start": "Start learning",
+    "lessonCount": "{{count}} lessons",
+    "guides": "Related study guides and activities",
+    "extra": "Further study and alternative paths",
+    "extraDescription": "Optional material outside the recommended path.",
+    "progressNotice": "Progress is saved within each sequence when signed in. These materials supplement, rather than replace, official teaching.",
+    "library": "Full video library ({{count}})",
+    "libraryNote": "Includes every video directly linked to the unit, including those also used in the pathways above. Nothing has been removed."
   }
 }
