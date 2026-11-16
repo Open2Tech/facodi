@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { canPresentComposedStudyPath, parseComposedStudyPath } from './composedStudyPath';
+import { canPresentComposedStudyPath, isComposedPathPending, parseComposedStudyPath } from './composedStudyPath';
 
 const raw = {
   facodi_study_path_v2: {
@@ -51,4 +51,12 @@ describe('curricular-unit playlist composition', () => {
     expect(parseComposedStudyPath(null)).toBeNull();
     expect(parseComposedStudyPath({ facodi_study_path_v1: { version: 1 } })).toBeNull();
   });
+  it('suppresses the legacy catalog while a configured path is loading, but not on failure', () => {
+    const configured = parseComposedStudyPath(raw);
+    expect(isComposedPathPending(configured, ['success', 'pending', 'success'])).toBe(true);
+    expect(isComposedPathPending(configured, ['success', 'error', 'success'])).toBe(false);
+    expect(isComposedPathPending(configured, ['success', 'success', 'success'])).toBe(false);
+    expect(isComposedPathPending(null, ['pending', 'pending', 'pending'])).toBe(false);
+  });
+
 });
