@@ -61,17 +61,26 @@ export function buildUalgSections(
     const placements = Array.isArray(metadata.curriculum_placements)
       ? metadata.curriculum_placements.flatMap(value => parsePlacement(value) ?? [])
       : [];
-    for (const placement of placements) {
-      if (program === 'MNCN' && placement.specialization !== specialization) continue;
-      if (program === 'MNCN' && placement.year >= 2 && placement.track !== track) continue;
-      if (program === 'LPSI' && placement.specialization !== 'Tronco Comum') continue;
-      const key = unit.code ?? unit.id;
-      const existing = candidate.get(key);
-      // When an official plan repeats a UC as mandatory and elective,
-      // give the mandatory listing precedence in this view.
-      if (!existing || ROLE_ORDER[placement.role] < ROLE_ORDER[existing.placement.role]) {
-        candidate.set(key, { unit, placement });
-      }
+    const visible = placements.filter(placement =>
+      (program === 'LPSI'
+        ? placement.specialization === 'Tronco Comum'
+        : placement.specialization === specialization &&
+          (placement.year < 2 || placement.track === track)));
+    for (const placement of visible) {
+      // Some source tables repeat a UC as required and optional in one term.
+      // Prefer the required placement in that term, without suppressing
+      // legitimate alternatives when the same UC belongs to two choice groups.
+      if (placement.role !== 'mandatory' && visible.some(other =>
+        other.role === 'mandatory' &&
+        other.year === placement.year && other.semester === placement.semester)) continue;
+      const key = [
+        unit.code ?? unit.id,
+        placement.year,
+        placement.semester ?? 'annual',
+        placement.role,
+        placement.group ?? '',
+      ].join(':');
+      if (!candidate.has(key)) candidate.set(key, { unit, placement });
     }
   }
 
