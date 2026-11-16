@@ -430,6 +430,28 @@
     "noMatches": "Aucune ressource ne correspond aux filtres.",
     "filterTopic": "Filtrer par thème"
   },
+  "resourceExplorer": {
+    "title": "Que veux-tu apprendre aujourd’hui ?",
+    "description": "Trouve un thème, suis une séquence de cours ou explore les ressources à ton rythme.",
+    "searchLabel": "Rechercher dans la bibliothèque",
+    "searchPlaceholder": "Essaie calcul, Python ou gestion",
+    "skipToLibrary": "Aller à la bibliothèque complète",
+    "filters": "Plus de filtres",
+    "searchTopics": "Rechercher des thèmes",
+    "topicPlaceholder": "Trouve un thème pour filtrer",
+    "noTopics": "Aucun thème ne correspond à cette recherche.",
+    "clearTopic": "Retirer le filtre de thème",
+    "guidedTitle": "Tu préfères un point de départ structuré ?",
+    "guidedDescription": "Les modules réunissent des ressources autour d’un thème. Les séquences proposent des cours dans un ordre suggéré.",
+    "allModules": "Voir les modules",
+    "allSequences": "Voir les séquences",
+    "noModules": "Aucun module n’a encore été publié.",
+    "noSequences": "Aucune séquence avec des cours publiés pour l’instant.",
+    "academicContext": "Tu cherches un programme d’études ?",
+    "library": "Bibliothèque complète",
+    "ranked": "Par pertinence de recherche",
+    "alphabetical": "Par ordre alphabétique"
+  },
   "about": {
     "title": "Un onglet ouvert est devenu une grande idée.",
     "lead": "FACODI relie ressources publiques, cours, personnes et questions utiles. Né d'une expérience étudiante, ouvert à toute la communauté.",

@@ -430,6 +430,28 @@
     "noMatches": "Nenhum recurso corresponde aos filtros.",
     "filterTopic": "Filtrar por tema"
   },
+  "resourceExplorer": {
+    "title": "O que queres aprender hoje?",
+    "description": "Encontra um tema, segue uma sequência de aulas ou explora os materiais ao teu ritmo.",
+    "searchLabel": "Pesquisar na biblioteca",
+    "searchPlaceholder": "Experimenta cálculo, Python ou gestão",
+    "skipToLibrary": "Ir para a biblioteca completa",
+    "filters": "Mais filtros",
+    "searchTopics": "Pesquisar temas",
+    "topicPlaceholder": "Encontra um tema para filtrar",
+    "noTopics": "Não há temas correspondentes nesta pesquisa.",
+    "clearTopic": "Remover o filtro de tema",
+    "guidedTitle": "Preferes um caminho organizado?",
+    "guidedDescription": "Os módulos reúnem materiais para estudar um tema. As sequências organizam aulas numa ordem sugerida.",
+    "allModules": "Ver módulos",
+    "allSequences": "Ver sequências",
+    "noModules": "Ainda não há módulos publicados.",
+    "noSequences": "Ainda não há sequências com aulas publicadas.",
+    "academicContext": "Procuras um plano de estudos?",
+    "library": "Biblioteca completa",
+    "ranked": "Por relevância da pesquisa",
+    "alphabetical": "Por ordem alfabética"
+  },
   "about": {
     "title": "De uma aba aberta nasceu uma ideia maior.",
     "lead": "A FACODI liga os bons recursos que encontramos por aí aos cursos, às pessoas e às perguntas que nos fazem aprender. Um projeto com raízes estudantis e vontade de ir longe.",

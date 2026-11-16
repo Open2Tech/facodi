@@ -430,6 +430,28 @@
     "noMatches": "No resources match these filters.",
     "filterTopic": "Filter by topic"
   },
+  "resourceExplorer": {
+    "title": "What would you like to learn today?",
+    "description": "Find a topic, follow a sequence of lessons or explore materials at your own pace.",
+    "searchLabel": "Search the library",
+    "searchPlaceholder": "Try calculus, Python or management",
+    "skipToLibrary": "Skip to the full library",
+    "filters": "More filters",
+    "searchTopics": "Search topics",
+    "topicPlaceholder": "Find a topic to filter by",
+    "noTopics": "No topics match this search.",
+    "clearTopic": "Remove topic filter",
+    "guidedTitle": "Prefer a structured starting point?",
+    "guidedDescription": "Modules bring materials together around a topic. Sequences arrange lessons in a suggested order.",
+    "allModules": "Browse modules",
+    "allSequences": "Browse sequences",
+    "noModules": "No modules have been published yet.",
+    "noSequences": "No sequences with published lessons yet.",
+    "academicContext": "Looking for a study plan?",
+    "library": "Full library",
+    "ranked": "By search relevance",
+    "alphabetical": "In alphabetical order"
+  },
   "about": {
     "title": "One open tab became a bigger idea.",
     "lead": "FACODI connects useful public resources to the courses, people and questions that make learning happen. Student-born, community-minded and open to the world.",

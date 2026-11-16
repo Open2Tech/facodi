@@ -430,6 +430,28 @@
     "noMatches": "Ningún recurso coincide con los filtros.",
     "filterTopic": "Filtrar por tema"
   },
+  "resourceExplorer": {
+    "title": "¿Qué quieres aprender hoy?",
+    "description": "Encuentra un tema, sigue una secuencia de clases o explora los materiales a tu ritmo.",
+    "searchLabel": "Buscar en la biblioteca",
+    "searchPlaceholder": "Prueba cálculo, Python o gestión",
+    "skipToLibrary": "Ir a la biblioteca completa",
+    "filters": "Más filtros",
+    "searchTopics": "Buscar temas",
+    "topicPlaceholder": "Encuentra un tema para filtrar",
+    "noTopics": "No hay temas que coincidan con esta búsqueda.",
+    "clearTopic": "Quitar el filtro de tema",
+    "guidedTitle": "¿Prefieres un punto de partida organizado?",
+    "guidedDescription": "Los módulos reúnen materiales sobre un tema. Las secuencias organizan clases en un orden sugerido.",
+    "allModules": "Ver módulos",
+    "allSequences": "Ver secuencias",
+    "noModules": "Todavía no hay módulos publicados.",
+    "noSequences": "Todavía no hay secuencias con clases publicadas.",
+    "academicContext": "¿Buscas un plan de estudios?",
+    "library": "Biblioteca completa",
+    "ranked": "Por relevancia de búsqueda",
+    "alphabetical": "Por orden alfabético"
+  },
   "about": {
     "title": "Una pestaña abierta se convirtió en una gran idea.",
     "lead": "FACODI conecta recursos públicos útiles con cursos, personas y preguntas. Un proyecto nacido entre estudiantes, abierto a la comunidad.",
