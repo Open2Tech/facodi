@@ -2190,5 +2190,21 @@
     "progressNotice": "O progresso é guardado em cada sequência quando tens sessão iniciada. Estes materiais são complementares e não constituem aulas oficiais.",
     "library": "Biblioteca completa de vídeos ({{count}})",
     "libraryNote": "Inclui vídeos associados diretamente à unidade, mesmo que alguns também façam parte dos percursos acima. Esta lista não foi eliminada nem alterada."
+  },
+  "ualgCurriculum": {
+    "specialization": "Especialização",
+    "cognitiveNeuroscience": "Neurociências Cognitivas",
+    "neuropsychology": "Neuropsicologia",
+    "track": "Percurso no 2.º ano",
+    "researchTrack": "Investigação · dissertação",
+    "professionalTrack": "Profissional · estágio e dissertação",
+    "licenceNotice": "Plano 2026/27: cada grupo de opção representa uma escolha entre as UCs apresentadas. As alternativas não acrescentam ECTS cumulativos aos 180 ECTS do curso.",
+    "masterNotice": "Plano 2026/27: escolhe uma especialização e, quando aplicável, um percurso de conclusão. As UCs partilhadas aparecem uma só vez em cada seleção. Listagens alternativas e variantes de código não devem ser somadas aos 120 ECTS do mestrado.",
+    "required": "Unidades obrigatórias",
+    "optional": "Opções",
+    "variant": "Outras entradas no plano",
+    "annual": "Anual",
+    "choicesNotice": "Unidades alternativas dentro do mesmo grupo. Consulta o plano oficial para confirmar as regras de escolha.",
+    "variantsNotice": "O plano oficial também apresenta esta entrada com outra designação ou código. Não contes automaticamente os ECTS duas vezes; confirma a equivalência junto da UAlg."
   }
 }
