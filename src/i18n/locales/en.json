@@ -2091,6 +2091,7 @@
     "chooseSequence": "Sequence to reorder",
     "notFound": "This sequence is not available for editing.",
     "lessonCount": "{{count}} video lessons",
+    "sequenceCount": "{{count}} sequences",
     "revision": "Revision {{count}}",
     "viewPublic": "View public sequence",
     "instructions": "Drag lessons into order, or use the up and down buttons with a keyboard or on mobile. Changes are published only after confirmation.",
