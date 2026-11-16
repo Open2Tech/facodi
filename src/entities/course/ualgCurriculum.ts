@@ -2,7 +2,15 @@ import type { CurricularUnit } from '@/entities/course/course.types';
 
 export type UalgProgram = 'LPSI' | 'MNCN';
 export type UalgSpecialization = 'Neurociências Cognitivas' | 'Neuropsicologia';
-export type UalgTrack = 'investigação' | 'profissional';
+/** Official 2026/27 completion route depends on the specialization. */
+export function completionTrack(specialization: UalgSpecialization): 'investigação' | 'profissional' {
+  return specialization === 'Neuropsicologia' ? 'profissional' : 'investigação';
+}
+
+/** Do not present a conflicting source ECTS value as verified. */
+export function ectsVerificationPending(metadata: unknown): boolean {
+  return isRecord(metadata) && metadata.ects_requires_fchs_confirmation === true;
+}
 export type UalgCurricularUnit = Pick<CurricularUnit, 'id' | 'slug' | 'title' | 'code' | 'ects' | 'year' | 'semester' | 'position' | 'metadata'>;
 export type UalgPlacementRole = 'mandatory' | 'alternative' | 'listed_variant';
 
@@ -45,15 +53,14 @@ function parsePlacement(value: unknown): Placement | null {
   };
 }
 
-/** The official programme contains repeated entries for alternative blocks.
- * Resolve one placement per UC within the selected specialization and study track.
- * Never total all available alternatives as compulsory ECTS.
+/** The published 2026/27 programme contains repeated elective listings.
+ * Resolve the official completion route by specialization, never inventing
+ * an NP research pathway or counting alternatives as cumulative ECTS.
  */
 export function buildUalgSections(
   units: readonly UalgCurricularUnit[],
   program: UalgProgram,
   specialization: UalgSpecialization = 'Neurociências Cognitivas',
-  track: UalgTrack = 'investigação',
 ): UalgSection[] {
   const candidate = new Map<string, { unit: UalgCurricularUnit; placement: Placement }>();
   for (const unit of units) {
@@ -65,7 +72,7 @@ export function buildUalgSections(
       (program === 'LPSI'
         ? placement.specialization === 'Tronco Comum'
         : placement.specialization === specialization &&
-          (placement.year < 2 || placement.track === track)));
+          (placement.year < 2 || placement.track === completionTrack(specialization))));
     for (const placement of visible) {
       // Some source tables repeat a UC as required and optional in one term.
       // Prefer the required placement in that term, without suppressing
