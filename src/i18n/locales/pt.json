@@ -2091,6 +2091,7 @@
     "chooseSequence": "Sequência a organizar",
     "notFound": "A sequência não está disponível para edição.",
     "lessonCount": "{{count}} videoaulas",
+    "sequenceCount": "{{count}} sequências",
     "revision": "Revisão {{count}}",
     "viewPublic": "Ver sequência pública",
     "instructions": "Arraste as aulas para reorganizar. No telemóvel ou com teclado, use as setas para subir e descer. As alterações só são publicadas depois da confirmação.",
