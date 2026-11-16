@@ -244,6 +244,7 @@ export default function SuggestResource() {
           </div>
           <h2 className="mt-4 text-2xl font-semibold">{t(verdict.status === 'duplicate' ? 'suggest.verdict.duplicateTitle' : 'suggest.verdict.title')}</h2>
           <p className="mt-2 max-w-prose text-muted-foreground">{t(`suggest.verdict.${screening.recommendation}`)}</p>
+          {verdict.status === 'pending' && <p className="mt-2 max-w-prose text-muted-foreground">{t('suggest.verdict.analysis')}</p>}
           <ScreeningSignals className="mt-5" screening={screening} provider={verdict.provider} />
           <Button type="button" variant="outline" className="mt-6" onClick={restart}><RotateCcw aria-hidden="true" />{t('suggest.another')}</Button>
         </div>}

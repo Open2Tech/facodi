@@ -1,6 +1,7 @@
 import type { Database } from '@/integrations/supabase/types';
 
 export type ResourceSuggestionRow = Database['facodi']['Tables']['resource_suggestions']['Row'];
+type AnalysisJobRow = Database['facodi']['Tables']['analysis_jobs']['Row'];
 export type SuggestionDecision = 'approved' | 'rejected';
 export type SuggestionStatus = 'pending' | 'duplicate' | 'approved' | 'rejected';
 
@@ -61,4 +62,24 @@ export interface SuggestionInput {
 export type SuggestionSummary = Pick<ResourceSuggestionRow,
   'id' | 'url' | 'canonical_url' | 'provider' | 'title' | 'author' | 'thumbnail_url' | 'license' | 'object_type'
   | 'language' | 'tags' | 'note' | 'status' | 'screening' | 'review_note' | 'reviewed_at' | 'created_at' | 'learning_object_id'>
-  & { curricular_units: { code: string; title: string; slug: string; courses: { code: string; slug: string } | null } | null };
+  & { curricular_units: { id: string; code: string; title: string; slug: string; courses: { code: string; slug: string } | null } | null }
+  & { analysis_jobs?: Pick<AnalysisJobRow, 'status' | 'error_code' | 'result_payload'>[] };
+
+/** Unit proposed by the advisory analysis (see docs/suggest-ai-analysis-plan.md). */
+export interface AnalysisMatch {
+  unitId: string;
+  code: string | null;
+  title: string;
+  unitSlug: string;
+  courseCode: string | null;
+  courseSlug: string;
+  fit: 'strong' | 'partial';
+  reason: string;
+}
+
+/** Learner- and editor-facing state of the automatic analysis; it never decides anything. */
+export interface SuggestionAnalysis {
+  state: 'pending' | 'waiting' | 'done' | 'failed';
+  matches: AnalysisMatch[];
+  topics: string[];
+}

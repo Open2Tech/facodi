@@ -935,7 +935,8 @@
       "duplicateTitle": "This resource is already on FACODI",
       "fast_track": "Recognised source, open licence and a chosen unit: it sits at the top of the curation queue.",
       "review": "Some signals are missing; the editorial team will check the source and licence.",
-      "reject": "The check found a blocker. The editorial team confirms before deciding."
+      "reject": "The check found a blocker. The editorial team confirms before deciding.",
+      "analysis": "An automatic analysis starts in about a minute; follow it in your history."
     },
     "signals": {
       "sourceKnown": "Recognised source: {{provider}}.",
@@ -967,7 +968,20 @@
       "reject": "Resource already exists or NC/ND licence.",
       "manual": "The recommendation orders the queue; publishing is always manual."
     },
-    "legalNote": "Sending applies the rules on [contributions](/terms#contributions) and [copyright](/copyright#contributors)."
+    "legalNote": "Sending applies the rules on [contributions](/terms#contributions) and [copyright](/copyright#contributors).",
+    "analysis": {
+      "title": "Automatic analysis",
+      "pending": "Analysing the metadata… this usually takes about a minute.",
+      "waiting": "Queued: today's analysis limit was reached. It resumes automatically tomorrow.",
+      "failed": "The analysis could not be completed. The editorial team can run it again.",
+      "none": "No curricular unit matches this resource's metadata.",
+      "fit": {
+        "strong": "Strong match",
+        "partial": "Partial match"
+      },
+      "topics": "Topics",
+      "disclaimer": "Based only on public metadata, not on the content. These are pointers for the editorial team: nothing is approved or published automatically. Explanations are written in Portuguese."
+    }
   },
   "suggestReview": {
     "open": "Resource suggestions",
@@ -986,7 +1000,14 @@
     "approved": "Draft created. Review and publish it in the editor.",
     "rejected": "Suggestion declined.",
     "confirmApproveExisting": "The resource already exists: approving reuses it (and links it to the unit, if any) without creating a new one.",
-    "approvedExisting": "Existing resource reused, no new draft."
+    "approvedExisting": "Existing resource reused, no new draft.",
+    "analyse": "Analyse",
+    "reanalyse": "Analyse again",
+    "analysisQueued": "Analysis queued. The result appears in about a minute.",
+    "unitChoice": "Unit to link",
+    "unitLearner": "Chosen by the learner",
+    "unitAnalysis": "Proposed by the analysis",
+    "unitNone": "No unit"
   },
   "courseArchive": {
     "title": "Previous study plans",
@@ -1535,6 +1556,11 @@
                 "IP address and the suggested link"
               ],
               [
+                "Google Gemini API",
+                "Automatic analysis of suggested resources: proposes curricular units to the editorial team. Nothing is published automatically.",
+                "Title, tags, language and type of the suggested resource, YouTube's public title and channel and public unit names; no account data"
+              ],
+              [
                 "Vercel",
                 "Technical previews used during development.",
                 "IP address of whoever visits them"
@@ -1546,7 +1572,7 @@
           "id": "transfers",
           "title": "International transfers",
           "body": [
-            "The database and authentication are hosted in the United States. Cloudflare runs a global network, and Resend and Vercel are US-based companies. Your data may therefore be processed outside the European Economic Area.",
+            "The database and authentication are hosted in the United States. Cloudflare runs a global network, and Resend, Vercel and Google are US-based companies. Your data may therefore be processed outside the European Economic Area.",
             "These transfers must rely on a Chapter V GDPR mechanism, such as the adequacy decision for the EU-U.S. Data Privacy Framework where the provider is certified, or standard contractual clauses approved by the European Commission. The mechanism for each provider is still to be confirmed and will be listed here."
           ]
         },

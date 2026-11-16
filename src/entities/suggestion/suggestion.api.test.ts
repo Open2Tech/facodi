@@ -4,7 +4,7 @@ import { server } from '@/shared/test/mswServer';
 import { getEnv } from '@/shared/config/env';
 import { fetchPublicMetadata } from '@/entities/suggestion/metadata';
 import { recognizeUrl } from '@/entities/suggestion/recognition';
-import { parseScreening, reviewSuggestion, submitSuggestion } from '@/entities/suggestion/suggestion.api';
+import { parseAnalysis, parseScreening, reviewSuggestion, submitSuggestion } from '@/entities/suggestion/suggestion.api';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
 const input = {
@@ -37,6 +37,29 @@ describe('FACODI resource suggestions API', () => {
       return HttpResponse.json('lo-1');
     }));
     expect(await reviewSuggestion('s1', 'approved', '  ')).toBe('lo-1');
+  });
+
+  it('sends the unit chosen by the editor', async () => {
+    server.use(http.post(`${endpoint}/rpc/review_resource_suggestion`, async ({ request }) => {
+      expect(await request.json()).toEqual({ p_suggestion_id: 's1', p_decision: 'approved', p_curricular_unit_id: 'u2' });
+      return HttpResponse.json('lo-1');
+    }));
+    await reviewSuggestion('s1', 'approved', '', 'u2');
+  });
+
+  it('reads the advisory analysis defensively', () => {
+    const job = (status: string, extra: Record<string, unknown> = {}) => [{ status, error_code: null, result_payload: {}, ...extra }];
+    expect(parseAnalysis(undefined)).toBeNull();
+    expect(parseAnalysis(job('cancelled'))).toBeNull();
+    expect(parseAnalysis(job('retrying'))).toMatchObject({ state: 'pending' });
+    expect(parseAnalysis(job('queued', { error_code: 'budget_exhausted' }))).toMatchObject({ state: 'waiting' });
+    expect(parseAnalysis(job('failed'))).toMatchObject({ state: 'failed' });
+    expect(parseAnalysis(job('succeeded', { result_payload: { matching: { topics: ['Cálculo', 3], matches: [
+      { unit_id: 'u1', title: 'Análise Matemática II', slug: 'am2', course_slug: 'lei', course_code: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.' },
+      { unit_id: 'u2', title: 'Sem curso', slug: 'x', fit: 'strong', reason: 'Incompleto' },
+    ] } } }))).toEqual({ state: 'done', topics: ['Cálculo'], matches: [{
+      unitId: 'u1', title: 'Análise Matemática II', unitSlug: 'am2', courseSlug: 'lei', courseCode: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.',
+    }] });
   });
 
   it('reads screening defensively', () => {

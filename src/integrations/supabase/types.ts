@@ -62,8 +62,12 @@ export type Database = {
           input_url: string | null
           job_type: string
           learning_object_id: string | null
+          lease_expires_at: string | null
+          lease_token: string | null
+          next_attempt_at: string
           request_source: string
           requested_by: string | null
+          resource_suggestion_id: string | null
           result_payload: Json
           started_at: string | null
           status: string
@@ -83,8 +87,12 @@ export type Database = {
           input_url?: string | null
           job_type?: string
           learning_object_id?: string | null
+          lease_expires_at?: string | null
+          lease_token?: string | null
+          next_attempt_at?: string
           request_source?: string
           requested_by?: string | null
+          resource_suggestion_id?: string | null
           result_payload?: Json
           started_at?: string | null
           status?: string
@@ -104,8 +112,12 @@ export type Database = {
           input_url?: string | null
           job_type?: string
           learning_object_id?: string | null
+          lease_expires_at?: string | null
+          lease_token?: string | null
+          next_attempt_at?: string
           request_source?: string
           requested_by?: string | null
+          resource_suggestion_id?: string | null
           result_payload?: Json
           started_at?: string | null
           status?: string
@@ -119,6 +131,13 @@ export type Database = {
             columns: ["learning_object_id"]
             isOneToOne: false
             referencedRelation: "learning_objects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "analysis_jobs_resource_suggestion_id_fkey"
+            columns: ["resource_suggestion_id"]
+            isOneToOne: false
+            referencedRelation: "resource_suggestions"
             referencedColumns: ["id"]
           },
           {
@@ -2320,6 +2339,25 @@ export type Database = {
       }
     }
     Functions: {
+      claim_resource_suggestion_analyses: {
+        Args: { p_lease_seconds?: number; p_limit?: number }
+        Returns: {
+          attempts: number
+          canonical_url: string
+          current_step: string
+          curricular_unit_id: string
+          job_id: string
+          language: string
+          lease_token: string
+          object_type: string
+          provider: string
+          result_payload: Json
+          suggestion_id: string
+          suggestion_status: string
+          tags: string[]
+          title: string
+        }[]
+      }
       classify_resource_license: {
         Args: { p_license: string }
         Returns: string
@@ -2484,6 +2522,7 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      dispatch_resource_suggestion_analysis: { Args: never; Returns: number }
       get_analysis_job_status: {
         Args: { p_job_id: string }
         Returns: {
@@ -2504,10 +2543,6 @@ export type Database = {
           video_id: string
         }[]
       }
-      get_editorial_sequence_order_v1: {
-        Args: { p_slug: string }
-        Returns: Json
-      }
       get_editor_ifes_course_quality_v1: {
         Args: { p_course_code?: string }
         Returns: {
@@ -2525,6 +2560,10 @@ export type Database = {
           source_pages_recheck: number
           teacher_validations_recorded: number
         }[]
+      }
+      get_editorial_sequence_order_v1: {
+        Args: { p_slug: string }
+        Returns: Json
       }
       get_learning_object_children: {
         Args: { p_parent_object_id: string; p_relation_type?: string }
@@ -2673,6 +2712,42 @@ export type Database = {
           verified_metadata_count: number
         }[]
       }
+      get_public_math_sequence_v1: {
+        Args: { p_playlist_slug: string }
+        Returns: {
+          guide_slug: string
+          guide_title: string
+          guiding_questions: Json
+          linked_curricular_units: Json
+          original_practice_activity: string
+          playlist_description: string
+          playlist_slug: string
+          playlist_title: string
+          prerequisite_slugs: Json
+          teacher_approved: boolean
+          video_content_fully_reviewed: boolean
+          video_count: number
+          video_lessons: Json
+        }[]
+      }
+      get_public_science_path_v1: {
+        Args: { p_playlist_slug: string }
+        Returns: {
+          discipline: string
+          editor_notes: string
+          fully_watched: boolean
+          learning_level: string
+          lesson_count: number
+          linked_curricular_units: Json
+          playlist_description: string
+          playlist_slug: string
+          playlist_title: string
+          recommended_after: Json
+          teacher_approved: boolean
+          topic_progression: Json
+          video_lessons: Json
+        }[]
+      }
       get_public_study_module_v1: {
         Args: { p_module_slug: string }
         Returns: {
@@ -2770,6 +2845,37 @@ export type Database = {
           source_url: string
         }[]
       }
+      list_editor_math_review_queue_v1: {
+        Args: { p_limit?: number; p_offset?: number }
+        Returns: {
+          editorial_checklist: string
+          fully_reviewed: boolean
+          object_id: string
+          officially_approved: boolean
+          parent_sequence_slug: string
+          provenance_and_scope: string
+          resource_slug: string
+          resource_title: string
+          resource_type: string
+          review_priority: number
+        }[]
+      }
+      list_editor_science_review_queue_v1: {
+        Args: { p_limit?: number; p_offset?: number }
+        Returns: {
+          full_video_review_completed: boolean
+          original_publisher: string
+          required_checks: string
+          resource_id: string
+          resource_slug: string
+          resource_title: string
+          resource_type: string
+          review_priority: number
+          review_scope: string
+          science_discipline: string
+          teacher_approved: boolean
+        }[]
+      }
       list_editor_youtube_review_queue_v1: {
         Args: { p_limit?: number; p_offset?: number }
         Returns: {
@@ -2835,6 +2941,25 @@ export type Database = {
           youtube_url: string
         }[]
       }
+      list_public_course_math_paths_v1: {
+        Args: { p_course_code: string; p_unit_code?: string }
+        Returns: {
+          academic_review_complete: boolean
+          creator_video_count: number
+          curricular_unit_code: string
+          curricular_unit_title: string
+          guide_slug: string
+          guide_title: string
+          guiding_questions: Json
+          original_practice_activity: string
+          playlist_description: string
+          playlist_slug: string
+          playlist_title: string
+          prerequisite_slugs: Json
+          study_semester: number
+          study_year: number
+        }[]
+      }
       list_public_course_projects_v1: {
         Args: { p_course_code: string }
         Returns: {
@@ -2863,6 +2988,25 @@ export type Database = {
           unit_title: string
           video_count: number
           year: number
+        }[]
+      }
+      list_public_course_science_paths_v1: {
+        Args: { p_area?: string; p_course_code: string; p_unit_code?: string }
+        Returns: {
+          curricular_unit_code: string
+          curricular_unit_title: string
+          discipline: string
+          editorial_review_scope: string
+          learning_level: string
+          lesson_count: number
+          playlist_description: string
+          playlist_slug: string
+          playlist_title: string
+          recommended_after: Json
+          study_semester: number
+          study_year: number
+          teacher_approved: boolean
+          topic_progression: Json
         }[]
       }
       list_public_course_study_map_v1: {
@@ -2919,6 +3063,18 @@ export type Database = {
           unit_codes: string[]
         }[]
       }
+      list_public_resource_topics_v1: {
+        Args: {
+          p_area?: string
+          p_language?: string
+          p_object_type?: string
+          p_search?: string
+        }
+        Returns: {
+          item_count: number
+          tag: string
+        }[]
+      }
       list_public_sequences_for_video_v1: {
         Args: { p_video_id: string }
         Returns: {
@@ -2954,8 +3110,12 @@ export type Database = {
           input_url: string | null
           job_type: string
           learning_object_id: string | null
+          lease_expires_at: string | null
+          lease_token: string | null
+          next_attempt_at: string
           request_source: string
           requested_by: string | null
+          resource_suggestion_id: string | null
           result_payload: Json
           started_at: string | null
           status: string
@@ -2969,6 +3129,20 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      rank_resource_suggestion_units: {
+        Args: { p_include?: string; p_limit?: number; p_text: string }
+        Returns: {
+          code: string
+          course_code: string
+          course_slug: string
+          course_title: string
+          id: string
+          rank: number
+          slug: string
+          summary: string
+          title: string
+        }[]
       }
       reconcile_playlist_items: {
         Args: { p_playlist_id: string }
@@ -3047,12 +3221,20 @@ export type Database = {
       }
       reorder_editorial_sequence_v1: {
         Args: {
-          p_playlist_id: string
-          p_expected_revision: number
           p_expected_order: string[]
+          p_expected_revision: number
           p_new_order: string[]
+          p_playlist_id: string
         }
         Returns: Json
+      }
+      reserve_resource_suggestion_ai_call: {
+        Args: { p_daily_limit: number; p_job_id: string; p_lease_token: string }
+        Returns: string
+      }
+      retry_resource_suggestion_analysis: {
+        Args: { p_suggestion_id: string }
+        Returns: undefined
       }
       review_playlist: {
         Args: {
@@ -3076,6 +3258,7 @@ export type Database = {
       }
       review_resource_suggestion: {
         Args: {
+          p_curricular_unit_id?: string
           p_decision: string
           p_review_note?: string
           p_suggestion_id: string
@@ -3130,24 +3313,15 @@ export type Database = {
         }
         Returns: Json
       }
-      list_public_resource_topics_v1: {
-        Args: {
-          p_search?: string
-          p_language?: string | null
-          p_object_type?: string | null
-          p_area?: string | null
-        }
-        Returns: { tag: string; item_count: number }[]
-      }
       search_public_resources_v4: {
         Args: {
+          p_area?: string
           p_language?: string
           p_object_type?: string
           p_page?: number
           p_page_size?: number
           p_search?: string
           p_tag?: string
-          p_area?: string
         }
         Returns: Json
       }
