@@ -2091,6 +2091,7 @@
     "chooseSequence": "Secuencia que deseas ordenar",
     "notFound": "Esta secuencia no está disponible para editar.",
     "lessonCount": "{{count}} clases",
+    "sequenceCount": "{{count}} secuencias",
     "revision": "Revisión {{count}}",
     "viewPublic": "Ver secuencia pública",
     "instructions": "Arrastra las clases o usa los botones para subir y bajar con teclado o móvil. Los cambios solo se publican al confirmar.",
