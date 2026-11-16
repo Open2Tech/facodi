@@ -439,7 +439,7 @@ export default function ResourceDetails() {
           <h2 id="video-curation" className="text-lg font-semibold">{t('video.curation')}</h2>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('video.curationText')}</p>
           <dl className="mt-5 divide-y divide-input border-y border-input text-sm">
-            {info.reviewScope && <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.selection')}</dt><dd className="text-right">{info.reviewScope === 'title_and_channel_only' ? t('video.scopeTitleChannel') : info.reviewScope}</dd></div>}
+            {info.reviewScope && <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.selection')}</dt><dd className="min-w-0 break-words text-right">{info.reviewScope === 'title_and_channel_only' ? t('video.scopeTitleChannel') : info.reviewScope}</dd></div>}
             <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.fullReviewed')}</dt><dd className="text-right">{t(info.fullReviewed ? 'common.yes' : 'common.no')}</dd></div>
             <div className="flex justify-between gap-4 py-3"><dt className="text-muted-foreground">{t('video.licenseVerified')}</dt><dd className="text-right">{t(info.licenseVerified ? 'common.yes' : 'common.no')}</dd></div>
           </dl>
