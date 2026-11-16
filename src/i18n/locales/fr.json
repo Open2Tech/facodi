@@ -2190,5 +2190,21 @@
     "progressNotice": "La progression est enregistrée pour chaque séquence après connexion. Ces ressources complètent les cours officiels sans les remplacer.",
     "library": "Bibliothèque vidéo complète ({{count}})",
     "libraryNote": "Comprend toutes les vidéos directement associées à l’unité, y compris celles déjà présentes dans les parcours ci-dessus. Aucun contenu n’a été supprimé."
+  },
+  "ualgCurriculum": {
+    "specialization": "Spécialisation",
+    "cognitiveNeuroscience": "Neurosciences cognitives",
+    "neuropsychology": "Neuropsychologie",
+    "track": "Parcours de deuxième année",
+    "researchTrack": "Recherche · mémoire",
+    "professionalTrack": "Professionnel · stage et mémoire",
+    "licenceNotice": "Programme 2026/27 : chaque groupe optionnel présente des unités alternatives. Il ne faut pas additionner toutes les options aux 180 ECTS du diplôme.",
+    "masterNotice": "Programme 2026/27 : sélectionnez une spécialisation et, le cas échéant, un parcours final. Les unités communes n'apparaissent qu'une fois. Les variantes de code et les options ne s'ajoutent pas aux 120 ECTS du master.",
+    "required": "Unités obligatoires",
+    "optional": "Options",
+    "variant": "Autres entrées du programme",
+    "annual": "Annuel",
+    "choicesNotice": "Ces unités sont des choix alternatifs au sein d'un groupe. Consultez le programme officiel pour vérifier les règles de sélection.",
+    "variantsNotice": "Le programme officiel présente également cette unité sous un autre intitulé ou code. Ne comptez pas deux fois les ECTS ; vérifiez l'équivalence auprès de l'université."
   }
 }
