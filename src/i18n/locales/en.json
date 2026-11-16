@@ -2226,12 +2226,14 @@
     "researchTrack": "Research · dissertation",
     "professionalTrack": "Professional · internship and dissertation",
     "licenceNotice": "2026/27 curriculum: each elective group offers alternative units. These options must not be added together when calculating the programme's 180 ECTS.",
-    "masterNotice": "2026/27 curriculum: select a specialization and, where available, a completion pathway. Shared units appear once in the selected view. Alternative listings and code variants must not be added to the programme's 120 ECTS.",
+    "masterNotice": "Official 2026/27 plan: choose a specialization. Cognitive Neuroscience ends with a 60-ECTS dissertation; Neuropsychology with a 30-ECTS internship and a 30-ECTS dissertation. Electives and repeated listings must not be added together.",
     "required": "Required units",
     "optional": "Electives",
     "variant": "Additional entries in the plan",
     "annual": "Full year",
     "choicesNotice": "These are alternative units within the same elective group. Refer to the official curriculum to verify the selection rules.",
-    "variantsNotice": "The official plan also lists this entry under another name or code. Do not count its ECTS twice; confirm equivalence with the university."
+    "variantsNotice": "The official plan also lists this entry under another name or code. Do not count its ECTS twice; confirm equivalence with the university.",
+    "verifiedTrack": "Completion route in the official plan",
+    "ectsPending": "ECTS to be confirmed by UAlg"
   }
 }

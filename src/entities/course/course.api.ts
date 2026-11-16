@@ -23,7 +23,7 @@ export async function listPublicCourses(signal?: AbortSignal): Promise<PublicCou
 
 const PUBLIC_RESOURCE_STATES = ['active', 'published'];
 
-const UNIT_LIST_FIELDS = 'id, slug, title, code, ects, year, semester, position, language, courses!inner(slug, code, title, published, status)';
+const UNIT_LIST_FIELDS = 'id, slug, title, code, ects, metadata, year, semester, position, language, courses!inner(slug, code, title, published, status)';
 
 /** PostgREST `or()` value: quoted so commas, dots or parentheses in user search stay literal. */
 function orIlike(columns: string[], search: string) {
@@ -155,7 +155,7 @@ export async function getUnit(courseSlug: string, unitSlug: string, signal?: Abo
   if (error) throw new Error(getSupabaseErrorMessage(error));
   if (!course) return null;
   const { data: outline, error: outlineError } = await supabase.from('curricular_units')
-    .select('id, slug, title, code, ects, year, semester, position')
+    .select('id, slug, title, code, ects, metadata, year, semester, position')
     .eq('course_id', course.id).eq('status', 'active')
     .order('year', { nullsFirst: false }).order('semester', { nullsFirst: false }).order('position', { nullsFirst: false }).order('title').order('id')
     .abortSignal(signal);
