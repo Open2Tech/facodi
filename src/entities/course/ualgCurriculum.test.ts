@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildUalgSections, type UalgCurricularUnit } from './ualgCurriculum';
+import { buildUalgSections, completionTrack, ectsVerificationPending, type UalgCurricularUnit } from './ualgCurriculum';
 
 const u = (code: string, placements: unknown[], position = 1): UalgCurricularUnit => ({
   id: code, slug: code, code, title: code, year: 1, semester: 1, ects: 5, position,
@@ -23,7 +23,7 @@ describe('UAlg curriculum pathways', () => {
     ]);
   });
 
-  it('filters MNCN by specialization and the second-year research or professional track', () => {
+  it('uses only the verified second-year completion pathway for each specialization', () => {
     const nc = 'Neurociências Cognitivas';
     const np = 'Neuropsicologia';
     const units = [
@@ -34,11 +34,13 @@ describe('UAlg curriculum pathways', () => {
                      placement('mandatory', np, 2, null, null, 'investigação')]),
       u('internship', [placement('mandatory', np, 2, null, null, 'profissional')]),
     ];
-    const list = (spec: typeof nc | typeof np, track: 'investigação' | 'profissional') =>
-      buildUalgSections(units, 'MNCN', spec, track).flatMap(group => group.units.map(unit => unit.code));
-    expect(list(nc, 'investigação')).toEqual(['common', 'neuro-cognitive', 'research']);
-    expect(list(np, 'investigação')).toEqual(['common', 'neuro-psychology', 'research']);
-    expect(list(np, 'profissional')).toEqual(['common', 'neuro-psychology', 'internship']);
+    const list = (spec: typeof nc | typeof np) =>
+      buildUalgSections(units, 'MNCN', spec).flatMap(group => group.units.map(unit => unit.code));
+    expect(completionTrack(nc)).toBe('investigação');
+    expect(completionTrack(np)).toBe('profissional');
+    expect(list(nc)).toEqual(['common', 'neuro-cognitive', 'research']);
+    // Even if stale metadata still lists the NP research placement, do not expose that unsupported pathway.
+    expect(list(np)).toEqual(['common', 'neuro-psychology', 'internship']);
   });
 
   it('prefers a mandatory occurrence and still exposes ambiguous official variants distinctly', () => {
@@ -75,6 +77,13 @@ describe('UAlg curriculum pathways', () => {
     ]);
     expect(buildUalgSections(units, 'MNCN', nc)
       .flatMap(group => group.units.map(unit => unit.code))).toEqual(['cross-specialty']);
+  });
+
+  it('flags ECTS values that conflict between the official elective groups', () => {
+    expect(ectsVerificationPending({ ects_requires_fchs_confirmation: true })).toBe(true);
+    expect(ectsVerificationPending({ ects_requires_fchs_confirmation: false })).toBe(false);
+    expect(ectsVerificationPending(null)).toBe(false);
+    expect(ectsVerificationPending({})).toBe(false);
   });
 
 });
