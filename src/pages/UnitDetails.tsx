@@ -106,7 +106,7 @@ export default function UnitDetails() {
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
         {studyPath && <UnitStudyPath config={studyPath}
-          sequences={sequences.data ?? []} modules={modulesQuery.data ?? []} videos={videoList} />}
+          sequences={sequences.data ?? []} videos={videoList} />}
         <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
           <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitOutcomes.notice')}</p>
