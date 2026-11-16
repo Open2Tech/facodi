@@ -28,6 +28,7 @@ import { formatDuration, videoInfo } from '@/entities/course/video';
 import { cn } from '@/lib/utils';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { brazilianCredits, ufesElectiveGroup, unitHours } from '@/entities/course/brazilianCurriculum';
+import { ectsVerificationPending } from '@/entities/course/ualgCurriculum';
 
 const FACT_ICONS: Record<string, LucideIcon> = {
   code: Hash, ects: Award, hours: Clock, brazilianCredits: Award, electiveGroup: CalendarRange, yearLabel: Calendar, semesterLabel: CalendarRange, language: Languages, institution: Building2,
@@ -74,7 +75,7 @@ export default function UnitDetails() {
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const facts = [
     ['code', unit.code],
-    ['ects', unit.ects != null ? `${unit.ects} ECTS` : null],
+    ['ects', ectsVerificationPending(unit.metadata) ? t('ualgCurriculum.ectsPending') : unit.ects != null ? `${unit.ects} ECTS` : null],
     ['hours', unit.ects == null && unitHours(unit.metadata) != null ? `${unitHours(unit.metadata)} h` : null],
     ['brazilianCredits', course.code === 'UFES-LETRAS-ING-83-2019' && brazilianCredits(unit.metadata) != null ? String(brazilianCredits(unit.metadata)) : null],
     ['electiveGroup', course.code === 'UFES-LETRAS-ING-83-2019' && ufesElectiveGroup(unit.metadata) ? t(`course.electiveGroups.${ufesElectiveGroup(unit.metadata)}`) : null],
@@ -264,7 +265,9 @@ export default function UnitDetails() {
             {siblings.map(item => <li key={item.id}>
               <Link to={unitPath(course.slug, item.slug)} className="flex items-baseline justify-between gap-4 py-4 hover:underline hover:underline-offset-4">
                 <span className="font-medium">{item.title}</span>
-                {item.ects != null && <span className="shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{item.ects} ECTS</span>}
+                {ectsVerificationPending(item.metadata)
+                  ? <span className="shrink-0 text-xs text-muted-foreground">{t('ualgCurriculum.ectsPending')}</span>
+                  : item.ects != null && <span className="shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{item.ects} ECTS</span>}
               </Link>
             </li>)}
           </ul>
