@@ -52,4 +52,29 @@ describe('UAlg curriculum pathways', () => {
     expect(groups.flatMap(group => group.units.map(unit => unit.code))).toEqual(['same-uc', 'listed-variant']);
     expect(groups.map(group => group.role)).toEqual(['mandatory', 'listed_variant']);
   });
+  it('preserves a unit offered in multiple optional groups without creating distinct UC records', () => {
+    const np = 'Neuropsicologia';
+    const nc = 'Neurociências Cognitivas';
+    const units = [
+      u('shared-option', [
+        placement('alternative', np, 1, 2, 'Optativa II'),
+        placement('alternative', np, 1, 2, 'Optativa III'),
+      ]),
+      u('cross-specialty', [
+        placement('mandatory', np, 1, 2),
+        placement('alternative', nc, 1, 2, 'Optativa II'),
+      ]),
+    ];
+    const neuropsychology = buildUalgSections(units, 'MNCN', np);
+    expect(neuropsychology.map(group => [
+      group.role, group.optionGroup, group.units.map(unit => unit.code),
+    ])).toEqual([
+      ['mandatory', null, ['cross-specialty']],
+      ['alternative', 'Optativa II', ['shared-option']],
+      ['alternative', 'Optativa III', ['shared-option']],
+    ]);
+    expect(buildUalgSections(units, 'MNCN', nc)
+      .flatMap(group => group.units.map(unit => unit.code))).toEqual(['cross-specialty']);
+  });
+
 });
