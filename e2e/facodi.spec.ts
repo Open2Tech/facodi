@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
     await route.fulfill({ json: [], headers: { 'content-range': '0-0/0', 'access-control-expose-headers': 'content-range' } });
   });
   // Read-only side panels call these on every visit; tests that need rows route them themselves.
-  for (const rpc of ['list_public_sequences_for_video_v1', 'get_public_course_creator_video_study_v1', 'get_my_course_study_modules_v1']) {
+  for (const rpc of ['list_public_sequences_for_video_v1', 'get_public_course_creator_video_study_v1', 'get_my_course_study_modules_v1', 'list_public_resource_topics_v1']) {
     await page.route(`**/rest/v1/rpc/${rpc}`, async route => {
       expect(route.request().headers()['content-profile']).toBe('facodi');
       await route.fulfill({ json: [] });
@@ -136,7 +136,11 @@ test('legal pages deep-link to sections and stay usable on mobile', async ({ pag
   await expect(page.getByRole('heading', { name: 'Your rights' })).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.goto('/legal');
-  await expect(page.getByText('To be confirmed', { exact: true })).toHaveCount(3);
+  const identity = page.getByRole('region', { name: 'Identification', exact: true });
+  await expect(identity.getByText('Personal educational project', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg tax identification', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg institutional address', { exact: true })).toBeVisible();
+  await expect(identity.getByText('UAlg legal status and registration', { exact: true })).toBeVisible();
 });
 
 test('language and theme persist across visits only after opting in, and withdrawing deletes them', async ({ page }) => {
@@ -377,7 +381,7 @@ test('home search, entry paths and new public catalogues render without overflow
     const head = route.request().method() === 'HEAD';
     await route.fulfill({ status: 200, json: head ? undefined : [resource], headers: { 'content-range': head ? '*/1' : '0-0/1', 'access-control-expose-headers': 'content-range' } });
   });
-  await page.route('**/rest/v1/rpc/search_public_resources_v3', route =>
+  await page.route('**/rest/v1/rpc/search_public_resources_v4', route =>
     route.fulfill({ json: { total: 1, items: [resource], types: [{ value: 'article', count: 1 }] } }));
   await page.route('**/rest/v1/curricular_units*', async route => {
     const unit = { id: 'u1', slug: 'logic-1', title: 'Logic I', summary: 'Test fixture only', code: 'L1', ects: 6, year: 1, semester: 1, language: 'en', courses: { slug: 'test-course', title: 'Test course', published: true, status: 'active' } };
@@ -1109,7 +1113,7 @@ test('unified resources catalogue searches every type with contextual facets, ta
       value: async (data: ShareData) => sessionStorage.setItem('test:module-share', JSON.stringify(data)),
     });
   });
-  await page.route('**/rest/v1/rpc/search_public_resources_v3', async route => {
+  await page.route('**/rest/v1/rpc/search_public_resources_v4', async route => {
     expect(route.request().headers()['content-profile']).toBe('facodi');
     const body = route.request().postDataJSON() as Record<string, string | undefined>;
     calls.push(body);
