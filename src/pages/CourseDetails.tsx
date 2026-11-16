@@ -10,6 +10,7 @@ import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
+import { UalgCurriculum } from '@/components/course/UalgCurriculum';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
@@ -143,6 +144,9 @@ export default function CourseDetails() {
         {t('course.coverageSummary', { videos: coverage.data.filter(unit => unit.video_count > 0).length, units: units.length, readings: coverage.data.filter(unit => unit.reading_count > 0).length })}
       </p>}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
+      {(course.code === 'LPSI' || course.code === 'MNCN') ? (
+        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
+      ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
           {year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}
@@ -181,6 +185,7 @@ export default function CourseDetails() {
           })}
         </div>
       </section>)}
+      </>}
     </section>
     {['LGEST', 'UFES-LETRAS-ING-83-2019'].includes(course.code) && <CurriculumArchive courseId={course.id} />}
   </article>;
