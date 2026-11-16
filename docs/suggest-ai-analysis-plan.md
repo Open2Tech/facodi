@@ -1,7 +1,8 @@
 # /suggest: análise assistida e associação curricular simples
 
-Estado: proposta para aprovação; nenhuma implementação ou ativação autorizada por
-este documento. Data da investigação: 16/11/2026.
+Estado: fase consultiva implementada e ativa (16/11/2026). Ver
+[Implementação](#implementação) para o que foi entregue e o que difere do plano.
+Data da investigação: 16/11/2026.
 
 Base: `facodi`, commit `81a54852aec37817f8b538ac82c10e17476892e1`.
 Entrega independente do PR #39 e de outras worktrees. As issues estão
@@ -312,6 +313,32 @@ sem acrescentar rondas obrigatórias de aprovação humana.
   humana. Migrações aditivas podem permanecer sem processador ativo.
 - Registar no PR de implementação o comando de ativação/paragem e como consultar
   falhas/uso nas tabelas existentes. Sem dashboard operacional novo.
+
+## Implementação
+
+Entregue como fatia vertical mínima e **apenas consultiva**:
+
+- Migração `20261116233006_facodi_resource_suggestion_ai_analysis.sql`: fila em
+  `facodi.analysis_jobs` (lease, `next_attempt_at`, um job por sugestão),
+  trigger de enfileiramento, ranking SQL de UCs, orçamento diário,
+  `retry_resource_suggestion_analysis` (editor) e o Cron
+  `facodi-suggestion-analysis` (pg_net + Vault).
+- Edge Function `facodi-suggestion-analysis` (sem JWT; segredo partilhado em
+  `x-facodi-worker-secret`): Google Gemini (`gemini-2.5-flash`, endpoint
+  compatível com OpenAI) com saída JSON estruturada, até 3 UCs com razão em
+  português. O provedor mudou de OpenAI para Gemini porque a conta OpenAI não
+  tinha créditos.
+- Interface: o aluno vê o estado e as propostas no histórico; o editor vê a
+  análise, pode reanalisar e escolhe a UC no diálogo de aprovação.
+
+Diferenças deliberadas face às secções 4–5: não há aplicação automática de
+associações nem gate de confiança; a etapa B fica para quando houver dados
+que justifiquem. Limitações: só metadados (sem transcrição); títulos em inglês
+podem não encontrar UCs, porque o ranking é textual sobre UCs em português.
+
+Operação: falhas em `analysis_jobs` (`job_type = 'analyze_resource_suggestion'`,
+`status`, `error_code`); uso diário em `analysis_job_events`
+(`event_type = 'ai_call'`).
 
 ## 9. Deliberadamente adiado
 
