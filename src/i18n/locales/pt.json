@@ -2200,12 +2200,14 @@
     "researchTrack": "Investigação · dissertação",
     "professionalTrack": "Profissional · estágio e dissertação",
     "licenceNotice": "Plano 2026/27: cada grupo de opção representa uma escolha entre as UCs apresentadas. As alternativas não acrescentam ECTS cumulativos aos 180 ECTS do curso.",
-    "masterNotice": "Plano 2026/27: escolhe uma especialização e, quando aplicável, um percurso de conclusão. As UCs partilhadas aparecem uma só vez em cada seleção. Listagens alternativas e variantes de código não devem ser somadas aos 120 ECTS do mestrado.",
+    "masterNotice": "Plano oficial 2026/27: seleciona a especialização. Neurociências Cognitivas conclui com dissertação de 60 ECTS; Neuropsicologia, com estágio de 30 ECTS e dissertação de 30 ECTS. As opções e listagens repetidas não são créditos cumulativos.",
     "required": "Unidades obrigatórias",
     "optional": "Opções",
     "variant": "Outras entradas no plano",
     "annual": "Anual",
     "choicesNotice": "Unidades alternativas dentro do mesmo grupo. Consulta o plano oficial para confirmar as regras de escolha.",
-    "variantsNotice": "O plano oficial também apresenta esta entrada com outra designação ou código. Não contes automaticamente os ECTS duas vezes; confirma a equivalência junto da UAlg."
+    "variantsNotice": "O plano oficial também apresenta esta entrada com outra designação ou código. Não contes automaticamente os ECTS duas vezes; confirma a equivalência junto da UAlg.",
+    "verifiedTrack": "Conclusão prevista no plano oficial",
+    "ectsPending": "ECTS a confirmar na UAlg"
   }
 }
