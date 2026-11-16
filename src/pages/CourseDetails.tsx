@@ -50,6 +50,7 @@ export default function CourseDetails() {
   const query = useCourse(slug);
   const coverage = useCourseCoverage(query.data?.course.id);
   const collections = useLinkedCatalogAssets(query.data?.course.learning_object_id, 'collection');
+  const sequences = useLinkedCatalogAssets(query.data?.course.learning_object_id, 'playlist');
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   if (query.isPending) return <PageState loading />;
@@ -96,6 +97,30 @@ export default function CourseDetails() {
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
+    {!!sequences.data?.length && <section aria-labelledby="course-sequences" className="mb-12 border-t border-foreground pt-9">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <h2 id="course-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.title')}</h2>
+        {sequences.data.length > 12 && <Link to="/sequences" className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+          {t('sequences.title')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>}
+      </div>
+      <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('sequences.notice')}</p>
+      <ol className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        {sequences.data.slice(0, 12).map((sequence, index) => <li key={sequence.id}>
+          <Link to={`/sequences/${encodeURIComponent(sequence.slug)}`}
+            className="group flex h-full gap-3 border border-input p-5 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <span aria-hidden="true" className="shrink-0 font-mono text-sm tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+            <span className="flex min-w-0 flex-1 flex-col gap-2">
+              <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{sequence.title}</span>
+              {sequence.description && <span className="line-clamp-2 text-sm text-muted-foreground">{sequence.description}</span>}
+              <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">
+                {t('courseCollections.open')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </span>
+          </Link>
+        </li>)}
+      </ol>
+    </section>}
     {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
       <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
       <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
