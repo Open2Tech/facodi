@@ -2154,5 +2154,18 @@
     "loadFailed": "No se pudo cargar el itinerario.",
     "unavailable": "Este itinerario ha cambiado y requiere revisión editorial. La secuencia original sigue disponible.",
     "openSequence": "Abrir secuencia"
+  },
+  "composedPath": {
+    "eyebrow": "FACODI · Estudio independiente",
+    "title": "Itinerario de estudio recomendado",
+    "description": "Una ruta temática compuesta por secuencias existentes. Cada secuencia conserva sus clases y progreso individual.",
+    "start": "Empezar a estudiar",
+    "lessonCount": "{{count}} clases",
+    "guides": "Guías y actividades relacionadas",
+    "extra": "Ampliación y rutas alternativas",
+    "extraDescription": "Material opcional fuera del recorrido principal.",
+    "progressNotice": "El progreso se guarda en cada secuencia al iniciar sesión. Estos recursos complementan, pero no sustituyen, las clases oficiales.",
+    "library": "Biblioteca completa de vídeos ({{count}})",
+    "libraryNote": "Incluye todos los vídeos vinculados directamente a la asignatura, incluso los que también aparecen en las rutas anteriores. No se ha eliminado ninguno."
   }
 }
