@@ -2135,5 +2135,24 @@
     "react": "React",
     "gestao": "Gestão",
     "tecnologia": "Tecnologia"
+  },
+  "studyPath": {
+    "eyebrow": "FACODI · Percurso de estudo",
+    "title": "Percurso recomendado",
+    "intro": "Um único percurso com secções temáticas. Os vídeos são dos seus autores originais e servem de apoio, não substituem as aulas da instituição.",
+    "lessons": "{{count}} aulas",
+    "completed": "{{completed}} de {{total}} concluídas",
+    "progressNote": "O progresso fica disponível quando inicias sessão.",
+    "continue": "Continuar a estudar",
+    "done": "Aula concluída",
+    "sourceNotice": "Sequência editorial de apoio: a FACODI não afirma que estes vídeos sejam aulas oficiais ou conteúdo integralmente revisto.",
+    "practice": "Aplicação prática",
+    "practiceDescription": "Consolida a aprendizagem com a atividade orientada e os critérios de autoavaliação do guia existente.",
+    "openGuide": "Abrir atividade e guia",
+    "extra": "Para explorar mais",
+    "extraDescription": "Sequências de aprofundamento e recursos opcionais, fora do percurso principal.",
+    "loadFailed": "Não foi possível carregar o percurso de estudo.",
+    "unavailable": "O percurso foi atualizado e precisa de validação editorial. A sequência original continua acessível.",
+    "openSequence": "Abrir sequência"
   }
 }

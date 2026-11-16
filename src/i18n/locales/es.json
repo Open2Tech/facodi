@@ -2135,5 +2135,24 @@
     "react": "React",
     "gestao": "Gestión",
     "tecnologia": "Tecnología"
+  },
+  "studyPath": {
+    "eyebrow": "FACODI · Itinerario de estudio",
+    "title": "Ruta de aprendizaje recomendada",
+    "intro": "Un único itinerario con secciones temáticas. Los vídeos pertenecen a sus autores originales y complementan, pero no sustituyen, las clases de la institución.",
+    "lessons": "{{count}} lecciones",
+    "completed": "{{completed}} de {{total}} completadas",
+    "progressNote": "Inicia sesión para seguir tu progreso.",
+    "continue": "Continuar aprendiendo",
+    "done": "Lección completada",
+    "sourceNotice": "Secuencia editorial complementaria: FACODI no afirma que sean clases oficiales ni que todo el contenido se haya revisado íntegramente.",
+    "practice": "Actividad práctica",
+    "practiceDescription": "Aplica lo aprendido con la actividad y los criterios de autoevaluación de la guía existente.",
+    "openGuide": "Abrir actividad y guía",
+    "extra": "Para profundizar",
+    "extraDescription": "Secuencias avanzadas y recursos opcionales, fuera del itinerario principal.",
+    "loadFailed": "No se pudo cargar el itinerario.",
+    "unavailable": "Este itinerario ha cambiado y requiere revisión editorial. La secuencia original sigue disponible.",
+    "openSequence": "Abrir secuencia"
   }
 }
