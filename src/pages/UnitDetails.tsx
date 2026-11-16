@@ -6,7 +6,7 @@ import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { parseStudyPath } from '@/entities/course/studyPath';
-import { parseComposedStudyPath, canPresentComposedStudyPath } from '@/entities/course/composedStudyPath';
+import { parseComposedStudyPath, canPresentComposedStudyPath, isComposedPathPending } from '@/entities/course/composedStudyPath';
 import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath';
 import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
@@ -63,9 +63,9 @@ export default function UnitDetails() {
   const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
   // A configured journey must not flash the legacy catalog while its dependencies load.
   // Errors/invalid links still fall back to the complete catalog after queries settle.
-  const composedPending = Boolean(composedCandidate && (
-    sequences.isPending || playlistsQuery.isPending || modulesQuery.isPending
-  ));
+  const composedPending = isComposedPathPending(composedCandidate, [
+    sequences.status, playlistsQuery.status, modulesQuery.status,
+  ]);
   const composedPath = composedCandidate && !composedPending
     && sequences.isSuccess && modulesQuery.isSuccess && playlistsQuery.isSuccess
     && canPresentComposedStudyPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
