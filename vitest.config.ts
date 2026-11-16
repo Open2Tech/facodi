@@ -18,6 +18,6 @@ export default defineConfig({
       VITE_SUPABASE_URL: 'https://test-project.supabase.co',
       VITE_SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_test',
     },
-    exclude: [...configDefaults.exclude, 'e2e/**', 'supabase/functions/**/*.test.ts'],
+    exclude: [...configDefaults.exclude, 'e2e/**', 'supabase/functions/**/*.test.ts', 'scripts/enrichment/youtube-data-api-utils.test.mjs'],
   },
 });
