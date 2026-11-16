@@ -964,6 +964,7 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
 for (const surface of ['sequence', 'unit'] as const) {
   for (const width of [375, 1280]) {
     test(`embedded ${surface} notebook saves to the video and seeks locally at ${width}px`, async ({ page }) => {
+      test.slow();
       const videos = [
         { id: 'v1', slug: 'variables', title: 'Variables', object_type: 'video', source_url: 'https://youtu.be/abcdefghij1',
           metadata: { youtube_video_id: 'abcdefghij1', duration_seconds: 600 }, language: 'en' },
@@ -1019,8 +1020,11 @@ for (const surface of ['sequence', 'unit'] as const) {
       await expect(page.locator('iframe[title="Variables"]')).toHaveAttribute('src', /start=12/);
       await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
       await expect(drawer.getByText('01:23', { exact: true })).toBeVisible();
+      await drawer.getByLabel('Title or concept').focus();
+      await expect(drawer.getByRole('button', { name: 'Remove the 01:23 mark' })).toBeVisible();
       await drawer.getByLabel('Title or concept').fill('Variable scope');
       await drawer.getByLabel('Note', { exact: true }).fill('This note belongs to Variables.');
+      await expect(drawer.getByLabel('Title or concept')).toHaveValue('Variable scope');
       await drawer.getByRole('button', { name: 'Save note', exact: true }).click();
       await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toBeVisible();
       await expect(page).toHaveURL(new RegExp(`${path.replaceAll('/', '\\/')}\\?v=v1&t=12&notes=open$`));
