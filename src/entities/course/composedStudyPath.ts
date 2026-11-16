@@ -76,3 +76,11 @@ export function canPresentComposedStudyPath(config: ComposedStudyPath,
   const guides = new Set(config.guideModuleSlugs);
   return guides.size === modules.length && modules.every(module => guides.has(module.slug));
 }
+
+/** Keep a configured path's legacy catalog hidden until its dependent queries settle. */
+export function isComposedPathPending(
+  config: ComposedStudyPath | null,
+  status: readonly ('pending' | 'error' | 'success')[],
+): boolean {
+  return !!config && status.includes('pending');
+}
