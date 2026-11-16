@@ -7,6 +7,7 @@ export const STUDY_AREAS = [
   { key: 'mathematics', matcher: /matemat|calculo|algebra|estatistic|probabil|trigonometri|geometri/ },
   { key: 'technology', matcher: /program|software|dados|python|git|linux|sql|excel|web|informat|tecnolog|comput|algorit|react|javascript|cloud/ },
   { key: 'science', matcher: /fisic|physics|chemistr|quimic|astro|biolog|cienc/ },
+  { key: 'psychology', matcher: /psicolog|psychol|psicoterap|psiquiatr|psychiatr|neuro|cerebr|brain|cognit|sinaps|synaps|farmacol|pharmacol|dopamin|tdah|\\bmental\\b/ },
   { key: 'management', matcher: /gestao|gestion|administra|contab|financ|empreend|marketing|negoci|econom/ },
   { key: 'languages', matcher: /lingu|idiom|ingles|english|literat|teaching|gramatic/ },
   { key: 'education', matcher: /educa|pedagog|ensino|didatic/ },
