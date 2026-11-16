@@ -2200,12 +2200,14 @@
     "researchTrack": "Investigación · tesis",
     "professionalTrack": "Profesional · prácticas y tesis",
     "licenceNotice": "Plan 2026/27: cada grupo optativo presenta asignaturas alternativas. No deben sumarse todas las opciones al total de 180 ECTS.",
-    "masterNotice": "Plan 2026/27: selecciona una especialización y, cuando exista, un itinerario final. Las asignaturas compartidas aparecen una sola vez. Las alternativas y variantes de código no se suman a los 120 ECTS del máster.",
+    "masterNotice": "Plan oficial 2026/27: selecciona la especialización. Neurociencias Cognitivas termina con una tesis de 60 ECTS; Neuropsicología con prácticas de 30 ECTS y tesis de 30 ECTS. Las optativas y listados repetidos no son créditos acumulativos.",
     "required": "Asignaturas obligatorias",
     "optional": "Optativas",
     "variant": "Otras entradas del plan",
     "annual": "Anual",
     "choicesNotice": "Estas asignaturas son alternativas dentro del mismo grupo. Consulta el plan oficial para confirmar las reglas de elección.",
-    "variantsNotice": "El plan oficial también incluye esta entrada con otro nombre o código. No cuentes dos veces sus ECTS; confirma la equivalencia con la universidad."
+    "variantsNotice": "El plan oficial también incluye esta entrada con otro nombre o código. No cuentes dos veces sus ECTS; confirma la equivalencia con la universidad.",
+    "verifiedTrack": "Vía de finalización del plan oficial",
+    "ectsPending": "ECTS pendientes de confirmación por la UAlg"
   }
 }
