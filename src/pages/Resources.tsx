@@ -96,7 +96,8 @@ export default function Resources() {
         onRemove={key => filter(key as CatalogParamKey, '')} onReset={reset} />
     </div>
     {discovering && <>
-      <nav aria-label={t('catalog.browseByArea')} className="mt-7">
+      <ResourceDiscovery />
+      <nav aria-label={t('catalog.browseByArea')} className="my-9">
         <h2 className="text-lg font-semibold">{t('catalog.browseByArea')}</h2>
         <div className="mt-2 flex gap-x-5 overflow-x-auto pb-1 sm:grid sm:grid-cols-3 lg:grid-cols-6">
           {STUDY_AREAS.map(studyArea => <Link key={studyArea.key} to={`?area=${studyArea.key}`}
@@ -105,7 +106,6 @@ export default function Resources() {
           </Link>)}
         </div>
       </nav>
-      <ResourceDiscovery />
     </>}
     <div id="resource-library" ref={results} tabIndex={-1} aria-label={t('resources.results')} className="scroll-mt-24 outline-none"
       aria-busy={query.isFetching || undefined}>

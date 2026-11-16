@@ -56,7 +56,6 @@ for (const width of [375, 1280]) {
     await page.getByRole('link', { name: 'Skip to the full library' }).click();
     await expect(page.getByRole('heading', { name: 'Full library' })).toBeInViewport();
 
-    await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
     for (const dark of [false, true]) {
       if (dark) {
         if (width < 1280) await page.getByRole('button', { name: 'Open menu' }).click();
@@ -66,6 +65,7 @@ for (const width of [375, 1280]) {
         await expect(page.locator('html')).toHaveClass(/dark/);
         await expect(page.getByRole('heading', { name: 'Algebra study module', level: 4 })).toBeVisible();
       }
+      await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       const violations = await page.evaluate(async () => {
         const axe = (window as typeof window & { axe: typeof import('axe-core') }).axe;
@@ -75,7 +75,7 @@ for (const width of [375, 1280]) {
     }
     await page.getByRole('navigation', { name: 'Browse by area' }).getByRole('link', { name: /Mathematics/ }).click();
     await expect(page).toHaveURL(/area=mathematics/);
-    await expect(page.getByRole('heading', { name: 'Prefer a structured starting point?' })).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Learn step by step' })).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Remove filter Area: Mathematics and statistics' })).toBeVisible();
   });
 }
