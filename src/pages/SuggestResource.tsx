@@ -31,7 +31,7 @@ const SELECT = 'h-11 w-full border border-input bg-background px-3 text-sm disab
 /** A word-overlap match is preselected only when it shares at least half of the vocabulary. */
 const PRESELECT_SCORE = 50;
 const EMPTY: ResourceSuggestionFormValues = {
-  title: '', author: '', license: '', objectType: 'external_resource', language: '', tags: '', unitId: '', note: '',
+  title: '', author: '', license: '', objectType: 'external_resource', language: '', tags: '', courseId: '', unitId: '', note: '',
   licenseDeclared: false as true, attributionDeclared: false as true,
 };
 const LICENSE_FILLS = { open: 'bg-brand-mint', restricted: 'bg-brand-coral', unknown: 'bg-muted' } as const;
@@ -55,7 +55,7 @@ export default function SuggestResource() {
   const extracted = useMemo(() => recognition && metadataSettled ? metadata.data ?? baseMetadata(recognition) : null,
     [recognition, metadataSettled, metadata.data]);
   const alreadyMine = !!recognition && !!mine.data?.some(item => item.canonical_url === recognition.canonicalUrl);
-  const [title, tags, license, unitId] = form.watch(['title', 'tags', 'license', 'unitId']);
+  const [title, tags, license, courseId, unitId] = form.watch(['title', 'tags', 'license', 'courseId', 'unitId']);
   const matches = useMemo(() => rankUnits(`${title} ${tags} ${extracted?.description ?? ''}`, units.data ?? []),
     [title, tags, extracted?.description, units.data]);
   const licenseClass = classifyLicense(license);
@@ -67,11 +67,12 @@ export default function SuggestResource() {
     if (!run || !extracted || !units.isSuccess || prefilled.current === run.key) return;
     prefilled.current = run.key;
     const top = rankUnits(`${extracted.title} ${extracted.tags.join(' ')} ${extracted.description}`, units.data)[0];
+    const preselect = top && top.score >= PRESELECT_SCORE ? top.unit : null;
     form.reset({
       ...EMPTY,
       title: extracted.title, author: extracted.author, license: extracted.license, objectType: extracted.objectType,
       language: (LANGUAGES.some(([code]) => code === extracted.language) ? extracted.language : '') as ResourceSuggestionFormValues['language'],
-      tags: extracted.tags.join(', '), unitId: top && top.score >= PRESELECT_SCORE ? top.unit.id : '',
+      tags: extracted.tags.join(', '), courseId: preselect?.course.id ?? '', unitId: preselect?.id ?? '',
     });
   }, [run, extracted, units.isSuccess, units.data, form]);
 
@@ -107,7 +108,7 @@ export default function SuggestResource() {
     submit.mutate({
       url: urlDraft.trim(), title: values.title, author: values.author, license: values.license,
       thumbnailUrl: extracted?.thumbnail ?? null, objectType: values.objectType, language: values.language,
-      tags: parseSuggestionTags(values.tags), unitId: values.unitId, note: values.note,
+      tags: parseSuggestionTags(values.tags), courseId: values.courseId, unitId: values.unitId, note: values.note,
     }, { onSuccess: data => setVerdict(data) });
   });
   useEffect(() => { if (verdict) verdictRef.current?.focus(); }, [verdict]);
@@ -210,8 +211,11 @@ export default function SuggestResource() {
               {props => <Input {...props} maxLength={400} {...form.register('tags')} />}
             </FormField>
           </div>
-          <UnitMatchPicker units={units.data ?? []} matches={matches} value={unitId}
-            onChange={id => form.setValue('unitId', id, { shouldDirty: true })} disabled={busy} />
+          <UnitMatchPicker units={units.data ?? []} matches={matches} courseId={courseId} unitId={unitId} disabled={busy}
+            onChange={next => {
+              form.setValue('courseId', next.courseId, { shouldDirty: true });
+              form.setValue('unitId', next.unitId, { shouldDirty: true });
+            }} />
           <FormField label={t('suggest.fields.note')} error={errors.note?.message}
             hint={t('suggest.noteCount', { length: form.watch('note').length })}>
             {props => <Textarea {...props} rows={3} maxLength={500} {...form.register('note')} />}

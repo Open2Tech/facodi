@@ -31,7 +31,7 @@ export interface UnitOption {
   code: string;
   title: string;
   slug: string;
-  course: { code: string; title: string; slug: string };
+  course: { id: string; code: string; title: string; slug: string };
 }
 
 /** Metadata recognised from the URL and, when available, a public metadata API. */
@@ -55,13 +55,17 @@ export interface SuggestionInput {
   objectType: SuggestionType;
   language: string;
   tags: string[];
+  /** Course chosen by the learner; the pipeline can then pick the unit itself. */
+  courseId: string;
   unitId: string;
   note: string;
 }
 
 export type SuggestionSummary = Pick<ResourceSuggestionRow,
   'id' | 'url' | 'canonical_url' | 'provider' | 'title' | 'author' | 'thumbnail_url' | 'license' | 'object_type'
-  | 'language' | 'tags' | 'note' | 'status' | 'screening' | 'review_note' | 'reviewed_at' | 'created_at' | 'learning_object_id'>
+  | 'language' | 'tags' | 'note' | 'status' | 'screening' | 'review_note' | 'reviewed_at' | 'created_at' | 'learning_object_id'
+  | 'course_id'>
+  & { courses: { code: string; title: string; slug: string } | null }
   & { curricular_units: { id: string; code: string; title: string; slug: string; courses: { code: string; slug: string } | null } | null }
   & { analysis_jobs?: Pick<AnalysisJobRow, 'status' | 'error_code' | 'result_payload'>[] };
 
@@ -75,6 +79,8 @@ export interface AnalysisMatch {
   courseSlug: string;
   fit: 'strong' | 'partial';
   reason: string;
+  /** Words of the resource that justify the match; null for analyses before quotes existed. */
+  quote: string | null;
 }
 
 /** Learner- and editor-facing state of the automatic analysis and of the automatic decision that followed it. */
@@ -86,4 +92,10 @@ export interface SuggestionAnalysis {
   published: { objectSlug: string } | null;
   /** Machine reason (e.g. `no_course`) when the pipeline left the suggestion for editors. */
   reviewReason: string | null;
+  /** What the analysis actually read: the video itself (first minutes) or only metadata. */
+  evidence: EvidenceLevel | null;
+  /** Second model's verdict on the strong matches: true when it agreed, null when not consulted. */
+  confirmed: boolean | null;
 }
+
+export type EvidenceLevel = 'content_video' | 'metadata_rich' | 'metadata_only';

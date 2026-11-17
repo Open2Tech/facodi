@@ -94,6 +94,7 @@ export const resourceSuggestionSchema = z.object({
   objectType: z.enum(['video', 'document', 'external_resource']),
   language: z.union([z.enum(['pt', 'en', 'es', 'fr']), z.literal('')]),
   tags: z.string().max(400, 'validation.tooLong'),
+  courseId: z.union([z.uuid(), z.literal('')]),
   unitId: z.union([z.uuid(), z.literal('')]),
   note: z.string().max(500, 'validation.tooLong'),
   licenseDeclared: z.literal(true, 'suggest.errors.declaration'),

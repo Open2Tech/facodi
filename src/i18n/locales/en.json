@@ -713,7 +713,8 @@
     },
     "language": "Video language",
     "submittedOn": "Submitted {{date}}",
-    "legalNote": "Submitting applies the rules on [contributions](/terms#contributions) and [embedded videos](/copyright#videos)."
+    "legalNote": "Submitting applies the rules on [contributions](/terms#contributions) and [embedded videos](/copyright#videos).",
+    "options": "Options: title, description, language, limit and manual IDs"
   },
   "playlistReview": {
     "open": "Review playlists",
@@ -899,12 +900,15 @@
     "licenseHint": "E.g. CC BY 4.0, MIT. NC/ND licences are declined.",
     "languageUnknown": "Not stated",
     "tagsHint": "Comma-separated, up to 8.",
-    "unit": "Curricular unit",
+    "course": "Course",
+    "courseHint": "With a course, FACODI picks the curricular unit itself and publishes on its own when two models confirm the match.",
+    "courseNone": "No course (curators decide)",
+    "unit": "Curricular unit (optional)",
     "matches": "Suggested units",
     "matchScore": "{{score}}% shared vocabulary",
-    "noMatches": "We found no units with shared vocabulary. Pick one from the list or leave it without a unit.",
-    "unitAll": "All units",
-    "noUnit": "No unit (curators decide)",
+    "noMatches": "We found no units with shared vocabulary. Just choose the course: the automatic analysis looks for the unit.",
+    "unitAll": "Units",
+    "noUnit": "Let FACODI pick the unit",
     "noteCount": "{{length}}/500 characters",
     "declarations": "Declarations",
     "licenseDeclared": "I confirm the licence allows educational use of this resource.",
@@ -933,7 +937,7 @@
     "verdict": {
       "title": "Suggestion received",
       "duplicateTitle": "This resource is already on FACODI",
-      "fast_track": "Recognised source, open licence and a chosen unit: it sits at the top of the curation queue.",
+      "fast_track": "Recognised source, open licence and a chosen course: it sits at the top of the queue.",
       "review": "Some signals are missing; the editorial team will check the source and licence.",
       "reject": "The check found a blocker. The editorial team confirms before deciding.",
       "analysis": "An automatic analysis starts in about a minute; follow it in your history."
@@ -963,26 +967,34 @@
     "reviewNote": "Curator note",
     "criteria": {
       "title": "Curation criteria",
-      "fast_track": "Recognised source, open licence and a chosen curricular unit.",
-      "review": "Generic source, licence to check or no unit.",
+      "fast_track": "Recognised source, open licence and a chosen course.",
+      "review": "Generic source, licence to check or no course.",
       "reject": "Resource already exists or NC/ND licence.",
-      "manual": "The recommendation orders the queue; publishing is always manual."
+      "manual": "A video that strongly matches the chosen course, confirmed by two models, is published automatically. Everything else goes to curators."
     },
     "legalNote": "Sending applies the rules on [contributions](/terms#contributions) and [copyright](/copyright#contributors).",
     "analysis": {
       "title": "Automatic analysis",
-      "pending": "Analysing the metadata… this usually takes about a minute.",
+      "pending": "Analysing the resource… this usually takes one or two minutes.",
       "waiting": "Queued: today's analysis limit was reached. It resumes automatically tomorrow.",
       "failed": "The analysis could not be completed. The editorial team can run it again.",
-      "none": "No curricular unit matches this resource's metadata.",
+      "none": "No curricular unit matches this resource.",
       "fit": {
         "strong": "Strong match",
         "partial": "Partial match"
       },
       "topics": "Topics",
-      "disclaimer": "Based only on public metadata, not the content. A video that strongly matches the chosen course is published automatically; the editorial team can correct or unpublish it.",
+      "disclaimer": "Automatic analysis, which can be wrong. A video that strongly matches the chosen course, confirmed by a second model, is published automatically; the editorial team can correct or unpublish it.",
       "autoPublished": "Published automatically.",
-      "viewResource": "View resource"
+      "viewResource": "View resource",
+      "evidence": {
+        "content_video": "Watched the first minutes of the video",
+        "metadata_rich": "Read the description and catalogue history",
+        "metadata_only": "Read only the title and author"
+      },
+      "confirmed": "Confirmed by a second model",
+      "notConfirmed": "Not confirmed by the second model",
+      "quote": "Evidence"
     }
   },
   "suggestReview": {
@@ -1018,7 +1030,8 @@
       "screening": "The check found a restricted licence.",
       "no_strong_match_in_course": "No strong match in the chosen course.",
       "existing_not_public": "The resource already exists as a draft or archived.",
-      "no_candidates": "No candidate units in the catalogue."
+      "no_candidates": "No candidate units in the catalogue.",
+      "not_confirmed": "The first model saw a strong match, but the second did not confirm it. Choose the unit before approving."
     },
     "autoPublished": "Published automatically",
     "autoPublishedHint": "Last 14 days. Check them and unpublish in the editor if needed.",

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { canonicalResourceUrl, classifyLicense, parseSuggestionTags, rankUnits, recognizeUrl } from '@/entities/suggestion/recognition';
 import type { UnitOption } from '@/entities/suggestion/suggestion.types';
 
-const unit = (id: string, title: string): UnitOption => ({ id, code: id, title, slug: id, course: { code: 'C', title: 'Curso', slug: 'curso' } });
+const unit = (id: string, title: string): UnitOption => ({ id, code: id, title, slug: id, course: { id: 'c', code: 'C', title: 'Curso', slug: 'curso' } });
 
 describe('resource recognition', () => {
   // Same cases the SQL `facodi.normalize_resource_url` was verified against.

@@ -5,6 +5,7 @@ import { useMySuggestions } from '@/features/suggestions/queries/useSuggestions'
 import { StatusBadge } from '@/components/editorial/StatusBadge';
 import { PageState } from '@/components/layout/PageState';
 import { RecommendationBadge } from '@/components/suggestion/RecommendationBadge';
+import { SuggestionTarget } from '@/components/suggestion/SuggestionTarget';
 import { SuggestionAnalysis } from '@/components/suggestion/SuggestionAnalysis';
 
 /** The signed-in learner's latest suggestions; only they and editors can read them. */
@@ -18,7 +19,6 @@ export function SuggestionHistory() {
   return <ul className="mt-4 divide-y divide-input border-y border-input">
     {mine.data.map(item => {
       const screening = parseScreening(item.screening);
-      const unit = item.curricular_units;
       const open = item.status === 'pending' || item.status === 'duplicate';
       const analysis = parseAnalysis(item.analysis_jobs);
       const published = item.status === 'approved' ? analysis?.published : null;
@@ -29,9 +29,7 @@ export function SuggestionHistory() {
         </div>
         <p className="mt-1 text-sm text-muted-foreground">
           {t(`suggest.providers.${item.provider}`, { defaultValue: item.provider })}
-          {unit && <> · {unit.courses
-            ? <Link className="underline underline-offset-4" to={`/courses/${encodeURIComponent(unit.courses.slug)}/units/${encodeURIComponent(unit.slug)}`}>{unit.title}</Link>
-            : unit.title}</>}
+          {(item.curricular_units || item.courses) && <> · <SuggestionTarget item={item} /></>}
         </p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {open && <RecommendationBadge recommendation={screening.recommendation} />}
