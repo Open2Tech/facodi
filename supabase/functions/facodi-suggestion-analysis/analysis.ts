@@ -56,6 +56,10 @@ export function shortlistText(input: SuggestionInput, evidence: Evidence): strin
     .filter(Boolean).join(" ").slice(0, 2000);
 }
 
+// Candidates are referred to by short keys: a long enum of UUIDs makes Gemini reject the schema,
+// and short keys also cost fewer tokens. parseMatches maps them back to unit ids.
+export const candidateKey = (index: number) => `u${index + 1}`;
+
 export function responseSchema(candidates: Candidate[]) {
   return {
     type: "object",
@@ -71,7 +75,7 @@ export function responseSchema(candidates: Candidate[]) {
           additionalProperties: false,
           required: ["unit_id", "fit", "reason"],
           properties: {
-            unit_id: { type: "string", enum: candidates.map((c) => c.id) },
+            unit_id: { type: "string", enum: candidates.map((_, i) => candidateKey(i)) },
             fit: { type: "string", enum: ["strong", "partial"] },
             reason: { type: "string", maxLength: 280 },
           },
@@ -104,12 +108,13 @@ export function buildMessages(input: SuggestionInput, evidence: Evidence, candid
       language: input.language ?? undefined,
       tags: input.tags.length ? input.tags : undefined,
     },
-    candidates: candidates.map((c) => ({
-      id: c.id,
+    // A whole course can reach 80 units: shorter summaries keep the prompt (and its cost) small.
+    candidates: candidates.map((c, i) => ({
+      id: candidateKey(i),
       unit: c.title,
       code: c.code ?? undefined,
       course: c.course_title,
-      summary: c.summary ? c.summary.slice(0, 300) : undefined,
+      summary: c.summary ? c.summary.slice(0, candidates.length > 20 ? 120 : 300) : undefined,
     })),
   };
   return [
@@ -128,7 +133,7 @@ export function parseMatches(raw: unknown, candidates: Candidate[]): { topics: s
   if (!value || typeof value !== "object") throw new InvalidOutput("not_object");
   const { matches, topics } = value as { matches?: unknown; topics?: unknown };
   if (!Array.isArray(matches) || matches.length > MAX_MATCHES) throw new InvalidOutput("matches");
-  const byId = new Map(candidates.map((c) => [c.id, c]));
+  const byId = new Map(candidates.map((c, i) => [candidateKey(i), c]));
   const seen = new Set<string>();
   const parsed = matches.map((item): Match => {
     const { unit_id, fit, reason } = (item ?? {}) as Record<string, unknown>;
@@ -150,29 +155,84 @@ export function parseMatches(raw: unknown, candidates: Candidate[]): { topics: s
   return { topics: cleanTopics, matches: parsed };
 }
 
+// Result of facodi.auto_publish_resource_suggestion; "review" leaves the suggestion to editors.
+export type Decision = {
+  outcome: "published" | "review" | "skipped";
+  reason?: string;
+  object_id?: string;
+  object_slug?: string;
+  unit_id?: string;
+  reused?: boolean;
+};
+
 export function resultPayload(args: {
   evidence: Evidence;
   model: string | null;
+  provider?: AiProviderName | null;
+  fallbackFrom?: string | null;
   outcome: Outcome;
   shortlistSize: number;
   topics?: string[];
   matches?: Match[];
   usage?: { input_tokens: number; output_tokens: number } | null;
+  decision?: Decision | null;
 }) {
   return {
-    version: 1,
+    version: 2,
     evidence: args.evidence,
     matching: {
       model: args.model,
+      provider: args.provider ?? null,
+      // Error code of the primary provider when the fallback answered instead.
+      fallback_from: args.fallbackFrom ?? null,
       outcome: args.outcome,
       shortlist_size: args.shortlistSize,
       topics: args.topics ?? [],
       matches: args.matches ?? [],
     },
-    // Reserved for future automatic actions; phase 1 never links or publishes anything.
-    applied: [],
+    decision: args.decision ?? null,
     usage: args.usage ?? null,
   };
+}
+
+// Only strong matches, in the AI's order, are eligible for automatic publication.
+export function strongUnitIds(matches: Match[]): string[] {
+  return matches.filter((m) => m.fit === "strong").map((m) => m.unit_id);
+}
+
+export type AiProviderName = "gemini" | "openai";
+export type AiProvider = {
+  name: AiProviderName;
+  url: string;
+  model: string;
+  key: string;
+  // Lowest effort each API accepts: matching metadata needs little reasoning.
+  reasoningEffort: "low" | "minimal";
+};
+
+// Gemini first (OpenAI-compatible endpoint); OpenAI's cheapest model only as a fallback.
+export function aiProviders(
+  env: (name: string) => string | undefined,
+  opts: { fallbackEnabled: boolean; force?: AiProviderName | null },
+): AiProvider[] {
+  const all: AiProvider[] = [];
+  const gemini = env("GEMINI_API_KEY");
+  if (gemini) {
+    all.push({
+      name: "gemini", key: gemini, reasoningEffort: "low",
+      url: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+      model: env("FACODI_SUGGESTION_AI_MODEL") || "gemini-2.5-flash",
+    });
+  }
+  const openai = env("OPENAI_API_KEY");
+  if (openai && (opts.fallbackEnabled || opts.force === "openai")) {
+    all.push({
+      name: "openai", key: openai, reasoningEffort: "minimal",
+      url: "https://api.openai.com/v1/chat/completions",
+      model: env("FACODI_SUGGESTION_FALLBACK_MODEL") || "gpt-5-nano",
+    });
+  }
+  return opts.force ? all.filter((p) => p.name === opts.force) : all;
 }
 
 export class JobFailure extends Error {
