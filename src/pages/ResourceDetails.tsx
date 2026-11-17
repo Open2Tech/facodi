@@ -140,7 +140,6 @@ export default function ResourceDetails() {
           <li><TypeBadge type={resource.object_type} label={typeLabel} className="border border-foreground" /></li>
           {info.durationSeconds && <li className="inline-flex items-center gap-1.5 border border-input px-2 py-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" /><time dateTime={isoDuration(info.durationSeconds)}>{formatDuration(info.durationSeconds)}</time></li>}
           {resource.language && <li lang={resource.language} className="border border-input px-2 py-1">{resource.language}</li>}
-          {primary?.ects != null && <li className="border border-input px-2 py-1">{primary.ects} ECTS</li>}
         </ul>
         <h1 className="max-w-4xl text-3xl font-semibold leading-[1.08] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{resource.title}</h1>
         {info.channel && <p className="mt-4 text-lg text-muted-foreground">{t('video.byChannel', { channel: info.channel })}</p>}

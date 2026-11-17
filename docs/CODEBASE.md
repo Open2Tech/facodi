@@ -40,7 +40,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   lease, 3 tentativas e limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`).
   Se o vídeo tiver curso indicado (`course_id`; a UC é opcional) e um match
   forte confirmado pelo segundo fornecedor (OpenAI), a RPC
-  `auto_publish_resource_suggestion` publica e associa (`reviewed_by` nulo);
+  `auto_publish_resource_suggestion` publica, associa (`reviewed_by` nulo) e
+  preenche descrição/tags/idioma a partir da análise, com nota de IA;
   senão fica na fila com o motivo em `result_payload.decision`. Email via
   Resend. Flags em `facodi.suggestion_pipeline_settings` (só `service_role`).
   Parar: `select cron.unschedule('facodi-suggestion-analysis')`;
