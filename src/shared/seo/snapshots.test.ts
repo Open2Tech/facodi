@@ -1,5 +1,9 @@
+import { createElement } from 'react';
+import { act } from 'react';
+import { createRoot } from 'react-dom/client';
 import { describe, expect, it } from 'vitest';
-import { assertCompleteSequenceSnapshot, renderSitemap, renderSnapshotHtml, snapshotFilePath } from './snapshots';
+import { courseMeta } from './seo';
+import { assertCompleteSequenceSnapshot, renderLlmsTxt, renderSitemap, renderSnapshotBody, renderSnapshotHtml, snapshotFilePath } from './snapshots';
 
 describe('build-time SEO snapshots', () => {
   it('writes extensionless Worker routes as sibling .html files', () => {
@@ -51,6 +55,38 @@ describe('build-time SEO snapshots', () => {
       '  <url><loc>https://facodi.com/resources/a&amp;b</loc></url>',
       '</urlset>',
       '',
+    ].join('\n'));
+  });
+
+  it('gives crawlers without JavaScript the heading, description, breadcrumb and public links', () => {
+    const page = courseMeta({ slug: 'lesti', title: 'LESTI <beta>', summary: 'Curso & percurso.' }, { courses: 'Cursos' });
+    const shell = '<head><!-- seo:start -->old<!-- seo:end --></head><body><div id="root"></div></body>';
+    const html = renderSnapshotHtml(shell, page, [{ name: 'Cálculo I', path: '/courses/lesti/units/calculo' }]);
+    expect(html).toContain('<h1>LESTI &lt;beta&gt;</h1>');
+    expect(html).toContain('<p>Curso &amp; percurso.</p>');
+    expect(html).toContain('<nav aria-label="breadcrumb"><a href="/">FACODI</a> › <a href="/courses">Cursos</a></nav>');
+    expect(html).toContain('<li><a href="/courses/lesti/units/calculo">Cálculo I</a></li>');
+    expect(html.match(/<div id="root">/g)).toHaveLength(1);
+    expect(renderSnapshotHtml('<head><!-- seo:start -->old<!-- seo:end --></head><body></body>', page)).not.toContain('<main');
+  });
+
+  it('lets React replace the static body on its first render', async () => {
+    const container = document.createElement('div');
+    container.innerHTML = renderSnapshotBody({ title: 'Cursos', description: 'Catálogo.', path: '/courses' });
+    const root = createRoot(container);
+    await act(async () => root.render(createElement('p', null, 'app')));
+    expect(container.innerHTML).toBe('<p>app</p>');
+    root.unmount();
+  });
+
+  it('writes llms.txt as a plain markdown map with canonical links and no empty sections', () => {
+    const text = renderLlmsTxt({ summary: 'Um campus  aberto.', details: ['Sem conta.', 'Com curadoria.'] }, [
+      { title: 'Cursos', links: [{ name: 'Gestão [UAlg]', path: '/courses/gestao', note: 'Universidade do Algarve' }] },
+      { title: 'Vazia', links: [] },
+    ]);
+    expect(text).toBe([
+      '# FACODI', '', '> Um campus aberto.', '', 'Sem conta.', '', 'Com curadoria.', '',
+      '## Cursos', '', '- [Gestão UAlg](https://facodi.com/courses/gestao): Universidade do Algarve', '',
     ].join('\n'));
   });
 });

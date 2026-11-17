@@ -83,7 +83,13 @@ describe('SEO snapshot build', () => {
     const html = await readFile(path.join(directory, 'dist', 'sequences', 'história.html'), 'utf8');
     const sitemap = await readFile(path.join(directory, 'dist', 'sitemap.xml'), 'utf8');
     expect(html).toContain('<title data-seo-shell>História — FACODI</title>');
+    expect(html).toContain('<h1>História</h1>');
     expect(sitemap).toContain('<loc>https://facodi.com/sequences/hist%C3%B3ria</loc>');
+    const index = await readFile(path.join(directory, 'dist', 'sequences.html'), 'utf8');
+    expect(index).toContain('<li><a href="/sequences/hist%C3%B3ria">História</a></li>');
+    const llms = await readFile(path.join(directory, 'dist', 'llms.txt'), 'utf8');
+    expect(llms).toMatch(/^# FACODI\n/);
+    expect(llms).toContain('- [História](https://facodi.com/sequences/hist%C3%B3ria): Sequência pública');
   });
 
   it('continues pagination when the API returns fewer rows than requested', async () => {
