@@ -138,3 +138,17 @@ Foram criadas **28 associações UC → vídeo** e **9 sequência → vídeo**, 
 - Os seis vídeos provêm do canal original CrashCourse, mas não foi realizada revisão integral das suas afirmações científicas. Tratam-se de recursos didáticos de apoio e não de guias clínicos.
 
 Fonte primária para cada recurso: `https://www.youtube.com/watch?v=<ID>`. Sem ingestão de legendas ou transcrições no Supabase.
+
+### Complemento de Estatística, Genética e Neurotransmissão
+
+Três recursos adicionais, também verificados no canal original **CrashCourse**, cobriram lacunas em áreas fundamentais:
+
+- `sxQaBpKfDRk` — [*What Is Statistics: Crash Course Statistics #1*](https://www.youtube.com/watch?v=sxQaBpKfDRk), 2018-01-24; como introdução a Estatística I/II e métodos de investigação.
+- `CBezq1fFUEA` — [*Heredity: Crash Course Biology #9*](https://www.youtube.com/watch?v=CBezq1fFUEA), 2012-03-26; bases de hereditariedade para Biologia e Genética.
+- `W4N-7AlzK7s` — [*The Chemical Mind: Crash Course Psychology #3*](https://www.youtube.com/watch?v=W4N-7AlzK7s), 2014-02-17; neurónios, sinapses, neurotransmissores e sistema endócrino em Biopsicologia, Neurociências Cognitivas e Neurofarmacologia.
+
+Nenhum vídeo foi copiado. Os três vídeos foram associados a **sete** UCs e a **três** sequências, como complemento introdutório. As aulas de Estatística II e métodos avançados continuam a exigir leitura e materiais de maior profundidade, já ligados às UCs.
+
+**Inventário final verificado com `SET LOCAL ROLE anon`, 17/11/2026:** 62/62 UCs com bibliografia e três resultados de aprendizagem; **21 recursos bibliográficos novos**; **135 relações UC → leitura**; **186 resultados de aprendizagem**; **9 novos vídeos CrashCourse publicados**; **35 novas relações UC → vídeo** provenientes da importação desses nove vídeos; **48/62 UCs com vídeo direto**; **113 relações UC → vídeo** no conjunto dos cursos; **15 sequências**, com **74 posições de vídeo** e nenhuma divergência em `metadata.video_count`; filtro `psychology` com **139 objetos pesquisáveis**. As **20 relações anteriores** com vídeos reutilizados já existentes também permanecem publicadas. Os 4 vídeos Lutz pendentes continuam por verificar, sem publicação automática.
+
+A contagem de vídeos representa posições editoriais numa sequência ou ligações curriculares, não cópias dos vídeos. Os materiais são links à publicação original, sem processamento de vídeo, transcrições integrais ou reivindicação de aprovação clínica.
