@@ -4,4 +4,5 @@ export const suggestionKeys = {
   all: (userId: string) => ['facodi', 'private', userId, 'suggestions'] as const,
   mine: (userId: string) => ['facodi', 'private', userId, 'suggestions', 'mine'] as const,
   queue: (userId: string) => ['facodi', 'private', userId, 'suggestions', 'queue'] as const,
+  autoPublished: (userId: string) => ['facodi', 'private', userId, 'suggestions', 'auto-published'] as const,
 };

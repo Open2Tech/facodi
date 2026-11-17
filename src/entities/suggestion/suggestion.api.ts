@@ -61,6 +61,16 @@ export async function listSuggestionQueue(signal?: AbortSignal): Promise<Suggest
   return data;
 }
 
+/** Suggestions the pipeline published by itself (no reviewer) in the last two weeks, newest first. */
+export async function listAutoPublishedSuggestions(signal?: AbortSignal): Promise<SuggestionSummary[]> {
+  const since = new Date(Date.now() - 14 * 24 * 60 * 60_000).toISOString();
+  const { data, error } = await supabase.from('resource_suggestions').select(SUMMARY_FIELDS)
+    .eq('status', 'approved').is('reviewed_by', null).gte('reviewed_at', since)
+    .order('reviewed_at', { ascending: false }).limit(20).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data;
+}
+
 /** Approval returns the draft learning object created (or reused) for the suggestion; `unitId` overrides the learner's unit. */
 export async function reviewSuggestion(id: string, decision: SuggestionDecision, note: string, unitId?: string): Promise<string> {
   const { data, error } = await supabase.rpc('review_resource_suggestion', {
@@ -104,13 +114,17 @@ const text = (value: unknown) => typeof value === 'string' ? value : null;
 export function parseAnalysis(jobs: SuggestionSummary['analysis_jobs']): SuggestionAnalysis | null {
   const job = jobs?.[0];
   if (!job) return null;
-  if (job.status === 'failed') return { state: 'failed', matches: [], topics: [] };
+  const empty = { matches: [], topics: [], published: null, reviewReason: null };
+  if (job.status === 'failed') return { state: 'failed', ...empty };
   if (job.status !== 'succeeded') {
     if (!['queued', 'running', 'retrying'].includes(job.status)) return null;
     const waiting = job.status === 'queued' && (job.error_code === 'budget_exhausted' || job.error_code === 'ai_quota');
-    return { state: waiting ? 'waiting' : 'pending', matches: [], topics: [] };
+    return { state: waiting ? 'waiting' : 'pending', ...empty };
   }
-  const matching = record(record(job.result_payload).matching);
+  const payload = record(job.result_payload);
+  const matching = record(payload.matching);
+  const decision = record(payload.decision);
+  const objectSlug = text(decision.object_slug);
   const matches = (Array.isArray(matching.matches) ? matching.matches : []).flatMap((item): AnalysisMatch[] => {
     const match = record(item);
     const unitId = text(match.unit_id), title = text(match.title), unitSlug = text(match.slug);
@@ -120,5 +134,9 @@ export function parseAnalysis(jobs: SuggestionSummary['analysis_jobs']): Suggest
       fit: match.fit === 'strong' ? 'strong' : 'partial' }];
   }).slice(0, 3);
   const topics = (Array.isArray(matching.topics) ? matching.topics : []).filter((topic): topic is string => typeof topic === 'string').slice(0, 5);
-  return { state: 'done', matches, topics };
+  return {
+    state: 'done', matches, topics,
+    published: decision.outcome === 'published' && objectSlug ? { objectSlug } : null,
+    reviewReason: decision.outcome === 'review' ? text(decision.reason) : null,
+  };
 }

@@ -77,9 +77,13 @@ export interface AnalysisMatch {
   reason: string;
 }
 
-/** Learner- and editor-facing state of the automatic analysis; it never decides anything. */
+/** Learner- and editor-facing state of the automatic analysis and of the automatic decision that followed it. */
 export interface SuggestionAnalysis {
   state: 'pending' | 'waiting' | 'done' | 'failed';
   matches: AnalysisMatch[];
   topics: string[];
+  /** Set when the pipeline published the resource; editors can still unpublish it. */
+  published: { objectSlug: string } | null;
+  /** Machine reason (e.g. `no_course`) when the pipeline left the suggestion for editors. */
+  reviewReason: string | null;
 }

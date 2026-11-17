@@ -475,7 +475,7 @@
       }
     },
     "contributeTitle": "Comment contribuer",
-    "contributeText": "Les contributions passent par l’équipe éditoriale : rien n’est publié automatiquement.",
+    "contributeText": "Les contributions sont vérifiées : les vidéos qui correspondent fortement au cours indiqué sont publiées automatiquement ; le reste passe par l’équipe éditoriale.",
     "flow": {
       "account": "Crée un compte FACODI avec ton email.",
       "review": "Partage ta proposition avec l’équipe éditoriale, qui prépare le contenu en brouillon.",
@@ -850,7 +850,7 @@
     "nav": "Suggérer une ressource",
     "back": "Comment contribuer",
     "title": "Suggérer une ressource",
-    "description": "Collez l’adresse d’une vidéo, d’un dépôt ou d’un document ouvert. FACODI reconnaît la source, lit ses métadonnées publiques et propose l’unité d’enseignement ; l’équipe éditoriale décide de ce qui est publié.",
+    "description": "Collez l’adresse d’une vidéo, d’un dépôt ou d’un document ouvert. FACODI reconnaît la source, lit les métadonnées publiques et propose l’unité d’enseignement. Les vidéos qui correspondent clairement au cours indiqué sont publiées automatiquement ; les autres passent par l’équipe éditoriale.",
     "url": "Adresse de la ressource",
     "urlHint": "HTTPS de préférence. Seule cette adresse est envoyée aux API publiques de la source, jamais votre session.",
     "urlInvalid": "Indiquez une adresse HTTP ou HTTPS valide.",
@@ -980,14 +980,16 @@
         "partial": "Correspondance partielle"
       },
       "topics": "Thèmes",
-      "disclaimer": "Fondée uniquement sur des métadonnées publiques, pas sur le contenu. Ce sont des pistes pour l’équipe éditoriale : rien n’est approuvé ni publié automatiquement. Les explications sont rédigées en portugais."
+      "disclaimer": "Fondée uniquement sur les métadonnées publiques, pas sur le contenu. Une vidéo qui correspond fortement au cours indiqué est publiée automatiquement ; l’équipe éditoriale peut la corriger ou la dépublier.",
+      "autoPublished": "Publié automatiquement.",
+      "viewResource": "Voir la ressource"
     }
   },
   "suggestReview": {
     "open": "Suggestions de ressources",
     "back": "Retour à l’éditeur",
     "title": "Suggestions de ressources",
-    "description": "Suggestions envoyées par des étudiants et vérifiées automatiquement. Approuver crée un brouillon dans l’éditeur ; rien n’est publié sans révision.",
+    "description": "Suggestions que la publication automatique a laissées en revue. Approuver crée un brouillon dans l’éditeur.",
     "queue": "En attente ({{count}})",
     "empty": "Aucune suggestion en attente",
     "emptyDescription": "Les nouvelles suggestions apparaissent ici par ordre d’arrivée.",
@@ -1007,7 +1009,21 @@
     "unitChoice": "Unité à associer",
     "unitLearner": "Choisie par la personne qui l’a suggérée",
     "unitAnalysis": "Proposée par l’analyse",
-    "unitNone": "Aucune unité"
+    "unitNone": "Aucune unité",
+    "reviewReason": "Pourquoi une revue est nécessaire",
+    "reasons": {
+      "auto_publish_disabled": "La publication automatique est désactivée.",
+      "not_a_video": "Seules les vidéos YouTube sont publiées automatiquement.",
+      "no_course": "Aucune unité d’enseignement indiquée : le contexte du cours manque.",
+      "screening": "La vérification a trouvé une licence restreinte.",
+      "no_strong_match_in_course": "Aucune correspondance forte dans le cours indiqué.",
+      "existing_not_public": "La ressource existe déjà en brouillon ou archivée.",
+      "no_candidates": "Aucune unité candidate dans le catalogue."
+    },
+    "autoPublished": "Publiés automatiquement",
+    "autoPublishedHint": "14 derniers jours. Vérifiez-les et dépubliez-les dans l’éditeur si nécessaire.",
+    "autoPublishedEmpty": "Aucune publication automatique récente.",
+    "editResource": "Modifier ou dépublier"
   },
   "courseArchive": {
     "title": "Anciens plans d’études",
@@ -1556,8 +1572,8 @@
                 "Adresse IP et lien suggéré"
               ],
               [
-                "Google Gemini API",
-                "Analyse automatique des ressources suggérées : propose des unités d’enseignement à l’équipe éditoriale. Rien n’est publié automatiquement.",
+                "Google Gemini API et OpenAI API (solution de repli)",
+                "Analyse automatique des ressources suggérées : propose des unités d’enseignement et publie les vidéos qui correspondent fortement au cours indiqué. OpenAI n’est utilisé que si Gemini échoue.",
                 "Titre, étiquettes, langue et type de la ressource suggérée, titre et chaîne publics sur YouTube et noms publics des unités ; aucune donnée de compte"
               ],
               [

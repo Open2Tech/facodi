@@ -5,6 +5,7 @@ import { getEnv } from '@/shared/config/env';
 import { fetchPublicMetadata } from '@/entities/suggestion/metadata';
 import { recognizeUrl } from '@/entities/suggestion/recognition';
 import { parseAnalysis, parseScreening, reviewSuggestion, submitSuggestion } from '@/entities/suggestion/suggestion.api';
+import type { Json } from '@/integrations/supabase/types';
 
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
 const input = {
@@ -57,9 +58,16 @@ describe('FACODI resource suggestions API', () => {
     expect(parseAnalysis(job('succeeded', { result_payload: { matching: { topics: ['Cálculo', 3], matches: [
       { unit_id: 'u1', title: 'Análise Matemática II', slug: 'am2', course_slug: 'lei', course_code: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.' },
       { unit_id: 'u2', title: 'Sem curso', slug: 'x', fit: 'strong', reason: 'Incompleto' },
-    ] } } }))).toEqual({ state: 'done', topics: ['Cálculo'], matches: [{
+    ] } } }))).toEqual({ state: 'done', topics: ['Cálculo'], published: null, reviewReason: null, matches: [{
       unitId: 'u1', title: 'Análise Matemática II', unitSlug: 'am2', courseSlug: 'lei', courseCode: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.',
     }] });
+  });
+
+  it('reads the automatic decision', () => {
+    const done = (decision: Json) => parseAnalysis([{ status: 'succeeded', error_code: null, result_payload: { matching: {}, decision } }]);
+    expect(done({ outcome: 'published', object_slug: 'vetores-1a2b3c4d' })).toMatchObject({ published: { objectSlug: 'vetores-1a2b3c4d' }, reviewReason: null });
+    expect(done({ outcome: 'review', reason: 'no_course' })).toMatchObject({ published: null, reviewReason: 'no_course' });
+    expect(done({ outcome: 'published' })).toMatchObject({ published: null });
   });
 
   it('reads screening defensively', () => {

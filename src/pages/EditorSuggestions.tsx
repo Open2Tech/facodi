@@ -6,7 +6,9 @@ import { toast } from 'sonner';
 import { parseAnalysis, parseScreening } from '@/entities/suggestion/suggestion.api';
 import type { SuggestionDecision } from '@/entities/suggestion/suggestion.types';
 import { safeExternalUrl } from '@/shared/lib/navigation';
-import { useRetrySuggestionAnalysis, useReviewSuggestion, useSuggestionQueue } from '@/features/suggestions/queries/useSuggestions';
+import {
+  useAutoPublishedSuggestions, useRetrySuggestionAnalysis, useReviewSuggestion, useSuggestionQueue,
+} from '@/features/suggestions/queries/useSuggestions';
 import { LANGUAGES } from '@/components/catalog/CatalogToolbar';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { StatusBadge } from '@/components/editorial/StatusBadge';
@@ -30,6 +32,7 @@ export default function EditorSuggestions() {
   const [reviewNote, setReviewNote] = useState('');
   const [unitChoice, setUnitChoice] = useState('none');
   const queue = useSuggestionQueue();
+  const autoPublished = useAutoPublishedSuggestions();
   const review = useReviewSuggestion();
   const retry = useRetrySuggestionAnalysis();
   const selected = queue.data?.find(item => item.id === params.get('id')) ?? queue.data?.[0] ?? null;
@@ -146,6 +149,9 @@ export default function EditorSuggestions() {
               </Button>}
           </div>
           {analysis && <SuggestionAnalysis className="mt-3" analysis={analysis} />}
+          {analysis?.reviewReason && i18n.exists(`suggestReview.reasons.${analysis.reviewReason}`) && <p className="mt-4 max-w-prose text-sm">
+            <span className="font-semibold">{t('suggestReview.reviewReason')}:</span> {t(`suggestReview.reasons.${analysis.reviewReason}`)}
+          </p>}
           <p className="mt-5 max-w-prose text-sm text-muted-foreground">{t('suggestReview.scope')}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button variant="outline" disabled={review.isPending} onClick={() => open('rejected')}>
@@ -158,6 +164,34 @@ export default function EditorSuggestions() {
         </>}
       </section>
     </div>
+    <section className="mt-12 border-t border-input pt-8" aria-labelledby="auto-published">
+      <h2 id="auto-published" className="text-xl font-semibold">{t('suggestReview.autoPublished')}</h2>
+      <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('suggestReview.autoPublishedHint')}</p>
+      {autoPublished.isPending ? <PageState loading /> : autoPublished.error
+        ? <PageState level="h3" title={t('common.error')} description={autoPublished.error.message} retry={() => void autoPublished.refetch()} />
+        : !autoPublished.data.length ? <p className="mt-4 text-sm text-muted-foreground">{t('suggestReview.autoPublishedEmpty')}</p>
+        : <ul className="mt-4 divide-y divide-input border-y border-input">
+          {autoPublished.data.map(item => {
+            const slug = parseAnalysis(item.analysis_jobs)?.published?.objectSlug;
+            const unit = item.curricular_units;
+            return <li key={item.id} className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2 py-4">
+              <div className="min-w-0 flex-1">
+                <p className="break-words font-medium">{item.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {unit && <>{unit.courses
+                    ? <Link className="underline underline-offset-4" to={`/courses/${encodeURIComponent(unit.courses.slug)}/units/${encodeURIComponent(unit.slug)}`}>{unit.title}</Link>
+                    : unit.title} · </>}
+                  {item.reviewed_at && <time dateTime={item.reviewed_at}>{dateFormat.format(new Date(item.reviewed_at))}</time>}
+                </p>
+              </div>
+              {slug && <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold">
+                <Link className="underline underline-offset-4" to={`/resources/${encodeURIComponent(slug)}`}>{t('suggest.analysis.viewResource')}</Link>
+                <Link className="underline underline-offset-4" to={`/editor?kind=learning_objects&search=${encodeURIComponent(slug)}`}>{t('suggestReview.editResource')}</Link>
+              </div>}
+            </li>;
+          })}
+        </ul>}
+    </section>
     <AlertDialog open={!!decision} onOpenChange={next => { if (!next && !review.isPending) setDecision(null); }}>
       <AlertDialogContent>
         <AlertDialogHeader>

@@ -20,7 +20,8 @@ export function SuggestionHistory() {
       const screening = parseScreening(item.screening);
       const unit = item.curricular_units;
       const open = item.status === 'pending' || item.status === 'duplicate';
-      const analysis = open ? parseAnalysis(item.analysis_jobs) : null;
+      const analysis = parseAnalysis(item.analysis_jobs);
+      const published = item.status === 'approved' ? analysis?.published : null;
       return <li key={item.id} className="py-4">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <p className="min-w-0 flex-1 break-words font-medium">{item.title}</p>
@@ -36,7 +37,11 @@ export function SuggestionHistory() {
           {open && <RecommendationBadge recommendation={screening.recommendation} />}
           <time dateTime={item.created_at} className="text-xs text-muted-foreground">{t('suggest.submittedOn', { date: dateFormat.format(new Date(item.created_at)) })}</time>
         </div>
-        {analysis && <section className="mt-3" aria-label={t('suggest.analysis.title')}><SuggestionAnalysis analysis={analysis} /></section>}
+        {open && analysis && <section className="mt-3" aria-label={t('suggest.analysis.title')}><SuggestionAnalysis analysis={analysis} /></section>}
+        {published && <p className="mt-2 text-sm">
+          {t('suggest.analysis.autoPublished')}{' '}
+          <Link className="font-medium underline underline-offset-4" to={`/resources/${encodeURIComponent(published.objectSlug)}`}>{t('suggest.analysis.viewResource')}</Link>
+        </p>}
         {item.review_note && <p className="mt-2 max-w-prose text-sm">{t('suggest.reviewNote')}: {item.review_note}</p>}
       </li>;
     })}
