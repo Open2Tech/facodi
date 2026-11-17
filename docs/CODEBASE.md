@@ -8,8 +8,6 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/app/providers](../src/app/providers): QueryClient, i18n, Auth, tema, metadata e notificações.
 - [src/integrations/supabase](../src/integrations/supabase): cliente único e tipos
   gerados do schema remoto `facodi`, reexportados pelo módulo shared.
-- [src/entities/course](../src/entities/course): tipos, APIs e keys do catálogo,
-  incluindo as unidades e os objetos educativos associados.
 - [src/entities/facodi](../src/entities/facodi): autorização por `app_metadata.role`.
 - [src/entities/auth](../src/entities/auth): chamadas ao Supabase Auth nativo
   (conta, mudança de email com reenvio, sessões noutros dispositivos) e
@@ -32,9 +30,9 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `metadata.ts` consulta oEmbed/GitHub/Zenodo com `credentials: 'omit'` e
   devolve `null` em falha (preenchimento manual). A revisão usa a RPC
   `review_resource_suggestion` (4.º parâmetro opcional: UC escolhida pelo
-  editor). `parseAnalysis` lê, de forma defensiva, o job consultivo
-  `analysis_jobs` (`analyze_resource_suggestion`).
-- Análise consultiva de sugestões: um trigger enfileira um job por sugestão;
+  editor). `parseAnalysis` lê, de forma defensiva, o job
+  `analysis_jobs` (`analyze_resource_suggestion`) e a sua decisão.
+- Análise e publicação automática de sugestões: um trigger enfileira um job por sugestão;
   o pg_cron (`facodi-suggestion-analysis`, a cada minuto) chama, via pg_net e
   Vault, a Edge Function homónima. Esta lê só metadados públicos (oEmbed do
   YouTube), pede ao Gemini (fallback OpenAI) uma escolha estruturada entre
@@ -47,7 +45,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   Parar: `select cron.unschedule('facodi-suggestion-analysis')`;
   desativar só a IA: limite `0`. Detalhes em
   [suggest-ai-analysis-plan.md](suggest-ai-analysis-plan.md).
-- [src/entities/course](../src/entities/course): catálogo público. `/courses`
+- [src/entities/course](../src/entities/course): tipos, APIs e keys do catálogo
+  público, incluindo unidades e objetos educativos associados. `/courses`
   carrega uma vez os cursos públicos (`listPublicCourses`, até 500, com a
   contagem de UCs ativas via embed `curricular_units(count)`) e filtra no
   cliente com `course.catalog.ts`: pesquisa sem acentos em título, código,
@@ -89,7 +88,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - [src/features/contributions/queries](../src/features/contributions/queries):
   TanStack Query para contribuições e revisão editorial, com keys privadas por utilizador.
 - [src/features/suggestions/queries](../src/features/suggestions/queries):
-  TanStack Query para as sugestões do utilizador e a fila editorial.
+  TanStack Query para as sugestões do utilizador, a fila editorial e os
+  publicados automaticamente nos últimos 14 dias (só editores).
 - [src/features/notes](../src/features/notes): `useNotebook`/`useResourceNotes`;
   TanStack Query com escrita otimista e rollback para contas,
   `useSyncExternalStore` entre separadores para visitantes; `useNoteActions`
@@ -119,7 +119,8 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   [src/components/suggestion](../src/components/suggestion) mostra o
   reconhecimento por etapas (`useStagedReveal`, sem animação com
   `prefers-reduced-motion`), os sinais de triagem, a escolha da unidade e o
-  resultado da análise consultiva (`SuggestionAnalysis`).
+  resultado da análise (`SuggestionAnalysis`), incluindo a publicação
+  automática ou o motivo de revisão lidos de `result_payload.decision`.
 - [src/pages](../src/pages): composição das páginas, sem acesso direto a dados.
 - [src/shared/lib/validation.ts](../src/shared/lib/validation.ts): validação
   centralizada com Zod; formulários usam React Hook Form.

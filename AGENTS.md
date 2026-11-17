@@ -9,7 +9,7 @@ Fast-start guide for AI coding agents in this repository. Keep changes small, fo
 - Stack: React, TypeScript, Vite, Tailwind, shadcn/ui, Supabase (Auth + `facodi` schema), TanStack Query.
 - Package manager: Bun only (`bun install`, `bun run <script>`, `bunx <tool>`). If missing from PATH: `export PATH="$HOME/.bun/bin:$PATH"`.
 - Source of truth: [README.md](README.md), [AI_RULES.md](AI_RULES.md), [docs/CODEBASE.md](docs/CODEBASE.md), and scoped rules in [.github/instructions](.github/instructions).
-- Supabase project ref: `wvkjainfwsyiyfcmbtid`. No Odoo integration, no `public` schema data; the only Edge Function is the server-side suggestion worker `facodi-suggestion-analysis`.
+- Supabase project ref: `wvkjainfwsyiyfcmbtid`. No Odoo integration, no `public` schema data. FACODI Edge Functions: `facodi-submit-playlist` and `facodi-email-notifications` (invoked from `src/entities/contribution`) and the cron-driven worker `facodi-suggestion-analysis`; never call legacy Tube O2 functions.
 
 ## Dependency Notes
 
