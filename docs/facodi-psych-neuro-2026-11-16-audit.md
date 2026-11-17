@@ -102,3 +102,11 @@ A auditoria revelou que as **62 UCs** dos cursos `LPSI` (40) e `MNCN` (22) não 
 - `facodi.learning_objects.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
 - `facodi.learning_object_relations.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
 - `facodi.learning_outcomes.metadata.batch = 'facodi_psych_neuro_readings_20261117'`
+
+### Reutilização de vídeos já existentes na FACODI
+
+Uma segunda pesquisa identificou que seis vídeos divulgativos sobre Biopsicologia e Neuroimagem estavam publicados e vinculados às sequências, mas não diretamente às UCs. Foram registadas **20 novas relações públicas UC → vídeo**, distribuídas por sete vídeos existentes (seis vídeos da seleção de neurociências e o episódio **Psycholinguistics: Crash Course Linguistics #11**, ID `A5uNFKEn4_A`, já catalogado noutra área). O último foi verificado pela publicação original da CrashCourse: <https://www.youtube.com/watch?v=A5uNFKEn4_A>.
+
+O vídeo de Psicolinguística foi também integrado, **sem cópia**, nas duas sequências de cognição (`LPSI` e `MNCN`), que passaram de quatro para **cinco vídeos cada**. Foram criadas **duas novas relações** de sequência. A seleção não implica aprovação médica nem revisão integral do conteúdo audiovisual.
+
+Metadados utilizados: `curation_batch='facodi_psych_neuro_readings_20261117'`, `review_status='approved'`, `review_scope='title_and_channel_only'`, `full_video_reviewed=false`. A regra pública de relação exige a publicação prévia do vídeo. Consulta transacional com o papel `anon` confirmou as 20 novas relações UC-vídeo e as duas relações de sequência.
