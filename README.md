@@ -260,7 +260,11 @@ trigger de `facodi.resource_suggestions` normaliza o URL, deteta duplicados,
 classifica a licença e grava uma recomendação (`fast_track`, `review`,
 `reject`) que apenas ordena a fila. Em `/editor/suggestions`, a RPC
 `review_resource_suggestion` aprova (cria um objeto em rascunho ou reutiliza o
-existente e liga-o à unidade) ou recusa. Nada é publicado automaticamente.
+existente e liga-o à unidade) ou recusa. Vídeos do YouTube com UC indicada e
+correspondência forte no mesmo curso são publicados e associados
+automaticamente pela análise (Gemini, com fallback OpenAI) e aparecem em
+"Publicados automaticamente" para eventual despublicação; o resto fica na fila
+com o motivo. As flags estão em `facodi.suggestion_pipeline_settings`.
 
 ### Sequências de estudo
 

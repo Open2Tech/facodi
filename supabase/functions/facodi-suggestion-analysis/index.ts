@@ -1,13 +1,15 @@
 import { createClient } from "npm:@supabase/supabase-js@2.110.0";
 import {
-  buildMessages, type Candidate, classifyAiStatus, type Evidence, InvalidOutput, JobFailure, nextUtcDay,
-  parseMatches, responseSchema, resultPayload, retryDelayMinutes, shortlistText, type SuggestionInput,
-  timingSafeEqual,
+  type AiProvider, type AiProviderName, aiProviders, buildMessages, type Candidate, classifyAiStatus, type Decision,
+  type Evidence, InvalidOutput, JobFailure, nextUtcDay, parseMatches, responseSchema, resultPayload,
+  retryDelayMinutes, shortlistText, strongUnitIds, type SuggestionInput, timingSafeEqual,
 } from "./analysis.ts";
+import { buildNotification, type PipelineSettings } from "./notification.ts";
 
-// Advisory analysis of learner resource suggestions (docs/suggest-ai-analysis-plan.md).
+// Autonomous analysis of learner resource suggestions (docs/suggest-ai-analysis-plan.md).
 // Called by pg_cron through pg_net with a shared secret; never by browsers.
-// It only writes facodi.analysis_jobs (and budget events): nothing is approved, linked or published.
+// The AI only proposes units; facodi.auto_publish_resource_suggestion decides deterministically whether
+// to publish. Switches live in facodi.suggestion_pipeline_settings.
 
 type Job = SuggestionInput & {
   job_id: string;
@@ -16,14 +18,18 @@ type Job = SuggestionInput & {
   suggestion_status: string;
   curricular_unit_id: string | null;
 };
-type DryRunBody = { dry_run?: Partial<SuggestionInput> & { curricular_unit_id?: string | null } };
+type DryRunBody = {
+  dry_run?: Partial<SuggestionInput> & { curricular_unit_id?: string | null; force_provider?: AiProviderName };
+};
 
 const VIDEO = /^https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const AI_TIMEOUT_MS = 25_000;
-// Gemini through its OpenAI-compatible API; the model can be changed without redeploying.
-const AI_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
-const DEFAULT_AI_MODEL = "gemini-2.5-flash";
+// Fail safe: without readable settings nothing is published or emailed.
+const SAFE_SETTINGS: PipelineSettings = {
+  auto_publish_enabled: false, ai_fallback_enabled: true, notification_email_enabled: false,
+  notify_on_auto_publish: false, notify_on_review: false, notification_recipient: "hello@facodi.com",
+};
 
 const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
   auth: { persistSession: false, autoRefreshToken: false },
@@ -65,26 +71,33 @@ async function collectEvidence(input: SuggestionInput): Promise<Evidence> {
   return evidence;
 }
 
+async function loadSettings(): Promise<PipelineSettings> {
+  const { data, error } = await db.from("suggestion_pipeline_settings").select("*").maybeSingle();
+  if (error || !data) console.error(JSON.stringify({ step: "settings", message: error?.message ?? "missing" }));
+  return (data as PipelineSettings | null) ?? SAFE_SETTINGS;
+}
+
+// With a chosen unit the whole course is the shortlist, so matching does not depend on shared words.
 async function shortlist(input: SuggestionInput, evidence: Evidence, include: string | null): Promise<Candidate[]> {
   const { data, error } = await db.rpc("rank_resource_suggestion_units", {
-    p_text: shortlistText(input, evidence), p_include: include, p_limit: 12,
+    p_text: shortlistText(input, evidence), p_include: include, p_limit: include ? 80 : 12,
+    p_course_only: include !== null,
   });
   if (error) throw error;
   return (data ?? []) as Candidate[];
 }
 
-type AiResult = { model: string; topics: string[]; matches: ReturnType<typeof parseMatches>["matches"];
-  usage: { input_tokens: number; output_tokens: number } | null };
+type AiResult = { model: string; provider: AiProviderName; fallbackFrom: string | null; topics: string[];
+  matches: ReturnType<typeof parseMatches>["matches"]; usage: { input_tokens: number; output_tokens: number } | null };
 
-async function askAi(input: SuggestionInput, evidence: Evidence, candidates: Candidate[]): Promise<AiResult> {
-  const key = Deno.env.get("GEMINI_API_KEY");
-  const model = Deno.env.get("FACODI_SUGGESTION_AI_MODEL") || DEFAULT_AI_MODEL;
-  if (!key) throw new JobFailure("not_configured", "GEMINI_API_KEY is not configured", false);
+// Both providers speak the OpenAI chat completions format with strict JSON schema output.
+async function askAi(provider: AiProvider, input: SuggestionInput, evidence: Evidence, candidates: Candidate[]) {
+  const model = provider.model;
   let res: Response;
   try {
-    res = await fetchWithTimeout(AI_URL, {
+    res = await fetchWithTimeout(provider.url, {
       method: "POST",
-      headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json" },
+      headers: { "Authorization": `Bearer ${provider.key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         model,
         messages: buildMessages(input, evidence, candidates),
@@ -92,8 +105,7 @@ async function askAi(input: SuggestionInput, evidence: Evidence, candidates: Can
           type: "json_schema",
           json_schema: { name: "facodi_unit_matches", strict: true, schema: responseSchema(candidates) },
         },
-        // Matching needs little reasoning; "low" is accepted by every current Gemini model.
-        reasoning_effort: "low",
+        reasoning_effort: provider.reasoningEffort,
         max_completion_tokens: 4000,
       }),
     }, AI_TIMEOUT_MS);
@@ -113,6 +125,8 @@ async function askAi(input: SuggestionInput, evidence: Evidence, candidates: Can
     const parsed = parseMatches(body.choices?.[0]?.message?.content ?? null, candidates);
     return {
       model: body.model ?? model,
+      provider: provider.name,
+      fallbackFrom: null as string | null,
       ...parsed,
       usage: body.usage
         ? { input_tokens: body.usage.prompt_tokens ?? 0, output_tokens: body.usage.completion_tokens ?? 0 }
@@ -146,8 +160,64 @@ async function waitForBudget(job: Job, code: string) {
   return code;
 }
 
-async function processJob(job: Job, dailyLimit: number): Promise<string> {
-  if (job.suggestion_status !== "pending") {
+// Tries each provider in order; every paid call is reserved against the shared daily budget first.
+async function askWithFallback(
+  providers: AiProvider[], input: SuggestionInput, evidence: Evidence, candidates: Candidate[],
+  reserve: () => Promise<"reserved" | "budget_exhausted" | "lease_lost">,
+): Promise<AiResult | "budget_exhausted" | "lease_lost"> {
+  if (providers.length === 0) throw new JobFailure("not_configured", "No AI provider key is configured", false);
+  let failure: JobFailure | null = null;
+  for (const provider of providers) {
+    const reservation = await reserve();
+    if (reservation !== "reserved") return reservation;
+    try {
+      const result: AiResult = await askAi(provider, input, evidence, candidates);
+      return { ...result, fallbackFrom: failure?.code ?? null };
+    } catch (e) {
+      if (!(e instanceof JobFailure)) throw e;
+      console.error(JSON.stringify({ provider: provider.name, code: e.code }));
+      failure = e;
+    }
+  }
+  throw failure!;
+}
+
+async function notify(job: Job, settings: PipelineSettings, args: Parameters<typeof buildNotification>[1]) {
+  const message = buildNotification(settings, args);
+  const key = Deno.env.get("FACODI_RESEND_API_KEY") || Deno.env.get("RESEND_API_KEY");
+  const from = Deno.env.get("FACODI_EMAIL_FROM") || Deno.env.get("RESEND_FROM_EMAIL");
+  if (!message) return;
+  let event = "email_sent";
+  let detail = message.to;
+  if (!key || !from) {
+    event = "email_failed";
+    detail = "not_configured";
+  } else {
+    try {
+      const res = await fetchWithTimeout("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${key}`, "Content-Type": "application/json",
+          // A retried job never emails twice for the same attempt.
+          "Idempotency-Key": `facodi-suggestion-${job.job_id}-${job.attempts}`,
+        },
+        body: JSON.stringify({ from, to: [message.to], subject: message.subject, html: message.html, text: message.text }),
+      }, 10_000);
+      if (!res.ok) {
+        event = "email_failed";
+        detail = `HTTP ${res.status}`;
+      }
+    } catch {
+      event = "email_failed";
+      detail = "timeout";
+    }
+  }
+  // Email is best effort: a failure is recorded but never fails or retries the analysis.
+  await db.from("analysis_job_events").insert({ job_id: job.job_id, event_type: event, message: detail });
+}
+
+async function processJob(job: Job, dailyLimit: number, settings: PipelineSettings): Promise<string> {
+  if (job.suggestion_status !== "pending" && job.suggestion_status !== "duplicate") {
     await finish(job, { ...released, status: "cancelled", current_step: "completed", completed_at: new Date().toISOString() });
     return "cancelled";
   }
@@ -155,34 +225,56 @@ async function processJob(job: Job, dailyLimit: number): Promise<string> {
     const evidence = await collectEvidence(job);
     if (!await finish(job, { current_step: "matching" })) return "lease_lost";
     const candidates = await shortlist(job, evidence, job.curricular_unit_id);
+    const chosen = candidates.find((c) => c.id === job.curricular_unit_id) ?? null;
+    const notice = { title: job.title, url: job.canonical_url, author: evidence.author,
+      chosenUnit: chosen && { title: chosen.title, course_title: chosen.course_title } };
     if (candidates.length === 0) {
-      await finish(job, {
+      const decision: Decision = { outcome: "review", reason: "no_candidates" };
+      if (!await finish(job, {
         ...released, status: "succeeded", current_step: "completed", completed_at: new Date().toISOString(),
-        result_payload: resultPayload({ evidence, model: null, outcome: "no_candidates", shortlistSize: 0 }),
-      });
+        result_payload: resultPayload({ evidence, model: null, outcome: "no_candidates", shortlistSize: 0, decision }),
+      })) return "lease_lost";
+      await notify(job, settings, { ...notice, decision, matches: [], provider: null });
       return "no_candidates";
     }
-    const { data: reservation, error } = await db.rpc("reserve_resource_suggestion_ai_call", {
-      p_job_id: job.job_id, p_lease_token: job.lease_token, p_daily_limit: dailyLimit,
-    });
-    if (error) throw error;
-    if (reservation === "lease_lost") return "lease_lost";
-    if (reservation === "budget_exhausted") return await waitForBudget(job, "budget_exhausted");
-    let ai: AiResult;
+    const reserve = async () => {
+      const { data, error } = await db.rpc("reserve_resource_suggestion_ai_call", {
+        p_job_id: job.job_id, p_lease_token: job.lease_token, p_daily_limit: dailyLimit,
+      });
+      if (error) throw error;
+      return data as "reserved" | "budget_exhausted" | "lease_lost";
+    };
+    let ai: AiResult | "budget_exhausted" | "lease_lost";
     try {
-      ai = await askAi(job, evidence, candidates);
+      ai = await askWithFallback(
+        aiProviders((name) => Deno.env.get(name), { fallbackEnabled: settings.ai_fallback_enabled }),
+        job, evidence, candidates, reserve);
     } catch (e) {
       if (e instanceof JobFailure && e.code === "ai_quota") return await waitForBudget(job, "ai_quota");
       throw e;
     }
-    await finish(job, {
+    if (ai === "lease_lost") return "lease_lost";
+    if (ai === "budget_exhausted") return await waitForBudget(job, "budget_exhausted");
+
+    if (!await finish(job, { current_step: "deciding" })) return "lease_lost";
+    const strong = strongUnitIds(ai.matches);
+    const { data: decided, error: decideError } = await db.rpc("auto_publish_resource_suggestion", {
+      p_job_id: job.job_id, p_lease_token: job.lease_token, p_unit_ids: strong,
+      p_reason: ai.matches.find((m) => m.fit === "strong")?.reason ?? "",
+    });
+    if (decideError) throw decideError;
+    const decision = decided as Decision;
+    if (decision.outcome === "skipped" && decision.reason === "lease_lost") return "lease_lost";
+    if (!await finish(job, {
       ...released, status: "succeeded", current_step: "completed", completed_at: new Date().toISOString(),
       result_payload: resultPayload({
-        evidence, model: ai.model, outcome: ai.matches.length ? "matched" : "no_match",
-        shortlistSize: candidates.length, topics: ai.topics, matches: ai.matches, usage: ai.usage,
+        evidence, model: ai.model, provider: ai.provider, fallbackFrom: ai.fallbackFrom,
+        outcome: ai.matches.length ? "matched" : "no_match", shortlistSize: candidates.length,
+        topics: ai.topics, matches: ai.matches, usage: ai.usage, decision,
       }),
-    });
-    return "succeeded";
+    })) return "lease_lost";
+    await notify(job, settings, { ...notice, decision, matches: ai.matches, provider: `${ai.provider} · ${ai.model}` });
+    return decision.outcome === "published" ? "published" : "succeeded";
   } catch (e) {
     const failure = e instanceof JobFailure
       ? e
@@ -199,6 +291,7 @@ async function processJob(job: Job, dailyLimit: number): Promise<string> {
 }
 
 // Authenticated rehearsal with synthetic metadata: ranking, AI and validation without any writes or budget use.
+// force_provider tests one provider (for example the OpenAI fallback) in isolation.
 async function dryRun(body: NonNullable<DryRunBody["dry_run"]>) {
   const input: SuggestionInput = {
     title: typeof body.title === "string" ? body.title.slice(0, 200) : "",
@@ -211,16 +304,24 @@ async function dryRun(body: NonNullable<DryRunBody["dry_run"]>) {
   if (input.title.trim().length < 3) return json(400, { error: "title_required" });
   const include = typeof body.curricular_unit_id === "string" && UUID.test(body.curricular_unit_id)
     ? body.curricular_unit_id : null;
+  const force = body.force_provider === "gemini" || body.force_provider === "openai" ? body.force_provider : null;
   const evidence = await collectEvidence(input);
   const candidates = await shortlist(input, evidence, include);
   if (candidates.length === 0) {
     return json(200, resultPayload({ evidence, model: null, outcome: "no_candidates", shortlistSize: 0 }));
   }
   try {
-    const ai = await askAi(input, evidence, candidates);
+    const settings = await loadSettings();
+    const ai = await askWithFallback(
+      aiProviders((name) => Deno.env.get(name), { fallbackEnabled: settings.ai_fallback_enabled, force }),
+      input, evidence, candidates, () => Promise.resolve("reserved"));
+    if (typeof ai === "string") return json(500, { error: ai });
     return json(200, {
-      ...resultPayload({ evidence, model: ai.model, outcome: ai.matches.length ? "matched" : "no_match",
-        shortlistSize: candidates.length, topics: ai.topics, matches: ai.matches, usage: ai.usage }),
+      ...resultPayload({ evidence, model: ai.model, provider: ai.provider, fallbackFrom: ai.fallbackFrom,
+        outcome: ai.matches.length ? "matched" : "no_match", shortlistSize: candidates.length, topics: ai.topics,
+        matches: ai.matches, usage: ai.usage }),
+      // Units that would be published if the suggestion passes the deterministic rules.
+      strong_unit_ids: strongUnitIds(ai.matches),
       shortlist: candidates.map((c) => c.title),
     });
   } catch (e) {
@@ -245,9 +346,11 @@ Deno.serve(async (req) => {
     console.error(JSON.stringify({ step: "claim", message: error.message }));
     return json(500, { error: "claim_failed" });
   }
+  const jobs = (data ?? []) as Job[];
+  const settings = jobs.length ? await loadSettings() : SAFE_SETTINGS;
   const results: string[] = [];
-  for (const job of (data ?? []) as Job[]) {
-    results.push(await processJob({ ...job, tags: job.tags ?? [] }, dailyLimit));
+  for (const job of jobs) {
+    results.push(await processJob({ ...job, tags: job.tags ?? [] }, dailyLimit, settings));
   }
   return json(200, { processed: results.length, results });
 });

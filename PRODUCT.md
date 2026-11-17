@@ -69,9 +69,13 @@ reference; its former Odoo implementation is not.
   hard deletes; records are archived.
 - Supabase Auth is shared with Tube O2. Its global authentication emails use
   FACODI templates, and its `site_url` is `https://facodi.com`.
-- Resource suggestions receive an automatic, advisory analysis (Google Gemini,
-  public metadata only) that proposes up to three curricular units with a
-  reason. It never approves, links or publishes anything; editors decide.
+- Resource suggestions receive an automatic analysis (Google Gemini, OpenAI
+  fallback; public metadata only) that proposes up to three curricular units.
+  A YouTube video whose submitter chose a unit is published and linked
+  automatically when the analysis finds a strong match in that course; anything
+  else waits for editors. Editors can unpublish afterwards. Automatic
+  publishing and email notices are switchable in
+  `facodi.suggestion_pipeline_settings`.
 - Out of scope: enrolment, official academic records or grades, uploads, other
   AI pipelines, automatic sync and certification. Study-module completion is
   self-declared and private to its owner.

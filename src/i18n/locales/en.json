@@ -475,7 +475,7 @@
       }
     },
     "contributeTitle": "How to contribute",
-    "contributeText": "Contributions go through the editorial team: nothing is published automatically.",
+    "contributeText": "Contributions are checked: videos that strongly match the chosen course are published automatically; everything else goes through the editorial team.",
     "flow": {
       "account": "Create a FACODI account with your email.",
       "review": "Share your proposal with the editorial team, who prepare the content as a draft.",
@@ -850,7 +850,7 @@
     "nav": "Suggest a resource",
     "back": "How to contribute",
     "title": "Suggest a resource",
-    "description": "Paste the address of an open video, repository or document. FACODI recognises the source, reads its public metadata and proposes a curricular unit; the editorial team decides what gets published.",
+    "description": "Paste the address of an open video, repository or document. FACODI recognises the source, reads the public metadata and proposes the curricular unit. Videos that clearly match the chosen course are published automatically; the rest go through the editorial team.",
     "url": "Resource address",
     "urlHint": "HTTPS preferred. Only this address is sent to the source’s public APIs, never your session.",
     "urlInvalid": "Enter a valid HTTP or HTTPS address.",
@@ -980,14 +980,16 @@
         "partial": "Partial match"
       },
       "topics": "Topics",
-      "disclaimer": "Based only on public metadata, not on the content. These are pointers for the editorial team: nothing is approved or published automatically. Explanations are written in Portuguese."
+      "disclaimer": "Based only on public metadata, not the content. A video that strongly matches the chosen course is published automatically; the editorial team can correct or unpublish it.",
+      "autoPublished": "Published automatically.",
+      "viewResource": "View resource"
     }
   },
   "suggestReview": {
     "open": "Resource suggestions",
     "back": "Back to the editor",
     "title": "Resource suggestions",
-    "description": "Suggestions sent by learners and checked automatically. Approving creates a draft in the editor; nothing is published without review.",
+    "description": "Suggestions that automatic publication left for review. Approving creates a draft in the editor.",
     "queue": "Pending ({{count}})",
     "empty": "No pending suggestions",
     "emptyDescription": "New suggestions appear here in order of arrival.",
@@ -1007,7 +1009,21 @@
     "unitChoice": "Unit to link",
     "unitLearner": "Chosen by the learner",
     "unitAnalysis": "Proposed by the analysis",
-    "unitNone": "No unit"
+    "unitNone": "No unit",
+    "reviewReason": "Why it needs review",
+    "reasons": {
+      "auto_publish_disabled": "Automatic publication is turned off.",
+      "not_a_video": "Only YouTube videos are published automatically.",
+      "no_course": "No curricular unit was chosen, so the course context is missing.",
+      "screening": "The check found a restricted licence.",
+      "no_strong_match_in_course": "No strong match in the chosen course.",
+      "existing_not_public": "The resource already exists as a draft or archived.",
+      "no_candidates": "No candidate units in the catalogue."
+    },
+    "autoPublished": "Published automatically",
+    "autoPublishedHint": "Last 14 days. Check them and unpublish in the editor if needed.",
+    "autoPublishedEmpty": "No recent automatic publications.",
+    "editResource": "Edit or unpublish"
   },
   "courseArchive": {
     "title": "Previous study plans",
@@ -1556,8 +1572,8 @@
                 "IP address and the suggested link"
               ],
               [
-                "Google Gemini API",
-                "Automatic analysis of suggested resources: proposes curricular units to the editorial team. Nothing is published automatically.",
+                "Google Gemini API and OpenAI API (fallback)",
+                "Automatic analysis of suggested resources: proposes curricular units and publishes videos that strongly match the chosen course. OpenAI is only used when Gemini fails.",
                 "Title, tags, language and type of the suggested resource, YouTube's public title and channel and public unit names; no account data"
               ],
               [

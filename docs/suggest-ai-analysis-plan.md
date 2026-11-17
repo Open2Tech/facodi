@@ -31,9 +31,8 @@ Evidência fraca ou conflito produz abstenção, não uma aprovação fictícia 
 tarefa humana obrigatória. O editor pode corrigir ou resolver exceções, mas não
 é um passo obrigatório do caminho normal.
 
-**Limite do MVP:** recursos novos continuam em rascunho. Publicação automática de
-novos recursos é uma decisão de produto distinta e fica fora deste plano.
-Não chamar «publicado» a um rascunho aprovado pela automação.
+**Limite do MVP:** recursos novos continuam em rascunho. A fase 2 (secção 8.1)
+adotou depois a publicação automática, de forma restrita e com flags.
 
 ## 2. Estado verificado e qualidade do diagnóstico anexo
 
@@ -340,12 +339,39 @@ Operação: falhas em `analysis_jobs` (`job_type = 'analyze_resource_suggestion'
 `status`, `error_code`); uso diário em `analysis_job_events`
 (`event_type = 'ai_call'`).
 
+### 8.1 Fase 2 — publicação autónoma (implementada)
+
+Migração `20261117002506_facodi_resource_suggestion_auto_publish.sql`.
+
+- **Regra:** só vídeos do YouTube cuja submissão indicou uma UC; a análise
+  procura entre as UCs desse curso (até 80) e publica quando há um match
+  `strong` público no mesmo curso, sem licença restrita nem screening `reject`
+  (duplicados são reanalisados e reutilizam o objeto público). Qualquer outra
+  situação fica na fila com `result_payload.decision.reason`
+  (`no_course`, `not_a_video`, `screening`, `no_strong_match_in_course`,
+  `existing_not_public`, `auto_publish_disabled`, `no_candidates`).
+- **Efeito:** `auto_publish_resource_suggestion` (só `service_role`) cria ou
+  reutiliza o objeto publicado/ativo, cria a relação `contains` com
+  `decided_by: automatic_analysis` e aprova a sugestão com `reviewed_by` nulo.
+  Os editores veem os últimos 14 dias em `/editor/suggestions` e podem
+  despublicar no editor.
+- **IA:** Gemini `gemini-2.5-flash` (raciocínio baixo); em falha, OpenAI
+  `FACODI_SUGGESTION_FALLBACK_MODEL` (padrão `gpt-5-nano`). Os candidatos usam
+  chaves curtas `u1..uN` porque o Gemini rejeita enums grandes de UUIDs.
+- **Email:** Resend (`FACODI_RESEND_API_KEY`, `FACODI_EMAIL_FROM`), com
+  idempotência por job e eventos `email_sent`/`email_failed`.
+- **Flags** (`facodi.suggestion_pipeline_settings`, uma linha, editável no
+  Studio): `auto_publish_enabled`, `ai_fallback_enabled`,
+  `notification_email_enabled`, `notify_on_auto_publish`, `notify_on_review`,
+  `notification_recipient`. Se a leitura falhar, o worker não publica nem envia
+  emails.
+
 ## 9. Deliberadamente adiado
 
 Análise audiovisual, download/ASR, recolha geral de legendas, vetorização,
 pesquisa híbrida, geração automática de módulos/percursos, publicação de
-recursos novos, múltiplos provedores, comités de agentes, reprocessamento em
-massa e notificações. Só reconsiderar perante um problema medido que a solução
+recursos sem UC indicada ou que não sejam vídeos, comités de agentes e
+reprocessamento em massa. Só reconsiderar perante um problema medido que a solução
 textual/contextual não resolva.
 
 ## Referências

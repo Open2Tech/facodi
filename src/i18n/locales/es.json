@@ -475,7 +475,7 @@
       }
     },
     "contributeTitle": "Cómo contribuir",
-    "contributeText": "Las contribuciones pasan por el equipo editorial: nada se publica automáticamente.",
+    "contributeText": "Las contribuciones se verifican: los vídeos con una coincidencia fuerte en el curso indicado se publican automáticamente; el resto pasa por el equipo editorial.",
     "flow": {
       "account": "Crea una cuenta FACODI con tu email.",
       "review": "Comparte tu propuesta con el equipo editorial, que prepara el contenido como borrador.",
@@ -850,7 +850,7 @@
     "nav": "Sugerir recurso",
     "back": "Cómo contribuir",
     "title": "Sugerir un recurso",
-    "description": "Pega la dirección de un vídeo, repositorio o documento abierto. FACODI reconoce la fuente, lee sus metadatos públicos y propone la unidad curricular; el equipo editorial decide qué se publica.",
+    "description": "Pega la dirección de un vídeo, repositorio o documento abierto. FACODI reconoce la fuente, lee los metadatos públicos y propone la unidad curricular. Los vídeos con una coincidencia clara en el curso indicado se publican automáticamente; el resto pasa por el equipo editorial.",
     "url": "Dirección del recurso",
     "urlHint": "Preferiblemente HTTPS. Solo esta dirección se envía a las API públicas de la fuente, nunca tu sesión.",
     "urlInvalid": "Indica una dirección HTTP o HTTPS válida.",
@@ -980,14 +980,16 @@
         "partial": "Coincidencia parcial"
       },
       "topics": "Temas",
-      "disclaimer": "Basado solo en metadatos públicos, no en el contenido. Son indicaciones para el equipo editorial: nada se aprueba ni se publica automáticamente. Las explicaciones están escritas en portugués."
+      "disclaimer": "Basado solo en metadatos públicos, no en el contenido. Un vídeo con coincidencia fuerte en el curso indicado se publica automáticamente; el equipo editorial puede corregirlo o despublicarlo.",
+      "autoPublished": "Publicado automáticamente.",
+      "viewResource": "Ver recurso"
     }
   },
   "suggestReview": {
     "open": "Sugerencias de recursos",
     "back": "Volver al editor",
     "title": "Sugerencias de recursos",
-    "description": "Sugerencias enviadas por estudiantes y verificadas automáticamente. Aprobar crea un borrador en el editor; nada se publica sin revisión.",
+    "description": "Sugerencias que la publicación automática dejó para revisión. Aprobar crea un borrador en el editor.",
     "queue": "Pendientes ({{count}})",
     "empty": "Sin sugerencias pendientes",
     "emptyDescription": "Las nuevas sugerencias aparecen aquí por orden de llegada.",
@@ -1007,7 +1009,21 @@
     "unitChoice": "Unidad que vincular",
     "unitLearner": "Elegida por quien la sugirió",
     "unitAnalysis": "Propuesta por el análisis",
-    "unitNone": "Sin unidad"
+    "unitNone": "Sin unidad",
+    "reviewReason": "Por qué necesita revisión",
+    "reasons": {
+      "auto_publish_disabled": "La publicación automática está desactivada.",
+      "not_a_video": "Solo los vídeos de YouTube se publican automáticamente.",
+      "no_course": "No indica una unidad curricular, así que falta el contexto del curso.",
+      "screening": "La verificación encontró una licencia restringida.",
+      "no_strong_match_in_course": "Ninguna coincidencia fuerte en el curso indicado.",
+      "existing_not_public": "El recurso ya existe como borrador o archivado.",
+      "no_candidates": "No hay unidades candidatas en el catálogo."
+    },
+    "autoPublished": "Publicados automáticamente",
+    "autoPublishedHint": "Últimos 14 días. Revísalos y, si hace falta, despublícalos en el editor.",
+    "autoPublishedEmpty": "Sin publicaciones automáticas recientes.",
+    "editResource": "Editar o despublicar"
   },
   "courseArchive": {
     "title": "Planes de estudios anteriores",
@@ -1556,8 +1572,8 @@
                 "Dirección IP y enlace sugerido"
               ],
               [
-                "Google Gemini API",
-                "Análisis automático de los recursos sugeridos: propone unidades curriculares al equipo editorial. Nada se publica automáticamente.",
+                "Google Gemini API y OpenAI API (alternativa)",
+                "Análisis automático de los recursos sugeridos: propone unidades curriculares y publica vídeos con coincidencia fuerte en el curso indicado. OpenAI solo se usa cuando Gemini falla.",
                 "Título, etiquetas, idioma y tipo del recurso sugerido, título y canal públicos de YouTube y nombres públicos de las unidades; sin datos de la cuenta"
               ],
               [

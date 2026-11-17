@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { suggestionKeys } from '@/entities/suggestion/suggestion.keys';
 import {
-  listMySuggestions, listSuggestionQueue, listSuggestionUnits, parseAnalysis, retrySuggestionAnalysis, reviewSuggestion,
+  listAutoPublishedSuggestions, listMySuggestions, listSuggestionQueue, listSuggestionUnits, parseAnalysis, retrySuggestionAnalysis, reviewSuggestion,
   submitSuggestion,
 } from '@/entities/suggestion/suggestion.api';
 import { fetchPublicMetadata } from '@/entities/suggestion/metadata';
@@ -57,6 +57,15 @@ export function useSuggestionQueue() {
     queryFn: ({ signal }) => listSuggestionQueue(signal),
     enabled: !!user && canAccessFacodiRoute(role, 'editor'),
     refetchInterval: pollWhileAnalysing,
+  });
+}
+
+export function useAutoPublishedSuggestions() {
+  const { user, role } = useAuth();
+  return useQuery({
+    queryKey: suggestionKeys.autoPublished(user?.id ?? ''),
+    queryFn: ({ signal }) => listAutoPublishedSuggestions(signal),
+    enabled: !!user && canAccessFacodiRoute(role, 'editor'),
   });
 }
 

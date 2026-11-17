@@ -37,10 +37,14 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
 - Análise consultiva de sugestões: um trigger enfileira um job por sugestão;
   o pg_cron (`facodi-suggestion-analysis`, a cada minuto) chama, via pg_net e
   Vault, a Edge Function homónima. Esta lê só metadados públicos (oEmbed do
-  YouTube), pede ao Gemini uma escolha estruturada entre até 12 UCs
-  pré-filtradas em SQL e grava `result_payload`, com lease, 3 tentativas e
-  limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`). Nada é associado ou
-  publicado automaticamente. Parar: `select cron.unschedule('facodi-suggestion-analysis')`;
+  YouTube), pede ao Gemini (fallback OpenAI) uma escolha estruturada entre
+  UCs pré-filtradas em SQL e grava `result_payload`, com lease, 3 tentativas e
+  limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`). Se o vídeo tiver UC
+  indicada e um match forte no mesmo curso, a RPC
+  `auto_publish_resource_suggestion` publica e associa (`reviewed_by` nulo);
+  senão fica na fila com o motivo em `result_payload.decision`. Email via
+  Resend. Flags em `facodi.suggestion_pipeline_settings` (só `service_role`).
+  Parar: `select cron.unschedule('facodi-suggestion-analysis')`;
   desativar só a IA: limite `0`. Detalhes em
   [suggest-ai-analysis-plan.md](suggest-ai-analysis-plan.md).
 - [src/entities/course](../src/entities/course): catálogo público. `/courses`
