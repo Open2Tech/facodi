@@ -1932,6 +1932,39 @@ export type Database = {
           },
         ]
       }
+      suggestion_pipeline_settings: {
+        Row: {
+          ai_fallback_enabled: boolean
+          auto_publish_enabled: boolean
+          id: boolean
+          notification_email_enabled: boolean
+          notification_recipient: string
+          notify_on_auto_publish: boolean
+          notify_on_review: boolean
+          updated_at: string
+        }
+        Insert: {
+          ai_fallback_enabled?: boolean
+          auto_publish_enabled?: boolean
+          id?: boolean
+          notification_email_enabled?: boolean
+          notification_recipient?: string
+          notify_on_auto_publish?: boolean
+          notify_on_review?: boolean
+          updated_at?: string
+        }
+        Update: {
+          ai_fallback_enabled?: boolean
+          auto_publish_enabled?: boolean
+          id?: boolean
+          notification_email_enabled?: boolean
+          notification_recipient?: string
+          notify_on_auto_publish?: boolean
+          notify_on_review?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       tags: {
         Row: {
           created_at: string
@@ -2339,6 +2372,15 @@ export type Database = {
       }
     }
     Functions: {
+      auto_publish_resource_suggestion: {
+        Args: {
+          p_job_id: string
+          p_lease_token: string
+          p_reason: string
+          p_unit_ids: string[]
+        }
+        Returns: Json
+      }
       claim_resource_suggestion_analyses: {
         Args: { p_lease_seconds?: number; p_limit?: number }
         Returns: {
@@ -3131,7 +3173,12 @@ export type Database = {
         }
       }
       rank_resource_suggestion_units: {
-        Args: { p_include?: string; p_limit?: number; p_text: string }
+        Args: {
+          p_course_only?: boolean
+          p_include?: string
+          p_limit?: number
+          p_text: string
+        }
         Returns: {
           code: string
           course_code: string
