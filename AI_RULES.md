@@ -42,7 +42,7 @@
 - **Avoid magic strings/numbers**: Extract to constants or config files.
 - **No direct DOM manipulation**: Use React refs only when absolutely necessary (e.g., focus management) and wrap in a custom hook.
 - **Environment variables**: Prefix client-exposed values with `VITE_`; keep Supabase service-role, OpenAI, Gemini, and Resend values server-side in Supabase secrets or runtime env.
-- **Edge Functions**: The FACODI frontend does not call Edge Functions, `public` RPCs, or Odoo; data access uses only the `facodi` schema.
+- **Edge Functions**: The frontend invokes only the FACODI functions `facodi-submit-playlist` and `facodi-email-notifications`, from `src/entities/contribution`; `facodi-suggestion-analysis` runs only from pg_cron. Never call legacy Edge Functions, `public` RPCs, or Odoo; data access uses only the `facodi` schema.
 - **Generated output**: Do not edit `dist/` by hand.
 - **Commit messages**: Follow conventional style (`feat:`, `fix:`, `docs:`, etc.).
 - **Branch naming**: `feature/...`, `bugfix/...`, `chore/...`.
