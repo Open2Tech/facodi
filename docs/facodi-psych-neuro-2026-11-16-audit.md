@@ -62,3 +62,43 @@ Os **Supabase Advisors** foram consultados nas categorias segurança, desempenho
 - Confirmar com a UAlg a discrepância de `15271021` (0/5 ECTS) e a equivalência de listagens de neuroimagem (`15261022`/`15261027` versus `15261037`/`15261038`).
 - Fazer revisão editorial e científica integral dos vídeos que tratam de terapêuticas e condições clínicas; materiais externos não constituem aconselhamento clínico.
 - Tratar em trabalho separado os avisos que dizem respeito ao esquema compartilhado `public`, evitando alterações destrutivas fora do escopo FACODI.
+
+
+## Atualização editorial — 17/11/2026: bibliografia e resultados de aprendizagem
+
+### Lacunas identificadas e resolvidas
+
+A auditoria revelou que as **62 UCs** dos cursos `LPSI` (40) e `MNCN` (22) não tinham referências `external_resource` associadas diretamente à respetiva UC. As páginas de detalhe já tinham o componente `useUnitReadings`; a correção foi de dados e **não exigiu refatoração do frontend**.
+
+- **21 novos objetos** `facodi.learning_objects` de tipo `external_resource`, cada um com URL original de editora/instituição, descrição editorial, publicação ativa, e proveniência em `facodi.external_sources`. Um capítulo de empreendedorismo da OpenStax já existia no catálogo e foi **reutilizado**, não duplicado.
+- **135 novas relações UC → leitura** com `created_by_mechanism='verified_external_reading_curation'`, `review_status='approved'` e `review_scope='external_landing_page'` (condições exigidas pela política pública de leitura). Todas as 62 UCs possuem entre duas e três leituras.
+- **28 relações adicionais sequência → bibliografia** distribuídas pelas 15 sequências já existentes. Duas relações pretendidas já existiam e foram preservadas pelo conflito único; as 15 sequências mantêm vídeos, ordenação e bibliografia.
+- **186 resultados de aprendizagem** em `facodi.learning_outcomes`, correspondendo aos **três objetivos editoriais já existentes** em cada uma das 62 UCs. A tabela pública era anteriormente vazia para estes cursos. Os novos resultados são **propostas da FACODI**, não resultados homologados pela UAlg, nem avaliações formais. A origem editorial foi mantida nos metadados e corresponde à política pública de leitura de `learning_outcomes`.
+- O registo antigo `facodi-psych-openstax-psychology-2e` tinha a licença indicada como `CC BY 4.0`; foi corrigido para **`CC BY-NC-SA 4.0` segundo o aviso apresentado nas páginas do editor em 17/11/2026**.
+
+### Fontes consultadas
+
+- OpenStax, *Psychology 2e*, capítulos 1–16: <https://openstax.org/books/psychology-2e/pages/preface>. Os URLs dos 16 capítulos foram individualmente consultados no site original.
+- OpenStax, *Introduction to Anthropology*, capítulo 3: <https://openstax.org/books/introduction-anthropology/pages/3-introduction>.
+- OpenStax, *Writing Guide*, capítulo 10: <https://openstax.org/books/writing-guide/pages/10-introduction>.
+- OpenStax, *Entrepreneurship*, capítulo 1: <https://openstax.org/books/entrepreneurship/pages/1-introduction> (reutilizado do catálogo).
+- OpenStax, *Psychology 2e*, secção 16.3 sobre modalidades e terapia familiar: <https://openstax.org/books/psychology-2e/pages/16-3-treatment-modalities>.
+- Noba Project, Laney e Loftus, *Eyewitness Testimony and Memory Biases*: <https://nobaproject.com/modules/eyewitness-testimony-and-memory-biases>.
+- The Open University / OpenLearn, *Forensic Psychology*: <https://www.open.edu/openlearn/mod/oucontent/view.php?id=70526>.
+- Foram também reutilizados os recursos já publicados de `Neuroscience Online` (UTHealth), `BrainFacts` e estatística da OpenStax.
+
+**Direitos de autor:** só foram registados URLs públicos, títulos, nomes de capítulos e descrições editoriais originais. **Não foi copiado, re-hospedado nem ingerido em pipelines de IA qualquer texto integral protegido.** As páginas de *Psychology 2e* da OpenStax avisam expressamente sobre restrições à ingestão por sistemas de IA.
+
+### Critérios de curadoria e QA
+
+- Mapeamento manual de cada UC para leitura(s) com correspondência temática demonstrável, sem criar objetos por cada link repetido.
+- Identificação de `teacher_approved=false` ou equivalente; nenhum vínculo representa equivalência académica oficial.
+- Consulta transacional com `SET LOCAL ROLE anon`: **135 relações diretas**, **186 resultados de aprendizagem** e **62/62 UCs** com ambos os elementos visíveis; **15/15 sequências** com bibliografia pública. Sem novas políticas ou concessões de acesso.
+- **Vídeos:** quatro entradas do lote `facodi_lutz_science_20261116` continuam `pending` e os seus objetos em `draft`: `KU57aScQXWg`, `1CLmXdzXlhA`, `F64USbOkE14`, `dDPs-3xSlxE`. Ocorreu validação indireta do Lutz #146, mas sem confirmação direta da página do YouTube para promoção segura. Não foi feita republicação automática dessas quatro entradas.
+- Esta intervenção apenas adicionou/ajustou **dados editoriais e relações existentes**. Não foi alterado o contrato da API, o modelo relacional, a estrutura do curso, as RLS ou o frontend.
+
+### Identificadores de auditoria
+
+- `facodi.learning_objects.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
+- `facodi.learning_object_relations.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
+- `facodi.learning_outcomes.metadata.batch = 'facodi_psych_neuro_readings_20261117'`
