@@ -110,3 +110,31 @@ Uma segunda pesquisa identificou que seis vídeos divulgativos sobre Biopsicolog
 O vídeo de Psicolinguística foi também integrado, **sem cópia**, nas duas sequências de cognição (`LPSI` e `MNCN`), que passaram de quatro para **cinco vídeos cada**. Foram criadas **duas novas relações** de sequência. A seleção não implica aprovação médica nem revisão integral do conteúdo audiovisual.
 
 Metadados utilizados: `curation_batch='facodi_psych_neuro_readings_20261117'`, `review_status='approved'`, `review_scope='title_and_channel_only'`, `full_video_reviewed=false`. A regra pública de relação exige a publicação prévia do vídeo. Consulta transacional com o papel `anon` confirmou as 20 novas relações UC-vídeo e as duas relações de sequência.
+
+### Seis vídeos adicionais da CrashCourse publicados
+
+Depois de verificar os títulos, o canal original, as datas disponíveis e as descrições públicas, foram acrescentados **6 vídeos da série Crash Course Psychology**, sem alojar cópias do conteúdo:
+
+| ID YouTube | Tema e episódio |
+|---|---|
+| `hFV71QPvX2I` | *Psychological Research* #2 — métodos de investigação |
+| `bSycdIx-C48` | *How We Make Memories* #13 — memória |
+| `unWnZvXJH2o` | *Sensation and Perception* #5 — perceção |
+| `8nz2dtv--ok` | *The Growth of Knowledge* #18 — desenvolvimento cognitivo |
+| `UGxGDdQnC1Y` | *Social Influence* #38 — influência social |
+| `R-sVnmmw6WY` | *Cognition – How Your Mind Can Amaze and Betray You* #15 — heurísticas e cognição |
+
+Todos os vídeos estão em `facodi.youtube_videos`, ligados aos objetos `video` publicados e registados em `facodi.external_sources`. Os metadados identificam explicitamente `full_video_reviewed=false`, `copyright_rehosting_allowed=false` e materiais educacionais complementares não certificados pela UAlg.
+
+Foram criadas **28 associações UC → vídeo** e **9 sequência → vídeo**, seguindo a semântica pública `review_status=approved` e `review_scope=title_and_channel_only`. Os vídeos foram adicionados ao fim das respetivas sequências, preservando a ordem anterior e atualizando `metadata.video_count`.
+
+**QA com `SET LOCAL ROLE anon`, 17/11/2026:**
+
+- **21** recursos externos novos, **135** links de bibliografia diretos e **186** resultados de aprendizagem, cobrindo as **62 UCs**.
+- **45/62 UCs com vídeos diretos**, num total de **106 relações UC → vídeo**.
+- **15** sequências, com **71 posições de vídeo**, nenhuma vazia e nenhuma contagem de metadados divergente.
+- **137** objetos visíveis no filtro temático `psychology`.
+- Os **4 vídeos da seleção Lutz com `status=pending` permanecem não publicados**; não foi inferida uma aprovação a partir de fontes de terceiros.
+- Os seis vídeos provêm do canal original CrashCourse, mas não foi realizada revisão integral das suas afirmações científicas. Tratam-se de recursos didáticos de apoio e não de guias clínicos.
+
+Fonte primária para cada recurso: `https://www.youtube.com/watch?v=<ID>`. Sem ingestão de legendas ou transcrições no Supabase.
