@@ -1,4 +1,4 @@
-import { canonicalUrl, headTags, renderHeadTags, type PageMeta } from './seo';
+import { SITE_NAME, SITE_ORIGIN, canonicalUrl, headTags, renderHeadTags, STATIC_HEAD_ATTRIBUTE, type PageMeta } from './seo';
 
 const SEO_BLOCK = /<!-- seo:start[^>]*-->[\s\S]*?<!-- seo:end -->/;
 const SNAPSHOT_SEGMENT = /^[A-Za-z0-9._~%-]+$/;
@@ -26,10 +26,58 @@ export function snapshotFilePath(outputDirectory: string, route: string) {
   return `${outputDirectory.replace(/[\\/]+$/, '')}/${suffix}`;
 }
 
-export function renderSnapshotHtml(shell: string, page: PageMeta) {
+export type SnapshotLink = { name: string; path: string };
+
+const ROOT_ELEMENT = '<div id="root"></div>';
+const escapeText = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+function breadcrumbLinks(page: PageMeta): SnapshotLink[] {
+  const list = page.jsonLd?.find(item => item['@type'] === 'BreadcrumbList');
+  const items = Array.isArray(list?.itemListElement) ? list.itemListElement as { name?: unknown; item?: unknown }[] : [];
+  return items.flatMap(item => (typeof item.name === 'string' && typeof item.item === 'string' && item.item.startsWith(SITE_ORIGIN)
+    ? [{ name: item.name, path: item.item.slice(SITE_ORIGIN.length) || '/' }]
+    : []));
+}
+
+const anchor = (link: SnapshotLink) => `<a href="${escapeText(link.path)}">${escapeText(link.name)}</a>`;
+
+/**
+ * Plain HTML for crawlers and answer engines that never run JavaScript: the page heading,
+ * its description, the breadcrumb and the public pages it links to. React's createRoot
+ * replaces it on the first render, so people only see it until the app loads.
+ */
+export function renderSnapshotBody(page: PageMeta, links: SnapshotLink[] = []) {
+  const crumbs = [{ name: SITE_NAME, path: '/' }, ...breadcrumbLinks(page).filter(link => link.path !== '/' && link.path !== page.path)];
+  const list = links.length ? `\n      <ul>${links.map(link => `<li>${anchor(link)}</li>`).join('')}</ul>` : '';
+  return [
+    `<main ${STATIC_HEAD_ATTRIBUTE} style="max-width:72ch;margin:3rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;line-height:1.5">`,
+    `      <nav aria-label="breadcrumb">${crumbs.map(anchor).join(' › ')}</nav>`,
+    `      <h1>${escapeText(page.title)}</h1>`,
+    `      <p>${escapeText(page.description)}</p>${list}`,
+    '    </main>',
+  ].join('\n');
+}
+
+export function renderSnapshotHtml(shell: string, page: PageMeta, links: SnapshotLink[] = []) {
   if (!SEO_BLOCK.test(shell)) throw new Error('SPA shell is missing its seo:start/end block.');
   const tags = renderHeadTags(headTags(page));
-  return shell.replace(SEO_BLOCK, () => `<!-- seo:start · generated for ${page.path} -->\n    ${tags}\n    <!-- seo:end -->`);
+  const html = shell.replace(SEO_BLOCK, () => `<!-- seo:start · generated for ${page.path} -->\n    ${tags}\n    <!-- seo:end -->`);
+  return html.includes(ROOT_ELEMENT)
+    ? html.replace(ROOT_ELEMENT, () => `<div id="root">\n    ${renderSnapshotBody(page, links)}\n    </div>`)
+    : html;
+}
+
+export type LlmsSection = { title: string; links: (SnapshotLink & { note?: string })[] };
+
+/** `/llms.txt` (llmstxt.org): a plain map of the public catalogue for language models. */
+export function renderLlmsTxt(intro: { summary: string; details: string[] }, sections: LlmsSection[]) {
+  const line = (value: string) => value.replace(/\s+/g, ' ').trim();
+  const blocks = sections.filter(section => section.links.length).map(section => [
+    `## ${line(section.title)}`,
+    '',
+    ...section.links.map(link => `- [${line(link.name).replace(/[[\]]/g, '')}](${canonicalUrl(link.path)})${link.note ? `: ${line(link.note)}` : ''}`),
+  ].join('\n'));
+  return [`# ${SITE_NAME}`, '', `> ${line(intro.summary)}`, '', intro.details.map(line).join('\n\n'), '', blocks.join('\n\n'), ''].join('\n');
 }
 
 export function exactSnapshotCount(contentRange: string | null, label: string) {

@@ -33,7 +33,7 @@ for (const prefix of ['/login', '/auth', '/editor', '/admin', '/profile', '/dash
 }
 assert.ok(pageSeo.includes("rel: 'canonical'"), 'Page SEO requires canonical URLs');
 assert.ok(pageSeo.includes('application/ld+json'), 'Page SEO must include structured metadata');
-assert.ok(about.includes("staticPageMeta('/about'"), 'About must install route-specific SEO');
+assert.ok(about.includes("staticPageMeta('/about'") || about.includes('aboutMeta('), 'About must install route-specific SEO');
 assert.ok(community.includes("staticPageMeta('/community'"), 'Community must install route-specific SEO');
 assert.ok(admin.includes("supabase.rpc('revoke_project_credit'"), 'Editor must offer revocation workflow');
 

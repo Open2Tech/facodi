@@ -118,10 +118,25 @@ export function renderHeadTags(tags: HeadTag[]) {
 const compact = (value: JsonLd): JsonLd =>
   Object.fromEntries(Object.entries(value).filter(([, item]) => item !== null && item !== undefined && item !== ''));
 
-export const organizationJsonLd = (): JsonLd => ({
+/** Official FACODI profiles; `sameAs` lets search and answer engines tie them to the site. */
+export const SOCIAL_PROFILES = ['https://www.instagram.com/somosfacodi/'] as const;
+
+export const organizationJsonLd = (description?: string): JsonLd => compact({
   '@context': 'https://schema.org', '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organization`,
   name: SITE_NAME, url: `${SITE_ORIGIN}/`, logo: `${SITE_ORIGIN}/pwa-512x512.png`,
+  description, sameAs: [...SOCIAL_PROFILES],
 });
+
+/** Question/answer pairs taken verbatim from visible page copy, for answer engines. */
+export function faqJsonLd(items: { question: string; answer: string }[]): JsonLd {
+  return {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: items.map(item => ({
+      '@type': 'Question', name: plainLine(item.question),
+      acceptedAnswer: { '@type': 'Answer', text: plainLine(item.answer) },
+    })),
+  };
+}
 
 export const websiteJsonLd = (description: string, language = 'pt'): JsonLd => ({
   '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`,
@@ -282,7 +297,21 @@ export function sequenceMeta(
 
 /** Catalogue and project pages that exist regardless of data. */
 export function homeMeta(labels: { title: string; description: string }): PageMeta {
-  return { title: labels.title, description: labels.description, path: '/', jsonLd: [organizationJsonLd(), websiteJsonLd(labels.description)] };
+  return { title: labels.title, description: labels.description, path: '/', jsonLd: [organizationJsonLd(labels.description), websiteJsonLd(labels.description)] };
+}
+
+/** i18n keys of the About FAQ: each answer is copy that is already visible on the page. */
+export const ABOUT_FAQ = [
+  { question: 'about.faq.free', answer: 'about.principles.open.text' },
+  { question: 'about.faq.curated', answer: 'about.principles.curated.text' },
+  { question: 'about.faq.origin', answer: 'about.seaeuText' },
+  { question: 'about.faq.contribute', answer: 'about.contributeText' },
+] as const;
+
+/** The project page also answers the questions people ask about FACODI, using its own visible copy. */
+export function aboutMeta(labels: { title: string; description: string }, faq: { question: string; answer: string }[]): PageMeta {
+  const page = staticPageMeta('/about', labels);
+  return faq.length ? { ...page, jsonLd: [...(page.jsonLd ?? []), faqJsonLd(faq)] } : page;
 }
 
 export function staticPageMeta(path: string, labels: { title: string; description: string }): PageMeta {

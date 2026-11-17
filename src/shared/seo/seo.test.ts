@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import pt from '@/i18n/locales/pt.json';
 import indexHtml from '../../../index.html?raw';
-import { headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, sequenceMeta, unitMeta } from './seo';
+import { aboutMeta, headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, sequenceMeta, SOCIAL_PROFILES, unitMeta } from './seo';
 
 const find = (tags: ReturnType<typeof headTags>, key: string) =>
   tags.find(tag => (tag.tag === 'meta' && (tag.name === key || tag.property === key)) || (tag.tag === 'link' && tag.rel === key));
@@ -57,5 +57,21 @@ describe('page metadata', () => {
     const expected = renderHeadTags(headTags(homeMeta({ title: `FACODI — ${pt.brand.tagline}`, description: pt.brand.description }))
       .filter(tag => !(tag.tag === 'link' && tag.rel === 'canonical') && !(tag.tag === 'meta' && tag.property === 'og:url')));
     expect(shell).toBe(expected);
+  });
+
+  it('links the organization to its official profiles', () => {
+    const home = homeMeta({ title: 'FACODI', description: 'Campus aberto.' });
+    expect(home.jsonLd?.[0]).toMatchObject({ '@type': 'Organization', description: 'Campus aberto.', sameAs: [...SOCIAL_PROFILES] });
+  });
+
+  it('adds an FAQ to the project page only when there is copy to answer with', () => {
+    const labels = { title: 'Sobre', description: 'História.' };
+    const page = aboutMeta(labels, [{ question: 'É gratuita?', answer: '<p>Sem conta e sem paywall.</p>' }]);
+    expect(page.path).toBe('/about');
+    expect(page.jsonLd?.[page.jsonLd.length - 1]).toEqual({
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: [{ '@type': 'Question', name: 'É gratuita?', acceptedAnswer: { '@type': 'Answer', text: 'Sem conta e sem paywall.' } }],
+    });
+    expect(aboutMeta(labels, []).jsonLd?.some(item => item['@type'] === 'FAQPage')).toBe(false);
   });
 });

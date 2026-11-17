@@ -483,7 +483,13 @@
     },
     "openEditor": "Open editorial workspace",
     "openDashboard": "Go to my space",
-    "createAccount": "Create an account or sign in"
+    "createAccount": "Create an account or sign in",
+    "faq": {
+      "free": "Is FACODI free? Do I need an account?",
+      "curated": "Who decides what gets published on FACODI?",
+      "origin": "Who created FACODI?",
+      "contribute": "How can I contribute to FACODI?"
+    }
   },
   "footer": {
     "learn": "Learn",
@@ -491,7 +497,8 @@
     "account": "Account",
     "contribute": "Contribute",
     "note": "FACODI · a project by Marcelo Santos · open digital campus",
-    "legal": "Legal information"
+    "legal": "Legal information",
+    "instagram": "FACODI on Instagram"
   },
   "course": {
     "facts": "Course facts",

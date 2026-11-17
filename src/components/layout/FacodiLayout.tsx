@@ -10,6 +10,7 @@ import { LEGAL_DOCUMENTS, legalPath } from '@/components/legal/legalDocuments';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
+import { SOCIAL_PROFILES } from '@/shared/seo/seo';
 import { cn } from '@/lib/utils';
 import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
 
@@ -104,6 +105,9 @@ export default function FacodiLayout() {
         <div>
           <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight"><img src="/favicon.svg" alt="" width="28" height="28" /><span>FACODI<span className="text-primary" aria-hidden="true">.</span></span></Link>
           <p className="mt-4 max-w-xs leading-relaxed text-ink-foreground/75">{t('brand.footer')}</p>
+          <a href={SOCIAL_PROFILES[0]} target="_blank" rel="me noopener noreferrer" className="mt-4 inline-flex items-center gap-1 font-medium text-ink-foreground/85 underline-offset-4 transition-colors hover:text-primary hover:underline">
+            {t('footer.instagram')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
         {footer.map(column => <nav key={column.title} aria-label={column.title}>
           <h2 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.12em] text-brand-cyan">{column.title}</h2>
