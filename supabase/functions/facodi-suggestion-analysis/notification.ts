@@ -1,5 +1,5 @@
 // Editorial email for the suggestion pipeline: pure, so Vitest covers it. Sent through Resend by index.ts.
-import type { Decision, Match } from "./analysis.ts";
+import type { Decision, EvidenceLevel, Match, Notice } from "./analysis.ts";
 
 const SITE = "https://facodi.com";
 
@@ -12,22 +12,21 @@ export type PipelineSettings = {
   notification_recipient: string;
 };
 
-export type NotificationInput = {
-  title: string;
-  url: string;
-  author: string | null;
-  decision: Decision;
-  matches: Match[];
-  chosenUnit: { title: string; course_title: string } | null;
-  provider: string | null;
+export type NotificationInput = Notice & { decision: Decision; matches: Match[] };
+
+const EVIDENCE: Record<EvidenceLevel, string> = {
+  content_video: "Primeiros minutos do vídeo (vistos pelo Gemini) e metadados da plataforma",
+  metadata_rich: "Descrição, capítulos ou dados do catálogo (sem ver o conteúdo)",
+  metadata_only: "Apenas título e canal (sem ver o conteúdo)",
 };
 
 const REVIEW_REASONS: Record<string, string> = {
   auto_publish_disabled: "A publicação automática está desativada.",
   not_a_video: "Não é um vídeo do YouTube; a publicação automática só cobre vídeos.",
-  no_course: "A sugestão não indica uma unidade curricular, por isso falta o contexto do curso.",
+  no_course: "A sugestão não indica um curso, por isso a publicação automática não tem contexto curricular.",
   screening: "A triagem indicou uma licença restrita ou outro bloqueio.",
   no_strong_match_in_course: "A análise não encontrou uma correspondência forte no curso indicado.",
+  not_confirmed: "Um modelo propôs uma correspondência forte, mas o segundo modelo não a confirmou.",
   existing_not_public: "O recurso já existe, mas está em rascunho ou arquivado.",
   no_candidates: "Não há unidades curriculares candidatas no catálogo.",
 };
@@ -62,11 +61,13 @@ export function buildNotification(settings: PipelineSettings, input: Notificatio
     ["Título", input.title],
     ["Autor/canal", input.author ?? "—"],
     ["URL", input.url],
-    ...(input.chosenUnit
-      ? [["Indicado pelo estudante", `${input.chosenUnit.title} · ${input.chosenUnit.course_title}`] as [string, string]]
+    ...(input.chosen
+      ? [["Indicado pelo estudante", [input.chosen.unit_title, input.chosen.course_title].filter(Boolean).join(" · ")] as [string, string]]
       : []),
+    ["Evidência analisada", EVIDENCE[input.evidence_level] ?? EVIDENCE.metadata_only],
     ["Análise", input.matches.length
-      ? input.matches.map((m) => `${m.fit === "strong" ? "Forte" : "Parcial"} — ${m.title}: ${m.reason}`).join("\n")
+      ? input.matches.map((m) => `${m.fit === "strong" ? "Forte" : "Parcial"} — ${m.title}: ${m.reason}` +
+        (m.quote ? ` («${m.quote}»${m.grounded ? "" : ", citação não encontrada"})` : "")).join("\n")
       : "Sem correspondências."],
     ...(input.provider ? [["Modelo", input.provider] as [string, string]] : []),
   ];

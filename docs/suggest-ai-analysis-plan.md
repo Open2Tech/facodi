@@ -356,7 +356,7 @@ Migração `20261117002506_facodi_resource_suggestion_auto_publish.sql`.
   Os editores veem os últimos 14 dias em `/editor/suggestions` e podem
   despublicar no editor.
 - **IA:** Gemini `gemini-2.5-flash` (raciocínio baixo); em falha, OpenAI
-  `FACODI_SUGGESTION_FALLBACK_MODEL` (padrão `gpt-5-nano`). Os candidatos usam
+  `FACODI_SUGGESTION_FALLBACK_MODEL` (padrão `gpt-5-mini`, ver §8.2). Os candidatos usam
   chaves curtas `u1..uN` porque o Gemini rejeita enums grandes de UUIDs.
 - **Email:** Resend (`FACODI_RESEND_API_KEY`, `FACODI_EMAIL_FROM`), com
   idempotência por job e eventos `email_sent`/`email_failed`.
@@ -366,12 +366,50 @@ Migração `20261117002506_facodi_resource_suggestion_auto_publish.sql`.
   `notification_recipient`. Se a leitura falhar, o worker não publica nem envia
   emails.
 
+### 8.2 Endurecimento (implementado)
+
+Migrações `20261117012305_facodi_suggestion_pipeline_hardening.sql` e
+`20261117015627_facodi_suggestion_notification_retry_grant.sql`.
+
+- **Curso sem UC:** `resource_suggestions.course_id` (o trigger copia o curso
+  da UC, quando há UC). Em `/suggest`, o aluno escolhe o curso e, opcionalmente,
+  a UC; com curso, todas as UCs públicas desse curso são candidatas e a IA
+  escolhe a melhor. Não se criam módulos nem tópicos.
+- **Evidência:** `result_payload.evidence.level` distingue `content_video`
+  (o Gemini viu os primeiros 5 minutos via `file_data`), `metadata_rich`
+  (descrição/histórico do catálogo) e `metadata_only`. A página e a transcrição
+  do YouTube não são acessíveis a partir da edge (bloqueio anti-bot), por isso
+  não são usadas. Cada match `strong` tem de citar (`quote`) texto do recurso,
+  não da UC nem do título dado pelo aluno.
+- **Consenso:** antes de publicar, o segundo fornecedor (OpenAI `gpt-5-mini`)
+  reavalia os candidatos `strong`; só se publica nas UCs em que ambos
+  concordam (`confirmation.agreed_unit_ids`). Sem acordo, fica em revisão
+  com o motivo `not_confirmed`. O `gpt-5-nano` foi trocado porque classificava
+  como `partial` correspondências evidentes; custo por confirmação ≈ 0,002 USD.
+- **Já no catálogo:** se o vídeo já está ligado a uma UC do curso indicado
+  (`catalog_listed`), publica-se sem IA, reutilizando o objeto.
+- **Idempotência e grafo:** `auto_publish_resource_suggestion` serializa por
+  YouTube id (`pg_advisory_xact_lock`) e reutiliza o objeto, o
+  `youtube_videos`, a `external_sources` e os `unit_videos` legados. Um vídeo
+  produz 1 objeto, 1 registo YouTube, 1 fonte e uma relação `contains` por UC.
+- **Recuperação:** o dispatch volta a enfileirar uma vez as análises
+  concluídas sem decisão estruturada (versões 1 e 2) e acorda o worker
+  também quando há emails em dívida.
+- **Emails:** `claim_suggestion_notifications` reclama, sob advisory lock, os
+  emails falhados (< 3 tentativas, últimos 2 dias); o reenvio usa a mesma
+  chave de idempotência do Resend e nunca republica.
+
+Validação E2E em produção (contas temporárias, depois removidas):
+publicação com consenso, reutilização de vídeo legado, corrida de dois
+workers sobre o mesmo vídeo (1 objeto), correspondência parcial, ausência de
+curso, flag desligada, fallback real Gemini → OpenAI, retry de email e
+despublicação pelo editor.
+
 ## 9. Deliberadamente adiado
 
-Análise audiovisual, download/ASR, recolha geral de legendas, vetorização,
-pesquisa híbrida, geração automática de módulos/percursos, publicação de
-recursos sem UC indicada ou que não sejam vídeos, comités de agentes e
-reprocessamento em massa. Só reconsiderar perante um problema medido que a solução
+Download/ASR, recolha geral de legendas, vetorização, pesquisa híbrida,
+geração automática de módulos/percursos, publicação de recursos que não sejam
+vídeos, comités de agentes e reprocessamento em massa. Só reconsiderar perante um problema medido que a solução
 textual/contextual não resolva.
 
 ## Referências

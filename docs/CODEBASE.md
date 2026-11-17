@@ -34,11 +34,12 @@ React + Vite SPA, Bun, TypeScript e Supabase. Ver [operação e limites](../READ
   `analysis_jobs` (`analyze_resource_suggestion`) e a sua decisão.
 - Análise e publicação automática de sugestões: um trigger enfileira um job por sugestão;
   o pg_cron (`facodi-suggestion-analysis`, a cada minuto) chama, via pg_net e
-  Vault, a Edge Function homónima. Esta lê só metadados públicos (oEmbed do
-  YouTube), pede ao Gemini (fallback OpenAI) uma escolha estruturada entre
-  UCs pré-filtradas em SQL e grava `result_payload`, com lease, 3 tentativas e
-  limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`). Se o vídeo tiver UC
-  indicada e um match forte no mesmo curso, a RPC
+  Vault, a Edge Function homónima. Esta lê metadados públicos, o histórico do
+  catálogo e (Gemini) os primeiros minutos do vídeo, pede uma escolha
+  estruturada entre as UCs do curso indicado e grava `result_payload`, com
+  lease, 3 tentativas e limite diário (`FACODI_SUGGESTION_AI_DAILY_LIMIT`).
+  Se o vídeo tiver curso indicado (`course_id`; a UC é opcional) e um match
+  forte confirmado pelo segundo fornecedor (OpenAI), a RPC
   `auto_publish_resource_suggestion` publica e associa (`reviewed_by` nulo);
   senão fica na fila com o motivo em `result_payload.decision`. Email via
   Resend. Flags em `facodi.suggestion_pipeline_settings` (só `service_role`).
