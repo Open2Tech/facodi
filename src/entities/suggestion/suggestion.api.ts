@@ -3,12 +3,12 @@ import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 import type { Json } from '@/integrations/supabase/types';
 import { canonicalResourceUrl } from '@/entities/suggestion/recognition';
 import type {
-  AnalysisMatch, LicenseClass, Recommendation, Screening, SuggestionAnalysis, SuggestionDecision, SuggestionInput,
+  AnalysisMatch, EvidenceLevel, LicenseClass, Recommendation, Screening, SuggestionAnalysis, SuggestionDecision, SuggestionInput,
   SuggestionSummary, UnitOption,
 } from '@/entities/suggestion/suggestion.types';
 
 // RLS shows analysis jobs to the learner who suggested the resource and to editors.
-const SUMMARY_FIELDS = 'id,url,canonical_url,provider,title,author,thumbnail_url,license,object_type,language,tags,note,status,screening,review_note,reviewed_at,created_at,learning_object_id,curricular_units(id,code,title,slug,courses(code,slug)),analysis_jobs(status,error_code,result_payload)';
+const SUMMARY_FIELDS = 'id,url,canonical_url,provider,title,author,thumbnail_url,license,object_type,language,tags,note,status,screening,review_note,reviewed_at,created_at,learning_object_id,course_id,courses(code,title,slug),curricular_units(id,code,title,slug,courses(code,slug)),analysis_jobs(status,error_code,result_payload)';
 /** Database error codes raised by the screening trigger and constraints, mapped to locale keys. */
 const ERROR_CODES: Record<string, string> = { '23505': 'already_suggested', '54000': 'daily_limit', '42501': 'forbidden' };
 
@@ -18,7 +18,7 @@ function suggestionError(error: { code?: string | null; message?: string | null 
 
 /** Units follow the public catalogue rule (active, inside a published and active course). */
 export async function listSuggestionUnits(signal?: AbortSignal): Promise<UnitOption[]> {
-  const { data, error } = await supabase.from('curricular_units').select('id,code,title,slug,courses!inner(code,title,slug)')
+  const { data, error } = await supabase.from('curricular_units').select('id,code,title,slug,courses!inner(id,code,title,slug)')
     .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active')
     .order('title').limit(1000).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
@@ -38,6 +38,7 @@ export async function submitSuggestion(input: SuggestionInput): Promise<Suggesti
     language: input.language || null,
     tags: input.tags,
     curricular_unit_id: input.unitId || null,
+    course_id: input.courseId || null,
     note: input.note.trim() || null,
     license_declared: true,
     attribution_declared: true,
@@ -89,6 +90,7 @@ export async function retrySuggestionAnalysis(id: string): Promise<void> {
 
 const LICENSES: LicenseClass[] = ['open', 'restricted', 'unknown'];
 const RECOMMENDATIONS: Recommendation[] = ['fast_track', 'review', 'reject'];
+const EVIDENCE_LEVELS: EvidenceLevel[] = ['content_video', 'metadata_rich', 'metadata_only'];
 
 /** Reads the trigger's screening defensively; unknown values fall back to "needs review". */
 export function parseScreening(value: Json): Screening {
@@ -114,7 +116,7 @@ const text = (value: unknown) => typeof value === 'string' ? value : null;
 export function parseAnalysis(jobs: SuggestionSummary['analysis_jobs']): SuggestionAnalysis | null {
   const job = jobs?.[0];
   if (!job) return null;
-  const empty = { matches: [], topics: [], published: null, reviewReason: null };
+  const empty = { matches: [], topics: [], published: null, reviewReason: null, evidence: null, confirmed: null };
   if (job.status === 'failed') return { state: 'failed', ...empty };
   if (job.status !== 'succeeded') {
     if (!['queued', 'running', 'retrying'].includes(job.status)) return null;
@@ -131,12 +133,17 @@ export function parseAnalysis(jobs: SuggestionSummary['analysis_jobs']): Suggest
     const courseSlug = text(match.course_slug), reason = text(match.reason);
     if (!unitId || !title || !unitSlug || !courseSlug || !reason) return [];
     return [{ unitId, title, unitSlug, courseSlug, reason, code: text(match.code), courseCode: text(match.course_code),
-      fit: match.fit === 'strong' ? 'strong' : 'partial' }];
+      fit: match.fit === 'strong' ? 'strong' : 'partial', quote: text(match.quote) || null }];
   }).slice(0, 3);
+  const level = text(record(payload.evidence).level);
+  const confirmation = record(payload.confirmation);
+  const agreed = confirmation.agreed_unit_ids;
   const topics = (Array.isArray(matching.topics) ? matching.topics : []).filter((topic): topic is string => typeof topic === 'string').slice(0, 5);
   return {
     state: 'done', matches, topics,
     published: decision.outcome === 'published' && objectSlug ? { objectSlug } : null,
     reviewReason: decision.outcome === 'review' ? text(decision.reason) : null,
+    evidence: EVIDENCE_LEVELS.find(item => item === level) ?? null,
+    confirmed: Array.isArray(agreed) ? agreed.length > 0 : null,
   };
 }

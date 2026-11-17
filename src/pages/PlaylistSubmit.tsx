@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CheckCircle2, ListVideo, ShieldCheck } from 'lucide-react';
@@ -32,11 +32,18 @@ export default function PlaylistSubmit() {
   const busy = submit.isPending;
   const errorCode = submit.error?.message ?? '';
   const urlValid = isYoutubePlaylistUrl(url.trim());
+  const receivedRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { if (response) receivedRef.current?.focus(); }, [response]);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResponse(null);
-    submit.mutate({ courseId, unitId, url, title, description, language, maxVideos, manualIds: idsText }, { onSuccess: setResponse });
+    submit.mutate({ courseId, unitId, url, title, description, language, maxVideos, manualIds: idsText }, {
+      onSuccess: data => {
+        setResponse(data);
+        setUrl(''); setTitle(''); setDescription(''); setIdsText('');
+      },
+    });
   };
 
   return <div className="mx-auto max-w-3xl">
@@ -51,6 +58,15 @@ export default function PlaylistSubmit() {
       <p className="max-w-prose text-muted-foreground">{t('playlistSubmit.description')}</p>
     </header>
     <form onSubmit={onSubmit} className="space-y-6" noValidate>
+      <label className="block space-y-2 text-sm font-medium">
+        <span className="block">{t('playlistSubmit.url')} *</span>
+        <Input type="url" inputMode="url" required maxLength={500} value={url} disabled={busy}
+          aria-invalid={!!url.trim() && !urlValid} aria-describedby="playlist-url-hint"
+          onChange={e => setUrl(e.target.value)} placeholder="https://www.youtube.com/playlist?list=PL…" />
+        <span id="playlist-url-hint" className={`block text-xs font-normal ${url.trim() && !urlValid ? 'text-destructive' : 'text-muted-foreground'}`}>
+          {t('playlistSubmit.urlHint')}
+        </span>
+      </label>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="space-y-2 text-sm font-medium">
           <span className="block">{t('playlistSubmit.course')} *</span>
@@ -74,42 +90,38 @@ export default function PlaylistSubmit() {
           void courses.refetch();
           if (courseId) void units.refetch();
         }} />}
-      <label className="block space-y-2 text-sm font-medium">
-        <span className="block">{t('playlistSubmit.url')} *</span>
-        <Input type="url" inputMode="url" required maxLength={500} value={url} disabled={busy}
-          aria-invalid={!!url.trim() && !urlValid} aria-describedby="playlist-url-hint"
-          onChange={e => setUrl(e.target.value)} placeholder="https://www.youtube.com/playlist?list=PL…" />
-        <span id="playlist-url-hint" className={`block text-xs font-normal ${url.trim() && !urlValid ? 'text-destructive' : 'text-muted-foreground'}`}>
-          {t('playlistSubmit.urlHint')}
-        </span>
-      </label>
-      <label className="block space-y-2 text-sm font-medium">
-        <span className="block">{t('playlistSubmit.optionalTitle')}</span>
-        <Input maxLength={200} value={title} disabled={busy} onChange={e => setTitle(e.target.value)} />
-      </label>
-      <label className="block space-y-2 text-sm font-medium">
-        <span className="block">{t('playlistSubmit.optionalDescription')}</span>
-        <Textarea maxLength={2000} rows={3} value={description} disabled={busy} onChange={e => setDescription(e.target.value)} />
-      </label>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="space-y-2 text-sm font-medium">
-          <span className="block">{t('playlistSubmit.language')}</span>
-          <select className={SELECT} value={language} disabled={busy} onChange={e => setLanguage(e.target.value)}>
-            {LANGUAGES.map(([code, label]) => <option key={code} value={code}>{label}</option>)}
-          </select>
-        </label>
-        <label className="space-y-2 text-sm font-medium">
-          <span className="block">{t('playlistSubmit.maxVideos')}</span>
-          <select className={SELECT} value={maxVideos} disabled={busy} onChange={e => setMaxVideos(Number(e.target.value))}>
-            {[10, 25, 50, 100].map(n => <option key={n} value={n}>{n}</option>)}
-          </select>
-        </label>
-      </div>
-      <details className="border border-input p-4">
-        <summary className="cursor-pointer text-sm font-semibold">{t('playlistSubmit.manualTitle')}</summary>
-        <p className="my-3 text-sm text-muted-foreground">{t('playlistSubmit.manualHint')}</p>
-        <Textarea rows={4} value={idsText} disabled={busy} onChange={e => setIdsText(e.target.value)}
-          aria-label={t('playlistSubmit.manualTitle')} placeholder={'dQw4w9WgXcQ\n…'} className="font-mono" />
+      <details className="border border-input">
+        <summary className="cursor-pointer p-4 text-sm font-semibold">{t('playlistSubmit.options')}</summary>
+        <div className="space-y-5 border-t border-input p-4">
+          <label className="block space-y-2 text-sm font-medium">
+            <span className="block">{t('playlistSubmit.optionalTitle')}</span>
+            <Input maxLength={200} value={title} disabled={busy} onChange={e => setTitle(e.target.value)} />
+          </label>
+          <label className="block space-y-2 text-sm font-medium">
+            <span className="block">{t('playlistSubmit.optionalDescription')}</span>
+            <Textarea maxLength={2000} rows={3} value={description} disabled={busy} onChange={e => setDescription(e.target.value)} />
+          </label>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className="space-y-2 text-sm font-medium">
+              <span className="block">{t('playlistSubmit.language')}</span>
+              <select className={SELECT} value={language} disabled={busy} onChange={e => setLanguage(e.target.value)}>
+                {LANGUAGES.map(([code, label]) => <option key={code} value={code}>{label}</option>)}
+              </select>
+            </label>
+            <label className="space-y-2 text-sm font-medium">
+              <span className="block">{t('playlistSubmit.maxVideos')}</span>
+              <select className={SELECT} value={maxVideos} disabled={busy} onChange={e => setMaxVideos(Number(e.target.value))}>
+                {[10, 25, 50, 100].map(n => <option key={n} value={n}>{n}</option>)}
+              </select>
+            </label>
+          </div>
+          <div className="space-y-2 text-sm">
+            <p className="font-medium">{t('playlistSubmit.manualTitle')}</p>
+            <p className="text-muted-foreground">{t('playlistSubmit.manualHint')}</p>
+            <Textarea rows={4} value={idsText} disabled={busy} onChange={e => setIdsText(e.target.value)}
+              aria-label={t('playlistSubmit.manualTitle')} placeholder={'dQw4w9WgXcQ\n…'} className="font-mono" />
+          </div>
+        </div>
       </details>
       <p className="flex gap-3 border border-input bg-muted/40 p-4 text-sm text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-foreground" aria-hidden="true" />{t('playlistSubmit.reviewNotice')}
@@ -122,7 +134,7 @@ export default function PlaylistSubmit() {
         {busy ? t('playlistSubmit.sending') : t('playlistSubmit.send')}
       </Button>
     </form>
-    {response && <div role="status" className="mt-8 space-y-2 border border-foreground p-5">
+    {response && <div ref={receivedRef} tabIndex={-1} role="status" className="mt-8 space-y-2 border border-foreground p-5 outline-none">
       <p className="flex items-center gap-2 font-semibold"><CheckCircle2 className="h-5 w-5" aria-hidden="true" />{t('playlistSubmit.received')}</p>
       <p className="text-sm">{response.title}</p>
       <p className="text-sm text-muted-foreground">{t('playlistSubmit.receivedCounts', {

@@ -713,7 +713,8 @@
     },
     "language": "Langue des vidéos",
     "submittedOn": "Envoyée le {{date}}",
-    "legalNote": "En envoyant, les règles sur les [contributions](/terms#contributions) et les [vidéos intégrées](/copyright#videos) s’appliquent."
+    "legalNote": "En envoyant, les règles sur les [contributions](/terms#contributions) et les [vidéos intégrées](/copyright#videos) s’appliquent.",
+    "options": "Options : titre, description, langue, limite et ID manuels"
   },
   "playlistReview": {
     "open": "Réviser les playlists",
@@ -899,12 +900,15 @@
     "licenseHint": "Ex. : CC BY 4.0, MIT. Les licences NC/ND sont refusées.",
     "languageUnknown": "Non indiquée",
     "tagsHint": "Séparées par des virgules, 8 au maximum.",
-    "unit": "Unité d’enseignement",
+    "course": "Cursus",
+    "courseHint": "Avec un cursus indiqué, FACODI choisit l’unité d’enseignement et publie seule lorsque deux modèles confirment la correspondance.",
+    "courseNone": "Sans cursus (la curation décide)",
+    "unit": "Unité d’enseignement (facultatif)",
     "matches": "Unités suggérées",
     "matchScore": "{{score}} % de vocabulaire commun",
-    "noMatches": "Aucune unité ne partage de vocabulaire. Choisissez-en une dans la liste ou laissez sans unité.",
-    "unitAll": "Toutes les unités",
-    "noUnit": "Sans unité (la curation décide)",
+    "noMatches": "Aucune unité ne partage de vocabulaire. Choisissez simplement le cursus : l’analyse automatique cherche l’unité.",
+    "unitAll": "Unités",
+    "noUnit": "Laisser FACODI choisir l’unité",
     "noteCount": "{{length}}/500 caractères",
     "declarations": "Déclarations",
     "licenseDeclared": "Je confirme que la licence permet un usage éducatif de la ressource.",
@@ -933,7 +937,7 @@
     "verdict": {
       "title": "Suggestion reçue",
       "duplicateTitle": "Cette ressource existe déjà sur FACODI",
-      "fast_track": "Source reconnue, licence ouverte et unité choisie : elle est en tête de la file de curation.",
+      "fast_track": "Source reconnue, licence ouverte et cursus choisi : elle est en tête de file.",
       "review": "Certains signaux manquent ; l’équipe éditoriale vérifiera la source et la licence.",
       "reject": "La vérification a relevé un obstacle. L’équipe éditoriale confirme avant de décider.",
       "analysis": "Une analyse automatique commence dans environ une minute ; suivez-la dans votre historique."
@@ -963,26 +967,34 @@
     "reviewNote": "Note de la curation",
     "criteria": {
       "title": "Critères de curation",
-      "fast_track": "Source reconnue, licence ouverte et unité d’enseignement choisie.",
-      "review": "Source générique, licence à vérifier ou sans unité.",
+      "fast_track": "Source reconnue, licence ouverte et cursus choisi.",
+      "review": "Source générique, licence à vérifier ou sans cursus.",
       "reject": "Ressource déjà existante ou licence NC/ND.",
-      "manual": "La recommandation ordonne la file ; la publication reste toujours manuelle."
+      "manual": "Une vidéo fortement liée au cursus indiqué, confirmée par deux modèles, est publiée automatiquement. Le reste passe par la curation."
     },
     "legalNote": "En envoyant, les règles sur les [contributions](/terms#contributions) et le [droit d’auteur](/copyright#contributors) s’appliquent.",
     "analysis": {
       "title": "Analyse automatique",
-      "pending": "Analyse des métadonnées… cela prend généralement environ une minute.",
+      "pending": "Analyse de la ressource… cela prend généralement une à deux minutes.",
       "waiting": "En file d’attente : la limite quotidienne d’analyses est atteinte. Reprise automatique demain.",
       "failed": "L’analyse n’a pas pu aboutir. L’équipe éditoriale peut la relancer.",
-      "none": "Aucune unité d’enseignement ne correspond aux métadonnées de cette ressource.",
+      "none": "Aucune unité d’enseignement ne correspond à cette ressource.",
       "fit": {
         "strong": "Correspondance forte",
         "partial": "Correspondance partielle"
       },
       "topics": "Thèmes",
-      "disclaimer": "Fondée uniquement sur les métadonnées publiques, pas sur le contenu. Une vidéo qui correspond fortement au cours indiqué est publiée automatiquement ; l’équipe éditoriale peut la corriger ou la dépublier.",
+      "disclaimer": "Analyse automatique, susceptible d’erreurs. Une vidéo fortement liée au cursus indiqué, confirmée par un second modèle, est publiée automatiquement ; l’équipe éditoriale peut la corriger ou la dépublier.",
       "autoPublished": "Publié automatiquement.",
-      "viewResource": "Voir la ressource"
+      "viewResource": "Voir la ressource",
+      "evidence": {
+        "content_video": "A visionné les premières minutes de la vidéo",
+        "metadata_rich": "A lu la description et l’historique du catalogue",
+        "metadata_only": "A lu uniquement le titre et l’auteur"
+      },
+      "confirmed": "Confirmée par un second modèle",
+      "notConfirmed": "Non confirmée par le second modèle",
+      "quote": "Indice"
     }
   },
   "suggestReview": {
@@ -1018,7 +1030,8 @@
       "screening": "La vérification a trouvé une licence restreinte.",
       "no_strong_match_in_course": "Aucune correspondance forte dans le cours indiqué.",
       "existing_not_public": "La ressource existe déjà en brouillon ou archivée.",
-      "no_candidates": "Aucune unité candidate dans le catalogue."
+      "no_candidates": "Aucune unité candidate dans le catalogue.",
+      "not_confirmed": "Le premier modèle a vu une forte correspondance, mais le second ne l’a pas confirmée. Choisissez l’unité avant d’approuver."
     },
     "autoPublished": "Publiés automatiquement",
     "autoPublishedHint": "14 derniers jours. Vérifiez-les et dépubliez-les dans l’éditeur si nécessaire.",

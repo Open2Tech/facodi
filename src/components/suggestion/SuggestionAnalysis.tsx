@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, Clock, Loader2, SearchX } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, CircleDashed, Clock, Eye, Loader2, SearchX } from 'lucide-react';
 import type { SuggestionAnalysis as Analysis } from '@/entities/suggestion/suggestion.types';
 import { cn } from '@/lib/utils';
 
-/** Advisory result of the automatic analysis: proposed units with the reason, never a decision. */
+/** Result of the automatic analysis: what it read, the proposed units with their evidence and the second model's verdict. */
 export function SuggestionAnalysis({ analysis, className }: { analysis: Analysis; className?: string }) {
   const { t } = useTranslation();
   const status = (icon: React.ReactNode, text: string) => <p className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -26,7 +26,17 @@ export function SuggestionAnalysis({ analysis, className }: { analysis: Analysis
           </span>
         </div>
         <p lang="pt" className="mt-1 max-w-prose text-sm">{match.reason}</p>
+        {match.quote && <blockquote className="mt-2 max-w-prose border-l-2 border-input pl-3 text-sm italic text-muted-foreground">
+          <span className="sr-only">{t('suggest.analysis.quote')}: </span>{match.quote}
+        </blockquote>}
       </li>)}
+    </ul>}
+    {(analysis.evidence || analysis.confirmed !== null) && <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+      {analysis.evidence && <li className="inline-flex items-center gap-1.5"><Eye className="h-3.5 w-3.5" aria-hidden="true" />{t(`suggest.analysis.evidence.${analysis.evidence}`)}</li>}
+      {analysis.confirmed !== null && <li className="inline-flex items-center gap-1.5">
+        {analysis.confirmed ? <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" /> : <CircleDashed className="h-3.5 w-3.5" aria-hidden="true" />}
+        {t(analysis.confirmed ? 'suggest.analysis.confirmed' : 'suggest.analysis.notConfirmed')}
+      </li>}
     </ul>}
     {!!analysis.topics.length && <p className="text-sm">
       <span className="text-muted-foreground">{t('suggest.analysis.topics')}: </span><span lang="pt">{analysis.topics.join(' · ')}</span>

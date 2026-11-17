@@ -15,6 +15,7 @@ import { StatusBadge } from '@/components/editorial/StatusBadge';
 import { RecommendationBadge } from '@/components/suggestion/RecommendationBadge';
 import { ScreeningSignals } from '@/components/suggestion/ScreeningSignals';
 import { SuggestionAnalysis } from '@/components/suggestion/SuggestionAnalysis';
+import { SuggestionTarget } from '@/components/suggestion/SuggestionTarget';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -101,7 +102,7 @@ export default function EditorSuggestions() {
                 className={cn('w-full p-4 text-left transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                   selected?.id === item.id && 'bg-muted')}>
                 <span className="block break-words font-medium">{item.title}</span>
-                <span className="mt-1 block text-sm text-muted-foreground">{[provider(item.provider), item.curricular_units?.code].filter(Boolean).join(' · ')}</span>
+                <span className="mt-1 block text-sm text-muted-foreground">{[provider(item.provider), item.curricular_units?.code ?? item.courses?.code].filter(Boolean).join(' · ')}</span>
                 <span className="mt-3 flex flex-wrap items-center justify-between gap-2">
                   <time dateTime={item.created_at} className="text-xs text-muted-foreground">{dateFormat.format(new Date(item.created_at))}</time>
                   <RecommendationBadge recommendation={parseScreening(item.screening).recommendation} />
@@ -130,6 +131,7 @@ export default function EditorSuggestions() {
               className="aspect-video w-full border border-input object-cover" />}
           </div>
           <dl className="mt-6 grid gap-x-6 gap-y-3 border-y border-input py-4 text-sm sm:grid-cols-2">
+            <div><dt className="text-muted-foreground">{t('suggest.course')}</dt><dd className="font-medium">{selected.courses ? `${selected.courses.code} · ${selected.courses.title}` : '—'}</dd></div>
             <div><dt className="text-muted-foreground">{t('suggest.unit')}</dt><dd className="font-medium">{selected.curricular_units ? `${selected.curricular_units.code} · ${selected.curricular_units.title}` : '—'}</dd></div>
             <div><dt className="text-muted-foreground">{t('suggest.fields.license')}</dt><dd className="font-mono font-medium">{selected.license || '—'}</dd></div>
             <div><dt className="text-muted-foreground">{t('suggest.fields.language')}</dt><dd className="font-medium">{languageName(selected.language)}</dd></div>
@@ -173,14 +175,11 @@ export default function EditorSuggestions() {
         : <ul className="mt-4 divide-y divide-input border-y border-input">
           {autoPublished.data.map(item => {
             const slug = parseAnalysis(item.analysis_jobs)?.published?.objectSlug;
-            const unit = item.curricular_units;
             return <li key={item.id} className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2 py-4">
               <div className="min-w-0 flex-1">
                 <p className="break-words font-medium">{item.title}</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {unit && <>{unit.courses
-                    ? <Link className="underline underline-offset-4" to={`/courses/${encodeURIComponent(unit.courses.slug)}/units/${encodeURIComponent(unit.slug)}`}>{unit.title}</Link>
-                    : unit.title} · </>}
+                  {(item.curricular_units || item.courses) && <><SuggestionTarget item={item} /> · </>}
                   {item.reviewed_at && <time dateTime={item.reviewed_at}>{dateFormat.format(new Date(item.reviewed_at))}</time>}
                 </p>
               </div>

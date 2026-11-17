@@ -10,7 +10,7 @@ import type { Json } from '@/integrations/supabase/types';
 const endpoint = `${getEnv().VITE_SUPABASE_URL}/rest/v1`;
 const input = {
   url: 'https://youtu.be/dQw4w9WgXcQ', title: 'Aula', author: '', license: '', thumbnailUrl: null,
-  objectType: 'video' as const, language: '', tags: [], unitId: '', note: '',
+  objectType: 'video' as const, language: '', tags: [], courseId: '', unitId: '', note: '',
 };
 
 describe('FACODI resource suggestions API', () => {
@@ -22,7 +22,9 @@ describe('FACODI resource suggestions API', () => {
       return HttpResponse.json({ id: 's1', status: 'pending' }, { status: 201 });
     }));
     await submitSuggestion(input);
-    expect(body).toMatchObject({ canonical_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', license_declared: true, attribution_declared: true, curricular_unit_id: null });
+    expect(body).toMatchObject({ canonical_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', license_declared: true, attribution_declared: true, curricular_unit_id: null, course_id: null });
+    await submitSuggestion({ ...input, courseId: 'c1' });
+    expect(body).toMatchObject({ course_id: 'c1', curricular_unit_id: null });
     expect(body).not.toHaveProperty('status');
     expect(body).not.toHaveProperty('screening');
   });
@@ -58,8 +60,8 @@ describe('FACODI resource suggestions API', () => {
     expect(parseAnalysis(job('succeeded', { result_payload: { matching: { topics: ['Cálculo', 3], matches: [
       { unit_id: 'u1', title: 'Análise Matemática II', slug: 'am2', course_slug: 'lei', course_code: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.' },
       { unit_id: 'u2', title: 'Sem curso', slug: 'x', fit: 'strong', reason: 'Incompleto' },
-    ] } } }))).toEqual({ state: 'done', topics: ['Cálculo'], published: null, reviewReason: null, matches: [{
-      unitId: 'u1', title: 'Análise Matemática II', unitSlug: 'am2', courseSlug: 'lei', courseCode: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.',
+    ] } } }))).toEqual({ state: 'done', topics: ['Cálculo'], published: null, reviewReason: null, evidence: null, confirmed: null, matches: [{
+      unitId: 'u1', title: 'Análise Matemática II', unitSlug: 'am2', courseSlug: 'lei', courseCode: 'LEI', code: '19', fit: 'strong', reason: 'Derivadas parciais.', quote: null,
     }] });
   });
 
@@ -68,6 +70,10 @@ describe('FACODI resource suggestions API', () => {
     expect(done({ outcome: 'published', object_slug: 'vetores-1a2b3c4d' })).toMatchObject({ published: { objectSlug: 'vetores-1a2b3c4d' }, reviewReason: null });
     expect(done({ outcome: 'review', reason: 'no_course' })).toMatchObject({ published: null, reviewReason: 'no_course' });
     expect(done({ outcome: 'published' })).toMatchObject({ published: null });
+    const confirmed = (agreed: unknown, level: unknown) => parseAnalysis([{ status: 'succeeded', error_code: null,
+      result_payload: { matching: {}, evidence: { level }, confirmation: { agreed_unit_ids: agreed }, decision: {} } as Json }]);
+    expect(confirmed(['u1'], 'content_video')).toMatchObject({ confirmed: true, evidence: 'content_video' });
+    expect(confirmed([], 'transcript')).toMatchObject({ confirmed: false, evidence: null });
   });
 
   it('reads screening defensively', () => {

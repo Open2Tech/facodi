@@ -1686,6 +1686,7 @@ export type Database = {
           attribution_declared: boolean
           author: string | null
           canonical_url: string
+          course_id: string | null
           created_at: string
           curricular_unit_id: string | null
           id: string
@@ -1712,6 +1713,7 @@ export type Database = {
           attribution_declared: boolean
           author?: string | null
           canonical_url: string
+          course_id?: string | null
           created_at?: string
           curricular_unit_id?: string | null
           id?: string
@@ -1738,6 +1740,7 @@ export type Database = {
           attribution_declared?: boolean
           author?: string | null
           canonical_url?: string
+          course_id?: string | null
           created_at?: string
           curricular_unit_id?: string | null
           id?: string
@@ -1761,6 +1764,20 @@ export type Database = {
           url?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "resource_suggestions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "course_unit_content_coverage"
+            referencedColumns: ["course_id"]
+          },
+          {
+            foreignKeyName: "resource_suggestions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "resource_suggestions_curricular_unit_id_fkey"
             columns: ["curricular_unit_id"]
@@ -2374,6 +2391,7 @@ export type Database = {
     Functions: {
       auto_publish_resource_suggestion: {
         Args: {
+          p_evidence?: Json
           p_job_id: string
           p_lease_token: string
           p_reason: string
@@ -2386,6 +2404,7 @@ export type Database = {
         Returns: {
           attempts: number
           canonical_url: string
+          course_id: string
           current_step: string
           curricular_unit_id: string
           job_id: string
@@ -2398,6 +2417,15 @@ export type Database = {
           suggestion_status: string
           tags: string[]
           title: string
+        }[]
+      }
+      claim_suggestion_notifications: {
+        Args: { p_limit?: number }
+        Returns: {
+          completed_at: string
+          failures: number
+          job_id: string
+          result_payload: Json
         }[]
       }
       classify_resource_license: {
@@ -3174,7 +3202,7 @@ export type Database = {
       }
       rank_resource_suggestion_units: {
         Args: {
-          p_course_only?: boolean
+          p_course_id?: string
           p_include?: string
           p_limit?: number
           p_text: string
@@ -3391,6 +3419,15 @@ export type Database = {
           p_youtube_video_ids?: string[]
         }
         Returns: string
+      }
+      suggestion_notifications_due: {
+        Args: { p_limit?: number }
+        Returns: {
+          completed_at: string
+          failures: number
+          job_id: string
+          result_payload: Json
+        }[]
       }
       unlink_learning_objects: {
         Args: {
