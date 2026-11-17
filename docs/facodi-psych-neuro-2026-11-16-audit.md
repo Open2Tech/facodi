@@ -62,3 +62,93 @@ Os **Supabase Advisors** foram consultados nas categorias segurança, desempenho
 - Confirmar com a UAlg a discrepância de `15271021` (0/5 ECTS) e a equivalência de listagens de neuroimagem (`15261022`/`15261027` versus `15261037`/`15261038`).
 - Fazer revisão editorial e científica integral dos vídeos que tratam de terapêuticas e condições clínicas; materiais externos não constituem aconselhamento clínico.
 - Tratar em trabalho separado os avisos que dizem respeito ao esquema compartilhado `public`, evitando alterações destrutivas fora do escopo FACODI.
+
+
+## Atualização editorial — 17/11/2026: bibliografia e resultados de aprendizagem
+
+### Lacunas identificadas e resolvidas
+
+A auditoria revelou que as **62 UCs** dos cursos `LPSI` (40) e `MNCN` (22) não tinham referências `external_resource` associadas diretamente à respetiva UC. As páginas de detalhe já tinham o componente `useUnitReadings`; a correção foi de dados e **não exigiu refatoração do frontend**.
+
+- **21 novos objetos** `facodi.learning_objects` de tipo `external_resource`, cada um com URL original de editora/instituição, descrição editorial, publicação ativa, e proveniência em `facodi.external_sources`. Um capítulo de empreendedorismo da OpenStax já existia no catálogo e foi **reutilizado**, não duplicado.
+- **135 novas relações UC → leitura** com `created_by_mechanism='verified_external_reading_curation'`, `review_status='approved'` e `review_scope='external_landing_page'` (condições exigidas pela política pública de leitura). Todas as 62 UCs possuem entre duas e três leituras.
+- **28 relações adicionais sequência → bibliografia** distribuídas pelas 15 sequências já existentes. Duas relações pretendidas já existiam e foram preservadas pelo conflito único; as 15 sequências mantêm vídeos, ordenação e bibliografia.
+- **186 resultados de aprendizagem** em `facodi.learning_outcomes`, correspondendo aos **três objetivos editoriais já existentes** em cada uma das 62 UCs. A tabela pública era anteriormente vazia para estes cursos. Os novos resultados são **propostas da FACODI**, não resultados homologados pela UAlg, nem avaliações formais. A origem editorial foi mantida nos metadados e corresponde à política pública de leitura de `learning_outcomes`.
+- O registo antigo `facodi-psych-openstax-psychology-2e` tinha a licença indicada como `CC BY 4.0`; foi corrigido para **`CC BY-NC-SA 4.0` segundo o aviso apresentado nas páginas do editor em 17/11/2026**.
+
+### Fontes consultadas
+
+- OpenStax, *Psychology 2e*, capítulos 1–16: <https://openstax.org/books/psychology-2e/pages/preface>. Os URLs dos 16 capítulos foram individualmente consultados no site original.
+- OpenStax, *Introduction to Anthropology*, capítulo 3: <https://openstax.org/books/introduction-anthropology/pages/3-introduction>.
+- OpenStax, *Writing Guide*, capítulo 10: <https://openstax.org/books/writing-guide/pages/10-introduction>.
+- OpenStax, *Entrepreneurship*, capítulo 1: <https://openstax.org/books/entrepreneurship/pages/1-introduction> (reutilizado do catálogo).
+- OpenStax, *Psychology 2e*, secção 16.3 sobre modalidades e terapia familiar: <https://openstax.org/books/psychology-2e/pages/16-3-treatment-modalities>.
+- Noba Project, Laney e Loftus, *Eyewitness Testimony and Memory Biases*: <https://nobaproject.com/modules/eyewitness-testimony-and-memory-biases>.
+- The Open University / OpenLearn, *Forensic Psychology*: <https://www.open.edu/openlearn/mod/oucontent/view.php?id=70526>.
+- Foram também reutilizados os recursos já publicados de `Neuroscience Online` (UTHealth), `BrainFacts` e estatística da OpenStax.
+
+**Direitos de autor:** só foram registados URLs públicos, títulos, nomes de capítulos e descrições editoriais originais. **Não foi copiado, re-hospedado nem ingerido em pipelines de IA qualquer texto integral protegido.** As páginas de *Psychology 2e* da OpenStax avisam expressamente sobre restrições à ingestão por sistemas de IA.
+
+### Critérios de curadoria e QA
+
+- Mapeamento manual de cada UC para leitura(s) com correspondência temática demonstrável, sem criar objetos por cada link repetido.
+- Identificação de `teacher_approved=false` ou equivalente; nenhum vínculo representa equivalência académica oficial.
+- Consulta transacional com `SET LOCAL ROLE anon`: **135 relações diretas**, **186 resultados de aprendizagem** e **62/62 UCs** com ambos os elementos visíveis; **15/15 sequências** com bibliografia pública. Sem novas políticas ou concessões de acesso.
+- **Vídeos:** quatro entradas do lote `facodi_lutz_science_20261116` continuam `pending` e os seus objetos em `draft`: `KU57aScQXWg`, `1CLmXdzXlhA`, `F64USbOkE14`, `dDPs-3xSlxE`. Ocorreu validação indireta do Lutz #146, mas sem confirmação direta da página do YouTube para promoção segura. Não foi feita republicação automática dessas quatro entradas.
+- Esta intervenção apenas adicionou/ajustou **dados editoriais e relações existentes**. Não foi alterado o contrato da API, o modelo relacional, a estrutura do curso, as RLS ou o frontend.
+
+### Identificadores de auditoria
+
+- `facodi.learning_objects.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
+- `facodi.learning_object_relations.metadata.curation_batch = 'facodi_psych_neuro_readings_20261117'`
+- `facodi.learning_outcomes.metadata.batch = 'facodi_psych_neuro_readings_20261117'`
+
+### Reutilização de vídeos já existentes na FACODI
+
+Uma segunda pesquisa identificou que seis vídeos divulgativos sobre Biopsicologia e Neuroimagem estavam publicados e vinculados às sequências, mas não diretamente às UCs. Foram registadas **20 novas relações públicas UC → vídeo**, distribuídas por sete vídeos existentes (seis vídeos da seleção de neurociências e o episódio **Psycholinguistics: Crash Course Linguistics #11**, ID `A5uNFKEn4_A`, já catalogado noutra área). O último foi verificado pela publicação original da CrashCourse: <https://www.youtube.com/watch?v=A5uNFKEn4_A>.
+
+O vídeo de Psicolinguística foi também integrado, **sem cópia**, nas duas sequências de cognição (`LPSI` e `MNCN`), que passaram de quatro para **cinco vídeos cada**. Foram criadas **duas novas relações** de sequência. A seleção não implica aprovação médica nem revisão integral do conteúdo audiovisual.
+
+Metadados utilizados: `curation_batch='facodi_psych_neuro_readings_20261117'`, `review_status='approved'`, `review_scope='title_and_channel_only'`, `full_video_reviewed=false`. A regra pública de relação exige a publicação prévia do vídeo. Consulta transacional com o papel `anon` confirmou as 20 novas relações UC-vídeo e as duas relações de sequência.
+
+### Seis vídeos adicionais da CrashCourse publicados
+
+Depois de verificar os títulos, o canal original, as datas disponíveis e as descrições públicas, foram acrescentados **6 vídeos da série Crash Course Psychology**, sem alojar cópias do conteúdo:
+
+| ID YouTube | Tema e episódio |
+|---|---|
+| `hFV71QPvX2I` | *Psychological Research* #2 — métodos de investigação |
+| `bSycdIx-C48` | *How We Make Memories* #13 — memória |
+| `unWnZvXJH2o` | *Sensation and Perception* #5 — perceção |
+| `8nz2dtv--ok` | *The Growth of Knowledge* #18 — desenvolvimento cognitivo |
+| `UGxGDdQnC1Y` | *Social Influence* #38 — influência social |
+| `R-sVnmmw6WY` | *Cognition – How Your Mind Can Amaze and Betray You* #15 — heurísticas e cognição |
+
+Todos os vídeos estão em `facodi.youtube_videos`, ligados aos objetos `video` publicados e registados em `facodi.external_sources`. Os metadados identificam explicitamente `full_video_reviewed=false`, `copyright_rehosting_allowed=false` e materiais educacionais complementares não certificados pela UAlg.
+
+Foram criadas **28 associações UC → vídeo** e **9 sequência → vídeo**, seguindo a semântica pública `review_status=approved` e `review_scope=title_and_channel_only`. Os vídeos foram adicionados ao fim das respetivas sequências, preservando a ordem anterior e atualizando `metadata.video_count`.
+
+**QA com `SET LOCAL ROLE anon`, 17/11/2026:**
+
+- **21** recursos externos novos, **135** links de bibliografia diretos e **186** resultados de aprendizagem, cobrindo as **62 UCs**.
+- **45/62 UCs com vídeos diretos**, num total de **106 relações UC → vídeo**.
+- **15** sequências, com **71 posições de vídeo**, nenhuma vazia e nenhuma contagem de metadados divergente.
+- **137** objetos visíveis no filtro temático `psychology`.
+- Os **4 vídeos da seleção Lutz com `status=pending` permanecem não publicados**; não foi inferida uma aprovação a partir de fontes de terceiros.
+- Os seis vídeos provêm do canal original CrashCourse, mas não foi realizada revisão integral das suas afirmações científicas. Tratam-se de recursos didáticos de apoio e não de guias clínicos.
+
+Fonte primária para cada recurso: `https://www.youtube.com/watch?v=<ID>`. Sem ingestão de legendas ou transcrições no Supabase.
+
+### Complemento de Estatística, Genética e Neurotransmissão
+
+Três recursos adicionais, também verificados no canal original **CrashCourse**, cobriram lacunas em áreas fundamentais:
+
+- `sxQaBpKfDRk` — [*What Is Statistics: Crash Course Statistics #1*](https://www.youtube.com/watch?v=sxQaBpKfDRk), 2018-01-24; como introdução a Estatística I/II e métodos de investigação.
+- `CBezq1fFUEA` — [*Heredity: Crash Course Biology #9*](https://www.youtube.com/watch?v=CBezq1fFUEA), 2012-03-26; bases de hereditariedade para Biologia e Genética.
+- `W4N-7AlzK7s` — [*The Chemical Mind: Crash Course Psychology #3*](https://www.youtube.com/watch?v=W4N-7AlzK7s), 2014-02-17; neurónios, sinapses, neurotransmissores e sistema endócrino em Biopsicologia, Neurociências Cognitivas e Neurofarmacologia.
+
+Nenhum vídeo foi copiado. Os três vídeos foram associados a **sete** UCs e a **três** sequências, como complemento introdutório. As aulas de Estatística II e métodos avançados continuam a exigir leitura e materiais de maior profundidade, já ligados às UCs.
+
+**Inventário final verificado com `SET LOCAL ROLE anon`, 17/11/2026:** 62/62 UCs com bibliografia e três resultados de aprendizagem; **21 recursos bibliográficos novos**; **135 relações UC → leitura**; **186 resultados de aprendizagem**; **9 novos vídeos CrashCourse publicados**; **35 novas relações UC → vídeo** provenientes da importação desses nove vídeos; **48/62 UCs com vídeo direto**; **113 relações UC → vídeo** no conjunto dos cursos; **15 sequências**, com **74 posições de vídeo** e nenhuma divergência em `metadata.video_count`; filtro `psychology` com **139 objetos pesquisáveis**. As **20 relações anteriores** com vídeos reutilizados já existentes também permanecem publicadas. Os 4 vídeos Lutz pendentes continuam por verificar, sem publicação automática.
+
+A contagem de vídeos representa posições editoriais numa sequência ou ligações curriculares, não cópias dos vídeos. Os materiais são links à publicação original, sem processamento de vídeo, transcrições integrais ou reivindicação de aprovação clínica.
