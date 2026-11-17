@@ -2593,6 +2593,10 @@ export type Database = {
         }
       }
       dispatch_resource_suggestion_analysis: { Args: never; Returns: number }
+      enrich_auto_published_object: {
+        Args: { p_evidence: Json; p_job_id: string; p_object: string }
+        Returns: boolean
+      }
       get_analysis_job_status: {
         Args: { p_job_id: string }
         Returns: {

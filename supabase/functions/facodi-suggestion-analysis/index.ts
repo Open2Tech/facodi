@@ -397,7 +397,11 @@ async function processJob(job: Job, dailyLimit: number, settings: PipelineSettin
       if (!await finish(job, { current_step: "deciding" })) return "lease_lost" as const;
       const { data, error } = await db.rpc("auto_publish_resource_suggestion", {
         p_job_id: job.job_id, p_lease_token: job.lease_token, p_unit_ids: unitIds, p_reason: reason,
-        p_evidence: { level: evidence.level, description: evidence.description ?? null, channel_title: evidence.author },
+        p_evidence: {
+          level: evidence.level, description: evidence.description ?? null, channel_title: evidence.author,
+          content_summary: evidence.content_summary ?? null, content_topics: evidence.content_topics ?? [],
+          content_language: evidence.content_language ?? null, content_seconds: VIDEO_SECONDS,
+        },
       });
       if (error) throw error;
       const decision = data as Decision;

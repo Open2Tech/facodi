@@ -399,6 +399,27 @@ Migrações `20261117012305_facodi_suggestion_pipeline_hardening.sql` e
   emails falhados (< 3 tentativas, últimos 2 dias); o reenvio usa a mesma
   chave de idempotência do Resend e nunca republica.
 
+### 8.3 Enriquecimento editorial (implementado)
+
+Migração `20261117074406_facodi_suggestion_editorial_enrichment.sql`.
+
+- `enrich_auto_published_object` usa a análise do vídeo (`content_summary`,
+  `content_topics`, `content_language`) para preencher a ficha pública:
+  descrição, tags (até 8 tópicos) e idioma. Corre uma vez por objeto, dentro
+  de `auto_publish_resource_suggestion`, e só em objetos publicados pela
+  pipeline com evidência `content_video`.
+- Não sobrescreve a curadoria: só substitui a descrição genérica escrita pela
+  própria pipeline, só preenche tags vazias e só preenche o idioma `und`.
+- O resumo leva a nota «Resumo gerado automaticamente por IA a partir dos
+  primeiros 5 minutos do vídeo, sem revisão integral» (ou «do vídeo completo»
+  se a duração conhecida couber na janela analisada). A proveniência fica em
+  `metadata.ai_enrichment` (`coverage`, `analysed_seconds`, `fields`, `topics`,
+  `analysis_job_id`). Não se inventam capítulos, transcrições nem licenças.
+- A migração enriqueceu retroativamente as publicações existentes a partir
+  de `analysis_jobs.result_payload.evidence`, sem recriar objetos nem relações.
+- A ficha de um vídeo deixou de mostrar os ECTS da UC no cabeçalho; os
+  créditos aparecem só no bloco da unidade curricular associada.
+
 Validação E2E em produção (contas temporárias, depois removidas):
 publicação com consenso, reutilização de vídeo legado, corrida de dois
 workers sobre o mesmo vídeo (1 objeto), correspondência parcial, ausência de
