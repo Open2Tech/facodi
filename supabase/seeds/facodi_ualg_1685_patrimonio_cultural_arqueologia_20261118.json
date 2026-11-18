@@ -1,0 +1,2224 @@
+{
+  "batch": "facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118",
+  "course": {
+    "code": "LPCA",
+    "official_id": "1685",
+    "plan": "https://www.ualg.pt/curso/1685/plano",
+    "academic_year": "2026/27",
+    "branches": [
+      "Arqueologia",
+      "Património Cultural"
+    ]
+  },
+  "verified_on": "2026-11-18",
+  "application": {
+    "status": "por aplicar",
+    "method": "Supabase MCP, fora do PR (sem ficheiros .sql no PR, como no #69 e no #72)",
+    "script_branch": "scripts/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118/supabase/seeds/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118.sql",
+    "published_playlists": 28,
+    "published_links": 28,
+    "units": 43,
+    "placements": 65,
+    "excluded_policy": "ligações de confiança baixa ficam só no manifesto (published: false)",
+    "excluded_links": [
+      {
+        "code": "16851122",
+        "playlist_id": "PLPLO3dpbsYqj0xTlJq9jL-1uZFfRGY6Iu"
+      },
+      {
+        "code": "16851012",
+        "playlist_id": "PLNFT3L-N-zBo0Z29C7k35iQuiZNEelaUF"
+      },
+      {
+        "code": "16851029",
+        "playlist_id": "PLcS8WM7ZFc-MDoHfey5b9B72v2Ka5LjSI"
+      },
+      {
+        "code": "16851030",
+        "playlist_id": "PLj2nKAhlUa9wePPHYOHH4hNwVyz_lBvAf"
+      },
+      {
+        "code": "16851114",
+        "playlist_id": "PLufl2wDdfkKuqq-cuRc5q9SW5TBKLEpts"
+      },
+      {
+        "code": "16851121",
+        "playlist_id": "PLxI8Can9yAHcsjbqvg141RE5sWQSPzg_f"
+      },
+      {
+        "code": "16851025",
+        "playlist_id": "PLqyjqev47LLBSLxs-FMf9v-arFUME7dZd"
+      }
+    ]
+  },
+  "decisions": {
+    "seminars": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+  },
+  "units": [
+    {
+      "code": "16851000",
+      "title": "Introdução à Arqueologia",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "História da arqueologia, tipos de evidência arqueológica, arqueologia de campo e de laboratório e o estudo das sociedades do passado.",
+      "topics": [
+        "História da arqueologia",
+        "Arqueologia de campo",
+        "Arqueologia no laboratório"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851000&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851005",
+      "title": "Introdução à História Cultural",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "Os conceitos de cultura e de história cultural, os legados greco-latino e judaico-cristão, as instituições de cultura e as fontes para o seu estudo.",
+      "topics": [
+        "Cultura e história cultural",
+        "Tradição cultural europeia",
+        "Fontes e bibliografia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851005&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851001",
+      "title": "Introdução à História da Arte",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "A história da arte como ciência: objeto, metodologias (formalismo, iconologia e sociologia da arte), a criação artística e as disciplinas da história da arte.",
+      "topics": [
+        "Metodologias da história da arte",
+        "Cliente, artista, obra e público",
+        "Urbanismo, arquitetura, escultura e pintura"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851001&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851003",
+      "title": "Introdução ao Património Cultural",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Conceito, tipologias e evolução do património cultural, métodos de identificação, proteção e intervenção, e o quadro legal e institucional.",
+      "topics": [
+        "Conceito e categorias de património",
+        "Da Carta de Veneza ao século XXI",
+        "Cartas internacionais e legislação nacional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851003&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851124",
+      "title": "Metodologia de Trabalho Científico",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "Organização e etapas do trabalho académico, pesquisa bibliográfica e sistemas de referenciação, e interpretação, escrita e apresentação de trabalhos.",
+      "topics": [
+        "Etapas do trabalho científico",
+        "Referenciação bibliográfica",
+        "Escrita e apresentação académicas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851124&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851006",
+      "title": "Pré-História",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 6,
+      "summary": "Da datação e dos paleoambientes às primeiras sociedades agro-pastoris: Paleolítico, Mesolítico, Neolítico e Calcolítico na Europa e no território português.",
+      "topics": [
+        "Datação e paleoambientes",
+        "Paleolítico e evolução humana",
+        "Neolítico, megalitismo e Calcolítico"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851006&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851009",
+      "title": "Arqueologia Romana",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "A arqueologia do mundo romano: cidade e urbanismo, arquitetura doméstica, equipamentos da água, mundo rural, produção, vias de comunicação, santuários e mundo funerário.",
+      "topics": [
+        "Cidade e urbanismo romanos",
+        "Villae e mundo rural",
+        "Mundo funerário romano"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851009&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851008",
+      "title": "História da Arte da Antiguidade",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "As artes e os programas edificados dos mundos grego e romano, da Acrópole de Atenas à arquitetura monumental, ao retrato e ao relevo narrativo romanos.",
+      "topics": [
+        "Arte e arquitetura gregas",
+        "Arquitetura monumental romana",
+        "Retrato e relevo narrativo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851008&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851007",
+      "title": "História da Cultura Clássica",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "Cultura e civilização gregas e romanas: o mundo homérico, a polis e a cidadania, o helenismo, a romanização e o legado clássico na cultura europeia e portuguesa.",
+      "topics": [
+        "Mundo homérico e mitos fundadores",
+        "A polis e a democracia ateniense",
+        "Roma e a receção da cultura clássica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851007&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851122",
+      "title": "Itinerários do Património",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Itinerários patrimoniais: património, território e paisagem, interpretação e mediação patrimonial, análise de casos e metodologia de conceção.",
+      "topics": [
+        "Património, território e paisagem",
+        "Interpretação e mediação patrimonial",
+        "Conceção de itinerários"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851122&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851123",
+      "title": "Materiais e Técnicas de Construção Tradicional",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 11,
+      "summary": "Os materiais da construção tradicional (pedra, terra, cerâmica, argamassas e madeira), a sua degradação e conservação, os sistemas construtivos e a construção vernácula do Algarve.",
+      "topics": [
+        "Materiais tradicionais e degradação",
+        "Sistemas e técnicas construtivas",
+        "Construção vernácula do Algarve"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851123&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851060",
+      "title": "Proto-História",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 12,
+      "summary": "Cronologia, geografia e fontes da Proto-História, e a Idade do Bronze e a Idade do Ferro na Europa, na Península Ibérica e em Portugal.",
+      "topics": [
+        "Fontes e periodização",
+        "Idade do Bronze",
+        "Idade do Ferro peninsular"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851060&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851013",
+      "title": "História da Arte Medieval",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 13,
+      "summary": "Da génese da cultura visual cristã ao tempo das grandes catedrais: arte da época de Justiniano, artes germânica, carolíngia, otoniana e peninsular, e arte europeia dos séculos XI a XIV.",
+      "topics": [
+        "Cultura visual cristã e época de Justiniano",
+        "Arte carolíngia, otoniana e peninsular",
+        "Grandes catedrais e arte italiana"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851013&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851012",
+      "title": "História da Cultura Medieval",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 14,
+      "summary": "Unidade e diversidade cultural do Ocidente medieval: a herança da Antiguidade, a cultura monástica da Europa rural e as escolas urbanas, a universidade e as cortes.",
+      "topics": [
+        "Herança cultural da Antiguidade",
+        "Cultura e religiosidade monásticas",
+        "Escolas urbanas, universidade e cortes"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851012&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851160",
+      "title": "Metodologias de Intervenção em Património Construído",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "Teorias do restauro, cartas e legislação, princípios e conceitos de intervenção no património construído e análise crítica de intervenções em Portugal.",
+      "topics": [
+        "Teorias do restauro",
+        "Princípios de intervenção e reutilização adaptativa",
+        "Intervenções no património construído em Portugal"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851160&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851027",
+      "title": "Museologia",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 16,
+      "summary": "Conceitos de museu, museologia e museografia, a história e o enquadramento legal dos museus em Portugal, as funções museológicas e a museologia social.",
+      "topics": [
+        "Museu, museologia e museografia",
+        "Museus em Portugal",
+        "Funções museológicas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851027&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851157",
+      "title": "Arqueologia Marítima e Costeira",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 17,
+      "summary": "Património cultural subaquático: tipos de sítio, métodos de prospeção, escavação e registo em meio aquático, arqueologia dos naufrágios e salvaguarda em Portugal.",
+      "topics": [
+        "Património cultural subaquático",
+        "Prospeção e escavação em meio aquático",
+        "Arqueologia dos naufrágios"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851157&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 1",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 2",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 5 - ARQ",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - ARQ",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 1",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851155",
+      "title": "Estudos de Megalitismo",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 18,
+      "summary": "Cronologias, arquiteturas e tipologias monumentais, práticas funerárias, paisagem e simbolismo do megalitismo, em Portugal e no contexto peninsular.",
+      "topics": [
+        "Arquiteturas e tipologias monumentais",
+        "Práticas funerárias e organização social",
+        "Megalitismo em Portugal"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851155&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 1",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 2",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 5 - ARQ",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - ARQ",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 1",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851156",
+      "title": "Mitologia Greco-Romana",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 19,
+      "summary": "Mito e religião no mundo greco-romano: cosmogonia e panteão, heróis e ciclos mitológicos, religião cívica e receção da mitologia na arte e no património.",
+      "topics": [
+        "Cosmogonia e panteão",
+        "Heróis e ciclos mitológicos",
+        "Receção da mitologia clássica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851156&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 1",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 2",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 5 - PC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - PC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 1",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851011",
+      "title": "Arqueologia Medieval",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 20,
+      "summary": "Conceito e métodos da arqueologia medieval: povoamento, cidade cristã e muçulmana, espaços fortificados e religiosos, mundo funerário, quotidiano e cerâmica medieval.",
+      "topics": [
+        "Povoamento e cidade medieval",
+        "Espaços fortificados e religiosos",
+        "Cerâmica medieval"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851011&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851097",
+      "title": "Arqueologia Urbana",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 21,
+      "summary": "Natureza e evolução da arqueologia urbana, a cidade como sítio arqueológico, metodologias de intervenção em contexto urbano e arqueologia da arquitetura.",
+      "topics": [
+        "A cidade como sítio arqueológico",
+        "Metodologias de intervenção urbana",
+        "Arqueologia da arquitetura"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851097&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851015",
+      "title": "História da Arte Moderna",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 22,
+      "summary": "Do Renascimento ao Rococó: a perspetiva, a pintura italiana do Quattrocento, o realismo do Norte, o classicismo, a tratadística e o Barroco em Roma, no Norte da Europa e em Espanha.",
+      "topics": [
+        "Renascimento e perspetiva",
+        "Classicismo e tratadística",
+        "Barroco"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851015&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851014",
+      "title": "História da Cultura Moderna",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 23,
+      "summary": "A cultura europeia dos séculos XV a XVIII: humanismos e Renascimento, expansão e reformas religiosas, Revolução Científica e Estado moderno, e o Iluminismo.",
+      "topics": [
+        "Humanismos e Renascimento",
+        "Revolução Científica e Estado moderno",
+        "Iluminismo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851014&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851143",
+      "title": "Arqueologia da Alimentação",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 24,
+      "summary": "Fontes e metodologias para estudar a alimentação no passado, abordagens culturais e biológicas e a alimentação dos caçadores-recolectores ao período moderno.",
+      "topics": [
+        "Fontes e metodologias",
+        "Dieta, nutrição e identidade",
+        "Alimentação ao longo da história"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851143&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 3",
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 4",
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 7 - ARQ",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 8 - ARQ",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 3",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851053",
+      "title": "Estética e Teorias da Arte",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 25,
+      "summary": "As reflexões ocidentais sobre a arte, dos pitagóricos, Platão, Aristóteles e Plotino à estética medieval, a Alberti e Leonardo, Kant, Nietzsche e a estética contemporânea.",
+      "topics": [
+        "Estética antiga",
+        "Alberti e Leonardo da Vinci",
+        "Kant, Nietzsche e estética contemporânea"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851053&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 3",
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 4",
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 7 - PC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 8 - PC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 3",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851016",
+      "title": "História da Cultura Contemporânea",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 26,
+      "summary": "Nação e nacionalismo, de Fichte e Herder ao século XX, o anticlericalismo e o ideal de Estado laico, e o património industrial.",
+      "topics": [
+        "Nação e nacionalismo",
+        "Anticlericalismo e Estado laico",
+        "Património industrial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851016&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851159",
+      "title": "História do Pensamento Historiográfico e Arqueológico",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 27,
+      "summary": "Fundamentos e correntes da história e da arqueologia, do antiquarianismo e do século XIX aos Annales, à arqueologia processual e pós-processual e às viragens epistemológicas contemporâneas.",
+      "topics": [
+        "História e arqueologia no século XIX",
+        "Annales e correntes do século XX",
+        "Arqueologia processual e pós-processual"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851159&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851032",
+      "title": "Técnicas de Análise Laboratorial: Cerâmicas",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 28,
+      "summary": "A cadeia operatória cerâmica (matérias-primas, fabrico, tipologia formal e decorativa), sistemas de classificação, caracterização petrográfica e química e etnoarqueologia cerâmica.",
+      "topics": [
+        "Cadeia operatória cerâmica",
+        "Tipologias e classificação",
+        "Caracterização petrográfica e química"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851032&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851030",
+      "title": "Técnicas de Análise Laboratorial: Faunas",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 29,
+      "summary": "Zooarqueologia: identificação, quantificação, tafonomia e biometria de restos de vertebrados e invertebrados, tratamento dos vestígios e estudo de uma coleção arqueofaunística.",
+      "topics": [
+        "Zooarqueologia",
+        "Identificação e quantificação de restos",
+        "Tafonomia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851030&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851121",
+      "title": "História da Arte Portuguesa",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 30,
+      "summary": "A arte em Portugal da arte moçárabe ao românico, gótico, manuelino, Renascimento, maneirismo, barroco e era pombalina, até à pintura e arquitetura dos séculos XIX e XX.",
+      "topics": [
+        "Românico e gótico em Portugal",
+        "Manuelino e Renascimento",
+        "Barroco e era pombalina"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851121&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851024",
+      "title": "Representação Gráfica do Património Construído",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 31,
+      "summary": "O desenho como ferramenta de inventário, análise e intervenção no património: conceitos de representação, sistemas de vistas e perspetivas, e levantamento de edifícios e conjuntos urbanos.",
+      "topics": [
+        "Desenho e documentação gráfica",
+        "Sistemas de vistas e perspetivas",
+        "Desenho de levantamento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851024&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851070",
+      "title": "Introdução ao Estudo das Imagens Medievais",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 32,
+      "summary": "Semiótica, iconografia e arqueologia da imagem no Ocidente medieval: a Virgem e os santos, a morte, as classes sociais e o bestiário.",
+      "topics": [
+        "Semiótica e iconografia",
+        "A imagem no Ocidente medieval",
+        "O bestiário"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851070&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 5 - PC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - PC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 5 - PC",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851114",
+      "title": "Arqueociências",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 33,
+      "summary": "Métodos de datação e ciências aplicadas à arqueologia: geoarqueologia, arqueobotânica, zooarqueologia e bioquímica de paleodietas, mobilidade e paleogenética.",
+      "topics": [
+        "Métodos de datação",
+        "Geoarqueologia e arqueobotânica",
+        "Paleodietas e paleogenética"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851114&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851029",
+      "title": "Gestão do Património Cultural",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 34,
+      "summary": "Conceito e níveis da gestão do património, da gestão conservacionista à participativa, e a gestão do património arquitetónico e arqueológico, da inventariação à interpretação.",
+      "topics": [
+        "Gestão integrada e participativa",
+        "Património arquitetónico",
+        "Património arqueológico"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851029&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851018",
+      "title": "História do Urbanismo",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 35,
+      "summary": "A cidade e o urbanismo da Antiguidade oriental e clássica à cidade islâmica, medieval, renascentista e barroca, ao urbanismo da Expansão portuguesa, à cidade industrial e à contemporânea.",
+      "topics": [
+        "Cidade antiga e medieval",
+        "Urbanismo da Expansão portuguesa",
+        "Urbanismo modernista e cidade contemporânea"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851018&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851031",
+      "title": "Técnicas de Análise Laboratorial: Líticos",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 36,
+      "summary": "A cadeia operatória lítica (matérias-primas, núcleos, suportes e utensílios), tipologias, caracterização petrográfica e geoquímica, traceologia e etnoarqueologia.",
+      "topics": [
+        "Cadeia operatória lítica",
+        "Tipologia e classificação",
+        "Petrografia e traceologia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851031&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851144",
+      "title": "Sustentabilidade e Colapso de Sociedades do Passado",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 37,
+      "summary": "Arqueologia ambiental das relações entre sociedade e ambiente, riscos ambientais e societários e casos de colapso, do declínio do Neolítico europeu à Ilha da Páscoa.",
+      "topics": [
+        "Arqueologia ambiental",
+        "Riscos ambientais e societários",
+        "Casos de colapso"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851144&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 7 - ARQ",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 8 - ARQ",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 7 - ARQ",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851025",
+      "title": "História da Arte Contemporânea",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 38,
+      "summary": "Da transição do Barroco às vanguardas do início do século XX: Neoclassicismo e Romantismo, Realismo, Impressionismo, Simbolismo e Arte Nova, Expressionismo, Fauvismo e Cubismo.",
+      "topics": [
+        "Neoclassicismo e Romantismo",
+        "Realismo e Impressionismo",
+        "Vanguardas do início do século XX"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851025&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851125",
+      "title": "História da Cultura Portuguesa",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 39,
+      "summary": "A cultura portuguesa da Geração de 70 ao Estado Novo: positivismo e ideologia republicana, a questão social e as correntes socialistas e libertárias, o Integralismo Lusitano e a tradição católica.",
+      "topics": [
+        "Geração de 70",
+        "Positivismo e República",
+        "Questão social e reação política"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851125&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851158",
+      "title": "O Género na Arte e na Cultura Visual do Ocidente",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 40,
+      "summary": "O género como ferramenta de análise histórica e da história da arte: identidade e representação na cultura visual medieval e as mulheres na produção e promoção artística.",
+      "topics": [
+        "Estudos de género",
+        "Género na cultura visual medieval",
+        "Mulheres na produção artística"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=16851158&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 7 - PC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        },
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 8 - PC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 7 - PC",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "16851134",
+      "title": "Seminário de Investigação (área ARQ)",
+      "ects": 10,
+      "year": 3,
+      "semester": null,
+      "position": 41,
+      "summary": "Seminário anual de investigação na área ARQ do curso; o tema é definido com o orientador e os conteúdos variam com o trabalho.",
+      "topics": [
+        "Escolha do tema",
+        "Trabalho de investigação"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - ARQ",
+          "year": 3,
+          "semester": null,
+          "specialization": "Arqueologia"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 6 - ARQ",
+      "offered_both_terms": false,
+      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+    },
+    {
+      "code": "16851148",
+      "title": "Seminário de Investigação (área H)",
+      "ects": 10,
+      "year": 3,
+      "semester": null,
+      "position": 42,
+      "summary": "Seminário anual de investigação na área H do curso; o tema é definido com o orientador e os conteúdos variam com o trabalho.",
+      "topics": [
+        "Escolha do tema",
+        "Trabalho de investigação"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - PC",
+          "year": 3,
+          "semester": null,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 6 - PC",
+      "offered_both_terms": false,
+      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+    },
+    {
+      "code": "16851154",
+      "title": "Seminário de Investigação (área HA)",
+      "ects": 10,
+      "year": 3,
+      "semester": null,
+      "position": 43,
+      "summary": "Seminário anual de investigação na área HA do curso; o tema é definido com o orientador e os conteúdos variam com o trabalho.",
+      "topics": [
+        "Escolha do tema",
+        "Trabalho de investigação"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "OPÇÃO 6 - PC",
+          "year": 3,
+          "semester": null,
+          "specialization": "Património Cultural"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "OPÇÃO 6 - PC",
+      "offered_both_terms": false,
+      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLXHTI9NsgqAib9Yr4WwSMxFonos5LoCwN",
+      "url": "https://www.youtube.com/playlist?list=PLXHTI9NsgqAib9Yr4WwSMxFonos5LoCwN",
+      "title": "Curso de Extensão \"Introdução à Arqueologia no Alto Sertão da Bahia\"",
+      "channel": "Museu do Alto Sertão da Bahia MASB",
+      "channel_url": "https://www.youtube.com/@museudoaltosertaodabahiama4040",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Curso de extensão \"Introdução à Arqueologia\" (Museu do Alto Sertão da Bahia): definição e classificação de sítios, pesquisa de campo, análise de materiais arqueológicos — pontos 2–4.",
+      "tags": [
+        "Introdução à Arqueologia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8dPuuaLjXtMg4YXg6jCIDMbHUDaHDXXZ",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtMg4YXg6jCIDMbHUDaHDXXZ",
+      "title": "Art History",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 23,
+      "language": "en",
+      "description": "CrashCourse Art History: porque estudamos arte, como olhar para uma obra, história dos museus, artista e público — objeto, métodos e a relação cliente/artista/obra/público.",
+      "tags": [
+        "Introdução à História da Arte"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLEKef72IgtQn1z4WUDT7NgNFzu2H3OCc4",
+      "url": "https://www.youtube.com/playlist?list=PLEKef72IgtQn1z4WUDT7NgNFzu2H3OCc4",
+      "title": "CORTES Curso Apreciando a História da Arte",
+      "channel": "Apreciando Arte",
+      "channel_url": "https://www.youtube.com/@ApreciandoArte",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Cortes do curso \"Apreciando a História da Arte\" (Apreciando Arte): conceitos básicos de arte e leitura de obras.",
+      "tags": [
+        "Introdução à História da Arte"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLPLO3dpbsYqg_9Ja-U8iQ9XoYfr9sybx-",
+      "url": "https://www.youtube.com/playlist?list=PLPLO3dpbsYqg_9Ja-U8iQ9XoYfr9sybx-",
+      "title": "PATRIMÓNIO CULTURAL 360®",
+      "channel": "Património Cultural, I.P.",
+      "channel_url": "https://www.youtube.com/@PatrimonioCulturalIP",
+      "videos": 23,
+      "language": "pt-PT",
+      "description": "\"Património Cultural 360\" (Património Cultural, I.P., organismo do Estado português): monumentos e bens classificados em Portugal — ponto 2.3 (a realidade portuguesa) e 3.",
+      "tags": [
+        "Introdução ao Património Cultural"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLfl3sC5B_gkJ4uxE2oXcvQilszL_DQF0W",
+      "url": "https://www.youtube.com/playlist?list=PLfl3sC5B_gkJ4uxE2oXcvQilszL_DQF0W",
+      "title": "Património Cultural",
+      "channel": "Citaliarestauro",
+      "channel_url": "https://www.youtube.com/@Citaliarestaurocom",
+      "videos": 33,
+      "language": "pt-PT",
+      "description": "Património Cultural (Citaliarestauro, conservadora-restauradora): o que é património cultural, património como recurso turístico e educativo, estilos arquitetónicos — ponto 1.",
+      "tags": [
+        "Introdução ao Património Cultural"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "title": "Ciclo Básico | Projetos e Métodos para a Produção do Conhecimento",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "\"Projetos e Métodos para a Produção do Conhecimento\" (Univesp): etapas de um trabalho científico, pesquisa bibliográfica, escrita académica — módulo 1.",
+      "tags": [
+        "Metodologia de Trabalho Científico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLAudUnJeNg4vRpJ-j54P41kEmJLpKf0CY",
+      "url": "https://www.youtube.com/playlist?list=PLAudUnJeNg4vRpJ-j54P41kEmJLpKf0CY",
+      "title": "Série: Evolução Humana",
+      "channel": "Canal USP",
+      "channel_url": "https://www.youtube.com/@CanalUSP",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Série Evolução Humana (Canal USP, Laboratório de Estudos Evolutivos Humanos): escala geológica, datação, fósseis, primatas e hominíneos — pontos 1–3.",
+      "tags": [
+        "Pré-História"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLAudUnJeNg4sUpVQaygeymsa8fVsZjkCb",
+      "url": "https://www.youtube.com/playlist?list=PLAudUnJeNg4sUpVQaygeymsa8fVsZjkCb",
+      "title": "A Saga da Humanidade, por Walter Neves | Aulas USP",
+      "channel": "Canal USP",
+      "channel_url": "https://www.youtube.com/@CanalUSP",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "\"A Saga da Humanidade\" (Walter Neves, USP): evolução humana, neandertais e humanos modernos, dispersão — pontos 3–4.",
+      "tags": [
+        "Pré-História"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLufl2wDdfkKvl1VJnDNesAGJsTGD7-xa4",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKvl1VJnDNesAGJsTGD7-xa4",
+      "title": "Ossonoba, Faro Romana",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 15,
+      "language": "pt-PT",
+      "description": "\"Ossonoba, Faro Romana\" (ERA Arqueologia): escavações e resultados sobre a cidade romana de Faro — pontos 3–4 com caso algarvio.",
+      "tags": [
+        "Arqueologia Romana"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLqyjqev47LLCtBITJVqaU1uhnldZmPW32",
+      "url": "https://www.youtube.com/playlist?list=PLqyjqev47LLCtBITJVqaU1uhnldZmPW32",
+      "title": "Curso Roma Antiga 1.0",
+      "channel": "Arte e Culturas - Por Marcelo Albuquerque",
+      "channel_url": "https://www.youtube.com/@arteculturas",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Curso Roma Antiga 1.0 (Arte e Culturas, Marcelo Albuquerque): cidades romanas, domus, teatros e anfiteatros, aquedutos, mausoléus — pontos 3–5.",
+      "tags": [
+        "Arqueologia Romana"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL26A5D7AA0F7CE7E7",
+      "url": "https://www.youtube.com/playlist?list=PL26A5D7AA0F7CE7E7",
+      "title": "- 400 C.E.: Ancient Cultures",
+      "channel": "Smarthistory",
+      "channel_url": "https://www.youtube.com/@smarthistory-art-history",
+      "videos": 142,
+      "language": "en",
+      "description": "Smarthistory \"Ancient Cultures\" (até 400 d.C.): Acrópole e Erecteion, escultura grega, arte e arquitetura romanas, retrato e relevo — programa completo.",
+      "tags": [
+        "História da Arte da Antiguidade"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdO8opggkzNOPSih2sJC66y",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdO8opggkzNOPSih2sJC66y",
+      "title": "História da arte II - Aula 2 - Roma antiga: realismo e di?",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "História da Arte II, aula 2 (Univesp/Unesp): Roma antiga, realismo e diálogo com a Grécia — parte romana do programa.",
+      "tags": [
+        "História da Arte da Antiguidade"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL43A07E8A4D9A36E7",
+      "url": "https://www.youtube.com/playlist?list=PL43A07E8A4D9A36E7",
+      "title": "Introdução à História da Grécia Antiga",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Introdução à História da Grécia Antiga (curso de Donald Kagan, Yale, legendado/difundido pela Univesp): mundo homérico, pólis, democracia ateniense, helenismo — pontos 1–4.",
+      "tags": [
+        "História da Cultura Clássica"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLPLO3dpbsYqj0xTlJq9jL-1uZFfRGY6Iu",
+      "url": "https://www.youtube.com/playlist?list=PLPLO3dpbsYqj0xTlJq9jL-1uZFfRGY6Iu",
+      "title": "PATRIMÓNIO CULTURAL 360®  - Reportagem RTP",
+      "channel": "Património Cultural, I.P.",
+      "channel_url": "https://www.youtube.com/@PatrimonioCulturalIP",
+      "videos": 14,
+      "language": "pt-PT",
+      "description": "\"Património Cultural 360 — Reportagem RTP\" (Património Cultural, I.P.): visitas e leituras de sítios patrimoniais portugueses — casos de estudo (ponto 3).",
+      "tags": [
+        "Itinerários do Património"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLufl2wDdfkKuyPy-klfbXkuOyCEOen0mY",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKuyPy-klfbXkuOyCEOen0mY",
+      "title": "Castros da Idade do Ferro",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 19,
+      "language": "pt-PT",
+      "description": "\"Castros da Idade do Ferro\" (ERA Arqueologia): castros do Barroso, prospeção geofísica, mineração e ocupação romana — ponto 4 (Idade do Ferro peninsular).",
+      "tags": [
+        "Proto-História"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLugP0T-YRCWLydpMe7ICAZOs4BiNfzO7x",
+      "url": "https://www.youtube.com/playlist?list=PLugP0T-YRCWLydpMe7ICAZOs4BiNfzO7x",
+      "title": "Byzantine art",
+      "channel": "Smarthistory",
+      "channel_url": "https://www.youtube.com/@smarthistory-art-history",
+      "videos": 17,
+      "language": "en",
+      "description": "Smarthistory \"Byzantine art\": classicismo e cristianismo, mosaicos de Ravena (San Vitale, Sant'Apollinare), Chora — ponto 1.",
+      "tags": [
+        "História da Arte Medieval"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHeKqPdSQhMdNsAg1ch6MtgM",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeKqPdSQhMdNsAg1ch6MtgM",
+      "title": "História da arte II - Aula 5 - Arte bizantina: espirituali",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "História da Arte II, aula 5 (Univesp/Unesp): arte bizantina, espiritualidade e poder — ponto 1.",
+      "tags": [
+        "História da Arte Medieval"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLNFT3L-N-zBo0Z29C7k35iQuiZNEelaUF",
+      "url": "https://www.youtube.com/playlist?list=PLNFT3L-N-zBo0Z29C7k35iQuiZNEelaUF",
+      "title": "Cultura",
+      "channel": "História Medieval UFSC",
+      "channel_url": "https://www.youtube.com/@historiamedievalufsc9067",
+      "videos": 26,
+      "language": "pt-BR",
+      "description": "\"Cultura\" (História Medieval UFSC): arquitetura, catedrais, universidades medievais, vida quotidiana — pontos 2–3.",
+      "tags": [
+        "História da Cultura Medieval"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLfl3sC5B_gkJ8x6WGBy--eYgsbDFFosPh",
+      "url": "https://www.youtube.com/playlist?list=PLfl3sC5B_gkJ8x6WGBy--eYgsbDFFosPh",
+      "title": "Conservação e Restauro | Museologia",
+      "channel": "Citaliarestauro",
+      "channel_url": "https://www.youtube.com/@Citaliarestaurocom",
+      "videos": 136,
+      "language": "pt-PT",
+      "description": "Conservação e Restauro / Museologia (Citaliarestauro): critérios de intervenção, métodos de análise, tratamento de suportes, remoção de argamassas de azulejos — pontos 1 e 3.",
+      "tags": [
+        "Metodologias de Intervenção em Património Construído"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLDDS96ilPoJOdTrrjuWJs5KoDU4Rxa3NG",
+      "url": "https://www.youtube.com/playlist?list=PLDDS96ilPoJOdTrrjuWJs5KoDU4Rxa3NG",
+      "title": "50 ANOS DEPOIS. E AGORA? Ciclo de debates online",
+      "channel": "ICOM Portugal",
+      "channel_url": "https://www.youtube.com/@ICOM_Portugal",
+      "videos": 6,
+      "language": "pt-PT",
+      "description": "Ciclo de debates \"50 anos depois\" (ICOM Portugal): Lei-Quadro dos Museus Portugueses, redes de museus, profissionais, ética e deontologia — pontos II.d–II.e e III.",
+      "tags": [
+        "Museologia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLuIPKf01BBSKbMglnAjC_rf4rp_USgc1B",
+      "url": "https://www.youtube.com/playlist?list=PLuIPKf01BBSKbMglnAjC_rf4rp_USgc1B",
+      "title": "3º Encontro Nacional de Museus com Coleções de Arqueologia",
+      "channel": "Museu Nacional Arqueologia",
+      "channel_url": "https://www.youtube.com/@museunacionalarqueologia1893",
+      "videos": 16,
+      "language": "pt-PT",
+      "description": "3.º Encontro Nacional de Museus com Coleções de Arqueologia (Museu Nacional de Arqueologia): panorama dos museus e centros de interpretação de arqueologia em Portugal.",
+      "tags": [
+        "Museologia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLufl2wDdfkKtimiPPCWgtvge1dqQmGq3D",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKtimiPPCWgtvge1dqQmGq3D",
+      "title": "Necrópole dos Lagares (Mouraria)",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 13,
+      "language": "pt-PT",
+      "description": "\"Necrópole dos Lagares (Mouraria)\" (ERA Arqueologia): cemitério medieval islâmico e judaico de Lisboa, cronologia, joias — pontos 4, 6 e 7.",
+      "tags": [
+        "Arqueologia Medieval"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLBDftrXWNJKbyQDrrdSCszMCH4d8YI5yE",
+      "url": "https://www.youtube.com/playlist?list=PLBDftrXWNJKbyQDrrdSCszMCH4d8YI5yE",
+      "title": "Sessões Medievais",
+      "channel": "Gabinete de Estudos Olisiponenses",
+      "channel_url": "https://www.youtube.com/@gabinetedeestudosolisiponenses",
+      "videos": 43,
+      "language": "pt-PT",
+      "description": "\"Sessões Medievais\" (Gabinete de Estudos Olisiponenses): Lisboa medieval e quinhentista — arqueologia urbana, planta da cidade, dinâmicas urbanas — pontos 3–4.",
+      "tags": [
+        "Arqueologia Medieval"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLufl2wDdfkKtz7Sftd_VyBO1OSbX86WnR",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKtz7Sftd_VyBO1OSbX86WnR",
+      "title": "Lisboa Romana",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 32,
+      "language": "pt-PT",
+      "description": "\"Lisboa Romana\" (ERA Arqueologia): intervenções arqueológicas em contexto urbano em Lisboa — casos de estudo (ponto 8) e metodologia de acompanhamento e escavação (ponto 5).",
+      "tags": [
+        "Arqueologia Urbana"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLAAEFE618A27E29D2",
+      "url": "https://www.youtube.com/playlist?list=PLAAEFE618A27E29D2",
+      "title": "1400-1500: Renaissance in Italy and the North",
+      "channel": "Smarthistory",
+      "channel_url": "https://www.youtube.com/@smarthistory-art-history",
+      "videos": 115,
+      "language": "en",
+      "description": "Smarthistory \"1400–1500: Renaissance in Italy and the North\": perspetiva, pintores do Quattrocento, realismo flamengo — primeira metade do programa.",
+      "tags": [
+        "História da Arte Moderna"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLaFNCarPxuvA6luKwYCld6Uj_qdB11ISw",
+      "url": "https://www.youtube.com/playlist?list=PLaFNCarPxuvA6luKwYCld6Uj_qdB11ISw",
+      "title": "História Moderna",
+      "channel": "Douglas Mota Xavier de Lima",
+      "channel_url": "https://www.youtube.com/@gagnomota",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "História Moderna (Douglas Mota Xavier de Lima): Renascimento e humanismo, exploração atlântica, relações internacionais na Idade Moderna — pontos I–II.",
+      "tags": [
+        "História da Cultura Moderna"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8dPuuaLjXtMsMTfmRomkVQG8AqrAmJFX",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtMsMTfmRomkVQG8AqrAmJFX",
+      "title": "European History",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 51,
+      "language": "en",
+      "description": "CrashCourse European History: Renascimento, reformas religiosas, revolução científica, absolutismo — pontos II–III.",
+      "tags": [
+        "História da Cultura Moderna"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL1O0tZSeRDB-6I3tNJnT_ul7E4HxmMaIv",
+      "url": "https://www.youtube.com/playlist?list=PL1O0tZSeRDB-6I3tNJnT_ul7E4HxmMaIv",
+      "title": "História Contemporânea - Graduação em História",
+      "channel": "Prof. Daniel Chaves - UNIFAP",
+      "channel_url": "https://www.youtube.com/@ProfDanielChavesUNIFAP",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "História Contemporânea (Prof. Daniel Chaves, UNIFAP — disciplina de licenciatura): traços da contemporaneidade, revoluções, século XIX — ponto 1.",
+      "tags": [
+        "História da Cultura Contemporânea"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL_RU3V4VaE9Z2Tac-i4YlCKRJspsXlbRv",
+      "url": "https://www.youtube.com/playlist?list=PL_RU3V4VaE9Z2Tac-i4YlCKRJspsXlbRv",
+      "title": "Teorias da História [Curso completo - 11 aulas]",
+      "channel": "Prof. Francisco José Alves de Aquino",
+      "channel_url": "https://www.youtube.com/@prof.franciscojosealves6258",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Teorias da História (Prof. Francisco José Alves de Aquino): historiografia do século XX, Febvre, Collingwood, Elias, Thompson — Annales e grandes correntes do século XX.",
+      "tags": [
+        "História do Pensamento Historiográfico e Arqueológico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLcS8WM7ZFc-MDoHfey5b9B72v2Ka5LjSI",
+      "url": "https://www.youtube.com/playlist?list=PLcS8WM7ZFc-MDoHfey5b9B72v2Ka5LjSI",
+      "title": "Encontro «Arqueologia em Portugal - recuperar o passado em 2015» - Museu Nacional de Arqueologia 21/05/2016",
+      "channel": "Património Cultural",
+      "channel_url": "https://www.youtube.com/@patrimoniocultural4055",
+      "videos": 18,
+      "language": "pt-PT",
+      "description": "Encontro \"Arqueologia em Portugal: recuperar o passado em 2015\" (Património Cultural / DGPC): gestão do património arqueológico em Portugal.",
+      "tags": [
+        "Gestão do Património Cultural"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLj2nKAhlUa9wePPHYOHH4hNwVyz_lBvAf",
+      "url": "https://www.youtube.com/playlist?list=PLj2nKAhlUa9wePPHYOHH4hNwVyz_lBvAf",
+      "title": "COMUNIARQ SCIENCE VIDEOS 2023",
+      "channel": "UNIARQ FLUL",
+      "channel_url": "https://www.youtube.com/@UNIARQFLUL",
+      "videos": 44,
+      "language": "pt-PT",
+      "description": "COMUNIARQ Science Videos 2023 (UNIARQ, Universidade de Lisboa): inclui a série \"Laboratório de Zooarqueologia\" 1/5–5/5 (identificação, quantificação, tafonomia).",
+      "tags": [
+        "Técnicas de Análise Laboratorial: Faunas"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLufl2wDdfkKtpS02ufI3FsHMGgsojh6k_",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKtpS02ufI3FsHMGgsojh6k_",
+      "title": "Geofísica e Deteção Remota",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 24,
+      "language": "pt-PT",
+      "description": "\"Geofísica e Deteção Remota\" (ERA Arqueologia): prospeção geofísica e deteção remota aplicadas a sítios portugueses — ponto 2 (geoarqueologia).",
+      "tags": [
+        "Arqueociências"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLufl2wDdfkKuqq-cuRc5q9SW5TBKLEpts",
+      "url": "https://www.youtube.com/playlist?list=PLufl2wDdfkKuqq-cuRc5q9SW5TBKLEpts",
+      "title": "Antropologia Biológica",
+      "channel": "ERA Arqueologia",
+      "channel_url": "https://www.youtube.com/@eraarqueologia1997",
+      "videos": 40,
+      "language": "pt-PT",
+      "description": "\"Antropologia Biológica\" (ERA Arqueologia): estudo de restos humanos em intervenções arqueológicas — ponto 5 (paleodietas, mobilidade).",
+      "tags": [
+        "Arqueociências"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLxI8Can9yAHcsjbqvg141RE5sWQSPzg_f",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcsjbqvg141RE5sWQSPzg_f",
+      "title": "A História da Arte entre Brasil e Portugal",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "\"A História da Arte entre Brasil e Portugal\" (ciclo de estudos avançados Unicamp, difundido pela Univesp): relações artísticas luso-brasileiras.",
+      "tags": [
+        "História da Arte Portuguesa"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLqyjqev47LLBSLxs-FMf9v-arFUME7dZd",
+      "url": "https://www.youtube.com/playlist?list=PLqyjqev47LLBSLxs-FMf9v-arFUME7dZd",
+      "title": "História da Arte geral - videos abertos",
+      "channel": "Arte e Culturas - Por Marcelo Albuquerque",
+      "channel_url": "https://www.youtube.com/@arteculturas",
+      "videos": 77,
+      "language": "pt-BR",
+      "description": "\"História da Arte geral — vídeos abertos\" (Arte e Culturas, Marcelo Albuquerque): inclui Neoclassicismo, Romantismo, Realismo, Impressionismo e vanguardas — pontos 2–5.",
+      "tags": [
+        "História da Arte Contemporânea"
+      ],
+      "published": false
+    }
+  ],
+  "links": [
+    {
+      "code": "16851000",
+      "playlist_id": "PLXHTI9NsgqAib9Yr4WwSMxFonos5LoCwN",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Curso de extensão \"Introdução à Arqueologia\" (Museu do Alto Sertão da Bahia): definição e classificação de sítios, pesquisa de campo, análise de materiais arqueológicos — pontos 2–4.",
+      "published": true
+    },
+    {
+      "code": "16851001",
+      "playlist_id": "PL8dPuuaLjXtMg4YXg6jCIDMbHUDaHDXXZ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "CrashCourse Art History: porque estudamos arte, como olhar para uma obra, história dos museus, artista e público — objeto, métodos e a relação cliente/artista/obra/público.",
+      "published": true
+    },
+    {
+      "code": "16851001",
+      "playlist_id": "PLEKef72IgtQn1z4WUDT7NgNFzu2H3OCc4",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Cortes do curso \"Apreciando a História da Arte\" (Apreciando Arte): conceitos básicos de arte e leitura de obras.",
+      "published": true
+    },
+    {
+      "code": "16851003",
+      "playlist_id": "PLPLO3dpbsYqg_9Ja-U8iQ9XoYfr9sybx-",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Património Cultural 360\" (Património Cultural, I.P., organismo do Estado português): monumentos e bens classificados em Portugal — ponto 2.3 (a realidade portuguesa) e 3.",
+      "published": true
+    },
+    {
+      "code": "16851003",
+      "playlist_id": "PLfl3sC5B_gkJ4uxE2oXcvQilszL_DQF0W",
+      "ord": 2,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "Património Cultural (Citaliarestauro, conservadora-restauradora): o que é património cultural, património como recurso turístico e educativo, estilos arquitetónicos — ponto 1.",
+      "published": true
+    },
+    {
+      "code": "16851124",
+      "playlist_id": "PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "\"Projetos e Métodos para a Produção do Conhecimento\" (Univesp): etapas de um trabalho científico, pesquisa bibliográfica, escrita académica — módulo 1.",
+      "published": true
+    },
+    {
+      "code": "16851006",
+      "playlist_id": "PLAudUnJeNg4vRpJ-j54P41kEmJLpKf0CY",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Série Evolução Humana (Canal USP, Laboratório de Estudos Evolutivos Humanos): escala geológica, datação, fósseis, primatas e hominíneos — pontos 1–3.",
+      "published": true
+    },
+    {
+      "code": "16851006",
+      "playlist_id": "PLAudUnJeNg4sUpVQaygeymsa8fVsZjkCb",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "\"A Saga da Humanidade\" (Walter Neves, USP): evolução humana, neandertais e humanos modernos, dispersão — pontos 3–4.",
+      "published": true
+    },
+    {
+      "code": "16851009",
+      "playlist_id": "PLufl2wDdfkKvl1VJnDNesAGJsTGD7-xa4",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Ossonoba, Faro Romana\" (ERA Arqueologia): escavações e resultados sobre a cidade romana de Faro — pontos 3–4 com caso algarvio.",
+      "published": true
+    },
+    {
+      "code": "16851009",
+      "playlist_id": "PLqyjqev47LLCtBITJVqaU1uhnldZmPW32",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Curso Roma Antiga 1.0 (Arte e Culturas, Marcelo Albuquerque): cidades romanas, domus, teatros e anfiteatros, aquedutos, mausoléus — pontos 3–5.",
+      "published": true
+    },
+    {
+      "code": "16851008",
+      "playlist_id": "PL26A5D7AA0F7CE7E7",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Smarthistory \"Ancient Cultures\" (até 400 d.C.): Acrópole e Erecteion, escultura grega, arte e arquitetura romanas, retrato e relevo — programa completo.",
+      "published": true
+    },
+    {
+      "code": "16851008",
+      "playlist_id": "PLxI8Can9yAHdO8opggkzNOPSih2sJC66y",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "História da Arte II, aula 2 (Univesp/Unesp): Roma antiga, realismo e diálogo com a Grécia — parte romana do programa.",
+      "published": true
+    },
+    {
+      "code": "16851007",
+      "playlist_id": "PL43A07E8A4D9A36E7",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Introdução à História da Grécia Antiga (curso de Donald Kagan, Yale, legendado/difundido pela Univesp): mundo homérico, pólis, democracia ateniense, helenismo — pontos 1–4.",
+      "published": true
+    },
+    {
+      "code": "16851122",
+      "playlist_id": "PLPLO3dpbsYqj0xTlJq9jL-1uZFfRGY6Iu",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Património Cultural 360 — Reportagem RTP\" (Património Cultural, I.P.): visitas e leituras de sítios patrimoniais portugueses — casos de estudo (ponto 3).",
+      "published": false
+    },
+    {
+      "code": "16851060",
+      "playlist_id": "PLufl2wDdfkKuyPy-klfbXkuOyCEOen0mY",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Castros da Idade do Ferro\" (ERA Arqueologia): castros do Barroso, prospeção geofísica, mineração e ocupação romana — ponto 4 (Idade do Ferro peninsular).",
+      "published": true
+    },
+    {
+      "code": "16851013",
+      "playlist_id": "PLugP0T-YRCWLydpMe7ICAZOs4BiNfzO7x",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Smarthistory \"Byzantine art\": classicismo e cristianismo, mosaicos de Ravena (San Vitale, Sant'Apollinare), Chora — ponto 1.",
+      "published": true
+    },
+    {
+      "code": "16851013",
+      "playlist_id": "PLxI8Can9yAHeKqPdSQhMdNsAg1ch6MtgM",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "História da Arte II, aula 5 (Univesp/Unesp): arte bizantina, espiritualidade e poder — ponto 1.",
+      "published": true
+    },
+    {
+      "code": "16851012",
+      "playlist_id": "PLNFT3L-N-zBo0Z29C7k35iQuiZNEelaUF",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Cultura\" (História Medieval UFSC): arquitetura, catedrais, universidades medievais, vida quotidiana — pontos 2–3.",
+      "published": false
+    },
+    {
+      "code": "16851160",
+      "playlist_id": "PLfl3sC5B_gkJ8x6WGBy--eYgsbDFFosPh",
+      "ord": 1,
+      "confidence": "média",
+      "level": "formação profissional / divulgação",
+      "match": "Conservação e Restauro / Museologia (Citaliarestauro): critérios de intervenção, métodos de análise, tratamento de suportes, remoção de argamassas de azulejos — pontos 1 e 3.",
+      "published": true
+    },
+    {
+      "code": "16851027",
+      "playlist_id": "PLDDS96ilPoJOdTrrjuWJs5KoDU4Rxa3NG",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Ciclo de debates \"50 anos depois\" (ICOM Portugal): Lei-Quadro dos Museus Portugueses, redes de museus, profissionais, ética e deontologia — pontos II.d–II.e e III.",
+      "published": true
+    },
+    {
+      "code": "16851027",
+      "playlist_id": "PLuIPKf01BBSKbMglnAjC_rf4rp_USgc1B",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "3.º Encontro Nacional de Museus com Coleções de Arqueologia (Museu Nacional de Arqueologia): panorama dos museus e centros de interpretação de arqueologia em Portugal.",
+      "published": true
+    },
+    {
+      "code": "16851011",
+      "playlist_id": "PLufl2wDdfkKtimiPPCWgtvge1dqQmGq3D",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Necrópole dos Lagares (Mouraria)\" (ERA Arqueologia): cemitério medieval islâmico e judaico de Lisboa, cronologia, joias — pontos 4, 6 e 7.",
+      "published": true
+    },
+    {
+      "code": "16851011",
+      "playlist_id": "PLBDftrXWNJKbyQDrrdSCszMCH4d8YI5yE",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "\"Sessões Medievais\" (Gabinete de Estudos Olisiponenses): Lisboa medieval e quinhentista — arqueologia urbana, planta da cidade, dinâmicas urbanas — pontos 3–4.",
+      "published": true
+    },
+    {
+      "code": "16851097",
+      "playlist_id": "PLufl2wDdfkKtz7Sftd_VyBO1OSbX86WnR",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Lisboa Romana\" (ERA Arqueologia): intervenções arqueológicas em contexto urbano em Lisboa — casos de estudo (ponto 8) e metodologia de acompanhamento e escavação (ponto 5).",
+      "published": true
+    },
+    {
+      "code": "16851015",
+      "playlist_id": "PLAAEFE618A27E29D2",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Smarthistory \"1400–1500: Renaissance in Italy and the North\": perspetiva, pintores do Quattrocento, realismo flamengo — primeira metade do programa.",
+      "published": true
+    },
+    {
+      "code": "16851014",
+      "playlist_id": "PLaFNCarPxuvA6luKwYCld6Uj_qdB11ISw",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "História Moderna (Douglas Mota Xavier de Lima): Renascimento e humanismo, exploração atlântica, relações internacionais na Idade Moderna — pontos I–II.",
+      "published": true
+    },
+    {
+      "code": "16851014",
+      "playlist_id": "PL8dPuuaLjXtMsMTfmRomkVQG8AqrAmJFX",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "CrashCourse European History: Renascimento, reformas religiosas, revolução científica, absolutismo — pontos II–III.",
+      "published": true
+    },
+    {
+      "code": "16851016",
+      "playlist_id": "PL1O0tZSeRDB-6I3tNJnT_ul7E4HxmMaIv",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "História Contemporânea (Prof. Daniel Chaves, UNIFAP — disciplina de licenciatura): traços da contemporaneidade, revoluções, século XIX — ponto 1.",
+      "published": true
+    },
+    {
+      "code": "16851159",
+      "playlist_id": "PL_RU3V4VaE9Z2Tac-i4YlCKRJspsXlbRv",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Teorias da História (Prof. Francisco José Alves de Aquino): historiografia do século XX, Febvre, Collingwood, Elias, Thompson — Annales e grandes correntes do século XX.",
+      "published": true
+    },
+    {
+      "code": "16851029",
+      "playlist_id": "PLcS8WM7ZFc-MDoHfey5b9B72v2Ka5LjSI",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Encontro \"Arqueologia em Portugal: recuperar o passado em 2015\" (Património Cultural / DGPC): gestão do património arqueológico em Portugal.",
+      "published": false
+    },
+    {
+      "code": "16851030",
+      "playlist_id": "PLj2nKAhlUa9wePPHYOHH4hNwVyz_lBvAf",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "divulgação científica (complementar)",
+      "match": "COMUNIARQ Science Videos 2023 (UNIARQ, Universidade de Lisboa): inclui a série \"Laboratório de Zooarqueologia\" 1/5–5/5 (identificação, quantificação, tafonomia).",
+      "published": false
+    },
+    {
+      "code": "16851114",
+      "playlist_id": "PLufl2wDdfkKtpS02ufI3FsHMGgsojh6k_",
+      "ord": 1,
+      "confidence": "média",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Geofísica e Deteção Remota\" (ERA Arqueologia): prospeção geofísica e deteção remota aplicadas a sítios portugueses — ponto 2 (geoarqueologia).",
+      "published": true
+    },
+    {
+      "code": "16851114",
+      "playlist_id": "PLufl2wDdfkKuqq-cuRc5q9SW5TBKLEpts",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "divulgação científica (complementar)",
+      "match": "\"Antropologia Biológica\" (ERA Arqueologia): estudo de restos humanos em intervenções arqueológicas — ponto 5 (paleodietas, mobilidade).",
+      "published": false
+    },
+    {
+      "code": "16851121",
+      "playlist_id": "PLxI8Can9yAHcsjbqvg141RE5sWQSPzg_f",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "\"A História da Arte entre Brasil e Portugal\" (ciclo de estudos avançados Unicamp, difundido pela Univesp): relações artísticas luso-brasileiras.",
+      "published": false
+    },
+    {
+      "code": "16851025",
+      "playlist_id": "PLqyjqev47LLBSLxs-FMf9v-arFUME7dZd",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior (introdutório)",
+      "match": "\"História da Arte geral — vídeos abertos\" (Arte e Culturas, Marcelo Albuquerque): inclui Neoclassicismo, Romantismo, Realismo, Impressionismo e vanguardas — pontos 2–5.",
+      "published": false
+    }
+  ]
+}
