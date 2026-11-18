@@ -13,8 +13,14 @@ const ICONS: Record<MilestoneKey, LucideIcon> = {
 
 /** Private progress markers on the dashboard: what the learner has done, never a ranking. */
 export function StudyMilestones() {
+  return <StudyMilestonesView {...useStudyMilestones()} />;
+}
+
+type MilestonesState = ReturnType<typeof useStudyMilestones>;
+
+/** Presentation only, so the section can be rendered and checked with any data. */
+export function StudyMilestonesView({ data, isPending, isError, retry }: MilestonesState) {
   const { t } = useTranslation();
-  const { data, isPending, isError, retry } = useStudyMilestones();
   return <section aria-labelledby="dashboard-milestones" className="mt-12">
     <div className="flex flex-wrap items-end justify-between gap-3 border-b border-foreground pb-3">
       <h2 id="dashboard-milestones" className="flex items-center gap-3 text-2xl font-semibold tracking-[-0.02em]">
@@ -38,16 +44,16 @@ export function StudyMilestones() {
             </p>
             {data.streak.best > 0 && <p className="mt-3 font-mono text-xs text-muted-foreground">{t('milestones.best', { count: data.streak.best })}</p>}
           </div>
-          <ul className="grid content-start gap-px border border-input bg-input sm:grid-cols-2 xl:grid-cols-4">
+          <ul className="grid content-start grid-cols-2 gap-px border border-input bg-input xl:grid-cols-4">
             {data.milestones.map(item => {
               const Icon = ICONS[item.key];
-              return <li key={item.key} className="flex items-start gap-4 bg-background p-4">
-                <span className={cn('grid h-10 w-10 shrink-0 place-items-center border', item.reached ? 'border-foreground bg-primary text-primary-foreground' : 'border-input text-muted-foreground')} aria-hidden="true">
-                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+              return <li key={item.key} className="flex flex-col items-start gap-2 bg-background p-3 sm:flex-row sm:gap-4 sm:p-4">
+                <span className={cn('grid h-8 w-8 shrink-0 place-items-center border sm:h-10 sm:w-10', item.reached ? 'border-foreground bg-primary text-primary-foreground' : 'border-input text-muted-foreground')} aria-hidden="true">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.75} />
                 </span>
                 <span className="min-w-0">
-                  <span className={cn('block font-semibold', !item.reached && 'text-muted-foreground')}>{t(`milestones.items.${item.key}`)}</span>
-                  <span className="mt-1 block text-sm text-muted-foreground">
+                  <span className={cn('block text-sm font-semibold leading-snug sm:text-base', !item.reached && 'text-muted-foreground')}>{t(`milestones.items.${item.key}`)}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground sm:text-sm">
                     {item.reached ? t('milestones.reached') : t('milestones.progress', { value: Math.min(item.value, item.target), target: item.target })}
                   </span>
                 </span>
