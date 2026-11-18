@@ -1437,7 +1437,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Bioestatística aplicada à saúde: amostragem, variáveis, medidas descritivas, testes. Autor: Prof. Moacir Pereira Junior (educação física/ciências do exercício)."
+      "match": "Bioestatística aplicada à saúde: amostragem, variáveis, medidas descritivas, testes. Autor: Prof. Moacir Pereira Junior (educação física/ciências do exercício).",
+      "published": true
     },
     {
       "code": "14241044",
@@ -1445,7 +1446,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Curso de bioestatística para pesquisa científica: tendência central, dispersão, escolha de testes."
+      "match": "Curso de bioestatística para pesquisa científica: tendência central, dispersão, escolha de testes.",
+      "published": true
     },
     {
       "code": "14241045",
@@ -1453,7 +1455,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Curso de Bioética pela Profa. Maria Clara Dias (filosofia, UFRJ): ética, teorias da justiça, fundamentos da bioética."
+      "match": "Curso de Bioética pela Profa. Maria Clara Dias (filosofia, UFRJ): ética, teorias da justiça, fundamentos da bioética.",
+      "published": true
     },
     {
       "code": "14241040",
@@ -1461,7 +1464,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS), aulas de disciplina de graduação."
+      "match": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS), aulas de disciplina de graduação.",
+      "published": true
     },
     {
       "code": "14241040",
@@ -1469,7 +1473,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Citologia de nível superior: membrana, organelos, citoesqueleto, ciclo celular. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior."
+      "match": "Citologia de nível superior: membrana, organelos, citoesqueleto, ciclo celular. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
     },
     {
       "code": "19151009",
@@ -1477,7 +1482,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Histologia básica: os quatro tecidos fundamentais, matriz extracelular. Prof. Roberval Moraes."
+      "match": "Histologia básica: os quatro tecidos fundamentais, matriz extracelular. Prof. Roberval Moraes.",
+      "published": true
     },
     {
       "code": "19151009",
@@ -1485,7 +1491,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Histologia geral (epitelial, conjuntivo, muscular, nervoso). Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior."
+      "match": "Histologia geral (epitelial, conjuntivo, muscular, nervoso). Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
     },
     {
       "code": "14241042",
@@ -1493,7 +1500,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará): limites, derivadas, integrais e aplicações."
+      "match": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará): limites, derivadas, integrais e aplicações.",
+      "published": true
     },
     {
       "code": "14241042",
@@ -1501,7 +1509,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "secundário (10.º–12.º ano) — introdutório",
-      "match": "Funções reais de variável real em PT-PT (Khan Academy Portugal), revisão de base para a UC."
+      "match": "Funções reais de variável real em PT-PT (Khan Academy Portugal), revisão de base para a UC.",
+      "published": true
     },
     {
       "code": "14241041",
@@ -1509,7 +1518,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Química geral para o ensino superior: modelos atómicos, teoria quântica, ligações."
+      "match": "Química geral para o ensino superior: modelos atómicos, teoria quântica, ligações.",
+      "published": true
     },
     {
       "code": "14241041",
@@ -1517,7 +1527,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "introdutório/superior",
-      "match": "CrashCourse Chemistry: estrutura atómica, estequiometria, equilíbrio, termoquímica."
+      "match": "CrashCourse Chemistry: estrutura atómica, estequiometria, equilíbrio, termoquímica.",
+      "published": true
     },
     {
       "code": "14241048",
@@ -1525,7 +1536,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Bioquímica: estrutura, propriedades e funções de biomoléculas — canal da disciplina na UFABC."
+      "match": "Bioquímica: estrutura, propriedades e funções de biomoléculas — canal da disciplina na UFABC.",
+      "published": true
     },
     {
       "code": "14241048",
@@ -1533,7 +1545,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos, metabolismo energético."
+      "match": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos, metabolismo energético.",
+      "published": true
     },
     {
       "code": "14241049",
@@ -1541,7 +1554,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "introdutório/superior",
-      "match": "CrashCourse Organic Chemistry: nomenclatura, grupos funcionais, estereoquímica, reatividade."
+      "match": "CrashCourse Organic Chemistry: nomenclatura, grupos funcionais, estereoquímica, reatividade.",
+      "published": true
     },
     {
       "code": "14241049",
@@ -1549,7 +1563,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Química orgânica na graduação (Profa. Cláudia Regina): acidez/basicidade, grupos funcionais, reações."
+      "match": "Química orgânica na graduação (Profa. Cláudia Regina): acidez/basicidade, grupos funcionais, reações.",
+      "published": true
     },
     {
       "code": "14241047",
@@ -1557,7 +1572,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Anatomia do sistema digestório com peças cadavéricas — canal de Anatomia da Unicamp."
+      "match": "Anatomia do sistema digestório com peças cadavéricas — canal de Anatomia da Unicamp.",
+      "published": true
     },
     {
       "code": "14241047",
@@ -1565,7 +1581,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiologia do trato digestório (Pedro Metran), enfoque médico."
+      "match": "Fisiologia do trato digestório (Pedro Metran), enfoque médico.",
+      "published": true
     },
     {
       "code": "14241057",
@@ -1573,7 +1590,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Anatomia do sistema urogenital (rins, segmentação renal, ureteres) — Anatomia Unicamp."
+      "match": "Anatomia do sistema urogenital (rins, segmentação renal, ureteres) — Anatomia Unicamp.",
+      "published": true
     },
     {
       "code": "14241057",
@@ -1581,7 +1599,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiologia renal completa (filtração, reabsorção, equilíbrio hidroeletrolítico) — Pedro Metran."
+      "match": "Fisiologia renal completa (filtração, reabsorção, equilíbrio hidroeletrolítico) — Pedro Metran.",
+      "published": true
     },
     {
       "code": "14241051",
@@ -1589,7 +1608,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistema circulatório (coração, vasos, circulação pulmonar e sistémica) e linfático — Prof. Rogério Gozzi."
+      "match": "Sistema circulatório (coração, vasos, circulação pulmonar e sistémica) e linfático — Prof. Rogério Gozzi.",
+      "published": true
     },
     {
       "code": "14241051",
@@ -1597,7 +1617,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiologia respiratória (difusão e transporte de gases) — monitoria de Fisiologia e Biofísica do ICB-UFMG."
+      "match": "Fisiologia respiratória (difusão e transporte de gases) — monitoria de Fisiologia e Biofísica do ICB-UFMG.",
+      "published": true
     },
     {
       "code": "19151011",
@@ -1605,7 +1626,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Histologia sistémica (circulatório, coração, artérias/veias e restantes órgãos) — Prof. Roberval Moraes."
+      "match": "Histologia sistémica (circulatório, coração, artérias/veias e restantes órgãos) — Prof. Roberval Moraes.",
+      "published": true
     },
     {
       "code": "14241069",
@@ -1613,7 +1635,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Epidemiologia: história, risco e indicadores, desenhos de estudo (Prof. Mario Gandra)."
+      "match": "Epidemiologia: história, risco e indicadores, desenhos de estudo (Prof. Mario Gandra).",
+      "published": true
     },
     {
       "code": "14241069",
@@ -1621,7 +1644,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "introdutório",
-      "match": "CrashCourse Outbreak Science: surtos, transmissão, vigilância."
+      "match": "CrashCourse Outbreak Science: surtos, transmissão, vigilância.",
+      "published": true
     },
     {
       "code": "14241055",
@@ -1629,7 +1653,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Microbiologia médica: introdução, microbiota normal, patogenicidade (projeto Teoria da Medicina, aulas para cursos de saúde)."
+      "match": "Microbiologia médica: introdução, microbiota normal, patogenicidade (projeto Teoria da Medicina, aulas para cursos de saúde).",
+      "published": true
     },
     {
       "code": "14241055",
@@ -1637,7 +1662,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Bactérias de interesse médico, patogenicidade, Staphylococcus, etc. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior."
+      "match": "Bactérias de interesse médico, patogenicidade, Staphylococcus, etc. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
     },
     {
       "code": "19151012",
@@ -1645,7 +1671,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiologia endócrina: hormonas, sinalização, eixos hormonais (Fisiologia Virtual)."
+      "match": "Fisiologia endócrina: hormonas, sinalização, eixos hormonais (Fisiologia Virtual).",
+      "published": true
     },
     {
       "code": "19151012",
@@ -1653,7 +1680,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Ciclo menstrual e hormonas sexuais femininas (Pedro Metran) — parte de reprodução."
+      "match": "Ciclo menstrual e hormonas sexuais femininas (Pedro Metran) — parte de reprodução.",
+      "published": true
     },
     {
       "code": "14241053",
@@ -1661,7 +1689,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Neuroanatomia pelo Prof. Jamary Oliveira Filho (neurologista, docente UFBA)."
+      "match": "Neuroanatomia pelo Prof. Jamary Oliveira Filho (neurologista, docente UFBA).",
+      "published": true
     },
     {
       "code": "14241053",
@@ -1669,7 +1698,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Neurofisiologia: neurónios, glia, sinapses, vias sensoriais. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior."
+      "match": "Neurofisiologia: neurónios, glia, sinapses, vias sensoriais. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
     },
     {
       "code": "19151010",
@@ -1677,7 +1707,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Física para ciências biológicas — Prof. Antonio Alonso (Grupo de Biofísica, Instituto de Física da UFG)."
+      "match": "Física para ciências biológicas — Prof. Antonio Alonso (Grupo de Biofísica, Instituto de Física da UFG).",
+      "published": true
     },
     {
       "code": "19151010",
@@ -1685,7 +1716,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Biofísica (ciclo cardíaco, biomecânica, eletroforese) — canal institucional Ensino Remoto UFRN."
+      "match": "Biofísica (ciclo cardíaco, biomecânica, eletroforese) — canal institucional Ensino Remoto UFRN.",
+      "published": true
     },
     {
       "code": "14241054",
@@ -1693,7 +1725,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich)."
+      "match": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich).",
+      "published": true
     },
     {
       "code": "14241054",
@@ -1701,7 +1734,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran."
+      "match": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran.",
+      "published": true
     },
     {
       "code": "14241056",
@@ -1709,7 +1743,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Genética molecular: ácidos nucleicos, replicação, transcrição, tradução (Thaís Magalhães, mestre em Genética)."
+      "match": "Genética molecular: ácidos nucleicos, replicação, transcrição, tradução (Thaís Magalhães, mestre em Genética).",
+      "published": true
     },
     {
       "code": "14241056",
@@ -1717,7 +1752,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Curso de Biologia Molecular: cromatina procariota/eucariota, genes, expressão (Prof. Patrick Gomes)."
+      "match": "Curso de Biologia Molecular: cromatina procariota/eucariota, genes, expressão (Prof. Patrick Gomes).",
+      "published": true
     },
     {
       "code": "14241058",
@@ -1725,7 +1761,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT."
+      "match": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT.",
+      "published": true
     },
     {
       "code": "14241058",
@@ -1733,7 +1770,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas."
+      "match": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas.",
+      "published": true
     },
     {
       "code": "14241046",
@@ -1741,7 +1779,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Aparelho locomotor: ossos, articulações, músculos — Anatomia Unicamp."
+      "match": "Aparelho locomotor: ossos, articulações, músculos — Anatomia Unicamp.",
+      "published": true
     },
     {
       "code": "14241046",
@@ -1749,7 +1788,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Osteologia e artrologia (Prof. Rogério Gozzi)."
+      "match": "Osteologia e artrologia (Prof. Rogério Gozzi).",
+      "published": true
     },
     {
       "code": "14241059",
@@ -1757,7 +1797,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Curso completo de tecnologia de cultura celular (substratos, laboratório, linhas celulares, culturas neuronais e musculares); formato de curso universitário indiano (NPTEL)."
+      "match": "Curso completo de tecnologia de cultura celular (substratos, laboratório, linhas celulares, culturas neuronais e musculares); formato de curso universitário indiano (NPTEL).",
+      "published": true
     },
     {
       "code": "14241059",
@@ -1765,7 +1806,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Cell Culture Basics (Thermo Fisher Scientific): passagem, congelação, contagem e técnica asséptica."
+      "match": "Cell Culture Basics (Thermo Fisher Scientific): passagem, congelação, contagem e técnica asséptica.",
+      "published": true
     },
     {
       "code": "14241061",
@@ -1773,7 +1815,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020."
+      "match": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020.",
+      "published": true
     },
     {
       "code": "14241061",
@@ -1781,7 +1824,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes)."
+      "match": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes).",
+      "published": true
     },
     {
       "code": "14241062",
@@ -1789,7 +1833,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Genética médica (Faculdade de Medicina da UFMT): anomalias congénitas, erros inatos do metabolismo, oncogenética."
+      "match": "Genética médica (Faculdade de Medicina da UFMT): anomalias congénitas, erros inatos do metabolismo, oncogenética.",
+      "published": true
     },
     {
       "code": "14241062",
@@ -1797,7 +1842,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Curso de Anomalias Congénitas (Lúmina/UFRGS): desenvolvimento embrionário e fetal, diagnóstico pré-natal."
+      "match": "Curso de Anomalias Congénitas (Lúmina/UFRGS): desenvolvimento embrionário e fetal, diagnóstico pré-natal.",
+      "published": true
     },
     {
       "code": "14241063",
@@ -1805,7 +1851,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia)."
+      "match": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia).",
+      "published": true
     },
     {
       "code": "14241063",
@@ -1813,7 +1860,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes)."
+      "match": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes).",
+      "published": true
     },
     {
       "code": "14241065",
@@ -1821,7 +1869,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas."
+      "match": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas.",
+      "published": true
     },
     {
       "code": "14241065",
@@ -1829,7 +1878,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista)."
+      "match": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista).",
+      "published": true
     },
     {
       "code": "14241064",
@@ -1837,7 +1887,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Cátedra 'Terapias Avançadas' do Colégio Brasileiro de Altos Estudos da UFRJ: terapia celular, células estromais, vetores."
+      "match": "Cátedra 'Terapias Avançadas' do Colégio Brasileiro de Altos Estudos da UFRJ: terapia celular, células estromais, vetores.",
+      "published": true
     },
     {
       "code": "14241064",
@@ -1845,7 +1896,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "iBiology Lectures: Development & Stem Cells — investigadores de referência sobre células estaminais e regeneração."
+      "match": "iBiology Lectures: Development & Stem Cells — investigadores de referência sobre células estaminais e regeneração.",
+      "published": true
     },
     {
       "code": "14241156",
@@ -1853,7 +1905,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "introdutório/divulgação",
-      "match": "'ABC Epigenética' do Centro de Estudos do Genoma Humano (genoma USP)."
+      "match": "'ABC Epigenética' do Centro de Estudos do Genoma Humano (genoma USP).",
+      "published": true
     },
     {
       "code": "14241156",
@@ -1861,7 +1914,8 @@
       "ord": 2,
       "confidence": "baixa",
       "level": "superior",
-      "match": "Aulas de Genética e Epigenética (imprinting, herança multifatorial, DNA e ambiente)."
+      "match": "Aulas de Genética e Epigenética (imprinting, herança multifatorial, DNA e ambiente).",
+      "published": false
     },
     {
       "code": "14241154",
@@ -1869,7 +1923,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Farmacocinética e farmacodinâmica: agonistas, antagonistas, eficácia, potência, recetores (Profa. Tatiana Lavich)."
+      "match": "Farmacocinética e farmacodinâmica: agonistas, antagonistas, eficácia, potência, recetores (Profa. Tatiana Lavich).",
+      "published": true
     },
     {
       "code": "14241154",
@@ -1877,7 +1932,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Farmacologia médica: farmacocinética, farmacodinâmica, classes de fármacos (Teoria da Medicina)."
+      "match": "Farmacologia médica: farmacocinética, farmacodinâmica, classes de fármacos (Teoria da Medicina).",
+      "published": true
     },
     {
       "code": "14241066",
@@ -1885,7 +1941,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Algoritmos de alinhamento de sequências — projeto OnlineBioinfo (Profa. Raquel Minardi, DCC-UFMG)."
+      "match": "Algoritmos de alinhamento de sequências — projeto OnlineBioinfo (Profa. Raquel Minardi, DCC-UFMG).",
+      "published": true
     },
     {
       "code": "14241066",
@@ -1893,7 +1950,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "XIV Curso de Verão em Bioinformática da USP (2023)."
+      "match": "XIV Curso de Verão em Bioinformática da USP (2023).",
+      "published": true
     },
     {
       "code": "14241155",
@@ -1901,7 +1959,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistema tegumentar: pele (epiderme, derme) e anexos (Prof. Rogério Gozzi)."
+      "match": "Sistema tegumentar: pele (epiderme, derme) e anexos (Prof. Rogério Gozzi).",
+      "published": true
     },
     {
       "code": "14241155",
@@ -1909,7 +1968,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Khan Academy Medicine — Integumentary system (pele, termorregulação, anexos)."
+      "match": "Khan Academy Medicine — Integumentary system (pele, termorregulação, anexos).",
+      "published": true
     }
   ]
 }

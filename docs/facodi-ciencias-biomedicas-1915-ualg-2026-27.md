@@ -1,7 +1,7 @@
 # Licenciatura em Ciências Biomédicas, UAlg 1915
 
 **Data:** 2026-11-18
-**Migração:** `supabase/migrations/20261118190000_facodi_ualg_1915_ciencias_biomedicas_20261118.sql`
+**Script de dados:** `supabase/seeds/facodi_ualg_1915_ciencias_biomedicas_20261118.sql`, para aplicar via Supabase MCP como no #69. Não é uma migração.
 **Manifesto:** `supabase/seeds/facodi_ualg_1915_ciencias_biomedicas_20261118.json`
 
 ## Identidade
@@ -77,7 +77,7 @@ As UCs de opção e o Projeto ainda não têm playlists. A pesquisa cobriu só a
 
 ## Playlists
 
-- **Volume:** 60 playlists para 31 UCs.
+- **Volume:** 60 playlists para 31 UCs na pesquisa. O script publica 59: a ligação de confiança baixa fica só no manifesto (`published: false`), para revisão, como no #69.
 - **Idioma:** 52 em PT-BR, 7 em inglês (CrashCourse, iBiology, Khan Academy Medicine, Thermo Fisher, NPTEL), 1 em PT-PT.
 - **Confiança:** 23 alta, 36 média, 1 baixa.
 - **Critérios:**
@@ -92,13 +92,13 @@ As UCs de opção e o Projeto ainda não têm playlists. A pesquisa cobriu só a
 - **Uma só playlist:** Bioética (conteúdo teórico brasileiro) e Aplicações em Histologia (cobre histologia de órgãos, não a técnica laboratorial).
 - **Canal sem autor identificado:** "Facilitando a Medicina" é usado em algumas entradas e ficou com confiança média.
 
-## Verificação da migração
+## Verificação do script
 
 Foi feito um dry-run em PostgreSQL 17, com as tabelas `facodi` reduzidas às colunas usadas:
 
 | Caso | Resultado |
 |---|---|
-| Primeira execução | 1 curso (180 ECTS), 40 UCs, 60 playlists, 40 relações curso → UC e 60 relações UC → playlist |
+| Primeira execução | 1 curso (180 ECTS), 40 UCs, 59 playlists, 40 relações curso → UC e 59 relações UC → playlist |
 | Segunda execução | Não altera nada (idempotente) |
 | Outro curso já com `LCBM`, o slug ou o ID 1915 | Aborta antes de inserir |
 | Playlist já registada com o mesmo ID do YouTube | É reaproveitada |
@@ -108,9 +108,9 @@ As pré-verificações confirmam:
 - os IDs e URLs das playlists;
 - que nenhum código de UC pertence a outro curso.
 
-A pós-verificação confirma o curso publicado, as 40 UCs e as 60 ligações.
+A pós-verificação confirma o curso publicado, as 40 UCs e as 59 ligações.
 
 ## Aplicação
 
-A migração não foi aplicada em produção. Fica para o fluxo habitual de migrações do projeto. Depois de
-aplicada, o build seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap e ao `llms.txt`.
+O script não foi aplicado em produção. Aplica-se via Supabase MCP, como no #69, e de preferência depois do merge do #67, para a página mostrar os grupos de opção. Depois de
+aplicado, o build seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap e ao `llms.txt`.
