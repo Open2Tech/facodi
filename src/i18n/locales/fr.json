@@ -472,7 +472,7 @@
       },
       "curated": {
         "title": "Sélectionné",
-        "text": "Seul ce que l’équipe éditoriale a relu est publié. Les règles d’accès sont appliquées par la base de données."
+        "text": "FACODI associe la sélection éditoriale et des vérifications automatiques pour publier des ressources. Les contenus peuvent être corrigés ou retirés ultérieurement. Les règles d’accès sont appliquées par la base de données."
       }
     },
     "contributeTitle": "Comment contribuer",
