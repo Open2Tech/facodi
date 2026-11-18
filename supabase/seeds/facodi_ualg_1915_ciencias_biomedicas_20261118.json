@@ -1,0 +1,1995 @@
+{
+  "batch": "facodi_ualg_1915_ciencias_biomedicas_20261118",
+  "course": {
+    "code": "LCBM",
+    "official_id": "1915",
+    "plan": "https://www.ualg.pt/curso/1915/plano",
+    "academic_year": "2026/27"
+  },
+  "verified_on": "2026-11-18",
+  "units": [
+    {
+      "code": "14241044",
+      "title": "Bioestatística",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 1,
+      "summary": "Estatística descritiva e indutiva aplicada às ciências biomédicas: organização e representação de dados, medidas de localização e dispersão, probabilidade e variáveis aleatórias.",
+      "topics": [
+        "Estatística descritiva",
+        "Probabilidade e teorema de Bayes",
+        "Variáveis aleatórias"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241044&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241045",
+      "title": "Bioética",
+      "ects": 3,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 2,
+      "summary": "História e princípios da bioética, dilemas éticos e tomada de decisão, ética na investigação científica, comissões de ética e relação entre bioética e biodireito.",
+      "topics": [
+        "Princípios e história da bioética",
+        "Dilemas éticos e tomada de decisão",
+        "Ética na investigação e comissões de ética"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241045&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241040",
+      "title": "Biologia Celular",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 3,
+      "summary": "Estrutura e função da célula: componentes químicos, núcleo e cromossomas, membranas e transporte, organelos, comunicação celular, matriz extracelular e citoesqueleto.",
+      "topics": [
+        "Membranas e transporte",
+        "Núcleo, DNA e cromossomas",
+        "Organelos, citoesqueleto e comunicação celular"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241040&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151009",
+      "title": "Histologia",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 4,
+      "summary": "Métodos de estudo em histologia e organização dos tecidos animais: preparação de tecidos, técnicas histológicas, microscopia e tecidos epiteliais, conjuntivos, musculares e nervoso.",
+      "topics": [
+        "Técnicas histológicas e microscopia",
+        "Tecido epitelial",
+        "Organização dos tecidos animais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151009&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241042",
+      "title": "Matemática",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 5,
+      "summary": "Álgebra linear (matrizes, sistemas de equações lineares, determinantes) e análise matemática (funções elementares, primitivas e cálculo integral).",
+      "topics": [
+        "Matrizes e sistemas lineares",
+        "Determinantes",
+        "Funções e cálculo integral"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241042&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241041",
+      "title": "Química Geral",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 6,
+      "summary": "Estrutura atómica, ligação química, forças intermoleculares, gases, termodinâmica química e equilíbrios químico, ácido-base e de oxidação-redução.",
+      "topics": [
+        "Estrutura atómica e ligação química",
+        "Termodinâmica química",
+        "Equilíbrio químico, ácido-base e redox"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241041&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241048",
+      "title": "Bioquímica",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 7,
+      "summary": "Aminoácidos e proteínas, enzimas e cinética enzimática, glícidos, lípidos e membranas, bioenergética, nucleótidos e ácidos nucleicos, e transdução de sinal.",
+      "topics": [
+        "Proteínas e enzimas",
+        "Glícidos e lípidos",
+        "Bioenergética e transdução de sinal"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241048&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241049",
+      "title": "Estrutura e Função dos Compostos Orgânicos",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 8,
+      "summary": "Estrutura, representação e reatividade dos compostos orgânicos: grupos funcionais, conjugação e aromaticidade, compostos heterocíclicos, elucidação estrutural e estereoquímica.",
+      "topics": [
+        "Grupos funcionais e reatividade",
+        "Aromaticidade e compostos heterocíclicos",
+        "Estereoquímica e bioatividade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241049&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241047",
+      "title": "Sistemas Orgânicos Funcionais 102 – Aparelho Digestivo",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 9,
+      "summary": "Anatomia e fisiologia do tubo digestivo, membranas e transporte, absorção intestinal e metabolismo hepático.",
+      "topics": [
+        "Anatomia e fisiologia do tubo digestivo",
+        "Absorção e transporte",
+        "Metabolismo hepático"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241047&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241057",
+      "title": "Sistemas Orgânicos Funcionais 103 – Aparelho Urinário",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 10,
+      "summary": "Anatomia renal e do aparelho urinário, o nefrónio, filtração glomerular, secreção e reabsorção tubular e controlo da volémia e da osmolaridade do plasma.",
+      "topics": [
+        "Anatomia renal e nefrónio",
+        "Filtração e transporte tubular",
+        "Controlo da volémia e da osmolaridade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241057&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241051",
+      "title": "Sistemas Orgânicos Funcionais 201 – Aparelho Circulatório e Respiratório",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 11,
+      "summary": "Sangue e hematologia, aparelho circulatório e aparelho respiratório: histologia, fisiologia, diagnóstico laboratorial e patologia.",
+      "topics": [
+        "Sangue e hematologia",
+        "Aparelho circulatório",
+        "Aparelho respiratório"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241051&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241071",
+      "title": "Genética do Desenvolvimento",
+      "ects": 3,
+      "year": 1,
+      "semester": 2,
+      "option_group": "Opção I",
+      "position": 12,
+      "summary": "Hereditariedade e análise genética: genética mendeliana, determinação do sexo, ligação e mapeamento genético, organização dos genes em eucariontes e linhagem germinativa.",
+      "topics": [
+        "Genética mendeliana",
+        "Ligação e mapeamento genético",
+        "Linhagem germinativa"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241071&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151004",
+      "title": "Práticas de Investigação Molecular",
+      "ects": 3,
+      "year": 1,
+      "semester": 2,
+      "option_group": "Opção I",
+      "position": 13,
+      "summary": "Método científico e técnicas de laboratório molecular: desenho experimental, análise bioquímica, espectroscopia, imunodeteção e eletroforese.",
+      "topics": [
+        "Desenho experimental",
+        "Espectroscopia",
+        "Imunodeteção e eletroforese"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151004&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241075",
+      "title": "Técnicas Básicas de Laboratório",
+      "ects": 3,
+      "year": 1,
+      "semester": 2,
+      "option_group": "Opção I",
+      "position": 14,
+      "summary": "Práticas fundamentais de laboratório: pipetagem, medição de volumes, pesagem, medição e ajuste de pH, cálculos de molaridade e diluições, e preparação de soluções.",
+      "topics": [
+        "Pipetagem e medição de volumes",
+        "Soluções e diluições",
+        "Medição e ajuste de pH"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241075&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151011",
+      "title": "Aplicações em Histologia",
+      "ects": 3,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 15,
+      "summary": "Técnicas histológicas avançadas e análise histológica na investigação científica, com aplicações na retina, no cérebro e no fígado.",
+      "topics": [
+        "Técnicas histológicas avançadas",
+        "Histologia na investigação",
+        "Retina, cérebro e fígado"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151011&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241069",
+      "title": "Epidemiologia",
+      "ects": 3,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 16,
+      "summary": "Fundamentos e métodos da epidemiologia: indicadores demográficos e epidemiológicos, medidas de frequência, associação e risco, e estudos observacionais e experimentais.",
+      "topics": [
+        "Indicadores e medidas de frequência",
+        "Medidas de associação e risco",
+        "Estudos observacionais e experimentais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241069&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241055",
+      "title": "Fundamentos de Microbiologia Médica",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 17,
+      "summary": "História e importância da microbiologia médica; classificação, ultraestrutura e função de bactérias, arqueas, microrganismos eucariotas e vírus.",
+      "topics": [
+        "Microbiologia médica",
+        "Bactérias e arqueas",
+        "Vírus e microrganismos eucariotas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241055&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151012",
+      "title": "Sistemas Orgânicos Funcionais 202 – Sistema Endócrino, Reprodução e Desenvolvimento",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 18,
+      "summary": "Sistema endócrino (anatomia, histologia, fisiologia, hormonas e patologia) e aparelhos reprodutores masculino e feminino.",
+      "topics": [
+        "Sistema endócrino e hormonas",
+        "Aparelho reprodutor masculino",
+        "Aparelho reprodutor feminino"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151012&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241053",
+      "title": "Sistemas Orgânicos Funcionais 301 – Sistema Nervoso e Sentidos Especiais",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 19,
+      "summary": "Composição e anatomia funcional do sistema nervoso, sinapses e neurotransmissão, potenciais de membrana e impulso nervoso, órgãos dos sentidos e patologias neurológicas.",
+      "topics": [
+        "Anatomia funcional do sistema nervoso",
+        "Sinapses e impulso nervoso",
+        "Órgãos dos sentidos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241053&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151010",
+      "title": "Tópicos de Física para Ciências Biomédicas",
+      "ects": 4,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 20,
+      "summary": "Física aplicada ao corpo humano: biomecânica (cinemática, dinâmica, equilíbrio e alavancas) e termodinâmica.",
+      "topics": [
+        "Biomecânica",
+        "Termodinâmica",
+        "Física do corpo humano"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151010&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241054",
+      "title": "Doenças Metabólicas",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 21,
+      "summary": "Biomoléculas e metabolismo celular (glicólise, fermentação, ciclo de Krebs e respiração mitocondrial) como base para compreender as doenças metabólicas.",
+      "topics": [
+        "Metabolismo celular",
+        "Glicólise e ciclo de Krebs",
+        "Respiração mitocondrial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241054&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241056",
+      "title": "Genética Molecular",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 22,
+      "summary": "Estrutura e evolução dos genomas, replicação e transcrição do DNA, cromatina e efeitos epigenéticos, diversidade de RNAs e regulação da transcrição.",
+      "topics": [
+        "Genomas e cromossomas",
+        "Replicação e transcrição",
+        "Regulação da expressão génica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241056&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241058",
+      "title": "Parasitologia e Micologia Médica",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 23,
+      "summary": "Protozoários e helmintas (biologia, ciclos de vida, patogenia, diagnóstico e prevenção), vetores e hospedeiros, interações patógeno-hospedeiro e micoses humanas.",
+      "topics": [
+        "Protozoários e helmintas",
+        "Vetores e hospedeiros",
+        "Micologia médica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241058&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241046",
+      "title": "Sistemas Orgânicos Funcionais 101 – Sistema Músculo-Esquelético",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 24,
+      "summary": "Estrutura e função do sistema músculo-esquelético numa perspetiva integrada: anatomia, histologia, fisiologia, bioquímica e biofísica.",
+      "topics": [
+        "Anatomia e desenvolvimento dos tecidos",
+        "Fisiologia muscular",
+        "Osso e articulações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241046&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241059",
+      "title": "Tecnologia de Cultura de Células Animais",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 25,
+      "summary": "O laboratório de cultura de células, condições e métodos de cultura, culturas primárias, linhas celulares estáveis, viabilidade celular e transfeção.",
+      "topics": [
+        "Laboratório e condições de cultura",
+        "Culturas primárias e linhas celulares",
+        "Viabilidade celular e transfeção"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241059&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151013",
+      "title": "Aplicações em Bioestatística",
+      "ects": 3,
+      "year": 2,
+      "semester": 2,
+      "option_group": "Opção 2",
+      "position": 26,
+      "summary": "Análise estatística com SPSS e/ou R: preparação de bases de dados, classificação de variáveis e estatística descritiva univariada, bivariada e multivariada.",
+      "topics": [
+        "SPSS e R",
+        "Bases de dados e variáveis",
+        "Estatística descritiva"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151013&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151000",
+      "title": "Bases Moleculares de Neurodegeneração",
+      "ects": 3,
+      "year": 2,
+      "semester": 2,
+      "option_group": "Opção 2",
+      "position": 27,
+      "summary": "Enovelamento e agregação de proteínas, proteostasia, doenças neurodegenerativas e priónicas, e o eixo intestino-cérebro.",
+      "topics": [
+        "Agregação de proteínas e proteostasia",
+        "Doenças neurodegenerativas e priónicas",
+        "Eixo intestino-cérebro"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151000&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151001",
+      "title": "Fundamentos Anatómicos, Fisiológicos e Evolutivos nas Perturbações Psíquicas",
+      "ects": 3,
+      "year": 2,
+      "semester": 2,
+      "option_group": "Opção 2",
+      "position": 28,
+      "summary": "Funções psíquicas, as estruturas anatómicas e os sistemas bioquímicos envolvidos, a vida psíquica à luz da evolução e as bases biológicas das perturbações psíquicas.",
+      "topics": [
+        "Funções psíquicas",
+        "Bases neurobiológicas",
+        "Evolução e perturbações psíquicas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151001&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "19151030",
+      "title": "Inteligência Artificial em Biomedicina",
+      "ects": 3,
+      "year": 2,
+      "semester": 2,
+      "option_group": "Opção 2",
+      "position": 29,
+      "summary": "Conceitos de inteligência artificial em saúde (aprendizagem profunda, modelos generativos), modelos de linguagem e uso responsável, e IA por tipo de dado biomédico.",
+      "topics": [
+        "Aprendizagem automática e profunda",
+        "Modelos de linguagem e uso responsável",
+        "IA em dados biomédicos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19151030&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241160",
+      "title": "Modelos Animais em Investigação Biomédica",
+      "ects": 3,
+      "year": 2,
+      "semester": 2,
+      "option_group": "Opção 2",
+      "position": 30,
+      "summary": "Conceito e utilidade dos modelos animais, desenho experimental, aspetos legais e bioéticos e modelos invertebrados na investigação biomédica.",
+      "topics": [
+        "Modelos animais",
+        "Desenho experimental",
+        "Aspetos legais e bioéticos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241160&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241061",
+      "title": "Biologia do Desenvolvimento Embrionário",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 31,
+      "summary": "Gametogénese, fertilização, gastrulação e formação das três camadas germinativas, eixos embrionários e sinalização no desenvolvimento.",
+      "topics": [
+        "Gametogénese e fertilização",
+        "Gastrulação",
+        "Eixos e sinalização embrionária"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241061&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241062",
+      "title": "Genética Humana",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 32,
+      "summary": "Organização e variabilidade do genoma humano, padrões de hereditariedade, citogenética, doenças genéticas, genética das populações e diagnóstico.",
+      "topics": [
+        "Hereditariedade humana",
+        "Citogenética e doenças genéticas",
+        "Genética das populações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241062&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241063",
+      "title": "Imunologia Humana",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 33,
+      "summary": "Funcionamento do sistema imunitário na resposta do hospedeiro a patogénios e desvios da resposta imunitária com consequências patológicas.",
+      "topics": [
+        "Sistema imunitário",
+        "Resposta a patogénios",
+        "Imunopatologia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241063&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241065",
+      "title": "Neurobiologia",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 34,
+      "summary": "Estruturas e componentes celulares do sistema nervoso, neurotransmissão e sinalização intracelular, plasticidade sináptica, memória e aprendizagem, e perturbações do sistema nervoso.",
+      "topics": [
+        "Neurotransmissão",
+        "Plasticidade, memória e aprendizagem",
+        "Perturbações do sistema nervoso"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241065&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241064",
+      "title": "Terapia Génica e Celular",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 35,
+      "summary": "Bases da terapia génica e celular: sistemas de entrega de ácidos nucleicos, adição, silenciamento e edição de genes, terapia oncolítica e células estaminais.",
+      "topics": [
+        "Sistemas de entrega de ácidos nucleicos",
+        "Edição e silenciamento de genes",
+        "Células estaminais e reparação de tecidos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241064&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241156",
+      "title": "Epigenética",
+      "ects": 4,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 36,
+      "summary": "Mecanismos de regulação epigenética e o seu papel no envelhecimento, no cancro e na toxicologia; epigenómica.",
+      "topics": [
+        "Mecanismos epigenéticos",
+        "Epigenética no envelhecimento e no cancro",
+        "Epigenómica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241156&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241154",
+      "title": "Farmacologia Molecular",
+      "ects": 4,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 37,
+      "summary": "Farmacologia geral (farmacocinética, farmacodinâmica, farmacogenética e farmacogenómica) e farmacologia da neurotransmissão.",
+      "topics": [
+        "Farmacocinética",
+        "Farmacodinâmica e recetores",
+        "Farmacologia da neurotransmissão"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241154&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241066",
+      "title": "Fundamentos de Bioinformática",
+      "ects": 4,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 38,
+      "summary": "Bases de dados biológicas, alinhamento de sequências de DNA e proteína, clonagem virtual e estrutura tridimensional de proteínas, com casos biomédicos.",
+      "topics": [
+        "Bases de dados biológicas",
+        "Alinhamento de sequências",
+        "Estrutura de proteínas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241066&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241124",
+      "title": "Projeto",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 39,
+      "summary": "Projeto na área geral das ciências biomédicas; o tema e a metodologia variam com o projeto escolhido.",
+      "topics": [
+        "Escolha do tema",
+        "Desenvolvimento do projeto"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241124&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    },
+    {
+      "code": "14241155",
+      "title": "Sistemas Orgânicos Funcionais 302 – Sistema Tegumentar, Regulação da Temperatura, Integração",
+      "ects": 3,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 40,
+      "summary": "Anatomia, histologia e fisiopatologia do sistema tegumentar, termorregulação e febre, e integração entre os sistemas do organismo.",
+      "topics": [
+        "Sistema tegumentar",
+        "Termorregulação e febre",
+        "Integração entre sistemas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241155&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false"
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLlJ9qIISE9VApezwzuVUORmg4v79jQaa_",
+      "url": "https://www.youtube.com/playlist?list=PLlJ9qIISE9VApezwzuVUORmg4v79jQaa_",
+      "title": "Bioestatística aplicada à saúde",
+      "channel": "Moacir Pereira Junior",
+      "channel_url": "https://www.youtube.com/@MoacirPereiraJunior",
+      "videos": 37,
+      "language": "pt-BR",
+      "description": "Bioestatística aplicada à saúde: amostragem, variáveis, medidas descritivas, testes. Autor: Prof. Moacir Pereira Junior (educação física/ciências do exercício).",
+      "tags": [
+        "Bioestatística"
+      ]
+    },
+    {
+      "id": "PLzPsQlMW_Jyf9vyDJWPH9h0M0B8hOMpxx",
+      "url": "https://www.youtube.com/playlist?list=PLzPsQlMW_Jyf9vyDJWPH9h0M0B8hOMpxx",
+      "title": "Curso Bioestatística",
+      "channel": "Bioestatística em Gotas",
+      "channel_url": "https://www.youtube.com/@bioestatisticaemgotas6018",
+      "videos": 30,
+      "language": "pt-BR",
+      "description": "Curso de bioestatística para pesquisa científica: tendência central, dispersão, escolha de testes.",
+      "tags": [
+        "Bioestatística"
+      ]
+    },
+    {
+      "id": "PLxjZIPDA-FGgdjVwbi6Kkt5iz7IwP9y9s",
+      "url": "https://www.youtube.com/playlist?list=PLxjZIPDA-FGgdjVwbi6Kkt5iz7IwP9y9s",
+      "title": "Curso de Bioética",
+      "channel": "Maria Clara Dias",
+      "channel_url": "https://www.youtube.com/@mariaclaradiasfilosofia",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Curso de Bioética pela Profa. Maria Clara Dias (filosofia, UFRJ): ética, teorias da justiça, fundamentos da bioética.",
+      "tags": [
+        "Bioética"
+      ]
+    },
+    {
+      "id": "PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "url": "https://www.youtube.com/playlist?list=PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "title": "Biologia Celular e Molecular - Profa. Dra. Cristiane Matte/UFRGS",
+      "channel": "CRISTIANE MATTE",
+      "channel_url": "https://www.youtube.com/@cristianematte4852",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS), aulas de disciplina de graduação.",
+      "tags": [
+        "Biologia Celular"
+      ]
+    },
+    {
+      "id": "PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "url": "https://www.youtube.com/playlist?list=PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "title": "CITOLOGIA",
+      "channel": "Facilitando a Medicina",
+      "channel_url": "https://www.youtube.com/@FacilitandoaMedicina",
+      "videos": 50,
+      "language": "pt-BR",
+      "description": "Citologia de nível superior: membrana, organelos, citoesqueleto, ciclo celular. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "tags": [
+        "Biologia Celular"
+      ]
+    },
+    {
+      "id": "PLsVeL2OBJnCtLqdHPtMlx-LeXQ5tfvjhG",
+      "url": "https://www.youtube.com/playlist?list=PLsVeL2OBJnCtLqdHPtMlx-LeXQ5tfvjhG",
+      "title": "Histologia Básica: Dominando os 4 Tecidos Fundamentais. Aulas Completas",
+      "channel": "Prof Roberval Moraes - MedAulas",
+      "channel_url": "https://www.youtube.com/@medaulas-robervalmoraes",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Histologia básica: os quatro tecidos fundamentais, matriz extracelular. Prof. Roberval Moraes.",
+      "tags": [
+        "Histologia"
+      ]
+    },
+    {
+      "id": "PLbAgCI7O-2vqIGWt8oW8gre8IXVuc9pAD",
+      "url": "https://www.youtube.com/playlist?list=PLbAgCI7O-2vqIGWt8oW8gre8IXVuc9pAD",
+      "title": "HISTOLOGIA COMPLETA",
+      "channel": "Facilitando a Medicina",
+      "channel_url": "https://www.youtube.com/@FacilitandoaMedicina",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Histologia geral (epitelial, conjuntivo, muscular, nervoso). Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "tags": [
+        "Histologia"
+      ]
+    },
+    {
+      "id": "PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "url": "https://www.youtube.com/playlist?list=PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "title": "Projeto Newton | Cálculo 1 | 2026-2",
+      "channel": "Projeto Newton - UFPA",
+      "channel_url": "https://www.youtube.com/@projetonewton-ufpa3300",
+      "videos": 63,
+      "language": "pt-BR",
+      "description": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará): limites, derivadas, integrais e aplicações.",
+      "tags": [
+        "Matemática"
+      ]
+    },
+    {
+      "id": "PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "url": "https://www.youtube.com/playlist?list=PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "title": "Funções Reais de Variável Real",
+      "channel": "Khan Academy em Português de Portugal",
+      "channel_url": "https://www.youtube.com/@KhanAcademyPortugal",
+      "videos": 348,
+      "language": "pt-PT",
+      "description": "Funções reais de variável real em PT-PT (Khan Academy Portugal), revisão de base para a UC.",
+      "tags": [
+        "Matemática"
+      ]
+    },
+    {
+      "id": "PLn4_ixE2STJlYkW7o915iT-12Bh9qLSjX",
+      "url": "https://www.youtube.com/playlist?list=PLn4_ixE2STJlYkW7o915iT-12Bh9qLSjX",
+      "title": "Química Geral para o Ensino Superior",
+      "channel": "Prof. Caio - Química",
+      "channel_url": "https://www.youtube.com/@profcaioquimica",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Química geral para o ensino superior: modelos atómicos, teoria quântica, ligações.",
+      "tags": [
+        "Química Geral"
+      ]
+    },
+    {
+      "id": "PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr",
+      "title": "Chemistry",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 47,
+      "language": "en",
+      "description": "CrashCourse Chemistry: estrutura atómica, estequiometria, equilíbrio, termoquímica.",
+      "tags": [
+        "Química Geral"
+      ]
+    },
+    {
+      "id": "PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "url": "https://www.youtube.com/playlist?list=PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "title": "BIOQUÍMICA: ESTRUTURA, PROPRIEDADES E FUNÇÕES DE BIOMOLÉCULAS",
+      "channel": "QUÍMICA - A CIÊNCIA CENTRAL NA UFABC",
+      "channel_url": "https://www.youtube.com/@QU%C3%8DMICA-ACI%C3%8ANCIACENTRALNAUFABC",
+      "videos": 32,
+      "language": "pt-BR",
+      "description": "Bioquímica: estrutura, propriedades e funções de biomoléculas — canal da disciplina na UFABC.",
+      "tags": [
+        "Bioquímica"
+      ]
+    },
+    {
+      "id": "PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "url": "https://www.youtube.com/playlist?list=PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "title": "Bioquímica - Profa. Dra. Cristiane Matte/UFRGS",
+      "channel": "CRISTIANE MATTE",
+      "channel_url": "https://www.youtube.com/@cristianematte4852",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos, metabolismo energético.",
+      "tags": [
+        "Bioquímica"
+      ]
+    },
+    {
+      "id": "PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "title": "Organic Chemistry",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 51,
+      "language": "en",
+      "description": "CrashCourse Organic Chemistry: nomenclatura, grupos funcionais, estereoquímica, reatividade.",
+      "tags": [
+        "Estrutura e Função dos Compostos Orgânicos"
+      ]
+    },
+    {
+      "id": "PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "url": "https://www.youtube.com/playlist?list=PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "title": "Química Orgânica na graduação",
+      "channel": "Claudia Regina Quimica",
+      "channel_url": "https://www.youtube.com/@ClaudiaReginaQuimica",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "Química orgânica na graduação (Profa. Cláudia Regina): acidez/basicidade, grupos funcionais, reações.",
+      "tags": [
+        "Estrutura e Função dos Compostos Orgânicos"
+      ]
+    },
+    {
+      "id": "PLiUItvs2yOPlMnoHEs1VJBwMPJ4Z26p-G",
+      "url": "https://www.youtube.com/playlist?list=PLiUItvs2yOPlMnoHEs1VJBwMPJ4Z26p-G",
+      "title": "Sistema Digestório",
+      "channel": "Anatomia Unicamp",
+      "channel_url": "https://www.youtube.com/@AnatomiaUnicamp",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Anatomia do sistema digestório com peças cadavéricas — canal de Anatomia da Unicamp.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 102 – Aparelho Digestivo"
+      ]
+    },
+    {
+      "id": "PLB-dtv1lzMSJVgEFp5VPKzse_tU8_8f7Q",
+      "url": "https://www.youtube.com/playlist?list=PLB-dtv1lzMSJVgEFp5VPKzse_tU8_8f7Q",
+      "title": "Fisiologia do trato digestório.",
+      "channel": "Pedro Metran",
+      "channel_url": "https://www.youtube.com/@pedrometran",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Fisiologia do trato digestório (Pedro Metran), enfoque médico.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 102 – Aparelho Digestivo"
+      ]
+    },
+    {
+      "id": "PLiUItvs2yOPnroW3LETxd4GT2OlC0NDCj",
+      "url": "https://www.youtube.com/playlist?list=PLiUItvs2yOPnroW3LETxd4GT2OlC0NDCj",
+      "title": "Sistema Urogenital",
+      "channel": "Anatomia Unicamp",
+      "channel_url": "https://www.youtube.com/@AnatomiaUnicamp",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Anatomia do sistema urogenital (rins, segmentação renal, ureteres) — Anatomia Unicamp.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 103 – Aparelho Urinário"
+      ]
+    },
+    {
+      "id": "PLB-dtv1lzMSIF5lBJc2eLIFa03fZA1NYa",
+      "url": "https://www.youtube.com/playlist?list=PLB-dtv1lzMSIF5lBJc2eLIFa03fZA1NYa",
+      "title": "Fisiologia renal.",
+      "channel": "Pedro Metran",
+      "channel_url": "https://www.youtube.com/@pedrometran",
+      "videos": 28,
+      "language": "pt-BR",
+      "description": "Fisiologia renal completa (filtração, reabsorção, equilíbrio hidroeletrolítico) — Pedro Metran.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 103 – Aparelho Urinário"
+      ]
+    },
+    {
+      "id": "PLsPIneJCpRR475zfzjNMauHJ3khB7DmR-",
+      "url": "https://www.youtube.com/playlist?list=PLsPIneJCpRR475zfzjNMauHJ3khB7DmR-",
+      "title": "Sistema Circulatório: Cardiovascular e Linfático",
+      "channel": "Anatomia Fácil com Rogério Gozzi",
+      "channel_url": "https://www.youtube.com/@AnatomiaFacilOficial",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Sistema circulatório (coração, vasos, circulação pulmonar e sistémica) e linfático — Prof. Rogério Gozzi.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 201 – Aparelho Circulatório e Respiratório"
+      ]
+    },
+    {
+      "id": "PL7sP6IQjeaAyenQfdpVBqhilZ9ebfH_j9",
+      "url": "https://www.youtube.com/playlist?list=PL7sP6IQjeaAyenQfdpVBqhilZ9ebfH_j9",
+      "title": "Fisiologia Respiratória",
+      "channel": "Monitoria em Fisiologia e Biofísica ICB-UFMG",
+      "channel_url": "https://www.youtube.com/@monitoriaemfisiologiaebiof8368",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Fisiologia respiratória (difusão e transporte de gases) — monitoria de Fisiologia e Biofísica do ICB-UFMG.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 201 – Aparelho Circulatório e Respiratório"
+      ]
+    },
+    {
+      "id": "PLsVeL2OBJnCtXo_C3ar48Hxtl48Wt3_5n",
+      "url": "https://www.youtube.com/playlist?list=PLsVeL2OBJnCtXo_C3ar48Hxtl48Wt3_5n",
+      "title": "Histologia Sistêmica para Medicina e Área da Saúde - Curso Completo",
+      "channel": "Prof Roberval Moraes - MedAulas",
+      "channel_url": "https://www.youtube.com/@medaulas-robervalmoraes",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Histologia sistémica (circulatório, coração, artérias/veias e restantes órgãos) — Prof. Roberval Moraes.",
+      "tags": [
+        "Aplicações em Histologia"
+      ]
+    },
+    {
+      "id": "PLle9NwXSBQH2dGPkpvQfYFHVZaf0ylnbp",
+      "url": "https://www.youtube.com/playlist?list=PLle9NwXSBQH2dGPkpvQfYFHVZaf0ylnbp",
+      "title": "Epidemiologia e Saúde Coletiva",
+      "channel": "Prof. Mario Gandra",
+      "channel_url": "https://www.youtube.com/@ProfMarioGandra",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Epidemiologia: história, risco e indicadores, desenhos de estudo (Prof. Mario Gandra).",
+      "tags": [
+        "Epidemiologia"
+      ]
+    },
+    {
+      "id": "PL8dPuuaLjXtPkACD-BkU-oM6PUotjdCEk",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtPkACD-BkU-oM6PUotjdCEk",
+      "title": "Outbreak Science",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 16,
+      "language": "en",
+      "description": "CrashCourse Outbreak Science: surtos, transmissão, vigilância.",
+      "tags": [
+        "Epidemiologia"
+      ]
+    },
+    {
+      "id": "PLokE6izDq5XOiGhp_2pNGaJKVAfwc6BMt",
+      "url": "https://www.youtube.com/playlist?list=PLokE6izDq5XOiGhp_2pNGaJKVAfwc6BMt",
+      "title": "Microbiologia Médica",
+      "channel": "Teoria da Medicina",
+      "channel_url": "https://www.youtube.com/@TeoriadaMedicinagplus",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Microbiologia médica: introdução, microbiota normal, patogenicidade (projeto Teoria da Medicina, aulas para cursos de saúde).",
+      "tags": [
+        "Fundamentos de Microbiologia Médica"
+      ]
+    },
+    {
+      "id": "PLbAgCI7O-2voai7hfwi0KpEViihPE8yMp",
+      "url": "https://www.youtube.com/playlist?list=PLbAgCI7O-2voai7hfwi0KpEViihPE8yMp",
+      "title": "MICROBIOLOGIA MÉDICA",
+      "channel": "Facilitando a Medicina",
+      "channel_url": "https://www.youtube.com/@FacilitandoaMedicina",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Bactérias de interesse médico, patogenicidade, Staphylococcus, etc. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "tags": [
+        "Fundamentos de Microbiologia Médica"
+      ]
+    },
+    {
+      "id": "PLo3SOH-Uj7B6jDhb_E4IAEczRXQ1zmoUu",
+      "url": "https://www.youtube.com/playlist?list=PLo3SOH-Uj7B6jDhb_E4IAEczRXQ1zmoUu",
+      "title": "Fisiologia Endócrina",
+      "channel": "Fisiologia Virtual",
+      "channel_url": "https://www.youtube.com/@FisioVT",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Fisiologia endócrina: hormonas, sinalização, eixos hormonais (Fisiologia Virtual).",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 202 – Sistema Endócrino, Reprodução e Desenvolvimento"
+      ]
+    },
+    {
+      "id": "PLB-dtv1lzMSJG_UUQ0Qgg4Vxl2HPZ6HCc",
+      "url": "https://www.youtube.com/playlist?list=PLB-dtv1lzMSJG_UUQ0Qgg4Vxl2HPZ6HCc",
+      "title": "Ciclo menstrual e hormônios sexuais femininos.",
+      "channel": "Pedro Metran",
+      "channel_url": "https://www.youtube.com/@pedrometran",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Ciclo menstrual e hormonas sexuais femininas (Pedro Metran) — parte de reprodução.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 202 – Sistema Endócrino, Reprodução e Desenvolvimento"
+      ]
+    },
+    {
+      "id": "PLuTpg3sTSDlZOlTBlEr-1lp-Ec91Unx-y",
+      "url": "https://www.youtube.com/playlist?list=PLuTpg3sTSDlZOlTBlEr-1lp-Ec91Unx-y",
+      "title": "Neuroanatomia",
+      "channel": "Jamary Oliveira Filho",
+      "channel_url": "https://www.youtube.com/@jamaryoliveirafilho6741",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "Neuroanatomia pelo Prof. Jamary Oliveira Filho (neurologista, docente UFBA).",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 301 – Sistema Nervoso e Sentidos Especiais"
+      ]
+    },
+    {
+      "id": "PLbAgCI7O-2vp_6zZOxEg8ABrQyZyhgET8",
+      "url": "https://www.youtube.com/playlist?list=PLbAgCI7O-2vp_6zZOxEg8ABrQyZyhgET8",
+      "title": "NEUROFISIOLOGIA",
+      "channel": "Facilitando a Medicina",
+      "channel_url": "https://www.youtube.com/@FacilitandoaMedicina",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Neurofisiologia: neurónios, glia, sinapses, vias sensoriais. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 301 – Sistema Nervoso e Sentidos Especiais"
+      ]
+    },
+    {
+      "id": "PLmWmJVDdk7vP4AzdAOZ3S4WdIaeSGy3o2",
+      "url": "https://www.youtube.com/playlist?list=PLmWmJVDdk7vP4AzdAOZ3S4WdIaeSGy3o2",
+      "title": "Física para ciências biológicas - Alonso",
+      "channel": "Antonio Alonso",
+      "channel_url": "https://www.youtube.com/@leletiticiciaa100",
+      "videos": 77,
+      "language": "pt-BR",
+      "description": "Física para ciências biológicas — Prof. Antonio Alonso (Grupo de Biofísica, Instituto de Física da UFG).",
+      "tags": [
+        "Tópicos de Física para Ciências Biomédicas"
+      ]
+    },
+    {
+      "id": "PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "url": "https://www.youtube.com/playlist?list=PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "title": "Biofísica",
+      "channel": "Ensino Remoto UFRN",
+      "channel_url": "https://www.youtube.com/@EnsinoRemotoUFRN",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Biofísica (ciclo cardíaco, biomecânica, eletroforese) — canal institucional Ensino Remoto UFRN.",
+      "tags": [
+        "Tópicos de Física para Ciências Biomédicas"
+      ]
+    },
+    {
+      "id": "PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "url": "https://www.youtube.com/playlist?list=PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "title": "Fisiopatologia do Diabetes",
+      "channel": "Profa Tatiana Lavich",
+      "channel_url": "https://www.youtube.com/@ProfaTatianaLavich",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich).",
+      "tags": [
+        "Doenças Metabólicas"
+      ]
+    },
+    {
+      "id": "PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "url": "https://www.youtube.com/playlist?list=PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "title": "Fisiologia do metabolismo.",
+      "channel": "Pedro Metran",
+      "channel_url": "https://www.youtube.com/@pedrometran",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran.",
+      "tags": [
+        "Doenças Metabólicas"
+      ]
+    },
+    {
+      "id": "PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "url": "https://www.youtube.com/playlist?list=PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "title": "Genética Molecular",
+      "channel": "Thaisplicando Genética",
+      "channel_url": "https://www.youtube.com/@ThaisplicandoGen%C3%A9tica",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Genética molecular: ácidos nucleicos, replicação, transcrição, tradução (Thaís Magalhães, mestre em Genética).",
+      "tags": [
+        "Genética Molecular"
+      ]
+    },
+    {
+      "id": "PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "url": "https://www.youtube.com/playlist?list=PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "title": "Curso de Biologia Molecular",
+      "channel": "Biologia com Patrick Gomes",
+      "channel_url": "https://www.youtube.com/@BiologiacomPatrickGomes",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Curso de Biologia Molecular: cromatina procariota/eucariota, genes, expressão (Prof. Patrick Gomes).",
+      "tags": [
+        "Genética Molecular"
+      ]
+    },
+    {
+      "id": "PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "url": "https://www.youtube.com/playlist?list=PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "title": "Parasitologia Humana",
+      "channel": "MEDICINA UFMT",
+      "channel_url": "https://www.youtube.com/@MEDICINAUFMT",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT.",
+      "tags": [
+        "Parasitologia e Micologia Médica"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "title": "Licenciatura em Biologia | Parasitologia - 16º Bimestre",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas.",
+      "tags": [
+        "Parasitologia e Micologia Médica"
+      ]
+    },
+    {
+      "id": "PLiUItvs2yOPknxYf0OTM9bTgtNhv2cLee",
+      "url": "https://www.youtube.com/playlist?list=PLiUItvs2yOPknxYf0OTM9bTgtNhv2cLee",
+      "title": "Aparelho Locomotor",
+      "channel": "Anatomia Unicamp",
+      "channel_url": "https://www.youtube.com/@AnatomiaUnicamp",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Aparelho locomotor: ossos, articulações, músculos — Anatomia Unicamp.",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 101 – Sistema Músculo-Esquelético"
+      ]
+    },
+    {
+      "id": "PLsPIneJCpRR6BgTavHjM4kOtPlzTLWPs4",
+      "url": "https://www.youtube.com/playlist?list=PLsPIneJCpRR6BgTavHjM4kOtPlzTLWPs4",
+      "title": "Ossos e Articulações",
+      "channel": "Anatomia Fácil com Rogério Gozzi",
+      "channel_url": "https://www.youtube.com/@AnatomiaFacilOficial",
+      "videos": 48,
+      "language": "pt-BR",
+      "description": "Osteologia e artrologia (Prof. Rogério Gozzi).",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 101 – Sistema Músculo-Esquelético"
+      ]
+    },
+    {
+      "id": "PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "url": "https://www.youtube.com/playlist?list=PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "title": "Cell Culture Technologies",
+      "channel": "Cell Culture Technologies",
+      "channel_url": "https://www.youtube.com/@cellculturetechnologies2653",
+      "videos": 40,
+      "language": "en",
+      "description": "Curso completo de tecnologia de cultura celular (substratos, laboratório, linhas celulares, culturas neuronais e musculares); formato de curso universitário indiano (NPTEL).",
+      "tags": [
+        "Tecnologia de Cultura de Células Animais"
+      ]
+    },
+    {
+      "id": "PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "url": "https://www.youtube.com/playlist?list=PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "title": "Cell Culture Basics",
+      "channel": "Thermo Fisher Scientific",
+      "channel_url": "https://www.youtube.com/@thermofisher",
+      "videos": 6,
+      "language": "en",
+      "description": "Cell Culture Basics (Thermo Fisher Scientific): passagem, congelação, contagem e técnica asséptica.",
+      "tags": [
+        "Tecnologia de Cultura de Células Animais"
+      ]
+    },
+    {
+      "id": "PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "url": "https://www.youtube.com/playlist?list=PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "title": "EmbriologiaFarmácia2020",
+      "channel": "Rodrigo Nunes da Fonseca",
+      "channel_url": "https://www.youtube.com/@rodrigonunesdafonseca1565",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020.",
+      "tags": [
+        "Biologia do Desenvolvimento Embrionário"
+      ]
+    },
+    {
+      "id": "PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "url": "https://www.youtube.com/playlist?list=PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "title": "Embriologia p/ ens SUPERIOR",
+      "channel": "Biologia com Patrick Gomes",
+      "channel_url": "https://www.youtube.com/@BiologiacomPatrickGomes",
+      "videos": 27,
+      "language": "pt-BR",
+      "description": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes).",
+      "tags": [
+        "Biologia do Desenvolvimento Embrionário"
+      ]
+    },
+    {
+      "id": "PLtODRsfD0xW9MHqinfe0HgoHx3AuRhLVB",
+      "url": "https://www.youtube.com/playlist?list=PLtODRsfD0xW9MHqinfe0HgoHx3AuRhLVB",
+      "title": "Genética Médica",
+      "channel": "MEDICINA UFMT",
+      "channel_url": "https://www.youtube.com/@MEDICINAUFMT",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Genética médica (Faculdade de Medicina da UFMT): anomalias congénitas, erros inatos do metabolismo, oncogenética.",
+      "tags": [
+        "Genética Humana"
+      ]
+    },
+    {
+      "id": "PL9-BJ9guBp_J5S3ee2do_zMrXMelJPBbj",
+      "url": "https://www.youtube.com/playlist?list=PL9-BJ9guBp_J5S3ee2do_zMrXMelJPBbj",
+      "title": "Anomalias Congênitas",
+      "channel": "Lúmina UFRGS",
+      "channel_url": "https://www.youtube.com/@L%C3%BAminaUFRGS",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Curso de Anomalias Congénitas (Lúmina/UFRGS): desenvolvimento embrionário e fetal, diagnóstico pré-natal.",
+      "tags": [
+        "Genética Humana"
+      ]
+    },
+    {
+      "id": "PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "url": "https://www.youtube.com/playlist?list=PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "title": "Imunologia - UNEB",
+      "channel": "Imunologia UNEB",
+      "channel_url": "https://www.youtube.com/@Otacilia77",
+      "videos": 26,
+      "language": "pt-BR",
+      "description": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia).",
+      "tags": [
+        "Imunologia Humana"
+      ]
+    },
+    {
+      "id": "PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "url": "https://www.youtube.com/playlist?list=PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "title": "Imunologia e Imunopatologia (Curso Completo)",
+      "channel": "Prof Roberval Moraes - MedAulas",
+      "channel_url": "https://www.youtube.com/@medaulas-robervalmoraes",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes).",
+      "tags": [
+        "Imunologia Humana"
+      ]
+    },
+    {
+      "id": "PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "url": "https://www.youtube.com/playlist?list=PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "title": "Aulas de Neurofisiologia",
+      "channel": "AldoLucion",
+      "channel_url": "https://www.youtube.com/@AldoLucionNeuro",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas.",
+      "tags": [
+        "Neurobiologia"
+      ]
+    },
+    {
+      "id": "PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "url": "https://www.youtube.com/playlist?list=PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "title": "AULAS DE NEUROFISIOLOGIA",
+      "channel": "Neurociência Descomplicada",
+      "channel_url": "https://www.youtube.com/@NeuroDescomplicada",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista).",
+      "tags": [
+        "Neurobiologia"
+      ]
+    },
+    {
+      "id": "PLHcz8whldnbk117QTmWLPw-ioSAcPFOan",
+      "url": "https://www.youtube.com/playlist?list=PLHcz8whldnbk117QTmWLPw-ioSAcPFOan",
+      "title": "Cátedra Darcy Fontoura de Almeida - Terapias Avançadas",
+      "channel": "Colégio Brasileiro de Altos Estudos da UFRJ",
+      "channel_url": "https://www.youtube.com/@CBAEUFRJ",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Cátedra 'Terapias Avançadas' do Colégio Brasileiro de Altos Estudos da UFRJ: terapia celular, células estromais, vetores.",
+      "tags": [
+        "Terapia Génica e Celular"
+      ]
+    },
+    {
+      "id": "PL184C42BACF6D9093",
+      "url": "https://www.youtube.com/playlist?list=PL184C42BACF6D9093",
+      "title": "iBiology Lectures: Development & Stem Cells",
+      "channel": "Science Communication Lab",
+      "channel_url": "https://www.youtube.com/@scicommlab",
+      "videos": 73,
+      "language": "en",
+      "description": "iBiology Lectures: Development & Stem Cells — investigadores de referência sobre células estaminais e regeneração.",
+      "tags": [
+        "Terapia Génica e Celular"
+      ]
+    },
+    {
+      "id": "PLRxLNUL6CtpVSKYLpkJCNqRnPTcLfQBgE",
+      "url": "https://www.youtube.com/playlist?list=PLRxLNUL6CtpVSKYLpkJCNqRnPTcLfQBgE",
+      "title": "ABC Epigenética",
+      "channel": "genoma USP",
+      "channel_url": "https://www.youtube.com/@GenomaUSP",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "'ABC Epigenética' do Centro de Estudos do Genoma Humano (genoma USP).",
+      "tags": [
+        "Epigenética"
+      ]
+    },
+    {
+      "id": "PLzF6mGL_E5nF_nU4XvamExnlLcUbDQFPG",
+      "url": "https://www.youtube.com/playlist?list=PLzF6mGL_E5nF_nU4XvamExnlLcUbDQFPG",
+      "title": "Aulas - Genética e Epigenética",
+      "channel": "BioLógicaMente",
+      "channel_url": "https://www.youtube.com/@BioL%C3%B3gicaMente_BLM",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Aulas de Genética e Epigenética (imprinting, herança multifatorial, DNA e ambiente).",
+      "tags": [
+        "Epigenética"
+      ]
+    },
+    {
+      "id": "PLREa-1X0x4IkTtYo6fjhgDtEoLCFt5srU",
+      "url": "https://www.youtube.com/playlist?list=PLREa-1X0x4IkTtYo6fjhgDtEoLCFt5srU",
+      "title": "Farmacocinetica e Farmacodinâmica",
+      "channel": "Profa Tatiana Lavich",
+      "channel_url": "https://www.youtube.com/@ProfaTatianaLavich",
+      "videos": 30,
+      "language": "pt-BR",
+      "description": "Farmacocinética e farmacodinâmica: agonistas, antagonistas, eficácia, potência, recetores (Profa. Tatiana Lavich).",
+      "tags": [
+        "Farmacologia Molecular"
+      ]
+    },
+    {
+      "id": "PLokE6izDq5XNWBx8giKXq938dmHRaCPRU",
+      "url": "https://www.youtube.com/playlist?list=PLokE6izDq5XNWBx8giKXq938dmHRaCPRU",
+      "title": "Farmacologia Médica",
+      "channel": "Teoria da Medicina",
+      "channel_url": "https://www.youtube.com/@TeoriadaMedicinagplus",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Farmacologia médica: farmacocinética, farmacodinâmica, classes de fármacos (Teoria da Medicina).",
+      "tags": [
+        "Farmacologia Molecular"
+      ]
+    },
+    {
+      "id": "PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "url": "https://www.youtube.com/playlist?list=PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "title": "Alinhamento de sequências",
+      "channel": "OnlineBioinfo Bioinformática",
+      "channel_url": "https://www.youtube.com/@OnlineBioinfo",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Algoritmos de alinhamento de sequências — projeto OnlineBioinfo (Profa. Raquel Minardi, DCC-UFMG).",
+      "tags": [
+        "Fundamentos de Bioinformática"
+      ]
+    },
+    {
+      "id": "PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "url": "https://www.youtube.com/playlist?list=PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "title": "Curso de Verão 2023",
+      "channel": "Curso de Verão em Bioinformática USP",
+      "channel_url": "https://www.youtube.com/@cursoveraobioinfousp",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "XIV Curso de Verão em Bioinformática da USP (2023).",
+      "tags": [
+        "Fundamentos de Bioinformática"
+      ]
+    },
+    {
+      "id": "PLsPIneJCpRR74cYVdG7pJBJ927VsWU0ff",
+      "url": "https://www.youtube.com/playlist?list=PLsPIneJCpRR74cYVdG7pJBJ927VsWU0ff",
+      "title": "Dermatologia (Sistema Tegumentar): Pele e Anexos",
+      "channel": "Anatomia Fácil com Rogério Gozzi",
+      "channel_url": "https://www.youtube.com/@AnatomiaFacilOficial",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Sistema tegumentar: pele (epiderme, derme) e anexos (Prof. Rogério Gozzi).",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 302 – Sistema Tegumentar, Regulação da Temperatura, Integração"
+      ]
+    },
+    {
+      "id": "PLbKSbFnKYVY1-S3v7AumitreE3WDxDgYs",
+      "url": "https://www.youtube.com/playlist?list=PLbKSbFnKYVY1-S3v7AumitreE3WDxDgYs",
+      "title": "Integumentary system",
+      "channel": "khanacademymedicine",
+      "channel_url": "https://www.youtube.com/@khanacademymedicine",
+      "videos": 11,
+      "language": "en",
+      "description": "Khan Academy Medicine — Integumentary system (pele, termorregulação, anexos).",
+      "tags": [
+        "Sistemas Orgânicos Funcionais 302 – Sistema Tegumentar, Regulação da Temperatura, Integração"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "code": "14241044",
+      "playlist_id": "PLlJ9qIISE9VApezwzuVUORmg4v79jQaa_",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Bioestatística aplicada à saúde: amostragem, variáveis, medidas descritivas, testes. Autor: Prof. Moacir Pereira Junior (educação física/ciências do exercício).",
+      "published": true
+    },
+    {
+      "code": "14241044",
+      "playlist_id": "PLzPsQlMW_Jyf9vyDJWPH9h0M0B8hOMpxx",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso de bioestatística para pesquisa científica: tendência central, dispersão, escolha de testes.",
+      "published": true
+    },
+    {
+      "code": "14241045",
+      "playlist_id": "PLxjZIPDA-FGgdjVwbi6Kkt5iz7IwP9y9s",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso de Bioética pela Profa. Maria Clara Dias (filosofia, UFRJ): ética, teorias da justiça, fundamentos da bioética.",
+      "published": true
+    },
+    {
+      "code": "14241040",
+      "playlist_id": "PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS), aulas de disciplina de graduação.",
+      "published": true
+    },
+    {
+      "code": "14241040",
+      "playlist_id": "PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Citologia de nível superior: membrana, organelos, citoesqueleto, ciclo celular. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
+    },
+    {
+      "code": "19151009",
+      "playlist_id": "PLsVeL2OBJnCtLqdHPtMlx-LeXQ5tfvjhG",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Histologia básica: os quatro tecidos fundamentais, matriz extracelular. Prof. Roberval Moraes.",
+      "published": true
+    },
+    {
+      "code": "19151009",
+      "playlist_id": "PLbAgCI7O-2vqIGWt8oW8gre8IXVuc9pAD",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Histologia geral (epitelial, conjuntivo, muscular, nervoso). Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
+    },
+    {
+      "code": "14241042",
+      "playlist_id": "PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará): limites, derivadas, integrais e aplicações.",
+      "published": true
+    },
+    {
+      "code": "14241042",
+      "playlist_id": "PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "ord": 2,
+      "confidence": "média",
+      "level": "secundário (10.º–12.º ano) — introdutório",
+      "match": "Funções reais de variável real em PT-PT (Khan Academy Portugal), revisão de base para a UC.",
+      "published": true
+    },
+    {
+      "code": "14241041",
+      "playlist_id": "PLn4_ixE2STJlYkW7o915iT-12Bh9qLSjX",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química geral para o ensino superior: modelos atómicos, teoria quântica, ligações.",
+      "published": true
+    },
+    {
+      "code": "14241041",
+      "playlist_id": "PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "introdutório/superior",
+      "match": "CrashCourse Chemistry: estrutura atómica, estequiometria, equilíbrio, termoquímica.",
+      "published": true
+    },
+    {
+      "code": "14241048",
+      "playlist_id": "PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Bioquímica: estrutura, propriedades e funções de biomoléculas — canal da disciplina na UFABC.",
+      "published": true
+    },
+    {
+      "code": "14241048",
+      "playlist_id": "PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos, metabolismo energético.",
+      "published": true
+    },
+    {
+      "code": "14241049",
+      "playlist_id": "PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "introdutório/superior",
+      "match": "CrashCourse Organic Chemistry: nomenclatura, grupos funcionais, estereoquímica, reatividade.",
+      "published": true
+    },
+    {
+      "code": "14241049",
+      "playlist_id": "PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química orgânica na graduação (Profa. Cláudia Regina): acidez/basicidade, grupos funcionais, reações.",
+      "published": true
+    },
+    {
+      "code": "14241047",
+      "playlist_id": "PLiUItvs2yOPlMnoHEs1VJBwMPJ4Z26p-G",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Anatomia do sistema digestório com peças cadavéricas — canal de Anatomia da Unicamp.",
+      "published": true
+    },
+    {
+      "code": "14241047",
+      "playlist_id": "PLB-dtv1lzMSJVgEFp5VPKzse_tU8_8f7Q",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia do trato digestório (Pedro Metran), enfoque médico.",
+      "published": true
+    },
+    {
+      "code": "14241057",
+      "playlist_id": "PLiUItvs2yOPnroW3LETxd4GT2OlC0NDCj",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Anatomia do sistema urogenital (rins, segmentação renal, ureteres) — Anatomia Unicamp.",
+      "published": true
+    },
+    {
+      "code": "14241057",
+      "playlist_id": "PLB-dtv1lzMSIF5lBJc2eLIFa03fZA1NYa",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia renal completa (filtração, reabsorção, equilíbrio hidroeletrolítico) — Pedro Metran.",
+      "published": true
+    },
+    {
+      "code": "14241051",
+      "playlist_id": "PLsPIneJCpRR475zfzjNMauHJ3khB7DmR-",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistema circulatório (coração, vasos, circulação pulmonar e sistémica) e linfático — Prof. Rogério Gozzi.",
+      "published": true
+    },
+    {
+      "code": "14241051",
+      "playlist_id": "PL7sP6IQjeaAyenQfdpVBqhilZ9ebfH_j9",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia respiratória (difusão e transporte de gases) — monitoria de Fisiologia e Biofísica do ICB-UFMG.",
+      "published": true
+    },
+    {
+      "code": "19151011",
+      "playlist_id": "PLsVeL2OBJnCtXo_C3ar48Hxtl48Wt3_5n",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Histologia sistémica (circulatório, coração, artérias/veias e restantes órgãos) — Prof. Roberval Moraes.",
+      "published": true
+    },
+    {
+      "code": "14241069",
+      "playlist_id": "PLle9NwXSBQH2dGPkpvQfYFHVZaf0ylnbp",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Epidemiologia: história, risco e indicadores, desenhos de estudo (Prof. Mario Gandra).",
+      "published": true
+    },
+    {
+      "code": "14241069",
+      "playlist_id": "PL8dPuuaLjXtPkACD-BkU-oM6PUotjdCEk",
+      "ord": 2,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "CrashCourse Outbreak Science: surtos, transmissão, vigilância.",
+      "published": true
+    },
+    {
+      "code": "14241055",
+      "playlist_id": "PLokE6izDq5XOiGhp_2pNGaJKVAfwc6BMt",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Microbiologia médica: introdução, microbiota normal, patogenicidade (projeto Teoria da Medicina, aulas para cursos de saúde).",
+      "published": true
+    },
+    {
+      "code": "14241055",
+      "playlist_id": "PLbAgCI7O-2voai7hfwi0KpEViihPE8yMp",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Bactérias de interesse médico, patogenicidade, Staphylococcus, etc. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
+    },
+    {
+      "code": "19151012",
+      "playlist_id": "PLo3SOH-Uj7B6jDhb_E4IAEczRXQ1zmoUu",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia endócrina: hormonas, sinalização, eixos hormonais (Fisiologia Virtual).",
+      "published": true
+    },
+    {
+      "code": "19151012",
+      "playlist_id": "PLB-dtv1lzMSJG_UUQ0Qgg4Vxl2HPZ6HCc",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Ciclo menstrual e hormonas sexuais femininas (Pedro Metran) — parte de reprodução.",
+      "published": true
+    },
+    {
+      "code": "14241053",
+      "playlist_id": "PLuTpg3sTSDlZOlTBlEr-1lp-Ec91Unx-y",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Neuroanatomia pelo Prof. Jamary Oliveira Filho (neurologista, docente UFBA).",
+      "published": true
+    },
+    {
+      "code": "14241053",
+      "playlist_id": "PLbAgCI7O-2vp_6zZOxEg8ABrQyZyhgET8",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Neurofisiologia: neurónios, glia, sinapses, vias sensoriais. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true
+    },
+    {
+      "code": "19151010",
+      "playlist_id": "PLmWmJVDdk7vP4AzdAOZ3S4WdIaeSGy3o2",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Física para ciências biológicas — Prof. Antonio Alonso (Grupo de Biofísica, Instituto de Física da UFG).",
+      "published": true
+    },
+    {
+      "code": "19151010",
+      "playlist_id": "PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Biofísica (ciclo cardíaco, biomecânica, eletroforese) — canal institucional Ensino Remoto UFRN.",
+      "published": true
+    },
+    {
+      "code": "14241054",
+      "playlist_id": "PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich).",
+      "published": true
+    },
+    {
+      "code": "14241054",
+      "playlist_id": "PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran.",
+      "published": true
+    },
+    {
+      "code": "14241056",
+      "playlist_id": "PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Genética molecular: ácidos nucleicos, replicação, transcrição, tradução (Thaís Magalhães, mestre em Genética).",
+      "published": true
+    },
+    {
+      "code": "14241056",
+      "playlist_id": "PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso de Biologia Molecular: cromatina procariota/eucariota, genes, expressão (Prof. Patrick Gomes).",
+      "published": true
+    },
+    {
+      "code": "14241058",
+      "playlist_id": "PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT.",
+      "published": true
+    },
+    {
+      "code": "14241058",
+      "playlist_id": "PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas.",
+      "published": true
+    },
+    {
+      "code": "14241046",
+      "playlist_id": "PLiUItvs2yOPknxYf0OTM9bTgtNhv2cLee",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Aparelho locomotor: ossos, articulações, músculos — Anatomia Unicamp.",
+      "published": true
+    },
+    {
+      "code": "14241046",
+      "playlist_id": "PLsPIneJCpRR6BgTavHjM4kOtPlzTLWPs4",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Osteologia e artrologia (Prof. Rogério Gozzi).",
+      "published": true
+    },
+    {
+      "code": "14241059",
+      "playlist_id": "PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso completo de tecnologia de cultura celular (substratos, laboratório, linhas celulares, culturas neuronais e musculares); formato de curso universitário indiano (NPTEL).",
+      "published": true
+    },
+    {
+      "code": "14241059",
+      "playlist_id": "PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Cell Culture Basics (Thermo Fisher Scientific): passagem, congelação, contagem e técnica asséptica.",
+      "published": true
+    },
+    {
+      "code": "14241061",
+      "playlist_id": "PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020.",
+      "published": true
+    },
+    {
+      "code": "14241061",
+      "playlist_id": "PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes).",
+      "published": true
+    },
+    {
+      "code": "14241062",
+      "playlist_id": "PLtODRsfD0xW9MHqinfe0HgoHx3AuRhLVB",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Genética médica (Faculdade de Medicina da UFMT): anomalias congénitas, erros inatos do metabolismo, oncogenética.",
+      "published": true
+    },
+    {
+      "code": "14241062",
+      "playlist_id": "PL9-BJ9guBp_J5S3ee2do_zMrXMelJPBbj",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso de Anomalias Congénitas (Lúmina/UFRGS): desenvolvimento embrionário e fetal, diagnóstico pré-natal.",
+      "published": true
+    },
+    {
+      "code": "14241063",
+      "playlist_id": "PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia).",
+      "published": true
+    },
+    {
+      "code": "14241063",
+      "playlist_id": "PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes).",
+      "published": true
+    },
+    {
+      "code": "14241065",
+      "playlist_id": "PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas.",
+      "published": true
+    },
+    {
+      "code": "14241065",
+      "playlist_id": "PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista).",
+      "published": true
+    },
+    {
+      "code": "14241064",
+      "playlist_id": "PLHcz8whldnbk117QTmWLPw-ioSAcPFOan",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cátedra 'Terapias Avançadas' do Colégio Brasileiro de Altos Estudos da UFRJ: terapia celular, células estromais, vetores.",
+      "published": true
+    },
+    {
+      "code": "14241064",
+      "playlist_id": "PL184C42BACF6D9093",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "iBiology Lectures: Development & Stem Cells — investigadores de referência sobre células estaminais e regeneração.",
+      "published": true
+    },
+    {
+      "code": "14241156",
+      "playlist_id": "PLRxLNUL6CtpVSKYLpkJCNqRnPTcLfQBgE",
+      "ord": 1,
+      "confidence": "média",
+      "level": "introdutório/divulgação",
+      "match": "'ABC Epigenética' do Centro de Estudos do Genoma Humano (genoma USP).",
+      "published": true
+    },
+    {
+      "code": "14241156",
+      "playlist_id": "PLzF6mGL_E5nF_nU4XvamExnlLcUbDQFPG",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Aulas de Genética e Epigenética (imprinting, herança multifatorial, DNA e ambiente).",
+      "published": false
+    },
+    {
+      "code": "14241154",
+      "playlist_id": "PLREa-1X0x4IkTtYo6fjhgDtEoLCFt5srU",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Farmacocinética e farmacodinâmica: agonistas, antagonistas, eficácia, potência, recetores (Profa. Tatiana Lavich).",
+      "published": true
+    },
+    {
+      "code": "14241154",
+      "playlist_id": "PLokE6izDq5XNWBx8giKXq938dmHRaCPRU",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Farmacologia médica: farmacocinética, farmacodinâmica, classes de fármacos (Teoria da Medicina).",
+      "published": true
+    },
+    {
+      "code": "14241066",
+      "playlist_id": "PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Algoritmos de alinhamento de sequências — projeto OnlineBioinfo (Profa. Raquel Minardi, DCC-UFMG).",
+      "published": true
+    },
+    {
+      "code": "14241066",
+      "playlist_id": "PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "XIV Curso de Verão em Bioinformática da USP (2023).",
+      "published": true
+    },
+    {
+      "code": "14241155",
+      "playlist_id": "PLsPIneJCpRR74cYVdG7pJBJ927VsWU0ff",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistema tegumentar: pele (epiderme, derme) e anexos (Prof. Rogério Gozzi).",
+      "published": true
+    },
+    {
+      "code": "14241155",
+      "playlist_id": "PLbKSbFnKYVY1-S3v7AumitreE3WDxDgYs",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Khan Academy Medicine — Integumentary system (pele, termorregulação, anexos).",
+      "published": true
+    }
+  ],
+  "application": {
+    "status": "aplicado_em_producao",
+    "applied_on": "2026-11-18",
+    "method": "Supabase MCP: SQL validado em transação revertida e executado diretamente; sem migration no repositório",
+    "course_code": "LCBM",
+    "course_external_id": "1915",
+    "published_course_count": 1,
+    "published_units": 40,
+    "published_playlists": 59,
+    "course_unit_relations": 40,
+    "unit_playlist_relations": 59,
+    "excluded_low_confidence": [
+      {
+        "playlist_id": "PLzF6mGL_E5nF_nU4XvamExnlLcUbDQFPG",
+        "unit_code": "14241156",
+        "reason": "baixa confiança, published=false no manifesto"
+      }
+    ],
+    "note": "A lista original de 60 playlists foi preservada para proveniência; o subconjunto aplicado contém apenas confiança alta/média."
+  }
+}
