@@ -282,6 +282,14 @@
     "text_other": "Repaso para exámenes: las {{count}} clases de esta asignatura están en una sola lista, más abajo. Usa el cuaderno para anotar lo que necesitas repasar.",
     "cta": "Repasar las clases"
   },
+  "resourceFeedback": {
+    "questionVideo": "¿Te ayudó este vídeo?",
+    "questionResource": "¿Te ayudó este recurso?",
+    "yes": "Sí",
+    "no": "No",
+    "thanks": "¡Gracias! El equipo editorial usa estas respuestas para mejorar la selección. Puedes cambiar tu respuesta cuando quieras.",
+    "failed": "No se pudo guardar la respuesta."
+  },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
     "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",
