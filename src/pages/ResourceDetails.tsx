@@ -9,7 +9,7 @@ import { useChannelVideos, useResource, useResourceContext } from '@/features/co
 import { useLinkedCatalogAssets, useModuleProgression } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useContributePath } from '@/features/auth/useContributePath';
 import { unitPath } from '@/entities/course/course.paths';
-import { formatDuration, isoDuration, videoInfo } from '@/entities/course/video';
+import { formatDuration, isoDuration, videoInfo, youtubePlaylistIdFromUrl } from '@/entities/course/video';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -19,6 +19,7 @@ import { VideoCard } from '@/components/resource/VideoCard';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { VideoSequences } from '@/components/sequence/VideoSequences';
 import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
+import { YouTubePlaylistPlayer } from '@/components/resource/YouTubePlaylistPlayer';
 import { NoteTimeline } from '@/components/notes/NoteTimeline';
 import { StudyNotebook } from '@/components/notes/StudyNotebook';
 import { formatTimestamp, parseStartParam } from '@/entities/notes/notes';
@@ -95,6 +96,9 @@ export default function ResourceDetails() {
   const windowStart = Math.max(0, Math.min(position - 2, sequence.length - SEQUENCE_WINDOW));
   const visibleSequence = sequence.slice(windowStart, windowStart + SEQUENCE_WINDOW);
   const player = isVideo && info.youtubeId;
+  const playlistId = resource.object_type === 'playlist' && resource.source_type === 'youtube'
+    ? youtubePlaylistIdFromUrl(resource.source_url) : null;
+  const hasPlayer = Boolean(player || playlistId);
   const unitHref = primary ? unitPath(primary.courses.slug, primary.slug) : null;
   const playerTime = player && clock?.id === resource.id ? clock.time : null;
   const notesOpen = searchParams.get('notes') === 'open';
@@ -159,7 +163,7 @@ export default function ResourceDetails() {
         <h1 className="max-w-4xl text-3xl font-semibold leading-[1.08] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{resource.title}</h1>
         {info.channel && <p className="mt-4 text-lg text-muted-foreground">{t('video.byChannel', { channel: info.channel })}</p>}
       </div>
-      {renderActions(player ? 'max-lg:hidden' : undefined)}
+      {renderActions(hasPlayer ? 'max-lg:hidden' : undefined)}
     </header>
     <LearningContext focus="resource" />
 
@@ -179,6 +183,17 @@ export default function ResourceDetails() {
             </span>
           </div>
           {info.durationSeconds && <NoteTimeline notes={notes} duration={info.durationSeconds} playerTime={playerTime} onSeek={seek} />}
+        </div>
+        {renderActions('mt-6 lg:hidden')}
+      </section>}
+
+      {playlistId && <section aria-label={t('video.player')} className="min-w-0 lg:col-start-1 lg:row-start-1">
+        <div className="border border-foreground">
+          <YouTubePlaylistPlayer key={resource.id} playlistId={playlistId} title={resource.title} />
+          <div className="flex items-center justify-between gap-4 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
+            <span>YouTube</span>
+            {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-6 items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
+          </div>
         </div>
         {renderActions('mt-6 lg:hidden')}
       </section>}
