@@ -45,6 +45,18 @@ export function metaDescription(value: string | null | undefined, fallback = '',
   return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max * 0.6)).replace(/[\s,;:.–—-]+$/, '')}…`;
 }
 
+/**
+ * Many catalogue descriptions are editorial boilerplate shared by dozens of pages ("Vídeo externo do canal…").
+ * When the stored text never names the page subject, lead with the title so each snippet is unique and says
+ * what the page is about. Uses only stored facts; nothing is generated.
+ */
+export function subjectDescription(title: string, description: string | null | undefined, fallback = '') {
+  const text = plainLine(description);
+  const subject = plainLine(title);
+  if (!text || !subject || text.toLocaleLowerCase().includes(subject.toLocaleLowerCase())) return metaDescription(text, fallback);
+  return metaDescription(`${subject}${/[.!?…]$/.test(subject) ? '' : '.'} ${text}`, fallback);
+}
+
 export const pageTitle = (title: string) => (title.includes(SITE_NAME) ? title : `${title} — ${SITE_NAME}`);
 
 export function canonicalUrl(path: string) {
@@ -142,6 +154,12 @@ export const websiteJsonLd = (description: string, language = 'pt'): JsonLd => (
   '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`,
   name: SITE_NAME, url: `${SITE_ORIGIN}/`, description, inLanguage: language,
   publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+  // Tells assistants and agents how to search the public library directly.
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${SITE_ORIGIN}/resources?search={search_term_string}` },
+    'query-input': 'required name=search_term_string',
+  },
 });
 
 export function breadcrumbJsonLd(items: { name: string; path?: string }[]): JsonLd {
@@ -255,7 +273,7 @@ export function resourceMeta(
   labels: { resources: string; type: string },
 ): PageMeta {
   const path = publicResourcePath(resource.object_type, resource.slug);
-  const description = metaDescription(resource.description, `${labels.type}: ${resource.title}`);
+  const description = subjectDescription(resource.title, resource.description, `${labels.type}: ${resource.title}`);
   const youtubeId = resource.object_type === 'video' ? video?.youtubeId ?? null : null;
   const typePath = `/resources?type=${enc(resource.object_type)}`;
   return {
@@ -280,7 +298,7 @@ export function sequenceMeta(
   labels: { sequences: string },
 ): PageMeta {
   const path = sequencePath(sequence.slug);
-  const description = metaDescription(sequence.description, sequence.title);
+  const description = subjectDescription(sequence.title, sequence.description, sequence.title);
   const cover = sequence.coverYoutubeId ?? sequence.items.find(item => item.youtubeId)?.youtubeId;
   return {
     title: sequence.title, description, path, language: sequence.language,

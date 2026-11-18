@@ -405,6 +405,7 @@
     "contribute": "Suggest resources",
     "search": "Search by title or code",
     "searchPlaceholder": "e.g. Programming, 14541000",
+    "searchLibrary": "Search videos and resources for “{{term}}”",
     "sort": "Sort by",
     "sorts": {
       "curriculum": "Study plan order",
@@ -484,6 +485,7 @@
     "openEditor": "Open editorial workspace",
     "openDashboard": "Go to my space",
     "createAccount": "Create an account or sign in",
+    "faqTitle": "Frequently asked questions",
     "faq": {
       "free": "Is FACODI free? Do I need an account?",
       "curated": "Who decides what gets published on FACODI?",

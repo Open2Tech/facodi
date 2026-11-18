@@ -120,17 +120,15 @@ export async function getCatalogCounts(signal?: AbortSignal) {
   return { courses: courses.count ?? 0, units: units.count ?? 0, resources: resources.count ?? 0, videos: videos.count ?? 0 };
 }
 
-/** Most frequent tags across a bounded sample of published resources. */
+/**
+ * Most frequent study topics in the public library. Uses the same curated vocabulary as the library's topic
+ * filter, so bookkeeping tags (source, institution, year, format) never appear as themes on the home page.
+ */
 export async function listTopics(limit = 6, signal?: AbortSignal) {
-  const { data, error } = await supabase.from('learning_objects').select('tags')
-    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).order('updated_at', { ascending: false }).limit(200).abortSignal(signal);
+  const { data, error } = await supabase.rpc('list_public_resource_topics_v1', { p_search: '' }).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  const counts = new Map<string, number>();
-  for (const row of data) for (const tag of row.tags) {
-    const label = tag.trim();
-    if (label) counts.set(label, (counts.get(label) ?? 0) + 1);
-  }
-  return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, limit).map(([tag, count]) => ({ tag, count }));
+  return [...(data ?? [])].sort((a, b) => b.item_count - a.item_count || a.tag.localeCompare(b.tag))
+    .slice(0, limit).map(row => ({ tag: row.tag, count: row.item_count }));
 }
 
 export async function getCourse(slug: string, signal?: AbortSignal) {

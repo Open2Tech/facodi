@@ -41,29 +41,48 @@ function breadcrumbLinks(page: PageMeta): SnapshotLink[] {
 
 const anchor = (link: SnapshotLink) => `<a href="${escapeText(link.path)}">${escapeText(link.name)}</a>`;
 
+/** A titled group of public links; ordered groups keep a curated reading order (a sequence, a unit trail). */
+export type SnapshotSection = { title?: string; ordered?: boolean; links: SnapshotLink[] };
+
+function faqItems(page: PageMeta) {
+  const faq = page.jsonLd?.find(item => item['@type'] === 'FAQPage');
+  const entries = Array.isArray(faq?.mainEntity) ? faq.mainEntity as { name?: unknown; acceptedAnswer?: { text?: unknown } }[] : [];
+  return entries.flatMap(entry => (typeof entry.name === 'string' && typeof entry.acceptedAnswer?.text === 'string'
+    ? [{ question: entry.name, answer: entry.acceptedAnswer.text }]
+    : []));
+}
+
+function renderSection(section: SnapshotSection) {
+  if (!section.links.length) return '';
+  const tag = section.ordered ? 'ol' : 'ul';
+  const heading = section.title ? `<h2>${escapeText(section.title)}</h2>` : '';
+  return `\n      ${heading}<${tag}>${section.links.map(link => `<li>${anchor(link)}</li>`).join('')}</${tag}>`;
+}
+
 /**
  * Plain HTML for crawlers and answer engines that never run JavaScript: the page heading,
- * its description, the breadcrumb and the public pages it links to. React's createRoot
- * replaces it on the first render, so people only see it until the app loads.
+ * its description, the breadcrumb, the FAQ it declares in structured data and the public
+ * pages it links to. React's createRoot replaces it on the first render, so people only see
+ * it until the app loads.
  */
-export function renderSnapshotBody(page: PageMeta, links: SnapshotLink[] = []) {
+export function renderSnapshotBody(page: PageMeta, sections: SnapshotSection[] = []) {
   const crumbs = [{ name: SITE_NAME, path: '/' }, ...breadcrumbLinks(page).filter(link => link.path !== '/' && link.path !== page.path)];
-  const list = links.length ? `\n      <ul>${links.map(link => `<li>${anchor(link)}</li>`).join('')}</ul>` : '';
+  const faq = faqItems(page).map(item => `\n      <h2>${escapeText(item.question)}</h2><p>${escapeText(item.answer)}</p>`).join('');
   return [
     `<main ${STATIC_HEAD_ATTRIBUTE} style="max-width:72ch;margin:3rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;line-height:1.5">`,
     `      <nav aria-label="breadcrumb">${crumbs.map(anchor).join(' › ')}</nav>`,
     `      <h1>${escapeText(page.title)}</h1>`,
-    `      <p>${escapeText(page.description)}</p>${list}`,
+    `      <p>${escapeText(page.description)}</p>${faq}${sections.map(renderSection).join('')}`,
     '    </main>',
   ].join('\n');
 }
 
-export function renderSnapshotHtml(shell: string, page: PageMeta, links: SnapshotLink[] = []) {
+export function renderSnapshotHtml(shell: string, page: PageMeta, sections: SnapshotSection[] = []) {
   if (!SEO_BLOCK.test(shell)) throw new Error('SPA shell is missing its seo:start/end block.');
   const tags = renderHeadTags(headTags(page));
   const html = shell.replace(SEO_BLOCK, () => `<!-- seo:start · generated for ${page.path} -->\n    ${tags}\n    <!-- seo:end -->`);
   return html.includes(ROOT_ELEMENT)
-    ? html.replace(ROOT_ELEMENT, () => `<div id="root">\n    ${renderSnapshotBody(page, links)}\n    </div>`)
+    ? html.replace(ROOT_ELEMENT, () => `<div id="root">\n    ${renderSnapshotBody(page, sections)}\n    </div>`)
     : html;
 }
 

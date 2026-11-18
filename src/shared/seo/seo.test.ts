@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import pt from '@/i18n/locales/pt.json';
 import indexHtml from '../../../index.html?raw';
-import { aboutMeta, headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, sequenceMeta, SOCIAL_PROFILES, unitMeta } from './seo';
+import { aboutMeta, headTags, homeMeta, metaDescription, renderHeadTags, resourceMeta, sequenceMeta, SOCIAL_PROFILES, subjectDescription, unitMeta } from './seo';
 
 const find = (tags: ReturnType<typeof headTags>, key: string) =>
   tags.find(tag => (tag.tag === 'meta' && (tag.name === key || tag.property === key)) || (tag.tag === 'link' && tag.rel === key));
@@ -57,6 +57,21 @@ describe('page metadata', () => {
     const expected = renderHeadTags(headTags(homeMeta({ title: `FACODI — ${pt.brand.tagline}`, description: pt.brand.description }))
       .filter(tag => !(tag.tag === 'link' && tag.rel === 'canonical') && !(tag.tag === 'meta' && tag.property === 'og:url')));
     expect(shell).toBe(expected);
+  });
+
+  it('leads boilerplate descriptions with the page subject, without repeating a subject already named', () => {
+    expect(subjectDescription('Derivadas', 'Vídeo externo do canal X.')).toBe('Derivadas. Vídeo externo do canal X.');
+    expect(subjectDescription('O que é um limite?', 'Vídeo externo.')).toBe('O que é um limite? Vídeo externo.');
+    expect(subjectDescription('Derivadas', 'Tema do vídeo: derivadas e regras.')).toBe('Tema do vídeo: derivadas e regras.');
+    expect(subjectDescription('Derivadas', '', 'Vídeo: Derivadas')).toBe('Vídeo: Derivadas');
+  });
+
+  it('tells assistants how to search the public library', () => {
+    const home = homeMeta({ title: 'FACODI', description: 'Campus aberto.' });
+    expect(home.jsonLd?.[1]).toMatchObject({
+      '@type': 'WebSite',
+      potentialAction: { '@type': 'SearchAction', target: { urlTemplate: 'https://facodi.com/resources?search={search_term_string}' } },
+    });
   });
 
   it('links the organization to its official profiles', () => {
