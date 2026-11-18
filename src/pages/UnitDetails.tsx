@@ -118,7 +118,6 @@ export default function UnitDetails() {
           sequences={sequences.data ?? []} videos={videoList} />}
         <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
           <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
-          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitOutcomes.notice')}</p>
           {outcomesQuery.isPending
             ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
             : outcomesQuery.error
@@ -135,7 +134,6 @@ export default function UnitDetails() {
         </section>
         {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
           <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
-          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitReadings.notice')}</p>
           {readingsQuery.isPending
             ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
             : readingsQuery.error
@@ -177,7 +175,6 @@ export default function UnitDetails() {
         </section>}
         {!studyPath && !composedPath && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
           <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
-          <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('unitPlaylists.notice')}</p>
           {playlistsQuery.isPending
             ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
             : playlistsQuery.error

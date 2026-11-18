@@ -58,6 +58,12 @@ export default function HowItWorks() {
       <div>
         <h2 className="text-lg font-semibold">{t('learningGuide.disclaimerTitle')}</h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t('learningGuide.disclaimerText')}</p>
+        <h3 className="mt-5 text-sm font-semibold">{t('learningGuide.unitNotesTitle')}</h3>
+        <ul className="mt-2 max-w-3xl list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
+          <li>{t('unitOutcomes.notice')}</li>
+          <li>{t('unitReadings.notice')}</li>
+          <li>{t('unitPlaylists.notice')}</li>
+        </ul>
       </div>
     </section>
   </article>;
