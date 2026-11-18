@@ -2270,6 +2270,8 @@
     "choicesNotice": "Estas asignaturas son alternativas dentro del mismo grupo. Consulta el plan oficial para confirmar las reglas de elección.",
     "variantsNotice": "El plan oficial también incluye esta entrada con otro nombre o código. No cuentes dos veces sus ECTS; confirma la equivalencia con la universidad.",
     "verifiedTrack": "Vía de finalización del plan oficial",
-    "ectsPending": "ECTS pendientes de confirmación por la UAlg"
+    "ectsPending": "ECTS pendientes de confirmación por la UAlg",
+    "branch": "Rama",
+    "branchNotice": "El primer año es común. A partir del segundo, elige la rama para ver sus UC obligatorias y sus optativas."
   }
 }

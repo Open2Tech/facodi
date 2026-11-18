@@ -1,6 +1,7 @@
 import type { CurricularUnit } from '@/entities/course/course.types';
 
-export type UalgProgram = 'LPSI' | 'MNCN';
+/** Programmes with bespoke rules; any other course is read only from its curriculum_placements. */
+export type UalgProgram = 'LPSI' | 'MNCN' | (string & {});
 export type UalgSpecialization = 'Neurociências Cognitivas' | 'Neuropsicologia';
 /** Official 2026/27 completion route depends on the specialization. */
 export function completionTrack(specialization: UalgSpecialization): 'investigação' | 'profissional' {
@@ -39,6 +40,9 @@ const ROLE_ORDER: Record<UalgPlacementRole, number> = {
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
 
+/** Placements shared by every branch of a programme. */
+export const COMMON_TRUNK = 'Tronco Comum';
+
 function parsePlacement(value: unknown): Placement | null {
   if (!isRecord(value)) return null;
   if (typeof value.year !== 'number' || !Number.isInteger(value.year) || value.year < 1) return null;
@@ -53,6 +57,29 @@ function parsePlacement(value: unknown): Placement | null {
   };
 }
 
+const placementsOf = (unit: UalgCurricularUnit) => {
+  const metadata = isRecord(unit.metadata) ? unit.metadata : {};
+  return Array.isArray(metadata.curriculum_placements)
+    ? metadata.curriculum_placements.flatMap(value => parsePlacement(value) ?? [])
+    : [];
+};
+
+/** True when every unit states where it sits in the plan, so the plan can be drawn from placements alone. */
+export function hasCurriculumPlacements(units: readonly UalgCurricularUnit[]) {
+  return units.length > 0 && units.every(unit => placementsOf(unit).length > 0);
+}
+
+/** Branches (ramos) a programme splits into after the common trunk, in plan order. */
+export function curriculumBranches(units: readonly UalgCurricularUnit[]) {
+  const branches: string[] = [];
+  const ordered = [...units].sort((a, b) => (a.position ?? 999) - (b.position ?? 999));
+  for (const unit of ordered) for (const placement of placementsOf(unit)) {
+    const name = placement.specialization;
+    if (name && name !== COMMON_TRUNK && !branches.includes(name)) branches.push(name);
+  }
+  return branches;
+}
+
 /** The published 2026/27 programme contains repeated elective listings.
  * Resolve the official completion route by specialization, never inventing
  * an NP research pathway or counting alternatives as cumulative ECTS.
@@ -60,19 +87,19 @@ function parsePlacement(value: unknown): Placement | null {
 export function buildUalgSections(
   units: readonly UalgCurricularUnit[],
   program: UalgProgram,
-  specialization: UalgSpecialization = 'Neurociências Cognitivas',
+  specialization: string | null = 'Neurociências Cognitivas',
 ): UalgSection[] {
   const candidate = new Map<string, { unit: UalgCurricularUnit; placement: Placement }>();
   for (const unit of units) {
-    const metadata = isRecord(unit.metadata) ? unit.metadata : {};
-    const placements = Array.isArray(metadata.curriculum_placements)
-      ? metadata.curriculum_placements.flatMap(value => parsePlacement(value) ?? [])
-      : [];
+    const placements = placementsOf(unit);
     const visible = placements.filter(placement =>
       (program === 'LPSI'
-        ? placement.specialization === 'Tronco Comum'
-        : placement.specialization === specialization &&
-          (placement.year < 2 || placement.track === completionTrack(specialization))));
+        ? placement.specialization === COMMON_TRUNK
+        : program === 'MNCN'
+          ? placement.specialization === specialization &&
+            (placement.year < 2 || placement.track === completionTrack(specialization as UalgSpecialization))
+          // Any other programme: the common trunk plus the selected branch (a missing specialization is common).
+          : (placement.specialization ?? COMMON_TRUNK) === COMMON_TRUNK || placement.specialization === specialization));
     for (const placement of visible) {
       // Some source tables repeat a UC as required and optional in one term.
       // Prefer the required placement in that term, without suppressing

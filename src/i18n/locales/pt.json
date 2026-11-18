@@ -2270,6 +2270,8 @@
     "choicesNotice": "Unidades alternativas dentro do mesmo grupo. Consulta o plano oficial para confirmar as regras de escolha.",
     "variantsNotice": "O plano oficial também apresenta esta entrada com outra designação ou código. Não contes automaticamente os ECTS duas vezes; confirma a equivalência junto da UAlg.",
     "verifiedTrack": "Conclusão prevista no plano oficial",
-    "ectsPending": "ECTS a confirmar na UAlg"
+    "ectsPending": "ECTS a confirmar na UAlg",
+    "branch": "Ramo",
+    "branchNotice": "O 1.º ano é comum. A partir do 2.º ano, escolhe o ramo para ver as UCs obrigatórias e as opções de cada um."
   }
 }

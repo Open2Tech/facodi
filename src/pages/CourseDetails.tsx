@@ -11,6 +11,7 @@ import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { UalgCurriculum } from '@/components/course/UalgCurriculum';
+import { hasCurriculumPlacements } from '@/entities/course/ualgCurriculum';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
@@ -144,7 +145,7 @@ export default function CourseDetails() {
         {t('course.coverageSummary', { videos: coverage.data.filter(unit => unit.video_count > 0).length, units: units.length, readings: coverage.data.filter(unit => unit.reading_count > 0).length })}
       </p>}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
-      {(course.code === 'LPSI' || course.code === 'MNCN') ? (
+      {(course.code === 'LPSI' || course.code === 'MNCN' || hasCurriculumPlacements(units)) ? (
         <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
