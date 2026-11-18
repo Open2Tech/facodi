@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { unitPath } from '@/entities/course/course.paths';
-import { buildUalgSections, completionTrack, ectsVerificationPending, type UalgCurricularUnit, type UalgProgram, type UalgSpecialization } from '@/entities/course/ualgCurriculum';
+import { buildUalgSections, completionTrack, curriculumBranches, ectsVerificationPending, type UalgCurricularUnit, type UalgProgram, type UalgSpecialization } from '@/entities/course/ualgCurriculum';
 
 interface UnitCoverage {
   curricular_unit_id: string;
@@ -28,7 +28,10 @@ export function UalgCurriculum({
 }) {
   const { t } = useTranslation();
   const [specialization, setSpecialization] = useState<UalgSpecialization>(SPECIALIZATIONS[0]);
-  const sections = buildUalgSections(units, program, specialization);
+  const branches = program === 'MNCN' || program === 'LPSI' ? [] : curriculumBranches(units);
+  const [chosenBranch, setBranch] = useState<string | null>(null);
+  const branch = chosenBranch && branches.includes(chosenBranch) ? chosenBranch : branches[0] ?? null;
+  const sections = buildUalgSections(units, program, program === 'MNCN' ? specialization : branch);
   const years = [...new Set(sections.map(section => section.year))];
   const coverageById = new Map(coverage.map(item => [item.curricular_unit_id, item]));
   const isMaster = program === 'MNCN';
@@ -37,6 +40,19 @@ export function UalgCurriculum({
     <p className="max-w-prose text-sm leading-relaxed text-muted-foreground">
       {t(isMaster ? 'ualgCurriculum.masterNotice' : 'ualgCurriculum.licenceNotice')}
     </p>
+    {branches.length > 1 && <div className="mt-6">
+      <h3 id="ualg-branch" className="text-sm font-semibold">{t('ualgCurriculum.branch')}</h3>
+      <p className="mt-1 max-w-prose text-sm text-muted-foreground">{t('ualgCurriculum.branchNotice')}</p>
+      <div role="group" aria-labelledby="ualg-branch" className="mt-3 flex flex-wrap gap-2">
+        {branches.map(value => <button key={value} type="button" aria-pressed={branch === value}
+          className={branch === value
+            ? 'min-h-11 border border-foreground bg-primary px-4 py-2 text-left text-sm font-semibold text-primary-foreground'
+            : 'min-h-11 border border-input px-4 py-2 text-left text-sm font-semibold hover:border-foreground'}
+          onClick={() => setBranch(value)}>
+          {value}
+        </button>)}
+      </div>
+    </div>}
     {isMaster && <>
       <div className="mt-6">
         <h3 id="ualg-specialization" className="text-sm font-semibold">{t('ualgCurriculum.specialization')}</h3>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildUalgSections, completionTrack, ectsVerificationPending, type UalgCurricularUnit } from './ualgCurriculum';
+import { buildUalgSections, completionTrack, curriculumBranches, ectsVerificationPending, hasCurriculumPlacements, type UalgCurricularUnit } from './ualgCurriculum';
 
 const u = (code: string, placements: unknown[], position = 1): UalgCurricularUnit => ({
   id: code, slug: code, code, title: code, year: 1, semester: 1, ects: 5, position,
@@ -86,4 +86,43 @@ describe('UAlg curriculum pathways', () => {
     expect(ectsVerificationPending({})).toBe(false);
   });
 
+
+  it('draws any programme with branches from placements: the common trunk plus the chosen branch', () => {
+    const tec = 'Telecomunicações, Eletrónica e Computadores';
+    const ea = 'Energia e Automação';
+    const units = [
+      u('circuits', [placement('mandatory', 'Tronco Comum', 1, 1)], 1),
+      u('data-structures', [placement('mandatory', tec, 2, 1), placement('alternative', ea, 3, 1, 'Opção I - EA')], 2),
+      u('machines', [placement('mandatory', ea, 3, 1)], 3),
+      u('robotics', [placement('alternative', tec, 3, 1, 'Opção I - TEC'), placement('mandatory', ea, 2, 1)], 4),
+    ];
+    expect(hasCurriculumPlacements(units)).toBe(true);
+    expect(hasCurriculumPlacements([...units, u('loose', [])])).toBe(false);
+    expect(curriculumBranches(units)).toEqual([tec, ea]);
+    const view = (branch: string) => buildUalgSections(units, 'LEEC', branch)
+      .map(section => [section.year, section.role, section.optionGroup, section.units.map(unit => unit.code)]);
+    expect(view(tec)).toEqual([
+      [1, 'mandatory', null, ['circuits']],
+      [2, 'mandatory', null, ['data-structures']],
+      [3, 'alternative', 'Opção I - TEC', ['robotics']],
+    ]);
+    expect(view(ea)).toEqual([
+      [1, 'mandatory', null, ['circuits']],
+      [2, 'mandatory', null, ['robotics']],
+      [3, 'mandatory', null, ['machines']],
+      [3, 'alternative', 'Opção I - EA', ['data-structures']],
+    ]);
+  });
+
+  it('shows a programme without branches as its common trunk with option groups', () => {
+    const units = [
+      u('core', [placement('mandatory', 'Tronco Comum', 1, 2)]),
+      u('choice-a', [placement('alternative', 'Tronco Comum', 1, 2, 'Opção I')]),
+    ];
+    expect(curriculumBranches(units)).toEqual([]);
+    expect(buildUalgSections(units, 'LCBM', null).map(section => [section.role, section.optionGroup])).toEqual([
+      ['mandatory', null], ['alternative', 'Opção I'],
+    ]);
+  });
 });
+

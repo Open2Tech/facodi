@@ -2277,6 +2277,8 @@
     "choicesNotice": "Ces unités sont des choix alternatifs au sein d'un groupe. Consultez le programme officiel pour vérifier les règles de sélection.",
     "variantsNotice": "Le programme officiel présente également cette unité sous un autre intitulé ou code. Ne comptez pas deux fois les ECTS ; vérifiez l'équivalence auprès de l'université.",
     "verifiedTrack": "Parcours final du programme officiel",
-    "ectsPending": "ECTS à confirmer par l'UAlg"
+    "ectsPending": "ECTS à confirmer par l'UAlg",
+    "branch": "Filière",
+    "branchNotice": "La première année est commune. À partir de la deuxième, choisis une filière pour voir ses UE obligatoires et ses options."
   }
 }
