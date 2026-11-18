@@ -1,0 +1,1616 @@
+{
+  "batch": "facodi_uc_gap_playlists_20261118",
+  "verified_on": "2026-11-18",
+  "method": "YouTube oEmbed (título e canal dono) + página da playlist (nº de vídeos)",
+  "source": "Fichas de UC em academico.ualg.pt e planos em ualg.pt; pesquisa em facodi/pesquisa/playlists-ualg-2026-11-18",
+  "units": [
+    {
+      "course": "LESTI",
+      "code": "15241279",
+      "uc": "Automação e Robótica",
+      "topics": "Automação industrial e autómatos programáveis; sensores e atuadores; robótica: tipos de robôs, graus de liberdade, sistemas de coordenadas, modelo cinemático e dinâmico, planeamento de trajetórias (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLfcJAZC7MecVelrqxfn_kdiHvRGwWlwOy",
+          "url": "https://www.youtube.com/playlist?list=PLfcJAZC7MecVelrqxfn_kdiHvRGwWlwOy",
+          "title": "2024.1 ROBÓTICA, CEFET RJ, Campus Nova Iguaçu",
+          "channel": "Alef de Pontes Silva",
+          "videos": 24,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Disciplina de Robótica do CEFET-RJ (2024): matrizes de rotação, cinemática direta e inversa de manipuladores esférico, antropomórfico e SCARA, velocidades e trajetórias."
+        },
+        {
+          "id": "PLW8jdFeNwHQzeRjEBntvh6Nr76l_LJEDR",
+          "url": "https://www.youtube.com/playlist?list=PLW8jdFeNwHQzeRjEBntvh6Nr76l_LJEDR",
+          "title": "Disciplina: Controladores Lógicos Programáveis | PLC",
+          "channel": "Prof. Paulo Silveira",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "UC de Controladores Lógicos Programáveis da UTFPR: arquitetura do PLC, norma IEC 61131-3 e programação, cobre a parte de automação/autómatos."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411031",
+      "uc": "Laboratório IoT",
+      "topics": "Tecnologias de transmissão em redes de sensores; protocolos de aplicação (MQTT, WebSockets); captura, envio, armazenamento e monitorização remota de dados; controlo por RF; integração microcontrolador–web–app (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLMmiQibT0iTarJNCm8c5TYUMMxR-cZzch",
+          "url": "https://www.youtube.com/playlist?list=PLMmiQibT0iTarJNCm8c5TYUMMxR-cZzch",
+          "title": "📡 Curso de MQTT edição 2025",
+          "channel": "Internet e Coisas",
+          "videos": 10,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso de MQTT (edição 2025): publish/subscribe, tópicos, QoS, retain, sessões persistentes e implementação em ESP8266/ESP32, exatamente o protocolo de aplicação central da UC."
+        },
+        {
+          "id": "PLLHo4pVI8I_o_tIRC-twzYImDhwHgpYbw",
+          "url": "https://www.youtube.com/playlist?list=PLLHo4pVI8I_o_tIRC-twzYImDhwHgpYbw",
+          "title": "Curso ESP32 Básico - IOT",
+          "channel": "Vida de Silício - Robótica e Cultura maker",
+          "videos": 8,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso básico de IoT com ESP32: leitura de sensores (temperatura, distância, som, acelerómetro) e atuadores, base prática para os projetos de captura de dados."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411011",
+      "uc": "Algoritmos e Estruturas de Dados",
+      "topics": "POO em Java (memória dinâmica, ficheiros, GUI); complexidade algorítmica; ordenação (bubble, shell, quick) e pesquisa; listas, filas e pilhas; árvores BST e AVL; tabelas de dispersão e grafos (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi",
+          "url": "https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi",
+          "title": "Curso Estrutura de Dados e Algoritmos Java",
+          "channel": "Loiane Groner",
+          "videos": 55,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso de Loiane Groner no canal da própria autora: estruturas de dados (vetores, listas, pilhas, filas, árvores) e algoritmos implementados em Java, a mesma linguagem da UC."
+        },
+        {
+          "id": "PLxI8Can9yAHcfFBv5K_EEukS4zkQILy-_",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcfFBv5K_EEukS4zkQILy-_",
+          "title": "Eixo de Computação | Estruturas de Dados (2020.1)",
+          "channel": "UNIVESP",
+          "videos": 22,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Disciplina de Estruturas de Dados da UNIVESP (2020): listas, pilhas, filas, árvores e complexidade; aulas universitárias, embora com exemplos em C."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411059",
+      "uc": "Desenvolvimento de Jogos Digitais",
+      "topics": "Conceção de jogos (mecânicas, regras, prototipagem); arquitetura de jogo 2D (game loop, estados); entidades e componentes; sprites, animação, colisões e física 2D; áudio, UI, persistência; IA elementar; motor/framework definido no semestre (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLNlPErl_v81vNINVVotsh0nYBBSp4LEgY",
+          "url": "https://www.youtube.com/playlist?list=PLNlPErl_v81vNINVVotsh0nYBBSp4LEgY",
+          "title": "Godot do Zero 2025 – Desenvolvendo um Jogo de Plataforma 2D",
+          "channel": "Rafael Forbeck | Game Dev",
+          "videos": 47,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Jogo de plataforma 2D do zero em Godot (2025): movimento, animação de sprites, câmara, tilemaps, colisões e parallax, ou seja, a arquitetura 2D prevista na UC num motor atual e livre."
+        },
+        {
+          "id": "PL-oJEh-N3A3QQ9oa_aUE95y-c4uaGubI_",
+          "url": "https://www.youtube.com/playlist?list=PL-oJEh-N3A3QQ9oa_aUE95y-c4uaGubI_",
+          "title": "Tutorial Godot 4.7 do Zero 2026 – Desenvolvendo um Jogo de Plataforma 2D na GODOT 4.7",
+          "channel": "Clécio Espindola GameDev",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Plataforma 2D do zero na versão mais recente do Godot (4.7, 2026): complementa a primeira playlist com a versão atual do motor."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411025",
+      "uc": "Microprocessadores",
+      "topics": "Arquitetura de microprocessadores (máquinas de estado, VLSI, projeto top-down); microcontroladores; sistemas embebidos com Arduino e ATmega328 (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLxnWsEyYN2cFw-q-lOdF98r2ZZC7VxFUI",
+          "url": "https://www.youtube.com/playlist?list=PLxnWsEyYN2cFw-q-lOdF98r2ZZC7VxFUI",
+          "title": "Microcontrolador ATMEGA328p",
+          "channel": "Professor Vargasp",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas de microcontroladores centradas no ATmega328p (o chip da UC): arquitetura interna, memórias, C para AVR, interrupções, EEPROM e comunicação série."
+        },
+        {
+          "id": "PLxI8Can9yAHfYu7ZxKykXftYGehN7p-xI",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfYu7ZxKykXftYGehN7p-xI",
+          "title": "Engenharia de Computação | Sistemas Embarcados",
+          "channel": "UNIVESP",
+          "videos": 21,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Disciplina de Sistemas Embarcados da UNIVESP (Eng. de Computação): PWM, sensores, consumo de energia e sistemas ciberfísicos, ou seja, a parte de projeto de sistemas embebidos."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411028",
+      "uc": "Computação Reconfigurável",
+      "topics": "Sistemas reconfiguráveis; FPGAs; linguagens VHDL e Verilog; projeto e implementação de sistemas digitais reconfiguráveis (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLy72MjZHhunFbozTDgjF0sv4NXbIyaRzJ",
+          "url": "https://www.youtube.com/playlist?list=PLy72MjZHhunFbozTDgjF0sv4NXbIyaRzJ",
+          "title": "Curso de VHDL",
+          "channel": "Alexandre Mendonça",
+          "videos": 13,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas de Eletrónica Digital II / Projeto de Dispositivos Programáveis do IME (2020): linguagem VHDL, contadores, registos de deslocamento, máquinas de estados e exercícios resolvidos."
+        },
+        {
+          "id": "PLaqM8nQGtk7ZV7ouH0HETsE0KI1DPdM9t",
+          "url": "https://www.youtube.com/playlist?list=PLaqM8nQGtk7ZV7ouH0HETsE0KI1DPdM9t",
+          "title": "VHDL-FPGA",
+          "channel": "Erivelton Nepomuceno",
+          "videos": 17,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Projetos de circuitos digitais em VHDL e FPGA (Prof. Erivelton Nepomuceno): representação numérica, circuitos combinacionais e sequenciais implementados em FPGA."
+        }
+      ]
+    },
+    {
+      "course": "LESTI",
+      "code": "19411023",
+      "uc": "Técnicas de Comunicação",
+      "topics": "Processo e elementos da comunicação; estilos; comunicação escrita e oral, formal e informal, verbal e não verbal; escuta ativa; barreiras e gestão de conflitos; comunicação nas organizações e liderança (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLaKsFg9AIvPpajuGT8uIw9K_yCaZ9PqG8",
+          "url": "https://www.youtube.com/playlist?list=PLaKsFg9AIvPpajuGT8uIw9K_yCaZ9PqG8",
+          "title": "Comunicação Interpessoal",
+          "channel": "Aqui Tem Comunicação | Eliane",
+          "videos": 32,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Série sobre comunicação interpessoal e intrapessoal, comunicação não verbal, comunicação não violenta e conversas difíceis, com os temas centrais da UC."
+        },
+        {
+          "id": "PL8vXuI6zmpdgkCW51WLTRI1XBUuGC33Ak",
+          "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdgkCW51WLTRI1XBUuGC33Ak",
+          "title": "Como Desenvolver Escuta Ativa e Relacionamento Interpessoal",
+          "channel": "Kultivi",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso curto sobre escuta ativa: barreiras à escuta, técnicas, comunicação não verbal, empatia e feedback."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521184",
+      "uc": "Gestão de Carreira e Empreendedorismo",
+      "topics": "Desenvolvimento pessoal e diagnóstico de competências (SWOT pessoal); teorias de carreira, transição para o mercado de trabalho, tomada de decisão; empreendedorismo, plano de negócios e financiamento de start-ups (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLxI8Can9yAHfR3plnG4_hmDJO4kVxiJcW",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfR3plnG4_hmDJO4kVxiJcW",
+          "title": "Gestão de Carreira | Bacharelado em Adm",
+          "channel": "UNIVESP",
+          "videos": 22,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Disciplina Gestão de Carreira da UNIVESP: modelos de carreira, planeamento de carreira, valores, âncoras de carreira, competências e empregabilidade."
+        },
+        {
+          "id": "PLvGDbgpiKHgfwQwmsrqieEsVKrMkHc4zM",
+          "url": "https://www.youtube.com/playlist?list=PLvGDbgpiKHgfwQwmsrqieEsVKrMkHc4zM",
+          "title": "Curso breve “Empreendedorismo: da Ideia ao Negócio\"",
+          "channel": "Universidade Politécnica de Castelo Branco",
+          "videos": 8,
+          "language": "pt-PT",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso breve do Politécnico de Castelo Branco \"Empreendedorismo: da Ideia ao Negócio\", em português europeu, cobre a parte de empreendedorismo e criação do projeto."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521116",
+      "uc": "Psicologia Forense",
+      "topics": "Comportamento desviante e delinquência; psicologia e sistema de justiça; delinquência juvenil (LPCJP e Lei Tutelar Educativa); psicopatologia, psicopatia e crime; profiling; sistema prisional português; programas de intervenção (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLtugX8q-zcE79UDFHXuKxr8dNvaB2ngfp",
+          "url": "https://www.youtube.com/playlist?list=PLtugX8q-zcE79UDFHXuKxr8dNvaB2ngfp",
+          "title": "Curso Online Psicologia Jurídica (Mariana Juras)",
+          "channel": "Psicologia Jurídica",
+          "videos": 10,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Curso de Psicologia Jurídica: definição da área, papéis do psicólogo na justiça, perito e assistente técnico, varas de família e depoimento especial."
+        },
+        {
+          "id": "PL1LslURwWBbc8yfM18gyWWwSb9IB2I3y7",
+          "url": "https://www.youtube.com/playlist?list=PL1LslURwWBbc8yfM18gyWWwSb9IB2I3y7",
+          "title": "PSICOLOGIA FORENSE E CRIMINAL",
+          "channel": "Professor Claudio Herbert - Neuropsicólogo",
+          "videos": 8,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Neuropsicólogo sobre psicologia forense e criminal: psicopatia, tríade negra, neuropsicologia da agressão e avaliação psicopatológica da personalidade."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521086",
+      "uc": "Psicologia Sistémica",
+      "topics": "Teoria Geral dos Sistemas, 1.ª e 2.ª cibernética, comunicação humana; família como sistema; escolas de terapia familiar (Minuchin, Palo Alto, Whitaker, Bowen, White); intervenção sistémica; genograma (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLLwtDXdOPtYz2kyRSHoIkOQurCATQJzyJ",
+          "url": "https://www.youtube.com/playlist?list=PLLwtDXdOPtYz2kyRSHoIkOQurCATQJzyJ",
+          "title": "Escolas base da psicologia sistêmica",
+          "channel": "Psicóloga Maristella I. de Freitas",
+          "videos": 14,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Playlist \"Escolas base da psicologia sistêmica\": cibernética de 1.ª, 2.ª e 3.ª ordem, escola construtivista, fronteiras e limites familiares."
+        },
+        {
+          "id": "PLQSJcukal_SDrOWsLMfdSAbV39jcp0bzN",
+          "url": "https://www.youtube.com/playlist?list=PLQSJcukal_SDrOWsLMfdSAbV39jcp0bzN",
+          "title": "Genograma Familiar | ferramenta terapêutica",
+          "channel": "Fabiane Siqueira ",
+          "videos": 17,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Série sobre o genograma familiar como ferramenta terapêutica, a componente prática da UC."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521010",
+      "uc": "Antropologia",
+      "topics": "Antropologia como estudo da diferença cultural; etnografia e trabalho de campo; história das teorias antropológicas; antropologia contemporânea (género, pós-colonialismo, migrações, etnicidade, racismo); diálogo com psicologia e educação (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLscFjkqoYQtXU1X_cYS9wbn8_GTfyzdN6",
+          "url": "https://www.youtube.com/playlist?list=PLscFjkqoYQtXU1X_cYS9wbn8_GTfyzdN6",
+          "title": "Introdução à Antropologia",
+          "channel": "Prof. Márcio Caniello",
+          "videos": 17,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Videoaulas da disciplina Introdução à Antropologia (Prof. Márcio Caniello): o que é antropologia, escolas clássicas, subdisciplinas e conceito antropológico de cultura."
+        },
+        {
+          "id": "PL-bOlg62Dz6R5ax9ZqmHczljcR_KAYZyy",
+          "url": "https://www.youtube.com/playlist?list=PL-bOlg62Dz6R5ax9ZqmHczljcR_KAYZyy",
+          "title": "Aulas abertas: Teorias & Histórias da Antropologia",
+          "channel": "IFCH - UNICAMP",
+          "videos": 11,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas abertas do programa de pós-graduação do IFCH-Unicamp sobre teorias e histórias da antropologia: Mauss, Malinowski, Lévi-Strauss, Turner, Bourdieu, Benedict e Mead."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521036",
+      "uc": "Psicologia e Tecnologias da Informação e da Comunicação",
+      "topics": "Informação e conhecimento na sociedade em rede; cultura digital; interações online e comunicação mediada por computador; software social e IA; identidade digital e presença online; processos psicossociais em ambientes digitais (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL0mU_yxzY2YU3l_jIByM3dgwIPYV15Tw8",
+          "url": "https://www.youtube.com/playlist?list=PL0mU_yxzY2YU3l_jIByM3dgwIPYV15Tw8",
+          "title": "Masterclasses Identidade e Cidadania Digital - Unico & Atopos/USP",
+          "channel": "Centro Internacional de Pesquisa Atopos",
+          "videos": 9,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Masterclasses do centro de pesquisa Atopos (USP) sobre identidade e cidadania digital: o \"info-víduo\", gémeo digital (Derrick de Kerckhove), privacidade e dados abertos."
+        },
+        {
+          "id": "PL8dPuuaLjXtN07XYqqWSKpPrtNDiCHTzU",
+          "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN07XYqqWSKpPrtNDiCHTzU",
+          "title": "Navigating Digital Information",
+          "channel": "CrashCourse",
+          "videos": 11,
+          "language": "en",
+          "order": 2,
+          "confidence": "baixa",
+          "level": "introdutório",
+          "match": "Crash Course \"Navigating Digital Information\": como a informação circula e é avaliada online, para o tema informação e conhecimento na sociedade digital."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521217",
+      "uc": "Retórica e Argumentação",
+      "topics": "Análise estrutural de argumentos; argumentos dedutivos, indutivos e abdutivos; falácias; retórica: história e conceitos; construção de argumentos curtos e do ensaio argumentativo (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL7Z_ggL6r1CRfyxJbqR6Gx7b2XIvPlOXb",
+          "url": "https://www.youtube.com/playlist?list=PL7Z_ggL6r1CRfyxJbqR6Gx7b2XIvPlOXb",
+          "title": "[Introdução à filosofia] Princípios básicos da lógica informal (ou teoria da argumentação)",
+          "channel": "φ | Catarina Spagnol",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Introdução à filosofia: princípios básicos da lógica informal (teoria da argumentação), com estrutura de argumentos, validade e falácias."
+        },
+        {
+          "id": "PLFqHvKDAwlkEsQd8DZSR-z9G1GmpDrkFQ",
+          "url": "https://www.youtube.com/playlist?list=PLFqHvKDAwlkEsQd8DZSR-z9G1GmpDrkFQ",
+          "title": "Curso \"Retórica, Argumentação e Discurso\" mar-mai/2021",
+          "channel": "Centro de Estudos de Argumentação e Discurso",
+          "videos": 9,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso \"Retórica, Argumentação e Discurso\" do Centro de Estudos de Argumentação e Discurso: retórica aristotélica, nova retórica, Meyer, Angenot e Amossy."
+        }
+      ]
+    },
+    {
+      "course": "LPSI",
+      "code": "14521216",
+      "uc": "Psicologia do Desporto e do Exercício Físico",
+      "topics": "Conceitos introdutórios; personalidade e comportamento desportivo; motivação e emoção; ansiedade, stress e ativação; processos cognitivos e desempenho; intervenção psicológica no desporto e exercício (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLf3uaP0Rgfuc",
+          "url": "https://www.youtube.com/playlist?list=PLf3uaP0Rgfuc",
+          "title": "Psicologia do Esporte para Psicológos",
+          "channel": "Laboratório PPSC-UFRJ",
+          "videos": 32,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso do Laboratório PPSC-UFRJ: o atleta como sujeito psicológico, ansiedade, autoconfiança, foco e atenção, autorregulação, emoções, overtraining e burnout."
+        },
+        {
+          "id": "PLOlWSJS9pEny5cxF54DqXnkylnuv2MMnI",
+          "url": "https://www.youtube.com/playlist?list=PLOlWSJS9pEny5cxF54DqXnkylnuv2MMnI",
+          "title": "Introdução à Psicologia do Esporte | PSICOBIO EM REDE",
+          "channel": "Psicobiologia USP RP",
+          "videos": 7,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Módulo \"Introdução à Psicologia do Esporte\" do Psicobio em Rede (USP Ribeirão Preto)."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541199",
+      "uc": "Realidade Virtual e Videomapping",
+      "topics": "História do videomapping e da RV; projetores; mapeamento de superfícies; máscaras (Illustrator) e animação para mapping (After Effects); gestão de conteúdo em tempo real; realidade aumentada 2D/3D; imagem imersiva 360º (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLwsgogx5aiUIjWYGSk0GCD1gDGgfgY4CU",
+          "url": "https://www.youtube.com/playlist?list=PLwsgogx5aiUIjWYGSk0GCD1gDGgfgY4CU",
+          "title": "HeavyM 2 Tutorials",
+          "channel": "HeavyM Software",
+          "videos": 9,
+          "language": "en",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Tutoriais oficiais do software HeavyM 2: configuração de saída para projetor, ferramentas de desenho de superfícies, efeitos e fontes multimédia para projection mapping em tempo real."
+        },
+        {
+          "id": "PL5tgPJtuHukl96qq1ZUcVFqG-HeXT9Z5j",
+          "url": "https://www.youtube.com/playlist?list=PL5tgPJtuHukl96qq1ZUcVFqG-HeXT9Z5j",
+          "title": "Curso de Realidade Aumentada com Unity e Vuforia",
+          "channel": "CAMALEÃO DIGITAL",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de realidade aumentada com Unity e Vuforia, do projeto à aplicação interativa."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541193",
+      "uc": "Modelação 3D em Design de Comunicação",
+      "topics": "Modelação 3D de formas orgânicas e inorgânicas no Blender; controlo de topologia low e high poly; materiais, mapas UV e texturização; introdução à iluminação e render (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL-YgB1cUwWX0faPlCEbu8NjyYpWjtgl4w",
+          "url": "https://www.youtube.com/playlist?list=PL-YgB1cUwWX0faPlCEbu8NjyYpWjtgl4w",
+          "title": "Blender para iniciantes - Curso de Blender gratuito em Português",
+          "channel": "Augusto Cezar - Blender para Arquitetura",
+          "videos": 16,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de Blender para iniciantes (Blender 3.x, cerca de 2021–22): modelação, modifiers e escultura, com a base de topologia da UC."
+        },
+        {
+          "id": "PLuuVq4jlL1BR1RlRAAqcsGHlrR0ayRnyn",
+          "url": "https://www.youtube.com/playlist?list=PLuuVq4jlL1BR1RlRAAqcsGHlrR0ayRnyn",
+          "title": "Curso Blender para Iniciantes COMPLETO",
+          "channel": "Game Asset Factory",
+          "videos": 40,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso completo de Blender para iniciantes (cerca de 2022): interface, modelação, materiais, texturas e render."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541184",
+      "uc": "Fotografia I",
+      "topics": "Câmara digital, definições, objetivas e acessórios; linguagem fotográfica (enquadramento, luz, profundidade de campo, movimento); edição digital (Bridge, Photoshop); composição; literacia visual e história (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLBpxpRHbe9PJb9p5AWG-I9TxR92L2kMkD",
+          "url": "https://www.youtube.com/playlist?list=PLBpxpRHbe9PJb9p5AWG-I9TxR92L2kMkD",
+          "title": "Curso de Fotografia Completo",
+          "channel": "Robson Moraes - Fotógrafo",
+          "videos": 33,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Curso de fotografia completo (2023): câmara, objetivas, exposição e composição em ensaios externos."
+        },
+        {
+          "id": "PLX5nKvA10bA3PgonbdQFQIsYD0SJFCgZp",
+          "url": "https://www.youtube.com/playlist?list=PLX5nKvA10bA3PgonbdQFQIsYD0SJFCgZp",
+          "title": "Fotografia Básica por Sit Kong Sang",
+          "channel": "Escola Pública de Fotografia",
+          "videos": 39,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Fotografia Básica com Sit Kong Sang (Escola Pública de Fotografia): fundamentos técnicos e de linguagem fotográfica."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541185",
+      "uc": "Fotografia II",
+      "topics": "Da química à imagem digital; equipamentos; câmara, objetivas e iluminação; formatos (RAW, JPG, TIFF); captura e edição digital: ajustes, retoque, fotomontagem (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL3Nb6T8H0YSfZJYf_xrENfppzsj-4251p",
+          "url": "https://www.youtube.com/playlist?list=PL3Nb6T8H0YSfZJYf_xrENfppzsj-4251p",
+          "title": "Curso de Câmera Raw",
+          "channel": "Cantinho do Jojo",
+          "videos": 13,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de Camera Raw: revelação de RAW, curvas, HSL, calibração, correção ótica, remoção de manchas e exportação."
+        },
+        {
+          "id": "PLd8JMD_vmpcrSCuparVX_DUa4429IKUWY",
+          "url": "https://www.youtube.com/playlist?list=PLd8JMD_vmpcrSCuparVX_DUa4429IKUWY",
+          "title": "Curso Gratuito de Iluminação de Estúdio | A Linguagem da Luz",
+          "channel": "Alexandre Carnieri",
+          "videos": 13,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso \"A Linguagem da Luz\" (2024): iluminação de estúdio, modificadores de luz, balanço de cores e retrato."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541189",
+      "uc": "Fotografia Analógica",
+      "topics": "Fotografia alternativa: história; antotipia; escurecimento latente; câmara estenopeica (pinhole); laboratório e revelação de película 35 mm; cianotipia (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLqEJ-kwRRuU1cwSzog30uSce95Dq1iZ8Z",
+          "url": "https://www.youtube.com/playlist?list=PLqEJ-kwRRuU1cwSzog30uSce95Dq1iZ8Z",
+          "title": "Sobre Revelação e laboratório",
+          "channel": "Câmera Velha",
+          "videos": 27,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Série \"Câmera Velha\" sobre revelação e laboratório: revelar filme em casa, ampliação a preto e branco, provas de contacto."
+        },
+        {
+          "id": "PL6_MSRUTHTCrRxfFdgTaUuk9FPS-4iUHk",
+          "url": "https://www.youtube.com/playlist?list=PL6_MSRUTHTCrRxfFdgTaUuk9FPS-4iUHk",
+          "title": "Oficina de fotografia e processos alternativos",
+          "channel": "Fotografia Alternativa Brasil",
+          "videos": 10,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Oficina de fotografia e processos alternativos (Fotografia Alternativa Brasil): luz, composição e história da fotografia, com o enquadramento dos processos alternativos."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541188",
+      "uc": "Produção 3D em Design de Comunicação",
+      "topics": "Modelação de texto e formas inorgânicas para suportes físicos e digitais; impressão 3D e parâmetros de impressão; dobragem pop-up; desenho 3D com software livre (Tinkercad) (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLCQQLujpF4hWA9kXNdIVMEACPUNwV_8U8",
+          "url": "https://www.youtube.com/playlist?list=PLCQQLujpF4hWA9kXNdIVMEACPUNwV_8U8",
+          "title": "Modelagem 3D com Tinkercad",
+          "channel": "Engenheiro de Plantão",
+          "videos": 10,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Série de exercícios de modelação 3D no Tinkercad, o software indicado na ficha."
+        },
+        {
+          "id": "PLLHo4pVI8I_qqTaIjCxrJLEsMLirIz8eG",
+          "url": "https://www.youtube.com/playlist?list=PLLHo4pVI8I_qqTaIjCxrJLEsMLirIz8eG",
+          "title": "Curso Impressora 3D",
+          "channel": "Vida de Silício - Robótica e Cultura maker",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de impressora 3D: funcionamento, fatiamento e parâmetros de impressão."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541143",
+      "uc": "Tecnologias I",
+      "topics": "História do computador como máquina gráfica; imagem bitmap e vetorial; formatos e compressão; modelos de cor (RGB, CMYK, HSV); software de edição bitmap e vetorial (Photoshop, Illustrator); introdução à ilustração digital (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL3TA2ARM3HlIWmp0Z5jbd3Rbgeb5ZlXpE",
+          "url": "https://www.youtube.com/playlist?list=PL3TA2ARM3HlIWmp0Z5jbd3Rbgeb5ZlXpE",
+          "title": "Photoshop Curso gratis 2026",
+          "channel": "João Voinarski",
+          "videos": 23,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso gratuito de Photoshop (versão 2025): interface, camadas, seleções, configuração e exportação, a parte de edição bitmap."
+        },
+        {
+          "id": "PLObtFRrmPV_9c-kr7gD9Djgad9sX7FqGd",
+          "url": "https://www.youtube.com/playlist?list=PLObtFRrmPV_9c-kr7gD9Djgad9sX7FqGd",
+          "title": "CURSO ILLUSTRATOR - DO ZERO AO VETOR",
+          "channel": "Fê Pugens",
+          "videos": 56,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Curso \"Illustrator do zero ao vetor\" (2025), a parte de desenho vetorial."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541144",
+      "uc": "Tecnologias II",
+      "topics": "Paginação com Adobe InDesign; a página como base da publicação; proporção e escala; estrutura de página e grelha; publicação multipágina interativa (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLzvyjJBWFAElZbEV5vP6t9MEZZYL5Zf62",
+          "url": "https://www.youtube.com/playlist?list=PLzvyjJBWFAElZbEV5vP6t9MEZZYL5Zf62",
+          "title": "Curso de InDesign",
+          "channel": "Daniel R. C. - Comunicação e design.",
+          "videos": 24,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Tutoriais de Adobe InDesign: paginação de livros, numeração de páginas, imagens, impressão em caderno (booklet)."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541147",
+      "uc": "Tecnologias III",
+      "topics": "História de hipertexto e hipermédia; tecnologias multimédia; interatividade e navegação; formatos e suportes; prática de HTML e CSS (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+          "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+          "title": "Curso completo e atual de HTML5 e CSS3 - Módulo 1 de 5",
+          "channel": "Curso em Vídeo",
+          "videos": 41,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Curso em Vídeo (Gustavo Guanabara), HTML5 e CSS3 Módulo 1: estrutura HTML, CSS, multimédia e hiperligações, incluindo a história da web."
+        },
+        {
+          "id": "PLpdAy0tYrnKy78lFgG55BL2RfVw9hB-je",
+          "url": "https://www.youtube.com/playlist?list=PLpdAy0tYrnKy78lFgG55BL2RfVw9hB-je",
+          "title": "Curso de HTML e CSS",
+          "channel": "Hashtag Programação",
+          "videos": 7,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Projeto front-end completo (página responsiva) em HTML e CSS, para a prática do último ponto do programa."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541150",
+      "uc": "Tecnologias IV",
+      "topics": "Motion design: história e análise; do brief à pré-visualização; composição e design boards; design do movimento, timing e sincronia com som; compositing; render e exportação (After Effects) (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLCoOJGfL5ooGpFWnAaxJJwNXDY3FgdIlj",
+          "url": "https://www.youtube.com/playlist?list=PLCoOJGfL5ooGpFWnAaxJJwNXDY3FgdIlj",
+          "title": "Motion Graphics para Designers | Curso Gratuito",
+          "channel": "Designer Turbinado",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Curso \"Motion Graphics para Designers\": animação de objetos estáticos, som e música, construção de peças de motion."
+        },
+        {
+          "id": "PLV1mz1tvl0SFxNVcxpbwJ2drOMBlH3KeB",
+          "url": "https://www.youtube.com/playlist?list=PLV1mz1tvl0SFxNVcxpbwJ2drOMBlH3KeB",
+          "title": "AFTER EFFECTS - CURSO COMPLETO",
+          "channel": "Educação 4.0",
+          "videos": 25,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de After Effects: composições, camadas, keyframes, efeitos e render."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541187",
+      "uc": "Ilustração Digital em Design de Comunicação",
+      "topics": "História e géneros da ilustração; narrativa visual; processo de design aplicado à ilustração; desenho vetorial e pintura bitmap; técnicas de pintura digital; preparação de ficheiros (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLnj5Xes7TzSv-A-ekCjlR-OE5afHzN1eG",
+          "url": "https://www.youtube.com/playlist?list=PLnj5Xes7TzSv-A-ekCjlR-OE5afHzN1eG",
+          "title": "Aulas Gratuitas do Meu Curso de Pintura Digital",
+          "channel": "Caius Augustus | Art & Photoshop",
+          "videos": 11,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas de pintura digital no Photoshop (Caius Augustus): cor e significado, colorização, mapas de gradiente, materiais e luz."
+        },
+        {
+          "id": "PLObtFRrmPV_9c-kr7gD9Djgad9sX7FqGd",
+          "url": "https://www.youtube.com/playlist?list=PLObtFRrmPV_9c-kr7gD9Djgad9sX7FqGd",
+          "title": "CURSO ILLUSTRATOR - DO ZERO AO VETOR",
+          "channel": "Fê Pugens",
+          "videos": 56,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso de Illustrator do zero ao vetor, a parte de desenho vetorial da UC."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541145",
+      "uc": "Ilustração",
+      "topics": "História da ilustração; do texto à imagem e narrativa; domínios: editorial, infantil, científica e de autor; etapas (esboço a finalização); técnicas tradicionais, mistas e digitais (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLdQ3o3MyYkIfTUCX9Gck-0i-t1yUzuWjj",
+          "url": "https://www.youtube.com/playlist?list=PLdQ3o3MyYkIfTUCX9Gck-0i-t1yUzuWjj",
+          "title": "Carreira e Vida Profissional do Ilustrador",
+          "channel": "Ingrid Osternack",
+          "videos": 52,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Ilustradora profissional sobre a vida profissional do ilustrador: mercado editorial e infantil, orçamentos, portfólio e processo."
+        },
+        {
+          "id": "PLNTIsKbU6AZk7tcBmMtS0GEr5A0yTClre",
+          "url": "https://www.youtube.com/playlist?list=PLNTIsKbU6AZk7tcBmMtS0GEr5A0yTClre",
+          "title": "Ilustração Científica - UnB",
+          "channel": "Marcos Ferraz - Ilustração Científica",
+          "videos": 11,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Disciplina de Ilustração Científica (UnB, Marcos Ferraz): ilustração em zoologia e botânica e técnicas de sombreado, para o domínio da ilustração científica."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541200",
+      "uc": "Didática das Artes Visuais",
+      "topics": "Orientações curriculares para o ensino das artes visuais; modelos educativos: produtivo, criativo autoexpressivo, alfabetização visual, disciplinar e narrativo (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLaV4cVMp_ody62qDOkj4sNIGUsZroPuN-",
+          "url": "https://www.youtube.com/playlist?list=PLaV4cVMp_ody62qDOkj4sNIGUsZroPuN-",
+          "title": "Ocupação Ana Mae Barbosa",
+          "channel": "Itaú Cultural",
+          "videos": 11,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Ocupação Itaú Cultural dedicada a Ana Mae Barbosa (abordagem triangular): formação do educador, Escolinhas de Arte, ensino de arte e leitura de imagens."
+        },
+        {
+          "id": "PLVeUbjLOKnG4fEqjkmLjGL3G7jnTxGy4y",
+          "url": "https://www.youtube.com/playlist?list=PLVeUbjLOKnG4fEqjkmLjGL3G7jnTxGy4y",
+          "title": "EAV - ARTIGOS: EDUCAÇÃO EM  ARTES VISUAIS",
+          "channel": "ESTÚDIO ANPAP 2022 - EXISTÊNCIAS",
+          "videos": 47,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Comunicações do simpósio de Educação em Artes Visuais da ANPAP 2022: formação de professores de arte, políticas públicas, Albers e Dewey."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541191",
+      "uc": "Marketing em Design de Comunicação",
+      "topics": "Comunicação e sociedade; da massificação à individualização; história do marketing; marketing, RP e publicidade nos novos media digitais; plano de marketing estratégico (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLykmhbJDFjHllqWahotCL4wtnQLCe2qwU",
+          "url": "https://www.youtube.com/playlist?list=PLykmhbJDFjHllqWahotCL4wtnQLCe2qwU",
+          "title": "ADMINISTRAÇÃO DE MARKETING",
+          "channel": "Educaline Brasil",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Administração de marketing: evolução do marketing do tradicional ao digital, marketing mix, growth hacking, IA no atendimento."
+        },
+        {
+          "id": "PL8vXuI6zmpdjSk-vWZA8epVojkD_Gg0Ec",
+          "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdjSk-vWZA8epVojkD_Gg0Ec",
+          "title": "Kultivi | Fundamentos do Marketing Digital",
+          "channel": "Kultivi",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Fundamentos do marketing digital: evolução do marketing, funil e jornada do consumidor, métricas e fontes de tráfego."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541172",
+      "uc": "Produção e Edição de Vídeo",
+      "topics": "Linguagem da imagem em movimento (planos, composição, luz, movimento); tipos de montagem; análise de montagem; storyboard; produção com câmaras digitais; edição e uso do som (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLOdsUlopgxkeiKFhs5nTVGAcQNp2Tcy4L",
+          "url": "https://www.youtube.com/playlist?list=PLOdsUlopgxkeiKFhs5nTVGAcQNp2Tcy4L",
+          "title": "Linguagem Cinematográfica",
+          "channel": "AvMakers",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Série sobre linguagem cinematográfica: mise-en-scène, tipos de plano, plano-sequência e movimentos de câmara."
+        },
+        {
+          "id": "PLGxmjKaC6SfnAqzAC-NIY0pOG3nOe1Eq4",
+          "url": "https://www.youtube.com/playlist?list=PLGxmjKaC6SfnAqzAC-NIY0pOG3nOe1Eq4",
+          "title": "Curso completo de edição de vídeo (2025)",
+          "channel": "Felipe Drumond ",
+          "videos": 41,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Curso completo de edição de vídeo em Adobe Premiere (2025), a parte de edição e montagem."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541165",
+      "uc": "Língua Estrangeira - Inglês",
+      "topics": "Atualidade do Reino Unido através dos media; tempos compostos, phrasal verbs, discurso indireto, pronomes e preposições, expressões idiomáticas; exprimir opiniões, narrar e recontar (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLcetZ6gSk968l1s4WuxwyhiyEUmg5GOZC",
+          "url": "https://www.youtube.com/playlist?list=PLcetZ6gSk968l1s4WuxwyhiyEUmg5GOZC",
+          "title": "News Review - Learn the English words and phrases in the news",
+          "channel": "BBC Learning English",
+          "videos": 430,
+          "language": "en",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "BBC Learning English, \"News Review\": vocabulário e expressões a partir de notícias da atualidade, o eixo media e cultura britânica da UC."
+        },
+        {
+          "id": "PLcetZ6gSk96-ZHfHIl2EZmzfwrbZeAulE",
+          "url": "https://www.youtube.com/playlist?list=PLcetZ6gSk96-ZHfHIl2EZmzfwrbZeAulE",
+          "title": "The Grammar Gameshow - Test your English with the ultimate English quiz",
+          "channel": "BBC Learning English",
+          "videos": 29,
+          "language": "en",
+          "order": 2,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "BBC Learning English, \"The Grammar Gameshow\": tempos verbais, modais, used to/would e outros pontos gramaticais do programa."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541158",
+      "uc": "Design de Comunicação V",
+      "topics": "Design centrado no humano; research e design crítico e especulativo; UX e XD; design de interação (princípios, fluxo, navegação, cenários); UI (hierarquia, consistência, layout); prototipagem (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLNNPNNvgZUlq9B9pgoAqxoE3pEbkyUQ0d",
+          "url": "https://www.youtube.com/playlist?list=PLNNPNNvgZUlq9B9pgoAqxoE3pEbkyUQ0d",
+          "title": "Disciplina IHC - Interação Humano Computador",
+          "channel": "Thiago Jabur",
+          "videos": 45,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Disciplina de Interação Humano-Computador (Thiago Jabur): usabilidade, interação e interface, modelo conceptual, princípios de Norman e UX."
+        },
+        {
+          "id": "PLwgL9IEA0PxVxs3z5_q0Sl4zV7YkM8AAH",
+          "url": "https://www.youtube.com/playlist?list=PLwgL9IEA0PxVxs3z5_q0Sl4zV7YkM8AAH",
+          "title": "UX Design na Prática - Aprenda Ferramentas e Metodologias de UX",
+          "channel": "Chief of Design",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Chief of Design, \"UX Design na Prática\": ferramentas e metodologias de UX (pesquisa, personas, jornadas, prototipagem)."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541154",
+      "uc": "História e Teorias do Design I",
+      "topics": "Teoria, crítica e historiografia do design; origens da comunicação gráfica e escrita; papel e impressão; tipografia móvel; Revolução Industrial e Arts & Crafts; Bauhaus; Estilo Internacional; design em Portugal; pós-modernismo; transição digital (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLSwFQpUkawdjYMbxvN1GH5ya_B0Ud6CNo",
+          "url": "https://www.youtube.com/playlist?list=PLSwFQpUkawdjYMbxvN1GH5ya_B0Ud6CNo",
+          "title": "História do Design | Mestres, Movimentos & Estilos",
+          "channel": "Gabriel Freitas",
+          "videos": 44,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Série \"História do Design: Mestres, Movimentos & Estilos\": Revolução Industrial, Owen Jones, William Morris, Arts & Crafts e os movimentos seguintes."
+        },
+        {
+          "id": "PLnjJSq693n6ZJFegQCi0XOuy-p5EnF7SO",
+          "url": "https://www.youtube.com/playlist?list=PLnjJSq693n6ZJFegQCi0XOuy-p5EnF7SO",
+          "title": "História da Arte Moderna e dos Movimentos de Design",
+          "channel": "Márcio Delgado - História - IF Sudeste MG - SD",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Curso \"História da Arte Moderna e dos Movimentos de Design\" (IF Sudeste MG): vanguardas, modernismo, arquitetura do século XX, pop e minimalismo."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541178",
+      "uc": "Princípios de Animação 3D",
+      "topics": "Exercícios de animação 3D no Blender: rigging básico; keyframes; modificadores e auxiliares de animação; motor de física e partículas; motion graphics e cutout animation (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLYXc1aQZtYHswdQYm4qJR4favNXB_v5N6",
+          "url": "https://www.youtube.com/playlist?list=PLYXc1aQZtYHswdQYm4qJR4favNXB_v5N6",
+          "title": "Curso: Princípios da Animação no Blender 3D",
+          "channel": "Crazy Pixel School",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Os princípios da animação aplicados no Blender: timeline e keyframes, squash and stretch, antecipação, staging, pose to pose."
+        },
+        {
+          "id": "PLuGCQAHfIDDs9UbG2xhU9B3gDXWSGO451",
+          "url": "https://www.youtube.com/playlist?list=PLuGCQAHfIDDs9UbG2xhU9B3gDXWSGO451",
+          "title": "Física, partículas e muito mais!",
+          "channel": "Wellington Coloni",
+          "videos": 220,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Tutoriais de Blender sobre física, partículas e simulações (Wellington Coloni), para a parte de motor de física e partículas."
+        }
+      ]
+    },
+    {
+      "course": "LDCOM",
+      "code": "14541197",
+      "uc": "Prática e Deontologia do Design",
+      "topics": "Deontologia, ética e moral; regulação da atividade (associações, ordens); relação com clientes e colegas; currículo e portfólio; formas de exercício e de pagamento; responsabilidade cultural, social e ambiental (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL9tgFFr71mw0QccMLJeDrzx86pHRTGJBI",
+          "url": "https://www.youtube.com/playlist?list=PL9tgFFr71mw0QccMLJeDrzx86pHRTGJBI",
+          "title": "Aulas sobre design contra opressão por Frederick van Amstel",
+          "channel": "Usabilidoido",
+          "videos": 14,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Aulas de Frederick van Amstel (Usabilidoido) sobre design contra a opressão: ética, responsabilidade social e política do design."
+        },
+        {
+          "id": "PLYcW3SAGQhBxAeqjFktd67i2OF6f7c47Z",
+          "url": "https://www.youtube.com/playlist?list=PLYcW3SAGQhBxAeqjFktd67i2OF6f7c47Z",
+          "title": "Aspectos Comerciais no Design Gráfico",
+          "channel": "Miragem Design",
+          "videos": 8,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Aspetos comerciais do design gráfico: precificação, contratos, briefing e relação com clientes."
+        }
+      ]
+    },
+    {
+      "course": "CTESP-STI",
+      "code": "18121005",
+      "uc": "Técnicas de Comunicação",
+      "topics": "Módulo de português: gramática, estruturação textual e coerência, análise e produção de texto, relatório e comentário de texto. Módulo de inglês: working in IT, IT systems, data communication, websites e e-commerce, IT support (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLxI8Can9yAHemh_YJh9GtkIUljZbI7Tvw",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHemh_YJh9GtkIUljZbI7Tvw",
+          "title": "Licenciatura Univesp - Leitura e Produção de Texto - 01º Bimestre",
+          "channel": "UNIVESP",
+          "videos": 28,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Disciplina Leitura e Produção de Texto da UNIVESP: coesão, coerência, géneros e produção textual."
+        },
+        {
+          "id": "PLZFZMpu6X_JcXV5U1N-xXyD0QHbTINa45",
+          "url": "https://www.youtube.com/playlist?list=PLZFZMpu6X_JcXV5U1N-xXyD0QHbTINa45",
+          "title": "INGLÊS PARA PROFISSONAIS DE TI - CURSO BÁSICO",
+          "channel": "Johnatan Willow",
+          "videos": 36,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso básico de inglês para profissionais de TI (2025), do quadro fonético ao vocabulário da área."
+        }
+      ]
+    },
+    {
+      "course": "CTESP-STI",
+      "code": "18121011",
+      "uc": "Web Marketing",
+      "topics": "Introdução ao web marketing; estratégia e fundamentos; principais canais; inbound e outbound marketing; abordagens de marketing digital (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL8vXuI6zmpdjSk-vWZA8epVojkD_Gg0Ec",
+          "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdjSk-vWZA8epVojkD_Gg0Ec",
+          "title": "Kultivi | Fundamentos do Marketing Digital",
+          "channel": "Kultivi",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Fundamentos do marketing digital: evolução, funil de vendas e jornada do consumidor, métricas, tráfego pago e orgânico."
+        },
+        {
+          "id": "PLHz_AreHm4dn43Vrha_Ks35x4EHmYrn0q",
+          "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dn43Vrha_Ks35x4EHmYrn0q",
+          "title": "Curso prático de SEO - Módulo 2 - Conteúdo",
+          "channel": "Curso em Vídeo",
+          "videos": 17,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso em Vídeo, curso prático de SEO, Módulo 2 (Conteúdo): o canal orgânico e o inbound."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181093",
+      "uc": "Gestão Estratégica",
+      "topics": "Planeamento e estratégia; análise estratégica e análise estrutural da indústria; estratégias em mercado global; planeamento de portfólios de negócios; sustentabilidade, RSE, gestão da mudança e cultura organizacional (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLxI8Can9yAHdphItaZo26a2rLM8t0n6KM",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdphItaZo26a2rLM8t0n6KM",
+          "title": "Tecnologia em processos gerenciais | Planejamento e ferramentas de gestão estratégica",
+          "channel": "UNIVESP",
+          "videos": 24,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Disciplina da UNIVESP \"Planejamento e ferramentas de gestão estratégica\" (2025): planeamento, análise estratégica e ferramentas."
+        },
+        {
+          "id": "PLxI8Can9yAHetpjk8q5ZDjtGZeSk97_iP",
+          "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHetpjk8q5ZDjtGZeSk97_iP",
+          "title": "Eixo de Negócios - Estratégia e Governança - (LIBRAS)",
+          "channel": "UNIVESP",
+          "videos": 16,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Disciplina da UNIVESP \"Estratégia e Governança\" (Eixo de Negócios)."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "15161098",
+      "uc": "Gestão e Negociação",
+      "topics": "Gestão por processos (identificação, descrição, implementação, avaliação); modelos, elementos, tipologias e fases da negociação; estilos de negociadores; ética; mediação e arbitragem; negociação internacional (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLh9KZYAP_1cQeMBYwXFoilUUPGYjYO4eg",
+          "url": "https://www.youtube.com/playlist?list=PLh9KZYAP_1cQeMBYwXFoilUUPGYjYO4eg",
+          "title": "Negociação: O Método Harvard",
+          "channel": "Rodolfo Araujo",
+          "videos": 7,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "O método de negociação de Harvard explicado: pessoas e problemas, interesses e posições, alternativas, critérios."
+        },
+        {
+          "id": "PL2eg-RIciv8yI-qBdkdhxNeAtcrgDiEBt",
+          "url": "https://www.youtube.com/playlist?list=PL2eg-RIciv8yI-qBdkdhxNeAtcrgDiEBt",
+          "title": "Curso de Negociação, Mediação e Arbitragem",
+          "channel": "Joel Arruda - Professor",
+          "videos": 21,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Curso de Negociação, Mediação e Arbitragem (21 aulas), com os capítulos de negociação e de resolução alternativa de conflitos."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "15161109",
+      "uc": "Escrita para a Web e Storytelling",
+      "topics": "Leitura e comportamento na web; escrita clara e breve para meios digitais; títulos, leads e hierarquia; escrita para redes sociais, newsletters e landing pages; estratégia de conteúdo; storytelling de marca e transmedia; acessibilidade e linguagem inclusiva; IA generativa na escrita (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLWZ9pSn_wvWDjvJOYuyuXost78SzB3wwQ",
+          "url": "https://www.youtube.com/playlist?list=PLWZ9pSn_wvWDjvJOYuyuXost78SzB3wwQ",
+          "title": "Copywriting, Storytelling e Narrativa: Como Escrever, Convencer e Construir Autoridade | Jota Gui",
+          "channel": "KULTIVI sua CARREIRA",
+          "videos": 21,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso \"Copywriting, Storytelling e Narrativa\": narrativa estratégica e de marca, storytelling aplicado ao digital, posicionamento."
+        },
+        {
+          "id": "PLm7y-Z-ustqiIdVXz-nTuMkuoDWBKKbTM",
+          "url": "https://www.youtube.com/playlist?list=PLm7y-Z-ustqiIdVXz-nTuMkuoDWBKKbTM",
+          "title": "Clube do UX Writing | Masterclasses",
+          "channel": "Clube do UX Writing",
+          "videos": 15,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Masterclasses do Clube do UX Writing: tom e voz, linguagem simples, arquitetura da informação e acessibilidade na escrita para interfaces digitais."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181179",
+      "uc": "Introdução à Gestão",
+      "topics": "Gestão e gestores; visão histórica e contemporânea; planeamento estratégico (missão, visão, análise interna/externa); estrutura organizacional; ética, RSE e sustentabilidade; empreendedorismo e inovação (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+          "url": "https://www.youtube.com/playlist?list=PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+          "title": "Introdução à Teoria Geral da Administração | 3ª Edição | Antonio Cesar Amaru Maximiano",
+          "channel": "GEN Negócios e Gestão",
+          "videos": 21,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas que acompanham o livro \"Introdução à Teoria Geral da Administração\" (GEN): da revolução industrial a Taylor, Fayol, Weber e as abordagens seguintes."
+        },
+        {
+          "id": "PLd62WfTsN2p4pZs6ryUmt6TfM3UIIjx71",
+          "url": "https://www.youtube.com/playlist?list=PLd62WfTsN2p4pZs6ryUmt6TfM3UIIjx71",
+          "title": "TGA - Teoria Geral da Administração",
+          "channel": "Prof. Renato Medeiros",
+          "videos": 35,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Teoria Geral da Administração (Prof. Renato Medeiros): escolas da administração, funções do gestor e estrutura organizacional."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "15161047",
+      "uc": "Marketing de Serviços",
+      "topics": "Natureza dos serviços; experiência do cliente, expectativas e cocriação; marketing mix alargado; evidência física e encontros de serviço; desenho de processos, blueprinting e jornada do cliente; qualidade, falhas e recuperação; tecnologia e IA nos serviços (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLLa51Nr3EtaVFQpRXG4uqAVFri6OJRdYM",
+          "url": "https://www.youtube.com/playlist?list=PLLa51Nr3EtaVFQpRXG4uqAVFri6OJRdYM",
+          "title": "Marketing de Serviços - 2021/S2 - Graduação - INESP",
+          "channel": "Prof. Eduardo Bianchi",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Aulas da disciplina Marketing de Serviços de uma licenciatura (INESP, 2021), gravadas pelo próprio docente."
+        },
+        {
+          "id": "PLJOFJ3Ok_idtKLTFgGtC_pwkK5k_EMGY0",
+          "url": "https://www.youtube.com/playlist?list=PLJOFJ3Ok_idtKLTFgGtC_pwkK5k_EMGY0",
+          "title": "Service Design",
+          "channel": "NNgroup",
+          "videos": 17,
+          "language": "en",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Nielsen Norman Group, \"Service Design\": service blueprints, jornada do cliente e desenho de processos de serviço."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181095",
+      "uc": "Produtos Financeiros",
+      "topics": "Estratégia de financiamento e sistema financeiro; aplicações financeiras (risco e liquidez); gestão de risco (taxa de juro e de câmbio, cobertura); mercados de futuros e de opções; futuros negociados em Portugal (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL8mEkeR6KxctwMrpwLY7RgKgiL6IivgmC",
+          "url": "https://www.youtube.com/playlist?list=PL8mEkeR6KxctwMrpwLY7RgKgiL6IivgmC",
+          "title": "Derivativos e Hedge",
+          "channel": "Finanças Pragmáticas  |  Prof. Massa ",
+          "videos": 11,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Derivativos e hedge: futuros, swaps (incluindo cambial) e cobertura de risco, com os produtos de gestão de risco da UC."
+        },
+        {
+          "id": "PLpDoIofcp9Y7_IRSU7Nm8RyUEZ9HTf33v",
+          "url": "https://www.youtube.com/playlist?list=PLpDoIofcp9Y7_IRSU7Nm8RyUEZ9HTf33v",
+          "title": "TUDO SOBRE O MERCADO DE DERIVATIVOS",
+          "channel": "T2 Educação",
+          "videos": 8,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Introdução ao mercado de derivativos: termo, futuros, opções e swaps."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181190",
+      "uc": "Economia II",
+      "topics": "Introdução à macroeconomia e modelo AS-AD; Estado e contabilidade nacional; moeda, sistema bancário e política monetária; modelos keynesianos e IS-LM; inflação, desemprego, curva de Phillips e lei de Okun; crescimento; economia internacional (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLTtZUJqLYbCkny2biC1Foyz_XcN2l8kwF",
+          "url": "https://www.youtube.com/playlist?list=PLTtZUJqLYbCkny2biC1Foyz_XcN2l8kwF",
+          "title": "Macroeconomia",
+          "channel": "Khan Academy Brasil",
+          "videos": 132,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Khan Academy, Macroeconomia: PIB e contabilidade nacional, AS-AD, inflação, desemprego, política monetária e orçamental."
+        },
+        {
+          "id": "PL9B175DCCA462A826",
+          "url": "https://www.youtube.com/playlist?list=PL9B175DCCA462A826",
+          "title": "Economia Monetária - Moeda e Bancos",
+          "channel": "UNIVESP",
+          "videos": 76,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "UNIVESP, \"Economia Monetária: Moeda e Bancos\" (76 aulas), aprofunda o capítulo de moeda, mercado monetário e política monetária."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181193",
+      "uc": "Fiscalidade I",
+      "topics": "Enquadramento da fiscalidade; IVA (incidência, isenções, valor tributável, taxas, dedução, obrigações, regimes especiais, RITI); impostos sobre o património: Imposto do Selo, IMT e IMI (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL6Rnz4Z4O4CL-dh5lvmTHeafQo4cg0fBP",
+          "url": "https://www.youtube.com/playlist?list=PL6Rnz4Z4O4CL-dh5lvmTHeafQo4cg0fBP",
+          "title": "Impostos? Eu explico",
+          "channel": "Ordem dos Contabilistas Certificados",
+          "videos": 188,
+          "language": "pt-PT",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Ordem dos Contabilistas Certificados, rubrica \"Impostos? Eu explico\" (TVI24): IVA (dedução, isenções, recuperação), IMI, IMT e outros impostos portugueses."
+        },
+        {
+          "id": "PLGb01Vyuh06YMinF3znR5iBUeK6swhn5s",
+          "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06YMinF3znR5iBUeK6swhn5s",
+          "title": "Exame O.C.C 2023",
+          "channel": "CERTFORM – Escola de Formação Prática",
+          "videos": 37,
+          "language": "pt-PT",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "CERTFORM, preparação do exame OCC 2023: IVA intracomunitário, operações triangulares, apuramento e regime de isenção do IVA português."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181195",
+      "uc": "Fiscalidade II",
+      "topics": "Impostos sobre o rendimento: IRC e IRS (incidência, isenções, matéria coletável e rendimento coletável, liquidação e pagamento, obrigações acessórias) (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLGb01Vyuh06YMinF3znR5iBUeK6swhn5s",
+          "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06YMinF3znR5iBUeK6swhn5s",
+          "title": "Exame O.C.C 2023",
+          "channel": "CERTFORM – Escola de Formação Prática",
+          "videos": 37,
+          "language": "pt-PT",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "CERTFORM, preparação do exame OCC 2023: tributações autónomas e regime simplificado de IRC, Modelo 22, retenções na fonte e categorias de IRS."
+        },
+        {
+          "id": "PLkfLRHbskCP9_04nZyrUvnbSpDZZROpWX",
+          "url": "https://www.youtube.com/playlist?list=PLkfLRHbskCP9_04nZyrUvnbSpDZZROpWX",
+          "title": "IRS",
+          "channel": "Autoridade Tributária e Aduaneira",
+          "videos": 48,
+          "language": "pt-PT",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Autoridade Tributária e Aduaneira, playlist IRS: declaração Modelo 3, despesas dedutíveis, IRS Jovem, pagamento e obrigações declarativas."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14191111",
+      "uc": "Contabilidade Pública",
+      "topics": "Enquadramento legal da contabilidade na AP; SNC-AP: contabilidade orçamental, financeira (estrutura concetual, NCP, plano de contas multidimensional) e de gestão; indicadores de gestão pública; controlo interno e externo (fonte: ficha da UC 2025/26, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PL6Rnz4Z4O4CJgBD5Da0YNcchmIEfmRQOj",
+          "url": "https://www.youtube.com/playlist?list=PL6Rnz4Z4O4CJgBD5Da0YNcchmIEfmRQOj",
+          "title": "Reuniões Livres SNC-AP 2026",
+          "channel": "Ordem dos Contabilistas Certificados",
+          "videos": 6,
+          "language": "pt-PT",
+          "order": 1,
+          "confidence": "baixa",
+          "level": "superior",
+          "match": "Ordem dos Contabilistas Certificados, \"Reuniões Livres SNC-AP\" (2026): sessões de esclarecimento sobre a aplicação do SNC-AP."
+        },
+        {
+          "id": "PL6Rnz4Z4O4CKDexMXEfE0JAunhbYbuhcX",
+          "url": "https://www.youtube.com/playlist?list=PL6Rnz4Z4O4CKDexMXEfE0JAunhbYbuhcX",
+          "title": "Reuniões Livres Online SNC-AP | 2025",
+          "channel": "Ordem dos Contabilistas Certificados",
+          "videos": 7,
+          "language": "pt-PT",
+          "order": 2,
+          "confidence": "baixa",
+          "level": "superior",
+          "match": "Edição 2025 das mesmas reuniões livres SNC-AP da OCC."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181184",
+      "uc": "Análise Económica e Financeira",
+      "topics": "Função financeira e método de análise; demonstrações financeiras para análise; balanços comparados, rácios, equilíbrio financeiro (balanço funcional), fluxos; rendibilidade dos capitais; risco operacional, financeiro e global (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLGb01Vyuh06ZKd3DC-2F6FIKNLNWgp2xM",
+          "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06ZKd3DC-2F6FIKNLNWgp2xM",
+          "title": "BASES DAS FINANÇAS EMPRESARIAIS",
+          "channel": "CERTFORM – Escola de Formação Prática",
+          "videos": 9,
+          "language": "pt-PT",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "CERTFORM, \"As Bases das Finanças Empresariais\": rácios de autonomia, endividamento, solvabilidade e liquidez, ROIC, ROE e a ligação entre balanço, DR e fluxos de caixa."
+        },
+        {
+          "id": "PLEe0nmKgw0CVbE2iAXGj2wF2xqffFws29",
+          "url": "https://www.youtube.com/playlist?list=PLEe0nmKgw0CVbE2iAXGj2wF2xqffFws29",
+          "title": "Análise das demonstrações contábeis",
+          "channel": "Professor Quintino ®️",
+          "videos": 18,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Professor Quintino, Análise das Demonstrações Contábeis: análise vertical e horizontal, liquidez, endividamento, prazos médios e ciclo operacional."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "15161110",
+      "uc": "Gestão e Publicidade em Redes Sociais",
+      "topics": "Redes sociais e Web 2.0; canais de social media marketing e influenciadores; integração com a estratégia; planeamento e execução de campanhas nas plataformas de publicidade; monitorização e métricas (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLbQeIXJbBuGIGtcsVNvenZQCMBtcdvf_Z",
+          "url": "https://www.youtube.com/playlist?list=PLbQeIXJbBuGIGtcsVNvenZQCMBtcdvf_Z",
+          "title": "MARKETING DIGITAL - Curso Sequencial - Eduardo Tanaka",
+          "channel": "Prof. Eduardo Tanaka",
+          "videos": 37,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "Curso sequencial de marketing digital (Prof. Eduardo Tanaka) centrado em redes sociais: conta comercial, perfil, conteúdo e crescimento no Instagram."
+        },
+        {
+          "id": "PL8vXuI6zmpdjF68NJruL7Dh0hAYpZ9tQX",
+          "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdjF68NJruL7Dh0hAYpZ9tQX",
+          "title": "Tráfego Pago com Meta Ads para Iniciantes",
+          "channel": "Kultivi",
+          "videos": 12,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "alta",
+          "level": "introdutório",
+          "match": "Tráfego pago com Meta Ads: gestor de anúncios, tipos de campanha, segmentação e métricas."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181176",
+      "uc": "Introdução ao Direito",
+      "topics": "Noções elementares: sistema jurídico, fontes, interpretação e integração da lei, aplicação no tempo; direito internacional e da UE; ramos do direito; relação jurídica (sujeitos, objeto, facto, garantia); direito das obrigações (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLT4zTxiTEWW_x3ujzLq8BRrrVzmXKdxmo",
+          "url": "https://www.youtube.com/playlist?list=PLT4zTxiTEWW_x3ujzLq8BRrrVzmXKdxmo",
+          "title": "TEORIA GERAL DO DIREITO CIVIL ⚖️ 📚",
+          "channel": "Cascais em Direito por Célia Lopes ",
+          "videos": 26,
+          "language": "pt-PT",
+          "order": 1,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Teoria Geral do Direito Civil (direito português): fontes do direito civil português, princípios fundamentais, relação jurídica, personalidade e capacidade, pessoas singulares e património."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181199",
+      "uc": "Negócios Internacionais",
+      "topics": "Contexto dos negócios internacionais; teorias de internacionalização; aspetos culturais; seleção de mercados; modos de entrada; risco cambial e cobertura; pagamentos internacionais; preço internacional e distribuição; projeto de internacionalização (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLTjWXFmeozbmArk7LdGoQYHU3UpRSQ88N",
+          "url": "https://www.youtube.com/playlist?list=PLTjWXFmeozbmArk7LdGoQYHU3UpRSQ88N",
+          "title": "Negócios Internacionais",
+          "channel": "Professor Danillo Nogueira",
+          "videos": 7,
+          "language": "pt-BR",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "Negócios Internacionais: teorias de internacionalização (poder de mercado, paradigma eclético, modelo de Uppsala, redes) e processo de exportação."
+        },
+        {
+          "id": "PLfu3UeeiNMtsiYDtwc4-gFW03jTyd9Mge",
+          "url": "https://www.youtube.com/playlist?list=PLfu3UeeiNMtsiYDtwc4-gFW03jTyd9Mge",
+          "title": "Curso \"Comércio Internacional\" UNIFESP",
+          "channel": "Marcus Maurer de Salles",
+          "videos": 14,
+          "language": "pt-BR",
+          "order": 2,
+          "confidence": "média",
+          "level": "superior",
+          "match": "Videoaulas da UC Comércio Internacional da UNIFESP (2021/22): Bretton Woods, FMI, BIRD e o enquadramento institucional do comércio internacional."
+        }
+      ]
+    },
+    {
+      "course": "LGEST",
+      "code": "14181182",
+      "uc": "Inglês para Gestão",
+      "topics": "Pessoas e organizações (reuniões, e-mails); recrutamento (entrevistas, CV, carta de apresentação); finanças (relatórios, factos e números); correspondência formal, negociação, apresentações; gramática (fonte: ficha da UC 2026/27, academico.ualg.pt)",
+      "playlists": [
+        {
+          "id": "PLcetZ6gSk969oGvAI0e4_PgVnlGbm64bp",
+          "url": "https://www.youtube.com/playlist?list=PLcetZ6gSk969oGvAI0e4_PgVnlGbm64bp",
+          "title": "English at Work",
+          "channel": "BBC Learning English",
+          "videos": 67,
+          "language": "en",
+          "order": 1,
+          "confidence": "alta",
+          "level": "superior",
+          "match": "BBC Learning English, \"English at Work\": série em contexto de escritório com reuniões, e-mails, negociação, apresentações e telefonemas."
+        },
+        {
+          "id": "PLD729F046A29B3591",
+          "url": "https://www.youtube.com/playlist?list=PLD729F046A29B3591",
+          "title": "You're Hired",
+          "channel": "British Council | English",
+          "videos": 11,
+          "language": "en",
+          "order": 2,
+          "confidence": "média",
+          "level": "introdutório",
+          "match": "British Council, \"You're Hired\": preparação para entrevistas de emprego em inglês, para o tema recrutamento."
+        }
+      ]
+    }
+  ]
+}
