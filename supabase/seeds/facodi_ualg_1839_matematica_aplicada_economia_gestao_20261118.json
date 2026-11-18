@@ -1,0 +1,2106 @@
+{
+  "batch": "facodi_ualg_1839_matematica_aplicada_economia_gestao_20261118",
+  "course": {
+    "code": "LMAEG",
+    "official_id": "1839",
+    "plan": "https://www.ualg.pt/curso/1839/plano",
+    "academic_year": "2026/27",
+    "option_groups": [
+      "I (a.c. Economia)",
+      "II (a.c. Matemática)",
+      "III (a.c. Gestão)"
+    ]
+  },
+  "verified_on": "2026-11-18",
+  "application": {
+    "status": "por aplicar",
+    "method": "Supabase MCP, fora do PR (sem ficheiros .sql no PR, como no #69 e no #72)",
+    "script_branch": "scripts/facodi_ualg_1839_matematica_aplicada_economia_gestao_20261118",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1839_matematica_aplicada_economia_gestao_20261118/supabase/seeds/facodi_ualg_1839_matematica_aplicada_economia_gestao_20261118.sql",
+    "published_playlists": 51,
+    "published_links": 51,
+    "units": 31,
+    "placements": 31,
+    "excluded_policy": "ligações de confiança baixa ficam só no manifesto (published: false)",
+    "excluded_links": [
+      {
+        "code": "18391033",
+        "playlist_id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W"
+      }
+    ]
+  },
+  "decisions": {
+    "shared_economia_ucs": "UC da Licenciatura em Economia (Faculdade de Economia, curso 1440), listada no grupo I (a.c. Economia) deste plano.",
+    "group_iii_generic_entry": "Entrada genérica do plano 2026/27: única linha do grupo III (a.c. Gestão); o estudante escolhe a UC por requerimento na UALGNET. Não tem ficha.",
+    "group_names": "grupos com o nome da legenda do plano: I (a.c. Economia), II (a.c. Matemática), III (a.c. Gestão)"
+  },
+  "units": [
+    {
+      "code": "18391000",
+      "title": "Cálculo Infinitesimal I",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "Funções trigonométricas inversas, primitivação, integral de Riemann e integral impróprio, e séries numéricas e de potências.",
+      "topics": [
+        "Primitivação",
+        "Integral definido e impróprio",
+        "Séries numéricas e de potências"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391000&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391002",
+      "title": "Economia I",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "A ciência económica e o funcionamento dos mercados: procura, oferta, equilíbrio, elasticidades, eficiência e comportamento de consumidores e empresas.",
+      "topics": [
+        "Procura e oferta",
+        "Equilíbrio de mercado e elasticidades",
+        "Consumidores e empresas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391002&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391004",
+      "title": "Introdução à Programação",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "Elementos dos programas, algoritmos básicos, estruturas de dados, funções, recursividade e iteração, pesquisa e ordenação, eficiência e programação orientada por objetos.",
+      "topics": [
+        "Algoritmos e estruturas de dados",
+        "Funções, recursividade e iteração",
+        "Pesquisa, ordenação e eficiência"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391004&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391001",
+      "title": "Matrizes e Aplicações",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Matrizes, sistemas de equações lineares, determinantes, valores e vetores próprios, espaços vetoriais e produtos interno, externo e misto.",
+      "topics": [
+        "Matrizes e sistemas lineares",
+        "Determinantes",
+        "Valores e vetores próprios"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391001&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391030",
+      "title": "Organização e Gestão de Empresas",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "As funções da gestão na empresa: planeamento, organização, direção e controlo, e estratégia.",
+      "topics": [
+        "Planeamento e organização",
+        "Direção e controlo",
+        "Estratégia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391030&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391031",
+      "title": "Cálculo e Instrumentos Financeiros",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 6,
+      "summary": "Capitalização e atualização em juro simples e composto, taxas de juro, rendas, produtos financeiros, planos de amortização de empréstimos e avaliação de investimentos pelo VAL e pela TIR.",
+      "topics": [
+        "Juro simples e composto",
+        "Rendas e amortização de empréstimos",
+        "Avaliação de investimentos: VAL e TIR"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391031&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391005",
+      "title": "Cálculo Infinitesimal II",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "Cálculo diferencial e integral em várias variáveis: limites, continuidade, diferenciação, fórmula de Taylor e extremos, e integrais duplos e triplos.",
+      "topics": [
+        "Diferenciação em várias variáveis",
+        "Fórmula de Taylor e extremos",
+        "Integrais duplos e triplos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391005&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391009",
+      "title": "Contabilidade Geral",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "Conceitos de contabilidade financeira e normalização (SNC), registo dos factos patrimoniais nos ciclos de exploração, investimento e financiamento, operações de fim de período e demonstrações financeiras.",
+      "topics": [
+        "SNC e código de contas",
+        "Ciclos de exploração, investimento e financiamento",
+        "Demonstrações financeiras"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391009&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391007",
+      "title": "Economia II",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "Medição da atividade económica e análise económica no longo e no curto prazo.",
+      "topics": [
+        "Medição da atividade económica",
+        "Análise de longo prazo",
+        "Análise de curto prazo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391007&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391006",
+      "title": "Laboratório de Programação Aplicada",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Complementos de programação em Python aplicada à economia e à gestão, com noções de análise de dados e de modelização.",
+      "topics": [
+        "Python",
+        "Análise de dados",
+        "Modelização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391006&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391010",
+      "title": "Cálculo Infinitesimal III",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 11,
+      "summary": "Teoremas da função implícita e inversa, integrais de linha e de superfície, e medida e integral de Lebesgue.",
+      "topics": [
+        "Função implícita e inversa",
+        "Integrais de linha e de superfície",
+        "Medida e integral de Lebesgue"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391010&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391032",
+      "title": "Contabilidade de Gestão",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 12,
+      "summary": "Componentes do custo de produção, sistemas de custeio, análise custo-volume-resultados, apuramento do custo de produção e centros de custos.",
+      "topics": [
+        "Sistemas de custeio",
+        "Custo-volume-resultados",
+        "Centros de custos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391032&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391013",
+      "title": "Macroeconomia I",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 13,
+      "summary": "Ciclos económicos, o modelo IS/LM e as políticas monetária e orçamental, o modelo AS/AD e a relação entre inflação, produto e desemprego.",
+      "topics": [
+        "Modelo IS/LM",
+        "Modelo AS/AD",
+        "Inflação, desemprego e política monetária"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391013&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391012",
+      "title": "Microeconomia I",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 14,
+      "summary": "Teoria do consumidor e do produtor, formação dos preços em concorrência perfeita, monopólio, concorrência monopolística e oligopólio, e mercado de trabalho.",
+      "topics": [
+        "Teoria do consumidor",
+        "Teoria do produtor",
+        "Estruturas de mercado"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391012&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391011",
+      "title": "Probabilidades",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "Probabilidades elementares, variáveis e vetores aleatórios e teoremas limite.",
+      "topics": [
+        "Probabilidades elementares",
+        "Variáveis e vetores aleatórios",
+        "Teoremas limite"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391011&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391015",
+      "title": "Análise Complexa e Equações Diferenciais",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 16,
+      "summary": "Funções complexas, derivação e integração, funções holomorfas e teorema dos resíduos, equações diferenciais ordinárias e sistemas lineares, e equações às diferenças.",
+      "topics": [
+        "Funções complexas e teorema dos resíduos",
+        "Equações diferenciais ordinárias",
+        "Equações às diferenças"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391015&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391033",
+      "title": "Análise Económica e Financeira",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 17,
+      "summary": "Finanças empresariais: valor atual, avaliação de obrigações e de ações, VAL e decisões de investimento, risco, diversificação, CAPM e custo do capital.",
+      "topics": [
+        "Avaliação de obrigações e ações",
+        "VAL e decisões de investimento",
+        "Risco, CAPM e custo do capital"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391033&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391016",
+      "title": "Análise Estatística I",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 18,
+      "summary": "Estatística descritiva, amostragem e distribuições de amostragem, estimação, testes de hipóteses e regressão linear simples.",
+      "topics": [
+        "Estatística descritiva",
+        "Estimação e testes de hipóteses",
+        "Regressão linear simples"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391016&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391018",
+      "title": "Macroeconomia II",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 19,
+      "summary": "Mercado cambial, modelos keynesiano e clássico em economia aberta, contabilidade do crescimento e modelo de Solow, teorias do consumo e do investimento, e défice e dívida públicos.",
+      "topics": [
+        "Economia aberta e mercado cambial",
+        "Crescimento e modelo de Solow",
+        "Consumo, investimento e dívida pública"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391018&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391017",
+      "title": "Microeconomia II",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 20,
+      "summary": "Preferência revelada e escolhas intertemporais, escolhas em contexto de incerteza, economia da informação, teoria dos jogos e equilíbrio geral.",
+      "topics": [
+        "Escolhas intertemporais e incerteza",
+        "Teoria dos jogos",
+        "Equilíbrio geral e eficiência"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391017&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391023",
+      "title": "Análise Econométrica I",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 21,
+      "summary": "Metodologia econométrica e o modelo de regressão linear simples e múltipla: mínimos quadrados, inferência, previsão, variáveis artificiais e violação das hipóteses clássicas.",
+      "topics": [
+        "Regressão linear simples",
+        "Regressão linear múltipla",
+        "Previsão e teste de Chow"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391023&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391020",
+      "title": "Análise Estatística II",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 22,
+      "summary": "Inferência para duas populações, análise de variância, testes não paramétricos e regressão linear múltipla e logística.",
+      "topics": [
+        "Análise de variância",
+        "Testes não paramétricos",
+        "Regressão múltipla e logística"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391020&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391021",
+      "title": "Análise Numérica I",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 23,
+      "summary": "Precisão finita, equações não lineares, sistemas de equações lineares, interpolação polinomial, integração numérica e equações diferenciais ordinárias.",
+      "topics": [
+        "Equações não lineares",
+        "Interpolação polinomial",
+        "Integração numérica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391021&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391022",
+      "title": "Investigação Operacional I",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 24,
+      "summary": "Programação linear e método simplex, teoria da dualidade e análise de sensibilidade, e problemas de transportes e de afetação.",
+      "topics": [
+        "Programação linear e simplex",
+        "Dualidade e análise de sensibilidade",
+        "Transportes e afetação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391022&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "14401021",
+      "title": "Economia e Finanças Públicas",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 25,
+      "summary": "Intervenção do Estado na economia, bens públicos e bens de clube, efeitos externos e imposto de Pigou, e incidência e formas de tributação.",
+      "topics": [
+        "Bens públicos e externalidades",
+        "Federalismo fiscal",
+        "Tributação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14401021&anoLectivo=202627&codInstituic=4&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "I (a.c. Economia)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "I (a.c. Economia)",
+      "offered_both_terms": false,
+      "plan_note": "UC da Licenciatura em Economia (Faculdade de Economia, curso 1440), listada no grupo I (a.c. Economia) deste plano."
+    },
+    {
+      "code": "14401022",
+      "title": "Economia Monetária e Financeira",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 26,
+      "summary": "Moeda, inflação e política monetária, sistemas monetários internacionais e UEM, banca e oferta de moeda, intermediação financeira, dívida pública e avaliação de obrigações.",
+      "topics": [
+        "Moeda e política monetária",
+        "Banca e oferta de moeda",
+        "Taxas de juro e obrigações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14401022&anoLectivo=202627&codInstituic=4&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "I (a.c. Economia)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "I (a.c. Economia)",
+      "offered_both_terms": false,
+      "plan_note": "UC da Licenciatura em Economia (Faculdade de Economia, curso 1440), listada no grupo I (a.c. Economia) deste plano."
+    },
+    {
+      "code": "18391026",
+      "title": "Análise Econométrica II",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 27,
+      "summary": "Violação das hipóteses clássicas, endogeneidade e variáveis instrumentais, equações simultâneas e séries temporais: estacionaridade, modelos ARDL e cointegração.",
+      "topics": [
+        "Variáveis instrumentais",
+        "Equações simultâneas",
+        "Séries temporais e cointegração"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391026&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391024",
+      "title": "Investigação Operacional II",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 28,
+      "summary": "Programação inteira, problemas em redes, programação dinâmica, programação não linear e técnicas heurísticas de otimização.",
+      "topics": [
+        "Programação inteira",
+        "Redes e programação dinâmica",
+        "Programação não linear"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391024&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391025",
+      "title": "Processos Estocásticos e Aplicações",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 29,
+      "summary": "Cadeias de Markov em tempo discreto e contínuo, processos de Poisson e movimento browniano.",
+      "topics": [
+        "Cadeias de Markov",
+        "Processos de Poisson",
+        "Movimento browniano"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391025&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "18391040",
+      "title": "Equações às Diferenças",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 30,
+      "summary": "Equações às diferenças de primeira ordem e de ordem superior e sistemas de equações às diferenças, com aplicações financeiras, sociológicas e económicas.",
+      "topics": [
+        "Equações de primeira ordem",
+        "Equações de ordem superior",
+        "Sistemas e aplicações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18391040&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "II (a.c. Matemática)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "II (a.c. Matemática)",
+      "offered_both_terms": false,
+      "plan_note": null
+    },
+    {
+      "code": "140064482",
+      "title": "Opção a Escolher por Requerimento na UALGNET",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 31,
+      "summary": "Opção do grupo III (a.c. Gestão), escolhida pelo estudante por requerimento na UALGNET; os conteúdos dependem da UC escolhida.",
+      "topics": [
+        "Escolha da UC por requerimento",
+        "Grupo III (a.c. Gestão)"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "III (a.c. Gestão)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "III (a.c. Gestão)",
+      "offered_both_terms": false,
+      "plan_note": "Entrada genérica do plano 2026/27: única linha do grupo III (a.c. Gestão); o estudante escolhe a UC por requerimento na UALGNET. Não tem ficha."
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "url": "https://www.youtube.com/playlist?list=PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "title": "INTEGRAL- CÁLCULO",
+      "channel": "Prof. MURAKAMI - MATEMÁTICA RAPIDOLA",
+      "channel_url": "https://www.youtube.com/@Murakami.",
+      "videos": 79,
+      "language": "pt-BR",
+      "description": "primitivação, integral definido e impróprio",
+      "tags": [
+        "Cálculo Infinitesimal I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "url": "https://www.youtube.com/playlist?list=PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "title": "SEQUÊNCIAS E SÉRIES",
+      "channel": "Matemateca - Ester Velasquez",
+      "channel_url": "https://www.youtube.com/@Matemateca",
+      "videos": 39,
+      "language": "pt-BR",
+      "description": "séries numéricas e de potências",
+      "tags": [
+        "Cálculo Infinitesimal I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "url": "https://www.youtube.com/playlist?list=PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "title": "Introdução à Economia",
+      "channel": "Fábio Henrique Bittes Terra",
+      "channel_url": "https://www.youtube.com/@fabioterra",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "ciência económica, mercados, oferta e procura",
+      "tags": [
+        "Economia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qShfa57_vjxH7Sp8hXBIEikK",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qShfa57_vjxH7Sp8hXBIEikK",
+      "title": "Equilíbrio de Mercado",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "equilíbrio de mercado e elasticidades",
+      "tags": [
+        "Economia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "title": "Curso de Python 3 - Mundo 1: Fundamentos",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 48,
+      "language": "pt-BR",
+      "description": "Python: elementos dos programas, variáveis, condições",
+      "tags": [
+        "Introdução à Programação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA",
+      "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA",
+      "title": "6.0001 Introduction to Computer Science and Programming in Python. Fall 2016",
+      "channel": "MIT OpenCourseWare",
+      "channel_url": "https://www.youtube.com/@mitocw",
+      "videos": 38,
+      "language": "en",
+      "description": "recursividade, buscas e ordenações, eficiência e POO em Python (o programa da ficha segue de perto este curso)",
+      "tags": [
+        "Introdução à Programação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdlrpMgcMJS0YfPtlsFPr6C",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdlrpMgcMJS0YfPtlsFPr6C",
+      "title": "Licenciatura em Matemática | Álgebra Linear",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "matrizes, sistemas, determinantes, valores próprios, espaços vetoriais",
+      "tags": [
+        "Matrizes e Aplicações"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "url": "https://www.youtube.com/playlist?list=PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "title": "Vetores e Geometria Analítica",
+      "channel": "Sergio Munhoz",
+      "channel_url": "https://www.youtube.com/@antoniosergiomunhoz",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "vetores; produto interno, externo e misto",
+      "tags": [
+        "Matrizes e Aplicações"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "url": "https://www.youtube.com/playlist?list=PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "title": "Introdução à Teoria Geral da Administração | 3ª Edição | Antonio Cesar Amaru Maximiano",
+      "channel": "GEN Negócios e Gestão",
+      "channel_url": "https://www.youtube.com/@tvwebatlas",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "teoria da administração e processo administrativo (Fayol)",
+      "tags": [
+        "Organização e Gestão de Empresas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "title": "Engenharia Univesp - Administração I - 07º Bimestre",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "planeamento estratégico, estrutura organizacional, liderança, controlo",
+      "tags": [
+        "Organização e Gestão de Empresas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR3rtQYeryxuRupD_DFjGlSW",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR3rtQYeryxuRupD_DFjGlSW",
+      "title": "Cálculo Financeiro",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 37,
+      "language": "pt-PT",
+      "description": "regimes de capitalização, taxas, rendas, equivalência de capitais",
+      "tags": [
+        "Cálculo e Instrumentos Financeiros"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLGE4DzVqh6fV3elNa51Uerycu4rYSEjrw",
+      "url": "https://www.youtube.com/playlist?list=PLGE4DzVqh6fV3elNa51Uerycu4rYSEjrw",
+      "title": "Cálculo Financeiro",
+      "channel": "Miguel Coelho",
+      "channel_url": "https://www.youtube.com/@miguelcoelho9652",
+      "videos": 36,
+      "language": "pt-PT",
+      "description": "capital e vencimento comum, TIR, juro simples e composto",
+      "tags": [
+        "Cálculo e Instrumentos Financeiros"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "url": "https://www.youtube.com/playlist?list=PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "title": "CÁLCULO EM VÁRIAS VARIÁVEIS",
+      "channel": "Matemateca - Ester Velasquez",
+      "channel_url": "https://www.youtube.com/@Matemateca",
+      "videos": 52,
+      "language": "pt-BR",
+      "description": "várias variáveis: limites, derivadas, Taylor, extremos, integrais múltiplos",
+      "tags": [
+        "Cálculo Infinitesimal II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR1N_D3ymMBTR1Cmvk74sxgG",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR1N_D3ymMBTR1Cmvk74sxgG",
+      "title": "Funções Reais de Duas Variáveis Reais",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 4,
+      "language": "pt-PT",
+      "description": "extremos livres e condicionados (multiplicadores de Lagrange)",
+      "tags": [
+        "Cálculo Infinitesimal II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "title": "Rubrica Contabilidade",
+      "channel": "CERTFORM – Escola de Formação Prática",
+      "channel_url": "https://www.youtube.com/@certform_pt",
+      "videos": 164,
+      "language": "pt-PT",
+      "description": "SNC: movimentação de contas, apuramento do IVA e de resultados, operações de fim de período",
+      "tags": [
+        "Contabilidade Geral"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL2WRcOQhp8QwOR-exB0FYO5b1Qbcbjd-K",
+      "url": "https://www.youtube.com/playlist?list=PL2WRcOQhp8QwOR-exB0FYO5b1Qbcbjd-K",
+      "title": "Introdução à macroeconomia",
+      "channel": "Wladimir Azevedo Jr.",
+      "channel_url": "https://www.youtube.com/@WladimirColman",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "medição da atividade económica, longo e curto prazo",
+      "tags": [
+        "Economia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qSiRFnlecw3Q6q_eD5a2MBaz",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qSiRFnlecw3Q6q_eD5a2MBaz",
+      "title": "Modelo Keynesiano",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "modelo keynesiano (curto prazo)",
+      "tags": [
+        "Economia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLvlkVRRKOYFQHnDhjTmXLEz3HU5WTgOcF",
+      "url": "https://www.youtube.com/playlist?list=PLvlkVRRKOYFQHnDhjTmXLEz3HU5WTgOcF",
+      "title": "Pandas 2025",
+      "channel": "Téo Me Why",
+      "channel_url": "https://www.youtube.com/@teomewhy",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "pandas: Series, DataFrames, importação, filtros",
+      "tags": [
+        "Laboratório de Programação Aplicada"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLpdAy0tYrnKwBTr4Ouo3LBeT6ZXgOgi7h",
+      "url": "https://www.youtube.com/playlist?list=PLpdAy0tYrnKwBTr4Ouo3LBeT6ZXgOgi7h",
+      "title": "Pandas Python",
+      "channel": "Hashtag Programação",
+      "channel_url": "https://www.youtube.com/@HashtagProgramacao",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "funções de pandas para análise de dados",
+      "tags": [
+        "Laboratório de Programação Aplicada"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "url": "https://www.youtube.com/playlist?list=PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "title": "Cálculo Vetorial e Tensorial (CVT)",
+      "channel": "Roldão da Rocha",
+      "channel_url": "https://www.youtube.com/@roldaodarocha",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "integrais de linha e de superfície, teoremas de Stokes e Gauss (UFABC)",
+      "tags": [
+        "Cálculo Infinitesimal III"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLd_2IBR8LSDZFJSGfSZEMitoHBeFLIl-k",
+      "url": "https://www.youtube.com/playlist?list=PLd_2IBR8LSDZFJSGfSZEMitoHBeFLIl-k",
+      "title": "Teoria da Medida e Integração e Introdução à Análise Funcional",
+      "channel": "Marcos Pimenta",
+      "channel_url": "https://www.youtube.com/@marcos.pimenta84",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "medida e integral de Lebesgue",
+      "tags": [
+        "Cálculo Infinitesimal III"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "url": "https://www.youtube.com/playlist?list=PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "title": "Contabilidade de Gestão",
+      "channel": "Fátima Explica Gestão",
+      "channel_url": "https://www.youtube.com/@fatimaexplicagestao",
+      "videos": 21,
+      "language": "pt-PT",
+      "description": "custos de produção, unidades equivalentes, produção conjunta, custo industrial",
+      "tags": [
+        "Contabilidade de Gestão"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLzFvj-MWylfqYiY219bgasGvXxaV8sPPQ",
+      "url": "https://www.youtube.com/playlist?list=PLzFvj-MWylfqYiY219bgasGvXxaV8sPPQ",
+      "title": "Macroeconomia I",
+      "channel": "Marcelo de Oliveira Passos UFPEL",
+      "channel_url": "https://www.youtube.com/@marcelodeoliveirapassosufp5645",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "ciclos, IS/LM, AS/AD (UFPel)",
+      "tags": [
+        "Macroeconomia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qSiDFeYZj1MY1IyWhJYKz1F0",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qSiDFeYZj1MY1IyWhJYKz1F0",
+      "title": "Modelo IS/LM",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "modelo IS/LM, políticas monetária e orçamental",
+      "tags": [
+        "Macroeconomia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLV-5G0SwwQI2gICiCQKh2YCF_HiezGPxw",
+      "url": "https://www.youtube.com/playlist?list=PLV-5G0SwwQI2gICiCQKh2YCF_HiezGPxw",
+      "title": "Microeconomia",
+      "channel": "Roberto Guena de Oliveira",
+      "channel_url": "https://www.youtube.com/@robertoguenadeoliveira8506",
+      "videos": 64,
+      "language": "pt-BR",
+      "description": "consumidor, produtor e estruturas de mercado (USP)",
+      "tags": [
+        "Microeconomia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qSiKQMyaOEGTlH__giCvcNBd",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qSiKQMyaOEGTlH__giCvcNBd",
+      "title": "Microeconomia",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 118,
+      "language": "pt-BR",
+      "description": "microeconomia completa, com exercícios",
+      "tags": [
+        "Microeconomia I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "url": "https://www.youtube.com/playlist?list=PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "title": "Probabilidades e Estatística - Instituto Superior Técnico",
+      "channel": "MathTutorCascais",
+      "channel_url": "https://www.youtube.com/@Mathtutorcascais",
+      "videos": 20,
+      "language": "pt-PT",
+      "description": "probabilidade, variáveis e vetores aleatórios, teoremas limite (programa do IST)",
+      "tags": [
+        "Probabilidades"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "url": "https://www.youtube.com/playlist?list=PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "title": "Probabilidade e Estatística",
+      "channel": "Professor Douglas Maioli",
+      "channel_url": "https://www.youtube.com/@ProfessorDouglasMaioli",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "probabilidade elementar e variáveis aleatórias",
+      "tags": [
+        "Probabilidades"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLKZqnysDG435hiVF1kz6efrKp2OjNLqM_",
+      "url": "https://www.youtube.com/playlist?list=PLKZqnysDG435hiVF1kz6efrKp2OjNLqM_",
+      "title": "CURSO COMPLETO DE VARIÁVEIS COMPLEXAS PARA ENGENHEIROS",
+      "channel": "MATEMÁTICA PARA EXATAS",
+      "channel_url": "https://www.youtube.com/@ProfAlexandreReis",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "funções complexas, integral de Cauchy, resíduos",
+      "tags": [
+        "Análise Complexa e Equações Diferenciais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "url": "https://www.youtube.com/playlist?list=PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "title": "EQUAÇÕES DIFERENCIAIS",
+      "channel": "Prof. MURAKAMI - MATEMÁTICA RAPIDOLA",
+      "channel_url": "https://www.youtube.com/@Murakami.",
+      "videos": 95,
+      "language": "pt-BR",
+      "description": "EDO de 1.ª ordem e de ordem superior, sistemas lineares",
+      "tags": [
+        "Análise Complexa e Equações Diferenciais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLUl4u3cNGP63B2lDhyKOsImI7FjCf6eDW",
+      "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP63B2lDhyKOsImI7FjCf6eDW",
+      "title": "MIT 15.401 Finance Theory I, Fall 2008",
+      "channel": "MIT OpenCourseWare",
+      "channel_url": "https://www.youtube.com/@mitocw",
+      "videos": 20,
+      "language": "en",
+      "description": "valor atual, obrigações, ações, VAL, risco, CAPM (correspondência direta com o programa)",
+      "tags": [
+        "Análise Económica e Financeira"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "title": "Finanças Empresariais",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 12,
+      "language": "pt-PT",
+      "description": "finanças empresariais: rendibilidade e balanço funcional",
+      "tags": [
+        "Análise Económica e Financeira"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "title": "Eixo de Negócios | Estatística aplicada aos negócios",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "estatística descritiva, amostragem, estimação",
+      "tags": [
+        "Análise Estatística I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR11VqU0Bwmzn_dMQsgW4c3E",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR11VqU0Bwmzn_dMQsgW4c3E",
+      "title": "Estatística para MBA",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 16,
+      "language": "pt-PT",
+      "description": "intervalos de confiança e testes",
+      "tags": [
+        "Análise Estatística I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qSgm7M0b1_cb-iwu393XNiAL",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qSgm7M0b1_cb-iwu393XNiAL",
+      "title": "Modelo IS-LM-BP",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "economia aberta IS-LM-BP (Mundell-Fleming), câmbios fixos e flexíveis",
+      "tags": [
+        "Macroeconomia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL755_5GB1qSgoEDRJc3k1n-gQoOooEnk6",
+      "url": "https://www.youtube.com/playlist?list=PL755_5GB1qSgoEDRJc3k1n-gQoOooEnk6",
+      "title": "Crescimento Econômico",
+      "channel": "Aplicadas Descomplicadas",
+      "channel_url": "https://www.youtube.com/@aplicadasdescomplicadas",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "modelo de Solow, regra de ouro",
+      "tags": [
+        "Macroeconomia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLptTWbUTJas_gM3CkPLA34-pxssBI8mS_",
+      "url": "https://www.youtube.com/playlist?list=PLptTWbUTJas_gM3CkPLA34-pxssBI8mS_",
+      "title": "Teoria dos Jogos",
+      "channel": "Professor Jáder Jucá",
+      "channel_url": "https://www.youtube.com/@professorjaderjuca",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "teoria dos jogos e equilíbrio estratégico",
+      "tags": [
+        "Microeconomia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLcvP5tEjdo3ts-dCpka27lWFO7d-nq87D",
+      "url": "https://www.youtube.com/playlist?list=PLcvP5tEjdo3ts-dCpka27lWFO7d-nq87D",
+      "title": "Teoria dos Incentivos",
+      "channel": "Rodrigo Andrés de Souza Peñaloza",
+      "channel_url": "https://www.youtube.com/@rodrigoandresdesouzapenalo2686",
+      "videos": 42,
+      "language": "pt-BR",
+      "description": "economia da informação e incentivos",
+      "tags": [
+        "Microeconomia II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLTtFBQsmB6GIU7tWXAXV6imXD2iKG4N1g",
+      "url": "https://www.youtube.com/playlist?list=PLTtFBQsmB6GIU7tWXAXV6imXD2iKG4N1g",
+      "title": "Econometria I",
+      "channel": "LINDOMAR PEGORINI DANIEL",
+      "channel_url": "https://www.youtube.com/@lindomarpegorinidaniel9617",
+      "videos": 28,
+      "language": "pt-BR",
+      "description": "regressão simples e múltipla, MQO, testes",
+      "tags": [
+        "Análise Econométrica I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIMiiQqY-ypq_WhYp4Al4PAQM5ZDOENFS",
+      "url": "https://www.youtube.com/playlist?list=PLIMiiQqY-ypq_WhYp4Al4PAQM5ZDOENFS",
+      "title": "Introdução à Econometria",
+      "channel": "Alessandro V. M. Oliveira",
+      "channel_url": "https://www.youtube.com/@alessandro_vm_oliveira",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "introdução à econometria",
+      "tags": [
+        "Análise Econométrica I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR2yCQ5gCsPXtZ5Y1EVsCwdZ",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR2yCQ5gCsPXtZ5Y1EVsCwdZ",
+      "title": "Inferência Estatística - Testes de Hipóteses Paramétricos e não Paramétricos",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 21,
+      "language": "pt-PT",
+      "description": "testes paramétricos e não paramétricos, duas populações",
+      "tags": [
+        "Análise Estatística II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLuHvZ6hWZut0pyae9DCHPpE6kwHOVB8lZ",
+      "url": "https://www.youtube.com/playlist?list=PLuHvZ6hWZut0pyae9DCHPpE6kwHOVB8lZ",
+      "title": "Análise de Regressão Logística",
+      "channel": "Statplace",
+      "channel_url": "https://www.youtube.com/@Statplace",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "regressão logística simples e múltipla",
+      "tags": [
+        "Análise Estatística II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLMduQLMIfiEnc0FvDCf9Milt8gKh_81NW",
+      "url": "https://www.youtube.com/playlist?list=PLMduQLMIfiEnc0FvDCf9Milt8gKh_81NW",
+      "title": "Cálculo Numérico",
+      "channel": "Prof. Milena Brandão",
+      "channel_url": "https://www.youtube.com/@profmilenabrandao",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "zeros de funções, sistemas lineares, interpolação",
+      "tags": [
+        "Análise Numérica I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLN0ZrxDaBfhhAIjTmyl8TaGfrdHYKvsH0",
+      "url": "https://www.youtube.com/playlist?list=PLN0ZrxDaBfhhAIjTmyl8TaGfrdHYKvsH0",
+      "title": "CÁLCULO NUMÉRICO",
+      "channel": "Prof. MURAKAMI - MATEMÁTICA RAPIDOLA",
+      "channel_url": "https://www.youtube.com/@Murakami.",
+      "videos": 39,
+      "language": "pt-BR",
+      "description": "cálculo numérico: integração numérica, EDO",
+      "tags": [
+        "Análise Numérica I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHcsSKBELLeg49R5QdWKh07h",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcsSKBELLeg49R5QdWKh07h",
+      "title": "Engenharia de Produção | Pesquisa Operacional I",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "programação linear, simplex, dualidade, transportes",
+      "tags": [
+        "Investigação Operacional I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLjK8TkmwOe0qQiJwSB_uxGsUNf54HPeS8",
+      "url": "https://www.youtube.com/playlist?list=PLjK8TkmwOe0qQiJwSB_uxGsUNf54HPeS8",
+      "title": "Programação Linear",
+      "channel": "Pedro Munari",
+      "channel_url": "https://www.youtube.com/@munariflix",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "programação linear, forma padrão, simplex (UFSCar)",
+      "tags": [
+        "Investigação Operacional I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLW1zGvUGqyiFYdCKLZSWuwe2QObzX1pi9",
+      "url": "https://www.youtube.com/playlist?list=PLW1zGvUGqyiFYdCKLZSWuwe2QObzX1pi9",
+      "title": "Econometria 2",
+      "channel": "economiaetv",
+      "channel_url": "https://www.youtube.com/@economiaetv",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "violação de hipóteses, endogeneidade, variáveis instrumentais",
+      "tags": [
+        "Análise Econométrica II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLW1zGvUGqyiEw1O3HAcjezB9esyI8R8xe",
+      "url": "https://www.youtube.com/playlist?list=PLW1zGvUGqyiEw1O3HAcjezB9esyI8R8xe",
+      "title": "Séries Temporais",
+      "channel": "economiaetv",
+      "channel_url": "https://www.youtube.com/@economiaetv",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "séries temporais, estacionariedade, cointegração",
+      "tags": [
+        "Análise Econométrica II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLH9knZH6lcgouNaDKh-khMqybVT9J5hOt",
+      "url": "https://www.youtube.com/playlist?list=PLH9knZH6lcgouNaDKh-khMqybVT9J5hOt",
+      "title": "UNIVESP - Pesquisa Operacional II",
+      "channel": "Anibal Azevedo",
+      "channel_url": "https://www.youtube.com/@AnibalAzevedo",
+      "videos": 83,
+      "language": "pt-BR",
+      "description": "programação inteira e binária, redes, problemas de mochila",
+      "tags": [
+        "Investigação Operacional II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLjK8TkmwOe0oDH6JUlqXJ08Kh7CJNNMj0",
+      "url": "https://www.youtube.com/playlist?list=PLjK8TkmwOe0oDH6JUlqXJ08Kh7CJNNMj0",
+      "title": "Programação Dinâmica",
+      "channel": "Pedro Munari",
+      "channel_url": "https://www.youtube.com/@munariflix",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "programação dinâmica",
+      "tags": [
+        "Investigação Operacional II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLjoaXFmeSbF8DRECVSDnTayDK2--NT3Ag",
+      "url": "https://www.youtube.com/playlist?list=PLjoaXFmeSbF8DRECVSDnTayDK2--NT3Ag",
+      "title": "Processos Estocásticos FCT/UFPA",
+      "channel": "Marcelino Silva",
+      "channel_url": "https://www.youtube.com/@marcelinosilva",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "processo de Poisson, cadeias de Markov (UFPA)",
+      "tags": [
+        "Processos Estocásticos e Aplicações"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLo4jXE-LdDTQKjOgI0cBrr-AWwnaS4dbr",
+      "url": "https://www.youtube.com/playlist?list=PLo4jXE-LdDTQKjOgI0cBrr-AWwnaS4dbr",
+      "title": "Programa de Mestrado: Cadeia de Markov (2026)",
+      "channel": "Instituto de Matemática Pura e Aplicada",
+      "channel_url": "https://www.youtube.com/@impabr",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "cadeias de Markov (IMPA, mestrado)",
+      "tags": [
+        "Processos Estocásticos e Aplicações"
+      ],
+      "published": true
+    }
+  ],
+  "links": [
+    {
+      "code": "18391000",
+      "playlist_id": "PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "primitivação, integral definido e impróprio",
+      "published": true
+    },
+    {
+      "code": "18391000",
+      "playlist_id": "PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "séries numéricas e de potências",
+      "published": true
+    },
+    {
+      "code": "18391002",
+      "playlist_id": "PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "ciência económica, mercados, oferta e procura",
+      "published": true
+    },
+    {
+      "code": "18391002",
+      "playlist_id": "PL755_5GB1qShfa57_vjxH7Sp8hXBIEikK",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "equilíbrio de mercado e elasticidades",
+      "published": true
+    },
+    {
+      "code": "18391004",
+      "playlist_id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "Python: elementos dos programas, variáveis, condições",
+      "published": true
+    },
+    {
+      "code": "18391004",
+      "playlist_id": "PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "recursividade, buscas e ordenações, eficiência e POO em Python (o programa da ficha segue de perto este curso)",
+      "published": true
+    },
+    {
+      "code": "18391001",
+      "playlist_id": "PLxI8Can9yAHdlrpMgcMJS0YfPtlsFPr6C",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "matrizes, sistemas, determinantes, valores próprios, espaços vetoriais",
+      "published": true
+    },
+    {
+      "code": "18391001",
+      "playlist_id": "PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "vetores; produto interno, externo e misto",
+      "published": true
+    },
+    {
+      "code": "18391030",
+      "playlist_id": "PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "teoria da administração e processo administrativo (Fayol)",
+      "published": true
+    },
+    {
+      "code": "18391030",
+      "playlist_id": "PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "planeamento estratégico, estrutura organizacional, liderança, controlo",
+      "published": true
+    },
+    {
+      "code": "18391031",
+      "playlist_id": "PLnx4ioejmfR3rtQYeryxuRupD_DFjGlSW",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "regimes de capitalização, taxas, rendas, equivalência de capitais",
+      "published": true
+    },
+    {
+      "code": "18391031",
+      "playlist_id": "PLGE4DzVqh6fV3elNa51Uerycu4rYSEjrw",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "capital e vencimento comum, TIR, juro simples e composto",
+      "published": true
+    },
+    {
+      "code": "18391005",
+      "playlist_id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "várias variáveis: limites, derivadas, Taylor, extremos, integrais múltiplos",
+      "published": true
+    },
+    {
+      "code": "18391005",
+      "playlist_id": "PLnx4ioejmfR1N_D3ymMBTR1Cmvk74sxgG",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "extremos livres e condicionados (multiplicadores de Lagrange)",
+      "published": true
+    },
+    {
+      "code": "18391009",
+      "playlist_id": "PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "ord": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "SNC: movimentação de contas, apuramento do IVA e de resultados, operações de fim de período",
+      "published": true
+    },
+    {
+      "code": "18391007",
+      "playlist_id": "PL2WRcOQhp8QwOR-exB0FYO5b1Qbcbjd-K",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "medição da atividade económica, longo e curto prazo",
+      "published": true
+    },
+    {
+      "code": "18391007",
+      "playlist_id": "PL755_5GB1qSiRFnlecw3Q6q_eD5a2MBaz",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "modelo keynesiano (curto prazo)",
+      "published": true
+    },
+    {
+      "code": "18391006",
+      "playlist_id": "PLvlkVRRKOYFQHnDhjTmXLEz3HU5WTgOcF",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "pandas: Series, DataFrames, importação, filtros",
+      "published": true
+    },
+    {
+      "code": "18391006",
+      "playlist_id": "PLpdAy0tYrnKwBTr4Ouo3LBeT6ZXgOgi7h",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "funções de pandas para análise de dados",
+      "published": true
+    },
+    {
+      "code": "18391010",
+      "playlist_id": "PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "integrais de linha e de superfície, teoremas de Stokes e Gauss (UFABC)",
+      "published": true
+    },
+    {
+      "code": "18391010",
+      "playlist_id": "PLd_2IBR8LSDZFJSGfSZEMitoHBeFLIl-k",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (avançado)",
+      "match": "medida e integral de Lebesgue",
+      "published": true
+    },
+    {
+      "code": "18391032",
+      "playlist_id": "PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "custos de produção, unidades equivalentes, produção conjunta, custo industrial",
+      "published": true
+    },
+    {
+      "code": "18391013",
+      "playlist_id": "PLzFvj-MWylfqYiY219bgasGvXxaV8sPPQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "ciclos, IS/LM, AS/AD (UFPel)",
+      "published": true
+    },
+    {
+      "code": "18391013",
+      "playlist_id": "PL755_5GB1qSiDFeYZj1MY1IyWhJYKz1F0",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "modelo IS/LM, políticas monetária e orçamental",
+      "published": true
+    },
+    {
+      "code": "18391012",
+      "playlist_id": "PLV-5G0SwwQI2gICiCQKh2YCF_HiezGPxw",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "consumidor, produtor e estruturas de mercado (USP)",
+      "published": true
+    },
+    {
+      "code": "18391012",
+      "playlist_id": "PL755_5GB1qSiKQMyaOEGTlH__giCvcNBd",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "microeconomia completa, com exercícios",
+      "published": true
+    },
+    {
+      "code": "18391011",
+      "playlist_id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "probabilidade, variáveis e vetores aleatórios, teoremas limite (programa do IST)",
+      "published": true
+    },
+    {
+      "code": "18391011",
+      "playlist_id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "probabilidade elementar e variáveis aleatórias",
+      "published": true
+    },
+    {
+      "code": "18391015",
+      "playlist_id": "PLKZqnysDG435hiVF1kz6efrKp2OjNLqM_",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "funções complexas, integral de Cauchy, resíduos",
+      "published": true
+    },
+    {
+      "code": "18391015",
+      "playlist_id": "PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "EDO de 1.ª ordem e de ordem superior, sistemas lineares",
+      "published": true
+    },
+    {
+      "code": "18391033",
+      "playlist_id": "PLUl4u3cNGP63B2lDhyKOsImI7FjCf6eDW",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "valor atual, obrigações, ações, VAL, risco, CAPM (correspondência direta com o programa)",
+      "published": true
+    },
+    {
+      "code": "18391033",
+      "playlist_id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "finanças empresariais: rendibilidade e balanço funcional",
+      "published": false
+    },
+    {
+      "code": "18391016",
+      "playlist_id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "estatística descritiva, amostragem, estimação",
+      "published": true
+    },
+    {
+      "code": "18391016",
+      "playlist_id": "PLnx4ioejmfR11VqU0Bwmzn_dMQsgW4c3E",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "intervalos de confiança e testes",
+      "published": true
+    },
+    {
+      "code": "18391018",
+      "playlist_id": "PL755_5GB1qSgm7M0b1_cb-iwu393XNiAL",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "economia aberta IS-LM-BP (Mundell-Fleming), câmbios fixos e flexíveis",
+      "published": true
+    },
+    {
+      "code": "18391018",
+      "playlist_id": "PL755_5GB1qSgoEDRJc3k1n-gQoOooEnk6",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "modelo de Solow, regra de ouro",
+      "published": true
+    },
+    {
+      "code": "18391017",
+      "playlist_id": "PLptTWbUTJas_gM3CkPLA34-pxssBI8mS_",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "teoria dos jogos e equilíbrio estratégico",
+      "published": true
+    },
+    {
+      "code": "18391017",
+      "playlist_id": "PLcvP5tEjdo3ts-dCpka27lWFO7d-nq87D",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "economia da informação e incentivos",
+      "published": true
+    },
+    {
+      "code": "18391023",
+      "playlist_id": "PLTtFBQsmB6GIU7tWXAXV6imXD2iKG4N1g",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "regressão simples e múltipla, MQO, testes",
+      "published": true
+    },
+    {
+      "code": "18391023",
+      "playlist_id": "PLIMiiQqY-ypq_WhYp4Al4PAQM5ZDOENFS",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "introdução à econometria",
+      "published": true
+    },
+    {
+      "code": "18391020",
+      "playlist_id": "PLnx4ioejmfR2yCQ5gCsPXtZ5Y1EVsCwdZ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "testes paramétricos e não paramétricos, duas populações",
+      "published": true
+    },
+    {
+      "code": "18391020",
+      "playlist_id": "PLuHvZ6hWZut0pyae9DCHPpE6kwHOVB8lZ",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "regressão logística simples e múltipla",
+      "published": true
+    },
+    {
+      "code": "18391021",
+      "playlist_id": "PLMduQLMIfiEnc0FvDCf9Milt8gKh_81NW",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "zeros de funções, sistemas lineares, interpolação",
+      "published": true
+    },
+    {
+      "code": "18391021",
+      "playlist_id": "PLN0ZrxDaBfhhAIjTmyl8TaGfrdHYKvsH0",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "cálculo numérico: integração numérica, EDO",
+      "published": true
+    },
+    {
+      "code": "18391022",
+      "playlist_id": "PLxI8Can9yAHcsSKBELLeg49R5QdWKh07h",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "programação linear, simplex, dualidade, transportes",
+      "published": true
+    },
+    {
+      "code": "18391022",
+      "playlist_id": "PLjK8TkmwOe0qQiJwSB_uxGsUNf54HPeS8",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "programação linear, forma padrão, simplex (UFSCar)",
+      "published": true
+    },
+    {
+      "code": "18391026",
+      "playlist_id": "PLW1zGvUGqyiFYdCKLZSWuwe2QObzX1pi9",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "violação de hipóteses, endogeneidade, variáveis instrumentais",
+      "published": true
+    },
+    {
+      "code": "18391026",
+      "playlist_id": "PLW1zGvUGqyiEw1O3HAcjezB9esyI8R8xe",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "séries temporais, estacionariedade, cointegração",
+      "published": true
+    },
+    {
+      "code": "18391024",
+      "playlist_id": "PLH9knZH6lcgouNaDKh-khMqybVT9J5hOt",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "programação inteira e binária, redes, problemas de mochila",
+      "published": true
+    },
+    {
+      "code": "18391024",
+      "playlist_id": "PLjK8TkmwOe0oDH6JUlqXJ08Kh7CJNNMj0",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "programação dinâmica",
+      "published": true
+    },
+    {
+      "code": "18391025",
+      "playlist_id": "PLjoaXFmeSbF8DRECVSDnTayDK2--NT3Ag",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "processo de Poisson, cadeias de Markov (UFPA)",
+      "published": true
+    },
+    {
+      "code": "18391025",
+      "playlist_id": "PLo4jXE-LdDTQKjOgI0cBrr-AWwnaS4dbr",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (avançado)",
+      "match": "cadeias de Markov (IMPA, mestrado)",
+      "published": true
+    }
+  ]
+}
