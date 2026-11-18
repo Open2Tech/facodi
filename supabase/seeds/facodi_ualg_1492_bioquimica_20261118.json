@@ -1,0 +1,2667 @@
+{
+  "batch": "facodi_ualg_1492_bioquimica_20261118",
+  "course": {
+    "code": "LBQM",
+    "official_id": "1492",
+    "plan": "https://www.ualg.pt/curso/1492/plano",
+    "academic_year": "2026/27",
+    "shared_units_with_lcbm": [
+      "14241054",
+      "14241058",
+      "14241061",
+      "14241063",
+      "14241065"
+    ],
+    "projeto_rule": "O Projeto (14921118, 12 ECTS) só aparece na Opção 3.2.1 (QAC); como o 2.º semestre do 3.º ano tem 18 ECTS obrigatórios, escolhê-lo ocupa as duas vagas de opção (3.2.1 e 3.2.2)."
+  },
+  "verified_on": "2026-11-18",
+  "application": {
+    "method": "Supabase MCP, como no #69 e no #72; não é uma migração e o script não faz parte do PR",
+    "script": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1492_bioquimica_20261118/supabase/seeds/facodi_ualg_1492_bioquimica_20261118.sql",
+    "status": "por aplicar"
+  },
+  "publication_policy": "só ligações de confiança alta ou média entram no script; as de confiança baixa ficam aqui com published: false",
+  "units": [
+    {
+      "code": "140064284",
+      "title": "Biologia Celular",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "Introdução à célula e à microscopia, base química da célula, fluxo de informação genética (replicação, transcrição, tradução e controlo da expressão génica), estrutura e função celular e energética celular.",
+      "topics": [
+        "Base química da célula e proteínas",
+        "Fluxo de informação genética",
+        "Membranas, citoesqueleto e ciclo celular"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064284&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064292",
+      "title": "Cálculo I",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "Conjuntos e funções, cálculo diferencial e integral em R, cálculo diferencial em Rⁿ e equações diferenciais.",
+      "topics": [
+        "Cálculo diferencial em R",
+        "Cálculo integral em R",
+        "Cálculo diferencial em Rⁿ e equações diferenciais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064292&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921113",
+      "title": "Metodologia Científica e Introdução ao Laboratório",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "O método científico em ciências experimentais, planeamento de experiências e tratamento de dados, pesquisa bibliográfica, segurança, comunicação e ética em ciência, e procedimentos básicos de laboratório: soluções, diluições, pH, tampões, espectroscopia e centrifugação.",
+      "topics": [
+        "Método científico e tratamento de dados",
+        "Segurança, comunicação e ética em ciência",
+        "Procedimentos básicos de laboratório"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921113&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064294",
+      "title": "Probabilidades e Estatística",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Probabilidades, variáveis aleatórias e distribuições discretas, contínuas e conjuntas, estimação pontual e por intervalos e testes de hipóteses.",
+      "topics": [
+        "Probabilidades",
+        "Variáveis aleatórias e distribuições",
+        "Estimação e testes de hipóteses"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064294&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064296",
+      "title": "Teoria da Ligação Química",
+      "ects": 6,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "Primórdios da mecânica quântica, átomo de hidrogénio e átomos polieletrónicos, periodicidade, teorias da ligação de valência e das orbitais moleculares, ligação em sólidos e forças intermoleculares, com trabalho de laboratório de química.",
+      "topics": [
+        "Mecânica quântica e orbitais atómicas",
+        "Ligação de valência e orbitais moleculares",
+        "Forças intermoleculares"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064296&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064301",
+      "title": "Bioquímica I",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 6,
+      "summary": "Aminoácidos, proteínas e enzimas, sacarídeos, lípidos e membranas, nucleótidos e ácidos nucleicos, com aulas práticas de titulação de aminoácidos, quantificação de proteínas, atividade enzimática e análise de açúcares e lípidos.",
+      "topics": [
+        "Aminoácidos e proteínas",
+        "Enzimas",
+        "Sacarídeos, lípidos e ácidos nucleicos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064301&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064330",
+      "title": "Cálculo II",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "Séries numéricas, integrais impróprios e integrais eulerianos, séries de potências e de Taylor, e integrais duplos e triplos com aplicações geométricas.",
+      "topics": [
+        "Séries numéricas e de potências",
+        "Integrais impróprios",
+        "Integrais duplos e triplos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064330&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064302",
+      "title": "Física",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "Mecânica (cinemática, leis de Newton, energia e momento), mecânica dos fluidos, oscilações e ondas, eletromagnetismo e radiação e decaimento radioativo.",
+      "topics": [
+        "Mecânica",
+        "Fluidos, oscilações e ondas",
+        "Eletromagnetismo e radiação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064302&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064305",
+      "title": "Introdução à Química Física",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "Termodinâmica química (gases, calor, trabalho, entalpia, entropia e energia de Gibbs), diagramas de fase, equilíbrio químico e cinética química: leis de velocidade, efeito da temperatura, mecanismos e catálise.",
+      "topics": [
+        "Termodinâmica química",
+        "Equilíbrio químico e diagramas de fase",
+        "Cinética química e catálise"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064305&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064306",
+      "title": "Química Orgânica I",
+      "ects": 6,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Estrutura e ligação, ácidos e bases e grupos funcionais, alcanos e estereoquímica, halogenetos de alquilo e substituição nucleofílica, alcenos, alcinos, álcoois, éteres e epóxidos.",
+      "topics": [
+        "Estrutura, ligação e estereoquímica",
+        "Substituição nucleofílica",
+        "Alcenos, alcinos, álcoois e éteres"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064306&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921078",
+      "title": "Bioquímica Física",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 11,
+      "summary": "Espectroscopia biológica: absorção UV/Vis, espectroscopias de atividade ótica, fluorescência e fosforescência, e introdução à ressonância magnética nuclear.",
+      "topics": [
+        "Espectroscopia de absorção UV/Vis",
+        "Atividade ótica",
+        "Fluorescência e RMN"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921078&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064287",
+      "title": "Bioquímica II",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 12,
+      "summary": "Metabolismo e sua regulação: enzimas e cinética enzimática, metabolismo dos glúcidos, dos lípidos e dos aminoácidos, ciclo da ureia e integração metabólica nos estados alimentado e de jejum.",
+      "topics": [
+        "Enzimas e regulação metabólica",
+        "Metabolismo dos glúcidos e dos lípidos",
+        "Metabolismo dos aminoácidos e integração"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064287&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064293",
+      "title": "Fisiologia Animal",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 13,
+      "summary": "Homeostasia e regulação, sistema nervoso e sistemas sensoriais, hormonas, contração muscular, fisiologia cardiovascular, trocas gasosas, equilíbrio osmótico e iónico, metabolismo e termorregulação.",
+      "topics": [
+        "Homeostasia, sistema nervoso e hormonas",
+        "Músculo, circulação e trocas gasosas",
+        "Osmorregulação e termorregulação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064293&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064295",
+      "title": "Química Orgânica II",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 14,
+      "summary": "Sistemas conjugados e análise estrutural por UV-Vis, espetrometria de massa, infravermelho e RMN, aromaticidade e compostos aromáticos, aldeídos e cetonas, ácidos carboxílicos e derivados e química de enóis e enolatos.",
+      "topics": [
+        "Análise estrutural por espetroscopia",
+        "Compostos aromáticos",
+        "Compostos carbonílicos e enolatos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064295&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921114",
+      "title": "Técnicas Laboratoriais de Análise",
+      "ects": 6,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "Tratamento de dados e incertezas em análise quantitativa, métodos de quantificação por padrão, potenciometria, espectrofotometria molecular e atómica e técnicas separativas, sobretudo cromatografia gasosa e líquida.",
+      "topics": [
+        "Incertezas e métodos de quantificação",
+        "Potenciometria e espectrofotometria",
+        "Cromatografia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921114&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921077",
+      "title": "Bioquímica Analítica",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 16,
+      "summary": "Rutura de tecidos e células, centrifugação, filtração e diálise, quantificação de proteínas, lípidos e hidratos de carbono, cromatografia, eletroforese, imunoensaios, afinidade para ligandos e caracterização de células.",
+      "topics": [
+        "Fracionamento e centrifugação",
+        "Cromatografia e eletroforese",
+        "Imunoensaios e afinidade para ligandos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921077&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921072",
+      "title": "Bioquímica Estrutural",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 17,
+      "summary": "Estrutura e interações das biomoléculas, princípios da estrutura de ácidos nucleicos e proteínas, especificidade catalítica, estabilidade e folding de proteínas, e estrutura e composição das biomembranas.",
+      "topics": [
+        "Estrutura de proteínas e ácidos nucleicos",
+        "Estabilidade e folding de proteínas",
+        "Biomembranas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921072&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921079",
+      "title": "Enzimologia",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 18,
+      "summary": "Cinética de enzimas mono e multissubstrato, inibição, efeito do pH e da temperatura, cooperatividade e alosteria, reações rápidas, teoria da catálise enzimática e mecanismos.",
+      "topics": [
+        "Cinética enzimática",
+        "Inibição, cooperatividade e alosteria",
+        "Catálise e mecanismos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921079&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064303",
+      "title": "Genética Molecular",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 19,
+      "summary": "Estrutura e evolução dos genomas, replicação e transcrição, regulação da expressão génica e processamento do RNA, tradução, expressão em procariotas, mutações e reparação, e técnicas de análise de DNA e RNA.",
+      "topics": [
+        "Genomas, replicação e transcrição",
+        "Regulação da expressão génica",
+        "Mutação, reparação e técnicas de DNA e RNA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064303&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064308",
+      "title": "Microbiologia",
+      "ects": 6,
+      "year": 2,
+      "semester": 2,
+      "position": 20,
+      "summary": "Caracterização e taxonomia de microrganismos, diversidade metabólica e ecologia microbiana, crescimento e seu controlo, ciclos nutricionais e simbioses, doenças microbianas e microbiologia industrial.",
+      "topics": [
+        "Caracterização e taxonomia microbiana",
+        "Crescimento microbiano e controlo",
+        "Ecologia e microbiologia industrial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064308&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064348",
+      "title": "Aplicações Ambientais de Sistemas Biológicos",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 21,
+      "summary": "Fundamentos e principais aplicações de sistemas biológicos ao ambiente e à produção sustentável.",
+      "topics": [
+        "Sistemas biológicos e ambiente",
+        "Produção sustentável"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064348&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064286",
+      "title": "Bioinformática",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 22,
+      "summary": "Representação de sequências biológicas, alinhamentos locais, globais e múltiplos, pesquisa em bases de dados, perfis e motivos proteicos, previsão de estrutura e função de proteínas e noções de filogenia.",
+      "topics": [
+        "Alinhamento de sequências",
+        "Bases de dados, perfis e motivos",
+        "Estrutura de proteínas e filogenia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064286&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14131096",
+      "title": "Biologia do Desenvolvimento",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 23,
+      "summary": "Desenvolvimento vegetal (fertilização, embriogénese, meristemas, controlo genético e fitohormonas) e animal (fertilização, gastrulação, neurulação e vias de sinalização na diferenciação celular).",
+      "topics": [
+        "Desenvolvimento vegetal",
+        "Desenvolvimento animal",
+        "Controlo genético e sinalização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14131096&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14241061",
+      "title": "Biologia do Desenvolvimento Embrionário",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 24,
+      "summary": "Gametogénese, fertilização, gastrulação e formação das três camadas germinativas, eixos embrionários e sinalização no desenvolvimento.",
+      "topics": [
+        "Gametogénese e fertilização",
+        "Gastrulação",
+        "Eixos e sinalização embrionária"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241061&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921115",
+      "title": "Bioquímica Inorgânica",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 25,
+      "summary": "Os metais nos sistemas biológicos: metais essenciais e tóxicos, armazenamento e transporte, metaloproteínas e centros metálicos de enzimas, stress oxidativo, toxicidade de metais pesados e metais na medicina.",
+      "topics": [
+        "Metais essenciais e metaloproteínas",
+        "Ferro, heme e centros ferro-enxofre",
+        "Toxicologia e metais na medicina"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921115&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921086",
+      "title": "Bioquímica Laboratorial",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 26,
+      "summary": "Purificação da enzima lactato desidrogenase de coração porcino: homogeneização, precipitação com sulfato de amónio, diálise, cromatografia de troca iónica, ensaios de proteína e de atividade, tabela de purificação e SDS-PAGE.",
+      "topics": [
+        "Purificação de enzimas",
+        "Cromatografia de troca iónica",
+        "Atividade enzimática e SDS-PAGE"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921086&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301094",
+      "title": "Biotecnologia Vegetal",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 27,
+      "summary": "Evolução e impacto da biotecnologia vegetal, cultura de células e tecidos vegetais, micropropagação, metabolitos secundários, protoplastos e híbridos somáticos, transformação genética de plantas e questões éticas dos OGM.",
+      "topics": [
+        "Cultura de células e tecidos vegetais",
+        "Micropropagação e protoplastos",
+        "Transformação genética de plantas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301094&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14241063",
+      "title": "Imunologia Humana",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 28,
+      "summary": "Funcionamento do sistema imunitário na resposta do hospedeiro a patogénios e desvios da resposta imunitária com consequências patológicas.",
+      "topics": [
+        "Sistema imunitário",
+        "Resposta a patogénios",
+        "Imunopatologia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241063&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14241065",
+      "title": "Neurobiologia",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 29,
+      "summary": "Estruturas e componentes celulares do sistema nervoso, neurotransmissão e sinalização intracelular, plasticidade sináptica, memória e aprendizagem, e perturbações do sistema nervoso.",
+      "topics": [
+        "Neurotransmissão",
+        "Plasticidade, memória e aprendizagem",
+        "Perturbações do sistema nervoso"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241065&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14241058",
+      "title": "Parasitologia e Micologia Médica",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 30,
+      "summary": "Protozoários e helmintas (biologia, ciclos de vida, patogenia, diagnóstico e prevenção), vetores e hospedeiros, interações patógeno-hospedeiro e micoses humanas.",
+      "topics": [
+        "Protozoários e helmintas",
+        "Vetores e hospedeiros",
+        "Micologia médica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241058&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14881205",
+      "title": "Técnicas Avançadas e Qualidade em Análises",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 31,
+      "summary": "Sistemas de qualidade, acreditação e normas NP EN ISO/IEC 17025 e ISO 15189, validação de métodos e resultados, espectroscopia de infravermelho e espectroscopia atómica.",
+      "topics": [
+        "Sistemas de qualidade e acreditação",
+        "Validação de métodos",
+        "Espectroscopia de infravermelho e atómica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14881205&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301102",
+      "title": "Tecnologia da Produção Biológica",
+      "ects": 6,
+      "year": 3,
+      "semester": 1,
+      "position": 32,
+      "summary": "Bioprocessos industriais: cinética e estequiometria do crescimento celular, modos de operação e tipos de reatores biológicos, transferência de massa e de oxigénio, transferência de calor e esterilização.",
+      "topics": [
+        "Cinética do crescimento celular",
+        "Reatores biológicos",
+        "Transferência de massa e esterilização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301102&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.1 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.1.2 (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.1.1 (QAC) / Opção 3.1.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921085",
+      "title": "Bioquímica Alimentar",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 33,
+      "summary": "Nutrientes e valor nutricional, alimentos funcionais e suplementos, efeitos no metabolismo, segurança alimentar (toxinas, contaminantes, aditivos e OGM), nutrigenómica, HACCP e política alimentar europeia.",
+      "topics": [
+        "Nutrientes e alimentos funcionais",
+        "Segurança alimentar e HACCP",
+        "Nutrigenómica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921085&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301090",
+      "title": "Biotecnologia Alimentar",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 34,
+      "summary": "Organismos e enzimas em processos de biotecnologia alimentar, alimentos geneticamente modificados, alergias e intolerâncias, suplementos, óleos e gorduras, sabores e vitaminas, fatores antinutricionais, toxinas, aditivos e segurança alimentar.",
+      "topics": [
+        "Organismos e enzimas na indústria alimentar",
+        "Alimentos geneticamente modificados",
+        "Aditivos, toxinas e segurança alimentar"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301090&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921117",
+      "title": "Biotecnologia de Células Animais",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 35,
+      "summary": "Tecnologia de cultura de células animais: laboratório e equipamentos, condições e métodos de cultura, culturas primárias e linhas celulares estáveis, viabilidade celular e transfeção.",
+      "topics": [
+        "Laboratório e condições de cultura",
+        "Culturas primárias e linhas celulares",
+        "Viabilidade e transfeção"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921117&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301100",
+      "title": "Controlo de Qualidade",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 36,
+      "summary": "Conceito e custos da qualidade, ferramentas de qualidade, inspeção e controlo de receção por amostragem, controlo estatístico de processo, Seis Sigma, e certificação e acreditação pelas normas ISO 9000.",
+      "topics": [
+        "Ferramentas e custos da qualidade",
+        "Controlo estatístico de processo",
+        "Certificação e normas ISO"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301100&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14241054",
+      "title": "Doenças Metabólicas",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 37,
+      "summary": "Biomoléculas e metabolismo celular (glicólise, fermentação, ciclo de Krebs e respiração mitocondrial) como base para compreender as doenças metabólicas.",
+      "topics": [
+        "Metabolismo celular",
+        "Glicólise e ciclo de Krebs",
+        "Respiração mitocondrial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14241054&anoLectivo=202627&codInstituic=12&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921116",
+      "title": "Genómica Funcional",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 38,
+      "summary": "Genomas, transcritomas e proteomas, genómica comparativa, marcadores moleculares, sequenciação e bibliotecas, regulação e estudo da expressão génica, edição de genes, organismos modelo e proteómica por espectrometria de massa.",
+      "topics": [
+        "Genomas e genómica comparativa",
+        "Expressão génica e edição de genes",
+        "Proteómica e espectrometria de massa"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921116&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064304",
+      "title": "Imunologia",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 39,
+      "summary": "Sistema imunitário inato e adquirido, linfócitos T e B, imunoglobulinas, complexo maior de histocompatibilidade, complemento, imunoensaios, anticorpos monoclonais e engenharia de anticorpos, e vacinação.",
+      "topics": [
+        "Imunidade inata e adquirida",
+        "Anticorpos e MHC",
+        "Imunoensaios e vacinação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064304&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301085",
+      "title": "Introdução à Economia e Gestão",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 40,
+      "summary": "Conceitos económicos, funcionamento dos mercados (consumidor, produtor, custos, oferta e procura), macroeconomia e economia portuguesa, e introdução à gestão: empresa, estratégia, marketing e planeamento.",
+      "topics": [
+        "Microeconomia e mercados",
+        "Macroeconomia",
+        "Gestão, estratégia e marketing"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301085&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064345",
+      "title": "Lipidómica Aplicada",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 41,
+      "summary": "Bioquímica dos lípidos e lipidómica celular, biomembranas e modelo do mosaico fluido, propriedades das bicamadas lipídicas, permeabilidade e eletrostática em membranas e encapsulação de fármacos em lipossomas.",
+      "topics": [
+        "Lípidos e lipidómica",
+        "Biomembranas e bicamadas lipídicas",
+        "Lipossomas e libertação de fármacos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064345&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15301103",
+      "title": "Processos de Separação",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 42,
+      "summary": "Recuperação de produtos biológicos: separação de sólidos e rutura celular, extração, adsorção e processos de membrana, precipitação de proteínas, cromatografia e afinidade, cristalização e formulação de bioprodutos.",
+      "topics": [
+        "Separação de sólidos e rutura celular",
+        "Extração, adsorção e membranas",
+        "Purificação e cromatografia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15301103&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14921118",
+      "title": "Projeto",
+      "ects": 12,
+      "year": 3,
+      "semester": 2,
+      "position": 43,
+      "summary": "Projeto de 12 ECTS na área da bioquímica; o tema e o programa são definidos para cada projeto.",
+      "topics": [
+        "Escolha do tema",
+        "Desenvolvimento do projeto"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14921118&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC)",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14881211",
+      "title": "Toxicologia Molecular",
+      "ects": 6,
+      "year": 3,
+      "semester": 2,
+      "position": 44,
+      "summary": "Princípios da toxicologia e mecanismos de toxicidade, metabolismo de xenobióticos (fases 0 a III), citocromos P450 e enzimas de conjugação, regulação do metabolismo, resistência a fármacos e carcinogénese.",
+      "topics": [
+        "Mecanismos de toxicidade",
+        "Metabolismo de xenobióticos e P450",
+        "Carcinogénese e resistência a fármacos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14881211&anoLectivo=202627&codInstituic=9&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.1 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção 3.2.2 (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção 3.2.1 (QAC) / Opção 3.2.2 (QAC)",
+      "offered_both_terms": false
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "url": "https://www.youtube.com/playlist?list=PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "title": "Biologia Celular e Molecular - Profa. Dra. Cristiane Matte/UFRGS",
+      "channel": "CRISTIANE MATTE",
+      "channel_url": "https://www.youtube.com/@cristianematte4852",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS).",
+      "tags": [
+        "Biologia Celular"
+      ]
+    },
+    {
+      "id": "PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "url": "https://www.youtube.com/playlist?list=PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "title": "CITOLOGIA",
+      "channel": "Facilitando a Medicina",
+      "channel_url": "https://www.youtube.com/@FacilitandoaMedicina",
+      "videos": 50,
+      "language": "pt-BR",
+      "description": "Citologia de nível superior. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "tags": [
+        "Biologia Celular"
+      ]
+    },
+    {
+      "id": "PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "url": "https://www.youtube.com/playlist?list=PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "title": "Projeto Newton | Cálculo 1 | 2026-2",
+      "channel": "Projeto Newton - UFPA",
+      "channel_url": "https://www.youtube.com/@projetonewton-ufpa3300",
+      "videos": 63,
+      "language": "pt-BR",
+      "description": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará).",
+      "tags": [
+        "Cálculo I"
+      ]
+    },
+    {
+      "id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "title": "CÁLCULO 1",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 60,
+      "language": "pt-BR",
+      "description": "Cálculo 1: limites, derivadas, aplicações (Prof. Paulo Pereira, mestre pelo IMPA).",
+      "tags": [
+        "Cálculo I"
+      ]
+    },
+    {
+      "id": "PLxtY5CJX-EihiKP44PaWMZ-WygVej0jBC",
+      "url": "https://www.youtube.com/playlist?list=PLxtY5CJX-EihiKP44PaWMZ-WygVej0jBC",
+      "title": "Boas Práticas de Laboratório",
+      "channel": "Eli Heber Anjos",
+      "channel_url": "https://www.youtube.com/@eliheber11",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Boas práticas de laboratório: segurança, vidraria, limpeza, resíduos (Profs. Eli Heber e Maria Lúcia).",
+      "tags": [
+        "Metodologia Científica e Introdução ao Laboratório"
+      ]
+    },
+    {
+      "id": "PLtfmiSMydKThVshApCjwEbOwrhFE6aX5E",
+      "url": "https://www.youtube.com/playlist?list=PLtfmiSMydKThVshApCjwEbOwrhFE6aX5E",
+      "title": "Aulas - Iniciação a Prática Científica - UFFS",
+      "channel": "Danielle Nicolodelli",
+      "channel_url": "https://www.youtube.com/@daniellenicolodelli7686",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Iniciação à prática científica (UFFS): ciência vs. pseudociência, método científico.",
+      "tags": [
+        "Metodologia Científica e Introdução ao Laboratório"
+      ]
+    },
+    {
+      "id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "url": "https://www.youtube.com/playlist?list=PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "title": "Probabilidades e Estatística - Instituto Superior Técnico",
+      "channel": "MathTutorCascais",
+      "channel_url": "https://www.youtube.com/@Mathtutorcascais",
+      "videos": 20,
+      "language": "pt-PT",
+      "description": "Probabilidades e Estatística segundo o programa do Instituto Superior Técnico, com R (Miguel Magalhães, explicador em Cascais).",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "title": "Eixo de computação | Estatísticas e probabilidade",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Estatística e probabilidade (UNIVESP, eixo de computação): distribuições, amostragem, inferência.",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PL8gq4PAPGbRc0fIoAfc_fx1W_TIxXMPSf",
+      "url": "https://www.youtube.com/playlist?list=PL8gq4PAPGbRc0fIoAfc_fx1W_TIxXMPSf",
+      "title": "Química Inorgânica - Graduação - UFMG",
+      "channel": "Guilherme Ferreira Lima",
+      "channel_url": "https://www.youtube.com/@guilhermeferreiradelima",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "Química Inorgânica (graduação UFMG): estrutura eletrónica, TOM, moléculas diatómicas.",
+      "tags": [
+        "Teoria da Ligação Química",
+        "Bioquímica Inorgânica"
+      ]
+    },
+    {
+      "id": "PLksgsMD1sK6J0bx2Zxc3B3PLgWglv9PYM",
+      "url": "https://www.youtube.com/playlist?list=PLksgsMD1sK6J0bx2Zxc3B3PLgWglv9PYM",
+      "title": "Tudo Sobre Orbitais Moleculares",
+      "channel": "Universidade da Química",
+      "channel_url": "https://www.youtube.com/@UniversidadedaQu%C3%ADmica",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Tudo sobre orbitais moleculares (Universidade da Química).",
+      "tags": [
+        "Teoria da Ligação Química"
+      ]
+    },
+    {
+      "id": "PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "url": "https://www.youtube.com/playlist?list=PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "title": "Bioquímica - Profa. Dra. Cristiane Matte/UFRGS",
+      "channel": "CRISTIANE MATTE",
+      "channel_url": "https://www.youtube.com/@cristianematte4852",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos.",
+      "tags": [
+        "Bioquímica I"
+      ]
+    },
+    {
+      "id": "PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "url": "https://www.youtube.com/playlist?list=PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "title": "BIOQUÍMICA: ESTRUTURA, PROPRIEDADES E FUNÇÕES DE BIOMOLÉCULAS",
+      "channel": "QUÍMICA - A CIÊNCIA CENTRAL NA UFABC",
+      "channel_url": "https://www.youtube.com/@QU%C3%8DMICA-ACI%C3%8ANCIACENTRALNAUFABC",
+      "videos": 32,
+      "language": "pt-BR",
+      "description": "Bioquímica: estrutura, propriedades e funções de biomoléculas (UFABC).",
+      "tags": [
+        "Bioquímica I",
+        "Bioquímica Estrutural"
+      ]
+    },
+    {
+      "id": "PLDuXYmx0oaNywcQeMQ-e5lxF5tEgPFp6R",
+      "url": "https://www.youtube.com/playlist?list=PLDuXYmx0oaNywcQeMQ-e5lxF5tEgPFp6R",
+      "title": "Projeto Newton | Cálculo 2 | 2026-2",
+      "channel": "Projeto Newton - UFPA",
+      "channel_url": "https://www.youtube.com/@projetonewton-ufpa3300",
+      "videos": 65,
+      "language": "pt-BR",
+      "description": "Cálculo 2 do Projeto Newton (UFPA).",
+      "tags": [
+        "Cálculo II"
+      ]
+    },
+    {
+      "id": "PL7PW7YXa8HO1rcxPTbtT_IotGcf3-qxy8",
+      "url": "https://www.youtube.com/playlist?list=PL7PW7YXa8HO1rcxPTbtT_IotGcf3-qxy8",
+      "title": "Cálculo Integral",
+      "channel": "Matemática Universitária com Professor Renan lima",
+      "channel_url": "https://www.youtube.com/@matematicauniversitariaRenan",
+      "videos": 55,
+      "language": "pt-BR",
+      "description": "Cálculo integral (Prof. Renan Lima, doutorado em Matemática, UFF).",
+      "tags": [
+        "Cálculo II"
+      ]
+    },
+    {
+      "id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "url": "https://www.youtube.com/playlist?list=PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "title": "Curso Física 1 / Fundamentos de Mecânica",
+      "channel": "Uai Física",
+      "channel_url": "https://www.youtube.com/@uaifisica",
+      "videos": 169,
+      "language": "pt-BR",
+      "description": "Curso Física 1 / Fundamentos de Mecânica (Uai Física).",
+      "tags": [
+        "Física"
+      ]
+    },
+    {
+      "id": "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV",
+      "title": "Physics",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 47,
+      "language": "en",
+      "description": "CrashCourse Physics.",
+      "tags": [
+        "Física"
+      ]
+    },
+    {
+      "id": "PLLgyllaAGjnyruWwB33Xn70QSv20E9Eyc",
+      "url": "https://www.youtube.com/playlist?list=PLLgyllaAGjnyruWwB33Xn70QSv20E9Eyc",
+      "title": "Termodinâmica Química: Conceitos e Definições",
+      "channel": "Físico-Química Universitária",
+      "channel_url": "https://www.youtube.com/@FQMCUniversitaria",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Termodinâmica química: entropia, energias livres de Helmholtz e Gibbs, espontaneidade.",
+      "tags": [
+        "Introdução à Química Física"
+      ]
+    },
+    {
+      "id": "PL1rvYCVeSjjCL1bBk8VnhOIUssi19O-tz",
+      "url": "https://www.youtube.com/playlist?list=PL1rvYCVeSjjCL1bBk8VnhOIUssi19O-tz",
+      "title": "Aulas de Físico-Química do Professor Juracy Lucena.",
+      "channel": "Professor Juracy Lucena",
+      "channel_url": "https://www.youtube.com/@juracyregis",
+      "videos": 28,
+      "language": "pt-BR",
+      "description": "Aulas de Físico-Química (Prof. Juracy Lucena): gases, pressão, termodinâmica.",
+      "tags": [
+        "Introdução à Química Física"
+      ]
+    },
+    {
+      "id": "PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "url": "https://www.youtube.com/playlist?list=PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "title": "Química Orgânica na graduação",
+      "channel": "Claudia Regina Quimica",
+      "channel_url": "https://www.youtube.com/@ClaudiaReginaQuimica",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "Química orgânica na graduação (Profa. Cláudia Regina).",
+      "tags": [
+        "Química Orgânica I"
+      ]
+    },
+    {
+      "id": "PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "url": "https://www.youtube.com/playlist?list=PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "title": "Organic Chemistry",
+      "channel": "CrashCourse",
+      "channel_url": "https://www.youtube.com/@crashcourse",
+      "videos": 51,
+      "language": "en",
+      "description": "CrashCourse Organic Chemistry.",
+      "tags": [
+        "Química Orgânica I"
+      ]
+    },
+    {
+      "id": "PL6IbV0bCREygertQEslIkX8oQvaoLohEz",
+      "url": "https://www.youtube.com/playlist?list=PL6IbV0bCREygertQEslIkX8oQvaoLohEz",
+      "title": "Bioquímica e Biofísica",
+      "channel": "Biocel UnB",
+      "channel_url": "https://www.youtube.com/@biocelunb6752",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Bioquímica e Biofísica (Biocel/UnB): bioenergética e termodinâmica, estrutura 3D de proteínas, enzimas.",
+      "tags": [
+        "Bioquímica Física",
+        "Bioquímica Estrutural",
+        "Enzimologia"
+      ]
+    },
+    {
+      "id": "PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "url": "https://www.youtube.com/playlist?list=PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "title": "Biofísica",
+      "channel": "Ensino Remoto UFRN",
+      "channel_url": "https://www.youtube.com/@EnsinoRemotoUFRN",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Biofísica (Ensino Remoto UFRN).",
+      "tags": [
+        "Bioquímica Física"
+      ]
+    },
+    {
+      "id": "PLDElI2mHSO29weh7adTUH-bNojiYWTWsW",
+      "url": "https://www.youtube.com/playlist?list=PLDElI2mHSO29weh7adTUH-bNojiYWTWsW",
+      "title": "Aulas de Graduação: Metabolismo",
+      "channel": "Alicia Kowaltowski",
+      "channel_url": "https://www.youtube.com/@aliciakowaltowski7470",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "Metabolismo — aulas de graduação da Profa. Alicia Kowaltowski (professora de Bioquímica, USP).",
+      "tags": [
+        "Bioquímica II"
+      ]
+    },
+    {
+      "id": "PLlJ9qIISE9VB0qYDFwZVsjEivPRFNKJDv",
+      "url": "https://www.youtube.com/playlist?list=PLlJ9qIISE9VB0qYDFwZVsjEivPRFNKJDv",
+      "title": "Bioquímica do Metabolismo Energético",
+      "channel": "Moacir Pereira Junior",
+      "channel_url": "https://www.youtube.com/@MoacirPereiraJunior",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Bioquímica do metabolismo energético (bioenergética, vias metabólicas).",
+      "tags": [
+        "Bioquímica II"
+      ]
+    },
+    {
+      "id": "PLbAiNXJ5j0G7ztaS_egrh3VbO1mbBEE2x",
+      "url": "https://www.youtube.com/playlist?list=PLbAiNXJ5j0G7ztaS_egrh3VbO1mbBEE2x",
+      "title": "Fisiologia sem mistério: Aprendendo Fisiologia",
+      "channel": "PPG Fisiologia - UFRGS",
+      "channel_url": "https://www.youtube.com/@PPGFisiologiaUFRGS",
+      "videos": 37,
+      "language": "pt-BR",
+      "description": "'Aprendendo Fisiologia' do PPG em Fisiologia da UFRGS: circulação, endócrino e outros sistemas.",
+      "tags": [
+        "Fisiologia Animal"
+      ]
+    },
+    {
+      "id": "PLsCT-SOhHrhmayqRrHdIgAMzKiKuP6qVW",
+      "url": "https://www.youtube.com/playlist?list=PLsCT-SOhHrhmayqRrHdIgAMzKiKuP6qVW",
+      "title": "Fisiologia Animal Comparada",
+      "channel": "Alexandre Tadeu Mota Macedo",
+      "channel_url": "https://www.youtube.com/@alexandretadeumotamacedo9295",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Fisiologia animal comparada: nutrição e digestão, respiração, etc. (Alexandre Tadeu Mota Macedo).",
+      "tags": [
+        "Fisiologia Animal"
+      ]
+    },
+    {
+      "id": "PLFGXHERUQ9QmY2qukTiJ7NXkfi9aZxLmn",
+      "url": "https://www.youtube.com/playlist?list=PLFGXHERUQ9QmY2qukTiJ7NXkfi9aZxLmn",
+      "title": "QUÍMICA ORGÂNICA 2",
+      "channel": "Patricia de Oliveira Figueiredo",
+      "channel_url": "https://www.youtube.com/@patriciadeoliveirafigueire6754",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Química Orgânica 2: cinética e termodinâmica de reações, mecanismos (Patrícia de Oliveira Figueiredo).",
+      "tags": [
+        "Química Orgânica II"
+      ]
+    },
+    {
+      "id": "PL0e-LENkp3oSuCgSe1DhIjyZgn8PphAZ7",
+      "url": "https://www.youtube.com/playlist?list=PL0e-LENkp3oSuCgSe1DhIjyZgn8PphAZ7",
+      "title": "Aldeídos e cetonas",
+      "channel": "Química Orgânica Avante",
+      "channel_url": "https://www.youtube.com/@quimicaorganicaavante3583",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Aldeídos e cetonas: síntese e reações (Prof. Dr. Raphael Salles, ex-IFRJ).",
+      "tags": [
+        "Química Orgânica II"
+      ]
+    },
+    {
+      "id": "PLgdXzDFXvssauP6Vz3pXwpfdXRi47oHBN",
+      "url": "https://www.youtube.com/playlist?list=PLgdXzDFXvssauP6Vz3pXwpfdXRi47oHBN",
+      "title": "Química Analítica Instrumental 2021-1",
+      "channel": "Professor Endler Marcel Borges",
+      "channel_url": "https://www.youtube.com/@marcelborges",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Química analítica instrumental 2021 (Prof. Endler Marcel Borges): calibração, estatística, métodos instrumentais.",
+      "tags": [
+        "Técnicas Laboratoriais de Análise"
+      ]
+    },
+    {
+      "id": "PLksgsMD1sK6J2yCn9cDe3lUOtkJvoH2vQ",
+      "url": "https://www.youtube.com/playlist?list=PLksgsMD1sK6J2yCn9cDe3lUOtkJvoH2vQ",
+      "title": "Análise Instrumental - feat. Professor Ademário Íris",
+      "channel": "Universidade da Química",
+      "channel_url": "https://www.youtube.com/@UniversidadedaQu%C3%ADmica",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Análise instrumental: potenciometria, elétrodos (com Prof. Ademário Íris).",
+      "tags": [
+        "Técnicas Laboratoriais de Análise"
+      ]
+    },
+    {
+      "id": "PL_1jFAelb5WL5IOvouU0KLXgjPb9h6KR4",
+      "url": "https://www.youtube.com/playlist?list=PL_1jFAelb5WL5IOvouU0KLXgjPb9h6KR4",
+      "title": "Espectrometria de Massas  na Identificação de Compostos Orgânicos",
+      "channel": "Prof. Luiz Cláudio A. Barbosa",
+      "channel_url": "https://www.youtube.com/@prof.luizclaudio.barbosa",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Espectrometria de massas na identificação de compostos (Prof. Luiz Cláudio A. Barbosa).",
+      "tags": [
+        "Bioquímica Analítica"
+      ]
+    },
+    {
+      "id": "PLxqLHmcWkLceJO5GsW9M64MMgvtQcQhiI",
+      "url": "https://www.youtube.com/playlist?list=PLxqLHmcWkLceJO5GsW9M64MMgvtQcQhiI",
+      "title": "Disciplina: Estrutura de Proteínas",
+      "channel": "Bioquímica Animal",
+      "channel_url": "https://www.youtube.com/@bioquimica_animal",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Proteómica e peptidómica: conceitos e aplicações (aulas de disciplina de pós-graduação).",
+      "tags": [
+        "Bioquímica Analítica"
+      ]
+    },
+    {
+      "id": "PLXSvHU7sJJldVuTRN8iEU1Ifqt_6DIjPX",
+      "url": "https://www.youtube.com/playlist?list=PLXSvHU7sJJldVuTRN8iEU1Ifqt_6DIjPX",
+      "title": "Cinética Enzimática",
+      "channel": "Química Sergipe",
+      "channel_url": "https://www.youtube.com/@quimicaparaoitaparaoimeepa3511",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Cinética enzimática em 13 aulas: Michaelis-Menten, eficiência catalítica, inibições.",
+      "tags": [
+        "Enzimologia"
+      ]
+    },
+    {
+      "id": "PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "url": "https://www.youtube.com/playlist?list=PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "title": "Genética Molecular",
+      "channel": "Thaisplicando Genética",
+      "channel_url": "https://www.youtube.com/@ThaisplicandoGen%C3%A9tica",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Genética molecular (Thaís Magalhães, mestre em Genética).",
+      "tags": [
+        "Genética Molecular"
+      ]
+    },
+    {
+      "id": "PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "url": "https://www.youtube.com/playlist?list=PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "title": "Curso de Biologia Molecular",
+      "channel": "Biologia com Patrick Gomes",
+      "channel_url": "https://www.youtube.com/@BiologiacomPatrickGomes",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Curso de Biologia Molecular (Prof. Patrick Gomes).",
+      "tags": [
+        "Genética Molecular"
+      ]
+    },
+    {
+      "id": "PLZViAZYDxQZ_7J5X7egu4lZrjkLC9BDbN",
+      "url": "https://www.youtube.com/playlist?list=PLZViAZYDxQZ_7J5X7egu4lZrjkLC9BDbN",
+      "title": "Microbiologia geral",
+      "channel": "Antonio Canettieri",
+      "channel_url": "https://www.youtube.com/@acanettieri1",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Microbiologia geral, teórica e prática (Prof. Antonio Canettieri).",
+      "tags": [
+        "Microbiologia"
+      ]
+    },
+    {
+      "id": "PL0SoMRn3PYpPN252G3JSxSH62bNSlJkBS",
+      "url": "https://www.youtube.com/playlist?list=PL0SoMRn3PYpPN252G3JSxSH62bNSlJkBS",
+      "title": "Aulas de Microbiologia UFMT",
+      "channel": "Flávio Silveira",
+      "channel_url": "https://www.youtube.com/@silveiravet",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Aulas de Microbiologia (Prof. Dr. Flávio Silveira): história, citologia bacteriana, crescimento.",
+      "tags": [
+        "Microbiologia"
+      ]
+    },
+    {
+      "id": "PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "url": "https://www.youtube.com/playlist?list=PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "title": "Alinhamento de sequências",
+      "channel": "OnlineBioinfo Bioinformática",
+      "channel_url": "https://www.youtube.com/@OnlineBioinfo",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Alinhamento de sequências — OnlineBioinfo (DCC-UFMG).",
+      "tags": [
+        "Bioinformática"
+      ]
+    },
+    {
+      "id": "PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "url": "https://www.youtube.com/playlist?list=PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "title": "Curso de Verão 2023",
+      "channel": "Curso de Verão em Bioinformática USP",
+      "channel_url": "https://www.youtube.com/@cursoveraobioinfousp",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Curso de Verão em Bioinformática da USP (2023).",
+      "tags": [
+        "Bioinformática"
+      ]
+    },
+    {
+      "id": "PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "url": "https://www.youtube.com/playlist?list=PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "title": "EmbriologiaFarmácia2020",
+      "channel": "Rodrigo Nunes da Fonseca",
+      "channel_url": "https://www.youtube.com/@rodrigonunesdafonseca1565",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020.",
+      "tags": [
+        "Biologia do Desenvolvimento Embrionário"
+      ]
+    },
+    {
+      "id": "PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "url": "https://www.youtube.com/playlist?list=PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "title": "Embriologia p/ ens SUPERIOR",
+      "channel": "Biologia com Patrick Gomes",
+      "channel_url": "https://www.youtube.com/@BiologiacomPatrickGomes",
+      "videos": 27,
+      "language": "pt-BR",
+      "description": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes).",
+      "tags": [
+        "Biologia do Desenvolvimento Embrionário"
+      ]
+    },
+    {
+      "id": "PLOzRYVm0a65dqK1-Xn14oEU4sjOT3ynoW",
+      "url": "https://www.youtube.com/playlist?list=PLOzRYVm0a65dqK1-Xn14oEU4sjOT3ynoW",
+      "title": "Inorganic Chemistry of Life: Principles and Perspectives",
+      "channel": "NPTEL IIT Bombay",
+      "channel_url": "https://www.youtube.com/@IITBombayJuly",
+      "videos": 60,
+      "language": "en",
+      "description": "Inorganic Chemistry of Life (NPTEL, IIT Bombay): metais em sistemas biológicos, metaloproteínas.",
+      "tags": [
+        "Bioquímica Inorgânica"
+      ]
+    },
+    {
+      "id": "PLzmGsmh0Ffh57HGSgXtj5YHBTsMX_llKa",
+      "url": "https://www.youtube.com/playlist?list=PLzmGsmh0Ffh57HGSgXtj5YHBTsMX_llKa",
+      "title": "Laboratório virtual de Biologia Molecular",
+      "channel": "Laboratório de Organismos Patogênicos UFABC",
+      "channel_url": "https://www.youtube.com/@laboratoriodeorganismospat6318",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Laboratório virtual de Biologia Molecular (UFABC): meios de cultura, transformação bacteriana, técnicas.",
+      "tags": [
+        "Bioquímica Laboratorial"
+      ]
+    },
+    {
+      "id": "PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "url": "https://www.youtube.com/playlist?list=PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "title": "Imunologia - UNEB",
+      "channel": "Imunologia UNEB",
+      "channel_url": "https://www.youtube.com/@Otacilia77",
+      "videos": 26,
+      "language": "pt-BR",
+      "description": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia).",
+      "tags": [
+        "Imunologia Humana"
+      ]
+    },
+    {
+      "id": "PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "url": "https://www.youtube.com/playlist?list=PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "title": "Imunologia e Imunopatologia (Curso Completo)",
+      "channel": "Prof Roberval Moraes - MedAulas",
+      "channel_url": "https://www.youtube.com/@medaulas-robervalmoraes",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes).",
+      "tags": [
+        "Imunologia Humana"
+      ]
+    },
+    {
+      "id": "PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "url": "https://www.youtube.com/playlist?list=PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "title": "Aulas de Neurofisiologia",
+      "channel": "AldoLucion",
+      "channel_url": "https://www.youtube.com/@AldoLucionNeuro",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas.",
+      "tags": [
+        "Neurobiologia"
+      ]
+    },
+    {
+      "id": "PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "url": "https://www.youtube.com/playlist?list=PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "title": "AULAS DE NEUROFISIOLOGIA",
+      "channel": "Neurociência Descomplicada",
+      "channel_url": "https://www.youtube.com/@NeuroDescomplicada",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista).",
+      "tags": [
+        "Neurobiologia"
+      ]
+    },
+    {
+      "id": "PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "url": "https://www.youtube.com/playlist?list=PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "title": "Parasitologia Humana",
+      "channel": "MEDICINA UFMT",
+      "channel_url": "https://www.youtube.com/@MEDICINAUFMT",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT.",
+      "tags": [
+        "Parasitologia e Micologia Médica"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "title": "Licenciatura em Biologia | Parasitologia - 16º Bimestre",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas.",
+      "tags": [
+        "Parasitologia e Micologia Médica"
+      ]
+    },
+    {
+      "id": "PLchLcDIwdeWA3mFvMcbJTK_jNQClGezhU",
+      "url": "https://www.youtube.com/playlist?list=PLchLcDIwdeWA3mFvMcbJTK_jNQClGezhU",
+      "title": "Videoaulas - Análise de alimentos",
+      "channel": "LabBio PPGAN / UNIRIO",
+      "channel_url": "https://www.youtube.com/@LabBioPPGANUNIRIO",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Análise de alimentos — videoaulas do LabBio/PPGAN da UNIRIO: composição, hidratos de carbono, controlo de qualidade.",
+      "tags": [
+        "Bioquímica Alimentar"
+      ]
+    },
+    {
+      "id": "PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "url": "https://www.youtube.com/playlist?list=PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "title": "Cell Culture Technologies",
+      "channel": "Cell Culture Technologies",
+      "channel_url": "https://www.youtube.com/@cellculturetechnologies2653",
+      "videos": 40,
+      "language": "en",
+      "description": "Tecnologia de cultura celular (curso de formato NPTEL).",
+      "tags": [
+        "Biotecnologia de Células Animais"
+      ]
+    },
+    {
+      "id": "PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "url": "https://www.youtube.com/playlist?list=PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "title": "Cell Culture Basics",
+      "channel": "Thermo Fisher Scientific",
+      "channel_url": "https://www.youtube.com/@thermofisher",
+      "videos": 6,
+      "language": "en",
+      "description": "Cell Culture Basics (Thermo Fisher Scientific).",
+      "tags": [
+        "Biotecnologia de Células Animais"
+      ]
+    },
+    {
+      "id": "PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "url": "https://www.youtube.com/playlist?list=PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "title": "Fisiopatologia do Diabetes",
+      "channel": "Profa Tatiana Lavich",
+      "channel_url": "https://www.youtube.com/@ProfaTatianaLavich",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich).",
+      "tags": [
+        "Doenças Metabólicas"
+      ]
+    },
+    {
+      "id": "PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "url": "https://www.youtube.com/playlist?list=PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "title": "Fisiologia do metabolismo.",
+      "channel": "Pedro Metran",
+      "channel_url": "https://www.youtube.com/@pedrometran",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran.",
+      "tags": [
+        "Doenças Metabólicas"
+      ]
+    },
+    {
+      "id": "PL0ZQm43UFHxGZlcsaPhmeYHYc7YaVS6ei",
+      "url": "https://www.youtube.com/playlist?list=PL0ZQm43UFHxGZlcsaPhmeYHYc7YaVS6ei",
+      "title": "Tutoriais aulas práticas - MCB485 - Bioinformática e genômica funcional",
+      "channel": "Disciplinas Manu NUPEM-UFRJ",
+      "channel_url": "https://www.youtube.com/@disciplinasmanunupem-ufrj1878",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Tutoriais práticos da disciplina MCB485 Bioinformática e Genómica Funcional (Profa. Manuela Leal da Silva, UFRJ-Macaé): UniProt, BLAST, MetaCyc, COG.",
+      "tags": [
+        "Genómica Funcional"
+      ]
+    },
+    {
+      "id": "PLyqSpQzTE6M8X_glBwCWSP__ygylohLig",
+      "url": "https://www.youtube.com/playlist?list=PLyqSpQzTE6M8X_glBwCWSP__ygylohLig",
+      "title": "Advances in Omics_Prof. Nagarjun Vijay",
+      "channel": "NPTEL-NOC IITM",
+      "channel_url": "https://www.youtube.com/@nptel-nociitm9240",
+      "videos": 41,
+      "language": "en",
+      "description": "Advances in Omics (NPTEL, IIT Madras): genómica, transcriptómica, proteómica.",
+      "tags": [
+        "Genómica Funcional"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "code": "140064284",
+      "playlist_id": "PLX9s50eKT-3xHNv2Q5Esjnuj6D2PTunf8",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Biologia Celular e Molecular da Profa. Dra. Cristiane Matté (UFRGS).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064284",
+      "playlist_id": "PLbAgCI7O-2voCkw0I4IfjBmRvxOItUprE",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Citologia de nível superior. Canal sem autor identificado (Facilitando a Medicina); conteúdo próprio de nível superior.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064292",
+      "playlist_id": "PLDuXYmx0oaNwZMZqI-djWU1KI2NT2TiU6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Cálculo 1 do Projeto Newton (Universidade Federal do Pará).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064292",
+      "playlist_id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cálculo 1: limites, derivadas, aplicações (Prof. Paulo Pereira, mestre pelo IMPA).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921113",
+      "playlist_id": "PLxtY5CJX-EihiKP44PaWMZ-WygVej0jBC",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Boas práticas de laboratório: segurança, vidraria, limpeza, resíduos (Profs. Eli Heber e Maria Lúcia).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921113",
+      "playlist_id": "PLtfmiSMydKThVshApCjwEbOwrhFE6aX5E",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Iniciação à prática científica (UFFS): ciência vs. pseudociência, método científico.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064294",
+      "playlist_id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Probabilidades e Estatística segundo o programa do Instituto Superior Técnico, com R (Miguel Magalhães, explicador em Cascais).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064294",
+      "playlist_id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística e probabilidade (UNIVESP, eixo de computação): distribuições, amostragem, inferência.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064296",
+      "playlist_id": "PL8gq4PAPGbRc0fIoAfc_fx1W_TIxXMPSf",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Química Inorgânica (graduação UFMG): estrutura eletrónica, TOM, moléculas diatómicas.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064296",
+      "playlist_id": "PLksgsMD1sK6J0bx2Zxc3B3PLgWglv9PYM",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Tudo sobre orbitais moleculares (Universidade da Química).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064301",
+      "playlist_id": "PLX9s50eKT-3wgpdxatQNK96Laj76qJYen",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Bioquímica da Profa. Dra. Cristiane Matté (UFRGS): proteínas, enzimas, carboidratos, lípidos.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064301",
+      "playlist_id": "PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Bioquímica: estrutura, propriedades e funções de biomoléculas (UFABC).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064330",
+      "playlist_id": "PLDuXYmx0oaNywcQeMQ-e5lxF5tEgPFp6R",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Cálculo 2 do Projeto Newton (UFPA).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064330",
+      "playlist_id": "PL7PW7YXa8HO1rcxPTbtT_IotGcf3-qxy8",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cálculo integral (Prof. Renan Lima, doutorado em Matemática, UFF).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064302",
+      "playlist_id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso Física 1 / Fundamentos de Mecânica (Uai Física).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064302",
+      "playlist_id": "PL8dPuuaLjXtN0ge7yDk_UA0ldZJdhwkoV",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "introdutório/superior",
+      "match": "CrashCourse Physics.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064305",
+      "playlist_id": "PLLgyllaAGjnyruWwB33Xn70QSv20E9Eyc",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Termodinâmica química: entropia, energias livres de Helmholtz e Gibbs, espontaneidade.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064305",
+      "playlist_id": "PL1rvYCVeSjjCL1bBk8VnhOIUssi19O-tz",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Aulas de Físico-Química (Prof. Juracy Lucena): gases, pressão, termodinâmica.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064306",
+      "playlist_id": "PLMFk-EbUP6ortr7z4YD-slSTwruelcbbS",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química orgânica na graduação (Profa. Cláudia Regina).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064306",
+      "playlist_id": "PL8dPuuaLjXtONguuhLdVmq0HTKS0jksS4",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "introdutório/superior",
+      "match": "CrashCourse Organic Chemistry.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921078",
+      "playlist_id": "PL6IbV0bCREygertQEslIkX8oQvaoLohEz",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Bioquímica e Biofísica (Biocel/UnB): bioenergética e termodinâmica, estrutura 3D de proteínas, enzimas.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921078",
+      "playlist_id": "PL8Uc50ti8bmfhCJkH1eNoeupD0VQEMqzl",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Biofísica (Ensino Remoto UFRN).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064287",
+      "playlist_id": "PLDElI2mHSO29weh7adTUH-bNojiYWTWsW",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Metabolismo — aulas de graduação da Profa. Alicia Kowaltowski (professora de Bioquímica, USP).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064287",
+      "playlist_id": "PLlJ9qIISE9VB0qYDFwZVsjEivPRFNKJDv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Bioquímica do metabolismo energético (bioenergética, vias metabólicas).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064293",
+      "playlist_id": "PLbAiNXJ5j0G7ztaS_egrh3VbO1mbBEE2x",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "'Aprendendo Fisiologia' do PPG em Fisiologia da UFRGS: circulação, endócrino e outros sistemas.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064293",
+      "playlist_id": "PLsCT-SOhHrhmayqRrHdIgAMzKiKuP6qVW",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Fisiologia animal comparada: nutrição e digestão, respiração, etc. (Alexandre Tadeu Mota Macedo).",
+      "published": false,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064295",
+      "playlist_id": "PLFGXHERUQ9QmY2qukTiJ7NXkfi9aZxLmn",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química Orgânica 2: cinética e termodinâmica de reações, mecanismos (Patrícia de Oliveira Figueiredo).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064295",
+      "playlist_id": "PL0e-LENkp3oSuCgSe1DhIjyZgn8PphAZ7",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Aldeídos e cetonas: síntese e reações (Prof. Dr. Raphael Salles, ex-IFRJ).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921114",
+      "playlist_id": "PLgdXzDFXvssauP6Vz3pXwpfdXRi47oHBN",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química analítica instrumental 2021 (Prof. Endler Marcel Borges): calibração, estatística, métodos instrumentais.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921114",
+      "playlist_id": "PLksgsMD1sK6J2yCn9cDe3lUOtkJvoH2vQ",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Análise instrumental: potenciometria, elétrodos (com Prof. Ademário Íris).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921077",
+      "playlist_id": "PL_1jFAelb5WL5IOvouU0KLXgjPb9h6KR4",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Espectrometria de massas na identificação de compostos (Prof. Luiz Cláudio A. Barbosa).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921077",
+      "playlist_id": "PLxqLHmcWkLceJO5GsW9M64MMgvtQcQhiI",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Proteómica e peptidómica: conceitos e aplicações (aulas de disciplina de pós-graduação).",
+      "published": false,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921072",
+      "playlist_id": "PLJlM5YEyF3s3xy6tAdXofed570DHRM3dP",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Estrutura, propriedades e funções de biomoléculas (UFABC).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921072",
+      "playlist_id": "PL6IbV0bCREygertQEslIkX8oQvaoLohEz",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Estrutura tridimensional e função de proteínas (Biocel/UnB).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921079",
+      "playlist_id": "PLXSvHU7sJJldVuTRN8iEU1Ifqt_6DIjPX",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cinética enzimática em 13 aulas: Michaelis-Menten, eficiência catalítica, inibições.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921079",
+      "playlist_id": "PL6IbV0bCREygertQEslIkX8oQvaoLohEz",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Enzimas e inibidores dentro da série Bioquímica e Biofísica (Biocel/UnB).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064303",
+      "playlist_id": "PL_VWfwNh1ap6OX1UdPs6PtKFmdyOeNuaS",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Genética molecular (Thaís Magalhães, mestre em Genética).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064303",
+      "playlist_id": "PLmtykM3ZLOU939pSQaPtmvGgsiagN3-K2",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso de Biologia Molecular (Prof. Patrick Gomes).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064308",
+      "playlist_id": "PLZViAZYDxQZ_7J5X7egu4lZrjkLC9BDbN",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Microbiologia geral, teórica e prática (Prof. Antonio Canettieri).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064308",
+      "playlist_id": "PL0SoMRn3PYpPN252G3JSxSH62bNSlJkBS",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Aulas de Microbiologia (Prof. Dr. Flávio Silveira): história, citologia bacteriana, crescimento.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064286",
+      "playlist_id": "PLVSek57SJFtTdzGvBpmj5qvnqZ-3LL76u",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Alinhamento de sequências — OnlineBioinfo (DCC-UFMG).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "140064286",
+      "playlist_id": "PLtMO804-tewnwai81KjcY1D8531rC43jr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Curso de Verão em Bioinformática da USP (2023).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14241061",
+      "playlist_id": "PLdt5EkYHahvXArnDDZALK0EmBw9y9JBZi",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Embriologia pelo Prof. Rodrigo Nunes da Fonseca (UFRJ), disciplina de graduação 2020.",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241061",
+      "playlist_id": "PLmtykM3ZLOU_hkG8RAAXl1eP6luTanQiF",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Embriologia para ensino superior: 1.ª a 3.ª semanas, gastrulação, organogénese (Prof. Patrick Gomes).",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14921115",
+      "playlist_id": "PLOzRYVm0a65dqK1-Xn14oEU4sjOT3ynoW",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Inorganic Chemistry of Life (NPTEL, IIT Bombay): metais em sistemas biológicos, metaloproteínas.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921115",
+      "playlist_id": "PL8gq4PAPGbRc0fIoAfc_fx1W_TIxXMPSf",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Química inorgânica (UFMG): base de estrutura eletrónica e ligação para química de coordenação.",
+      "published": false,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921086",
+      "playlist_id": "PLzmGsmh0Ffh57HGSgXtj5YHBTsMX_llKa",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Laboratório virtual de Biologia Molecular (UFABC): meios de cultura, transformação bacteriana, técnicas.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14241063",
+      "playlist_id": "PLI3AWxkLZq3J4NRHqGhHK1DQkWIs38DI6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Canal da disciplina de Imunologia da UNEB (Profa. Lívia Pugliese, doutora em Imunologia).",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241063",
+      "playlist_id": "PLsVeL2OBJnCs8VppUh1rHgo0ptZ1Yuj6P",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Imunologia e imunopatologia: imunidade inata e adaptativa, células, resposta imune (Prof. Roberval Moraes).",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241065",
+      "playlist_id": "PLfu5d6i4FMtKpW-SeCqYPdL9Fm555k0Q1",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Neurofisiologia pelo Prof. Aldo Lucion (professor titular de Fisiologia, ICBS-UFRGS): sinapse, integração, sistemas.",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241065",
+      "playlist_id": "PL6VwjPkUZkSAZFwvOxLITRhL1_sbxBMZv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Aulas de neurofisiologia: células do SN, potencial de ação, transmissão colinérgica (Bruno Marques, biomédico neurocientista).",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241058",
+      "playlist_id": "PLtODRsfD0xW-X5_fOHCDEWiaHPyW2lWuc",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Parasitologia humana — videoaulas da Faculdade de Medicina da UFMT.",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241058",
+      "playlist_id": "PLxI8Can9yAHcWPK9ePUKu3w-1YHKaO3Kr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Parasitologia (Licenciatura em Biologia, UNIVESP): classificação, protozoários, helmintas.",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14921085",
+      "playlist_id": "PLchLcDIwdeWA3mFvMcbJTK_jNQClGezhU",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Análise de alimentos — videoaulas do LabBio/PPGAN da UNIRIO: composição, hidratos de carbono, controlo de qualidade.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921117",
+      "playlist_id": "PLp6LssUG8RVXyamOzVAZj171a8YlXx2rD",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Tecnologia de cultura celular (curso de formato NPTEL).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921117",
+      "playlist_id": "PLGlvFEwL2wDGAFJFFFyi-LL1zu64BHvxv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Cell Culture Basics (Thermo Fisher Scientific).",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14241054",
+      "playlist_id": "PLREa-1X0x4InlgGKr-Yqbmhu_anGK2IXq",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiopatologia do diabetes: classificação, diagnóstico, mecanismos (Profa. Tatiana Lavich).",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14241054",
+      "playlist_id": "PLB-dtv1lzMSJa2ICZBL-NaImIiK3PCQCe",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fisiologia do metabolismo (hidratos de carbono, lípidos, proteínas, regulação hormonal) — Pedro Metran.",
+      "published": true,
+      "source": "pesquisa LCBM (UC partilhada)"
+    },
+    {
+      "code": "14921116",
+      "playlist_id": "PL0ZQm43UFHxGZlcsaPhmeYHYc7YaVS6ei",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Tutoriais práticos da disciplina MCB485 Bioinformática e Genómica Funcional (Profa. Manuela Leal da Silva, UFRJ-Macaé): UniProt, BLAST, MetaCyc, COG.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    },
+    {
+      "code": "14921116",
+      "playlist_id": "PLyqSpQzTE6M8X_glBwCWSP__ygylohLig",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Advances in Omics (NPTEL, IIT Madras): genómica, transcriptómica, proteómica.",
+      "published": true,
+      "source": "pesquisa Bioquímica"
+    }
+  ]
+}
