@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { CourseList } from '@/components/course/CourseList';
 import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
+import { ContinueLearning } from '@/components/sequence/ContinueLearning';
 import { useContributePath } from '@/features/auth/useContributePath';
 
 const STEPS: { key: 'ask' | 'explore' | 'connect' | 'contribute'; icon: LucideIcon }[] = [
@@ -40,6 +41,8 @@ export default function Home() {
   ] as const;
   return <>
     <PageSeo {...homeMeta({ title: `FACODI — ${t('brand.tagline')}`, description: t('brand.description') })} />
+    {/* Signed-in learners with a sequence in progress get straight back to it. */}
+    <ContinueLearning className="mb-10" />
     <section className="grid gap-10 pb-14 pt-4 lg:grid-cols-[1.35fr_1fr] lg:gap-14 lg:pb-20">
       <div className="flex flex-col">
         <h1 className="max-w-3xl text-balance text-[2.6rem] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-6xl lg:text-7xl">

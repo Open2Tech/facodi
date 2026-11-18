@@ -1241,6 +1241,11 @@
     "results": "Résultats des séquences",
     "noMatchesText": "Essaie d’autres mots ou une autre langue. La recherche ignore les accents et trouve aussi les codes d’UE."
   },
+  "continueLearning": {
+    "eyebrow": "Reprends là où tu en étais",
+    "next": "Prochain cours : {{title}}",
+    "cta": "Continuer"
+  },
   "projectSeo": {
     "about": {
       "title": "FACODI | D'une question à un campus ouvert",

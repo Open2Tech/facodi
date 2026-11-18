@@ -8,8 +8,8 @@ export function useSequences(unitCode: string | null = null, enabled = true) {
   return useQuery({ queryKey: sequenceKeys.list(unitCode), queryFn: ({ signal }) => listSequences(unitCode, signal), enabled, staleTime: 5 * 60_000 });
 }
 
-export function useSequence(slug: string) {
-  return useQuery({ queryKey: sequenceKeys.detail(slug), queryFn: ({ signal }) => getSequence(slug, signal) });
+export function useSequence(slug: string, enabled = true) {
+  return useQuery({ queryKey: sequenceKeys.detail(slug), queryFn: ({ signal }) => getSequence(slug, signal), enabled });
 }
 
 /** Public sequences containing a video, plus (signed in) which of them already count it as done. */

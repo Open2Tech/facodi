@@ -1241,6 +1241,11 @@
     "results": "Resultados de sequências",
     "noMatchesText": "Experimenta outras palavras ou outro idioma. A pesquisa ignora acentos e também procura pelo código da UC."
   },
+  "continueLearning": {
+    "eyebrow": "Continuar de onde paraste",
+    "next": "Próxima aula: {{title}}",
+    "cta": "Continuar"
+  },
   "projectSeo": {
     "about": {
       "title": "A história da FACODI | De uma pergunta a um campus aberto",
