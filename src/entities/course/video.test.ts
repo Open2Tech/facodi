@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDuration, isoDuration, videoInfo, youtubeIdFromUrl, youtubePlaylistIdFromUrl } from '@/entities/course/video';
+import { formatDuration, isoDuration, validDay, videoInfo, youtubeIdFromUrl, youtubePlaylistIdFromUrl } from '@/entities/course/video';
 
 describe('video metadata', () => {
   it('extracts ids from supported YouTube URL shapes and rejects everything else', () => {
@@ -27,7 +27,7 @@ describe('video metadata', () => {
   it('prefers a valid stored id, builds the thumbnail from it and reads curation flags strictly', () => {
     const info = videoInfo({ youtube_video_id: 'abcdefghijk', duration_seconds: 867.4, channel_name: ' Khan ', review_scope: 'title_and_channel_only', full_video_reviewed: 'true' }, 'https://youtu.be/zzzzzzzzzzz');
     expect(info).toEqual({
-      youtubeId: 'abcdefghijk', thumbnail: 'https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg', durationSeconds: 867,
+      youtubeId: 'abcdefghijk', thumbnail: 'https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg', durationSeconds: 867, uploadDate: null,
       channel: 'Khan', reviewScope: 'title_and_channel_only', fullReviewed: false, licenseVerified: false,
     });
   });
@@ -68,5 +68,18 @@ describe('video metadata', () => {
     expect(formatDuration(59)).toBe('0:59');
     expect(formatDuration(3723)).toBe('1:02:03');
     expect(isoDuration(867)).toBe('PT0H14M27S');
+  });
+});
+
+describe('upload date', () => {
+  it('reads the YouTube publication day from the curation metadata', () => {
+    expect(videoInfo({ youtube_video_id: 'abcdefghijk', published_date_on_youtube: '2024-06-15' }).uploadDate).toBe('2024-06-15');
+    expect(videoInfo({ youtube_video_id: 'abcdefghijk', youtube_published_at: '2012-07-05T10:00:00Z' }).uploadDate).toBe('2012-07-05');
+    expect(videoInfo({ youtube_video_id: 'abcdefghijk' }).uploadDate).toBeNull();
+  });
+  it('rejects malformed or impossible days', () => {
+    expect(validDay('2024-02-30')).toBeNull();
+    expect(validDay('15/06/2024')).toBeNull();
+    expect(validDay('2024-06-15')).toBe('2024-06-15');
   });
 });

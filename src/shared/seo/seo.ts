@@ -198,6 +198,7 @@ export function learningResourceJsonLd(resource: {
 
 export function videoJsonLd(video: {
   path: string; title: string; description: string; youtubeId: string; language?: string | null; durationSeconds?: number | null;
+  uploadDate?: string | null;
 }): JsonLd {
   return compact({
     '@context': 'https://schema.org', '@type': 'VideoObject', '@id': canonicalUrl(video.path), url: canonicalUrl(video.path),
@@ -206,6 +207,7 @@ export function videoJsonLd(video: {
     embedUrl: `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
     duration: video.durationSeconds ? `PT${Math.round(video.durationSeconds)}S` : undefined,
+    uploadDate: video.uploadDate ?? undefined,
   });
 }
 
@@ -271,7 +273,7 @@ export function unitMeta(
 
 export function resourceMeta(
   resource: { slug: string; title: string; description?: string | null; object_type: string; language?: string | null; tags?: string[] | null },
-  video: { youtubeId: string | null; durationSeconds: number | null } | null,
+  video: { youtubeId: string | null; durationSeconds: number | null; uploadDate?: string | null } | null,
   labels: { resources: string; type: string },
 ): PageMeta {
   const path = publicResourcePath(resource.object_type, resource.slug);
@@ -284,7 +286,7 @@ export function resourceMeta(
     image: youtubeId ? youtubeImage(youtubeId, resource.title) : null,
     jsonLd: [
       youtubeId
-        ? videoJsonLd({ path, title: resource.title, description, youtubeId, language: resource.language, durationSeconds: video?.durationSeconds })
+        ? videoJsonLd({ path, title: resource.title, description, youtubeId, language: resource.language, durationSeconds: video?.durationSeconds, uploadDate: video?.uploadDate })
         : learningResourceJsonLd({ path, title: resource.title, description, type: labels.type, language: resource.language, keywords: studyTopics(resource.tags) }),
       breadcrumbJsonLd([{ name: labels.resources, path: '/resources' }, { name: labels.type, path: typePath }, { name: resource.title, path }]),
     ],
