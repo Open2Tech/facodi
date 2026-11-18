@@ -472,7 +472,7 @@
       },
       "curated": {
         "title": "Curated",
-        "text": "Only what the editorial team has reviewed is published. Access rules are enforced by the database."
+        "text": "FACODI combines editorial curation and automated checks to publish resources. Content may be corrected or unpublished later. Access rules are enforced by the database."
       }
     },
     "contributeTitle": "How to contribute",
