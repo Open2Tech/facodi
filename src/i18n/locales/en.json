@@ -282,6 +282,14 @@
     "text_other": "Exam revision: this unit's {{count}} lessons are in one list, just below. Use the notebook to jot down what you need to go over.",
     "cta": "Review the lessons"
   },
+  "resourceFeedback": {
+    "questionVideo": "Did this video help you?",
+    "questionResource": "Did this resource help you?",
+    "yes": "Yes",
+    "no": "No",
+    "thanks": "Thank you! The editorial team uses these answers to improve the selection. You can change your answer at any time.",
+    "failed": "Your answer could not be saved."
+  },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
     "description": "Your space to find the next path and look after your account.",
