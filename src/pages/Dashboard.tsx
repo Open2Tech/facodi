@@ -6,6 +6,7 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { NotebookOverview } from '@/components/notes/NotebookOverview';
 import { SequenceOverview } from '@/components/sequence/SequenceOverview';
+import { StudyMilestones } from '@/components/sequence/StudyMilestones';
 import { ContinueLearning } from '@/components/sequence/ContinueLearning';
 import { IfesProgressOverview } from '@/components/course/IfesProgressOverview';
 
@@ -40,6 +41,7 @@ export default function Dashboard() {
     </ul>
     <IfesProgressOverview />
     <SequenceOverview />
+    <StudyMilestones />
     <NotebookOverview />
   </>;
 }

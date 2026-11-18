@@ -1246,6 +1246,30 @@
     "next": "Próxima clase: {{title}}",
     "cta": "Continuar"
   },
+  "milestones": {
+    "title": "Tus hitos",
+    "private": "Solo tú ves esta sección.",
+    "loadFailed": "No se pudieron cargar tus hitos.",
+    "streakTitle": "Semanas seguidas estudiando",
+    "streakDone": "Esta semana ya cuenta.",
+    "streakKeep": "Completa una clase esta semana para seguir la racha.",
+    "streakStart": "Completa una clase de una secuencia para empezar.",
+    "best_one": "Mejor racha: {{count}} semana",
+    "best_many": "Mejor racha: {{count}} semanas",
+    "best_other": "Mejor racha: {{count}} semanas",
+    "reached": "Conseguido",
+    "progress": "{{value}} de {{target}}",
+    "items": {
+      "firstLesson": "Primera clase completada",
+      "tenLessons": "10 clases completadas",
+      "fiftyLessons": "50 clases completadas",
+      "firstSequence": "Primera secuencia completa",
+      "threeSequences": "3 secuencias completas",
+      "firstNote": "Primera nota en el cuaderno",
+      "tenNotes": "10 notas en el cuaderno",
+      "fourWeeks": "4 semanas seguidas"
+    }
+  },
   "projectSeo": {
     "about": {
       "title": "Historia de FACODI | De una pregunta a un campus abierto",

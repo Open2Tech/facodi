@@ -1,5 +1,6 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
+import type { Completion } from './milestones';
 import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence, type SequenceProgressSummary, type SequenceSummary, type VideoProgress, type VideoSequence } from './sequence';
 
 const PROGRESS_FIELDS = 'video_id, completed_at, last_position_seconds, updated_at';
@@ -125,4 +126,12 @@ export async function listMySequences(userId: string, limit: number, signal?: Ab
     })];
   }));
   return { items: items.flat(), total: latest.size };
+}
+
+/** Every lesson the learner marked as done, in any sequence: their own rows only (filter and RLS). */
+export async function listMyCompletions(userId: string, signal?: AbortSignal): Promise<Completion[]> {
+  const { data, error } = await supabase.from('editorial_playlist_progress').select('playlist_id, video_id, completed_at')
+    .eq('user_id', userId).not('completed_at', 'is', null).order('completed_at').limit(5000).abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data.flatMap(row => (row.completed_at ? [{ playlistId: row.playlist_id, videoId: row.video_id, completedAt: row.completed_at }] : []));
 }
