@@ -37,6 +37,20 @@ export function youtubeIdFromUrl(url: string | null | undefined) {
   }
 }
 
+/** Only YouTube-owned playlist URLs are eligible for in-page playback. */
+export function youtubePlaylistIdFromUrl(url: string | null | undefined) {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^(www|m)\./, '');
+    if (parsed.protocol !== 'https:' || host !== 'youtube.com' || parsed.pathname !== '/playlist') return null;
+    const id = parsed.searchParams.get('list');
+    return id && /^PL[\w-]{10,60}$/.test(id) ? id : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Reads the video facts the curation pipeline stores in learning_objects.metadata. */
 export function videoInfo(metadata: Json | null | undefined, sourceUrl?: string | null): VideoInfo {
   const meta = record(metadata);
