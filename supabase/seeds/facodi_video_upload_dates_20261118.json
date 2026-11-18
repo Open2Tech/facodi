@@ -1,0 +1,5413 @@
+{
+ "batch": "facodi_video_upload_dates_20261118",
+ "generated_at": "2026-11-18",
+ "source": "YouTube public watch page (meta itemprop=uploadDate), 2 requests in flight, 500 ms apart",
+ "target": "facodi.learning_objects.metadata.published_date_on_youtube (videos only, only where it is still empty)",
+ "counts": {
+  "videos_checked": 963,
+  "with_date": 380,
+  "without_date": 583
+ },
+ "items": [
+  {
+   "slug": "algebra-linear-aula-17-espaco-e-sub-vetorial-parte-1-aprende-ef399e19",
+   "youtube_id": "h2ZBkpLjytE",
+   "upload_date": "2019-02-02"
+  },
+  {
+   "slug": "facodi-astro-usp-video-BFuXZnNG9PI",
+   "youtube_id": "BFuXZnNG9PI",
+   "upload_date": "2014-03-21"
+  },
+  {
+   "slug": "facodi-astro-usp-video-CXXH-5Oa1HI",
+   "youtube_id": "CXXH-5Oa1HI",
+   "upload_date": "2014-07-02"
+  },
+  {
+   "slug": "facodi-astro-usp-video-M0VKMNylSIg",
+   "youtube_id": "M0VKMNylSIg",
+   "upload_date": "2014-06-04"
+  },
+  {
+   "slug": "facodi-astro-usp-video-MNcTFh-1WAM",
+   "youtube_id": "MNcTFh-1WAM",
+   "upload_date": "2014-06-04"
+  },
+  {
+   "slug": "facodi-astro-usp-video-Mr97PrJZCag",
+   "youtube_id": "Mr97PrJZCag",
+   "upload_date": "2014-04-30"
+  },
+  {
+   "slug": "facodi-astro-usp-video-jfVRz6NLZWE",
+   "youtube_id": "jfVRz6NLZWE",
+   "upload_date": "2014-03-21"
+  },
+  {
+   "slug": "facodi-astro-usp-video-p-Dvp06QZRQ",
+   "youtube_id": "p-Dvp06QZRQ",
+   "upload_date": "2014-03-10"
+  },
+  {
+   "slug": "facodi-astro-usp-video-x5XxTuFVBbo",
+   "youtube_id": "x5XxTuFVBbo",
+   "upload_date": "2020-11-09"
+  },
+  {
+   "slug": "facodi-curated-yt--8H2Pyxnoek",
+   "youtube_id": "-8H2Pyxnoek",
+   "upload_date": "2023-04-17"
+  },
+  {
+   "slug": "facodi-curated-yt-2B6eSQ7qAeQ",
+   "youtube_id": "2B6eSQ7qAeQ",
+   "upload_date": "2018-03-12"
+  },
+  {
+   "slug": "facodi-curated-yt-7_eAQ7SeuEg",
+   "youtube_id": "7_eAQ7SeuEg",
+   "upload_date": "2018-03-05"
+  },
+  {
+   "slug": "facodi-curated-yt-BALM_oJcJL4",
+   "youtube_id": "BALM_oJcJL4",
+   "upload_date": "2018-08-13"
+  },
+  {
+   "slug": "facodi-curated-yt-Bb_TvqoUxX4",
+   "youtube_id": "Bb_TvqoUxX4",
+   "upload_date": "2021-11-22"
+  },
+  {
+   "slug": "facodi-curated-yt-DiiKff1z2Yw",
+   "youtube_id": "DiiKff1z2Yw",
+   "upload_date": "2022-06-20"
+  },
+  {
+   "slug": "facodi-curated-yt-GW6nAJ1NHUQ",
+   "youtube_id": "GW6nAJ1NHUQ",
+   "upload_date": "2022-01-10"
+  },
+  {
+   "slug": "facodi-curated-yt-HkdAHXoRtos",
+   "youtube_id": "HkdAHXoRtos",
+   "upload_date": "2018-10-26"
+  },
+  {
+   "slug": "facodi-curated-yt-L1f6N6NcgPw",
+   "youtube_id": "L1f6N6NcgPw",
+   "upload_date": "2021-06-28"
+  },
+  {
+   "slug": "facodi-curated-yt-MjQCvJmc31A",
+   "youtube_id": "MjQCvJmc31A",
+   "upload_date": "2021-06-07"
+  },
+  {
+   "slug": "facodi-curated-yt-O3bs4JtHrow",
+   "youtube_id": "O3bs4JtHrow",
+   "upload_date": "2022-02-14"
+  },
+  {
+   "slug": "facodi-curated-yt-PGAOqAWuwC0",
+   "youtube_id": "PGAOqAWuwC0",
+   "upload_date": "2022-04-13"
+  },
+  {
+   "slug": "facodi-curated-yt-UgaybOYMKS0",
+   "youtube_id": "UgaybOYMKS0",
+   "upload_date": "2020-09-28"
+  },
+  {
+   "slug": "facodi-curated-yt-bqxXWfCrUXs",
+   "youtube_id": "bqxXWfCrUXs",
+   "upload_date": "2018-02-26"
+  },
+  {
+   "slug": "facodi-curated-yt-hgrXprOLq6w",
+   "youtube_id": "hgrXprOLq6w",
+   "upload_date": "2019-05-20"
+  },
+  {
+   "slug": "facodi-curated-yt-hwP7WQkmECE",
+   "youtube_id": "hwP7WQkmECE",
+   "upload_date": "2020-03-02"
+  },
+  {
+   "slug": "facodi-curated-yt-naGF7EIUFp0",
+   "youtube_id": "naGF7EIUFp0",
+   "upload_date": "2022-02-07"
+  },
+  {
+   "slug": "facodi-curated-yt-sidi9Z_IkLU",
+   "youtube_id": "sidi9Z_IkLU",
+   "upload_date": "2021-06-14"
+  },
+  {
+   "slug": "facodi-curated-yt-xWTNoTtA9V8",
+   "youtube_id": "xWTNoTtA9V8",
+   "upload_date": "2018-08-20"
+  },
+  {
+   "slug": "facodi-curated-yt-yQtqkq9UkDA",
+   "youtube_id": "yQtqkq9UkDA",
+   "upload_date": "2022-07-18"
+  },
+  {
+   "slug": "facodi-curated-yt-yffiyHEiUvo",
+   "youtube_id": "yffiyHEiUvo",
+   "upload_date": "2022-04-06"
+  },
+  {
+   "slug": "facodi-curated-yt-yqsGbfvbMcQ",
+   "youtube_id": "yqsGbfvbMcQ",
+   "upload_date": "2019-10-07"
+  },
+  {
+   "slug": "facodi-oito-canais-video--UStMKzQfvI",
+   "youtube_id": "-UStMKzQfvI",
+   "upload_date": "2025-12-19"
+  },
+  {
+   "slug": "facodi-oito-canais-video-0B4LZP4Vx4U",
+   "youtube_id": "0B4LZP4Vx4U",
+   "upload_date": "2025-11-14"
+  },
+  {
+   "slug": "facodi-oito-canais-video-0BS9Q-o3A88",
+   "youtube_id": "0BS9Q-o3A88",
+   "upload_date": "2026-07-19"
+  },
+  {
+   "slug": "facodi-oito-canais-video-0fWlMrmIWbQ",
+   "youtube_id": "0fWlMrmIWbQ",
+   "upload_date": "2026-05-06"
+  },
+  {
+   "slug": "facodi-oito-canais-video-2Ls_uc0fo-Y",
+   "youtube_id": "2Ls_uc0fo-Y",
+   "upload_date": "2026-10-13"
+  },
+  {
+   "slug": "facodi-oito-canais-video-2nvbgwFE_0Y",
+   "youtube_id": "2nvbgwFE_0Y",
+   "upload_date": "2023-06-14"
+  },
+  {
+   "slug": "facodi-oito-canais-video-3DLhJZ8F0TE",
+   "youtube_id": "3DLhJZ8F0TE",
+   "upload_date": "2025-09-10"
+  },
+  {
+   "slug": "facodi-oito-canais-video-3EIuCzEVkRQ",
+   "youtube_id": "3EIuCzEVkRQ",
+   "upload_date": "2026-08-26"
+  },
+  {
+   "slug": "facodi-oito-canais-video-3Zt3XpAjCHc",
+   "youtube_id": "3Zt3XpAjCHc",
+   "upload_date": "2023-06-14"
+  },
+  {
+   "slug": "facodi-oito-canais-video-4AQn_YNwD7A",
+   "youtube_id": "4AQn_YNwD7A",
+   "upload_date": "2020-03-02"
+  },
+  {
+   "slug": "facodi-oito-canais-video-4a3fILFyYiw",
+   "youtube_id": "4a3fILFyYiw",
+   "upload_date": "2026-09-08"
+  },
+  {
+   "slug": "facodi-oito-canais-video-4qvG8MKBBnw",
+   "youtube_id": "4qvG8MKBBnw",
+   "upload_date": "2026-10-28"
+  },
+  {
+   "slug": "facodi-oito-canais-video-5JzEyB1AOAg",
+   "youtube_id": "5JzEyB1AOAg",
+   "upload_date": "2025-11-05"
+  },
+  {
+   "slug": "facodi-oito-canais-video-5vKcNaWXtCY",
+   "youtube_id": "5vKcNaWXtCY",
+   "upload_date": "2026-09-29"
+  },
+  {
+   "slug": "facodi-oito-canais-video-6YoPkUvlCdM",
+   "youtube_id": "6YoPkUvlCdM",
+   "upload_date": "2026-09-18"
+  },
+  {
+   "slug": "facodi-oito-canais-video-7MfGRexS5W8",
+   "youtube_id": "7MfGRexS5W8",
+   "upload_date": "2026-05-28"
+  },
+  {
+   "slug": "facodi-oito-canais-video-8G80nuEyDN4",
+   "youtube_id": "8G80nuEyDN4",
+   "upload_date": "2020-06-04"
+  },
+  {
+   "slug": "facodi-oito-canais-video-8HfbBKRYEvc",
+   "youtube_id": "8HfbBKRYEvc",
+   "upload_date": "2026-09-26"
+  },
+  {
+   "slug": "facodi-oito-canais-video-9lzHhnstv-c",
+   "youtube_id": "9lzHhnstv-c",
+   "upload_date": "2026-10-16"
+  },
+  {
+   "slug": "facodi-oito-canais-video-9sI8KHEjs0M",
+   "youtube_id": "9sI8KHEjs0M",
+   "upload_date": "2026-10-08"
+  },
+  {
+   "slug": "facodi-oito-canais-video-BWm-7FO2OK8",
+   "youtube_id": "BWm-7FO2OK8",
+   "upload_date": "2020-09-25"
+  },
+  {
+   "slug": "facodi-oito-canais-video-E82wXFm-Jx8",
+   "youtube_id": "E82wXFm-Jx8",
+   "upload_date": "2025-02-13"
+  },
+  {
+   "slug": "facodi-oito-canais-video-F-OBgD_vmCo",
+   "youtube_id": "F-OBgD_vmCo",
+   "upload_date": "2026-07-07"
+  },
+  {
+   "slug": "facodi-oito-canais-video-F5IliRRcIck",
+   "youtube_id": "F5IliRRcIck",
+   "upload_date": "2026-09-13"
+  },
+  {
+   "slug": "facodi-oito-canais-video-G4MvFT8TGII",
+   "youtube_id": "G4MvFT8TGII",
+   "upload_date": "2020-10-23"
+  },
+  {
+   "slug": "facodi-oito-canais-video-H0Honyy7Aaw",
+   "youtube_id": "H0Honyy7Aaw",
+   "upload_date": "2026-06-05"
+  },
+  {
+   "slug": "facodi-oito-canais-video-KtBLoiGbk1c",
+   "youtube_id": "KtBLoiGbk1c",
+   "upload_date": "2026-11-04"
+  },
+  {
+   "slug": "facodi-oito-canais-video-Mp8ATV9LLt8",
+   "youtube_id": "Mp8ATV9LLt8",
+   "upload_date": "2026-08-12"
+  },
+  {
+   "slug": "facodi-oito-canais-video-OUPJa5XD5hc",
+   "youtube_id": "OUPJa5XD5hc",
+   "upload_date": "2026-11-13"
+  },
+  {
+   "slug": "facodi-oito-canais-video-PIn19jLub2U",
+   "youtube_id": "PIn19jLub2U",
+   "upload_date": "2026-09-21"
+  },
+  {
+   "slug": "facodi-oito-canais-video-PaIzefYCwEc",
+   "youtube_id": "PaIzefYCwEc",
+   "upload_date": "2026-07-24"
+  },
+  {
+   "slug": "facodi-oito-canais-video-RmEhr3b0gtU",
+   "youtube_id": "RmEhr3b0gtU",
+   "upload_date": "2025-12-10"
+  },
+  {
+   "slug": "facodi-oito-canais-video-SJsjG3BHEE8",
+   "youtube_id": "SJsjG3BHEE8",
+   "upload_date": "2026-08-09"
+  },
+  {
+   "slug": "facodi-oito-canais-video-SraCw6iqu3E",
+   "youtube_id": "SraCw6iqu3E",
+   "upload_date": "2025-10-14"
+  },
+  {
+   "slug": "facodi-oito-canais-video-UBvYVhafU4k",
+   "youtube_id": "UBvYVhafU4k",
+   "upload_date": "2026-07-08"
+  },
+  {
+   "slug": "facodi-oito-canais-video-UNJNiz1-6k8",
+   "youtube_id": "UNJNiz1-6k8",
+   "upload_date": "2026-07-02"
+  },
+  {
+   "slug": "facodi-oito-canais-video-V0RulzPQt6M",
+   "youtube_id": "V0RulzPQt6M",
+   "upload_date": "2025-10-15"
+  },
+  {
+   "slug": "facodi-oito-canais-video-XKnQl0oNxJ8",
+   "youtube_id": "XKnQl0oNxJ8",
+   "upload_date": "2025-09-22"
+  },
+  {
+   "slug": "facodi-oito-canais-video-YXSIvbL4ZRA",
+   "youtube_id": "YXSIvbL4ZRA",
+   "upload_date": "2026-10-27"
+  },
+  {
+   "slug": "facodi-oito-canais-video-ZgG030O8FlM",
+   "youtube_id": "ZgG030O8FlM",
+   "upload_date": "2026-09-24"
+  },
+  {
+   "slug": "facodi-oito-canais-video-_CQFbWmHDJk",
+   "youtube_id": "_CQFbWmHDJk",
+   "upload_date": "2026-07-06"
+  },
+  {
+   "slug": "facodi-oito-canais-video-aGBvv4DPXK8",
+   "youtube_id": "aGBvv4DPXK8",
+   "upload_date": "2022-04-07"
+  },
+  {
+   "slug": "facodi-oito-canais-video-ecev-RuuKVg",
+   "youtube_id": "ecev-RuuKVg",
+   "upload_date": "2026-10-22"
+  },
+  {
+   "slug": "facodi-oito-canais-video-en_GTv0o96Y",
+   "youtube_id": "en_GTv0o96Y",
+   "upload_date": "2026-10-15"
+  },
+  {
+   "slug": "facodi-oito-canais-video-h-Q889Ro07w",
+   "youtube_id": "h-Q889Ro07w",
+   "upload_date": "2026-10-30"
+  },
+  {
+   "slug": "facodi-oito-canais-video-iLI0jWuYoeQ",
+   "youtube_id": "iLI0jWuYoeQ",
+   "upload_date": "2026-08-04"
+  },
+  {
+   "slug": "facodi-oito-canais-video-j4JdtGFffgM",
+   "youtube_id": "j4JdtGFffgM",
+   "upload_date": "2025-09-19"
+  },
+  {
+   "slug": "facodi-oito-canais-video-kKI1mMRZIvg",
+   "youtube_id": "kKI1mMRZIvg",
+   "upload_date": "2020-08-28"
+  },
+  {
+   "slug": "facodi-oito-canais-video-lNB8x2k0YNg",
+   "youtube_id": "lNB8x2k0YNg",
+   "upload_date": "2025-09-03"
+  },
+  {
+   "slug": "facodi-oito-canais-video-m4NTMvjCdcw",
+   "youtube_id": "m4NTMvjCdcw",
+   "upload_date": "2026-05-22"
+  },
+  {
+   "slug": "facodi-oito-canais-video-mbykpkwPSws",
+   "youtube_id": "mbykpkwPSws",
+   "upload_date": "2025-03-13"
+  },
+  {
+   "slug": "facodi-oito-canais-video-nH1vbRwCByc",
+   "youtube_id": "nH1vbRwCByc",
+   "upload_date": "2026-04-14"
+  },
+  {
+   "slug": "facodi-oito-canais-video-nNHR_0gKp7M",
+   "youtube_id": "nNHR_0gKp7M",
+   "upload_date": "2026-09-25"
+  },
+  {
+   "slug": "facodi-oito-canais-video-pc-5CmdvjJk",
+   "youtube_id": "pc-5CmdvjJk",
+   "upload_date": "2026-09-23"
+  },
+  {
+   "slug": "facodi-oito-canais-video-rXt6H-WypYM",
+   "youtube_id": "rXt6H-WypYM",
+   "upload_date": "2025-10-20"
+  },
+  {
+   "slug": "facodi-oito-canais-video-rZU0DadU9MI",
+   "youtube_id": "rZU0DadU9MI",
+   "upload_date": "2021-04-16"
+  },
+  {
+   "slug": "facodi-oito-canais-video-tXlxnIqQF2E",
+   "youtube_id": "tXlxnIqQF2E",
+   "upload_date": "2026-11-11"
+  },
+  {
+   "slug": "facodi-oito-canais-video-v7z2856g1A0",
+   "youtube_id": "v7z2856g1A0",
+   "upload_date": "2026-11-12"
+  },
+  {
+   "slug": "facodi-oito-canais-video-xZ5IDXms7bE",
+   "youtube_id": "xZ5IDXms7bE",
+   "upload_date": "2026-10-02"
+  },
+  {
+   "slug": "facodi-video---NWR_1uIW0",
+   "youtube_id": "--NWR_1uIW0",
+   "upload_date": "2021-02-10"
+  },
+  {
+   "slug": "facodi-video--1R_bh85RLQ",
+   "youtube_id": "-1R_bh85RLQ",
+   "upload_date": "2022-01-31"
+  },
+  {
+   "slug": "facodi-video--DbJzEi-NGA",
+   "youtube_id": "-DbJzEi-NGA",
+   "upload_date": "2023-12-07"
+  },
+  {
+   "slug": "facodi-video--IO3Neo7qWQ",
+   "youtube_id": "-IO3Neo7qWQ",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video--bT2iB8gqKs",
+   "youtube_id": "-bT2iB8gqKs",
+   "upload_date": "2021-12-01"
+  },
+  {
+   "slug": "facodi-video--qpzplkbHkQ",
+   "youtube_id": "-qpzplkbHkQ",
+   "upload_date": "2020-01-26"
+  },
+  {
+   "slug": "facodi-video--rOaCxBL58g",
+   "youtube_id": "-rOaCxBL58g",
+   "upload_date": "2021-05-25"
+  },
+  {
+   "slug": "facodi-video--xHbo21qjJI",
+   "youtube_id": "-xHbo21qjJI",
+   "upload_date": "2025-02-19"
+  },
+  {
+   "slug": "facodi-video-0NNV8FDuck8",
+   "youtube_id": "0NNV8FDuck8",
+   "upload_date": "2017-10-11"
+  },
+  {
+   "slug": "facodi-video-0R3zdROzvRk",
+   "youtube_id": "0R3zdROzvRk",
+   "upload_date": "2022-04-15"
+  },
+  {
+   "slug": "facodi-video-0R4_X8X2fFo",
+   "youtube_id": "0R4_X8X2fFo",
+   "upload_date": "2020-11-05"
+  },
+  {
+   "slug": "facodi-video-0REi8zCV0yw",
+   "youtube_id": "0REi8zCV0yw",
+   "upload_date": "2022-03-31"
+  },
+  {
+   "slug": "facodi-video-0Uj0n0ERx6I",
+   "youtube_id": "0Uj0n0ERx6I",
+   "upload_date": "2025-01-15"
+  },
+  {
+   "slug": "facodi-video-0ZpdSCECZOw",
+   "youtube_id": "0ZpdSCECZOw",
+   "upload_date": "2021-10-04"
+  },
+  {
+   "slug": "facodi-video-0oaf9qT-CZI",
+   "youtube_id": "0oaf9qT-CZI",
+   "upload_date": "2022-07-13"
+  },
+  {
+   "slug": "facodi-video-0pil4xQXIVE",
+   "youtube_id": "0pil4xQXIVE",
+   "upload_date": "2026-04-16"
+  },
+  {
+   "slug": "facodi-video-0ticI2HmWcE",
+   "youtube_id": "0ticI2HmWcE",
+   "upload_date": "2022-02-21"
+  },
+  {
+   "slug": "facodi-video-1CuomdJil1k",
+   "youtube_id": "1CuomdJil1k",
+   "upload_date": "2024-02-01"
+  },
+  {
+   "slug": "facodi-video-1FwL9GIsMFE",
+   "youtube_id": "1FwL9GIsMFE",
+   "upload_date": "2019-01-21"
+  },
+  {
+   "slug": "facodi-video-1SOk2p1peLo",
+   "youtube_id": "1SOk2p1peLo",
+   "upload_date": "2020-08-16"
+  },
+  {
+   "slug": "facodi-video-1jqB2gvSiVg",
+   "youtube_id": "1jqB2gvSiVg",
+   "upload_date": "2021-04-21"
+  },
+  {
+   "slug": "facodi-video-2BxY493wqP4",
+   "youtube_id": "2BxY493wqP4",
+   "upload_date": "2022-09-08"
+  },
+  {
+   "slug": "facodi-video-2F8gXqgukU0",
+   "youtube_id": "2F8gXqgukU0",
+   "upload_date": "2021-04-26"
+  },
+  {
+   "slug": "facodi-video-2K_CMXEWTOY",
+   "youtube_id": "2K_CMXEWTOY",
+   "upload_date": "2021-11-29"
+  },
+  {
+   "slug": "facodi-video-2NBVVW3XvZc",
+   "youtube_id": "2NBVVW3XvZc",
+   "upload_date": "2019-05-20"
+  },
+  {
+   "slug": "facodi-video-2NWtEezNE48",
+   "youtube_id": "2NWtEezNE48",
+   "upload_date": "2019-07-01"
+  },
+  {
+   "slug": "facodi-video-2jYuetj2Yig",
+   "youtube_id": "2jYuetj2Yig",
+   "upload_date": "2020-10-22"
+  },
+  {
+   "slug": "facodi-video-2kyjGsqPlko",
+   "youtube_id": "2kyjGsqPlko",
+   "upload_date": "2020-04-13"
+  },
+  {
+   "slug": "facodi-video-2wolMQImLpY",
+   "youtube_id": "2wolMQImLpY",
+   "upload_date": "2019-03-22"
+  },
+  {
+   "slug": "facodi-video-3-Qc8ZTrFXI",
+   "youtube_id": "3-Qc8ZTrFXI",
+   "upload_date": "2021-05-24"
+  },
+  {
+   "slug": "facodi-video-31llNGKWDdo",
+   "youtube_id": "31llNGKWDdo",
+   "upload_date": "2017-04-03"
+  },
+  {
+   "slug": "facodi-video-34rK4b4Ixrw",
+   "youtube_id": "34rK4b4Ixrw",
+   "upload_date": "2020-10-05"
+  },
+  {
+   "slug": "facodi-video-3NrjXOWkKLs",
+   "youtube_id": "3NrjXOWkKLs",
+   "upload_date": "2021-06-20"
+  },
+  {
+   "slug": "facodi-video-3ab1_i5xZQM",
+   "youtube_id": "3ab1_i5xZQM",
+   "upload_date": "2026-04-12"
+  },
+  {
+   "slug": "facodi-video-3cY2Y2SmhG0",
+   "youtube_id": "3cY2Y2SmhG0",
+   "upload_date": "2019-02-20"
+  },
+  {
+   "slug": "facodi-video-3j7l_c5yFXw",
+   "youtube_id": "3j7l_c5yFXw",
+   "upload_date": "2022-06-12"
+  },
+  {
+   "slug": "facodi-video-4B6maj7_Jpw",
+   "youtube_id": "4B6maj7_Jpw",
+   "upload_date": "2022-03-07"
+  },
+  {
+   "slug": "facodi-video-4DVqU0MsCsI",
+   "youtube_id": "4DVqU0MsCsI",
+   "upload_date": "2017-09-21"
+  },
+  {
+   "slug": "facodi-video-4KrTk2R0NxE",
+   "youtube_id": "4KrTk2R0NxE",
+   "upload_date": "2021-03-30"
+  },
+  {
+   "slug": "facodi-video-4KvbVq3Eg5w",
+   "youtube_id": "4KvbVq3Eg5w",
+   "upload_date": "2025-09-08"
+  },
+  {
+   "slug": "facodi-video-4L4E_N3EaJs",
+   "youtube_id": "4L4E_N3EaJs",
+   "upload_date": "2019-05-03"
+  },
+  {
+   "slug": "facodi-video-4MR6ID6yb3I",
+   "youtube_id": "4MR6ID6yb3I",
+   "upload_date": "2021-06-21"
+  },
+  {
+   "slug": "facodi-video-4TfJQussrvs",
+   "youtube_id": "4TfJQussrvs",
+   "upload_date": "2019-12-22"
+  },
+  {
+   "slug": "facodi-video-4c43elucpOM",
+   "youtube_id": "4c43elucpOM",
+   "upload_date": "2022-05-16"
+  },
+  {
+   "slug": "facodi-video-4lZDBkeZqis",
+   "youtube_id": "4lZDBkeZqis",
+   "upload_date": "2021-05-02"
+  },
+  {
+   "slug": "facodi-video-4o0UPg4s8MM",
+   "youtube_id": "4o0UPg4s8MM",
+   "upload_date": "2021-01-29"
+  },
+  {
+   "slug": "facodi-video-4t8M8mZfcxg",
+   "youtube_id": "4t8M8mZfcxg",
+   "upload_date": "2021-05-19"
+  },
+  {
+   "slug": "facodi-video-5577ZbBIjTY",
+   "youtube_id": "5577ZbBIjTY",
+   "upload_date": "2021-12-16"
+  },
+  {
+   "slug": "facodi-video-5BxxuVnOuy8",
+   "youtube_id": "5BxxuVnOuy8",
+   "upload_date": "2024-05-30"
+  },
+  {
+   "slug": "facodi-video-5EyJARJ6bo4",
+   "youtube_id": "5EyJARJ6bo4",
+   "upload_date": "2021-05-13"
+  },
+  {
+   "slug": "facodi-video-5HEoQx9_Iwg",
+   "youtube_id": "5HEoQx9_Iwg",
+   "upload_date": "2021-10-05"
+  },
+  {
+   "slug": "facodi-video-5I5EU6gV3N0",
+   "youtube_id": "5I5EU6gV3N0",
+   "upload_date": "2021-04-08"
+  },
+  {
+   "slug": "facodi-video-5Rrc1Dn7ngg",
+   "youtube_id": "5Rrc1Dn7ngg",
+   "upload_date": "2022-11-28"
+  },
+  {
+   "slug": "facodi-video-5SIB_FjcsEo",
+   "youtube_id": "5SIB_FjcsEo",
+   "upload_date": "2021-12-06"
+  },
+  {
+   "slug": "facodi-video-5Yf_WkeCfwc",
+   "youtube_id": "5Yf_WkeCfwc",
+   "upload_date": "2021-10-06"
+  },
+  {
+   "slug": "facodi-video-5gpLQa_N2iA",
+   "youtube_id": "5gpLQa_N2iA",
+   "upload_date": "2024-02-26"
+  },
+  {
+   "slug": "facodi-video-5oBAphKquyM",
+   "youtube_id": "5oBAphKquyM",
+   "upload_date": "2025-04-24"
+  },
+  {
+   "slug": "facodi-video-6-s62mR3u1E",
+   "youtube_id": "6-s62mR3u1E",
+   "upload_date": "2025-03-08"
+  },
+  {
+   "slug": "facodi-video-63dxNm3zJqc",
+   "youtube_id": "63dxNm3zJqc",
+   "upload_date": "2022-07-17"
+  },
+  {
+   "slug": "facodi-video-63oKGbVtJZY",
+   "youtube_id": "63oKGbVtJZY",
+   "upload_date": "2025-09-05"
+  },
+  {
+   "slug": "facodi-video-68EDBZwlSuA",
+   "youtube_id": "68EDBZwlSuA",
+   "upload_date": "2019-03-29"
+  },
+  {
+   "slug": "facodi-video-6JfjBoIzgZw",
+   "youtube_id": "6JfjBoIzgZw",
+   "upload_date": "2025-02-18"
+  },
+  {
+   "slug": "facodi-video-6R2Yu_cl6OQ",
+   "youtube_id": "6R2Yu_cl6OQ",
+   "upload_date": "2022-07-10"
+  },
+  {
+   "slug": "facodi-video-6RZFfSF31qo",
+   "youtube_id": "6RZFfSF31qo",
+   "upload_date": "2019-02-13"
+  },
+  {
+   "slug": "facodi-video-6by8etdzDAo",
+   "youtube_id": "6by8etdzDAo",
+   "upload_date": "2020-11-10"
+  },
+  {
+   "slug": "facodi-video-6l7ydS54KyY",
+   "youtube_id": "6l7ydS54KyY",
+   "upload_date": "2020-04-01"
+  },
+  {
+   "slug": "facodi-video-6p1HKaHrk0Y",
+   "youtube_id": "6p1HKaHrk0Y",
+   "upload_date": "2024-02-12"
+  },
+  {
+   "slug": "facodi-video-6rdD4itgDVk",
+   "youtube_id": "6rdD4itgDVk",
+   "upload_date": "2026-02-13"
+  },
+  {
+   "slug": "facodi-video-6vM-qc2StZI",
+   "youtube_id": "6vM-qc2StZI",
+   "upload_date": "2022-05-26"
+  },
+  {
+   "slug": "facodi-video-767Ke8_FAAQ",
+   "youtube_id": "767Ke8_FAAQ",
+   "upload_date": "2021-09-16"
+  },
+  {
+   "slug": "facodi-video-7ErXwOk0oaQ",
+   "youtube_id": "7ErXwOk0oaQ",
+   "upload_date": "2022-07-11"
+  },
+  {
+   "slug": "facodi-video-7IaAAqRy7U4",
+   "youtube_id": "7IaAAqRy7U4",
+   "upload_date": "2026-02-26"
+  },
+  {
+   "slug": "facodi-video-7abj2JXxjio",
+   "youtube_id": "7abj2JXxjio",
+   "upload_date": "2025-11-01"
+  },
+  {
+   "slug": "facodi-video-7lPkYk9fmYU",
+   "youtube_id": "7lPkYk9fmYU",
+   "upload_date": "2020-07-21"
+  },
+  {
+   "slug": "facodi-video-7vEIru6Qp0U",
+   "youtube_id": "7vEIru6Qp0U",
+   "upload_date": "2020-04-27"
+  },
+  {
+   "slug": "facodi-video-80nzMDjnZaw",
+   "youtube_id": "80nzMDjnZaw",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video-88uTd11Xu3A",
+   "youtube_id": "88uTd11Xu3A",
+   "upload_date": "2019-03-20"
+  },
+  {
+   "slug": "facodi-video-8NloB9J2WTc",
+   "youtube_id": "8NloB9J2WTc",
+   "upload_date": "2021-01-29"
+  },
+  {
+   "slug": "facodi-video-8TcimpQP51g",
+   "youtube_id": "8TcimpQP51g",
+   "upload_date": "2021-05-05"
+  },
+  {
+   "slug": "facodi-video-8_Nc6SVaN-4",
+   "youtube_id": "8_Nc6SVaN-4",
+   "upload_date": "2025-03-20"
+  },
+  {
+   "slug": "facodi-video-8b7CUnBCE6k",
+   "youtube_id": "8b7CUnBCE6k",
+   "upload_date": "2021-09-18"
+  },
+  {
+   "slug": "facodi-video-8uWVkjgzB7A",
+   "youtube_id": "8uWVkjgzB7A",
+   "upload_date": "2019-04-08"
+  },
+  {
+   "slug": "facodi-video-8yuHqWVrQXk",
+   "youtube_id": "8yuHqWVrQXk",
+   "upload_date": "2021-04-30"
+  },
+  {
+   "slug": "facodi-video-8z932KFK9dU",
+   "youtube_id": "8z932KFK9dU",
+   "upload_date": "2021-05-04"
+  },
+  {
+   "slug": "facodi-video-91UN2cbzBGY",
+   "youtube_id": "91UN2cbzBGY",
+   "upload_date": "2019-05-31"
+  },
+  {
+   "slug": "facodi-video-97Sxmj9Vfco",
+   "youtube_id": "97Sxmj9Vfco",
+   "upload_date": "2020-09-03"
+  },
+  {
+   "slug": "facodi-video-9ChI6ZFz1ak",
+   "youtube_id": "9ChI6ZFz1ak",
+   "upload_date": "2022-05-09"
+  },
+  {
+   "slug": "facodi-video-9bGIBZ_BQx4",
+   "youtube_id": "9bGIBZ_BQx4",
+   "upload_date": "2022-01-28"
+  },
+  {
+   "slug": "facodi-video-9s046WsHEbk",
+   "youtube_id": "9s046WsHEbk",
+   "upload_date": "2020-03-08"
+  },
+  {
+   "slug": "facodi-video-9vYJbLTr_XE",
+   "youtube_id": "9vYJbLTr_XE",
+   "upload_date": "2020-05-24"
+  },
+  {
+   "slug": "facodi-video-A10LYLm-NgQ",
+   "youtube_id": "A10LYLm-NgQ",
+   "upload_date": "2021-06-10"
+  },
+  {
+   "slug": "facodi-video-A7lGxqCuFN4",
+   "youtube_id": "A7lGxqCuFN4",
+   "upload_date": "2026-04-30"
+  },
+  {
+   "slug": "facodi-video-AWfE3a9J_uo",
+   "youtube_id": "AWfE3a9J_uo",
+   "upload_date": "2023-01-03"
+  },
+  {
+   "slug": "facodi-video-AXpxZMRM1EY",
+   "youtube_id": "AXpxZMRM1EY",
+   "upload_date": "2024-08-06"
+  },
+  {
+   "slug": "facodi-video-AYNgg-KycQc",
+   "youtube_id": "AYNgg-KycQc",
+   "upload_date": "2025-10-20"
+  },
+  {
+   "slug": "facodi-video-AYj6lt1Iofs",
+   "youtube_id": "AYj6lt1Iofs",
+   "upload_date": "2022-01-10"
+  },
+  {
+   "slug": "facodi-video-Ab01W6h4Giw",
+   "youtube_id": "Ab01W6h4Giw",
+   "upload_date": "2026-02-03"
+  },
+  {
+   "slug": "facodi-video-AgUtL10cyOQ",
+   "youtube_id": "AgUtL10cyOQ",
+   "upload_date": "2021-05-07"
+  },
+  {
+   "slug": "facodi-video-Ala6PHlYjmw",
+   "youtube_id": "Ala6PHlYjmw",
+   "upload_date": "2025-12-06"
+  },
+  {
+   "slug": "facodi-video-B3psOozIu2E",
+   "youtube_id": "B3psOozIu2E",
+   "upload_date": "2026-05-17"
+  },
+  {
+   "slug": "facodi-video-B4PVL4TQ5_8",
+   "youtube_id": "B4PVL4TQ5_8",
+   "upload_date": "2020-01-19"
+  },
+  {
+   "slug": "facodi-video-B4iSBSeSK24",
+   "youtube_id": "B4iSBSeSK24",
+   "upload_date": "2025-03-28"
+  },
+  {
+   "slug": "facodi-video-B7gk5bfmpGM",
+   "youtube_id": "B7gk5bfmpGM",
+   "upload_date": "2019-12-19"
+  },
+  {
+   "slug": "facodi-video-BORLLC3FG2I",
+   "youtube_id": "BORLLC3FG2I",
+   "upload_date": "2021-03-04"
+  },
+  {
+   "slug": "facodi-video-BTBIvqQ9fy4",
+   "youtube_id": "BTBIvqQ9fy4",
+   "upload_date": "2024-08-27"
+  },
+  {
+   "slug": "facodi-video-BU3ImZBcUE8",
+   "youtube_id": "BU3ImZBcUE8",
+   "upload_date": "2026-05-10"
+  },
+  {
+   "slug": "facodi-video-BVMPrtTXLmw",
+   "youtube_id": "BVMPrtTXLmw",
+   "upload_date": "2022-07-06"
+  },
+  {
+   "slug": "facodi-video-BbafuaHdjDs",
+   "youtube_id": "BbafuaHdjDs",
+   "upload_date": "2025-07-31"
+  },
+  {
+   "slug": "facodi-video-BpmcBdRwNMc",
+   "youtube_id": "BpmcBdRwNMc",
+   "upload_date": "2021-12-08"
+  },
+  {
+   "slug": "facodi-video-BqTyVtGHOEo",
+   "youtube_id": "BqTyVtGHOEo",
+   "upload_date": "2020-10-29"
+  },
+  {
+   "slug": "facodi-video-BuztbUr-h7Y",
+   "youtube_id": "BuztbUr-h7Y",
+   "upload_date": "2021-10-01"
+  },
+  {
+   "slug": "facodi-video-C4nsTlefR4s",
+   "youtube_id": "C4nsTlefR4s",
+   "upload_date": "2022-11-21"
+  },
+  {
+   "slug": "facodi-video-C7G5atBqyzQ",
+   "youtube_id": "C7G5atBqyzQ",
+   "upload_date": "2019-08-21"
+  },
+  {
+   "slug": "facodi-video-CDoc2ndAufI",
+   "youtube_id": "CDoc2ndAufI",
+   "upload_date": "2026-02-13"
+  },
+  {
+   "slug": "facodi-video-CJOzgEC__7U",
+   "youtube_id": "CJOzgEC__7U",
+   "upload_date": "2026-03-11"
+  },
+  {
+   "slug": "facodi-video-CPWiViTSiM8",
+   "youtube_id": "CPWiViTSiM8",
+   "upload_date": "2024-08-29"
+  },
+  {
+   "slug": "facodi-video-CSt5yw_4zak",
+   "youtube_id": "CSt5yw_4zak",
+   "upload_date": "2023-06-08"
+  },
+  {
+   "slug": "facodi-video-CUqGnuaMBq8",
+   "youtube_id": "CUqGnuaMBq8",
+   "upload_date": "2024-07-11"
+  },
+  {
+   "slug": "facodi-video-CWWbjoOjYOg",
+   "youtube_id": "CWWbjoOjYOg",
+   "upload_date": "2020-03-09"
+  },
+  {
+   "slug": "facodi-video-CWxaXyXZ-1A",
+   "youtube_id": "CWxaXyXZ-1A",
+   "upload_date": "2021-09-14"
+  },
+  {
+   "slug": "facodi-video-ChB77_9RJOM",
+   "youtube_id": "ChB77_9RJOM",
+   "upload_date": "2019-04-05"
+  },
+  {
+   "slug": "facodi-video-CmztKGWVph0",
+   "youtube_id": "CmztKGWVph0",
+   "upload_date": "2025-01-27"
+  },
+  {
+   "slug": "facodi-video-Cn9EV3mjT-k",
+   "youtube_id": "Cn9EV3mjT-k",
+   "upload_date": "2022-02-02"
+  },
+  {
+   "slug": "facodi-video-CubS4_sKDo8",
+   "youtube_id": "CubS4_sKDo8",
+   "upload_date": "2019-05-25"
+  },
+  {
+   "slug": "facodi-video-DCd6Mf-CPf8",
+   "youtube_id": "DCd6Mf-CPf8",
+   "upload_date": "2025-04-07"
+  },
+  {
+   "slug": "facodi-video-DCfV3LV8NkE",
+   "youtube_id": "DCfV3LV8NkE",
+   "upload_date": "2021-05-11"
+  },
+  {
+   "slug": "facodi-video-DI8wHiZlRgQ",
+   "youtube_id": "DI8wHiZlRgQ",
+   "upload_date": "2025-10-06"
+  },
+  {
+   "slug": "facodi-video-DpSbHbtV3dw",
+   "youtube_id": "DpSbHbtV3dw",
+   "upload_date": "2022-03-30"
+  },
+  {
+   "slug": "facodi-video-DusoPOW_XG4",
+   "youtube_id": "DusoPOW_XG4",
+   "upload_date": "2021-09-07"
+  },
+  {
+   "slug": "facodi-video-DzX4Ok48HV4",
+   "youtube_id": "DzX4Ok48HV4",
+   "upload_date": "2021-04-30"
+  },
+  {
+   "slug": "facodi-video-E2ZIxzXFL7s",
+   "youtube_id": "E2ZIxzXFL7s",
+   "upload_date": "2017-09-28"
+  },
+  {
+   "slug": "facodi-video-E3ZILV7ER54",
+   "youtube_id": "E3ZILV7ER54",
+   "upload_date": "2020-03-02"
+  },
+  {
+   "slug": "facodi-video-EEFxcuaxQ_Q",
+   "youtube_id": "EEFxcuaxQ_Q",
+   "upload_date": "2021-12-07"
+  },
+  {
+   "slug": "facodi-video-EGzAJPGjyE0",
+   "youtube_id": "EGzAJPGjyE0",
+   "upload_date": "2022-04-15"
+  },
+  {
+   "slug": "facodi-video-EcbgbKtOELY",
+   "youtube_id": "EcbgbKtOELY",
+   "upload_date": "2026-03-14"
+  },
+  {
+   "slug": "facodi-video-Eg0m_k9F9P4",
+   "youtube_id": "Eg0m_k9F9P4",
+   "upload_date": "2022-04-11"
+  },
+  {
+   "slug": "facodi-video-Eg98NG7bPjo",
+   "youtube_id": "Eg98NG7bPjo",
+   "upload_date": "2021-08-15"
+  },
+  {
+   "slug": "facodi-video-EnMondApUtY",
+   "youtube_id": "EnMondApUtY",
+   "upload_date": "2025-02-05"
+  },
+  {
+   "slug": "facodi-video-EoQFKtPz15Y",
+   "youtube_id": "EoQFKtPz15Y",
+   "upload_date": "2021-08-02"
+  },
+  {
+   "slug": "facodi-video-F-mUPmg_rfc",
+   "youtube_id": "F-mUPmg_rfc",
+   "upload_date": "2021-01-31"
+  },
+  {
+   "slug": "facodi-video-F2_nWcoVMO0",
+   "youtube_id": "F2_nWcoVMO0",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video-FG3QR9HeXHU",
+   "youtube_id": "FG3QR9HeXHU",
+   "upload_date": "2019-11-19"
+  },
+  {
+   "slug": "facodi-video-FMp4klLrREo",
+   "youtube_id": "FMp4klLrREo",
+   "upload_date": "2019-09-16"
+  },
+  {
+   "slug": "facodi-video-FNqdV5Zb_5Q",
+   "youtube_id": "FNqdV5Zb_5Q",
+   "upload_date": "2017-06-06"
+  },
+  {
+   "slug": "facodi-video-FYkWjKTKX6o",
+   "youtube_id": "FYkWjKTKX6o",
+   "upload_date": "2025-03-04"
+  },
+  {
+   "slug": "facodi-video-FZcBwjXBKWk",
+   "youtube_id": "FZcBwjXBKWk",
+   "upload_date": "2021-05-08"
+  },
+  {
+   "slug": "facodi-video-FqHd1Cu_Cq4",
+   "youtube_id": "FqHd1Cu_Cq4",
+   "upload_date": "2022-06-01"
+  },
+  {
+   "slug": "facodi-video-Frk8KYDOj60",
+   "youtube_id": "Frk8KYDOj60",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video-G3bEOwfrVrc",
+   "youtube_id": "G3bEOwfrVrc",
+   "upload_date": "2024-12-10"
+  },
+  {
+   "slug": "facodi-video-G6gVuVms0tA",
+   "youtube_id": "G6gVuVms0tA",
+   "upload_date": "2024-06-17"
+  },
+  {
+   "slug": "facodi-video-GCLkqUOHUh8",
+   "youtube_id": "GCLkqUOHUh8",
+   "upload_date": "2019-12-13"
+  },
+  {
+   "slug": "facodi-video-GEwm-AnPNCM",
+   "youtube_id": "GEwm-AnPNCM",
+   "upload_date": "2022-04-13"
+  },
+  {
+   "slug": "facodi-video-GRpdA7M9Qi0",
+   "youtube_id": "GRpdA7M9Qi0",
+   "upload_date": "2020-04-19"
+  },
+  {
+   "slug": "facodi-video-GbXl_XmPnu4",
+   "youtube_id": "GbXl_XmPnu4",
+   "upload_date": "2022-08-04"
+  },
+  {
+   "slug": "facodi-video-GeaIMnCbRPQ",
+   "youtube_id": "GeaIMnCbRPQ",
+   "upload_date": "2023-05-21"
+  },
+  {
+   "slug": "facodi-video-GewHZ9JKQHQ",
+   "youtube_id": "GewHZ9JKQHQ",
+   "upload_date": "2023-01-27"
+  },
+  {
+   "slug": "facodi-video-GhKVR72eJmA",
+   "youtube_id": "GhKVR72eJmA",
+   "upload_date": "2022-10-03"
+  },
+  {
+   "slug": "facodi-video-Gif5HKIlqFk",
+   "youtube_id": "Gif5HKIlqFk",
+   "upload_date": "2024-08-26"
+  },
+  {
+   "slug": "facodi-video-GvojVhaUQ54",
+   "youtube_id": "GvojVhaUQ54",
+   "upload_date": "2022-06-16"
+  },
+  {
+   "slug": "facodi-video-GwNyAfZ_9RA",
+   "youtube_id": "GwNyAfZ_9RA",
+   "upload_date": "2022-06-19"
+  },
+  {
+   "slug": "facodi-video-H3fdP7XB77A",
+   "youtube_id": "H3fdP7XB77A",
+   "upload_date": "2021-08-21"
+  },
+  {
+   "slug": "facodi-video-HFo5C43aA1c",
+   "youtube_id": "HFo5C43aA1c",
+   "upload_date": "2026-03-01"
+  },
+  {
+   "slug": "facodi-video-HH81AoQVvsA",
+   "youtube_id": "HH81AoQVvsA",
+   "upload_date": "2020-10-15"
+  },
+  {
+   "slug": "facodi-video-HMm3oElWtUw",
+   "youtube_id": "HMm3oElWtUw",
+   "upload_date": "2020-07-19"
+  },
+  {
+   "slug": "facodi-video-HQj_l5FABQc",
+   "youtube_id": "HQj_l5FABQc",
+   "upload_date": "2023-11-02"
+  },
+  {
+   "slug": "facodi-video-HXV3zeQKqGY",
+   "youtube_id": "HXV3zeQKqGY",
+   "upload_date": "2018-07-02"
+  },
+  {
+   "slug": "facodi-video-HZFNt-Grw0U",
+   "youtube_id": "HZFNt-Grw0U",
+   "upload_date": "2025-06-02"
+  },
+  {
+   "slug": "facodi-video-HfCKCkq4keI",
+   "youtube_id": "HfCKCkq4keI",
+   "upload_date": "2018-02-27"
+  },
+  {
+   "slug": "facodi-video-HmFUrlQcCJ0",
+   "youtube_id": "HmFUrlQcCJ0",
+   "upload_date": "2020-01-12"
+  },
+  {
+   "slug": "facodi-video-Honm31triIk",
+   "youtube_id": "Honm31triIk",
+   "upload_date": "2022-04-11"
+  },
+  {
+   "slug": "facodi-video-HqtKJbNMm6Y",
+   "youtube_id": "HqtKJbNMm6Y",
+   "upload_date": "2020-05-18"
+  },
+  {
+   "slug": "facodi-video-HuAc85cLRx0",
+   "youtube_id": "HuAc85cLRx0",
+   "upload_date": "2025-06-11"
+  },
+  {
+   "slug": "facodi-video-HwHO_w6V_No",
+   "youtube_id": "HwHO_w6V_No",
+   "upload_date": "2019-04-01"
+  },
+  {
+   "slug": "facodi-video-I2wqSXcTKIQ",
+   "youtube_id": "I2wqSXcTKIQ",
+   "upload_date": "2025-04-09"
+  },
+  {
+   "slug": "facodi-video-IMTzJoWrtU0",
+   "youtube_id": "IMTzJoWrtU0",
+   "upload_date": "2026-02-06"
+  },
+  {
+   "slug": "facodi-video-Il_jlZJV4G8",
+   "youtube_id": "Il_jlZJV4G8",
+   "upload_date": "2022-07-28"
+  },
+  {
+   "slug": "facodi-video-InKNIvky2KE",
+   "youtube_id": "InKNIvky2KE",
+   "upload_date": "2018-05-11"
+  },
+  {
+   "slug": "facodi-video-It1-TRv2Rzw",
+   "youtube_id": "It1-TRv2Rzw",
+   "upload_date": "2021-05-10"
+  },
+  {
+   "slug": "facodi-video-IwKd7P1ckLI",
+   "youtube_id": "IwKd7P1ckLI",
+   "upload_date": "2019-10-21"
+  },
+  {
+   "slug": "facodi-video-IxPbPxyUUFA",
+   "youtube_id": "IxPbPxyUUFA",
+   "upload_date": "2021-06-11"
+  },
+  {
+   "slug": "facodi-video-JDVg4fIoH5s",
+   "youtube_id": "JDVg4fIoH5s",
+   "upload_date": "2020-11-13"
+  },
+  {
+   "slug": "facodi-video-JDiD-OBl-ow",
+   "youtube_id": "JDiD-OBl-ow",
+   "upload_date": "2026-08-02"
+  },
+  {
+   "slug": "facodi-video-_1Q-Oo_mpmo",
+   "youtube_id": "_1Q-Oo_mpmo",
+   "upload_date": "2021-05-10"
+  },
+  {
+   "slug": "facodi-video-_71nVXkquQ0",
+   "youtube_id": "_71nVXkquQ0",
+   "upload_date": "2025-04-16"
+  },
+  {
+   "slug": "facodi-video-_C6vXSCazts",
+   "youtube_id": "_C6vXSCazts",
+   "upload_date": "2020-08-02"
+  },
+  {
+   "slug": "facodi-video-_MkDQ7hrDn0",
+   "youtube_id": "_MkDQ7hrDn0",
+   "upload_date": "2025-01-17"
+  },
+  {
+   "slug": "facodi-video-_RI3NUj1w1o",
+   "youtube_id": "_RI3NUj1w1o",
+   "upload_date": "2021-02-09"
+  },
+  {
+   "slug": "facodi-video-_ZKCJ4Y8UTo",
+   "youtube_id": "_ZKCJ4Y8UTo",
+   "upload_date": "2024-08-30"
+  },
+  {
+   "slug": "facodi-video-_gXJHeJiigg",
+   "youtube_id": "_gXJHeJiigg",
+   "upload_date": "2021-10-02"
+  },
+  {
+   "slug": "facodi-video-_oFiIVuXV7k",
+   "youtube_id": "_oFiIVuXV7k",
+   "upload_date": "2024-11-26"
+  },
+  {
+   "slug": "facodi-video-_tGbu-b1bIc",
+   "youtube_id": "_tGbu-b1bIc",
+   "upload_date": "2025-02-12"
+  },
+  {
+   "slug": "facodi-video-aDyXvEJ0NAY",
+   "youtube_id": "aDyXvEJ0NAY",
+   "upload_date": "2019-11-17"
+  },
+  {
+   "slug": "facodi-video-aDziF-eM08w",
+   "youtube_id": "aDziF-eM08w",
+   "upload_date": "2017-10-27"
+  },
+  {
+   "slug": "facodi-video-aKQkRo-1Hv0",
+   "youtube_id": "aKQkRo-1Hv0",
+   "upload_date": "2022-06-27"
+  },
+  {
+   "slug": "facodi-video-aMDwueq9_sY",
+   "youtube_id": "aMDwueq9_sY",
+   "upload_date": "2024-10-04"
+  },
+  {
+   "slug": "facodi-video-aMdkTOLF_Vw",
+   "youtube_id": "aMdkTOLF_Vw",
+   "upload_date": "2018-02-27"
+  },
+  {
+   "slug": "facodi-video-aV67vNreUgU",
+   "youtube_id": "aV67vNreUgU",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video-af6Tq3OVWxI",
+   "youtube_id": "af6Tq3OVWxI",
+   "upload_date": "2020-06-10"
+  },
+  {
+   "slug": "facodi-video-afV7yiHWMY0",
+   "youtube_id": "afV7yiHWMY0",
+   "upload_date": "2021-12-02"
+  },
+  {
+   "slug": "facodi-video-agLjvDJfEjw",
+   "youtube_id": "agLjvDJfEjw",
+   "upload_date": "2022-01-03"
+  },
+  {
+   "slug": "facodi-video-am-_MDjGXZA",
+   "youtube_id": "am-_MDjGXZA",
+   "upload_date": "2021-10-02"
+  },
+  {
+   "slug": "facodi-video-aysceqdGFw8",
+   "youtube_id": "aysceqdGFw8",
+   "upload_date": "2017-10-04"
+  },
+  {
+   "slug": "facodi-video-b1EMX3wyqCY",
+   "youtube_id": "b1EMX3wyqCY",
+   "upload_date": "2026-09-28"
+  },
+  {
+   "slug": "facodi-video-b5m864fIKvA",
+   "youtube_id": "b5m864fIKvA",
+   "upload_date": "2019-05-24"
+  },
+  {
+   "slug": "facodi-video-b9CWKYAJrr4",
+   "youtube_id": "b9CWKYAJrr4",
+   "upload_date": "2025-01-27"
+  },
+  {
+   "slug": "facodi-video-bD8q4xbVCwI",
+   "youtube_id": "bD8q4xbVCwI",
+   "upload_date": "2021-05-11"
+  },
+  {
+   "slug": "facodi-video-bUcuZork1XY",
+   "youtube_id": "bUcuZork1XY",
+   "upload_date": "2025-02-11"
+  },
+  {
+   "slug": "facodi-video-bVbR3tqTHpQ",
+   "youtube_id": "bVbR3tqTHpQ",
+   "upload_date": "2024-12-03"
+  },
+  {
+   "slug": "facodi-video-bZp5th6rb-w",
+   "youtube_id": "bZp5th6rb-w",
+   "upload_date": "2021-06-25"
+  },
+  {
+   "slug": "facodi-video-baG3KFVt21I",
+   "youtube_id": "baG3KFVt21I",
+   "upload_date": "2021-12-01"
+  },
+  {
+   "slug": "facodi-video-bcObvS2pPxY",
+   "youtube_id": "bcObvS2pPxY",
+   "upload_date": "2020-10-15"
+  },
+  {
+   "slug": "facodi-video-bsZDZKljV6Y",
+   "youtube_id": "bsZDZKljV6Y",
+   "upload_date": "2020-06-14"
+  },
+  {
+   "slug": "facodi-video-c7EnpLmbpoc",
+   "youtube_id": "c7EnpLmbpoc",
+   "upload_date": "2021-06-23"
+  },
+  {
+   "slug": "facodi-video-cCR3QEmg5tE",
+   "youtube_id": "cCR3QEmg5tE",
+   "upload_date": "2023-10-19"
+  },
+  {
+   "slug": "facodi-video-cKCytSOotDo",
+   "youtube_id": "cKCytSOotDo",
+   "upload_date": "2024-11-25"
+  },
+  {
+   "slug": "facodi-video-cVAB6Dj341E",
+   "youtube_id": "cVAB6Dj341E",
+   "upload_date": "2025-09-08"
+  },
+  {
+   "slug": "facodi-video-cWBEMN75IMc",
+   "youtube_id": "cWBEMN75IMc",
+   "upload_date": "2019-05-13"
+  },
+  {
+   "slug": "facodi-video-cZY9PW1lUW0",
+   "youtube_id": "cZY9PW1lUW0",
+   "upload_date": "2025-01-27"
+  },
+  {
+   "slug": "facodi-video-cd4y6udSm-A",
+   "youtube_id": "cd4y6udSm-A",
+   "upload_date": "2018-10-17"
+  },
+  {
+   "slug": "facodi-video-cksNMr7ZwhI",
+   "youtube_id": "cksNMr7ZwhI",
+   "upload_date": "2020-05-11"
+  },
+  {
+   "slug": "facodi-video-cr-MWnAXtiQ",
+   "youtube_id": "cr-MWnAXtiQ",
+   "upload_date": "2025-11-04"
+  },
+  {
+   "slug": "facodi-video-crmLq8_FtLc",
+   "youtube_id": "crmLq8_FtLc",
+   "upload_date": "2020-09-20"
+  },
+  {
+   "slug": "facodi-video-cv_FW6aI-5A",
+   "youtube_id": "cv_FW6aI-5A",
+   "upload_date": "2026-05-14"
+  },
+  {
+   "slug": "facodi-video-d1oh_o_kEtw",
+   "youtube_id": "d1oh_o_kEtw",
+   "upload_date": "2021-09-06"
+  },
+  {
+   "slug": "facodi-video-dDwWaoJlSlA",
+   "youtube_id": "dDwWaoJlSlA",
+   "upload_date": "2019-09-02"
+  },
+  {
+   "slug": "facodi-video-dQtIKmNdVgA",
+   "youtube_id": "dQtIKmNdVgA",
+   "upload_date": "2022-06-26"
+  },
+  {
+   "slug": "facodi-video-dU7GwCOgvNY",
+   "youtube_id": "dU7GwCOgvNY",
+   "upload_date": "2023-06-20"
+  },
+  {
+   "slug": "facodi-video-dWdyxWQrxAY",
+   "youtube_id": "dWdyxWQrxAY",
+   "upload_date": "2021-05-08"
+  },
+  {
+   "slug": "facodi-video-dihg92BT6ys",
+   "youtube_id": "dihg92BT6ys",
+   "upload_date": "2019-12-13"
+  },
+  {
+   "slug": "facodi-video-dpPxFB4rS40",
+   "youtube_id": "dpPxFB4rS40",
+   "upload_date": "2022-04-11"
+  },
+  {
+   "slug": "facodi-video-e1MGJr-IWdY",
+   "youtube_id": "e1MGJr-IWdY",
+   "upload_date": "2021-08-10"
+  },
+  {
+   "slug": "facodi-video-eIwy6lyxS7Q",
+   "youtube_id": "eIwy6lyxS7Q",
+   "upload_date": "2021-05-27"
+  },
+  {
+   "slug": "facodi-video-eKTIKqTSmHk",
+   "youtube_id": "eKTIKqTSmHk",
+   "upload_date": "2022-12-08"
+  },
+  {
+   "slug": "facodi-video-eNt2asXV0ko",
+   "youtube_id": "eNt2asXV0ko",
+   "upload_date": "2023-03-26"
+  },
+  {
+   "slug": "facodi-video-eQl3DSlrEHA",
+   "youtube_id": "eQl3DSlrEHA",
+   "upload_date": "2025-05-21"
+  },
+  {
+   "slug": "facodi-video-eRjkd8K6T10",
+   "youtube_id": "eRjkd8K6T10",
+   "upload_date": "2021-06-14"
+  },
+  {
+   "slug": "facodi-video-eXVlK2PzE1k",
+   "youtube_id": "eXVlK2PzE1k",
+   "upload_date": "2020-06-29"
+  },
+  {
+   "slug": "facodi-video-ebkzrOMjGXU",
+   "youtube_id": "ebkzrOMjGXU",
+   "upload_date": "2019-05-24"
+  },
+  {
+   "slug": "facodi-video-ecxJzTpg5hY",
+   "youtube_id": "ecxJzTpg5hY",
+   "upload_date": "2022-03-31"
+  },
+  {
+   "slug": "facodi-video-exVGPvcN6jA",
+   "youtube_id": "exVGPvcN6jA",
+   "upload_date": "2021-06-03"
+  },
+  {
+   "slug": "facodi-video-ez_UL9N_e9M",
+   "youtube_id": "ez_UL9N_e9M",
+   "upload_date": "2022-06-26"
+  },
+  {
+   "slug": "facodi-video-f1YvTdVj0V8",
+   "youtube_id": "f1YvTdVj0V8",
+   "upload_date": "2026-05-07"
+  },
+  {
+   "slug": "facodi-video-f6nXayXgjZI",
+   "youtube_id": "f6nXayXgjZI",
+   "upload_date": "2021-05-17"
+  },
+  {
+   "slug": "facodi-video-f6rTZHc98aU",
+   "youtube_id": "f6rTZHc98aU",
+   "upload_date": "2021-05-02"
+  },
+  {
+   "slug": "facodi-video-fDSsMtzu7Io",
+   "youtube_id": "fDSsMtzu7Io",
+   "upload_date": "2021-05-15"
+  },
+  {
+   "slug": "facodi-video-fHom2rFJGjg",
+   "youtube_id": "fHom2rFJGjg",
+   "upload_date": "2020-02-17"
+  },
+  {
+   "slug": "facodi-video-ff_VEx3Otak",
+   "youtube_id": "ff_VEx3Otak",
+   "upload_date": "2020-02-02"
+  },
+  {
+   "slug": "facodi-video-fipbqXzSSzo",
+   "youtube_id": "fipbqXzSSzo",
+   "upload_date": "2022-07-12"
+  },
+  {
+   "slug": "facodi-video-fkjjqyfN51c",
+   "youtube_id": "fkjjqyfN51c",
+   "upload_date": "2017-09-06"
+  },
+  {
+   "slug": "facodi-video-fmyvWz5TUWg",
+   "youtube_id": "fmyvWz5TUWg",
+   "upload_date": "2020-11-09"
+  },
+  {
+   "slug": "facodi-video-fxI85KqE-u8",
+   "youtube_id": "fxI85KqE-u8",
+   "upload_date": "2019-02-15"
+  },
+  {
+   "slug": "facodi-video-g22Tq4PExZs",
+   "youtube_id": "g22Tq4PExZs",
+   "upload_date": "2020-08-30"
+  },
+  {
+   "slug": "facodi-video-g4WUTb0jRkY",
+   "youtube_id": "g4WUTb0jRkY",
+   "upload_date": "2022-04-21"
+  },
+  {
+   "slug": "facodi-video-gB_y1GRLwys",
+   "youtube_id": "gB_y1GRLwys",
+   "upload_date": "2025-01-27"
+  },
+  {
+   "slug": "facodi-video-gBuTIrEG87s",
+   "youtube_id": "gBuTIrEG87s",
+   "upload_date": "2025-09-12"
+  },
+  {
+   "slug": "facodi-video-gFtYH4Tci0k",
+   "youtube_id": "gFtYH4Tci0k",
+   "upload_date": "2021-09-01"
+  },
+  {
+   "slug": "facodi-video-gKM6b2EnW1k",
+   "youtube_id": "gKM6b2EnW1k",
+   "upload_date": "2024-06-18"
+  },
+  {
+   "slug": "facodi-video-gM1v7lOY1nI",
+   "youtube_id": "gM1v7lOY1nI",
+   "upload_date": "2022-12-15"
+  },
+  {
+   "slug": "facodi-video-gTWm1ji4u9A",
+   "youtube_id": "gTWm1ji4u9A",
+   "upload_date": "2025-03-18"
+  },
+  {
+   "slug": "facodi-video-gVRjtT_IKxg",
+   "youtube_id": "gVRjtT_IKxg",
+   "upload_date": "2025-04-19"
+  },
+  {
+   "slug": "facodi-video-gWOy7S6lz8U",
+   "youtube_id": "gWOy7S6lz8U",
+   "upload_date": "2026-05-17"
+  },
+  {
+   "slug": "facodi-video-gpJgtED36U4",
+   "youtube_id": "gpJgtED36U4",
+   "upload_date": "2022-01-29"
+  },
+  {
+   "slug": "facodi-video-h4nCsLP93os",
+   "youtube_id": "h4nCsLP93os",
+   "upload_date": "2022-03-31"
+  },
+  {
+   "slug": "facodi-video-hBW9xzbYb70",
+   "youtube_id": "hBW9xzbYb70",
+   "upload_date": "2022-07-08"
+  },
+  {
+   "slug": "facodi-video-hDZdTihSWik",
+   "youtube_id": "hDZdTihSWik",
+   "upload_date": "2022-03-20"
+  },
+  {
+   "slug": "facodi-video-hKvOV3HZvkE",
+   "youtube_id": "hKvOV3HZvkE",
+   "upload_date": "2022-06-05"
+  },
+  {
+   "slug": "facodi-video-hORgEga59EE",
+   "youtube_id": "hORgEga59EE",
+   "upload_date": "2021-06-12"
+  },
+  {
+   "slug": "facodi-video-hXkmv9MdeRg",
+   "youtube_id": "hXkmv9MdeRg",
+   "upload_date": "2025-03-19"
+  },
+  {
+   "slug": "facodi-video-haJihppldZY",
+   "youtube_id": "haJihppldZY",
+   "upload_date": "2026-05-14"
+  },
+  {
+   "slug": "facodi-video-hdDHg1p3YVc",
+   "youtube_id": "hdDHg1p3YVc",
+   "upload_date": "2017-06-05"
+  },
+  {
+   "slug": "facodi-video-hgX5wwQuriA",
+   "youtube_id": "hgX5wwQuriA",
+   "upload_date": "2020-03-01"
+  },
+  {
+   "slug": "facodi-video-hglqZKEHlg0",
+   "youtube_id": "hglqZKEHlg0",
+   "upload_date": "2019-09-09"
+  },
+  {
+   "slug": "facodi-video-hhy6EDDjy-o",
+   "youtube_id": "hhy6EDDjy-o",
+   "upload_date": "2026-06-05"
+  },
+  {
+   "slug": "facodi-video-hyvXcbDaI8Q",
+   "youtube_id": "hyvXcbDaI8Q",
+   "upload_date": "2021-12-07"
+  },
+  {
+   "slug": "facodi-video-i06swUAOyc4",
+   "youtube_id": "i06swUAOyc4",
+   "upload_date": "2019-08-12"
+  },
+  {
+   "slug": "facodi-video-i07ONmuT1uQ",
+   "youtube_id": "i07ONmuT1uQ",
+   "upload_date": "2022-01-24"
+  },
+  {
+   "slug": "facodi-video-iAArpL6voHo",
+   "youtube_id": "iAArpL6voHo",
+   "upload_date": "2026-04-26"
+  },
+  {
+   "slug": "facodi-video-iQp4MUbSp3E",
+   "youtube_id": "iQp4MUbSp3E",
+   "upload_date": "2022-12-19"
+  },
+  {
+   "slug": "facodi-video-iRil_pJJB1g",
+   "youtube_id": "iRil_pJJB1g",
+   "upload_date": "2021-10-03"
+  },
+  {
+   "slug": "facodi-video-iV9dkYMFEIE",
+   "youtube_id": "iV9dkYMFEIE",
+   "upload_date": "2022-03-31"
+  },
+  {
+   "slug": "facodi-video-iVi_vqSI9-8",
+   "youtube_id": "iVi_vqSI9-8",
+   "upload_date": "2021-10-02"
+  },
+  {
+   "slug": "facodi-video-idf86c350U0",
+   "youtube_id": "idf86c350U0",
+   "upload_date": "2024-12-09"
+  },
+  {
+   "slug": "facodi-video-ie9X1MNUFcs",
+   "youtube_id": "ie9X1MNUFcs",
+   "upload_date": "2025-03-07"
+  },
+  {
+   "slug": "facodi-video-ijVjz469WHc",
+   "youtube_id": "ijVjz469WHc",
+   "upload_date": "2025-04-30"
+  },
+  {
+   "slug": "facodi-video-imSHkudjaks",
+   "youtube_id": "imSHkudjaks",
+   "upload_date": "2025-09-28"
+  },
+  {
+   "slug": "facodi-video-j30FhufdR5c",
+   "youtube_id": "j30FhufdR5c",
+   "upload_date": "2023-03-17"
+  },
+  {
+   "slug": "facodi-video-j6Ule7GXaRs",
+   "youtube_id": "j6Ule7GXaRs",
+   "upload_date": "2024-02-02"
+  },
+  {
+   "slug": "facodi-video-jBl03Hz0T5E",
+   "youtube_id": "jBl03Hz0T5E",
+   "upload_date": "2022-03-19"
+  },
+  {
+   "slug": "facodi-video-jDY1_7fz3BM",
+   "youtube_id": "jDY1_7fz3BM",
+   "upload_date": "2024-06-30"
+  },
+  {
+   "slug": "facodi-video-jE24gQtHjXY",
+   "youtube_id": "jE24gQtHjXY",
+   "upload_date": "2022-08-15"
+  }
+ ],
+ "not_found": [
+  {
+   "slug": "facodi-video-9A_AzxNMc30",
+   "youtube_id": "9A_AzxNMc30",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-9q9KRbljm0Q",
+   "youtube_id": "9q9KRbljm0Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-9u1_gPUmyQg",
+   "youtube_id": "9u1_gPUmyQg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-AB4wWER_wAI",
+   "youtube_id": "AB4wWER_wAI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-IOF3GUbuLdc",
+   "youtube_id": "IOF3GUbuLdc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-IpIOhPdI9_Y",
+   "youtube_id": "IpIOhPdI9_Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-J9KJztvxJQY",
+   "youtube_id": "J9KJztvxJQY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-JEINASluDB4",
+   "youtube_id": "JEINASluDB4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-JG90YeuY7nE",
+   "youtube_id": "JG90YeuY7nE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-JHXWF-AoDRA",
+   "youtube_id": "JHXWF-AoDRA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-K-_ZIxJ1rqE",
+   "youtube_id": "K-_ZIxJ1rqE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-K5Ux_m0ccuo",
+   "youtube_id": "K5Ux_m0ccuo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-K8F4KfrgEvY",
+   "youtube_id": "K8F4KfrgEvY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KDwM00nA_ko",
+   "youtube_id": "KDwM00nA_ko",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KTljJ5IO1a4",
+   "youtube_id": "KTljJ5IO1a4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-K_R-uAQmTQU",
+   "youtube_id": "K_R-uAQmTQU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KbOqJO1Q1lA",
+   "youtube_id": "KbOqJO1Q1lA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KdHcg6XWA0s",
+   "youtube_id": "KdHcg6XWA0s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KlHtzXSlz5w",
+   "youtube_id": "KlHtzXSlz5w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KqSfLLXcxtU",
+   "youtube_id": "KqSfLLXcxtU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KrQSZgHFGFg",
+   "youtube_id": "KrQSZgHFGFg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-KyqFXVVgvIs",
+   "youtube_id": "KyqFXVVgvIs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-LNIwcYjI2sc",
+   "youtube_id": "LNIwcYjI2sc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-LWMJvwY-JCc",
+   "youtube_id": "LWMJvwY-JCc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-LYsD1EaE1pA",
+   "youtube_id": "LYsD1EaE1pA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-L_c0EBLBEDE",
+   "youtube_id": "L_c0EBLBEDE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Lf7846MlOkY",
+   "youtube_id": "Lf7846MlOkY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-LlwvC8IxTaM",
+   "youtube_id": "LlwvC8IxTaM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Loucsjw-A24",
+   "youtube_id": "Loucsjw-A24",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Lt7yJ3QKBI0",
+   "youtube_id": "Lt7yJ3QKBI0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-M8BSg8VMta4",
+   "youtube_id": "M8BSg8VMta4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MFiufOqla_g",
+   "youtube_id": "MFiufOqla_g",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-M_xCxHcBdBo",
+   "youtube_id": "M_xCxHcBdBo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MbwCZ6-H6Dw",
+   "youtube_id": "MbwCZ6-H6Dw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MgJQT0frVMQ",
+   "youtube_id": "MgJQT0frVMQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MiMO4f6b1BY",
+   "youtube_id": "MiMO4f6b1BY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Mkexe8GndEA",
+   "youtube_id": "Mkexe8GndEA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Mp0vhMDI7fA",
+   "youtube_id": "Mp0vhMDI7fA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MtsUr3rMbTY",
+   "youtube_id": "MtsUr3rMbTY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-MtxP2pyCvYA",
+   "youtube_id": "MtxP2pyCvYA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-N2xGmcOPgpM",
+   "youtube_id": "N2xGmcOPgpM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-N3gvsXPyFt4",
+   "youtube_id": "N3gvsXPyFt4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-N9_cX20dlBg",
+   "youtube_id": "N9_cX20dlBg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NC3kdjHXmks",
+   "youtube_id": "NC3kdjHXmks",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NQP1MRWIQA0",
+   "youtube_id": "NQP1MRWIQA0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-N_0ujgVRrdI",
+   "youtube_id": "N_0ujgVRrdI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Nj9xw_8ZQCg",
+   "youtube_id": "Nj9xw_8ZQCg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NpEd2p2kb-s",
+   "youtube_id": "NpEd2p2kb-s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NrTLOOuVehQ",
+   "youtube_id": "NrTLOOuVehQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NuIOO5VWmXc",
+   "youtube_id": "NuIOO5VWmXc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NviwT9nvJEc",
+   "youtube_id": "NviwT9nvJEc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-NyxAXxEYkfA",
+   "youtube_id": "NyxAXxEYkfA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-O-ruLrLXoNE",
+   "youtube_id": "O-ruLrLXoNE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-O19X_lNEwIA",
+   "youtube_id": "O19X_lNEwIA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OCM34w5Lg-k",
+   "youtube_id": "OCM34w5Lg-k",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OEdRSbbYI14",
+   "youtube_id": "OEdRSbbYI14",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OKqpZ6zbZwQ",
+   "youtube_id": "OKqpZ6zbZwQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OOKGtPk0ZCM",
+   "youtube_id": "OOKGtPk0ZCM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OY4RHvyrRsI",
+   "youtube_id": "OY4RHvyrRsI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OZBGNpzTVD0",
+   "youtube_id": "OZBGNpzTVD0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OZLP-SCHW7A",
+   "youtube_id": "OZLP-SCHW7A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Oe3yehZ7XVk",
+   "youtube_id": "Oe3yehZ7XVk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Ofktsne-utM",
+   "youtube_id": "Ofktsne-utM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OnbmtKSIILE",
+   "youtube_id": "OnbmtKSIILE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-OzpZH330Tqc",
+   "youtube_id": "OzpZH330Tqc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PB254Cfjlyk",
+   "youtube_id": "PB254Cfjlyk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PIG8KI05OfM",
+   "youtube_id": "PIG8KI05OfM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PKgaZR44Qbg",
+   "youtube_id": "PKgaZR44Qbg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PMOEMs00Jz4",
+   "youtube_id": "PMOEMs00Jz4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PU_XMp5gQRM",
+   "youtube_id": "PU_XMp5gQRM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PV2nsCeWVCs",
+   "youtube_id": "PV2nsCeWVCs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PVu_jZrrH-M",
+   "youtube_id": "PVu_jZrrH-M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PW_Y2pvJg4s",
+   "youtube_id": "PW_Y2pvJg4s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PXQfMpuGxJg",
+   "youtube_id": "PXQfMpuGxJg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PZgLetQupA8",
+   "youtube_id": "PZgLetQupA8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-PhZYGTNxu6s",
+   "youtube_id": "PhZYGTNxu6s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Pu3tyDPf0pg",
+   "youtube_id": "Pu3tyDPf0pg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Q3q37jvwJiI",
+   "youtube_id": "Q3q37jvwJiI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Q8NUW3CZRvw",
+   "youtube_id": "Q8NUW3CZRvw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QDz8fh5w-Co",
+   "youtube_id": "QDz8fh5w-Co",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QK2BweTITwA",
+   "youtube_id": "QK2BweTITwA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QZW3LcskCwI",
+   "youtube_id": "QZW3LcskCwI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Q_Y_iMFheWQ",
+   "youtube_id": "Q_Y_iMFheWQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Q_smhHkGi70",
+   "youtube_id": "Q_smhHkGi70",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QbQq3I4DVpM",
+   "youtube_id": "QbQq3I4DVpM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QdPTWhACIwY",
+   "youtube_id": "QdPTWhACIwY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QdmZX76E5aQ",
+   "youtube_id": "QdmZX76E5aQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QijVl0VJ2Ik",
+   "youtube_id": "QijVl0VJ2Ik",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QqLL0reS80Y",
+   "youtube_id": "QqLL0reS80Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-QrOaBB8bi3Q",
+   "youtube_id": "QrOaBB8bi3Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RJ9Iyy1Ekuk",
+   "youtube_id": "RJ9Iyy1Ekuk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RK4bj-KhA-U",
+   "youtube_id": "RK4bj-KhA-U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RK90VSaYjuk",
+   "youtube_id": "RK90VSaYjuk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RSRGO8U6rSU",
+   "youtube_id": "RSRGO8U6rSU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RbCqWn_uH8Q",
+   "youtube_id": "RbCqWn_uH8Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RnlVwQc6620",
+   "youtube_id": "RnlVwQc6620",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RqlIpwpHWHA",
+   "youtube_id": "RqlIpwpHWHA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-RsLE1e4e-Lk",
+   "youtube_id": "RsLE1e4e-Lk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-S0BFstE-Xdk",
+   "youtube_id": "S0BFstE-Xdk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-S9uPNppGsGo",
+   "youtube_id": "S9uPNppGsGo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SB5i1cGaLFg",
+   "youtube_id": "SB5i1cGaLFg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SEIuuF7Uosw",
+   "youtube_id": "SEIuuF7Uosw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SGkmYU305Do",
+   "youtube_id": "SGkmYU305Do",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SIMlBFy-Erk",
+   "youtube_id": "SIMlBFy-Erk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SIjRu1Xw1QM",
+   "youtube_id": "SIjRu1Xw1QM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SJI-FAiMi7A",
+   "youtube_id": "SJI-FAiMi7A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SLY_ZcNYjIY",
+   "youtube_id": "SLY_ZcNYjIY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SVH0EbN3QDE",
+   "youtube_id": "SVH0EbN3QDE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SYU8tT_WqIY",
+   "youtube_id": "SYU8tT_WqIY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SZA2sP-xFSM",
+   "youtube_id": "SZA2sP-xFSM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ScrZj1iCp6c",
+   "youtube_id": "ScrZj1iCp6c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-SluCJcu7cR4",
+   "youtube_id": "SluCJcu7cR4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Swc1E0mxIPw",
+   "youtube_id": "Swc1E0mxIPw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-T-Cjbx3Ie3g",
+   "youtube_id": "T-Cjbx3Ie3g",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-T3Tki14snck",
+   "youtube_id": "T3Tki14snck",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TIe5E_TqrvQ",
+   "youtube_id": "TIe5E_TqrvQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TV-8D20Ul78",
+   "youtube_id": "TV-8D20Ul78",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TV0k3ro2sjI",
+   "youtube_id": "TV0k3ro2sjI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TawkL78AcHM",
+   "youtube_id": "TawkL78AcHM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TbhD2iVwZ60",
+   "youtube_id": "TbhD2iVwZ60",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Td3ctKuO-qc",
+   "youtube_id": "Td3ctKuO-qc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ToTN0oZaDcY",
+   "youtube_id": "ToTN0oZaDcY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TrQOuMQ3JKU",
+   "youtube_id": "TrQOuMQ3JKU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-TyF5FFHwop8",
+   "youtube_id": "TyF5FFHwop8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-U70Tqg8Z0sk",
+   "youtube_id": "U70Tqg8Z0sk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-UIcCwuYzxcE",
+   "youtube_id": "UIcCwuYzxcE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-USW31veYWAc",
+   "youtube_id": "USW31veYWAc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-UXcC17Lw1jQ",
+   "youtube_id": "UXcC17Lw1jQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-UZ0jQtG0bqE",
+   "youtube_id": "UZ0jQtG0bqE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-UxAU0BiiBZc",
+   "youtube_id": "UxAU0BiiBZc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-V6Bnt6VwH8s",
+   "youtube_id": "V6Bnt6VwH8s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-VH0LnZLs3z4",
+   "youtube_id": "VH0LnZLs3z4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-VMgFWtZpYCw",
+   "youtube_id": "VMgFWtZpYCw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-VQKkYM8EZAU",
+   "youtube_id": "VQKkYM8EZAU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Vw6gLypRKmY",
+   "youtube_id": "Vw6gLypRKmY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-W22GkazP_Pk",
+   "youtube_id": "W22GkazP_Pk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-W3K_9S3Qsj8",
+   "youtube_id": "W3K_9S3Qsj8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-W4agSbyZzaw",
+   "youtube_id": "W4agSbyZzaw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-W5-YsKL2ftA",
+   "youtube_id": "W5-YsKL2ftA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WH4-5xDujpo",
+   "youtube_id": "WH4-5xDujpo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WQOvHXIE-P8",
+   "youtube_id": "WQOvHXIE-P8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WSW1urIXsfA",
+   "youtube_id": "WSW1urIXsfA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WXn5il2wB0o",
+   "youtube_id": "WXn5il2wB0o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WYdZhR1V99Q",
+   "youtube_id": "WYdZhR1V99Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WmOy3MlIP6s",
+   "youtube_id": "WmOy3MlIP6s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Wmf_ST7sDqs",
+   "youtube_id": "Wmf_ST7sDqs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WqAP6W4Tlt8",
+   "youtube_id": "WqAP6W4Tlt8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-WrYTbA3KMng",
+   "youtube_id": "WrYTbA3KMng",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Ww81lc07pGM",
+   "youtube_id": "Ww81lc07pGM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Wx4urIeX4hU",
+   "youtube_id": "Wx4urIeX4hU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-X-HOkv4BmVY",
+   "youtube_id": "X-HOkv4BmVY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-X0oPzFw8JpI",
+   "youtube_id": "X0oPzFw8JpI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-X3_FkHr3loQ",
+   "youtube_id": "X3_FkHr3loQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-X6w49w1et70",
+   "youtube_id": "X6w49w1et70",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-X9F2Xrg4HK8",
+   "youtube_id": "X9F2Xrg4HK8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XAXwwtb4P9M",
+   "youtube_id": "XAXwwtb4P9M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XDybTbodMys",
+   "youtube_id": "XDybTbodMys",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XE4UHson59Y",
+   "youtube_id": "XE4UHson59Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XdPFH_pEmTo",
+   "youtube_id": "XdPFH_pEmTo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XlnmN4BfCxw",
+   "youtube_id": "XlnmN4BfCxw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Xn9_LuE9Hio",
+   "youtube_id": "Xn9_LuE9Hio",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XrvWDjLZHq4",
+   "youtube_id": "XrvWDjLZHq4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XsElsVjj9Gg",
+   "youtube_id": "XsElsVjj9Gg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-XtO4JJ1l2NU",
+   "youtube_id": "XtO4JJ1l2NU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-YV_Q-cKfbyE",
+   "youtube_id": "YV_Q-cKfbyE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Yh21JKIYRI4",
+   "youtube_id": "Yh21JKIYRI4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-YheU9qGb9tU",
+   "youtube_id": "YheU9qGb9tU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-YsZJzP1rs5U",
+   "youtube_id": "YsZJzP1rs5U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-YtJKhB4pVBc",
+   "youtube_id": "YtJKhB4pVBc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Yvw60m0E9D8",
+   "youtube_id": "Yvw60m0E9D8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZOSWdktsKf0",
+   "youtube_id": "ZOSWdktsKf0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZPd0Bufmd88",
+   "youtube_id": "ZPd0Bufmd88",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZQ67ab_GN3Y",
+   "youtube_id": "ZQ67ab_GN3Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZQ9pqvJtSks",
+   "youtube_id": "ZQ9pqvJtSks",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZTHHQ-WQACA",
+   "youtube_id": "ZTHHQ-WQACA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZZsV1VIdR2I",
+   "youtube_id": "ZZsV1VIdR2I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-Zd014DjonqE",
+   "youtube_id": "Zd014DjonqE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZfeN3T60nAE",
+   "youtube_id": "ZfeN3T60nAE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZmEFgl3N2vY",
+   "youtube_id": "ZmEFgl3N2vY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ZrZ6vJGiE8I",
+   "youtube_id": "ZrZ6vJGiE8I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-a9gpZQCNy-Q",
+   "youtube_id": "a9gpZQCNy-Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-hnpkTjDOx_o",
+   "youtube_id": "hnpkTjDOx_o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-j6YL3DG2zA0",
+   "youtube_id": "j6YL3DG2zA0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jMklyLBHjA4",
+   "youtube_id": "jMklyLBHjA4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jQI0bsCtdws",
+   "youtube_id": "jQI0bsCtdws",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jQgCMY5Y1k8",
+   "youtube_id": "jQgCMY5Y1k8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jRR7grGUqRQ",
+   "youtube_id": "jRR7grGUqRQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jZgyOJGWayQ",
+   "youtube_id": "jZgyOJGWayQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jbMlDSz8RGg",
+   "youtube_id": "jbMlDSz8RGg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jjLrgiQoJsc",
+   "youtube_id": "jjLrgiQoJsc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jsS5FyfEv3o",
+   "youtube_id": "jsS5FyfEv3o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-jwt7KCejF0M",
+   "youtube_id": "jwt7KCejF0M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-k1xnyWoY92w",
+   "youtube_id": "k1xnyWoY92w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-k5ooInYL6b8",
+   "youtube_id": "k5ooInYL6b8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-k7u9v3fUhvs",
+   "youtube_id": "k7u9v3fUhvs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-kCky6ac9aCo",
+   "youtube_id": "kCky6ac9aCo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-kFpwdwFDxDM",
+   "youtube_id": "kFpwdwFDxDM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-kMvqKZpuKf0",
+   "youtube_id": "kMvqKZpuKf0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-kO32Z5Zg5P0",
+   "youtube_id": "kO32Z5Zg5P0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-kSho2A7057o",
+   "youtube_id": "kSho2A7057o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-l--UNp-Xlpk",
+   "youtube_id": "l--UNp-Xlpk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-l2KlzGrhB6w",
+   "youtube_id": "l2KlzGrhB6w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lAAfjtnc7bI",
+   "youtube_id": "lAAfjtnc7bI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lFhU3L8VoSQ",
+   "youtube_id": "lFhU3L8VoSQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lGKFyPc_PU4",
+   "youtube_id": "lGKFyPc_PU4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lLYuOJYkiq4",
+   "youtube_id": "lLYuOJYkiq4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lPAsunweNbo",
+   "youtube_id": "lPAsunweNbo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-lbQQ7NDQrgg",
+   "youtube_id": "lbQQ7NDQrgg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ld4vUbxn9Mc",
+   "youtube_id": "ld4vUbxn9Mc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-m0t1Z4NY0Ww",
+   "youtube_id": "m0t1Z4NY0Ww",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-m4EIjFZyZ0w",
+   "youtube_id": "m4EIjFZyZ0w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-m9YPlX0fcJk",
+   "youtube_id": "m9YPlX0fcJk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mJQh1vfg4uU",
+   "youtube_id": "mJQh1vfg4uU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mRTwy__oJ7A",
+   "youtube_id": "mRTwy__oJ7A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mSDgDw-8F2A",
+   "youtube_id": "mSDgDw-8F2A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mTx6pUqWDYs",
+   "youtube_id": "mTx6pUqWDYs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-maDW8Nfb_Gw",
+   "youtube_id": "maDW8Nfb_Gw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-maVFymlExwY",
+   "youtube_id": "maVFymlExwY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mokZT4ZwrDk",
+   "youtube_id": "mokZT4ZwrDk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-mwP4sdp7gW0",
+   "youtube_id": "mwP4sdp7gW0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-n2gRI5kkAw0",
+   "youtube_id": "n2gRI5kkAw0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nCbocso-Pbw",
+   "youtube_id": "nCbocso-Pbw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nKQvdg4v8HM",
+   "youtube_id": "nKQvdg4v8HM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nMJZregetSA",
+   "youtube_id": "nMJZregetSA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nN0YiLXjr3c",
+   "youtube_id": "nN0YiLXjr3c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nX6XtwX5dV4",
+   "youtube_id": "nX6XtwX5dV4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nons0GcdVqM",
+   "youtube_id": "nons0GcdVqM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nsKAHLGAYw0",
+   "youtube_id": "nsKAHLGAYw0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-nxpW6EqN2Jc",
+   "youtube_id": "nxpW6EqN2Jc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-o9M-28RNaRI",
+   "youtube_id": "o9M-28RNaRI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oBK-7bJcah0",
+   "youtube_id": "oBK-7bJcah0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oBiksRTpvkg",
+   "youtube_id": "oBiksRTpvkg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oEorhw5r2Do",
+   "youtube_id": "oEorhw5r2Do",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oFR79UQdRlc",
+   "youtube_id": "oFR79UQdRlc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oI3iIUjxG7s",
+   "youtube_id": "oI3iIUjxG7s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oLypZwIf7l8",
+   "youtube_id": "oLypZwIf7l8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oMJ2rbaw7Uw",
+   "youtube_id": "oMJ2rbaw7Uw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oQPYxhqoH1o",
+   "youtube_id": "oQPYxhqoH1o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-oQRxU4puI34",
+   "youtube_id": "oQRxU4puI34",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ojmnjMeUvWE",
+   "youtube_id": "ojmnjMeUvWE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-osHVuqevqZc",
+   "youtube_id": "osHVuqevqZc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ot51_hzEptc",
+   "youtube_id": "ot51_hzEptc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-p4G6D1Y0oxQ",
+   "youtube_id": "p4G6D1Y0oxQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-p9L7YFqHGk4",
+   "youtube_id": "p9L7YFqHGk4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pBlGLhBoRvY",
+   "youtube_id": "pBlGLhBoRvY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pGSRpeapO2w",
+   "youtube_id": "pGSRpeapO2w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pVlCTdb1c90",
+   "youtube_id": "pVlCTdb1c90",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-p_r-zSz8PAA",
+   "youtube_id": "p_r-zSz8PAA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pdX_hOH_jEA",
+   "youtube_id": "pdX_hOH_jEA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pejxUqrT7yo",
+   "youtube_id": "pejxUqrT7yo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-po6hw4T9lEk",
+   "youtube_id": "po6hw4T9lEk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-powVeMYKCSw",
+   "youtube_id": "powVeMYKCSw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-pqNCD_5r0IU",
+   "youtube_id": "pqNCD_5r0IU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-q2ZiYRE0mmg",
+   "youtube_id": "q2ZiYRE0mmg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-q9dmuj9huFk",
+   "youtube_id": "q9dmuj9huFk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qEBs47cExug",
+   "youtube_id": "qEBs47cExug",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qEitmEuXG1I",
+   "youtube_id": "qEitmEuXG1I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qIemCSbTz9c",
+   "youtube_id": "qIemCSbTz9c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qLgqIumCZ-U",
+   "youtube_id": "qLgqIumCZ-U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qMgTcowkmI0",
+   "youtube_id": "qMgTcowkmI0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qQ26LBt3vmc",
+   "youtube_id": "qQ26LBt3vmc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qQ51wuIgM7E",
+   "youtube_id": "qQ51wuIgM7E",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qRMvrwLt96s",
+   "youtube_id": "qRMvrwLt96s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qYR_7FTtcgA",
+   "youtube_id": "qYR_7FTtcgA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qcCQOCjGvT0",
+   "youtube_id": "qcCQOCjGvT0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qjfJXsg_zSA",
+   "youtube_id": "qjfJXsg_zSA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-qkhDUezyZuc",
+   "youtube_id": "qkhDUezyZuc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rDGKSL9y0EY",
+   "youtube_id": "rDGKSL9y0EY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rGGddJcWLq4",
+   "youtube_id": "rGGddJcWLq4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rL2xoFfHNGo",
+   "youtube_id": "rL2xoFfHNGo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rLEzSLhY89o",
+   "youtube_id": "rLEzSLhY89o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rWCyIPLEABQ",
+   "youtube_id": "rWCyIPLEABQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-r_SYz8wXtSI",
+   "youtube_id": "r_SYz8wXtSI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rcZn6kE9tpU",
+   "youtube_id": "rcZn6kE9tpU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rfscVS0vtbw",
+   "youtube_id": "rfscVS0vtbw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ritDwsy-qJ8",
+   "youtube_id": "ritDwsy-qJ8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rldbKCg4c5s",
+   "youtube_id": "rldbKCg4c5s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rokC0PdqwpQ",
+   "youtube_id": "rokC0PdqwpQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rye1ajtwCis",
+   "youtube_id": "rye1ajtwCis",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-rzedG6E6-Bo",
+   "youtube_id": "rzedG6E6-Bo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-s3j69Fd3GWM",
+   "youtube_id": "s3j69Fd3GWM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sAKx7_-jr4A",
+   "youtube_id": "sAKx7_-jr4A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sCTea1IkIl4",
+   "youtube_id": "sCTea1IkIl4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sEGHOjFE1ws",
+   "youtube_id": "sEGHOjFE1ws",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sKyvsdEv6rk",
+   "youtube_id": "sKyvsdEv6rk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sMQQXjlr9qY",
+   "youtube_id": "sMQQXjlr9qY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sQ120Qw_pNE",
+   "youtube_id": "sQ120Qw_pNE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sRQJu2K9kPI",
+   "youtube_id": "sRQJu2K9kPI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sZPDfG4-hik",
+   "youtube_id": "sZPDfG4-hik",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-sn2X6g3CRpM",
+   "youtube_id": "sn2X6g3CRpM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-snXf8YT7L3U",
+   "youtube_id": "snXf8YT7L3U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-szLoH2pOs40",
+   "youtube_id": "szLoH2pOs40",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-szWU3UznZa8",
+   "youtube_id": "szWU3UznZa8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-t025JGVKtug",
+   "youtube_id": "t025JGVKtug",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tA_ZvxcR7o8",
+   "youtube_id": "tA_ZvxcR7o8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tBJsOkGe4fE",
+   "youtube_id": "tBJsOkGe4fE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tB_HcKjW8fQ",
+   "youtube_id": "tB_HcKjW8fQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tWcwNRBpViQ",
+   "youtube_id": "tWcwNRBpViQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tXk96HgUHMo",
+   "youtube_id": "tXk96HgUHMo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-td-dXVz_t_A",
+   "youtube_id": "td-dXVz_t_A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tmlPchI--gw",
+   "youtube_id": "tmlPchI--gw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-tzD23cgmA0s",
+   "youtube_id": "tzD23cgmA0s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-u4ZDWImeCvg",
+   "youtube_id": "u4ZDWImeCvg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-u6wAIs0_lnw",
+   "youtube_id": "u6wAIs0_lnw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-u8Ltc5645Nk",
+   "youtube_id": "u8Ltc5645Nk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-uBmVnipuECk",
+   "youtube_id": "uBmVnipuECk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-uGexFqrNhw0",
+   "youtube_id": "uGexFqrNhw0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-uTqi3QBNL38",
+   "youtube_id": "uTqi3QBNL38",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-uXtPVTJ51OI",
+   "youtube_id": "uXtPVTJ51OI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-uzwSxfGEK8Q",
+   "youtube_id": "uzwSxfGEK8Q",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-v5AhF1Nnsic",
+   "youtube_id": "v5AhF1Nnsic",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vCfK3pESClU",
+   "youtube_id": "vCfK3pESClU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vIAif7CajKI",
+   "youtube_id": "vIAif7CajKI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vN5dIxDx18I",
+   "youtube_id": "vN5dIxDx18I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vOMMwcRLtXw",
+   "youtube_id": "vOMMwcRLtXw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vSOihwvGf_4",
+   "youtube_id": "vSOihwvGf_4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vYyl77YzRwY",
+   "youtube_id": "vYyl77YzRwY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-v_06ORjZgsY",
+   "youtube_id": "v_06ORjZgsY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vhscShB_T50",
+   "youtube_id": "vhscShB_T50",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-viURaw3oiBA",
+   "youtube_id": "viURaw3oiBA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vivSXNiUkYs",
+   "youtube_id": "vivSXNiUkYs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vlVKTeokFO4",
+   "youtube_id": "vlVKTeokFO4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-voBexx2V7gw",
+   "youtube_id": "voBexx2V7gw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-voK7ghxjU6A",
+   "youtube_id": "voK7ghxjU6A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vpL_E5nR4Dk",
+   "youtube_id": "vpL_E5nR4Dk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vrG-627wBMI",
+   "youtube_id": "vrG-627wBMI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vxmOOf7UuhA",
+   "youtube_id": "vxmOOf7UuhA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-vy_uQmSn3hY",
+   "youtube_id": "vy_uQmSn3hY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-wLwGM60yevA",
+   "youtube_id": "wLwGM60yevA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-wRsfMnbxH2A",
+   "youtube_id": "wRsfMnbxH2A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-wZducJaKuGI",
+   "youtube_id": "wZducJaKuGI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-whDneEoaYgY",
+   "youtube_id": "whDneEoaYgY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-wqe0VU5L5aU",
+   "youtube_id": "wqe0VU5L5aU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-wv23YefHGJA",
+   "youtube_id": "wv23YefHGJA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-x2IwKEB8pdQ",
+   "youtube_id": "x2IwKEB8pdQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-x7qEwTjT1EQ",
+   "youtube_id": "x7qEwTjT1EQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xDm5AS6dtwk",
+   "youtube_id": "xDm5AS6dtwk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xEKo29OWILE",
+   "youtube_id": "xEKo29OWILE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xEcOUeBWGL0",
+   "youtube_id": "xEcOUeBWGL0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xJCPpDlk9_w",
+   "youtube_id": "xJCPpDlk9_w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xORNYSsHGZY",
+   "youtube_id": "xORNYSsHGZY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xPeP18M1m-k",
+   "youtube_id": "xPeP18M1m-k",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xSjG8zovhB4",
+   "youtube_id": "xSjG8zovhB4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xV_45JZ5xEM",
+   "youtube_id": "xV_45JZ5xEM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xb_UPVL_jGI",
+   "youtube_id": "xb_UPVL_jGI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xdfx--oTa78",
+   "youtube_id": "xdfx--oTa78",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xj_GjnD4uyI",
+   "youtube_id": "xj_GjnD4uyI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xn8MMmlmDYA",
+   "youtube_id": "xn8MMmlmDYA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xrYDlx8evR0",
+   "youtube_id": "xrYDlx8evR0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-xtAd5bI5LyQ",
+   "youtube_id": "xtAd5bI5LyQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-y1Ty1EmWpqc",
+   "youtube_id": "y1Ty1EmWpqc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-y2g-fzpmQkE",
+   "youtube_id": "y2g-fzpmQkE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-y5Q0nH0PXnM",
+   "youtube_id": "y5Q0nH0PXnM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-y86qxcZHr0Y",
+   "youtube_id": "y86qxcZHr0Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yC2-ukW02Wk",
+   "youtube_id": "yC2-ukW02Wk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yIemkwQy3a4",
+   "youtube_id": "yIemkwQy3a4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yJxxTf0IQC8",
+   "youtube_id": "yJxxTf0IQC8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yM8qU-S1KNQ",
+   "youtube_id": "yM8qU-S1KNQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yTjdPFlqeBg",
+   "youtube_id": "yTjdPFlqeBg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yUUjfr8r0js",
+   "youtube_id": "yUUjfr8r0js",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yV3V-VZIp4o",
+   "youtube_id": "yV3V-VZIp4o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yWI46ifhXSI",
+   "youtube_id": "yWI46ifhXSI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-yZdcmAApq-0",
+   "youtube_id": "yZdcmAApq-0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-ydg64NYZZzI",
+   "youtube_id": "ydg64NYZZzI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zFNHNHI2p6M",
+   "youtube_id": "zFNHNHI2p6M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zFZg-GvCH5A",
+   "youtube_id": "zFZg-GvCH5A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zLrWbhEOkZ0",
+   "youtube_id": "zLrWbhEOkZ0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zR1LwJDmwbk",
+   "youtube_id": "zR1LwJDmwbk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zRwLIMvsXY8",
+   "youtube_id": "zRwLIMvsXY8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zSWr84Y8eew",
+   "youtube_id": "zSWr84Y8eew",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zbUnlQ9BVGQ",
+   "youtube_id": "zbUnlQ9BVGQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zdaELnDd13I",
+   "youtube_id": "zdaELnDd13I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zeLQEiUKnP8",
+   "youtube_id": "zeLQEiUKnP8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zgNQrW6OhMU",
+   "youtube_id": "zgNQrW6OhMU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "facodi-video-zz9cXoy-I5k",
+   "youtube_id": "zz9cXoy-I5k",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "jellyfin-crie-seu-proprio-servidor-de-midia-tutorial-tecnolo-1ec6149f",
+   "youtube_id": "vWUWZpDP63E",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "normalizacao-primeira-forma-normal-b7d7816b",
+   "youtube_id": "eRaAMNjCFYw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching--XsL2rkNojM",
+   "youtube_id": "-XsL2rkNojM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-5UIjsSBwsLc",
+   "youtube_id": "5UIjsSBwsLc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-GXeC9GH9Ft0",
+   "youtube_id": "GXeC9GH9Ft0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-I9oNy5Ehuv8",
+   "youtube_id": "I9oNy5Ehuv8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-KLR0rkdVulQ",
+   "youtube_id": "KLR0rkdVulQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-KMPhtVUBM4A",
+   "youtube_id": "KMPhtVUBM4A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-Kd7F_LGcwzE",
+   "youtube_id": "Kd7F_LGcwzE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-NkhK5O3EseQ",
+   "youtube_id": "NkhK5O3EseQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-PALSWcoF0D8",
+   "youtube_id": "PALSWcoF0D8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-WWA-YluaYKo",
+   "youtube_id": "WWA-YluaYKo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-XcygGHROynM",
+   "youtube_id": "XcygGHROynM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-bRrGDbNCGTQ",
+   "youtube_id": "bRrGDbNCGTQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-bz7-rLkYp9g",
+   "youtube_id": "bz7-rLkYp9g",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-d_ecZqJ5AgY",
+   "youtube_id": "d_ecZqJ5AgY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-ewvThEyCKZ0",
+   "youtube_id": "ewvThEyCKZ0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-hOpf5XkXLKY",
+   "youtube_id": "hOpf5XkXLKY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-iGtSwx_t9Uk",
+   "youtube_id": "iGtSwx_t9Uk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-k42Hp6rl2rs",
+   "youtube_id": "k42Hp6rl2rs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-lOOE1dS73l8",
+   "youtube_id": "lOOE1dS73l8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-pUU_0eGGP6c",
+   "youtube_id": "pUU_0eGGP6c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-rCSsMRKhl2c",
+   "youtube_id": "rCSsMRKhl2c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-tuHQ6DaZnoQ",
+   "youtube_id": "tuHQ6DaZnoQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-bc-teaching-y8C2L9HVDOg",
+   "youtube_id": "y8C2L9HVDOg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse--sUUWyo4RZQ",
+   "youtube_id": "-sUUWyo4RZQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-3npuPXvA_g8",
+   "youtube_id": "3npuPXvA_g8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-3yLXNzDUH58",
+   "youtube_id": "3yLXNzDUH58",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-4kF0U8kIMp4",
+   "youtube_id": "4kF0U8kIMp4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-4zdkun4xzOs",
+   "youtube_id": "4zdkun4xzOs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-5xTh44G6RYs",
+   "youtube_id": "5xTh44G6RYs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-6geQjY8b7sA",
+   "youtube_id": "6geQjY8b7sA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-6iVGuMyKFgA",
+   "youtube_id": "6iVGuMyKFgA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-6lQyPgaakY4",
+   "youtube_id": "6lQyPgaakY4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-93sK4jTGrss",
+   "youtube_id": "93sK4jTGrss",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-9J4hoAatGRQ",
+   "youtube_id": "9J4hoAatGRQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-A5uNFKEn4_A",
+   "youtube_id": "A5uNFKEn4_A",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-B1r1grQiLdk",
+   "youtube_id": "B1r1grQiLdk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-Ccsf0yX7ECg",
+   "youtube_id": "Ccsf0yX7ECg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-H9ipRaLa4Jw",
+   "youtube_id": "H9ipRaLa4Jw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-I4kz-C7GryY",
+   "youtube_id": "I4kz-C7GryY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-JBYqV2sK918",
+   "youtube_id": "JBYqV2sK918",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-MPwpk-YgvjQ",
+   "youtube_id": "MPwpk-YgvjQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-MSYw502dJNY",
+   "youtube_id": "MSYw502dJNY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-My14mZa-eq8",
+   "youtube_id": "My14mZa-eq8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-Nxyo83cQjhI",
+   "youtube_id": "Nxyo83cQjhI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-PubyDwbNqYA",
+   "youtube_id": "PubyDwbNqYA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-R4WwhOdk_Eg",
+   "youtube_id": "R4WwhOdk_Eg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-R66eQLLOins",
+   "youtube_id": "R66eQLLOins",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-SyyrwoCec1k",
+   "youtube_id": "SyyrwoCec1k",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-VPYOs0EGgJk",
+   "youtube_id": "VPYOs0EGgJk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-Z8tqY8fX0Ec",
+   "youtube_id": "Z8tqY8fX0Ec",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-bDpW1sHrBaU",
+   "youtube_id": "bDpW1sHrBaU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-cn0WZ8-0Z1Y",
+   "youtube_id": "cn0WZ8-0Z1Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-dNkMC92kFLA",
+   "youtube_id": "dNkMC92kFLA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-dhgEpr87Yac",
+   "youtube_id": "dhgEpr87Yac",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-eAHYT5gIPZg",
+   "youtube_id": "eAHYT5gIPZg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-hRDjmyEvmBI",
+   "youtube_id": "hRDjmyEvmBI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-hvfs4jIYHrI",
+   "youtube_id": "hvfs4jIYHrI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-iJn0ZPd6mYo",
+   "youtube_id": "iJn0ZPd6mYo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-imH7hdOgxrU",
+   "youtube_id": "imH7hdOgxrU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-ir0URpI9nKQ",
+   "youtube_id": "ir0URpI9nKQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-mtHilmUa69M",
+   "youtube_id": "mtHilmUa69M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-n1zpnN-6pZQ",
+   "youtube_id": "n1zpnN-6pZQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-nDCohlKUufs",
+   "youtube_id": "nDCohlKUufs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-of4XzrbkknM",
+   "youtube_id": "of4XzrbkknM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-oyvDYZ6hJNA",
+   "youtube_id": "oyvDYZ6hJNA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-qPTL5x0QW-Y",
+   "youtube_id": "qPTL5x0QW-Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-rtepIKeNHPU",
+   "youtube_id": "rtepIKeNHPU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-vyea8Ph9BOM",
+   "youtube_id": "vyea8Ph9BOM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-w1Kw94qjdQA",
+   "youtube_id": "w1Kw94qjdQA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-xw9Au9OoN88",
+   "youtube_id": "xw9Au9OoN88",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-crashcourse-zj05QxebnC4",
+   "youtube_id": "zj05QxebnC4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-7fpnzYf1_AU",
+   "youtube_id": "7fpnzYf1_AU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-8VHW9mbL2LE",
+   "youtube_id": "8VHW9mbL2LE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-BHMAKCPMqP8",
+   "youtube_id": "BHMAKCPMqP8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-DmiLDormnMA",
+   "youtube_id": "DmiLDormnMA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-R2Bl3y9XaJw",
+   "youtube_id": "R2Bl3y9XaJw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-Vv6y3WNo3Jo",
+   "youtube_id": "Vv6y3WNo3Jo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-bOpRXVNhQiM",
+   "youtube_id": "bOpRXVNhQiM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-dDd5l8LGsqA",
+   "youtube_id": "dDd5l8LGsqA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-ghAb-jhee0M",
+   "youtube_id": "ghAb-jhee0M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-hiXa0K_P1rM",
+   "youtube_id": "hiXa0K_P1rM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-iyUuav7SPaw",
+   "youtube_id": "iyUuav7SPaw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-pNyJcO2ExEw",
+   "youtube_id": "pNyJcO2ExEw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-rls5vAu_DcU",
+   "youtube_id": "rls5vAu_DcU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-rnlLVi2uS5c",
+   "youtube_id": "rnlLVi2uS5c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-tR-Xq-ZUGvw",
+   "youtube_id": "tR-Xq-ZUGvw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "ufes83-univesp-uS7fcCJIcH0",
+   "youtube_id": "uS7fcCJIcH0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube--33l8zeOzIY",
+   "youtube_id": "-33l8zeOzIY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-0A8fvJKzhcc",
+   "youtube_id": "0A8fvJKzhcc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-0bWAWKvGens",
+   "youtube_id": "0bWAWKvGens",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-1OLBTHDqWIE",
+   "youtube_id": "1OLBTHDqWIE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-1OVibKnrHoA",
+   "youtube_id": "1OVibKnrHoA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-1fT1nVfbW-4",
+   "youtube_id": "1fT1nVfbW-4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-1rl-HTAzL6Y",
+   "youtube_id": "1rl-HTAzL6Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-24GBIcCvOfg",
+   "youtube_id": "24GBIcCvOfg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-26CkHyfOYq0",
+   "youtube_id": "26CkHyfOYq0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-31SD3RriOgs",
+   "youtube_id": "31SD3RriOgs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-3nnkoAbaHZs",
+   "youtube_id": "3nnkoAbaHZs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-3zj6BDybg1I",
+   "youtube_id": "3zj6BDybg1I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-4_PSnbX35zk",
+   "youtube_id": "4_PSnbX35zk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-4nMxyLIzUhU",
+   "youtube_id": "4nMxyLIzUhU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-55elVJZexVg",
+   "youtube_id": "55elVJZexVg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-5cBSgGjLczc",
+   "youtube_id": "5cBSgGjLczc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-5rXU-Z_ojfM",
+   "youtube_id": "5rXU-Z_ojfM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-7mJEK0Xvy34",
+   "youtube_id": "7mJEK0Xvy34",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-8WGJSZ1eBgE",
+   "youtube_id": "8WGJSZ1eBgE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-8nz2dtv--ok",
+   "youtube_id": "8nz2dtv--ok",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-9GIR28sFlBA",
+   "youtube_id": "9GIR28sFlBA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-9UWhEjeQs40",
+   "youtube_id": "9UWhEjeQs40",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-9weu53jUEPw",
+   "youtube_id": "9weu53jUEPw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-BFKoCAB6e6w",
+   "youtube_id": "BFKoCAB6e6w",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-BJyGKYpdIxY",
+   "youtube_id": "BJyGKYpdIxY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-CBezq1fFUEA",
+   "youtube_id": "CBezq1fFUEA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-CxkBTcRcxPE",
+   "youtube_id": "CxkBTcRcxPE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-DPrJm6lOOGE",
+   "youtube_id": "DPrJm6lOOGE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-DycQqhlB68g",
+   "youtube_id": "DycQqhlB68g",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-FAJ5DFY6d0k",
+   "youtube_id": "FAJ5DFY6d0k",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-FcNZNzdOugY",
+   "youtube_id": "FcNZNzdOugY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Fr9lurVLNyo",
+   "youtube_id": "Fr9lurVLNyo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-GcVyR_GB1GY",
+   "youtube_id": "GcVyR_GB1GY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-GvSks_b5JMI",
+   "youtube_id": "GvSks_b5JMI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-H9phtIEm0Zk",
+   "youtube_id": "H9phtIEm0Zk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-H_s5gDeSLq8",
+   "youtube_id": "H_s5gDeSLq8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-I8sRO8QlN4c",
+   "youtube_id": "I8sRO8QlN4c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-ImDXtSXL3fo",
+   "youtube_id": "ImDXtSXL3fo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-JcSgulAdofc",
+   "youtube_id": "JcSgulAdofc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-KB7NezH1ZK4",
+   "youtube_id": "KB7NezH1ZK4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-KZkvA6uDOTM",
+   "youtube_id": "KZkvA6uDOTM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-KuUBnF24OXk",
+   "youtube_id": "KuUBnF24OXk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-MPdJTYsJDMs",
+   "youtube_id": "MPdJTYsJDMs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Mf2cxR9BWa4",
+   "youtube_id": "Mf2cxR9BWa4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-MoUBOh17EvA",
+   "youtube_id": "MoUBOh17EvA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-N2apCx1rlIQ",
+   "youtube_id": "N2apCx1rlIQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-NnwSeQ5otM4",
+   "youtube_id": "NnwSeQ5otM4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-NrzNe_AJeCs",
+   "youtube_id": "NrzNe_AJeCs",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-OQqUjVbLYpo",
+   "youtube_id": "OQqUjVbLYpo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-PDxmyRwntXg",
+   "youtube_id": "PDxmyRwntXg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-PFFdpoI8xbg",
+   "youtube_id": "PFFdpoI8xbg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Q38d6YoOz0U",
+   "youtube_id": "Q38d6YoOz0U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-QwEac8RiTWY",
+   "youtube_id": "QwEac8RiTWY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-R-sVnmmw6WY",
+   "youtube_id": "R-sVnmmw6WY",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-SKSny3xtqDA",
+   "youtube_id": "SKSny3xtqDA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-SazzwSJPd_g",
+   "youtube_id": "SazzwSJPd_g",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-SuNABtcEjCw",
+   "youtube_id": "SuNABtcEjCw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-TUOSCEVt6HI",
+   "youtube_id": "TUOSCEVt6HI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-UGxGDdQnC1Y",
+   "youtube_id": "UGxGDdQnC1Y",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Un67JkVy0xo",
+   "youtube_id": "Un67JkVy0xo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-VNTBHXDarb4",
+   "youtube_id": "VNTBHXDarb4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-W0sP9UpLqhA",
+   "youtube_id": "W0sP9UpLqhA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-W4N-7AlzK7s",
+   "youtube_id": "W4N-7AlzK7s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-WPAgZgqDeQo",
+   "youtube_id": "WPAgZgqDeQo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-WhowH0kb7n0",
+   "youtube_id": "WhowH0kb7n0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-X5xOEgJtCHU",
+   "youtube_id": "X5xOEgJtCHU",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-XPi2i0ALJC4",
+   "youtube_id": "XPi2i0ALJC4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Xi8Vj7aDcvg",
+   "youtube_id": "Xi8Vj7aDcvg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-Y79GQU7n95o",
+   "youtube_id": "Y79GQU7n95o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-ZHZKuM9iWdo",
+   "youtube_id": "ZHZKuM9iWdo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-__fm3PIulws",
+   "youtube_id": "__fm3PIulws",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-_jBZkHFOD28",
+   "youtube_id": "_jBZkHFOD28",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-_stQu-3EgWQ",
+   "youtube_id": "_stQu-3EgWQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-amV13tcqti8",
+   "youtube_id": "amV13tcqti8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-bSycdIx-C48",
+   "youtube_id": "bSycdIx-C48",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-cpqHg8oTJ_s",
+   "youtube_id": "cpqHg8oTJ_s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-cuHddXfinDE",
+   "youtube_id": "cuHddXfinDE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-eQ08AS5ZHQQ",
+   "youtube_id": "eQ08AS5ZHQQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-eg47cCMcQr0",
+   "youtube_id": "eg47cCMcQr0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-gtusn3CB5Iw",
+   "youtube_id": "gtusn3CB5Iw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-gv2-aSuNWr0",
+   "youtube_id": "gv2-aSuNWr0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-hApq0SEfJOE",
+   "youtube_id": "hApq0SEfJOE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-hFV71QPvX2I",
+   "youtube_id": "hFV71QPvX2I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-iEyPLBHtq_s",
+   "youtube_id": "iEyPLBHtq_s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-iTdC2JWyCMc",
+   "youtube_id": "iTdC2JWyCMc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-j1kYYL-R8mk",
+   "youtube_id": "j1kYYL-R8mk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-jaKZAYqr8pk",
+   "youtube_id": "jaKZAYqr8pk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-jz45QNYZqpM",
+   "youtube_id": "jz45QNYZqpM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-k8A3LID1y3o",
+   "youtube_id": "k8A3LID1y3o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-knhR38J1kOc",
+   "youtube_id": "knhR38J1kOc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-kyOvBU8oYbI",
+   "youtube_id": "kyOvBU8oYbI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-lQT17sdopbA",
+   "youtube_id": "lQT17sdopbA",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-lTWCZkJtSpw",
+   "youtube_id": "lTWCZkJtSpw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-lxuXpXdGn0I",
+   "youtube_id": "lxuXpXdGn0I",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-n_Nbn6IYsJM",
+   "youtube_id": "n_Nbn6IYsJM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-oGYDPxcNMmw",
+   "youtube_id": "oGYDPxcNMmw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-oHupEt5YPqw",
+   "youtube_id": "oHupEt5YPqw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-py58sYXxEU0",
+   "youtube_id": "py58sYXxEU0",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-qqSRyVsbjXE",
+   "youtube_id": "qqSRyVsbjXE",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-r1o7RryS8WM",
+   "youtube_id": "r1o7RryS8WM",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-rJjHjnzmvDI",
+   "youtube_id": "rJjHjnzmvDI",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-rdf2AZ2Ss2c",
+   "youtube_id": "rdf2AZ2Ss2c",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-rhlG6PvpuTw",
+   "youtube_id": "rhlG6PvpuTw",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-rkF8jDLS2Xc",
+   "youtube_id": "rkF8jDLS2Xc",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-sxQaBpKfDRk",
+   "youtube_id": "sxQaBpKfDRk",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-t48EzglnBag",
+   "youtube_id": "t48EzglnBag",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-t6nJNv-pNr8",
+   "youtube_id": "t6nJNv-pNr8",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-tHFfCDiV6Zg",
+   "youtube_id": "tHFfCDiV6Zg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-tNGIhkZ4SrQ",
+   "youtube_id": "tNGIhkZ4SrQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-u4xKswRO4bQ",
+   "youtube_id": "u4xKswRO4bQ",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-unWnZvXJH2o",
+   "youtube_id": "unWnZvXJH2o",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-v0QATR7xhq4",
+   "youtube_id": "v0QATR7xhq4",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-v54Ki_KhN0s",
+   "youtube_id": "v54Ki_KhN0s",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-veMe-K-BL3U",
+   "youtube_id": "veMe-K-BL3U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-vg2wbsAHw3U",
+   "youtube_id": "vg2wbsAHw3U",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-vo4pMVb0R6M",
+   "youtube_id": "vo4pMVb0R6M",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-wm4Vlu9LFCg",
+   "youtube_id": "wm4Vlu9LFCg",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-x8AjawRmHKo",
+   "youtube_id": "x8AjawRmHKo",
+   "http": 429,
+   "error": null
+  },
+  {
+   "slug": "youtube-zoX6DRwWAi8",
+   "youtube_id": "zoX6DRwWAi8",
+   "http": 429,
+   "error": null
+  }
+ ]
+}
