@@ -11,7 +11,7 @@ const ICONS: Record<MilestoneKey, LucideIcon> = {
   fourWeeks: CalendarCheck,
 };
 
-/** Private progress markers on the dashboard: what the learner has done, never a ranking or a certificate. */
+/** Private progress markers on the dashboard: what the learner has done, never a ranking. */
 export function StudyMilestones() {
   const { t } = useTranslation();
   const { data, isPending, isError, retry } = useStudyMilestones();
@@ -55,7 +55,6 @@ export function StudyMilestones() {
             })}
           </ul>
         </div>
-        <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t('milestones.note')}</p>
       </>}
   </section>;
 }

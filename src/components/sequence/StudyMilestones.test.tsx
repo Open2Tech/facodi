@@ -9,7 +9,7 @@ import { StudyMilestones } from './StudyMilestones';
 vi.mock('@/features/milestones/useStudyMilestones', () => ({ useStudyMilestones: vi.fn() }));
 
 describe('StudyMilestones', () => {
-  it('shows the weekly run, reached milestones and progress towards the next ones, without certificates', async () => {
+  it('shows the weekly run, reached milestones and progress towards the next ones', async () => {
     await i18n.changeLanguage('pt');
     const now = new Date();
     vi.mocked(useStudyMilestones).mockReturnValue({
@@ -24,6 +24,5 @@ describe('StudyMilestones', () => {
     expect(within(section).getByText('Esta semana já conta.')).toBeInTheDocument();
     expect(within(section).getByText('Primeira sequência completa').nextSibling).toHaveTextContent('Alcançado');
     expect(within(section).getByText('10 notas no caderno').nextSibling).toHaveTextContent('3 de 10');
-    expect(within(section).getByText(/Não são certificados/)).toBeInTheDocument();
   });
 });
