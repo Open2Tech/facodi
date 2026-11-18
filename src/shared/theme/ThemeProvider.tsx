@@ -1,8 +1,6 @@
 import { useCallback, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
-import { PREFERENCE_KEYS, readPreference, writePreference } from '@/shared/lib/preferenceStorage';
-import { ThemeContext, type Theme } from './theme';
-
-const initialTheme = (): Theme => readPreference(PREFERENCE_KEYS.theme) === 'dark' ? 'dark' : 'light';
+import { PREFERENCE_KEYS, writePreference } from '@/shared/lib/preferenceStorage';
+import { initialTheme, ThemeContext, type Theme } from './theme';
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(initialTheme);
