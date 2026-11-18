@@ -28,6 +28,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { plainText, stringList } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
+import { studyTopics } from '@/shared/lib/topicTags';
 
 const SEQUENCE_WINDOW = 5;
 const MIRRORS = ['course', 'curricular_unit'];
@@ -266,7 +267,7 @@ export default function ResourceDetails() {
           <dl className="mt-6 grid border-t border-input sm:grid-cols-2">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 border-b border-input py-3 text-sm sm:odd:pr-6 sm:even:pl-6">
             <dt className="text-muted-foreground">{t(`video.facts.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
           </div>)}</dl>
-          {!!resource.tags.length && <ul className="mt-6 flex flex-wrap gap-2">{resource.tags.map(tag => <li key={tag}>
+          {!!studyTopics(resource.tags).length && <ul className="mt-6 flex flex-wrap gap-2">{studyTopics(resource.tags).map(tag => <li key={tag}>
             <Link to={`/resources?tag=${encodeURIComponent(tag)}`} className="inline-block border border-input px-3 py-1 text-sm transition-colors hover:border-foreground hover:bg-primary hover:text-primary-foreground">{tag}</Link>
           </li>)}</ul>}
           {!!resource.keywords.length && <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-foreground">{t('resource.keywords')}:</span> {resource.keywords.join(' · ')}</p>}

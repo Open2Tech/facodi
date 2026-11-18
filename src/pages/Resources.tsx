@@ -23,6 +23,7 @@ import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { useCatalogParams, type CatalogParamKey } from '@/shared/hooks/useCatalogParams';
 import { plainText } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
+import { studyTopics } from '@/shared/lib/topicTags';
 
 export default function Resources() {
   const { t } = useTranslation();
@@ -163,8 +164,8 @@ export default function Resources() {
                       <h3 className="text-base font-semibold leading-snug sm:text-lg"><Link to={href} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h3>
                       {isVideo && info.channel && <p className="mt-1 truncate text-sm text-muted-foreground sm:mt-2">{info.channel}</p>}
                       {excerpt && <p className="mt-2 line-clamp-2 text-sm text-muted-foreground sm:line-clamp-3">{excerpt}</p>}
-                      {!!resource.tags.length && <div className="mt-4 hidden flex-wrap gap-1.5 sm:flex" role="group" aria-label={t('resources.filterByTag')}>
-                        {resource.tags.slice(0, 3).map(tagButton)}
+                      {!!studyTopics(resource.tags).length && <div className="mt-4 hidden flex-wrap gap-1.5 sm:flex" role="group" aria-label={t('resources.filterByTag')}>
+                        {studyTopics(resource.tags).slice(0, 3).map(tagButton)}
                       </div>}
                       <Link to={href} aria-label={action + ': ' + resource.title}
                         className="mt-auto hidden items-center gap-2 pt-5 text-sm font-semibold underline underline-offset-4 sm:inline-flex">
