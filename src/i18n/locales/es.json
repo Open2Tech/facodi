@@ -1241,6 +1241,13 @@
     "results": "Resultados de secuencias",
     "noMatchesText": "Prueba otras palabras u otro idioma. La búsqueda ignora los acentos y también busca por código de asignatura."
   },
+  "shareCard": {
+    "button": "Compartir logro",
+    "eyebrow": "Secuencia completada",
+    "text": "Terminé «{{title}}» en FACODI.",
+    "saved": "Imagen guardada. Ya puedes compartirla.",
+    "failed": "No se pudo crear la imagen."
+  },
   "continueLearning": {
     "eyebrow": "Continúa donde lo dejaste",
     "next": "Próxima clase: {{title}}",

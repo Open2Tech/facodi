@@ -13,6 +13,7 @@ import { safeExternalUrl } from '@/shared/lib/navigation';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
+import { ShareAchievementButton } from '@/components/share/ShareAchievementButton';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
@@ -122,7 +123,10 @@ export default function SequenceDetails() {
           <SequenceProgress className="mt-3" completed={done} total={items.length} label={t('sequences.progressLabel', { title: sequence.title })} />
           <p className="mt-3 text-xs text-muted-foreground">{t('sequences.selfReported')}</p>
           {done === items.length && items.length > 0
-            ? <p className="mt-4 text-sm font-semibold">{t('sequences.finished')}</p>
+            ? <>
+              <p className="mt-4 text-sm font-semibold">{t('sequences.finished')}</p>
+              <ShareAchievementButton title={sequence.title} path={`/sequences/${sequence.slug}`} lessons={items.length} />
+            </>
             : resumeItem && selected?.videoId !== resumeItem.videoId && <button type="button" onClick={() => select(resumeItem.videoId)}
               className="mt-4 inline-flex items-center gap-2 text-left text-sm font-semibold underline underline-offset-4">{t('sequences.continue', { title: resumeItem.title })}<ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" /></button>}
           {rows.size > 0 && <AlertDialog>

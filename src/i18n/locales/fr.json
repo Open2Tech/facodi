@@ -1241,6 +1241,13 @@
     "results": "Résultats des séquences",
     "noMatchesText": "Essaie d’autres mots ou une autre langue. La recherche ignore les accents et trouve aussi les codes d’UE."
   },
+  "shareCard": {
+    "button": "Partager ma réussite",
+    "eyebrow": "Séquence terminée",
+    "text": "J’ai terminé « {{title}} » sur FACODI.",
+    "saved": "Image enregistrée. Tu peux la partager.",
+    "failed": "Impossible de créer l’image."
+  },
   "continueLearning": {
     "eyebrow": "Reprends là où tu en étais",
     "next": "Prochain cours : {{title}}",

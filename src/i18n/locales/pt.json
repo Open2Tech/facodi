@@ -1241,6 +1241,13 @@
     "results": "Resultados de sequências",
     "noMatchesText": "Experimenta outras palavras ou outro idioma. A pesquisa ignora acentos e também procura pelo código da UC."
   },
+  "shareCard": {
+    "button": "Partilhar conquista",
+    "eyebrow": "Sequência concluída",
+    "text": "Concluí «{{title}}» na FACODI.",
+    "saved": "Imagem guardada. Já a podes partilhar.",
+    "failed": "Não foi possível criar a imagem."
+  },
   "continueLearning": {
     "eyebrow": "Continuar de onde paraste",
     "next": "Próxima aula: {{title}}",
