@@ -6,7 +6,7 @@ import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { parseStudyPath } from '@/entities/course/studyPath';
-import { parseComposedStudyPath, canPresentComposedStudyPath } from '@/entities/course/composedStudyPath';
+import { parseComposedStudyPath, canPresentComposedStudyPath, isComposedPathPending } from '@/entities/course/composedStudyPath';
 import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath';
 import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
@@ -62,9 +62,16 @@ export default function UnitDetails() {
   const { course, unit, outline } = query.data;
   const studyPath = parseStudyPath(unit.metadata);
   const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
-  const composedPath = composedCandidate && sequences.isSuccess && modulesQuery.isSuccess && playlistsQuery.isSuccess
+  // A configured journey must not flash the legacy catalog while its dependencies load.
+  // Errors/invalid links still fall back to the complete catalog after queries settle.
+  const composedPending = isComposedPathPending(composedCandidate, [
+    sequences.status, playlistsQuery.status, modulesQuery.status,
+  ]);
+  const composedPath = composedCandidate && !composedPending
+    && sequences.isSuccess && modulesQuery.isSuccess && playlistsQuery.isSuccess
     && canPresentComposedStudyPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
     ? composedCandidate : null;
+  const showLegacy = !studyPath && !composedPath && !composedPending;
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
@@ -98,8 +105,8 @@ export default function UnitDetails() {
     <header className="border-b border-foreground pb-10">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <a href={studyPath || composedPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
-          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath ? t('studyPath.title') : t('unit.videoChip', { count: videoList.length })}
+        {!!videoList.length && <a href={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
+          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath || composedPending ? t('composedPath.title') : t('unit.videoChip', { count: videoList.length })}
         </a>}
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
@@ -113,6 +120,12 @@ export default function UnitDetails() {
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
+        {composedPending && <section id="unit-study-path" aria-labelledby="composed-loading-heading" aria-busy="true" className="scroll-mt-28 border-t border-foreground pt-9">
+          <h2 id="composed-loading-heading" className="text-2xl font-semibold tracking-tight">{t('composedPath.title')}</h2>
+          <p role="status" className="mt-3 text-sm text-muted-foreground">{t('common.loading')}</p>
+          <Skeleton className="mt-5 h-24 w-full" />
+          <Skeleton className="mt-3 h-24 w-full" />
+        </section>}
         {composedPath && <UnitComposedStudyPath config={composedPath} sequences={sequences.data ?? []} modules={modulesQuery.data ?? []} />}
         {studyPath && <UnitStudyPath config={studyPath}
           sequences={sequences.data ?? []} videos={videoList} />}
@@ -153,7 +166,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && !composedPath && (modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
+        {showLegacy && (modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
           <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
           {modulesQuery.isPending
@@ -173,7 +186,7 @@ export default function UnitDetails() {
                 </li>)}
               </ul>}
         </section>}
-        {!studyPath && !composedPath && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
+        {showLegacy && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
           <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
           {playlistsQuery.isPending
             ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
@@ -193,7 +206,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
+        {!studyPath && !composedPending && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
@@ -251,7 +264,7 @@ export default function UnitDetails() {
               <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
             </div>}
         </section></UnitVideoLibraryFrame>}
-        {!studyPath && !composedPath && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
+        {showLegacy && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
           <h2 id="unit-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.forUnit')}</h2>
           <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('sequences.forUnitText')}</p>
           <div className="mt-5"><SequenceList sequences={sequences.data} headingLevel={3} showUnits={false} /></div>
