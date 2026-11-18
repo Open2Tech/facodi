@@ -290,6 +290,18 @@
     "thanks": "Merci ! L’équipe éditoriale utilise ces réponses pour améliorer la sélection. Tu peux changer ta réponse à tout moment.",
     "failed": "Impossible d’enregistrer la réponse."
   },
+  "monthlyChallenge": {
+    "eyebrow": "Défi de {{month}}",
+    "text_one": "Une séquence de {{count}} cours à l'honneur ce mois-ci. Chaque cours terminé compte pour l'objectif de la communauté : {{goal}} cours.",
+    "text_many": "Une séquence de {{count}} cours à l'honneur ce mois-ci. Chaque cours terminé compte pour l'objectif de la communauté : {{goal}} cours.",
+    "text_other": "Une séquence de {{count}} cours à l'honneur ce mois-ci. Chaque cours terminé compte pour l'objectif de la communauté : {{goal}} cours.",
+    "progressLabel": "Cours terminés par la communauté ce mois-ci",
+    "total_one": "La communauté a déjà terminé {{count}} cours sur {{goal}}.",
+    "total_many": "La communauté a déjà terminé {{count}} cours sur {{goal}}.",
+    "total_other": "La communauté a déjà terminé {{count}} cours sur {{goal}}.",
+    "goal": "Objectif de la communauté : {{goal}} cours terminés ce mois-ci.",
+    "cta": "Relever le défi"
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",
