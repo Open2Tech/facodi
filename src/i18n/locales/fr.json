@@ -265,6 +265,23 @@
     "allUnits_many": "Voir les {{count}} unités",
     "allUnits_other": "Voir les {{count}} unités"
   },
+  "courseMap": {
+    "exploredUnit": "Tu as exploré cette unité",
+    "summary_one": "Tu as exploré {{count}} unité sur {{total}} de ce cursus.",
+    "summary_many": "Tu as exploré {{count}} unités sur {{total}} de ce cursus.",
+    "summary_other": "Tu as exploré {{count}} unités sur {{total}} de ce cursus.",
+    "start": "Termine un cours dans une séquence pour commencer à colorier la carte de ce cursus.",
+    "groupExplored_one": "{{count}} explorée",
+    "groupExplored_many": "{{count}} explorées",
+    "groupExplored_other": "{{count}} explorées"
+  },
+  "examRevision": {
+    "title": "Session d'examens du semestre {{term}}",
+    "text_one": "Révisions : le cours de cette unité est juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "text_many": "Révisions : les {{count}} cours de cette unité sont réunis dans une liste, juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "text_other": "Révisions : les {{count}} cours de cette unité sont réunis dans une liste, juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "cta": "Revoir les cours"
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",

@@ -265,6 +265,23 @@
     "allUnits_many": "See all {{count}} units",
     "allUnits_other": "See all {{count}} units"
   },
+  "courseMap": {
+    "exploredUnit": "You have explored this unit",
+    "summary_one": "You have explored {{count}} of {{total}} units in this course.",
+    "summary_many": "You have explored {{count}} of {{total}} units in this course.",
+    "summary_other": "You have explored {{count}} of {{total}} units in this course.",
+    "start": "Finish a lesson in a sequence to start filling in this course map.",
+    "groupExplored_one": "{{count}} explored",
+    "groupExplored_many": "{{count}} explored",
+    "groupExplored_other": "{{count}} explored"
+  },
+  "examRevision": {
+    "title": "Semester {{term}} exam season",
+    "text_one": "Exam revision: this unit's lesson is just below. Use the notebook to jot down what you need to go over.",
+    "text_many": "Exam revision: this unit's {{count}} lessons are in one list, just below. Use the notebook to jot down what you need to go over.",
+    "text_other": "Exam revision: this unit's {{count}} lessons are in one list, just below. Use the notebook to jot down what you need to go over.",
+    "cta": "Review the lessons"
+  },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
     "description": "Your space to find the next path and look after your account.",

@@ -11,6 +11,9 @@ import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { UalgCurriculum } from '@/components/course/UalgCurriculum';
+import { CourseMapSummary, ExploredMark } from '@/components/course/CourseMap';
+import { useExploredUnits } from '@/features/milestones/useExploredUnits';
+import { countExplored } from '@/entities/sequence/courseMap';
 import { hasCurriculumPlacements } from '@/entities/course/ualgCurriculum';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
@@ -55,6 +58,7 @@ export default function CourseDetails() {
   const sequences = useLinkedCatalogAssets(query.data?.course.learning_object_id, 'playlist');
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
+  const map = useExploredUnits();
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
@@ -144,9 +148,10 @@ export default function CourseDetails() {
       {!!coverage.data?.length && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
         {t('course.coverageSummary', { videos: coverage.data.filter(unit => unit.video_count > 0).length, units: units.length, readings: coverage.data.filter(unit => unit.reading_count > 0).length })}
       </p>}
+      {map.ready && !!units.length && <CourseMapSummary explored={countExplored(units, map.explored)} total={units.length} />}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {(course.code === 'LPSI' || course.code === 'MNCN' || hasCurriculumPlacements(units)) ? (
-        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
+        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} explored={map.explored} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
@@ -164,7 +169,7 @@ export default function CourseDetails() {
             return <section key={`${group.year}:${group.semester}:${group.electiveGroup ?? ''}`} aria-label={groupLabel} className="min-w-0">
               <div className="flex items-baseline justify-between gap-4 border-b border-foreground pb-2">
                 <h4 className="font-semibold">{groupLabel}</h4>
-                <p className="font-mono text-xs tabular-nums text-muted-foreground">{isEditorialStudyPath ? t('course.editorialStepCount', { count: group.units.length }) : t('course.termSummary', { count: group.units.length })}</p>
+                <p className="font-mono text-xs tabular-nums text-muted-foreground">{isEditorialStudyPath ? t('course.editorialStepCount', { count: group.units.length }) : t('course.termSummary', { count: group.units.length })}{countExplored(group.units, map.explored) > 0 && ` · ${t('courseMap.groupExplored', { count: countExplored(group.units, map.explored) })}`}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
                 const media = coverageById.get(unit.id);
@@ -174,6 +179,7 @@ export default function CourseDetails() {
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
                       {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
+                      {unit.code && map.explored.has(unit.code) && <ExploredMark />}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}
                     </span>
