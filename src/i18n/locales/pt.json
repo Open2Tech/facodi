@@ -282,6 +282,14 @@
     "text_other": "Revisão para exames: as {{count}} aulas desta UC estão numa só lista, mais abaixo. Usa o caderno para anotar o que precisas de rever.",
     "cta": "Rever as aulas"
   },
+  "resourceFeedback": {
+    "questionVideo": "Este vídeo ajudou-te?",
+    "questionResource": "Este recurso ajudou-te?",
+    "yes": "Sim",
+    "no": "Não",
+    "thanks": "Obrigado! A equipa editorial usa estas respostas para melhorar a seleção. Podes mudar a resposta quando quiseres.",
+    "failed": "Não foi possível guardar a resposta."
+  },
   "dashboard": {
     "welcome": "Olá, {{name}}.",
     "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.",

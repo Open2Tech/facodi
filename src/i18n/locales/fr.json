@@ -282,6 +282,14 @@
     "text_other": "Révisions : les {{count}} cours de cette unité sont réunis dans une liste, juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
     "cta": "Revoir les cours"
   },
+  "resourceFeedback": {
+    "questionVideo": "Cette vidéo t’a-t-elle aidé ?",
+    "questionResource": "Cette ressource t’a-t-elle aidé ?",
+    "yes": "Oui",
+    "no": "Non",
+    "thanks": "Merci ! L’équipe éditoriale utilise ces réponses pour améliorer la sélection. Tu peux changer ta réponse à tout moment.",
+    "failed": "Impossible d’enregistrer la réponse."
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",
