@@ -265,6 +265,13 @@
     "allUnits_many": "Ver las {{count}} asignaturas",
     "allUnits_other": "Ver las {{count}} asignaturas"
   },
+  "examRevision": {
+    "title": "Época de exámenes del {{term}}.º semestre",
+    "text_one": "Repaso para exámenes: la clase de esta asignatura está más abajo. Usa el cuaderno para anotar lo que necesitas repasar.",
+    "text_many": "Repaso para exámenes: las {{count}} clases de esta asignatura están en una sola lista, más abajo. Usa el cuaderno para anotar lo que necesitas repasar.",
+    "text_other": "Repaso para exámenes: las {{count}} clases de esta asignatura están en una sola lista, más abajo. Usa el cuaderno para anotar lo que necesitas repasar.",
+    "cta": "Repasar las clases"
+  },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
     "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",
