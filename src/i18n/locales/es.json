@@ -265,6 +265,16 @@
     "allUnits_many": "Ver las {{count}} asignaturas",
     "allUnits_other": "Ver las {{count}} asignaturas"
   },
+  "courseMap": {
+    "exploredUnit": "Ya exploraste esta asignatura",
+    "summary_one": "Ya exploraste {{count}} de {{total}} asignaturas de este curso.",
+    "summary_many": "Ya exploraste {{count}} de {{total}} asignaturas de este curso.",
+    "summary_other": "Ya exploraste {{count}} de {{total}} asignaturas de este curso.",
+    "start": "Completa una clase en una secuencia para empezar a pintar el mapa de este curso.",
+    "groupExplored_one": "{{count}} explorada",
+    "groupExplored_many": "{{count}} exploradas",
+    "groupExplored_other": "{{count}} exploradas"
+  },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
     "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",
