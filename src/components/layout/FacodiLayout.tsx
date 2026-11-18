@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, Search, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
 import { useTheme } from '@/shared/theme/theme';
 import { Helmet } from 'react-helmet-async';
 import { useSeoClaims } from '@/components/layout/seoClaims';
@@ -12,12 +12,14 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { SOCIAL_PROFILES } from '@/shared/seo/seo';
 import { cn } from '@/lib/utils';
+import { HeaderSearch } from '@/components/layout/HeaderSearch';
 import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
 
 export default function FacodiLayout() {
   const { t, i18n } = useTranslation();
   const { user, role, loading, signOut } = useAuth();
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const location = useLocation();
   const { theme, setTheme } = useTheme();
@@ -27,8 +29,22 @@ export default function FacodiLayout() {
   const privateRoute = location.pathname.startsWith('/community/join') || ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
     setOpen(false);
+    setSearchOpen(false);
     window.scrollTo(0, 0);
   }, [location.pathname]);
+  // "/" opens the library search from anywhere, unless the learner is typing; Escape closes it.
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      const target = event.target as HTMLElement | null;
+      const typing = !!target && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
+      if (event.key === '/' && !typing && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        event.preventDefault();
+        setSearchOpen(true);
+      } else if (event.key === 'Escape') setSearchOpen(false);
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
   useEffect(() => { document.documentElement.lang = i18n.language; }, [i18n.language]);
   async function logout() {
     setSigningOut(true);
@@ -72,14 +88,19 @@ export default function FacodiLayout() {
         <Button type="button" variant="outline" size="icon" className="xl:hidden" aria-label={t(open ? 'nav.close' : 'nav.menu')} aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
         </Button>
-        <nav id="navigation" aria-label={t('nav.main')} className={cn('w-full flex-col gap-5 pb-5 xl:flex xl:w-auto xl:flex-row xl:items-center xl:pb-0', open ? 'flex' : 'hidden')}>
+        <nav id="navigation" aria-label={t('nav.main')} className={cn('w-full flex-col gap-5 pb-5 xl:flex xl:w-auto xl:flex-row xl:items-center xl:gap-3 xl:pb-0 2xl:gap-5', open ? 'flex' : 'hidden')}>
+          <HeaderSearch className="xl:hidden" onSubmitted={() => setOpen(false)} />
           <div className="flex flex-col gap-1 xl:flex-row">
             {/* Account links collapse to icons on narrow desktops so the signed-in bar stays on one line. */}
-            {links.map(({ to, title, icon: Icon, compact }) => <NavLink key={to} to={to} title={compact ? title : undefined} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
+            {links.map(({ to, title, icon: Icon, compact }) => <NavLink key={to} to={to} title={compact ? title : undefined} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted xl:px-2.5 2xl:px-3', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
               <Icon className="h-4 w-4 shrink-0" aria-hidden="true" /><span className={cn(compact && 'xl:sr-only 2xl:not-sr-only')}>{title}</span>
             </NavLink>)}
           </div>
           <div className="flex items-center gap-2">
+            <Button type="button" variant="outline" size="icon" className="hidden shrink-0 xl:inline-flex" aria-label={t('resourceExplorer.searchLabel')}
+              title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
+              {searchOpen ? <X /> : <Search />}
+            </Button>
             <label className="flex items-center gap-2 text-sm">
               <span className="sr-only">{t('common.language')}</span>
               <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => setInterfaceLanguage(event.target.value)}>
@@ -96,6 +117,11 @@ export default function FacodiLayout() {
             : <Button asChild><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>)}
         </nav>
       </div>
+      {searchOpen && <div id="header-search" className="border-t border-input">
+        <div className="mx-auto max-w-3xl px-5 py-3 lg:px-8">
+          <HeaderSearch autoFocus onSubmitted={() => setSearchOpen(false)} />
+        </div>
+      </div>}
     </header>
     <main id="main" tabIndex={-1} className="mx-auto w-full max-w-7xl flex-1 px-5 py-8 outline-none sm:py-12 lg:px-8">
       <Outlet />
