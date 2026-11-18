@@ -6,6 +6,7 @@ import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { NotebookOverview } from '@/components/notes/NotebookOverview';
 import { SequenceOverview } from '@/components/sequence/SequenceOverview';
+import { ContinueLearning } from '@/components/sequence/ContinueLearning';
 import { IfesProgressOverview } from '@/components/course/IfesProgressOverview';
 
 export default function Dashboard() {
@@ -22,6 +23,7 @@ export default function Dashboard() {
     <h1 className="break-words text-4xl font-semibold">{name ? t('dashboard.welcome', { name }) : t('dashboard.welcomeAnonymous')}</h1>
     <p className="mt-4 text-muted-foreground">{t('dashboard.description')}</p>
     {!name && <p className="mt-3 text-sm"><Link to="/profile" className="font-semibold underline underline-offset-4">{t('dashboard.addName')}</Link></p>}
+    <ContinueLearning className="mt-8" />
     <dl className="my-8 flex flex-wrap gap-x-12 gap-y-4 border-y border-input py-6 text-sm">
       <div><dt className="text-muted-foreground">{t('auth.email')}</dt><dd className="mt-1 break-all font-medium">{user?.email}</dd></div>
       <div><dt className="text-muted-foreground">{t('dashboard.role')}</dt><dd className="mt-1 font-medium">{t(`roles.${role}`)}</dd></div>

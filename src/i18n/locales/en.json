@@ -1239,6 +1239,11 @@
     "results": "Sequence results",
     "noMatchesText": "Try different words or another language. Search ignores accents and also matches unit codes."
   },
+  "continueLearning": {
+    "eyebrow": "Pick up where you left off",
+    "next": "Next lesson: {{title}}",
+    "cta": "Continue"
+  },
   "projectSeo": {
     "about": {
       "title": "About FACODI | From one question to an open campus",
