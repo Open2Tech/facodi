@@ -1,34 +1,31 @@
 /**
- * UAlg exam seasons: the 1st-semester exams (normal and resit) run in January and February, the
- * 2nd-semester ones in June and July. The revision window opens a few weeks before each season.
- * Months are 1-based; both ends are inclusive.
+ * FACODI study prompts for the UAlg 2026/27 academic calendar.
+ *
+ * Official ordinary + resit exam dates (UAlg):
+ * Semester 1: 2027-01-08 through 2027-02-04.
+ * Semester 2: 2027-06-08 through 2027-07-06.
+ * Source: https://www.ualg.pt/calendario-escolar
+ *
+ * The *revision* banner starts several weeks before exams. It does NOT represent
+ * an individual UC exam timetable. The windows are specific to 2026/27 and do
+ * not silently repeat in future academic years without verification.
  */
 const WINDOWS = [
-  { term: 1, from: { month: 12, day: 1 }, to: { month: 2, day: 20 } },
-  { term: 2, from: { month: 5, day: 15 }, to: { month: 7, day: 25 } },
+  { term: 1, from: '2026-12-01', to: '2027-02-04' },
+  { term: 2, from: '2027-05-15', to: '2027-07-06' },
 ] as const;
 
 export type ExamTerm = 1 | 2;
 
-const ordinal = (month: number, day: number) => month * 100 + day;
-
-/** Which semester's exams are coming up on this date, or null outside both windows. */
+/** Current year's revision season, or null when not within verified dates. */
 export function examTerm(date: Date): ExamTerm | null {
-  const today = ordinal(date.getMonth() + 1, date.getDate());
-  for (const { term, from, to } of WINDOWS) {
-    const start = ordinal(from.month, from.day);
-    const end = ordinal(to.month, to.day);
-    const inside = start <= end ? today >= start && today <= end : today >= start || today <= end;
-    if (inside) return term;
-  }
-  return null;
+  if (Number.isNaN(date.getTime())) return null;
+  const day = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  return WINDOWS.find(window => window.from <= day && day <= window.to)?.term ?? null;
 }
 
-/**
- * Whether a unit's semester sits in the given exam term. Courses that count semesters across years
- * (a CTeSP's 3rd semester is the 1st of year two) are folded back to 1 or 2.
- */
-export function unitInExamTerm(semester: number | null | undefined, term: ExamTerm | null) {
-  if (!term || semester == null || semester < 1) return false;
-  return (semester % 2 === 1 ? 1 : 2) === term;
+/** The 3rd/4th semesters of a CTeSP correspond to the next year's 1st/2nd term. */
+export function unitInExamTerm(semester: number | null | undefined, term: ExamTerm | null): boolean {
+  return !!term && typeof semester === 'number' && Number.isInteger(semester) && semester >= 1
+    && (semester % 2 === 1 ? 1 : 2) === term;
 }
