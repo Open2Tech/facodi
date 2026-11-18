@@ -1,0 +1,1654 @@
+{
+  "batch": "facodi_ualg_1448_ciencias_educacao_formacao_20261118",
+  "course": {
+    "code": "LCEF",
+    "official_id": "1448",
+    "plan": "https://www.ualg.pt/curso/1448/plano",
+    "academic_year": "2026/27"
+  },
+  "verified_on": "2026-11-18",
+  "units": [
+    {
+      "code": "14481000",
+      "title": "Filosofia da Educação",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "A educação como problema filosófico e as suas abordagens ao longo da história: Sócrates, Platão e Aristóteles, Agostinho e Aquino, Erasmo e Montaigne, Kant e, no século XX, Edgar Morin e Victoria Camps.",
+      "topics": [
+        "Filosofia da educação na Antiguidade e na Idade Média",
+        "Humanismo e Kant",
+        "Complexidade e ética: Morin e Camps"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481000&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481006",
+      "title": "História da Educação",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "Emergência e expansão dos sistemas educativos contemporâneos e construção do sistema educativo português, das reformas pombalinas e do século XIX à 1.ª República, ao Estado Novo e à expansão de 1960 a 1986.",
+      "topics": [
+        "Sistemas educativos contemporâneos",
+        "Reformas pombalinas e século XIX",
+        "Do Estado Novo a 1986"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481006&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481115",
+      "title": "Introdução à Investigação Científica",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "Ciência e conhecimento científico, fundamentos epistemológicos e critérios de credibilidade, etapas de uma investigação (problema, hipóteses, variáveis e amostra), escrita científica e ética na investigação em Ciências da Educação.",
+      "topics": [
+        "Conhecimento científico e senso comum",
+        "Etapas da investigação",
+        "Escrita científica e ética"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481115&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481113",
+      "title": "Introdução às Ciências da Educação",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Conceito e dimensões da educação, situações e relação educativas, e a emergência e consolidação das Ciências da Educação como campo científico, entre teoria, investigação e prática.",
+      "topics": [
+        "Conceito e dimensões da educação",
+        "Relação educativa",
+        "Epistemologia das Ciências da Educação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481113&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481114",
+      "title": "Psicologia do Desenvolvimento",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "Conceitos e teorias da psicologia do desenvolvimento e o desenvolvimento físico, cognitivo, afetivo e social na infância, na adolescência, na idade adulta e na velhice.",
+      "topics": [
+        "Teorias do desenvolvimento",
+        "Infância e adolescência",
+        "Idade adulta e velhice"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481114&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481005",
+      "title": "Recursos e Tecnologias Educativas",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 6,
+      "summary": "As TIC na educação e na cultura digital: história e impacto no ensino, ferramentas de produtividade e aplicações móveis, edição de texto, imagem, áudio e vídeo, criação de conteúdos web e planeamento de recursos multimédia.",
+      "topics": [
+        "TIC na educação",
+        "Produção de recursos digitais",
+        "Storyboarding e recursos multimédia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481005&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481118",
+      "title": "Conceção, Gestão e Avaliação de Projetos",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "Planificação de programas e projetos (modelos e abordagens) e construção de projetos socioeducativos: diagnóstico, elementos do projeto, avaliação e financiamento.",
+      "topics": [
+        "Planificação de projetos",
+        "Diagnóstico socioeducativo",
+        "Avaliação e financiamento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481118&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481081",
+      "title": "Correntes da Pedagogia Contemporânea",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "O que é a pedagogia, o pensamento pedagógico moderno, a pedagogia científica e as correntes contemporâneas: Educação Nova, pedagogia libertária, pedagogia institucional, descolarização e pedagogia crítica.",
+      "topics": [
+        "Pensamento pedagógico moderno",
+        "Educação Nova",
+        "Pedagogias libertária, institucional e crítica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481081&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481116",
+      "title": "Metodologias e Técnicas de Investigação em Educação I",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "O processo de investigação quantitativa em educação: problema, revisão bibliográfica, hipóteses e variáveis, desenhos quantitativos, amostragem, instrumentos de recolha de dados, fidelidade e validade.",
+      "topics": [
+        "Problema, hipóteses e variáveis",
+        "Desenhos quantitativos e amostragem",
+        "Fidelidade e validade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481116&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481117",
+      "title": "Psicologia da Educação",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Psicologia da educação: teorias da aprendizagem, motivação e expectativas dos professores, psicossociologia e gestão da sala de aula e mediação de conflitos em meio escolar.",
+      "topics": [
+        "Teorias da aprendizagem",
+        "Motivação",
+        "Gestão da sala de aula e mediação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481117&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481001",
+      "title": "Sociologia da Educação",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 11,
+      "summary": "A sociologia da educação e o seu objeto, Durkheim e Parsons, socialização, desigualdades sociais e escolares, insucesso e exclusão, e os atores da educação: alunos, famílias e professores.",
+      "topics": [
+        "Educação e socialização",
+        "Desigualdades e insucesso escolar",
+        "Escola, família e interculturalidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481001&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481089",
+      "title": "Teoria e Desenvolvimento Curricular",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 12,
+      "summary": "Noção, teorias, fontes e componentes do currículo, organização do sistema educativo português e planificação do ensino: objetivos, competências, estratégias e avaliação.",
+      "topics": [
+        "Teorias curriculares",
+        "Lei de Bases e organização das escolas",
+        "Planificação e avaliação do ensino"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481089&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481028",
+      "title": "Educação e Formação de Adultos",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 13,
+      "summary": "O adulto e a educação de adultos: emergência internacional, evolução em Portugal da educação popular à aprendizagem ao longo da vida, e os Centros Qualifica, o RVCC e os cursos EFA.",
+      "topics": [
+        "Educação de adultos",
+        "Da educação permanente à aprendizagem ao longo da vida",
+        "Centros Qualifica, RVCC e EFA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481028&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481009",
+      "title": "Educação e Intervenção Social",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 14,
+      "summary": "A educação social e a pedagogia social, o trabalho social, as literacias, a educação de adultos, a economia social e contextos especializados como a educação em contexto prisional e a de adultos mais velhos.",
+      "topics": [
+        "Pedagogia social",
+        "Economia social",
+        "Educação social especializada"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481009&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481120",
+      "title": "Metodologias e Técnicas de Investigação em Educação II",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "O paradigma qualitativo em educação: etnografia, estudo de caso e investigação-ação, observação, entrevista e análise documental, tratamento de dados, qualidade, ética e escrita.",
+      "topics": [
+        "Desenhos qualitativos",
+        "Observação e entrevista",
+        "Análise de dados qualitativos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481120&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481121",
+      "title": "Políticas Educativas",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 16,
+      "summary": "O Estado e as políticas educativas, do Estado educador ao regulador e avaliador, a influência das organizações transnacionais, a europeização e a evolução das políticas educativas em Portugal desde o período revolucionário.",
+      "topics": [
+        "Estado e políticas educativas",
+        "Europeização e organizações transnacionais",
+        "Políticas educativas em Portugal"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481121&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481086",
+      "title": "Processos de Comunicação em Educação",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 17,
+      "summary": "Fundamentos da comunicação em educação, comunicação interpessoal, escuta ativa, assertividade e empatia, estilos comunicacionais e comunicação pedagógica em contextos formais, informais e digitais.",
+      "topics": [
+        "Comunicação interpessoal",
+        "Assertividade e empatia",
+        "Comunicação pedagógica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481086&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": 2
+    },
+    {
+      "code": "14481011",
+      "title": "Seminário de Projeto – Práticas Profissionais em Educação I",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 18,
+      "summary": "Estudo de instituições educativas e formativas, dentro e fora do sistema educativo (autarquias, empresas de formação, ONG, IPSS e associações), e identidade e competências profissionais em Ciências da Educação.",
+      "topics": [
+        "Análise de contextos educativos",
+        "Instituições da sociedade civil",
+        "Identidade profissional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481011&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481119",
+      "title": "Estatística Aplicada às Ciências Sociais",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 19,
+      "summary": "Estatística aplicada à investigação social: natureza dos dados, censos e sondagens, amostragem, análise e apresentação de dados, estatística descritiva e inferencial, fidelidade e validade.",
+      "topics": [
+        "Recolha de dados e amostragem",
+        "Estatística descritiva",
+        "Estatística inferencial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481119&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": 1
+    },
+    {
+      "code": "14481024",
+      "title": "Gestão e Administração em Educação e Formação",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 20,
+      "summary": "Organização, gestão e administração das organizações educativas em Portugal, liderança e governação, monitorização da gestão e avaliação externa, e desafios atuais da educação e formação.",
+      "topics": [
+        "Administração educativa em Portugal",
+        "Liderança e governação",
+        "Avaliação externa"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481024&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481122",
+      "title": "Intervenção Comunitária e Animação Sociocultural",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 21,
+      "summary": "Bases teóricas da intervenção comunitária e da animação sociocultural, participação e mudança social, voluntariado, métodos e projetos de animação e os seus destinatários, da infância à terceira idade.",
+      "topics": [
+        "Animação sociocultural",
+        "Participação e mudança comunitária",
+        "Projetos e técnicas de animação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481122&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481104",
+      "title": "Necessidades Educativas Especiais",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 22,
+      "summary": "Educação inclusiva: conceitos, princípios e enquadramento legal português, identificação e avaliação numa perspetiva ecológica, e intervenção nas perturbações do neurodesenvolvimento e na deficiência.",
+      "topics": [
+        "Educação inclusiva",
+        "Identificação e avaliação",
+        "Perturbações do neurodesenvolvimento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481104&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481016",
+      "title": "Seminário de Projeto – Práticas Profissionais em Educação II",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 23,
+      "summary": "Estudo de instituições educativas e formativas, dentro e fora do sistema educativo, na continuação do Seminário de Projeto I, com outras instituições visitadas.",
+      "topics": [
+        "Análise de contextos educativos",
+        "Instituições educativas e formativas",
+        "Visitas a instituições"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481016&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481126",
+      "title": "Educação de Infância",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 24,
+      "summary": "Construção social da infância, emergência e expansão da educação de infância, modelos pedagógicos e problemáticas atuais de qualidade, justiça social e equidade.",
+      "topics": [
+        "Construção social da infância",
+        "Modelos pedagógicos",
+        "Qualidade e equidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481126&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I (CE)",
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I (CE)",
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481014",
+      "title": "Construção de Materiais Educativos",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 25,
+      "summary": "Materiais educativos na cultura digital: recursos educacionais abertos e licenças Creative Commons, inteligência artificial na educação, curadoria e avaliação de recursos e construção de materiais com ferramentas colaborativas.",
+      "topics": [
+        "Recursos educacionais abertos",
+        "Curadoria de materiais educativos",
+        "Produção de materiais e IA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481014&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481123",
+      "title": "Formação, Emprego e Profissionalidade",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 26,
+      "summary": "Trabalho e emprego na globalização, políticas de emprego nacionais, europeias e da OCDE, relação entre emprego e formação, profissionalidade e planeamento de carreira.",
+      "topics": [
+        "Trabalho e emprego",
+        "Políticas europeias de emprego",
+        "Gestão de carreira e empregabilidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481123&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481124",
+      "title": "Modelos de Formação",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 27,
+      "summary": "Paradigmas e modelos de organização da formação, necessidades de formação e o seu levantamento, modalidades e etapas do processo formativo, métodos e avaliação da formação.",
+      "topics": [
+        "Necessidades de formação",
+        "Etapas do processo formativo",
+        "Avaliação da formação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481124&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481022",
+      "title": "Seminário de Projeto – Práticas Profissionais em Educação III",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 28,
+      "summary": "Preparação da prática profissional: caracterização da organização de acolhimento, enquadramento teórico do contexto de intervenção e planeamento do diagnóstico de necessidades e da avaliação.",
+      "topics": [
+        "Organização de acolhimento",
+        "Diagnóstico de necessidades",
+        "Plano de avaliação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481022&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481087",
+      "title": "Teoria e Prática da Avaliação",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 29,
+      "summary": "A avaliação educacional: gerações e paradigmas da avaliação, referentes e critérios, modalidades segundo a função, o momento, o normotipo e os agentes, e avaliação das aprendizagens e das organizações educativas.",
+      "topics": [
+        "Gerações e paradigmas da avaliação",
+        "Modalidades de avaliação",
+        "Avaliação interna e externa das escolas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481087&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14521138",
+      "title": "Psicologia da Motivação e Emoção",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 30,
+      "summary": "Conceitos e teorias da motivação, teoria da autodeterminação, abordagens cognitivas (expectativas, autoeficácia, atribuições e metas), o self na motivação e o estudo das emoções e da sua regulação.",
+      "topics": [
+        "Teorias da motivação",
+        "Autodeterminação e autoeficácia",
+        "Emoções e regulação emocional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14521138&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção II (QAC)",
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14521140",
+      "title": "Psicologia da Personalidade",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 31,
+      "summary": "Avaliação, investigação e teoria da personalidade: teorias psicodinâmicas, humanistas e existencialistas, disposicionais, cognitivas e da aprendizagem.",
+      "topics": [
+        "Avaliação da personalidade",
+        "Teorias psicodinâmicas e humanistas",
+        "Teorias disposicionais e sociocognitivas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14521140&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção II (QAC)",
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14521012",
+      "title": "Psicologia Social",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 32,
+      "summary": "Influência social (normas, conformismo, obediência e minorias), relações intergrupais, estereótipos e preconceito, processos de grupo e atitudes, persuasão e dissonância cognitiva.",
+      "topics": [
+        "Influência social",
+        "Relações intergrupais e preconceito",
+        "Atitudes e persuasão"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14521012&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II (QAC)",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção II (QAC)",
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481088",
+      "title": "Empreendedorismo em Educação",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 33,
+      "summary": "Empreendedorismo, nomeadamente social, e inovação em educação, descentralização educativa e políticas locais (Conselho Local de Educação, Carta Educativa, Projeto Educativo Local), cidade educadora e desenvolvimento comunitário.",
+      "topics": [
+        "Empreendedorismo social e inovação",
+        "Descentralização e políticas locais de educação",
+        "Cidade educadora"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481088&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481085",
+      "title": "Formação ao Longo da Vida",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 34,
+      "summary": "Competências para a aprendizagem ao longo da vida, contextos de formação contínua e comunitária, aprendizagem no trabalho, abordagens biográficas na formação de profissionais e desafios de inclusão, digitalização e empregabilidade.",
+      "topics": [
+        "Aprendizagem ao longo da vida",
+        "Abordagens biográficas",
+        "Inclusão e empregabilidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481085&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481125",
+      "title": "Seminário de Projeto – Práticas Profissionais em Educação IV",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 35,
+      "summary": "Prática profissional em organizações da sociedade civil: integração em contextos reais, observação, participação e intervenção em projetos educativos e sociais, e reflexão sobre ética, inclusão e impacto social.",
+      "topics": [
+        "Prática em contexto real",
+        "Intervenção em projetos educativos e sociais",
+        "Ética e reflexão crítica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481125&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false,
+      "fuc_semester": null
+    },
+    {
+      "code": "14481127",
+      "title": "Aprendizagem em Serviço",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 36,
+      "summary": "O pragmatismo de John Dewey, o pensamento reflexivo, a aprendizagem experiencial e a reflexão na ação, e a aprendizagem em serviço: conceito, características, metodologias e avaliação.",
+      "topics": [
+        "Dewey e a aprendizagem experiencial",
+        "Reflexão na ação",
+        "Metodologias da aprendizagem em serviço"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14481127&anoLectivo=202627&codInstituic=8&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III (QAC)",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III (QAC)",
+      "offered_both_terms": false,
+      "fuc_semester": null
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLxI8Can9yAHfrpbepaWbXqA-Qcwp_vVE5",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfrpbepaWbXqA-Qcwp_vVE5",
+      "title": "Pedagogia | Filosofia da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Disciplina de Filosofia da Educação da Pedagogia Univesp: o que é filosofia, relação filosofia–educação, antropologia filosófica, formas de conhecimento, ética e educação — pontos 1 e 4, base para o ponto 2.",
+      "tags": [
+        "Filosofia da Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfa85sdKQPM9L8-1H2cADRe",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfa85sdKQPM9L8-1H2cADRe",
+      "title": "Pedagogia * D-07: Disciplina Filosofia da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Disciplina D-07 (Pedagogia Unesp/Univesp): Teeteto/episteme, autonomia, Morin — reforça Platão e o ponto 3.1 (Edgar Morin).",
+      "tags": [
+        "Filosofia da Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "title": "Ciclo Básico | Projetos e Métodos para a Produção do Conhecimento",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Ciclo Básico Univesp \"Projetos e Métodos para a Produção do Conhecimento\": ciência vs senso comum, etapas do projeto de investigação, problema e hipóteses.",
+      "tags": [
+        "Introdução à Investigação Científica"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8BBF8ABEAA751D1D",
+      "url": "https://www.youtube.com/playlist?list=PL8BBF8ABEAA751D1D",
+      "title": "Pedagogia * D-10: Introdução à Metodologia da Pesquisa Científica",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Disciplina D-10 da Pedagogia Unesp/Univesp: introdução à metodologia da pesquisa científica em educação.",
+      "tags": [
+        "Introdução à Investigação Científica"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL6DF97EE1ED9A5225",
+      "url": "https://www.youtube.com/playlist?list=PL6DF97EE1ED9A5225",
+      "title": "Pedagogia * D-11: Psicologia do Desenvolvimento",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Disciplina D-11 (Pedagogia Unesp/Univesp): desenvolvimento afetivo, cognitivo, moral e social — cobre os pontos 1 e 2.",
+      "tags": [
+        "Psicologia do Desenvolvimento"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfyOVdJbvJ933E5-cVtXiTM",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfyOVdJbvJ933E5-cVtXiTM",
+      "title": "Letras, Matemática e Pedagogia | Educação Mediada por Tecnologias (2019.2)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "\"Educação Mediada por Tecnologias\" (Univesp): evolução histórica das TIC na educação, abordagens metodológicas, TPACK, tecnologias móveis e aplicações — pontos 1–3.",
+      "tags": [
+        "Recursos e Tecnologias Educativas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "title": "Eixo de Negócios | Gestão de Projetos",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Gestão de Projetos (Univesp, Eixo de Negócios): ciclo de vida, fases, plano de projeto, controlo e avaliação.",
+      "tags": [
+        "Conceção, Gestão e Avaliação de Projetos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIO3rdVtpBvZMD_RCE-2o1Be5htjXCBeB",
+      "url": "https://www.youtube.com/playlist?list=PLIO3rdVtpBvZMD_RCE-2o1Be5htjXCBeB",
+      "title": "Disciplina: Pedagogias Contra-Hegemônicas",
+      "channel": "HISTEDBR",
+      "channel_url": "https://www.youtube.com/@histedbroficial",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Disciplina do HISTEDBR (Unicamp) sobre pedagogias contra-hegemónicas: pedagogia crítica, educação popular freiriana, pedagogia libertária e socialista — pontos 4.2 e 4.5.",
+      "tags": [
+        "Correntes da Pedagogia Contemporânea"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLc0YQRSzTrBWDpWjEtQBQPHCDvl6Yi01O",
+      "url": "https://www.youtube.com/playlist?list=PLc0YQRSzTrBWDpWjEtQBQPHCDvl6Yi01O",
+      "title": "Métodos e técnicas de pesquisa",
+      "channel": "Prof. Dr. Ivan Guedes",
+      "channel_url": "https://www.youtube.com/@IvanGuedes",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Métodos e técnicas de pesquisa (Prof. Dr. Ivan Guedes): pesquisa quantitativa vs qualitativa, tipos de pesquisa, observação, instrumentos de recolha.",
+      "tags": [
+        "Metodologias e Técnicas de Investigação em Educação I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLA720D8131D805B0E",
+      "url": "https://www.youtube.com/playlist?list=PLA720D8131D805B0E",
+      "title": "Pedagogia * D-08: Psicologia da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Disciplina D-08 (Pedagogia Unesp/Univesp): paradigmas psicanalítico (Freud), construtivista e socioconstrutivista (Piaget) na educação — ponto 2 (teorias da aprendizagem).",
+      "tags": [
+        "Psicologia da Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHeiDNQ0cIKAioGodClAReMd",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeiDNQ0cIKAioGodClAReMd",
+      "title": "Psicologia da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Psicologia da Educação (Univesp): adolescência, psicanálise e educação, relação professor-aluno.",
+      "tags": [
+        "Psicologia da Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHeX6uNY_Mlexm0rj8IjQK9v",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeX6uNY_Mlexm0rj8IjQK9v",
+      "title": "Pedagogia | Sociologia da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Sociologia da Educação (Pedagogia Univesp): Durkheim, socialização, desigualdades e reprodução escolar — pontos 2–4.",
+      "tags": [
+        "Sociologia da Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdOz83XuTSFkSWYi1YkpP8P",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdOz83XuTSFkSWYi1YkpP8P",
+      "title": "Licenciaturas | Teorias do Currículo (2019.2)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Teorias do Currículo (Licenciaturas Univesp): teorias tradicionais, críticas e pós-críticas, políticas e documentos curriculares — pontos 1, 2 e 4.",
+      "tags": [
+        "Teoria e Desenvolvimento Curricular"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLvjRd2UFhoblgvmJBubkvnJtBKhM-naHT",
+      "url": "https://www.youtube.com/playlist?list=PLvjRd2UFhoblgvmJBubkvnJtBKhM-naHT",
+      "title": "EDUCAÇÃO PERMANENTE EM TEMPO DE MUDANÇA",
+      "channel": "APCEP Associação",
+      "channel_url": "https://www.youtube.com/@apcepassociacao4846",
+      "videos": 43,
+      "language": "pt-PT",
+      "description": "Encontro \"Educação Permanente em Tempo de Mudança\" da APCEP (Associação Portuguesa para a Cultura e Educação Permanente): educação popular, educação permanente e aprendizagem ao longo da vida em Portugal — pontos 3.1–3.2 e 4.",
+      "tags": [
+        "Educação e Formação de Adultos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfzSAygYjL4xrByRfuURLng",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfzSAygYjL4xrByRfuURLng",
+      "title": "Pedagogia | Educação em Espaços Não-Formais",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Educação em Espaços Não-Formais (Pedagogia Univesp): conceitos e histórico da educação não formal e lugares de atuação do educador fora da escola — ponto 2.",
+      "tags": [
+        "Educação e Intervenção Social"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLaznWX12zgjMC8K9j6hxeGgzTmFEaQr6C",
+      "url": "https://www.youtube.com/playlist?list=PLaznWX12zgjMC8K9j6hxeGgzTmFEaQr6C",
+      "title": "SÉRIE METODOLOGIA DA PESQUISA QUALITATIVA",
+      "channel": "Metodologia Científica Sem Sofrimento",
+      "channel_url": "https://www.youtube.com/@metodologiacient%C3%ADficasem",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Série sobre pesquisa qualitativa: etnografia, investigação-ação, estudo de caso — ponto 2 do programa.",
+      "tags": [
+        "Metodologias e Técnicas de Investigação em Educação II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLuUuDRbZm2YEWailm9O0Sif70KXKM4TPS",
+      "url": "https://www.youtube.com/playlist?list=PLuUuDRbZm2YEWailm9O0Sif70KXKM4TPS",
+      "title": "Seminários 2022 - 2026",
+      "channel": "CONSELHO NACIONAL EDUCAÇÃO",
+      "channel_url": "https://www.youtube.com/@CONSELHONACIONALEDUCA%C3%87%C3%83O",
+      "videos": 42,
+      "language": "pt-PT",
+      "description": "Seminários 2022–2026 do Conselho Nacional de Educação (Portugal): debate das políticas educativas portuguesas atuais por investigadores e decisores — ponto 4.",
+      "tags": [
+        "Políticas Educativas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8vXuI6zmpdiZ-lXFDJgGOSm1BbGoU-_z",
+      "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdiZ-lXFDJgGOSm1BbGoU-_z",
+      "title": "Comunicação Assertiva para Líderes",
+      "channel": "Kultivi",
+      "channel_url": "https://www.youtube.com/@Kultivi",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Comunicação assertiva (Kultivi): assertividade, feedback, escuta, gestão de conflitos — ponto 2 (competências interpessoais).",
+      "tags": [
+        "Processos de Comunicação em Educação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdTPLwm3tMU4SR6cGGR0VzQ",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdTPLwm3tMU4SR6cGGR0VzQ",
+      "title": "Pedagogia | Estatística Aplicada à Educação  (2017.2)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Estatística Aplicada à Educação (Pedagogia Univesp): tipos de dados, amostragem, estatística descritiva e inferencial.",
+      "tags": [
+        "Estatística Aplicada às Ciências Sociais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdNMHdD4vKxA8H97hdhP8VU",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdNMHdD4vKxA8H97hdhP8VU",
+      "title": "Licenciatura em letras | Educação especial e Inclusiva",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Educação Especial e Inclusiva (Letras Univesp): aspetos históricos e paradigmas da inclusão, atendimento educacional especializado, ensino colaborativo — pontos 1.1–1.2 e 2.",
+      "tags": [
+        "Necessidades Educativas Especiais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfokWX5RlJ9eIzzq-pcW3ro",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfokWX5RlJ9eIzzq-pcW3ro",
+      "title": "Pedagogia | Design Educacional (2018.1)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Design Educacional (Pedagogia Univesp): fundamentos dos materiais pedagógicos digitais, design instrucional, TPACK, planeamento e produção de materiais — pontos 1 e 3.",
+      "tags": [
+        "Construção de Materiais Educativos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHcTuDrqFL8cHpAbpR338yQp",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcTuDrqFL8cHpAbpR338yQp",
+      "title": "Pedagogia * D-29: Avaliação Educacional e Escolar",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Disciplina D-29 \"Avaliação Educacional e Escolar\" (Pedagogia Unesp/Univesp): avaliação formativa vs somativa, avaliação e responsabilidade — pontos 1 e 4.1.",
+      "tags": [
+        "Teoria e Prática da Avaliação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHeJjZS74nP5F3woVrpxIYYz",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeJjZS74nP5F3woVrpxIYYz",
+      "title": "Pedagogia | História da Educação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Primeiros vídeos (Antiguidade, Estado Moderno, concepções pedagógicas, Educação Nova) e o episódio das reformas pombalinas cobrem o ponto 1 e o 2.1; o resto da playlist é história da educação brasileira.",
+      "tags": [
+        "História da Educação"
+      ],
+      "published": false
+    },
+    {
+      "id": "PL369D7EF754D62940",
+      "url": "https://www.youtube.com/playlist?list=PL369D7EF754D62940",
+      "title": "Pedagogia * D-01: Educação e Sociedade",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Disciplina D-01 \"Educação e Sociedade\" (Pedagogia Univesp): conceito de educação, ensino e aprendizagem, relação educativa.",
+      "tags": [
+        "Introdução às Ciências da Educação"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLxI8Can9yAHcr81PeRofmgvMw-3hx0r0F",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcr81PeRofmgvMw-3hx0r0F",
+      "title": "Pedagogia | Gestão Escolar (2017.2)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Gestão Escolar (Pedagogia Univesp): conceções de gestão, gestão democrática e participativa, liderança — ponto 2.",
+      "tags": [
+        "Gestão e Administração em Educação e Formação"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLxI8Can9yAHfR3plnG4_hmDJO4kVxiJcW",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfR3plnG4_hmDJO4kVxiJcW",
+      "title": "Gestão de Carreira | Bacharelado em Adm",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Gestão de Carreira (Bacharelado em Administração Univesp): empregabilidade, planeamento de carreira, portefólio — ponto 4.",
+      "tags": [
+        "Formação, Emprego e Profissionalidade"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLgeChMKX_s3fGEIb6B5ZN6rNURgfKlmMQ",
+      "url": "https://www.youtube.com/playlist?list=PLgeChMKX_s3fGEIb6B5ZN6rNURgfKlmMQ",
+      "title": "VI Congresso Nacional da Formação Profissional",
+      "channel": "Forma-te - Portal dos Formadores",
+      "channel_url": "https://www.youtube.com/@forma-te",
+      "videos": 24,
+      "language": "pt-PT",
+      "description": "VI Congresso Nacional da Formação Profissional (Forma-te, Portal dos Formadores): comunicações sobre formação profissional, modalidades e formação digital em Portugal.",
+      "tags": [
+        "Modelos de Formação"
+      ],
+      "published": false
+    }
+  ],
+  "links": [
+    {
+      "code": "14481000",
+      "playlist_id": "PLxI8Can9yAHfrpbepaWbXqA-Qcwp_vVE5",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Disciplina de Filosofia da Educação da Pedagogia Univesp: o que é filosofia, relação filosofia–educação, antropologia filosófica, formas de conhecimento, ética e educação — pontos 1 e 4, base para o ponto 2.",
+      "published": true
+    },
+    {
+      "code": "14481000",
+      "playlist_id": "PLxI8Can9yAHfa85sdKQPM9L8-1H2cADRe",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Disciplina D-07 (Pedagogia Unesp/Univesp): Teeteto/episteme, autonomia, Morin — reforça Platão e o ponto 3.1 (Edgar Morin).",
+      "published": true
+    },
+    {
+      "code": "14481006",
+      "playlist_id": "PLxI8Can9yAHeJjZS74nP5F3woVrpxIYYz",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Primeiros vídeos (Antiguidade, Estado Moderno, concepções pedagógicas, Educação Nova) e o episódio das reformas pombalinas cobrem o ponto 1 e o 2.1; o resto da playlist é história da educação brasileira.",
+      "published": false
+    },
+    {
+      "code": "14481115",
+      "playlist_id": "PLxI8Can9yAHePQrbm_Z5TZD278IlPyNUL",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Ciclo Básico Univesp \"Projetos e Métodos para a Produção do Conhecimento\": ciência vs senso comum, etapas do projeto de investigação, problema e hipóteses.",
+      "published": true
+    },
+    {
+      "code": "14481115",
+      "playlist_id": "PL8BBF8ABEAA751D1D",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Disciplina D-10 da Pedagogia Unesp/Univesp: introdução à metodologia da pesquisa científica em educação.",
+      "published": true
+    },
+    {
+      "code": "14481113",
+      "playlist_id": "PL369D7EF754D62940",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior (introdutório)",
+      "match": "Disciplina D-01 \"Educação e Sociedade\" (Pedagogia Univesp): conceito de educação, ensino e aprendizagem, relação educativa.",
+      "published": false
+    },
+    {
+      "code": "14481114",
+      "playlist_id": "PL6DF97EE1ED9A5225",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Disciplina D-11 (Pedagogia Unesp/Univesp): desenvolvimento afetivo, cognitivo, moral e social — cobre os pontos 1 e 2.",
+      "published": true
+    },
+    {
+      "code": "14481005",
+      "playlist_id": "PLxI8Can9yAHfyOVdJbvJ933E5-cVtXiTM",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "\"Educação Mediada por Tecnologias\" (Univesp): evolução histórica das TIC na educação, abordagens metodológicas, TPACK, tecnologias móveis e aplicações — pontos 1–3.",
+      "published": true
+    },
+    {
+      "code": "14481118",
+      "playlist_id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Gestão de Projetos (Univesp, Eixo de Negócios): ciclo de vida, fases, plano de projeto, controlo e avaliação.",
+      "published": true
+    },
+    {
+      "code": "14481081",
+      "playlist_id": "PLIO3rdVtpBvZMD_RCE-2o1Be5htjXCBeB",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Disciplina do HISTEDBR (Unicamp) sobre pedagogias contra-hegemónicas: pedagogia crítica, educação popular freiriana, pedagogia libertária e socialista — pontos 4.2 e 4.5.",
+      "published": true
+    },
+    {
+      "code": "14481116",
+      "playlist_id": "PLc0YQRSzTrBWDpWjEtQBQPHCDvl6Yi01O",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Métodos e técnicas de pesquisa (Prof. Dr. Ivan Guedes): pesquisa quantitativa vs qualitativa, tipos de pesquisa, observação, instrumentos de recolha.",
+      "published": true
+    },
+    {
+      "code": "14481117",
+      "playlist_id": "PLA720D8131D805B0E",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Disciplina D-08 (Pedagogia Unesp/Univesp): paradigmas psicanalítico (Freud), construtivista e socioconstrutivista (Piaget) na educação — ponto 2 (teorias da aprendizagem).",
+      "published": true
+    },
+    {
+      "code": "14481117",
+      "playlist_id": "PLxI8Can9yAHeiDNQ0cIKAioGodClAReMd",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Psicologia da Educação (Univesp): adolescência, psicanálise e educação, relação professor-aluno.",
+      "published": true
+    },
+    {
+      "code": "14481001",
+      "playlist_id": "PLxI8Can9yAHeX6uNY_Mlexm0rj8IjQK9v",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sociologia da Educação (Pedagogia Univesp): Durkheim, socialização, desigualdades e reprodução escolar — pontos 2–4.",
+      "published": true
+    },
+    {
+      "code": "14481089",
+      "playlist_id": "PLxI8Can9yAHdOz83XuTSFkSWYi1YkpP8P",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Teorias do Currículo (Licenciaturas Univesp): teorias tradicionais, críticas e pós-críticas, políticas e documentos curriculares — pontos 1, 2 e 4.",
+      "published": true
+    },
+    {
+      "code": "14481028",
+      "playlist_id": "PLvjRd2UFhoblgvmJBubkvnJtBKhM-naHT",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Encontro \"Educação Permanente em Tempo de Mudança\" da APCEP (Associação Portuguesa para a Cultura e Educação Permanente): educação popular, educação permanente e aprendizagem ao longo da vida em Portugal — pontos 3.1–3.2 e 4.",
+      "published": true
+    },
+    {
+      "code": "14481009",
+      "playlist_id": "PLxI8Can9yAHfzSAygYjL4xrByRfuURLng",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Educação em Espaços Não-Formais (Pedagogia Univesp): conceitos e histórico da educação não formal e lugares de atuação do educador fora da escola — ponto 2.",
+      "published": true
+    },
+    {
+      "code": "14481120",
+      "playlist_id": "PLaznWX12zgjMC8K9j6hxeGgzTmFEaQr6C",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Série sobre pesquisa qualitativa: etnografia, investigação-ação, estudo de caso — ponto 2 do programa.",
+      "published": true
+    },
+    {
+      "code": "14481121",
+      "playlist_id": "PLuUuDRbZm2YEWailm9O0Sif70KXKM4TPS",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Seminários 2022–2026 do Conselho Nacional de Educação (Portugal): debate das políticas educativas portuguesas atuais por investigadores e decisores — ponto 4.",
+      "published": true
+    },
+    {
+      "code": "14481086",
+      "playlist_id": "PL8vXuI6zmpdiZ-lXFDJgGOSm1BbGoU-_z",
+      "ord": 1,
+      "confidence": "média",
+      "level": "formação profissional / divulgação",
+      "match": "Comunicação assertiva (Kultivi): assertividade, feedback, escuta, gestão de conflitos — ponto 2 (competências interpessoais).",
+      "published": true
+    },
+    {
+      "code": "14481119",
+      "playlist_id": "PLxI8Can9yAHdTPLwm3tMU4SR6cGGR0VzQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística Aplicada à Educação (Pedagogia Univesp): tipos de dados, amostragem, estatística descritiva e inferencial.",
+      "published": true
+    },
+    {
+      "code": "14481024",
+      "playlist_id": "PLxI8Can9yAHcr81PeRofmgvMw-3hx0r0F",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Gestão Escolar (Pedagogia Univesp): conceções de gestão, gestão democrática e participativa, liderança — ponto 2.",
+      "published": false
+    },
+    {
+      "code": "14481104",
+      "playlist_id": "PLxI8Can9yAHdNMHdD4vKxA8H97hdhP8VU",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Educação Especial e Inclusiva (Letras Univesp): aspetos históricos e paradigmas da inclusão, atendimento educacional especializado, ensino colaborativo — pontos 1.1–1.2 e 2.",
+      "published": true
+    },
+    {
+      "code": "14481014",
+      "playlist_id": "PLxI8Can9yAHfokWX5RlJ9eIzzq-pcW3ro",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Design Educacional (Pedagogia Univesp): fundamentos dos materiais pedagógicos digitais, design instrucional, TPACK, planeamento e produção de materiais — pontos 1 e 3.",
+      "published": true
+    },
+    {
+      "code": "14481123",
+      "playlist_id": "PLxI8Can9yAHfR3plnG4_hmDJO4kVxiJcW",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior (introdutório)",
+      "match": "Gestão de Carreira (Bacharelado em Administração Univesp): empregabilidade, planeamento de carreira, portefólio — ponto 4.",
+      "published": false
+    },
+    {
+      "code": "14481124",
+      "playlist_id": "PLgeChMKX_s3fGEIb6B5ZN6rNURgfKlmMQ",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "formação profissional / divulgação",
+      "match": "VI Congresso Nacional da Formação Profissional (Forma-te, Portal dos Formadores): comunicações sobre formação profissional, modalidades e formação digital em Portugal.",
+      "published": false
+    },
+    {
+      "code": "14481087",
+      "playlist_id": "PLxI8Can9yAHcTuDrqFL8cHpAbpR338yQp",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Disciplina D-29 \"Avaliação Educacional e Escolar\" (Pedagogia Unesp/Univesp): avaliação formativa vs somativa, avaliação e responsabilidade — pontos 1 e 4.1.",
+      "published": true
+    },
+    {
+      "code": "14481085",
+      "playlist_id": "PLvjRd2UFhoblgvmJBubkvnJtBKhM-naHT",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Encontro APCEP sobre educação permanente e aprendizagem ao longo da vida: literacias, educação comunitária, inclusão — pontos 1, 2 e 4.",
+      "published": false
+    }
+  ]
+}
