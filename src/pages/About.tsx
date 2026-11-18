@@ -25,11 +25,10 @@ export default function About() {
     if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
   }, [hash]);
   const editor = canAccessFacodiRoute(role, 'editor');
+  // Shown on the page word for word, so the FAQPage structured data always matches visible content.
+  const faq = ABOUT_FAQ.map(item => ({ question: t(item.question), answer: t(item.answer) }));
   return <article>
-    <PageSeo {...aboutMeta(
-      { title: t('projectSeo.about.title'), description: t('projectSeo.about.description') },
-      ABOUT_FAQ.map(item => ({ question: t(item.question), answer: t(item.answer) })),
-    )} />
+    <PageSeo {...aboutMeta({ title: t('projectSeo.about.title'), description: t('projectSeo.about.description') }, faq)} />
     <header className="grid gap-8 border-b border-foreground pb-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
       <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-6xl">{t('about.title')}</h1>
       <p className="max-w-prose text-lg leading-relaxed text-muted-foreground">{t('about.lead')}</p>
@@ -51,6 +50,16 @@ export default function About() {
             {t(`about.principles.${item}.title`)}
           </dt>
           <dd className="mt-4 leading-relaxed text-muted-foreground">{t(`about.principles.${item}.text`)}</dd>
+        </div>)}
+      </dl>
+    </section>
+
+    <section aria-labelledby="faq" className="border-t border-input py-12">
+      <h2 id="faq" className="text-3xl font-semibold tracking-[-0.02em]">{t('about.faqTitle')}</h2>
+      <dl className="mt-8 divide-y divide-input border-y border-input">
+        {faq.map(item => <div key={item.question} className="grid gap-3 py-6 md:grid-cols-[1fr_1.4fr] md:gap-14">
+          <dt className="text-lg font-semibold">{item.question}</dt>
+          <dd className="max-w-prose leading-relaxed text-muted-foreground">{item.answer}</dd>
         </div>)}
       </dl>
     </section>

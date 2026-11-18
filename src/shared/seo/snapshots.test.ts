@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { describe, expect, it } from 'vitest';
-import { courseMeta } from './seo';
+import { aboutMeta, courseMeta } from './seo';
 import { assertCompleteSequenceSnapshot, renderLlmsTxt, renderSitemap, renderSnapshotBody, renderSnapshotHtml, snapshotFilePath } from './snapshots';
 
 describe('build-time SEO snapshots', () => {
@@ -61,13 +61,27 @@ describe('build-time SEO snapshots', () => {
   it('gives crawlers without JavaScript the heading, description, breadcrumb and public links', () => {
     const page = courseMeta({ slug: 'lesti', title: 'LESTI <beta>', summary: 'Curso & percurso.' }, { courses: 'Cursos' });
     const shell = '<head><!-- seo:start -->old<!-- seo:end --></head><body><div id="root"></div></body>';
-    const html = renderSnapshotHtml(shell, page, [{ name: 'Cálculo I', path: '/courses/lesti/units/calculo' }]);
+    const html = renderSnapshotHtml(shell, page, [{ links: [{ name: 'Cálculo I', path: '/courses/lesti/units/calculo' }] }]);
     expect(html).toContain('<h1>LESTI &lt;beta&gt;</h1>');
     expect(html).toContain('<p>Curso &amp; percurso.</p>');
     expect(html).toContain('<nav aria-label="breadcrumb"><a href="/">FACODI</a> › <a href="/courses">Cursos</a></nav>');
     expect(html).toContain('<li><a href="/courses/lesti/units/calculo">Cálculo I</a></li>');
     expect(html.match(/<div id="root">/g)).toHaveLength(1);
     expect(renderSnapshotHtml('<head><!-- seo:start -->old<!-- seo:end --></head><body></body>', page)).not.toContain('<main');
+  });
+
+  it('renders titled link groups, keeping curated order as an ordered list and skipping empty groups', () => {
+    const body = renderSnapshotBody({ title: 'Sequência', description: 'Aulas.', path: '/sequences/a' }, [
+      { title: '2 aulas', ordered: true, links: [{ name: 'Limites', path: '/resources/limites' }, { name: 'Derivadas', path: '/resources/derivadas' }] },
+      { title: 'Vazia', links: [] },
+    ]);
+    expect(body).toContain('<h2>2 aulas</h2><ol><li><a href="/resources/limites">Limites</a></li><li><a href="/resources/derivadas">Derivadas</a></li></ol>');
+    expect(body).not.toContain('Vazia');
+  });
+
+  it('writes the FAQ declared in structured data as visible questions and answers', () => {
+    const page = aboutMeta({ title: 'Sobre', description: 'Projeto.' }, [{ question: 'É gratuita?', answer: 'Sim & sem conta.' }]);
+    expect(renderSnapshotBody(page)).toContain('<h2>É gratuita?</h2><p>Sim &amp; sem conta.</p>');
   });
 
   it('lets React replace the static body on its first render', async () => {

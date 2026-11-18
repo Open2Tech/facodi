@@ -405,6 +405,7 @@
     "contribute": "Sugerir recursos",
     "search": "Pesquisar por título ou código",
     "searchPlaceholder": "Ex.: Programação, 14541000",
+    "searchLibrary": "Procurar «{{term}}» nos vídeos e recursos",
     "sort": "Ordenar",
     "sorts": {
       "curriculum": "Ordem do plano",
@@ -484,6 +485,7 @@
     "openEditor": "Abrir gestão editorial",
     "openDashboard": "Ir para a área pessoal",
     "createAccount": "Criar conta ou entrar",
+    "faqTitle": "Perguntas frequentes",
     "faq": {
       "free": "A FACODI é gratuita? Preciso de conta?",
       "curated": "Quem decide o que é publicado na FACODI?",

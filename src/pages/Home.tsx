@@ -29,7 +29,8 @@ export default function Home() {
   function submit(event: FormEvent) {
     event.preventDefault();
     const term = search.trim();
-    navigate(term ? `/units?search=${encodeURIComponent(term)}` : '/units');
+    // The hero asks what to understand next: search the whole library (videos, modules, documents), not only unit titles.
+    navigate(term ? `/resources?search=${encodeURIComponent(term)}` : '/resources');
   }
   const paths = [
     { to: '/courses', key: 'courses', count: counts.data?.courses, icon: BookOpen, tone: 'bg-primary' },

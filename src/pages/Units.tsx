@@ -116,7 +116,13 @@ export default function Units() {
                 </dl>
               </li>;
             })}
-          </ol> : <PageState level="h2" title={t('units.empty')} description={t(faceted || page > 1 ? 'units.noResults' : 'units.emptyDescription')} />}
+          </ol> : <>
+            <PageState level="h2" title={t('units.empty')} description={t(faceted || page > 1 ? 'units.noResults' : 'units.emptyDescription')} />
+            {/* Unit search only matches titles and codes; the topic usually lives in the videos and resources. */}
+            {search.trim() && <Link to={`/resources?search=${encodeURIComponent(search.trim())}`} className="-mt-4 inline-flex min-h-11 items-center gap-2 font-semibold underline underline-offset-4 hover:text-foreground">
+              {t('units.searchLibrary', { term: search.trim() })}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>}
+          </>}
           <Pagination page={page} total={query.data.total} onChange={value => filter('page', String(value))} />
         </>}
         <section aria-labelledby="units-contribute" className="mt-12 flex flex-col gap-6 border border-foreground bg-primary px-6 py-8 text-primary-foreground sm:flex-row sm:items-end sm:justify-between lg:hidden">

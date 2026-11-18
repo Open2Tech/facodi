@@ -139,11 +139,12 @@ describe('FACODI Data API contract', () => {
     expect(await getCatalogCounts()).toEqual({ courses: 2, units: 5, resources: 9, videos: 4 });
     expect(seen.sort()).toEqual(['courses', 'curricular_units', 'learning_objects', 'learning_objects']);
   });
-  it('ranks topics by frequency, ignoring blanks', async () => {
-    server.use(http.get(`${endpoint}/learning_objects`, () => HttpResponse.json([
-      { tags: ['Logic', 'Ethics'] }, { tags: ['Logic', ' '] }, { tags: ['Algebra'] },
-    ])));
-    expect(await listTopics(2)).toEqual([{ tag: 'Logic', count: 2 }, { tag: 'Algebra', count: 1 }]);
+  it('reads home topics from the curated library vocabulary, most frequent first', async () => {
+    server.use(http.post(`${endpoint}/rpc/list_public_resource_topics_v1`, async ({ request }) => {
+      expect(await request.json()).toEqual({ p_search: '' });
+      return HttpResponse.json([{ tag: 'algebra', item_count: 1 }, { tag: 'logica', item_count: 2 }, { tag: 'etica', item_count: 1 }]);
+    }));
+    expect(await listTopics(2)).toEqual([{ tag: 'logica', count: 2 }, { tag: 'algebra', count: 1 }]);
   });
   it.each(['courses', 'curricular_units', 'learning_objects'] as const)('creates manual drafts in %s, never auto-publishing', async kind => {
     server.use(http.post(`${endpoint}/${kind}`, async ({ request }) => {
