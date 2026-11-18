@@ -1241,6 +1241,13 @@
     "results": "Sequence results",
     "noMatchesText": "Try different words or another language. Search ignores accents and also matches unit codes."
   },
+  "shareCard": {
+    "button": "Share achievement",
+    "eyebrow": "Sequence completed",
+    "text": "I finished “{{title}}” on FACODI.",
+    "saved": "Image saved. You can share it now.",
+    "failed": "The image could not be created."
+  },
   "continueLearning": {
     "eyebrow": "Pick up where you left off",
     "next": "Next lesson: {{title}}",
