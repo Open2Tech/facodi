@@ -265,6 +265,13 @@
     "allUnits_many": "See all {{count}} units",
     "allUnits_other": "See all {{count}} units"
   },
+  "examRevision": {
+    "title": "Semester {{term}} exam season",
+    "text_one": "Exam revision: this unit's lesson is just below. Use the notebook to jot down what you need to go over.",
+    "text_many": "Exam revision: this unit's {{count}} lessons are in one list, just below. Use the notebook to jot down what you need to go over.",
+    "text_other": "Exam revision: this unit's {{count}} lessons are in one list, just below. Use the notebook to jot down what you need to go over.",
+    "cta": "Review the lessons"
+  },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
     "description": "Your space to find the next path and look after your account.",
