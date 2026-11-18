@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { unitPath } from '@/entities/course/course.paths';
+import { countExplored } from '@/entities/sequence/courseMap';
+import { ExploredMark } from './CourseMap';
 import { buildUalgSections, completionTrack, curriculumBranches, ectsVerificationPending, type UalgCurricularUnit, type UalgProgram, type UalgSpecialization } from '@/entities/course/ualgCurriculum';
 
 interface UnitCoverage {
@@ -19,12 +21,14 @@ const SPECIALIZATIONS: UalgSpecialization[] = ['Neurociências Cognitivas', 'Neu
  * of curriculum_placements, not duplicated UCs or additive ECTS.
  */
 export function UalgCurriculum({
-  program, courseSlug, units, coverage,
+  program, courseSlug, units, coverage, explored = new Set<string>(),
 }: {
   program: UalgProgram;
   courseSlug: string;
   units: readonly UalgCurricularUnit[];
   coverage: readonly UnitCoverage[];
+  /** Unit codes the signed-in learner has explored (course map); empty for visitors. */
+  explored?: ReadonlySet<string>;
 }) {
   const { t } = useTranslation();
   const [specialization, setSpecialization] = useState<UalgSpecialization>(SPECIALIZATIONS[0]);
@@ -98,6 +102,7 @@ export function UalgCurriculum({
               <h4 className="font-semibold">{term} · {heading}</h4>
               <span className="font-mono text-xs text-muted-foreground">
                 {t('course.termSummary', { count: section.units.length })}
+                {countExplored(section.units, explored) > 0 && ` · ${t('courseMap.groupExplored', { count: countExplored(section.units, explored) })}`}
               </span>
             </div>
             {section.role === 'alternative' && <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
@@ -121,6 +126,7 @@ export function UalgCurriculum({
                         <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
                         <span className="sr-only">{t('course.hasResource')}</span>
                       </span>}
+                      {explored.has(unit.code) && <ExploredMark />}
                       <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">
                         {t('unit.videoChip', { count: media.video_count })}

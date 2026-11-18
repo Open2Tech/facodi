@@ -247,6 +247,16 @@
     "hidePasswords": "Masquer les mots de passe",
     "legalNotice": "En créant un compte, vous acceptez les [Conditions d’utilisation](/terms) et confirmez avoir lu la [Politique de confidentialité](/privacy)."
   },
+  "courseMap": {
+    "exploredUnit": "Tu as exploré cette unité",
+    "summary_one": "Tu as exploré {{count}} unité sur {{total}} de ce cursus.",
+    "summary_many": "Tu as exploré {{count}} unités sur {{total}} de ce cursus.",
+    "summary_other": "Tu as exploré {{count}} unités sur {{total}} de ce cursus.",
+    "start": "Termine un cours dans une séquence pour commencer à colorier la carte de ce cursus.",
+    "groupExplored_one": "{{count}} explorée",
+    "groupExplored_many": "{{count}} explorées",
+    "groupExplored_other": "{{count}} explorées"
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",
