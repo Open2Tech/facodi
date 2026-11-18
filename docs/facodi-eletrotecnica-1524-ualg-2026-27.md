@@ -1,7 +1,7 @@
 # Licenciatura em Engenharia Eletrotécnica e de Computadores, UAlg/ISE 1524
 
 **Data:** 2026-11-18
-**Migração:** `supabase/migrations/20261118200000_facodi_ualg_1524_eletrotecnica_computadores_20261118.sql`
+**Script de dados:** `supabase/seeds/facodi_ualg_1524_eletrotecnica_computadores_20261118.sql`, para aplicar via Supabase MCP como no #69. Não é uma migração.
 **Manifesto:** `supabase/seeds/facodi_ualg_1524_eletrotecnica_computadores_20261118.json`
 **Depende de:** #67, para a página do curso mostrar os ramos e os grupos de opção.
 
@@ -41,8 +41,7 @@ Energia. Com o #67, a página do curso mostra um seletor de ramo, e o tronco com
 
 ## Playlists
 
-- **Cobertura:** 83 playlists, com 85 ligações, para 44 das 55 UCs. São **todas as obrigatórias dos dois ramos**,
-  mais 3 opções partilhadas com a LESTI, que reaproveitam as playlists já verificadas no #65.
+- **Cobertura:** a pesquisa tem 83 playlists e 85 ligações para 44 das 55 UCs. O script publica **80 playlists e 82 ligações para 42 UCs**: as 3 ligações de confiança baixa (Projeto de Instalações Elétricas I e II) ficam só no manifesto (`published: false`), para revisão, como no #69. Entram todas as obrigatórias dos dois ramos menos essas duas, mais 3 opções partilhadas com a LESTI, que reaproveitam as playlists já publicadas pelo #69.
 - **Idioma:** 82 em PT-BR e 3 em inglês.
 - **Confiança:** 48 alta, 34 média, 3 baixa.
 - **Critérios:**
@@ -52,8 +51,8 @@ Energia. Com o #67, a página do curso mostra um seletor de ramo, e o tronco com
 - **Reutilização:** uma playlist já registada com o mesmo ID do YouTube é reaproveitada.
 
 **Para rever:**
-- **Confiança baixa:**
-  - Projeto de Instalações Elétricas I e II. As instalações elétricas em Portugal seguem as RTIEBT e os regulamentos de redes de baixa tensão e de postos de transformação, e não há aulas abertas portuguesas. As playlists brasileiras cobrem os conceitos, não a regulamentação.
+- **Fora do script (confiança baixa):**
+  - Projeto de Instalações Elétricas I e II ficam sem playlist publicada. As instalações elétricas em Portugal seguem as RTIEBT e os regulamentos de redes de baixa tensão e de postos de transformação, e não há aulas abertas portuguesas. As playlists brasileiras cobrem os conceitos, não a regulamentação.
 - **Só uma playlist:** Projeto de Instalações Elétricas I, Energias Renováveis e Sistemas de Telecomunicações I.
 - **Sem playlist:** 11 opções, estágios e projetos (Low-Code, Domótica, Introdução aos Sistemas Operativos,
   Complementos de Bases de Dados e Infraestruturas de Telecomunicações, mais os 6 estágios e projetos). A pesquisa cobriu as obrigatórias.
@@ -64,7 +63,7 @@ Energia. Com o #67, a página do curso mostra um seletor de ramo, e o tronco com
 
 | Caso | Resultado |
 |---|---|
-| Execução com a LESTI já registada (UC `19411031`) | 1 curso (180 ECTS, 2 ramos), 55 UCs, 83 playlists; o Laboratório IoT deste curso fica `eletrotecnica-uc-19411031` |
+| Execução com a LESTI já registada (UC `19411031`) | 1 curso (180 ECTS, 2 ramos), 55 UCs, 80 playlists e 82 ligações; o Laboratório IoT deste curso fica `eletrotecnica-uc-19411031` |
 | Segunda execução | Não altera nada (idempotente) |
 | Outro curso já com `LEEC` | Aborta antes de inserir |
 
@@ -74,9 +73,9 @@ Energia. Com o #67, a página do curso mostra um seletor de ramo, e o tronco com
 - as playlists;
 - conflitos de curso.
 
-**Pós-verificação:** confirma o curso, as 55 UCs com colocação e as 85 ligações. Se uma restrição da base que não está
+**Pós-verificação:** confirma o curso, as 55 UCs com colocação e as 82 ligações. Se uma restrição da base que não está
 no repositório rejeitar alguma linha (por exemplo, código de UC único entre cursos), a pós-verificação aborta a
-migração inteira.
+importação inteira.
 
 **Vista do plano:** foi simulada com o `buildUalgSections` do #67 e os dados deste manifesto. Em cada ramo, o 1.º e o
 2.º ano somam 30 ECTS por semestre. O 3.º ano tem 25 ECTS obrigatórios no 1.º semestre e 10 no 2.º, mais os grupos
@@ -84,5 +83,5 @@ Opção I e II (com as listas do plano em cada semestre) e a Opção III (estág
 
 ## Aplicação
 
-A migração não foi aplicada em produção. Convém fazer antes o merge do #67. Depois de aplicada, o build gera as
+O script não foi aplicado em produção. Aplica-se via Supabase MCP, como no #69, depois do merge do #67. Depois de aplicada, o build gera as
 páginas do curso e das UCs, que entram no sitemap e no `llms.txt`.

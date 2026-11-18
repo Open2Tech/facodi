@@ -3008,7 +3008,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Espaços vetoriais, matrizes, determinantes, sistemas, mudança de base (PROFMAT/SBM)."
+      "match": "Espaços vetoriais, matrizes, determinantes, sistemas, mudança de base (PROFMAT/SBM).",
+      "published": true
     },
     {
       "code": "15241001",
@@ -3016,7 +3017,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "MIT 18.06 (Gilbert Strang): referência para valores e vetores próprios e matrizes ortogonais."
+      "match": "MIT 18.06 (Gilbert Strang): referência para valores e vetores próprios e matrizes ortogonais.",
+      "published": true
     },
     {
       "code": "15241000",
@@ -3024,7 +3026,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Funções reais: limites, continuidade, derivadas, primitivas e integrais."
+      "match": "Funções reais: limites, continuidade, derivadas, primitivas e integrais.",
+      "published": true
     },
     {
       "code": "15241000",
@@ -3032,7 +3035,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Integrais e técnicas de primitivação, áreas e volumes de revolução."
+      "match": "Integrais e técnicas de primitivação, áreas e volumes de revolução.",
+      "published": true
     },
     {
       "code": "15241253",
@@ -3040,7 +3044,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Funções de várias variáveis: derivadas parciais, diferencial, gradiente, integrais duplos e triplos."
+      "match": "Funções de várias variáveis: derivadas parciais, diferencial, gradiente, integrais duplos e triplos.",
+      "published": true
     },
     {
       "code": "15241253",
@@ -3048,7 +3053,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Cálculo vetorial (UFABC): divergência, rotacional, integrais de linha e superfície, Stokes e Gauss."
+      "match": "Cálculo vetorial (UFABC): divergência, rotacional, integrais de linha e superfície, Stokes e Gauss.",
+      "published": true
     },
     {
       "code": "15241254",
@@ -3056,7 +3062,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Circuitos em corrente contínua: leis de Ohm e Kirchhoff, potência, associação, teoremas."
+      "match": "Circuitos em corrente contínua: leis de Ohm e Kirchhoff, potência, associação, teoremas.",
+      "published": true
     },
     {
       "code": "15241254",
@@ -3064,7 +3071,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Análise de circuitos I (PET Elétrica UFBA): análise nodal e de malhas, problemas resolvidos."
+      "match": "Análise de circuitos I (PET Elétrica UFBA): análise nodal e de malhas, problemas resolvidos.",
+      "published": true
     },
     {
       "code": "15241238",
@@ -3072,7 +3080,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Estática do ponto e do corpo rígido, sistemas equivalentes de forças, equilíbrio."
+      "match": "Estática do ponto e do corpo rígido, sistemas equivalentes de forças, equilíbrio.",
+      "published": true
     },
     {
       "code": "15241238",
@@ -3080,7 +3089,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Física 1: cinemática e dinâmica do ponto material, trabalho e energia."
+      "match": "Física 1: cinemática e dinâmica do ponto material, trabalho e energia.",
+      "published": true
     },
     {
       "code": "15241255",
@@ -3088,7 +3098,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior (introdutório)",
-      "match": "Linguagem C do básico ao avançado: controlo, funções, vetores, strings, apontadores, estruturas, ficheiros."
+      "match": "Linguagem C do básico ao avançado: controlo, funções, vetores, strings, apontadores, estruturas, ficheiros.",
+      "published": true
     },
     {
       "code": "15241255",
@@ -3096,7 +3107,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior (introdutório)",
-      "match": "Algoritmos e lógica de programação (bloco 1 do programa)."
+      "match": "Algoritmos e lógica de programação (bloco 1 do programa).",
+      "published": true
     },
     {
       "code": "15241256",
@@ -3104,7 +3116,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "técnico",
-      "match": "Comandos elétricos: proteção e manobra, contactores, arranque de motores assíncronos trifásicos."
+      "match": "Comandos elétricos: proteção e manobra, contactores, arranque de motores assíncronos trifásicos.",
+      "published": true
     },
     {
       "code": "15241256",
@@ -3112,7 +3125,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "AutoCAD 2D aplicado ao desenho eletrotécnico (Módulo II da UC)."
+      "match": "AutoCAD 2D aplicado ao desenho eletrotécnico (Módulo II da UC).",
+      "published": true
     },
     {
       "code": "15241257",
@@ -3120,7 +3134,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Corrente alternada sinusoidal: fasores, impedância, potência ativa/reativa/aparente, fator de potência."
+      "match": "Corrente alternada sinusoidal: fasores, impedância, potência ativa/reativa/aparente, fator de potência.",
+      "published": true
     },
     {
       "code": "15241257",
@@ -3128,7 +3143,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Análise de circuitos em CA: sinais alternados, fase, regime sinusoidal."
+      "match": "Análise de circuitos em CA: sinais alternados, fase, regime sinusoidal.",
+      "published": true
     },
     {
       "code": "15241258",
@@ -3136,7 +3152,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "técnico",
-      "match": "Arduino e AVR: hardware, ATmega328P, E/S digitais, PWM, ADC, sensores e atuadores."
+      "match": "Arduino e AVR: hardware, ATmega328P, E/S digitais, PWM, ADC, sensores e atuadores.",
+      "published": true
     },
     {
       "code": "15241258",
@@ -3144,7 +3161,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Curso de Arduino: entradas e saídas, sensores, protocolos e projetos."
+      "match": "Curso de Arduino: entradas e saídas, sensores, protocolos e projetos.",
+      "published": true
     },
     {
       "code": "15241259",
@@ -3152,7 +3170,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Medidas elétricas e magnéticas: erros, instrumentos analógicos e digitais."
+      "match": "Medidas elétricas e magnéticas: erros, instrumentos analógicos e digitais.",
+      "published": true
     },
     {
       "code": "15241259",
@@ -3160,7 +3179,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Uso prático do multímetro e medições em CC e CA."
+      "match": "Uso prático do multímetro e medições em CC e CA.",
+      "published": true
     },
     {
       "code": "15241260",
@@ -3168,7 +3188,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Sistemas de numeração, álgebra de Boole, simplificação, lógica combinatória e sequencial."
+      "match": "Sistemas de numeração, álgebra de Boole, simplificação, lógica combinatória e sequencial.",
+      "published": true
     },
     {
       "code": "15241260",
@@ -3176,7 +3197,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Sistemas digitais (UnB): bits, operações e teoremas booleanos, circuitos."
+      "match": "Sistemas digitais (UnB): bits, operações e teoremas booleanos, circuitos.",
+      "published": true
     },
     {
       "code": "15241261",
@@ -3184,7 +3206,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior (introdutório)",
-      "match": "Comunicação interpessoal: processo, elementos, estilos, barreiras e comunicação em público."
+      "match": "Comunicação interpessoal: processo, elementos, estilos, barreiras e comunicação em público.",
+      "published": true
     },
     {
       "code": "15241261",
@@ -3192,7 +3215,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior (introdutório)",
-      "match": "Comunicação empresarial: comunicação escrita e oral, formal e informal."
+      "match": "Comunicação empresarial: comunicação escrita e oral, formal e informal.",
+      "published": true
     },
     {
       "code": "15241262",
@@ -3200,7 +3224,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Programação orientada a objetos em Java: classes, objetos, encapsulamento, herança, polimorfismo."
+      "match": "Programação orientada a objetos em Java: classes, objetos, encapsulamento, herança, polimorfismo.",
+      "published": true
     },
     {
       "code": "15241262",
@@ -3208,7 +3233,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Algoritmos e estruturas de dados (USP): arranjos, listas, complexidade, ordenação."
+      "match": "Algoritmos e estruturas de dados (USP): arranjos, listas, complexidade, ordenação.",
+      "published": true
     },
     {
       "code": "15241263",
@@ -3216,7 +3242,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior (introdutório)",
-      "match": "SQL com MySQL: criação de bases, tabelas, consultas, chaves."
+      "match": "SQL com MySQL: criação de bases, tabelas, consultas, chaves.",
+      "published": true
     },
     {
       "code": "15241263",
@@ -3224,7 +3251,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Modelação relacional: entidades, relacionamentos, normalização."
+      "match": "Modelação relacional: entidades, relacionamentos, normalização.",
+      "published": true
     },
     {
       "code": "15241264",
@@ -3232,7 +3260,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Física 3: carga, campo e potencial elétrico, Gauss, condensadores, campo magnético, Ampère, indução, Maxwell."
+      "match": "Física 3: carga, campo e potencial elétrico, Gauss, condensadores, campo magnético, Ampère, indução, Maxwell.",
+      "published": true
     },
     {
       "code": "15241264",
@@ -3240,7 +3269,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Lei de Ampère, fluxo magnético, circuitos magnéticos."
+      "match": "Lei de Ampère, fluxo magnético, circuitos magnéticos.",
+      "published": true
     },
     {
       "code": "15241265",
@@ -3248,7 +3278,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Eletrónica analógica I: semicondutores, junção PN, díodos, BJT e FET."
+      "match": "Eletrónica analógica I: semicondutores, junção PN, díodos, BJT e FET.",
+      "published": true
     },
     {
       "code": "15241265",
@@ -3256,7 +3287,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Eletrónica (UnB): componentes, circuitos equivalentes, díodos e transístores."
+      "match": "Eletrónica (UnB): componentes, circuitos equivalentes, díodos e transístores.",
+      "published": true
     },
     {
       "code": "140064377",
@@ -3264,7 +3296,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Transformada de Laplace: propriedades, inversa, aplicação a EDO e circuitos."
+      "match": "Transformada de Laplace: propriedades, inversa, aplicação a EDO e circuitos.",
+      "published": true
     },
     {
       "code": "140064377",
@@ -3272,7 +3305,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Cálculo IV (UNIVESP): sucessões, séries, séries de Fourier."
+      "match": "Cálculo IV (UNIVESP): sucessões, séries, séries de Fourier.",
+      "published": true
     },
     {
       "code": "15241266",
@@ -3280,7 +3314,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Microprocessadores e microcontroladores: arquitetura, máquinas de estado, programação."
+      "match": "Microprocessadores e microcontroladores: arquitetura, máquinas de estado, programação.",
+      "published": true
     },
     {
       "code": "15241266",
@@ -3288,7 +3323,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistemas embarcados (UNIVESP): projeto e implementação de sistemas embebidos."
+      "match": "Sistemas embarcados (UNIVESP): projeto e implementação de sistemas embebidos.",
+      "published": true
     },
     {
       "code": "15241267",
@@ -3296,7 +3332,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "técnico",
-      "match": "CLP/PLC: tipos, características, programação em Ladder, partida de motores."
+      "match": "CLP/PLC: tipos, características, programação em Ladder, partida de motores.",
+      "published": true
     },
     {
       "code": "15241267",
@@ -3304,7 +3341,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Programação de CLP: contadores, temporizadores, bobinas set/reset."
+      "match": "Programação de CLP: contadores, temporizadores, bobinas set/reset.",
+      "published": true
     },
     {
       "code": "15241269",
@@ -3312,7 +3350,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Simulação SPICE com LTspice: análise transitória, AC, varrimento DC."
+      "match": "Simulação SPICE com LTspice: análise transitória, AC, varrimento DC.",
+      "published": true
     },
     {
       "code": "15241269",
@@ -3320,7 +3359,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Desenho de esquemáticos e PCB em KiCad."
+      "match": "Desenho de esquemáticos e PCB em KiCad.",
+      "published": true
     },
     {
       "code": "15241270",
@@ -3328,7 +3368,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Estatística descritiva, probabilidades, distribuições, estimação, testes de hipóteses."
+      "match": "Estatística descritiva, probabilidades, distribuições, estimação, testes de hipóteses.",
+      "published": true
     },
     {
       "code": "15241270",
@@ -3336,7 +3377,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Estatística e probabilidade (UNIVESP)."
+      "match": "Estatística e probabilidade (UNIVESP).",
+      "published": true
     },
     {
       "code": "15241272",
@@ -3344,7 +3386,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Análise de sistemas lineares (UFMG): sinais contínuos e discretos, SLIT, convolução, Fourier."
+      "match": "Análise de sistemas lineares (UFMG): sinais contínuos e discretos, SLIT, convolução, Fourier.",
+      "published": true
     },
     {
       "code": "15241272",
@@ -3352,7 +3395,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Sinais e sistemas: operações com sinais, sistemas contínuos, séries e transformada de Fourier."
+      "match": "Sinais e sistemas: operações com sinais, sistemas contínuos, séries e transformada de Fourier.",
+      "published": true
     },
     {
       "code": "15241268",
@@ -3360,7 +3404,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Comunicação I: sistemas de comunicação, sinais, Fourier, modulação analógica AM/DSB/SSB/FM."
+      "match": "Comunicação I: sistemas de comunicação, sinais, Fourier, modulação analógica AM/DSB/SSB/FM.",
+      "published": true
     },
     {
       "code": "15241268",
@@ -3368,7 +3413,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistemas de comunicação I: ganhos, dB/dBm, potência, transmissão."
+      "match": "Sistemas de comunicação I: ganhos, dB/dBm, potência, transmissão.",
+      "published": true
     },
     {
       "code": "15241271",
@@ -3376,7 +3422,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Ondas e linhas: ondas viajantes, equações de Maxwell, linhas de transmissão."
+      "match": "Ondas e linhas: ondas viajantes, equações de Maxwell, linhas de transmissão.",
+      "published": true
     },
     {
       "code": "15241271",
@@ -3384,7 +3431,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Propagação e antenas: ondas planas, reflexão/refração, ligações rádio e por satélite."
+      "match": "Propagação e antenas: ondas planas, reflexão/refração, ligações rádio e por satélite.",
+      "published": true
     },
     {
       "code": "15241273",
@@ -3392,7 +3440,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Teoria das comunicações II: conversão A/D, PCM, sistemas de comunicação digital, modulações."
+      "match": "Teoria das comunicações II: conversão A/D, PCM, sistemas de comunicação digital, modulações.",
+      "published": true
     },
     {
       "code": "15241273",
@@ -3400,7 +3449,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "NPTEL IIT Bombay — Principles of Digital Communications: modulações M-árias, espalhamento, OFDM."
+      "match": "NPTEL IIT Bombay — Principles of Digital Communications: modulações M-árias, espalhamento, OFDM.",
+      "published": true
     },
     {
       "code": "15241274",
@@ -3408,7 +3458,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior (introdutório)",
-      "match": "HTML5 e CSS3: estrutura de páginas e estilos (bloco 2 da UC)."
+      "match": "HTML5 e CSS3: estrutura de páginas e estilos (bloco 2 da UC).",
+      "published": true
     },
     {
       "code": "15241274",
@@ -3416,7 +3467,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior (introdutório)",
-      "match": "PHP moderno: processamento no servidor (bloco 4 da UC)."
+      "match": "PHP moderno: processamento no servidor (bloco 4 da UC).",
+      "published": true
     },
     {
       "code": "15241275",
@@ -3424,7 +3476,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Amplificadores operacionais: circuitos lineares e não lineares, comparadores, filtros, osciladores."
+      "match": "Amplificadores operacionais: circuitos lineares e não lineares, comparadores, filtros, osciladores.",
+      "published": true
     },
     {
       "code": "15241275",
@@ -3432,7 +3485,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Eletrónica analógica II (CEFET-MG): amplificadores multiestágio, de potência, realimentação."
+      "match": "Eletrónica analógica II (CEFET-MG): amplificadores multiestágio, de potência, realimentação.",
+      "published": true
     },
     {
       "code": "15241276",
@@ -3440,7 +3494,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Redes de computadores e a Internet (Kurose): camadas, protocolos, ligação de dados, rede."
+      "match": "Redes de computadores e a Internet (Kurose): camadas, protocolos, ligação de dados, rede.",
+      "published": true
     },
     {
       "code": "15241276",
@@ -3448,7 +3503,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior (introdutório)",
-      "match": "Redes de computadores do zero: meios de transmissão, topologias, modelos de referência."
+      "match": "Redes de computadores do zero: meios de transmissão, topologias, modelos de referência.",
+      "published": true
     },
     {
       "code": "15241277",
@@ -3456,7 +3512,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistemas de telecomunicações: atenuação, dB/dBm/dBW, linhas, fibra ótica e ligações por satélite."
+      "match": "Sistemas de telecomunicações: atenuação, dB/dBm/dBW, linhas, fibra ótica e ligações por satélite.",
+      "published": true
     },
     {
       "code": "140064379",
@@ -3464,7 +3521,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Administração I (UNIVESP): conceitos de gestão, planeamento estratégico, organização."
+      "match": "Administração I (UNIVESP): conceitos de gestão, planeamento estratégico, organização.",
+      "published": true
     },
     {
       "code": "140064379",
@@ -3472,7 +3530,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Gestão de projetos (UNIVESP): planeamento de atividades, recursos e custos, controlo."
+      "match": "Gestão de projetos (UNIVESP): planeamento de atividades, recursos e custos, controlo.",
+      "published": true
     },
     {
       "code": "15241278",
@@ -3480,7 +3539,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Ligações rádio (feixes hertzianos), propagação, desvanecimento e ligações por satélite."
+      "match": "Ligações rádio (feixes hertzianos), propagação, desvanecimento e ligações por satélite.",
+      "published": true
     },
     {
       "code": "15241278",
@@ -3488,7 +3548,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "NPTEL (IIT Kanpur) — comunicações sem fio modernas: CDMA, MIMO, OFDM, desvanecimento."
+      "match": "NPTEL (IIT Kanpur) — comunicações sem fio modernas: CDMA, MIMO, OFDM, desvanecimento.",
+      "published": true
     },
     {
       "code": "15241279",
@@ -3496,7 +3557,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "técnico",
-      "match": "Fundamentos da robótica industrial: movimentação de juntas, referenciais, programação."
+      "match": "Fundamentos da robótica industrial: movimentação de juntas, referenciais, programação.",
+      "published": true
     },
     {
       "code": "15241279",
@@ -3504,7 +3566,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Automação industrial (NERo/UFV): lógica, automatismos, sensores e atuadores."
+      "match": "Automação industrial (NERo/UFV): lógica, automatismos, sensores e atuadores.",
+      "published": true
     },
     {
       "code": "15241280",
@@ -3512,7 +3575,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Circuitos trifásicos: estrela/triângulo, sistemas equilibrados e desequilibrados, potências."
+      "match": "Circuitos trifásicos: estrela/triângulo, sistemas equilibrados e desequilibrados, potências.",
+      "published": true
     },
     {
       "code": "15241280",
@@ -3520,7 +3584,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Circuitos magnéticos: Ampère, fluxo, relutância, indutância."
+      "match": "Circuitos magnéticos: Ampère, fluxo, relutância, indutância.",
+      "published": true
     },
     {
       "code": "15241282",
@@ -3528,7 +3593,8 @@
       "ord": 1,
       "confidence": "baixa",
       "level": "superior",
-      "match": "Instalações elétricas: projeto residencial, cargas, aterramento, proteção."
+      "match": "Instalações elétricas: projeto residencial, cargas, aterramento, proteção.",
+      "published": false
     },
     {
       "code": "15241281",
@@ -3536,7 +3602,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Controlo de sistemas dinâmicos (UFC Sobral): modelação, função de transferência, resposta, estabilidade, lugar das raízes, Bode."
+      "match": "Controlo de sistemas dinâmicos (UFC Sobral): modelação, função de transferência, resposta, estabilidade, lugar das raízes, Bode.",
+      "published": true
     },
     {
       "code": "15241281",
@@ -3544,7 +3611,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Controle e automação (UNIVESP): modelos dinâmicos de sistemas mecânicos e elétricos."
+      "match": "Controle e automação (UNIVESP): modelos dinâmicos de sistemas mecânicos e elétricos.",
+      "published": true
     },
     {
       "code": "15241283",
@@ -3552,7 +3620,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Eletrónica de potência (UFC): semicondutores de potência, retificadores, conversores."
+      "match": "Eletrónica de potência (UFC): semicondutores de potência, retificadores, conversores.",
+      "published": true
     },
     {
       "code": "15241283",
@@ -3560,7 +3629,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Conversores Buck, Boost e Buck-Boost, PWM, projeto de magnéticos (CEFET-MG)."
+      "match": "Conversores Buck, Boost e Buck-Boost, PWM, projeto de magnéticos (CEFET-MG).",
+      "published": true
     },
     {
       "code": "15241284",
@@ -3568,7 +3638,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Energias renováveis e planeamento energético (USP): transição energética, análise técnico-económica, conversão."
+      "match": "Energias renováveis e planeamento energético (USP): transição energética, análise técnico-económica, conversão.",
+      "published": true
     },
     {
       "code": "15241285",
@@ -3576,7 +3647,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Máquinas elétricas: fundamentos, transformadores, campo girante, máquinas de indução."
+      "match": "Máquinas elétricas: fundamentos, transformadores, campo girante, máquinas de indução.",
+      "published": true
     },
     {
       "code": "15241285",
@@ -3584,7 +3656,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Máquinas elétricas: princípios, transformadores, fundamentos de máquinas CA."
+      "match": "Máquinas elétricas: princípios, transformadores, fundamentos de máquinas CA.",
+      "published": true
     },
     {
       "code": "15241286",
@@ -3592,7 +3665,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Sistema elétrico de potência: fluxo de potência, matriz de admitâncias, sistema por unidade."
+      "match": "Sistema elétrico de potência: fluxo de potência, matriz de admitâncias, sistema por unidade.",
+      "published": true
     },
     {
       "code": "15241286",
@@ -3600,7 +3674,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "técnico",
-      "match": "Linhas de transmissão: parâmetros, capacidade, proteção."
+      "match": "Linhas de transmissão: parâmetros, capacidade, proteção.",
+      "published": true
     },
     {
       "code": "15241287",
@@ -3608,7 +3683,8 @@
       "ord": 1,
       "confidence": "baixa",
       "level": "técnico",
-      "match": "Subestações de alta tensão: topologia, arranjos, equipamentos."
+      "match": "Subestações de alta tensão: topologia, arranjos, equipamentos.",
+      "published": false
     },
     {
       "code": "15241287",
@@ -3616,7 +3692,8 @@
       "ord": 2,
       "confidence": "baixa",
       "level": "superior",
-      "match": "Instalações elétricas industriais (UFC Sobral): projeto de subestação abrigada."
+      "match": "Instalações elétricas industriais (UFC Sobral): projeto de subestação abrigada.",
+      "published": false
     },
     {
       "code": "15241288",
@@ -3624,7 +3701,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Motor/máquina síncrona trifásica: teoria e prática, alternadores."
+      "match": "Motor/máquina síncrona trifásica: teoria e prática, alternadores.",
+      "published": true
     },
     {
       "code": "15241288",
@@ -3632,7 +3710,8 @@
       "ord": 2,
       "confidence": "alta",
       "level": "superior",
-      "match": "Máquinas de corrente contínua: princípio, reação do induzido, arranque e controlo de velocidade."
+      "match": "Máquinas de corrente contínua: princípio, reação do induzido, arranque e controlo de velocidade.",
+      "published": true
     },
     {
       "code": "19411031",
@@ -3640,7 +3719,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Curso de MQTT (edição 2025): publish/subscribe, tópicos, QoS, retain, sessões persistentes e implementação em ESP8266/ESP32, exatamente o protocolo de aplicação central da UC."
+      "match": "Curso de MQTT (edição 2025): publish/subscribe, tópicos, QoS, retain, sessões persistentes e implementação em ESP8266/ESP32, exatamente o protocolo de aplicação central da UC.",
+      "published": true
     },
     {
       "code": "19411031",
@@ -3648,7 +3728,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "introdutório",
-      "match": "Curso básico de IoT com ESP32: leitura de sensores (temperatura, distância, som, acelerómetro) e atuadores, base prática para os projetos de captura de dados."
+      "match": "Curso básico de IoT com ESP32: leitura de sensores (temperatura, distância, som, acelerómetro) e atuadores, base prática para os projetos de captura de dados.",
+      "published": true
     },
     {
       "code": "19411059",
@@ -3656,7 +3737,8 @@
       "ord": 1,
       "confidence": "média",
       "level": "superior",
-      "match": "Jogo de plataforma 2D do zero em Godot (2025): movimento, animação de sprites, câmara, tilemaps, colisões e parallax, ou seja, a arquitetura 2D prevista na UC num motor atual e livre."
+      "match": "Jogo de plataforma 2D do zero em Godot (2025): movimento, animação de sprites, câmara, tilemaps, colisões e parallax, ou seja, a arquitetura 2D prevista na UC num motor atual e livre.",
+      "published": true
     },
     {
       "code": "19411059",
@@ -3664,7 +3746,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "introdutório",
-      "match": "Plataforma 2D do zero na versão mais recente do Godot (4.7, 2026): complementa a primeira playlist com a versão atual do motor."
+      "match": "Plataforma 2D do zero na versão mais recente do Godot (4.7, 2026): complementa a primeira playlist com a versão atual do motor.",
+      "published": true
     },
     {
       "code": "19411028",
@@ -3672,7 +3755,8 @@
       "ord": 1,
       "confidence": "alta",
       "level": "superior",
-      "match": "Aulas de Eletrónica Digital II / Projeto de Dispositivos Programáveis do IME (2020): linguagem VHDL, contadores, registos de deslocamento, máquinas de estados e exercícios resolvidos."
+      "match": "Aulas de Eletrónica Digital II / Projeto de Dispositivos Programáveis do IME (2020): linguagem VHDL, contadores, registos de deslocamento, máquinas de estados e exercícios resolvidos.",
+      "published": true
     },
     {
       "code": "19411028",
@@ -3680,7 +3764,8 @@
       "ord": 2,
       "confidence": "média",
       "level": "superior",
-      "match": "Projetos de circuitos digitais em VHDL e FPGA (Prof. Erivelton Nepomuceno): representação numérica, circuitos combinacionais e sequenciais implementados em FPGA."
+      "match": "Projetos de circuitos digitais em VHDL e FPGA (Prof. Erivelton Nepomuceno): representação numérica, circuitos combinacionais e sequenciais implementados em FPGA.",
+      "published": true
     }
   ]
 }
