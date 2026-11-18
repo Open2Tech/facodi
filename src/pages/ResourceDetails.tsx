@@ -29,6 +29,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { plainText, stringList } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
+import { ResourceFeedback } from '@/components/resource/ResourceFeedback';
 import { studyTopics } from '@/shared/lib/topicTags';
 
 const SEQUENCE_WINDOW = 5;
@@ -276,6 +277,7 @@ export default function ResourceDetails() {
         </nav>}
 
         {(resource.object_type === 'playlist' || isVideo) && <CreatorLearningPanel kind={resource.object_type} slug={resource.slug} youtubeId={isVideo ? info.youtubeId : null} />}
+        <ResourceFeedback resourceId={resource.id} isVideo={isVideo} />
         <section aria-labelledby="resource-about">
           <h2 id="resource-about" className="text-2xl font-semibold tracking-[-0.02em]">{t(isVideo ? 'video.about' : 'resource.about')}</h2>
           {resource.description && <div className="mt-4"><SafeHtml html={resource.description} /></div>}
