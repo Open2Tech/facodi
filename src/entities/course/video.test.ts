@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDuration, isoDuration, videoInfo, youtubeIdFromUrl } from '@/entities/course/video';
+import { formatDuration, isoDuration, videoInfo, youtubeIdFromUrl, youtubePlaylistIdFromUrl } from '@/entities/course/video';
 
 describe('video metadata', () => {
   it('extracts ids from supported YouTube URL shapes and rejects everything else', () => {
@@ -10,6 +10,18 @@ describe('video metadata', () => {
     expect(youtubeIdFromUrl('https://evil.example/watch?v=dQw4w9WgXcQ')).toBeNull();
     expect(youtubeIdFromUrl('https://youtu.be/short')).toBeNull();
     expect(youtubeIdFromUrl('not a url')).toBeNull();
+  });
+
+  it('accepts only genuine https YouTube playlist URLs with a valid PL identifier', () => {
+    const id = 'PLfcJAZC7MecVelrqxfn_kdiHvRGwWlwOy';
+    expect(youtubePlaylistIdFromUrl(`https://www.youtube.com/playlist?list=${id}`)).toBe(id);
+    expect(youtubePlaylistIdFromUrl(`https://m.youtube.com/playlist?list=${id}&index=3`)).toBe(id);
+    expect(youtubePlaylistIdFromUrl(`https://youtube.com/playlist?list=${id}`)).toBe(id);
+    expect(youtubePlaylistIdFromUrl(`https://evil.example/playlist?list=${id}`)).toBeNull();
+    expect(youtubePlaylistIdFromUrl(`http://youtube.com/playlist?list=${id}`)).toBeNull();
+    expect(youtubePlaylistIdFromUrl(`https://youtube.com/watch?v=abcdefghijk&list=${id}`)).toBeNull();
+    expect(youtubePlaylistIdFromUrl('https://youtube.com/playlist?list=unsafe<script>')).toBeNull();
+    expect(youtubePlaylistIdFromUrl('')).toBeNull();
   });
 
   it('prefers a valid stored id, builds the thumbnail from it and reads curation flags strictly', () => {
