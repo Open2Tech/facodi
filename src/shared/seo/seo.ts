@@ -2,6 +2,8 @@
 // script, so crawlers and the running app describe each page identically.
 // Keep this module free of `@/` imports and browser APIs: Bun runs it at build.
 
+import { studyTopics } from '../lib/topicTags';
+
 export const SITE_ORIGIN = 'https://facodi.com';
 export const SITE_NAME = 'FACODI';
 export const DEFAULT_IMAGE = {
@@ -283,7 +285,7 @@ export function resourceMeta(
     jsonLd: [
       youtubeId
         ? videoJsonLd({ path, title: resource.title, description, youtubeId, language: resource.language, durationSeconds: video?.durationSeconds })
-        : learningResourceJsonLd({ path, title: resource.title, description, type: labels.type, language: resource.language, keywords: resource.tags ?? [] }),
+        : learningResourceJsonLd({ path, title: resource.title, description, type: labels.type, language: resource.language, keywords: studyTopics(resource.tags) }),
       breadcrumbJsonLd([{ name: labels.resources, path: '/resources' }, { name: labels.type, path: typePath }, { name: resource.title, path }]),
     ],
   };
