@@ -12,7 +12,7 @@
   },
   "verified_on": "2026-11-18",
   "application": {
-    "status": "por aplicar",
+    "status": "aplicado e verificado em Supabase",
     "method": "Supabase MCP, fora do PR (sem ficheiros .sql no PR, como no #69 e no #72)",
     "script_branch": "scripts/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118",
     "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118/supabase/seeds/facodi_ualg_1685_patrimonio_cultural_arqueologia_20261118.sql",
@@ -50,10 +50,24 @@
         "code": "16851025",
         "playlist_id": "PLqyjqev47LLBSLxs-FMf9v-arFUME7dZd"
       }
-    ]
+    ],
+    "published_playlist_links": 28,
+    "published_unique_playlists": 27,
+    "note": "O campo published_playlists=28 descreve a seleção/associações do manifesto original; o catálogo reutiliza uma playlist existente e contém 27 objetos únicos para 28 ligações.",
+    "enrichment_manifest": "supabase/seeds/facodi_ualg_1685_enrichment_20261118.json",
+    "enrichment_summary": {
+      "videos": 160,
+      "new_videos": 143,
+      "reused_videos": 17,
+      "readings": 19,
+      "editorial_sequences": 17,
+      "units_with_complementary_resources": 43,
+      "full_curriculum_coverage": false,
+      "archive_academic_year": "2025/26"
+    }
   },
   "decisions": {
-    "seminars": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+    "seminars": "O plano oficial apresenta seminários anuais de 10 ECTS em grupos de opção. A página não explicita a regra de substituição das opções semestrais; preservam-se os grupos e os 180 ECTS oficiais sem somar alternativas nem inferir equivalências."
   },
   "units": [
     {
@@ -1355,7 +1369,7 @@
       "elective_only": true,
       "option_group": "OPÇÃO 6 - ARQ",
       "offered_both_terms": false,
-      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+      "plan_note": "O plano oficial apresenta seminários anuais de 10 ECTS em grupos de opção. A página não explicita a regra de substituição das opções semestrais; preservam-se os grupos e os 180 ECTS oficiais sem somar alternativas nem inferir equivalências."
     },
     {
       "code": "16851148",
@@ -1382,7 +1396,7 @@
       "elective_only": true,
       "option_group": "OPÇÃO 6 - PC",
       "offered_both_terms": false,
-      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+      "plan_note": "O plano oficial apresenta seminários anuais de 10 ECTS em grupos de opção. A página não explicita a regra de substituição das opções semestrais; preservam-se os grupos e os 180 ECTS oficiais sem somar alternativas nem inferir equivalências."
     },
     {
       "code": "16851154",
@@ -1409,7 +1423,7 @@
       "elective_only": true,
       "option_group": "OPÇÃO 6 - PC",
       "offered_both_terms": false,
-      "plan_note": "Listado no plano 2026/27 como Anual (10 ECTS) dentro do grupo OPÇÃO 6 do ramo, ao lado das opções semestrais de 5 ECTS; o plano não indica que ECTS substitui. Mantido como alternativa anual desse grupo, sem o somar aos 180 ECTS."
+      "plan_note": "O plano oficial apresenta seminários anuais de 10 ECTS em grupos de opção. A página não explicita a regra de substituição das opções semestrais; preservam-se os grupos e os 180 ECTS oficiais sem somar alternativas nem inferir equivalências."
     }
   ],
   "playlists": [
