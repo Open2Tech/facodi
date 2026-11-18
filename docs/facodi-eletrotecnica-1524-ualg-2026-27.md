@@ -1,9 +1,9 @@
 # Licenciatura em Engenharia Eletrotécnica e de Computadores, UAlg/ISE 1524
 
 **Data:** 2026-11-18
-**Script de dados:** `supabase/seeds/facodi_ualg_1524_eletrotecnica_computadores_20261118.sql`, para aplicar via Supabase MCP como no #69. Não é uma migração.
+**Script de dados:** fora do PR, como pediste no #66/#72, na branch [`scripts/facodi_ualg_1524_eletrotecnica_computadores_20261118`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1524_eletrotecnica_computadores_20261118/supabase/seeds/facodi_ualg_1524_eletrotecnica_computadores_20261118.sql) do fork, para aplicar via Supabase MCP. O PR só tem este doc e o manifesto.
 **Manifesto:** `supabase/seeds/facodi_ualg_1524_eletrotecnica_computadores_20261118.json`
-**Depende de:** #67, para a página do curso mostrar os ramos e os grupos de opção.
+**Depende de:** #67 (já mergeado), para a página do curso mostrar os ramos e os grupos de opção.
 
 ## Identidade
 
