@@ -1,9 +1,9 @@
 # Licenciatura em Economia, UAlg/FE 1440
 
 **Data:** 2026-11-18
-**Script de dados:** `supabase/seeds/facodi_ualg_1440_economia_20261118.sql`, para aplicar via Supabase MCP como no #69. Não é uma migração.
 **Manifesto:** `supabase/seeds/facodi_ualg_1440_economia_20261118.json`
-**Depende de:** #67, para a página do curso mostrar os grupos de opção à parte das obrigatórias.
+**Script:** [`facodi_ualg_1440_economia_20261118.sql`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1440_economia_20261118/supabase/seeds/facodi_ualg_1440_economia_20261118.sql), na branch `scripts/facodi_ualg_1440_economia_20261118` do fork. Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72).
+**Depende de:** #67, já integrado, para a página do curso mostrar os grupos de opção à parte das obrigatórias.
 
 ## Identidade
 
@@ -115,7 +115,7 @@ Resultado: 168 + 6 + 6 = 180 ECTS, com 30 ECTS em cada semestre.
 
 ## Verificação do script
 
-Foi feito um dry-run em PostgreSQL 17, com as tabelas `facodi` reduzidas às colunas usadas:
+O script foi testado num dry-run em PostgreSQL 17, com as tabelas `facodi` reduzidas às colunas usadas:
 
 | Caso | Resultado |
 |---|---|
@@ -139,8 +139,10 @@ que não está no repositório rejeitar alguma linha, a pós-verificação abort
 
 ## Aplicação
 
-Aplicação: script em `supabase/seeds/facodi_ualg_1440_economia_20261118.sql`, para aplicar via Supabase MCP como no #69; não é uma migração.
+Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72):
+[`supabase/seeds/facodi_ualg_1440_economia_20261118.sql`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1440_economia_20261118/supabase/seeds/facodi_ualg_1440_economia_20261118.sql), na branch `scripts/facodi_ualg_1440_economia_20261118` do fork.
 
-O script não foi aplicado em produção. Convém aplicá-lo depois do merge do #67, para a página mostrar os grupos de
-opção. Depois de aplicado, o build seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap
-e ao `llms.txt`.
+O PR não tem nenhum ficheiro `.sql`: leva só este documento e o manifesto. O script não foi aplicado em produção.
+Só tem as ligações de confiança alta ou média; as 2 de confiança baixa ficam no manifesto com `"published": false`.
+O #67, que mostra os grupos de opção na página do curso, já está integrado. Depois de aplicado o script, o build
+seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap e ao `llms.txt`.

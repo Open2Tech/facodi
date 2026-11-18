@@ -9,8 +9,10 @@
   },
   "verified_on": "2026-11-18",
   "application": {
-    "script": "supabase/seeds/facodi_ualg_1440_economia_20261118.sql",
-    "method": "Supabase MCP, como no #69; não é uma migração",
+    "status": "não aplicado",
+    "method": "Supabase MCP, fora do PR (sem ficheiros .sql no PR, como pedido no #66/#72)",
+    "script_branch": "scripts/facodi_ualg_1440_economia_20261118",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1440_economia_20261118/supabase/seeds/facodi_ualg_1440_economia_20261118.sql",
     "published_policy": "só ligações de confiança alta ou média; as de confiança baixa ficam aqui com published=false"
   },
   "units": [
