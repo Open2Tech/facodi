@@ -36,7 +36,7 @@ export function MonthlyChallengeView({ className, month, slug, title, lessons, g
         <h2 id="monthly-challenge" className="text-2xl font-semibold tracking-[-0.02em] [text-wrap:balance] sm:text-3xl">{title}</h2>
         <p className="mt-2 max-w-prose text-ink-foreground/80">{t('monthlyChallenge.text', { count: lessons, goal })}</p>
         <div className="mt-5 max-w-md">
-          {total != null && <div className="mb-2 h-3 border border-ink-foreground" role="progressbar" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={total ?? 0}
+          {total != null && <div className="mb-2 h-3 border border-ink-foreground" role="progressbar" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={Math.min(goal, Math.max(0, total ?? 0))}
             aria-label={t('monthlyChallenge.progressLabel')}>
             <div className="h-full bg-primary" style={{ width: `${percent}%` }} />
           </div>}
