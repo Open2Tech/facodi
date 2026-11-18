@@ -5,8 +5,8 @@ describe('challengeFor', () => {
   it('finds the challenge of the calendar month with its bounds', () => {
     const challenge = challengeFor(new Date(2026, 11, 18));
     expect(challenge?.slug).toBe(MONTHLY_CHALLENGES[0].slug);
-    expect(challenge?.from).toEqual(new Date(2026, 11, 1));
-    expect(challenge?.to).toEqual(new Date(2027, 0, 1));
+    expect(challenge?.from).toEqual(new Date(Date.UTC(2026, 11, 1)));
+    expect(challenge?.to).toEqual(new Date(Date.UTC(2027, 0, 1)));
   });
   it('returns null for a month without a challenge', () => {
     expect(challengeFor(new Date(2026, 10, 18))).toBeNull();
