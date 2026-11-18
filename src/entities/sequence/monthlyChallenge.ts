@@ -18,7 +18,7 @@ const monthKey = (date: Date) => `${date.getFullYear()}-${String(date.getMonth()
 export function challengeFor(date: Date): MonthlyChallenge | null {
   const entry = MONTHLY_CHALLENGES.find(item => item.month === monthKey(date));
   if (!entry) return null;
-  return { ...entry, from: new Date(date.getFullYear(), date.getMonth(), 1), to: new Date(date.getFullYear(), date.getMonth() + 1, 1) };
+  return { ...entry, from: new Date(Date.UTC(date.getFullYear(), date.getMonth(), 1)), to: new Date(Date.UTC(date.getFullYear(), date.getMonth() + 1, 1)) };
 }
 
 /** Share of the goal reached, 0–100. */
@@ -29,7 +29,7 @@ export function goalPercent(total: number | null, goal: number) {
 
 type CommunityRpc = (fn: string, args: Record<string, string>) => { abortSignal: (signal?: AbortSignal) => PromiseLike<{ data: unknown; error: { message: string } | null }> };
 
-/** Anonymous community total of lessons finished in the sequence this period; null when it is below 10. */
+/** Privacy-safe community total for the editorial calendar month; null until at least 10 distinct learners participated. */
 export async function getCommunityCompletions(challenge: MonthlyChallenge, signal?: AbortSignal): Promise<number | null> {
   // Not yet in the generated types (new migration); same client and schema.
   const rpc = supabase.rpc.bind(supabase) as unknown as CommunityRpc;
