@@ -31,7 +31,7 @@ const RESUME_MIN_SECONDS = 15;
 const SAVE_EVERY_SECONDS = 20;
 
 const infoOf = (item: SequenceItem): VideoInfo => ({
-  youtubeId: item.youtubeId, thumbnail: item.thumbnail, durationSeconds: null, channel: item.channel,
+  youtubeId: item.youtubeId, thumbnail: item.thumbnail, durationSeconds: null, uploadDate: null, channel: item.channel,
   reviewScope: null, fullReviewed: false, licenseVerified: false,
 });
 

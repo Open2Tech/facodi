@@ -30,6 +30,9 @@ describe('page metadata', () => {
     expect(video.type).toBe('video.other');
     expect(video.image?.url).toBe('https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg');
     expect(video.jsonLd?.[0]).toMatchObject({ '@type': 'VideoObject', duration: 'PT90S' });
+    expect(video.jsonLd?.[0]).not.toHaveProperty('uploadDate');
+    const dated = resourceMeta({ slug: 'v', title: 'Aula', object_type: 'video' }, { youtubeId: 'abcdefghijk', durationSeconds: 90, uploadDate: '2024-06-15' }, { resources: 'Recursos', type: 'Vídeo' });
+    expect(dated.jsonLd?.[0]).toMatchObject({ '@type': 'VideoObject', uploadDate: '2024-06-15' });
     const module = resourceMeta({ slug: 'm 1', title: 'Módulo', object_type: 'module' }, null, { resources: 'Recursos', type: 'Módulo' });
     expect(module.path).toBe('/modules/m%201');
     expect(module.image).toBeNull();

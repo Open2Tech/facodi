@@ -6,6 +6,8 @@ export interface VideoInfo {
   youtubeId: string | null;
   thumbnail: string | null;
   durationSeconds: number | null;
+  /** YouTube publication day (YYYY-MM-DD), when the curation pipeline recorded it. */
+  uploadDate: string | null;
   channel: string | null;
   reviewScope: string | null;
   fullReviewed: boolean;
@@ -51,17 +53,27 @@ export function youtubePlaylistIdFromUrl(url: string | null | undefined) {
   }
 }
 
+/** Accepts YYYY-MM-DD or an ISO timestamp and returns a real calendar day, or null. */
+export function validDay(value: string | null | undefined) {
+  const day = value?.trim().slice(0, 10);
+  if (!day || !/^\d{4}-\d{2}-\d{2}$/.test(day)) return null;
+  const date = new Date(`${day}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === day ? day : null;
+}
+
 /** Reads the video facts the curation pipeline stores in learning_objects.metadata. */
 export function videoInfo(metadata: Json | null | undefined, sourceUrl?: string | null): VideoInfo {
   const meta = record(metadata);
   const stored = text(meta.youtube_video_id);
   const youtubeId = stored && YOUTUBE_ID.test(stored) ? stored : youtubeIdFromUrl(sourceUrl);
   const duration = meta.duration_seconds;
+  const published = text(meta.published_date_on_youtube) ?? text(meta.youtube_published_at);
   return {
     youtubeId,
     // Built from the validated id instead of trusting a stored URL.
     thumbnail: youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : null,
     durationSeconds: typeof duration === 'number' && Number.isFinite(duration) && duration > 0 ? Math.round(duration) : null,
+    uploadDate: validDay(published),
     // Source publishers use different metadata keys across legacy imports.
     // Preserve the creator name when channel_name has not yet been backfilled.
     channel: text(meta.channel_name) ?? text(meta.publisher_channel) ?? text(meta.source_creator) ?? text(meta.publisher),
