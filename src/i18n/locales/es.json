@@ -290,6 +290,18 @@
     "thanks": "¡Gracias! El equipo editorial usa estas respuestas para mejorar la selección. Puedes cambiar tu respuesta cuando quieras.",
     "failed": "No se pudo guardar la respuesta."
   },
+  "monthlyChallenge": {
+    "eyebrow": "Desafío de {{month}}",
+    "text_one": "Una secuencia de {{count}} clase destacada este mes. Cada clase que completas cuenta para la meta de la comunidad: {{goal}} clases.",
+    "text_many": "Una secuencia de {{count}} clases destacada este mes. Cada clase que completas cuenta para la meta de la comunidad: {{goal}} clases.",
+    "text_other": "Una secuencia de {{count}} clases destacada este mes. Cada clase que completas cuenta para la meta de la comunidad: {{goal}} clases.",
+    "progressLabel": "Clases completadas por la comunidad este mes",
+    "total_one": "La comunidad ya completó {{count}} clase de {{goal}}.",
+    "total_many": "La comunidad ya completó {{count}} clases de {{goal}}.",
+    "total_other": "La comunidad ya completó {{count}} clases de {{goal}}.",
+    "goal": "Meta de la comunidad: {{goal}} clases completadas este mes.",
+    "cta": "Unirme al desafío"
+  },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
     "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",
