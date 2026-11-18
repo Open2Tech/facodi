@@ -31,7 +31,9 @@ for (const route of routes) {
   assert.equal(response.status, 200, `SPA route ${route} returned ${response.status}`);
   assert.match(response.headers.get('content-type') ?? '', /text\/html/i,
     `SPA route ${route} must serve the Vite HTML shell`);
-  assert.match(text, /<div id="root"><\/div>/i, `Missing React root at ${route}`);
+  // Static SEO snapshots pre-render semantic content inside #root for crawlers; SPA-only
+  // routes can still return an empty root. Both are valid React hydration shells.
+  assert.match(text, /<div id="root"(?:\\s[^>]*)?>/i, `Missing React root at ${route}`);
   assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/i,
     `Workers preview ${route} must not be indexed`);
   assert.equal(response.headers.get('x-content-type-options'), 'nosniff',
