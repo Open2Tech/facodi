@@ -99,7 +99,7 @@ export default function Units() {
               const href = unitPath(unit.courses.slug, unit.slug);
               return <li key={unit.id} className="group relative grid gap-x-8 gap-y-3 py-6 sm:grid-cols-[minmax(0,1fr)_auto]">
                 <div className="min-w-0">
-                  <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                  <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-label uppercase tracking-wide text-muted-foreground">
                     {unit.code && <span>{unit.code}</span>}
                     <span className="text-foreground">{unit.courses.code || unit.courses.title}</span>
                   </p>

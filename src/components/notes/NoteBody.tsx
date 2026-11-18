@@ -26,7 +26,7 @@ export function NoteBody({ text }: { text: string }) {
     {blocks.flatMap((block, index) => {
       if (index % 2 === 1) {
         const code = block.replace(/^[\w+-]*\n/, '').replace(/\n$/, '');
-        return [<pre key={`code-${index}`} className="overflow-x-auto border border-input bg-muted px-3 py-2 font-mono text-xs leading-relaxed"><code>{code}</code></pre>];
+        return [<pre key={`code-${index}`} className="overflow-x-auto border border-input bg-muted px-3 py-2 font-mono text-label leading-relaxed"><code>{code}</code></pre>];
       }
       return block.split(/\n{2,}/).map(part => part.trim()).filter(Boolean).map((part, offset) => paragraph(part, index * 1000 + offset));
     })}

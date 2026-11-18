@@ -127,7 +127,7 @@ export function CurriculumArchive({ courseId }: { courseId: string }) {
                   <tbody>{yearUnits.map(unit => <tr key={unit.code} className="border-b border-input">
                     <td className="py-3 pr-4">
                       <span className="font-medium">{unit.title}</span>
-                      <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>
+                      <span className="block font-mono text-label text-muted-foreground">{unit.code}</span>
                       {unit.category && <span className="block text-xs text-muted-foreground">
                         {t(`courseArchive.categories.${unit.category}`, { defaultValue: unit.category })}
                       </span>}

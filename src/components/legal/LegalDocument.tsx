@@ -28,7 +28,7 @@ export function LegalDocument({ id }: { id: LegalDocumentId }) {
   const index = <ol className="space-y-1 text-sm">
     {doc.sections.map((section, position) => <li key={section.id}>
       <a href={`#${section.id}`} className="flex gap-3 px-2 py-1.5 transition-colors hover:bg-muted">
-        <span className="shrink-0 font-mono text-xs leading-5 text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
+        <span className="shrink-0 font-mono text-label leading-5 text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
         <span>{section.title}</span>
       </a>
     </li>)}
@@ -40,7 +40,7 @@ export function LegalDocument({ id }: { id: LegalDocumentId }) {
       <h1 className="max-w-3xl text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">{doc.title}</h1>
       <div className="max-w-xl space-y-4 self-end">
         <p className="text-lg leading-relaxed text-muted-foreground">{doc.lead}</p>
-        <p className="font-mono text-xs text-muted-foreground">{t('legal.common.updated')} <time dateTime={LEGAL_LAST_UPDATED}>{updated}</time></p>
+        <p className="font-mono text-label text-muted-foreground">{t('legal.common.updated')} <time dateTime={LEGAL_LAST_UPDATED}>{updated}</time></p>
       </div>
     </header>
 
@@ -130,7 +130,7 @@ function Section({ section, number, pendingLabel, children }: { section: LegalSe
         <tbody>
           {section.table.rows.map(row => <tr key={row.join('|')} className="border-b border-input last:border-b-0 align-top">
             {row.map((cell, cellIndex) => cellIndex === 0
-              ? <th key={cellIndex} scope="row" className={cn('px-4 py-3 font-semibold [overflow-wrap:anywhere]', section.table?.code && 'min-w-[13rem] font-mono text-xs font-medium')}>{cell}</th>
+              ? <th key={cellIndex} scope="row" className={cn('px-4 py-3 font-semibold [overflow-wrap:anywhere]', section.table?.code && 'min-w-[13rem] font-mono text-label font-medium')}>{cell}</th>
               : <td key={cellIndex} className="px-4 py-3 leading-relaxed text-foreground/90"><LegalRichText text={cell} /></td>)}
           </tr>)}
         </tbody>

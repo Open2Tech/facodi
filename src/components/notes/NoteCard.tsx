@@ -7,7 +7,7 @@ import { NoteBody } from './NoteBody';
 
 const iconButton = 'grid h-8 w-8 place-items-center border border-transparent text-muted-foreground transition-colors hover:border-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
 
-const stamp = 'inline-flex shrink-0 items-center gap-1 border border-foreground bg-primary px-2 py-1 font-mono text-xs tabular-nums text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
+const stamp = 'inline-flex shrink-0 items-center gap-1 border border-foreground bg-primary px-2 py-1 font-mono text-label tabular-nums text-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
 
 /** `onSeek` drives a player on the same page; `seekHref` opens the resource at the note's moment instead. */
 export function NoteCard({ note, onSeek, seekHref, onEdit, onTogglePin, onDelete, onTag, activeTag }: {
@@ -49,7 +49,7 @@ export function NoteCard({ note, onSeek, seekHref, onEdit, onTogglePin, onDelete
     {(note.tags.length > 0 || (time && onSeek)) && <footer className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-input px-4 py-3">
       {note.tags.length > 0 && <ul className="flex flex-1 flex-wrap gap-x-3 gap-y-1">
         {note.tags.map(tag => <li key={tag}><button type="button" onClick={() => onTag(tag)} aria-pressed={activeTag === tag}
-          className={cn('font-mono text-xs underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring', activeTag === tag ? 'bg-primary px-1 text-primary-foreground' : 'text-muted-foreground')}>#{tag}</button></li>)}
+          className={cn('font-mono text-label underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring', activeTag === tag ? 'bg-primary px-1 text-primary-foreground' : 'text-muted-foreground')}>#{tag}</button></li>)}
       </ul>}
       {time && onSeek && <button type="button" onClick={() => onSeek(note.timestamp!)} className="ml-auto inline-flex items-center gap-1 text-xs font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         {t('notes.jumpTo', { time })}<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

@@ -94,13 +94,13 @@ export function NoteComposer({ note, playerTime, timed, onSubmit, onCancel }: {
             <format.icon className="h-4 w-4" aria-hidden="true" />
           </button>)}
           {timed && <span className="ml-auto flex items-center gap-1">
-            {timestamp !== null && <span className="inline-flex items-center border border-foreground bg-primary font-mono text-xs tabular-nums text-primary-foreground">
+            {timestamp !== null && <span className="inline-flex items-center border border-foreground bg-primary font-mono text-label tabular-nums text-primary-foreground">
               <span className="inline-flex items-center gap-1 px-2 py-1"><Timer className="h-3.5 w-3.5" aria-hidden="true" />{formatTimestamp(timestamp)}</span>
               <button type="button" onClick={() => setTimestamp(null)} aria-label={t('notes.removeStamp', { time: formatTimestamp(timestamp) })}
                 className="grid h-7 w-7 place-items-center border-l border-foreground hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><X className="h-3.5 w-3.5" aria-hidden="true" /></button>
             </span>}
             {playerTime !== null && playerTime !== timestamp && <button type="button" onClick={() => setTimestamp(playerTime)}
-              className="inline-flex h-8 items-center gap-1 px-2 font-mono text-xs tabular-nums transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              className="inline-flex h-8 items-center gap-1 px-2 font-mono text-label tabular-nums transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               <Timer className="h-3.5 w-3.5" aria-hidden="true" />{t('notes.markNow', { time: formatTimestamp(playerTime) })}
             </button>}
           </span>}

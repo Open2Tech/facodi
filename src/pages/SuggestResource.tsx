@@ -146,12 +146,12 @@ export default function SuggestResource() {
           <ul className="mt-4 flex flex-wrap gap-2" aria-label={t('suggest.providersLabel')}>
             {PROVIDERS.filter(provider => provider !== 'web').map(provider => {
               const active = recognition?.provider === provider;
-              return <li key={provider} className={cn('border px-2 py-1 font-mono text-xs transition-colors',
+              return <li key={provider} className={cn('border px-2 py-1 font-mono text-label transition-colors',
                 active ? 'border-foreground bg-primary text-ink' : 'border-input text-muted-foreground')}>
                 {providerName(provider)}{active && <span className="sr-only"> · {t('suggest.detected')}</span>}
               </li>;
             })}
-            <li className={cn('flex items-center gap-1 border px-2 py-1 font-mono text-xs',
+            <li className={cn('flex items-center gap-1 border px-2 py-1 font-mono text-label',
               recognition?.provider === 'web' ? 'border-foreground bg-primary text-ink' : 'border-input text-muted-foreground')}>
               <Globe className="h-3 w-3" aria-hidden="true" />{providerName('web')}
             </li>
@@ -161,7 +161,7 @@ export default function SuggestResource() {
         {recognition && <section aria-labelledby="suggest-recognition">
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <h2 id="suggest-recognition" className="text-xl font-semibold">{t('suggest.recognition')}</h2>
-            <span className="max-w-full break-all font-mono text-xs text-muted-foreground">{recognition.canonicalUrl}</span>
+            <span className="max-w-full break-all font-mono text-label text-muted-foreground">{recognition.canonicalUrl}</span>
           </div>
           <RecognitionPipeline stages={reveal.stages} label={t('suggest.recognition')} />
           {units.error && <PageState level="h3" title={t('common.error')} description={units.error.message} retry={() => void units.refetch()} />}

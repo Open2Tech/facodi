@@ -34,7 +34,7 @@ export function ResourceDiscovery() {
               <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="min-w-0">
-              <span className="mb-1 block font-mono text-xs text-muted-foreground" lang={module.language}>{module.language}</span>
+              <span className="mb-1 block font-mono text-label text-muted-foreground" lang={module.language}>{module.language}</span>
               <h4 className="text-lg font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">{module.title}</h4>
               {module.description && <span className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{plainText(module.description)}</span>}
             </span>

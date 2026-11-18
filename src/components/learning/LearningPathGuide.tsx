@@ -18,7 +18,7 @@ export function LearningPathGuide({ compact = false }: { compact?: boolean }) {
   return <section aria-labelledby="learning-path-guide" className="border-t border-foreground pt-9">
     <div className="flex flex-wrap items-end justify-between gap-5">
       <div className="max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{t('learningGuide.eyebrow')}</p>
+        <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">{t('learningGuide.eyebrow')}</p>
         <h2 id="learning-path-guide" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
           {t('learningGuide.title')}
         </h2>
@@ -36,7 +36,7 @@ export function LearningPathGuide({ compact = false }: { compact?: boolean }) {
               <span className={`grid h-10 w-10 place-items-center border border-foreground text-ink ${tone}`}>
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
-              <span className="font-mono text-xs tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-label tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
             </div>
             <h3 className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">
               {t(`learningGuide.parts.${id}.title`)}

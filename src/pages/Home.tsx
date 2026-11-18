@@ -57,7 +57,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col border border-foreground bg-primary text-primary-foreground">
         <p className="flex items-center justify-between border-b border-ink/25 px-6 py-4 text-sm font-semibold sm:px-8">
-          <span>{t('home.notebook')}</span><span className="font-mono text-xs" aria-hidden="true">FACODI/01</span>
+          <span>{t('home.notebook')}</span><span className="font-mono text-label" aria-hidden="true">FACODI/01</span>
         </p>
         <form role="search" onSubmit={submit} className="flex flex-1 flex-col justify-center gap-5 px-6 py-10 sm:px-8 sm:py-14">
           <label htmlFor="home-search" className="max-w-sm text-3xl font-semibold leading-tight tracking-[-0.02em]">{t('home.question')}</label>
@@ -129,7 +129,7 @@ export default function Home() {
       <ul className="mt-7 flex flex-wrap gap-2">
         {topics.data.map(({ tag, count }) => <li key={tag}>
           <Link to={`/resources?tag=${encodeURIComponent(tag)}`} className="inline-flex items-center gap-3 border border-input px-4 py-2 text-sm font-medium transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
-            {tag}<span className="font-mono text-xs text-muted-foreground">{count}</span>
+            {tag}<span className="font-mono text-label text-muted-foreground">{count}</span>
           </Link>
         </li>)}
       </ul>

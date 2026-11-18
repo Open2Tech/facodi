@@ -36,7 +36,7 @@ function IdentityCard({ profile, language }: { profile: ProjectProfilePublic; la
       <span className={`grid h-12 w-12 shrink-0 place-items-center border border-foreground text-ink ${config.tone}`}>
         <Icon className="h-6 w-6" aria-hidden="true" />
       </span>
-      <span className="max-w-40 text-right font-mono text-xs uppercase leading-relaxed text-muted-foreground">
+      <span className="max-w-40 text-right font-mono text-label uppercase leading-relaxed text-muted-foreground">
         {projectText(profile, language, 'role_label', profile.role_label)}
       </span>
     </div>
@@ -59,7 +59,7 @@ export default function ProjectStorySections() {
   return <div id="project-story" className="scroll-mt-28 space-y-14 py-12 sm:space-y-20 sm:py-20">
     <section aria-labelledby="story-title" className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
       <div>
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{t('projectStory.eyebrow')}</p>
+        <p className="mb-3 font-mono text-label uppercase tracking-[0.14em] text-muted-foreground">{t('projectStory.eyebrow')}</p>
         <h2 id="story-title" className="max-w-xl text-4xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-5xl">
           {t('projectStory.title')}
         </h2>
@@ -80,7 +80,7 @@ export default function ProjectStorySections() {
         <span aria-hidden="true" className="select-none font-mono text-8xl font-bold tracking-tighter">MS.</span>
       </div>
       <div className="p-7 sm:p-10">
-        <p className="font-mono text-xs uppercase tracking-widest">{t('projectStory.founderEyebrow')}</p>
+        <p className="font-mono text-label uppercase tracking-widest">{t('projectStory.founderEyebrow')}</p>
         <h3 id="founder-title" className="mt-3 text-3xl font-semibold sm:text-4xl">{founder.display_name}</h3>
         <p className="mt-2 font-semibold">{projectText(founder, i18n.language, 'role_label', founder.role_label)}</p>
         <p className="mt-5 max-w-2xl leading-relaxed">{projectText(founder, i18n.language, 'description', founder.description)}</p>
@@ -91,16 +91,16 @@ export default function ProjectStorySections() {
     {!!query.data?.milestones.length && <section aria-labelledby="timeline-title">
       <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{t('projectStory.timelineEyebrow')}</p>
+          <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">{t('projectStory.timelineEyebrow')}</p>
           <h3 id="timeline-title" className="mt-2 text-3xl font-semibold">{t('projectStory.timelineTitle')}</h3>
         </div>
-        <span className="font-mono text-xs text-muted-foreground">{t('projectStory.timelineUpdated')}</span>
+        <span className="font-mono text-label text-muted-foreground">{t('projectStory.timelineUpdated')}</span>
       </div>
       <ol className="grid gap-px border border-foreground bg-foreground md:grid-cols-3">
         {query.data.milestones.map((event, index) => <li key={event.id}
           className="flex flex-col bg-background p-6 sm:p-8">
           <div className="mb-7 flex items-center justify-between gap-3">
-            <span className="font-mono text-xs uppercase text-muted-foreground">{event.date_label}</span>
+            <span className="font-mono text-label uppercase text-muted-foreground">{event.date_label}</span>
             <span className="font-mono text-sm font-bold">{String(index + 1).padStart(2, '0')}</span>
           </div>
           <h4 className="text-xl font-semibold">{projectText(event, i18n.language, 'title', event.title)}</h4>
@@ -114,7 +114,7 @@ export default function ProjectStorySections() {
 
     {!!profiles.length && <section aria-labelledby="ecosystem-title" id="ecosystem" className="scroll-mt-28">
       <div className="mb-8 max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{t('projectStory.ecosystemEyebrow')}</p>
+        <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">{t('projectStory.ecosystemEyebrow')}</p>
         <h3 id="ecosystem-title" className="mt-2 text-3xl font-semibold sm:text-4xl">{t('projectStory.ecosystemTitle')}</h3>
         <p className="mt-4 leading-relaxed text-muted-foreground">{t('projectStory.ecosystemDescription')}</p>
       </div>
@@ -135,7 +135,7 @@ export default function ProjectStorySections() {
 
     <section aria-labelledby="community-invite-title" className="flex flex-col gap-8 border border-foreground bg-brand-pink p-7 text-ink md:flex-row md:items-end md:justify-between sm:p-10">
       <div>
-        <p className="font-mono text-xs font-semibold uppercase tracking-widest">{t('projectStory.communityEyebrow')}</p>
+        <p className="font-mono text-label font-semibold uppercase tracking-widest">{t('projectStory.communityEyebrow')}</p>
         <h3 id="community-invite-title" className="mt-3 max-w-xl text-3xl font-semibold sm:text-4xl">
           {t('projectStory.communityTitle')}
         </h3>

@@ -137,7 +137,7 @@ export default function EditorSuggestions() {
             <div><dt className="text-muted-foreground">{t('suggest.fields.language')}</dt><dd className="font-medium">{languageName(selected.language)}</dd></div>
             <div><dt className="text-muted-foreground">{t('playlistReview.submitted')}</dt><dd className="font-medium"><time dateTime={selected.created_at}>{dateFormat.format(new Date(selected.created_at))}</time></dd></div>
             {!!selected.tags.length && <div className="sm:col-span-2"><dt className="text-muted-foreground">{t('suggest.fields.tags')}</dt>
-              <dd className="mt-1 flex flex-wrap gap-1.5">{selected.tags.map(tag => <span key={tag} className="border border-input px-1.5 py-0.5 font-mono text-xs">{tag}</span>)}</dd></div>}
+              <dd className="mt-1 flex flex-wrap gap-1.5">{selected.tags.map(tag => <span key={tag} className="border border-input px-1.5 py-0.5 font-mono text-label">{tag}</span>)}</dd></div>}
           </dl>
           {selected.note && <blockquote className="mt-4 max-w-prose border-l-2 border-foreground pl-4 text-sm">{selected.note}</blockquote>}
           <h3 className="mt-6 font-semibold">{t('suggestReview.screening')}</h3>

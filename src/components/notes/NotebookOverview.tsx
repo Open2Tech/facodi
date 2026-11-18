@@ -30,7 +30,7 @@ export function NotebookOverview() {
         <span className="grid h-9 w-9 place-items-center border border-foreground bg-primary text-primary-foreground" aria-hidden="true"><NotebookPen className="h-5 w-5" strokeWidth={1.75} /></span>
         {t('notes.overviewTitle')}
       </h2>
-      {ready && all.length > 0 && <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('notes.overviewTotals', { notes: t('notes.count', { count: all.length }), resources: t('notes.resourceCount', { count: groups.length }) })}</p>}
+      {ready && all.length > 0 && <p className="font-mono text-label tabular-nums text-muted-foreground">{t('notes.overviewTotals', { notes: t('notes.count', { count: all.length }), resources: t('notes.resourceCount', { count: groups.length }) })}</p>}
     </div>
     {failed ? <div role="alert" className="py-6 text-sm">
       <p>{t('notes.loadFailed')}</p>

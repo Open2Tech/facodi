@@ -40,7 +40,7 @@ function BlueprintItem({ blueprint, busy, onDecide }: { blueprint: Blueprint; bu
     <div className="flex flex-wrap items-center gap-2">
       <TypeBadge type={view.isCourse ? 'course' : 'curricular_unit'} label={view.isCourse ? t('studyReview.courseMap') : t('studyReview.unitPlan')} />
       <StatusBadge status={blueprint.status} label={t(`studyReview.status.${blueprint.status}`, { defaultValue: blueprint.status })} />
-      {view.code && <span className="font-mono text-xs text-muted-foreground">{view.code}</span>}
+      {view.code && <span className="font-mono text-label text-muted-foreground">{view.code}</span>}
     </div>
     <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0 flex-1">
@@ -67,7 +67,7 @@ function BlueprintItem({ blueprint, busy, onDecide }: { blueprint: Blueprint; bu
           ? [item.code, item.year !== null && t('catalog.year', { value: item.year }), item.semester !== null && t('catalog.semester', { value: item.semester }), item.ects !== null && t('studyReview.ects', { count: item.ects })].filter(Boolean).join(' · ')
           : item.activity;
         return <li key={index} className="flex gap-3 bg-background p-3 text-sm">
-          <span className="w-5 shrink-0 text-right font-mono text-xs tabular-nums text-muted-foreground">{item.order}</span>
+          <span className="w-5 shrink-0 text-right font-mono text-label tabular-nums text-muted-foreground">{item.order}</span>
           <span className="min-w-0">
             <span className="block break-words font-medium">{item.label}</span>
             {detail && <span className="mt-0.5 block text-xs text-muted-foreground">{detail}</span>}
@@ -126,13 +126,13 @@ export default function EditorStudyPaths() {
       {STATES.map(value => <Button key={value} type="button" variant={status === value ? 'default' : 'outline'}
         aria-pressed={status === value} onClick={() => update({ status: value })}>
         {t(`studyReview.status.${value}`)}
-        {counts.data && <span className="font-mono text-xs tabular-nums opacity-75">{counts.data[value]}</span>}
+        {counts.data && <span className="font-mono text-label tabular-nums opacity-75">{counts.data[value]}</span>}
       </Button>)}
     </div>
     {queue.isPending ? <PageState loading /> : queue.error
       ? <PageState level="h2" title={t('common.error')} description={queue.error.message} retry={() => void queue.refetch()} />
       : <>
-        <p className="mb-2 font-mono text-xs text-muted-foreground" aria-live="polite">{t('studyReview.count', { count: queue.data.total })}</p>
+        <p className="mb-2 font-mono text-label text-muted-foreground" aria-live="polite">{t('studyReview.count', { count: queue.data.total })}</p>
         {!queue.data.items.length
           ? <PageState level="h2" title={t('studyReview.empty')} description={t('studyReview.emptyDescription')} />
           : <ul className={`divide-y divide-input border-y border-input transition-opacity ${queue.isPlaceholderData ? 'opacity-60' : ''}`}>

@@ -21,7 +21,7 @@ export function SequenceList({ sequences, headingLevel = 2, showUnits = true }: 
         </span>
         <span className="col-start-2 flex items-center gap-4 text-sm sm:col-start-auto sm:flex-col sm:items-end sm:justify-center sm:gap-1">
           <span className="font-mono tabular-nums">{t('sequences.lessons', { count: sequence.itemCount })}</span>
-          {showUnits && !!sequence.unitCodes.length && <span className="font-mono text-xs text-muted-foreground">{t('sequences.unitCount', { count: sequence.unitCodes.length })}</span>}
+          {showUnits && !!sequence.unitCodes.length && <span className="font-mono text-label text-muted-foreground">{t('sequences.unitCount', { count: sequence.unitCodes.length })}</span>}
           <ArrowRight className="hidden h-4 w-4 sm:block" aria-hidden="true" />
         </span>
       </Link>

@@ -32,7 +32,7 @@ export function UnitStudyPath({
   const progressReady = !progress.signedIn || progress.isSuccess;
 
   return <section id="unit-study-path" aria-labelledby="unit-study-path-title" className="scroll-mt-28 border-t border-foreground pt-9">
-    <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">{t('studyPath.eyebrow')}</p>
+    <p className="font-mono text-label uppercase tracking-wide text-muted-foreground">{t('studyPath.eyebrow')}</p>
     <h2 id="unit-study-path-title" className="mt-2 text-2xl font-semibold tracking-tight">{t('studyPath.title')}</h2>
     <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyPath.intro')}</p>
 
@@ -76,7 +76,7 @@ export function UnitStudyPath({
               {section.items.map((item, position) => <li key={item.videoId}>
                 <Link to={`/sequences/${encodeURIComponent(sequence.data!.slug)}?v=${encodeURIComponent(item.videoId)}`}
                   className="group flex items-center gap-3 py-3 text-sm hover:bg-muted/40">
-                  <span className="w-7 shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
+                  <span className="w-7 shrink-0 font-mono text-label tabular-nums text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
                   <span className="min-w-0 flex-1 font-medium group-hover:underline group-hover:underline-offset-4">{item.title}</span>
                   {progress.signedIn && progressMap.get(item.videoId)?.completedAt
                     ? <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" aria-label={t('studyPath.done')} />

@@ -164,7 +164,7 @@ export default function CourseDetails() {
             return <section key={`${group.year}:${group.semester}:${group.electiveGroup ?? ''}`} aria-label={groupLabel} className="min-w-0">
               <div className="flex items-baseline justify-between gap-4 border-b border-foreground pb-2">
                 <h4 className="font-semibold">{groupLabel}</h4>
-                <p className="font-mono text-xs tabular-nums text-muted-foreground">{isEditorialStudyPath ? t('course.editorialStepCount', { count: group.units.length }) : t('course.termSummary', { count: group.units.length })}</p>
+                <p className="font-mono text-label tabular-nums text-muted-foreground">{isEditorialStudyPath ? t('course.editorialStepCount', { count: group.units.length }) : t('course.termSummary', { count: group.units.length })}</p>
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
                 const media = coverageById.get(unit.id);
@@ -174,7 +174,7 @@ export default function CourseDetails() {
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
                       {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
-                      {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
+                      {unit.code && <span className="block font-mono text-label text-muted-foreground">{unit.code}</span>}
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}
                     </span>
                     {unit.ects != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>

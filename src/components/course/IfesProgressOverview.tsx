@@ -33,7 +33,7 @@ export function IfesProgressOverview() {
   return <section aria-labelledby="ifes-dashboard-progress" className="my-9 border border-foreground p-6">
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div className="max-w-prose">
-        <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">FACODI · Ifes Cariacica</p>
+        <p className="font-mono text-label uppercase tracking-wide text-muted-foreground">FACODI · Ifes Cariacica</p>
         <h2 id="ifes-dashboard-progress" className="mt-2 inline-flex items-center gap-2 text-2xl font-semibold">
           <BookOpenCheck className="h-6 w-6" aria-hidden="true" /> {t('ifesProgress.dashboardTitle')}
         </h2>

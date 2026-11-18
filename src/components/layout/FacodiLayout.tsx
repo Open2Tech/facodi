@@ -112,13 +112,13 @@ export default function FacodiLayout() {
           </a>
         </div>
         {footer.map(column => <nav key={column.title} aria-label={column.title}>
-          <h2 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.12em] text-brand-cyan">{column.title}</h2>
+          <h2 className="mb-4 font-mono text-label font-medium uppercase tracking-[0.12em] text-brand-cyan">{column.title}</h2>
           <ul className="space-y-3">{column.links.map(link => <li key={link.to}><Link to={link.to} className="font-medium text-ink-foreground/85 underline-offset-4 transition-colors hover:text-primary hover:underline">{link.title}</Link></li>)}</ul>
         </nav>)}
       </div>
       <div className="border-t border-ink-foreground/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p className="font-mono text-xs text-ink-foreground/70">{t('footer.note')}</p>
+          <p className="font-mono text-label text-ink-foreground/70">{t('footer.note')}</p>
           <nav aria-label={t('footer.legal')}>
             <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs">{legalLinks.map(link => <li key={link.to}><Link to={link.to} className="text-ink-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline">{link.title}</Link></li>)}</ul>
           </nav>

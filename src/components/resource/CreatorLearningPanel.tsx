@@ -56,7 +56,7 @@ export function CreatorLearningPanel({
 
   return <div className="space-y-6">
     {isIfesPlaylist && <section aria-label="Percurso de aprendizagem" className="border border-foreground p-6">
-      <p className="font-mono text-xs uppercase text-muted-foreground">FACODI · Sequência editorial</p>
+      <p className="font-mono text-label uppercase text-muted-foreground">FACODI · Sequência editorial</p>
       <h2 className="mt-2 text-2xl font-semibold">Aprende com esta sequência</h2>
       {!inlineSequence && <Link to={`/sequences/${encodeURIComponent(slug)}`}
         className="mt-5 inline-flex items-center gap-2 border border-foreground bg-foreground px-4 py-3 text-sm font-semibold text-background hover:opacity-90">
@@ -81,7 +81,7 @@ export function CreatorLearningPanel({
     </section>}
 
     {reflection && <section aria-label="Estudo orientado do vídeo" className="border border-foreground p-6">
-      <p className="font-mono text-xs uppercase text-muted-foreground">FACODI · Atividade independente</p>
+      <p className="font-mono text-label uppercase text-muted-foreground">FACODI · Atividade independente</p>
       <h2 className="mt-2 text-2xl font-semibold">Depois de assistir</h2>
       <p className="mt-4 text-sm font-semibold">{reflection.guiding_question}</p>
       <p className="mt-3 text-sm text-muted-foreground">{reflection.practice_activity}</p>

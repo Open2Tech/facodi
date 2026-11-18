@@ -154,7 +154,7 @@ export default function EditorCourseQuality() {
     </Link>
     <header className="flex flex-wrap items-start justify-between gap-4">
       <div className="max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">FACODI · Revisão académica</p>
+        <p className="font-mono text-label uppercase tracking-wider text-muted-foreground">FACODI · Revisão académica</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Qualidade editorial — Ifes Cariacica</h1>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
           Verifica conteúdos complementares do PPC 2026 e regista decisões justificadas.
@@ -210,7 +210,7 @@ export default function EditorCourseQuality() {
         Não foi possível consultar a fila: {queue.error.message}
         <Button className="mt-3" variant="outline" type="button" onClick={() => void queue.refetch()}>Repetir</Button>
       </div>}
-      {queue.isSuccess && <p className="mt-5 font-mono text-xs text-muted-foreground" aria-live="polite">
+      {queue.isSuccess && <p className="mt-5 font-mono text-label text-muted-foreground" aria-live="polite">
         {filtered.length} itens encontrados · {Math.min(page, maxPage)} / {maxPage}
       </p>}
 
@@ -222,7 +222,7 @@ export default function EditorCourseQuality() {
           return <li key={item.issue_key} className="py-5">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-xs uppercase text-muted-foreground">
+              <p className="font-mono text-label uppercase text-muted-foreground">
                 {labels[item.issue_kind] ?? item.issue_kind}{item.school_year ? ` · ${item.school_year}º ano` : ''}
                 {' · '}{item.latest_editorial_decision ? 'Revisão registada' : 'Pendente'}
               </p>
@@ -248,7 +248,7 @@ export default function EditorCourseQuality() {
       {queue.isSuccess && !filtered.length && <p className="mt-5 text-sm text-muted-foreground">Nenhum item corresponde aos filtros escolhidos.</p>}
       {maxPage > 1 && <nav className="mt-5 flex items-center justify-end gap-3" aria-label="Paginação da fila">
         <Button type="button" size="sm" variant="outline" disabled={page <= 1} onClick={() => setPage(p => Math.max(1, p - 1))}>Anterior</Button>
-        <span className="font-mono text-xs tabular-nums">{page} / {maxPage}</span>
+        <span className="font-mono text-label tabular-nums">{page} / {maxPage}</span>
         <Button type="button" size="sm" variant="outline" disabled={page >= maxPage} onClick={() => setPage(p => Math.min(maxPage, p + 1))}>
           Próxima <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Button>

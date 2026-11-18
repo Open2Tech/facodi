@@ -25,20 +25,20 @@ export default function Community() {
     <PageSeo {...staticPageMeta('/community', { title: t('projectSeo.community.title'), description: t('projectSeo.community.description') })} />
     <header className="grid gap-8 border-b border-foreground pb-12 lg:grid-cols-[1fr_0.8fr]">
       <div>
-        <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.eyebrow')}</p>
+        <p className="mb-4 font-mono text-label font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.eyebrow')}</p>
         <h1 className="max-w-3xl text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-6xl">{t('projectCommunity.title')}</h1>
         <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground">{t('projectCommunity.lead')}</p>
       </div>
       <div className="flex min-h-52 flex-col justify-between border border-foreground bg-primary p-7 text-primary-foreground">
-        <span className="font-mono text-xs uppercase tracking-[0.14em]">{t('projectCommunity.noteLabel')}</span>
+        <span className="font-mono text-label uppercase tracking-[0.14em]">{t('projectCommunity.noteLabel')}</span>
         <p className="max-w-sm text-3xl font-semibold tracking-[-0.03em]">{t('projectCommunity.note')}</p>
-        <span className="font-mono text-xs">FACODI / COMMUNITY</span>
+        <span className="font-mono text-label">FACODI / COMMUNITY</span>
       </div>
     </header>
 
     <section aria-labelledby="community-actions">
       <div className="mb-8">
-        <p className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.actionsEyebrow')}</p>
+        <p className="font-mono text-label font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.actionsEyebrow')}</p>
         <h2 id="community-actions" className="mt-3 text-3xl font-semibold">{t('projectCommunity.actionsTitle')}</h2>
       </div>
       <ul className="grid gap-px border border-foreground bg-foreground sm:grid-cols-2 lg:grid-cols-4">
@@ -65,7 +65,7 @@ export default function Community() {
 
     <section aria-labelledby="community-roles" className="grid gap-9 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
       <div>
-        <p className="font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.rolesEyebrow')}</p>
+        <p className="font-mono text-label font-semibold uppercase tracking-widest text-muted-foreground">{t('projectCommunity.rolesEyebrow')}</p>
         <h2 id="community-roles" className="mt-3 max-w-sm text-3xl font-semibold sm:text-4xl">{t('projectCommunity.rolesTitle')}</h2>
         <p className="mt-5 max-w-prose leading-relaxed text-muted-foreground">{t('projectCommunity.rolesDescription')}</p>
       </div>
@@ -74,7 +74,7 @@ export default function Community() {
         {query.error && <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />}
         {!!community.length && <ul className="grid gap-4 sm:grid-cols-2">
           {community.map((profile, index) => <li key={profile.id} className="flex flex-col border border-input p-6">
-            <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2,'0')}</span>
+            <span className="font-mono text-label text-muted-foreground">{String(index + 1).padStart(2,'0')}</span>
             <h3 className="mt-5 text-2xl font-semibold">{profile.display_name}</h3>
             <p className="mt-3 font-medium">{projectText(profile,i18n.language,'headline',profile.headline)}</p>
             <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
@@ -104,7 +104,7 @@ export default function Community() {
 
     <section aria-labelledby="community-cta" className="flex flex-col gap-7 border border-foreground bg-brand-mint p-8 text-ink sm:p-12 md:flex-row md:items-end md:justify-between">
       <div>
-        <p className="font-mono text-xs font-semibold uppercase tracking-widest">FACODI / OPEN CALL</p>
+        <p className="font-mono text-label font-semibold uppercase tracking-widest">FACODI / OPEN CALL</p>
         <h2 id="community-cta" className="mt-3 max-w-xl text-3xl font-semibold sm:text-4xl">{t('projectCommunity.ctaTitle')}</h2>
         <p className="mt-4 max-w-2xl">{t('projectCommunity.ctaDescription')}</p>
       </div>

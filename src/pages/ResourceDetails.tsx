@@ -134,7 +134,7 @@ export default function ResourceDetails() {
       : resource.source_url && <p role="alert" className="text-destructive">{t('validation.url')}</p>}
     <Button variant="outline" onClick={() => setNotesOpen(true)} aria-haspopup="dialog" aria-expanded={notesOpen}>
       <NotebookPen />{t('notes.open')}
-      {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-xs tabular-nums text-primary-foreground">{notes.length}</span>}
+      {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-label tabular-nums text-primary-foreground">{notes.length}</span>}
     </Button>
     <ShareButton title={resource.title} />
     <Link to={contribute} className="inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
@@ -156,7 +156,7 @@ export default function ResourceDetails() {
 
     <header className="grid gap-8 border-b border-foreground pb-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
       <div className="min-w-0">
-        <ul className="mb-5 flex flex-wrap gap-2 font-mono text-xs uppercase">
+        <ul className="mb-5 flex flex-wrap gap-2 font-mono text-label uppercase">
           <li><TypeBadge type={resource.object_type} label={typeLabel} className="border border-foreground" /></li>
           {info.durationSeconds && <li className="inline-flex items-center gap-1.5 border border-input px-2 py-1"><Clock className="h-3.5 w-3.5" aria-hidden="true" /><time dateTime={isoDuration(info.durationSeconds)}>{formatDuration(info.durationSeconds)}</time></li>}
           {resource.language && <li lang={resource.language} className="border border-input px-2 py-1">{resource.language}</li>}
@@ -173,7 +173,7 @@ export default function ResourceDetails() {
         <div className="border border-foreground">
           <YouTubePlayer key={resource.id} ref={playerRef} videoId={info.youtubeId!} title={resource.title} thumbnail={info.thumbnail}
             autoPlay={engaged} onPlay={() => setEngaged(true)} start={parseStartParam(searchParams.get('t'))} onTime={onTime} />
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-ink px-4 py-3 font-mono text-label text-ink-foreground/80">
             <span className="min-w-0 truncate">{info.channel ?? 'YouTube'}</span>
             <span className="flex items-center gap-4">
               <button type="button" onClick={() => setNotesOpen(true)} className="inline-flex min-h-6 items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -191,7 +191,7 @@ export default function ResourceDetails() {
       {playlistId && <section aria-label={t('video.player')} className="min-w-0 lg:col-start-1 lg:row-start-1">
         <div className="border border-foreground">
           <YouTubePlaylistPlayer key={resource.id} playlistId={playlistId} title={resource.title} />
-          <div className="flex items-center justify-between gap-4 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
+          <div className="flex items-center justify-between gap-4 bg-ink px-4 py-3 font-mono text-label text-ink-foreground/80">
             <span>YouTube</span>
             {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-6 items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
           </div>
@@ -208,7 +208,7 @@ export default function ResourceDetails() {
           : primary && unitHref ? <>
             <section aria-labelledby="video-unit" className="border border-foreground bg-primary p-5 text-primary-foreground">
               <h2 id="video-unit" className="text-sm font-semibold">{t('video.unit')}</h2>
-              {primary.code && <p className="mt-4 inline-block bg-ink px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
+              {primary.code && <p className="mt-4 inline-block bg-ink px-2 py-1 font-mono text-label text-primary">{primary.code}</p>}
               <p className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.02em] [text-wrap:balance]"><Link to={unitHref} className="decoration-2 underline-offset-4 hover:underline">{primary.title}</Link></p>
               <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-black/25 pt-4 text-sm">
                 {primary.ects != null && <div><dt className="text-xs">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{primary.ects}</dd></div>}
@@ -222,7 +222,7 @@ export default function ResourceDetails() {
             {!!sequence.length && <section aria-labelledby="video-sequence" className="border border-input">
               <div className="flex items-baseline justify-between gap-3 border-b border-input bg-muted px-5 py-3">
                 <h2 id="video-sequence" className="text-sm font-semibold">{t('video.sequence')}</h2>
-                {position >= 0 && <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('video.position', { current: position + 1, total: sequence.length })}</p>}
+                {position >= 0 && <p className="font-mono text-label tabular-nums text-muted-foreground">{t('video.position', { current: position + 1, total: sequence.length })}</p>}
               </div>
               {position >= 0 && <div aria-hidden="true" className="h-1 bg-muted"><div className="h-full bg-foreground" style={{ width: `${((position + 1) / sequence.length) * 100}%` }} /></div>}
               <ol className="divide-y divide-input">
@@ -230,10 +230,10 @@ export default function ResourceDetails() {
                   const current = item.id === resource.id;
                   const itemInfo = videoInfo(item.metadata, item.source_url);
                   const body = <>
-                    <span className="w-7 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(windowStart + offset + 1).padStart(2, '0')}</span>
+                    <span className="w-7 shrink-0 pt-0.5 font-mono text-label tabular-nums">{String(windowStart + offset + 1).padStart(2, '0')}</span>
                     <span className="min-w-0 flex-1">
                       <span className="line-clamp-2 text-sm font-medium leading-snug">{item.title}</span>
-                      <span className={cn('mt-1 block font-mono text-xs', current ? 'text-primary-foreground' : 'text-muted-foreground')}>
+                      <span className={cn('mt-1 block font-mono text-label', current ? 'text-primary-foreground' : 'text-muted-foreground')}>
                         {current ? t('video.nowViewing') : itemInfo.durationSeconds ? formatDuration(itemInfo.durationSeconds) : itemInfo.channel}
                       </span>
                     </span>
@@ -252,7 +252,7 @@ export default function ResourceDetails() {
               <h2 id="video-also" className="text-sm font-semibold">{t('video.alsoIn')}</h2>
               <ul className="mt-3 space-y-2 text-sm">{units.slice(1).map(unit => <li key={unit.id}>
                 <Link to={unitPath(unit.courses.slug, unit.slug)} className="underline underline-offset-4 hover:text-foreground">{unit.title}</Link>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">{unit.courses.code}</span>
+                <span className="ml-2 font-mono text-label text-muted-foreground">{unit.courses.code}</span>
               </li>)}</ul>
             </section>}
           </>

@@ -16,7 +16,7 @@ export function SequenceOverview() {
         <span className="grid h-9 w-9 place-items-center border border-foreground bg-brand-pink text-ink" aria-hidden="true"><ListVideo className="h-5 w-5" strokeWidth={1.75} /></span>
         {t('sequences.overviewTitle')}
       </h2>
-      {!!query.data?.total && <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('sequences.overviewTotal', { count: query.data.total })}</p>}
+      {!!query.data?.total && <p className="font-mono text-label tabular-nums text-muted-foreground">{t('sequences.overviewTotal', { count: query.data.total })}</p>}
     </div>
     {query.isError ? <div role="alert" className="py-6 text-sm">
       <p>{t('sequences.loadFailed')}</p>

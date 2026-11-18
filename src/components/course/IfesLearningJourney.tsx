@@ -63,7 +63,7 @@ export function IfesLearningJourney({ courseSlug }: { courseSlug: string }) {
   return <section aria-labelledby="ifes-learning-heading" className="mb-12 border-t border-foreground pt-10">
     <div className="flex flex-wrap items-start justify-between gap-5">
       <div className="max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">FACODI · Estudo independente</p>
+        <p className="font-mono text-label uppercase tracking-wide text-muted-foreground">FACODI · Estudo independente</p>
         <h2 id="ifes-learning-heading" className="mt-2 text-3xl font-semibold tracking-[-0.02em]">Aprende por ano e por disciplina</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           Consulta guias, atividades práticas e playlists dos criadores originais. São recursos
@@ -93,7 +93,7 @@ export function IfesLearningJourney({ courseSlug }: { courseSlug: string }) {
     {current && <div className="mt-7">
       <h3 className="text-xl font-semibold">{current.year_title}</h3>
       {current.year_description && <p className="mt-2 max-w-prose text-sm text-muted-foreground">{current.year_description}</p>}
-      <p className="mt-2 font-mono text-xs text-muted-foreground">{current.unit_count} disciplinas · 3 tópicos de estudo por guia</p>
+      <p className="mt-2 font-mono text-label text-muted-foreground">{current.unit_count} disciplinas · 3 tópicos de estudo por guia</p>
       <IfesStudyProgressPanel courseSlug={courseSlug} units={current.units} />
       {!!current.interdisciplinary_projects.length && <div className="mt-8 border border-foreground bg-muted/30 p-5">
         <h4 className="font-semibold">Projetos interdisciplinares opcionais</h4>
@@ -118,7 +118,7 @@ export function IfesLearningJourney({ courseSlug }: { courseSlug: string }) {
             <Link to={`/sequences/${encodeURIComponent(playlist.playlist_slug)}`}
               className="group flex h-full flex-col border border-input p-4 transition-colors hover:border-foreground">
               <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.playlist_title}</span>
-              <span className="mt-2 font-mono text-xs text-muted-foreground">
+              <span className="mt-2 font-mono text-label text-muted-foreground">
                 {playlist.item_count} vídeos {playlist.guide_slug ? '· guia de estudo' : ''}
               </span>
               <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold">Ver sequência <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>

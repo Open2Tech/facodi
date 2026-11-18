@@ -96,7 +96,7 @@ export function UalgCurriculum({
           return <section key={section.key} className="min-w-0" aria-label={`${term} — ${heading}`}>
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-input pb-3">
               <h4 className="font-semibold">{term} · {heading}</h4>
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-label text-muted-foreground">
                 {t('course.termSummary', { count: section.units.length })}
               </span>
             </div>
@@ -121,7 +121,7 @@ export function UalgCurriculum({
                         <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
                         <span className="sr-only">{t('course.hasResource')}</span>
                       </span>}
-                      <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>
+                      <span className="block font-mono text-label text-muted-foreground">{unit.code}</span>
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">
                         {t('unit.videoChip', { count: media.video_count })}
                       </span>}
@@ -129,7 +129,7 @@ export function UalgCurriculum({
                     <span className="shrink-0 text-right">
                       {ectsVerificationPending(unit.metadata)
                         ? <span className="block text-xs text-muted-foreground">{t('ualgCurriculum.ectsPending')}</span>
-                        : unit.ects !== null && <span className="block font-mono text-xs tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}
+                        : unit.ects !== null && <span className="block font-mono text-label tabular-nums text-muted-foreground">{unit.ects} ECTS</span>}
                       <ArrowRight className="ml-auto mt-1 h-4 w-4 text-muted-foreground" aria-hidden="true" />
                     </span>
                   </Link>

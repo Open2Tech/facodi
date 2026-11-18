@@ -92,7 +92,7 @@ export default function Editor() {
           <ToggleGroupItem value="all">{t('editor.allStates')}</ToggleGroupItem>
           {EDITORIAL_STATUSES.map(state => <ToggleGroupItem key={state} value={state} className="gap-2">
             <StateSwatch status={state} />{t(`states.${state}`)}
-            {query.data && <span className="font-mono text-xs tabular-nums text-muted-foreground">{query.data.statusCounts[state]}</span>}
+            {query.data && <span className="font-mono text-label tabular-nums text-muted-foreground">{query.data.statusCounts[state]}</span>}
           </ToggleGroupItem>)}
         </ToggleGroup>
       </div>

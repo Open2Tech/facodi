@@ -84,7 +84,7 @@ export default function CommunityJoin() {
       <div className="mb-5 flex h-12 w-12 items-center justify-center border border-foreground bg-brand-mint text-ink">
         <HeartHandshake className="h-6 w-6" aria-hidden="true" />
       </div>
-      <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">FACODI / OPEN COMMUNITY</p>
+      <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">FACODI / OPEN COMMUNITY</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t('communityJoin.title')}</h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{t('communityJoin.description')}</p>
     </header>
@@ -140,7 +140,7 @@ export default function CommunityJoin() {
         {history.data.map(item => <li key={item.id} className="flex flex-wrap items-start justify-between gap-4 py-4">
           <div>
             <p className="font-semibold">{t(`communityJoin.interests.${item.interest}`)}</p>
-            <p className="mt-1 font-mono text-xs text-muted-foreground">{new Date(item.created_at).toLocaleDateString()}</p>
+            <p className="mt-1 font-mono text-label text-muted-foreground">{new Date(item.created_at).toLocaleDateString()}</p>
             {item.review_note && <p className="mt-2 text-sm text-muted-foreground">{item.review_note}</p>}
             <div className="mt-3">
               {withdrawId === item.id ? <div className="space-y-3 border border-input p-3">
@@ -158,7 +158,7 @@ export default function CommunityJoin() {
               </Button>}
             </div>
           </div>
-          <span className="font-mono text-xs uppercase">{t(`communityJoin.status.${item.review_status}`)}</span>
+          <span className="font-mono text-label uppercase">{t(`communityJoin.status.${item.review_status}`)}</span>
         </li>)}
       </ul>}
     </section>

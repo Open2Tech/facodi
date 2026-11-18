@@ -14,6 +14,10 @@ export default {
       },
     },
     extend: {
+      fontSize: {
+        // Mono labels: 13px minimum, 12px uppercase mono tired the eye on phones.
+        label: ['0.8125rem', { lineHeight: '1.125rem' }],
+      },
       fontFamily: {
         sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],

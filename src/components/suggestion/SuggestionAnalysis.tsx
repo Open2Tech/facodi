@@ -20,7 +20,7 @@ export function SuggestionAnalysis({ analysis, className }: { analysis: Analysis
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <Link className="font-medium underline underline-offset-4"
             to={`/courses/${encodeURIComponent(match.courseSlug)}/units/${encodeURIComponent(match.unitSlug)}`}>{match.title}</Link>
-          {match.courseCode && <span className="font-mono text-xs text-muted-foreground">{match.courseCode}</span>}
+          {match.courseCode && <span className="font-mono text-label text-muted-foreground">{match.courseCode}</span>}
           <span className={cn('px-1.5 py-0.5 text-xs font-semibold text-ink', match.fit === 'strong' ? 'bg-brand-mint' : 'bg-primary')}>
             {t(`suggest.analysis.fit.${match.fit}`)}
           </span>

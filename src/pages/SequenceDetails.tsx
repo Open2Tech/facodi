@@ -103,8 +103,8 @@ export default function SequenceDetails() {
       <div className="min-w-0">
         <p className="mb-5 flex flex-wrap items-center gap-2">
           <TypeBadge type="playlist" label={t('objectTypes.playlist')} className="border border-foreground" />
-          <span className="border border-input px-2 py-1 font-mono text-xs uppercase">{t('sequences.lessons', { count: items.length })}</span>
-          {sequence.language && <span className="border border-input px-2 py-1 font-mono text-xs uppercase">{sequence.language}</span>}
+          <span className="border border-input px-2 py-1 font-mono text-label uppercase">{t('sequences.lessons', { count: items.length })}</span>
+          {sequence.language && <span className="border border-input px-2 py-1 font-mono text-label uppercase">{sequence.language}</span>}
         </p>
         <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{sequence.title}</h1>
         {description && <p className="mt-5 max-w-prose leading-relaxed text-muted-foreground">{description}</p>}
@@ -160,7 +160,7 @@ export default function SequenceDetails() {
                   start={resumeAt} onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
               : <div className="border border-foreground"><VideoThumbnail info={infoOf(selected)} /></div>}
           </div>
-          <p className="mt-4 font-mono text-xs tabular-nums text-muted-foreground">{t('sequences.position', { current: selectedIndex + 1, total: items.length })}</p>
+          <p className="mt-4 font-mono text-label tabular-nums text-muted-foreground">{t('sequences.position', { current: selectedIndex + 1, total: items.length })}</p>
           <h3 className="mt-1 text-xl font-semibold leading-snug">{selected.title}</h3>
           <p className="mt-1 flex flex-wrap gap-x-3 text-sm text-muted-foreground">
             {selected.channel && <span>{selected.channel}</span>}
@@ -190,7 +190,7 @@ export default function SequenceDetails() {
             return <li key={item.videoId} className={cn('flex items-stretch', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
               <button type="button" aria-current={active ? 'true' : undefined} onClick={() => select(item.videoId)}
                 className="flex min-w-0 flex-1 gap-3 px-3 py-3 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
-                <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
+                <span className="w-6 shrink-0 pt-0.5 font-mono text-label tabular-nums">{String(position + 1).padStart(2, '0')}</span>
                 <span className="w-24 shrink-0"><VideoThumbnail info={infoOf(item)} /></span>
                 <span className="min-w-0 flex-1">
                   <span className="line-clamp-2 font-medium leading-snug">{item.title}</span>
@@ -241,7 +241,7 @@ export default function SequenceDetails() {
         {sequence.units.map(unit => <li key={`${unit.courseSlug}/${unit.unitSlug}`}>
           <Link to={unitPath(unit.courseSlug, unit.unitSlug)} className="group flex items-baseline justify-between gap-4 py-4 hover:bg-muted sm:px-3">
             <span className="font-medium decoration-2 underline-offset-4 group-hover:underline">{unit.unitTitle}</span>
-            <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{unit.courseCode} · {unit.unitCode}</span>
+            <span className="shrink-0 font-mono text-label tabular-nums text-muted-foreground">{unit.courseCode} · {unit.unitCode}</span>
           </Link>
         </li>)}
       </ul>

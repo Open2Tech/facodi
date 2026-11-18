@@ -11,7 +11,7 @@ export default function HowItWorks() {
     <PageSeo {...staticPageMeta('/how-it-works', { title: t('learningGuide.pageTitle'), description: t('learningGuide.pageDescription') })} />
     <header className="grid gap-6 border-b border-foreground pb-11 lg:grid-cols-[1fr_0.8fr]">
       <div>
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{t('learningGuide.eyebrow')}</p>
+        <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">{t('learningGuide.eyebrow')}</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
           {t('learningGuide.pageTitle')}
         </h1>

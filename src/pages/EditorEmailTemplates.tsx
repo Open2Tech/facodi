@@ -50,7 +50,7 @@ export default function EditorEmailTemplates() {
     {!query.isPending && !query.error && !count && <PageState title={t('editorEmails.empty')} />}
     {!!count && <div className="grid gap-7 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]">
       <aside>
-        <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="mb-4 font-mono text-label uppercase tracking-widest text-muted-foreground">
           {t('editorEmails.count',{count})}
         </p>
         <ul className="divide-y divide-input border-y border-input">
@@ -68,7 +68,7 @@ export default function EditorEmailTemplates() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-semibold">{selected.subject}</h2>
-            <p className="mt-2 font-mono text-xs text-muted-foreground">
+            <p className="mt-2 font-mono text-label text-muted-foreground">
               {selected.site_origin} · v{selected.version} · {selected.locale}
             </p>
           </div>

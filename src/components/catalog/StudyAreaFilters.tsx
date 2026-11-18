@@ -29,7 +29,7 @@ export function StudyAreaFilters({ value, onChange, counts, total }: {
             selected ? 'border-foreground bg-primary text-primary-foreground' : 'border-input bg-background hover:border-foreground hover:bg-muted')}>
           {selected && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
           {option.label}
-          {option.count != null && <span className={cn('font-mono text-xs tabular-nums', selected ? 'text-primary-foreground' : 'text-muted-foreground')}>{option.count}</span>}
+          {option.count != null && <span className={cn('font-mono text-label tabular-nums', selected ? 'text-primary-foreground' : 'text-muted-foreground')}>{option.count}</span>}
         </button>;
       })}
     </div>

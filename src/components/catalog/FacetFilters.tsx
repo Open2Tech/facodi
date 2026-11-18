@@ -25,7 +25,7 @@ export function FacetGroup({ title, options, value, onChange, allLabel, allCount
             active ? 'border-foreground bg-primary text-primary-foreground' : 'border-input bg-background hover:border-foreground')}>
           {active && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
           <span>{option.label}</span>
-          <span className={cn('font-mono text-xs tabular-nums', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{option.count}</span>
+          <span className={cn('font-mono text-label tabular-nums', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{option.count}</span>
         </button>;
       })}
     </div>

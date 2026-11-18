@@ -91,7 +91,7 @@ export default function Notebook() {
             {shownTags.length > 0 && <div role="group" aria-label={t('notebookPage.tags')} className="flex flex-wrap items-center gap-x-3 gap-y-2">
               <span className="text-sm font-medium">{t('notebookPage.tags')}</span>
               {shownTags.map(item => <button key={item.tag} type="button" aria-pressed={tag === item.tag} onClick={() => set('tag', tag === item.tag ? '' : item.tag)}
-                className={cn('font-mono text-xs underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                className={cn('font-mono text-label underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                   tag === item.tag ? 'border border-foreground bg-primary px-1.5 py-0.5 text-primary-foreground' : 'text-muted-foreground hover:text-foreground hover:underline')}>
                 #{item.tag} <span className="tabular-nums">{item.count}</span>
               </button>)}
@@ -99,7 +99,7 @@ export default function Notebook() {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground pb-3">
-            <p aria-live="polite" className="font-mono text-xs tabular-nums text-muted-foreground">
+            <p aria-live="polite" className="font-mono text-label tabular-nums text-muted-foreground">
               {t('notes.overviewTotals', { notes: t('notes.count', { count: matches }), resources: t('notes.resourceCount', { count: groups.length }) })}
             </p>
             {filtered && <button type="button" onClick={() => setParams({}, { replace: true })} className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
@@ -118,7 +118,7 @@ export default function Notebook() {
                       <h2 id={`group-${group.resourceId}`} className="break-words text-xl font-semibold tracking-[-0.02em]">
                         {href ? <Link to={href} className="decoration-2 underline-offset-4 hover:underline">{group.title}</Link> : t('notes.resourceUnavailable')}
                       </h2>
-                      <p className="mt-1 font-mono text-xs tabular-nums text-muted-foreground">{t('notes.count', { count: group.notes.length })}</p>
+                      <p className="mt-1 font-mono text-label tabular-nums text-muted-foreground">{t('notes.count', { count: group.notes.length })}</p>
                     </div>
                     {href && <Link to={`${href}?notes=open`} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold underline underline-offset-4">
                       {t('notebookPage.openNotebook')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />

@@ -21,7 +21,7 @@ export function UnitComposedStudyPath({
   const bySlug = new Map(sequences.map(item => [item.slug, item]));
   const first = config.sections[0]?.sequenceSlugs[0];
   return <section id="unit-study-path" aria-labelledby="unit-composed-heading" className="scroll-mt-28 border-t border-foreground pt-9">
-    <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">{t('composedPath.eyebrow')}</p>
+    <p className="font-mono text-label uppercase tracking-wide text-muted-foreground">{t('composedPath.eyebrow')}</p>
     <h2 id="unit-composed-heading" className="mt-2 text-2xl font-semibold tracking-tight">{t('composedPath.title')}</h2>
     <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('composedPath.description')}</p>
     {first && <Link to={`/sequences/${encodeURIComponent(first)}`}

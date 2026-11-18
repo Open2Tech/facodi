@@ -54,7 +54,7 @@ export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, o
         <button type="button" onClick={() => setOpen(true)} aria-haspopup="dialog" aria-expanded={open}
           className="inline-flex min-h-8 items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <NotebookPen className="h-4 w-4 shrink-0" aria-hidden="true" />{t('notes.open')}
-          {notes.length > 0 && <span className="border border-input px-1.5 font-mono text-xs tabular-nums">{notes.length}</span>}
+          {notes.length > 0 && <span className="border border-input px-1.5 font-mono text-label tabular-nums">{notes.length}</span>}
         </button>
         <button type="button" onClick={() => setOpen(true)}
           className="min-h-8 text-left text-xs underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">

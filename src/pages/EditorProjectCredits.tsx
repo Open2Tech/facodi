@@ -60,7 +60,7 @@ function CreditForm({ candidate, onReviewed }: { candidate: Candidate; onReviewe
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); mutation.mutate(); };
   return <form onSubmit={submit} className="space-y-5 border border-input p-6 sm:p-8">
     <div>
-      <p className="font-mono text-xs uppercase text-muted-foreground">{candidate.slug}</p>
+      <p className="font-mono text-label uppercase text-muted-foreground">{candidate.slug}</p>
       <h2 className="mt-2 text-2xl font-semibold">{candidate.display_name}</h2>
       <p className="mt-2 text-sm text-muted-foreground">{t('projectCredits.unverified')}</p>
     </div>
@@ -219,7 +219,7 @@ export default function EditorProjectCredits() {
     </Link>
     <header className="mb-10 grid gap-5 border-b border-foreground pb-8 md:grid-cols-[1fr_auto] md:items-end">
       <div>
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">FACODI / CREDITS</p>
+        <p className="font-mono text-label uppercase tracking-widest text-muted-foreground">FACODI / CREDITS</p>
         <h1 className="mt-3 flex items-center gap-3 text-3xl font-semibold sm:text-4xl">
           <UsersRound className="h-8 w-8" aria-hidden="true" />{t('projectCredits.title')}
         </h1>

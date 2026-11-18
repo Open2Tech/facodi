@@ -70,7 +70,7 @@ export default function EditorCommunity() {
       <p className="text-sm text-muted-foreground">{t('communityJoin.reviewEmpty')}</p>}
     {!!requests.data?.length && <div className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
       <aside>
-        <h2 className="mb-4 font-mono text-xs uppercase tracking-widest">
+        <h2 className="mb-4 font-mono text-label uppercase tracking-widest">
           {t('communityJoin.queueCount',{count:requests.data.length})}
         </h2>
         <ul className="divide-y divide-input border-y border-input">
@@ -79,7 +79,7 @@ export default function EditorCommunity() {
               aria-pressed={selected?.id===item.id}
               onClick={() => { setSelectedId(item.id);setDecision(null);setNote(''); }}>
               <span className="block font-semibold">{t(`communityJoin.interests.${item.interest}`)}</span>
-              <span className="mt-1 block font-mono text-xs text-muted-foreground">
+              <span className="mt-1 block font-mono text-label text-muted-foreground">
                 {new Date(item.created_at).toLocaleDateString()}
               </span>
             </button>
@@ -88,7 +88,7 @@ export default function EditorCommunity() {
       </aside>
       {selected && <section className="space-y-5">
         <div>
-          <p className="font-mono text-xs uppercase text-muted-foreground">
+          <p className="font-mono text-label uppercase text-muted-foreground">
             {t('communityJoin.interest')} / {selected.id.slice(0,8)}
           </p>
           <h2 className="mt-2 text-2xl font-semibold">{t(`communityJoin.interests.${selected.interest}`)}</h2>

@@ -106,7 +106,7 @@ export default function EditorPlaylists() {
                 {items.data.map(item => {
                   const valid = isYoutubeVideoId(item.youtube_video_id);
                   return <li key={item.id} className="flex items-center gap-3 py-3">
-                    <span className="w-7 shrink-0 text-right font-mono text-xs tabular-nums text-muted-foreground">{item.position + 1}</span>
+                    <span className="w-7 shrink-0 text-right font-mono text-label tabular-nums text-muted-foreground">{item.position + 1}</span>
                     <span className="aspect-video w-24 shrink-0 overflow-hidden bg-muted sm:w-28">
                       {valid && <img src={`https://i.ytimg.com/vi/${item.youtube_video_id}/mqdefault.jpg`} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />}
                     </span>

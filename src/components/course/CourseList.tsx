@@ -11,7 +11,7 @@ export function CourseList({ courses, headingLevel = 'h2', className }: { course
     {courses.map(course => <article key={course.id} className="group grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-6 sm:items-start">
       <span className="grid h-12 w-12 place-items-center border border-foreground bg-primary text-primary-foreground" aria-hidden="true"><BookOpen className="h-6 w-6" strokeWidth={1.75} /></span>
       <div className="min-w-0">
-        <p className="mb-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs uppercase text-muted-foreground">
+        <p className="mb-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-label uppercase text-muted-foreground">
           {course.code && <span>{course.code}</span>}
           {course.degree_type && <span>{t(`course.degreeTypes.${course.degree_type}`, { defaultValue: course.degree_type })}</span>}
           {course.ects_total != null && <span>{course.ects_total} ECTS</span>}

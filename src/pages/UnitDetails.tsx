@@ -98,7 +98,7 @@ export default function UnitDetails() {
     <header className="border-b border-foreground pb-10">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <a href={studyPath || composedPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
+        {!!videoList.length && <a href={studyPath || composedPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-label uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
           <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath ? t('studyPath.title') : t('unit.videoChip', { count: videoList.length })}
         </a>}
       </p>
@@ -127,7 +127,7 @@ export default function UnitDetails() {
                 ? <ol className="mt-5 space-y-3">
                   {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
                     className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
-                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="shrink-0 font-mono text-label text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
                     <span>{outcome.statement}</span>
                   </li>)}
                 </ol>
@@ -236,7 +236,7 @@ export default function UnitDetails() {
                         return next;
                       }, { replace: true })}
                         className={cn('flex w-full gap-3 px-3 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
-                        <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
+                        <span className="w-6 shrink-0 pt-0.5 font-mono text-label tabular-nums">{String(position + 1).padStart(2, '0')}</span>
                         <span className="w-24 shrink-0"><VideoThumbnail info={info} /></span>
                         <span className="min-w-0 flex-1">
                           <span className="line-clamp-2 font-medium leading-snug">{video.title}</span>

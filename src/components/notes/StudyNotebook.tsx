@@ -87,7 +87,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
         <section aria-labelledby="notebook-list" className="px-5 py-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 id="notebook-list" className="text-sm font-semibold">{t('notes.listTitle')}</h3>
-            <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('notes.count', { count: notes.length })}</p>
+            <p className="font-mono text-label tabular-nums text-muted-foreground">{t('notes.count', { count: notes.length })}</p>
           </div>
           {notes.length > 0 && <div role="group" aria-label={t('notes.filters')} className="mt-3 flex flex-wrap gap-2">
             {filters.map(key => <button key={key} type="button" aria-pressed={filter === key} onClick={() => setFilter(key)}
@@ -96,7 +96,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
               {t(`notes.filter.${key}`)} <span className="font-mono tabular-nums">({counts[key]})</span>
             </button>)}
             {tag && <button type="button" onClick={() => setTag(null)} aria-label={t('notes.clearTag', { tag })}
-              className="inline-flex items-center gap-1 border border-foreground bg-primary px-2.5 py-1 font-mono text-xs text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              className="inline-flex items-center gap-1 border border-foreground bg-primary px-2.5 py-1 font-mono text-label text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               #{tag}<X className="h-3 w-3" aria-hidden="true" />
             </button>}
           </div>}

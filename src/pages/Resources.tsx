@@ -132,7 +132,7 @@ export default function Resources() {
                       <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="mb-2 flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
+                      <span className="mb-2 flex flex-wrap items-center gap-3 font-mono text-label text-muted-foreground">
                         <span>{t('objectTypes.module')}</span>
                         <span lang={module.language}>{module.language}</span>
                       </span>
@@ -157,7 +157,7 @@ export default function Resources() {
                   return <li key={resource.id} className="relative -ml-px -mt-px flex border border-input transition-colors hover:z-10 hover:border-foreground sm:flex-col">
                     {isVideo && <Link to={href} tabIndex={-1} aria-hidden="true" className="block w-32 shrink-0 self-start p-3 pr-0 sm:w-auto sm:self-auto sm:p-0"><VideoThumbnail info={info} /></Link>}
                     <div className="flex min-w-0 flex-1 flex-col p-3 sm:p-6">
-                      <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase text-muted-foreground sm:mb-3">
+                      <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-label uppercase text-muted-foreground sm:mb-3">
                         <TypeBadge type={resource.object_type} label={typeLabel(resource.object_type)} />
                         <span lang={resource.language}>{resource.language}</span>
                       </p>

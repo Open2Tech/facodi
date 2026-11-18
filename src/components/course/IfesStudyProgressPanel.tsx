@@ -123,7 +123,7 @@ export function IfesStudyProgressPanel({ courseSlug, units }: Props) {
         return <li key={unit.unit_slug} className="flex flex-col border border-input p-4 transition-colors hover:border-foreground">
           <Link to={unitPath(courseSlug, unit.unit_slug)}
             className="font-semibold underline-offset-4 hover:underline">{unit.unit_title}</Link>
-          <p className="mt-2 font-mono text-xs tabular-nums text-muted-foreground">
+          <p className="mt-2 font-mono text-label tabular-nums text-muted-foreground">
             {t('ifesProgress.resources', {
               topics: unit.study_topic_count, videos: unit.video_count, readings: unit.reading_count,
             })}

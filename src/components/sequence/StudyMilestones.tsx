@@ -42,7 +42,7 @@ export function StudyMilestonesView({ data, isPending, isError, retry }: Milesto
             <p className="mt-2 text-sm text-muted-foreground">
               {t(data.streak.thisWeek ? 'milestones.streakDone' : data.streak.current ? 'milestones.streakKeep' : 'milestones.streakStart')}
             </p>
-            {data.streak.best > 0 && <p className="mt-3 font-mono text-xs text-muted-foreground">{t('milestones.best', { count: data.streak.best })}</p>}
+            {data.streak.best > 0 && <p className="mt-3 font-mono text-label text-muted-foreground">{t('milestones.best', { count: data.streak.best })}</p>}
           </div>
           <ul className="grid content-start grid-cols-2 gap-px border border-input bg-input xl:grid-cols-4">
             {data.milestones.map(item => {

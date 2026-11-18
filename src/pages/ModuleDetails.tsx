@@ -57,7 +57,7 @@ export default function ModuleDetails() {
         <span className="inline-flex items-center gap-2 border border-input px-3 py-1.5 text-xs font-semibold uppercase">
           <BookOpenCheck className="h-4 w-4" aria-hidden="true" />{t('objectTypes.module')}
         </span>
-        <span className="font-mono text-xs text-muted-foreground">{t('studyModules.resourceCount',{count:items.length})}</span>
+        <span className="font-mono text-label text-muted-foreground">{t('studyModules.resourceCount',{count:items.length})}</span>
       </div>
       <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">{module.title}</h1>
       {module.description && <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
