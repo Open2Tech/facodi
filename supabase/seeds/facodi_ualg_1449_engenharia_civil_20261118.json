@@ -1,0 +1,2442 @@
+{
+  "batch": "facodi_ualg_1449_engenharia_civil_20261118",
+  "course": {
+    "code": "LCIV",
+    "official_id": "1449",
+    "plan": "https://www.ualg.pt/curso/1449/plano",
+    "academic_year": "2026/27"
+  },
+  "verified_on": "2026-11-18",
+  "application": {
+    "method": "Supabase MCP, como no #69 e no #72; não é uma migração e o script não faz parte do PR",
+    "script": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1449_engenharia_civil_20261118/supabase/seeds/facodi_ualg_1449_engenharia_civil_20261118.sql",
+    "status": "por aplicar"
+  },
+  "publication_policy": "só ligações de confiança alta ou média entram no script; as de confiança baixa ficam aqui com published: false",
+  "units": [
+    {
+      "code": "14491074",
+      "title": "Álgebra Linear e Geometria Analítica",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "Matrizes, determinantes e sistemas de equações lineares, espaços vetoriais, valores e vetores próprios, e geometria analítica de retas e planos.",
+      "topics": [
+        "Matrizes, determinantes e sistemas lineares",
+        "Espaços vetoriais e valores próprios",
+        "Vetores, retas e planos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491074&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "14491077",
+      "title": "Análise Matemática",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "Funções reais de variável real: limites, continuidade, derivadas e aplicações, primitivas e integrais com aplicação a áreas e volumes, e sucessões e séries, incluindo as de Taylor.",
+      "topics": [
+        "Limites, continuidade e derivadas",
+        "Primitivas e integrais",
+        "Sucessões e séries"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491077&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "14491068",
+      "title": "Desenho Técnico e CAD",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "Representação bidimensional de objetos tridimensionais por projeções ortogonais, desenho técnico de construção e a regulamentação associada, e desenho 2D num programa comercial de CAD.",
+      "topics": [
+        "Sistemas de projeções",
+        "Desenho técnico de construção",
+        "CAD 2D"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491068&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491076",
+      "title": "Física Aplicada à Engenharia Civil",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Cálculo vetorial, estática da partícula e do corpo rígido, leis de Newton e movimento harmónico simples, hidrostática, centros de gravidade e momentos de inércia de superfícies.",
+      "topics": [
+        "Estática e sistemas de forças",
+        "Dinâmica e movimento harmónico simples",
+        "Hidrostática, centros de gravidade e inércia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491076&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491069",
+      "title": "Geologia de Engenharia Civil",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "Geologia aplicada às obras: ciclo das rochas, geologia de Portugal e cartografia, geodinâmica interna e externa, mecânica das rochas, classificações geomecânicas e estabilidade de taludes rochosos.",
+      "topics": [
+        "Rochas e geologia de Portugal",
+        "Mecânica das rochas e classificações geomecânicas",
+        "Estabilidade de taludes rochosos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491069&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491073",
+      "title": "Química",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 6,
+      "summary": "Estrutura atómica e tabela periódica, ligação química e forças intermoleculares, soluções, equilíbrio químico, ácidos e bases, reações redox e corrosão, e polímeros.",
+      "topics": [
+        "Estrutura atómica e ligação química",
+        "Equilíbrio químico, ácidos e bases",
+        "Eletroquímica e corrosão"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491073&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491070",
+      "title": "Análise Matemática Aplicada",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "Equações diferenciais ordinárias, funções de várias variáveis (derivadas parciais, gradiente e extremos) e integrais duplos e triplos com mudança de variáveis.",
+      "topics": [
+        "Equações diferenciais ordinárias",
+        "Funções de várias variáveis",
+        "Integrais múltiplos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491070&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "14491071",
+      "title": "Estática",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "Modelação de estruturas de engenharia civil e equilíbrio de treliças planas, cabos e pórticos planos e espaciais, com reações de apoio, esforços internos e diagramas de esforços.",
+      "topics": [
+        "Estruturas articuladas planas",
+        "Equilíbrio de cabos",
+        "Pórticos e diagramas de esforços"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491071&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491103",
+      "title": "Inovação Tecnológica e Sustentabilidade Ambiental",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "Fatores ambientais, sociais e económicos da (in)sustentabilidade, materiais de baixa pegada carbónica e circularidade na engenharia civil, e inovação e design thinking.",
+      "topics": [
+        "Sustentabilidade e emergência climática",
+        "Materiais de baixa pegada carbónica e circularidade",
+        "Inovação e design thinking"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491103&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491105",
+      "title": "Modelação BIM",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Modelação BIM de edifícios: terreno, paredes, lajes, coberturas, escadas e elementos estruturais, mapas de quantidades, peças desenhadas, renderizações, animações e realidade virtual.",
+      "topics": [
+        "Modelação dos componentes do edifício",
+        "Mapas de quantidades e peças desenhadas",
+        "Rendering e realidade virtual"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491105&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491104",
+      "title": "Outra (definida anualmente pela UO)",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 11,
+      "summary": "Unidade curricular de opção definida em cada ano letivo pela unidade orgânica (ISE); pode ocupar a Opção I ou a Opção II.",
+      "topics": [
+        "Opção definida anualmente",
+        "Opção I ou Opção II"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I / Opção II",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491072",
+      "title": "Probabilidades e Estatística",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 12,
+      "summary": "Estatística descritiva, probabilidades e variáveis aleatórias discretas e contínuas, intervalos de confiança, testes de hipóteses e regressão linear simples.",
+      "topics": [
+        "Estatística descritiva",
+        "Probabilidades e variáveis aleatórias",
+        "Inferência e regressão linear"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491072&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491067",
+      "title": "Programação e Computação Numérica",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 13,
+      "summary": "Introdução à programação (funções, estruturas de decisão e de repetição, gráficos) e métodos numéricos: erros, raízes de equações não lineares, interpolação polinomial e otimização.",
+      "topics": [
+        "Programação: funções, decisão e repetição",
+        "Raízes de equações e interpolação",
+        "Otimização numérica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491067&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491075",
+      "title": "Topografia e Sistemas de Informação Geográfica",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 14,
+      "summary": "Topografia (escalas, nivelamento, sistemas de coordenadas, rede geodésica nacional, GNSS e implantação) e sistemas de informação geográfica: dados georreferenciados, análise espacial, cartografia temática e modelos de superfície.",
+      "topics": [
+        "Nivelamento e levantamentos topográficos",
+        "GNSS e sistemas de coordenadas",
+        "SIG e análise espacial"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491075&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491106",
+      "title": "Aquisição e Modelação 3D",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "Aquisição de informação geométrica por laser-scanner terrestre e fotogrametria digital terrestre e por UAV, modelação 3D com malhas e nuvens de pontos em ambiente BIM e realidade aumentada.",
+      "topics": [
+        "Laser-scanner terrestre",
+        "Fotogrametria digital e UAV",
+        "Nuvens de pontos e BIM"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491106&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção II",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491078",
+      "title": "Caracterização Geotécnica",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 16,
+      "summary": "Tipos de obras geotécnicas, caracterização geológico-geotécnica e introdução ao EC7, prospeção e ensaios de campo, classificação de maciços rochosos e identificação e classificação de solos em laboratório.",
+      "topics": [
+        "Prospeção e ensaios de campo",
+        "Índices físicos e ensaios de identificação de solos",
+        "Classificação de solos e maciços rochosos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491078&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491107",
+      "title": "Economia e Gestão",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 17,
+      "summary": "Estrutura do Estado, introdução à economia, valor do dinheiro no tempo, relações custo-volume-lucro, gestão, marketing, ética, empreendedorismo e gestão de projetos.",
+      "topics": [
+        "Economia e valor do dinheiro no tempo",
+        "Relações custo-volume-lucro",
+        "Gestão, marketing e empreendedorismo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491107&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção II",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491088",
+      "title": "Hidráulica Geral",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 18,
+      "summary": "Propriedades dos fluidos, hidrostática, hidrocinemática e hidrodinâmica, leis de resistência, escoamentos sob pressão em condutas, orifícios e descarregadores e escoamentos com superfície livre.",
+      "topics": [
+        "Hidrostática",
+        "Escoamentos sob pressão em condutas",
+        "Escoamentos com superfície livre"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491088&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491082",
+      "title": "Materiais de Construção Não Estruturais",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 19,
+      "summary": "Rochas ornamentais, metais não ferrosos, madeira e derivados em uso não estrutural, vidros, cerâmicos, materiais poliméricos, tintas e vernizes e materiais betuminosos.",
+      "topics": [
+        "Rochas ornamentais e cerâmicos",
+        "Madeira, vidros e polímeros",
+        "Tintas, vernizes e betuminosos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491082&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491081",
+      "title": "Resistência dos Materiais I",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 20,
+      "summary": "Tensão e deformação sob esforço normal (lei de Hooke, problemas hiperestáticos e efeitos térmicos), flexão pura, desviada e composta, e dimensionamento de vigas à flexão.",
+      "topics": [
+        "Conceito de tensão",
+        "Esforço axial e lei de Hooke",
+        "Flexão e dimensionamento de vigas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491081&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491086",
+      "title": "Urbanismo Sustentável",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 21,
+      "summary": "Sustentabilidade e resiliência urbanas, evolução do urbanismo e elementos do espaço urbano, cidades e alterações climáticas, ordenamento do território, a Lei de Bases dos solos e do urbanismo, condicionantes legais e planos territoriais.",
+      "topics": [
+        "Cidades sustentáveis e resilientes",
+        "Ordenamento do território e Lei de Bases",
+        "Planos territoriais e reabilitação urbana"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491086&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491087",
+      "title": "Análise de Estruturas",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 22,
+      "summary": "Deslocamentos em estruturas isostáticas pelo princípio dos trabalhos virtuais, método das forças em estruturas hiperestáticas, método dos deslocamentos na formulação direta e matricial e linhas de influência.",
+      "topics": [
+        "Trabalhos virtuais e deslocamentos",
+        "Método das forças",
+        "Método dos deslocamentos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491087&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491084",
+      "title": "Edificações",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 23,
+      "summary": "Enquadramento regulamentar do projeto e da construção de edifícios, exigências funcionais, drenagem e impermeabilização, soluções estruturais, paredes, coberturas, acabamentos e regras de medição.",
+      "topics": [
+        "Exigências funcionais e regulamentação",
+        "Paredes e coberturas",
+        "Acabamentos e regras de medição"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491084&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491079",
+      "title": "Hidráulica Aplicada",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 24,
+      "summary": "Hidrologia de superfície e subterrânea, escoamentos sob pressão e permanentes, bombas centrífugas e turbinas, e estruturas hidráulicas.",
+      "topics": [
+        "Hidrologia de superfície e subterrânea",
+        "Bombas e turbinas",
+        "Estruturas hidráulicas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491079&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491083",
+      "title": "Materiais de Construção Estruturais",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 25,
+      "summary": "Betão e seus componentes, composição pelo método das curvas de referência, propriedades no estado fresco e endurecido, durabilidade e controlo de qualidade, aços, madeira estrutural, argamassas e compósitos.",
+      "topics": [
+        "Composição e propriedades do betão",
+        "Aços para estruturas",
+        "Madeira estrutural, argamassas e compósitos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491083&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491085",
+      "title": "Mecânica dos Solos",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 26,
+      "summary": "Compactação, tensões efetivas, permeabilidade e percolação, consolidação de argilas pela teoria de Terzaghi e resistência ao corte de areias e argilas.",
+      "topics": [
+        "Compactação e tensões efetivas",
+        "Permeabilidade e consolidação",
+        "Resistência ao corte"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491085&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491080",
+      "title": "Resistência dos Materiais II",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 27,
+      "summary": "Deslocamentos transversais de vigas, tensões tangenciais e centro de corte, torção, estados planos de tensão com a circunferência de Mohr e encurvadura de colunas.",
+      "topics": [
+        "Linha elástica de vigas",
+        "Tensões tangenciais e torção",
+        "Análise de tensões e encurvadura"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491080&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491095",
+      "title": "Análise Computacional de Estruturas Correntes",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 28,
+      "summary": "Bases de projeto e estados limites segundo a EN 1990, ações em edifícios (gerais, neve, vento e térmicas) e ação sísmica pelo Eurocódigo 8, com dinâmica de osciladores, espectro de resposta e o método de Rayleigh.",
+      "topics": [
+        "Bases de projeto e estados limites",
+        "Ações em edifícios (NP EN 1991)",
+        "Ação sísmica e dinâmica estrutural"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491095&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491094",
+      "title": "Betão Estrutural I",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 29,
+      "summary": "Projeto de estruturas de betão armado segundo os Eurocódigos: segurança e estados limites, flexão simples, composta e desviada, esforço transverso, torção, encurvadura, fendilhação e deformação, durabilidade e pormenorização.",
+      "topics": [
+        "Bases de projeto e estados limites",
+        "Flexão, esforço transverso e torção",
+        "Fendilhação, deformação e pormenorização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491094&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491090",
+      "title": "Estaleiros e Segurança",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 30,
+      "summary": "Empreitadas e empresas de construção, organização do estaleiro, planeamento de obra (Gantt, caminho crítico e BIM 4D) e segurança na construção: enquadramento legal, planos de segurança e saúde e coordenação de segurança.",
+      "topics": [
+        "Organização do estaleiro",
+        "Planeamento de obra",
+        "Segurança e saúde na construção"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491090&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491092",
+      "title": "Estradas e Arruamentos",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 31,
+      "summary": "Planos rodoviários e tráfego, mobilidade urbana sustentável e acessibilidade, traçado em planta, perfil longitudinal e perfil transversal, drenagem, pavimentos e organização do projeto.",
+      "topics": [
+        "Mobilidade urbana e acessibilidade",
+        "Traçado em planta e perfil longitudinal",
+        "Perfil transversal, drenagem e pavimentos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491092&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491091",
+      "title": "Fundações e Contenções",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 32,
+      "summary": "Tensões em maciços terrosos, impulsos de terras (Rankine, Coulomb, Caquot-Kerisel), estruturas de contenção rígidas e fundações superficiais e profundas, com verificação dos estados limites últimos segundo o EC7.",
+      "topics": [
+        "Impulsos de terras",
+        "Estruturas de contenção",
+        "Fundações superficiais e profundas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491091&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491089",
+      "title": "Tecnologia de Edifícios",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 33,
+      "summary": "Redes prediais de água, de águas residuais e pluviais e o seu dimensionamento, acústica de edifícios e isolamento sonoro segundo o RRAE, e térmica e desempenho energético de edifícios.",
+      "topics": [
+        "Redes prediais de água e drenagem",
+        "Acústica de edifícios",
+        "Térmica e desempenho energético"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491089&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491097",
+      "title": "Betão Estrutural II",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 34,
+      "summary": "Dimensionamento e pormenorização segundo os Eurocódigos de lajes vigadas e fungiformes, com verificação ao punçoamento, de paredes de betão armado e de fundações superficiais.",
+      "topics": [
+        "Lajes vigadas e fungiformes",
+        "Punçoamento",
+        "Paredes e fundações superficiais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491097&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491098",
+      "title": "Construção e Processos",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 35,
+      "summary": "Indústria da construção, demolição de edifícios, implantação e movimento de terras, processos construtivos de fundações, cofragens, estruturas pré-fabricadas e conservação e reabilitação de edifícios.",
+      "topics": [
+        "Demolição e movimento de terras",
+        "Cofragens e pré-fabricação",
+        "Conservação e reabilitação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491098&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491093",
+      "title": "Gestão de Obras",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 36,
+      "summary": "Economia da construção, gestão de projetos de construção, contratos e Código dos Contratos Públicos, gestão de custos e orçamentação, controlo de obra e gestão do valor ganho.",
+      "topics": [
+        "Contratos e contratação pública",
+        "Orçamentação e gestão de custos",
+        "Controlo de obra e valor ganho"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491093&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491096",
+      "title": "Hidráulica Urbana",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 37,
+      "summary": "Ciclo urbano da água e enquadramento legal, conceção e dimensionamento de redes de abastecimento de água e de drenagem de águas residuais e pluviais, e noções de ETA e ETAR.",
+      "topics": [
+        "Abastecimento de água",
+        "Drenagem de águas residuais e pluviais",
+        "ETA e ETAR"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491096&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491100",
+      "title": "Projeto de Estruturas Regulares",
+      "ects": 10,
+      "year": 3,
+      "semester": 2,
+      "position": 38,
+      "summary": "Projeto de uma estrutura regular: conceção e pré-dimensionamento, quantificação e combinação de ações, modelação tridimensional em programa de cálculo, dimensionamento e pormenorização, peças escritas e desenhadas e modelo BIM.",
+      "topics": [
+        "Conceção e pré-dimensionamento",
+        "Modelação estrutural 3D",
+        "Dimensionamento, pormenorização e BIM"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491100&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III",
+      "offered_both_terms": false
+    },
+    {
+      "code": "14491101",
+      "title": "Projeto de Reabilitação Urbana",
+      "ects": 10,
+      "year": 3,
+      "semester": 2,
+      "position": 39,
+      "summary": "Problemática da reabilitação urbana nas vertentes social, económica, ambiental e cultural, e o seu enquadramento legal e instrumentos.",
+      "topics": [
+        "Vertentes da reabilitação urbana",
+        "Enquadramento legal e instrumentos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14491101&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III",
+      "offered_both_terms": false
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "url": "https://www.youtube.com/playlist?list=PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "title": "MA 33 – Introdução à Álgebra Linear",
+      "channel": "PROFMAT",
+      "channel_url": "https://www.youtube.com/@PROFMATVIDEOS",
+      "videos": 46,
+      "language": "pt-BR",
+      "description": "Matrizes, determinantes, sistemas lineares, espaços vetoriais, base e dimensão (PROFMAT/SBM).",
+      "tags": [
+        "Álgebra Linear e Geometria Analítica"
+      ]
+    },
+    {
+      "id": "PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "url": "https://www.youtube.com/playlist?list=PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "title": "Vetores e Geometria Analítica",
+      "channel": "Sergio Munhoz",
+      "channel_url": "https://www.youtube.com/@antoniosergiomunhoz",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Vetores no plano e no espaço, bases, produto interno, vetorial e misto — a parte de geometria analítica.",
+      "tags": [
+        "Álgebra Linear e Geometria Analítica"
+      ]
+    },
+    {
+      "id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "title": "CÁLCULO 1",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 60,
+      "language": "pt-BR",
+      "description": "Limites, continuidade, derivadas e aplicações, primitivas e integrais (Cálculo 1).",
+      "tags": [
+        "Análise Matemática"
+      ]
+    },
+    {
+      "id": "PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "url": "https://www.youtube.com/playlist?list=PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "title": "SEQUÊNCIAS E SÉRIES",
+      "channel": "Matemateca - Ester Velasquez",
+      "channel_url": "https://www.youtube.com/@Matemateca",
+      "videos": 39,
+      "language": "pt-BR",
+      "description": "Sucessões, séries numéricas, critérios de convergência e séries de potências — o último bloco do programa.",
+      "tags": [
+        "Análise Matemática"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHcUT_QY7k8f70AVtg2Hyiyz",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcUT_QY7k8f70AVtg2Hyiyz",
+      "title": "Engenharia de produção | Desenho técnico assistido por computador",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Desenho técnico assistido por computador: representação de objetos, vistas e isometria (UNIVESP).",
+      "tags": [
+        "Desenho Técnico e CAD"
+      ]
+    },
+    {
+      "id": "PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "url": "https://www.youtube.com/playlist?list=PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "title": "CURSO  AUTOCAD  2D COMPLETO GRATIS",
+      "channel": "Rodrigo Lorenzi",
+      "channel_url": "https://www.youtube.com/@projetolorenzi",
+      "videos": 34,
+      "language": "pt-BR",
+      "description": "AutoCAD 2D do zero: interface, comandos de desenho e edição — a componente de software comercial de CAD.",
+      "tags": [
+        "Desenho Técnico e CAD"
+      ]
+    },
+    {
+      "id": "PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "url": "https://www.youtube.com/playlist?list=PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "title": "Mecânica Vetorial: Estática",
+      "channel": "Filipe Molinar",
+      "channel_url": "https://www.youtube.com/@FilipeMolinar",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Mecânica vetorial — estática: grandezas vetoriais, equilíbrio da partícula e do corpo rígido, momentos.",
+      "tags": [
+        "Física Aplicada à Engenharia Civil"
+      ]
+    },
+    {
+      "id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "url": "https://www.youtube.com/playlist?list=PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "title": "Curso Física 1 / Fundamentos de Mecânica",
+      "channel": "Uai Física",
+      "channel_url": "https://www.youtube.com/@uaifisica",
+      "videos": 169,
+      "language": "pt-BR",
+      "description": "Física 1 universitária: cinemática, leis de Newton e dinâmica, MHS.",
+      "tags": [
+        "Física Aplicada à Engenharia Civil"
+      ]
+    },
+    {
+      "id": "PLxKuPa67B0jKI0ijlrViWnGGOOlEaB7d1",
+      "url": "https://www.youtube.com/playlist?list=PLxKuPa67B0jKI0ijlrViWnGGOOlEaB7d1",
+      "title": "Geologia de Engenharia e Mecânica das Rochas e Solos",
+      "channel": "Profa. Maria Giovana (GIGIFLIX)",
+      "channel_url": "https://www.youtube.com/@profa.mariagiovana",
+      "videos": 31,
+      "language": "pt-BR",
+      "description": "Curso de Geologia de Engenharia da UFMG: rochas, mecânica das rochas, descontinuidades, maciços.",
+      "tags": [
+        "Geologia de Engenharia Civil"
+      ]
+    },
+    {
+      "id": "PLKcx3qM4KFcmQm34vWilMJ2CS-YNudvg7",
+      "url": "https://www.youtube.com/playlist?list=PLKcx3qM4KFcmQm34vWilMJ2CS-YNudvg7",
+      "title": "EGE138 - GEOLOGIA DE ENGENHARIA E GEOTECNIA (2021/1)",
+      "channel": "Geologia de Engenharia - UFVJM",
+      "channel_url": "https://www.youtube.com/@geologiadeengenharia-ufvjm6007",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Geologia de engenharia e geotecnia (UFVJM): processos geodinâmicos, propriedades e amostragem de solos.",
+      "tags": [
+        "Geologia de Engenharia Civil"
+      ]
+    },
+    {
+      "id": "PLn4_ixE2STJkB1BqI7UNz5Fmy2TzGxlEj",
+      "url": "https://www.youtube.com/playlist?list=PLn4_ixE2STJkB1BqI7UNz5Fmy2TzGxlEj",
+      "title": "Química Geral - Cursos de Engenharia",
+      "channel": "Prof. Caio - Química",
+      "channel_url": "https://www.youtube.com/@profcaioquimica",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Química geral para engenharia: modelos atómicos, configuração eletrónica, tabela periódica, ligações químicas.",
+      "tags": [
+        "Química"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHeYWhwnYnAu5a3OMWp_haJC",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeYWhwnYnAu5a3OMWp_haJC",
+      "title": "Engenharia de Produção  | Química Tecnológica e Ambiental",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Química tecnológica e ambiental (UNIVESP): átomos, tabela periódica e aplicações em engenharia.",
+      "tags": [
+        "Química"
+      ]
+    },
+    {
+      "id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "url": "https://www.youtube.com/playlist?list=PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "title": "CÁLCULO EM VÁRIAS VARIÁVEIS",
+      "channel": "Matemateca - Ester Velasquez",
+      "channel_url": "https://www.youtube.com/@Matemateca",
+      "videos": 52,
+      "language": "pt-BR",
+      "description": "Funções de várias variáveis, derivadas parciais, gradiente, extremos e integrais múltiplos.",
+      "tags": [
+        "Análise Matemática Aplicada"
+      ]
+    },
+    {
+      "id": "PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "url": "https://www.youtube.com/playlist?list=PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "title": "EQUAÇÕES DIFERENCIAIS",
+      "channel": "Prof. MURAKAMI - MATEMÁTICA RAPIDOLA",
+      "channel_url": "https://www.youtube.com/@Murakami.",
+      "videos": 95,
+      "language": "pt-BR",
+      "description": "Equações diferenciais ordinárias de 1.ª ordem e de ordem superior (bloco I do programa).",
+      "tags": [
+        "Análise Matemática Aplicada"
+      ]
+    },
+    {
+      "id": "PLT_AgIMWbgDHzoXroh0GIYbmnwrSQuASv",
+      "url": "https://www.youtube.com/playlist?list=PLT_AgIMWbgDHzoXroh0GIYbmnwrSQuASv",
+      "title": "Isostática",
+      "channel": "Prof. Rodolfo - Engenharia",
+      "channel_url": "https://www.youtube.com/@ProfRodolfo",
+      "videos": 81,
+      "language": "pt-BR",
+      "description": "Isostática: apoios, reações, treliças (nós e secções), pórticos, esforços internos e diagramas.",
+      "tags": [
+        "Estática"
+      ]
+    },
+    {
+      "id": "PLMd4Tuh_gMqebD6D1mKUlJq8_eY3sptB8",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqebD6D1mKUlJq8_eY3sptB8",
+      "title": "Estática Para Engenharia Civil",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Estática para Engenharia Civil: forças, momentos e equilíbrio de estruturas.",
+      "tags": [
+        "Estática"
+      ]
+    },
+    {
+      "id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "url": "https://www.youtube.com/playlist?list=PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "title": "Probabilidade e Estatística",
+      "channel": "Professor Douglas Maioli",
+      "channel_url": "https://www.youtube.com/@ProfessorDouglasMaioli",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "Estatística descritiva, probabilidade, variáveis aleatórias, distribuições e inferência.",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "title": "Eixo de computação | Estatísticas e probabilidade",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Estatística e probabilidade (UNIVESP): distribuições amostrais, estimação e testes.",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "title": "Curso de Python 3 - Mundo 1: Fundamentos",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 48,
+      "language": "pt-BR",
+      "description": "Introdução à programação em Python (a linguagem da UC): variáveis, decisões, ciclos.",
+      "tags": [
+        "Programação e Computação Numérica"
+      ]
+    },
+    {
+      "id": "PLBO3A_BljWQgxuQiDqlVXa4gYIPbzW5Y0",
+      "url": "https://www.youtube.com/playlist?list=PLBO3A_BljWQgxuQiDqlVXa4gYIPbzW5Y0",
+      "title": "Cálculo Numérico/Métodos Numéricos",
+      "channel": "Professor Pinguim",
+      "channel_url": "https://www.youtube.com/@ProfessorPinguimMatematica",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Cálculo numérico: erros, zeros de funções, interpolação polinomial, sistemas lineares.",
+      "tags": [
+        "Programação e Computação Numérica"
+      ]
+    },
+    {
+      "id": "PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "url": "https://www.youtube.com/playlist?list=PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "title": "MÉTODOS DE LEVANTAMENTO TOPOGRÁFICO PLANIMÉTRICO E CÁLCULOS",
+      "channel": "Alessandro Carvalho",
+      "channel_url": "https://www.youtube.com/@TopografiaDescomplicada",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "Métodos de levantamento topográfico planimétrico, poligonais e cálculos.",
+      "tags": [
+        "Topografia e Sistemas de Informação Geográfica"
+      ]
+    },
+    {
+      "id": "PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "title": "Geoprocessamento",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Geoprocessamento: SIG, deteção remota, fotogrametria, dados georreferenciados.",
+      "tags": [
+        "Topografia e Sistemas de Informação Geográfica"
+      ]
+    },
+    {
+      "id": "PLnW7e9m8AEonbZdbPHWqVsPO9woX_lllU",
+      "url": "https://www.youtube.com/playlist?list=PLnW7e9m8AEonbZdbPHWqVsPO9woX_lllU",
+      "title": "Propriedades-índices",
+      "channel": "Professor Klinger Senra | Geotecnia",
+      "channel_url": "https://www.youtube.com/@ProfessorKlingerSenra",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Propriedades-índice dos solos: índices físicos, granulometria, limites de Atterberg.",
+      "tags": [
+        "Caracterização Geotécnica"
+      ]
+    },
+    {
+      "id": "PLSkrkw8sS0Qm_uY64FsnLDHt1ViaTd-s1",
+      "url": "https://www.youtube.com/playlist?list=PLSkrkw8sS0Qm_uY64FsnLDHt1ViaTd-s1",
+      "title": "Classificação dos Solos",
+      "channel": "Professor Daciolo",
+      "channel_url": "https://www.youtube.com/@professordaciolo5736",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Classificação de solos: granulometria e limites de consistência.",
+      "tags": [
+        "Caracterização Geotécnica"
+      ]
+    },
+    {
+      "id": "PLC_RcZ08fgghpi9Ceda50Q4eneGUhUseN",
+      "url": "https://www.youtube.com/playlist?list=PLC_RcZ08fgghpi9Ceda50Q4eneGUhUseN",
+      "title": "Mecânica dos Fluidos",
+      "channel": "A. Gil Andrade-Campos",
+      "channel_url": "https://www.youtube.com/@gilacGilac",
+      "videos": 76,
+      "language": "pt-PT",
+      "description": "Mecânica dos fluidos (Universidade de Aveiro): propriedades, hidrostática, cinemática, Bernoulli e escoamentos.",
+      "tags": [
+        "Hidráulica Geral"
+      ]
+    },
+    {
+      "id": "PLhqijcsr6iHYl8pQ_v-sJHLdbko-TZK_h",
+      "url": "https://www.youtube.com/playlist?list=PLhqijcsr6iHYl8pQ_v-sJHLdbko-TZK_h",
+      "title": "Hidráulica I - Condutos Forçados e Orifícios",
+      "channel": "Tomaz Leal Leite",
+      "channel_url": "https://www.youtube.com/@tomazlealleite170",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Escoamento sob pressão em condutas, perdas de carga contínuas e localizadas, orifícios.",
+      "tags": [
+        "Hidráulica Geral"
+      ]
+    },
+    {
+      "id": "PLheJkpt1h1GNSvZ6RBoXYZ4GI37lEz50V",
+      "url": "https://www.youtube.com/playlist?list=PLheJkpt1h1GNSvZ6RBoXYZ4GI37lEz50V",
+      "title": "Materiais de Construção Civil II",
+      "channel": "Tassiane Oliveira",
+      "channel_url": "https://www.youtube.com/@proftassianeoliveira",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Tintas e vernizes, vidros, plásticos, rochas usadas na construção, revestimentos.",
+      "tags": [
+        "Materiais de Construção Não Estruturais"
+      ]
+    },
+    {
+      "id": "PLUWG7VRpCEkYyVSmUPwiT6mcPbtORZBbT",
+      "url": "https://www.youtube.com/playlist?list=PLUWG7VRpCEkYyVSmUPwiT6mcPbtORZBbT",
+      "title": "Resistência dos Materiais",
+      "channel": "Prof. Pablo Altoé Amorim",
+      "channel_url": "https://www.youtube.com/@prof.pabloaltoeamorim",
+      "videos": 98,
+      "language": "pt-BR",
+      "description": "Tensão e deformação, esforço axial, lei de Hooke, flexão — curso completo de Resistência dos Materiais.",
+      "tags": [
+        "Resistência dos Materiais I",
+        "Resistência dos Materiais II"
+      ]
+    },
+    {
+      "id": "PLMd4Tuh_gMqfzx18Zz0T3zxdNzBTJBkhx",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqfzx18Zz0T3zxdNzBTJBkhx",
+      "title": "Mecânica dos Sólidos 1",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 71,
+      "language": "pt-BR",
+      "description": "Mecânica dos Sólidos 1 (Beer & Johnston): tensões, deformações, carga axial, flexão.",
+      "tags": [
+        "Resistência dos Materiais I"
+      ]
+    },
+    {
+      "id": "PL_ro6PVmFbGLuVp8BhKy7S1LvqLZRs010",
+      "url": "https://www.youtube.com/playlist?list=PL_ro6PVmFbGLuVp8BhKy7S1LvqLZRs010",
+      "title": "Planejamento Ambiental e Urbanismo",
+      "channel": "Prof. Alex Nina",
+      "channel_url": "https://www.youtube.com/@ProfAlexNina",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "Planeamento urbano e ambiental: teorias do desenvolvimento, cidade e sustentabilidade.",
+      "tags": [
+        "Urbanismo Sustentável"
+      ]
+    },
+    {
+      "id": "PLL-nR1_d8sAL-kjcMMFfJC5PZWZVs2TVG",
+      "url": "https://www.youtube.com/playlist?list=PLL-nR1_d8sAL-kjcMMFfJC5PZWZVs2TVG",
+      "title": "Planejamento Urbano",
+      "channel": "SITU UNESP",
+      "channel_url": "https://www.youtube.com/@situ_unesp",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Aulas de planeamento urbano (UNESP).",
+      "tags": [
+        "Urbanismo Sustentável"
+      ]
+    },
+    {
+      "id": "PLT_AgIMWbgDH-dF3xzITnfjQuS4OAXqjN",
+      "url": "https://www.youtube.com/playlist?list=PLT_AgIMWbgDH-dF3xzITnfjQuS4OAXqjN",
+      "title": "Hiperestática",
+      "channel": "Prof. Rodolfo - Engenharia",
+      "channel_url": "https://www.youtube.com/@ProfRodolfo",
+      "videos": 73,
+      "language": "pt-BR",
+      "description": "Hiperestática: princípio dos trabalhos virtuais, deslocamentos, método das forças e dos deslocamentos.",
+      "tags": [
+        "Análise de Estruturas"
+      ]
+    },
+    {
+      "id": "PLMNpxcy0KqYVktXHuqlCYtzBl7TuyhiCb",
+      "url": "https://www.youtube.com/playlist?list=PLMNpxcy0KqYVktXHuqlCYtzBl7TuyhiCb",
+      "title": "Curso Análise de Estruturas 02 - Método das Forças",
+      "channel": "Ftool & LESM",
+      "channel_url": "https://www.youtube.com/@ftool_lesm",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Método das forças (Ftool/LESM, PUC-Rio): sistema principal, compatibilidade, esforços.",
+      "tags": [
+        "Análise de Estruturas"
+      ]
+    },
+    {
+      "id": "PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "url": "https://www.youtube.com/playlist?list=PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "title": "Como construir da forma correta?",
+      "channel": "Construção de Edifícios UFC",
+      "channel_url": "https://www.youtube.com/@construcaodeedificiosufc9924",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Execução de elementos de edifícios (UFC): paredes, impermeabilizações, coberturas, acabamentos.",
+      "tags": [
+        "Edificações"
+      ]
+    },
+    {
+      "id": "PLzXFfQPPqUsXfFRkNI4GmhDf8DSzty9RT",
+      "url": "https://www.youtube.com/playlist?list=PLzXFfQPPqUsXfFRkNI4GmhDf8DSzty9RT",
+      "title": "Projeto de Impermeabilização",
+      "channel": "Prof. Adriano Gomes de Matos",
+      "channel_url": "https://www.youtube.com/@prof.adrianogomesdematos7080",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Projeto de impermeabilização (caves, pavimentos térreos, coberturas).",
+      "tags": [
+        "Edificações"
+      ]
+    },
+    {
+      "id": "PLNwwqZkiVtSOghT2fWl-HCvfPiOt_iEio",
+      "url": "https://www.youtube.com/playlist?list=PLNwwqZkiVtSOghT2fWl-HCvfPiOt_iEio",
+      "title": "Máquinas de Fluxo",
+      "channel": "Ricardo V. Salvo",
+      "channel_url": "https://www.youtube.com/@RicardoVSalvo-sf4yi",
+      "videos": 50,
+      "language": "pt-BR",
+      "description": "Máquinas de fluxo: bombas centrífugas e turbinas, triângulos de velocidades, semelhança.",
+      "tags": [
+        "Hidráulica Aplicada"
+      ]
+    },
+    {
+      "id": "PLyT8KAblFLIScp9CSnxaTDIuOeH3u7K1E",
+      "url": "https://www.youtube.com/playlist?list=PLyT8KAblFLIScp9CSnxaTDIuOeH3u7K1E",
+      "title": "Hidrologia - Curso de Hidrologia aplicada aos cursos de Ciências Agrárias",
+      "channel": "DESCOMPLICANDO A CIÊNCIA - Prof. Ricardo Gava",
+      "channel_url": "https://www.youtube.com/@ricardogav1",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Hidrologia: ciclo hidrológico, bacias hidrográficas, vazões de ponta.",
+      "tags": [
+        "Hidráulica Aplicada"
+      ]
+    },
+    {
+      "id": "PL5Bvp2-ShwWQYre7fY-aMxNuub3TVBtew",
+      "url": "https://www.youtube.com/playlist?list=PL5Bvp2-ShwWQYre7fY-aMxNuub3TVBtew",
+      "title": "Tecnologia do Concreto e Argamassa",
+      "channel": "Professor João Melo",
+      "channel_url": "https://www.youtube.com/@professorjoaomelo9083",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Tecnologia do betão e argamassas: componentes, propriedades no estado fresco e endurecido.",
+      "tags": [
+        "Materiais de Construção Estruturais"
+      ]
+    },
+    {
+      "id": "PLheJkpt1h1GO8IcHe99du7Ahp2tirAGGZ",
+      "url": "https://www.youtube.com/playlist?list=PLheJkpt1h1GO8IcHe99du7Ahp2tirAGGZ",
+      "title": "Materiais de Construção Civil I",
+      "channel": "Tassiane Oliveira",
+      "channel_url": "https://www.youtube.com/@proftassianeoliveira",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Agregados: constantes físicas, granulometria — base da composição do betão.",
+      "tags": [
+        "Materiais de Construção Estruturais"
+      ]
+    },
+    {
+      "id": "PLnW7e9m8AEom_iMoY1zv0HXeSZFUAaIaE",
+      "url": "https://www.youtube.com/playlist?list=PLnW7e9m8AEom_iMoY1zv0HXeSZFUAaIaE",
+      "title": "Adensamento dos solos",
+      "channel": "Professor Klinger Senra | Geotecnia",
+      "channel_url": "https://www.youtube.com/@ProfessorKlingerSenra",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Teoria do adensamento de Terzaghi, pré-adensamento, assentamentos por consolidação.",
+      "tags": [
+        "Mecânica dos Solos"
+      ]
+    },
+    {
+      "id": "PLnW7e9m8AEokDP7WX__BpIVrUvo0oVBkK",
+      "url": "https://www.youtube.com/playlist?list=PLnW7e9m8AEokDP7WX__BpIVrUvo0oVBkK",
+      "title": "Resistência ao Cisalhamento dos solos",
+      "channel": "Professor Klinger Senra | Geotecnia",
+      "channel_url": "https://www.youtube.com/@ProfessorKlingerSenra",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Resistência ao corte dos solos: Mohr-Coulomb, ensaios triaxial e de corte direto.",
+      "tags": [
+        "Mecânica dos Solos"
+      ]
+    },
+    {
+      "id": "PLMd4Tuh_gMqdoRMdX1TrXNF4Vsws39GtQ",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqdoRMdX1TrXNF4Vsws39GtQ",
+      "title": "Mecânica dos Sólidos 2",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "Mecânica dos Sólidos 2: transformação de tensões, círculo de Mohr, deflexão de vigas, encurvadura.",
+      "tags": [
+        "Resistência dos Materiais II"
+      ]
+    },
+    {
+      "id": "PLyVhmjhvTvDbqByamCNEYw2zDBOscOHRb",
+      "url": "https://www.youtube.com/playlist?list=PLyVhmjhvTvDbqByamCNEYw2zDBOscOHRb",
+      "title": "Structural Dynamics NPTEL",
+      "channel": "Pradeep Kumar Ramancharla",
+      "channel_url": "https://www.youtube.com/@pradeepkumarramancharla7813",
+      "videos": 45,
+      "language": "en",
+      "description": "Dinâmica estrutural (IIIT Hyderabad): osciladores de 1 e vários GL, frequências naturais, espectro de resposta.",
+      "tags": [
+        "Análise Computacional de Estruturas Correntes"
+      ]
+    },
+    {
+      "id": "PLYM-FY6nhslPCKkJ8cZd68-t_prnNEE0W",
+      "url": "https://www.youtube.com/playlist?list=PLYM-FY6nhslPCKkJ8cZd68-t_prnNEE0W",
+      "title": "Sismos (Terremotos)",
+      "channel": "Yuri Bessa Cesarino",
+      "channel_url": "https://www.youtube.com/@yuri.bessa91",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Sismos e estruturas sismo-resistentes: conceitos e projeto.",
+      "tags": [
+        "Análise Computacional de Estruturas Correntes"
+      ]
+    },
+    {
+      "id": "PLt0Ig0F5FfRe1fzZx7wxX4DAvGWN4QUAr",
+      "url": "https://www.youtube.com/playlist?list=PLt0Ig0F5FfRe1fzZx7wxX4DAvGWN4QUAr",
+      "title": "BetaoArmado",
+      "channel": "João Vinagre",
+      "channel_url": "https://www.youtube.com/@JoaoVinagreSantos",
+      "videos": 77,
+      "language": "pt-PT",
+      "description": "Betão estrutural segundo os Eurocódigos: filosofia de segurança, combinações de ações, flexão (MDRS), esforço transverso, fendilhação.",
+      "tags": [
+        "Betão Estrutural I",
+        "Betão Estrutural II"
+      ]
+    },
+    {
+      "id": "PLMd4Tuh_gMqejII4wz9vImjQ2Ftgt852C",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqejII4wz9vImjQ2Ftgt852C",
+      "title": "Concreto Armado 1",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Concreto armado 1: materiais, flexão e dimensionamento de secções.",
+      "tags": [
+        "Betão Estrutural I"
+      ]
+    },
+    {
+      "id": "PLzy9Rbi396BzgXhPR61qb4mnytO0B4Y0L",
+      "url": "https://www.youtube.com/playlist?list=PLzy9Rbi396BzgXhPR61qb4mnytO0B4Y0L",
+      "title": "Gerenciamento da Obra pelo Caminho Crítico",
+      "channel": "Prof. Alex Amarante",
+      "channel_url": "https://www.youtube.com/@ProfAlexAmarante",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Planeamento de obra pelo caminho crítico e cronogramas (MS Project).",
+      "tags": [
+        "Estaleiros e Segurança"
+      ]
+    },
+    {
+      "id": "PL_WTioD7S6oVp6m8Fg4bEpsXCGdv5Cwj7",
+      "url": "https://www.youtube.com/playlist?list=PL_WTioD7S6oVp6m8Fg4bEpsXCGdv5Cwj7",
+      "title": "Tecnologia da Construção 1",
+      "channel": "Prof. Amanda Beatriz",
+      "channel_url": "https://www.youtube.com/@prof.amandabeatriz0610",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Tecnologia da construção: estaleiro (canteiro) de obras e segurança.",
+      "tags": [
+        "Estaleiros e Segurança"
+      ]
+    },
+    {
+      "id": "PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "url": "https://www.youtube.com/playlist?list=PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "title": "Projeto Geométrico de Estradas",
+      "channel": "ALVARO VIEIRA",
+      "channel_url": "https://www.youtube.com/@alvarovieira-IME",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Projeto de estradas: parâmetros de projeto, estudos de traçado, planta e perfil.",
+      "tags": [
+        "Estradas e Arruamentos"
+      ]
+    },
+    {
+      "id": "PLCVF5em-BdK17PXRQ8k3pXmBeDUB9xNii",
+      "url": "https://www.youtube.com/playlist?list=PLCVF5em-BdK17PXRQ8k3pXmBeDUB9xNii",
+      "title": "Estradas",
+      "channel": "Igor Lima",
+      "channel_url": "https://www.youtube.com/@igorlima8144",
+      "videos": 32,
+      "language": "pt-BR",
+      "description": "Estradas: curvas, sobrelevação, sobrelargura, perfil longitudinal.",
+      "tags": [
+        "Estradas e Arruamentos"
+      ]
+    },
+    {
+      "id": "PLbapccu15AEI",
+      "url": "https://www.youtube.com/playlist?list=PLbapccu15AEI",
+      "title": "Fundações",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Fundações: investigação geotécnica, escolha do tipo, capacidade de carga (Terzaghi), assentamentos.",
+      "tags": [
+        "Fundações e Contenções"
+      ]
+    },
+    {
+      "id": "PLdp1BT3nm0zZiK4dVsY0Cg_aT99L1KY6h",
+      "url": "https://www.youtube.com/playlist?list=PLdp1BT3nm0zZiK4dVsY0Cg_aT99L1KY6h",
+      "title": "Obras de Terra - Geotecnia III",
+      "channel": "Obras de Terra",
+      "channel_url": "https://www.youtube.com/@obrasdeterra7157",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Obras de terra: muros de suporte, impulsos ativo e passivo, cortinas de estacas-prancha.",
+      "tags": [
+        "Fundações e Contenções"
+      ]
+    },
+    {
+      "id": "PL3um1sRXtZJRS5CcCZV9PIm1KprM5NVQq",
+      "url": "https://www.youtube.com/playlist?list=PL3um1sRXtZJRS5CcCZV9PIm1KprM5NVQq",
+      "title": "Instalações Hidráulicas e Sanitárias",
+      "channel": "Prof. Robson Felix",
+      "channel_url": "https://www.youtube.com/@prof.robsonfelix7110",
+      "videos": 26,
+      "language": "pt-BR",
+      "description": "Instalações prediais de água e esgotos: água fria, reservatórios, colunas, dimensionamento.",
+      "tags": [
+        "Tecnologia de Edifícios"
+      ]
+    },
+    {
+      "id": "PLjxHngy9w1noFfeZpUnaVGc0IlMTgJ6o0",
+      "url": "https://www.youtube.com/playlist?list=PLjxHngy9w1noFfeZpUnaVGc0IlMTgJ6o0",
+      "title": "Desempenho Térmico em Edificações",
+      "channel": "Eduardo Corpa",
+      "channel_url": "https://www.youtube.com/@eduardocorpa8949",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Desempenho térmico de edificações: incidência solar, envolvente.",
+      "tags": [
+        "Tecnologia de Edifícios"
+      ]
+    },
+    {
+      "id": "PLYM-FY6nhslOMJ8gLJ5KYXc7O4swtjO-K",
+      "url": "https://www.youtube.com/playlist?list=PLYM-FY6nhslOMJ8gLJ5KYXc7O4swtjO-K",
+      "title": "Concreto Armado Unidade 9 - Lajes Nervuradas e Lisas",
+      "channel": "Yuri Bessa Cesarino",
+      "channel_url": "https://www.youtube.com/@yuri.bessa91",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Lajes lisas (fungiformes) e nervuradas: critérios e cálculo.",
+      "tags": [
+        "Betão Estrutural II"
+      ]
+    },
+    {
+      "id": "PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "url": "https://www.youtube.com/playlist?list=PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "title": "Processos Construtivos",
+      "channel": "Bruno Toniolo",
+      "channel_url": "https://www.youtube.com/@rbcadigeotecnologias6960",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Processos construtivos: vedações, sondagens, fundações e execução.",
+      "tags": [
+        "Construção e Processos"
+      ]
+    },
+    {
+      "id": "PLrN4WrTg3wmo5eW0yMeCZgoj8oEuoSPbT",
+      "url": "https://www.youtube.com/playlist?list=PLrN4WrTg3wmo5eW0yMeCZgoj8oEuoSPbT",
+      "title": "Patologia das Construções - Engenharia Diagnóstica",
+      "channel": "PS Videoaulas Engenharia | Prof. PS CARVALHO",
+      "channel_url": "https://www.youtube.com/@psvideoaulas",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Patologia das construções e engenharia diagnóstica — base para conservação e reabilitação.",
+      "tags": [
+        "Construção e Processos"
+      ]
+    },
+    {
+      "id": "PLu8MPMRGe7BTZRa6Axit1df20oEaOlx6g",
+      "url": "https://www.youtube.com/playlist?list=PLu8MPMRGe7BTZRa6Axit1df20oEaOlx6g",
+      "title": "PLANEJAMENTO E ORÇAMENTO DE OBRAS",
+      "channel": "Professor Mauricio Santini",
+      "channel_url": "https://www.youtube.com/@ProfessorMauricioSantini",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Planeamento e orçamentação de obras: custo, preço, métodos de orçamentação.",
+      "tags": [
+        "Gestão de Obras"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "title": "Eixo de Negócios | Gestão de Projetos",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Gestão de projetos (UNIVESP): âmbito, prazo, custo, controlo.",
+      "tags": [
+        "Gestão de Obras"
+      ]
+    },
+    {
+      "id": "PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "url": "https://www.youtube.com/playlist?list=PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "title": "Sistema de Abastecimento de Água",
+      "channel": "Trecos de Engenharia",
+      "channel_url": "https://www.youtube.com/@trecosdeengenharia",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "Sistemas de abastecimento de água: consumos, estudo populacional, caudais de projeto, rede de distribuição.",
+      "tags": [
+        "Hidráulica Urbana"
+      ]
+    },
+    {
+      "id": "PLXxnV_-cL3Yq93_bbLTAcMDi2RE7Phxqz",
+      "url": "https://www.youtube.com/playlist?list=PLXxnV_-cL3Yq93_bbLTAcMDi2RE7Phxqz",
+      "title": "SES - Sistema de Esgotamento Sanitário",
+      "channel": "Trecos de Engenharia",
+      "channel_url": "https://www.youtube.com/@trecosdeengenharia",
+      "videos": 49,
+      "language": "pt-BR",
+      "description": "Sistemas de drenagem de águas residuais: conceção, quantificação, redes de coletores.",
+      "tags": [
+        "Hidráulica Urbana"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "code": "14491074",
+      "playlist_id": "PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Matrizes, determinantes, sistemas lineares, espaços vetoriais, base e dimensão (PROFMAT/SBM).",
+      "published": true
+    },
+    {
+      "code": "14491074",
+      "playlist_id": "PL3SKHzLU3wD7yJDXh8UNrgaRQxx-8Yz3f",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Vetores no plano e no espaço, bases, produto interno, vetorial e misto — a parte de geometria analítica.",
+      "published": true
+    },
+    {
+      "code": "14491077",
+      "playlist_id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Limites, continuidade, derivadas e aplicações, primitivas e integrais (Cálculo 1).",
+      "published": true
+    },
+    {
+      "code": "14491077",
+      "playlist_id": "PLmtT_GZAQdt-ON8R6bn-653gU9J5tKw0G",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sucessões, séries numéricas, critérios de convergência e séries de potências — o último bloco do programa.",
+      "published": true
+    },
+    {
+      "code": "14491068",
+      "playlist_id": "PLxI8Can9yAHcUT_QY7k8f70AVtg2Hyiyz",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Desenho técnico assistido por computador: representação de objetos, vistas e isometria (UNIVESP).",
+      "published": true
+    },
+    {
+      "code": "14491068",
+      "playlist_id": "PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "AutoCAD 2D do zero: interface, comandos de desenho e edição — a componente de software comercial de CAD.",
+      "published": true
+    },
+    {
+      "code": "14491076",
+      "playlist_id": "PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Mecânica vetorial — estática: grandezas vetoriais, equilíbrio da partícula e do corpo rígido, momentos.",
+      "published": true
+    },
+    {
+      "code": "14491076",
+      "playlist_id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Física 1 universitária: cinemática, leis de Newton e dinâmica, MHS.",
+      "published": true
+    },
+    {
+      "code": "14491069",
+      "playlist_id": "PLxKuPa67B0jKI0ijlrViWnGGOOlEaB7d1",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Curso de Geologia de Engenharia da UFMG: rochas, mecânica das rochas, descontinuidades, maciços.",
+      "published": true
+    },
+    {
+      "code": "14491069",
+      "playlist_id": "PLKcx3qM4KFcmQm34vWilMJ2CS-YNudvg7",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Geologia de engenharia e geotecnia (UFVJM): processos geodinâmicos, propriedades e amostragem de solos.",
+      "published": true
+    },
+    {
+      "code": "14491073",
+      "playlist_id": "PLn4_ixE2STJkB1BqI7UNz5Fmy2TzGxlEj",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Química geral para engenharia: modelos atómicos, configuração eletrónica, tabela periódica, ligações químicas.",
+      "published": true
+    },
+    {
+      "code": "14491073",
+      "playlist_id": "PLxI8Can9yAHeYWhwnYnAu5a3OMWp_haJC",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Química tecnológica e ambiental (UNIVESP): átomos, tabela periódica e aplicações em engenharia.",
+      "published": true
+    },
+    {
+      "code": "14491070",
+      "playlist_id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Funções de várias variáveis, derivadas parciais, gradiente, extremos e integrais múltiplos.",
+      "published": true
+    },
+    {
+      "code": "14491070",
+      "playlist_id": "PLN0ZrxDaBfhgtmGfi60hd3jlwzxafQPnd",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Equações diferenciais ordinárias de 1.ª ordem e de ordem superior (bloco I do programa).",
+      "published": true
+    },
+    {
+      "code": "14491071",
+      "playlist_id": "PLT_AgIMWbgDHzoXroh0GIYbmnwrSQuASv",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Isostática: apoios, reações, treliças (nós e secções), pórticos, esforços internos e diagramas.",
+      "published": true
+    },
+    {
+      "code": "14491071",
+      "playlist_id": "PLMd4Tuh_gMqebD6D1mKUlJq8_eY3sptB8",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estática para Engenharia Civil: forças, momentos e equilíbrio de estruturas.",
+      "published": true
+    },
+    {
+      "code": "14491072",
+      "playlist_id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística descritiva, probabilidade, variáveis aleatórias, distribuições e inferência.",
+      "published": true
+    },
+    {
+      "code": "14491072",
+      "playlist_id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística e probabilidade (UNIVESP): distribuições amostrais, estimação e testes.",
+      "published": true
+    },
+    {
+      "code": "14491067",
+      "playlist_id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "Introdução à programação em Python (a linguagem da UC): variáveis, decisões, ciclos.",
+      "published": true
+    },
+    {
+      "code": "14491067",
+      "playlist_id": "PLBO3A_BljWQgxuQiDqlVXa4gYIPbzW5Y0",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cálculo numérico: erros, zeros de funções, interpolação polinomial, sistemas lineares.",
+      "published": true
+    },
+    {
+      "code": "14491075",
+      "playlist_id": "PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Métodos de levantamento topográfico planimétrico, poligonais e cálculos.",
+      "published": true
+    },
+    {
+      "code": "14491075",
+      "playlist_id": "PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Geoprocessamento: SIG, deteção remota, fotogrametria, dados georreferenciados.",
+      "published": true
+    },
+    {
+      "code": "14491078",
+      "playlist_id": "PLnW7e9m8AEonbZdbPHWqVsPO9woX_lllU",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Propriedades-índice dos solos: índices físicos, granulometria, limites de Atterberg.",
+      "published": true
+    },
+    {
+      "code": "14491078",
+      "playlist_id": "PLSkrkw8sS0Qm_uY64FsnLDHt1ViaTd-s1",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Classificação de solos: granulometria e limites de consistência.",
+      "published": true
+    },
+    {
+      "code": "14491088",
+      "playlist_id": "PLC_RcZ08fgghpi9Ceda50Q4eneGUhUseN",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Mecânica dos fluidos (Universidade de Aveiro): propriedades, hidrostática, cinemática, Bernoulli e escoamentos.",
+      "published": true
+    },
+    {
+      "code": "14491088",
+      "playlist_id": "PLhqijcsr6iHYl8pQ_v-sJHLdbko-TZK_h",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Escoamento sob pressão em condutas, perdas de carga contínuas e localizadas, orifícios.",
+      "published": true
+    },
+    {
+      "code": "14491082",
+      "playlist_id": "PLheJkpt1h1GNSvZ6RBoXYZ4GI37lEz50V",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Tintas e vernizes, vidros, plásticos, rochas usadas na construção, revestimentos.",
+      "published": true
+    },
+    {
+      "code": "14491081",
+      "playlist_id": "PLUWG7VRpCEkYyVSmUPwiT6mcPbtORZBbT",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Tensão e deformação, esforço axial, lei de Hooke, flexão — curso completo de Resistência dos Materiais.",
+      "published": true
+    },
+    {
+      "code": "14491081",
+      "playlist_id": "PLMd4Tuh_gMqfzx18Zz0T3zxdNzBTJBkhx",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Mecânica dos Sólidos 1 (Beer & Johnston): tensões, deformações, carga axial, flexão.",
+      "published": true
+    },
+    {
+      "code": "14491086",
+      "playlist_id": "PL_ro6PVmFbGLuVp8BhKy7S1LvqLZRs010",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Planeamento urbano e ambiental: teorias do desenvolvimento, cidade e sustentabilidade.",
+      "published": false
+    },
+    {
+      "code": "14491086",
+      "playlist_id": "PLL-nR1_d8sAL-kjcMMFfJC5PZWZVs2TVG",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Aulas de planeamento urbano (UNESP).",
+      "published": false
+    },
+    {
+      "code": "14491087",
+      "playlist_id": "PLT_AgIMWbgDH-dF3xzITnfjQuS4OAXqjN",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Hiperestática: princípio dos trabalhos virtuais, deslocamentos, método das forças e dos deslocamentos.",
+      "published": true
+    },
+    {
+      "code": "14491087",
+      "playlist_id": "PLMNpxcy0KqYVktXHuqlCYtzBl7TuyhiCb",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Método das forças (Ftool/LESM, PUC-Rio): sistema principal, compatibilidade, esforços.",
+      "published": true
+    },
+    {
+      "code": "14491084",
+      "playlist_id": "PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Execução de elementos de edifícios (UFC): paredes, impermeabilizações, coberturas, acabamentos.",
+      "published": false
+    },
+    {
+      "code": "14491084",
+      "playlist_id": "PLzXFfQPPqUsXfFRkNI4GmhDf8DSzty9RT",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Projeto de impermeabilização (caves, pavimentos térreos, coberturas).",
+      "published": false
+    },
+    {
+      "code": "14491079",
+      "playlist_id": "PLNwwqZkiVtSOghT2fWl-HCvfPiOt_iEio",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Máquinas de fluxo: bombas centrífugas e turbinas, triângulos de velocidades, semelhança.",
+      "published": true
+    },
+    {
+      "code": "14491079",
+      "playlist_id": "PLyT8KAblFLIScp9CSnxaTDIuOeH3u7K1E",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Hidrologia: ciclo hidrológico, bacias hidrográficas, vazões de ponta.",
+      "published": true
+    },
+    {
+      "code": "14491083",
+      "playlist_id": "PL5Bvp2-ShwWQYre7fY-aMxNuub3TVBtew",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Tecnologia do betão e argamassas: componentes, propriedades no estado fresco e endurecido.",
+      "published": true
+    },
+    {
+      "code": "14491083",
+      "playlist_id": "PLheJkpt1h1GO8IcHe99du7Ahp2tirAGGZ",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Agregados: constantes físicas, granulometria — base da composição do betão.",
+      "published": true
+    },
+    {
+      "code": "14491085",
+      "playlist_id": "PLnW7e9m8AEom_iMoY1zv0HXeSZFUAaIaE",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Teoria do adensamento de Terzaghi, pré-adensamento, assentamentos por consolidação.",
+      "published": true
+    },
+    {
+      "code": "14491085",
+      "playlist_id": "PLnW7e9m8AEokDP7WX__BpIVrUvo0oVBkK",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Resistência ao corte dos solos: Mohr-Coulomb, ensaios triaxial e de corte direto.",
+      "published": true
+    },
+    {
+      "code": "14491080",
+      "playlist_id": "PLMd4Tuh_gMqdoRMdX1TrXNF4Vsws39GtQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Mecânica dos Sólidos 2: transformação de tensões, círculo de Mohr, deflexão de vigas, encurvadura.",
+      "published": true
+    },
+    {
+      "code": "14491080",
+      "playlist_id": "PLUWG7VRpCEkYyVSmUPwiT6mcPbtORZBbT",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Curso completo de Resistência dos Materiais (torção, corte, linha elástica, encurvadura).",
+      "published": true
+    },
+    {
+      "code": "14491095",
+      "playlist_id": "PLyVhmjhvTvDbqByamCNEYw2zDBOscOHRb",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Dinâmica estrutural (IIIT Hyderabad): osciladores de 1 e vários GL, frequências naturais, espectro de resposta.",
+      "published": false
+    },
+    {
+      "code": "14491095",
+      "playlist_id": "PLYM-FY6nhslPCKkJ8cZd68-t_prnNEE0W",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Sismos e estruturas sismo-resistentes: conceitos e projeto.",
+      "published": false
+    },
+    {
+      "code": "14491094",
+      "playlist_id": "PLt0Ig0F5FfRe1fzZx7wxX4DAvGWN4QUAr",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Betão estrutural segundo os Eurocódigos: filosofia de segurança, combinações de ações, flexão (MDRS), esforço transverso, fendilhação.",
+      "published": true
+    },
+    {
+      "code": "14491094",
+      "playlist_id": "PLMd4Tuh_gMqejII4wz9vImjQ2Ftgt852C",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Concreto armado 1: materiais, flexão e dimensionamento de secções.",
+      "published": false
+    },
+    {
+      "code": "14491090",
+      "playlist_id": "PLzy9Rbi396BzgXhPR61qb4mnytO0B4Y0L",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Planeamento de obra pelo caminho crítico e cronogramas (MS Project).",
+      "published": true
+    },
+    {
+      "code": "14491090",
+      "playlist_id": "PL_WTioD7S6oVp6m8Fg4bEpsXCGdv5Cwj7",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Tecnologia da construção: estaleiro (canteiro) de obras e segurança.",
+      "published": false
+    },
+    {
+      "code": "14491092",
+      "playlist_id": "PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Projeto de estradas: parâmetros de projeto, estudos de traçado, planta e perfil.",
+      "published": false
+    },
+    {
+      "code": "14491092",
+      "playlist_id": "PLCVF5em-BdK17PXRQ8k3pXmBeDUB9xNii",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Estradas: curvas, sobrelevação, sobrelargura, perfil longitudinal.",
+      "published": false
+    },
+    {
+      "code": "14491091",
+      "playlist_id": "PLbapccu15AEI",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fundações: investigação geotécnica, escolha do tipo, capacidade de carga (Terzaghi), assentamentos.",
+      "published": true
+    },
+    {
+      "code": "14491091",
+      "playlist_id": "PLdp1BT3nm0zZiK4dVsY0Cg_aT99L1KY6h",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Obras de terra: muros de suporte, impulsos ativo e passivo, cortinas de estacas-prancha.",
+      "published": true
+    },
+    {
+      "code": "14491089",
+      "playlist_id": "PL3um1sRXtZJRS5CcCZV9PIm1KprM5NVQq",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Instalações prediais de água e esgotos: água fria, reservatórios, colunas, dimensionamento.",
+      "published": false
+    },
+    {
+      "code": "14491089",
+      "playlist_id": "PLjxHngy9w1noFfeZpUnaVGc0IlMTgJ6o0",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Desempenho térmico de edificações: incidência solar, envolvente.",
+      "published": false
+    },
+    {
+      "code": "14491097",
+      "playlist_id": "PLt0Ig0F5FfRe1fzZx7wxX4DAvGWN4QUAr",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Lajes vigadas e fungiformes, punçoamento, pormenorização — segundo o EC2 (a mesma playlist cobre BE I e II).",
+      "published": true
+    },
+    {
+      "code": "14491097",
+      "playlist_id": "PLYM-FY6nhslOMJ8gLJ5KYXc7O4swtjO-K",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Lajes lisas (fungiformes) e nervuradas: critérios e cálculo.",
+      "published": false
+    },
+    {
+      "code": "14491098",
+      "playlist_id": "PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Processos construtivos: vedações, sondagens, fundações e execução.",
+      "published": true
+    },
+    {
+      "code": "14491098",
+      "playlist_id": "PLrN4WrTg3wmo5eW0yMeCZgoj8oEuoSPbT",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Patologia das construções e engenharia diagnóstica — base para conservação e reabilitação.",
+      "published": true
+    },
+    {
+      "code": "14491093",
+      "playlist_id": "PLu8MPMRGe7BTZRa6Axit1df20oEaOlx6g",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Planeamento e orçamentação de obras: custo, preço, métodos de orçamentação.",
+      "published": false
+    },
+    {
+      "code": "14491093",
+      "playlist_id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Gestão de projetos (UNIVESP): âmbito, prazo, custo, controlo.",
+      "published": true
+    },
+    {
+      "code": "14491096",
+      "playlist_id": "PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Sistemas de abastecimento de água: consumos, estudo populacional, caudais de projeto, rede de distribuição.",
+      "published": false
+    },
+    {
+      "code": "14491096",
+      "playlist_id": "PLXxnV_-cL3Yq93_bbLTAcMDi2RE7Phxqz",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Sistemas de drenagem de águas residuais: conceção, quantificação, redes de coletores.",
+      "published": false
+    }
+  ]
+}
