@@ -32,6 +32,9 @@ import { cn } from '@/lib/utils';
 const SEQUENCE_WINDOW = 5;
 const MIRRORS = ['course', 'curricular_unit'];
 
+/** Breadcrumb links keep at least a 24px target (WCAG 2.2 target size). */
+const CRUMB = 'inline-flex min-h-6 items-center underline underline-offset-4 hover:text-foreground';
+
 export default function ResourceDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
@@ -120,16 +123,28 @@ export default function ResourceDetails() {
     ['type', typeLabel],
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
 
+  // On small screens a video page shows the player right after the title; the actions follow the player.
+  const renderActions = (className?: string) => <div className={cn('flex flex-col gap-3', className)}>
+    {source ? <Button size="lg" asChild><a href={source} target="_blank" rel="noopener noreferrer">{t(isVideo ? 'video.watchOnYoutube' : 'catalog.source')}<ArrowUpRight /></a></Button>
+      : resource.source_url && <p role="alert" className="text-destructive">{t('validation.url')}</p>}
+    <Button variant="outline" onClick={() => setNotesOpen(true)} aria-haspopup="dialog" aria-expanded={notesOpen}>
+      <NotebookPen />{t('notes.open')}
+      {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-xs tabular-nums text-primary-foreground">{notes.length}</span>}
+    </Button>
+    <ShareButton title={resource.title} />
+    <Link to={contribute} className="inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
+  </div>;
+
   return <article>
     <PageSeo {...resourceMeta(resource, info, { resources: t('nav.resources'), type: typeLabel })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to="/resources">{t('nav.resources')}</Link></li>
+        <li><Link className={CRUMB} to="/resources">{t('nav.resources')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/resources?type=${encodeURIComponent(resource.object_type)}`}>{typeLabel}</Link></li>
+        <li><Link className={CRUMB} to={`/resources?type=${encodeURIComponent(resource.object_type)}`}>{typeLabel}</Link></li>
         {primary && unitHref && <>
           <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
-          <li><Link className="underline underline-offset-4 hover:text-foreground" to={unitHref}>{primary.code || primary.title}</Link></li>
+          <li><Link className={CRUMB} to={unitHref}>{primary.title || primary.code}</Link></li>
         </>}
       </ol>
     </nav>
@@ -144,16 +159,7 @@ export default function ResourceDetails() {
         <h1 className="max-w-4xl text-3xl font-semibold leading-[1.08] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{resource.title}</h1>
         {info.channel && <p className="mt-4 text-lg text-muted-foreground">{t('video.byChannel', { channel: info.channel })}</p>}
       </div>
-      <div className="flex flex-col gap-3">
-        {source ? <Button size="lg" asChild><a href={source} target="_blank" rel="noopener noreferrer">{t(isVideo ? 'video.watchOnYoutube' : 'catalog.source')}<ArrowUpRight /></a></Button>
-          : resource.source_url && <p role="alert" className="text-destructive">{t('validation.url')}</p>}
-        <Button variant="outline" onClick={() => setNotesOpen(true)} aria-haspopup="dialog" aria-expanded={notesOpen}>
-          <NotebookPen />{t('notes.open')}
-          {notes.length > 0 && <span className="ml-auto border border-foreground bg-primary px-1.5 font-mono text-xs tabular-nums text-primary-foreground">{notes.length}</span>}
-        </Button>
-        <ShareButton title={resource.title} />
-        <Link to={contribute} className="inline-flex items-center gap-2 text-sm underline underline-offset-4 hover:text-foreground"><MessageSquarePlus className="h-4 w-4" aria-hidden="true" />{t('video.suggest')}</Link>
-      </div>
+      {renderActions(player ? 'max-lg:hidden' : undefined)}
     </header>
     <LearningContext focus="resource" />
 
@@ -165,15 +171,16 @@ export default function ResourceDetails() {
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-ink px-4 py-3 font-mono text-xs text-ink-foreground/80">
             <span className="min-w-0 truncate">{info.channel ?? 'YouTube'}</span>
             <span className="flex items-center gap-4">
-              <button type="button" onClick={() => setNotesOpen(true)} className="inline-flex items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <button type="button" onClick={() => setNotesOpen(true)} className="inline-flex min-h-6 items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                 <NotebookPen className="h-3.5 w-3.5" aria-hidden="true" />{playerTime !== null ? t('notes.quickAddAt', { time: formatTimestamp(playerTime) }) : t('notes.quickAdd')}
               </button>
               {info.durationSeconds && <span className="tabular-nums">{formatDuration(info.durationSeconds)}</span>}
-              {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
+              {source && <a href={source} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-6 items-center gap-1 text-primary underline-offset-4 hover:underline">YouTube<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
             </span>
           </div>
           {info.durationSeconds && <NoteTimeline notes={notes} duration={info.durationSeconds} playerTime={playerTime} onSeek={seek} />}
         </div>
+        {renderActions('mt-6 lg:hidden')}
       </section>}
 
       <aside aria-label={t('video.context')} className="space-y-6 self-start lg:col-start-2 lg:row-span-2 lg:row-start-1">
