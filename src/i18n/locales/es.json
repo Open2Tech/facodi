@@ -247,6 +247,24 @@
     "hidePasswords": "Ocultar contraseñas",
     "legalNotice": "Al crear una cuenta, aceptas los [Términos de uso](/terms) y confirmas que has leído la [Política de privacidad](/privacy)."
   },
+  "myCourse": {
+    "eyebrow": "Tu curso",
+    "pickTitle": "¿Qué curso estudias?",
+    "pickText": "Elige el curso y, si quieres, el año. El panel mostrará las asignaturas de ese año, cada una con los vídeos y lecturas que ya tiene.",
+    "course": "Curso",
+    "coursePlaceholder": "Elige un curso",
+    "year": "Año",
+    "allYears": "Todos los años",
+    "save": "Guardar",
+    "byTopic": "Prefiero explorar por tema",
+    "clear": "Dejar de mostrar el curso",
+    "change": "Cambiar",
+    "semester": "Semestre {{value}}",
+    "noUnits": "Todavía no hay asignaturas publicadas para esta elección.",
+    "allUnits_one": "Ver la asignatura",
+    "allUnits_many": "Ver las {{count}} asignaturas",
+    "allUnits_other": "Ver las {{count}} asignaturas"
+  },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
     "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",

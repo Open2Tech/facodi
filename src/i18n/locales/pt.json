@@ -247,6 +247,24 @@
     "hidePasswords": "Ocultar senhas",
     "legalNotice": "Ao criar conta, aceitas os [Termos de Utilização](/terms) e confirmas que leste a [Política de Privacidade](/privacy)."
   },
+  "myCourse": {
+    "eyebrow": "O teu curso",
+    "pickTitle": "Em que curso estás?",
+    "pickText": "Escolhe o curso e, se quiseres, o ano. O painel passa a mostrar as UCs desse ano, cada uma com os vídeos e leituras que já tem.",
+    "course": "Curso",
+    "coursePlaceholder": "Escolhe um curso",
+    "year": "Ano",
+    "allYears": "Todos os anos",
+    "save": "Guardar",
+    "byTopic": "Prefiro explorar por tema",
+    "clear": "Deixar de mostrar o curso",
+    "change": "Mudar",
+    "semester": "{{value}}.º semestre",
+    "noUnits": "Ainda não há UCs publicadas para esta escolha.",
+    "allUnits_one": "Ver a UC",
+    "allUnits_many": "Ver as {{count}} UCs",
+    "allUnits_other": "Ver as {{count}} UCs"
+  },
   "dashboard": {
     "welcome": "Olá, {{name}}.",
     "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.",
