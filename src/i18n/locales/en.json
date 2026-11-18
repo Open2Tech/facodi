@@ -290,6 +290,18 @@
     "thanks": "Thank you! The editorial team uses these answers to improve the selection. You can change your answer at any time.",
     "failed": "Your answer could not be saved."
   },
+  "monthlyChallenge": {
+    "eyebrow": "{{month}} challenge",
+    "text_one": "A {{count}}-lesson sequence in the spotlight this month. Every lesson you finish counts towards the community goal: {{goal}} lessons.",
+    "text_many": "A {{count}}-lesson sequence in the spotlight this month. Every lesson you finish counts towards the community goal: {{goal}} lessons.",
+    "text_other": "A {{count}}-lesson sequence in the spotlight this month. Every lesson you finish counts towards the community goal: {{goal}} lessons.",
+    "progressLabel": "Lessons finished by the community this month",
+    "total_one": "The community has finished {{count}} lesson of {{goal}}.",
+    "total_many": "The community has finished {{count}} lessons of {{goal}}.",
+    "total_other": "The community has finished {{count}} lessons of {{goal}}.",
+    "goal": "Community goal: {{goal}} lessons finished this month.",
+    "cta": "Join the challenge"
+  },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
     "description": "Your space to find the next path and look after your account.",
