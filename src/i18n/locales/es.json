@@ -626,6 +626,14 @@
     "rights": "Los derechos del vídeo pertenecen a su autor en YouTube. FACODI no aloja ni modifica el contenido.",
     "moreFromChannel": "Más de {{channel}}"
   },
+  "resourceFeedback": {
+    "questionVideo": "¿Te ayudó este vídeo?",
+    "questionResource": "¿Te ayudó este recurso?",
+    "yes": "Sí",
+    "no": "No",
+    "thanks": "¡Gracias! El equipo editorial usa estas respuestas para mejorar la selección. Puedes cambiar tu respuesta cuando quieras.",
+    "failed": "No se pudo guardar la respuesta."
+  },
   "unitVideos": {
     "title": "Vídeos de apoyo ({{count}})",
     "note": "Recursos complementarios seleccionados por los temas de sus títulos y canales. No sustituyen el programa oficial ni una revisión integral de las clases.",

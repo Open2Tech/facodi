@@ -626,6 +626,14 @@
     "rights": "Video rights belong to its author on YouTube. FACODI neither hosts nor alters the content.",
     "moreFromChannel": "More from {{channel}}"
   },
+  "resourceFeedback": {
+    "questionVideo": "Did this video help you?",
+    "questionResource": "Did this resource help you?",
+    "yes": "Yes",
+    "no": "No",
+    "thanks": "Thank you! The editorial team uses these answers to improve the selection. You can change your answer at any time.",
+    "failed": "Your answer could not be saved."
+  },
   "unitVideos": {
     "title": "Video lessons ({{count}})",
     "note": "Supplementary resources selected by the topics indicated in their titles and channels. They do not replace the official syllabus or a full review of the lessons.",

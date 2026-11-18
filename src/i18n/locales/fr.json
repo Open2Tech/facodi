@@ -626,6 +626,14 @@
     "rights": "Les droits de la vidéo appartiennent à son auteur sur YouTube. FACODI n’héberge ni ne modifie le contenu.",
     "moreFromChannel": "Plus de {{channel}}"
   },
+  "resourceFeedback": {
+    "questionVideo": "Cette vidéo t’a-t-elle aidé ?",
+    "questionResource": "Cette ressource t’a-t-elle aidé ?",
+    "yes": "Oui",
+    "no": "Non",
+    "thanks": "Merci ! L’équipe éditoriale utilise ces réponses pour améliorer la sélection. Tu peux changer ta réponse à tout moment.",
+    "failed": "Impossible d’enregistrer la réponse."
+  },
   "unitVideos": {
     "title": "Cours vidéo ({{count}})",
     "note": "Ressources complémentaires sélectionnées d'après les sujets de leurs titres et de leurs chaînes. Elles ne remplacent ni le programme officiel ni une vérification complète.",
