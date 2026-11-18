@@ -307,6 +307,24 @@
     "dataDescription": "Acesso, cópia e eliminação da conta.",
     "dataText": "Para pedir uma cópia dos teus dados ou eliminar a conta, escreve para [hello@open2.tech](mailto:hello@open2.tech) a partir do email desta conta. Ainda não existe eliminação automática na aplicação. Sabe o que é apagado em [Política de Privacidade](/privacy#deletion)."
   },
+  "curatorLevel": {
+    "title": "O teu nível de curadoria",
+    "none": "Ainda sem contributos aprovados",
+    "levelName": "Nível {{number}} · {{name}}",
+    "levels": {
+      "collaboration": "Colaboração",
+      "curation": "Curadoria"
+    },
+    "approved_zero": "0 contributos aprovados",
+    "approved_one": "{{count}} contributo aprovado",
+    "approved_many": "{{count}} contributos aprovados",
+    "approved_other": "{{count}} contributos aprovados",
+    "next_one": "falta {{count}} para {{name}}",
+    "next_many": "faltam {{count}} para {{name}}",
+    "next_other": "faltam {{count}} para {{name}}",
+    "top": "o passo seguinte é editor convidado, por convite da equipa editorial",
+    "explain": "Cada recurso sugerido ou playlist que a equipa editorial aprova conta para o teu nível."
+  },
   "preferences": {
     "rememberLabel": "Lembrar idioma e tema neste navegador",
     "rememberOff": "Desligado: o idioma e o tema que escolheres valem até fechares o separador.",
