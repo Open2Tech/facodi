@@ -1,0 +1,1254 @@
+{
+  "batch": "facodi_ualg_1843_ctesp_desenho_modelacao_digital_20261118",
+  "course": {
+    "code": "CTESP-DMD",
+    "slug": "ctesp-desenho-modelacao-digital",
+    "official_id": "1843",
+    "title": "CTeSP em Desenho e Modelação Digital",
+    "school": "Instituto Superior de Engenharia",
+    "campus": "Faro",
+    "plan": "https://www.ualg.pt/curso/1843/plano",
+    "academic_year": "2026/27",
+    "ects_total": 120,
+    "semesters": 4,
+    "title_corrections": {
+      "18431001": "MATEMATICA -> Matemática",
+      "18431014": "ELETRICAL -> Electrical"
+    }
+  },
+  "verified_on": "2026-11-18",
+  "method": "YouTube oEmbed (título e canal dono) + página da playlist (nº de vídeos)",
+  "source": "Plano 2026/27 em ualg.pt/curso/1843/plano; fichas de UC 2026/27 em academico.ualg.pt; pesquisa em facodi/pesquisa/playlists-ualg-2026-11-18 (fct-ctesp.json)",
+  "language_mapping": {
+    "pt (lusófono)": "pt"
+  },
+  "semester_convention": "semester = semestre do curso (1 a 4), como no CTESP-STI; local_semester = semestre dentro do ano",
+  "units": [
+    {
+      "code": "18431004",
+      "title": "Desenho Assistido por Computador",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 1,
+      "summary": "Produção de desenho técnico de edifícios e conjuntos edificados com software comercial de CAD: criação e edição de desenhos 2D e operações de quantificação e análise a partir dos desenhos digitais.",
+      "topics": [
+        "Ferramentas de CAD no projeto de edifícios",
+        "Criação e edição de desenhos 2D",
+        "Quantificação a partir do desenho digital"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431004&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431002",
+      "title": "Desenho Técnico",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 2,
+      "summary": "Representação bidimensional de entidades tridimensionais por sistemas de projeção, desenho técnico de construção em projeções ortogonais, técnicas e instrumentos de desenho analógico e regulamentação associada à construção.",
+      "topics": [
+        "Sistemas de projeção",
+        "Projeções ortogonais no desenho de construção",
+        "Desenho analógico e regulamentação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431002&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431005",
+      "title": "Edifícios",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 3,
+      "summary": "Formulação exigencial da construção e técnicas construtivas de edifícios: fundações, estruturas resistentes, paredes, coberturas e acabamentos.",
+      "topics": [
+        "Fundações e estruturas resistentes",
+        "Paredes e coberturas",
+        "Acabamentos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431005&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431001",
+      "title": "Matemática",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 4,
+      "summary": "Números reais, funções lineares, quadráticas, exponencial, logarítmica e trigonométricas, equações e inequações, derivadas, perímetros, áreas e volumes, e tratamento elementar de dados.",
+      "topics": [
+        "Funções, equações e inequações",
+        "Derivadas",
+        "Áreas, volumes e estatística elementar"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431001&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431000",
+      "title": "Projeto I",
+      "ects": 10,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 5,
+      "summary": "Projeto prático de levantamento arquitetónico: métodos de levantamento, critérios de medição em obra, representação gráfica em papel e desenho digital.",
+      "topics": [
+        "Levantamento arquitetónico",
+        "Critérios de medição em obra",
+        "Representação gráfica e desenho digital"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431000&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431003",
+      "title": "Topografia e Cartografia",
+      "ects": 4,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 6,
+      "summary": "Estação total topográfica, coordenadas cartesianas e geocêntricas, GNSS, sistemas de referência terrestres, projeções cartográficas e sistemas de coordenadas portugueses, representação planimétrica e altimétrica e formatos matricial e vetorial.",
+      "topics": [
+        "Estação total e coordenadas",
+        "GNSS e sistemas de referência",
+        "Projeções cartográficas e representação do relevo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431003&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431010",
+      "title": "Building Information Modeling na Arquitetura",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 7,
+      "summary": "Modelação BIM de edifícios: informação topográfica, paredes, lajes, coberturas, escadas, vigas e pilares, elementos compostos, mapas de quantidades, peças desenhadas, rendering, animação e realidade virtual.",
+      "topics": [
+        "Modelação dos componentes do edifício",
+        "Mapas de quantidades e peças desenhadas",
+        "Rendering, animação e realidade virtual"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431010&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431008",
+      "title": "Digitalização e Modelação 3D",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 8,
+      "summary": "Levantamento 3D por laser scanner terrestre e por fotogrametria digital terrestre e a partir de drone: nuvens de pontos e o seu co-registo, equações de colinearidade, malhas poligonais e nuvens de pontos em ambiente BIM.",
+      "topics": [
+        "Laser scanner e nuvens de pontos",
+        "Fotogrametria terrestre e por drone",
+        "Malhas 3D e nuvens de pontos em BIM"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431008&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431011",
+      "title": "Infraestruturas Urbanas",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 9,
+      "summary": "Desenho de infraestruturas urbanas: traçado de redes viárias em planta e perfil e movimentos de terra, redes de abastecimento de água, drenagem de águas residuais e pluviais, e redes elétricas, de telecomunicações e de gás.",
+      "topics": [
+        "Redes viárias e movimentos de terra",
+        "Abastecimento de água e drenagem",
+        "Redes elétricas, de telecomunicações e de gás"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431011&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431007",
+      "title": "Programação",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 10,
+      "summary": "Algoritmia e programação: estrutura de um programa, tipos de dados, variáveis, operadores e expressões, entrada e saída, estruturas de decisão e repetição, funções, módulos, listas, tuplos, dicionários e ficheiros.",
+      "topics": [
+        "Tipos de dados, operadores e expressões",
+        "Estruturas de controlo e funções",
+        "Listas, dicionários e ficheiros"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431007&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431006",
+      "title": "Projeto II",
+      "ects": 10,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 11,
+      "summary": "Projeto de modelação tridimensional de um caso real, na continuação do Projeto I, que junta digitalização e modelação 3D, técnicas de inventariação, infraestruturas e BIM na arquitetura.",
+      "topics": [
+        "Modelação tridimensional de um caso real",
+        "Integração das UCs do semestre"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431006&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431009",
+      "title": "Técnicas e Métodos de Inventariação",
+      "ects": 4,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 12,
+      "summary": "Métodos e técnicas de levantamento e recolha de informação conforme o objetivo do estudo (edifícios, transportes, mobilidade, índices urbanísticos), com conceção de formulários para cada situação.",
+      "topics": [
+        "Levantamento de edifícios",
+        "Transportes, mobilidade e índices urbanísticos",
+        "Formulários de recolha"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431009&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431016",
+      "title": "Animação Digital",
+      "ects": 4,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 13,
+      "summary": "Criação e edição de animações 3D: rigging, imagens-chave, modificadores e auxiliares de animação, motor de física e partículas, motion graphics e cutout animation.",
+      "topics": [
+        "Rigging e imagens-chave",
+        "Física e partículas",
+        "Motion graphics e cutout animation"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431016&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431014",
+      "title": "Building Information Modeling nas Estruturas e Mechanical, Electrical, and Plumbing",
+      "ects": 4,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 14,
+      "summary": "Projetos de especialidade de um edifício e a sua ligação à arquitetura: estruturas, redes de águas e drenagem, AVAC e instalações elétricas e de telecomunicações, com interpretação das peças desenhadas e modelos BIM.",
+      "topics": [
+        "Modelo BIM de estruturas",
+        "Modelo BIM de redes de águas e drenagem",
+        "AVAC e instalações elétricas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431014&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431017",
+      "title": "Computação Visual",
+      "ects": 4,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 15,
+      "summary": "Computação gráfica e visão computacional: modelação de objetos, processamento de imagem, deteção, classificação e reconhecimento de objetos, realidade aumentada e interação homem-máquina, com Blender, OpenCV e Python.",
+      "topics": [
+        "Computação gráfica e modelação",
+        "Processamento de imagem e visão computacional",
+        "Realidade aumentada"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431017&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431013",
+      "title": "Medições e Valoração Digital",
+      "ects": 4,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 16,
+      "summary": "BIM como processo colaborativo e modelação paramétrica, peças do projeto, normas buildingSMART, estrutura do mapa de medições e regras de medição, medição digital, orçamentação e planeamento da construção em BIM 4D e 5D.",
+      "topics": [
+        "BIM colaborativo e interoperabilidade",
+        "Mapa de medições e medição digital",
+        "Orçamentação e BIM 4D e 5D"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431013&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431012",
+      "title": "Projeto III",
+      "ects": 10,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 17,
+      "summary": "Projeto em aprendizagem baseada em problemas: modelação de projetos de arquitetura e especialidades em BIM, com tecnologias de apresentação e simulação e os conteúdos das UCs do semestre.",
+      "topics": [
+        "Modelação BIM de arquitetura e especialidades",
+        "Apresentação e simulação do projeto"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431012&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431015",
+      "title": "Sistemas de Informação Geográfica",
+      "ects": 4,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 18,
+      "summary": "Sistemas de informação geográfica: estrutura e componentes, modelos vetoriais e topológicos, aquisição de dados, sistemas de referência e digitalização, correção de erros, consultas, análise e cartografia temática aplicadas à gestão do território.",
+      "topics": [
+        "Modelos de dados geográficos",
+        "Aquisição e edição de dados",
+        "Análise espacial e cartografia temática"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431015&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "18431018",
+      "title": "Estágio",
+      "ects": 30,
+      "year": 2,
+      "semester": 4,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 19,
+      "summary": "Estágio numa empresa ou instituição, com integração na entidade acolhedora e desenvolvimento de um projeto numa área do curso, segundo um plano definido com o tutor e o orientador.",
+      "topics": [
+        "Integração na entidade acolhedora",
+        "Projeto de estágio"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=18431018&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 4,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "url": "https://www.youtube.com/playlist?list=PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "title": "CURSO  AUTOCAD  2D COMPLETO GRATIS",
+      "channel": "Rodrigo Lorenzi",
+      "channel_url": "https://www.youtube.com/@projetolorenzi",
+      "videos": 34,
+      "language": "pt-BR",
+      "description": "AutoCAD 2D: interface, comandos de desenho e edição",
+      "tags": [
+        "Desenho Assistido por Computador"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL3RsR7T6lgcIaStymrFEPIKS4yy0aB5D-",
+      "url": "https://www.youtube.com/playlist?list=PL3RsR7T6lgcIaStymrFEPIKS4yy0aB5D-",
+      "title": "Curso de AutoCAD Grátis: Do Básico ao Avançado | Free AutoCAD Course",
+      "channel": "OTIMIZACAD - Seja referência em AutoCAD",
+      "channel_url": "https://www.youtube.com/@OTIMIZACAD",
+      "videos": 27,
+      "language": "pt-BR",
+      "description": "AutoCAD: configuração, modelos e comandos",
+      "tags": [
+        "Desenho Assistido por Computador"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL6OmFkyT2DheRhGaMhZwpN2ls6cZ3XH_t",
+      "url": "https://www.youtube.com/playlist?list=PL6OmFkyT2DheRhGaMhZwpN2ls6cZ3XH_t",
+      "title": "Desenho Técnico Básico",
+      "channel": "Nádia de Oliveira Camacho",
+      "channel_url": "https://www.youtube.com/@nadiacamacho",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "sistemas de projeção e vistas ortográficas",
+      "tags": [
+        "Desenho Técnico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLtb8YzVQOV8MF2lIqOorBpShZzo7um7KW",
+      "url": "https://www.youtube.com/playlist?list=PLtb8YzVQOV8MF2lIqOorBpShZzo7um7KW",
+      "title": "Desenho Técnico!",
+      "channel": "Markoni Heringer",
+      "channel_url": "https://www.youtube.com/@desenhotecnico",
+      "videos": 176,
+      "language": "pt-BR",
+      "description": "perspetivas e desenho técnico",
+      "tags": [
+        "Desenho Técnico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "url": "https://www.youtube.com/playlist?list=PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "title": "Processos Construtivos",
+      "channel": "Bruno Toniolo",
+      "channel_url": "https://www.youtube.com/@rbcadigeotecnologias6960",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "fundações, alvenarias, coberturas",
+      "tags": [
+        "Edifícios"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "url": "https://www.youtube.com/playlist?list=PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "title": "Como construir da forma correta?",
+      "channel": "Construção de Edifícios UFC",
+      "channel_url": "https://www.youtube.com/@construcaodeedificiosufc9924",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "acabamentos, impermeabilização, revestimentos (UFC)",
+      "tags": [
+        "Edifícios"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "url": "https://www.youtube.com/playlist?list=PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "title": "Funções Reais de Variável Real",
+      "channel": "Khan Academy em Português de Portugal",
+      "channel_url": "https://www.youtube.com/@KhanAcademyPortugal",
+      "videos": 348,
+      "language": "pt-PT",
+      "description": "funções lineares, quadráticas, exponencial, logarítmica, trigonométrica",
+      "tags": [
+        "Matemática"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "title": "CÁLCULO 1",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 60,
+      "language": "pt-BR",
+      "description": "derivadas e regras de derivação",
+      "tags": [
+        "Matemática"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "url": "https://www.youtube.com/playlist?list=PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "title": "MÉTODOS DE LEVANTAMENTO TOPOGRÁFICO PLANIMÉTRICO E CÁLCULOS",
+      "channel": "Alessandro Carvalho",
+      "channel_url": "https://www.youtube.com/@TopografiaDescomplicada",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "levantamento planimétrico, poligonais, cálculos",
+      "tags": [
+        "Topografia e Cartografia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLOHUZxhgO-eY0C_kVC8Cv2c8tjZa6Qr9x",
+      "url": "https://www.youtube.com/playlist?list=PLOHUZxhgO-eY0C_kVC8Cv2c8tjZa6Qr9x",
+      "title": "Aulas - Levantamentos Geodésicos - UERJ 2021.1",
+      "channel": "João Azevedo",
+      "channel_url": "https://www.youtube.com/@jjbosco",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "geodesia, GNSS, redes geodésicas (UERJ)",
+      "tags": [
+        "Topografia e Cartografia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLRvM4LTxFnNVu3fxqte5OUvhPp8ffMnHC",
+      "url": "https://www.youtube.com/playlist?list=PLRvM4LTxFnNVu3fxqte5OUvhPp8ffMnHC",
+      "title": "💻 Curso de Revit | Revit Mais + (por Jônathas Melo)",
+      "channel": "Jônathas Aquino Melo",
+      "channel_url": "https://www.youtube.com/@jonathas_arquiteto",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Revit: paredes, portas, tabelas, importar e exportar (gravado há 1 ano)",
+      "tags": [
+        "Building Information Modeling na Arquitetura"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLQxbw3gHYsj_9I0-lCB6dnYCrrHhmBR5g",
+      "url": "https://www.youtube.com/playlist?list=PLQxbw3gHYsj_9I0-lCB6dnYCrrHhmBR5g",
+      "title": "Dominando o Revit",
+      "channel": "Samuel Martins BIM",
+      "channel_url": "https://www.youtube.com/@SamuelBIM",
+      "videos": 67,
+      "language": "pt-BR",
+      "description": "Revit: template, interface, modelação completa",
+      "tags": [
+        "Building Information Modeling na Arquitetura"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLDVFZ3pqTGpPPWG0dFaQ59CvN8C7faKwP",
+      "url": "https://www.youtube.com/playlist?list=PLDVFZ3pqTGpPPWG0dFaQ59CvN8C7faKwP",
+      "title": "Fotogrametria",
+      "channel": "Professor Téo",
+      "channel_url": "https://www.youtube.com/@professor-teo",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "fotogrametria analógica, digital e por drone, modelos 3D",
+      "tags": [
+        "Digitalização e Modelação 3D"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL-3EdcdITNqyxaC50bGIeYCyRDdRLWWNE",
+      "url": "https://www.youtube.com/playlist?list=PL-3EdcdITNqyxaC50bGIeYCyRDdRLWWNE",
+      "title": "Curso Básico de Topografia - LASER SCANNER",
+      "channel": "Helton Menezes",
+      "channel_url": "https://www.youtube.com/@HeltonMenezes",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "laser scanner e processamento de nuvens de pontos",
+      "tags": [
+        "Digitalização e Modelação 3D"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "url": "https://www.youtube.com/playlist?list=PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "title": "Projeto Geométrico de Estradas",
+      "channel": "ALVARO VIEIRA",
+      "channel_url": "https://www.youtube.com/@alvarovieira-IME",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "traçado de estradas em planta e perfil",
+      "tags": [
+        "Infraestruturas Urbanas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "url": "https://www.youtube.com/playlist?list=PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "title": "Sistema de Abastecimento de Água",
+      "channel": "Trecos de Engenharia",
+      "channel_url": "https://www.youtube.com/@trecosdeengenharia",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "sistemas de abastecimento de água",
+      "tags": [
+        "Infraestruturas Urbanas"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "title": "Curso de Python 3 - Mundo 1: Fundamentos",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 48,
+      "language": "pt-BR",
+      "description": "Python: tipos, variáveis, operadores, entrada e saída",
+      "tags": [
+        "Programação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dk_nZHmxxf_J0WRAqy5Czye",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dk_nZHmxxf_J0WRAqy5Czye",
+      "title": "Curso de Python 3 - Mundo 2: Estruturas de Controle",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 42,
+      "language": "pt-BR",
+      "description": "Python: estruturas de controlo",
+      "tags": [
+        "Programação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnZ5LH-yk0H3Q07nQQzVM3qOxnI76wayg",
+      "url": "https://www.youtube.com/playlist?list=PLnZ5LH-yk0H3Q07nQQzVM3qOxnI76wayg",
+      "title": "Levantamento Arquitetônico - Aprenda como fazer de maneira correta!",
+      "channel": "Projeto e Detalhes",
+      "channel_url": "https://www.youtube.com/@projetoedetalhes",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "levantamento arquitetónico de edifícios existentes",
+      "tags": [
+        "Técnicas e Métodos de Inventariação"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLuGCQAHfIDDsbHImZFJ9XiqwTDNU2UCFY",
+      "url": "https://www.youtube.com/playlist?list=PLuGCQAHfIDDsbHImZFJ9XiqwTDNU2UCFY",
+      "title": "Série: Como modelar e animar personagem no Blender 3D (passo-a-passo)",
+      "channel": "Wellington Coloni",
+      "channel_url": "https://www.youtube.com/@wellingtoncoloni",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Blender: modelar e animar personagem, com rigging",
+      "tags": [
+        "Animação Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLYXc1aQZtYHswdQYm4qJR4favNXB_v5N6",
+      "url": "https://www.youtube.com/playlist?list=PLYXc1aQZtYHswdQYm4qJR4favNXB_v5N6",
+      "title": "Curso: Princípios da Animação no Blender 3D",
+      "channel": "Crazy Pixel School",
+      "channel_url": "https://www.youtube.com/@CrazyPixelSchool",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "keyframes e princípios da animação no Blender",
+      "tags": [
+        "Animação Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLyRumplLF_YjbtD_B4urfS4_WwkOwdbXJ",
+      "url": "https://www.youtube.com/playlist?list=PLyRumplLF_YjbtD_B4urfS4_WwkOwdbXJ",
+      "title": "Modelagem de estrutura de concreto armado em BIM com o Revit 2025",
+      "channel": "Joel Donizete",
+      "channel_url": "https://www.youtube.com/@joeldonizete9121",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Revit 2025: estrutura de betão armado (fundações, pilares, vigas, lajes, armaduras)",
+      "tags": [
+        "Building Information Modeling nas Estruturas e Mechanical, Electrical, and Plumbing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL9t0ZaF1phAUfU9JbGsOEpeD--fFPDBvO",
+      "url": "https://www.youtube.com/playlist?list=PL9t0ZaF1phAUfU9JbGsOEpeD--fFPDBvO",
+      "title": "REVIT MEP 2019 BÁSICO: PROJETO HIDROSSANITÁRIO",
+      "channel": "Roberta Vendramini - Cursos Construir",
+      "channel_url": "https://www.youtube.com/@robertavendramini",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Revit MEP: projeto hidrossanitário",
+      "tags": [
+        "Building Information Modeling nas Estruturas e Mechanical, Electrical, and Plumbing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLmDIGfkfgKy1SBjXA0kBk4DAhIaN1vQOS",
+      "url": "https://www.youtube.com/playlist?list=PLmDIGfkfgKy1SBjXA0kBk4DAhIaN1vQOS",
+      "title": "INE410121 - Visão Computacional",
+      "channel": "Aldo von Wangenheim",
+      "channel_url": "https://www.youtube.com/@awangenh",
+      "videos": 34,
+      "language": "pt-BR",
+      "description": "visão computacional: filtros, morfologia, deteção e classificação (UFSC)",
+      "tags": [
+        "Computação Visual"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL-t7zzWJWPtx3enns2ZAV6si2p9zGhZJX",
+      "url": "https://www.youtube.com/playlist?list=PL-t7zzWJWPtx3enns2ZAV6si2p9zGhZJX",
+      "title": "Aulas Completas de Python e OpenCV",
+      "channel": "Universo Discreto",
+      "channel_url": "https://www.youtube.com/@UniversoDiscreto",
+      "videos": 34,
+      "language": "pt-BR",
+      "description": "Python e OpenCV: processamento de imagem",
+      "tags": [
+        "Computação Visual"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLTOp3n87VreU5qaZdHdMZvZzXBsJKvOTT",
+      "url": "https://www.youtube.com/playlist?list=PLTOp3n87VreU5qaZdHdMZvZzXBsJKvOTT",
+      "title": "Medições e Orçamentos - Eng. Emerson Lourenço",
+      "channel": "Aprender & Aplicar",
+      "channel_url": "https://www.youtube.com/@aprenderreaprenderea4136",
+      "videos": 7,
+      "language": "pt",
+      "description": "mapa de medições, mapa de quantidades, custos diretos e de estaleiro",
+      "tags": [
+        "Medições e Valoração Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL9t0ZaF1phAUKZXTScXvdMJbAfamGl3Rn",
+      "url": "https://www.youtube.com/playlist?list=PL9t0ZaF1phAUKZXTScXvdMJbAfamGl3Rn",
+      "title": "Revit: Modelagem Aplicada a Orçamentos",
+      "channel": "Roberta Vendramini - Cursos Construir",
+      "channel_url": "https://www.youtube.com/@robertavendramini",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "extração de quantidades do Revit para orçamento (BIM 5D)",
+      "tags": [
+        "Medições e Valoração Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "url": "https://www.youtube.com/playlist?list=PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "title": "Geoprocessamento",
+      "channel": "Prof. Ana Pierri",
+      "channel_url": "https://www.youtube.com/@ProfAnaPierri",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "geoprocessamento, deteção remota, SIG, QGIS",
+      "tags": [
+        "Sistemas de Informação Geográfica"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8zeXOlhTDo2uhc4peJ_wy4wP5P_sKWDo",
+      "url": "https://www.youtube.com/playlist?list=PL8zeXOlhTDo2uhc4peJ_wy4wP5P_sKWDo",
+      "title": "Curso Gratuito: QGIS Aplicado ao Meio Ambiente",
+      "channel": "Projeto Qgis",
+      "channel_url": "https://www.youtube.com/@ProjetoQgis10",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "QGIS: camadas, simbologia, rótulos, análise",
+      "tags": [
+        "Sistemas de Informação Geográfica"
+      ],
+      "published": true
+    }
+  ],
+  "links": [
+    {
+      "code": "18431004",
+      "playlist_id": "PLXz34osMlPE2HXInIxov4plLGap4KN_fk",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "AutoCAD 2D: interface, comandos de desenho e edição",
+      "published": true
+    },
+    {
+      "code": "18431004",
+      "playlist_id": "PL3RsR7T6lgcIaStymrFEPIKS4yy0aB5D-",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "AutoCAD: configuração, modelos e comandos",
+      "published": true
+    },
+    {
+      "code": "18431002",
+      "playlist_id": "PL6OmFkyT2DheRhGaMhZwpN2ls6cZ3XH_t",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "sistemas de projeção e vistas ortográficas",
+      "published": true
+    },
+    {
+      "code": "18431002",
+      "playlist_id": "PLtb8YzVQOV8MF2lIqOorBpShZzo7um7KW",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "perspetivas e desenho técnico",
+      "published": true
+    },
+    {
+      "code": "18431005",
+      "playlist_id": "PL18iKJf7geVjuxPJEPyOESaVvPyr7kBNs",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "fundações, alvenarias, coberturas",
+      "published": true
+    },
+    {
+      "code": "18431005",
+      "playlist_id": "PLf0SibRc7TxRuMDh0o4y8md4qYucVQJ-i",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "acabamentos, impermeabilização, revestimentos (UFC)",
+      "published": true
+    },
+    {
+      "code": "18431001",
+      "playlist_id": "PLM8Wh9Lc7O210q1Z6CT7O-suJ9aE-Lh2C",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "secundário (introdutório)",
+      "match": "funções lineares, quadráticas, exponencial, logarítmica, trigonométrica",
+      "published": true
+    },
+    {
+      "code": "18431001",
+      "playlist_id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "derivadas e regras de derivação",
+      "published": true
+    },
+    {
+      "code": "18431003",
+      "playlist_id": "PLV8kNxbra2Fv_fUTezdgEZGJsVoQ_5pkP",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "levantamento planimétrico, poligonais, cálculos",
+      "published": true
+    },
+    {
+      "code": "18431003",
+      "playlist_id": "PLOHUZxhgO-eY0C_kVC8Cv2c8tjZa6Qr9x",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "geodesia, GNSS, redes geodésicas (UERJ)",
+      "published": true
+    },
+    {
+      "code": "18431010",
+      "playlist_id": "PLRvM4LTxFnNVu3fxqte5OUvhPp8ffMnHC",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "Revit: paredes, portas, tabelas, importar e exportar (gravado há 1 ano)",
+      "published": true
+    },
+    {
+      "code": "18431010",
+      "playlist_id": "PLQxbw3gHYsj_9I0-lCB6dnYCrrHhmBR5g",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "Revit: template, interface, modelação completa",
+      "published": true
+    },
+    {
+      "code": "18431008",
+      "playlist_id": "PLDVFZ3pqTGpPPWG0dFaQ59CvN8C7faKwP",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "fotogrametria analógica, digital e por drone, modelos 3D",
+      "published": true
+    },
+    {
+      "code": "18431008",
+      "playlist_id": "PL-3EdcdITNqyxaC50bGIeYCyRDdRLWWNE",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "laser scanner e processamento de nuvens de pontos",
+      "published": true
+    },
+    {
+      "code": "18431011",
+      "playlist_id": "PLg6l26er-W20DPk__jMMn8_vw1yNlF4Lm",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "traçado de estradas em planta e perfil",
+      "published": true
+    },
+    {
+      "code": "18431011",
+      "playlist_id": "PLXxnV_-cL3Yq0Q7_1zYoacl8bkVU1pILl",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "sistemas de abastecimento de água",
+      "published": true
+    },
+    {
+      "code": "18431007",
+      "playlist_id": "PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "Python: tipos, variáveis, operadores, entrada e saída",
+      "published": true
+    },
+    {
+      "code": "18431007",
+      "playlist_id": "PLHz_AreHm4dk_nZHmxxf_J0WRAqy5Czye",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "Python: estruturas de controlo",
+      "published": true
+    },
+    {
+      "code": "18431009",
+      "playlist_id": "PLnZ5LH-yk0H3Q07nQQzVM3qOxnI76wayg",
+      "ord": null,
+      "research_order": 1,
+      "confidence": "baixa",
+      "level": "técnico-profissional",
+      "match": "levantamento arquitetónico de edifícios existentes",
+      "published": false
+    },
+    {
+      "code": "18431016",
+      "playlist_id": "PLuGCQAHfIDDsbHImZFJ9XiqwTDNU2UCFY",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "Blender: modelar e animar personagem, com rigging",
+      "published": true
+    },
+    {
+      "code": "18431016",
+      "playlist_id": "PLYXc1aQZtYHswdQYm4qJR4favNXB_v5N6",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "keyframes e princípios da animação no Blender",
+      "published": true
+    },
+    {
+      "code": "18431014",
+      "playlist_id": "PLyRumplLF_YjbtD_B4urfS4_WwkOwdbXJ",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "Revit 2025: estrutura de betão armado (fundações, pilares, vigas, lajes, armaduras)",
+      "published": true
+    },
+    {
+      "code": "18431014",
+      "playlist_id": "PL9t0ZaF1phAUfU9JbGsOEpeD--fFPDBvO",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "Revit MEP: projeto hidrossanitário",
+      "published": true
+    },
+    {
+      "code": "18431017",
+      "playlist_id": "PLmDIGfkfgKy1SBjXA0kBk4DAhIaN1vQOS",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "visão computacional: filtros, morfologia, deteção e classificação (UFSC)",
+      "published": true
+    },
+    {
+      "code": "18431017",
+      "playlist_id": "PL-t7zzWJWPtx3enns2ZAV6si2p9zGhZJX",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Python e OpenCV: processamento de imagem",
+      "published": true
+    },
+    {
+      "code": "18431013",
+      "playlist_id": "PLTOp3n87VreU5qaZdHdMZvZzXBsJKvOTT",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "mapa de medições, mapa de quantidades, custos diretos e de estaleiro",
+      "published": true
+    },
+    {
+      "code": "18431013",
+      "playlist_id": "PL9t0ZaF1phAUKZXTScXvdMJbAfamGl3Rn",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "extração de quantidades do Revit para orçamento (BIM 5D)",
+      "published": true
+    },
+    {
+      "code": "18431015",
+      "playlist_id": "PLMd4Tuh_gMqebcXKqnZBOwcl8P-UUZzIy",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "geoprocessamento, deteção remota, SIG, QGIS",
+      "published": true
+    },
+    {
+      "code": "18431015",
+      "playlist_id": "PL8zeXOlhTDo2uhc4peJ_wy4wP5P_sKWDo",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "QGIS: camadas, simbologia, rótulos, análise",
+      "published": true
+    }
+  ],
+  "application": {
+    "status": "por_aplicar",
+    "method": "Supabase MCP; o script SQL fica fora do PR, na branch scripts/facodi_ualg_1843_ctesp_desenho_modelacao_digital_20261118 do fork",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1843_ctesp_desenho_modelacao_digital_20261118/supabase/seeds/facodi_ualg_1843_ctesp_desenho_modelacao_digital_20261118.sql",
+    "published_playlists": 28,
+    "published_links": 28,
+    "units": 19,
+    "excluded_policy": "não publicar ligações com confiança baixa",
+    "excluded_links": [
+      {
+        "code": "18431009",
+        "playlist_id": "PLnZ5LH-yk0H3Q07nQQzVM3qOxnI76wayg",
+        "confidence": "baixa"
+      }
+    ]
+  }
+}
