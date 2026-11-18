@@ -34,6 +34,8 @@ describe('FACODI query isolation', () => {
     expect(sequenceKeys.progress('alice', 'p1')).not.toEqual(sequenceKeys.progress('bob', 'p1'));
     expect(sequenceKeys.progress('alice', 'p1').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));
     expect(sequenceKeys.overview('alice').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));
+    expect(sequenceKeys.milestones('alice')).not.toEqual(sequenceKeys.milestones('bob'));
+    expect(sequenceKeys.milestones('alice').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));
     expect(sequenceKeys.list(null).slice(0, 3)).toEqual(['facodi', 'sequences', 'public']);
     expect(sequenceKeys.forVideo('v1').slice(0, 3)).toEqual(['facodi', 'sequences', 'public']);
     expect(sequenceKeys.videoCompletion('alice', 'v1').slice(0, 4)).toEqual(sequenceKeys.progressAll('alice'));

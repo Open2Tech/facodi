@@ -1246,6 +1246,30 @@
     "next": "Prochain cours : {{title}}",
     "cta": "Continuer"
   },
+  "milestones": {
+    "title": "Tes étapes",
+    "private": "Cette section n’est visible que par toi.",
+    "loadFailed": "Impossible de charger tes étapes.",
+    "streakTitle": "Semaines d’étude d’affilée",
+    "streakDone": "Cette semaine compte déjà.",
+    "streakKeep": "Termine un cours cette semaine pour continuer la série.",
+    "streakStart": "Termine un cours d’une séquence pour commencer.",
+    "best_one": "Meilleure série : {{count}} semaine",
+    "best_many": "Meilleure série : {{count}} semaines",
+    "best_other": "Meilleure série : {{count}} semaines",
+    "reached": "Atteint",
+    "progress": "{{value}} sur {{target}}",
+    "items": {
+      "firstLesson": "Premier cours terminé",
+      "tenLessons": "10 cours terminés",
+      "fiftyLessons": "50 cours terminés",
+      "firstSequence": "Première séquence complète",
+      "threeSequences": "3 séquences complètes",
+      "firstNote": "Première note dans le carnet",
+      "tenNotes": "10 notes dans le carnet",
+      "fourWeeks": "4 semaines d’affilée"
+    }
+  },
   "projectSeo": {
     "about": {
       "title": "FACODI | D'une question à un campus ouvert",

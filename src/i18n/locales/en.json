@@ -1246,6 +1246,30 @@
     "next": "Next lesson: {{title}}",
     "cta": "Continue"
   },
+  "milestones": {
+    "title": "Your milestones",
+    "private": "Only you can see this section.",
+    "loadFailed": "Your milestones could not be loaded.",
+    "streakTitle": "Weeks in a row studying",
+    "streakDone": "This week already counts.",
+    "streakKeep": "Finish a lesson this week to keep the run going.",
+    "streakStart": "Finish a lesson in a sequence to start.",
+    "best_one": "Best run: {{count}} week",
+    "best_many": "Best run: {{count}} weeks",
+    "best_other": "Best run: {{count}} weeks",
+    "reached": "Reached",
+    "progress": "{{value}} of {{target}}",
+    "items": {
+      "firstLesson": "First lesson finished",
+      "tenLessons": "10 lessons finished",
+      "fiftyLessons": "50 lessons finished",
+      "firstSequence": "First sequence complete",
+      "threeSequences": "3 sequences complete",
+      "firstNote": "First note in the notebook",
+      "tenNotes": "10 notes in the notebook",
+      "fourWeeks": "4 weeks in a row"
+    }
+  },
   "projectSeo": {
     "about": {
       "title": "About FACODI | From one question to an open campus",

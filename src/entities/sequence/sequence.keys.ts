@@ -6,4 +6,5 @@ export const sequenceKeys = {
   progressAll: (userId: string) => ['facodi', 'private', userId, 'sequence-progress'] as const,
   progress: (userId: string, playlistId: string) => ['facodi', 'private', userId, 'sequence-progress', playlistId] as const,
   overview: (userId: string) => ['facodi', 'private', userId, 'sequence-progress', 'overview'] as const,
+  milestones: (userId: string) => ['facodi', 'private', userId, 'sequence-progress', 'milestones'] as const,
 };
