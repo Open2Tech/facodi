@@ -1,0 +1,2457 @@
+{
+  "batch": "facodi_ualg_1516_marketing_20261118",
+  "course": {
+    "code": "LMKT",
+    "official_id": "1516",
+    "slug": "marketing",
+    "plan": "https://www.ualg.pt/curso/1516/plano",
+    "academic_year": "2026/27"
+  },
+  "verified_on": "2026-11-18",
+  "application": {
+    "status": "não aplicado",
+    "method": "Supabase MCP, fora do PR (sem ficheiros .sql no PR, como pedido no #66/#72)",
+    "script_branch": "scripts/facodi_ualg_1516_marketing_20261118",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1516_marketing_20261118/supabase/seeds/facodi_ualg_1516_marketing_20261118.sql",
+    "published_policy": "só ligações de confiança alta ou média; as de confiança baixa ficam aqui com published=false",
+    "shared_codes_policy": "registo próprio neste curso; slug marketing-uc-<código> só se o código já for slug de outra UC"
+  },
+  "units": [
+    {
+      "code": "15161078",
+      "title": "Design Gráfico e Comunicação",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 1,
+      "summary": "Linguagem visual e princípios do design gráfico, com cor, tipografia e identidade visual, o processo criativo e a edição de imagem em Adobe Photoshop.",
+      "topics": [
+        "Cor e tipografia",
+        "Identidade visual e marca",
+        "Adobe Photoshop"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161078&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161081",
+      "title": "Fundamentos de Marketing",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 2,
+      "summary": "Conceitos e evolução do marketing, análise de mercado, segmentação, segmentos-alvo e posicionamento, marketing-mix e elaboração, controlo e avaliação do plano de marketing.",
+      "topics": [
+        "Segmentação e posicionamento",
+        "Marketing-mix",
+        "Plano de marketing"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161081&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161080",
+      "title": "Gestão das Organizações",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 3,
+      "summary": "Conceitos de gestão e a sua evolução, planeamento estratégico, estrutura organizacional, ética, responsabilidade social e sustentabilidade, e empreendedorismo e inovação.",
+      "topics": [
+        "Gestão e gestores",
+        "Planeamento estratégico",
+        "Ética, responsabilidade social e sustentabilidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161080&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161082",
+      "title": "Informática",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 4,
+      "summary": "A folha de cálculo como instrumento de análise e apoio à decisão, em Microsoft Excel: fórmulas e funções, tratamento de dados, tabelas dinâmicas, cenários, Solver e macros em VBA.",
+      "topics": [
+        "Fórmulas e funções do Excel",
+        "Tabelas e gráficos dinâmicos",
+        "Análise de cenários e VBA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161082&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161077",
+      "title": "Inglês para Marketing I",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 5,
+      "summary": "Inglês aplicado ao marketing a partir de marcas, mercados globais, comércio eletrónico, negócios digitais e marketing e IA, com revisão gramatical.",
+      "topics": [
+        "Marcas e mercados globais",
+        "Comércio eletrónico e negócios digitais",
+        "Gramática"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161077&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161079",
+      "title": "Métodos Quantitativos",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "option_group": null,
+      "position": 6,
+      "summary": "Matrizes, determinantes e sistemas de equações lineares, funções reais de variável real e diferenciação, com aplicações ao marketing.",
+      "topics": [
+        "Matrizes e sistemas de equações",
+        "Funções reais de variável real",
+        "Derivadas e otimização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161079&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161084",
+      "title": "Contabilidade Financeira",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 7,
+      "summary": "Património e factos patrimoniais, estrutura conceptual, balanço e demonstração dos resultados, método digráfico e escrituração de operações correntes, IVA e reconciliação bancária.",
+      "topics": [
+        "Património e estrutura conceptual",
+        "Demonstrações financeiras",
+        "Método digráfico e IVA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161084&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161088",
+      "title": "Economia",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 8,
+      "summary": "Introdução à economia: escassez e escolha, teoria do consumidor e do produtor, estruturas de mercado e introdução à macroeconomia com contabilidade nacional, ciclo económico e modelo keynesiano.",
+      "topics": [
+        "Teoria do consumidor e do produtor",
+        "Estruturas de mercado",
+        "Introdução à macroeconomia"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161088&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161087",
+      "title": "Estatística I",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 9,
+      "summary": "Estatística descritiva, tabelas de contingência e associação, correlação e regressão, previsão com séries temporais e números índice.",
+      "topics": [
+        "Estatísticas descritivas",
+        "Correlação e regressão",
+        "Previsão e números índice"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161087&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161083",
+      "title": "Inglês para Marketing II",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 10,
+      "summary": "Inglês aplicado ao marketing-mix, à publicidade, à candidatura a um emprego e aos métodos de pesquisa de mercado, com leitura de gráficos e tabelas.",
+      "topics": [
+        "Marketing-mix e publicidade",
+        "Candidatura a um emprego",
+        "Pesquisa de mercado"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161083&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161086",
+      "title": "Política de Produto e de Preço",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 11,
+      "summary": "Conceito, diferenciação e ciclo de vida do produto, gestão do portfólio e lançamento de novos produtos, e fundamentos e estratégias de fixação de preços.",
+      "topics": [
+        "Produto, marca e diferenciação",
+        "Ciclo de vida e portfólio de produtos",
+        "Estratégias de preço"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161086&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161085",
+      "title": "Psicologia Social Aplicada ao Marketing",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "option_group": null,
+      "position": 12,
+      "summary": "Psicologia social aplicada ao marketing: perceção social, atitudes, persuasão e influência social, emoções e tomada de decisão, e motivação e aprendizagem nas escolhas de consumo.",
+      "topics": [
+        "Perceção social e atitudes",
+        "Persuasão e influência social",
+        "Emoções e decisão de consumo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161085&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161094",
+      "title": "Comunicação Integrada de Marketing",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 13,
+      "summary": "Os atores e o processo da comunicação de marketing, a estratégia de comunicação (alvos, objetivos e posicionamento), o mix de comunicação inbound e outbound e os eventos.",
+      "topics": [
+        "Processo de comunicação",
+        "Estratégia de comunicação",
+        "Mix de comunicação inbound e outbound"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161094&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161090",
+      "title": "Contabilidade de Gestão",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 14,
+      "summary": "Contabilidade analítica como sistema de informação para a gestão: conceitos de custo, sistemas de custeio, análise custo-volume-resultado, repartição de custos indiretos e orçamentação.",
+      "topics": [
+        "Conceitos de custo",
+        "Sistemas de custeio",
+        "Análise custo-volume-resultado e orçamentação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161090&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161091",
+      "title": "Estatística II",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 15,
+      "summary": "Probabilidades, variáveis aleatórias e distribuições, estimação, testes de hipóteses paramétricos e não paramétricos e regressão linear múltipla.",
+      "topics": [
+        "Probabilidades e distribuições",
+        "Estimação e testes de hipóteses",
+        "Regressão linear múltipla"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161091&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161089",
+      "title": "Finanças Empresariais",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 16,
+      "summary": "A função financeira e as demonstrações financeiras, a análise económica e financeira da empresa com rácios, rendibilidade e risco, e o valor do dinheiro no tempo e as operações de financiamento.",
+      "topics": [
+        "Análise financeira e rácios",
+        "Rendibilidade e risco",
+        "Juros e operações de financiamento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161089&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161095",
+      "title": "Política de Distribuição e Merchandising",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 17,
+      "summary": "A distribuição e o aparelho comercial, a política de marketing dos distribuidores, o ponto de venda e o merchandising, as relações entre produtores e distribuidores e o comércio eletrónico.",
+      "topics": [
+        "Canais de distribuição",
+        "Ponto de venda e merchandising",
+        "Relações entre produtores e distribuidores"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161095&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161093",
+      "title": "Sistemas de Informação para Marketing",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "option_group": null,
+      "position": 18,
+      "summary": "Sistemas de informação e bases de dados, business intelligence (ETL, data warehouse, OLAP e dashboards) com Power BI e DAX, e data mining.",
+      "topics": [
+        "Bases de dados e sistemas de decisão",
+        "Business intelligence com Power BI",
+        "Data mining"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161093&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161097",
+      "title": "Comércio Eletrónico",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 19,
+      "summary": "Mercados eletrónicos, modelos de negócio e infraestrutura do comércio eletrónico, presença online e loja online, pagamentos e logística, métricas e web analytics e plano de marketing.",
+      "topics": [
+        "Modelos de negócio eletrónico",
+        "Loja online, pagamentos e logística",
+        "Métricas e web analytics"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161097&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161041",
+      "title": "Comportamento do Consumidor",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 20,
+      "summary": "Influências internas e externas no comportamento do consumidor, o processo de decisão de compra, o consumidor nas estratégias de marketing e o consumo digital.",
+      "topics": [
+        "Influências no consumidor",
+        "Processo de decisão de compra",
+        "Consumo digital e tendências"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161041&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161007",
+      "title": "Direito das Empresas e do Marketing",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 21,
+      "summary": "O direito da empresa e os ramos do direito, incluindo o direito da União Europeia, as sociedades comerciais, os contratos empresariais e práticas comerciais e o direito do marketing.",
+      "topics": [
+        "Direito da empresa e sociedades comerciais",
+        "Contratos e práticas comerciais",
+        "Direito do marketing"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161007&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161046",
+      "title": "Estudos de Mercado",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 22,
+      "summary": "Etapas e desenho de um estudo de mercado, pesquisa exploratória, descritiva e causal, questionários e amostragem, análise de dados uni, bi e multivariada e apresentação de resultados.",
+      "topics": [
+        "Pesquisa exploratória e qualitativa",
+        "Questionários e amostragem",
+        "Análise de dados multivariada"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161046&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161092",
+      "title": "Marketing Digital",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 23,
+      "summary": "Princípios do marketing digital, planeamento e estratégia digital, e os principais canais: publicidade pay-per-click, SEO, e-mail marketing, redes sociais, marketing de conteúdos e de influência.",
+      "topics": [
+        "Planeamento e estratégia digital",
+        "SEO e publicidade pay-per-click",
+        "Redes sociais e marketing de conteúdos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161092&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161096",
+      "title": "Publicidade e Planeamento de Meios",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "option_group": null,
+      "position": 24,
+      "summary": "Fundamentos e evolução da publicidade, o setor da publicidade em Portugal, as marcas na comunicação, o planeamento e gestão dos media e a avaliação da eficácia das campanhas.",
+      "topics": [
+        "Fundamentos da publicidade",
+        "Planeamento e gestão de meios",
+        "Avaliação de campanhas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161096&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161100",
+      "title": "Gestão de Recursos Humanos",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 25,
+      "summary": "O papel da gestão de recursos humanos nas organizações, o recrutamento e a seleção, a formação, a avaliação do desempenho, as carreiras e recompensas e a inteligência artificial nos processos de RH.",
+      "topics": [
+        "Recrutamento e seleção",
+        "Formação e avaliação do desempenho",
+        "Inteligência artificial nos RH"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161100&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161098",
+      "title": "Gestão e Negociação",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 26,
+      "summary": "Gestão de processos na organização e negociação: modelos, tipologias, fases e estilos de negociação, ética, mediação e arbitragem e negociação internacional.",
+      "topics": [
+        "Gestão de processos",
+        "Fases e estilos de negociação",
+        "Mediação, arbitragem e negociação internacional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161098&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161102",
+      "title": "Gestão e Técnica de Vendas",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 27,
+      "summary": "Gestão de vendas: programa e organização das vendas, territórios e quotas, recrutamento, motivação e remuneração da força de vendas, o processo de vendas e o controlo dos resultados.",
+      "topics": [
+        "Organização das vendas",
+        "Gestão da força de vendas",
+        "Processo e controlo de vendas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161102&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161047",
+      "title": "Marketing de Serviços",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 28,
+      "summary": "Fundamentos do marketing de serviços, a experiência do cliente, o marketing-mix alargado, o desenho de processos e jornada do cliente, a qualidade e recuperação do serviço e a inovação tecnológica.",
+      "topics": [
+        "Experiência do cliente",
+        "Marketing-mix alargado",
+        "Qualidade e recuperação do serviço"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161047&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161048",
+      "title": "Simulação de Marketing",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": null,
+      "position": 29,
+      "summary": "Jogo de simulação de marketing Cesim SimBrand, com decisões de segmentação, portefólio, comunicação e distribuição, e elaboração do plano de marketing.",
+      "topics": [
+        "Simulação de marketing",
+        "Decisões de mercado e portefólio",
+        "Plano de marketing"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161048&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161110",
+      "title": "Gestão e Publicidade em Redes Sociais",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": "Opção I",
+      "position": 30,
+      "summary": "Social media marketing: os principais canais e o papel dos influenciadores, o planeamento e a implementação de campanhas publicitárias nas redes sociais e a monitorização dos resultados.",
+      "topics": [
+        "Canais de social media",
+        "Campanhas publicitárias nas redes sociais",
+        "Métricas e otimização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161110&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161111",
+      "title": "Marketing Desportivo",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": "Opção I",
+      "position": 31,
+      "summary": "A indústria do desporto e o seu ecossistema, o comportamento do consumidor desportivo, os eventos desportivos e patrocínios e o marketing desportivo na construção de marcas.",
+      "topics": [
+        "Indústria do desporto",
+        "Consumidor desportivo",
+        "Eventos e patrocínios"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161111&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "14181198",
+      "title": "Marketing e Branding Digital",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": "Opção I",
+      "position": 32,
+      "summary": "Fundamentos do marketing digital, construção e gestão de marcas digitais, SEO, SEA, marketing de conteúdo e social media, tecnologias emergentes e gestão de campanhas digitais.",
+      "topics": [
+        "Branding digital",
+        "SEO, SEA e marketing de conteúdo",
+        "Gestão de campanhas digitais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14181198&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "14161160",
+      "title": "Organização de Eventos e Congressos",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": "Opção I",
+      "position": 33,
+      "summary": "A indústria dos eventos e congressos, o planeamento e a organização do pré-evento, do evento e do pós-evento e o marketing de eventos.",
+      "topics": [
+        "Indústria dos eventos",
+        "Planeamento e organização de eventos",
+        "Marketing de eventos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14161160&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "14181095",
+      "title": "Produtos Financeiros",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "option_group": "Opção I",
+      "position": 34,
+      "summary": "Estratégia de financiamento e sistema financeiro, aplicações financeiras e produtos de gestão de risco, com mercados de futuros e de opções e swaps.",
+      "topics": [
+        "Financiamento e aplicações financeiras",
+        "Gestão do risco de taxa de juro e de câmbio",
+        "Futuros, opções e swaps"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14181095&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161099",
+      "title": "Análise de Investimentos",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 35,
+      "summary": "Preparação e elaboração de projetos de investimento, com estudo de mercado, técnico e financeiro, critérios de escolha e análise de viabilidade e de risco.",
+      "topics": [
+        "Elaboração de projetos de investimento",
+        "Critérios de avaliação e viabilidade",
+        "Análise de risco"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161099&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161052",
+      "title": "Estágio",
+      "ects": 10,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 36,
+      "summary": "Estágio curricular numa organização da área do marketing, para aplicar e integrar os conhecimentos do curso na resolução de problemas reais das empresas.",
+      "topics": [
+        "Integração em contexto empresarial",
+        "Aplicação de conhecimentos de marketing",
+        "Métodos de trabalho em contexto real"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161052&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161051",
+      "title": "Marketing Internacional",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 37,
+      "summary": "Mercados mundiais e globalização, teorias e modelos de internacionalização, aspetos culturais, modos de entrada no exterior, marketing-mix internacional e plano de marketing internacional.",
+      "topics": [
+        "Internacionalização das empresas",
+        "Modos de entrada e ambiente internacional",
+        "Marketing-mix internacional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161051&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "15161101",
+      "title": "Marketing Relacional",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": null,
+      "position": 38,
+      "summary": "Fundamentos e programas de marketing relacional, CRM e modelos de implementação, valoração de clientes (RFM e CLTV), aplicação de software e métricas.",
+      "topics": [
+        "Marketing relacional",
+        "CRM",
+        "Valoração de clientes e métricas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161101&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    },
+    {
+      "code": "14181168",
+      "title": "Empreendedorismo e Inovação",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": "Opção II",
+      "position": 39,
+      "summary": "Conceitos e tipos de empreendedorismo, o processo de inovação, design thinking, desenvolvimento de ideias de negócio e o modelo de negócio Canvas.",
+      "topics": [
+        "Empreendedorismo",
+        "Inovação e design thinking",
+        "Modelo de negócio Canvas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14181168&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "15161109",
+      "title": "Escrita para a Web e Storytelling",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": "Opção II",
+      "position": 40,
+      "summary": "Escrita clara e eficaz para ambientes digitais (sites, redes sociais, newsletters e landing pages), estratégias de conteúdo e storytelling de marca, com IA generativa aplicada à escrita.",
+      "topics": [
+        "Escrita para a web",
+        "Estratégias de conteúdo",
+        "Storytelling"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15161109&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "14181093",
+      "title": "Gestão Estratégica",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": "Opção II",
+      "position": 41,
+      "summary": "Planeamento e estratégia, análise estratégica e do contexto concorrencial, estratégias empresariais e competitivas, matrizes de portfólio e estratégia e inovação.",
+      "topics": [
+        "Análise estratégica e concorrencial",
+        "Estratégias competitivas",
+        "Matrizes de portfólio"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14181093&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "14181200",
+      "title": "Inteligência Artificial Generativa Aplicada",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": "Opção II",
+      "position": 42,
+      "summary": "Fundamentos e ferramentas de IA generativa, produtividade e apoio à decisão, aplicações em gestão, marketing e turismo, automação com assistentes e fluxos no-code, ética e governação.",
+      "topics": [
+        "Modelos e ferramentas de IA generativa",
+        "Automação e assistentes digitais",
+        "Ética e governação da IA"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14181200&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": "LGEST"
+    },
+    {
+      "code": "14161242",
+      "title": "Turismo de Golfe",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "option_group": "Opção II",
+      "position": 43,
+      "summary": "O golfe como produto turístico: história e cultura da modalidade, o campo e as competições, o golfe como fator diferenciador de destinos, com o exemplo do Algarve, marketing e gestão de um campo de golfe.",
+      "topics": [
+        "Golfe e destinos turísticos",
+        "Marketing do turismo de golfe",
+        "Gestão de um campo de golfe"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=14161242&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "shared_code_with": null
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "url": "https://www.youtube.com/playlist?list=PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "title": "Os Fundamentos do Design - Aprenda os Conceitos de Design",
+      "channel": "Chief of Design",
+      "channel_url": "https://www.youtube.com/@chiefofdesign",
+      "videos": 55,
+      "language": "pt-BR",
+      "description": "Fundamentos do design visual: o que é design, tipografia, cor, composição (temas 1–4).",
+      "tags": [
+        "Design Gráfico e Comunicação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLu1hgmpBongJrGnyaQRU8LqudDUbhjSuM",
+      "url": "https://www.youtube.com/playlist?list=PLu1hgmpBongJrGnyaQRU8LqudDUbhjSuM",
+      "title": "Photoshop: Curso Completo para Iniciantes",
+      "channel": "Felipe Andarilho",
+      "channel_url": "https://www.youtube.com/@FelipeAndarilho",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Photoshop do zero: interface, seleção, cor, camadas (tema 7 — software de edição de imagem).",
+      "tags": [
+        "Design Gráfico e Comunicação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "url": "https://www.youtube.com/playlist?list=PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "title": "Marketing",
+      "channel": "Prof. Thiago Meneghel",
+      "channel_url": "https://www.youtube.com/@ProfThiagoMeneghel",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "Aulas de professor: o que é marketing, necessidades/desejos, ambiente e SWOT, posicionamento, mix de marketing.",
+      "tags": [
+        "Fundamentos de Marketing",
+        "Comunicação Integrada de Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "url": "https://www.youtube.com/playlist?list=PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "title": "Marketing Estratégico: Curso Completo em 8 aulas",
+      "channel": "Líderes em Ação",
+      "channel_url": "https://www.youtube.com/@RPalma",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Marketing estratégico em 8 aulas: planeamento e estratégias de marketing (temas 2–3).",
+      "tags": [
+        "Fundamentos de Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "url": "https://www.youtube.com/playlist?list=PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "title": "Introdução à Teoria Geral da Administração | 3ª Edição | Antonio Cesar Amaru Maximiano",
+      "channel": "GEN Negócios e Gestão",
+      "channel_url": "https://www.youtube.com/@tvwebatlas",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Teoria geral da administração pelo autor do manual (Maximiano): gestão, gestores, visão histórica.",
+      "tags": [
+        "Gestão das Organizações"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHd23o1kv2tUI8n-1dltM6Ss",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHd23o1kv2tUI8n-1dltM6Ss",
+      "title": "Eixo de Negócios | Estudos Organizacionais",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Estudos organizacionais: revolução industrial, administração científica, teoria clássica e funções do administrador (cap. I).",
+      "tags": [
+        "Gestão das Organizações"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL7iAT8C5wumqX-bUoZn4dgr2dld1KuBTc",
+      "url": "https://www.youtube.com/playlist?list=PL7iAT8C5wumqX-bUoZn4dgr2dld1KuBTc",
+      "title": "Excel - Funções",
+      "channel": "Alessandro Trovato",
+      "channel_url": "https://www.youtube.com/@AlessandroTrovato",
+      "videos": 124,
+      "language": "pt-BR",
+      "description": "Funções do Excel, incluindo funções de base de dados e avançadas (temas 2.1–2.3).",
+      "tags": [
+        "Informática"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxjKFMYkZ9OciqkeAGy7w9Rc3CoO80MpK",
+      "url": "https://www.youtube.com/playlist?list=PLxjKFMYkZ9OciqkeAGy7w9Rc3CoO80MpK",
+      "title": "[Excel] Nível Básico",
+      "channel": "Hashtag Treinamentos",
+      "channel_url": "https://www.youtube.com/@HashtagTreinamentos",
+      "videos": 131,
+      "language": "pt-BR",
+      "description": "Excel nível básico: fórmulas, formatação, gráficos, tabelas, filtros.",
+      "tags": [
+        "Informática"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLMbUu4QLDhNM",
+      "url": "https://www.youtube.com/playlist?list=PLMbUu4QLDhNM",
+      "title": "Inglês para Marketing Digital",
+      "channel": "KULTIVI seu INGLÊS",
+      "channel_url": "https://www.youtube.com/@kultiviseuingles",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Inglês para marketing digital: vocabulário, Google/Facebook Ads, copywriting, SEO internacional (temas 3–5).",
+      "tags": [
+        "Inglês para Marketing I",
+        "Inglês para Marketing II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "url": "https://www.youtube.com/playlist?list=PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "title": "Business English",
+      "channel": "Learn English with Rebecca · engVid",
+      "channel_url": "https://www.youtube.com/@engvidRebecca",
+      "videos": 57,
+      "language": "en",
+      "description": "Business English (engVid): inglês comercial, apresentações, linguagem profissional.",
+      "tags": [
+        "Inglês para Marketing I",
+        "Inglês para Marketing II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "title": "CÁLCULO 1",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 60,
+      "language": "pt-BR",
+      "description": "Funções reais e diferenciação (temas 1–2).",
+      "tags": [
+        "Métodos Quantitativos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLEfwqyY2ox868TPa8vjL-QPfQlmtqRGa5",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox868TPa8vjL-QPfQlmtqRGa5",
+      "title": "MATRIZES, DETERMINANTES E SISTEMAS LINEARES",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Matrizes, determinantes e sistemas lineares (tema 4). Nível de ensino médio — assinalado.",
+      "tags": [
+        "Métodos Quantitativos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "title": "Rubrica Contabilidade",
+      "channel": "CERTFORM – Escola de Formação Prática",
+      "channel_url": "https://www.youtube.com/@certform_pt",
+      "videos": 164,
+      "language": "pt-PT",
+      "description": "Partidas dobradas, plano de contas do SNC, apuramento de resultados — contabilidade portuguesa.",
+      "tags": [
+        "Contabilidade Financeira"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "url": "https://www.youtube.com/playlist?list=PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "title": "Introdução à Economia",
+      "channel": "Fábio Henrique Bittes Terra",
+      "channel_url": "https://www.youtube.com/@fabioterra",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Introdução à economia: micro (oferta, procura, estruturas de mercado) e macro (identidades, política orçamental) — corresponde ao programa misto da UC.",
+      "tags": [
+        "Economia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "title": "Eixo de Negócios | Estatística aplicada aos negócios",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Escalas de medida, estatísticas descritivas, amostragem (temas 1–3).",
+      "tags": [
+        "Estatística I"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "url": "https://www.youtube.com/playlist?list=PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "title": "Probabilidades e Estatística - Instituto Superior Técnico",
+      "channel": "MathTutorCascais",
+      "channel_url": "https://www.youtube.com/@Mathtutorcascais",
+      "videos": 20,
+      "language": "pt-PT",
+      "description": "Estatística descritiva (e probabilidades) segundo o programa do IST.",
+      "tags": [
+        "Estatística I",
+        "Estatística II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLvOk4pwVi_qwoM2Sz1E6CmvXeIWgv_xk1",
+      "url": "https://www.youtube.com/playlist?list=PLvOk4pwVi_qwoM2Sz1E6CmvXeIWgv_xk1",
+      "title": "Politica de Produto",
+      "channel": "Ariana Marketeer",
+      "channel_url": "https://www.youtube.com/@arianamarketeer",
+      "videos": 9,
+      "language": "pt-PT",
+      "description": "Produto vs serviço, classificação de produtos, marcas, embalagem, ciclo de vida (temas 1–4).",
+      "tags": [
+        "Política de Produto e de Preço"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLoNORu5fIXspfaJAp5AVBymHnkE3k2Zxj",
+      "url": "https://www.youtube.com/playlist?list=PLoNORu5fIXspfaJAp5AVBymHnkE3k2Zxj",
+      "title": "Módulo 3 - Os 4 P's (Mix de Marketing)",
+      "channel": "Fundamentos de Marketing - FEA USP",
+      "channel_url": "https://www.youtube.com/@fundamentosdemarketing-fea4206",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "FEA-USP: produtos, serviços, preço (estabelecer valor) e restantes Ps.",
+      "tags": [
+        "Política de Produto e de Preço"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLyBxgeWOYnbo8yOnkeII4_2ydd1BSBPlp",
+      "url": "https://www.youtube.com/playlist?list=PLyBxgeWOYnbo8yOnkeII4_2ydd1BSBPlp",
+      "title": "Psicologia Social - aulas",
+      "channel": "Profa. Josevânia Silva",
+      "channel_url": "https://www.youtube.com/@josevaniapsi",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Aulas de psicologia social: cognição social, perceção social, atitudes, influência social.",
+      "tags": [
+        "Psicologia Social Aplicada ao Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "url": "https://www.youtube.com/playlist?list=PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "title": "Comportamento do Consumidor",
+      "channel": "Marina Monteiro Garcia",
+      "channel_url": "https://www.youtube.com/@MarinaMonteiroMarketing",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Fatores sociais e psicológicos que influenciam o consumidor (aplicação ao marketing).",
+      "tags": [
+        "Psicologia Social Aplicada ao Marketing",
+        "Comportamento do Consumidor"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "url": "https://www.youtube.com/playlist?list=PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "title": "Contabilidade de Gestão",
+      "channel": "Fátima Explica Gestão",
+      "channel_url": "https://www.youtube.com/@fatimaexplicagestao",
+      "videos": 21,
+      "language": "pt-PT",
+      "description": "Custo industrial, secções homogéneas, custeio, ponto crítico — terminologia portuguesa.",
+      "tags": [
+        "Contabilidade de Gestão"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "url": "https://www.youtube.com/playlist?list=PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "title": "Probabilidade e Estatística",
+      "channel": "Professor Douglas Maioli",
+      "channel_url": "https://www.youtube.com/@ProfessorDouglasMaioli",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "Probabilidades, variáveis aleatórias, distribuições binomial, Poisson e normal.",
+      "tags": [
+        "Estatística II"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "url": "https://www.youtube.com/playlist?list=PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "title": "Finanças Empresariais",
+      "channel": "As Explicações do Pontes",
+      "channel_url": "https://www.youtube.com/@AsExplica%C3%A7%C3%B5esdoPontes",
+      "videos": 12,
+      "language": "pt-PT",
+      "description": "Ponto crítico, rendibilidade, balanço funcional, prazos médios (tema 2 — análise económica e financeira).",
+      "tags": [
+        "Finanças Empresariais",
+        "Análise de Investimentos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLGb01Vyuh06ZKd3DC-2F6FIKNLNWgp2xM",
+      "url": "https://www.youtube.com/playlist?list=PLGb01Vyuh06ZKd3DC-2F6FIKNLNWgp2xM",
+      "title": "BASES DAS FINANÇAS EMPRESARIAIS",
+      "channel": "CERTFORM – Escola de Formação Prática",
+      "channel_url": "https://www.youtube.com/@certform_pt",
+      "videos": 9,
+      "language": "pt-PT",
+      "description": "Rácios financeiros, fontes de financiamento, custo do capital.",
+      "tags": [
+        "Finanças Empresariais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLykmhbJDFjHlOeTmQgu1ga6xTIta233pk",
+      "url": "https://www.youtube.com/playlist?list=PLykmhbJDFjHlOeTmQgu1ga6xTIta233pk",
+      "title": "TRADE MARKETING",
+      "channel": "Educaline Brasil",
+      "channel_url": "https://www.youtube.com/@educalinecursos",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Trade marketing: funções, estratégia e execução no ponto de venda.",
+      "tags": [
+        "Política de Distribuição e Merchandising"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLgSJrZABHuBRHWFgnRzVvHyYDq4ju4jGt",
+      "url": "https://www.youtube.com/playlist?list=PLgSJrZABHuBRHWFgnRzVvHyYDq4ju4jGt",
+      "title": "Trade Marketing",
+      "channel": "Rubens Sant'Anna",
+      "channel_url": "https://www.youtube.com/@RubensSantAnna",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Trade marketing, gestão por categorias, merchandising e canais.",
+      "tags": [
+        "Política de Distribuição e Merchandising"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHd74tFP2EXySW5oU4XCaEX4",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHd74tFP2EXySW5oU4XCaEX4",
+      "title": "Eixo de Negócios - Ferramentas de Análise e Business Intelligence",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Sistemas de informação de inteligência, conceitos de BI, big data e ferramentas de análise (temas 1, 4 e 5).",
+      "tags": [
+        "Sistemas de Informação para Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxjKFMYkZ9OdI5b7egO3t5xFbTUhuw-vE",
+      "url": "https://www.youtube.com/playlist?list=PLxjKFMYkZ9OdI5b7egO3t5xFbTUhuw-vE",
+      "title": "Curso Básico Power BI 2025",
+      "channel": "Hashtag Treinamentos",
+      "channel_url": "https://www.youtube.com/@HashtagTreinamentos",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Power BI: Power Query, relacionamentos, fórmulas, dashboard (tema 6).",
+      "tags": [
+        "Sistemas de Informação para Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHeeQoa-aYlB2CjVPydmMwIV",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHeeQoa-aYlB2CjVPydmMwIV",
+      "title": "Engenharia de Computação | Negócios online – 18º Bimestre",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Negócios online: comércio eletrónico, segurança, sistemas de pagamento.",
+      "tags": [
+        "Comércio Eletrónico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "title": "Eixo de Negócios | Organizações digitais e modelos de negócios",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Organizações digitais e modelos de negócio (tema 1.3).",
+      "tags": [
+        "Comércio Eletrónico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLoNORu5fIXsq7vIkA34z76TaguignzFXJ",
+      "url": "https://www.youtube.com/playlist?list=PLoNORu5fIXsq7vIkA34z76TaguignzFXJ",
+      "title": "Módulo 4 - Comportamento do consumidor",
+      "channel": "Fundamentos de Marketing - FEA USP",
+      "channel_url": "https://www.youtube.com/@fundamentosdemarketing-fea4206",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "FEA-USP, módulo de comportamento do consumidor.",
+      "tags": [
+        "Comportamento do Consumidor"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "url": "https://www.youtube.com/playlist?list=PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "title": "Pesquisa de Marketing",
+      "channel": "Marina Monteiro Garcia",
+      "channel_url": "https://www.youtube.com/@MarinaMonteiroMarketing",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Pesquisa de marketing: definição do problema, mensuração e escalas, questionário, amostragem.",
+      "tags": [
+        "Estudos de Mercado"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL5mY_Y1_mKXTLvcoM7A1NManSFNemtGeR",
+      "url": "https://www.youtube.com/playlist?list=PL5mY_Y1_mKXTLvcoM7A1NManSFNemtGeR",
+      "title": "Faculdade Sumaré - Análises e Pesquisa de Mercado",
+      "channel": "Giovana Quini",
+      "channel_url": "https://www.youtube.com/@GiovanaQuini",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Análises e pesquisa de mercado: métodos qualitativos vs quantitativos, classificação, cliente-mistério.",
+      "tags": [
+        "Estudos de Mercado"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "url": "https://www.youtube.com/playlist?list=PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "title": "Marketing Digital do Básico ao Avançado",
+      "channel": "Welbth Orneles",
+      "channel_url": "https://www.youtube.com/@WelbthOrneles",
+      "videos": 28,
+      "language": "pt-BR",
+      "description": "Curso em aulas: princípios do marketing digital, jornada do consumidor, objetivos, SEO, SEM.",
+      "tags": [
+        "Marketing Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxVwq_58WZr688XFnoEX9xm0-nAYevfxs",
+      "url": "https://www.youtube.com/playlist?list=PLxVwq_58WZr688XFnoEX9xm0-nAYevfxs",
+      "title": "Planejamento de Mídia",
+      "channel": "Ivana Duarte Mechailech",
+      "channel_url": "https://www.youtube.com/@ivanaduartemechailech1446",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Planeamento de media: objetivos (alcance, frequência), estratégia de meios, critérios de escolha, CPM (tema 5).",
+      "tags": [
+        "Publicidade e Planeamento de Meios"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHWp-mf9Et3_Wu-fF8o4I0jL6omSytjRw",
+      "url": "https://www.youtube.com/playlist?list=PLHWp-mf9Et3_Wu-fF8o4I0jL6omSytjRw",
+      "title": "Fundamentos de Publicidade e Propaganda",
+      "channel": "Clóvis Ferratoni",
+      "channel_url": "https://www.youtube.com/@clovisferratoni",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Fundamentos de publicidade e propaganda (temas 1–2).",
+      "tags": [
+        "Publicidade e Planeamento de Meios"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfLlb4v5fjP049u9-W9OitW",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfLlb4v5fjP049u9-W9OitW",
+      "title": "Tecnologias em Processos Gerenciais  | Gestão de Pessoas",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Gestão de pessoas: evolução da área, ações operacionais e estratégicas, políticas de RH, cultura organizacional (tema I e parte de II–III).",
+      "tags": [
+        "Gestão de Recursos Humanos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLh9KZYAP_1cQeMBYwXFoilUUPGYjYO4eg",
+      "url": "https://www.youtube.com/playlist?list=PLh9KZYAP_1cQeMBYwXFoilUUPGYjYO4eg",
+      "title": "Negociação: O Método Harvard",
+      "channel": "Rodolfo Araujo",
+      "channel_url": "https://www.youtube.com/@RodolfoAraujo360",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Método Harvard de negociação, capítulo a capítulo: pessoas e problemas, interesses e posições, alternativas (cap. II).",
+      "tags": [
+        "Gestão e Negociação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLOtwMQN_J2c_vM-XYUcYllLjb3pxHVf5k",
+      "url": "https://www.youtube.com/playlist?list=PLOtwMQN_J2c_vM-XYUcYllLjb3pxHVf5k",
+      "title": "Curso Grátis de Gestão de Processos - Aulas Gratuitas de Gestão de Processos",
+      "channel": "ProdutividadeMaxima",
+      "channel_url": "https://www.youtube.com/@ProdutividadeMaxima",
+      "videos": 23,
+      "language": "pt-BR",
+      "description": "Curso de gestão de processos: níveis de processos, mapeamento, gestor de processos (cap. I).",
+      "tags": [
+        "Gestão e Negociação"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLLa51Nr3EtaVFQpRXG4uqAVFri6OJRdYM",
+      "url": "https://www.youtube.com/playlist?list=PLLa51Nr3EtaVFQpRXG4uqAVFri6OJRdYM",
+      "title": "Marketing de Serviços - 2021/S2 - Graduação - INESP",
+      "channel": "Prof. Eduardo Bianchi",
+      "channel_url": "https://www.youtube.com/@luiseduardobianchi",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Gravações das aulas de uma disciplina de graduação de Marketing de Serviços (INESP, 2021).",
+      "tags": [
+        "Marketing de Serviços"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "url": "https://www.youtube.com/playlist?list=PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "title": "Plano de Marketing na Prática",
+      "channel": "Líderes em Ação",
+      "channel_url": "https://www.youtube.com/@RPalma",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Planeamento estratégico aplicado: análise SWOT, objetivos e metas, plano de ação 5W2H (tema 4 — o plano de marketing).",
+      "tags": [
+        "Simulação de Marketing"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLbQeIXJbBuGIGtcsVNvenZQCMBtcdvf_Z",
+      "url": "https://www.youtube.com/playlist?list=PLbQeIXJbBuGIGtcsVNvenZQCMBtcdvf_Z",
+      "title": "MARKETING DIGITAL - Curso Sequencial - Eduardo Tanaka",
+      "channel": "Prof. Eduardo Tanaka",
+      "channel_url": "https://www.youtube.com/@proftanaka",
+      "videos": 37,
+      "language": "pt-BR",
+      "description": "Curso sequencial de marketing digital (Prof. Eduardo Tanaka) centrado em redes sociais: conta comercial, perfil, conteúdo e crescimento no Instagram.",
+      "tags": [
+        "Gestão e Publicidade em Redes Sociais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8vXuI6zmpdjF68NJruL7Dh0hAYpZ9tQX",
+      "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdjF68NJruL7Dh0hAYpZ9tQX",
+      "title": "Tráfego Pago com Meta Ads para Iniciantes",
+      "channel": "Kultivi",
+      "channel_url": "https://www.youtube.com/@Kultivi",
+      "videos": 12,
+      "language": "pt-BR",
+      "description": "Tráfego pago com Meta Ads: gestor de anúncios, tipos de campanha, segmentação e métricas.",
+      "tags": [
+        "Gestão e Publicidade em Redes Sociais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8mEkeR6KxctwMrpwLY7RgKgiL6IivgmC",
+      "url": "https://www.youtube.com/playlist?list=PL8mEkeR6KxctwMrpwLY7RgKgiL6IivgmC",
+      "title": "Derivativos e Hedge",
+      "channel": "Finanças Pragmáticas  |  Prof. Massa ",
+      "channel_url": "https://www.youtube.com/@FinancasPragmaticas",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Derivativos e hedge: futuros, swaps (incluindo cambial) e cobertura de risco, com os produtos de gestão de risco da UC.",
+      "tags": [
+        "Produtos Financeiros"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLpDoIofcp9Y7_IRSU7Nm8RyUEZ9HTf33v",
+      "url": "https://www.youtube.com/playlist?list=PLpDoIofcp9Y7_IRSU7Nm8RyUEZ9HTf33v",
+      "title": "TUDO SOBRE O MERCADO DE DERIVATIVOS",
+      "channel": "T2 Educação",
+      "channel_url": "https://www.youtube.com/@T2educacao",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Introdução ao mercado de derivativos: termo, futuros, opções e swaps.",
+      "tags": [
+        "Produtos Financeiros"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL28H-AQmelQNsxIqv7PebRsG2G-IHLhA4",
+      "url": "https://www.youtube.com/playlist?list=PL28H-AQmelQNsxIqv7PebRsG2G-IHLhA4",
+      "title": "Análise de Investimentos",
+      "channel": "Matemática Financeira UFRGS",
+      "channel_url": "https://www.youtube.com/@MatematicaFinanceiraUFRGS",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Critérios de avaliação: VPL/VAL, TIR, payback (tema 3).",
+      "tags": [
+        "Análise de Investimentos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLTjWXFmeozbmArk7LdGoQYHU3UpRSQ88N",
+      "url": "https://www.youtube.com/playlist?list=PLTjWXFmeozbmArk7LdGoQYHU3UpRSQ88N",
+      "title": "Negócios Internacionais",
+      "channel": "Professor Danillo Nogueira",
+      "channel_url": "https://www.youtube.com/@ProfDanilloNogueira",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Teorias da internacionalização (Uppsala, paradigma eclético, redes) e processo de exportação (temas 3, 5, 8).",
+      "tags": [
+        "Marketing Internacional"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIIW4N3aCKkRQkwGfCF2kcV8SCHBwYlCX",
+      "url": "https://www.youtube.com/playlist?list=PLIIW4N3aCKkRQkwGfCF2kcV8SCHBwYlCX",
+      "title": "Marketing de Relacionamento: Curso Completo em  8 aulas",
+      "channel": "Líderes em Ação",
+      "channel_url": "https://www.youtube.com/@RPalma",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Marketing de relacionamento em 8 aulas (temas 1–2).",
+      "tags": [
+        "Marketing Relacional"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLWZ9pSn_wvWDjvJOYuyuXost78SzB3wwQ",
+      "url": "https://www.youtube.com/playlist?list=PLWZ9pSn_wvWDjvJOYuyuXost78SzB3wwQ",
+      "title": "Copywriting, Storytelling e Narrativa: Como Escrever, Convencer e Construir Autoridade | Jota Gui",
+      "channel": "KULTIVI sua CARREIRA",
+      "channel_url": "https://www.youtube.com/@kultivisuacarreira9076",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Curso \"Copywriting, Storytelling e Narrativa\": narrativa estratégica e de marca, storytelling aplicado ao digital, posicionamento.",
+      "tags": [
+        "Escrita para a Web e Storytelling"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLm7y-Z-ustqiIdVXz-nTuMkuoDWBKKbTM",
+      "url": "https://www.youtube.com/playlist?list=PLm7y-Z-ustqiIdVXz-nTuMkuoDWBKKbTM",
+      "title": "Clube do UX Writing | Masterclasses",
+      "channel": "Clube do UX Writing",
+      "channel_url": "https://www.youtube.com/@clubedouxwriting",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "Masterclasses do Clube do UX Writing: tom e voz, linguagem simples, arquitetura da informação e acessibilidade na escrita para interfaces digitais.",
+      "tags": [
+        "Escrita para a Web e Storytelling"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHdphItaZo26a2rLM8t0n6KM",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHdphItaZo26a2rLM8t0n6KM",
+      "title": "Tecnologia em processos gerenciais | Planejamento e ferramentas de gestão estratégica",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Disciplina da UNIVESP \"Planejamento e ferramentas de gestão estratégica\" (2025): planeamento, análise estratégica e ferramentas.",
+      "tags": [
+        "Gestão Estratégica"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHetpjk8q5ZDjtGZeSk97_iP",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHetpjk8q5ZDjtGZeSk97_iP",
+      "title": "Eixo de Negócios - Estratégia e Governança - (LIBRAS)",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Disciplina da UNIVESP \"Estratégia e Governança\" (Eixo de Negócios).",
+      "tags": [
+        "Gestão Estratégica"
+      ],
+      "published": true
+    }
+  ],
+  "links": [
+    {
+      "code": "15161078",
+      "playlist_id": "PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Fundamentos do design visual: o que é design, tipografia, cor, composição (temas 1–4).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161078",
+      "playlist_id": "PLu1hgmpBongJrGnyaQRU8LqudDUbhjSuM",
+      "ord": 2,
+      "confidence": "média",
+      "level": "prático",
+      "match": "Photoshop do zero: interface, seleção, cor, camadas (tema 7 — software de edição de imagem).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161081",
+      "playlist_id": "PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Aulas de professor: o que é marketing, necessidades/desejos, ambiente e SWOT, posicionamento, mix de marketing.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161081",
+      "playlist_id": "PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Marketing estratégico em 8 aulas: planeamento e estratégias de marketing (temas 2–3).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161080",
+      "playlist_id": "PLUwkoDInsefOGukevvnhiJdP9QtZn22_W",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "Teoria geral da administração pelo autor do manual (Maximiano): gestão, gestores, visão histórica.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161080",
+      "playlist_id": "PLxI8Can9yAHd23o1kv2tUI8n-1dltM6Ss",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Estudos organizacionais: revolução industrial, administração científica, teoria clássica e funções do administrador (cap. I).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161082",
+      "playlist_id": "PL7iAT8C5wumqX-bUoZn4dgr2dld1KuBTc",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "prático",
+      "match": "Funções do Excel, incluindo funções de base de dados e avançadas (temas 2.1–2.3).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161082",
+      "playlist_id": "PLxjKFMYkZ9OciqkeAGy7w9Rc3CoO80MpK",
+      "ord": 2,
+      "confidence": "média",
+      "level": "prático",
+      "match": "Excel nível básico: fórmulas, formatação, gráficos, tabelas, filtros.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161077",
+      "playlist_id": "PLMbUu4QLDhNM",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (inglês aplicado)",
+      "match": "Inglês para marketing digital: vocabulário, Google/Facebook Ads, copywriting, SEO internacional (temas 3–5).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161077",
+      "playlist_id": "PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (inglês aplicado)",
+      "match": "Business English (engVid): inglês comercial, apresentações, linguagem profissional.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161079",
+      "playlist_id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Funções reais e diferenciação (temas 1–2).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161079",
+      "playlist_id": "PLEfwqyY2ox868TPa8vjL-QPfQlmtqRGa5",
+      "ord": 2,
+      "confidence": "média",
+      "level": "secundário/introdutório",
+      "match": "Matrizes, determinantes e sistemas lineares (tema 4). Nível de ensino médio — assinalado.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161084",
+      "playlist_id": "PLGb01Vyuh06bIRo_-2KI75Ba0GMxjO1aY",
+      "ord": 1,
+      "confidence": "média",
+      "level": "profissional/superior",
+      "match": "Partidas dobradas, plano de contas do SNC, apuramento de resultados — contabilidade portuguesa.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161088",
+      "playlist_id": "PLR6oLxuHjSrww-B7ItwGME_hHI6HLWzpb",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "Introdução à economia: micro (oferta, procura, estruturas de mercado) e macro (identidades, política orçamental) — corresponde ao programa misto da UC.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161087",
+      "playlist_id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Escalas de medida, estatísticas descritivas, amostragem (temas 1–3).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161087",
+      "playlist_id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Estatística descritiva (e probabilidades) segundo o programa do IST.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161083",
+      "playlist_id": "PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (inglês aplicado)",
+      "match": "Business English: inglês profissional, carreira, apresentações (tema 2 — candidatura a emprego).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161083",
+      "playlist_id": "PLMbUu4QLDhNM",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior (inglês aplicado)",
+      "match": "Vocabulário de marketing e publicidade em inglês (temas 1 e 3).",
+      "source": "pesquisa 2026-11-18",
+      "published": false
+    },
+    {
+      "code": "15161086",
+      "playlist_id": "PLvOk4pwVi_qwoM2Sz1E6CmvXeIWgv_xk1",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Produto vs serviço, classificação de produtos, marcas, embalagem, ciclo de vida (temas 1–4).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161086",
+      "playlist_id": "PLoNORu5fIXspfaJAp5AVBymHnkE3k2Zxj",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "FEA-USP: produtos, serviços, preço (estabelecer valor) e restantes Ps.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161085",
+      "playlist_id": "PLyBxgeWOYnbo8yOnkeII4_2ydd1BSBPlp",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Aulas de psicologia social: cognição social, perceção social, atitudes, influência social.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161085",
+      "playlist_id": "PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fatores sociais e psicológicos que influenciam o consumidor (aplicação ao marketing).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161094",
+      "playlist_id": "PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Processo de comunicação, etapas de uma comunicação de marketing eficaz, planeamento e gestão da comunicação (vídeos centrais da playlist).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161090",
+      "playlist_id": "PLWKRPaJwAO6jEDDKH68R4LfiFmEcXsIHC",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Custo industrial, secções homogéneas, custeio, ponto crítico — terminologia portuguesa.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161091",
+      "playlist_id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Probabilidades, variáveis aleatórias, distribuições binomial, Poisson e normal.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161091",
+      "playlist_id": "PLN791jz87AQls5WKQG6Jk6xmHsXMXL-YD",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Noções de probabilidade e variáveis aleatórias discretas e contínuas (programa do IST).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161089",
+      "playlist_id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Ponto crítico, rendibilidade, balanço funcional, prazos médios (tema 2 — análise económica e financeira).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161089",
+      "playlist_id": "PLGb01Vyuh06ZKd3DC-2F6FIKNLNWgp2xM",
+      "ord": 2,
+      "confidence": "média",
+      "level": "profissional/superior",
+      "match": "Rácios financeiros, fontes de financiamento, custo do capital.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161095",
+      "playlist_id": "PLykmhbJDFjHlOeTmQgu1ga6xTIta233pk",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Trade marketing: funções, estratégia e execução no ponto de venda.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161095",
+      "playlist_id": "PLgSJrZABHuBRHWFgnRzVvHyYDq4ju4jGt",
+      "ord": 2,
+      "confidence": "média",
+      "level": "profissional",
+      "match": "Trade marketing, gestão por categorias, merchandising e canais.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161093",
+      "playlist_id": "PLxI8Can9yAHd74tFP2EXySW5oU4XCaEX4",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sistemas de informação de inteligência, conceitos de BI, big data e ferramentas de análise (temas 1, 4 e 5).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161093",
+      "playlist_id": "PLxjKFMYkZ9OdI5b7egO3t5xFbTUhuw-vE",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "prático",
+      "match": "Power BI: Power Query, relacionamentos, fórmulas, dashboard (tema 6).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161097",
+      "playlist_id": "PLxI8Can9yAHeeQoa-aYlB2CjVPydmMwIV",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Negócios online: comércio eletrónico, segurança, sistemas de pagamento.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161097",
+      "playlist_id": "PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Organizações digitais e modelos de negócio (tema 1.3).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161041",
+      "playlist_id": "PLoNORu5fIXsq7vIkA34z76TaguignzFXJ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "FEA-USP, módulo de comportamento do consumidor.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161041",
+      "playlist_id": "PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Influências sociais, demográficas e psicológicas no consumidor; macroambiente.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161046",
+      "playlist_id": "PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Pesquisa de marketing: definição do problema, mensuração e escalas, questionário, amostragem.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161046",
+      "playlist_id": "PL5mY_Y1_mKXTLvcoM7A1NManSFNemtGeR",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Análises e pesquisa de mercado: métodos qualitativos vs quantitativos, classificação, cliente-mistério.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161092",
+      "playlist_id": "PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Curso em aulas: princípios do marketing digital, jornada do consumidor, objetivos, SEO, SEM.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161096",
+      "playlist_id": "PLxVwq_58WZr688XFnoEX9xm0-nAYevfxs",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Planeamento de media: objetivos (alcance, frequência), estratégia de meios, critérios de escolha, CPM (tema 5).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161096",
+      "playlist_id": "PLHWp-mf9Et3_Wu-fF8o4I0jL6omSytjRw",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Fundamentos de publicidade e propaganda (temas 1–2).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161100",
+      "playlist_id": "PLxI8Can9yAHfLlb4v5fjP049u9-W9OitW",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Gestão de pessoas: evolução da área, ações operacionais e estratégicas, políticas de RH, cultura organizacional (tema I e parte de II–III).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161098",
+      "playlist_id": "PLh9KZYAP_1cQeMBYwXFoilUUPGYjYO4eg",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Método Harvard de negociação, capítulo a capítulo: pessoas e problemas, interesses e posições, alternativas (cap. II).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161098",
+      "playlist_id": "PLOtwMQN_J2c_vM-XYUcYllLjb3pxHVf5k",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "profissional",
+      "match": "Curso de gestão de processos: níveis de processos, mapeamento, gestor de processos (cap. I).",
+      "source": "pesquisa 2026-11-18",
+      "published": false
+    },
+    {
+      "code": "15161047",
+      "playlist_id": "PLLa51Nr3EtaVFQpRXG4uqAVFri6OJRdYM",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Gravações das aulas de uma disciplina de graduação de Marketing de Serviços (INESP, 2021).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161048",
+      "playlist_id": "PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior (introdutório)",
+      "match": "Planeamento estratégico aplicado: análise SWOT, objetivos e metas, plano de ação 5W2H (tema 4 — o plano de marketing).",
+      "source": "pesquisa 2026-11-18",
+      "published": false
+    },
+    {
+      "code": "15161110",
+      "playlist_id": "PLbQeIXJbBuGIGtcsVNvenZQCMBtcdvf_Z",
+      "ord": 1,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "Curso sequencial de marketing digital (Prof. Eduardo Tanaka) centrado em redes sociais: conta comercial, perfil, conteúdo e crescimento no Instagram.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "15161110",
+      "playlist_id": "PL8vXuI6zmpdjF68NJruL7Dh0hAYpZ9tQX",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "Tráfego pago com Meta Ads: gestor de anúncios, tipos de campanha, segmentação e métricas.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "14181095",
+      "playlist_id": "PL8mEkeR6KxctwMrpwLY7RgKgiL6IivgmC",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Derivativos e hedge: futuros, swaps (incluindo cambial) e cobertura de risco, com os produtos de gestão de risco da UC.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "14181095",
+      "playlist_id": "PLpDoIofcp9Y7_IRSU7Nm8RyUEZ9HTf33v",
+      "ord": 2,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "Introdução ao mercado de derivativos: termo, futuros, opções e swaps.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "15161099",
+      "playlist_id": "PL28H-AQmelQNsxIqv7PebRsG2G-IHLhA4",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Critérios de avaliação: VPL/VAL, TIR, payback (tema 3).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161099",
+      "playlist_id": "PLnx4ioejmfR3E08_tbdzf7hgUHT4EcK3W",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "VAL e TIR na análise da viabilidade e comparação de projetos.",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161051",
+      "playlist_id": "PLTjWXFmeozbmArk7LdGoQYHU3UpRSQ88N",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Teorias da internacionalização (Uppsala, paradigma eclético, redes) e processo de exportação (temas 3, 5, 8).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161101",
+      "playlist_id": "PLIIW4N3aCKkRQkwGfCF2kcV8SCHBwYlCX",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Marketing de relacionamento em 8 aulas (temas 1–2).",
+      "source": "pesquisa 2026-11-18",
+      "published": true
+    },
+    {
+      "code": "15161109",
+      "playlist_id": "PLWZ9pSn_wvWDjvJOYuyuXost78SzB3wwQ",
+      "ord": 1,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "Curso \"Copywriting, Storytelling e Narrativa\": narrativa estratégica e de marca, storytelling aplicado ao digital, posicionamento.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "15161109",
+      "playlist_id": "PLm7y-Z-ustqiIdVXz-nTuMkuoDWBKKbTM",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Masterclasses do Clube do UX Writing: tom e voz, linguagem simples, arquitetura da informação e acessibilidade na escrita para interfaces digitais.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "14181093",
+      "playlist_id": "PLxI8Can9yAHdphItaZo26a2rLM8t0n6KM",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Disciplina da UNIVESP \"Planejamento e ferramentas de gestão estratégica\" (2025): planeamento, análise estratégica e ferramentas.",
+      "source": "#69 (LGEST)",
+      "published": true
+    },
+    {
+      "code": "14181093",
+      "playlist_id": "PLxI8Can9yAHetpjk8q5ZDjtGZeSk97_iP",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Disciplina da UNIVESP \"Estratégia e Governança\" (Eixo de Negócios).",
+      "source": "#69 (LGEST)",
+      "published": true
+    }
+  ]
+}
