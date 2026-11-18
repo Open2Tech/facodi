@@ -77,11 +77,9 @@
 
 /* Minimum readable size for IBM Plex Mono labels while preserving 12px sans-serif
    captions. A single composed selector replaces mechanical edits across 53 files. */
-@layer utilities {
-  .font-mono.text-xs {
-    font-size: 0.8125rem;
-    line-height: 1.125rem;
-  }
+.font-mono.text-xs {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
