@@ -74,8 +74,9 @@ SELECT md5('facodi:ualg:1915:uc:record:'||u.code)::uuid,md5('facodi:ualg:1915:uc
  'official_plan_url','https://www.ualg.pt/curso/1915/plano','official_fuc_url',u.fuc_url,'detailed_fuc_checked',true,
  'official_code_checked',true,'official_ects_checked',true,'official_semester_checked',true,
  'is_elective_option',u.option_group IS NOT NULL,'official_option_group',u.option_group,
- 'curriculum_placements',CASE WHEN u.option_group IS NULL THEN '[]'::jsonb ELSE jsonb_build_array(jsonb_build_object(
- 'role','alternative','group',u.option_group,'year',u.year,'semester',u.semester,'specialization','Tronco Comum')) END,
+ 'curriculum_placements',jsonb_build_array(jsonb_build_object(
+ 'role',CASE WHEN u.option_group IS NULL THEN 'mandatory' ELSE 'alternative' END,'group',u.option_group,
+ 'year',u.year,'semester',u.semester,'specialization','Tronco Comum')),
  'study_topics',to_jsonb(u.topics),'source_quality','ualg_official_structure',
  'curriculum_review_status','approved_official_plan','curation_batch','facodi_ualg_1915_ciencias_biomedicas_20261118')
 FROM _u u
