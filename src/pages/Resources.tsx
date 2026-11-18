@@ -152,21 +152,22 @@ export default function Resources() {
                   const info = videoInfo(resource.metadata, resource.source_url);
                   const excerpt = isVideo ? null : plainText(resource.description);
                   const action = resource.object_type === 'module' ? t('studyModules.open') : t('resources.open');
-                  return <li key={resource.id} className="relative -ml-px -mt-px flex flex-col border border-input transition-colors hover:z-10 hover:border-foreground">
-                    {isVideo && <Link to={href} tabIndex={-1} aria-hidden="true" className="block"><VideoThumbnail info={info} /></Link>}
-                    <div className="flex flex-1 flex-col p-6">
-                      <p className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase text-muted-foreground">
+                  // Phones get a compact row (thumbnail beside the text) so several results fit on one screen.
+                  return <li key={resource.id} className="relative -ml-px -mt-px flex border border-input transition-colors hover:z-10 hover:border-foreground sm:flex-col">
+                    {isVideo && <Link to={href} tabIndex={-1} aria-hidden="true" className="block w-32 shrink-0 self-start p-3 pr-0 sm:w-auto sm:self-auto sm:p-0"><VideoThumbnail info={info} /></Link>}
+                    <div className="flex min-w-0 flex-1 flex-col p-3 sm:p-6">
+                      <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase text-muted-foreground sm:mb-3">
                         <TypeBadge type={resource.object_type} label={typeLabel(resource.object_type)} />
                         <span lang={resource.language}>{resource.language}</span>
                       </p>
-                      <h3 className="text-lg font-semibold"><Link to={href} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h3>
-                      {isVideo && info.channel && <p className="mt-2 truncate text-sm text-muted-foreground">{info.channel}</p>}
-                      {excerpt && <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{excerpt}</p>}
-                      {!!resource.tags.length && <div className="mt-4 flex flex-wrap gap-1.5" role="group" aria-label={t('resources.filterByTag')}>
+                      <h3 className="text-base font-semibold leading-snug sm:text-lg"><Link to={href} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h3>
+                      {isVideo && info.channel && <p className="mt-1 truncate text-sm text-muted-foreground sm:mt-2">{info.channel}</p>}
+                      {excerpt && <p className="mt-2 line-clamp-2 text-sm text-muted-foreground sm:line-clamp-3">{excerpt}</p>}
+                      {!!resource.tags.length && <div className="mt-4 hidden flex-wrap gap-1.5 sm:flex" role="group" aria-label={t('resources.filterByTag')}>
                         {resource.tags.slice(0, 3).map(tagButton)}
                       </div>}
                       <Link to={href} aria-label={action + ': ' + resource.title}
-                        className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold underline underline-offset-4">
+                        className="mt-auto hidden items-center gap-2 pt-5 text-sm font-semibold underline underline-offset-4 sm:inline-flex">
                         {action}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                       </Link>
                     </div>
