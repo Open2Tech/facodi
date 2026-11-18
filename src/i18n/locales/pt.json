@@ -275,6 +275,13 @@
     "groupExplored_many": "{{count}} exploradas",
     "groupExplored_other": "{{count}} exploradas"
   },
+  "examRevision": {
+    "title": "Época de exames do {{term}}.º semestre",
+    "text_one": "Revisão para exames: a aula desta UC está mais abaixo. Usa o caderno para anotar o que precisas de rever.",
+    "text_many": "Revisão para exames: as {{count}} aulas desta UC estão numa só lista, mais abaixo. Usa o caderno para anotar o que precisas de rever.",
+    "text_other": "Revisão para exames: as {{count}} aulas desta UC estão numa só lista, mais abaixo. Usa o caderno para anotar o que precisas de rever.",
+    "cta": "Rever as aulas"
+  },
   "dashboard": {
     "welcome": "Olá, {{name}}.",
     "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.",
