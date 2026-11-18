@@ -97,7 +97,9 @@ export default function FacodiLayout() {
         </nav>
       </div>
     </header>
-    <main id="main" tabIndex={-1} className="mx-auto w-full max-w-7xl flex-1 px-5 py-8 outline-none sm:py-12 lg:px-8">
+    {/* At least one screen tall (minus the 5rem header), so the footer starts below the fold while a page loads
+        its data and never jumps into view (cumulative layout shift). */}
+    <main id="main" tabIndex={-1} className="mx-auto min-h-[calc(100svh-5rem)] w-full max-w-7xl flex-1 px-5 py-8 outline-none sm:py-12 lg:px-8">
       <Outlet />
     </main>
     <footer className="mt-12 border-t-4 border-primary bg-ink text-ink-foreground">
