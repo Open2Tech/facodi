@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { CuratorLevel } from '@/components/profile/CuratorLevel';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, Lightbulb, ListPlus, ListVideo, Route } from 'lucide-react';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -38,6 +39,7 @@ export function ContributionSummary() {
   const { t } = useTranslation();
   const { role } = useAuth();
   return <div>
+    <CuratorLevel />
     <div className="flex flex-wrap items-center justify-between gap-3">
       <h3 className="text-base font-semibold">{t('playlistSubmit.history')}</h3>
       <Button asChild variant="outline" size="sm"><Link to="/playlists/submit"><ListPlus aria-hidden="true" />{t('profile.proposePlaylist')}</Link></Button>

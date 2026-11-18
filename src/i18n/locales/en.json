@@ -325,6 +325,24 @@
     "dataDescription": "Access, copy and account deletion.",
     "dataText": "To request a copy of your data or delete your account, write to [hello@open2.tech](mailto:hello@open2.tech) from this account's email. The app does not offer automatic deletion yet. See what is deleted in the [Privacy Policy](/privacy#deletion)."
   },
+  "curatorLevel": {
+    "title": "Your curation level",
+    "none": "No approved contributions yet",
+    "levelName": "Level {{number}} · {{name}}",
+    "levels": {
+      "collaboration": "Collaboration",
+      "curation": "Curation"
+    },
+    "approved_zero": "0 approved contributions",
+    "approved_one": "{{count}} approved contribution",
+    "approved_many": "{{count}} approved contributions",
+    "approved_other": "{{count}} approved contributions",
+    "next_one": "{{count}} more for {{name}}",
+    "next_many": "{{count}} more for {{name}}",
+    "next_other": "{{count}} more for {{name}}",
+    "top": "the next step is guest editor, by invitation from the editorial team",
+    "explain": "Every suggested resource or playlist the editorial team approves counts towards your level."
+  },
   "preferences": {
     "rememberLabel": "Remember language and theme in this browser",
     "rememberOff": "Off: the language and theme you choose last until you close the tab.",
