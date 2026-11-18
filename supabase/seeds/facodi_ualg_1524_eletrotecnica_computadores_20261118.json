@@ -1,0 +1,3771 @@
+{
+  "batch": "facodi_ualg_1524_eletrotecnica_computadores_20261118",
+  "course": {
+    "code": "LEEC",
+    "official_id": "1524",
+    "plan": "https://www.ualg.pt/curso/1524/plano",
+    "academic_year": "2026/27",
+    "branches": [
+      "Telecomunicações, Eletrónica e Computadores",
+      "Energia e Automação"
+    ]
+  },
+  "verified_on": "2026-11-18",
+  "units": [
+    {
+      "code": "15241254",
+      "title": "Análise de Circuitos I",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 1,
+      "summary": "Leis e teoremas dos circuitos elétricos resistivos lineares: grandezas e unidades, resistências, bobinas, condensadores e fontes de tensão e de corrente.",
+      "topics": [
+        "Grandezas elétricas",
+        "Componentes e fontes",
+        "Leis e teoremas dos circuitos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241254&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241000",
+      "title": "Análise Matemática I",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 2,
+      "summary": "Números reais e complexos e funções reais de variável real: limites, continuidade, derivadas, fórmula de Taylor, primitivas e integrais com aplicação a áreas e volumes.",
+      "topics": [
+        "Números complexos",
+        "Limites, continuidade e derivadas",
+        "Primitivas e integrais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241000&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "15241238",
+      "title": "Física",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 3,
+      "summary": "Sistemas de unidades e análise dimensional, estática do ponto material e do corpo rígido e leis de Newton.",
+      "topics": [
+        "Unidades e análise dimensional",
+        "Estática",
+        "Leis de Newton"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241238&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241255",
+      "title": "Programação",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 4,
+      "summary": "Algoritmia e programação em C: controlo de fluxo, funções, tabelas, cadeias de caracteres, apontadores e estruturas.",
+      "topics": [
+        "Algoritmia",
+        "Linguagem C",
+        "Apontadores e estruturas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241255&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241256",
+      "title": "Tecnologias de Eletricidade",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 5,
+      "summary": "Regras técnicas e segurança em instalações elétricas, quadros de automatismos industriais e tipos de arranque de motores.",
+      "topics": [
+        "Segurança em instalações elétricas",
+        "Quadros de automatismos",
+        "Arranque de motores"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241256&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241001",
+      "title": "Álgebra Linear e Geometria Analítica",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "position": 6,
+      "summary": "Espaços vetoriais, matrizes, determinantes e sistemas de equações lineares, com geometria analítica.",
+      "topics": [
+        "Espaços vetoriais",
+        "Matrizes e determinantes",
+        "Sistemas de equações lineares"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241001&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "15241257",
+      "title": "Análise de Circuitos II",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 7,
+      "summary": "Bobinas e condensadores e circuitos em corrente alternada sinusoidal: valor eficaz, fasores, impedância e admitância.",
+      "topics": [
+        "Corrente alternada sinusoidal",
+        "Fasores",
+        "Impedância e admitância"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241257&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241253",
+      "title": "Análise Matemática II",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 8,
+      "summary": "Funções de várias variáveis: noções topológicas em Rⁿ, limites e continuidade, derivadas parciais, diferencial, gradiente, divergência e rotacional.",
+      "topics": [
+        "Campos escalares e vetoriais",
+        "Derivadas parciais e diferencial",
+        "Gradiente, divergência e rotacional"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241253&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "15241258",
+      "title": "Computação Física",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 9,
+      "summary": "Eletrónica básica e programação de microcontroladores Arduino com sensores, atuadores e portas de entrada e saída.",
+      "topics": [
+        "Eletrónica básica",
+        "Arduino",
+        "Sensores e atuadores"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241258&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241259",
+      "title": "Medidas Elétricas",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 10,
+      "summary": "Fundamentos da medida e tratamento de erros, sistema metrológico, unidades e padrões, e aparelhos de medida analógicos e digitais.",
+      "topics": [
+        "Incerteza e erros de medida",
+        "Unidades e padrões",
+        "Aparelhos de medida"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241259&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241260",
+      "title": "Sistemas Digitais",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 11,
+      "summary": "Sistemas de numeração, álgebra de Boole e simplificação de funções booleanas, funções lógicas e fundamentos de eletrónica digital.",
+      "topics": [
+        "Sistemas de numeração",
+        "Álgebra de Boole",
+        "Funções lógicas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241260&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241261",
+      "title": "Técnicas de Comunicação",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "position": 12,
+      "summary": "O processo de comunicação: comunicação interpessoal, elementos e funções da comunicação, signos e significados, e a influência das características individuais.",
+      "topics": [
+        "Comunicação interpessoal",
+        "Elementos da comunicação",
+        "Características individuais"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241261&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241262",
+      "title": "Algoritmos e Estrutura de Dados",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 13,
+      "summary": "Programação orientada por objetos em Java (classes, objetos, métodos, sobrecarga) e estruturas de dados e algoritmos.",
+      "topics": [
+        "Programação orientada por objetos",
+        "Java",
+        "Estruturas de dados"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241262&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241279",
+      "title": "Automação e Robótica",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 14,
+      "summary": "Automação industrial e robótica: objetivos e aplicações, automatismos na produção e estrutura dos sistemas automatizados.",
+      "topics": [
+        "Automação industrial",
+        "Automatismos",
+        "Robótica"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241279&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241263",
+      "title": "Bases de Dados",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 15,
+      "summary": "Conceitos de bases de dados e sistemas de gestão de bases de dados (arquitetura ANSI/SPARC, transações), organização e armazenamento de dados.",
+      "topics": [
+        "SGBD e transações",
+        "Organização dos dados",
+        "Armazenamento de dados"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241263&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241264",
+      "title": "Eletromagnetismo",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 16,
+      "summary": "Carga e campo elétrico, lei de Gauss, potencial, condensadores e dielétricos, corrente e circuitos de corrente contínua, e campo magnético.",
+      "topics": [
+        "Campo e potencial elétrico",
+        "Condensadores e corrente",
+        "Campo magnético"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241264&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241280",
+      "title": "Eletrotecnia Aplicada",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 17,
+      "summary": "Circuitos trifásicos equilibrados e desequilibrados, potências trifásicas, compensação do fator de potência e medição de potência.",
+      "topics": [
+        "Circuitos trifásicos",
+        "Potências trifásicas",
+        "Fator de potência"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241280&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241265",
+      "title": "Eletrónica I",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 18,
+      "summary": "Semicondutores e díodos (retificação, regulação, limitadores) e transístores de junção bipolar.",
+      "topics": [
+        "Díodos",
+        "Transístores bipolares",
+        "Retificação e regulação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241265&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064377",
+      "title": "Matemática Aplicada à Eletrotecnia",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 19,
+      "summary": "Análise complexa (funções de variável complexa, derivação e integração) e transformada de Laplace e as suas propriedades.",
+      "topics": [
+        "Funções de variável complexa",
+        "Transformada de Laplace"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064377&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241266",
+      "title": "Microprocessadores",
+      "ects": 5,
+      "year": 2,
+      "semester": 1,
+      "position": 20,
+      "summary": "Arquitetura de microprocessadores e sistemas embebidos: dispositivos VLSI, máquinas de estados e projeto top-down.",
+      "topics": [
+        "Arquitetura de microprocessadores",
+        "Máquinas de estados",
+        "Sistemas embebidos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241266&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241267",
+      "title": "Autómatos Programáveis",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 21,
+      "summary": "Controladores lógicos programáveis: descrição de sistemas automatizados e linguagens IEC 61131-3, com controlador e software industriais.",
+      "topics": [
+        "Autómatos programáveis",
+        "Linguagens IEC 61131-3",
+        "Sistemas automatizados"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241267&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241281",
+      "title": "Controlo Automático",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 22,
+      "summary": "Modelos matemáticos de sistemas físicos, função de transferência e diagramas de blocos, e características dos sistemas de controlo.",
+      "topics": [
+        "Modelação de sistemas",
+        "Função de transferência",
+        "Sistemas de controlo"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241281&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241268",
+      "title": "Fundamentos de Telecomunicações",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 23,
+      "summary": "Sistemas de comunicação e meios de transmissão, análise de sinais e sistemas, séries e transformada de Fourier.",
+      "topics": [
+        "Sistemas de comunicação",
+        "Séries de Fourier",
+        "Transformada de Fourier"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241268&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241269",
+      "title": "Laboratório de Eletrónica",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 24,
+      "summary": "Prática de laboratório de eletrónica: segurança, simulação de circuitos com SPICE e desenho e construção de placas de circuito impresso.",
+      "topics": [
+        "Simulação SPICE",
+        "Desenho de PCB",
+        "Segurança em laboratório"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241269&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241270",
+      "title": "Probabilidades e Estatística",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 25,
+      "summary": "Estatística descritiva e análise exploratória, probabilidades, teorema de Bayes e variáveis aleatórias uni e bidimensionais.",
+      "topics": [
+        "Estatística descritiva",
+        "Probabilidade e teorema de Bayes",
+        "Variáveis aleatórias"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241270&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241282",
+      "title": "Projeto de Instalações Elétricas I",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 26,
+      "summary": "Projeto de instalações elétricas: enquadramento legislativo, perigos da corrente, ligação do neutro, proteções, quedas de tensão e curto-circuito.",
+      "topics": [
+        "Proteção de pessoas e instalações",
+        "Quedas de tensão e curto-circuito",
+        "Dimensionamento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241282&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": true
+    },
+    {
+      "code": "15241271",
+      "title": "Radiação e Propagação de Ondas Eletromagnéticas",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 27,
+      "summary": "Álgebra e teoremas vetoriais, equações de Maxwell, ondas planas, potência e vetor de Poynting.",
+      "topics": [
+        "Equações de Maxwell",
+        "Ondas planas",
+        "Vetor de Poynting"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241271&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241272",
+      "title": "Sinais e Sistemas",
+      "ects": 5,
+      "year": 2,
+      "semester": 2,
+      "position": 28,
+      "summary": "Sinais e sistemas contínuos e discretos, sistemas lineares e invariantes no tempo, resposta impulsiva, convolução e estabilidade.",
+      "topics": [
+        "Sinais contínuos e discretos",
+        "Sistemas lineares e convolução",
+        "Estabilidade"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241272&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241273",
+      "title": "Comunicações Digitais",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 29,
+      "summary": "Comunicação em banda base (PCM, TDM, DPCM) e em banda passante (ASK, FSK, PSK, QAM), espalhamento espectral e acesso múltiplo.",
+      "topics": [
+        "Banda base",
+        "Modulações digitais",
+        "Espalhamento espectral"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241273&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "19411050",
+      "title": "Desenvolvimento de Aplicações com Low-Code",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 30,
+      "summary": "Desenvolvimento com low-code: métodos ágeis, interfaces por modelação visual, modelação de dados em UML e processamento no cliente e no servidor.",
+      "topics": [
+        "Métodos ágeis",
+        "Modelação visual de interfaces",
+        "Modelação de dados"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19411050&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241274",
+      "title": "Desenvolvimento de Aplicações Multimédia",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 31,
+      "summary": "Funcionamento da Web e aplicações multimédia: HTTP, HTML, XML, CSS e XSLT, JavaScript e programação do lado do servidor em PHP.",
+      "topics": [
+        "Web e HTTP",
+        "HTML, CSS e JavaScript",
+        "PHP"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241274&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "19411059",
+      "title": "Desenvolvimento de Jogos Digitais",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 32,
+      "summary": "Conceção de jogos (regras, mecânicas, prototipagem) e arquitetura de um jogo 2D: game loop, renderização, entidades e componentes.",
+      "topics": [
+        "Conceção de jogos",
+        "Arquitetura de um jogo 2D",
+        "Entidades e componentes"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19411059&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241290",
+      "title": "Domótica",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 33,
+      "summary": "Domótica e edifícios inteligentes com o sistema KNX: comunicação, topologia, dispositivos de bus e projeto no software ETS.",
+      "topics": [
+        "Edifícios inteligentes",
+        "Sistema KNX",
+        "Software ETS"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241290&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241283",
+      "title": "Eletrónica de Potência",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 34,
+      "summary": "Semicondutores de potência (díodo, tirístor, MOSFET, IGBT), circuitos de comando e conversores AC-DC.",
+      "topics": [
+        "Semicondutores de potência",
+        "Retificadores",
+        "Conversores"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241283&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241275",
+      "title": "Eletrónica II",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 35,
+      "summary": "Amplificadores operacionais: características e limitações, circuitos lineares (inversor, somador, integrador, instrumentação) e não lineares.",
+      "topics": [
+        "Amplificadores operacionais",
+        "Circuitos lineares",
+        "Circuitos não lineares"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241275&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241284",
+      "title": "Energias Renováveis",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 36,
+      "summary": "Fontes de energia renovável e avaliação económica de investimentos: energia hídrica, eólica e solar fotovoltaica.",
+      "topics": [
+        "Energia hídrica",
+        "Energia eólica",
+        "Energia solar"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241284&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241292",
+      "title": "Introdução aos Sistemas Operativos",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 37,
+      "summary": "Funções e estrutura dos sistemas operativos, arquitetura de computadores e gestão de processos.",
+      "topics": [
+        "Funções do sistema operativo",
+        "Arquitetura de computadores",
+        "Gestão de processos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241292&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "19411031",
+      "title": "Laboratório IoT",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 38,
+      "summary": "Tecnologias de transmissão e protocolos de aplicação em redes de sensores, captura e envio de dados para plataformas na Internet.",
+      "topics": [
+        "Redes de sensores",
+        "Protocolos de aplicação",
+        "Plataformas IoT"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19411031&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241285",
+      "title": "Máquinas Elétricas I",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 39,
+      "summary": "Introdução às máquinas elétricas e transformadores: construção, funcionamento, esquemas equivalentes e regulação de tensão.",
+      "topics": [
+        "Transformadores",
+        "Esquemas equivalentes",
+        "Regulação de tensão"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241285&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241286",
+      "title": "Produção e Transporte de Energia",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 40,
+      "summary": "Recursos energéticos e conversão em energia elétrica, energias renováveis e convencionais, sistemas de potência e diagramas de carga.",
+      "topics": [
+        "Recursos energéticos",
+        "Sistemas de potência",
+        "Diagramas de carga"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241286&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241287",
+      "title": "Projeto de Instalações Elétricas II",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 41,
+      "summary": "Legislação e regulamentos de redes de distribuição em baixa tensão e de postos de transformação, e projeto de instalações.",
+      "topics": [
+        "Redes de baixa tensão",
+        "Postos de transformação",
+        "Projeto de instalações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241287&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241276",
+      "title": "Redes de Comunicação",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 42,
+      "summary": "Meios de transmissão, topologias e cablagem estruturada, normalização e modelos de referência, e camada física.",
+      "topics": [
+        "Meios e topologias",
+        "Modelos de referência",
+        "Camada física"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241276&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241277",
+      "title": "Sistemas de Telecomunicações I",
+      "ects": 5,
+      "year": 3,
+      "semester": 1,
+      "position": 43,
+      "summary": "Evolução e aspetos de transmissão das telecomunicações (atenuação, distorção, unidades logarítmicas) e sistemas de comunicações óticas por fibra.",
+      "topics": [
+        "Transmissão e unidades logarítmicas",
+        "Fibra ótica",
+        "Comunicações óticas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241277&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 1,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 1,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241250",
+      "title": "Complementos de Bases de Dados",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 44,
+      "summary": "Arquitetura e armazenamento de um sistema de gestão de bases de dados, metadados e catálogos, views materializadas, restrições, database links e triggers.",
+      "topics": [
+        "Arquitetura e armazenamento",
+        "Metadados e catálogos",
+        "Views, restrições e triggers"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241250&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "19411028",
+      "title": "Computação Reconfigurável",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 45,
+      "summary": "Sistemas reconfiguráveis e FPGA, linguagens VHDL e Verilog e projeto de sistemas digitais reconfiguráveis.",
+      "topics": [
+        "FPGA",
+        "VHDL e Verilog",
+        "Sistemas digitais reconfiguráveis"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19411028&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241298",
+      "title": "Estágio (área CI)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 46,
+      "summary": "Estágio na área CI do curso, com plano de trabalho definido caso a caso.",
+      "topics": [
+        "Plano de trabalho",
+        "Prática em organização"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241296",
+      "title": "Estágio (área EA)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 47,
+      "summary": "Estágio na área EA do curso, com plano de trabalho definido caso a caso.",
+      "topics": [
+        "Plano de trabalho",
+        "Prática em organização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241296&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241297",
+      "title": "Estágio (área EE)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 48,
+      "summary": "Estágio na área EE do curso, com plano de trabalho definido caso a caso.",
+      "topics": [
+        "Plano de trabalho",
+        "Prática em organização"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "140064379",
+      "title": "Gestão",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 49,
+      "summary": "Contexto da gestão (planeamento, organização, direção e controlo, estrutura financeira e investimentos) e gestão de projetos.",
+      "topics": [
+        "Funções da gestão",
+        "Estrutura financeira e investimentos",
+        "Gestão de projetos"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=140064379&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241291",
+      "title": "Infraestruturas de Telecomunicações",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 50,
+      "summary": "Infraestruturas de telecomunicações em edifícios (ITED): enquadramento legal, materiais e equipamentos, projeto, instalação e ensaios.",
+      "topics": [
+        "Manual ITED",
+        "Projeto ITED",
+        "Instalação e ensaios"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241291&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção I - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção I - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção II - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção I - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241288",
+      "title": "Máquinas Elétricas II",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 51,
+      "summary": "Máquinas síncronas (alternadores, motores síncronos e paralelo de alternadores) e máquinas de corrente contínua.",
+      "topics": [
+        "Máquinas síncronas",
+        "Paralelo de alternadores",
+        "Máquinas de corrente contínua"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241288&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241295",
+      "title": "Projeto (área CI)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 52,
+      "summary": "Projeto na área CI do curso; o tema é definido com o orientador.",
+      "topics": [
+        "Escolha do tema",
+        "Desenvolvimento do projeto"
+      ],
+      "fuc_url": null,
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241293",
+      "title": "Projeto (área EA)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 53,
+      "summary": "Projeto na área EA do curso; o tema é definido com o orientador e os conteúdos variam com o projeto.",
+      "topics": [
+        "Escolha do tema",
+        "Desenvolvimento do projeto"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241293&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241294",
+      "title": "Projeto (área EE)",
+      "ects": 15,
+      "year": 3,
+      "semester": 2,
+      "position": 54,
+      "summary": "Projeto na área EE do curso; o tema é definido com o orientador e os conteúdos variam com o projeto.",
+      "topics": [
+        "Escolha do tema",
+        "Desenvolvimento do projeto"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241294&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "alternative",
+          "group": "Opção III - TEC",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        },
+        {
+          "role": "alternative",
+          "group": "Opção III - EA",
+          "year": 3,
+          "semester": 2,
+          "specialization": "Energia e Automação"
+        }
+      ],
+      "elective_only": true,
+      "option_group": "Opção III - TEC",
+      "offered_both_terms": false
+    },
+    {
+      "code": "15241278",
+      "title": "Sistemas de Telecomunicações II",
+      "ects": 5,
+      "year": 3,
+      "semester": 2,
+      "position": 55,
+      "summary": "Sistemas de comunicação em radiofrequência: feixes hertzianos digitais, propagação, desvanecimento, modulações e projeto de ligações.",
+      "topics": [
+        "Feixes hertzianos",
+        "Propagação e desvanecimento",
+        "Projeto de ligações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=15241278&anoLectivo=202627&codInstituic=7&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 3,
+          "semester": 2,
+          "specialization": "Telecomunicações, Eletrónica e Computadores"
+        }
+      ],
+      "elective_only": false,
+      "option_group": null,
+      "offered_both_terms": false
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "url": "https://www.youtube.com/playlist?list=PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "title": "MA 33 – Introdução à Álgebra Linear",
+      "channel": "PROFMAT",
+      "channel_url": "https://www.youtube.com/@PROFMATVIDEOS",
+      "videos": 46,
+      "language": "pt-BR",
+      "description": "Espaços vetoriais, matrizes, determinantes, sistemas, mudança de base (PROFMAT/SBM).",
+      "tags": [
+        "Álgebra Linear e Geometria Analítica"
+      ]
+    },
+    {
+      "id": "PLE7DDD91010BC51F8",
+      "url": "https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8",
+      "title": "MIT 18.06 Linear Algebra, Spring 2005",
+      "channel": "MIT OpenCourseWare",
+      "channel_url": "https://www.youtube.com/@mitocw",
+      "videos": 36,
+      "language": "en",
+      "description": "MIT 18.06 (Gilbert Strang): referência para valores e vetores próprios e matrizes ortogonais.",
+      "tags": [
+        "Álgebra Linear e Geometria Analítica"
+      ]
+    },
+    {
+      "id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "url": "https://www.youtube.com/playlist?list=PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "title": "CÁLCULO 1",
+      "channel": "Equaciona Com Paulo Pereira",
+      "channel_url": "https://www.youtube.com/@equacionamatematica",
+      "videos": 60,
+      "language": "pt-BR",
+      "description": "Funções reais: limites, continuidade, derivadas, primitivas e integrais.",
+      "tags": [
+        "Análise Matemática I"
+      ]
+    },
+    {
+      "id": "PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "url": "https://www.youtube.com/playlist?list=PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "title": "INTEGRAL- CÁLCULO",
+      "channel": "Prof. MURAKAMI - MATEMÁTICA RAPIDOLA",
+      "channel_url": "https://www.youtube.com/@Murakami.",
+      "videos": 79,
+      "language": "pt-BR",
+      "description": "Integrais e técnicas de primitivação, áreas e volumes de revolução.",
+      "tags": [
+        "Análise Matemática I"
+      ]
+    },
+    {
+      "id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "url": "https://www.youtube.com/playlist?list=PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "title": "CÁLCULO EM VÁRIAS VARIÁVEIS",
+      "channel": "Matemateca - Ester Velasquez",
+      "channel_url": "https://www.youtube.com/@Matemateca",
+      "videos": 52,
+      "language": "pt-BR",
+      "description": "Funções de várias variáveis: derivadas parciais, diferencial, gradiente, integrais duplos e triplos.",
+      "tags": [
+        "Análise Matemática II"
+      ]
+    },
+    {
+      "id": "PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "url": "https://www.youtube.com/playlist?list=PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "title": "Cálculo Vetorial e Tensorial (CVT)",
+      "channel": "Roldão da Rocha",
+      "channel_url": "https://www.youtube.com/@roldaodarocha",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Cálculo vetorial (UFABC): divergência, rotacional, integrais de linha e superfície, Stokes e Gauss.",
+      "tags": [
+        "Análise Matemática II"
+      ]
+    },
+    {
+      "id": "PLFai7UQvyStnDxKHfRm6Fgc-IXsiapTOy",
+      "url": "https://www.youtube.com/playlist?list=PLFai7UQvyStnDxKHfRm6Fgc-IXsiapTOy",
+      "title": "Circuitos Elétricos CC",
+      "channel": "Elétrica em Vídeos",
+      "channel_url": "https://www.youtube.com/@eletricaemvideos",
+      "videos": 42,
+      "language": "pt-BR",
+      "description": "Circuitos em corrente contínua: leis de Ohm e Kirchhoff, potência, associação, teoremas.",
+      "tags": [
+        "Análise de Circuitos I"
+      ]
+    },
+    {
+      "id": "PLPYIiTqJVmYELwVbgnrtZgy5-wjzPcVoZ",
+      "url": "https://www.youtube.com/playlist?list=PLPYIiTqJVmYELwVbgnrtZgy5-wjzPcVoZ",
+      "title": "[PET AULAS] ANÁLISE DE CIRCUITOS I - QUESTÕES",
+      "channel": "PET ELÉTRICA UFBA",
+      "channel_url": "https://www.youtube.com/@PETeletricaUFBA",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Análise de circuitos I (PET Elétrica UFBA): análise nodal e de malhas, problemas resolvidos.",
+      "tags": [
+        "Análise de Circuitos I"
+      ]
+    },
+    {
+      "id": "PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "url": "https://www.youtube.com/playlist?list=PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "title": "Mecânica Vetorial: Estática",
+      "channel": "Filipe Molinar",
+      "channel_url": "https://www.youtube.com/@FilipeMolinar",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Estática do ponto e do corpo rígido, sistemas equivalentes de forças, equilíbrio.",
+      "tags": [
+        "Física"
+      ]
+    },
+    {
+      "id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "url": "https://www.youtube.com/playlist?list=PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "title": "Curso Física 1 / Fundamentos de Mecânica",
+      "channel": "Uai Física",
+      "channel_url": "https://www.youtube.com/@uaifisica",
+      "videos": 169,
+      "language": "pt-BR",
+      "description": "Física 1: cinemática e dinâmica do ponto material, trabalho e energia.",
+      "tags": [
+        "Física"
+      ]
+    },
+    {
+      "id": "PLqJK4Oyr5WSjjEQCKkX6oXFORZX7ro3DA",
+      "url": "https://www.youtube.com/playlist?list=PLqJK4Oyr5WSjjEQCKkX6oXFORZX7ro3DA",
+      "title": "Curso de Programação C Completo",
+      "channel": "Programe seu futuro",
+      "channel_url": "https://www.youtube.com/@programeseufuturo",
+      "videos": 347,
+      "language": "pt-BR",
+      "description": "Linguagem C do básico ao avançado: controlo, funções, vetores, strings, apontadores, estruturas, ficheiros.",
+      "tags": [
+        "Programação"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dmSj0MHol_aoNYCSGFqvfXV",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dmSj0MHol_aoNYCSGFqvfXV",
+      "title": "Curso de Algoritmos e Lógica de Programação",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Algoritmos e lógica de programação (bloco 1 do programa).",
+      "tags": [
+        "Programação"
+      ]
+    },
+    {
+      "id": "PLbsw_zYXS04NtAUOJsTkSy30QxLvl8Akb",
+      "url": "https://www.youtube.com/playlist?list=PLbsw_zYXS04NtAUOJsTkSy30QxLvl8Akb",
+      "title": "Curso de Comandos Elétricos",
+      "channel": "Elétrica é tudo!",
+      "channel_url": "https://www.youtube.com/@eletricaetudo",
+      "videos": 112,
+      "language": "pt-BR",
+      "description": "Comandos elétricos: proteção e manobra, contactores, arranque de motores assíncronos trifásicos.",
+      "tags": [
+        "Tecnologias de Eletricidade"
+      ]
+    },
+    {
+      "id": "PLzZw_-eFTu5_M1qXKNjN6vWtjVPVgf0kq",
+      "url": "https://www.youtube.com/playlist?list=PLzZw_-eFTu5_M1qXKNjN6vWtjVPVgf0kq",
+      "title": "CURSO DE AUTOCAD PARA ELETRICISTAS !",
+      "channel": "Trick Drawing",
+      "channel_url": "https://www.youtube.com/@TrickDrawing",
+      "videos": 41,
+      "language": "pt-BR",
+      "description": "AutoCAD 2D aplicado ao desenho eletrotécnico (Módulo II da UC).",
+      "tags": [
+        "Tecnologias de Eletricidade"
+      ]
+    },
+    {
+      "id": "PLFai7UQvyStlSqR39rwA8im2teq2SZSNz",
+      "url": "https://www.youtube.com/playlist?list=PLFai7UQvyStlSqR39rwA8im2teq2SZSNz",
+      "title": "Circuitos Elétricos CA",
+      "channel": "Elétrica em Vídeos",
+      "channel_url": "https://www.youtube.com/@eletricaemvideos",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "Corrente alternada sinusoidal: fasores, impedância, potência ativa/reativa/aparente, fator de potência.",
+      "tags": [
+        "Análise de Circuitos II"
+      ]
+    },
+    {
+      "id": "PL3N3z6jVFGfCri6XUp36A_P8F7fV50SpN",
+      "url": "https://www.youtube.com/playlist?list=PL3N3z6jVFGfCri6XUp36A_P8F7fV50SpN",
+      "title": "Eletricidade II",
+      "channel": "Prof. Vitor Silva",
+      "channel_url": "https://www.youtube.com/@vitormoreiras",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Análise de circuitos em CA: sinais alternados, fase, regime sinusoidal.",
+      "tags": [
+        "Análise de Circuitos II"
+      ]
+    },
+    {
+      "id": "PLZ8dBTV2_5HSyOXhJ77d-iyt5Z_v_1DPM",
+      "url": "https://www.youtube.com/playlist?list=PLZ8dBTV2_5HSyOXhJ77d-iyt5Z_v_1DPM",
+      "title": "Curso de Arduino e AVR",
+      "channel": "WR Kits",
+      "channel_url": "https://www.youtube.com/@canalwrkits",
+      "videos": 312,
+      "language": "pt-BR",
+      "description": "Arduino e AVR: hardware, ATmega328P, E/S digitais, PWM, ADC, sensores e atuadores.",
+      "tags": [
+        "Computação Física"
+      ]
+    },
+    {
+      "id": "PL1IAWKHSkvMGoqTsYkWS_hQgfOiOD_L1F",
+      "url": "https://www.youtube.com/playlist?list=PL1IAWKHSkvMGoqTsYkWS_hQgfOiOD_L1F",
+      "title": "Curso de Arduino Completo - Eletrônica Fácil",
+      "channel": "Eletrônica Fácil",
+      "channel_url": "https://www.youtube.com/@eletronicafaciloficial",
+      "videos": 100,
+      "language": "pt-BR",
+      "description": "Curso de Arduino: entradas e saídas, sensores, protocolos e projetos.",
+      "tags": [
+        "Computação Física"
+      ]
+    },
+    {
+      "id": "PLEie0SLRzDjB7Eb_WtxVlt1FC4yfLICAi",
+      "url": "https://www.youtube.com/playlist?list=PLEie0SLRzDjB7Eb_WtxVlt1FC4yfLICAi",
+      "title": "Medidas Elétricas e Magnéticas",
+      "channel": "Profa. Marley Tavares",
+      "channel_url": "https://www.youtube.com/@profamarleytavares",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Medidas elétricas e magnéticas: erros, instrumentos analógicos e digitais.",
+      "tags": [
+        "Medidas Elétricas"
+      ]
+    },
+    {
+      "id": "PLbsw_zYXS04MBXDeqvDEkhPB3MLCAm7Jv",
+      "url": "https://www.youtube.com/playlist?list=PLbsw_zYXS04MBXDeqvDEkhPB3MLCAm7Jv",
+      "title": "Curso de Medidas Elétricas",
+      "channel": "Elétrica é tudo!",
+      "channel_url": "https://www.youtube.com/@eletricaetudo",
+      "videos": 27,
+      "language": "pt-BR",
+      "description": "Uso prático do multímetro e medições em CC e CA.",
+      "tags": [
+        "Medidas Elétricas"
+      ]
+    },
+    {
+      "id": "PLiyqJyiJiQ_Epju5nH11O8ESeP2Lu_sKS",
+      "url": "https://www.youtube.com/playlist?list=PLiyqJyiJiQ_Epju5nH11O8ESeP2Lu_sKS",
+      "title": "Sistemas Digitais",
+      "channel": "Professor Massola",
+      "channel_url": "https://www.youtube.com/@ProfessorMassola",
+      "videos": 96,
+      "language": "pt-BR",
+      "description": "Sistemas de numeração, álgebra de Boole, simplificação, lógica combinatória e sequencial.",
+      "tags": [
+        "Sistemas Digitais"
+      ]
+    },
+    {
+      "id": "PLfdR3_dt2rbcPf-4Te36zw98P4DFKVNKm",
+      "url": "https://www.youtube.com/playlist?list=PLfdR3_dt2rbcPf-4Te36zw98P4DFKVNKm",
+      "title": "Sistemas Digitais - 2024/1",
+      "channel": "Edil Medeiros",
+      "channel_url": "https://www.youtube.com/@edilmedeiros",
+      "videos": 24,
+      "language": "pt-BR",
+      "description": "Sistemas digitais (UnB): bits, operações e teoremas booleanos, circuitos.",
+      "tags": [
+        "Sistemas Digitais"
+      ]
+    },
+    {
+      "id": "PLaKsFg9AIvPpajuGT8uIw9K_yCaZ9PqG8",
+      "url": "https://www.youtube.com/playlist?list=PLaKsFg9AIvPpajuGT8uIw9K_yCaZ9PqG8",
+      "title": "Comunicação Interpessoal",
+      "channel": "Aqui Tem Comunicação | Eliane",
+      "channel_url": "https://www.youtube.com/@AquiTemComunica%C3%A7%C3%A3o",
+      "videos": 32,
+      "language": "pt-BR",
+      "description": "Comunicação interpessoal: processo, elementos, estilos, barreiras e comunicação em público.",
+      "tags": [
+        "Técnicas de Comunicação"
+      ]
+    },
+    {
+      "id": "PLW0Ix6kqeqiSNnWY15CxzB4ez_gwEcJlO",
+      "url": "https://www.youtube.com/playlist?list=PLW0Ix6kqeqiSNnWY15CxzB4ez_gwEcJlO",
+      "title": "Curso - Comunicação Empresarial",
+      "channel": "Vinnie de Oliveira",
+      "channel_url": "https://www.youtube.com/@VinniedeOliveira",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Comunicação empresarial: comunicação escrita e oral, formal e informal.",
+      "tags": [
+        "Técnicas de Comunicação"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dkqe2aR0tQK74m8SFe-aGsY",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkqe2aR0tQK74m8SFe-aGsY",
+      "title": "Curso de POO Java (Programação Orientada a Objetos)",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 32,
+      "language": "pt-BR",
+      "description": "Programação orientada a objetos em Java: classes, objetos, encapsulamento, herança, polimorfismo.",
+      "tags": [
+        "Algoritmos e Estrutura de Dados"
+      ]
+    },
+    {
+      "id": "PL_JAaU8k6DQXxJ_HL_kiy8_jXzGs6e6EH",
+      "url": "https://www.youtube.com/playlist?list=PL_JAaU8k6DQXxJ_HL_kiy8_jXzGs6e6EH",
+      "title": "Algoritmos e Estruturas de Dados I - Prof. Luciano Antonio Digiampietri",
+      "channel": "Luciano Digiampietri",
+      "channel_url": "https://www.youtube.com/@digiampietri",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "Algoritmos e estruturas de dados (USP): arranjos, listas, complexidade, ordenação.",
+      "tags": [
+        "Algoritmos e Estrutura de Dados"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r",
+      "title": "Curso de Banco de Dados MySQL",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "SQL com MySQL: criação de bases, tabelas, consultas, chaves.",
+      "tags": [
+        "Bases de Dados"
+      ]
+    },
+    {
+      "id": "PLg5-aZqPjMmAo-kX-1l6BQS_yIIObGc3C",
+      "url": "https://www.youtube.com/playlist?list=PLg5-aZqPjMmAo-kX-1l6BQS_yIIObGc3C",
+      "title": "Curso de Modelagem Relacional - Banco de Dados",
+      "channel": "Hélio Kamakawa",
+      "channel_url": "https://www.youtube.com/@H%C3%A9lioKamakawa",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Modelação relacional: entidades, relacionamentos, normalização.",
+      "tags": [
+        "Bases de Dados"
+      ]
+    },
+    {
+      "id": "PLptGVz3Mchw7v9WDKCGvfR1Qzkl5BKGPV",
+      "url": "https://www.youtube.com/playlist?list=PLptGVz3Mchw7v9WDKCGvfR1Qzkl5BKGPV",
+      "title": "Curso de Física 3 / Fundamentos de Eletromagnetismo",
+      "channel": "Uai Física",
+      "channel_url": "https://www.youtube.com/@uaifisica",
+      "videos": 145,
+      "language": "pt-BR",
+      "description": "Física 3: carga, campo e potencial elétrico, Gauss, condensadores, campo magnético, Ampère, indução, Maxwell.",
+      "tags": [
+        "Eletromagnetismo"
+      ]
+    },
+    {
+      "id": "PLFai7UQvyStllMmfmkQ8Y1IIGL-HT6I4L",
+      "url": "https://www.youtube.com/playlist?list=PLFai7UQvyStllMmfmkQ8Y1IIGL-HT6I4L",
+      "title": "Circuitos Magnéticos",
+      "channel": "Elétrica em Vídeos",
+      "channel_url": "https://www.youtube.com/@eletricaemvideos",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Lei de Ampère, fluxo magnético, circuitos magnéticos.",
+      "tags": [
+        "Eletromagnetismo",
+        "Eletrotecnia Aplicada"
+      ]
+    },
+    {
+      "id": "PL2eNU94rB3R6hRXe4pVM79YA443yx8ble",
+      "url": "https://www.youtube.com/playlist?list=PL2eNU94rB3R6hRXe4pVM79YA443yx8ble",
+      "title": "Eletrônica Analógica I - Semicondutores, Diodos e Transistores (BJTs e FETs)",
+      "channel": "Rony Mark da Silva (Poços de Caldas)",
+      "channel_url": "https://www.youtube.com/@ronymarkdasilvapocosdecald2344",
+      "videos": 56,
+      "language": "pt-BR",
+      "description": "Eletrónica analógica I: semicondutores, junção PN, díodos, BJT e FET.",
+      "tags": [
+        "Eletrónica I"
+      ]
+    },
+    {
+      "id": "PLfdR3_dt2rbciXfngnbtg1XyITPmxc22B",
+      "url": "https://www.youtube.com/playlist?list=PLfdR3_dt2rbciXfngnbtg1XyITPmxc22B",
+      "title": "Eletrônica - 2021/1",
+      "channel": "Edil Medeiros",
+      "channel_url": "https://www.youtube.com/@edilmedeiros",
+      "videos": 30,
+      "language": "pt-BR",
+      "description": "Eletrónica (UnB): componentes, circuitos equivalentes, díodos e transístores.",
+      "tags": [
+        "Eletrónica I"
+      ]
+    },
+    {
+      "id": "PL2ozrwYLdXngdyPkkjbVg2hMnWyhcMYPC",
+      "url": "https://www.youtube.com/playlist?list=PL2ozrwYLdXngdyPkkjbVg2hMnWyhcMYPC",
+      "title": "Transformada de Laplace",
+      "channel": "Prof. Rodrigo RB",
+      "channel_url": "https://www.youtube.com/@prof.rodrigorb875",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Transformada de Laplace: propriedades, inversa, aplicação a EDO e circuitos.",
+      "tags": [
+        "Matemática Aplicada à Eletrotecnia"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHd-4h2WJ5iD1mPHsgJo_N6J",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHd-4h2WJ5iD1mPHsgJo_N6J",
+      "title": "Cálculo IV | Licenciatura em matemática",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Cálculo IV (UNIVESP): sucessões, séries, séries de Fourier.",
+      "tags": [
+        "Matemática Aplicada à Eletrotecnia"
+      ]
+    },
+    {
+      "id": "PLLD5p4BxNubjQKGyStArqUf0ua2wZdmiU",
+      "url": "https://www.youtube.com/playlist?list=PLLD5p4BxNubjQKGyStArqUf0ua2wZdmiU",
+      "title": "Fucapi - Microcontroladores e Microprocessadores",
+      "channel": "Walmir Acioli",
+      "channel_url": "https://www.youtube.com/@was12325",
+      "videos": 49,
+      "language": "pt-BR",
+      "description": "Microprocessadores e microcontroladores: arquitetura, máquinas de estado, programação.",
+      "tags": [
+        "Microprocessadores"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHfYu7ZxKykXftYGehN7p-xI",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfYu7ZxKykXftYGehN7p-xI",
+      "title": "Engenharia de Computação | Sistemas Embarcados",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Sistemas embarcados (UNIVESP): projeto e implementação de sistemas embebidos.",
+      "tags": [
+        "Microprocessadores"
+      ]
+    },
+    {
+      "id": "PLL8fMK6502iyAdqZqOrGl-RWJm62SSGdx",
+      "url": "https://www.youtube.com/playlist?list=PLL8fMK6502iyAdqZqOrGl-RWJm62SSGdx",
+      "title": "CLP - Controlador Lógico Programável",
+      "channel": "Prof Jadson Caetano ",
+      "channel_url": "https://www.youtube.com/@JadsonCaetano",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "CLP/PLC: tipos, características, programação em Ladder, partida de motores.",
+      "tags": [
+        "Autómatos Programáveis"
+      ]
+    },
+    {
+      "id": "PLgquJaWag0X5iQpqX7oENeCMhLA5as9bG",
+      "url": "https://www.youtube.com/playlist?list=PLgquJaWag0X5iQpqX7oENeCMhLA5as9bG",
+      "title": "CLP - Controlador Lógico Programável",
+      "channel": "DAP Engenharia",
+      "channel_url": "https://www.youtube.com/@dapengenharia",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Programação de CLP: contadores, temporizadores, bobinas set/reset.",
+      "tags": [
+        "Autómatos Programáveis"
+      ]
+    },
+    {
+      "id": "PL1tqcPAgeqOP8oZgpsGLTAnTEs2yO-jH0",
+      "url": "https://www.youtube.com/playlist?list=PL1tqcPAgeqOP8oZgpsGLTAnTEs2yO-jH0",
+      "title": "Curso de Introdução ao software LTSpice",
+      "channel": "Grupo de Pesquisa em Eletrônica, Áudio e Acústica",
+      "channel_url": "https://www.youtube.com/@grupodepesquisaemaudioeacu1446",
+      "videos": 11,
+      "language": "pt-BR",
+      "description": "Simulação SPICE com LTspice: análise transitória, AC, varrimento DC.",
+      "tags": [
+        "Laboratório de Eletrónica"
+      ]
+    },
+    {
+      "id": "PLP6_ek05fAYfNDPXFyAZ4NfIfAwkJmMWg",
+      "url": "https://www.youtube.com/playlist?list=PLP6_ek05fAYfNDPXFyAZ4NfIfAwkJmMWg",
+      "title": "Curso Kicad (PCB Designer)",
+      "channel": "Eletrônica de A a Z",
+      "channel_url": "https://www.youtube.com/@eletronicadeaaz",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Desenho de esquemáticos e PCB em KiCad.",
+      "tags": [
+        "Laboratório de Eletrónica"
+      ]
+    },
+    {
+      "id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "url": "https://www.youtube.com/playlist?list=PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "title": "Probabilidade e Estatística",
+      "channel": "Professor Douglas Maioli",
+      "channel_url": "https://www.youtube.com/@ProfessorDouglasMaioli",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "Estatística descritiva, probabilidades, distribuições, estimação, testes de hipóteses.",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "title": "Eixo de computação | Estatísticas e probabilidade",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Estatística e probabilidade (UNIVESP).",
+      "tags": [
+        "Probabilidades e Estatística"
+      ]
+    },
+    {
+      "id": "PLALrL4i0Pz6AlgdkEphL8jvUP-mT_JA5s",
+      "url": "https://www.youtube.com/playlist?list=PLALrL4i0Pz6AlgdkEphL8jvUP-mT_JA5s",
+      "title": "Curso de Análise de Sistemas Lineares",
+      "channel": "Luis Antonio Aguirre",
+      "channel_url": "https://www.youtube.com/@Prof.Aguirre",
+      "videos": 74,
+      "language": "pt-BR",
+      "description": "Análise de sistemas lineares (UFMG): sinais contínuos e discretos, SLIT, convolução, Fourier.",
+      "tags": [
+        "Sinais e Sistemas"
+      ]
+    },
+    {
+      "id": "PLNmYb1mcnj-FqrIses5J3Q-ztgnnwBJum",
+      "url": "https://www.youtube.com/playlist?list=PLNmYb1mcnj-FqrIses5J3Q-ztgnnwBJum",
+      "title": "SINAIS E SISTEMAS",
+      "channel": "Renan Caron Viero",
+      "channel_url": "https://www.youtube.com/@profRecaViero",
+      "videos": 112,
+      "language": "pt-BR",
+      "description": "Sinais e sistemas: operações com sinais, sistemas contínuos, séries e transformada de Fourier.",
+      "tags": [
+        "Sinais e Sistemas"
+      ]
+    },
+    {
+      "id": "PL3kgjnl3DVXT9H6tP59wqU5pe1ieLP5BY",
+      "url": "https://www.youtube.com/playlist?list=PL3kgjnl3DVXT9H6tP59wqU5pe1ieLP5BY",
+      "title": "Comunicação I",
+      "channel": "Marcelo Lemos",
+      "channel_url": "https://www.youtube.com/@MarceloL_R",
+      "videos": 67,
+      "language": "pt-BR",
+      "description": "Comunicação I: sistemas de comunicação, sinais, Fourier, modulação analógica AM/DSB/SSB/FM.",
+      "tags": [
+        "Fundamentos de Telecomunicações"
+      ]
+    },
+    {
+      "id": "PLHyF6EJ7lXywrH1nSFrFwdvTDp2AFGbHO",
+      "url": "https://www.youtube.com/playlist?list=PLHyF6EJ7lXywrH1nSFrFwdvTDp2AFGbHO",
+      "title": "Sistemas de Comunicação I",
+      "channel": "SOLUCIONANDO",
+      "channel_url": "https://www.youtube.com/@solucionando_Eneas_Naiene",
+      "videos": 39,
+      "language": "pt-BR",
+      "description": "Sistemas de comunicação I: ganhos, dB/dBm, potência, transmissão.",
+      "tags": [
+        "Fundamentos de Telecomunicações"
+      ]
+    },
+    {
+      "id": "PL3kgjnl3DVXTkuhrlnpKKNjm7mtXRpd9g",
+      "url": "https://www.youtube.com/playlist?list=PL3kgjnl3DVXTkuhrlnpKKNjm7mtXRpd9g",
+      "title": "Ondas e Linhas 2020",
+      "channel": "Marcelo Lemos",
+      "channel_url": "https://www.youtube.com/@MarceloL_R",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Ondas e linhas: ondas viajantes, equações de Maxwell, linhas de transmissão.",
+      "tags": [
+        "Radiação e Propagação de Ondas Eletromagnéticas"
+      ]
+    },
+    {
+      "id": "PLe4JDF2-tbFbEeUkpl-iHmj1VG6XJZoyP",
+      "url": "https://www.youtube.com/playlist?list=PLe4JDF2-tbFbEeUkpl-iHmj1VG6XJZoyP",
+      "title": "Propagação e antenas",
+      "channel": "Manoel Navas",
+      "channel_url": "https://www.youtube.com/@manoelnavas1991",
+      "videos": 107,
+      "language": "pt-BR",
+      "description": "Propagação e antenas: ondas planas, reflexão/refração, ligações rádio e por satélite.",
+      "tags": [
+        "Radiação e Propagação de Ondas Eletromagnéticas",
+        "Sistemas de Telecomunicações II"
+      ]
+    },
+    {
+      "id": "PLRtcUuTO2SAQp7VISlLsYIqQa2KeQwfCx",
+      "url": "https://www.youtube.com/playlist?list=PLRtcUuTO2SAQp7VISlLsYIqQa2KeQwfCx",
+      "title": "Teorias das Comunicações II",
+      "channel": "Reginaldo Barbosa Nunes",
+      "channel_url": "https://www.youtube.com/@reginaldobarbosanunes7731",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "Teoria das comunicações II: conversão A/D, PCM, sistemas de comunicação digital, modulações.",
+      "tags": [
+        "Comunicações Digitais"
+      ]
+    },
+    {
+      "id": "PLOzRYVm0a65dhUUuWow3dmimcgOisQn4I",
+      "url": "https://www.youtube.com/playlist?list=PLOzRYVm0a65dhUUuWow3dmimcgOisQn4I",
+      "title": "Principles of Digital Communications",
+      "channel": "NPTEL IIT Bombay",
+      "channel_url": "https://www.youtube.com/@IITBombayJuly",
+      "videos": 65,
+      "language": "en",
+      "description": "NPTEL IIT Bombay — Principles of Digital Communications: modulações M-árias, espalhamento, OFDM.",
+      "tags": [
+        "Comunicações Digitais"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "title": "Curso completo e atual de HTML5 e CSS3 - Módulo 1 de 5",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 41,
+      "language": "pt-BR",
+      "description": "HTML5 e CSS3: estrutura de páginas e estilos (bloco 2 da UC).",
+      "tags": [
+        "Desenvolvimento de Aplicações Multimédia"
+      ]
+    },
+    {
+      "id": "PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_",
+      "title": "Curso de PHP Moderno - Módulo 1 - Curso em Vídeo",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "PHP moderno: processamento no servidor (bloco 4 da UC).",
+      "tags": [
+        "Desenvolvimento de Aplicações Multimédia"
+      ]
+    },
+    {
+      "id": "PLIHE326iMCHCyfJVUz5c-tRSIpMF1400F",
+      "url": "https://www.youtube.com/playlist?list=PLIHE326iMCHCyfJVUz5c-tRSIpMF1400F",
+      "title": "Amplificadores Operacionais",
+      "channel": "Jalberth Fernandes",
+      "channel_url": "https://www.youtube.com/@JalberthFernandes",
+      "videos": 140,
+      "language": "pt-BR",
+      "description": "Amplificadores operacionais: circuitos lineares e não lineares, comparadores, filtros, osciladores.",
+      "tags": [
+        "Eletrónica II"
+      ]
+    },
+    {
+      "id": "PLX4nFyRPk4ogTSbh1AXiEjeZT21T4GdY2",
+      "url": "https://www.youtube.com/playlist?list=PLX4nFyRPk4ogTSbh1AXiEjeZT21T4GdY2",
+      "title": "Eletrônica Analógica II - Graduação",
+      "channel": "Prof. Andrei Almeida",
+      "channel_url": "https://www.youtube.com/@Prof.AndreiAlmeida",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "Eletrónica analógica II (CEFET-MG): amplificadores multiestágio, de potência, realimentação.",
+      "tags": [
+        "Eletrónica II"
+      ]
+    },
+    {
+      "id": "PLoucIh_I7rD2Z2EJ1XydBflcknM3w0kh8",
+      "url": "https://www.youtube.com/playlist?list=PLoucIh_I7rD2Z2EJ1XydBflcknM3w0kh8",
+      "title": "Redes de Computadores e a Internet (curso completo)",
+      "channel": "Elmano Ramalho Cavalcanti",
+      "channel_url": "https://www.youtube.com/@computacao",
+      "videos": 38,
+      "language": "pt-BR",
+      "description": "Redes de computadores e a Internet (Kurose): camadas, protocolos, ligação de dados, rede.",
+      "tags": [
+        "Redes de Comunicação"
+      ]
+    },
+    {
+      "id": "PLG_7LYUryUI1coU_8JZffCHspvDwZUbcC",
+      "url": "https://www.youtube.com/playlist?list=PLG_7LYUryUI1coU_8JZffCHspvDwZUbcC",
+      "title": "CURSO Redes de Computadores do ZERO | DETALHADO",
+      "channel": "Professora Nattane",
+      "channel_url": "https://www.youtube.com/@ProfessoraNattane",
+      "videos": 50,
+      "language": "pt-BR",
+      "description": "Redes de computadores do zero: meios de transmissão, topologias, modelos de referência.",
+      "tags": [
+        "Redes de Comunicação"
+      ]
+    },
+    {
+      "id": "PLe4JDF2-tbFZUZ3aQ4NK4S5KtPeWpNBHE",
+      "url": "https://www.youtube.com/playlist?list=PLe4JDF2-tbFZUZ3aQ4NK4S5KtPeWpNBHE",
+      "title": "Sistemas de Telecomunicações",
+      "channel": "Manoel Navas",
+      "channel_url": "https://www.youtube.com/@manoelnavas1991",
+      "videos": 137,
+      "language": "pt-BR",
+      "description": "Sistemas de telecomunicações: atenuação, dB/dBm/dBW, linhas, fibra ótica e ligações por satélite.",
+      "tags": [
+        "Sistemas de Telecomunicações I"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "title": "Engenharia Univesp - Administração I - 07º Bimestre",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "Administração I (UNIVESP): conceitos de gestão, planeamento estratégico, organização.",
+      "tags": [
+        "Gestão"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "title": "Eixo de Negócios | Gestão de Projetos",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 25,
+      "language": "pt-BR",
+      "description": "Gestão de projetos (UNIVESP): planeamento de atividades, recursos e custos, controlo.",
+      "tags": [
+        "Gestão"
+      ]
+    },
+    {
+      "id": "PLTgNKd4RxFTY_rhPBYyFJ-qVwMHNgebJe",
+      "url": "https://www.youtube.com/playlist?list=PLTgNKd4RxFTY_rhPBYyFJ-qVwMHNgebJe",
+      "title": "Principles of Modern CDMA/ MIMO/ OFDM Wireless Communications",
+      "channel": "NOC15 July-Sep EC05",
+      "channel_url": "https://www.youtube.com/@NOCJuly-SepEC",
+      "videos": 51,
+      "language": "en",
+      "description": "NPTEL (IIT Kanpur) — comunicações sem fio modernas: CDMA, MIMO, OFDM, desvanecimento.",
+      "tags": [
+        "Sistemas de Telecomunicações II"
+      ]
+    },
+    {
+      "id": "PL70batOF3D1nVqFUexrZ4xVMB3CQuU3LY",
+      "url": "https://www.youtube.com/playlist?list=PL70batOF3D1nVqFUexrZ4xVMB3CQuU3LY",
+      "title": "Fundamentos da Robótica Industrial",
+      "channel": "Prof. Roberto Araújo",
+      "channel_url": "https://www.youtube.com/@prof.roberto_araujo",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Fundamentos da robótica industrial: movimentação de juntas, referenciais, programação.",
+      "tags": [
+        "Automação e Robótica"
+      ]
+    },
+    {
+      "id": "PLBP0svE-0jhkoQASb3iBfHV8c4i8w4jz4",
+      "url": "https://www.youtube.com/playlist?list=PLBP0svE-0jhkoQASb3iBfHV8c4i8w4jz4",
+      "title": "Automação Industrial",
+      "channel": "NERo - Robótica na UFV",
+      "channel_url": "https://www.youtube.com/@RoboticaUFV",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Automação industrial (NERo/UFV): lógica, automatismos, sensores e atuadores.",
+      "tags": [
+        "Automação e Robótica"
+      ]
+    },
+    {
+      "id": "PLFai7UQvyStkfU_i8KXQre-k32CnokitN",
+      "url": "https://www.youtube.com/playlist?list=PLFai7UQvyStkfU_i8KXQre-k32CnokitN",
+      "title": "Circuitos Elétricos Trifásicos",
+      "channel": "Elétrica em Vídeos",
+      "channel_url": "https://www.youtube.com/@eletricaemvideos",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Circuitos trifásicos: estrela/triângulo, sistemas equilibrados e desequilibrados, potências.",
+      "tags": [
+        "Eletrotecnia Aplicada"
+      ]
+    },
+    {
+      "id": "PLwBW7b8ObY-DsjCqQHWpN9wbcKXi-nTro",
+      "url": "https://www.youtube.com/playlist?list=PLwBW7b8ObY-DsjCqQHWpN9wbcKXi-nTro",
+      "title": "Instalações Elétricas",
+      "channel": "Professor Ronimack",
+      "channel_url": "https://www.youtube.com/@ProfessorRonimack",
+      "videos": 40,
+      "language": "pt-BR",
+      "description": "Instalações elétricas: projeto residencial, cargas, aterramento, proteção.",
+      "tags": [
+        "Projeto de Instalações Elétricas I"
+      ]
+    },
+    {
+      "id": "PLfp0Bi77yZFj2vzUS8L52YCMkp4idvw8d",
+      "url": "https://www.youtube.com/playlist?list=PLfp0Bi77yZFj2vzUS8L52YCMkp4idvw8d",
+      "title": "Controle de Sistemas Dinâmicos",
+      "channel": "Engenharia Elétrica - UFC Sobral",
+      "channel_url": "https://www.youtube.com/@EngenhariaEl%C3%A9trica-UFCSobral",
+      "videos": 45,
+      "language": "pt-BR",
+      "description": "Controlo de sistemas dinâmicos (UFC Sobral): modelação, função de transferência, resposta, estabilidade, lugar das raízes, Bode.",
+      "tags": [
+        "Controlo Automático"
+      ]
+    },
+    {
+      "id": "PLxI8Can9yAHfta-cPDXWwv0-_EQObW_XC",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfta-cPDXWwv0-_EQObW_XC",
+      "title": "Engenharia de Computação | Controle e Automação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 20,
+      "language": "pt-BR",
+      "description": "Controle e automação (UNIVESP): modelos dinâmicos de sistemas mecânicos e elétricos.",
+      "tags": [
+        "Controlo Automático"
+      ]
+    },
+    {
+      "id": "PLIsM5DcYGb8KTPOzbhTtfw3bjGQNRBZRK",
+      "url": "https://www.youtube.com/playlist?list=PLIsM5DcYGb8KTPOzbhTtfw3bjGQNRBZRK",
+      "title": "Eletrônica de Potência",
+      "channel": "Demercil de Souza Oliveira Júnior",
+      "channel_url": "https://www.youtube.com/@demercil",
+      "videos": 22,
+      "language": "pt-BR",
+      "description": "Eletrónica de potência (UFC): semicondutores de potência, retificadores, conversores.",
+      "tags": [
+        "Eletrónica de Potência"
+      ]
+    },
+    {
+      "id": "PL-1UOgKEtOdaI-G8BN4FJdprMDcH5FyWs",
+      "url": "https://www.youtube.com/playlist?list=PL-1UOgKEtOdaI-G8BN4FJdprMDcH5FyWs",
+      "title": "Eletrônica de Potência - CEFETMG",
+      "channel": "Claudio Santos",
+      "channel_url": "https://www.youtube.com/@claudiosantos6945",
+      "videos": 30,
+      "language": "pt-BR",
+      "description": "Conversores Buck, Boost e Buck-Boost, PWM, projeto de magnéticos (CEFET-MG).",
+      "tags": [
+        "Eletrónica de Potência"
+      ]
+    },
+    {
+      "id": "PLmho8Rcnd60cKFwUGIPqMZvwdpOVIbFM6",
+      "url": "https://www.youtube.com/playlist?list=PLmho8Rcnd60cKFwUGIPqMZvwdpOVIbFM6",
+      "title": "Curso de Energias Renováveis e Planejamento Energético",
+      "channel": "Prof. P. Seleghim",
+      "channel_url": "https://www.youtube.com/@ProfSeleghim",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Energias renováveis e planeamento energético (USP): transição energética, análise técnico-económica, conversão.",
+      "tags": [
+        "Energias Renováveis"
+      ]
+    },
+    {
+      "id": "PLaACpLKadqlBQW0hZxSTu6lqZDcBbjcrD",
+      "url": "https://www.youtube.com/playlist?list=PLaACpLKadqlBQW0hZxSTu6lqZDcBbjcrD",
+      "title": "Curso Completo de Máquinas Elétricas",
+      "channel": "Campo Girante",
+      "channel_url": "https://www.youtube.com/@CampoGirante",
+      "videos": 83,
+      "language": "pt-BR",
+      "description": "Máquinas elétricas: fundamentos, transformadores, campo girante, máquinas de indução.",
+      "tags": [
+        "Máquinas Elétricas I"
+      ]
+    },
+    {
+      "id": "PLd1PTE_PgqFQlopCmMoWnHBhVvtvlcsA_",
+      "url": "https://www.youtube.com/playlist?list=PLd1PTE_PgqFQlopCmMoWnHBhVvtvlcsA_",
+      "title": "Máquinas Elétricas",
+      "channel": "Prof. Igor Pizetta",
+      "channel_url": "https://www.youtube.com/@prof.igorpizetta",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Máquinas elétricas: princípios, transformadores, fundamentos de máquinas CA.",
+      "tags": [
+        "Máquinas Elétricas I"
+      ]
+    },
+    {
+      "id": "PLotZYHQBkGgRg-CbEk47Zdjcg2N0QRB15",
+      "url": "https://www.youtube.com/playlist?list=PLotZYHQBkGgRg-CbEk47Zdjcg2N0QRB15",
+      "title": "Sistema Elétrico de Potência",
+      "channel": "Eng. Luís César Emanuelli",
+      "channel_url": "https://www.youtube.com/@luiscesaremanuelli",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Sistema elétrico de potência: fluxo de potência, matriz de admitâncias, sistema por unidade.",
+      "tags": [
+        "Produção e Transporte de Energia"
+      ]
+    },
+    {
+      "id": "PLPZbZj6r50EY-i8tEvb5AWryyxMuuvldy",
+      "url": "https://www.youtube.com/playlist?list=PLPZbZj6r50EY-i8tEvb5AWryyxMuuvldy",
+      "title": "Linha de transmissão",
+      "channel": "Elétrica sem Limites",
+      "channel_url": "https://www.youtube.com/@eletrica-sem-limites",
+      "videos": 29,
+      "language": "pt-BR",
+      "description": "Linhas de transmissão: parâmetros, capacidade, proteção.",
+      "tags": [
+        "Produção e Transporte de Energia"
+      ]
+    },
+    {
+      "id": "PLPZbZj6r50Ea1uQ6RRlYCdHT892xQROrI",
+      "url": "https://www.youtube.com/playlist?list=PLPZbZj6r50Ea1uQ6RRlYCdHT892xQROrI",
+      "title": "Subestações de energia",
+      "channel": "Elétrica sem Limites",
+      "channel_url": "https://www.youtube.com/@eletrica-sem-limites",
+      "videos": 55,
+      "language": "pt-BR",
+      "description": "Subestações de alta tensão: topologia, arranjos, equipamentos.",
+      "tags": [
+        "Projeto de Instalações Elétricas II"
+      ]
+    },
+    {
+      "id": "PLfp0Bi77yZFhuUVToL9X9egmsXN1nqeyf",
+      "url": "https://www.youtube.com/playlist?list=PLfp0Bi77yZFhuUVToL9X9egmsXN1nqeyf",
+      "title": "Projeto de Subestação Abrigada",
+      "channel": "Engenharia Elétrica - UFC Sobral",
+      "channel_url": "https://www.youtube.com/@EngenhariaEl%C3%A9trica-UFCSobral",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "Instalações elétricas industriais (UFC Sobral): projeto de subestação abrigada.",
+      "tags": [
+        "Projeto de Instalações Elétricas II"
+      ]
+    },
+    {
+      "id": "PLaACpLKadqlDHSbaD_sslWUm13_UC5VwO",
+      "url": "https://www.youtube.com/playlist?list=PLaACpLKadqlDHSbaD_sslWUm13_UC5VwO",
+      "title": "Motor Síncrono Trifásico | Teoria e Prática",
+      "channel": "Campo Girante",
+      "channel_url": "https://www.youtube.com/@CampoGirante",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Motor/máquina síncrona trifásica: teoria e prática, alternadores.",
+      "tags": [
+        "Máquinas Elétricas II"
+      ]
+    },
+    {
+      "id": "PLaACpLKadqlCHVP96e0t1B-IzceTvas-0",
+      "url": "https://www.youtube.com/playlist?list=PLaACpLKadqlCHVP96e0t1B-IzceTvas-0",
+      "title": "MÁQUINA CC #diretoaoponto",
+      "channel": "Campo Girante",
+      "channel_url": "https://www.youtube.com/@CampoGirante",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "Máquinas de corrente contínua: princípio, reação do induzido, arranque e controlo de velocidade.",
+      "tags": [
+        "Máquinas Elétricas II"
+      ]
+    },
+    {
+      "id": "PLMmiQibT0iTarJNCm8c5TYUMMxR-cZzch",
+      "url": "https://www.youtube.com/playlist?list=PLMmiQibT0iTarJNCm8c5TYUMMxR-cZzch",
+      "title": "📡 Curso de MQTT edição 2025",
+      "channel": "Internet e Coisas",
+      "channel_url": "https://www.youtube.com/@InterneteCoisas",
+      "videos": 10,
+      "language": "pt-BR",
+      "description": "Curso de MQTT (edição 2025): publish/subscribe, tópicos, QoS, retain, sessões persistentes e implementação em ESP8266/ESP32, exatamente o protocolo de aplicação central da UC.",
+      "tags": [
+        "Laboratório IoT"
+      ]
+    },
+    {
+      "id": "PLLHo4pVI8I_o_tIRC-twzYImDhwHgpYbw",
+      "url": "https://www.youtube.com/playlist?list=PLLHo4pVI8I_o_tIRC-twzYImDhwHgpYbw",
+      "title": "Curso ESP32 Básico - IOT",
+      "channel": "Vida de Silício - Robótica e Cultura maker",
+      "channel_url": "https://www.youtube.com/@vidadesilicio",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "Curso básico de IoT com ESP32: leitura de sensores (temperatura, distância, som, acelerómetro) e atuadores, base prática para os projetos de captura de dados.",
+      "tags": [
+        "Laboratório IoT"
+      ]
+    },
+    {
+      "id": "PLNlPErl_v81vNINVVotsh0nYBBSp4LEgY",
+      "url": "https://www.youtube.com/playlist?list=PLNlPErl_v81vNINVVotsh0nYBBSp4LEgY",
+      "title": "Godot do Zero 2025 – Desenvolvendo um Jogo de Plataforma 2D",
+      "channel": "Rafael Forbeck | Game Dev",
+      "channel_url": "https://www.youtube.com/@rafaelforbeck-game-dev",
+      "videos": 47,
+      "language": "pt-BR",
+      "description": "Jogo de plataforma 2D do zero em Godot (2025): movimento, animação de sprites, câmara, tilemaps, colisões e parallax, ou seja, a arquitetura 2D prevista na UC num motor atual e livre.",
+      "tags": [
+        "Desenvolvimento de Jogos Digitais"
+      ]
+    },
+    {
+      "id": "PL-oJEh-N3A3QQ9oa_aUE95y-c4uaGubI_",
+      "url": "https://www.youtube.com/playlist?list=PL-oJEh-N3A3QQ9oa_aUE95y-c4uaGubI_",
+      "title": "Tutorial Godot 4.7 do Zero 2026 – Desenvolvendo um Jogo de Plataforma 2D na GODOT 4.7",
+      "channel": "Clécio Espindola GameDev",
+      "channel_url": "https://www.youtube.com/@clecioespindolagamedev",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "Plataforma 2D do zero na versão mais recente do Godot (4.7, 2026): complementa a primeira playlist com a versão atual do motor.",
+      "tags": [
+        "Desenvolvimento de Jogos Digitais"
+      ]
+    },
+    {
+      "id": "PLy72MjZHhunFbozTDgjF0sv4NXbIyaRzJ",
+      "url": "https://www.youtube.com/playlist?list=PLy72MjZHhunFbozTDgjF0sv4NXbIyaRzJ",
+      "title": "Curso de VHDL",
+      "channel": "Alexandre Mendonça",
+      "channel_url": "https://www.youtube.com/@alexandremendonca2631",
+      "videos": 13,
+      "language": "pt-BR",
+      "description": "Aulas de Eletrónica Digital II / Projeto de Dispositivos Programáveis do IME (2020): linguagem VHDL, contadores, registos de deslocamento, máquinas de estados e exercícios resolvidos.",
+      "tags": [
+        "Computação Reconfigurável"
+      ]
+    },
+    {
+      "id": "PLaqM8nQGtk7ZV7ouH0HETsE0KI1DPdM9t",
+      "url": "https://www.youtube.com/playlist?list=PLaqM8nQGtk7ZV7ouH0HETsE0KI1DPdM9t",
+      "title": "VHDL-FPGA",
+      "channel": "Erivelton Nepomuceno",
+      "channel_url": "https://www.youtube.com/@eriveltonnepomuceno8580",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Projetos de circuitos digitais em VHDL e FPGA (Prof. Erivelton Nepomuceno): representação numérica, circuitos combinacionais e sequenciais implementados em FPGA.",
+      "tags": [
+        "Computação Reconfigurável"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "code": "15241001",
+      "playlist_id": "PLxEB_CPQhRLs_EiuuALmCJm8y1ZdpPebE",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Espaços vetoriais, matrizes, determinantes, sistemas, mudança de base (PROFMAT/SBM).",
+      "published": true
+    },
+    {
+      "code": "15241001",
+      "playlist_id": "PLE7DDD91010BC51F8",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "MIT 18.06 (Gilbert Strang): referência para valores e vetores próprios e matrizes ortogonais.",
+      "published": true
+    },
+    {
+      "code": "15241000",
+      "playlist_id": "PLEfwqyY2ox86LhxKybOY3_IG-7R5herLC",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Funções reais: limites, continuidade, derivadas, primitivas e integrais.",
+      "published": true
+    },
+    {
+      "code": "15241000",
+      "playlist_id": "PLN0ZrxDaBfhiN1E0p2yL5GyPUm4PATF_A",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Integrais e técnicas de primitivação, áreas e volumes de revolução.",
+      "published": true
+    },
+    {
+      "code": "15241253",
+      "playlist_id": "PLmtT_GZAQdt-ipFNgAfMCyVlL_apgZHKQ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Funções de várias variáveis: derivadas parciais, diferencial, gradiente, integrais duplos e triplos.",
+      "published": true
+    },
+    {
+      "code": "15241253",
+      "playlist_id": "PL5JfnKJ2SjLocfQUUmCgOoX-v5KIw97-B",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Cálculo vetorial (UFABC): divergência, rotacional, integrais de linha e superfície, Stokes e Gauss.",
+      "published": true
+    },
+    {
+      "code": "15241254",
+      "playlist_id": "PLFai7UQvyStnDxKHfRm6Fgc-IXsiapTOy",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Circuitos em corrente contínua: leis de Ohm e Kirchhoff, potência, associação, teoremas.",
+      "published": true
+    },
+    {
+      "code": "15241254",
+      "playlist_id": "PLPYIiTqJVmYELwVbgnrtZgy5-wjzPcVoZ",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Análise de circuitos I (PET Elétrica UFBA): análise nodal e de malhas, problemas resolvidos.",
+      "published": true
+    },
+    {
+      "code": "15241238",
+      "playlist_id": "PLcS74Pd-fkjQrRR-TFejGKfe6kUutGLQi",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estática do ponto e do corpo rígido, sistemas equivalentes de forças, equilíbrio.",
+      "published": true
+    },
+    {
+      "code": "15241238",
+      "playlist_id": "PLptGVz3Mchw679BFimyt12FLE0yjoZzlx",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Física 1: cinemática e dinâmica do ponto material, trabalho e energia.",
+      "published": true
+    },
+    {
+      "code": "15241255",
+      "playlist_id": "PLqJK4Oyr5WSjjEQCKkX6oXFORZX7ro3DA",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "Linguagem C do básico ao avançado: controlo, funções, vetores, strings, apontadores, estruturas, ficheiros.",
+      "published": true
+    },
+    {
+      "code": "15241255",
+      "playlist_id": "PLHz_AreHm4dmSj0MHol_aoNYCSGFqvfXV",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Algoritmos e lógica de programação (bloco 1 do programa).",
+      "published": true
+    },
+    {
+      "code": "15241256",
+      "playlist_id": "PLbsw_zYXS04NtAUOJsTkSy30QxLvl8Akb",
+      "ord": 1,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Comandos elétricos: proteção e manobra, contactores, arranque de motores assíncronos trifásicos.",
+      "published": true
+    },
+    {
+      "code": "15241256",
+      "playlist_id": "PLzZw_-eFTu5_M1qXKNjN6vWtjVPVgf0kq",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "AutoCAD 2D aplicado ao desenho eletrotécnico (Módulo II da UC).",
+      "published": true
+    },
+    {
+      "code": "15241257",
+      "playlist_id": "PLFai7UQvyStlSqR39rwA8im2teq2SZSNz",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Corrente alternada sinusoidal: fasores, impedância, potência ativa/reativa/aparente, fator de potência.",
+      "published": true
+    },
+    {
+      "code": "15241257",
+      "playlist_id": "PL3N3z6jVFGfCri6XUp36A_P8F7fV50SpN",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Análise de circuitos em CA: sinais alternados, fase, regime sinusoidal.",
+      "published": true
+    },
+    {
+      "code": "15241258",
+      "playlist_id": "PLZ8dBTV2_5HSyOXhJ77d-iyt5Z_v_1DPM",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "técnico",
+      "match": "Arduino e AVR: hardware, ATmega328P, E/S digitais, PWM, ADC, sensores e atuadores.",
+      "published": true
+    },
+    {
+      "code": "15241258",
+      "playlist_id": "PL1IAWKHSkvMGoqTsYkWS_hQgfOiOD_L1F",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Curso de Arduino: entradas e saídas, sensores, protocolos e projetos.",
+      "published": true
+    },
+    {
+      "code": "15241259",
+      "playlist_id": "PLEie0SLRzDjB7Eb_WtxVlt1FC4yfLICAi",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Medidas elétricas e magnéticas: erros, instrumentos analógicos e digitais.",
+      "published": true
+    },
+    {
+      "code": "15241259",
+      "playlist_id": "PLbsw_zYXS04MBXDeqvDEkhPB3MLCAm7Jv",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Uso prático do multímetro e medições em CC e CA.",
+      "published": true
+    },
+    {
+      "code": "15241260",
+      "playlist_id": "PLiyqJyiJiQ_Epju5nH11O8ESeP2Lu_sKS",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sistemas de numeração, álgebra de Boole, simplificação, lógica combinatória e sequencial.",
+      "published": true
+    },
+    {
+      "code": "15241260",
+      "playlist_id": "PLfdR3_dt2rbcPf-4Te36zw98P4DFKVNKm",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sistemas digitais (UnB): bits, operações e teoremas booleanos, circuitos.",
+      "published": true
+    },
+    {
+      "code": "15241261",
+      "playlist_id": "PLaKsFg9AIvPpajuGT8uIw9K_yCaZ9PqG8",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Comunicação interpessoal: processo, elementos, estilos, barreiras e comunicação em público.",
+      "published": true
+    },
+    {
+      "code": "15241261",
+      "playlist_id": "PLW0Ix6kqeqiSNnWY15CxzB4ez_gwEcJlO",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Comunicação empresarial: comunicação escrita e oral, formal e informal.",
+      "published": true
+    },
+    {
+      "code": "15241262",
+      "playlist_id": "PLHz_AreHm4dkqe2aR0tQK74m8SFe-aGsY",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Programação orientada a objetos em Java: classes, objetos, encapsulamento, herança, polimorfismo.",
+      "published": true
+    },
+    {
+      "code": "15241262",
+      "playlist_id": "PL_JAaU8k6DQXxJ_HL_kiy8_jXzGs6e6EH",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Algoritmos e estruturas de dados (USP): arranjos, listas, complexidade, ordenação.",
+      "published": true
+    },
+    {
+      "code": "15241263",
+      "playlist_id": "PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "SQL com MySQL: criação de bases, tabelas, consultas, chaves.",
+      "published": true
+    },
+    {
+      "code": "15241263",
+      "playlist_id": "PLg5-aZqPjMmAo-kX-1l6BQS_yIIObGc3C",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Modelação relacional: entidades, relacionamentos, normalização.",
+      "published": true
+    },
+    {
+      "code": "15241264",
+      "playlist_id": "PLptGVz3Mchw7v9WDKCGvfR1Qzkl5BKGPV",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Física 3: carga, campo e potencial elétrico, Gauss, condensadores, campo magnético, Ampère, indução, Maxwell.",
+      "published": true
+    },
+    {
+      "code": "15241264",
+      "playlist_id": "PLFai7UQvyStllMmfmkQ8Y1IIGL-HT6I4L",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Lei de Ampère, fluxo magnético, circuitos magnéticos.",
+      "published": true
+    },
+    {
+      "code": "15241265",
+      "playlist_id": "PL2eNU94rB3R6hRXe4pVM79YA443yx8ble",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Eletrónica analógica I: semicondutores, junção PN, díodos, BJT e FET.",
+      "published": true
+    },
+    {
+      "code": "15241265",
+      "playlist_id": "PLfdR3_dt2rbciXfngnbtg1XyITPmxc22B",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Eletrónica (UnB): componentes, circuitos equivalentes, díodos e transístores.",
+      "published": true
+    },
+    {
+      "code": "140064377",
+      "playlist_id": "PL2ozrwYLdXngdyPkkjbVg2hMnWyhcMYPC",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Transformada de Laplace: propriedades, inversa, aplicação a EDO e circuitos.",
+      "published": true
+    },
+    {
+      "code": "140064377",
+      "playlist_id": "PLxI8Can9yAHd-4h2WJ5iD1mPHsgJo_N6J",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Cálculo IV (UNIVESP): sucessões, séries, séries de Fourier.",
+      "published": true
+    },
+    {
+      "code": "15241266",
+      "playlist_id": "PLLD5p4BxNubjQKGyStArqUf0ua2wZdmiU",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Microprocessadores e microcontroladores: arquitetura, máquinas de estado, programação.",
+      "published": true
+    },
+    {
+      "code": "15241266",
+      "playlist_id": "PLxI8Can9yAHfYu7ZxKykXftYGehN7p-xI",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistemas embarcados (UNIVESP): projeto e implementação de sistemas embebidos.",
+      "published": true
+    },
+    {
+      "code": "15241267",
+      "playlist_id": "PLL8fMK6502iyAdqZqOrGl-RWJm62SSGdx",
+      "ord": 1,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "CLP/PLC: tipos, características, programação em Ladder, partida de motores.",
+      "published": true
+    },
+    {
+      "code": "15241267",
+      "playlist_id": "PLgquJaWag0X5iQpqX7oENeCMhLA5as9bG",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Programação de CLP: contadores, temporizadores, bobinas set/reset.",
+      "published": true
+    },
+    {
+      "code": "15241269",
+      "playlist_id": "PL1tqcPAgeqOP8oZgpsGLTAnTEs2yO-jH0",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Simulação SPICE com LTspice: análise transitória, AC, varrimento DC.",
+      "published": true
+    },
+    {
+      "code": "15241269",
+      "playlist_id": "PLP6_ek05fAYfNDPXFyAZ4NfIfAwkJmMWg",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Desenho de esquemáticos e PCB em KiCad.",
+      "published": true
+    },
+    {
+      "code": "15241270",
+      "playlist_id": "PLrOyM49ctTx8HWnxWRBtKrfcuf7ew_3nm",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística descritiva, probabilidades, distribuições, estimação, testes de hipóteses.",
+      "published": true
+    },
+    {
+      "code": "15241270",
+      "playlist_id": "PLxI8Can9yAHevxab8uTsc_pPzDuL7_i3l",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Estatística e probabilidade (UNIVESP).",
+      "published": true
+    },
+    {
+      "code": "15241272",
+      "playlist_id": "PLALrL4i0Pz6AlgdkEphL8jvUP-mT_JA5s",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Análise de sistemas lineares (UFMG): sinais contínuos e discretos, SLIT, convolução, Fourier.",
+      "published": true
+    },
+    {
+      "code": "15241272",
+      "playlist_id": "PLNmYb1mcnj-FqrIses5J3Q-ztgnnwBJum",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Sinais e sistemas: operações com sinais, sistemas contínuos, séries e transformada de Fourier.",
+      "published": true
+    },
+    {
+      "code": "15241268",
+      "playlist_id": "PL3kgjnl3DVXT9H6tP59wqU5pe1ieLP5BY",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Comunicação I: sistemas de comunicação, sinais, Fourier, modulação analógica AM/DSB/SSB/FM.",
+      "published": true
+    },
+    {
+      "code": "15241268",
+      "playlist_id": "PLHyF6EJ7lXywrH1nSFrFwdvTDp2AFGbHO",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistemas de comunicação I: ganhos, dB/dBm, potência, transmissão.",
+      "published": true
+    },
+    {
+      "code": "15241271",
+      "playlist_id": "PL3kgjnl3DVXTkuhrlnpKKNjm7mtXRpd9g",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Ondas e linhas: ondas viajantes, equações de Maxwell, linhas de transmissão.",
+      "published": true
+    },
+    {
+      "code": "15241271",
+      "playlist_id": "PLe4JDF2-tbFbEeUkpl-iHmj1VG6XJZoyP",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Propagação e antenas: ondas planas, reflexão/refração, ligações rádio e por satélite.",
+      "published": true
+    },
+    {
+      "code": "15241273",
+      "playlist_id": "PLRtcUuTO2SAQp7VISlLsYIqQa2KeQwfCx",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Teoria das comunicações II: conversão A/D, PCM, sistemas de comunicação digital, modulações.",
+      "published": true
+    },
+    {
+      "code": "15241273",
+      "playlist_id": "PLOzRYVm0a65dhUUuWow3dmimcgOisQn4I",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "NPTEL IIT Bombay — Principles of Digital Communications: modulações M-árias, espalhamento, OFDM.",
+      "published": true
+    },
+    {
+      "code": "15241274",
+      "playlist_id": "PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "HTML5 e CSS3: estrutura de páginas e estilos (bloco 2 da UC).",
+      "published": true
+    },
+    {
+      "code": "15241274",
+      "playlist_id": "PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior (introdutório)",
+      "match": "PHP moderno: processamento no servidor (bloco 4 da UC).",
+      "published": true
+    },
+    {
+      "code": "15241275",
+      "playlist_id": "PLIHE326iMCHCyfJVUz5c-tRSIpMF1400F",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Amplificadores operacionais: circuitos lineares e não lineares, comparadores, filtros, osciladores.",
+      "published": true
+    },
+    {
+      "code": "15241275",
+      "playlist_id": "PLX4nFyRPk4ogTSbh1AXiEjeZT21T4GdY2",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Eletrónica analógica II (CEFET-MG): amplificadores multiestágio, de potência, realimentação.",
+      "published": true
+    },
+    {
+      "code": "15241276",
+      "playlist_id": "PLoucIh_I7rD2Z2EJ1XydBflcknM3w0kh8",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Redes de computadores e a Internet (Kurose): camadas, protocolos, ligação de dados, rede.",
+      "published": true
+    },
+    {
+      "code": "15241276",
+      "playlist_id": "PLG_7LYUryUI1coU_8JZffCHspvDwZUbcC",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior (introdutório)",
+      "match": "Redes de computadores do zero: meios de transmissão, topologias, modelos de referência.",
+      "published": true
+    },
+    {
+      "code": "15241277",
+      "playlist_id": "PLe4JDF2-tbFZUZ3aQ4NK4S5KtPeWpNBHE",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistemas de telecomunicações: atenuação, dB/dBm/dBW, linhas, fibra ótica e ligações por satélite.",
+      "published": true
+    },
+    {
+      "code": "140064379",
+      "playlist_id": "PLxI8Can9yAHc__8D7Va0KQuklpKmuqXwo",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Administração I (UNIVESP): conceitos de gestão, planeamento estratégico, organização.",
+      "published": true
+    },
+    {
+      "code": "140064379",
+      "playlist_id": "PLxI8Can9yAHckoLD-Wwso-iCfxePLDWqI",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Gestão de projetos (UNIVESP): planeamento de atividades, recursos e custos, controlo.",
+      "published": true
+    },
+    {
+      "code": "15241278",
+      "playlist_id": "PLe4JDF2-tbFbEeUkpl-iHmj1VG6XJZoyP",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Ligações rádio (feixes hertzianos), propagação, desvanecimento e ligações por satélite.",
+      "published": true
+    },
+    {
+      "code": "15241278",
+      "playlist_id": "PLTgNKd4RxFTY_rhPBYyFJ-qVwMHNgebJe",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "NPTEL (IIT Kanpur) — comunicações sem fio modernas: CDMA, MIMO, OFDM, desvanecimento.",
+      "published": true
+    },
+    {
+      "code": "15241279",
+      "playlist_id": "PL70batOF3D1nVqFUexrZ4xVMB3CQuU3LY",
+      "ord": 1,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Fundamentos da robótica industrial: movimentação de juntas, referenciais, programação.",
+      "published": true
+    },
+    {
+      "code": "15241279",
+      "playlist_id": "PLBP0svE-0jhkoQASb3iBfHV8c4i8w4jz4",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Automação industrial (NERo/UFV): lógica, automatismos, sensores e atuadores.",
+      "published": true
+    },
+    {
+      "code": "15241280",
+      "playlist_id": "PLFai7UQvyStkfU_i8KXQre-k32CnokitN",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Circuitos trifásicos: estrela/triângulo, sistemas equilibrados e desequilibrados, potências.",
+      "published": true
+    },
+    {
+      "code": "15241280",
+      "playlist_id": "PLFai7UQvyStllMmfmkQ8Y1IIGL-HT6I4L",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Circuitos magnéticos: Ampère, fluxo, relutância, indutância.",
+      "published": true
+    },
+    {
+      "code": "15241282",
+      "playlist_id": "PLwBW7b8ObY-DsjCqQHWpN9wbcKXi-nTro",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Instalações elétricas: projeto residencial, cargas, aterramento, proteção.",
+      "published": false
+    },
+    {
+      "code": "15241281",
+      "playlist_id": "PLfp0Bi77yZFj2vzUS8L52YCMkp4idvw8d",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Controlo de sistemas dinâmicos (UFC Sobral): modelação, função de transferência, resposta, estabilidade, lugar das raízes, Bode.",
+      "published": true
+    },
+    {
+      "code": "15241281",
+      "playlist_id": "PLxI8Can9yAHfta-cPDXWwv0-_EQObW_XC",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Controle e automação (UNIVESP): modelos dinâmicos de sistemas mecânicos e elétricos.",
+      "published": true
+    },
+    {
+      "code": "15241283",
+      "playlist_id": "PLIsM5DcYGb8KTPOzbhTtfw3bjGQNRBZRK",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Eletrónica de potência (UFC): semicondutores de potência, retificadores, conversores.",
+      "published": true
+    },
+    {
+      "code": "15241283",
+      "playlist_id": "PL-1UOgKEtOdaI-G8BN4FJdprMDcH5FyWs",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Conversores Buck, Boost e Buck-Boost, PWM, projeto de magnéticos (CEFET-MG).",
+      "published": true
+    },
+    {
+      "code": "15241284",
+      "playlist_id": "PLmho8Rcnd60cKFwUGIPqMZvwdpOVIbFM6",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Energias renováveis e planeamento energético (USP): transição energética, análise técnico-económica, conversão.",
+      "published": true
+    },
+    {
+      "code": "15241285",
+      "playlist_id": "PLaACpLKadqlBQW0hZxSTu6lqZDcBbjcrD",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Máquinas elétricas: fundamentos, transformadores, campo girante, máquinas de indução.",
+      "published": true
+    },
+    {
+      "code": "15241285",
+      "playlist_id": "PLd1PTE_PgqFQlopCmMoWnHBhVvtvlcsA_",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Máquinas elétricas: princípios, transformadores, fundamentos de máquinas CA.",
+      "published": true
+    },
+    {
+      "code": "15241286",
+      "playlist_id": "PLotZYHQBkGgRg-CbEk47Zdjcg2N0QRB15",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Sistema elétrico de potência: fluxo de potência, matriz de admitâncias, sistema por unidade.",
+      "published": true
+    },
+    {
+      "code": "15241286",
+      "playlist_id": "PLPZbZj6r50EY-i8tEvb5AWryyxMuuvldy",
+      "ord": 2,
+      "confidence": "média",
+      "level": "técnico",
+      "match": "Linhas de transmissão: parâmetros, capacidade, proteção.",
+      "published": true
+    },
+    {
+      "code": "15241287",
+      "playlist_id": "PLPZbZj6r50Ea1uQ6RRlYCdHT892xQROrI",
+      "ord": 1,
+      "confidence": "baixa",
+      "level": "técnico",
+      "match": "Subestações de alta tensão: topologia, arranjos, equipamentos.",
+      "published": false
+    },
+    {
+      "code": "15241287",
+      "playlist_id": "PLfp0Bi77yZFhuUVToL9X9egmsXN1nqeyf",
+      "ord": 2,
+      "confidence": "baixa",
+      "level": "superior",
+      "match": "Instalações elétricas industriais (UFC Sobral): projeto de subestação abrigada.",
+      "published": false
+    },
+    {
+      "code": "15241288",
+      "playlist_id": "PLaACpLKadqlDHSbaD_sslWUm13_UC5VwO",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Motor/máquina síncrona trifásica: teoria e prática, alternadores.",
+      "published": true
+    },
+    {
+      "code": "15241288",
+      "playlist_id": "PLaACpLKadqlCHVP96e0t1B-IzceTvas-0",
+      "ord": 2,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Máquinas de corrente contínua: princípio, reação do induzido, arranque e controlo de velocidade.",
+      "published": true
+    },
+    {
+      "code": "19411031",
+      "playlist_id": "PLMmiQibT0iTarJNCm8c5TYUMMxR-cZzch",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Curso de MQTT (edição 2025): publish/subscribe, tópicos, QoS, retain, sessões persistentes e implementação em ESP8266/ESP32, exatamente o protocolo de aplicação central da UC.",
+      "published": true
+    },
+    {
+      "code": "19411031",
+      "playlist_id": "PLLHo4pVI8I_o_tIRC-twzYImDhwHgpYbw",
+      "ord": 2,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "Curso básico de IoT com ESP32: leitura de sensores (temperatura, distância, som, acelerómetro) e atuadores, base prática para os projetos de captura de dados.",
+      "published": true
+    },
+    {
+      "code": "19411059",
+      "playlist_id": "PLNlPErl_v81vNINVVotsh0nYBBSp4LEgY",
+      "ord": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Jogo de plataforma 2D do zero em Godot (2025): movimento, animação de sprites, câmara, tilemaps, colisões e parallax, ou seja, a arquitetura 2D prevista na UC num motor atual e livre.",
+      "published": true
+    },
+    {
+      "code": "19411059",
+      "playlist_id": "PL-oJEh-N3A3QQ9oa_aUE95y-c4uaGubI_",
+      "ord": 2,
+      "confidence": "média",
+      "level": "introdutório",
+      "match": "Plataforma 2D do zero na versão mais recente do Godot (4.7, 2026): complementa a primeira playlist com a versão atual do motor.",
+      "published": true
+    },
+    {
+      "code": "19411028",
+      "playlist_id": "PLy72MjZHhunFbozTDgjF0sv4NXbIyaRzJ",
+      "ord": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "Aulas de Eletrónica Digital II / Projeto de Dispositivos Programáveis do IME (2020): linguagem VHDL, contadores, registos de deslocamento, máquinas de estados e exercícios resolvidos.",
+      "published": true
+    },
+    {
+      "code": "19411028",
+      "playlist_id": "PLaqM8nQGtk7ZV7ouH0HETsE0KI1DPdM9t",
+      "ord": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "Projetos de circuitos digitais em VHDL e FPGA (Prof. Erivelton Nepomuceno): representação numérica, circuitos combinacionais e sequenciais implementados em FPGA.",
+      "published": true
+    }
+  ]
+}
