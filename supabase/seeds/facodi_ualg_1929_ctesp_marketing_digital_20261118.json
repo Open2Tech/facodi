@@ -1,0 +1,1396 @@
+{
+  "batch": "facodi_ualg_1929_ctesp_marketing_digital_20261118",
+  "course": {
+    "code": "CTESP-MD",
+    "slug": "ctesp-marketing-digital",
+    "official_id": "1929",
+    "title": "CTeSP em Marketing Digital",
+    "school": "Escola Superior de Gestão, Hotelaria e Turismo",
+    "campus": "Faro",
+    "plan": "https://www.ualg.pt/curso/1929/plano",
+    "academic_year": "2026/27",
+    "ects_total": 120,
+    "semesters": 4,
+    "separate_offerings": [
+      "Marketing Digital - Portimão: oferta própria da ESGHT em Portimão, com plano à parte; não entra neste lote"
+    ]
+  },
+  "verified_on": "2026-11-18",
+  "method": "YouTube oEmbed (título e canal dono) + página da playlist (nº de vídeos)",
+  "source": "Plano 2026/27 em ualg.pt/curso/1929/plano; fichas de UC 2026/27 em academico.ualg.pt; pesquisa em facodi/pesquisa/playlists-ualg-2026-11-18 (fct-ctesp.json)",
+  "semester_convention": "semester = semestre do curso (1 a 4), como no CTESP-STI; local_semester = semestre dentro do ano",
+  "units": [
+    {
+      "code": "19291004",
+      "title": "Escrita para a Web e Storytelling",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 1,
+      "summary": "Leitura e escrita na web: características da escrita digital face aos outros media, estilo e retórica, planificação, redação e revisão de texto, escrita para a audiência-alvo e para redes sociais, e storytelling.",
+      "topics": [
+        "Escrita na web e nos outros media",
+        "Planificação, redação e revisão de texto",
+        "Storytelling"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291004&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291000",
+      "title": "Gestão e Empreendedorismo",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 2,
+      "summary": "Conceitos fundamentais de gestão, análise do ambiente externo e interno do negócio, empreendedorismo e inovação, elaboração do plano de negócios, ética empresarial, responsabilidade social e sustentabilidade.",
+      "topics": [
+        "Funções da gestão e ambiente de negócio",
+        "Empreendedorismo e inovação",
+        "Plano de negócios"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291000&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291002",
+      "title": "Informática",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 3,
+      "summary": "Tecnologias de informação, segurança informática, sistemas operativos, serviços em linha e gestão de documentos na nuvem, processamento de texto em Word avançado e apresentações em PowerPoint e alternativas livres.",
+      "topics": [
+        "Segurança informática e sistemas operativos",
+        "Computação na nuvem e partilha de documentos",
+        "Processamento de texto e apresentações"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291002&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291016",
+      "title": "Inglês Técnico",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 4,
+      "summary": "Inglês aplicado ao marketing digital, com marcas, mercados globais, comércio eletrónico, negócios digitais e marketing com IA, e gramática: tempos verbais, verbos modais, graus dos adjetivos, preposições e voz passiva.",
+      "topics": [
+        "Marcas e mercados globais",
+        "Comércio eletrónico e negócios digitais",
+        "Tempos verbais, modais e voz passiva"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291016&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291001",
+      "title": "Introdução ao Marketing",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 5,
+      "summary": "Fundamentos do marketing no contexto digital: diagnóstico, segmentação, escolha do público-alvo e posicionamento, marketing mix, planeamento e ética em marketing, dados e inteligência artificial.",
+      "topics": [
+        "Diagnóstico de marketing",
+        "Segmentação, público-alvo e posicionamento",
+        "Marketing mix e planeamento"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291001&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291003",
+      "title": "Introdução às Tecnologias Web",
+      "ects": 5,
+      "year": 1,
+      "semester": 1,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 6,
+      "summary": "História e fundamentos do desenvolvimento e do design web, introdução a HTML, CSS e JavaScript, criação e otimização de conteúdos e publicação de páginas em servidores locais e remotos.",
+      "topics": [
+        "Web development e web design",
+        "HTML, CSS e JavaScript",
+        "Publicação de páginas web"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291003&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 1,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291006",
+      "title": "Comportamento do Consumidor Online",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 7,
+      "summary": "O consumidor no contexto online: fatores internos, externos e de estilo de vida que influenciam a compra, customer journey, perfis de utilizadores e personas, e estratégias das empresas para o consumidor online.",
+      "topics": [
+        "Fatores que influenciam a compra online",
+        "Customer journey",
+        "Perfis de utilizadores e personas"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291006&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291007",
+      "title": "Design de Comunicação",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 8,
+      "summary": "Design e design de comunicação: elementos da linguagem visual, cor e tipografia, identidade visual e marca, e criação de conteúdos visuais digitais em Canva e Adobe Photoshop.",
+      "topics": [
+        "Linguagem visual, cor e tipografia",
+        "Identidade visual e marca",
+        "Conteúdos visuais em Canva e Photoshop"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291007&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291005",
+      "title": "Marketing de Conteúdos",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 9,
+      "summary": "Estratégia de marketing de conteúdos: inbound marketing, storytelling e marketing de influência, públicos e personas, pilares editoriais, formatos e canais, copywriting, planeamento editorial e medição com métricas e KPIs.",
+      "topics": [
+        "Inbound marketing e criação de valor",
+        "Personas e planeamento editorial",
+        "Métricas, KPIs e otimização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291005&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291010",
+      "title": "Search Engine Advertising",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 10,
+      "summary": "Publicidade paga nos motores de pesquisa com o Google Ads: intenção de pesquisa e leilão, estrutura e configuração de campanhas, palavras-chave e tipos de correspondência, anúncios de pesquisa responsivos, métricas e otimização.",
+      "topics": [
+        "Campanhas no Google Ads",
+        "Palavras-chave e correspondências",
+        "Anúncios, métricas e otimização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291010&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291008",
+      "title": "Search Engine Optimization",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 11,
+      "summary": "Otimização para motores de pesquisa: palavras-chave e contexto do SEO, técnicas on-page e off-page, análise da web e utilização prática da Semrush com casos reais.",
+      "topics": [
+        "Palavras-chave",
+        "SEO on-page e off-page",
+        "Análise com a Semrush"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291008&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291009",
+      "title": "Tecnologias Multimédia",
+      "ects": 5,
+      "year": 1,
+      "semester": 2,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 12,
+      "summary": "Informação multimédia e a sua aplicação ao marketing digital: imagem, áudio e vídeo digitais (conceitos, formatos, captura e edição), multimédia para a internet e conceção e gestão de projetos multimédia.",
+      "topics": [
+        "Imagem digital e modelos de cor",
+        "Áudio digital: edição e compressão",
+        "Vídeo digital: formatos e edição"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291009&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 1,
+          "semester": 2,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291018",
+      "title": "Comércio Eletrónico",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 13,
+      "summary": "Mercados eletrónicos, modelos e estratégia de negócio eletrónico, desenvolvimento de loja online, shipping, fulfilment e métodos de pagamento, métricas, plano de marketing e legislação do comércio eletrónico.",
+      "topics": [
+        "Modelos de negócio eletrónico",
+        "Loja online, logística e pagamentos",
+        "Métricas e legislação"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291018&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291013",
+      "title": "Email e Mobile Marketing",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 14,
+      "summary": "Captação e gestão de bases de dados, estratégia e planeamento de campanhas de email, testes A/B e métricas, marketing automation com workflows e lead nurturing, e mobile marketing.",
+      "topics": [
+        "Bases de dados e segmentação",
+        "Campanhas de email e testes A/B",
+        "Marketing automation e mobile marketing"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291013&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291011",
+      "title": "Gestão e Publicidade em Redes Sociais",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 15,
+      "summary": "Social media marketing: principais canais e as suas especificidades, planeamento e papel dos influenciadores, planeamento e implementação de campanhas publicitárias nas redes sociais e monitorização dos resultados.",
+      "topics": [
+        "Canais de social media e planeamento",
+        "Campanhas publicitárias nas redes sociais",
+        "Métricas e otimização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291011&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291014",
+      "title": "Métodos Quantitativos",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 16,
+      "summary": "Recolha e exploração de dados em marketing: fontes e métodos de recolha, desenho de questionários, tabelas, gráficos e medidas descritivas, análise bivariada, regressão linear simples, correlação e métodos de previsão.",
+      "topics": [
+        "Inquéritos por questionário",
+        "Estatística descritiva",
+        "Regressão linear e previsão"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291014&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291012",
+      "title": "Métricas e Web Analytics",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 17,
+      "summary": "Métricas e KPIs para a decisão em marketing digital: Google Analytics 4, rastreamento com parâmetros UTM e Google Tag Manager, funis de conversão e atribuição, e dashboards em Data Studio.",
+      "topics": [
+        "Google Analytics 4",
+        "Rastreamento com UTM e Google Tag Manager",
+        "Funis, atribuição e dashboards"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291012&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291015",
+      "title": "Plano de Marketing Digital",
+      "ects": 5,
+      "year": 2,
+      "semester": 3,
+      "local_semester": 1,
+      "option_group": null,
+      "position": 18,
+      "summary": "Integração do marketing digital na estratégia da organização: processo de planeamento online, etapas e estrutura de um plano de marketing digital, implementação, monitorização e avaliação das ações.",
+      "topics": [
+        "Planeamento de campanhas online",
+        "Estrutura do plano de marketing digital",
+        "Implementação e monitorização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291015&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 3,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    },
+    {
+      "code": "19291017",
+      "title": "Estágio",
+      "ects": 30,
+      "year": 2,
+      "semester": 4,
+      "local_semester": 2,
+      "option_group": null,
+      "position": 19,
+      "summary": "Estágio em contexto real de trabalho, com plano acordado com a empresa, em comunicação digital, email marketing, redes sociais, páginas web, multimédia e comércio eletrónico.",
+      "topics": [
+        "Plano de estágio",
+        "Prática em organização"
+      ],
+      "fuc_url": "https://academico.ualg.pt/netpa/doc?codeDiscip=19291017&anoLectivo=202627&codInstituic=6&stage=FichaUnidadeCurricular&_event=publicacaoFUC&docIsAttachment=false",
+      "placements": [
+        {
+          "role": "mandatory",
+          "group": null,
+          "year": 2,
+          "semester": 4,
+          "specialization": "Tronco Comum"
+        }
+      ],
+      "offered_both_terms": false
+    }
+  ],
+  "playlists": [
+    {
+      "id": "PLljP9Ji00uFpxq9H2zDNEq3CCJrXFP3UC",
+      "url": "https://www.youtube.com/playlist?list=PLljP9Ji00uFpxq9H2zDNEq3CCJrXFP3UC",
+      "title": "Curso de Redação na WEB",
+      "channel": "IFMA - Campus São Luís Monte Castelo",
+      "channel_url": "https://www.youtube.com/@ifma-campussaoluismontecas7310",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "redação na web (Instituto Federal do Maranhão)",
+      "tags": [
+        "Escrita para a Web e Storytelling"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLZsjaJhVZaxUplKbmnRO3F5NtFCYX5_uQ",
+      "url": "https://www.youtube.com/playlist?list=PLZsjaJhVZaxUplKbmnRO3F5NtFCYX5_uQ",
+      "title": "Fale para as pessoas te ouvirem! - Curso de Storytelling",
+      "channel": "Diolinux",
+      "channel_url": "https://www.youtube.com/@Diolinux",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "storytelling: estrutura de histórias e jornada do herói",
+      "tags": [
+        "Escrita para a Web e Storytelling"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHcbwZCGYvVLJiyOvrv4K_Nk",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHcbwZCGYvVLJiyOvrv4K_Nk",
+      "title": "Engenharia de Produção | Empreendedorismo e Inovação",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "empreendedorismo e inovação",
+      "tags": [
+        "Gestão e Empreendedorismo"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL_ro6PVmFbGJOLOcXuqvW_N4taeFjwEX3",
+      "url": "https://www.youtube.com/playlist?list=PL_ro6PVmFbGJOLOcXuqvW_N4taeFjwEX3",
+      "title": "Empreendedorismo e Plano de Negócios",
+      "channel": "Prof. Alex Nina",
+      "channel_url": "https://www.youtube.com/@ProfAlexNina",
+      "videos": 46,
+      "language": "pt-BR",
+      "description": "noções de gestão e plano de negócios",
+      "tags": [
+        "Gestão e Empreendedorismo"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLPRjOeofXKAftk5NWLmKacrrhQqc3zIqp",
+      "url": "https://www.youtube.com/playlist?list=PLPRjOeofXKAftk5NWLmKacrrhQqc3zIqp",
+      "title": "WORD BÁSICO",
+      "channel": "Sou independente digital",
+      "channel_url": "https://www.youtube.com/@souindependentedigital",
+      "videos": 21,
+      "language": "pt-BR",
+      "description": "Word: formatação e documentos",
+      "tags": [
+        "Informática"
+      ],
+      "published": false
+    },
+    {
+      "id": "PLxjKFMYkZ9Of6oHihY1s3VnGEkqzKVwM9",
+      "url": "https://www.youtube.com/playlist?list=PLxjKFMYkZ9Of6oHihY1s3VnGEkqzKVwM9",
+      "title": "[PPT] Série Como Criar Apresentações do Zero",
+      "channel": "Hashtag Treinamentos",
+      "channel_url": "https://www.youtube.com/@HashtagTreinamentos",
+      "videos": 7,
+      "language": "pt-BR",
+      "description": "PowerPoint: criar apresentações",
+      "tags": [
+        "Informática"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLMbUu4QLDhNM",
+      "url": "https://www.youtube.com/playlist?list=PLMbUu4QLDhNM",
+      "title": "Inglês para Marketing Digital",
+      "channel": "KULTIVI seu INGLÊS",
+      "channel_url": "https://www.youtube.com/@kultiviseuingles",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "inglês para marketing digital: vocabulário, anúncios, copy",
+      "tags": [
+        "Inglês Técnico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "url": "https://www.youtube.com/playlist?list=PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "title": "Business English",
+      "channel": "Learn English with Rebecca · engVid",
+      "channel_url": "https://www.youtube.com/@engvidRebecca",
+      "videos": 57,
+      "language": "en",
+      "description": "business English",
+      "tags": [
+        "Inglês Técnico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "url": "https://www.youtube.com/playlist?list=PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "title": "Marketing",
+      "channel": "Prof. Thiago Meneghel",
+      "channel_url": "https://www.youtube.com/@ProfThiagoMeneghel",
+      "videos": 44,
+      "language": "pt-BR",
+      "description": "fundamentos, segmentação, posicionamento, marketing mix",
+      "tags": [
+        "Introdução ao Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "url": "https://www.youtube.com/playlist?list=PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "title": "Marketing Estratégico: Curso Completo em 8 aulas",
+      "channel": "Líderes em Ação",
+      "channel_url": "https://www.youtube.com/@RPalma",
+      "videos": 18,
+      "language": "pt-BR",
+      "description": "marketing estratégico",
+      "tags": [
+        "Introdução ao Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "title": "Curso completo e atual de HTML5 e CSS3 - Módulo 1 de 5",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 41,
+      "language": "pt-BR",
+      "description": "HTML5 e CSS3",
+      "tags": [
+        "Introdução às Tecnologias Web"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1",
+      "title": "Curso Grátis de JavaScript e ECMAScript para Iniciantes",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 33,
+      "language": "pt-BR",
+      "description": "JavaScript",
+      "tags": [
+        "Introdução às Tecnologias Web"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "url": "https://www.youtube.com/playlist?list=PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "title": "Comportamento do Consumidor",
+      "channel": "Marina Monteiro Garcia",
+      "channel_url": "https://www.youtube.com/@MarinaMonteiroMarketing",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "comportamento do consumidor: fatores internos e externos",
+      "tags": [
+        "Comportamento do Consumidor Online"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLvmVuWAjQxv6q0TA_UVClHPbaBoI92QkT",
+      "url": "https://www.youtube.com/playlist?list=PLvmVuWAjQxv6q0TA_UVClHPbaBoI92QkT",
+      "title": "Jornada do Cliente",
+      "channel": "CS Academy",
+      "channel_url": "https://www.youtube.com/@CSAcademybr",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "jornada do cliente e personas",
+      "tags": [
+        "Comportamento do Consumidor Online"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "url": "https://www.youtube.com/playlist?list=PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "title": "Os Fundamentos do Design - Aprenda os Conceitos de Design",
+      "channel": "Chief of Design",
+      "channel_url": "https://www.youtube.com/@chiefofdesign",
+      "videos": 55,
+      "language": "pt-BR",
+      "description": "fundamentos do design: cor, tipografia, composição",
+      "tags": [
+        "Design de Comunicação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLltHgIJnfTsDS3Ok5Adsn6ywiYao6yiiP",
+      "url": "https://www.youtube.com/playlist?list=PLltHgIJnfTsDS3Ok5Adsn6ywiYao6yiiP",
+      "title": "Curso de Design Gráfico com CANVA 2026 ( GRATUITO )",
+      "channel": "Leandro Biffi",
+      "channel_url": "https://www.youtube.com/@oleandrobiffi",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "design gráfico com Canva (2026)",
+      "tags": [
+        "Design de Comunicação"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL8vXuI6zmpdjmFAMNjLzu6evwiMHeKYYI",
+      "url": "https://www.youtube.com/playlist?list=PL8vXuI6zmpdjmFAMNjLzu6evwiMHeKYYI",
+      "title": "Fundamentos de Marketing de Conteúdo: Planeje, Crie e Cresça",
+      "channel": "Kultivi",
+      "channel_url": "https://www.youtube.com/@Kultivi",
+      "videos": 15,
+      "language": "pt-BR",
+      "description": "estratégia, públicos, planeamento editorial, métricas",
+      "tags": [
+        "Marketing de Conteúdos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLkOl6dUL8gCTey7xlMu7mS_UKHMztx0ua",
+      "url": "https://www.youtube.com/playlist?list=PLkOl6dUL8gCTey7xlMu7mS_UKHMztx0ua",
+      "title": "Inbound Marketing: o que é e como fazer",
+      "channel": "Surfe Digital",
+      "channel_url": "https://www.youtube.com/@SurfeDigital",
+      "videos": 31,
+      "language": "pt-BR",
+      "description": "inbound marketing, personas, jornada",
+      "tags": [
+        "Marketing de Conteúdos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLjm8rxH__HzJ0GHp99x1_tKkeDG3-rs5n",
+      "url": "https://www.youtube.com/playlist?list=PLjm8rxH__HzJ0GHp99x1_tKkeDG3-rs5n",
+      "title": "CURSO GRATUITO DE GOOGLE ADS PARA INICIANTES",
+      "channel": "Adriano Gianini",
+      "channel_url": "https://www.youtube.com/@AdrianoGianiniAds",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "Google Ads: planeador de palavras-chave, CPC, métricas, segmentações",
+      "tags": [
+        "Search Engine Advertising"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dlkAQ8ZBGOXJTkaFewVoZW0",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dlkAQ8ZBGOXJTkaFewVoZW0",
+      "title": "Curso Grátis de Anúncios na Internet",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 42,
+      "language": "pt-BR",
+      "description": "anúncios na internet: Google e redes",
+      "tags": [
+        "Search Engine Advertising"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dn43Vrha_Ks35x4EHmYrn0q",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dn43Vrha_Ks35x4EHmYrn0q",
+      "title": "Curso prático de SEO - Módulo 2 - Conteúdo",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 17,
+      "language": "pt-BR",
+      "description": "SEO on-page: fatores de conteúdo",
+      "tags": [
+        "Search Engine Optimization"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLV7hU9BBDbaQ-j5ZeICBG7dUtOn48Zoaq",
+      "url": "https://www.youtube.com/playlist?list=PLV7hU9BBDbaQ-j5ZeICBG7dUtOn48Zoaq",
+      "title": "Free SEO Training Series",
+      "channel": "Semrush",
+      "channel_url": "https://www.youtube.com/@semrush",
+      "videos": 10,
+      "language": "en",
+      "description": "SEO, keyword research, auditoria, on-page (canal oficial Semrush)",
+      "tags": [
+        "Search Engine Optimization"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLGxmjKaC6SfnAqzAC-NIY0pOG3nOe1Eq4",
+      "url": "https://www.youtube.com/playlist?list=PLGxmjKaC6SfnAqzAC-NIY0pOG3nOe1Eq4",
+      "title": "Curso completo de edição de vídeo (2025)",
+      "channel": "Felipe Drumond ",
+      "channel_url": "https://www.youtube.com/@felipedrumond",
+      "videos": 41,
+      "language": "pt-BR",
+      "description": "vídeo digital: Adobe Premiere 2025",
+      "tags": [
+        "Tecnologias Multimédia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLZsjaJhVZaxVLmZcDb9O7w7hkDMq90MXJ",
+      "url": "https://www.youtube.com/playlist?list=PLZsjaJhVZaxVLmZcDb9O7w7hkDMq90MXJ",
+      "title": "Curso de edição de áudio com Audacity para podcasts",
+      "channel": "Diolinux",
+      "channel_url": "https://www.youtube.com/@Diolinux",
+      "videos": 8,
+      "language": "pt-BR",
+      "description": "áudio digital: captura, formatos, edição no Audacity",
+      "tags": [
+        "Tecnologias Multimédia"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "title": "Eixo de Negócios | Organizações digitais e modelos de negócios",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "organizações digitais e modelos de negócio",
+      "tags": [
+        "Comércio Eletrónico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLHz_AreHm4dkZNE5PAYc0h4iVkqBCgBZR",
+      "url": "https://www.youtube.com/playlist?list=PLHz_AreHm4dkZNE5PAYc0h4iVkqBCgBZR",
+      "title": "Curso de Loja Virtual: WooCommerce + WordPress",
+      "channel": "Curso em Vídeo",
+      "channel_url": "https://www.youtube.com/@cursoemvideo",
+      "videos": 35,
+      "language": "pt-BR",
+      "description": "loja online com WooCommerce e WordPress",
+      "tags": [
+        "Comércio Eletrónico"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLg3EheUX72H4hcFiz-Pm4dYOTSNVz4Tv2",
+      "url": "https://www.youtube.com/playlist?list=PLg3EheUX72H4hcFiz-Pm4dYOTSNVz4Tv2",
+      "title": "Email Marketing Gratuito Curso 2026 na Prática - Como Fazer Email Marketing Grátis - Email Marketing Step by Step",
+      "channel": "Email Marketing na Prática",
+      "channel_url": "https://www.youtube.com/@emailmarketingnapratica",
+      "videos": 16,
+      "language": "pt-BR",
+      "description": "email marketing com a Brevo: domínio, listas, campanhas (2026)",
+      "tags": [
+        "Email e Mobile Marketing"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLBpP7rltSIHur0hn-jnKhPA3DnCKAcHls",
+      "url": "https://www.youtube.com/playlist?list=PLBpP7rltSIHur0hn-jnKhPA3DnCKAcHls",
+      "title": "Facebook | MetaAds - Curso Gratuito",
+      "channel": "Invente | Frederico Isfer Bittencourt",
+      "channel_url": "https://www.youtube.com/@invente",
+      "videos": 78,
+      "language": "pt-BR",
+      "description": "Meta Ads: Business Manager, pixel, eventos, campanhas",
+      "tags": [
+        "Gestão e Publicidade em Redes Sociais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PL2sMBBaPF554dtorj5Gcxw6Qq5Z7Lu0Zm",
+      "url": "https://www.youtube.com/playlist?list=PL2sMBBaPF554dtorj5Gcxw6Qq5Z7Lu0Zm",
+      "title": "Curso Social Media",
+      "channel": "Social Media Marcos",
+      "channel_url": "https://www.youtube.com/@socialmediamarcos",
+      "videos": 104,
+      "language": "pt-BR",
+      "description": "gestão de redes sociais: briefing, planeamento, proposta",
+      "tags": [
+        "Gestão e Publicidade em Redes Sociais"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "url": "https://www.youtube.com/playlist?list=PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "title": "Eixo de Negócios | Estatística aplicada aos negócios",
+      "channel": "UNIVESP",
+      "channel_url": "https://www.youtube.com/@univesptv",
+      "videos": 14,
+      "language": "pt-BR",
+      "description": "estatística descritiva, amostragem, probabilidade",
+      "tags": [
+        "Métodos Quantitativos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "url": "https://www.youtube.com/playlist?list=PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "title": "Pesquisa de Marketing",
+      "channel": "Marina Monteiro Garcia",
+      "channel_url": "https://www.youtube.com/@MarinaMonteiroMarketing",
+      "videos": 6,
+      "language": "pt-BR",
+      "description": "pesquisa de marketing e desenho de questionários",
+      "tags": [
+        "Métodos Quantitativos"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLf3jBoVVznvbioWlUVIS9j-DhuQscp1u-",
+      "url": "https://www.youtube.com/playlist?list=PLf3jBoVVznvbioWlUVIS9j-DhuQscp1u-",
+      "title": "Google Analytics4",
+      "channel": "Mundo do Traqueamento",
+      "channel_url": "https://www.youtube.com/@mundodotraqueamento",
+      "videos": 37,
+      "language": "pt-BR",
+      "description": "Google Analytics 4: eventos, conversões, funis, relatórios",
+      "tags": [
+        "Métricas e Web Analytics"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLwqbwo7TpbVmfa6zefvA2COBiQ2bZ0Ex2",
+      "url": "https://www.youtube.com/playlist?list=PLwqbwo7TpbVmfa6zefvA2COBiQ2bZ0Ex2",
+      "title": "Curso de Google Tag Manager (GTM) Básico",
+      "channel": "Henrique Reis",
+      "channel_url": "https://www.youtube.com/@henriquelvreis",
+      "videos": 9,
+      "language": "pt-BR",
+      "description": "Google Tag Manager: tags, acionadores, variáveis",
+      "tags": [
+        "Métricas e Web Analytics"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "url": "https://www.youtube.com/playlist?list=PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "title": "Plano de Marketing na Prática",
+      "channel": "Líderes em Ação",
+      "channel_url": "https://www.youtube.com/@RPalma",
+      "videos": 19,
+      "language": "pt-BR",
+      "description": "plano de marketing na prática",
+      "tags": [
+        "Plano de Marketing Digital"
+      ],
+      "published": true
+    },
+    {
+      "id": "PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "url": "https://www.youtube.com/playlist?list=PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "title": "Marketing Digital do Básico ao Avançado",
+      "channel": "Welbth Orneles",
+      "channel_url": "https://www.youtube.com/@WelbthOrneles",
+      "videos": 28,
+      "language": "pt-BR",
+      "description": "marketing digital do básico ao avançado",
+      "tags": [
+        "Plano de Marketing Digital"
+      ],
+      "published": true
+    }
+  ],
+  "links": [
+    {
+      "code": "19291004",
+      "playlist_id": "PLljP9Ji00uFpxq9H2zDNEq3CCJrXFP3UC",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "redação na web (Instituto Federal do Maranhão)",
+      "published": true
+    },
+    {
+      "code": "19291004",
+      "playlist_id": "PLZsjaJhVZaxUplKbmnRO3F5NtFCYX5_uQ",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "storytelling: estrutura de histórias e jornada do herói",
+      "published": true
+    },
+    {
+      "code": "19291000",
+      "playlist_id": "PLxI8Can9yAHcbwZCGYvVLJiyOvrv4K_Nk",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "empreendedorismo e inovação",
+      "published": true
+    },
+    {
+      "code": "19291000",
+      "playlist_id": "PL_ro6PVmFbGJOLOcXuqvW_N4taeFjwEX3",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "noções de gestão e plano de negócios",
+      "published": true
+    },
+    {
+      "code": "19291002",
+      "playlist_id": "PLPRjOeofXKAftk5NWLmKacrrhQqc3zIqp",
+      "ord": null,
+      "research_order": 1,
+      "confidence": "baixa",
+      "level": "introdutório",
+      "match": "Word: formatação e documentos",
+      "published": false
+    },
+    {
+      "code": "19291002",
+      "playlist_id": "PLxjKFMYkZ9Of6oHihY1s3VnGEkqzKVwM9",
+      "ord": 1,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "PowerPoint: criar apresentações",
+      "published": true
+    },
+    {
+      "code": "19291016",
+      "playlist_id": "PLMbUu4QLDhNM",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "inglês para marketing digital: vocabulário, anúncios, copy",
+      "published": true
+    },
+    {
+      "code": "19291016",
+      "playlist_id": "PLxSz4mPLHWDb5ilkSD089gY2UwKiP72S7",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "business English",
+      "published": true
+    },
+    {
+      "code": "19291001",
+      "playlist_id": "PLQn0pR7M5E1KvUYXEu2iCTTzeoOIJUflg",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "fundamentos, segmentação, posicionamento, marketing mix",
+      "published": true
+    },
+    {
+      "code": "19291001",
+      "playlist_id": "PLIIW4N3aCKkSHFTDM14yT7TyOBhvElmH-",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "marketing estratégico",
+      "published": true
+    },
+    {
+      "code": "19291003",
+      "playlist_id": "PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "HTML5 e CSS3",
+      "published": true
+    },
+    {
+      "code": "19291003",
+      "playlist_id": "PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "introdutório",
+      "match": "JavaScript",
+      "published": true
+    },
+    {
+      "code": "19291006",
+      "playlist_id": "PLd8GFiZJX0f3-zntCmKfUfRuEVxUtXDwr",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "superior",
+      "match": "comportamento do consumidor: fatores internos e externos",
+      "published": true
+    },
+    {
+      "code": "19291006",
+      "playlist_id": "PLvmVuWAjQxv6q0TA_UVClHPbaBoI92QkT",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "jornada do cliente e personas",
+      "published": true
+    },
+    {
+      "code": "19291007",
+      "playlist_id": "PLwgL9IEA0PxUl0eXSqqI_78rvlog15lHl",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "fundamentos do design: cor, tipografia, composição",
+      "published": true
+    },
+    {
+      "code": "19291007",
+      "playlist_id": "PLltHgIJnfTsDS3Ok5Adsn6ywiYao6yiiP",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "design gráfico com Canva (2026)",
+      "published": true
+    },
+    {
+      "code": "19291005",
+      "playlist_id": "PL8vXuI6zmpdjmFAMNjLzu6evwiMHeKYYI",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "estratégia, públicos, planeamento editorial, métricas",
+      "published": true
+    },
+    {
+      "code": "19291005",
+      "playlist_id": "PLkOl6dUL8gCTey7xlMu7mS_UKHMztx0ua",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "inbound marketing, personas, jornada",
+      "published": true
+    },
+    {
+      "code": "19291010",
+      "playlist_id": "PLjm8rxH__HzJ0GHp99x1_tKkeDG3-rs5n",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "Google Ads: planeador de palavras-chave, CPC, métricas, segmentações",
+      "published": true
+    },
+    {
+      "code": "19291010",
+      "playlist_id": "PLHz_AreHm4dlkAQ8ZBGOXJTkaFewVoZW0",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "anúncios na internet: Google e redes",
+      "published": true
+    },
+    {
+      "code": "19291008",
+      "playlist_id": "PLHz_AreHm4dn43Vrha_Ks35x4EHmYrn0q",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "SEO on-page: fatores de conteúdo",
+      "published": true
+    },
+    {
+      "code": "19291008",
+      "playlist_id": "PLV7hU9BBDbaQ-j5ZeICBG7dUtOn48Zoaq",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "SEO, keyword research, auditoria, on-page (canal oficial Semrush)",
+      "published": true
+    },
+    {
+      "code": "19291009",
+      "playlist_id": "PLGxmjKaC6SfnAqzAC-NIY0pOG3nOe1Eq4",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "vídeo digital: Adobe Premiere 2025",
+      "published": true
+    },
+    {
+      "code": "19291009",
+      "playlist_id": "PLZsjaJhVZaxVLmZcDb9O7w7hkDMq90MXJ",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "áudio digital: captura, formatos, edição no Audacity",
+      "published": true
+    },
+    {
+      "code": "19291018",
+      "playlist_id": "PLxI8Can9yAHc6SJQ_R2Sspivu5sEuSBPq",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "organizações digitais e modelos de negócio",
+      "published": true
+    },
+    {
+      "code": "19291018",
+      "playlist_id": "PLHz_AreHm4dkZNE5PAYc0h4iVkqBCgBZR",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "loja online com WooCommerce e WordPress",
+      "published": true
+    },
+    {
+      "code": "19291013",
+      "playlist_id": "PLg3EheUX72H4hcFiz-Pm4dYOTSNVz4Tv2",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "email marketing com a Brevo: domínio, listas, campanhas (2026)",
+      "published": true
+    },
+    {
+      "code": "19291011",
+      "playlist_id": "PLBpP7rltSIHur0hn-jnKhPA3DnCKAcHls",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "técnico-profissional",
+      "match": "Meta Ads: Business Manager, pixel, eventos, campanhas",
+      "published": true
+    },
+    {
+      "code": "19291011",
+      "playlist_id": "PL2sMBBaPF554dtorj5Gcxw6Qq5Z7Lu0Zm",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "gestão de redes sociais: briefing, planeamento, proposta",
+      "published": true
+    },
+    {
+      "code": "19291014",
+      "playlist_id": "PLxI8Can9yAHfXPQeS5X2Y6H7n__nTE4W0",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "alta",
+      "level": "superior",
+      "match": "estatística descritiva, amostragem, probabilidade",
+      "published": true
+    },
+    {
+      "code": "19291014",
+      "playlist_id": "PLd8GFiZJX0f14P22DnGIvd3afgIvPt8kJ",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "superior",
+      "match": "pesquisa de marketing e desenho de questionários",
+      "published": true
+    },
+    {
+      "code": "19291012",
+      "playlist_id": "PLf3jBoVVznvbioWlUVIS9j-DhuQscp1u-",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "Google Analytics 4: eventos, conversões, funis, relatórios",
+      "published": true
+    },
+    {
+      "code": "19291012",
+      "playlist_id": "PLwqbwo7TpbVmfa6zefvA2COBiQ2bZ0Ex2",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "Google Tag Manager: tags, acionadores, variáveis",
+      "published": true
+    },
+    {
+      "code": "19291015",
+      "playlist_id": "PLIIW4N3aCKkSR_ytZUu9sl9ptJkEudaYn",
+      "ord": 1,
+      "research_order": 1,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "plano de marketing na prática",
+      "published": true
+    },
+    {
+      "code": "19291015",
+      "playlist_id": "PLB144lTsf8UqBT0XTNuAQlZ_EmglDccCR",
+      "ord": 2,
+      "research_order": 2,
+      "confidence": "média",
+      "level": "técnico-profissional",
+      "match": "marketing digital do básico ao avançado",
+      "published": true
+    }
+  ],
+  "application": {
+    "status": "por_aplicar",
+    "method": "Supabase MCP; o script SQL fica fora do PR, na branch scripts/facodi_ualg_1929_ctesp_marketing_digital_20261118 do fork",
+    "script_url": "https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1929_ctesp_marketing_digital_20261118/supabase/seeds/facodi_ualg_1929_ctesp_marketing_digital_20261118.sql",
+    "published_playlists": 34,
+    "published_links": 34,
+    "units": 19,
+    "excluded_policy": "não publicar ligações com confiança baixa",
+    "excluded_links": [
+      {
+        "code": "19291002",
+        "playlist_id": "PLPRjOeofXKAftk5NWLmKacrrhQqc3zIqp",
+        "confidence": "baixa"
+      }
+    ]
+  }
+}
