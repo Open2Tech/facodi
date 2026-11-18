@@ -247,6 +247,13 @@
     "hidePasswords": "Masquer les mots de passe",
     "legalNotice": "En créant un compte, vous acceptez les [Conditions d’utilisation](/terms) et confirmez avoir lu la [Politique de confidentialité](/privacy)."
   },
+  "examRevision": {
+    "title": "Session d'examens du semestre {{term}}",
+    "text_one": "Révisions : le cours de cette unité est juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "text_many": "Révisions : les {{count}} cours de cette unité sont réunis dans une liste, juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "text_other": "Révisions : les {{count}} cours de cette unité sont réunis dans une liste, juste en dessous. Utilise le carnet pour noter ce que tu dois revoir.",
+    "cta": "Revoir les cours"
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",

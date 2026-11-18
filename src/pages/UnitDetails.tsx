@@ -25,6 +25,7 @@ import { StudyVideo } from '@/components/resource/StudyVideo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
+import { ExamRevision } from '@/components/course/ExamRevision';
 import { cn } from '@/lib/utils';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { brazilianCredits, ufesElectiveGroup, unitHours } from '@/entities/course/brazilianCurriculum';
@@ -109,6 +110,8 @@ export default function UnitDetails() {
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
       <div className="mt-6"><ShareButton title={unit.title} /></div>
     </header>
+    <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
+      href={studyPath || composedPath ? '#unit-study-path' : '#unit-resources'} />
     <LearningContext focus="unit" />
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
