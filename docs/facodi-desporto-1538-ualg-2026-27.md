@@ -1,7 +1,7 @@
 # Licenciatura em Desporto, UAlg/ESEC 1538
 
 **Data:** 2026-11-18
-**Script de dados:** `supabase/seeds/facodi_ualg_1538_desporto_20261118.sql`, para aplicar via Supabase MCP como no #69. Não é uma migração.
+**Script:** [`facodi_ualg_1538_desporto_20261118.sql`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1538_desporto_20261118/supabase/seeds/facodi_ualg_1538_desporto_20261118.sql). Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72).
 **Manifesto:** `supabase/seeds/facodi_ualg_1538_desporto_20261118.json`
 **Depende de:** #67 (já integrado na `facodi`), para a página do curso mostrar os grupos de opção.
 
@@ -137,7 +137,8 @@ A coluna "Playlists" conta só as ligações que entram no script (confiança al
 
 ## Aplicação
 
-Aplicação: script em `supabase/seeds/facodi_ualg_1538_desporto_20261118.sql`, para aplicar via Supabase MCP como no #69; não é uma migração.
+Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72): [facodi_ualg_1538_desporto_20261118.sql](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1538_desporto_20261118/supabase/seeds/facodi_ualg_1538_desporto_20261118.sql), na branch `scripts/facodi_ualg_1538_desporto_20261118` do fork.
 
-O script não foi aplicado em produção. Corre numa única transação: as tabelas temporárias são `ON COMMIT DROP`. Depois de aplicado,
-o build seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap e ao `llms.txt`.
+- **Este PR não tem ficheiros `.sql`:** leva só este documento e o manifesto JSON.
+- **O script não foi aplicado em produção.** Corre numa única transação: as tabelas temporárias são `ON COMMIT DROP`.
+- **Depois de aplicado,** o build seguinte gera as páginas estáticas do curso e das UCs e acrescenta-as ao sitemap e ao `llms.txt`.
