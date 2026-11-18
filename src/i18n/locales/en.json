@@ -247,6 +247,24 @@
     "hidePasswords": "Hide passwords",
     "legalNotice": "By creating an account, you accept the [Terms of Use](/terms) and confirm you have read the [Privacy Policy](/privacy)."
   },
+  "myCourse": {
+    "eyebrow": "Your course",
+    "pickTitle": "Which course are you taking?",
+    "pickText": "Pick the course and, if you like, the year. Your dashboard then lists that year's curricular units, each with the videos and readings it already has.",
+    "course": "Course",
+    "coursePlaceholder": "Choose a course",
+    "year": "Year",
+    "allYears": "All years",
+    "save": "Save",
+    "byTopic": "I'd rather explore by topic",
+    "clear": "Stop showing the course",
+    "change": "Change",
+    "semester": "Semester {{value}}",
+    "noUnits": "No units have been published for this choice yet.",
+    "allUnits_one": "See the unit",
+    "allUnits_many": "See all {{count}} units",
+    "allUnits_other": "See all {{count}} units"
+  },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
     "description": "Your space to find the next path and look after your account.",

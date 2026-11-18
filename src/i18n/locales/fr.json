@@ -247,6 +247,24 @@
     "hidePasswords": "Masquer les mots de passe",
     "legalNotice": "En créant un compte, vous acceptez les [Conditions d’utilisation](/terms) et confirmez avoir lu la [Politique de confidentialité](/privacy)."
   },
+  "myCourse": {
+    "eyebrow": "Ton cursus",
+    "pickTitle": "Quel cursus suis-tu ?",
+    "pickText": "Choisis le cursus et, si tu veux, l'année. Ton tableau de bord affiche alors les unités de cette année, chacune avec les vidéos et lectures déjà disponibles.",
+    "course": "Cursus",
+    "coursePlaceholder": "Choisis un cursus",
+    "year": "Année",
+    "allYears": "Toutes les années",
+    "save": "Enregistrer",
+    "byTopic": "Je préfère explorer par thème",
+    "clear": "Ne plus afficher le cursus",
+    "change": "Changer",
+    "semester": "Semestre {{value}}",
+    "noUnits": "Aucune unité publiée pour ce choix pour l'instant.",
+    "allUnits_one": "Voir l'unité",
+    "allUnits_many": "Voir les {{count}} unités",
+    "allUnits_other": "Voir les {{count}} unités"
+  },
   "dashboard": {
     "welcome": "Bonjour, {{name}}.",
     "description": "Votre espace pour trouver le prochain chemin et gérer votre compte.",

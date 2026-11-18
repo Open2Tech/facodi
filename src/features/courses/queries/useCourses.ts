@@ -8,8 +8,8 @@ import { canAccessFacodiRoute } from '@/entities/facodi/access';
 export function usePublicCourses() {
   return useQuery({ queryKey: courseKeys.publicCourses(), queryFn: ({ signal }) => listPublicCourses(signal), staleTime: 5 * 60_000 });
 }
-export function useUnits(params: CatalogParams) {
-  return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal), placeholderData: keepPreviousData });
+export function useUnits(params: CatalogParams, enabled = true) {
+  return useQuery({ queryKey: courseKeys.units(params), queryFn: ({ signal }) => listUnits(params, signal), placeholderData: keepPreviousData, enabled });
 }
 export function useUnitFacets() {
   return useQuery({ queryKey: courseKeys.unitFacets(), queryFn: ({ signal }) => getUnitFacets(signal), staleTime: 5 * 60_000 });
