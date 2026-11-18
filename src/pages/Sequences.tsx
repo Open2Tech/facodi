@@ -9,6 +9,7 @@ import { CatalogHeader, CatalogToolbar } from '@/components/catalog/CatalogToolb
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
 import { SequenceList } from '@/components/sequence/SequenceList';
+import { MonthlyChallenge } from '@/components/sequence/MonthlyChallenge';
 import { useSequences } from '@/features/sequences/useSequences';
 import { Pagination } from '@/components/course/Pagination';
 import { PAGE_SIZE } from '@/entities/course/course.types';
@@ -35,6 +36,7 @@ export default function Sequences() {
     <PageSeo {...staticPageMeta('/sequences', { title: t('sequences.title'), description: t('sequences.description') })} />
     <CatalogHeader title={t('sequences.title')} description={t('sequences.description')} total={query.data?.length} />
     <LearningContext focus="sequence" />
+    <MonthlyChallenge className="mb-8" />
     <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t('sequences.notice')}</p>
     <CatalogToolbar
       search={search}
