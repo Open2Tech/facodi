@@ -4,6 +4,7 @@
 **Manifesto:** `supabase/seeds/facodi_ualg_1440_economia_20261118.json`
 **Script:** [`facodi_ualg_1440_economia_20261118.sql`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1440_economia_20261118/supabase/seeds/facodi_ualg_1440_economia_20261118.sql), na branch `scripts/facodi_ualg_1440_economia_20261118` do fork. Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72).
 **Depende de:** #67, já integrado, para a página do curso mostrar os grupos de opção à parte das obrigatórias.
+**Ordem de aplicação:** aplicar este script **antes do #82** (Matemática Aplicada, `LMAEG`), que partilha as UCs 14401021 e 14401022. A pré-verificação deste script aborta se esses códigos já pertencerem a outro curso; o #82 já indica "aplicar depois do #74".
 
 ## Identidade
 
@@ -141,6 +142,9 @@ que não está no repositório rejeitar alguma linha, a pós-verificação abort
 
 Script para aplicar via Supabase MCP (fora do PR, como pediste no #66/#72):
 [`supabase/seeds/facodi_ualg_1440_economia_20261118.sql`](https://github.com/guguscheidt/facodi/blob/scripts/facodi_ualg_1440_economia_20261118/supabase/seeds/facodi_ualg_1440_economia_20261118.sql), na branch `scripts/facodi_ualg_1440_economia_20261118` do fork.
+
+**Aplicar antes do #82** (Matemática Aplicada), que partilha as UCs 14401021 e 14401022: a pré-verificação deste script
+aborta se esses códigos já pertencerem a outro curso.
 
 O PR não tem nenhum ficheiro `.sql`: leva só este documento e o manifesto. O script não foi aplicado em produção.
 Só tem as ligações de confiança alta ou média; as 2 de confiança baixa ficam no manifesto com `"published": false`.
