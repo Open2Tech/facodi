@@ -8,7 +8,7 @@ O perfil `gustavo-scheidt` já existe na base, como rascunho pendente ("Planeame
 
 | Campo | Valor |
 |---|---|
-| Papel | Estratégia, comunicação e crescimento |
+| Papel | Estratégia, comunicação e growth |
 | Título | Levar a FACODI a quem ainda não sabe que ela existe. |
 | Descrição | O Gustavo cuida da estratégia, da aquisição e da comunicação da FACODI: redes sociais, parcerias e o caminho para a plataforma chegar a mais estudantes. |
 | Fonte pública | https://www.linkedin.com/in/gustavoscheidt |
