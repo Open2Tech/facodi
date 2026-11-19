@@ -221,10 +221,10 @@ tabular figures so columns line up.
   grids are used only where thumbnails carry information.
 - Editorial pages use paginated lists, searchable association pickers and
   stacked typed forms.
-- The header is sticky and fits on one line. Below `xl` the navigation
-  collapses into an inline disclosure panel. With a session, account links
-  (personal area, editor, admin) shrink to icon links between `xl` and `2xl`,
-  keeping the name as the accessible label and tooltip.
+- The header is sticky and stays on one line. Below `xl`, navigation opens
+  in a modal sheet with its own scroll area. At `xl` and above, public links
+  use text labels and account actions share a labelled dropdown, independent
+  of role. Language codes keep desktop preferences compact.
 - Mobile: stacked forms; tables scroll inside their container.
 - Legal pages use `LegalDocument`: a sticky numbered index (a `<details>` on
   mobile), a bordered review note, an optional summary box, numbered sections
@@ -285,8 +285,9 @@ all have sharp corners. The only curves come from icons and the F favicon.
 
 ### Navigation
 - The header shows the FACODI wordmark with a cyan full stop and the F favicon.
-  Links are icon plus label; the active link is a sun block. Mobile uses an
-  outline icon button that toggles the inline navigation panel.
+  Desktop links use text labels; mobile links pair icons with labels. The active
+  link is a sun block. Mobile uses an outline icon button to open a labelled
+  sheet with focus trapping, Escape dismissal and scrollable navigation.
 - The footer is an ink band with the sun rule, holding institutional and
   legal links.
 
