@@ -99,9 +99,9 @@ assert.equal(wrangler.assets?.not_found_handling, 'none',
   'Unmatched paths must reach the Worker, which serves the SPA shell (200) or a real 404');
 assert.deepEqual(wrangler.assets?.run_worker_first, ['/'],
   'Only "/" runs the Worker first (home snapshot); every other static file is served directly');
-assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
+assert.ok(workerHeaders.includes('https://:version.:subdomain.workers.dev/*') &&
   workerHeaders.includes('X-Robots-Tag: noindex, nofollow, noarchive'),
-  'Cloudflare Workers preview host must not be indexed');
+  'All Cloudflare Workers branch preview hosts must be noindexed');
 for (const rule of ['X-Content-Type-Options: nosniff','X-Frame-Options: DENY',
   'Referrer-Policy: strict-origin-when-cross-origin']) {
   assert.ok(workerHeaders.includes(rule), `Missing Cloudflare security header: ${rule}`);
