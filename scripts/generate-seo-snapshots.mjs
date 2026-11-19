@@ -6,6 +6,7 @@ import {
   ABOUT_FAQ, aboutMeta, coursePath, courseMeta, homeMeta, metaDescription, publicResourcePath, resourceMeta, sequenceMeta,
   sequencePath, staticPageMeta, unitMeta, unitPagePath,
 } from '../src/shared/seo/seo.ts';
+import { HOME_SNAPSHOT_FILE } from '../src/worker/routes.ts';
 import {
   assertCompleteSequenceSnapshot, exactSnapshotCount, renderLlmsTxt, renderSitemap, renderSnapshotHtml, snapshotFilePath,
 } from '../src/shared/seo/snapshots.ts';
@@ -288,6 +289,18 @@ for (const page of pages.values()) {
   if (page.path !== '/') await writeSnapshot(shell, page, mergeSections(sections.get(page.path)));
 }
 
+// The home snapshot cannot live in index.html: that file is also the SPA shell every app route
+// falls back to. It is written aside and served for "/" only by the Worker (src/worker).
+const home = pages.get('/');
+if (home) {
+  const learn = staticPages.filter(page => ['/courses', '/units', '/resources', '/sequences', '/how-it-works', '/about'].includes(page.path))
+    .map(page => ({ name: page.title, path: page.path }));
+  await writeFile(path.join(outputDirectory, HOME_SNAPSHOT_FILE), renderSnapshotHtml(shell, home, [
+    { title: pt.footer.learn, links: learn },
+    { title: pt.nav.courses, links: llmsCourses.map(({ name, path: href }) => ({ name, path: href })) },
+  ]), 'utf8');
+}
+
 const staticLink = page => ({ name: page.title, path: page.path, note: page.description });
 const llmsTxt = renderLlmsTxt(
   { summary: pt.brand.description, details: [pt.about.seaeuScope, pt.about.principles.open.text, pt.about.principles.curated.text] },
@@ -300,4 +313,4 @@ const llmsTxt = renderLlmsTxt(
 );
 await writeFile(path.join(outputDirectory, 'llms.txt'), llmsTxt, 'utf8');
 await writeFile(path.join(outputDirectory, 'sitemap.xml'), renderSitemap([...pages.keys()]), 'utf8');
-console.log(`FACODI SEO snapshots: wrote ${pages.size - 1} HTML snapshots, ${pages.size} sitemap URLs and llms.txt.`);
+console.log(`FACODI SEO snapshots: wrote ${pages.size - 1} HTML snapshots plus the home (${HOME_SNAPSHOT_FILE}), ${pages.size} sitemap URLs and llms.txt.`);
