@@ -14,7 +14,9 @@ para cada alteração**, evitando os limites do plano atual.
 
 O domínio canónico `https://facodi.com` (apex; `www.facodi.com` não tem DNS) continua separado do ambiente
 de desenvolvimento. O Worker serve os assets estáticos de `dist/` através
-de [`wrangler.jsonc`](wrangler.jsonc), com fallback para as rotas SPA e
+de [`wrangler.jsonc`](wrangler.jsonc). Um Worker pequeno ([`src/worker`](src/worker)) só corre
+para `/` (snapshot da home) e para caminhos sem ficheiro estático: rotas da app recebem a SPA com
+200 e o resto um 404 real. Mantém o
 cabeçalho `X-Robots-Tag: noindex` no preview. Requer apenas as variáveis
 públicas de build `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`;
 nunca incluir uma chave `service_role` no frontend.

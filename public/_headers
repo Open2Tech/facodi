@@ -6,8 +6,9 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-# Workers preview stays accessible for QA but must not compete with the canonical site.
-https://facodi.marcelo-0d6.workers.dev/*
+# All Workers previews stay accessible for QA without competing with the canonical site.
+# Cloudflare static-assets named placeholders also cover branch-specific preview URLs.
+https://:version.:subdomain.workers.dev/*
   X-Robots-Tag: noindex, nofollow, noarchive
 
 # Private and authentication routes must remain unindexed even for crawlers that do not run the SPA.
