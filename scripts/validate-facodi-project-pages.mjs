@@ -91,8 +91,14 @@ assert.equal(wrangler.name, 'facodi', 'Cloudflare must deploy the FACODI Worker'
 assert.equal(wrangler.assets?.directory, './dist', 'Cloudflare must serve the Vite dist assets');
 assert.ok(wrangler.previews && typeof wrangler.previews === 'object',
   'Workers Builds branch previews (`wrangler preview`) require a previews block');
-assert.equal(wrangler.assets?.not_found_handling, 'single-page-application',
-  'Client-side routes and Auth callbacks require Cloudflare SPA fallback');
+// The SPA fallback lives in the Worker (src/worker): app routes get the shell with 200, unknown
+// paths a real 404, and "/" the home snapshot. Static files are still served without the Worker.
+assert.equal(wrangler.main, 'src/worker/index.ts', 'Cloudflare must run the FACODI routing Worker');
+assert.equal(wrangler.assets?.binding, 'ASSETS', 'The routing Worker reads the shell through the ASSETS binding');
+assert.equal(wrangler.assets?.not_found_handling, 'none',
+  'Unmatched paths must reach the Worker, which serves the SPA shell (200) or a real 404');
+assert.deepEqual(wrangler.assets?.run_worker_first, ['/'],
+  'Only "/" runs the Worker first (home snapshot); every other static file is served directly');
 assert.ok(workerHeaders.includes('https://facodi.marcelo-0d6.workers.dev/*') &&
   workerHeaders.includes('X-Robots-Tag: noindex, nofollow, noarchive'),
   'Cloudflare Workers preview host must not be indexed');
