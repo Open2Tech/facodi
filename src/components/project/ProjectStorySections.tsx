@@ -1,3 +1,4 @@
+import { profilePhoto } from '@/entities/project/profilePhotos';
 import { ArrowUpRight, Compass, Globe2, HeartHandshake, Sparkles, type LucideIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -31,11 +32,15 @@ function IdentityCard({ profile, language }: { profile: ProjectProfilePublic; la
   const { t } = useTranslation();
   const config = relationship[profile.relationship_kind] ?? { icon: Compass, tone: 'bg-muted' };
   const Icon = config.icon;
+  const photo = profilePhoto(profile.slug);
   return <li className="flex min-w-0 flex-col border border-input bg-background p-6">
     <div className="mb-6 flex items-start justify-between gap-3">
-      <span className={`grid h-12 w-12 shrink-0 place-items-center border border-foreground text-ink ${config.tone}`}>
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </span>
+      {photo
+        ? <img src={photo} alt={profile.display_name} width={64} height={64} loading="lazy" decoding="async"
+          className="h-16 w-16 shrink-0 border border-foreground object-cover" />
+        : <span className={`grid h-12 w-12 shrink-0 place-items-center border border-foreground text-ink ${config.tone}`}>
+          <Icon className="h-6 w-6" aria-hidden="true" />
+        </span>}
       <span className="max-w-40 text-right font-mono text-xs uppercase leading-relaxed text-muted-foreground">
         {projectText(profile, language, 'role_label', profile.role_label)}
       </span>
