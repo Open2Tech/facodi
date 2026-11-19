@@ -28,8 +28,8 @@ for (const width of [375, 768, 1280, 1440]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-home-${width}.png`, fullPage: true });
     if (width < 1280) await page.getByRole('button', { name: 'Open menu' }).click();
-    await expect(page.locator('header').getByRole('link', { name: 'Explore courses' })).toBeVisible();
-    await page.locator('header').getByRole('link', { name: 'Explore courses' }).click();
+    await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Explore courses' })).toBeVisible();
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Explore courses' }).click();
     await expect(page).toHaveURL(/\/courses$/);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `test-results/facodi-catalog-${width}.png`, fullPage: true });
@@ -200,6 +200,120 @@ async function mockAuth(page: Page, role?: string) {
   });
 }
 
+// Regression: the signed-in header used to wrap even at 1920px because the
+// account links expanded inside a fixed-width container.
+for (const language of ['pt', 'en', 'es', 'fr']) {
+  for (const width of [1280, 1536, 1920]) {
+    test(`header stays on one row for an admin in ${language} at ${width}px`, async ({ page }) => {
+      const session = authFixture('admin');
+      await mockAuth(page, 'admin');
+      await page.addInitScript(({ session, language }) => {
+        localStorage.setItem('sb-wvkjainfwsyiyfcmbtid-auth-token', JSON.stringify(session));
+        sessionStorage.setItem('i18nextLng', language);
+      }, { session, language });
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/about');
+      const header = page.getByRole('banner');
+      await expect(header.getByRole('button', { name: /^(Account|Conta|Cuenta|Compte)$/ })).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      const bounds = await header.evaluate(element => {
+        const brand = element.querySelector('a')!.getBoundingClientRect();
+        const nav = element.querySelector('nav')!.getBoundingClientRect();
+        const actions = element.querySelector('nav')!.nextElementSibling!.getBoundingClientRect();
+        return { height: element.getBoundingClientRect().height, brandRight: brand.right, navLeft: nav.left, navRight: nav.right, actionsLeft: actions.left, actionsRight: actions.right };
+      });
+      expect(bounds.height).toBe(81);
+      expect(bounds.brandRight).toBeLessThan(bounds.navLeft);
+      expect(bounds.navRight).toBeLessThan(bounds.actionsLeft);
+      expect(bounds.actionsRight).toBeLessThanOrEqual(width);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+      if (language === 'pt' && width === 1920) await page.screenshot({ path: 'test-results/header-desktop.png' });
+    });
+  }
+}
+
+for (const role of [undefined, 'user', 'editor', 'admin']) {
+  test(`account menu preserves permissions for ${role ?? 'visitor'}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    if (role) {
+      await mockAuth(page, role);
+      await page.addInitScript(session => localStorage.setItem('sb-wvkjainfwsyiyfcmbtid-auth-token', JSON.stringify(session)), authFixture(role));
+    }
+    await page.goto('/about');
+    const header = page.getByRole('banner');
+    if (!role) {
+      await expect(header.getByRole('link', { name: 'Sign in' })).toBeVisible();
+      await expect(header.getByRole('button', { name: 'Account' })).toHaveCount(0);
+      return;
+    }
+    await header.getByRole('button', { name: 'Account' }).click();
+    for (const name of ['My space', 'Notebook', 'Profile', 'Suggest a resource', 'Contribute', 'Sign out']) {
+      await expect(page.getByRole('menuitem', { name, exact: true })).toBeVisible();
+    }
+    await expect(page.getByRole('menuitem', { name: 'Editorial workspace' })).toHaveCount(role === 'editor' || role === 'admin' ? 1 : 0);
+    await expect(page.getByRole('menuitem', { name: 'Administration' })).toHaveCount(role === 'admin' ? 1 : 0);
+    await page.keyboard.press('Escape');
+    await expect(header.getByRole('button', { name: 'Account' })).toBeFocused();
+  });
+}
+
+for (const [width, height] of [[320, 568], [375, 667], [768, 500]]) {
+  test(`mobile menu scrolls, traps focus and closes after navigation at ${width}px`, async ({ page }) => {
+    await mockAuth(page, 'admin');
+    await page.addInitScript(session => localStorage.setItem('sb-wvkjainfwsyiyfcmbtid-auth-token', JSON.stringify(session)), authFixture('admin'));
+    await page.setViewportSize({ width, height });
+    await page.goto('/about');
+    const trigger = page.getByRole('button', { name: 'Open menu' });
+    await trigger.click();
+    const sheet = page.getByRole('dialog', { name: 'Main navigation' });
+    await expect(sheet).toBeVisible();
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    const language = sheet.getByRole('combobox', { name: 'Language' });
+    await language.scrollIntoViewIfNeeded();
+    await expect(language).toBeInViewport();
+    await sheet.getByRole('button', { name: 'Switch to dark theme' }).click();
+    await expect(page.locator('html')).toHaveClass(/dark/);
+    await page.keyboard.press('Tab');
+    expect(await sheet.evaluate(element => element.contains(document.activeElement))).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    if (width === 375) {
+      await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+      const violations = await page.evaluate(async () => (await (window as typeof window & { axe: typeof import('axe-core') }).axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations);
+      expect(violations.map(item => item.id)).toEqual([]);
+      await sheet.getByRole('navigation', { name: 'Main navigation' }).scrollIntoViewIfNeeded();
+      await page.screenshot({ path: 'test-results/header-mobile-menu.png' });
+    }
+    await page.keyboard.press('Escape');
+    await expect(sheet).toBeHidden();
+    await expect(trigger).toBeFocused();
+    await trigger.click();
+    // Selecting the current route also dismisses the sheet.
+    await sheet.getByRole('link', { name: 'About', exact: true }).click();
+    await expect(sheet).toBeHidden();
+    await trigger.click();
+    await sheet.getByRole('searchbox').fill('partial derivatives');
+    await sheet.getByRole('searchbox').press('Enter');
+    await expect(page).toHaveURL('/resources?search=partial%20derivatives');
+    await expect(sheet).toBeHidden();
+  });
+}
+
+test('header search restores focus and mobile navigation releases the page after resizing', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.goto('/about');
+  const header = page.getByRole('banner');
+  const search = header.getByRole('button', { name: 'Search the library' });
+  await search.click();
+  await expect(header.getByRole('searchbox')).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(search).toBeFocused();
+  await page.getByRole('button', { name: 'Open menu' }).click();
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await expect(page.getByRole('dialog')).toBeHidden();
+  await expect(header.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
+  await expect(page.locator('body')).not.toHaveAttribute('data-scroll-locked');
+});
+
 test('signup confirmation, safe return path, profile and logout', async ({ page }) => {
   await mockAuth(page);
   await page.goto('/login?next=//evil.test');
@@ -218,7 +332,8 @@ test('signup confirmation, safe return path, profile and logout', async ({ page 
   await expect(page.getByRole('status').filter({ hasText: 'Changes saved.' })).toBeVisible();
   await page.goto('/admin');
   await expect(page.getByText('You do not have permission to access this area.')).toBeVisible();
-  await page.locator('header').getByRole('button', { name: 'Sign out', exact: true }).click();
+  await page.locator('header').getByRole('button', { name: 'Account', exact: true }).click();
+  await page.getByRole('menuitem', { name: 'Sign out', exact: true }).click();
   await expect(page).toHaveURL(/\/login\?next=%2Fadmin$/);
 });
 

@@ -1,70 +1,25 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpen, Info, Layers, LayoutDashboard, Lightbulb, ListOrdered, ListVideo, Menu, Moon, PenSquare, PlayCircle, Search, ShieldCheck, Sun, UsersRound, X, type LucideIcon } from 'lucide-react';
-import { useTheme } from '@/shared/theme/theme';
+import { ArrowUpRight } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useSeoClaims } from '@/components/layout/seoClaims';
-import { toast } from 'sonner';
 import { LEGAL_DOCUMENTS, legalPath } from '@/components/legal/legalDocuments';
-import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
-import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { SOCIAL_PROFILES } from '@/shared/seo/seo';
-import { cn } from '@/lib/utils';
-import { HeaderSearch } from '@/components/layout/HeaderSearch';
-import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
+import { SiteHeader } from '@/components/layout/SiteHeader';
 
 export default function FacodiLayout() {
   const { t, i18n } = useTranslation();
-  const { user, role, loading, signOut } = useAuth();
-  const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [signingOut, setSigningOut] = useState(false);
+  const { user } = useAuth();
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
-  const dark = theme === 'dark';
   const seoClaims = useSeoClaims();
   const isWorkersPreview = window.location.hostname === 'facodi.marcelo-0d6.workers.dev';
   const privateRoute = location.pathname.startsWith('/community/join') || ['/dashboard', '/profile', '/notes', '/playlists', '/suggest', '/editor', '/admin', '/login', '/auth'].some(path => location.pathname.startsWith(path));
   useEffect(() => {
-    setOpen(false);
-    setSearchOpen(false);
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  // "/" opens the library search from anywhere, unless the learner is typing; Escape closes it.
-  useEffect(() => {
-    function onKey(event: KeyboardEvent) {
-      const target = event.target as HTMLElement | null;
-      const typing = !!target && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
-      if (event.key === '/' && !typing && !event.metaKey && !event.ctrlKey && !event.altKey) {
-        event.preventDefault();
-        setSearchOpen(true);
-      } else if (event.key === 'Escape') setSearchOpen(false);
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
   useEffect(() => { document.documentElement.lang = i18n.language; }, [i18n.language]);
-  async function logout() {
-    setSigningOut(true);
-    try { await signOut(); }
-    catch (error) { toast.error(error instanceof Error ? error.message : t('common.error')); }
-    finally { setSigningOut(false); }
-  }
-  const links: { to: string; title: string; icon: LucideIcon; compact?: boolean }[] = [
-    { to: '/courses', title: t('nav.courses'), icon: BookOpen },
-    { to: '/units', title: t('nav.units'), icon: Layers },
-    { to: '/resources', title: t('nav.resources'), icon: PlayCircle },
-    { to: '/sequences', title: t('nav.sequences'), icon: ListOrdered },
-    { to: '/about', title: t('nav.about'), icon: Info },
-    { to: '/community', title: t('projectCommunity.nav'), icon: UsersRound },
-    ...(user ? [{ to: '/suggest', title: t('suggest.nav'), icon: Lightbulb, compact: true }] : []),
-    ...(user ? [{ to: '/playlists/submit', title: t('playlistSubmit.nav'), icon: ListVideo, compact: true }] : []),
-    ...(user ? [{ to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard, compact: true }] : []),
-    ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare, compact: true }] : []),
-    ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck, compact: true }] : []),
-  ];
   const footer = [
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }, { to: '/sequences', title: t('nav.sequences') }] },
     { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, ...(user ? [{ to: '/suggest', title: t('suggest.nav') }] : [])] },
@@ -80,49 +35,7 @@ export default function FacodiLayout() {
       {(privateRoute || isWorkersPreview) && !seoClaims.robots && <meta name="robots" content="noindex, nofollow, noarchive" />}
     </Helmet>
     <a href="#main" className="sr-only z-50 bg-primary p-4 text-primary-foreground focus:not-sr-only focus:absolute">{t('nav.skip')}</a>
-    <header className="sticky top-0 z-30 border-b border-input bg-background">
-      <div className="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-4 px-5 lg:px-8">
-        <Link to="/" aria-label={t('brand.home')} className="flex items-center gap-2 text-2xl font-bold tracking-tight">
-          <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
-        </Link>
-        <Button type="button" variant="outline" size="icon" className="xl:hidden" aria-label={t(open ? 'nav.close' : 'nav.menu')} aria-expanded={open} aria-controls="navigation" onClick={() => setOpen(!open)}>
-          {open ? <X /> : <Menu />}
-        </Button>
-        <nav id="navigation" aria-label={t('nav.main')} className={cn('w-full flex-col gap-5 pb-5 xl:flex xl:w-auto xl:flex-row xl:items-center xl:gap-3 xl:pb-0 2xl:gap-5', open ? 'flex' : 'hidden')}>
-          <HeaderSearch className="xl:hidden" onSubmitted={() => setOpen(false)} />
-          <div className="flex flex-col gap-1 xl:flex-row">
-            {/* Account links collapse to icons on narrow desktops so the signed-in bar stays on one line. */}
-            {links.map(({ to, title, icon: Icon, compact }) => <NavLink key={to} to={to} title={compact ? title : undefined} className={({ isActive }) => cn('inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted xl:px-2.5 2xl:px-3', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
-              <Icon className="h-4 w-4 shrink-0" aria-hidden="true" /><span className={cn(compact && 'xl:sr-only 2xl:not-sr-only')}>{title}</span>
-            </NavLink>)}
-          </div>
-          <div className="flex items-center gap-2">
-            <Button type="button" variant="outline" size="icon" className="hidden shrink-0 xl:inline-flex" aria-label={t('resourceExplorer.searchLabel')}
-              title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
-              {searchOpen ? <X /> : <Search />}
-            </Button>
-            <label className="flex items-center gap-2 text-sm">
-              <span className="sr-only">{t('common.language')}</span>
-              <select className="h-10 rounded-md border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => setInterfaceLanguage(event.target.value)}>
-                {INTERFACE_LANGUAGES.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
-              </select>
-            </label>
-            <Button type="button" variant="outline" size="icon" className="shrink-0" aria-label={t(dark ? 'nav.themeLight' : 'nav.themeDark')} title={t(dark ? 'nav.themeLight' : 'nav.themeDark')}
-              onClick={() => setTheme(dark ? 'light' : 'dark')}>
-              {dark ? <Sun /> : <Moon />}
-            </Button>
-          </div>
-          {!loading && (user
-            ? <Button variant="outline" disabled={signingOut} onClick={logout}>{t('nav.logout')}</Button>
-            : <Button asChild><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>)}
-        </nav>
-      </div>
-      {searchOpen && <div id="header-search" className="border-t border-input">
-        <div className="mx-auto max-w-3xl px-5 py-3 lg:px-8">
-          <HeaderSearch autoFocus onSubmitted={() => setSearchOpen(false)} />
-        </div>
-      </div>}
-    </header>
+    <SiteHeader />
     {/* At least one screen tall (minus the 5rem header), so the footer starts below the fold while a page loads
         its data and never jumps into view (cumulative layout shift). */}
     <main id="main" tabIndex={-1} className="mx-auto min-h-[calc(100svh-5rem)] w-full max-w-7xl flex-1 px-5 py-8 outline-none sm:py-12 lg:px-8">
