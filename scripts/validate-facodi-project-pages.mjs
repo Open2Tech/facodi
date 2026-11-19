@@ -139,8 +139,10 @@ assert.ok(read('src/entities/course/course.api.ts').includes("rpc('search_public
   'Resource catalog (including modules) must use the published-only v4 area search RPC');
 assert.ok(moduleApi.includes(".eq('object_type', 'module').eq('slug', slug)"),
   'Module details must query module objects only');
-assert.ok(moduleApi.includes(".eq('published', true).eq('status', 'active')"),
-  'Module children must be published and active under RLS');
+const moduleVisibility = ".eq('published', true).in('status', PUBLIC_RESOURCE_STATUSES)";
+assert.ok(moduleApi.includes("const PUBLIC_RESOURCE_STATUSES = ['active', 'published']") &&
+  moduleApi.split(moduleVisibility).length === 3,
+  'Module details and children must follow published active/published catalog visibility under RLS');
 assert.ok(moduleCatalog.includes('moduleOnly') && moduleCatalog.includes('moduleResourcePath(') &&
   moduleCatalog.includes('<ResourceDiscovery') &&
   read('src/components/catalog/ResourceDiscovery.tsx').includes("t('resourceExplorer.guidedDescription')"),

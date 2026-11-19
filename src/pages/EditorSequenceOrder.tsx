@@ -61,10 +61,11 @@ function OrderEditor({ slug }: { slug: string }) {
     setDraft(snapshot.data?.items.map(item => item.videoId) ?? []);
   }, [snapshot.data]);
 
-  const current = snapshot.data?.items ?? [];
-  const original = current.map(item => item.videoId);
+  // Keep order-derived maps stable between renders while refreshing on a new snapshot.
+  const current = useMemo(() => snapshot.data?.items ?? [], [snapshot.data?.items]);
+  const original = useMemo(() => current.map(item => item.videoId), [current]);
   const lessonById = useMemo(() => new Map(current.map(item => [item.videoId, item])), [current]);
-  const originalPosition = useMemo(() => new Map(original.map((id, i) => [id, i + 1])), [current]);
+  const originalPosition = useMemo(() => new Map(original.map((id, i) => [id, i + 1])), [original]);
   const dirty = draft.length === original.length && draft.some((id, index) => id !== original[index]);
   const movedCount = changedPositions(original, draft);
 

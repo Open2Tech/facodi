@@ -40,6 +40,19 @@ for (const route of routes) {
     `Missing security headers at ${route}`);
   console.log('OK', route, response.status, '(noindex)');
 }
+// Regression guard for the Cloudflare Worker introduced in #107: unknown routes
+// must return actual 404s, not an indexable SPA shell with status 200.
+for (const route of ['/pagina-que-nao-existe', '/courses/lesti/extra', '/wp-admin']) {
+  const { response, text } = await get(route);
+  assert.equal(response.status, 404, `Unknown route ${route} must return HTTP 404`);
+  assert.ok((response.headers.get('content-type') ?? '').includes('text/html'),
+    `Unknown route ${route} must serve HTML`);
+  assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/i,
+    `Unknown route ${route} must not be indexed`);
+  assert.match(text, /<div id="root">/i, `Missing SPA error shell at ${route}`);
+  console.log('OK', route, response.status, '(noindex)');
+}
+
 const robots = await get('/robots.txt','text/plain');
 assert.equal(robots.response.status, 200);
 assert.ok(robots.text.includes(`Sitemap: ${canonical}/sitemap.xml`));
@@ -95,6 +108,8 @@ assert.ok(manifest.icons.some(icon => icon.src === '/pwa-512x512.png' && icon.pu
   'PWA maskable icon must remain available');
 
 const home = await get('/');
+assert.ok(home.text.includes('<main '),
+  'Worker home must contain the pre-rendered main content, not just the empty SPA shell');
 assert.match(home.text, /https:\/\/facodi\.com\/social-preview-default\.png\?v=20261115/,
   'Worker home shell does not advertise the current OG image');
 assert.match(home.text, /twitter:card" content="summary_large_image"/,

@@ -3,6 +3,8 @@ import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 
 const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,language,tags,metadata';
 const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url';
+// Match the public resource catalogue: a published object may be active or published.
+const PUBLIC_RESOURCE_STATUSES = ['active', 'published'];
 
 export function moduleResourcePath(type: string, slug: string): string {
   const encoded = encodeURIComponent(slug);
@@ -13,7 +15,7 @@ export async function getModule(slug: string, signal?: AbortSignal) {
   const { data: module, error } = await supabase.from('learning_objects')
     .select(PUBLIC_MODULE_FIELDS)
     .eq('object_type', 'module').eq('slug', slug)
-    .eq('published', true).eq('status', 'active')
+    .eq('published', true).in('status', PUBLIC_RESOURCE_STATUSES)
     .abortSignal(signal).maybeSingle();
   if (error) throw new Error(getSupabaseErrorMessage(error));
   if (!module) return null;
@@ -37,7 +39,7 @@ export async function getModule(slug: string, signal?: AbortSignal) {
   const [childReply, unitReply] = await Promise.all([
     childIds.length
       ? supabase.from('learning_objects').select(PUBLIC_CHILD_FIELDS)
-          .in('id', childIds).eq('published', true).eq('status', 'active')
+          .in('id', childIds).eq('published', true).in('status', PUBLIC_RESOURCE_STATUSES)
           .abortSignal(signal)
       : Promise.resolve({ data: [], error: null }),
     parentIds.length
