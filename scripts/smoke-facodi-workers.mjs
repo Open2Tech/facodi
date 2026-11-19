@@ -45,7 +45,8 @@ for (const route of routes) {
 for (const route of ['/pagina-que-nao-existe', '/courses/lesti/extra', '/wp-admin']) {
   const { response, text } = await get(route);
   assert.equal(response.status, 404, `Unknown route ${route} must return HTTP 404`);
-  assert.match(response.headers.get('content-type') ?? '', /text\\/html/i);
+  assert.ok((response.headers.get('content-type') ?? '').includes('text/html'),
+    `Unknown route ${route} must serve HTML`);
   assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/i,
     `Unknown route ${route} must not be indexed`);
   assert.match(text, /<div id="root">/i, `Missing SPA error shell at ${route}`);
@@ -107,7 +108,7 @@ assert.ok(manifest.icons.some(icon => icon.src === '/pwa-512x512.png' && icon.pu
   'PWA maskable icon must remain available');
 
 const home = await get('/');
-assert.match(home.text, /<main\\b/i,
+assert.ok(home.text.includes('<main '),
   'Worker home must contain the pre-rendered main content, not just the empty SPA shell');
 assert.match(home.text, /https:\/\/facodi\.com\/social-preview-default\.png\?v=20261115/,
   'Worker home shell does not advertise the current OG image');
