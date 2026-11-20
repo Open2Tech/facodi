@@ -6,8 +6,9 @@ import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLea
 import { useSequences } from '@/features/sequences/useSequences';
 import { SequenceList } from '@/components/sequence/SequenceList';
 import { safeExternalUrl } from '@/shared/lib/navigation';
+import { unitPath } from '@/entities/course/course.paths';
 import { plainText } from '@/shared/lib/text';
-import type { CourseLearningAsset } from '@/entities/course/courseLearningAssets';
+import { filterCourseLearningAssets, normalizeCourseMaterialTerm, emptyCourseLearningAssets, type CourseLearningAsset } from '@/entities/course/courseLearningAssets';
 
 const PREVIEW_COUNT = 6;
 
@@ -15,13 +16,15 @@ export interface CourseLearningUnit {
   learningObjectId: string | null;
   title: string;
   code: string | null;
+  slug: string;
 }
 
 /** All learning material already linked to the course or its public units.
  * External YouTube playlists are intentionally distinct from FACODI editorial sequences. */
 export function CourseLearningMaterials({
-  courseObjectId, units,
+  courseSlug, courseObjectId, units,
 }: {
+  courseSlug: string;
   courseObjectId: string | null;
   units: readonly CourseLearningUnit[];
 }) {
@@ -29,13 +32,22 @@ export function CourseLearningMaterials({
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedUnitId, setSelectedUnitId] = useState('');
+  const selectedUnit = units.find(unit => unit.learningObjectId === selectedUnitId);
+  const search = normalizeCourseMaterialTerm(searchTerm);
   const codes = new Set(units.flatMap(unit => unit.code ? [unit.code] : []));
-  const editorial = (sequences.data ?? []).filter(sequence =>
+  const allEditorial = (sequences.data ?? []).filter(sequence =>
     sequence.itemCount > 0 && sequence.unitCodes.some(code => codes.has(code)));
-  const playlists = assets.data?.playlists ?? [];
-  const references = assets.data?.references ?? [];
-  const guides = assets.data?.guides ?? [];
-  const hasContent = editorial.length + playlists.length + references.length + guides.length > 0;
+  const editorial = allEditorial.filter(sequence =>
+    (!selectedUnit || (selectedUnit.code != null && sequence.unitCodes.includes(selectedUnit.code)))
+    && (!search || normalizeCourseMaterialTerm([sequence.title, sequence.description, ...sequence.unitCodes].join(' ')).includes(search)));
+  const sourceAssets = assets.data ?? emptyCourseLearningAssets();
+  const filteredAssets = filterCourseLearningAssets(sourceAssets, selectedUnitId || null, searchTerm);
+  const { playlists, references, guides } = filteredAssets;
+  const hasContent = allEditorial.length + sourceAssets.playlists.length + sourceAssets.references.length + sourceAssets.guides.length > 0;
+  const hasMatches = editorial.length + playlists.length + references.length + guides.length > 0;
+  const hasFilters = Boolean(search || selectedUnitId);
 
   if (!hasContent && !assets.isPending && !assets.error && !sequences.isPending && !sequences.error) return null;
 
@@ -87,12 +99,38 @@ export function CourseLearningMaterials({
       <h2 id="course-materials-title" className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">{t('courseMaterials.title')}</h2>
     </div>
     <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t('courseMaterials.description')}</p>
+    {hasContent && <div className="mt-6 grid gap-4 border-y border-input py-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
+      <div className="min-w-0">
+        <label htmlFor="course-material-search" className="mb-2 block text-sm font-semibold">{t('courseMaterials.searchLabel')}</label>
+        <input id="course-material-search" type="search" value={searchTerm} onChange={event => { setSearchTerm(event.target.value); setExpanded({}); }}
+          placeholder={t('courseMaterials.searchPlaceholder')}
+          className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
+      </div>
+      <div className="min-w-0">
+        <label htmlFor="course-material-unit" className="mb-2 block text-sm font-semibold">{t('courseMaterials.unitFilterLabel')}</label>
+        <select id="course-material-unit" value={selectedUnitId} onChange={event => { setSelectedUnitId(event.target.value); setExpanded({}); }}
+          className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <option value="">{t('courseMaterials.allUnits')}</option>
+          {units.filter(unit => unit.learningObjectId).map(unit =>
+            <option key={unit.learningObjectId} value={unit.learningObjectId!}>{unit.code ? `${unit.code} · ` : ''}{unit.title}</option>)}
+        </select>
+      </div>
+      {hasFilters && <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:col-span-2">
+        <button type="button" className="min-h-11 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          onClick={() => { setSearchTerm(''); setSelectedUnitId(''); setExpanded({}); }}>{t('courseMaterials.clearFilters')}</button>
+        {selectedUnit && <Link to={unitPath(courseSlug, selectedUnit.slug)}
+          className="inline-flex min-h-11 items-center gap-1.5 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          {t('courseMaterials.openUnit')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </Link>}
+      </div>}
+    </div>}
 
     {assets.isPending && <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>}
     {assets.error && <div role="alert" className="mt-5 border border-input p-5 text-sm">
       <p>{t('courseMaterials.loadFailed')}</p>
       <button type="button" onClick={() => void assets.refetch()} className="mt-3 min-h-11 font-semibold underline underline-offset-4">{t('common.retry')}</button>
     </div>}
+    {hasContent && hasFilters && !hasMatches && !assets.isPending && !sequences.isPending && <p role="status" className="mt-6 border border-input p-5 text-sm text-muted-foreground">{t('courseMaterials.noMatches')}</p>}
     {!!editorial.length && <section aria-labelledby="course-editorial-sequences" className="mt-8">
       <h3 id="course-editorial-sequences" className="flex items-center gap-2 text-xl font-semibold"><ListVideo className="h-5 w-5" aria-hidden="true" />{t('courseMaterials.editorialSequences')} <span className="font-mono text-sm text-muted-foreground">({editorial.length})</span></h3>
       <div className="mt-4"><SequenceList sequences={expanded.editorial ? editorial : editorial.slice(0, PREVIEW_COUNT)} headingLevel={4} showUnits={false} /></div>
