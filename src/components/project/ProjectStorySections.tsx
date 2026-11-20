@@ -1,5 +1,5 @@
 import { profilePhoto } from '@/entities/project/profilePhotos';
-import { ArrowUpRight, Compass, Globe2, HeartHandshake, Sparkles, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, Compass, Globe2, HeartHandshake, Linkedin, Sparkles, type LucideIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useProjectDirectory, projectText, type ProjectProfilePublic } from '@/entities/project/project.api';
@@ -81,19 +81,36 @@ export default function ProjectStorySections() {
     {query.error && <p role="alert" className="text-sm text-destructive">{query.error.message}</p>}
 
     {founder && <section aria-labelledby="founder-title"
-      className="grid gap-0 border border-foreground bg-brand-mint text-ink md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
-      <div className="relative grid min-h-56 place-items-center overflow-hidden border-b border-ink/25 md:min-h-64 md:border-b-0 md:border-r">
-        {founderPhoto
-          ? <img src={founderPhoto} alt={founder.display_name} width={640} height={640}
-            loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover object-center" />
-          : <span aria-hidden="true" className="select-none font-mono text-8xl font-bold tracking-tighter">MS.</span>}
+      className="grid gap-0 border border-foreground bg-brand-mint text-ink md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
+      <div className="flex items-center justify-center border-b border-ink/25 bg-brand-cyan p-8 sm:p-10 md:border-b-0 md:border-r">
+        <div className="relative w-full max-w-60">
+          <span aria-hidden="true" className="absolute inset-0 translate-x-2 translate-y-2 border-2 border-ink bg-primary" />
+          <div className="relative grid aspect-square place-items-center overflow-hidden border-2 border-ink bg-brand-pink">
+            {founderPhoto
+              ? <img src={founderPhoto} alt={founder.display_name} width={512} height={512}
+                loading="lazy" decoding="async" className="h-full w-full object-cover object-center" />
+              : <span aria-hidden="true" className="select-none font-mono text-7xl font-bold tracking-tighter">MS.</span>}
+          </div>
+          <span aria-hidden="true"
+            className="absolute -bottom-3 -left-3 -rotate-3 border-2 border-ink bg-primary px-3 py-1 font-mono text-xs font-bold tracking-wider">
+            FACODI / 01
+          </span>
+        </div>
       </div>
       <div className="p-7 sm:p-10">
         <p className="font-mono text-xs uppercase tracking-widest">{t('projectStory.founderEyebrow')}</p>
         <h3 id="founder-title" className="mt-3 text-3xl font-semibold sm:text-4xl">{founder.display_name}</h3>
         <p className="mt-2 font-semibold">{projectText(founder, i18n.language, 'role_label', founder.role_label)}</p>
         <p className="mt-5 max-w-2xl leading-relaxed">{projectText(founder, i18n.language, 'description', founder.description)}</p>
-        <div className="mt-6"><ExternalSource url={founder.public_source_url} label={t('projectStory.authorSource')} /></div>
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4">
+          <a href="https://www.linkedin.com/in/marcelo-m7/" target="_blank" rel="noopener noreferrer"
+            aria-label={`LinkedIn — ${founder.display_name}`}
+            className="inline-flex items-center gap-2 border-2 border-ink bg-ink px-4 py-2.5 text-sm font-semibold text-ink-foreground transition-transform hover:-translate-y-0.5">
+            <Linkedin className="h-4 w-4" aria-hidden="true" />
+            LinkedIn <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+          <ExternalSource url={founder.public_source_url} label={t('projectStory.authorSource')} />
+        </div>
       </div>
     </section>}
 
