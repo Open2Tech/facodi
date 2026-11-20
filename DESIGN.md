@@ -114,6 +114,10 @@ components:
 
 # Design System: FACODI
 
+The [FACODI v4 design and voice guide](docs/facodi-identidade-v4.md) applies
+the v03 media kit's visual direction and editorial tone to this HSL system.
+Use it for colour pairings, channel formats and practical copy examples.
+
 ## Overview
 
 **Creative North Star: "O caderno marcado"** — warm paper, navy ink and a

@@ -1,7 +1,7 @@
 ---
 description: "Use when editing docs, marketing copy, SEO metadata, structured data, sitemap/robots/manifest files, or brand assets and copy."
 name: "Docs Branding SEO Rules"
-applyTo: "{README.md,docs/**/*.md,index.html,public/robots.txt,public/sitemap.xml,public/site.webmanifest,public/brand/o2t/README.md}"
+applyTo: "{README.md,DESIGN.md,docs/**/*.md,index.html,public/robots.txt,public/sitemap.xml,public/site.webmanifest}"
 ---
 # Docs, Branding, and SEO Rules
 
@@ -11,4 +11,5 @@ applyTo: "{README.md,docs/**/*.md,index.html,public/robots.txt,public/sitemap.xm
 - Treat [public/social-preview-default.png](../../public/social-preview-default.png) as the default social share image currently used by metadata. Do not swap preview assets without updating metadata references and verifying the image still fits a `1200x630` share card.
 - When editing [public/site.webmanifest](../../public/site.webmanifest), keep the app name, short name, theme colors, and icon set consistent with the current product branding and favicon assets in [public](../../public).
 - When editing [public/robots.txt](../../public/robots.txt) or [public/sitemap.xml](../../public/sitemap.xml), keep the host, canonical domain, and crawl policy aligned with the live product routes. Do not add private or authenticated routes.
-- Prefer linking to existing brand and design references instead of duplicating guidance. Use [public/brand/o2t/README.md](../../public/brand/o2t/README.md) for brand assets and [docs/visual-elevation.md](../../docs/visual-elevation.md) for visual system context.
+- Use the [FACODI v4 guide](../../docs/facodi-identidade-v4.md) for voice, colour usage and channel specifications. Use [DESIGN.md](../../DESIGN.md), [src/index.css](../../src/index.css) and [tailwind.config.ts](../../tailwind.config.ts) for the existing HSL design system and component roles.
+- Keep the HSL channel format, existing token names and semantic roles when adapting visual references. Keep `:root`, `.dark` and Tailwind mappings as the basis for the site's colours.

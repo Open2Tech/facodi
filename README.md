@@ -88,6 +88,11 @@ Os tipos foram gerados do schema real, não de uma reprodução local.
 
 ## Identidade, comunidade e créditos editoriais
 
+O [guia FACODI v4](docs/facodi-identidade-v4.md) reúne a paleta HSL, as regras
+de composição e exemplos de voz. O [sistema de design](DESIGN.md) e o
+[índice da documentação](docs/wiki/Home.md) dão acesso à implementação e aos
+guias de contribuição.
+
 A FACODI assume a sua própria identidade: um campus digital aberto, nascido de uma experiência estudantil e apresentado no programa SEA-EU Student-Led Projects 2026. A comunicação usa uma voz mais humana, curiosa e criativa — inspirada na Monynha, sem confundir as duas iniciativas.
 
 A página **/about** apresenta a história, o autor, os marcos e o ecossistema com fontes públicas. Em **/community**, estudantes e colaboradores encontram formas claras de participar. Em **/editor/project-credits**, apenas editores podem validar créditos pessoais com consentimento explícito e rasto de auditoria. As traduções PT/EN/ES/FR e os dados públicos vêm do schema FACODI no Supabase.
