@@ -33,6 +33,10 @@ describe('SiteHeader', () => {
     expect(within(menu).queryByRole('menuitem', { name: 'Administration' }) !== null).toBe(role === 'admin');
     await userEvent.keyboard('{Escape}');
     await waitFor(() => expect(screen.getByRole('button', { name: 'Account' })).toHaveFocus());
+
+    await userEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    const panel = screen.getByRole('dialog', { name: 'Main navigation' });
+    expect(within(panel).getAllByRole('link', { name: 'Suggest a resource' })).toHaveLength(1);
   });
 
   it('shows icons and the suggestion link in the public navigation', async () => {
@@ -80,11 +84,14 @@ describe('SiteHeader', () => {
     await waitFor(() => expect(screen.getByRole('button', { name: 'Search the library' })).toHaveFocus());
   });
 
-  it('closes search with Escape and restores focus to its trigger', async () => {
+  it('opens search inline with the brand row, closes with Escape, and restores focus to its trigger', async () => {
     renderWithProviders(<SiteHeader />);
+    const brand = screen.getByRole('link', { name: 'FACODI — home' });
     const trigger = screen.getByRole('button', { name: 'Search the library' });
     await userEvent.click(trigger);
-    expect(screen.getByRole('searchbox', { name: 'Search the library' })).toHaveFocus();
+    const searchbox = screen.getByRole('searchbox', { name: 'Search the library' });
+    expect(searchbox).toHaveFocus();
+    expect(brand.parentElement).toContainElement(searchbox);
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
