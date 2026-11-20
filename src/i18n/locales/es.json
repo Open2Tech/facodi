@@ -2412,5 +2412,23 @@
     "ectsPending": "ECTS pendientes de confirmación por la UAlg",
     "branch": "Rama",
     "branchNotice": "El primer año es común. A partir del segundo, elige la rama para ver sus UC obligatorias y sus optativas."
+  },
+  "courseMaterials": {
+    "title": "Materiales para estudiar",
+    "description": "Consulta aquí las secuencias, listas de reproducción y referencias asociadas a las asignaturas de este curso.",
+    "editorialSequences": "Secuencias de aprendizaje",
+    "playlists": "Listas de reproducción por tema",
+    "playlistNotice": "Listas de creadores externos. Abre el recurso para consultar la fuente original; no registran el progreso de secuencias editoriales de FACODI.",
+    "references": "Referencias y fuentes",
+    "guides": "Guías de estudio",
+    "linkedUnits": "Asignaturas",
+    "moreUnits": "{{count}} más",
+    "openSource": "Consultar fuente",
+    "open": "Abrir recurso",
+    "showAll": "Ver todos ({{count}})",
+    "showLess": "Mostrar menos",
+    "loadFailed": "No se han podido cargar los materiales vinculados a este curso.",
+    "sequencesFailed": "No se pueden cargar las secuencias editoriales ahora mismo.",
+    "notice": "Estos materiales complementan las asignaturas y conservan la autoría y licencias originales. No son clases oficiales de la institución."
   }
 }
