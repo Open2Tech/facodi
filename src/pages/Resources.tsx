@@ -10,6 +10,7 @@ import { PageState } from '@/components/layout/PageState';
 import { SearchInput } from '@/components/catalog/SearchInput';
 import { ResourceDiscovery } from '@/components/catalog/ResourceDiscovery';
 import { ResourceAdvancedFilters } from '@/components/catalog/ResourceAdvancedFilters';
+import { SuggestResourceCallout } from '@/components/suggestion/SuggestResourceCallout';
 import { ActiveFilters } from '@/components/catalog/ActiveFilters';
 import { useCatalogFilterChips } from '@/components/catalog/useCatalogFilterChips';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
@@ -181,6 +182,9 @@ export default function Resources() {
             {!!query.data.items.length && <Pagination page={page} total={query.data.total} onChange={changePage} />}
           </div>}
     </div>
+    {query.isSuccess && !query.isPlaceholderData && <div className="mt-8">
+      <SuggestResourceCallout context={chips.length && !query.data.items.length ? 'search' : 'library'} />
+    </div>}
     {moduleOnly && <p className="mt-9 max-w-prose border-t border-input pt-5 text-sm leading-relaxed text-muted-foreground">
       {t('studyModules.disclaimer')}
     </p>}

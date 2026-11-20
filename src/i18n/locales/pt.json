@@ -101,7 +101,7 @@
       },
       "contribute": {
         "title": "Contribui",
-        "text": "Propõe melhorias e novos recursos. A equipa editorial revê antes de publicar."
+        "text": "Partilha um recurso que te ajudou. A FACODI verifica a fonte e procura onde faz sentido no catálogo."
       }
     },
     "contributeLink": "Como contribuir",
@@ -124,8 +124,7 @@
       }
     },
     "ctaTitle": "Conheces um recurso que vale a pena partilhar?",
-    "ctaText": "A FACODI cresce com contributos revistos pela equipa editorial. Descobre como participar.",
-    "ctaButton": "Contribuir",
+    "ctaText": "Aquela aula que fez tudo encaixar ou a leitura que explicava mesmo bem? Partilha o link com quem vem a seguir.",
     "videosTitle": "Aulas para começar já",
     "videosText": "Os primeiros vídeos das trilhas curadas, de canais diferentes. Cada um abre com o contexto da unidade curricular.",
     "videosCta": "Ver todos os vídeos"
@@ -475,7 +474,6 @@
     "filterSemester": "Semestre",
     "howTitle": "Como funciona este catálogo",
     "howText": "Cada UC vem do plano de estudos oficial e mantém o código e os créditos da instituição. Os recursos abertos são ligados às UCs depois de revistos pela equipa editorial.",
-    "contribute": "Sugerir recursos",
     "search": "Pesquisar por título ou código",
     "searchPlaceholder": "Ex.: Programação, 14541000",
     "searchLibrary": "Procurar «{{term}}» nos vídeos e recursos",
@@ -549,15 +547,14 @@
       }
     },
     "contributeTitle": "Como contribuir",
-    "contributeText": "As contribuições são verificadas: vídeos com correspondência forte no curso indicado são publicados automaticamente; as restantes passam pela equipa editorial.",
+    "contributeText": "Começa com o link de uma aula, leitura ou referência aberta. Vídeos com correspondência forte no curso indicado podem ser publicados automaticamente. As outras sugestões passam pela equipa editorial.",
     "flow": {
-      "account": "Cria uma conta FACODI com o teu email.",
-      "review": "Partilha a tua proposta com a equipa editorial, que prepara o conteúdo como rascunho.",
-      "publish": "Depois de revisto, o conteúdo é publicado no catálogo aberto."
+      "account": "Entra na tua conta FACODI ou cria uma com o teu e-mail.",
+      "review": "Cola o link, confirma a informação e escolhe um curso ou unidade se souberes onde encaixa.",
+      "publish": "Acompanha a análise no teu histórico. Se for aprovado, o recurso pode entrar no catálogo aberto."
     },
     "openEditor": "Abrir gestão editorial",
     "openDashboard": "Ir para a área pessoal",
-    "createAccount": "Criar conta ou entrar",
     "faqTitle": "Perguntas frequentes",
     "faq": {
       "free": "A FACODI é gratuita? Preciso de conta?",
@@ -934,6 +931,33 @@
     "back": "Como contribuir",
     "title": "Sugerir um recurso",
     "description": "Cola o endereço de um vídeo, repositório ou documento aberto. A FACODI reconhece a fonte, lê os metadados públicos e propõe a unidade curricular. Vídeos com correspondência clara no curso indicado são publicados automaticamente; os restantes passam pela equipa editorial.",
+    "backToUnit": "Voltar à unidade curricular",
+    "unitContext": "Vais sugerir um recurso para {{unit}} ({{course}}). Podes mudar a seleção antes de enviar.",
+    "signInDescription": "Entra ou cria uma conta para sugerir um recurso e acompanhar a resposta no teu histórico.",
+    "playlistLink": "Partilhar uma playlist do YouTube",
+    "invite": {
+      "library": {
+        "title": "Tens um bom recurso nos favoritos?",
+        "description": "Partilha o link de uma aula, leitura ou referência aberta que te ajudou a estudar."
+      },
+      "search": {
+        "title": "Faltou um recurso nesta pesquisa?",
+        "description": "Se já tens um link sobre o tema, sugere-o para a próxima pessoa que procurar por aqui."
+      },
+      "sequences": {
+        "title": "Conheces um vídeo que merece entrar numa sequência?",
+        "description": "Partilha o link e indica o tema ou a unidade curricular onde faz sentido.",
+        "browseVideos": "Procurar vídeos sobre o tema"
+      },
+      "unit": {
+        "title": "Que recurso te ajudou nesta unidade?",
+        "description": "Uma boa aula, leitura ou explicação pode desbloquear o próximo passo de quem estuda esta matéria."
+      },
+      "guide": {
+        "title": "Ajuda a ligar um recurso ao sítio certo",
+        "description": "Cola o link, escolhe o curso ou a unidade se souberes e acompanha a sugestão no teu histórico."
+      }
+    },
     "url": "Endereço do recurso",
     "urlHint": "HTTPS de preferência. Só este endereço é enviado às APIs públicas da fonte, sem a tua sessão.",
     "urlInvalid": "Indica um endereço HTTP ou HTTPS válido.",
@@ -1193,8 +1217,8 @@
         "cta": "Explorar"
       },
       "suggest": {
-        "title": "Encontraste algo bom?",
-        "description": "Partilha um artigo, vídeo ou material com contexto para revisão.",
+        "title": "Uma aula fez tudo encaixar?",
+        "description": "Partilha o link de um vídeo, artigo ou guia aberto e diz em que tema ou unidade faz sentido.",
         "cta": "Sugerir recurso"
       },
       "playlist": {

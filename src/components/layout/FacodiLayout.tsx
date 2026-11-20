@@ -22,7 +22,7 @@ export default function FacodiLayout() {
   useEffect(() => { document.documentElement.lang = i18n.language; }, [i18n.language]);
   const footer = [
     { title: t('footer.learn'), links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }, { to: '/sequences', title: t('nav.sequences') }] },
-    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, ...(user ? [{ to: '/suggest', title: t('suggest.nav') }] : [])] },
+    { title: t('footer.project'), links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, { to: '/suggest', title: t('suggest.nav') }] },
     { title: t('footer.account'), links: user
       ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
       : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },

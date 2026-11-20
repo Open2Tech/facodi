@@ -8,11 +8,11 @@ import { useProjectDirectory, projectText } from '@/entities/project/project.api
 import { PageSeo } from '@/components/layout/PageSeo';
 import { staticPageMeta } from '@/shared/seo/seo';
 
-const actions: { id: 'explore'|'suggest'|'playlist'|'build'; icon: LucideIcon; href: string; private: boolean; tone: string }[] = [
-  { id:'explore',icon:BookOpen,href:'/courses',private:false,tone:'bg-brand-mint' },
-  { id:'suggest',icon:Lightbulb,href:'/suggest',private:true,tone:'bg-brand-cyan' },
-  { id:'playlist',icon:ListVideo,href:'/playlists/submit',private:true,tone:'bg-brand-orange' },
-  { id:'build',icon:HeartHandshake,href:'https://github.com/Open2Tech/facodi',private:false,tone:'bg-brand-pink' },
+const actions: { id: 'explore'|'suggest'|'playlist'|'build'; icon: LucideIcon; href: string; tone: string }[] = [
+  { id:'explore',icon:BookOpen,href:'/courses',tone:'bg-brand-mint' },
+  { id:'suggest',icon:Lightbulb,href:'/suggest',tone:'bg-brand-cyan' },
+  { id:'playlist',icon:ListVideo,href:'/playlists/submit',tone:'bg-brand-orange' },
+  { id:'build',icon:HeartHandshake,href:'https://github.com/Open2Tech/facodi',tone:'bg-brand-pink' },
 ];
 
 export default function Community() {
@@ -44,8 +44,7 @@ export default function Community() {
       <ul className="grid gap-px border border-foreground bg-foreground sm:grid-cols-2 lg:grid-cols-4">
         {actions.map((action, index) => {
           const Icon = action.icon;
-          const to = action.private && !user ? `/login?next=${encodeURIComponent(action.href)}` : action.href;
-          const external = to.startsWith('https://');
+          const external = action.href.startsWith('https://');
           const shared = `flex h-full flex-col p-6 text-ink transition-[filter] hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground ${action.tone}`;
           const content = <>
             <span className="mb-8 flex items-center justify-between">
@@ -56,8 +55,8 @@ export default function Community() {
             <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">{t(`projectCommunity.actions.${action.id}.cta`)}<ArrowUpRight className="h-4 w-4" /></span>
           </>;
           return <li key={action.id}>
-            {external ? <a href={to} target="_blank" rel="noopener noreferrer" className={shared}>{content}</a>
-              : <Link to={to} className={shared}>{content}</Link>}
+            {external ? <a href={action.href} target="_blank" rel="noopener noreferrer" className={shared}>{content}</a>
+              : <Link to={action.href} className={shared}>{content}</Link>}
           </li>;
         })}
       </ul>

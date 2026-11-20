@@ -3,7 +3,6 @@ import { ArrowRight, SlidersHorizontal, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnitFacets, useUnits } from '@/features/courses/queries/useCourses';
-import { useContributePath } from '@/features/auth/useContributePath';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
 import { PageSeo } from '@/components/layout/PageSeo';
@@ -48,7 +47,6 @@ export default function Units() {
   const params = useCatalogParams();
   const { page, search, course, year, semester, sort, filter, reset, faceted } = params;
   const query = useUnits({ page, search, language: '', course, year, semester, sort });
-  const contribute = useContributePath();
   const activeCount = [course, year, semester].filter(Boolean).length;
   const [filtersOpen, setFiltersOpen] = useState(() => typeof window === 'undefined' || !window.matchMedia || window.matchMedia(DESKTOP).matches);
   useEffect(() => {
@@ -75,7 +73,7 @@ export default function Units() {
         <section aria-labelledby="units-how" className="mt-10 hidden border-t border-input pt-6 lg:block">
           <h2 id="units-how" className="text-sm font-semibold">{t('units.howTitle')}</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t('units.howText')}</p>
-          <Link to={contribute} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/suggest" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </section>
       </aside>
       <div className="min-w-0">
@@ -128,7 +126,7 @@ export default function Units() {
         <section aria-labelledby="units-contribute" className="mt-12 flex flex-col gap-6 border border-foreground bg-primary px-6 py-8 text-primary-foreground sm:flex-row sm:items-end sm:justify-between lg:hidden">
           <div><h2 id="units-contribute" className="text-2xl font-semibold tracking-[-0.02em]">{t('units.howTitle')}</h2>
             <p className="mt-2 max-w-prose text-sm leading-relaxed">{t('units.howText')}</p></div>
-          <Link to={contribute} className="inline-flex shrink-0 items-center gap-2 font-semibold underline underline-offset-4">{t('units.contribute')}<ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/suggest" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-semibold underline underline-offset-4">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </section>
       </div>
     </div>

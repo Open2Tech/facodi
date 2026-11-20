@@ -101,7 +101,7 @@
       },
       "contribute": {
         "title": "Contribute",
-        "text": "Suggest improvements and new resources. The editorial team reviews before publishing."
+        "text": "Share a resource that helped you. FACODI checks the source and looks for a good fit in the catalogue."
       }
     },
     "contributeLink": "How to contribute",
@@ -124,8 +124,7 @@
       }
     },
     "ctaTitle": "Know a resource worth sharing?",
-    "ctaText": "FACODI grows through contributions reviewed by the editorial team. Find out how to take part.",
-    "ctaButton": "Contribute",
+    "ctaText": "That lesson that made it click or the reading that explained it so well? Share the link with whoever comes next.",
     "videosTitle": "Lessons to start right away",
     "videosText": "The opening videos of curated trails, from different channels. Each one opens with its curricular unit context.",
     "videosCta": "See all videos"
@@ -475,7 +474,6 @@
     "filterSemester": "Semester",
     "howTitle": "How this catalogue works",
     "howText": "Each unit comes from the official study plan and keeps the institution’s code and credits. Open resources are linked to units after editorial review.",
-    "contribute": "Suggest resources",
     "search": "Search by title or code",
     "searchPlaceholder": "e.g. Programming, 14541000",
     "searchLibrary": "Search videos and resources for “{{term}}”",
@@ -549,15 +547,14 @@
       }
     },
     "contributeTitle": "How to contribute",
-    "contributeText": "Contributions are checked: videos that strongly match the chosen course are published automatically; everything else goes through the editorial team.",
+    "contributeText": "Start with a link to an open lesson, reading or reference. Videos that clearly match the chosen course may be published automatically. The editorial team reviews other suggestions.",
     "flow": {
-      "account": "Create a FACODI account with your email.",
-      "review": "Share your proposal with the editorial team, who prepare the content as a draft.",
-      "publish": "Once reviewed, the content is published in the open catalogue."
+      "account": "Sign in to your FACODI account or create one with your email.",
+      "review": "Paste the link, check the details and choose a course or unit if you know where it fits.",
+      "publish": "Follow the review in your history. Approved resources may join the open catalogue."
     },
     "openEditor": "Open editorial workspace",
     "openDashboard": "Go to my space",
-    "createAccount": "Create an account or sign in",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "free": "Is FACODI free? Do I need an account?",
@@ -934,6 +931,33 @@
     "back": "How to contribute",
     "title": "Suggest a resource",
     "description": "Paste the address of an open video, repository or document. FACODI recognises the source, reads the public metadata and proposes the curricular unit. Videos that clearly match the chosen course are published automatically; the rest go through the editorial team.",
+    "backToUnit": "Back to the curricular unit",
+    "unitContext": "You’re suggesting a resource for {{unit}} ({{course}}). You can change the selection before sending.",
+    "signInDescription": "Sign in or create an account to suggest a resource and follow its progress in your history.",
+    "playlistLink": "Share a YouTube playlist",
+    "invite": {
+      "library": {
+        "title": "Got a great resource bookmarked?",
+        "description": "Share the link to an open lesson, reading or reference that helped you study."
+      },
+      "search": {
+        "title": "Missing a resource in these results?",
+        "description": "If you already have a link on the topic, suggest it for the next person who looks here."
+      },
+      "sequences": {
+        "title": "Know a video that belongs in a sequence?",
+        "description": "Share the link and tell us which topic or curricular unit it fits.",
+        "browseVideos": "Search the library for videos"
+      },
+      "unit": {
+        "title": "What helped you study this unit?",
+        "description": "A good lesson, reading or explanation could help someone else take the next step."
+      },
+      "guide": {
+        "title": "Help a resource find the right place",
+        "description": "Paste the link, pick a course or unit if you know where it fits, and follow the suggestion in your history."
+      }
+    },
     "url": "Resource address",
     "urlHint": "HTTPS preferred. Only this address is sent to the source’s public APIs, never your session.",
     "urlInvalid": "Enter a valid HTTP or HTTPS address.",
@@ -1193,8 +1217,8 @@
         "cta": "Explore"
       },
       "suggest": {
-        "title": "Found something useful?",
-        "description": "Suggest a video, article or document with enough context for review.",
+        "title": "Did a lesson make it click?",
+        "description": "Share the link to an open video, article or guide and tell us which topic or unit it fits.",
         "cta": "Suggest a resource"
       },
       "playlist": {

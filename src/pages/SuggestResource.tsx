@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { ArrowLeft, BookOpenCheck, FileSearch, Globe, Lightbulb, Link2, RotateCcw, Scale, ShieldCheck } from 'lucide-react';
+import { unitPath } from '@/entities/course/course.paths';
 import { classifyLicense, parseSuggestionTags, rankUnits, recognizeUrl, type Recognition } from '@/entities/suggestion/recognition';
 import { baseMetadata } from '@/entities/suggestion/metadata';
 import { parseScreening } from '@/entities/suggestion/suggestion.api';
@@ -38,6 +40,8 @@ const LICENSE_FILLS = { open: 'bg-brand-mint', restricted: 'bg-brand-coral', unk
 
 export default function SuggestResource() {
   const { t } = useTranslation();
+  const [params] = useSearchParams();
+  const contextUnitId = z.uuid().safeParse(params.get('unit')).data?.toLowerCase();
   const [urlDraft, setUrlDraft] = useState('');
   const [urlError, setUrlError] = useState(false);
   const [run, setRun] = useState<{ recognition: Recognition; key: string } | null>(null);
@@ -45,7 +49,8 @@ export default function SuggestResource() {
   const verdictRef = useRef<HTMLDivElement>(null);
   const recognition = run?.recognition ?? null;
   const metadata = usePublicMetadata(recognition);
-  const units = useSuggestionUnits();
+  const units = useSuggestionUnits(contextUnitId);
+  const contextUnit = contextUnitId ? units.data?.find(unit => unit.id === contextUnitId) : undefined;
   const mine = useMySuggestions();
   const submit = useSubmitSuggestion();
   const form = useForm<ResourceSuggestionFormValues>({ resolver: zodResolver(resourceSuggestionSchema), defaultValues: EMPTY });
@@ -64,17 +69,17 @@ export default function SuggestResource() {
   // Prefill the editable form once per analysed URL, as soon as the recognition data is known.
   const prefilled = useRef<string | null>(null);
   useEffect(() => {
-    if (!run || !extracted || !units.isSuccess || prefilled.current === run.key) return;
+    if (!run || !extracted || units.isPending || prefilled.current === run.key) return;
     prefilled.current = run.key;
-    const top = rankUnits(`${extracted.title} ${extracted.tags.join(' ')} ${extracted.description}`, units.data)[0];
-    const preselect = top && top.score >= PRESELECT_SCORE ? top.unit : null;
+    const top = rankUnits(`${extracted.title} ${extracted.tags.join(' ')} ${extracted.description}`, units.data ?? [])[0];
+    const preselect = contextUnit ?? (top && top.score >= PRESELECT_SCORE ? top.unit : null);
     form.reset({
       ...EMPTY,
       title: extracted.title, author: extracted.author, license: extracted.license, objectType: extracted.objectType,
       language: (LANGUAGES.some(([code]) => code === extracted.language) ? extracted.language : '') as ResourceSuggestionFormValues['language'],
       tags: extracted.tags.join(', '), courseId: preselect?.course.id ?? '', unitId: preselect?.id ?? '',
     });
-  }, [run, extracted, units.isSuccess, units.data, form]);
+  }, [run, extracted, contextUnit, units.isPending, units.data, form]);
 
   const extractedLicense = extracted ? classifyLicense(extracted.license) : 'unknown';
   const initialTop = extracted && units.data ? rankUnits(`${extracted.title} ${extracted.tags.join(' ')} ${extracted.description}`, units.data)[0] : undefined;
@@ -118,8 +123,9 @@ export default function SuggestResource() {
   const busy = submit.isPending;
 
   return <div>
-    <Link to="/about#contribute" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
-      <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('suggest.back')}
+    <Link to={contextUnit ? unitPath(contextUnit.course.slug, contextUnit.slug) : '/about#contribute'}
+      className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+      <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t(contextUnit ? 'suggest.backToUnit' : 'suggest.back')}
     </Link>
     <header className="mb-10 max-w-3xl">
       <div className="mb-3 flex items-center gap-3">
@@ -127,6 +133,9 @@ export default function SuggestResource() {
         <h1 className="text-3xl font-semibold sm:text-4xl">{t('suggest.title')}</h1>
       </div>
       <p className="max-w-prose text-muted-foreground">{t('suggest.description')}</p>
+      {contextUnit && <p className="mt-4 max-w-prose border-l-4 border-primary pl-3 text-sm">
+        {t('suggest.unitContext', { unit: contextUnit.title, course: contextUnit.course.title })}
+      </p>}
     </header>
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
       <div className="min-w-0 space-y-8">
@@ -156,6 +165,9 @@ export default function SuggestResource() {
               <Globe className="h-3 w-3" aria-hidden="true" />{providerName('web')}
             </li>
           </ul>
+          <Link to="/playlists/submit" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">
+            {t('suggest.playlistLink')}
+          </Link>
         </form>
 
         {recognition && <section aria-labelledby="suggest-recognition">
