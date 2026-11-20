@@ -80,7 +80,12 @@
       },
       "tabsLabel": "Mode du carnet",
       "quickPromptsLabel": "Essayer une recherche",
-      "quickPrompts": ["Algèbre linéaire", "Python", "Psychologie", "Statistiques"],
+      "quickPrompts": [
+        "Algèbre linéaire",
+        "Python",
+        "Psychologie",
+        "Statistiques"
+      ],
       "livePulse": "{{resources}} ressources publiées dans {{courses}} cours ouverts",
       "trySuggestTab": "Suggérer un lien ouvert",
       "suggestHeading": "Un cours ou un article ouvert a tout débloqué ? Partage le lien.",
@@ -2458,6 +2463,14 @@
     "showLess": "Afficher moins",
     "loadFailed": "Impossible de charger les ressources associées à ce cursus.",
     "sequencesFailed": "Impossible de charger les séquences éditoriales pour le moment.",
-    "notice": "Ces ressources complètent les unités d'enseignement et respectent les auteurs et licences d'origine. Il ne s'agit pas de cours officiels de l'établissement."
+    "notice": "Ces ressources complètent les unités d'enseignement et respectent les auteurs et licences d'origine. Il ne s'agit pas de cours officiels de l'établissement.",
+    "filterTitle": "Filtrer les ressources du cursus",
+    "searchLabel": "Rechercher des ressources",
+    "searchPlaceholder": "Ex. : circuits, fiscalité, statistiques…",
+    "unitFilterLabel": "Unité d'enseignement",
+    "allUnits": "Toutes les unités",
+    "clearFilters": "Effacer les filtres",
+    "openUnit": "Ouvrir l'unité",
+    "noMatches": "Aucune ressource ne correspond aux filtres. Essayez une autre unité ou un autre mot-clé."
   }
 }
