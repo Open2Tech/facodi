@@ -49,7 +49,7 @@
   "home": {
     "campus": "Un campus digital abierto",
     "title": "El conocimiento está en todas partes. <mark>Encuentra tu próximo paso.</mark>",
-    "description": "Aprender es más sencillo cuando los recursos adecuados se conectan. Explora cursos y referencias académicas con contexto, a tu ritmo.",
+    "description": "Trae esa duda que te quedó al salir de clase. Busca una explicación, guarda lo que te ayudó y comparte el enlace con quien estudia contigo.",
     "explore": "Explorar cursos",
     "open": "Recursos abiertos · Sin muro de pago · Curaduría con contexto",
     "notebook": "Cuaderno de exploración",
@@ -91,7 +91,7 @@
       "recognizedWeb": "Dirección válida — metadatos y licencia se revisan en el siguiente paso",
       "openSuggestPage": "Formulario completo"
     },
-    "pathsTitle": "Cuatro puertas de entrada",
+    "pathsTitle": "¿Por dónde entras al campus?",
     "paths": {
       "published": "Publicados: {{count}}",
       "courses": {
@@ -152,8 +152,8 @@
         "value": "Contenido abierto, organizado por un equipo editorial y protegido por reglas de acceso en la base de datos."
       }
     },
-    "ctaTitle": "¿Conoces un recurso que merece ser compartido?",
-    "ctaText": "¿Esa clase que hizo que todo encajara o la lectura que lo explicaba tan bien? Comparte el enlace con quien venga después.",
+    "ctaTitle": "¿Qué enlace te salvó la tarde de estudio?",
+    "ctaText": "Una clase que te aclaró las ideas, un artículo lleno de pistas… Pasa el enlace al equipo editorial para que llegue a más estudiantes.",
     "videosTitle": "Clases para empezar ya",
     "videosText": "Los primeros vídeos de las rutas curadas, de canales distintos. Cada uno se abre con el contexto de su unidad curricular.",
     "videosCta": "Ver todos los vídeos"

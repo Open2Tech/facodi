@@ -5,7 +5,7 @@ import {
   BookOpen,
   CheckCircle2,
   Compass,
-   Globe,
+  Globe,
   Lightbulb,
   ListOrdered,
   ListVideo,
@@ -122,15 +122,15 @@ export function HomeHero({ counts }: HomeHeroProps) {
   const hasLiveCounts = counts != null && counts.resources > 0 && counts.courses > 0;
 
   return (
-    <section className="grid gap-10 pb-14 pt-4 lg:grid-cols-[minmax(0,1.28fr)_minmax(0,1fr)] lg:gap-12 xl:gap-14 lg:pb-20">
-      <div className="flex min-w-0 flex-col">
+    <section className="mb-12 grid border border-foreground lg:mb-16 lg:grid-cols-[minmax(0,1.28fr)_minmax(0,1fr)]">
+      <div className="flex min-w-0 flex-col bg-ink p-5 text-ink-foreground sm:p-8 xl:p-10">
         <h1 className="max-w-3xl text-balance text-[2.45rem] font-semibold leading-[1.1] tracking-[-0.04em] sm:text-6xl xl:text-[4.15rem]">
           <Trans
             i18nKey="home.title"
             components={{ mark: <mark className="box-decoration-clone bg-primary px-1.5 text-primary-foreground" /> }}
           />
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{t('home.description')}</p>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-foreground/85">{t('home.description')}</p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Button size="lg" className="px-6" asChild>
@@ -143,7 +143,7 @@ export function HomeHero({ counts }: HomeHeroProps) {
           <Button
             size="lg"
             variant="outline"
-            className="border-foreground bg-card px-6 hover:border-brand-cyan hover:bg-brand-cyan hover:text-ink"
+            className="border-brand-cyan bg-brand-cyan px-6 text-brand-ink hover:bg-brand-paper hover:text-brand-ink"
             asChild
           >
             <Link to="/suggest">
@@ -155,7 +155,7 @@ export function HomeHero({ counts }: HomeHeroProps) {
           <Button
             size="lg"
             variant="ghost"
-            className="px-3 underline decoration-input underline-offset-4 hover:decoration-current"
+            className="px-3 text-ink-foreground underline underline-offset-4 hover:bg-ink-foreground/10 hover:text-ink-foreground"
             asChild
           >
             <Link to="/how-it-works">
@@ -167,27 +167,27 @@ export function HomeHero({ counts }: HomeHeroProps) {
 
         <ul
           aria-label={t('home.hero.featuresLabel')}
-          className="mt-9 divide-y divide-input border-y border-input"
+          className="mt-8 grid gap-2"
         >
           {CAMPUS_FEATURES.map(({ key, to, icon: Icon, tone }) => (
             <li key={key}>
               <Link
                 to={to}
-                className="group flex items-start gap-3.5 py-3.5 transition-colors hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:items-center"
+                className="group flex items-center gap-3.5 bg-ink-foreground/5 pr-3 hover:bg-ink-foreground/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-cyan"
               >
-                <span className={cn('grid h-9 w-9 shrink-0 place-items-center text-ink', tone)}>
+                <span className={cn('grid w-12 shrink-0 self-stretch place-items-center text-brand-ink', tone)}>
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold leading-snug text-foreground">
+                <span className="min-w-0 flex-1 py-2.5">
+                  <span className="block text-sm font-semibold leading-snug text-ink-foreground">
                     {t(`home.hero.features.${key}.title`)}
                   </span>
-                  <span className="mt-0.5 block text-sm leading-relaxed text-muted-foreground">
+                  <span className="mt-0.5 block text-sm leading-relaxed text-ink-foreground/80">
                     {t(`home.hero.features.${key}.description`)}
                   </span>
                 </span>
                 <ArrowUpRight
-                  className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground sm:mt-0"
+                  className="mt-1 h-4 w-4 shrink-0 text-ink-foreground motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 sm:mt-0"
                   aria-hidden="true"
                 />
               </Link>
@@ -195,12 +195,12 @@ export function HomeHero({ counts }: HomeHeroProps) {
           ))}
         </ul>
 
-        <p className="mt-auto pt-5 font-mono text-xs text-muted-foreground">{t('home.open')}</p>
+        <p className="mt-auto pt-5 font-mono text-xs text-ink-foreground/75">{t('home.open')}</p>
       </div>
 
       <div
         className={cn(
-          'flex min-w-0 flex-col border border-foreground border-t-4 bg-ink text-ink-foreground',
+          'flex min-w-0 flex-col border-t-4 lg:border-l lg:border-l-ink-foreground/25 bg-ink text-ink-foreground',
           mode === 'suggest' ? 'border-t-brand-cyan' : 'border-t-primary',
         )}
       >

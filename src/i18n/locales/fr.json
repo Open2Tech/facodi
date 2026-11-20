@@ -49,7 +49,7 @@
   "home": {
     "campus": "Un campus numérique ouvert",
     "title": "Le savoir est partout. <mark>Trouvez votre prochaine étape.</mark>",
-    "description": "Apprendre devient plus simple lorsque les bonnes ressources se relient. Explorez cours et références universitaires avec du contexte, à votre rythme.",
+    "description": "Viens avec la question qui te trotte dans la tête depuis le cours. Trouve une explication, garde ce qui t’aide et partage le lien avec ton groupe de révision.",
     "explore": "Explorer les cours",
     "open": "Ressources ouvertes · Sans péage · Curation contextualisée",
     "notebook": "Carnet d'exploration",
@@ -91,7 +91,7 @@
       "recognizedWeb": "Adresse valide — métadonnées et licence vérifiées à l’étape suivante",
       "openSuggestPage": "Formulaire complet"
     },
-    "pathsTitle": "Quatre portes d’entrée",
+    "pathsTitle": "Par où veux-tu entrer sur le campus ?",
     "paths": {
       "published": "Publiés : {{count}}",
       "courses": {
@@ -152,8 +152,8 @@
         "value": "Contenu ouvert, organisé par une équipe éditoriale et protégé par des règles d’accès dans la base de données."
       }
     },
-    "ctaTitle": "Tu connais une ressource qui mérite d’être partagée ?",
-    "ctaText": "Ce cours qui t’a donné le déclic, ou cette lecture qui expliquait si bien le sujet ? Partage le lien avec les autres.",
+    "ctaTitle": "Quel lien a sauvé ta séance de révision ?",
+    "ctaText": "Un cours qui a fait tilt, un article plein de pistes… Envoie le lien à l’équipe éditoriale pour en faire profiter les autres.",
     "videosTitle": "Des cours pour commencer tout de suite",
     "videosText": "Les premières vidéos des parcours sélectionnés, de chaînes différentes. Chacune s’ouvre avec le contexte de son unité d’enseignement.",
     "videosCta": "Voir toutes les vidéos"

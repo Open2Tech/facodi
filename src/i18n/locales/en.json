@@ -49,7 +49,7 @@
   "home": {
     "campus": "An open digital campus",
     "title": "Knowledge is everywhere. <mark>Find your next step.</mark>",
-    "description": "Learning gets easier when useful resources connect. Explore courses and academic references with context, at your own pace.",
+    "description": "Bring the question you took home from class. Find an explanation, save what clicks and pass it on to a study buddy.",
     "explore": "Explore courses",
     "open": "Open resources · No paywall · Context-led curation",
     "notebook": "Field notebook",
@@ -91,7 +91,7 @@
       "recognizedWeb": "Valid address — metadata and licence checked in the next step",
       "openSuggestPage": "Full suggestion form"
     },
-    "pathsTitle": "Four ways in",
+    "pathsTitle": "Where will you start on campus?",
     "paths": {
       "published": "Published: {{count}}",
       "courses": {
@@ -152,8 +152,8 @@
         "value": "Open content, organised by an editorial team and protected by access rules in the database."
       }
     },
-    "ctaTitle": "Know a resource worth sharing?",
-    "ctaText": "That lesson that made it click or the reading that explained it so well? Share the link with whoever comes next.",
+    "ctaTitle": "Which link got you through your study session?",
+    "ctaText": "Maybe it was a lecture that made things click or a paper full of clues. Send the link to our editors for the next person studying it.",
     "videosTitle": "Lessons to start right away",
     "videosText": "The opening videos of curated trails, from different channels. Each one opens with its curricular unit context.",
     "videosCta": "See all videos"

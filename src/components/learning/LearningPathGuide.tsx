@@ -29,16 +29,13 @@ export function LearningPathGuide({ compact = false }: { compact?: boolean }) {
       </Link>}
     </div>
     <ol className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-      {PARTS.map(({ id, to, icon: Icon, tone }, index) =>
+      {PARTS.map(({ id, to, icon: Icon, tone }) =>
         <li key={id}>
-          <Link to={to} className="group flex h-full flex-col gap-3 border border-input p-5 transition-colors hover:border-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-            <div className="flex items-center justify-between">
-              <span className={`grid h-10 w-10 place-items-center border border-foreground text-ink ${tone}`}>
-                <Icon className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <span className="font-mono text-xs tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+          <Link to={to} className="group flex h-full flex-col gap-3 border border-foreground bg-card p-5 text-card-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <div className={`-mx-5 -mt-5 mb-1 flex items-center border-b border-brand-ink px-5 py-4 text-brand-ink ${tone}`}>
+              <Icon className="h-8 w-8" strokeWidth={1.7} aria-hidden="true" />
             </div>
-            <h3 className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">
+            <h3 className="text-xl font-semibold group-hover:underline group-hover:underline-offset-4">
               {t(`learningGuide.parts.${id}.title`)}
             </h3>
             <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
