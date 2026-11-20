@@ -151,3 +151,47 @@ Os três vídeos foram encontrados em páginas públicas indexadas, com canal, t
 - A leitura detalhada de todas as FUC de **2026/27** continua pendente; não preencher lacunas académicas com suposições. A eventual indisponibilidade temporária do portal não equivale a inexistência das fichas.
 
 **Prioridades editoriais seguintes:** revisão pedagógica individual de vídeos e ligações, validação das FUC 2026/27, reforço com aulas realmente específicas em Direito Fiscal Aplicado I, Informática e Contabilidade Pública; corrigir materiais antiquados antes de criar mais objetos.
+
+
+## Quarta ronda — vídeos, recursos introdutórios e marcação de FUC não verificadas (2026-11-20)
+
+**Lote:** `facodi_ualg_1802_quality_20261120_v4`. Carregamento direto no Supabase de produção, sem migrations, novas tabelas, alterações a RLS ou deploy frontend.
+
+### Novos conteúdos e fontes
+
+| Área de aplicação | Material | Referência |
+|---|---|---|
+| Informática e Simulação Empresarial | TABELA DINÂMICA no EXCEL: como criar, configurar e personalizar — Edu Tognon (2024) | [YouTube `xNvxfQprGvo`](https://www.youtube.com/watch?v=xNvxfQprGvo) |
+| Informática e Simulação Empresarial | Como formatar segmentação de dados no Excel — Edu Tognon (2023) | [YouTube `oIZ_KPyBgqI`](https://www.youtube.com/watch?v=oIZ_KPyBgqI) |
+| Direito Fiscal Aplicado I e II | MUDA num minuto — Autoridade Tributária e Aduaneira: IVA Automático — MUDA (2024), com participação de Cláudia Dias da AT | [YouTube `U3PBUBLDauo`](https://www.youtube.com/watch?v=U3PBUBLDauo) |
+| Direito Fiscal, Matemática Aplicada | Impostos diretos e indiretos: aplicação de IRS e IVA — #EstudoEmCasa / DGE / RTP | [Página do recurso](https://estudoemcasaapoia.dge.mec.pt/recurso/impostos-diretos-e-indiretos-atividades-de-aplicacao-irs-e-iva) |
+| Contabilidade Pública, Gestão Orçamental, Direito Fiscal | Receitas e despesas públicas — #EstudoEmCasa / DGE | [Página do recurso](https://estudoemcasaapoia.dge.mec.pt/recurso/receitas-e-despesas-publicas) |
+| Contabilidade Pública, Gestão Orçamental | Como elaborar o Orçamento do Estado — #EstudoEmCasa / DGE | [Página do recurso](https://estudoemcasaapoia.dge.mec.pt/recurso/como-elaborar-o-orcamento-do-estado) |
+| Direito Fiscal e Simulação Empresarial | Portal de cidadania fiscal, tutoriais e atividades — Autoridade Tributária e Aduaneira | [Portal institucional](https://info.portaldasfinancas.gov.pt/pt/Cidadania/O_que_fazemos/Paginas/default.aspx) |
+
+**Cuidado editorial:** as aulas de Excel são sobre ferramentas genéricas, não regras contabilísticas portuguesas. O vídeo MUDA explica a funcionalidade de IVA Automático em 2024 e não substitui instruções e regras de fiscalidade vigentes em 2026. Os recursos DGE destinam-se originalmente ao ensino secundário e funcionam aqui como introdução, não como substituição das unidades curriculares da ESGHT. Os links são conservados com autoria e metadados, sem reprodução de conteúdo externo.
+
+### Contagens confirmadas
+
+- 3 novos objetos `video`, também indexados em `youtube_videos`;
+- 4 novas referências externas;
+- 17 vínculos temáticos diretos com unidades curriculares e 17 com módulos: **34 relações** novas no lote;
+- 16 guias de estudo atualizados com índice de fontes ligado à realidade após este lote;
+- **453 relações** nos quatro lotes do CTeSP (204 iniciais, 205 da segunda ronda, 10 da terceira e 34 desta quarta);
+- Todas as **16 UCs** possuem pelo menos um vídeo diretamente associado, mais referências e percurso editorial;
+- `SET LOCAL ROLE anon`: 3 vídeos, 4 referências e 34 relações novas visíveis; curso acessível sob role pública;
+- Curso preserva **16 UCs e 120 ECTS**, 35 módulos, 16 guias e zero duplicações por `source_id` de vídeo.
+
+### Qualidade das FUC de 2026/27
+
+A **matriz oficial do curso** foi confirmada em [UAlg — Plano de Estudos](https://www.ualg.pt/curso/1802/plano). A construção das 16 URLs `academico.ualg.pt/netpa/doc?...anoLectivo=202627...` foi mantida como **padrão de ligação ainda não validado**, pois as páginas não puderam ser recuperadas pelo mecanismo público disponível, mesmo após pesquisa dirigida por código de UC.
+
+Em `facodi.curricular_units.metadata`, foram colocados os marcadores:
+- `fuc_202627_status='not_verified_by_public_retrieval'`;
+- `official_fuc_url_status='pattern_link_unverified'`;
+- `fuc_202627_access_attempted_at='2026-11-20'`;
+- `curriculum_plan_independently_verified=true`.
+
+Não afirmar que as FUC inexistem, que foram verificadas ou que o seu programa detalhado coincide com os módulos editoriais FACODI.
+
+**Próximos passos:** obter as FUC por fonte institucional ou acesso autorizado, verificar conteúdos dos vídeos para além de metadados públicos e testar a apresentação em desktop/telemóvel no frontend `facodi.com` por navegador autenticado adequado.
