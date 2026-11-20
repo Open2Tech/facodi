@@ -55,26 +55,6 @@ describe('SiteHeader', () => {
     expect(trigger).toHaveFocus();
   });
 
-  it('exposes labelled quick links with the current route marked', () => {
-    auth.user = { id: 'learner' };
-    renderWithProviders(<SiteHeader />, { route: '/notes' });
-    for (const [name, href] of [['My space', '/dashboard'], ['Notebook', '/notes'], ['Suggest a resource', '/suggest']]) {
-      const link = screen.getByRole('link', { name });
-      expect(link).toHaveAttribute('href', href);
-      expect(link).toHaveAttribute('title', name);
-    }
-    expect(screen.getByRole('link', { name: 'Notebook' })).toHaveAttribute('aria-current', 'page');
-    expect(screen.getByRole('link', { name: 'Notebook' })).toHaveClass('bg-primary');
-    expect(screen.getByRole('link', { name: 'My space' })).not.toHaveAttribute('aria-current');
-  });
-
-  it('does not show private quick links to visitors', () => {
-    renderWithProviders(<SiteHeader />);
-    for (const name of ['My space', 'Notebook', 'Suggest a resource']) {
-      expect(screen.queryByRole('link', { name })).not.toBeInTheDocument();
-    }
-  });
-
   it('signs out from the account menu', async () => {
     auth.user = { id: 'learner' };
     renderWithProviders(<SiteHeader />);

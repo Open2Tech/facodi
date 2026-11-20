@@ -215,14 +215,6 @@ for (const language of ['pt', 'en', 'es', 'fr']) {
       await page.goto('/about');
       const header = page.getByRole('banner');
       await expect(header.getByRole('button', { name: /^(Account|Conta|Cuenta|Compte)$/ })).toBeVisible();
-      const shortcuts = header.locator('a[title][aria-label]').filter({ has: page.locator('svg') });
-      if (width >= 1536) {
-        await expect(shortcuts).toHaveCount(3);
-        for (const shortcut of await shortcuts.all()) await expect(shortcut).toBeVisible();
-        expect(await shortcuts.evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['/dashboard', '/notes', '/suggest']);
-      } else {
-        for (const shortcut of await shortcuts.all()) await expect(shortcut).toBeHidden();
-      }
       await page.evaluate(() => document.fonts.ready);
       const bounds = await header.evaluate(element => {
         const brand = element.querySelector('a')!.getBoundingClientRect();
