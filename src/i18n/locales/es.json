@@ -80,7 +80,12 @@
       },
       "tabsLabel": "Modo del cuaderno",
       "quickPromptsLabel": "Prueba a buscar",
-      "quickPrompts": ["Álgebra lineal", "Python", "Psicología", "Estadística"],
+      "quickPrompts": [
+        "Álgebra lineal",
+        "Python",
+        "Psicología",
+        "Estadística"
+      ],
       "livePulse": "{{resources}} recursos publicados en {{courses}} cursos abiertos",
       "trySuggestTab": "Sugerir un enlace abierto",
       "suggestHeading": "¿Te salvó el semestre? Comparte ese enlace.",
@@ -2458,6 +2463,14 @@
     "showLess": "Mostrar menos",
     "loadFailed": "No se han podido cargar los materiales vinculados a este curso.",
     "sequencesFailed": "No se pueden cargar las secuencias editoriales ahora mismo.",
-    "notice": "Estos materiales complementan las asignaturas y conservan la autoría y licencias originales. No son clases oficiales de la institución."
+    "notice": "Estos materiales complementan las asignaturas y conservan la autoría y licencias originales. No son clases oficiales de la institución.",
+    "filterTitle": "Filtrar materiales del curso",
+    "searchLabel": "Buscar materiales",
+    "searchPlaceholder": "P. ej., circuitos, fiscalidad, estadística…",
+    "unitFilterLabel": "Asignatura",
+    "allUnits": "Todas las asignaturas",
+    "clearFilters": "Borrar filtros",
+    "openUnit": "Abrir asignatura",
+    "noMatches": "No se han encontrado materiales para estos filtros. Prueba con otra asignatura o palabra clave."
   }
 }
