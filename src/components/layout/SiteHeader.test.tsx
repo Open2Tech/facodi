@@ -22,13 +22,27 @@ describe('SiteHeader', () => {
     renderWithProviders(<SiteHeader />);
     await userEvent.click(screen.getByRole('button', { name: 'Account' }));
     const menu = screen.getByRole('menu');
-    for (const title of ['My space', 'Notebook', 'Profile', 'Suggest a resource', 'Contribute', 'Sign out']) {
+    for (const title of ['My space', 'Notebook', 'Profile', 'Contribute', 'Sign out']) {
       expect(within(menu).getByRole('menuitem', { name: title })).toBeVisible();
     }
     expect(within(menu).queryByRole('menuitem', { name: 'Editorial workspace' }) !== null).toBe(role !== 'user');
     expect(within(menu).queryByRole('menuitem', { name: 'Administration' }) !== null).toBe(role === 'admin');
     await userEvent.keyboard('{Escape}');
     await waitFor(() => expect(screen.getByRole('button', { name: 'Account' })).toHaveFocus());
+  });
+
+  it('shows icons and the suggestion link in the public navigation', async () => {
+    renderWithProviders(<SiteHeader />, { route: '/suggest' });
+    const navigation = screen.getByRole('navigation', { name: 'Main navigation', hidden: true });
+    for (const title of ['Explore courses', 'Units', 'Resources', 'Sequences', 'About', 'Community', 'Suggest a resource']) {
+      expect(within(navigation).getByRole('link', { name: title, hidden: true }).querySelector('svg[aria-hidden="true"]')).toBeInTheDocument();
+    }
+    expect(within(navigation).getByRole('link', { name: 'Suggest a resource', hidden: true })).toHaveAttribute('href', '/suggest');
+    expect(within(navigation).getByRole('link', { name: 'Suggest a resource', hidden: true })).toHaveAttribute('aria-current', 'page');
+
+    await userEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    const panel = screen.getByRole('dialog', { name: 'Main navigation' });
+    expect(within(panel).getByRole('link', { name: 'Suggest a resource' })).toHaveAttribute('href', '/suggest');
   });
 
   it('lets visitors sign in and dismisses the mobile menu even when selecting the current route', async () => {

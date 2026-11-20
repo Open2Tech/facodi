@@ -42,12 +42,12 @@ export function SiteHeader() {
     { to: '/sequences', title: t('nav.sequences'), icon: ListOrdered },
     { to: '/about', title: t('nav.about'), icon: Info },
     { to: '/community', title: t('projectCommunity.nav'), icon: UsersRound },
+    { to: '/suggest', title: t('suggest.nav'), icon: Lightbulb },
   ];
   const accountLinks = [
     { to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard },
     { to: '/notes', title: t('nav.notes'), icon: NotebookPen },
     { to: '/profile', title: t('nav.profile'), icon: UserRound },
-    { to: '/suggest', title: t('suggest.nav'), icon: Lightbulb },
     { to: '/playlists/submit', title: t('playlistSubmit.nav'), icon: ListVideo },
     ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare }] : []),
     ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck }] : []),
@@ -56,7 +56,7 @@ export function SiteHeader() {
   useEffect(() => { setOpen(false); setSearchOpen(false); }, [location]);
   useEffect(() => {
     if (typeof window.matchMedia !== 'function') return;
-    const desktop = window.matchMedia('(min-width: 1280px)');
+    const desktop = window.matchMedia('(min-width: 1536px)');
     const closeMobile = () => { if (desktop.matches) setOpen(false); };
     desktop.addEventListener('change', closeMobile);
     return () => desktop.removeEventListener('change', closeMobile);
@@ -84,29 +84,29 @@ export function SiteHeader() {
     finally { setSigningOut(false); }
   }
   const navigationClass = ({ isActive }: { isActive: boolean }) => cn(
-    'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted xl:whitespace-nowrap xl:px-2',
+    'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted 2xl:gap-1.5 2xl:whitespace-nowrap 2xl:px-1.5',
     isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover',
   );
 
   return <header className="sticky top-0 z-30 border-b border-input bg-background">
-    <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-5 lg:px-8">
+    <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between gap-3 px-5 lg:px-8">
       <Link to="/" aria-label={t('brand.home')} className="flex shrink-0 items-center gap-2 text-2xl font-bold tracking-tight">
         <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
       </Link>
-      <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 xl:flex">
-        {primaryLinks.map(({ to, title }) => <NavLink key={to} to={to} className={navigationClass}>{title}</NavLink>)}
+      <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 2xl:flex">
+        {primaryLinks.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={navigationClass}><Icon className="size-4 shrink-0" aria-hidden="true" />{title}</NavLink>)}
       </nav>
       <div className="flex shrink-0 items-center gap-2">
         <Button ref={searchTrigger} type="button" variant="ghost" size="icon" className="size-11" aria-label={t('resourceExplorer.searchLabel')}
           title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
           {searchOpen ? <X /> : <Search />}
         </Button>
-        <div className="hidden xl:block"><LanguageSelect compact /></div>
+        <div className="hidden 2xl:block"><LanguageSelect compact /></div>
         <Button type="button" variant="ghost" size="icon" className="hidden size-11 sm:inline-flex" aria-label={t(dark ? 'nav.themeLight' : 'nav.themeDark')} title={t(dark ? 'nav.themeLight' : 'nav.themeDark')}
           onClick={() => setTheme(dark ? 'light' : 'dark')}>
           {dark ? <Sun /> : <Moon />}
         </Button>
-        <div className="hidden xl:block">
+        <div className="hidden 2xl:block">
           {!loading && (user ? <DropdownMenu>
             <DropdownMenuTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11" aria-label={t('footer.account')} title={t('footer.account')}><UserRound /></Button></DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="max-h-[var(--radix-dropdown-menu-content-available-height)] w-64 overflow-y-auto">
@@ -120,7 +120,7 @@ export function SiteHeader() {
           </DropdownMenu> : <Button asChild><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>)}
         </div>
         <Sheet open={open} onOpenChange={value => { setOpen(value); if (value) setSearchOpen(false); }}>
-          <SheetTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11 xl:hidden" aria-label={t('nav.menu')}><Menu /></Button></SheetTrigger>
+          <SheetTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11 2xl:hidden" aria-label={t('nav.menu')}><Menu /></Button></SheetTrigger>
           <SheetContent side="right" hideClose aria-describedby={undefined} className="flex h-dvh w-full flex-col gap-0 p-0 sm:max-w-sm">
             <div className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-4">
               <SheetTitle>{t('nav.main')}</SheetTitle>
