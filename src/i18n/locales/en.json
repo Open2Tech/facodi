@@ -80,7 +80,12 @@
       },
       "tabsLabel": "Notebook mode",
       "quickPromptsLabel": "Try searching",
-      "quickPrompts": ["Linear algebra", "Python", "Psychology", "Statistics"],
+      "quickPrompts": [
+        "Linear algebra",
+        "Python",
+        "Psychology",
+        "Statistics"
+      ],
       "livePulse": "{{resources}} published resources across {{courses}} open courses",
       "trySuggestTab": "Suggest an open link",
       "suggestHeading": "Know an open lesson, book or paper?",
@@ -2458,6 +2463,14 @@
     "showLess": "Show less",
     "loadFailed": "The materials linked to this course could not be loaded.",
     "sequencesFailed": "Editorial sequences could not be loaded right now.",
-    "notice": "These materials supplement the curricular units and preserve the original authors and licences. They are not official lectures from the institution."
+    "notice": "These materials supplement the curricular units and preserve the original authors and licences. They are not official lectures from the institution.",
+    "filterTitle": "Filter course materials",
+    "searchLabel": "Search materials",
+    "searchPlaceholder": "E.g. circuits, taxation, statistics…",
+    "unitFilterLabel": "Curricular unit",
+    "allUnits": "All curricular units",
+    "clearFilters": "Clear filters",
+    "openUnit": "Open unit page",
+    "noMatches": "No materials match these filters. Try another unit or keyword."
   }
 }
