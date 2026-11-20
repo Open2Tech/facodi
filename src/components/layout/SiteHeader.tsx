@@ -14,6 +14,8 @@ import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
 import { useTheme } from '@/shared/theme/theme';
 import { cn } from '@/lib/utils';
 
+const DESKTOP_QUERY = '(min-width: 1536px)';
+
 function LanguageSelect({ compact = false }: { compact?: boolean }) {
   const { t, i18n } = useTranslation();
   return <label className="flex min-w-0 items-center gap-3 text-sm">
@@ -56,7 +58,7 @@ export function SiteHeader() {
   useEffect(() => { setOpen(false); setSearchOpen(false); }, [location]);
   useEffect(() => {
     if (typeof window.matchMedia !== 'function') return;
-    const desktop = window.matchMedia('(min-width: 1536px)');
+    const desktop = window.matchMedia(DESKTOP_QUERY);
     const closeMobile = () => { if (desktop.matches) setOpen(false); };
     desktop.addEventListener('change', closeMobile);
     return () => desktop.removeEventListener('change', closeMobile);
@@ -121,7 +123,13 @@ export function SiteHeader() {
         </div>
         <Sheet open={open} onOpenChange={value => { setOpen(value); if (value) setSearchOpen(false); }}>
           <SheetTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11 2xl:hidden" aria-label={t('nav.menu')}><Menu /></Button></SheetTrigger>
-          <SheetContent side="right" hideClose aria-describedby={undefined} className="flex h-dvh w-full flex-col gap-0 p-0 sm:max-w-sm">
+          <SheetContent side="right" hideClose aria-describedby={undefined} className="flex h-dvh w-full flex-col gap-0 p-0 sm:max-w-sm"
+            onCloseAutoFocus={event => {
+              if (typeof window.matchMedia === 'function' && window.matchMedia(DESKTOP_QUERY).matches && searchTrigger.current) {
+                event.preventDefault();
+                searchTrigger.current.focus();
+              }
+            }}>
             <div className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-4">
               <SheetTitle>{t('nav.main')}</SheetTitle>
               <SheetClose asChild><Button type="button" variant="ghost" size="icon" className="size-11" aria-label={t('nav.close')}><X /></Button></SheetClose>

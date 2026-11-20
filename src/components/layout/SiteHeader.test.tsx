@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { screen, within, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { renderWithProviders } from '@/shared/test/renderWithProviders';
@@ -13,6 +13,10 @@ beforeEach(async () => {
   auth.role = 'user';
   auth.signOut.mockReset().mockResolvedValue(undefined);
   await i18n.changeLanguage('en');
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
 });
 
 describe('SiteHeader', () => {
@@ -57,6 +61,23 @@ describe('SiteHeader', () => {
     await userEvent.click(within(panel).getByRole('link', { name: 'About' }));
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    await waitFor(() => expect(trigger).toHaveFocus());
+  });
+
+  it('moves focus to search when an open mobile menu closes at the desktop breakpoint', async () => {
+    const desktop = Object.assign(new EventTarget(), { matches: false });
+    vi.stubGlobal('matchMedia', vi.fn(() => desktop));
+    renderWithProviders(<SiteHeader />);
+    await userEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    expect(screen.getByRole('dialog', { name: 'Main navigation' })).toBeVisible();
+
+    act(() => {
+      desktop.matches = true;
+      desktop.dispatchEvent(new Event('change'));
+    });
+
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Search the library' })).toHaveFocus());
   });
 
   it('closes search with Escape and restores focus to its trigger', async () => {
