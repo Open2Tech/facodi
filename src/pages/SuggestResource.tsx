@@ -144,19 +144,19 @@ export default function SuggestResource() {
       className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
       <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t(contextUnit ? 'suggest.backToUnit' : 'suggest.back')}
     </Link>
-    <header className="mb-10 max-w-3xl">
+    <header className="mb-10 max-w-3xl border-t-4 border-t-brand-cyan pt-6">
       <div className="mb-3 flex items-center gap-3">
-        <span className="grid h-11 w-11 shrink-0 place-items-center bg-brand-cyan text-ink"><Lightbulb className="h-6 w-6" aria-hidden="true" /></span>
+        <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground bg-brand-cyan text-brand-ink"><Lightbulb className="h-6 w-6" aria-hidden="true" /></span>
         <h1 className="text-3xl font-semibold sm:text-4xl">{t('suggest.title')}</h1>
       </div>
       <p className="max-w-prose text-muted-foreground">{t('suggest.description')}</p>
-      {contextUnit && <p className="mt-4 max-w-prose border-l-4 border-primary pl-3 text-sm">
+      {contextUnit && <p className="mt-4 max-w-prose border border-foreground bg-primary px-4 py-2.5 text-sm font-medium text-brand-ink">
         {t('suggest.unitContext', { unit: contextUnit.title, course: contextUnit.course.title })}
       </p>}
     </header>
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)]">
       <div className="min-w-0 space-y-8">
-        <form onSubmit={analyse} noValidate className="border border-foreground p-5 sm:p-6">
+        <form onSubmit={analyse} noValidate className="border border-foreground border-t-4 border-t-brand-cyan bg-card p-5 sm:p-6">
           <label htmlFor="suggest-url" className="block text-sm font-semibold">{t('suggest.url')}</label>
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
             <Input id="suggest-url" type="url" inputMode="url" maxLength={2048} value={urlDraft} placeholder="https://" disabled={busy}
@@ -173,12 +173,12 @@ export default function SuggestResource() {
             {PROVIDERS.filter(provider => provider !== 'web').map(provider => {
               const active = recognition?.provider === provider;
               return <li key={provider} className={cn('border px-2 py-1 font-mono text-xs transition-colors',
-                active ? 'border-foreground bg-primary text-ink' : 'border-input text-muted-foreground')}>
+                active ? 'border-foreground bg-brand-cyan font-semibold text-brand-ink' : 'border-input bg-background text-muted-foreground')}>
                 {providerName(provider)}{active && <span className="sr-only"> · {t('suggest.detected')}</span>}
               </li>;
             })}
             <li className={cn('flex items-center gap-1 border px-2 py-1 font-mono text-xs',
-              recognition?.provider === 'web' ? 'border-foreground bg-primary text-ink' : 'border-input text-muted-foreground')}>
+              recognition?.provider === 'web' ? 'border-foreground bg-brand-cyan font-semibold text-brand-ink' : 'border-input bg-background text-muted-foreground')}>
               <Globe className="h-3 w-3" aria-hidden="true" />{providerName('web')}
             </li>
           </ul>
@@ -270,13 +270,13 @@ export default function SuggestResource() {
         </form>}
 
         {verdict && screening && <div ref={verdictRef} tabIndex={-1} role="status"
-          className="border border-foreground p-5 outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:animate-rise sm:p-6">
-          <div className="flex flex-wrap items-center gap-2">
+          className="border border-foreground border-t-4 border-t-brand-mint bg-card p-5 outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:animate-rise sm:p-6">
+          <h2 className="text-2xl font-semibold">{t(verdict.status === 'duplicate' ? 'suggest.verdict.duplicateTitle' : 'suggest.verdict.title')}</h2>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
             <StatusBadge status={verdict.status} label={t(`suggest.status.${verdict.status}`)} />
             <RecommendationBadge recommendation={screening.recommendation} />
           </div>
-          <h2 className="mt-4 text-2xl font-semibold">{t(verdict.status === 'duplicate' ? 'suggest.verdict.duplicateTitle' : 'suggest.verdict.title')}</h2>
-          <p className="mt-2 max-w-prose text-muted-foreground">{t(`suggest.verdict.${screening.recommendation}`)}</p>
+          <p className="mt-3 max-w-prose text-muted-foreground">{t(`suggest.verdict.${screening.recommendation}`)}</p>
           {verdict.status === 'pending' && <p className="mt-2 max-w-prose text-muted-foreground">{t('suggest.verdict.analysis')}</p>}
           <ScreeningSignals className="mt-5" screening={screening} provider={verdict.provider} />
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -295,7 +295,7 @@ export default function SuggestResource() {
           <h2 id="suggest-history" ref={historyRef} tabIndex={-1} className="scroll-mt-24 text-lg font-semibold">{t('suggest.history')}</h2>
           <SuggestionHistory />
         </section>
-        <section aria-labelledby="suggest-criteria" className="border-t border-input pt-6">
+        <section aria-labelledby="suggest-criteria" className="border border-foreground border-t-4 border-t-primary bg-card p-5">
           <h2 id="suggest-criteria" className="text-lg font-semibold">{t('suggest.criteria.title')}</h2>
           <dl className="mt-4 space-y-4 text-sm">
             {(['fast_track', 'review', 'reject'] as const).map(item => <div key={item}>

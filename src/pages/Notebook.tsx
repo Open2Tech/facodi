@@ -57,10 +57,10 @@ export default function Notebook() {
   }
 
   return <>
-    <header className="flex flex-wrap items-end justify-between gap-6">
+    <header className="flex flex-wrap items-end justify-between gap-6 border-t-4 border-t-brand-mint pt-6">
       <div className="max-w-2xl">
         <h1 className="flex items-center gap-4 text-4xl font-semibold tracking-[-0.03em]">
-          <span className="grid h-12 w-12 shrink-0 place-items-center border border-foreground bg-primary text-primary-foreground" aria-hidden="true"><NotebookPen className="h-6 w-6" strokeWidth={1.75} /></span>
+          <span className="grid h-12 w-12 shrink-0 place-items-center border border-foreground bg-brand-mint text-brand-ink" aria-hidden="true"><NotebookPen className="h-6 w-6" strokeWidth={1.75} /></span>
           {t('notebookPage.title')}
         </h1>
         <p className="mt-4 text-muted-foreground">{t('notebookPage.description')}</p>
@@ -73,9 +73,9 @@ export default function Notebook() {
       <Button type="button" variant="outline" size="sm" className="mt-3" onClick={() => void notebook.retry()}>{t('common.retry')}</Button>
     </div>
       : !notebook.ready ? <p className="mt-10 text-muted-foreground">{t('common.loading')}</p>
-      : !notebook.all.length ? <div className="mt-10 border border-dashed border-input px-6 py-10">
-        <p className="max-w-prose text-muted-foreground">{t('notes.overviewEmpty')}</p>
-        <Link to="/resources?type=video" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('notes.overviewBrowse')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+      : !notebook.all.length ? <div className="mt-10 border border-foreground bg-brand-mint px-6 py-10 text-brand-ink sm:px-8">
+        <p className="max-w-prose text-base leading-relaxed text-brand-ink">{t('notes.overviewEmpty')}</p>
+        <Link to="/resources?type=video" className="mt-5 inline-flex min-h-11 items-center gap-2 border border-brand-ink bg-brand-ink px-4 py-2 text-sm font-semibold text-ink-foreground transition-opacity hover:opacity-90">{t('notes.overviewBrowse')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
       </div>
         : <>
           <div className="mb-8 mt-9 space-y-5 border-t border-input pt-5">
@@ -84,7 +84,7 @@ export default function Notebook() {
             </label>
             <div role="group" aria-label={t('notes.filters')} className="flex flex-wrap gap-2">
               {NOTE_VIEWS.map((key: NoteView) => <button key={key} type="button" aria-pressed={view === key} onClick={() => set('view', key)}
-                className={cn(chip, view === key ? 'border-foreground bg-foreground text-background' : 'border-input hover:border-foreground')}>
+                className={cn(chip, view === key ? 'border-foreground bg-primary font-semibold text-brand-ink' : 'border-input bg-card hover:border-foreground')}>
                 {t(`notes.filter.${key}`)} <span className="font-mono tabular-nums">({counts[key]})</span>
               </button>)}
             </div>
@@ -92,7 +92,7 @@ export default function Notebook() {
               <span className="text-sm font-medium">{t('notebookPage.tags')}</span>
               {shownTags.map(item => <button key={item.tag} type="button" aria-pressed={tag === item.tag} onClick={() => set('tag', tag === item.tag ? '' : item.tag)}
                 className={cn('font-mono text-xs underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                  tag === item.tag ? 'border border-foreground bg-primary px-1.5 py-0.5 text-primary-foreground' : 'text-muted-foreground hover:text-foreground hover:underline')}>
+                  tag === item.tag ? 'border border-foreground bg-brand-cyan px-1.5 py-0.5 font-semibold text-brand-ink' : 'text-muted-foreground hover:text-foreground hover:underline')}>
                 #{item.tag} <span className="tabular-nums">{item.count}</span>
               </button>)}
             </div>}

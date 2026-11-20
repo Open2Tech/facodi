@@ -49,7 +49,7 @@
   "home": {
     "campus": "An open digital campus",
     "title": "Knowledge is everywhere. <mark>Find your next step.</mark>",
-    "description": "Learning gets easier when useful resources connect. Explore courses and academic references with context, at your own pace.",
+    "description": "Fewer lost browser tabs, more context that clicks. Explore open courses, curricular units and study trails at your own pace — no paywall, no gatekeeping.",
     "explore": "Explore courses",
     "open": "Open resources · No paywall · Context-led curation",
     "notebook": "Field notebook",
@@ -60,22 +60,22 @@
     "thread": "Follow the thread. Find a new connection.",
     "threadDescription": "A course provides structure. A curricular unit offers context. A resource opens a possibility. FACODI brings these pieces together without imposing a single path.",
     "howItWorks": "How it works",
-    "searchPlaceholder": "e.g. algebra, programming, ethics…",
+    "searchPlaceholder": "Try linear algebra, Python, ethics, statistics…",
     "searchButton": "Search the catalogue",
     "hero": {
       "featuresLabel": "Campus tools",
       "features": {
         "sequences": {
           "title": "Guided sequences",
-          "description": "Step-by-step study trails with saved progress per lesson."
+          "description": "Lessons lined up so you never lose the thread — with saved progress."
         },
         "notes": {
           "title": "Study notebook",
-          "description": "Personal notes linked to the exact video timestamp and unit."
+          "description": "Jot down ideas, formulas and code pinned to the exact second of the video."
         },
         "playlists": {
           "title": "Submit a playlist",
-          "description": "Propose open lesson series for editorial curation."
+          "description": "Got a goldmine playlist? Pair it with a unit and our editors take it from there."
         }
       },
       "tabsLabel": "Notebook mode",
@@ -84,7 +84,7 @@
       "livePulse": "{{resources}} published resources across {{courses}} open courses",
       "trySuggestTab": "Suggest an open link",
       "suggestHeading": "Know an open lesson, book or paper?",
-      "suggestSubtitle": "Paste the address to recognise the source and match it to the right curricular unit.",
+      "suggestSubtitle": "Paste the URL of an open lecture, book or repo — we spot the source right away and help link it to the right unit.",
       "suggestPlaceholder": "https://www.youtube.com/watch?v=… or https://arxiv.org/abs/…",
       "suggestSubmit": "Analyse resource on the suggestion page",
       "recognizedProvider": "Source recognised: {{provider}} — ready for curricular matching",
@@ -135,7 +135,7 @@
     },
     "contributeLink": "How to contribute",
     "topicsTitle": "Featured topics",
-    "topicsDescription": "The most frequent topics across published resources.",
+    "topicsDescription": "The topics showing up most across published resources — pick one and dive straight in.",
     "communityTitle": "An academic project, made by students.",
     "communityLink": "About the project",
     "community": {
@@ -153,14 +153,14 @@
       }
     },
     "ctaTitle": "Know a resource worth sharing?",
-    "ctaText": "That lesson that made it click or the reading that explained it so well? Share the link with whoever comes next.",
+    "ctaText": "That lecture that finally made things click at 11pm, or the open guide that explained it better than a dozen slides? Leave a clearer map for whoever comes next.",
     "videosTitle": "Lessons to start right away",
-    "videosText": "The opening videos of curated trails, from different channels. Each one opens with its curricular unit context.",
+    "videosText": "Opening lessons from curated study trails, ready to play with full curricular unit context right beside you.",
     "videosCta": "See all videos"
   },
   "catalog": {
     "title": "Find your next step.",
-    "description": "Explore published courses, discover curricular units and open educational resources with context.",
+    "description": "Real degree plans, curricular units in context and open study resources — pick where you want to start.",
     "search": "Search by title",
     "searchPlaceholder": "What would you like to learn?",
     "allLanguages": "All languages",
@@ -332,11 +332,11 @@
   },
   "dashboard": {
     "welcome": "Hello, {{name}}.",
-    "description": "Your space to find the next path and look after your account.",
+    "description": "Your corner of the campus: pick up right where you left off, check your study notebook and track what you’ve shared.",
     "role": "FACODI access",
-    "catalog": "Discover published courses and educational resources.",
+    "catalog": "Explore open courses, study plans and learning materials.",
     "account": "Update your account name, email and password.",
-    "suggestions": "Track the resources you’ve shared.",
+    "suggestions": "See how the links and resources you shared are doing.",
     "editor": "Prepare, publish and archive educational content.",
     "admin": "View catalogue states and counts.",
     "shortcuts": "Your shortcuts",
@@ -490,7 +490,7 @@
   },
   "units": {
     "title": "Curricular units",
-    "description": "Search the course units of published degrees, filter by course, year or semester, and open each unit for context.",
+    "description": "Every published curricular unit on one map: filter by degree, year or semester and check the study materials linked to each unit.",
     "inCourse": "Course: {{course}}",
     "empty": "No units to show yet.",
     "emptyDescription": "Units appear once the courses they belong to are published.",
@@ -535,7 +535,7 @@
   },
   "resourceExplorer": {
     "title": "What would you like to learn today?",
-    "description": "Explore topics, follow lessons and find materials at your own pace.",
+    "description": "Pull on a topic thread, follow a lesson trail or browse open materials at your own pace — zero rush, full context.",
     "searchLabel": "Search the library",
     "searchPlaceholder": "Try calculus, Python or management",
     "skipToLibrary": "Skip to the full library",
@@ -920,7 +920,7 @@
     "quickAddAt": "Note at {{time}}",
     "overviewTitle": "Your notebook",
     "overviewTotals": "{{notes}} · {{resources}}",
-    "overviewEmpty": "You have no notes yet. Open a video or resource and use the study notebook to capture ideas tied to the exact moment.",
+    "overviewEmpty": "Your notebook is wide open! Start any video or resource and pin ideas, formulas or code snippets to the exact timestamp.",
     "overviewBrowse": "Explore videos",
     "overviewLatest": "Latest: {{title}}",
     "resourceCount_one": "{{count}} resource",
@@ -968,24 +968,24 @@
     "invite": {
       "library": {
         "title": "Got a great resource bookmarked?",
-        "description": "Share the link to an open lesson, reading or reference that helped you study."
+        "description": "Share the link to that open lecture, reading or guide that saved your study session."
       },
       "search": {
         "title": "Missing a resource in these results?",
-        "description": "If you already have a link on the topic, suggest it for the next person who looks here."
+        "description": "Already have a solid link on this topic? Drop it here for the next person searching."
       },
       "sequences": {
         "title": "Know a video that belongs in a sequence?",
-        "description": "Share the link and tell us which topic or curricular unit it fits.",
+        "description": "Send the link and tell us which topic or curricular unit it fits — our editors will take a look.",
         "browseVideos": "Search the library for videos"
       },
       "unit": {
         "title": "What helped you study this unit?",
-        "description": "A good lesson, reading or explanation could help someone else take the next step."
+        "description": "That lesson or reading that made this subject click could unlock the next step for someone studying it right now."
       },
       "guide": {
         "title": "Help a resource find the right place",
-        "description": "Paste the link, pick a course or unit if you know where it fits, and follow the suggestion in your history."
+        "description": "Paste the link, point to a course or unit if you know where it fits, and follow everything in your history."
       }
     },
     "url": "Resource address",
@@ -1319,7 +1319,7 @@
   },
   "sequences": {
     "title": "Study sequences",
-    "description": "Editorial paths of YouTube lessons, ordered by FACODI so you can study a topic from start to finish.",
+    "description": "Curated trails of open YouTube lessons ordered by FACODI so you can take a topic from first question to solid grasp.",
     "search": "Search sequences",
     "searchPlaceholder": "Title, topic or unit code",
     "noMatches": "No study sequences match your search.",
@@ -1362,7 +1362,7 @@
     "overviewTotal_one": "{{count}} sequence started",
     "overviewTotal_many": "{{count}} sequences started",
     "overviewTotal_other": "{{count}} sequences started",
-    "overviewEmpty": "You have not started a sequence yet. Pick a path and mark lessons as you go.",
+    "overviewEmpty": "You haven’t started a sequence yet. Pick a trail and check off each lesson as you go!",
     "browse": "Browse study sequences",
     "inSequences": "In study sequences",
     "videoSequencesLoadFailed": "Could not load the study sequences for this video.",
@@ -1380,7 +1380,7 @@
   "continueLearning": {
     "eyebrow": "Pick up where you left off",
     "next": "Next lesson: {{title}}",
-    "cta": "Continue"
+    "cta": "Keep studying"
   },
   "milestones": {
     "title": "Your milestones",

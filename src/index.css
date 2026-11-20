@@ -67,9 +67,20 @@
     --ink: 222 60% 6%;
   }
   * { @apply border-border; }
-  body { @apply min-h-screen bg-background font-sans text-foreground antialiased; }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--foreground) / 0.32) transparent;
+  }
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    caret-color: hsl(var(--foreground));
+  }
+  .dark body {
+    caret-color: hsl(var(--primary));
+  }
   h1, h2, h3 { text-wrap: balance; overflow-wrap: anywhere; }
   p { text-wrap: pretty; }
+  a { text-underline-offset: 4px; }
   a, button, input, select, textarea { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground; }
   input::placeholder, textarea::placeholder { color: hsl(var(--muted-foreground)); opacity: 1; }
   ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }

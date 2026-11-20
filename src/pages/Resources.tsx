@@ -26,6 +26,15 @@ import { plainText } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
 import { studyTopics } from '@/shared/lib/topicTags';
 
+const AREA_POSTER_TONES = [
+  'bg-primary',
+  'bg-brand-cyan',
+  'bg-brand-mint',
+  'bg-brand-orange',
+  'bg-brand-pink',
+  'bg-brand-coral',
+] as const;
+
 export default function Resources() {
   const { t } = useTranslation();
   const { page, search, language, tag, area, type, filter, reset } = useCatalogParams();
@@ -58,11 +67,11 @@ export default function Resources() {
 
   return <>
     <PageSeo {...staticPageMeta('/resources', { title: t('resources.title'), description: t('resources.description') })} />
-    <header>
+    <header className="border-t-4 border-t-brand-mint pt-6">
       <h1 className="max-w-3xl text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{t('resourceExplorer.title')}</h1>
       <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <p className="max-w-prose text-lg text-muted-foreground">{t('resourceExplorer.description')}</p>
-        <a href="#resource-library" className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold underline underline-offset-4">
+        <a href="#resource-library" className="inline-flex min-h-10 items-center gap-2 border border-foreground bg-card px-3.5 py-2 text-sm font-semibold transition-colors hover:bg-brand-mint hover:text-brand-ink">
           {t('resourceExplorer.skipToLibrary')}<ArrowDown className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>
@@ -101,9 +110,12 @@ export default function Resources() {
       <ResourceDiscovery />
       <nav aria-label={t('catalog.browseByArea')} className="my-9">
         <h2 className="text-lg font-semibold">{t('catalog.browseByArea')}</h2>
-        <div className="mt-2 flex gap-x-5 overflow-x-auto pb-1 sm:grid sm:grid-cols-3 lg:grid-cols-6">
-          {STUDY_AREAS.map(studyArea => <Link key={studyArea.key} to={`?area=${studyArea.key}`}
-            className="inline-flex min-h-12 max-w-[11rem] shrink-0 items-center justify-between gap-2 border-b border-input py-2 text-sm decoration-2 underline-offset-4 hover:underline sm:max-w-none">
+        <div className="mt-3 flex gap-2.5 overflow-x-auto pb-1 sm:grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+          {STUDY_AREAS.map((studyArea, index) => <Link key={studyArea.key} to={`?area=${studyArea.key}`}
+            className={cn(
+              'inline-flex min-h-12 min-w-[11rem] shrink-0 items-center justify-between gap-2 border border-foreground px-3.5 py-2.5 text-sm font-semibold text-brand-ink transition-[filter] hover:brightness-95 sm:min-w-0',
+              AREA_POSTER_TONES[index % AREA_POSTER_TONES.length],
+            )}>
             {t('catalog.studyAreas.' + studyArea.key)}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           </Link>)}
         </div>

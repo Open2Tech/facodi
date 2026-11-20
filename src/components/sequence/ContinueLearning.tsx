@@ -25,12 +25,14 @@ export function ContinueLearning({ className }: { className?: string }) {
   const progress = useSequenceProgress(sequence.data?.id);
   if (!user || !current) return null;
   const next = sequence.data && progress.data ? nextItem(sequence.data.items, progress.data) : null;
-  return <section aria-labelledby="continue-learning" className={cn('grid gap-6 border border-foreground p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:p-8', className)}>
+  return <section aria-labelledby="continue-learning" className={cn('grid gap-6 border border-foreground border-t-4 border-t-brand-pink bg-card p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:p-8', className)}>
     <div className="min-w-0">
-      <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">
-        <span className="h-2.5 w-2.5 border border-foreground bg-primary" aria-hidden="true" />{t('continueLearning.eyebrow')}
-      </p>
-      <h2 id="continue-learning" className="mt-3 text-2xl font-semibold tracking-[-0.02em] [text-wrap:balance] sm:text-3xl">{current.title}</h2>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="continue-learning" className="text-2xl font-semibold tracking-[-0.02em] [text-wrap:balance] sm:text-3xl">{current.title}</h2>
+        <span className="border border-foreground bg-brand-pink px-2.5 py-0.5 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-brand-ink">
+          {t('continueLearning.eyebrow')}
+        </span>
+      </div>
       {next && <p className="mt-2 text-muted-foreground">{t('continueLearning.next', { title: next.title })}</p>}
       <SequenceProgress className="mt-5 max-w-md" completed={current.completed} total={current.total} label={t('sequences.progressLabel', { title: current.title })} />
     </div>

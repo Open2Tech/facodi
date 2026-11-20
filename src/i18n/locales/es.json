@@ -49,7 +49,7 @@
   "home": {
     "campus": "Un campus digital abierto",
     "title": "El conocimiento está en todas partes. <mark>Encuentra tu próximo paso.</mark>",
-    "description": "Aprender es más sencillo cuando los recursos adecuados se conectan. Explora cursos y referencias académicas con contexto, a tu ritmo.",
+    "description": "Menos 37 pestañas perdidas, más contexto con sentido. Explora cursos, asignaturas y clases abiertas a tu ritmo — sin muro de pago y sin poses.",
     "explore": "Explorar cursos",
     "open": "Recursos abiertos · Sin muro de pago · Curaduría con contexto",
     "notebook": "Cuaderno de exploración",
@@ -60,22 +60,22 @@
     "thread": "Sigue el hilo. Descubre una nueva conexión.",
     "threadDescription": "Un curso da estructura. Una unidad curricular ofrece contexto. Un recurso abre una posibilidad. FACODI acerca estas piezas sin imponer un único camino.",
     "howItWorks": "Cómo funciona",
-    "searchPlaceholder": "Ej.: álgebra, programación, ética…",
+    "searchPlaceholder": "Ej.: álgebra lineal, Python, ética, estadística…",
     "searchButton": "Buscar en el catálogo",
     "hero": {
       "featuresLabel": "Herramientas del campus",
       "features": {
         "sequences": {
           "title": "Secuencias guiadas",
-          "description": "Rutas paso a paso con progreso guardado en cada clase."
+          "description": "Clases en orden para avanzar sin perder el hilo — con progreso guardado."
         },
         "notes": {
           "title": "Cuaderno de estudio",
-          "description": "Notas personales vinculadas al minuto del vídeo y a la asignatura."
+          "description": "Apunta ideas, fórmulas y código clavados en el segundo exacto del vídeo."
         },
         "playlists": {
           "title": "Enviar lista",
-          "description": "Propón listas de clases abiertas para revisión editorial."
+          "description": "¿Tienes una lista joya? Indícanos la asignatura y el equipo editorial se encarga."
         }
       },
       "tabsLabel": "Modo del cuaderno",
@@ -83,8 +83,8 @@
       "quickPrompts": ["Álgebra lineal", "Python", "Psicología", "Estadística"],
       "livePulse": "{{resources}} recursos publicados en {{courses}} cursos abiertos",
       "trySuggestTab": "Sugerir un enlace abierto",
-      "suggestHeading": "¿Conoces una clase, libro o artículo abierto?",
-      "suggestSubtitle": "Pega la dirección para reconocer la fuente y vincularla a la asignatura adecuada.",
+      "suggestHeading": "¿Te salvó el semestre? Comparte ese enlace.",
+      "suggestSubtitle": "Pega la URL de una clase, libro o repositorio abierto: reconocemos la fuente al instante y la conectamos con la asignatura adecuada.",
       "suggestPlaceholder": "https://www.youtube.com/watch?v=… o https://arxiv.org/abs/…",
       "suggestSubmit": "Analizar recurso en la página de sugerencias",
       "recognizedProvider": "Fuente reconocida: {{provider}} — lista para el análisis curricular",
@@ -135,7 +135,7 @@
     },
     "contributeLink": "Cómo contribuir",
     "topicsTitle": "Temas destacados",
-    "topicsDescription": "Los temas más frecuentes en los recursos publicados.",
+    "topicsDescription": "Los temas que más suenan en el catálogo publicado — elige uno y entra directo.",
     "communityTitle": "Un proyecto académico, hecho por estudiantes.",
     "communityLink": "Conocer el proyecto",
     "community": {
@@ -153,14 +153,14 @@
       }
     },
     "ctaTitle": "¿Conoces un recurso que merece ser compartido?",
-    "ctaText": "¿Esa clase que hizo que todo encajara o la lectura que lo explicaba tan bien? Comparte el enlace con quien venga después.",
+    "ctaText": "¿Esa clase que hizo que todo encajara a última hora o la guía abierta que lo explicaba clarísimo? Deja el mapa más claro para quien venga detrás.",
     "videosTitle": "Clases para empezar ya",
-    "videosText": "Los primeros vídeos de las rutas curadas, de canales distintos. Cada uno se abre con el contexto de su unidad curricular.",
+    "videosText": "Primeras clases de las rutas curadas, listas para reproducir con el contexto de la asignatura justo al lado.",
     "videosCta": "Ver todos los vídeos"
   },
   "catalog": {
     "title": "Encuentra tu próximo paso.",
-    "description": "Explora cursos publicados, descubre unidades curriculares y abre recursos educativos con contexto.",
+    "description": "Planes de estudio reales, asignaturas en su sitio y recursos abiertos con contexto — elige por dónde empezar.",
     "search": "Buscar por título",
     "searchPlaceholder": "¿Qué quieres aprender?",
     "allLanguages": "Todos los idiomas",
@@ -332,11 +332,11 @@
   },
   "dashboard": {
     "welcome": "Hola, {{name}}.",
-    "description": "Tu espacio para encontrar el próximo camino y cuidar tu cuenta.",
+    "description": "Tu rincón en el campus: retoma la clase donde la dejaste, revisa tu cuaderno y sigue lo que compartiste con la comunidad.",
     "role": "Acceso FACODI",
-    "catalog": "Descubre cursos y recursos educativos publicados.",
+    "catalog": "Explora cursos, planes de estudio y materiales abiertos.",
     "account": "Actualiza el nombre, el email y la contraseña de tu cuenta.",
-    "suggestions": "Consulta el estado de los recursos que has compartido.",
+    "suggestions": "Mira cómo van los enlaces y recursos que has compartido.",
     "editor": "Prepara, publica y archiva contenidos educativos.",
     "admin": "Consulta los estados y las cifras del catálogo.",
     "shortcuts": "Tus accesos directos",
@@ -490,7 +490,7 @@
   },
   "units": {
     "title": "Unidades curriculares",
-    "description": "Busca las unidades curriculares de los grados publicados, filtra por curso, año o semestre y abre cada unidad para ver su contexto.",
+    "description": "Todas las asignaturas publicadas en un solo mapa: filtra por grado, año o semestre y mira los materiales enlazados en cada una.",
     "inCourse": "Curso: {{course}}",
     "empty": "Todavía no hay unidades para mostrar.",
     "emptyDescription": "Las unidades aparecen cuando se publican los cursos a los que pertenecen.",
@@ -535,7 +535,7 @@
   },
   "resourceExplorer": {
     "title": "¿Qué quieres aprender hoy?",
-    "description": "Explora temas, sigue clases y encuentra materiales a tu ritmo.",
+    "description": "Tira del hilo de un tema, sigue una ruta de clases o explora materiales abiertos a tu ritmo — sin prisa y con contexto.",
     "searchLabel": "Buscar en la biblioteca",
     "searchPlaceholder": "Prueba cálculo, Python o gestión",
     "skipToLibrary": "Ir a la biblioteca completa",
@@ -920,7 +920,7 @@
     "quickAddAt": "Nota en {{time}}",
     "overviewTitle": "Tu cuaderno",
     "overviewTotals": "{{notes}} · {{resources}}",
-    "overviewEmpty": "Aún no tienes notas. Abre un vídeo o recurso y usa el cuaderno de estudio para registrar ideas vinculadas al momento exacto.",
+    "overviewEmpty": "Tu cuaderno aún está en blanco — ¡listo para estrenar! Abre un vídeo o recurso y guarda ideas, fórmulas o código en el minuto exacto.",
     "overviewBrowse": "Explorar vídeos",
     "overviewLatest": "Última: {{title}}",
     "resourceCount_one": "{{count}} recurso",
@@ -967,25 +967,25 @@
     "playlistLink": "Compartir una lista de YouTube",
     "invite": {
       "library": {
-        "title": "¿Tienes un buen recurso guardado?",
-        "description": "Comparte el enlace de una clase, lectura o referencia abierta que te ayudó a estudiar."
+        "title": "¿Tienes una joya guardada en favoritos?",
+        "description": "Comparte el enlace de esa clase, lectura o guía abierta que te salvó la sesión de estudio."
       },
       "search": {
         "title": "¿Falta un recurso en esta búsqueda?",
-        "description": "Si ya tienes un enlace sobre el tema, sugiérelo para quien busque aquí después."
+        "description": "Si ya tienes un buen enlace sobre este tema, déjalo aquí para quien busque después."
       },
       "sequences": {
         "title": "¿Conoces un vídeo que encaje en una secuencia?",
-        "description": "Comparte el enlace e indica el tema o la asignatura en la que encaja.",
+        "description": "Manda el enlace y cuéntanos en qué tema o asignatura encaja — el equipo editorial le echará un vistazo.",
         "browseVideos": "Buscar vídeos en la biblioteca"
       },
       "unit": {
         "title": "¿Qué te ayudó a estudiar esta asignatura?",
-        "description": "Una buena clase, lectura o explicación puede ayudar a otra persona a dar el siguiente paso."
+        "description": "Esa clase o lectura que desbloqueó la materia puede salvar a quien la está estudiando ahora."
       },
       "guide": {
         "title": "Ayuda a cada recurso a encontrar su lugar",
-        "description": "Pega el enlace, elige un curso o una asignatura si sabes dónde encaja y sigue la sugerencia en tu historial."
+        "description": "Pega el enlace, indica el curso o la asignatura si sabes dónde encaja y sigue todo en tu historial."
       }
     },
     "url": "Dirección del recurso",
@@ -1319,7 +1319,7 @@
   },
   "sequences": {
     "title": "Secuencias de estudio",
-    "description": "Recorridos editoriales de clases de YouTube, ordenados por FACODI para estudiar un tema de principio a fin.",
+    "description": "Rutas de clases abiertas en YouTube ordenadas por FACODI para estudiar un tema de principio a fin sin perderte.",
     "search": "Buscar secuencias",
     "searchPlaceholder": "Título, tema o código de asignatura",
     "noMatches": "Ninguna secuencia coincide con tu búsqueda.",
@@ -1362,7 +1362,7 @@
     "overviewTotal_one": "{{count}} secuencia iniciada",
     "overviewTotal_many": "{{count}} secuencias iniciadas",
     "overviewTotal_other": "{{count}} secuencias iniciadas",
-    "overviewEmpty": "Todavía no empezaste ninguna secuencia. Elige un recorrido y marca las clases a medida que avanzas.",
+    "overviewEmpty": "Todavía no has empezado ninguna secuencia. ¡Elige una ruta y ve marcando cada clase superada!",
     "browse": "Ver secuencias de estudio",
     "inSequences": "En secuencias de estudio",
     "videoSequencesLoadFailed": "No se pudieron cargar las secuencias de este vídeo.",
@@ -1380,7 +1380,7 @@
   "continueLearning": {
     "eyebrow": "Continúa donde lo dejaste",
     "next": "Próxima clase: {{title}}",
-    "cta": "Continuar"
+    "cta": "Seguir estudiando"
   },
   "milestones": {
     "title": "Tus hitos",

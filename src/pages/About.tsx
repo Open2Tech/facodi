@@ -29,7 +29,7 @@ export default function About() {
   const faq = ABOUT_FAQ.map(item => ({ question: t(item.question), answer: t(item.answer) }));
   return <article>
     <PageSeo {...aboutMeta({ title: t('projectSeo.about.title'), description: t('projectSeo.about.description') }, faq)} />
-    <header className="grid gap-8 border-b border-foreground pb-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+    <header className="grid gap-8 border-b border-foreground border-t-4 border-t-brand-cyan pb-12 pt-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">
       <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] sm:text-6xl">{t('about.title')}</h1>
       <p className="max-w-prose text-lg leading-relaxed text-muted-foreground">{t('about.lead')}</p>
     </header>
@@ -64,17 +64,17 @@ export default function About() {
       </dl>
     </section>
 
-    <section id="contribute" aria-labelledby="contribute-title" className="scroll-mt-28 border border-foreground bg-primary px-6 py-10 text-primary-foreground sm:px-10">
+    <section id="contribute" aria-labelledby="contribute-title" className="scroll-mt-28 border border-foreground bg-primary px-6 py-10 text-brand-ink sm:px-10">
       <h2 id="contribute-title" className="max-w-2xl text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t('about.contributeTitle')}</h2>
-      <p className="mt-4 max-w-prose leading-relaxed">{t('about.contributeText')}</p>
-      <ol className="mt-8 grid gap-6 border-t border-ink/25 pt-6 md:grid-cols-3">
+      <p className="mt-4 max-w-prose leading-relaxed text-brand-ink/90">{t('about.contributeText')}</p>
+      <ol className="mt-8 grid gap-6 border-t border-brand-ink/25 pt-6 md:grid-cols-3">
         {FLOW.map((step, index) => <li key={step} className="flex gap-4">
-          <span className="font-mono text-sm">{String(index + 1).padStart(2, '0')}</span>
+          <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center border border-brand-ink bg-card font-mono text-xs font-semibold text-foreground">{String(index + 1).padStart(2, '0')}</span>
           <p className="leading-relaxed">{t(`about.flow.${step}`)}</p>
         </li>)}
       </ol>
       <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <Button size="lg" className="h-auto min-h-11 max-w-full whitespace-normal bg-ink py-3 text-left text-primary hover:bg-ink/90" asChild>
+        <Button size="lg" className="h-auto min-h-11 max-w-full whitespace-normal bg-brand-ink py-3 text-left text-ink-foreground hover:bg-brand-ink/90" asChild>
           <Link to="/suggest">{t('suggest.nav')}<ArrowUpRight aria-hidden="true" /></Link>
         </Button>
         <Link to="/playlists/submit" className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">{t('playlistSubmit.send')}</Link>

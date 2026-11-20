@@ -37,11 +37,19 @@ const CAMPUS_FEATURES: {
   to: string;
   icon: LucideIcon;
   tone: string;
+  hoverTone: string;
 }[] = [
-  { key: 'sequences', to: '/sequences', icon: ListOrdered, tone: 'bg-brand-pink' },
-  { key: 'notes', to: '/notes', icon: NotebookPen, tone: 'bg-brand-mint' },
-  { key: 'playlists', to: '/playlists/submit', icon: ListVideo, tone: 'bg-brand-orange' },
+  { key: 'sequences', to: '/sequences', icon: ListOrdered, tone: 'bg-brand-pink', hoverTone: 'hover:bg-brand-pink/20' },
+  { key: 'notes', to: '/notes', icon: NotebookPen, tone: 'bg-brand-mint', hoverTone: 'hover:bg-brand-mint/25' },
+  { key: 'playlists', to: '/playlists/submit', icon: ListVideo, tone: 'bg-brand-orange', hoverTone: 'hover:bg-brand-orange/20' },
 ];
+
+const PROMPT_HOVER_TONES = [
+  'hover:border-primary hover:bg-primary hover:text-brand-ink',
+  'hover:border-brand-cyan hover:bg-brand-cyan hover:text-brand-ink',
+  'hover:border-brand-mint hover:bg-brand-mint hover:text-brand-ink',
+  'hover:border-brand-pink hover:bg-brand-pink hover:text-brand-ink',
+] as const;
 
 const RECOGNIZED_PROVIDERS = PROVIDERS.filter((provider): provider is Exclude<(typeof PROVIDERS)[number], 'web'> => provider !== 'web');
 
@@ -155,7 +163,7 @@ export function HomeHero({ counts }: HomeHeroProps) {
           <Button
             size="lg"
             variant="ghost"
-            className="px-3 underline decoration-input underline-offset-4 hover:decoration-current"
+            className="px-3 underline decoration-input underline-offset-4 hover:bg-brand-mint hover:text-brand-ink hover:no-underline"
             asChild
           >
             <Link to="/how-it-works">
@@ -169,13 +177,16 @@ export function HomeHero({ counts }: HomeHeroProps) {
           aria-label={t('home.hero.featuresLabel')}
           className="mt-9 divide-y divide-input border-y border-input"
         >
-          {CAMPUS_FEATURES.map(({ key, to, icon: Icon, tone }) => (
+          {CAMPUS_FEATURES.map(({ key, to, icon: Icon, tone, hoverTone }) => (
             <li key={key}>
               <Link
                 to={to}
-                className="group flex items-start gap-3.5 py-3.5 transition-colors hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:items-center"
+                className={cn(
+                  'group flex items-start gap-3.5 px-2 py-3.5 -mx-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:items-center',
+                  hoverTone,
+                )}
               >
-                <span className={cn('grid h-9 w-9 shrink-0 place-items-center text-ink', tone)}>
+                <span className={cn('grid h-9 w-9 shrink-0 place-items-center border border-foreground text-brand-ink', tone)}>
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="min-w-0 flex-1">
@@ -289,12 +300,15 @@ export function HomeHero({ counts }: HomeHeroProps) {
               {quickPrompts.length > 0 && (
                 <div className="flex flex-wrap items-center gap-2 pt-1">
                   <span className="font-mono text-xs text-ink-foreground/75">{t('home.hero.quickPromptsLabel')}:</span>
-                  {quickPrompts.map(prompt => (
+                  {quickPrompts.map((prompt, index) => (
                     <button
                       key={prompt}
                       type="button"
                       onClick={() => runQuickPrompt(prompt)}
-                      className="border border-ink-foreground/25 bg-ink-foreground/[0.06] px-2.5 py-1 text-xs font-medium text-ink-foreground transition-colors hover:border-primary hover:bg-primary hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      className={cn(
+                        'border border-ink-foreground/25 bg-ink-foreground/[0.06] px-2.5 py-1 text-xs font-medium text-ink-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                        PROMPT_HOVER_TONES[index % PROMPT_HOVER_TONES.length],
+                      )}
                     >
                       {prompt}
                     </button>

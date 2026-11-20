@@ -40,7 +40,7 @@ export default function Sequences() {
   if (area) videoFilters.set('area', area);
   return <>
     <PageSeo {...staticPageMeta('/sequences', { title: t('sequences.title'), description: t('sequences.description') })} />
-    <CatalogHeader title={t('sequences.title')} description={t('sequences.description')} total={query.data?.length} />
+    <CatalogHeader accent="sequences" title={t('sequences.title')} description={t('sequences.description')} total={query.data?.length} />
     <LearningContext focus="sequence" />
     <MonthlyChallenge className="mb-8" />
     <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t('sequences.notice')}</p>

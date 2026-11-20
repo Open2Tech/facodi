@@ -49,7 +49,7 @@
   "home": {
     "campus": "Um campus digital aberto",
     "title": "O conhecimento está em todo o lado. <mark>Encontra o teu próximo passo.</mark>",
-    "description": "Aprender fica mais simples quando os recursos certos se ligam. Explora cursos e referências académicas com contexto, ao teu ritmo.",
+    "description": "Menos 37 separadores perdidos, mais contexto que faz sentido. Explora cursos, unidades curriculares e aulas abertas ao teu ritmo — sem paywall e sem pose.",
     "explore": "Explorar cursos",
     "open": "Recursos abertos · Sem paywall · Curadoria com contexto",
     "notebook": "Caderno de exploração",
@@ -60,22 +60,22 @@
     "thread": "Segue o fio. Descobre uma nova ligação.",
     "threadDescription": "Um curso dá estrutura. Uma unidade curricular oferece contexto. Um recurso abre uma possibilidade. A FACODI aproxima estas peças sem impor um único caminho.",
     "howItWorks": "Como funciona",
-    "searchPlaceholder": "Ex.: álgebra, programação, ética…",
+    "searchPlaceholder": "Ex.: álgebra sem drama, Python, ética, estatística…",
     "searchButton": "Pesquisar no catálogo",
     "hero": {
       "featuresLabel": "Funcionalidades do campus",
       "features": {
         "sequences": {
           "title": "Sequências guiadas",
-          "description": "Trilhas passo a passo com progresso guardado por aula."
+          "description": "Aulas em ordem para maratonar sem perder o fio — com progresso guardado."
         },
         "notes": {
           "title": "Caderno de estudo",
-          "description": "Notas pessoais ligadas ao minuto do vídeo e à unidade."
+          "description": "Anota ideias, fórmulas e código colados ao segundo exato do vídeo."
         },
         "playlists": {
           "title": "Enviar playlist",
-          "description": "Propõe listas de aulas abertas para curadoria editorial."
+          "description": "Tens uma playlist de ouro? Indica a UC e a equipa editorial trata do resto."
         }
       },
       "tabsLabel": "Modo do caderno",
@@ -83,8 +83,8 @@
       "quickPrompts": ["Álgebra linear", "Python", "Psicologia", "Estatística"],
       "livePulse": "{{resources}} recursos publicados em {{courses}} cursos abertos",
       "trySuggestTab": "Sugerir um link aberto",
-      "suggestHeading": "Conheces uma aula, livro ou artigo aberto?",
-      "suggestSubtitle": "Cola o endereço para reconhecer a fonte e ligá-lo à unidade curricular certa.",
+      "suggestHeading": "Salvou-te o semestre? Partilha esse link.",
+      "suggestSubtitle": "Cola o URL de uma aula, livro ou repositório aberto: reconhecemos a fonte na hora e ligamo-la à UC certa.",
       "suggestPlaceholder": "https://www.youtube.com/watch?v=… ou https://arxiv.org/abs/…",
       "suggestSubmit": "Analisar recurso na página de sugestão",
       "recognizedProvider": "Fonte reconhecida: {{provider}} — pronto para análise curricular",
@@ -135,7 +135,7 @@
     },
     "contributeLink": "Como contribuir",
     "topicsTitle": "Temas em destaque",
-    "topicsDescription": "Os temas mais frequentes nos recursos publicados.",
+    "topicsDescription": "Os assuntos que mais andam na ponta da língua no catálogo — escolhe um tema e mergulha direto.",
     "communityTitle": "Um projeto académico, feito por estudantes.",
     "communityLink": "Conhecer o projeto",
     "community": {
@@ -153,14 +153,14 @@
       }
     },
     "ctaTitle": "Conheces um recurso que vale a pena partilhar?",
-    "ctaText": "Aquela aula que fez tudo encaixar ou a leitura que explicava mesmo bem? Partilha o link com quem vem a seguir.",
+    "ctaText": "Aquela aula que fez tudo encaixar às 23h ou o guia aberto que explicava melhor que mil slides? Deixa o mapa mais claro para quem vem a seguir.",
     "videosTitle": "Aulas para começar já",
-    "videosText": "Os primeiros vídeos das trilhas curadas, de canais diferentes. Cada um abre com o contexto da unidade curricular.",
+    "videosText": "Primeiras aulas das trilhas curadas, prontas para dar play com o contexto da unidade curricular logo ao lado.",
     "videosCta": "Ver todos os vídeos"
   },
   "catalog": {
     "title": "Encontra o teu próximo passo.",
-    "description": "Explora cursos publicados, descobre unidades curriculares e abre recursos educativos com contexto.",
+    "description": "Planos de estudos reais, unidades curriculares no sítio certo e recursos abertos com contexto — escolhe por onde começar.",
     "search": "Pesquisar por título",
     "searchPlaceholder": "O que queres aprender?",
     "allLanguages": "Todos os idiomas",
@@ -332,11 +332,11 @@
   },
   "dashboard": {
     "welcome": "Olá, {{name}}.",
-    "description": "O teu espaço para encontrar o próximo caminho e cuidar da tua conta.",
+    "description": "O teu canto no campus: retoma a aula onde paraste, revê o teu caderno e acompanha o que partilhaste com a comunidade.",
     "role": "Acesso FACODI",
-    "catalog": "Descobre cursos e recursos educativos publicados.",
+    "catalog": "Explora cursos, planos de estudos e materiais abertos.",
     "account": "Atualiza o nome, o email e a senha da tua conta.",
-    "suggestions": "Acompanha o estado dos recursos que partilhaste.",
+    "suggestions": "Vê como vão os links e recursos que partilhaste.",
     "editor": "Prepara, publica e arquiva conteúdos educativos.",
     "admin": "Consulta os estados e as contagens do catálogo.",
     "shortcuts": "Os teus atalhos",
@@ -490,7 +490,7 @@
   },
   "units": {
     "title": "Unidades curriculares",
-    "description": "Pesquisa as unidades curriculares das licenciaturas publicadas, filtra por curso, ano ou semestre e abre cada UC para ver o contexto.",
+    "description": "Todas as disciplinas publicadas num só mapa: filtra por curso, ano ou semestre e espreita os materiais ligados a cada UC.",
     "inCourse": "Curso: {{course}}",
     "empty": "Ainda não há unidades para mostrar.",
     "emptyDescription": "As unidades aparecem quando os cursos a que pertencem são publicados.",
@@ -535,7 +535,7 @@
   },
   "resourceExplorer": {
     "title": "O que queres aprender hoje?",
-    "description": "Explora temas, segue aulas e encontra materiais ao teu ritmo.",
+    "description": "Puxa por um tema, segue uma trilha de aulas ou garimpa materiais abertos ao teu ritmo — sem pressa e com contexto.",
     "searchLabel": "Pesquisar na biblioteca",
     "searchPlaceholder": "Experimenta cálculo, Python ou gestão",
     "skipToLibrary": "Ir para a biblioteca completa",
@@ -920,7 +920,7 @@
     "quickAddAt": "Anotar em {{time}}",
     "overviewTitle": "O teu caderno",
     "overviewTotals": "{{notes}} · {{resources}}",
-    "overviewEmpty": "Ainda não tens anotações. Abre um vídeo ou recurso e usa o caderno de estudo para registar ideias ligadas ao momento exato.",
+    "overviewEmpty": "O teu caderno ainda está em branco — e pronto para rabiscar! Abre um vídeo ou recurso e cola ideias, fórmulas ou código ao minuto exato.",
     "overviewBrowse": "Explorar vídeos",
     "overviewLatest": "Última: {{title}}",
     "resourceCount_one": "{{count}} recurso",
@@ -967,25 +967,25 @@
     "playlistLink": "Partilhar uma playlist do YouTube",
     "invite": {
       "library": {
-        "title": "Tens um bom recurso nos favoritos?",
-        "description": "Partilha o link de uma aula, leitura ou referência aberta que te ajudou a estudar."
+        "title": "Tens uma pérola guardada nos favoritos?",
+        "description": "Partilha o link daquela aula, leitura ou guia aberto que te fez ganhar o dia de estudo."
       },
       "search": {
         "title": "Faltou um recurso nesta pesquisa?",
-        "description": "Se já tens um link sobre o tema, sugere-o para a próxima pessoa que procurar por aqui."
+        "description": "Se já tens um link certeiro sobre este tema, deixa a dica para a próxima pessoa que procurar por aqui."
       },
       "sequences": {
         "title": "Conheces um vídeo que merece entrar numa sequência?",
-        "description": "Partilha o link e indica o tema ou a unidade curricular onde faz sentido.",
+        "description": "Manda o link e diz em que tema ou unidade curricular encaixa — a curadoria dá uma vista de olhos.",
         "browseVideos": "Procurar vídeos sobre o tema"
       },
       "unit": {
         "title": "Que recurso te ajudou nesta unidade?",
-        "description": "Uma boa aula, leitura ou explicação pode desbloquear o próximo passo de quem estuda esta matéria."
+        "description": "Aquela aula ou leitura que desbloqueou a matéria pode salvar quem está a estudá-la agora."
       },
       "guide": {
         "title": "Ajuda a ligar um recurso ao sítio certo",
-        "description": "Cola o link, escolhe o curso ou a unidade se souberes e acompanha a sugestão no teu histórico."
+        "description": "Cola o link, aponta o curso ou a UC se souberes onde encaixa e acompanha tudo no teu histórico."
       }
     },
     "url": "Endereço do recurso",
@@ -1319,7 +1319,7 @@
   },
   "sequences": {
     "title": "Sequências de estudo",
-    "description": "Percursos editoriais de aulas do YouTube, ordenados pela FACODI para estudar um tema do princípio ao fim.",
+    "description": "Trilhas de aulas abertas no YouTube arrumadas pela FACODI para estudares um tema do zero até fazer sentido.",
     "search": "Pesquisar sequências",
     "searchPlaceholder": "Título, tema ou código da UC",
     "noMatches": "Nenhuma sequência corresponde à pesquisa.",
@@ -1362,7 +1362,7 @@
     "overviewTotal_one": "{{count}} sequência iniciada",
     "overviewTotal_many": "{{count}} sequências iniciadas",
     "overviewTotal_other": "{{count}} sequências iniciadas",
-    "overviewEmpty": "Ainda não começaste nenhuma sequência. Escolhe um percurso e marca as aulas à medida que avanças.",
+    "overviewEmpty": "Ainda não deste play em nenhuma sequência. Escolhe uma trilha e vai marcando cada aula conquistada!",
     "browse": "Ver sequências de estudo",
     "inSequences": "Nas sequências de estudo",
     "videoSequencesLoadFailed": "Não foi possível carregar as sequências deste vídeo.",
@@ -1380,7 +1380,7 @@
   "continueLearning": {
     "eyebrow": "Continuar de onde paraste",
     "next": "Próxima aula: {{title}}",
-    "cta": "Continuar"
+    "cta": "Continuar a estudar"
   },
   "milestones": {
     "title": "Os teus marcos",

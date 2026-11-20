@@ -27,13 +27,15 @@ export function MonthlyChallengeView({ className, month, slug, title, lessons, g
   const { t, i18n } = useTranslation();
   const monthName = new Intl.DateTimeFormat(i18n.language, { month: 'long' }).format(month);
   const percent = goalPercent(total, goal);
-  return <section aria-labelledby="monthly-challenge" className={cn('border border-foreground bg-ink p-6 text-ink-foreground sm:p-8', className)}>
-    <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-ink-foreground/80">
-      <span className="h-2.5 w-2.5 border border-ink-foreground bg-brand-pink" aria-hidden="true" />{t('monthlyChallenge.eyebrow', { month: monthName })}
-    </p>
-    <div className="mt-3 grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+  return <section aria-labelledby="monthly-challenge" className={cn('border border-foreground border-t-4 border-t-brand-pink bg-ink p-6 text-ink-foreground sm:p-8', className)}>
+    <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
       <div className="min-w-0">
-        <h2 id="monthly-challenge" className="text-2xl font-semibold tracking-[-0.02em] [text-wrap:balance] sm:text-3xl">{title}</h2>
+        <div className="flex flex-wrap items-center gap-3">
+          <h2 id="monthly-challenge" className="text-2xl font-semibold tracking-[-0.02em] [text-wrap:balance] sm:text-3xl">{title}</h2>
+          <span className="bg-brand-pink px-2.5 py-0.5 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-brand-ink">
+            {t('monthlyChallenge.eyebrow', { month: monthName })}
+          </span>
+        </div>
         <p className="mt-2 max-w-prose text-ink-foreground/80">{t('monthlyChallenge.text', { count: lessons, goal })}</p>
         <div className="mt-5 max-w-md">
           {total != null && <div className="mb-2 h-3 border border-ink-foreground" role="progressbar" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={Math.min(goal, Math.max(0, total ?? 0))}

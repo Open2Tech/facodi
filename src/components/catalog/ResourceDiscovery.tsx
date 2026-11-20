@@ -19,10 +19,10 @@ export function ResourceDiscovery() {
     <h2 id="guided-discovery" className="text-2xl font-semibold tracking-tight">{t('resourceExplorer.guidedTitle')}</h2>
     <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('resourceExplorer.guidedDescription')}</p>
     <div className="mt-5 grid gap-6 lg:grid-cols-2">
-      <div className="min-w-0 border-t border-input pt-4">
+      <div className="min-w-0 border border-input border-t-4 border-t-brand-mint bg-card p-5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="font-semibold">{t('studyModules.title')}</h3>
-          <Link to="/resources?type=module" className="inline-flex min-h-10 items-center gap-2 text-sm underline underline-offset-4">
+          <Link to="/resources?type=module" className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold underline underline-offset-4">
             {t('resourceExplorer.allModules')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
@@ -30,7 +30,7 @@ export function ResourceDiscovery() {
           : modules.error ? <PageState level="h4" title={t('common.error')} description={modules.error.message} retry={() => void modules.refetch()} />
           : module ? <Link to={`/modules/${encodeURIComponent(module.slug)}`}
             className="group mt-2 flex gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-            <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground bg-brand-mint text-ink">
+            <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground bg-brand-mint text-brand-ink">
               <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="min-w-0">
@@ -41,10 +41,10 @@ export function ResourceDiscovery() {
           </Link>
           : <p className="py-5 text-sm text-muted-foreground">{t('resourceExplorer.noModules')}</p>}
       </div>
-      <div className="min-w-0 border-t border-input pt-4">
+      <div className="min-w-0 border border-input border-t-4 border-t-brand-pink bg-card p-5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="font-semibold">{t('sequences.title')}</h3>
-          <Link to="/sequences" className="inline-flex min-h-10 items-center gap-2 text-sm underline underline-offset-4">
+          <Link to="/sequences" className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold underline underline-offset-4">
             {t('resourceExplorer.allSequences')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>

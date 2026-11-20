@@ -58,7 +58,7 @@ export default function Units() {
   }, []);
   return <>
     <PageSeo {...staticPageMeta('/units', { title: t('units.title'), description: t('units.description') })} />
-    <CatalogHeader title={t('units.title')} description={t('units.description')} total={query.data?.total} />
+    <CatalogHeader accent="units" title={t('units.title')} description={t('units.description')} total={query.data?.total} />
     <LearningContext focus="unit" />
     <div className="mt-10 grid gap-10 border-t border-foreground pt-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
       <aside aria-label={t('units.filters')} className="lg:sticky lg:top-28 lg:self-start">
@@ -70,10 +70,10 @@ export default function Units() {
           </summary>
           <div className="mt-6 lg:mt-0"><UnitFilters /></div>
         </details>
-        <section aria-labelledby="units-how" className="mt-10 hidden border-t border-input pt-6 lg:block">
-          <h2 id="units-how" className="text-sm font-semibold">{t('units.howTitle')}</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t('units.howText')}</p>
-          <Link to="/suggest" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+        <section aria-labelledby="units-how" className="mt-10 hidden border border-foreground bg-brand-orange p-5 text-brand-ink lg:block">
+          <h2 id="units-how" className="text-base font-semibold">{t('units.howTitle')}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink/90">{t('units.howText')}</p>
+          <Link to="/suggest" className="mt-4 inline-flex min-h-11 items-center gap-2 border border-brand-ink bg-brand-ink px-3.5 py-2 text-xs font-semibold text-ink-foreground transition-opacity hover:opacity-90">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </section>
       </aside>
       <div className="min-w-0">
@@ -82,7 +82,7 @@ export default function Units() {
             <SearchInput value={search} onSearch={value => filter('search', value)} placeholder={t('units.searchPlaceholder')} />
           </label>
           <label className="space-y-2 text-sm font-medium"><span className="block">{t('units.sort')}</span>
-            <select className="h-10 w-full rounded-md border border-input bg-background px-3 sm:w-52" value={sort} onChange={event => filter('sort', event.target.value === 'curriculum' ? '' : event.target.value)}>
+            <select className="h-10 w-full border border-input bg-background px-3 sm:w-52" value={sort} onChange={event => filter('sort', event.target.value === 'curriculum' ? '' : event.target.value)}>
               {SORTS.map(option => <option key={option} value={option}>{t(`units.sorts.${option}`)}</option>)}
             </select>
           </label>
@@ -95,22 +95,22 @@ export default function Units() {
           {query.data.items.length ? <ol className="mt-6 divide-y divide-input border-y border-input">
             {query.data.items.map(unit => {
               const href = unitPath(unit.courses.slug, unit.slug);
-              return <li key={unit.id} className="group relative grid gap-x-8 gap-y-3 py-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+              return <li key={unit.id} className="group relative grid gap-x-8 gap-y-3 px-3 py-6 -mx-3 transition-colors hover:bg-brand-orange/10 sm:grid-cols-[minmax(0,1fr)_auto]">
                 <div className="min-w-0">
                   <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-wide text-muted-foreground">
                     {unit.code && <span>{unit.code}</span>}
-                    <span className="text-foreground">{unit.courses.code || unit.courses.title}</span>
+                    <span className="font-semibold text-foreground">{unit.courses.code || unit.courses.title}</span>
                   </p>
                   <h2 className="text-xl font-semibold leading-snug">
                     <Link to={href} className="decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline focus-visible:outline-none">{unit.title}</Link>
                   </h2>
                 </div>
                 <dl className="flex flex-wrap items-start gap-2 text-sm sm:max-w-56 sm:justify-end">
-                  {unit.year != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.yearLabel')}</dt><dd>{t('catalog.year', { value: unit.year })}</dd></div>}
-                  {unit.semester != null && <div className="border border-input px-3 py-1"><dt className="sr-only">{t('course.semesterLabel')}</dt><dd>{t('catalog.semester', { value: unit.semester })}</dd></div>}
+                  {unit.year != null && <div className="border border-input bg-card px-3 py-1"><dt className="sr-only">{t('course.yearLabel')}</dt><dd>{t('catalog.year', { value: unit.year })}</dd></div>}
+                  {unit.semester != null && <div className="border border-input bg-card px-3 py-1"><dt className="sr-only">{t('course.semesterLabel')}</dt><dd>{t('catalog.semester', { value: unit.semester })}</dd></div>}
                   {ectsVerificationPending(unit.metadata)
                     ? <div className="border border-input px-3 py-1 text-muted-foreground"><dt className="sr-only">{t('course.ects')}</dt><dd>{t('ualgCurriculum.ectsPending')}</dd></div>
-                    : unit.ects != null && <div className="bg-brand-orange px-3 py-1 text-ink"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
+                    : unit.ects != null && <div className="border border-foreground/30 bg-brand-orange px-3 py-1 font-semibold text-brand-ink"><dt className="sr-only">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{unit.ects} ECTS</dd></div>}
                 </dl>
               </li>;
             })}
@@ -123,10 +123,10 @@ export default function Units() {
           </>}
           <Pagination page={page} total={query.data.total} onChange={value => filter('page', String(value))} />
         </>}
-        <section aria-labelledby="units-contribute" className="mt-12 flex flex-col gap-6 border border-foreground bg-primary px-6 py-8 text-primary-foreground sm:flex-row sm:items-end sm:justify-between lg:hidden">
+        <section aria-labelledby="units-contribute" className="mt-12 flex flex-col gap-6 border border-foreground bg-brand-orange px-6 py-8 text-brand-ink sm:flex-row sm:items-end sm:justify-between lg:hidden">
           <div><h2 id="units-contribute" className="text-2xl font-semibold tracking-[-0.02em]">{t('units.howTitle')}</h2>
-            <p className="mt-2 max-w-prose text-sm leading-relaxed">{t('units.howText')}</p></div>
-          <Link to="/suggest" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-semibold underline underline-offset-4">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            <p className="mt-2 max-w-prose text-sm leading-relaxed text-brand-ink/90">{t('units.howText')}</p></div>
+          <Link to="/suggest" className="inline-flex min-h-11 shrink-0 items-center gap-2 border border-brand-ink bg-brand-ink px-4 py-2 text-sm font-semibold text-ink-foreground">{t('suggest.nav')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </section>
       </div>
     </div>
