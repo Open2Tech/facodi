@@ -14,13 +14,13 @@ import { INTERFACE_LANGUAGES, setInterfaceLanguage } from '@/i18n/config';
 import { useTheme } from '@/shared/theme/theme';
 import { cn } from '@/lib/utils';
 
-const DESKTOP_QUERY = '(min-width: 1536px)';
+const DESKTOP_QUERY = '(min-width: 880px)';
 
 function LanguageSelect({ compact = false }: { compact?: boolean }) {
   const { t, i18n } = useTranslation();
   return <label className="flex min-w-0 items-center gap-3 text-sm">
     <span className={cn(compact && 'sr-only')}>{t('common.language')}</span>
-    <select className="h-11 min-w-0 border border-input bg-background px-2" value={i18n.language.split('-')[0]} onChange={event => setInterfaceLanguage(event.target.value)}>
+    <select className={cn('h-11 min-w-0 border border-input bg-background', compact ? 'px-1.5 2xl:px-2' : 'px-2')} value={i18n.language.split('-')[0]} onChange={event => setInterfaceLanguage(event.target.value)}>
       {INTERFACE_LANGUAGES.map(({ code, label }) => <option key={code} value={code}>{compact ? code.toUpperCase() : label}</option>)}
     </select>
   </label>;
@@ -50,10 +50,12 @@ export function SiteHeader() {
     { to: '/dashboard', title: t('nav.dashboard'), icon: LayoutDashboard },
     { to: '/notes', title: t('nav.notes'), icon: NotebookPen },
     { to: '/profile', title: t('nav.profile'), icon: UserRound },
+    { to: '/suggest', title: t('suggest.nav'), icon: Lightbulb },
     { to: '/playlists/submit', title: t('playlistSubmit.nav'), icon: ListVideo },
     ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), icon: PenSquare }] : []),
     ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), icon: ShieldCheck }] : []),
   ];
+  const mobileAccountLinks = accountLinks.filter(link => !primaryLinks.some(primary => primary.to === link.to));
 
   useEffect(() => { setOpen(false); setSearchOpen(false); }, [location]);
   useEffect(() => {
@@ -86,29 +88,29 @@ export function SiteHeader() {
     finally { setSigningOut(false); }
   }
   const navigationClass = ({ isActive }: { isActive: boolean }) => cn(
-    'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted 2xl:gap-1.5 2xl:whitespace-nowrap 2xl:px-1.5',
+    'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold transition-colors hover:bg-muted min-[880px]:gap-1.5 min-[880px]:whitespace-nowrap min-[880px]:px-2 min-[880px]:text-[13px] xl:gap-1 xl:px-1.5 2xl:gap-1.5 2xl:px-2.5 2xl:text-sm',
     isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover',
   );
 
   return <header className="sticky top-0 z-30 border-b border-input bg-background">
-    <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between gap-3 px-5 lg:px-8">
-      <Link to="/" aria-label={t('brand.home')} className="flex shrink-0 items-center gap-2 text-2xl font-bold tracking-tight">
-        <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
+    <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between gap-3 px-5 min-[880px]:max-xl:grid min-[880px]:max-xl:h-auto min-[880px]:max-xl:grid-cols-[1fr_auto] min-[880px]:max-xl:gap-x-4 min-[880px]:max-xl:gap-y-0 min-[880px]:max-xl:px-6 xl:gap-2 xl:px-4 2xl:gap-3 2xl:px-8">
+      <Link to="/" aria-label={t('brand.home')} className="flex shrink-0 items-center gap-2 text-2xl font-bold tracking-tight min-[880px]:max-xl:h-16 min-[880px]:max-xl:justify-self-start xl:max-2xl:text-xl">
+        <img src="/favicon.svg" alt="" width="34" height="34" className="xl:max-2xl:size-8" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
       </Link>
-      <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 2xl:flex">
-        {primaryLinks.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={navigationClass}><Icon className="size-4 shrink-0" aria-hidden="true" />{title}</NavLink>)}
+      <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 min-[880px]:flex min-[880px]:max-xl:col-span-2 min-[880px]:max-xl:row-start-2 min-[880px]:max-xl:flex-wrap min-[880px]:max-xl:border-t min-[880px]:max-xl:border-border min-[880px]:max-xl:py-1.5 xl:gap-0.5 2xl:gap-1">
+        {primaryLinks.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={navigationClass}><Icon className="size-4 shrink-0 xl:max-2xl:size-3.5" aria-hidden="true" />{title}</NavLink>)}
       </nav>
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="flex shrink-0 items-center gap-2 min-[880px]:max-xl:h-16 xl:gap-1.5 2xl:gap-2">
         <Button ref={searchTrigger} type="button" variant="ghost" size="icon" className="size-11" aria-label={t('resourceExplorer.searchLabel')}
           title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
           {searchOpen ? <X /> : <Search />}
         </Button>
-        <div className="hidden 2xl:block"><LanguageSelect compact /></div>
+        <div className="hidden min-[880px]:block"><LanguageSelect compact /></div>
         <Button type="button" variant="ghost" size="icon" className="hidden size-11 sm:inline-flex" aria-label={t(dark ? 'nav.themeLight' : 'nav.themeDark')} title={t(dark ? 'nav.themeLight' : 'nav.themeDark')}
           onClick={() => setTheme(dark ? 'light' : 'dark')}>
           {dark ? <Sun /> : <Moon />}
         </Button>
-        <div className="hidden 2xl:block">
+        <div className="hidden min-[880px]:block">
           {!loading && (user ? <DropdownMenu>
             <DropdownMenuTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11" aria-label={t('footer.account')} title={t('footer.account')}><UserRound /></Button></DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="max-h-[var(--radix-dropdown-menu-content-available-height)] w-64 overflow-y-auto">
@@ -119,10 +121,10 @@ export function SiteHeader() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup><DropdownMenuItem disabled={signingOut} onSelect={event => { event.preventDefault(); void logout(); }} className="min-h-11 gap-3"><LogOut className="size-4" aria-hidden="true" />{t('nav.logout')}</DropdownMenuItem></DropdownMenuGroup>
             </DropdownMenuContent>
-          </DropdownMenu> : <Button asChild><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>)}
+          </DropdownMenu> : <Button asChild className="xl:max-2xl:px-3"><Link to="/login">{t('nav.login')}<ArrowUpRight className="xl:max-2xl:hidden" /></Link></Button>)}
         </div>
         <Sheet open={open} onOpenChange={value => { setOpen(value); if (value) setSearchOpen(false); }}>
-          <SheetTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11 2xl:hidden" aria-label={t('nav.menu')}><Menu /></Button></SheetTrigger>
+          <SheetTrigger asChild><Button type="button" variant="outline" size="icon" className="size-11 min-[880px]:hidden" aria-label={t('nav.menu')}><Menu /></Button></SheetTrigger>
           <SheetContent side="right" hideClose aria-describedby={undefined} className="flex h-dvh w-full flex-col gap-0 p-0 sm:max-w-sm"
             onCloseAutoFocus={event => {
               if (typeof window.matchMedia === 'function' && window.matchMedia(DESKTOP_QUERY).matches && searchTrigger.current) {
@@ -143,7 +145,7 @@ export function SiteHeader() {
                 <Separator />
                 {user ? <nav aria-label={t('footer.account')} className="flex flex-col gap-1">
                   <p className="mb-1 px-3 text-sm font-semibold text-muted-foreground">{t('footer.account')}</p>
-                  {accountLinks.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={navigationClass} onClick={() => setOpen(false)}><Icon className="size-4 shrink-0" aria-hidden="true" />{title}</NavLink>)}
+                  {mobileAccountLinks.map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} className={navigationClass} onClick={() => setOpen(false)}><Icon className="size-4 shrink-0" aria-hidden="true" />{title}</NavLink>)}
                   <Button variant="outline" className="mt-3 min-h-11" disabled={signingOut} onClick={logout}><LogOut />{t('nav.logout')}</Button>
                 </nav> : <Button asChild className="min-h-11"><Link to="/login">{t('nav.login')}<ArrowUpRight /></Link></Button>}
               </>}

@@ -26,7 +26,7 @@ describe('SiteHeader', () => {
     renderWithProviders(<SiteHeader />);
     await userEvent.click(screen.getByRole('button', { name: 'Account' }));
     const menu = screen.getByRole('menu');
-    for (const title of ['My space', 'Notebook', 'Profile', 'Contribute', 'Sign out']) {
+    for (const title of ['My space', 'Notebook', 'Profile', 'Suggest a resource', 'Contribute', 'Sign out']) {
       expect(within(menu).getByRole('menuitem', { name: title })).toBeVisible();
     }
     expect(within(menu).queryByRole('menuitem', { name: 'Editorial workspace' }) !== null).toBe(role !== 'user');
