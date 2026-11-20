@@ -2412,5 +2412,23 @@
     "ectsPending": "ECTS a confirmar na UAlg",
     "branch": "Ramo",
     "branchNotice": "O 1.º ano é comum. A partir do 2.º ano, escolhe o ramo para ver as UCs obrigatórias e as opções de cada um."
+  },
+  "courseMaterials": {
+    "title": "Materiais para estudar",
+    "description": "Encontra aqui as sequências, playlists e referências já associadas às unidades curriculares deste curso. Explora por tema sem sair do plano de estudos.",
+    "editorialSequences": "Sequências de aprendizagem",
+    "playlists": "Playlists por tema",
+    "playlistNotice": "Playlists de canais externos. Abre a página do recurso para consultar a fonte original; não são sequências editoriais com progresso FACODI.",
+    "references": "Referências e fontes",
+    "guides": "Guias de estudo",
+    "linkedUnits": "Unidades",
+    "moreUnits": "mais {{count}}",
+    "openSource": "Consultar fonte",
+    "open": "Abrir recurso",
+    "showAll": "Ver todos ({{count}})",
+    "showLess": "Mostrar menos",
+    "loadFailed": "Não foi possível carregar os materiais ligados a este curso.",
+    "sequencesFailed": "Não foi possível consultar as sequências editoriais neste momento.",
+    "notice": "Estes materiais complementam as UCs e mantêm a autoria e a licença das fontes. Não são aulas oficiais da instituição."
   }
 }
