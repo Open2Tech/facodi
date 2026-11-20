@@ -116,8 +116,8 @@ export default function CourseDetails() {
         </li>)}
       </ul>
     </section>}
-    <CourseLearningMaterials courseObjectId={course.learning_object_id}
-      units={units.map(unit => ({ learningObjectId: unit.learning_object_id, title: unit.title, code: unit.code }))} />
+    <CourseLearningMaterials key={course.slug} courseSlug={course.slug} courseObjectId={course.learning_object_id}
+      units={units.map(unit => ({ learningObjectId: unit.learning_object_id, title: unit.title, code: unit.code, slug: unit.slug }))} />
     <section aria-labelledby="units" className="border-t border-foreground pt-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{studyPlanLabel}</h2>
