@@ -2412,5 +2412,23 @@
     "ectsPending": "ECTS to be confirmed by UAlg",
     "branch": "Branch",
     "branchNotice": "The first year is shared. From the second year on, choose a branch to see its required units and options."
+  },
+  "courseMaterials": {
+    "title": "Learning materials",
+    "description": "Find the learning sequences, playlists and references already linked to this course's units, all in one place.",
+    "editorialSequences": "Learning sequences",
+    "playlists": "Topic playlists",
+    "playlistNotice": "These are external creator playlists. Open the resource to visit its original source; they do not track FACODI editorial sequence progress.",
+    "references": "References and sources",
+    "guides": "Study guides",
+    "linkedUnits": "Units",
+    "moreUnits": "{{count}} more",
+    "openSource": "View source",
+    "open": "Open resource",
+    "showAll": "Show all ({{count}})",
+    "showLess": "Show less",
+    "loadFailed": "The materials linked to this course could not be loaded.",
+    "sequencesFailed": "Editorial sequences could not be loaded right now.",
+    "notice": "These materials supplement the curricular units and preserve the original authors and licences. They are not official lectures from the institution."
   }
 }
