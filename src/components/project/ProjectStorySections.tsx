@@ -1,4 +1,5 @@
-import { ArrowUpRight, Compass, Globe2, HeartHandshake, Sparkles, type LucideIcon } from 'lucide-react';
+import { profilePhoto } from '@/entities/project/profilePhotos';
+import { ArrowUpRight, Compass, Globe2, HeartHandshake, Linkedin, Sparkles, type LucideIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useProjectDirectory, projectText, type ProjectProfilePublic } from '@/entities/project/project.api';
@@ -31,11 +32,15 @@ function IdentityCard({ profile, language }: { profile: ProjectProfilePublic; la
   const { t } = useTranslation();
   const config = relationship[profile.relationship_kind] ?? { icon: Compass, tone: 'bg-muted' };
   const Icon = config.icon;
+  const photo = profilePhoto(profile.slug);
   return <li className="flex min-w-0 flex-col border border-input bg-background p-6">
     <div className="mb-6 flex items-start justify-between gap-3">
-      <span className={`grid h-12 w-12 shrink-0 place-items-center border border-foreground text-ink ${config.tone}`}>
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </span>
+      {photo
+        ? <img src={photo} alt={profile.display_name} width={64} height={64} loading="lazy" decoding="async"
+          className="h-16 w-16 shrink-0 border border-foreground object-cover" />
+        : <span className={`grid h-12 w-12 shrink-0 place-items-center border border-foreground text-ink ${config.tone}`}>
+          <Icon className="h-6 w-6" aria-hidden="true" />
+        </span>}
       <span className="max-w-40 text-right font-mono text-xs uppercase leading-relaxed text-muted-foreground">
         {projectText(profile, language, 'role_label', profile.role_label)}
       </span>
@@ -56,6 +61,7 @@ export default function ProjectStorySections() {
   const query = useProjectDirectory();
   const profiles = query.data?.profiles ?? [];
   const founder = profiles.find(p => p.relationship_kind === 'founder');
+  const founderPhoto = founder ? profilePhoto(founder.slug) : null;
   return <div id="project-story" className="scroll-mt-28 space-y-14 py-12 sm:space-y-20 sm:py-20">
     <section aria-labelledby="story-title" className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
       <div>
@@ -75,16 +81,36 @@ export default function ProjectStorySections() {
     {query.error && <p role="alert" className="text-sm text-destructive">{query.error.message}</p>}
 
     {founder && <section aria-labelledby="founder-title"
-      className="grid gap-0 border border-foreground bg-brand-mint text-ink md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
-      <div className="grid min-h-44 place-items-center border-b border-ink/25 px-8 py-12 md:border-b-0 md:border-r">
-        <span aria-hidden="true" className="select-none font-mono text-8xl font-bold tracking-tighter">MS.</span>
+      className="grid gap-0 border border-foreground bg-brand-mint text-ink md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
+      <div className="flex items-center justify-center border-b border-ink/25 bg-brand-cyan p-8 sm:p-10 md:border-b-0 md:border-r">
+        <div className="relative w-full max-w-60">
+          <span aria-hidden="true" className="absolute inset-0 translate-x-2 translate-y-2 border-2 border-ink bg-primary" />
+          <div className="relative grid aspect-square place-items-center overflow-hidden border-2 border-ink bg-brand-pink">
+            {founderPhoto
+              ? <img src={founderPhoto} alt={founder.display_name} width={512} height={512}
+                loading="lazy" decoding="async" className="h-full w-full object-cover object-center" />
+              : <span aria-hidden="true" className="select-none font-mono text-7xl font-bold tracking-tighter">MS.</span>}
+          </div>
+          <span aria-hidden="true"
+            className="absolute -bottom-3 -left-3 -rotate-3 border-2 border-ink bg-primary px-3 py-1 font-mono text-xs font-bold tracking-wider">
+            FACODI / 01
+          </span>
+        </div>
       </div>
       <div className="p-7 sm:p-10">
         <p className="font-mono text-xs uppercase tracking-widest">{t('projectStory.founderEyebrow')}</p>
         <h3 id="founder-title" className="mt-3 text-3xl font-semibold sm:text-4xl">{founder.display_name}</h3>
         <p className="mt-2 font-semibold">{projectText(founder, i18n.language, 'role_label', founder.role_label)}</p>
         <p className="mt-5 max-w-2xl leading-relaxed">{projectText(founder, i18n.language, 'description', founder.description)}</p>
-        <div className="mt-6"><ExternalSource url={founder.public_source_url} label={t('projectStory.authorSource')} /></div>
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4">
+          <a href="https://www.linkedin.com/in/marcelo-m7/" target="_blank" rel="noopener noreferrer"
+            aria-label={`LinkedIn — ${founder.display_name}`}
+            className="inline-flex items-center gap-2 border-2 border-ink bg-ink px-4 py-2.5 text-sm font-semibold text-ink-foreground transition-transform hover:-translate-y-0.5">
+            <Linkedin className="h-4 w-4" aria-hidden="true" />
+            LinkedIn <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+          <ExternalSource url={founder.public_source_url} label={t('projectStory.authorSource')} />
+        </div>
       </div>
     </section>}
 
