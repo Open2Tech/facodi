@@ -489,9 +489,11 @@ test('admin can view real-response-shaped counts without user management', async
 });
 
 test('home search, entry paths and new public catalogues render without overflow', async ({ page }) => {
-  // Eight full-page loads at two widths: give the walk-through room on busy CI runners.
+  // Several full-page loads at two widths: give the walk-through room on busy CI runners.
   test.slow();
   const resource = { id: 'r1', slug: 'intro-logic', title: 'Introduction to logic', description: '<p>Test fixture only</p>', object_type: 'article', language: 'en', tags: ['Logic', 'Ethics'] };
+  await page.route('**/rest/v1/rpc/list_public_resource_topics_v1', route =>
+    route.fulfill({ json: resource.tags.map(tag => ({ tag, item_count: 1 })) }));
   await page.route('**/rest/v1/learning_objects*', async route => {
     const head = route.request().method() === 'HEAD';
     await route.fulfill({ status: 200, json: head ? undefined : [resource], headers: { 'content-range': head ? '*/1' : '0-0/1', 'access-control-expose-headers': 'content-range' } });
@@ -520,11 +522,15 @@ test('home search, entry paths and new public catalogues render without overflow
   await page.goto('/');
   await page.getByRole('searchbox', { name: 'What do you want to understand next?' }).fill('logic');
   await page.getByRole('button', { name: 'Search the catalogue' }).click();
-  await expect(page).toHaveURL(/\/units\?search=logic$/);
+  await expect(page).toHaveURL('/resources?search=logic');
   await page.goto('/');
   await page.getByRole('link', { name: /Logic/ }).click();
   await expect(page).toHaveURL(/\/resources\?tag=Logic$/);
   await expect(page.getByRole('heading', { name: 'Introduction to logic' })).toBeVisible();
+  await page.goto('/');
+  const invitation = page.getByRole('region', { name: 'Know a resource worth sharing?' });
+  await invitation.getByRole('link', { name: 'Suggest a resource' }).click();
+  await expect(page).toHaveURL('/login?next=%2Fsuggest');
 });
 
 test('unit catalogue facets drive the URL and open the unit page inside its course', async ({ page }) => {
