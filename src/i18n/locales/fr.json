@@ -80,12 +80,7 @@
       },
       "tabsLabel": "Mode du carnet",
       "quickPromptsLabel": "Essayer une recherche",
-      "quickPrompts": [
-        "Algèbre linéaire",
-        "Python",
-        "Psychologie",
-        "Statistiques"
-      ],
+      "quickPrompts": ["Algèbre linéaire", "Python", "Psychologie", "Statistiques"],
       "livePulse": "{{resources}} ressources publiées dans {{courses}} cours ouverts",
       "trySuggestTab": "Suggérer un lien ouvert",
       "suggestHeading": "Un cours ou un article ouvert a tout débloqué ? Partage le lien.",
