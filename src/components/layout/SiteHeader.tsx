@@ -89,14 +89,20 @@ export function SiteHeader() {
   );
 
   return <header className="sticky top-0 z-30 border-b border-input bg-background">
-    <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-5 lg:px-8">
+    <div className="mx-auto flex h-20 max-w-screen-2xl items-center gap-3 px-5 lg:px-8">
       <Link to="/" aria-label={t('brand.home')} className="flex shrink-0 items-center gap-2 text-2xl font-bold tracking-tight">
         <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
       </Link>
       <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 xl:flex">
         {primaryLinks.map(({ to, title }) => <NavLink key={to} to={to} className={navigationClass}>{title}</NavLink>)}
       </nav>
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+        {!loading && user && <div className="hidden items-center gap-1 2xl:flex">
+          {accountLinks.filter(({ to }) => ['/dashboard', '/notes', '/suggest'].includes(to)).map(({ to, title, icon: Icon }) => <Button key={to} asChild variant="ghost" size="icon" className="size-11">
+            <NavLink to={to} aria-label={title} title={title} className={({ isActive }) => cn(isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover hover:text-primary-foreground')}><Icon aria-hidden="true" /></NavLink>
+          </Button>)}
+          <Separator orientation="vertical" className="mx-1 h-6" />
+        </div>}
         <Button ref={searchTrigger} type="button" variant="ghost" size="icon" className="size-11" aria-label={t('resourceExplorer.searchLabel')}
           title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
           {searchOpen ? <X /> : <Search />}
