@@ -14,9 +14,11 @@ describe('resource recognition', () => {
     ['https://www.example.org:443/a/b/?utm_source=x&id=2#top', 'https://example.org/a/b?id=2'],
   ])('normalises %s', (raw, expected) => expect(canonicalResourceUrl(raw)).toBe(expected));
 
-  it('rejects addresses that are not http(s)', () => {
+  it('rejects addresses that are not http(s) or have incomplete hosts', () => {
     expect(canonicalResourceUrl('javascript:alert(1)')).toBeNull();
     expect(recognizeUrl('ftp://example.org/file')).toBeNull();
+    expect(recognizeUrl('https://www.')).toBeNull();
+    expect(recognizeUrl('https://www.youtube.')).toBeNull();
   });
 
   it('detects the provider and its identifiers', () => {

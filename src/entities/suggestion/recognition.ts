@@ -29,6 +29,7 @@ export function canonicalResourceUrl(raw: string): string | null {
   const match = /^[a-z]+:\/\/([^/?#]+)(.*)$/i.exec(value.replace(/#.*$/, ''));
   if (!match) return null;
   const host = match[1].toLowerCase().replace(/^(www|m)\./, '').replace(/:443$/, '');
+  if (!host || !/^[^.]+(?:\.[^.]+)+$/.test(host)) return null;
   const rest = match[2];
   if (YOUTUBE_HOSTS.includes(host)) {
     const video = /[?&]v=([A-Za-z0-9_-]{11})/.exec(rest)?.[1]

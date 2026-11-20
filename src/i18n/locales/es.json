@@ -62,6 +62,35 @@
     "howItWorks": "Cómo funciona",
     "searchPlaceholder": "Ej.: álgebra, programación, ética…",
     "searchButton": "Buscar en el catálogo",
+    "hero": {
+      "featuresLabel": "Herramientas del campus",
+      "features": {
+        "sequences": {
+          "title": "Secuencias guiadas",
+          "description": "Rutas paso a paso con progreso guardado en cada clase."
+        },
+        "notes": {
+          "title": "Cuaderno de estudio",
+          "description": "Notas personales vinculadas al minuto del vídeo y a la asignatura."
+        },
+        "playlists": {
+          "title": "Enviar lista",
+          "description": "Propón listas de clases abiertas para revisión editorial."
+        }
+      },
+      "tabsLabel": "Modo del cuaderno",
+      "quickPromptsLabel": "Prueba a buscar",
+      "quickPrompts": ["Álgebra lineal", "Python", "Psicología", "Estadística"],
+      "livePulse": "{{resources}} recursos publicados en {{courses}} cursos abiertos",
+      "trySuggestTab": "Sugerir un enlace abierto",
+      "suggestHeading": "¿Conoces una clase, libro o artículo abierto?",
+      "suggestSubtitle": "Pega la dirección para reconocer la fuente y vincularla a la asignatura adecuada.",
+      "suggestPlaceholder": "https://www.youtube.com/watch?v=… o https://arxiv.org/abs/…",
+      "suggestSubmit": "Analizar recurso en la página de sugerencias",
+      "recognizedProvider": "Fuente reconocida: {{provider}} — lista para el análisis curricular",
+      "recognizedWeb": "Dirección válida — metadatos y licencia se revisan en el siguiente paso",
+      "openSuggestPage": "Formulario completo"
+    },
     "pathsTitle": "Cuatro puertas de entrada",
     "paths": {
       "published": "Publicados: {{count}}",

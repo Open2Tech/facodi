@@ -43,9 +43,14 @@ export default function SuggestResource() {
   const { hash } = useLocation();
   const [params] = useSearchParams();
   const contextUnitId = z.uuid().safeParse(params.get('unit')).data?.toLowerCase();
-  const [urlDraft, setUrlDraft] = useState('');
+  const initialUrl = params.get('url')?.trim() ?? '';
+  const [urlDraft, setUrlDraft] = useState(initialUrl);
   const [urlError, setUrlError] = useState(false);
-  const [lastRun, setRun] = useState<{ url: string; recognition: Recognition; key: string } | null>(null);
+  const [lastRun, setRun] = useState<{ url: string; recognition: Recognition; key: string } | null>(() => {
+    if (!initialUrl) return null;
+    const next = recognizeUrl(initialUrl);
+    return next ? { url: initialUrl, recognition: next, key: `${next.canonicalUrl}#init` } : null;
+  });
   const [lastVerdict, setVerdict] = useState<SuggestionSummary | null>(null);
   const verdictRef = useRef<HTMLDivElement>(null);
   const historyRef = useRef<HTMLHeadingElement>(null);

@@ -62,6 +62,35 @@
     "howItWorks": "Como funciona",
     "searchPlaceholder": "Ex.: álgebra, programação, ética…",
     "searchButton": "Pesquisar no catálogo",
+    "hero": {
+      "featuresLabel": "Funcionalidades do campus",
+      "features": {
+        "sequences": {
+          "title": "Sequências guiadas",
+          "description": "Trilhas passo a passo com progresso guardado por aula."
+        },
+        "notes": {
+          "title": "Caderno de estudo",
+          "description": "Notas pessoais ligadas ao minuto do vídeo e à unidade."
+        },
+        "playlists": {
+          "title": "Enviar playlist",
+          "description": "Propõe listas de aulas abertas para curadoria editorial."
+        }
+      },
+      "tabsLabel": "Modo do caderno",
+      "quickPromptsLabel": "Experimenta pesquisar",
+      "quickPrompts": ["Álgebra linear", "Python", "Psicologia", "Estatística"],
+      "livePulse": "{{resources}} recursos publicados em {{courses}} cursos abertos",
+      "trySuggestTab": "Sugerir um link aberto",
+      "suggestHeading": "Conheces uma aula, livro ou artigo aberto?",
+      "suggestSubtitle": "Cola o endereço para reconhecer a fonte e ligá-lo à unidade curricular certa.",
+      "suggestPlaceholder": "https://www.youtube.com/watch?v=… ou https://arxiv.org/abs/…",
+      "suggestSubmit": "Analisar recurso na página de sugestão",
+      "recognizedProvider": "Fonte reconhecida: {{provider}} — pronto para análise curricular",
+      "recognizedWeb": "Endereço válido — metadados e licença analisados no passo seguinte",
+      "openSuggestPage": "Formulário completo"
+    },
     "pathsTitle": "Quatro portas de entrada",
     "paths": {
       "published": "Publicados: {{count}}",

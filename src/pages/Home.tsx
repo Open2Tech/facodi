@@ -1,7 +1,6 @@
-import { useState, type FormEvent } from 'react';
 import { ArrowRight, ArrowUpRight, BookOpen, CircleHelp, Compass, HandHeart, Layers, Link2, PlayCircle, Shapes, type LucideIcon } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Trans, useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { homeMeta } from '@/shared/seo/seo';
@@ -9,6 +8,7 @@ import { useCatalogCounts, usePublicCourses, useFeaturedVideos, useTopics } from
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { cn } from '@/lib/utils';
 import { CourseList } from '@/components/course/CourseList';
+import { HomeHero } from '@/components/home/HomeHero';
 import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
 import { ContinueLearning } from '@/components/sequence/ContinueLearning';
@@ -19,18 +19,10 @@ const STEPS: { key: 'ask' | 'explore' | 'connect' | 'contribute'; icon: LucideIc
 
 export default function Home() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const [search, setSearch] = useState('');
   const courses = usePublicCourses();
   const counts = useCatalogCounts();
   const topics = useTopics();
   const videos = useFeaturedVideos(6);
-  function submit(event: FormEvent) {
-    event.preventDefault();
-    const term = search.trim();
-    // The hero asks what to understand next: search the whole library (videos, modules, documents), not only unit titles.
-    navigate(term ? `/resources?search=${encodeURIComponent(term)}` : '/resources');
-  }
   const paths = [
     { to: '/courses', key: 'courses', count: counts.data?.courses, icon: BookOpen, tone: 'bg-primary' },
     { to: '/units', key: 'units', count: counts.data?.units, icon: Layers, tone: 'bg-brand-orange' },
@@ -41,35 +33,7 @@ export default function Home() {
     <PageSeo {...homeMeta({ title: `FACODI — ${t('brand.tagline')}`, description: t('brand.description') })} />
     {/* Signed-in learners with a sequence in progress get straight back to it. */}
     <ContinueLearning className="mb-10" />
-    <section className="grid gap-10 pb-14 pt-4 lg:grid-cols-[1.35fr_1fr] lg:gap-14 lg:pb-20">
-      <div className="flex flex-col">
-        <h1 className="max-w-3xl text-balance text-[2.6rem] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
-          <Trans i18nKey="home.title" components={{ mark: <mark className="box-decoration-clone bg-primary px-1 text-primary-foreground" /> }} />
-        </h1>
-        <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">{t('home.description')}</p>
-        <div className="mt-9 flex flex-wrap gap-3">
-          <Button size="lg" asChild><Link to="/courses">{t('home.explore')}<ArrowUpRight /></Link></Button>
-          <Button size="lg" variant="outline" asChild><Link to="/how-it-works">{t('home.howItWorks')}</Link></Button>
-        </div>
-        <p className="mt-auto pt-10 text-sm text-muted-foreground">{t('home.open')}</p>
-      </div>
-      <div className="flex flex-col border border-foreground bg-primary text-primary-foreground">
-        <p className="flex items-center justify-between border-b border-ink/25 px-6 py-4 text-sm font-semibold sm:px-8">
-          <span>{t('home.notebook')}</span><span className="font-mono text-xs" aria-hidden="true">FACODI/01</span>
-        </p>
-        <form role="search" onSubmit={submit} className="flex flex-1 flex-col justify-center gap-5 px-6 py-10 sm:px-8 sm:py-14">
-          <label htmlFor="home-search" className="max-w-sm text-3xl font-semibold leading-tight tracking-[-0.02em]">{t('home.question')}</label>
-          <div className="flex border border-ink bg-brand-paper focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-ink">
-            <input id="home-search" type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder={t('home.searchPlaceholder')}
-              className="h-12 min-w-0 flex-1 bg-transparent px-4 text-base text-ink placeholder:text-ink/65 focus-visible:outline-none" />
-            <button type="submit" className="grid w-12 shrink-0 place-items-center bg-ink text-primary transition-colors hover:bg-ink/90 focus-visible:outline-none" aria-label={t('home.searchButton')}>
-              <ArrowRight className="h-5 w-5" />
-            </button>
-          </div>
-        </form>
-        <p className="border-t border-ink/25 px-6 py-4 text-sm leading-relaxed sm:px-8">{t('home.connect')}</p>
-      </div>
-    </section>
+    <HomeHero counts={counts.data} />
 
     <section aria-labelledby="paths" className="border-t border-foreground pt-10">
       <h2 id="paths" className="text-3xl font-semibold tracking-[-0.02em]">{t('home.pathsTitle')}</h2>

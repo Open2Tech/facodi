@@ -62,6 +62,35 @@
     "howItWorks": "Comment ça marche",
     "searchPlaceholder": "Ex. : algèbre, programmation, éthique…",
     "searchButton": "Rechercher dans le catalogue",
+    "hero": {
+      "featuresLabel": "Outils du campus",
+      "features": {
+        "sequences": {
+          "title": "Séquences guidées",
+          "description": "Parcours étape par étape avec progression enregistrée par cours."
+        },
+        "notes": {
+          "title": "Carnet d’étude",
+          "description": "Notes personnelles liées à la minute exacte de la vidéo et à l’unité."
+        },
+        "playlists": {
+          "title": "Proposer une playlist",
+          "description": "Soumettez des séries de cours ouverts à l’équipe éditoriale."
+        }
+      },
+      "tabsLabel": "Mode du carnet",
+      "quickPromptsLabel": "Essayer une recherche",
+      "quickPrompts": ["Algèbre linéaire", "Python", "Psychologie", "Statistiques"],
+      "livePulse": "{{resources}} ressources publiées dans {{courses}} cours ouverts",
+      "trySuggestTab": "Suggérer un lien ouvert",
+      "suggestHeading": "Une vidéo, un livre ou un article ouvert à partager ?",
+      "suggestSubtitle": "Collez l’adresse pour reconnaître la source et la relier à la bonne unité d’enseignement.",
+      "suggestPlaceholder": "https://www.youtube.com/watch?v=… ou https://arxiv.org/abs/…",
+      "suggestSubmit": "Analyser la ressource sur la page de suggestion",
+      "recognizedProvider": "Source reconnue : {{provider}} — prête pour l’association pédagogique",
+      "recognizedWeb": "Adresse valide — métadonnées et licence vérifiées à l’étape suivante",
+      "openSuggestPage": "Formulaire complet"
+    },
     "pathsTitle": "Quatre portes d’entrée",
     "paths": {
       "published": "Publiés : {{count}}",
