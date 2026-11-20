@@ -80,12 +80,7 @@
       },
       "tabsLabel": "Modo del cuaderno",
       "quickPromptsLabel": "Prueba a buscar",
-      "quickPrompts": [
-        "Álgebra lineal",
-        "Python",
-        "Psicología",
-        "Estadística"
-      ],
+      "quickPrompts": ["Álgebra lineal", "Python", "Psicología", "Estadística"],
       "livePulse": "{{resources}} recursos publicados en {{courses}} cursos abiertos",
       "trySuggestTab": "Sugerir un enlace abierto",
       "suggestHeading": "¿Te salvó el semestre? Comparte ese enlace.",
