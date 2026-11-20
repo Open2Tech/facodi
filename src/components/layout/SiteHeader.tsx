@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, BookOpen, LayoutDashboard, Layers, Lightbulb, ListOrdered, ListVideo, LogOut, Menu, Moon, NotebookPen, PenSquare, Search, ShieldCheck, Sun, UserRound, UsersRound, Info, PlayCircle, X } from 'lucide-react';
 import { toast } from 'sonner';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -89,14 +89,18 @@ export function SiteHeader() {
   );
 
   return <header className="sticky top-0 z-30 border-b border-input bg-background">
-    <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-5 lg:px-8">
+    <div className="mx-auto flex h-20 max-w-screen-2xl items-center gap-3 px-5 lg:px-8">
       <Link to="/" aria-label={t('brand.home')} className="flex shrink-0 items-center gap-2 text-2xl font-bold tracking-tight">
         <img src="/favicon.svg" alt="" width="34" height="34" /><span>FACODI<span className="text-brand-cyan" aria-hidden="true">.</span></span>
       </Link>
       <nav aria-label={t('nav.main')} className="hidden min-w-0 items-center gap-1 xl:flex">
         {primaryLinks.map(({ to, title }) => <NavLink key={to} to={to} className={navigationClass}>{title}</NavLink>)}
       </nav>
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+        {!loading && user && <div className="hidden items-center gap-1 2xl:flex">
+          {accountLinks.filter(({ to }) => ['/dashboard', '/notes', '/suggest'].includes(to)).map(({ to, title, icon: Icon }) => <NavLink key={to} to={to} aria-label={title} title={title} className={({ isActive }) => cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-11', isActive && 'bg-primary text-primary-foreground hover:bg-primary-hover hover:text-primary-foreground')}><Icon aria-hidden="true" /></NavLink>)}
+          <Separator orientation="vertical" className="mx-1 h-6" />
+        </div>}
         <Button ref={searchTrigger} type="button" variant="ghost" size="icon" className="size-11" aria-label={t('resourceExplorer.searchLabel')}
           title={`${t('resourceExplorer.searchLabel')} (/)`} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => setSearchOpen(value => !value)}>
           {searchOpen ? <X /> : <Search />}
