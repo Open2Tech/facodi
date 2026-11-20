@@ -1,10 +1,10 @@
 /**
- * Portraits for people credited on /about, served from public/team (square WebP, 256 px).
- * Keyed by project_profiles.slug. Only add a photo the person supplied for this purpose;
- * the card falls back to its icon for everyone else.
+ * Photos provided for the FACODI project credits, served as local JPEG assets.
+ * Match project_profiles.slug; other profiles keep their existing icon fallback.
  */
 export const PROFILE_PHOTOS: Readonly<Record<string, string>> = {
-  'gustavo-scheidt': '/team/gustavo-scheidt.webp',
+  'gustavo-scheidt': '/team/gustavo.jpeg',
+  'marcelo-santos': '/team/marcelo-santos.jpeg',
 };
 
 export const profilePhoto = (slug: string) => PROFILE_PHOTOS[slug] ?? null;

@@ -61,6 +61,7 @@ export default function ProjectStorySections() {
   const query = useProjectDirectory();
   const profiles = query.data?.profiles ?? [];
   const founder = profiles.find(p => p.relationship_kind === 'founder');
+  const founderPhoto = founder ? profilePhoto(founder.slug) : null;
   return <div id="project-story" className="scroll-mt-28 space-y-14 py-12 sm:space-y-20 sm:py-20">
     <section aria-labelledby="story-title" className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
       <div>
@@ -81,8 +82,11 @@ export default function ProjectStorySections() {
 
     {founder && <section aria-labelledby="founder-title"
       className="grid gap-0 border border-foreground bg-brand-mint text-ink md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]">
-      <div className="grid min-h-44 place-items-center border-b border-ink/25 px-8 py-12 md:border-b-0 md:border-r">
-        <span aria-hidden="true" className="select-none font-mono text-8xl font-bold tracking-tighter">MS.</span>
+      <div className="relative grid min-h-56 place-items-center overflow-hidden border-b border-ink/25 md:min-h-64 md:border-b-0 md:border-r">
+        {founderPhoto
+          ? <img src={founderPhoto} alt={founder.display_name} width={640} height={640}
+            loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover object-center" />
+          : <span aria-hidden="true" className="select-none font-mono text-8xl font-bold tracking-tighter">MS.</span>}
       </div>
       <div className="p-7 sm:p-10">
         <p className="font-mono text-xs uppercase tracking-widest">{t('projectStory.founderEyebrow')}</p>
