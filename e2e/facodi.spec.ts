@@ -528,7 +528,7 @@ test('home search, entry paths and new public catalogues render without overflow
   await expect(page).toHaveURL(/\/resources\?tag=Logic$/);
   await expect(page.getByRole('heading', { name: 'Introduction to logic' })).toBeVisible();
   await page.goto('/');
-  const invitation = page.getByRole('region', { name: 'Know a resource worth sharing?' });
+  const invitation = page.getByRole('region', { name: 'Which link got you through your study session?' });
   await invitation.getByRole('link', { name: 'Suggest a resource' }).click();
   await expect(page).toHaveURL('/login?next=%2Fsuggest');
 });
