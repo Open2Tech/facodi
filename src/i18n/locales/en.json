@@ -307,6 +307,7 @@
     "role": "FACODI access",
     "catalog": "Discover published courses and educational resources.",
     "account": "Update your account name, email and password.",
+    "suggestions": "Track the resources you’ve shared.",
     "editor": "Prepare, publish and archive educational content.",
     "admin": "View catalogue states and counts.",
     "shortcuts": "Your shortcuts",
@@ -960,6 +961,7 @@
     },
     "url": "Resource address",
     "urlHint": "HTTPS preferred. Only this address is sent to the source’s public APIs, never your session.",
+    "urlChanged": "Analyse the new link to fill in the resource details.",
     "urlInvalid": "Enter a valid HTTP or HTTPS address.",
     "analyse": "Analyse",
     "providersLabel": "Recognised sources",
@@ -1046,7 +1048,7 @@
       "fast_track": "Recognised source, open licence and a chosen course: it sits at the top of the queue.",
       "review": "Some signals are missing; the editorial team will check the source and licence.",
       "reject": "The check found a blocker. The editorial team confirms before deciding.",
-      "analysis": "An automatic analysis starts in about a minute; follow it in your history."
+      "analysis": "Follow the analysis and decision in your history."
     },
     "signals": {
       "sourceKnown": "Recognised source: {{provider}}.",
@@ -1068,6 +1070,7 @@
       }
     },
     "history": "My suggestions",
+    "viewHistory": "View history",
     "historyEmpty": "You have not suggested any resources yet.",
     "submittedOn": "Sent on {{date}}",
     "reviewNote": "Curator note",

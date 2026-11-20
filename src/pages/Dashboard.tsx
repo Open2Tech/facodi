@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowUpRight, BookOpen, PenSquare, ShieldCheck, UserRound, type LucideIcon } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Lightbulb, PenSquare, ShieldCheck, UserRound, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
@@ -19,6 +19,7 @@ export default function Dashboard() {
   const links: { to: string; title: string; description: string; icon: LucideIcon; fill: string }[] = [
     { to: '/courses', title: t('nav.courses'), description: t('dashboard.catalog'), icon: BookOpen, fill: 'bg-primary' },
     { to: '/profile', title: t('nav.profile'), description: t('dashboard.account'), icon: UserRound, fill: 'bg-brand-cyan' },
+    { to: '/suggest#suggest-history', title: t('suggest.history'), description: t('dashboard.suggestions'), icon: Lightbulb, fill: 'bg-brand-orange' },
     ...(canAccessFacodiRoute(role, 'editor') ? [{ to: '/editor', title: t('nav.editor'), description: t('dashboard.editor'), icon: PenSquare, fill: 'bg-brand-mint' }] : []),
     ...(role === 'admin' ? [{ to: '/admin', title: t('nav.admin'), description: t('dashboard.admin'), icon: ShieldCheck, fill: 'bg-brand-coral' }] : []),
   ];
