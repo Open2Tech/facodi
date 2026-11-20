@@ -4,6 +4,8 @@
 ## Fonte visual
 Mantivemos o símbolo **F.** do FACODI e a linguagem visual existente: Ink `#142846`, Sun `#EFFF00`, Cyan `#37BED2`, Blue `#3979C8`, Mint `#A7E8BE` e Paper `#F9FAFB`. Nenhuma biblioteca de UI, serviço externo ou framework foi adicionado.
 
+O papel `#F9FAFB` regista a referência desta entrega. O [guia de identidade v03](facodi-identidade-v03.md) documenta o papel `#FDFCF7` e as combinações atuais.
+
 ## Media ativos
 - `public/favicon.svg` — símbolo principal, vetor, 64×64.
 - `public/favicon-{16x16,32x32,64x64}.png` — raster compatível.

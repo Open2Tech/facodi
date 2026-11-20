@@ -2,10 +2,10 @@
 name: FACODI
 description: Open digital campus that maps free videos and resources onto real university curricula.
 colors:
-  warm-paper: "hsl(50 60% 98%)"
-  navy-ink: "hsl(216 56% 18%)"
-  sun-marker: "hsl(64 100% 50%)"
-  sun-marker-pressed: "hsl(64 100% 46%)"
+  warm-paper: "#FDFCF7"
+  navy-ink: "#142846"
+  sun-marker: "#EFFF00"
+  sun-marker-pressed: "hsl(63.76 100% 46%)"
   white-sheet: "hsl(0 0% 100%)"
   ruled-grey: "hsl(214 26% 95%)"
   pencil-grey: "hsl(219 21% 37%)"
@@ -13,12 +13,12 @@ colors:
   field-edge: "hsl(219 15% 49%)"
   ink-foreground: "hsl(210 7% 95%)"
   correction-red: "hsl(0 75% 42%)"
-  tab-cyan: "hsl(188 63% 52%)"
-  tab-mint: "hsl(141 59% 78%)"
+  tab-cyan: "#37BED2"
+  tab-mint: "#A7E8BE"
   tab-orange: "hsl(36 100% 60%)"
   tab-pink: "hsl(337 100% 72%)"
   tab-coral: "hsl(7 100% 74%)"
-  margin-blue: "hsl(213 57% 50%)"
+  margin-blue: "#3979C8"
   night-desk: "hsl(222 54% 9%)"
   night-sheet: "hsl(219 52% 14%)"
   night-ink: "hsl(222 60% 6%)"
@@ -140,8 +140,11 @@ curated videos are the only imagery; the curriculum itself is the hero.
 
 ## Colors
 
-The palette comes from the original facodi.com: paper, navy and highlighter,
-plus five marker tabs. Every fill that carries text carries navy text.
+The v03 identity defines Paper, Ink and Sun. The catalogue uses Cyan, Mint
+and the other marker tabs to distinguish content types. Use semantic Tailwind
+classes backed by [the CSS tokens](src/index.css). The
+[v03 brand guide](docs/facodi-identidade-v03.md) documents colour combinations,
+channel formats and the wording used in public communication.
 
 ### Primary
 - **Sun Marker** (`sun-marker`): primary buttons, the active navigation item,
@@ -154,8 +157,8 @@ plus five marker tabs. Every fill that carries text carries navy text.
   `src/components/catalog/contentTone.ts`. Courses use sun, units orange,
   modules and documents mint, videos and sequences pink, external references
   cyan, and unknown types coral.
-- **Margin Blue** (`margin-blue`): non-text marks only, such as dots, bars and
-  icons on paper. It does not meet text contrast with navy.
+- **Margin Blue** (`margin-blue`): use for non-text marks, such as dots, bars
+  and icons on paper. Use Ink for the accompanying labels.
 
 ### Neutral
 - **Warm Paper** (`warm-paper`): page background.
@@ -221,10 +224,10 @@ tabular figures so columns line up.
   grids are used only where thumbnails carry information.
 - Editorial pages use paginated lists, searchable association pickers and
   stacked typed forms.
-- The header is sticky and stays on one line. Below `xl`, navigation opens
-  in a modal sheet with its own scroll area. At `xl` and above, public links
-  use text labels and account actions share a labelled dropdown, independent
-  of role. Language codes keep desktop preferences compact.
+- The sticky header uses a scrollable navigation sheet below 800px. From
+  800px to `xl`, the links have a row below the brand and controls. From
+  `xl`, prioritise compact labels and one row. Account actions use a labelled
+  menu and language codes keep preferences compact.
 - Mobile: stacked forms; tables scroll inside their container.
 - Legal pages use `LegalDocument`: a sticky numbered index (a `<details>` on
   mobile), a bordered review note, an optional summary box, numbered sections
@@ -284,7 +287,7 @@ all have sharp corners. The only curves come from icons and the F favicon.
   debounce).
 
 ### Navigation
-- The header shows the FACODI wordmark with a cyan full stop and the F favicon.
+- The header shows the FACODI wordmark with a cyan full stop and the F. favicon.
   Desktop links use text labels; mobile links pair icons with labels. The active
   link is a sun block. Mobile uses an outline icon button to open a labelled
   sheet with focus trapping, Escape dismissal and scrollable navigation.

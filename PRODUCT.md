@@ -83,6 +83,10 @@ reference; its former Odoo implementation is not.
 
 ## Brand Commitments
 
+The [v03 guide](docs/facodi-identidade-v03.md) defines the shared visual
+identity and public voice. [DESIGN.md](DESIGN.md) defines how those decisions
+apply to interface components and the light and dark themes.
+
 - Name: FACODI, an Open 2 Technology (Open2 / O2T) project. Canonical
   domain `https://facodi.com`.
 - No advertising, no tracking or analytics, no paywall.
@@ -98,7 +102,7 @@ reference; its former Odoo implementation is not.
 - Curated programmes are documented under `docs/` (for example UAlg
   Management, CTeSP STI, UFES English Letters, GACS Astronomy).
 - Imagery: real YouTube thumbnails of published, approved videos, plus the
-  brand assets in `public/brand/`.
+  [canonical brand assets](docs/facodi-brand-media-and-email-canonical-2026-11-15.md#media-ativos).
 - Absent: testimonials, user metrics, institutional partnerships,
   accreditation and press coverage. Do not fabricate them.
 

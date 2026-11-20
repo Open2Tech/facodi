@@ -96,6 +96,10 @@ Foram criados oito perfis públicos e três marcos verificados; os três perfis 
 
 [Auditoria de identidade, fontes, curadoria e política de consentimento](docs/facodi-project-identity-community-2026-11-14.md).
 
+- [Guia de identidade FACODI v03](docs/facodi-identidade-v03.md) para cor, marca, voz, formatos e acessibilidade.
+- [Sistema de design da aplicação](DESIGN.md) para decisões de UI, tipografia e componentes.
+- [Índice da documentação](docs/wiki/Home.md) para desenvolvimento, catálogo e contribuição.
+
 **Publicação confirmada:** o commit a71dc0d8b32cdce6f7e5390d54d628022ddb8142 ficou READY na Vercel, e a leitura pública confirmou `/about` e `/community` com os novos conteúdos. A fila `/editor/project-credits` permanece protegida e depende de teste real com conta editorial. Novos commits após essa versão exigem confirmar o respetivo deploy.
 
 ### Participação voluntária e proteção de créditos
