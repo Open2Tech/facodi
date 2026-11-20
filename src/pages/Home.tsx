@@ -12,7 +12,6 @@ import { CourseList } from '@/components/course/CourseList';
 import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
 import { ContinueLearning } from '@/components/sequence/ContinueLearning';
-import { useContributePath } from '@/features/auth/useContributePath';
 
 const STEPS: { key: 'ask' | 'explore' | 'connect' | 'contribute'; icon: LucideIcon }[] = [
   { key: 'ask', icon: CircleHelp }, { key: 'explore', icon: Compass }, { key: 'connect', icon: Link2 }, { key: 'contribute', icon: HandHeart },
@@ -26,7 +25,6 @@ export default function Home() {
   const counts = useCatalogCounts();
   const topics = useTopics();
   const videos = useFeaturedVideos(6);
-  const contribute = useContributePath();
   function submit(event: FormEvent) {
     event.preventDefault();
     const term = search.trim();
@@ -118,7 +116,7 @@ export default function Home() {
           </span>
           <h3 className="text-xl font-semibold">{t(`home.steps.${step}.title`)}</h3>
           <p className="text-sm leading-relaxed text-ink-foreground/75">{t(`home.steps.${step}.text`)}</p>
-          {step === 'contribute' && <Link to={contribute} className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold text-primary underline underline-offset-4">{t('home.contributeLink')}<ArrowUpRight className="h-4 w-4" /></Link>}
+          {step === 'contribute' && <Link to="/about#contribute" className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold text-primary underline underline-offset-4">{t('home.contributeLink')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>}
         </li>)}
       </ol>
     </section>
@@ -151,7 +149,9 @@ export default function Home() {
     <section aria-labelledby="contribute" className="flex flex-col gap-8 border border-foreground bg-primary px-6 py-10 text-primary-foreground sm:px-10 md:flex-row md:items-end md:justify-between">
       <div><h2 id="contribute" className="max-w-xl text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t('home.ctaTitle')}</h2>
         <p className="mt-4 max-w-prose leading-relaxed">{t('home.ctaText')}</p></div>
-      <Button size="lg" className="h-auto min-h-11 max-w-full shrink-0 whitespace-normal bg-ink py-3 text-primary hover:bg-ink/90" asChild><Link to={contribute}>{t('home.ctaButton')}<ArrowUpRight /></Link></Button>
+      <Button size="lg" className="h-auto min-h-11 max-w-full shrink-0 self-start whitespace-normal bg-ink py-3 text-primary hover:bg-ink/90 md:self-end" asChild>
+        <Link to="/suggest">{t('suggest.nav')}<ArrowUpRight aria-hidden="true" /></Link>
+      </Button>
     </section>
   </>;
 }

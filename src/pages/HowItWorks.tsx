@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpenCheck, FolderOpen, ListVideo, ShieldCheck } from 'lucide-react';
 import { LearningPathGuide } from '@/components/learning/LearningPathGuide';
+import { SuggestResourceCallout } from '@/components/suggestion/SuggestResourceCallout';
 
 export default function HowItWorks() {
   const { t } = useTranslation();
@@ -53,6 +54,7 @@ export default function HowItWorks() {
         </Link>
       </div>
     </section>
+    <SuggestResourceCallout context="guide" />
     <section className="flex gap-4 border border-input bg-muted/40 p-6">
       <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0" aria-hidden="true" />
       <div>

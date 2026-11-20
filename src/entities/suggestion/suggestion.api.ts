@@ -17,12 +17,21 @@ function suggestionError(error: { code?: string | null; message?: string | null 
 }
 
 /** Units follow the public catalogue rule (active, inside a published and active course). */
-export async function listSuggestionUnits(signal?: AbortSignal): Promise<UnitOption[]> {
-  const { data, error } = await supabase.from('curricular_units').select('id,code,title,slug,courses!inner(id,code,title,slug)')
-    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active')
-    .order('title').limit(1000).abortSignal(signal);
+export async function listSuggestionUnits(signal: AbortSignal, contextUnitId?: string): Promise<UnitOption[]> {
+  const publicUnits = () => supabase.from('curricular_units').select('id,code,title,slug,courses!inner(id,code,title,slug)')
+    .eq('status', 'active').eq('courses.published', true).eq('courses.status', 'active').abortSignal(signal);
+  const { data, error } = await publicUnits().order('title').limit(1000);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  return data.map(({ courses, ...unit }) => ({ ...unit, course: courses }));
+  const options = data.map(({ courses, ...unit }) => ({ ...unit, course: courses }));
+  if (contextUnitId && !options.some(unit => unit.id === contextUnitId)) {
+    const { data: context, error: contextError } = await publicUnits().eq('id', contextUnitId).maybeSingle();
+    if (contextError) throw new Error(getSupabaseErrorMessage(contextError));
+    if (context) {
+      const { courses, ...unit } = context;
+      options.unshift({ ...unit, course: courses });
+    }
+  }
+  return options;
 }
 
 export async function submitSuggestion(input: SuggestionInput): Promise<SuggestionSummary> {

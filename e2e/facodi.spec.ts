@@ -932,10 +932,56 @@ test('editor reviews study paths and playlists through the review RPCs with stat
   expect(decisions).toContainEqual({ fn: 'review_playlist', p_playlist_id: 'p1', p_decision: 'rejected', p_review_note: null });
 });
 
+test('a curricular unit stays selected after sign-in and can be changed before suggesting a resource', async ({ page }) => {
+  await mockAuth(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const course = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e03', slug: 'test-course', code: 'TST', title: 'Test course' };
+  const unit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e01', slug: 'calculus', code: '101', title: 'Calculus' };
+  const otherUnit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e02', slug: 'linear-algebra', code: '102', title: 'Linear Algebra' };
+  const path = '/courses/test-course/units/calculus';
+  await page.route('**/rest/v1/**', route => {
+    const url = new URL(route.request().url());
+    if (url.pathname.endsWith('/courses')) return route.fulfill({ json: [course] });
+    if (url.pathname.endsWith('/curricular_units')) {
+      if (url.searchParams.get('courses.published')) {
+        // Simulate a unit beyond the first page of picker options.
+        if (!url.searchParams.has('id')) return route.fulfill({ json: [{ ...otherUnit, courses: course }] });
+        expect(url.searchParams.get('id')).toBe(`eq.${unit.id}`);
+        expect(url.searchParams.get('status')).toBe('eq.active');
+        expect(url.searchParams.get('courses.status')).toBe('eq.active');
+        return route.fulfill({ json: [{ ...unit, courses: course }] });
+      }
+      return route.fulfill({ json: url.searchParams.has('id') ? [unit] : [unit, otherUnit] });
+    }
+    return route.fulfill({ json: [] });
+  });
+  await page.route('https://www.youtube.com/oembed**', route => route.fulfill({ json: { title: 'Linear Algebra', author_name: 'Open Lessons' } }));
+  await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
+
+  await page.goto(path);
+  const invitation = page.getByRole('region', { name: 'What helped you study this unit?' });
+  await invitation.getByRole('link', { name: 'Suggest a resource' }).click();
+  await expect(page).toHaveURL(`/login?next=${encodeURIComponent(`/suggest?unit=${unit.id}`)}`);
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL(`/suggest?unit=${unit.id}`);
+  await expect(page.getByRole('link', { name: 'Back to the curricular unit' })).toHaveAttribute('href', path);
+  await page.getByLabel('Resource address').fill('https://youtu.be/dQw4w9WgXcQ');
+  await page.getByRole('button', { name: 'Analyse' }).click();
+  await expect(page.getByLabel('Title *')).toHaveValue('Linear Algebra');
+  await expect(page.getByRole('combobox', { name: 'Course', exact: true })).toHaveValue(course.id);
+  const picker = page.getByRole('combobox', { name: 'Curricular unit (optional)' });
+  await expect(picker).toHaveValue(unit.id);
+  await picker.selectOption(otherUnit.id);
+  await expect(picker).toHaveValue(otherUnit.id);
+});
+
 test('learner suggests a resource: recognition, unit match, declarations and the screening verdict', async ({ page }) => {
   await mockAuth(page);
   const posted: Record<string, unknown>[] = [];
-  const unit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e01', code: '19411006', title: 'Programação Orientada a Objetos', slug: 'poo', courses: { code: 'LESTI', title: 'Systems Engineering', slug: 'lesti' } };
+  const unit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e01', code: '19411006', title: 'Programação Orientada a Objetos', slug: 'poo',
+    courses: { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e02', code: 'LESTI', title: 'Systems Engineering', slug: 'lesti' } };
   await page.route('**/rest/v1/**', async route => {
     const request = route.request();
     const url = new URL(request.url());
@@ -993,7 +1039,7 @@ test('learner suggests a resource: recognition, unit match, declarations and the
   expect(posted).toEqual([expect.objectContaining({
     url: 'https://youtu.be/dQw4w9WgXcQ?si=share', canonical_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     title: 'Programação orientada a objetos em Java', license: 'CC BY 4.0', object_type: 'video', tags: ['java', 'oop'],
-    curricular_unit_id: unit.id, license_declared: true, attribution_declared: true,
+    course_id: unit.courses.id, curricular_unit_id: unit.id, license_declared: true, attribution_declared: true,
   })]);
   expect(posted[0]).not.toHaveProperty('status');
 });

@@ -11,8 +11,12 @@ import { canAccessFacodiRoute } from '@/entities/facodi/access';
 import { courseKeys } from '@/entities/course/course.keys';
 import { useAuth } from '@/features/auth/useAuth';
 
-export function useSuggestionUnits() {
-  return useQuery({ queryKey: suggestionKeys.unitOptions(), queryFn: ({ signal }) => listSuggestionUnits(signal), staleTime: 10 * 60_000 });
+export function useSuggestionUnits(contextUnitId?: string) {
+  return useQuery({
+    queryKey: suggestionKeys.unitOptions(contextUnitId),
+    queryFn: ({ signal }) => listSuggestionUnits(signal, contextUnitId),
+    staleTime: 10 * 60_000,
+  });
 }
 
 /** Public metadata for an analysed URL; a failed lookup is not retried, the form stays editable. */

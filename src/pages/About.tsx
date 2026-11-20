@@ -19,7 +19,7 @@ const FLOW = ['account', 'review', 'publish'] as const;
 
 export default function About() {
   const { t } = useTranslation();
-  const { user, role } = useAuth();
+  const { role } = useAuth();
   const { hash } = useLocation();
   useEffect(() => {
     if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
@@ -73,12 +73,13 @@ export default function About() {
           <p className="leading-relaxed">{t(`about.flow.${step}`)}</p>
         </li>)}
       </ol>
-      <Button size="lg" className="mt-9 h-auto min-h-11 max-w-full whitespace-normal bg-ink py-3 text-left text-primary hover:bg-ink/90" asChild>
-        {editor ? <Link to="/editor">{t('about.openEditor')}<ArrowUpRight /></Link>
-          : user ? <Link to="/suggest">{t('suggest.nav')}<ArrowUpRight /></Link>
-          : <Link to="/login">{t('about.createAccount')}<ArrowUpRight /></Link>}
-      </Button>
-      {user && !editor && <Link to="/playlists/submit" className="mt-4 block w-fit text-sm font-semibold underline underline-offset-4">{t('playlistSubmit.send')}</Link>}
+      <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <Button size="lg" className="h-auto min-h-11 max-w-full whitespace-normal bg-ink py-3 text-left text-primary hover:bg-ink/90" asChild>
+          <Link to="/suggest">{t('suggest.nav')}<ArrowUpRight aria-hidden="true" /></Link>
+        </Button>
+        <Link to="/playlists/submit" className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">{t('playlistSubmit.send')}</Link>
+        {editor && <Link to="/editor" className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">{t('about.openEditor')}</Link>}
+      </div>
     </section>
   </article>;
 }

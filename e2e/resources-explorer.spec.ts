@@ -128,3 +128,16 @@ test('optional discovery and topic failures remain visible and retryable without
   await expect(page.getByText('Topics service unavailable')).toBeVisible({ timeout: 15_000 });
   await expect(page.getByRole('heading', { name: 'Algebra lesson 01' })).toBeVisible();
 });
+
+test('an empty sequence search leads to videos with the same filters and to resource suggestions', async ({ page }) => {
+  await catalogue(page);
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto('/sequences?search=vector+spaces&language=en&area=mathematics');
+  await expect(page.getByRole('heading', { name: 'No study sequences match your search.' })).toBeVisible();
+  await page.getByRole('link', { name: 'Search the library for videos' }).click();
+  await expect(page).toHaveURL('/resources?type=video&search=vector+spaces&language=en&area=mathematics');
+  const invitation = page.getByRole('region', { name: 'Missing a resource in these results?' });
+  await invitation.getByRole('link', { name: 'Suggest a resource' }).click();
+  await expect(page).toHaveURL('/login?next=%2Fsuggest');
+  await expect(page.getByText('Sign in or create an account to suggest a resource and follow its progress in your history.')).toBeVisible();
+});

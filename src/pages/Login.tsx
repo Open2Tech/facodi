@@ -22,11 +22,14 @@ export default function Login() {
   const [signup, setSignup] = useState(false);
   const [params] = useSearchParams();
   const next = safeReturnPath(params.get('next'));
+  const suggesting = next.split('?')[0] === '/suggest';
   if (loading) return <PageState loading />;
   if (user) return <Navigate to={next} replace />;
   return <AuthShell>
     <h1 className="text-3xl font-semibold">{t(signup ? 'auth.signup' : 'auth.login')}</h1>
-    <p className="mb-8 mt-4 text-muted-foreground">{t(signup ? 'auth.signupDescription' : 'auth.loginDescription')}</p>
+    <p className="mb-8 mt-4 text-muted-foreground">
+      {t(suggesting ? 'suggest.signInDescription' : signup ? 'auth.signupDescription' : 'auth.loginDescription')}
+    </p>
     <LoginForm key={String(signup)} signup={signup} next={next} />
     <div className="mt-7 flex flex-wrap items-center justify-between gap-4 text-sm">
       <button type="button" className="underline underline-offset-4" onClick={() => setSignup(!signup)}>{t(signup ? 'auth.haveAccount' : 'auth.createAccount')}</button>
