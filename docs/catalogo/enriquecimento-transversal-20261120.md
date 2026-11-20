@@ -177,3 +177,136 @@ Software de modelação pode exigir licenças ou contas; os tutoriais são gratu
 - O catálogo contém uma **duplicação antiga**, anterior a este lote, do recurso `https://learnenglish.britishcouncil.org/free-resources/writing` em dois objetos de fontes históricas diferentes. Foi identificada, **mas não alterada** nesta intervenção para não afetar relações já existentes sem auditoria de dependências. Nenhuma das fontes adicionadas criou essa duplicação.
 - O teste de leitura pública foi realizado por consulta SQL com role `anon`. A revisão visual ponta a ponta em `facodi.com` e a visualização integral dos vídeos continuam pendentes.
 - Não criar módulos ou sequências de reprodução arbitrárias para compensar falta de FUC ou revisão de aulas. Próximas decisões de enriquecimento devem partir de recursos de alta adequação curricular, com autoria e direitos preservados.
+
+---
+
+## Sexta ronda — cobertura editorial de UCs sem referências (2026-11-20)
+
+**Objetivo:** reduzir lacunas reais de bibliografia complementar nos seis cursos já enriquecidos, sem preencher projetos, estágios ou opções com materiais arbitrários.
+
+**Lotes publicados diretamente no Supabase `facodi`:**
+- `facodi_cross_course_followup_20261120_v6_tech_econ`;
+- `facodi_cross_course_followup_20261120_v6_science`;
+- `facodi_cross_course_followup_20261120_v6_specifics`.
+
+### Resultado validado
+
+- **45 novos `external_resource`**, com autor, descrição, ligação pública para a fonte e metadados de revisão;
+- **98 novas relações `contains`**, correspondentes a **88 UCs distintas** dos seis cursos;
+- **101 UCs sem uma referência documental no início** desta ronda, **14 após a intervenção**;
+- Consulta transacional com `SET LOCAL ROLE anon`: **45 fontes e 98 relações visíveis**;
+- Integridade: **0 child objects indisponíveis, 0 parent objects indisponíveis, 0 relações com escopo de leitura inadequado**;
+- Nenhum código de UC, curso, ECTS, estado de publicação, tabela ou política RLS alterado.
+
+| Curso | Total UCs | UCs sem refs antes | Depois | UCs enriquecidas | Novos vínculos |
+|---|---:|---:|---:|---:|---:|
+| `engenharia-eletrotecnica-computadores` | 55 | 27 | 6 | 21 | 27 |
+| `engenharia-civil` | 39 | 24 | 1 | 24 | 28 |
+| `matematica-aplicada-economia-gestao` | 31 | 18 | 1 | 17 | 17 |
+| `bioquimica` | 44 | 16 | 1 | 15 | 15 |
+| `ciencias-biomedicas` | 40 | 8 | 1 | 7 | 7 |
+| `ctesp-desenho-modelacao-digital` | 19 | 8 | 4 | 4 | 4 |
+| **Total** | **228** | **101** | **14** | **88** | **98** |
+
+As 88 UCs enriquecidas não equivalem a 88 UCs antes vazias: **87 UCs passaram a ter uma primeira referência**, e uma UC que já tinha fontes recebeu conteúdo complementar adicional.
+
+### Aprendizagem transversal por áreas
+
+- **Engenharia Eletrotécnica:** MIT (Algoritmos, Sinais, Telecomunicações, Eletromagnetismo e Sistemas Operativos), PostgreSQL, Godot, Física, IEA 2026 (energia renovável), Siemens SITRAIN, Odoo 19 Studio, Diário da República (RTIEBT). As fontes legais e regulamentares devem ser verificadas quanto à sua redação atual e Anexos Nacionais quando aplicável; formação comercial não é apresentada como gratuita.
+- **Engenharia Civil:** MIT (Estruturas, Solos, Fluidos), OpenStax, EU-OSHA, UN-Habitat, Eurocode 2/JRC, Comissão Europeia (produtos de construção e segurança rodoviária), USGS, LNEC, APM e Portal da Habitação. Materiais não substituem projetos habilitados, normas completas ou legislação portuguesa em vigor.
+- **Matemática Aplicada à Economia e à Gestão:** OpenStax (Economia, Finanças, Gestão e Contabilidade), statsmodels (OLS), MIT (Probabilidade, sistemas dinâmicos), Banco Central Europeu e SNC da CNC. Notas sobre diferença entre regras contabilísticas internacionais e portuguesas preservadas nos objetos.
+- **Bioquímica:** Bioenergética/Enzimologia, química física, higiene alimentar FAO, gestão laboratorial OMS, mecanismos de toxicologia NIEHS, métodos de separação MIT, microbiologia e sistema nervoso OpenStax, biotecnologia vegetal introdutória e EPA (biorremediação).
+- **Ciências Biomédicas:** curso de Epidemiologia do CDC, artigos NCBI sobre Histologia e Farmacodinâmica, princípios 3Rs da NC3Rs e fundamentos de neuroanatomia da OpenStax; os recursos não têm função de aconselhamento médico ou protocolização clínica.
+- **CTeSP Desenho e Modelação Digital:** tutoriais Autodesk AutoCAD, mapas de quantidades Revit, QGIS (inventariação por atributos), UN-Habitat (infraestruturas urbanas).
+
+### Fontes publicadas nesta ronda
+
+#### Engenharia, economia e desenho
+
+| Referência original | Autor | Idioma indicado |
+|---|---|---|
+| [Agência Internacional da Energia — Renewables 2026](https://www.iea.org/reports/renewables-2026) | International Energy Agency | `en` |
+| [Autodesk — Tutoriais de desenho e cotagem no AutoCAD](https://www.autodesk.com/solutions/aec/autocad-tutorials) | Autodesk | `en` |
+| [Autodesk Revit — Schedules, Quantities and Material Takeoffs](https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-F50D6FF4-859E-43A2-A2F6-81C84A1BA0EB.htm) | Autodesk | `en` |
+| [Banco Central Europeu — Política Monetária](https://www.ecb.europa.eu/mopo/intro/html/index.pt.html) | Banco Central Europeu | `pt` |
+| [Comissão de Normalização Contabilística — SNC](https://www.cnc.min-financas.pt/snc.html) | Comissão de Normalização Contabilística / Portugal | `pt` |
+| [EU-OSHA — Construction Safety: Risks and Prevention](https://oshwiki.osha.europa.eu/en/themes/construction-safety-risks-and-prevention) | Agência Europeia para a Segurança e Saúde no Trabalho | `en` |
+| [Godot Engine — Your First 2D Game](https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html) | Godot Engine | `en` |
+| [MIT OCW — Probabilistic Systems Analysis (6.041SC)](https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Advanced Soil Mechanics](https://ocw.mit.edu/courses/1-361-advanced-soil-mechanics-fall-2004/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Digital Communication Systems (6.02)](https://ocw.mit.edu/courses/6-02-introduction-to-eecs-ii-digital-communication-systems-fall-2012/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Electromagnetics and Applications (6.013)](https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-fall-2005/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Engineering Mechanics II (Fluidos)](https://ocw.mit.edu/courses/1-060-engineering-mechanics-ii-spring-2006/pages/syllabus/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Operating System Engineering (6.828)](https://ocw.mit.edu/courses/6-828-operating-system-engineering-fall-2012/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Signals and Systems (6.003)](https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/) | MIT OpenCourseWare | `en` |
+| [MIT OpenCourseWare — Solid Mechanics (1.050)](https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/) | MIT OpenCourseWare | `en` |
+| [ONU-Habitat — Soluções baseadas na Natureza no Planeamento Urbano](https://unhabitat.org/knowledge/publications/integrating-nature-based-solutions-into-urban-territorial-planning-building-biodiverse-resilient) | UN-Habitat | `en` |
+| [OpenStax — Física dos Fluidos, capítulo 14](https://openstax.org/books/university-physics-volume-1/pages/14-introduction) | OpenStax | `en` |
+| [OpenStax — Principles of Finance](https://openstax.org/books/principles-finance/pages/1-why-it-matters) | OpenStax / Rice University | `en` |
+| [OpenStax — Principles of Managerial Accounting](https://openstax.org/books/principles-managerial-accounting/pages/1-why-it-matters) | OpenStax / Rice University | `en` |
+| [OpenStax — University Physics Vol. 2 (eletromagnetismo e termodinâmica)](https://openstax.org/books/university-physics-volume-2/pages/1-introduction) | OpenStax / Rice University | `en` |
+| [Portal da Habitação — Reabilitação Urbana](https://www.portaldahabitacao.pt/reabilitacao_urbana) | Instituto da Habitação e da Reabilitação Urbana | `en` |
+| [QGIS — Tabelas de Atributos e Inventariação Digital](https://docs.qgis.org/3.44/en/docs/user_manual/working_with_vector/attribute_table.html) | QGIS Documentation Team | `en` |
+| [statsmodels — Exemplo de Regressão por Mínimos Quadrados](https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html) | statsmodels | `en` |
+
+#### Bioquímica e Ciências Biomédicas
+
+| Referência original | Autor | Idioma indicado |
+|---|---|---|
+| [CDC Public Health 101 — Introduction to Epidemiology](https://www.cdc.gov/training-publichealth101/php/training/introduction-to-epidemiology.html) | Centers for Disease Control and Prevention | `en` |
+| [FAO — Boas Práticas de Higiene Alimentar e HACCP](https://www.fao.org/good-hygiene-practices-haccp-toolbox/ghp/introduction-to-ghp/) | FAO / Codex Alimentarius | `en` |
+| [MIT OpenCourseWare — Separation Processes (10.32)](https://ocw.mit.edu/courses/10-32-separation-processes-spring-2005/) | MIT OpenCourseWare | `en` |
+| [NC3Rs — Princípios dos 3Rs em Investigação Animal](https://nc3rs.org.uk/who-we-are/3rs) | NC3Rs (United Kingdom) | `en` |
+| [NCBI Bookshelf — Histology, Staining](https://www.ncbi.nlm.nih.gov/books/NBK557663/) | NCBI Bookshelf / StatPearls | `en` |
+| [NCBI Bookshelf — Pharmacodynamics](https://www.ncbi.nlm.nih.gov/books/NBK507791/) | NCBI Bookshelf / StatPearls | `en` |
+| [NIEHS — Introdução à Toxicologia Ambiental](https://www.niehs.nih.gov/health/topics/science/toxicology) | National Institute of Environmental Health Sciences (NIH) | `en` |
+| [OMS — Laboratory Quality Management System Handbook](https://www.who.int/publications-detail-redirect/9789241548274) | Organização Mundial da Saúde | `en` |
+| [OpenStax Anatomy & Physiology 2e — Introdução ao Sistema Nervoso](https://openstax.org/books/anatomy-and-physiology-2e/pages/12-introduction) | OpenStax / Rice University | `en` |
+| [OpenStax Biology 2e — Energia, Metabolismo e Enzimas](https://openstax.org/books/biology-2e/pages/6-introduction) | OpenStax / Rice University | `en` |
+| [OpenStax Biology 2e — Fotossíntese e Energia Vegetal](https://openstax.org/books/biology-2e/pages/8-introduction) | OpenStax / Rice University | `en` |
+| [OpenStax Chemistry 2e — Termodinâmica e Energia Livre](https://openstax.org/books/chemistry-2e/pages/16-introduction) | OpenStax / Rice University | `en` |
+
+#### Fontes técnicas e legislação específica
+
+| Referência original | Autor | Idioma indicado |
+|---|---|---|
+| [Association for Project Management — O que é gestão de projetos?](https://www.apm.org.uk/resources/what-is-project-management/) | Association for Project Management | `en` |
+| [Comissão Europeia — Regulamento de Produtos de Construção](https://single-market-economy.ec.europa.eu/sectors/construction/construction-products-regulation-cpr/cpr-overview_en) | Comissão Europeia | `en` |
+| [Comissão Europeia — Segurança e Avaliação de Infraestruturas Rodoviárias](https://road-safety.transport.ec.europa.eu/eu-road-safety-policy/priorities/infrastructure/road-infrastructure-guidelines_en) | Comissão Europeia / Road Safety | `en` |
+| [Diário da República — Regras Técnicas Instalações Elétricas de Baixa Tensão](https://diariodarepublica.pt/dr/detalhe/portaria/949-a-2006-303262) | Diário da República / Portugal | `pt` |
+| [EPA — Tecnologias de Biorremediação Ambiental](https://www.epa.gov/remedytech/remediation-technology-descriptions-cleaning-contaminated-sites) | US Environmental Protection Agency | `en` |
+| [Eurocodes / JRC — Eurocódigo 2, Estruturas de Betão](https://eurocodes.jrc.ec.europa.eu/EN-Eurocodes/eurocode-2-design-concrete-structures) | Joint Research Centre / Comissão Europeia | `en` |
+| [LNEC — Documentos de Homologação de Produtos e Sistemas](https://www.lnec.pt/services/produtos-e-sistemas-de-construcao/dh) | Laboratório Nacional de Engenharia Civil | `pt` |
+| [Odoo 19 — Documentação do Studio (Low-Code)](https://www.odoo.com/documentation/19.0/applications/studio.html) | Odoo S.A. | `en` |
+| [Siemens SITRAIN — Formação SIMATIC e TIA Portal](https://www.siemens.com/pt-pt/training/sitrain/simatic-training/) | Siemens | `pt` |
+| [USGS — Geological Framework Mapping](https://www.usgs.gov/special-topics/earth-mri/geologic-framework-mapping) | U.S. Geological Survey | `en` |
+
+### Verificação das permissões de leitura
+
+A **primeira execução** dos lotes técnico-económico e científico usou o valor `review_scope='original_public_landing_page'` e criou vínculos que não eram visíveis pela role `anon`. A auditoria às políticas existentes demonstrou que a política `facodi_public_external_reading_relations` exige exatamente:
+- `relation_type='contains'`;
+- `created_by_mechanism='verified_external_reading_curation'`;
+- `metadata.review_status='approved'`;
+- `metadata.review_scope='external_landing_page'`;
+- objetos parent `curricular_unit` e child `external_resource`, ambos publicados em estado permitido.
+
+Os **84 vínculos dos primeiros dois lotes** foram corrigidos **apenas nos seus metadados**, preservando `review_scope_detail='original_public_landing_page'` e registando a normalização de contrato. O terceiro lote foi gravado desde o início com o valor correto. A validação final confirmou **98 relações acessíveis a visitantes**, sem criar, remover ou alargar políticas RLS. Esta é uma regra de publicação a respeitar nas curadorias futuras.
+
+### Deliberadamente não preenchido
+
+Restam 14 UCs sem referência específica, todas com escopo ainda dependente de orientação académica, incluindo:
+- Projeto em Bioquímica e Projeto em Ciências Biomédicas;
+- Projeto I/II/III e Estágio do CTeSP em Desenho e Modelação Digital;
+- uma UC `Outra (definida anualmente pela UO)` em Engenharia Civil;
+- Projetos/Estágios por especialidade CI/EA/EE em Engenharia Eletrotécnica;
+- `Opção a Escolher por Requerimento na UALGNET` em Matemática Aplicada.
+
+**Próxima ação pertinente:** obter tema/brief de cada projeto e os regulamentos de estágio aplicáveis, e só então ligar os recursos específicos. Não confundir cobertura quantitativa com equivalência às FUC.
+
+### Limitações e auditoria
+
+- As URLs destinam-se às páginas públicas de autores e instituições. Os recursos e os capítulos internos **não foram revistos integralmente**.
+- O conteúdo pode estar em inglês, exigir uma conta, licença de software ou acesso a normas técnicas de pagamento. A ausência de paywall não foi garantida.
+- Nenhum vídeo novo foi registado nesta sexta ronda, nem foi construída uma sequência com vídeos não revistos.
+- O frontend React, schema Supabase, autenticação, RLS e paleta HSL do FACODI **não foram modificados**.
+- O teste SQL com `anon` valida a visibilidade dos dados, **não** substitui uma inspeção visual completa de cada rota em `facodi.com`.
