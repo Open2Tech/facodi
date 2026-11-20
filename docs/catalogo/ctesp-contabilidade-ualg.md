@@ -119,3 +119,35 @@ Esta curadoria avaliou títulos, canais e descrições públicas, **não a trans
 - Não foi possível validar visualmente as rotas em `https://facodi.com` por falha de acesso do navegador web usado para consulta. Essa limitação não invalida o teste de dados/RLS.
 - Não alterar as políticas de segurança nem duplicar o mesmo material em cada UC: as relações são a fonte de verdade. Ajustar correspondências mediante avaliação editorial efetiva.
 
+## Terceira ronda — auditoria editorial, correções e vídeo-aulas (2026-11-20)
+
+**Identificador:** `facodi_ualg_1802_editorial_qa_20261120_v3`. As correções foram feitas diretamente no Supabase em produção. Não foram criadas tabelas, migrations, novas permissões ou alterações ao frontend.
+
+### Auditoria de fontes oficiais
+
+- [Plano oficial UAlg do CTeSP de Contabilidade, 2026/27](https://www.ualg.pt/curso/1802/plano): confirmou 16 UCs obrigatórias, 120 ECTS, regime noturno, presencial e ESGHT.
+- [Apresentação oficial UAlg](https://www.ualg.pt/curso/1802): foram enriquecidos os metadados do curso com o perfil profissional e as licenciaturas relacionadas que a universidade enumera para candidatura com dispensa de prova de ingresso (Gestão, Gestão Hoteleira, Marketing e Turismo). A elegibilidade individual depende das regras vigentes; não é promessa de admissão.
+- **Regulamento de estágio CTeSP:** foi corrigida a URL do recurso `facodi-cont-20261120-ref-estagio-reg`. A ligação anterior ao PDF não estava acessível; a ESGHT publica o [Despacho RT.14/2022](https://www.esght.ualg.pt/sites/default/files/inline-files/despachort14-2022---regulamento-estagio-ctesp_atualizado.pdf), que contém as normas de plano, acompanhamento e relatório de estágio. O regulamento de 2022 substitui o de 2017, mas deve ser confirmado se existem revisões posteriores.
+- **IVA:** foi substituído o endereço ambíguo `faqs-00612.aspx` da referência `facodi-cont-20261120-ref-dp-iva` por [FAQ da declaração periódica de IVA — preenchimento (`faqs-00933.aspx`)](https://info.portaldasfinancas.gov.pt/pt/apoio_contribuinte/questoes_frequentes/pages/faqs-00933.aspx). Nesta página já constam esclarecimentos relativos a regras de 2026, sujeitos a atualização.
+- As duas alterações mantiveram os mesmos IDs de `learning_objects` e todas as relações existentes. A proveniência e as URLs antigas ficaram no campo `metadata`.
+
+### Novos vídeos e reutilização
+
+| UC | Vídeo e autor | Vídeo de origem |
+|---|---|---|
+| Contabilidade de Gestão (`18021031`) | **Contabilidade de Gestão na Prática: Quanto Custa Mesmo o que Vendes?** — Fátima Explica Gestão (2025) | [Gy7UY5uZBZA](https://www.youtube.com/watch?v=Gy7UY5uZBZA) |
+| Contabilidade de Gestão (`18021031`) | **Método Direto de Apuramento de Custos de Produção** — Fátima Explica Gestão (2023) | [hNKxWjrtLo8](https://www.youtube.com/watch?v=hNKxWjrtLo8) |
+| Contabilidade Pública (`18021033`) | **SNC-AP: Uma Visão Prática Do Normativo** — Incurso Capital Humano, com Célia Custódio (2025) | [5kkmer2aCEA](https://www.youtube.com/watch?v=5kkmer2aCEA) |
+
+Os três vídeos foram encontrados em páginas públicas indexadas, com canal, título e tema confirmado. Foram associados às UCs e aos módulos pertinentes por dez relações `contains`, sem duplicações e sem replicar media de terceiros. **A visualização integral e verificação de transcrição não foram efetuadas**, pelo que `full_video_reviewed=false`; a aprovação editorial corresponde a `review_scope='title_and_channel_only'`, não à certificação de exatidão de toda a aula. O vídeo sobre custeio também inclui divulgação de formação paga do próprio canal — apenas o vídeo de acesso público foi catalogado.
+
+### Verificações depois da publicação
+
+- `facodi.youtube_videos`: três novos registos com `status='published'`, associados aos objetos de aprendizagem publicados.
+- Consulta sob `SET LOCAL ROLE anon`: **3 vídeos + 10 relações** visíveis, preservando o acesso às 16 UCs.
+- Soma curricular: **16 UCs / 120 ECTS**, inalterada.
+- Cobertura direta após esta ronda: Contabilidade de Gestão **2 vídeos e 1 playlist**; Contabilidade Pública **1 vídeo e 7 fontes externas**.
+- Teste visual das rotas em `facodi.com` ainda não foi concluído: a ferramenta de consulta da página não conseguiu abri-la, embora o teste de RLS tenha passado.
+- A leitura detalhada de todas as FUC de **2026/27** continua pendente; não preencher lacunas académicas com suposições. A eventual indisponibilidade temporária do portal não equivale a inexistência das fichas.
+
+**Prioridades editoriais seguintes:** revisão pedagógica individual de vídeos e ligações, validação das FUC 2026/27, reforço com aulas realmente específicas em Direito Fiscal Aplicado I, Informática e Contabilidade Pública; corrigir materiais antiquados antes de criar mais objetos.
