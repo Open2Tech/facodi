@@ -1,0 +1,65 @@
+{
+  "batch": "facodi_credit_gustavo_scheidt_20261119",
+  "original_pr": "https://github.com/Open2Tech/facodi/pull/110",
+  "profile_slug": "gustavo-scheidt",
+  "production_snapshot_date": "2026-11-20",
+  "status": "staged_draft_pending_authenticated_editor_approval",
+  "proposed_consent_evidence": {
+    "type": "self_statement_in_pull_request",
+    "author_login": "guguscheidt",
+    "identity_and_role_verified_by_editor": false,
+    "consent_recorded_in_database": false
+  },
+  "staged_draft": {
+    "display_name": "Gustavo Scheidt",
+    "role_label": "Estratégia, comunicação e growth",
+    "headline": "Levar a FACODI a quem ainda não sabe que ela existe.",
+    "description": "O Gustavo cuida da estratégia, da aquisição e da comunicação da FACODI: redes sociais, parcerias e o caminho para a plataforma chegar a mais estudantes.",
+    "website_url": "https://www.linkedin.com/in/gustavoscheidt",
+    "translations": {
+      "en": {
+        "role_label": "Strategy, communications and growth",
+        "headline": "Bringing FACODI to people who don't know it exists yet.",
+        "description": "Gustavo looks after FACODI's strategy, outreach and communications: social media, partnerships and the path for the platform to reach more students."
+      },
+      "es": {
+        "role_label": "Estrategia, comunicación y crecimiento",
+        "headline": "Llevar FACODI a quien todavía no sabe que existe.",
+        "description": "Gustavo se ocupa de la estrategia, la captación y la comunicación de FACODI: redes sociales, alianzas y el camino para que la plataforma llegue a más estudiantes."
+      },
+      "fr": {
+        "role_label": "Stratégie, communication et croissance",
+        "headline": "Faire connaître FACODI à celles et ceux qui ne la connaissent pas encore.",
+        "description": "Gustavo s'occupe de la stratégie, de l'acquisition et de la communication de FACODI : réseaux sociaux, partenariats et le chemin pour que la plateforme atteigne davantage d'étudiants."
+      }
+    }
+  },
+  "step_1_editor_form": {
+    "page": "/editor/project-credits",
+    "rpc": "facodi.review_project_credit",
+    "p_role_label": "Estratégia, comunicação e growth",
+    "p_headline": "Levar a FACODI a quem ainda não sabe que ela existe.",
+    "p_description": "O Gustavo cuida da estratégia, da aquisição e da comunicação da FACODI: redes sociais, parcerias e o caminho para a plataforma chegar a mais estudantes.",
+    "p_public_source_url": "https://www.linkedin.com/in/gustavoscheidt",
+    "p_consent_basis_if_verified": "direct_written_confirmation",
+    "p_review_note_guidance": "Documentar os factos realmente verificados pelo editor: identidade, função, autorização, PR #110, método e data.",
+    "requires_explicit_editor_confirmation": true
+  },
+  "production_approval_at_snapshot": {
+    "publication_state": "draft",
+    "verification_state": "pending",
+    "consent_for_public_credit": false,
+    "approval_records": 0
+  },
+  "step_2_after_approval": {
+    "required": false,
+    "reason": "Nome, ligação e traduções preparados no rascunho em 20/11/2026; o SQL externo original não deve ser executado."
+  },
+  "scope_exclusions": [
+    "Sofia e outros colaboradores",
+    "aprovação automática",
+    "alteração de RLS",
+    "migrações SQL",
+    "envio de emails"
+  ]
+}
