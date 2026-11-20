@@ -983,9 +983,12 @@ test('a curricular unit stays selected after sign-in and can be changed before s
   await expect(picker).toHaveValue(otherUnit.id);
 });
 
-test('learner suggests a resource: recognition, unit match, declarations and the screening verdict', async ({ page }) => {
+test('learner submits the analysed link and can follow its screening verdict in their history', async ({ page }) => {
   await mockAuth(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 375, height: 900 });
   const posted: Record<string, unknown>[] = [];
+  let submitted: Record<string, unknown> | undefined;
   const unit = { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e01', code: '19411006', title: 'Programação Orientada a Objetos', slug: 'poo',
     courses: { id: '0b5f4f8e-8f0e-4d55-9c55-1f1f81907e02', code: 'LESTI', title: 'Systems Engineering', slug: 'lesti' } };
   await page.route('**/rest/v1/**', async route => {
@@ -997,15 +1000,21 @@ test('learner suggests a resource: recognition, unit match, declarations and the
     if (url.pathname.endsWith('/resource_suggestions') && request.method() === 'POST') {
       const body = request.postDataJSON() as Record<string, unknown>;
       posted.push(body);
-      return route.fulfill({ status: 201, json: {
+      submitted = {
         ...body, id: 's1', provider: 'youtube', status: 'pending', review_note: null, reviewed_at: null, learning_object_id: null,
         created_at: '2026-11-14T10:00:00Z', curricular_units: { code: unit.code, title: unit.title, slug: unit.slug, courses: { code: 'LESTI', slug: 'lesti' } },
         screening: { provider_recognized: true, secure_source: true, license: 'open', unit_selected: true, duplicate: null, recommendation: 'fast_track' },
-      } });
+      };
+      return route.fulfill({ status: 201, json: submitted });
     }
+    if (url.pathname.endsWith('/resource_suggestions')) return route.fulfill({ json: submitted ? [submitted] : [] });
     return route.fulfill({ json: [] });
   });
-  await page.route('https://www.youtube.com/oembed**', route => route.fulfill({ json: { title: 'Programação orientada a objetos em Java', author_name: 'Canal Aberto' } }));
+  await page.route('https://www.youtube.com/oembed**', route => {
+    const address = new URL(route.request().url()).searchParams.get('url');
+    const title = address?.includes('9bZkp7q19f0') ? 'First video' : 'Programação orientada a objetos em Java';
+    return route.fulfill({ json: { title, author_name: 'Canal Aberto' } });
+  });
   await page.route('https://i.ytimg.com/**', route => route.fulfill({ status: 404, body: '' }));
 
   await page.goto('/login?next=/suggest');
@@ -1019,10 +1028,17 @@ test('learner suggests a resource: recognition, unit match, declarations and the
   await page.getByRole('button', { name: 'Analyse' }).click();
   await expect(page.getByText('Enter a valid HTTP or HTTPS address.')).toBeVisible();
 
+  await page.getByLabel('Resource address').fill('https://youtu.be/9bZkp7q19f0');
+  await page.getByRole('button', { name: 'Analyse' }).click();
+  await expect(page.getByLabel('Title *')).toHaveValue('First video');
+  await page.getByLabel('Title *').fill('A title for the first video only');
+
   await page.getByLabel('Resource address').fill('https://youtu.be/dQw4w9WgXcQ?si=share');
+  await expect(page.getByText('Analyse the new link to fill in the resource details.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Send for curation' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Analyse' }).click();
   await expect(page.getByText('https://www.youtube.com/watch?v=dQw4w9WgXcQ')).toBeVisible();
-  await expect(page.getByText('Title and authorship read from the source.')).toBeVisible();
+  await expect(page.getByText('Title and authorship read from the source.', { exact: true })).toBeVisible();
   await expect(page.getByLabel('Title *')).toHaveValue('Programação orientada a objetos em Java');
   await expect(page.getByLabel('Author or channel')).toHaveValue('Canal Aberto');
   await expect(page.getByRole('radio', { name: /Programação Orientada a Objetos/ })).toBeChecked();
@@ -1048,6 +1064,22 @@ test('learner suggests a resource: recognition, unit match, declarations and the
     course_id: unit.courses.id, curricular_unit_id: unit.id, license_declared: true, attribution_declared: true,
   })]);
   expect(posted[0]).not.toHaveProperty('status');
+  await page.getByRole('link', { name: 'View history' }).click();
+  await expect(page).toHaveURL('/suggest#suggest-history');
+  const history = page.getByRole('region', { name: 'My suggestions' });
+  await expect(history.getByRole('heading')).toBeFocused();
+  await expect(history.getByRole('heading')).toBeInViewport();
+  await expect(history.getByText('Programação orientada a objetos em Java')).toBeVisible();
+});
+
+test('the personal area opens the suggestions history directly', async ({ page }) => {
+  await mockAuth(page);
+  await page.addInitScript(session => localStorage.setItem('sb-wvkjainfwsyiyfcmbtid-auth-token', JSON.stringify(session)), authFixture());
+  await page.goto('/dashboard');
+  await page.getByRole('link', { name: /My suggestions/ }).click();
+  await expect(page).toHaveURL('/suggest#suggest-history');
+  await expect(page.getByRole('heading', { name: 'My suggestions' })).toBeFocused();
+  await expect(page.getByText('You have not suggested any resources yet.')).toBeVisible();
 });
 
 test('editor reads the advisory analysis and approves a suggestion as a draft with a proposed unit', async ({ page }) => {

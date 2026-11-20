@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -40,19 +40,25 @@ const LICENSE_FILLS = { open: 'bg-brand-mint', restricted: 'bg-brand-coral', unk
 
 export default function SuggestResource() {
   const { t } = useTranslation();
+  const { hash } = useLocation();
   const [params] = useSearchParams();
   const contextUnitId = z.uuid().safeParse(params.get('unit')).data?.toLowerCase();
   const [urlDraft, setUrlDraft] = useState('');
   const [urlError, setUrlError] = useState(false);
-  const [run, setRun] = useState<{ recognition: Recognition; key: string } | null>(null);
-  const [verdict, setVerdict] = useState<SuggestionSummary | null>(null);
+  const [lastRun, setRun] = useState<{ url: string; recognition: Recognition; key: string } | null>(null);
+  const [lastVerdict, setVerdict] = useState<SuggestionSummary | null>(null);
   const verdictRef = useRef<HTMLDivElement>(null);
+  const historyRef = useRef<HTMLHeadingElement>(null);
+  const needsAnalysis = !!lastRun && urlDraft.trim() !== lastRun.url;
+  const run = needsAnalysis ? null : lastRun;
+  const verdict = run ? lastVerdict : null;
   const recognition = run?.recognition ?? null;
   const metadata = usePublicMetadata(recognition);
   const units = useSuggestionUnits(contextUnitId);
   const contextUnit = contextUnitId ? units.data?.find(unit => unit.id === contextUnitId) : undefined;
   const mine = useMySuggestions();
   const submit = useSubmitSuggestion();
+  const busy = submit.isPending;
   const form = useForm<ResourceSuggestionFormValues>({ resolver: zodResolver(resourceSuggestionSchema), defaultValues: EMPTY });
   const { errors } = form.formState;
 
@@ -98,29 +104,35 @@ export default function SuggestResource() {
 
   const analyse = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const next = recognizeUrl(urlDraft);
+    if (busy) return;
+    const url = urlDraft.trim();
+    const next = recognizeUrl(url);
     setUrlError(!next);
     if (!next) return;
     submit.reset();
     setVerdict(null);
-    setRun({ recognition: next, key: `${next.canonicalUrl}#${Date.now()}` });
+    setRun({ url, recognition: next, key: `${next.canonicalUrl}#${Date.now()}` });
   };
   const restart = () => {
     setRun(null); setVerdict(null); setUrlDraft(''); submit.reset(); form.reset(EMPTY); prefilled.current = null;
   };
   const onSubmit = form.handleSubmit(values => {
-    if (!recognition || alreadyMine) return;
+    if (!run || !showForm || busy || alreadyMine) return;
     submit.mutate({
-      url: urlDraft.trim(), title: values.title, author: values.author, license: values.license,
+      url: run.url, title: values.title, author: values.author, license: values.license,
       thumbnailUrl: extracted?.thumbnail ?? null, objectType: values.objectType, language: values.language,
       tags: parseSuggestionTags(values.tags), courseId: values.courseId, unitId: values.unitId, note: values.note,
     }, { onSuccess: data => setVerdict(data) });
   });
   useEffect(() => { if (verdict) verdictRef.current?.focus(); }, [verdict]);
+  useEffect(() => {
+    if (hash !== '#suggest-history') return;
+    const frame = requestAnimationFrame(() => historyRef.current?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
 
   const errorCode = submit.error?.message ?? '';
   const screening = verdict ? parseScreening(verdict.screening) : null;
-  const busy = submit.isPending;
 
   return <div>
     <Link to={contextUnit ? unitPath(contextUnit.course.slug, contextUnit.slug) : '/about#contribute'}
@@ -142,15 +154,15 @@ export default function SuggestResource() {
         <form onSubmit={analyse} noValidate className="border border-foreground p-5 sm:p-6">
           <label htmlFor="suggest-url" className="block text-sm font-semibold">{t('suggest.url')}</label>
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-            <Input id="suggest-url" type="url" inputMode="url" maxLength={2048} value={urlDraft} placeholder="https://"
+            <Input id="suggest-url" type="url" inputMode="url" maxLength={2048} value={urlDraft} placeholder="https://" disabled={busy}
               aria-invalid={urlError} aria-describedby="suggest-url-hint" className="font-mono"
               onChange={event => { setUrlDraft(event.target.value); setUrlError(false); }} />
             <Button type="submit" size="lg" className="shrink-0" disabled={!urlDraft.trim() || busy}>
               <FileSearch aria-hidden="true" />{t('suggest.analyse')}
             </Button>
           </div>
-          <p id="suggest-url-hint" role={urlError ? 'alert' : undefined} className={cn('mt-2 text-sm', urlError ? 'text-destructive' : 'text-muted-foreground')}>
-            {urlError ? t('suggest.urlInvalid') : t('suggest.urlHint')}
+          <p id="suggest-url-hint" aria-live="polite" className={cn('mt-2 text-sm', urlError ? 'text-destructive' : 'text-muted-foreground')}>
+            {t(urlError ? 'suggest.urlInvalid' : needsAnalysis ? 'suggest.urlChanged' : 'suggest.urlHint')}
           </p>
           <ul className="mt-4 flex flex-wrap gap-2" aria-label={t('suggest.providersLabel')}>
             {PROVIDERS.filter(provider => provider !== 'web').map(provider => {
@@ -262,13 +274,20 @@ export default function SuggestResource() {
           <p className="mt-2 max-w-prose text-muted-foreground">{t(`suggest.verdict.${screening.recommendation}`)}</p>
           {verdict.status === 'pending' && <p className="mt-2 max-w-prose text-muted-foreground">{t('suggest.verdict.analysis')}</p>}
           <ScreeningSignals className="mt-5" screening={screening} provider={verdict.provider} />
-          <Button type="button" variant="outline" className="mt-6" onClick={restart}><RotateCcw aria-hidden="true" />{t('suggest.another')}</Button>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Button type="button" variant="outline" className="h-auto min-h-11 max-w-full whitespace-normal text-left" onClick={restart}>
+              <RotateCcw aria-hidden="true" />{t('suggest.another')}
+            </Button>
+            <a href="#suggest-history" className="inline-flex min-h-11 items-center px-2 text-sm font-semibold underline underline-offset-4">
+              {t('suggest.viewHistory')}
+            </a>
+          </div>
         </div>}
       </div>
 
       <aside className="space-y-10">
         <section aria-labelledby="suggest-history">
-          <h2 id="suggest-history" className="text-lg font-semibold">{t('suggest.history')}</h2>
+          <h2 id="suggest-history" ref={historyRef} tabIndex={-1} className="scroll-mt-24 text-lg font-semibold">{t('suggest.history')}</h2>
           <SuggestionHistory />
         </section>
         <section aria-labelledby="suggest-criteria" className="border-t border-input pt-6">

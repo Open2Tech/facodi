@@ -307,6 +307,7 @@
     "role": "Acesso FACODI",
     "catalog": "Descobre cursos e recursos educativos publicados.",
     "account": "Atualiza o nome, o email e a senha da tua conta.",
+    "suggestions": "Acompanha o estado dos recursos que partilhaste.",
     "editor": "Prepara, publica e arquiva conteúdos educativos.",
     "admin": "Consulta os estados e as contagens do catálogo.",
     "shortcuts": "Os teus atalhos",
@@ -960,6 +961,7 @@
     },
     "url": "Endereço do recurso",
     "urlHint": "HTTPS de preferência. Só este endereço é enviado às APIs públicas da fonte, sem a tua sessão.",
+    "urlChanged": "Analisa o novo link para preencher os dados do recurso.",
     "urlInvalid": "Indica um endereço HTTP ou HTTPS válido.",
     "analyse": "Analisar",
     "providersLabel": "Fontes reconhecidas",
@@ -1046,7 +1048,7 @@
       "fast_track": "Fonte reconhecida, licença aberta e curso escolhido: está no topo da fila.",
       "review": "Faltam alguns sinais; a equipa editorial vai verificar a fonte e a licença.",
       "reject": "A verificação encontrou um impedimento. A equipa editorial confirma antes de decidir.",
-      "analysis": "Uma análise automática começa dentro de cerca de um minuto; acompanha-a no teu histórico."
+      "analysis": "Acompanha a análise e a decisão no teu histórico."
     },
     "signals": {
       "sourceKnown": "Fonte reconhecida: {{provider}}.",
@@ -1068,6 +1070,7 @@
       }
     },
     "history": "As minhas sugestões",
+    "viewHistory": "Ver histórico",
     "historyEmpty": "Ainda não sugeriste recursos.",
     "submittedOn": "Enviada a {{date}}",
     "reviewNote": "Nota da curadoria",
