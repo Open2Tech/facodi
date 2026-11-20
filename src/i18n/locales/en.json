@@ -80,12 +80,7 @@
       },
       "tabsLabel": "Notebook mode",
       "quickPromptsLabel": "Try searching",
-      "quickPrompts": [
-        "Linear algebra",
-        "Python",
-        "Psychology",
-        "Statistics"
-      ],
+      "quickPrompts": ["Linear algebra", "Python", "Psychology", "Statistics"],
       "livePulse": "{{resources}} published resources across {{courses}} open courses",
       "trySuggestTab": "Suggest an open link",
       "suggestHeading": "Know an open lesson, book or paper?",
