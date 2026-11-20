@@ -2412,5 +2412,23 @@
     "ectsPending": "ECTS à confirmer par l'UAlg",
     "branch": "Filière",
     "branchNotice": "La première année est commune. À partir de la deuxième, choisis une filière pour voir ses UE obligatoires et ses options."
+  },
+  "courseMaterials": {
+    "title": "Ressources pour étudier",
+    "description": "Retrouvez les séquences, playlists et références déjà associées aux unités d'enseignement de ce cursus.",
+    "editorialSequences": "Séquences d'apprentissage",
+    "playlists": "Playlists par thème",
+    "playlistNotice": "Playlists de créateurs externes. Ouvrez la ressource pour consulter la source d'origine ; elles ne suivent pas la progression des séquences éditoriales FACODI.",
+    "references": "Références et sources",
+    "guides": "Guides d'étude",
+    "linkedUnits": "Unités",
+    "moreUnits": "{{count}} de plus",
+    "openSource": "Consulter la source",
+    "open": "Ouvrir la ressource",
+    "showAll": "Tout voir ({{count}})",
+    "showLess": "Afficher moins",
+    "loadFailed": "Impossible de charger les ressources associées à ce cursus.",
+    "sequencesFailed": "Impossible de charger les séquences éditoriales pour le moment.",
+    "notice": "Ces ressources complètent les unités d'enseignement et respectent les auteurs et licences d'origine. Il ne s'agit pas de cours officiels de l'établissement."
   }
 }
