@@ -2458,6 +2458,14 @@
     "showLess": "Mostrar menos",
     "loadFailed": "Não foi possível carregar os materiais ligados a este curso.",
     "sequencesFailed": "Não foi possível consultar as sequências editoriais neste momento.",
-    "notice": "Estes materiais complementam as UCs e mantêm a autoria e a licença das fontes. Não são aulas oficiais da instituição."
+    "notice": "Estes materiais complementam as UCs e mantêm a autoria e a licença das fontes. Não são aulas oficiais da instituição.",
+    "filterTitle": "Filtrar materiais do curso",
+    "searchLabel": "Pesquisar materiais",
+    "searchPlaceholder": "Ex.: circuitos, fiscalidade, estatística…",
+    "unitFilterLabel": "Unidade curricular",
+    "allUnits": "Todas as unidades curriculares",
+    "clearFilters": "Limpar filtros",
+    "openUnit": "Abrir a página da UC",
+    "noMatches": "Não foram encontrados materiais para estes filtros. Experimente outra UC ou palavra-chave."
   }
 }

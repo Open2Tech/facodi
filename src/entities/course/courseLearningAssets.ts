@@ -9,6 +9,8 @@ export interface CourseLearningAsset {
   sourceUrl: string | null;
   /** Unit names where the same object appears, without duplicate cards. */
   unitTitles: string[];
+  /** Exact curricular-unit learning object IDs for scoped filtering. */
+  unitIds: string[];
 }
 
 export type CourseLearningAssetType = 'playlist' | 'external_resource' | 'document';
@@ -67,13 +69,39 @@ export function composeCourseLearningAssets(
     if (!asset) {
       asset = {
         id: item.id, slug: item.slug, title: item.title,
-        description: item.description, sourceUrl: item.source_url, unitTitles: [],
+        description: item.description, sourceUrl: item.source_url, unitTitles: [], unitIds: [],
       };
       buckets.set(item.id, asset);
       group.push(asset);
     }
     const label = unitLabels.get(relation.parent_object_id);
+    if (label && !asset.unitIds.includes(relation.parent_object_id)) asset.unitIds.push(relation.parent_object_id);
     if (label && !asset.unitTitles.includes(label)) asset.unitTitles.push(label);
   }
   return result;
+}
+
+/** Accent-insensitive local filtering. Course-wide assets remain available in every UC. */
+export function normalizeCourseMaterialTerm(value: string): string {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLocaleLowerCase();
+}
+
+export function filterCourseLearningAssets(
+  assets: CourseLearningAssets,
+  unitObjectId: string | null,
+  search: string,
+): CourseLearningAssets {
+  const term = normalizeCourseMaterialTerm(search);
+  const filter = (values: CourseLearningAsset[]) => values.filter(value => {
+    const matchesUnit = !unitObjectId || !value.unitIds.length || value.unitIds.includes(unitObjectId);
+    const matchesSearch = !term || normalizeCourseMaterialTerm([
+      value.title, value.description ?? '', ...value.unitTitles,
+    ].join(' ')).includes(term);
+    return matchesUnit && matchesSearch;
+  });
+  return {
+    playlists: filter(assets.playlists),
+    references: filter(assets.references),
+    guides: filter(assets.guides),
+  };
 }
