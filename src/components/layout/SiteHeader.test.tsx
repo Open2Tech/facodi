@@ -64,6 +64,7 @@ describe('SiteHeader', () => {
       expect(link).toHaveAttribute('title', name);
     }
     expect(screen.getByRole('link', { name: 'Notebook' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Notebook' })).toHaveClass('bg-primary');
     expect(screen.getByRole('link', { name: 'My space' })).not.toHaveAttribute('aria-current');
   });
 
