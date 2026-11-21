@@ -44,6 +44,7 @@ export default function ResourceDetails() {
   const query = useResource(slug);
   const resource = query.data;
   const context = useResourceContext(resource);
+  const playlistLessons = useLinkedCatalogAssets(resource?.object_type === 'playlist' && resource?.source_type === 'youtube' ? resource.id : undefined, 'video');
   const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
   const collectionPlaylists = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'playlist');
   const collectionModules = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'module');
@@ -277,6 +278,32 @@ export default function ResourceDetails() {
         </nav>}
 
         {(resource.object_type === 'playlist' || isVideo) && <CreatorLearningPanel kind={resource.object_type} slug={resource.slug} youtubeId={isVideo ? info.youtubeId : null} />}
+        {playlistId && (playlistLessons.isPending || playlistLessons.isError || !!playlistLessons.data?.length) && (
+          <section aria-labelledby="known-playlist-lessons" className="border-t border-foreground pt-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h2 id="known-playlist-lessons" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.lessonsHeading')}</h2>
+              {!!playlistLessons.data?.length && <span className="font-mono text-sm tabular-nums text-muted-foreground">{t('sequences.lessons', { count: playlistLessons.data.length })}</span>}
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">{t('courseMaterials.playlistNotice')}</p>
+            {playlistLessons.isPending ? <p role="status" className="mt-4 text-sm text-muted-foreground">{t('common.loading')}</p>
+              : playlistLessons.isError ? <div role="alert" className="mt-4 text-sm">
+                  <p>{t('common.error')}</p>
+                  <button type="button" onClick={() => void playlistLessons.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : <ol className="mt-5 max-h-[36rem] divide-y divide-input overflow-y-auto border-y border-input">
+                  {playlistLessons.data?.map((lesson, index) => (
+                    <li key={lesson.id}>
+                      <Link to={`/resources/${encodeURIComponent(lesson.slug)}`}
+                        className="group flex min-h-12 items-start gap-4 px-2 py-3 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
+                        <span className="w-8 shrink-0 pt-0.5 font-mono text-xs tabular-nums text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="min-w-0 flex-1 font-medium group-hover:underline group-hover:underline-offset-4">{lesson.title}</span>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </li>
+                  ))}
+                </ol>}
+          </section>
+        )}
         <ResourceFeedback resourceId={resource.id} isVideo={isVideo} />
         <section aria-labelledby="resource-about">
           <h2 id="resource-about" className="text-2xl font-semibold tracking-[-0.02em]">{t(isVideo ? 'video.about' : 'resource.about')}</h2>
