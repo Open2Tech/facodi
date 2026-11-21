@@ -1,9 +1,12 @@
 export const unitPath = (courseSlug: string, unitSlug: string) =>
   `/courses/${encodeURIComponent(courseSlug)}/units/${encodeURIComponent(unitSlug)}`;
 
-/** Stable entrypoint for a course's resources, optionally scoped to one exact UC. */
-export const courseMaterialsPath = (courseSlug: string, unitSlug?: string | null) => {
+/** Stable entrypoint for course resources, with optional UC and shareable search. */
+export const courseMaterialsPath = (courseSlug: string, unitSlug?: string | null, search?: string | null) => {
   const path = `/courses/${encodeURIComponent(courseSlug)}`;
-  const query = unitSlug ? `?materialsUnit=${encodeURIComponent(unitSlug)}` : '';
-  return `${path}${query}#course-materials`;
+  const params = [
+    unitSlug ? `materialsUnit=${encodeURIComponent(unitSlug)}` : null,
+    search?.trim() ? `materialsSearch=${encodeURIComponent(search.trim())}` : null,
+  ].filter(Boolean);
+  return `${path}${params.length ? `?${params.join('&')}` : ''}#course-materials`;
 };
