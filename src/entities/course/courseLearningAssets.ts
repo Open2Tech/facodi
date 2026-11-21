@@ -105,12 +105,14 @@ export function filterCourseLearningAssets(
   assets: CourseLearningAssets,
   unitObjectId: string | null,
   search: string,
+  unitCodesById?: ReadonlyMap<string, string>,
 ): CourseLearningAssets {
   const term = normalizeCourseMaterialTerm(search);
   const filter = (values: CourseLearningAsset[]) => values.filter(value => {
     const matchesUnit = !unitObjectId || !value.unitIds.length || value.unitIds.includes(unitObjectId);
     const matchesSearch = !term || normalizeCourseMaterialTerm([
       value.title, value.description ?? '', ...value.unitTitles,
+      ...value.unitIds.map(id => unitCodesById?.get(id) ?? ''),
     ].join(' ')).includes(term);
     return matchesUnit && matchesSearch;
   });
