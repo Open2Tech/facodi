@@ -113,7 +113,6 @@ async function readAvailableVideos(ids) {
   for (let start = 0; start < ids.length; start += 50) {
     const response = await youtubeGet('videos', {
       part: 'snippet,status,contentDetails', id: ids.slice(start, start + 50).join(','),
-      maxResults: 50,
     });
     for (const row of response.items ?? []) {
       const video = verifiedPublicVideo(row);
