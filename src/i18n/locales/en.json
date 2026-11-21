@@ -2466,6 +2466,8 @@
     "allUnits": "All curricular units",
     "clearFilters": "Clear filters",
     "openUnit": "Open unit page",
-    "noMatches": "No materials match these filters. Try another unit or keyword."
+    "noMatches": "No materials match these filters. Try another unit or keyword.",
+    "viewUnitMaterials": "View this unit's materials",
+    "browseMaterials": "Explore course materials"
   }
 }
