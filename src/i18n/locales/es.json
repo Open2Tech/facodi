@@ -2468,6 +2468,8 @@
     "openUnit": "Abrir asignatura",
     "noMatches": "No se han encontrado materiales para estos filtros. Prueba con otra asignatura o palabra clave.",
     "viewUnitMaterials": "Ver materiales de esta asignatura",
-    "browseMaterials": "Explorar materiales del curso"
+    "browseMaterials": "Explorar materiales del curso",
+    "videoLessons": "Clases en vídeo por asignatura",
+    "videoNotice": "Vídeos publicados y vinculados a asignaturas. No son automáticamente secuencias editoriales ni implica que cada clase se haya revisado íntegramente."
   }
 }
