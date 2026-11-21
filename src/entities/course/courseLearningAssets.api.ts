@@ -47,7 +47,7 @@ export async function getCourseLearningAssets(
   const objectQueries = [];
   for (let start = 0; start < childIds.length; start += OBJECT_BATCH) {
     objectQueries.push(supabase.from('learning_objects')
-      .select('id, slug, title, description, source_url, object_type')
+      .select('id, slug, title, description, source_url, object_type, metadata')
       .in('id', childIds.slice(start, start + OBJECT_BATCH))
       .in('object_type', ['video', 'playlist', 'external_resource', 'document'])
       .eq('published', true)
