@@ -50,14 +50,14 @@ export default function PlaylistSubmit() {
     <Link to="/about#contribute" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
       <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('playlistSubmit.back')}
     </Link>
-    <header className="mb-10 border-b border-foreground pb-8">
+    <header className="mb-10 border-b border-foreground border-t-4 border-t-brand-pink pb-8 pt-6">
       <div className="mb-3 flex items-center gap-3">
-        <span className="grid h-11 w-11 shrink-0 place-items-center bg-brand-pink text-ink"><ListVideo className="h-6 w-6" aria-hidden="true" /></span>
-        <h1 className="text-3xl font-semibold sm:text-4xl">{t('playlistSubmit.title')}</h1>
+        <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground bg-brand-pink text-brand-ink"><ListVideo className="h-6 w-6" aria-hidden="true" /></span>
+        <h1 className="text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t('playlistSubmit.title')}</h1>
       </div>
       <p className="max-w-prose text-muted-foreground">{t('playlistSubmit.description')}</p>
     </header>
-    <form onSubmit={onSubmit} className="space-y-6" noValidate>
+    <form onSubmit={onSubmit} className="space-y-6 border border-foreground border-t-4 border-t-brand-pink bg-card p-6 sm:p-8" noValidate>
       <label className="block space-y-2 text-sm font-medium">
         <span className="block">{t('playlistSubmit.url')} *</span>
         <Input type="url" inputMode="url" required maxLength={500} value={url} disabled={busy}
@@ -134,14 +134,14 @@ export default function PlaylistSubmit() {
         {busy ? t('playlistSubmit.sending') : t('playlistSubmit.send')}
       </Button>
     </form>
-    {response && <div ref={receivedRef} tabIndex={-1} role="status" className="mt-8 space-y-2 border border-foreground p-5 outline-none">
+    {response && <div ref={receivedRef} tabIndex={-1} role="status" className="mt-8 space-y-2 border border-foreground border-t-4 border-t-brand-mint bg-card p-5 outline-none">
       <p className="flex items-center gap-2 font-semibold"><CheckCircle2 className="h-5 w-5" aria-hidden="true" />{t('playlistSubmit.received')}</p>
       <p className="text-sm">{response.title}</p>
       <p className="text-sm text-muted-foreground">{t('playlistSubmit.receivedCounts', {
         count: response.playlist_video_count, linked: response.linked_video_count, missing: response.missing_video_count,
       })}</p>
     </div>}
-    <section className="mt-12 border-t border-input pt-8" aria-labelledby="playlist-history">
+    <section className="mt-12 border-t border-foreground pt-8" aria-labelledby="playlist-history">
       <h2 id="playlist-history" className="text-xl font-semibold">{t('playlistSubmit.history')}</h2>
       <PlaylistHistory />
     </section>

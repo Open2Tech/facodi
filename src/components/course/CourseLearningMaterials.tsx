@@ -83,8 +83,16 @@ export function CourseLearningMaterials({
     </button>;
   }
 
+  const ASSET_STYLES: Record<string, { card: string; badge: string }> = {
+    playlists: { card: 'border-t-brand-pink hover:bg-brand-pink/10', badge: 'bg-brand-pink text-brand-ink' },
+    references: { card: 'border-t-brand-cyan hover:bg-brand-cyan/10', badge: 'bg-brand-cyan text-brand-ink' },
+    guides: { card: 'border-t-brand-mint hover:bg-brand-mint/10', badge: 'bg-brand-mint text-brand-ink' },
+  };
+
   function assetList(key: string, values: CourseLearningAsset[]) {
     const shown = expanded[key] ? values : values.slice(0, PREVIEW_COUNT);
+    const tone = ASSET_STYLES[key]?.card ?? 'border-t-primary';
+    const cardClass = `group flex h-full min-h-36 flex-col gap-2 border border-input border-t-4 bg-card p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-5 ${tone}`;
     return <>
       <ul className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {shown.map(asset => {
@@ -103,10 +111,8 @@ export function CourseLearningMaterials({
           </>;
           return <li key={asset.id} className="min-w-0">
             {external
-              ? <a href={external} target="_blank" rel="noopener noreferrer"
-                className="group flex h-full min-h-36 flex-col gap-2 border border-input p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-5">{content}</a>
-              : <Link to={`/resources/${encodeURIComponent(asset.slug)}`}
-                className="group flex h-full min-h-36 flex-col gap-2 border border-input p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-5">{content}</Link>}
+              ? <a href={external} target="_blank" rel="noopener noreferrer" className={cardClass}>{content}</a>
+              : <Link to={`/resources/${encodeURIComponent(asset.slug)}`} className={cardClass}>{content}</Link>}
           </li>;
         })}
       </ul>
@@ -116,11 +122,11 @@ export function CourseLearningMaterials({
 
   return <section id="course-materials" aria-labelledby="course-materials-title" className="mb-12 scroll-mt-28 border-t border-foreground pt-9">
     <div className="flex flex-wrap items-center gap-3">
-      <div className="grid h-10 w-10 place-items-center bg-brand-mint text-ink" aria-hidden="true"><BookOpen className="h-5 w-5" /></div>
+      <div className="grid h-10 w-10 place-items-center border border-foreground bg-brand-mint text-brand-ink" aria-hidden="true"><BookOpen className="h-5 w-5" /></div>
       <h2 id="course-materials-title" className="text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">{t('courseMaterials.title')}</h2>
     </div>
     <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t('courseMaterials.description')}</p>
-    {hasContent && <div className="mt-6 grid gap-4 border-y border-input py-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
+    {hasContent && <div className="mt-6 grid gap-4 border border-foreground border-t-4 border-t-brand-mint bg-card p-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
       <div className="min-w-0">
         <label htmlFor="course-material-search" className="mb-2 block text-sm font-semibold">{t('courseMaterials.searchLabel')}</label>
         <input id="course-material-search" type="search" value={searchTerm} onChange={event => { setSearchTerm(event.target.value); setExpanded({}); }}

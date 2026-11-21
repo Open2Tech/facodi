@@ -80,18 +80,19 @@ export default function CommunityJoin() {
     <Link to="/community" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
       <ArrowLeft className="h-4 w-4" />{t('communityJoin.back')}
     </Link>
-    <header className="border-b border-foreground pb-9">
-      <div className="mb-5 flex h-12 w-12 items-center justify-center border border-foreground bg-brand-mint text-ink">
-        <HeartHandshake className="h-6 w-6" aria-hidden="true" />
+    <header className="border-b border-foreground border-t-4 border-t-brand-mint pb-9 pt-6">
+      <div className="flex items-center gap-3">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-foreground bg-brand-mint text-brand-ink">
+          <HeartHandshake className="h-6 w-6" aria-hidden="true" />
+        </span>
+        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{t('communityJoin.title')}</h1>
       </div>
-      <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">FACODI / OPEN COMMUNITY</p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t('communityJoin.title')}</h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{t('communityJoin.description')}</p>
     </header>
-    <form onSubmit={send} className="space-y-6 py-9">
+    <form onSubmit={send} className="my-9 space-y-6 border border-foreground border-t-4 border-t-brand-mint bg-card p-6 sm:p-8">
       <label className="block space-y-2 text-sm font-semibold">
         <span>{t('communityJoin.interest')}</span>
-        <select required className="h-11 w-full rounded-md border border-input bg-background px-3"
+        <select required className="h-11 w-full border border-input bg-background px-3"
           value={interest} disabled={submit.isPending}
           onChange={event => setInterest(event.target.value as Interest)}>
           {interests.map(item => <option key={item} value={item}>{t(`communityJoin.interests.${item}`)}</option>)}
@@ -121,7 +122,7 @@ export default function CommunityJoin() {
         <span>{t('communityJoin.privacy')} <LegalRichText text={t('communityJoin.legalNote')} /></span>
       </p>
       {submit.error && <p role="alert" className="text-sm text-destructive">{submit.error.message}</p>}
-      {success && <p role="status" className="border border-input bg-brand-mint p-4 font-semibold text-ink">
+      {success && <p role="status" className="border border-foreground bg-brand-mint p-4 font-semibold text-brand-ink">
         {t('communityJoin.success')}
       </p>}
       <Button size="lg" disabled={submit.isPending || !consent || motivation.trim().length < 30}>
@@ -129,7 +130,7 @@ export default function CommunityJoin() {
         <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
       </Button>
     </form>
-    <section className="border-t border-input pt-9" aria-labelledby="community-my-requests">
+    <section className="border-t border-foreground pt-9" aria-labelledby="community-my-requests">
       <h2 id="community-my-requests" className="text-2xl font-semibold">{t('communityJoin.history')}</h2>
       <p className="mt-2 text-sm text-muted-foreground">{t('communityJoin.historyDescription')}</p>
       {history.isPending && <p className="mt-5 text-sm" role="status">{t('common.loading')}</p>}
