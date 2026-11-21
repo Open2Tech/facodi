@@ -2468,6 +2468,8 @@
     "openUnit": "Open unit page",
     "noMatches": "No materials match these filters. Try another unit or keyword.",
     "viewUnitMaterials": "View this unit's materials",
-    "browseMaterials": "Explore course materials"
+    "browseMaterials": "Explore course materials",
+    "videoLessons": "Video lessons by curricular unit",
+    "videoNotice": "Published videos linked to curricular units. They are not automatically editorial sequences or proof that each lesson has been fully reviewed."
   }
 }
