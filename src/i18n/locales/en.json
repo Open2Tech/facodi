@@ -603,6 +603,15 @@
     "instagram": "FACODI on Instagram"
   },
   "course": {
+    "emblem": {
+      "discover": "Discover the symbol for {{course}}",
+      "greeting": "hello, world",
+      "accounting": "€10 debit, €10 credit. The books balance.",
+      "computing": "Hello, world! Many first programs begin with this greeting.",
+      "psychology": "Two faces or a vase? Figure and ground swap roles in Rubin’s vase.",
+      "neuroscience": "A signal passes from one neuron to another across a synapse.",
+      "astronomy": "When a planet crosses in front of its star, the observed brightness dips slightly."
+    },
     "facts": "Course facts",
     "code": "Code",
     "degree": "Degree",

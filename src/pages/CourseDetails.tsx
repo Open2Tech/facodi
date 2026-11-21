@@ -1,3 +1,4 @@
+import { CourseEmblem } from '@/components/course/CourseEmblem';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
@@ -83,6 +84,7 @@ export default function CourseDetails() {
     <PageSeo {...courseMeta(course, { courses: t('nav.courses') })} />
     <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
     <header className="border-b border-foreground border-t-4 border-t-primary pb-10 pt-6">
+      <div className="mb-4"><CourseEmblem key={course.slug} course={course} detail /></div>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{course.title}</h1>
       {course.summary && course.summary.trim() !== course.title.trim() && <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted-foreground">{course.summary}</p>}
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">

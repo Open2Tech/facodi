@@ -603,6 +603,15 @@
     "instagram": "Instagram da FACODI"
   },
   "course": {
+    "emblem": {
+      "discover": "Descobrir o símbolo de {{course}}",
+      "greeting": "olá, mundo",
+      "accounting": "10 € a débito, 10 € a crédito. As contas batem.",
+      "computing": "Olá, mundo! O primeiro programa de muita gente começa assim.",
+      "psychology": "Dois rostos ou uma taça? Na taça de Rubin, a figura e o fundo trocam de lugar.",
+      "neuroscience": "O sinal passa de um neurónio para o outro através da sinapse.",
+      "astronomy": "Quando um planeta passa à frente da sua estrela, o brilho observado diminui ligeiramente."
+    },
     "facts": "Ficha do curso",
     "code": "Código",
     "degree": "Grau",

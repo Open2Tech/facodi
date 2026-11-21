@@ -603,6 +603,15 @@
     "instagram": "FACODI sur Instagram"
   },
   "course": {
+    "emblem": {
+      "discover": "Découvrir le symbole de {{course}}",
+      "greeting": "salut, monde",
+      "accounting": "10 € au débit, 10 € au crédit. Les comptes sont équilibrés.",
+      "computing": "Bonjour, monde ! Beaucoup de premiers programmes commencent ainsi.",
+      "psychology": "Deux visages ou un vase ? Dans le vase de Rubin, la figure et le fond échangent leurs rôles.",
+      "neuroscience": "Le signal passe d’un neurone à l’autre au niveau de la synapse.",
+      "astronomy": "Quand une planète passe devant son étoile, la luminosité observée diminue légèrement."
+    },
     "facts": "Fiche du cours",
     "code": "Code",
     "degree": "Diplôme",
