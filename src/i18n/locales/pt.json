@@ -2472,5 +2472,20 @@
     "browseMaterials": "Explorar materiais do curso",
     "videoLessons": "Aulas em vídeo por UC",
     "videoNotice": "Vídeos publicados e associados às unidades curriculares. Não são automaticamente sequências editoriais nem significam que a aula tenha sido revista integralmente."
+  },
+  "courseStart": {
+    "eyebrow": "O teu próximo passo",
+    "title": "Por onde começar?",
+    "description": "Estas unidades têm materiais disponíveis. Começa pela que te interessa e explora os recursos associados.",
+    "noCoverage": "Explora as primeiras unidades do plano curricular. Os indicadores de materiais ainda não estão disponíveis para este curso.",
+    "materials": "Ver materiais",
+    "plan": "Plano curricular",
+    "coverage": "Cobertura disponível",
+    "availableSummary": "{{videos}} UCs com vídeos · {{readings}} UCs com leituras",
+    "unitLabel": "Unidade curricular",
+    "videoCount": "Vídeos: {{count}}",
+    "readingCount": "Leituras: {{count}}",
+    "openUnit": "Explorar UC",
+    "disclaimer": "Sugestões baseadas na ordem curricular e nos materiais disponíveis; não são uma recomendação oficial de pré-requisitos."
   }
 }
