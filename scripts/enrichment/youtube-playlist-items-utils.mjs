@@ -47,7 +47,7 @@ export function verifiedPublicVideo(resource) {
   if (!isYoutubeVideoId(resource?.id)) return null;
   const snippet = resource.snippet ?? {};
   const status = resource.status ?? {};
-  if (status.privacyStatus !== 'public' || status.embeddable === false
+  if (status.privacyStatus !== 'public' || status.embeddable !== true
     || (status.uploadStatus && status.uploadStatus !== 'processed')) return null;
   const title = typeof snippet.title === 'string' ? snippet.title.trim() : '';
   if (!title || /^(private video|deleted video)$/i.test(title)
