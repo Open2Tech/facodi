@@ -13,9 +13,10 @@ export interface CourseLearningAsset {
   unitIds: string[];
 }
 
-export type CourseLearningAssetType = 'playlist' | 'external_resource' | 'document';
+export type CourseLearningAssetType = 'playlist' | 'external_resource' | 'document' | 'video';
 
 export interface CourseLearningAssets {
+  videos: CourseLearningAsset[];
   playlists: CourseLearningAsset[];
   references: CourseLearningAsset[];
   guides: CourseLearningAsset[];
@@ -37,7 +38,7 @@ export interface CourseAssetObject {
 }
 
 export const emptyCourseLearningAssets = (): CourseLearningAssets => ({
-  playlists: [], references: [], guides: [],
+  videos: [], playlists: [], references: [], guides: [],
 });
 
 /** Caller supplies parent IDs in curriculum order and visible, published objects only. */
@@ -60,7 +61,8 @@ export function composeCourseLearningAssets(
     const item = byId.get(relation.child_object_id);
     if (!item || !rank.has(relation.parent_object_id)) continue;
     let group: CourseLearningAsset[] | undefined;
-    if (item.object_type === 'playlist') group = result.playlists;
+    if (item.object_type === 'video') group = result.videos;
+    else if (item.object_type === 'playlist') group = result.playlists;
     else if (item.object_type === 'external_resource') group = result.references;
     else if (item.object_type === 'document') group = result.guides;
     if (!group) continue;
@@ -100,6 +102,7 @@ export function filterCourseLearningAssets(
     return matchesUnit && matchesSearch;
   });
   return {
+    videos: filter(assets.videos),
     playlists: filter(assets.playlists),
     references: filter(assets.references),
     guides: filter(assets.guides),

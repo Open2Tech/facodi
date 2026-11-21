@@ -49,7 +49,7 @@ export async function getCourseLearningAssets(
     objectQueries.push(supabase.from('learning_objects')
       .select('id, slug, title, description, source_url, object_type')
       .in('id', childIds.slice(start, start + OBJECT_BATCH))
-      .in('object_type', ['playlist', 'external_resource', 'document'])
+      .in('object_type', ['video', 'playlist', 'external_resource', 'document'])
       .eq('published', true)
       .in('status', ['active', 'published'])
       .abortSignal(signal));

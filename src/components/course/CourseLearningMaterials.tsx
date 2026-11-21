@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, ArrowUpRight, BookOpen, Layers3, ListVideo } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen, Layers3, ListVideo, PlayCircle } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
@@ -65,9 +65,9 @@ export function CourseLearningMaterials({
     && (!search || normalizeCourseMaterialTerm([sequence.title, sequence.description, ...sequence.unitCodes].join(' ')).includes(search)));
   const sourceAssets = assets.data ?? emptyCourseLearningAssets();
   const filteredAssets = filterCourseLearningAssets(sourceAssets, selectedUnitId || null, searchTerm);
-  const { playlists, references, guides } = filteredAssets;
-  const hasContent = allEditorial.length + sourceAssets.playlists.length + sourceAssets.references.length + sourceAssets.guides.length > 0;
-  const hasMatches = editorial.length + playlists.length + references.length + guides.length > 0;
+  const { videos, playlists, references, guides } = filteredAssets;
+  const hasContent = allEditorial.length + sourceAssets.videos.length + sourceAssets.playlists.length + sourceAssets.references.length + sourceAssets.guides.length > 0;
+  const hasMatches = editorial.length + videos.length + playlists.length + references.length + guides.length > 0;
   const hasFilters = Boolean(search || selectedUnitId);
 
   if (!hasContent && !assets.isPending && !assets.error && !sequences.isPending && !sequences.error) return null;
@@ -164,6 +164,15 @@ export function CourseLearningMaterials({
       {showMore('editorial', editorial.length)}
     </section>}
     {sequences.error && <p role="alert" className="mt-4 text-sm text-muted-foreground">{t('courseMaterials.sequencesFailed')}</p>}
+
+    {!!videos.length && <section aria-labelledby="course-video-lessons" className="mt-8">
+      <h3 id="course-video-lessons" className="flex items-center gap-2 text-xl font-semibold">
+        <PlayCircle className="h-5 w-5" aria-hidden="true" />
+        {t('courseMaterials.videoLessons')} <span className="font-mono text-sm text-muted-foreground">({videos.length})</span>
+      </h3>
+      <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('courseMaterials.videoNotice')}</p>
+      {assetList('videos', videos)}
+    </section>}
 
     {!!playlists.length && <section aria-labelledby="course-playlists" className="mt-8">
       <h3 id="course-playlists" className="flex items-center gap-2 text-xl font-semibold"><ListVideo className="h-5 w-5" aria-hidden="true" />{t('courseMaterials.playlists')} <span className="font-mono text-sm text-muted-foreground">({playlists.length})</span></h3>

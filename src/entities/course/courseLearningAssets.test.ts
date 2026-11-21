@@ -29,7 +29,7 @@ describe('composeCourseLearningAssets', () => {
     expect(result.references[0].unitIds).toEqual(['unit-1', 'unit-2']);
   });
 
-  it('preserves curricular order and ignores non-public or out-of-scope objects', () => {
+  it('preserves curricular order and ignores out-of-scope objects', () => {
     const result = composeCourseLearningAssets(parentIds, labels, [
       { parent_object_id: 'unit-2', child_object_id: 'g2', position: 1 },
       { parent_object_id: 'unit-1', child_object_id: 'g1', position: 1 },
@@ -42,6 +42,7 @@ describe('composeCourseLearningAssets', () => {
       { id: 'v1', slug: 'video', title: 'Video', description: null, source_url: null, object_type: 'video' },
     ]);
     expect(result.guides.map(x => x.slug)).toEqual(['guide-1', 'guide-2']);
+    expect(result.videos.map(x => x.slug)).toEqual(['video']);
     expect(result.playlists).toHaveLength(0);
     expect(result.references).toHaveLength(0);
   });
@@ -77,5 +78,32 @@ describe('filterCourseLearningAssets', () => {
     expect(result.references).toHaveLength(0);
     expect(result.playlists).toHaveLength(0);
     expect(assets.references).toHaveLength(3);
+  });
+});
+
+
+describe('course-linked video discovery', () => {
+  const videos = composeCourseLearningAssets(parentIds, labels, [
+    { parent_object_id: 'unit-1', child_object_id: 'v1', position: 10 },
+    { parent_object_id: 'unit-2', child_object_id: 'v1', position: 10 },
+    { parent_object_id: 'unit-2', child_object_id: 'v2', position: 11 },
+    { parent_object_id: 'elsewhere', child_object_id: 'v3', position: 1 },
+  ], [
+    { id: 'v1', slug: 'algebra-linear', title: 'Álgebra Linear — Matrizes', description: 'Introdução às matrizes', source_url: 'https://www.youtube.com/watch?v=example', object_type: 'video' },
+    { id: 'v2', slug: 'estatistica', title: 'Estatística Aplicada', description: null, source_url: null, object_type: 'video' },
+    { id: 'v3', slug: 'fora', title: 'Vídeo externo a este curso', description: null, source_url: null, object_type: 'video' },
+  ]);
+
+  it('deduplicates published video assets from multiple UCs without mixing with playlists', () => {
+    expect(videos.videos.map(v => v.slug)).toEqual(['algebra-linear', 'estatistica']);
+    expect(videos.videos[0].unitIds).toEqual(['unit-1', 'unit-2']);
+    expect(videos.playlists).toHaveLength(0);
+    expect(videos.videos.every(v => v.id !== 'v3')).toBe(true);
+  });
+
+  it('filters video lessons by curricular unit and accent-insensitive title', () => {
+    expect(filterCourseLearningAssets(videos, 'unit-1', 'algebra').videos.map(v => v.slug)).toEqual(['algebra-linear']);
+    expect(filterCourseLearningAssets(videos, 'unit-1', 'estatistica').videos).toEqual([]);
+    expect(filterCourseLearningAssets(videos, 'unit-2', 'ESTATISTICA').videos.map(v => v.slug)).toEqual(['estatistica']);
   });
 });
