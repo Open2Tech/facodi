@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, ArrowUpRight, BookOpen, Layers3, ListVideo } from 'lucide-react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
 import { useSequences } from '@/features/sequences/useSequences';
@@ -29,31 +29,33 @@ export function CourseLearningMaterials({
   units: readonly CourseLearningUnit[];
 }) {
   const { t } = useTranslation();
-  const { hash } = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [searchTerm, setSearchTerm] = useState('');
-  const requestedSlug = searchParams.get('materialsUnit');
+  const requestedSlug = new URLSearchParams(location.search).get('materialsUnit');
   const selectedUnit = units.find(unit => unit.slug === requestedSlug && !!unit.learningObjectId);
   const selectedUnitId = selectedUnit?.learningObjectId ?? '';
   /** Keep a canonical, shareable URL without changing unrelated course query params. */
   function selectUnit(id: string) {
     const unit = units.find(item => item.learningObjectId === id);
-    setSearchParams(previous => {
-      const next = new URLSearchParams(previous);
-      if (unit) next.set('materialsUnit', unit.slug);
-      else next.delete('materialsUnit');
-      return next;
+    const next = new URLSearchParams(location.search);
+    if (unit) next.set('materialsUnit', unit.slug);
+    else next.delete('materialsUnit');
+    navigate({
+      pathname: location.pathname,
+      search: next.toString() ? `?${next}` : '',
+      hash: '#course-materials',
     }, { replace: true, preventScrollReset: true });
     setExpanded({});
   }
   useEffect(() => {
-    if (hash !== '#course-materials') return;
+    if (location.hash !== '#course-materials') return;
     const frame = requestAnimationFrame(() => document.getElementById('course-materials')?.scrollIntoView());
     return () => cancelAnimationFrame(frame);
-  }, [hash, assets.isPending, sequences.isPending]);
+  }, [location.hash, assets.isPending, sequences.isPending]);
   const search = normalizeCourseMaterialTerm(searchTerm);
   const codes = new Set(units.flatMap(unit => unit.code ? [unit.code] : []));
   const allEditorial = (sequences.data ?? []).filter(sequence =>
