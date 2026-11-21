@@ -12,6 +12,9 @@ export interface CourseUnitAssetParent {
 
 const PARENT_BATCH = 20;
 const OBJECT_BATCH = 60;
+// Keep the JSON-path projection as a string rather than a TS literal: the generated
+// Supabase SelectQueryError parser otherwise hits its recursive type-instantiation limit.
+const COURSE_ASSET_COLUMNS: string = 'id, slug, title, description, source_url, object_type, youtube_video_id:metadata->>youtube_video_id, duration_seconds:metadata->duration_seconds';
 
 /** Resolve the course and its units in curriculum order, rather than requiring
  * editors to duplicate every reference as a direct course-level relation.
@@ -48,7 +51,7 @@ export async function getCourseLearningAssets(
   for (let start = 0; start < childIds.length; start += OBJECT_BATCH) {
     objectQueries.push(supabase.from('learning_objects')
       // Request only the two video facts used in cards; complete metadata on large courses exceeds 1 MB.
-      .select('id, slug, title, description, source_url, object_type, youtube_video_id:metadata->>youtube_video_id, duration_seconds:metadata->duration_seconds')
+      .select(COURSE_ASSET_COLUMNS)
       .in('id', childIds.slice(start, start + OBJECT_BATCH))
       .in('object_type', ['video', 'playlist', 'external_resource', 'document'])
       .eq('published', true)
