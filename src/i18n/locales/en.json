@@ -2455,6 +2455,7 @@
     "openSource": "View source",
     "open": "Open resource",
     "showAll": "Show all ({{count}})",
+    "loadMore": "Show {{count}} more ({{visible}} of {{total}})",
     "showLess": "Show less",
     "loadFailed": "The materials linked to this course could not be loaded.",
     "sequencesFailed": "Editorial sequences could not be loaded right now.",
