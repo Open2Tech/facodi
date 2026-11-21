@@ -2468,6 +2468,8 @@
     "openUnit": "Abrir a página da UC",
     "noMatches": "Não foram encontrados materiais para estes filtros. Experimente outra UC ou palavra-chave.",
     "viewUnitMaterials": "Ver materiais desta UC",
-    "browseMaterials": "Explorar materiais do curso"
+    "browseMaterials": "Explorar materiais do curso",
+    "videoLessons": "Aulas em vídeo por UC",
+    "videoNotice": "Vídeos publicados e associados às unidades curriculares. Não são automaticamente sequências editoriais nem significam que a aula tenha sido revista integralmente."
   }
 }
