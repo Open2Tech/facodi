@@ -2443,6 +2443,8 @@
     "branchNotice": "O 1.º ano é comum. A partir do 2.º ano, escolhe o ramo para ver as UCs obrigatórias e as opções de cada um."
   },
   "courseMaterials": {
+    "emptyCourse": "Ainda não existem recursos publicados especificamente para este curso. Podes explorar a biblioteca geral enquanto o catálogo é enriquecido.",
+    "browseLibrary": "Explorar biblioteca FACODI",
     "title": "Materiais para estudar",
     "description": "Encontra aqui as sequências, playlists e referências já associadas às unidades curriculares deste curso. Explora por tema sem sair do plano de estudos.",
     "editorialSequences": "Sequências de aprendizagem",
