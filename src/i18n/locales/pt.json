@@ -2489,5 +2489,19 @@
     "readingCount": "Leituras: {{count}}",
     "openUnit": "Explorar UC",
     "disclaimer": "Sugestões baseadas na ordem curricular e nos materiais disponíveis; não são uma recomendação oficial de pré-requisitos."
+  },
+  "courseUnitFinder": {
+    "title": "Encontra a tua UC",
+    "description": "Pesquisa nas {{count}} unidades curriculares deste curso, sem percorrer todo o plano.",
+    "fullList": "Ver lista completa",
+    "searchLabel": "Nome ou código da UC",
+    "searchPlaceholder": "Ex.: Estatística, 18021025, Álgebra…",
+    "clear": "Limpar pesquisa",
+    "onlyWithMaterials": "Só UCs com vídeos ou leituras",
+    "matches": "{{count}} UCs encontradas",
+    "noMatches": "Nenhuma UC encontrada. Experimenta outro termo ou desativa o filtro.",
+    "materialCount": "{{videos}} vídeos · {{readings}} leituras",
+    "viewMaterials": "Ver materiais",
+    "limited": "A mostrar {{shown}} de {{total}}. Refina a pesquisa para encontrar a UC."
   }
 }
