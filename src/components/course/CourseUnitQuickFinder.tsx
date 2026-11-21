@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { ArrowRight, BookOpen, Search, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,7 @@ export function CourseUnitQuickFinder({
 }) {
   const { t } = useTranslation();
   const searchId = useId();
+  const searchInput = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState('');
   const [onlyWithMaterials, setOnlyWithMaterials] = useState(false);
   const active = Boolean(search.trim() || onlyWithMaterials);
@@ -44,11 +45,11 @@ export function CourseUnitQuickFinder({
         <label htmlFor={searchId} className="mb-2 block text-sm font-semibold">{t('courseUnitFinder.searchLabel')}</label>
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
-          <input id={searchId} type="search" autoComplete="off" value={search}
+          <input id={searchId} ref={searchInput} type="search" autoComplete="off" value={search}
             onChange={event => setSearch(event.target.value)}
             placeholder={t('courseUnitFinder.searchPlaceholder')}
             className="min-h-11 w-full min-w-0 border border-input bg-background py-2 pl-10 pr-10 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
-          {search && <button type="button" onClick={() => setSearch('')}
+          {search && <button type="button" onClick={() => { setSearch(''); searchInput.current?.focus(); }}
             aria-label={t('courseUnitFinder.clear')}
             className="absolute right-1 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <X className="h-4 w-4" aria-hidden="true" />
