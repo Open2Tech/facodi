@@ -10,6 +10,8 @@ import { parseComposedStudyPath, canPresentComposedStudyPath, isComposedPathPend
 import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath';
 import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
+import { UnitLearningHighlights } from '@/components/course/UnitLearningHighlights';
+import { pickUnitHighlights } from '@/entities/course/unitHighlights';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
@@ -80,6 +82,20 @@ export default function UnitDetails() {
   const videoList = videos.data ?? [];
   const selected = videoList.find(video => video.id === params.get('v')) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
+  const highlights = pickUnitHighlights({
+    courseSlug: course.slug, unitSlug: unit.slug,
+    hasStudyPath: Boolean(studyPath || composedPath),
+    sequences: sequences.data ?? [], videos: videoList,
+    playlists: playlistsQuery.data ?? [], modules: modulesQuery.data ?? [],
+    readings: readingsQuery.data ?? [],
+  });
+  const highlightsLoading = Boolean(unit.learning_object_id) && [
+    videos.isPending, readingsQuery.isPending, playlistsQuery.isPending, modulesQuery.isPending,
+  ].some(Boolean) || (Boolean(unitCode) && sequences.isPending);
+  const highlightsError = Boolean(
+    videos.error || readingsQuery.error || playlistsQuery.error || modulesQuery.error ||
+    (unitCode && sequences.error),
+  );
   const facts = [
     ['code', unit.code],
     ['ects', ectsVerificationPending(unit.metadata) ? t('ualgCurriculum.ectsPending') : unit.ects != null ? `${unit.ects} ECTS` : null],
@@ -127,6 +143,7 @@ export default function UnitDetails() {
     <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
       href={studyPath || composedPath || composedPending ? '#unit-study-path' : '#unit-resources'} />
     <LearningContext focus="unit" />
+    <UnitLearningHighlights courseSlug={course.slug} unitSlug={unit.slug} highlights={highlights} loading={highlightsLoading} hasError={highlightsError} />
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
         {unit.description_html && <SafeHtml html={unit.description_html} />}
