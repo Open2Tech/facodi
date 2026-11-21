@@ -2514,6 +2514,7 @@
     "limited": "Mostrando {{shown}} de {{total}}. Refina la búsqueda."
   },
   "unitHighlights": {
+    "sourceHost": "Fuente: {{host}}",
     "eyebrow": "Estudiar esta asignatura",
     "title": "Empieza por aquí",
     "description": "Materiales ya asociados a esta asignatura, organizados por formato. Elige cómo prefieres aprender.",
