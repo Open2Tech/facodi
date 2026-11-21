@@ -2514,6 +2514,7 @@
     "limited": "Showing {{shown}} of {{total}}. Refine your search to find a unit."
   },
   "unitHighlights": {
+    "sourceHost": "Source: {{host}}",
     "eyebrow": "Study this unit",
     "title": "Start here",
     "description": "Already-linked learning materials for this curricular unit, grouped by format. Choose what works for you.",
