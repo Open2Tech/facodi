@@ -2514,6 +2514,7 @@
     "limited": "A mostrar {{shown}} de {{total}}. Refina a pesquisa para encontrar a UC."
   },
   "unitHighlights": {
+    "sourceHost": "Fonte: {{host}}",
     "eyebrow": "Estudar esta UC",
     "title": "Começa por aqui",
     "description": "Materiais já associados a esta unidade curricular, apresentados por tipo. Escolhe o formato que te ajuda a aprender.",
