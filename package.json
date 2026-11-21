@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "db:types": "supabase gen types typescript --project-id wvkjainfwsyiyfcmbtid --schema facodi",
-    "test": "vitest run && node --test scripts/enrichment/youtube-data-api-utils.test.mjs",
+    "test": "vitest run && node --test scripts/enrichment/youtube-data-api-utils.test.mjs scripts/enrichment/youtube-playlist-items-utils.test.mjs",
     "test:e2e": "playwright test",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
