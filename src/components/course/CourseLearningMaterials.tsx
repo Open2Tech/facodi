@@ -34,22 +34,28 @@ export function CourseLearningMaterials({
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
   const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({});
-  const [searchTerm, setSearchTerm] = useState('');
-  const requestedSlug = new URLSearchParams(location.search).get('materialsUnit');
+  const query = new URLSearchParams(location.search);
+  const searchTerm = query.get('materialsSearch') ?? '';
+  const requestedSlug = query.get('materialsUnit');
   const selectedUnit = units.find(unit => unit.slug === requestedSlug && !!unit.learningObjectId);
   const selectedUnitId = selectedUnit?.learningObjectId ?? '';
-  /** Keep a canonical, shareable URL without changing unrelated course query params. */
-  function selectUnit(id: string) {
-    const unit = units.find(item => item.learningObjectId === id);
+  /** Keep the UC and search in the same shareable URL without touching unrelated params. */
+  function updateMaterialFilters(unitSlug: string | null, keyword: string) {
     const next = new URLSearchParams(location.search);
-    if (unit) next.set('materialsUnit', unit.slug);
+    if (unitSlug) next.set('materialsUnit', unitSlug);
     else next.delete('materialsUnit');
+    if (keyword) next.set('materialsSearch', keyword);
+    else next.delete('materialsSearch');
     navigate({
       pathname: location.pathname,
       search: next.toString() ? `?${next}` : '',
       hash: '#course-materials',
     }, { replace: true, preventScrollReset: true });
     setVisibleCounts({});
+  }
+  function selectUnit(id: string) {
+    const unit = units.find(item => item.learningObjectId === id);
+    updateMaterialFilters(unit?.slug ?? null, searchTerm);
   }
   useEffect(() => {
     if (location.hash !== '#course-materials') return;
@@ -63,8 +69,10 @@ export function CourseLearningMaterials({
   const editorial = allEditorial.filter(sequence =>
     (!selectedUnit || (selectedUnit.code != null && sequence.unitCodes.includes(selectedUnit.code)))
     && (!search || normalizeCourseMaterialTerm([sequence.title, sequence.description, ...sequence.unitCodes].join(' ')).includes(search)));
+  const unitCodesById = new Map<string, string>();
+  for (const unit of units) if (unit.learningObjectId && unit.code) unitCodesById.set(unit.learningObjectId, unit.code);
   const sourceAssets = assets.data ?? emptyCourseLearningAssets();
-  const filteredAssets = filterCourseLearningAssets(sourceAssets, selectedUnitId || null, searchTerm);
+  const filteredAssets = filterCourseLearningAssets(sourceAssets, selectedUnitId || null, searchTerm, unitCodesById);
   const { videos, playlists, references, guides } = filteredAssets;
   const hasContent = allEditorial.length + sourceAssets.videos.length + sourceAssets.playlists.length + sourceAssets.references.length + sourceAssets.guides.length > 0;
   const hasMatches = editorial.length + videos.length + playlists.length + references.length + guides.length > 0;
@@ -137,7 +145,7 @@ export function CourseLearningMaterials({
     {hasContent && <div className="mt-6 grid gap-4 border border-foreground border-t-4 border-t-brand-mint bg-card p-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
       <div className="min-w-0">
         <label htmlFor="course-material-search" className="mb-2 block text-sm font-semibold">{t('courseMaterials.searchLabel')}</label>
-        <input id="course-material-search" type="search" value={searchTerm} onChange={event => { setSearchTerm(event.target.value); setVisibleCounts({}); }}
+        <input id="course-material-search" type="search" value={searchTerm} onChange={event => updateMaterialFilters(selectedUnit?.slug ?? null, event.target.value)}
           placeholder={t('courseMaterials.searchPlaceholder')}
           className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
       </div>
@@ -152,7 +160,7 @@ export function CourseLearningMaterials({
       </div>
       {hasFilters && <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:col-span-2">
         <button type="button" className="min-h-11 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={() => { setSearchTerm(''); selectUnit(''); }}>{t('courseMaterials.clearFilters')}</button>
+          onClick={() => updateMaterialFilters(null, '')}>{t('courseMaterials.clearFilters')}</button>
         {selectedUnit && <Link to={unitPath(courseSlug, selectedUnit.slug)}
           className="inline-flex min-h-11 items-center gap-1.5 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           {t('courseMaterials.openUnit')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
