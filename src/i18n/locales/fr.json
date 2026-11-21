@@ -2489,5 +2489,19 @@
     "readingCount": "Lectures : {{count}}",
     "openUnit": "Découvrir l'unité",
     "disclaimer": "Ces suggestions suivent l'ordre du programme et les ressources disponibles ; elles ne constituent pas des prérequis officiels."
+  },
+  "courseUnitFinder": {
+    "title": "Trouver une unité d’enseignement",
+    "description": "Recherchez parmi les {{count}} unités de ce cursus sans parcourir tout le programme.",
+    "fullList": "Voir la liste complète",
+    "searchLabel": "Nom ou code de l’unité",
+    "searchPlaceholder": "Ex. : Statistiques, 18021025, Algèbre…",
+    "clear": "Effacer la recherche",
+    "onlyWithMaterials": "Uniquement les unités avec vidéos ou lectures",
+    "matches": "{{count}} unités trouvées",
+    "noMatches": "Aucune unité trouvée. Essayez un autre terme ou retirez le filtre.",
+    "materialCount": "{{videos}} vidéos · {{readings}} lectures",
+    "viewMaterials": "Voir les ressources",
+    "limited": "Affichage de {{shown}} sur {{total}}. Affinez votre recherche."
   }
 }
