@@ -2443,6 +2443,8 @@
     "branchNotice": "La première année est commune. À partir de la deuxième, choisis une filière pour voir ses UE obligatoires et ses options."
   },
   "courseMaterials": {
+    "emptyCourse": "Aucune ressource spécifique n'a encore été publiée pour ce cursus. Vous pouvez explorer la bibliothèque générale en attendant.",
+    "browseLibrary": "Explorer la bibliothèque FACODI",
     "title": "Ressources pour étudier",
     "description": "Retrouvez les séquences, playlists et références déjà associées aux unités d'enseignement de ce cursus.",
     "editorialSequences": "Séquences d'apprentissage",
@@ -2472,5 +2474,20 @@
     "browseMaterials": "Explorer les ressources du cursus",
     "videoLessons": "Cours vidéo par unité d’enseignement",
     "videoNotice": "Vidéos publiés et associés aux unités d’enseignement. Ce ne sont pas automatiquement des séquences éditoriales, ni des cours intégralement révisés."
+  },
+  "courseStart": {
+    "eyebrow": "Votre prochaine étape",
+    "title": "Par où commencer ?",
+    "description": "Ces unités proposent des ressources pédagogiques. Choisissez un sujet pour explorer ses contenus.",
+    "noCoverage": "Découvrez les premières unités du programme. Les indicateurs de ressources ne sont pas encore disponibles pour ce cursus.",
+    "materials": "Voir les ressources",
+    "plan": "Programme",
+    "coverage": "Ressources disponibles",
+    "availableSummary": "{{videos}} unités avec vidéos · {{readings}} avec lectures",
+    "unitLabel": "Unité d'enseignement",
+    "videoCount": "Vidéos : {{count}}",
+    "readingCount": "Lectures : {{count}}",
+    "openUnit": "Découvrir l'unité",
+    "disclaimer": "Ces suggestions suivent l'ordre du programme et les ressources disponibles ; elles ne constituent pas des prérequis officiels."
   }
 }

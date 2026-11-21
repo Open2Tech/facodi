@@ -2443,6 +2443,8 @@
     "branchNotice": "The first year is shared. From the second year on, choose a branch to see its required units and options."
   },
   "courseMaterials": {
+    "emptyCourse": "No resources have been published specifically for this course yet. Explore the wider library while the catalogue grows.",
+    "browseLibrary": "Browse the FACODI library",
     "title": "Learning materials",
     "description": "Find the learning sequences, playlists and references already linked to this course's units, all in one place.",
     "editorialSequences": "Learning sequences",
@@ -2472,5 +2474,20 @@
     "browseMaterials": "Explore course materials",
     "videoLessons": "Video lessons by curricular unit",
     "videoNotice": "Published videos linked to curricular units. They are not automatically editorial sequences or proof that each lesson has been fully reviewed."
+  },
+  "courseStart": {
+    "eyebrow": "Your next step",
+    "title": "Where to begin?",
+    "description": "These units have learning materials available. Pick a topic and explore its linked resources.",
+    "noCoverage": "Explore the first units in the curriculum. Material coverage indicators are not yet available for this course.",
+    "materials": "View materials",
+    "plan": "Study plan",
+    "coverage": "Available coverage",
+    "availableSummary": "{{videos}} units with videos · {{readings}} units with readings",
+    "unitLabel": "Curricular unit",
+    "videoCount": "Videos: {{count}}",
+    "readingCount": "Readings: {{count}}",
+    "openUnit": "Explore unit",
+    "disclaimer": "Suggestions reflect curriculum order and available resources, not official prerequisite guidance."
   }
 }

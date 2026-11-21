@@ -78,7 +78,6 @@ export function CourseLearningMaterials({
   const hasMatches = editorial.length + videos.length + playlists.length + references.length + guides.length > 0;
   const hasFilters = Boolean(search || selectedUnitId);
 
-  if (!hasContent && !assets.isPending && !assets.error && !sequences.isPending && !sequences.error) return null;
 
   function showMore(key: string, total: number) {
     if (total <= COURSE_MATERIAL_PREVIEW) return null;
@@ -168,6 +167,12 @@ export function CourseLearningMaterials({
       </div>}
     </div>}
 
+    {!hasContent && !assets.isPending && !sequences.isPending && !assets.error && !sequences.error && <div className="mt-6 border border-input bg-card p-5 sm:p-6">
+      <p className="text-sm leading-relaxed text-muted-foreground">{t('courseMaterials.emptyCourse')}</p>
+      <Link to="/resources" className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        {t('courseMaterials.browseLibrary')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </Link>
+    </div>}
     {assets.isPending && <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>}
     {assets.error && <div role="alert" className="mt-5 border border-input p-5 text-sm">
       <p>{t('courseMaterials.loadFailed')}</p>

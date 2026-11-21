@@ -10,6 +10,7 @@ import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { CourseLearningMaterials } from '@/components/course/CourseLearningMaterials';
+import { CourseStudyEntry } from '@/components/course/CourseStudyEntry';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { UalgCurriculum } from '@/components/course/UalgCurriculum';
 import { CourseMapSummary, ExploredMark } from '@/components/course/CourseMap';
@@ -108,6 +109,7 @@ export default function CourseDetails() {
         {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
       </aside>
     </div>
+    <CourseStudyEntry courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
