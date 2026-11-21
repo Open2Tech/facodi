@@ -1,3 +1,5 @@
+import { normalizeCourseMaterialTerm } from '@/entities/course/courseLearningAssets';
+
 /** Lightweight study suggestions for public course pages.
  * We only prioritise curricular units with confirmed public resource counts.
  * This does not invent prerequisites, mandatory study order, or resources.
@@ -47,4 +49,37 @@ export function suggestStudyUnits<T extends StudyEntryUnit>(
     }));
   const withMaterials = ranked.filter(entry => entry.videoCount > 0 || entry.readingCount > 0);
   return (withMaterials.length ? withMaterials : ranked).slice(0, limit);
+}
+
+/** Search the actual published course units; never invent matches or content counts.
+ * Token matching is accent-insensitive and order-independent (title or code).
+ */
+export function findCourseUnits<T extends StudyEntryUnit>(
+  units: readonly T[],
+  coverage: readonly StudyEntryCoverage[],
+  search: string,
+  onlyWithMaterials = false,
+  limit = 8,
+): { total: number; results: SuggestedStudyUnit<T>[] } {
+  const tokens = normalizeCourseMaterialTerm(search).split(/\s+/).filter(Boolean);
+  const counts = new Map(coverage.map(row => [row.curricular_unit_id, row]));
+  const matches = [...units]
+    .sort((a, b) =>
+      (a.year ?? Number.MAX_SAFE_INTEGER) - (b.year ?? Number.MAX_SAFE_INTEGER)
+      || (a.semester ?? Number.MAX_SAFE_INTEGER) - (b.semester ?? Number.MAX_SAFE_INTEGER)
+      || (a.position ?? Number.MAX_SAFE_INTEGER) - (b.position ?? Number.MAX_SAFE_INTEGER)
+      || a.title.localeCompare(b.title)
+      || a.id.localeCompare(b.id))
+    .map(unit => ({
+      unit,
+      videoCount: count(counts.get(unit.id)?.video_count),
+      readingCount: count(counts.get(unit.id)?.reading_count),
+    }))
+    .filter(({ unit, videoCount, readingCount }) => {
+      if (onlyWithMaterials && videoCount === 0 && readingCount === 0) return false;
+      if (!tokens.length) return true;
+      const value = normalizeCourseMaterialTerm([unit.title, unit.code ?? ''].join(' '));
+      return tokens.every(token => value.includes(token));
+    });
+  return { total: matches.length, results: matches.slice(0, Math.max(0, Math.floor(limit))) };
 }

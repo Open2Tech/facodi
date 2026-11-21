@@ -2489,5 +2489,19 @@
     "readingCount": "Readings: {{count}}",
     "openUnit": "Explore unit",
     "disclaimer": "Suggestions reflect curriculum order and available resources, not official prerequisite guidance."
+  },
+  "courseUnitFinder": {
+    "title": "Find your course unit",
+    "description": "Search all {{count}} curricular units without scrolling through the whole study plan.",
+    "fullList": "View full list",
+    "searchLabel": "Unit name or code",
+    "searchPlaceholder": "E.g. Statistics, 18021025, Algebra…",
+    "clear": "Clear search",
+    "onlyWithMaterials": "Only units with videos or readings",
+    "matches": "{{count}} matching units",
+    "noMatches": "No units found. Try another term or remove the filter.",
+    "materialCount": "{{videos}} videos · {{readings}} readings",
+    "viewMaterials": "View materials",
+    "limited": "Showing {{shown}} of {{total}}. Refine your search to find a unit."
   }
 }

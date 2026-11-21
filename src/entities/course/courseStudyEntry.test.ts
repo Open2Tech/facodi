@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { suggestStudyUnits, type StudyEntryUnit } from './courseStudyEntry';
+import { findCourseUnits, suggestStudyUnits, type StudyEntryUnit } from './courseStudyEntry';
 
 const unit = (id: string, year: number | null, semester: number | null, position: number | null): StudyEntryUnit => ({
   id, slug: id, title: id, code: id, year, semester, position,
@@ -31,5 +31,42 @@ describe('suggestStudyUnits', () => {
     const result = suggestStudyUnits([unit('x', 1, 1, 1)], [{ curricular_unit_id: 'x', video_count: -2, reading_count: Number.NaN }]);
     expect(result[0].videoCount).toBe(0);
     expect(result[0].readingCount).toBe(0);
+  });
+});
+
+describe('findCourseUnits', () => {
+  const units: StudyEntryUnit[] = [
+    { ...unit('18021025', 1, 1, 1), title: 'Informática' },
+    { ...unit('18021027', 1, 1, 2), title: 'Contabilidade Financeira I' },
+    { ...unit('18021035', 2, 1, 1), title: 'Direito Fiscal Aplicado III' },
+    { ...unit('18021023', null, null, null), title: 'Matemática Aplicada às Ciências Sociais' },
+  ];
+  const coverage = [
+    { curricular_unit_id: '18021025', video_count: 3, reading_count: 1 },
+    { curricular_unit_id: '18021027', video_count: 0, reading_count: 2 },
+    { curricular_unit_id: '18021035', video_count: 0, reading_count: 0 },
+  ];
+
+  it('matches accents, title tokens in any order, and exact UC codes', () => {
+    expect(findCourseUnits(units, coverage, 'matematica CieNcias').results.map(x => x.unit.id)).toEqual(['18021023']);
+    expect(findCourseUnits(units, coverage, 'FINANCEIRA CONTABILIDADE').results.map(x => x.unit.id)).toEqual(['18021027']);
+    expect(findCourseUnits(units, coverage, '18021025').results.map(x => x.unit.id)).toEqual(['18021025']);
+  });
+
+  it('filters to real videos or readings and keeps curriculum order', () => {
+    const matches = findCourseUnits(units, coverage, '', true);
+    expect(matches.total).toBe(2);
+    expect(matches.results.map(x => x.unit.id)).toEqual(['18021025', '18021027']);
+  });
+
+  it('reports total results even when rendering a limited preview', () => {
+    const result = findCourseUnits(units, coverage, '', false, 2);
+    expect(result.total).toBe(4);
+    expect(result.results.map(x => x.unit.id)).toEqual(['18021025', '18021027']);
+  });
+
+  it('does not fabricate coverage when the public view is empty', () => {
+    expect(findCourseUnits(units, [], '', true)).toEqual({ total: 0, results: [] });
+    expect(findCourseUnits(units, [], 'absent')).toEqual({ total: 0, results: [] });
   });
 });
