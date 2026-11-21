@@ -2524,7 +2524,7 @@
     "open": "Explore",
     "empty": "No materials are directly linked to this unit yet. Browse the course library or suggest a resource.",
     "unavailable": "Some materials could not be loaded. Explore the course library.",
-    "notice": "Highlights follow existing resource links and editorial order. They are not proof of full video review or official prerequisites.",
+    "notice": "Highlights favor topic-specific sources when available. The full library keeps its editorial order; a displayed domain identifies origin, not certification.",
     "kinds": {
       "path": "Editorial path",
       "sequence": "FACODI sequence",
