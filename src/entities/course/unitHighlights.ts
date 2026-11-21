@@ -21,6 +21,7 @@ type PublishedSequence = NamedAsset & { itemCount: number };
 const STOP_WORDS = new Set(['de', 'da', 'do', 'das', 'dos', 'e', 'em', 'um', 'uma', 'para', 'com',
   'i', 'ii', 'iii', 'iv', 'v', 'vi', 'a', 'o', 'as', 'os', 'the', 'and', 'of', 'to', 'for']);
 const GATEWAY_TITLE = /\b(portal|catalogo|biblioteca|diretorio|indice|homepage)\b|referencia da rede|lista de formacao/i;
+const SPECIFIC_DOCUMENT = /\b(codigo|fuc|ficha|manual|livro|curso|capitulo|aula|volume|normas)\b/i;
 const STRUCTURED_MATERIAL = /\b(curso|course|livro|book|textbook|volume|capitulo|chapter|fuc|ficha da unidade curricular)\b/i;
 
 function urlOf(asset: NamedAsset): string | null {
@@ -46,7 +47,7 @@ function provenance(asset: NamedAsset): Pick<UnitHighlight, 'sourceHost'> {
 function isGeneralGateway(asset: NamedAsset): boolean {
   const title = normalizeCourseMaterialTerm(asset.title);
   const url = urlOf(asset);
-  return GATEWAY_TITLE.test(title) ||
+  return (GATEWAY_TITLE.test(title) && !SPECIFIC_DOCUMENT.test(title)) ||
     (url != null && /\/(?:dr\/home|home|homepage|index)(?:\/?$|[?#])/i.test(url));
 }
 function hasMatchingTopic(title: string, unitTitle: string): boolean {
