@@ -2524,7 +2524,7 @@
     "open": "Découvrir",
     "empty": "Aucune ressource n’est encore directement liée à cette unité. Parcourez la bibliothèque du cursus ou suggérez une ressource.",
     "unavailable": "Certaines ressources n’ont pas pu être chargées. Parcourez la bibliothèque du cursus.",
-    "notice": "Les sélections suivent les liens et l’ordre éditorial existants. Elles ne prouvent ni la révision intégrale des vidéos ni des prérequis officiels.",
+    "notice": "Les sélections privilégient les sources spécifiques lorsqu’elles existent. La bibliothèque complète conserve l’ordre éditorial ; le domaine indique l’origine, pas une certification.",
     "kinds": {
       "path": "Parcours éditorial",
       "sequence": "Séquence FACODI",
