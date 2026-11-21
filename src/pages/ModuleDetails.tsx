@@ -52,9 +52,9 @@ export default function ModuleDetails() {
         <li aria-current="page" className="line-clamp-1 text-foreground">{module.title}</li>
       </ol>
     </nav>
-    <header className="border-b border-foreground pb-9">
+    <header className="border-b border-foreground border-t-4 border-t-brand-mint pb-9 pt-6">
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <span className="inline-flex items-center gap-2 border border-input px-3 py-1.5 text-xs font-semibold uppercase">
+        <span className="inline-flex items-center gap-2 border border-foreground bg-brand-mint px-3 py-1.5 text-xs font-semibold uppercase text-brand-ink">
           <BookOpenCheck className="h-4 w-4" aria-hidden="true" />{t('objectTypes.module')}
         </span>
         <span className="font-mono text-xs text-muted-foreground">{t('studyModules.resourceCount',{count:items.length})}</span>
@@ -71,15 +71,17 @@ export default function ModuleDetails() {
       <p className="mt-2 text-sm text-muted-foreground">{t('studyModules.linkedUnitsDescription')}</p>
       <ul className="mt-4 flex flex-wrap gap-3">
         {units.map(unit => <li key={unit.id}>
-          <Link to={unitPath(unit.courses.slug,unit.slug)} className="inline-flex items-center gap-2 border border-input px-4 py-2 text-sm font-semibold hover:border-foreground">
+          <Link to={unitPath(unit.courses.slug,unit.slug)} className="inline-flex items-center gap-2 border border-foreground bg-card px-4 py-2 text-sm font-semibold transition-colors hover:bg-brand-orange hover:text-brand-ink">
             {unit.title}<ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </li>)}
       </ul>
     </section>}
-    {(activity || deliverable || selfReview) && <section aria-labelledby="module-practice" className="mt-10 border border-input p-6 sm:p-8">
+    {(activity || deliverable || selfReview) && <section aria-labelledby="module-practice" className="mt-10 border border-foreground border-t-4 border-t-primary bg-card p-6 sm:p-8">
       <div className="flex items-center gap-3">
-        <ClipboardList className="h-6 w-6" aria-hidden="true" />
+        <span className="grid h-10 w-10 shrink-0 place-items-center border border-foreground bg-primary text-brand-ink" aria-hidden="true">
+          <ClipboardList className="h-5 w-5" />
+        </span>
         <h2 id="module-practice" className="text-2xl font-semibold">{t('studyModules.practice')}</h2>
       </div>
       <p className="mt-3 text-sm text-muted-foreground">{t('studyModules.practiceNotice')}</p>

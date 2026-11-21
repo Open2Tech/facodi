@@ -80,7 +80,7 @@ export default function CourseDetails() {
   return <article>
     <PageSeo {...courseMeta(course, { courses: t('nav.courses') })} />
     <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
-    <header className="border-b border-foreground pb-10">
+    <header className="border-b border-foreground border-t-4 border-t-primary pb-10 pt-6">
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{course.title}</h1>
       {course.summary && course.summary.trim() !== course.title.trim() && <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted-foreground">{course.summary}</p>}
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
@@ -100,12 +100,12 @@ export default function CourseDetails() {
           : !!units.length && <p className="max-w-prose text-lg leading-relaxed">{t('course.planIntro', { count: units.length, years: years.filter(year => year.year != null).length })}</p>}
         {resource && <Link className="mt-6 inline-flex items-center gap-2 font-semibold underline underline-offset-4" to={`/resources/${resource.slug}`}>{resource.title}<ArrowUpRight className="h-4 w-4" /></Link>}
       </div>
-      <aside aria-labelledby="facts" className="self-start border border-input lg:sticky lg:top-28">
-        <h2 id="facts" className="border-b border-foreground bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">{t('course.facts')}</h2>
+      <aside aria-labelledby="facts" className="self-start border border-foreground bg-card lg:sticky lg:top-28">
+        <h2 id="facts" className="border-b border-foreground bg-primary px-5 py-3 text-sm font-semibold text-brand-ink">{t('course.facts')}</h2>
         <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
           <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
         </div>)}</dl>
-        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
+        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
       </aside>
     </div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
@@ -116,7 +116,7 @@ export default function CourseDetails() {
       <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {collections.data.map(collection => <li key={collection.id}>
-          <Link to={`/resources/${encodeURIComponent(collection.slug)}`} className="group flex h-full flex-col gap-3 border border-input p-5 transition-colors hover:border-foreground">
+          <Link to={`/resources/${encodeURIComponent(collection.slug)}`} className="group flex h-full flex-col gap-3 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
             <span className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">{collection.title}</span>
             {collection.description && <span className="line-clamp-3 text-sm text-muted-foreground">{collection.description}</span>}
             <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('courseCollections.open')}<ArrowUpRight className="h-4 w-4" /></span>
@@ -140,7 +140,7 @@ export default function CourseDetails() {
         <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} explored={map.explored} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
-        {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-input px-4 py-1.5 text-sm transition-colors hover:border-foreground hover:bg-brand-cyan hover:text-ink">
+        {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-foreground bg-card px-4 py-1.5 text-sm font-medium transition-colors hover:bg-brand-cyan hover:text-brand-ink">
           {year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}
         </a>)}
       </nav>}
@@ -161,10 +161,10 @@ export default function CourseDetails() {
                 const media = coverageById.get(unit.id);
                 const visible = media && (media.video_count > 0 || media.reading_count > 0);
                 return <li key={unit.id}>
-                  <Link to={unitPath(course.slug, unit.slug)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3">
+                  <Link to={unitPath(course.slug, unit.slug)} className="-mx-2 group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 px-2 py-3 transition-colors hover:bg-primary/10">
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
-                      {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center bg-brand-mint align-middle text-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
+                      {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center border border-foreground bg-brand-mint align-middle text-brand-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
                       {unit.code && map.explored.has(unit.code) && <ExploredMark />}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}

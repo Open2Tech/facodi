@@ -102,10 +102,10 @@ export default function UnitDetails() {
         <li aria-current="page" className="text-foreground">{unit.code || unit.title}</li>
       </ol>
     </nav>
-    <header className="border-b border-foreground pb-10">
+    <header className="border-b border-foreground border-t-4 border-t-brand-orange pb-10 pt-6">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <a href={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-input px-2 py-1 font-mono text-xs uppercase transition-colors hover:border-foreground hover:bg-brand-pink hover:text-ink">
+        {!!videoList.length && <a href={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
           <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath || composedPending ? t('composedPath.title') : t('unit.videoChip', { count: videoList.length })}
         </a>}
       </p>
@@ -167,8 +167,8 @@ export default function UnitDetails() {
               : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                   {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
                     <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input p-5 transition-colors hover:border-foreground">
-                      <span className="grid h-8 w-8 place-items-center bg-brand-cyan text-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
+                      <span className="grid h-8 w-8 place-items-center border border-foreground bg-brand-cyan text-brand-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
                       <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
                       {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
                       <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
@@ -188,7 +188,7 @@ export default function UnitDetails() {
               : !!modulesQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {modulesQuery.data.map(module => <li key={module.id}>
                   <Link to={`/modules/${encodeURIComponent(module.slug)}`}
-                    className="group flex h-full flex-col gap-2 border border-input p-5 hover:border-foreground">
+                    className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-mint bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-mint/10">
                     <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
                     {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
                     <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
@@ -208,7 +208,7 @@ export default function UnitDetails() {
               : !!playlistsQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                   {playlistsQuery.data.map(playlist => <li key={playlist.id}>
                     <Link to={`/resources/${encodeURIComponent(playlist.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input p-5 transition-colors hover:border-foreground">
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-pink bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-pink/10">
                       <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
                       {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
                       <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
@@ -293,20 +293,20 @@ export default function UnitDetails() {
           </ul>
         </section>}
       </div>
-      <aside aria-labelledby="unit-facts" className="self-start border border-input lg:sticky lg:top-28">
-        <h2 id="unit-facts" className="border-b border-foreground bg-brand-orange px-5 py-3 text-sm font-semibold text-ink">{t('unit.facts')}</h2>
+      <aside aria-labelledby="unit-facts" className="self-start border border-foreground bg-card lg:sticky lg:top-28">
+        <h2 id="unit-facts" className="border-b border-foreground bg-brand-orange px-5 py-3 text-sm font-semibold text-brand-ink">{t('unit.facts')}</h2>
         <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
           <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
         </div>)}</dl>
-        <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground">{t('unit.allInCourse')}<ArrowRight className="h-4 w-4" /></Link>
+        <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{t('unit.allInCourse')}<ArrowRight className="h-4 w-4" /></Link>
       </aside>
     </div>
     {(previous || next) && <nav aria-label={t('unit.sequence')} className="grid gap-4 border-t border-foreground pt-8 sm:grid-cols-2">
-      {previous ? <Link to={unitPath(course.slug, previous.slug)} className="group flex flex-col gap-1 border border-input p-5 transition-colors hover:border-foreground">
+      {previous ? <Link to={unitPath(course.slug, previous.slug)} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-orange/10">
         <span className="inline-flex items-center gap-2 text-sm text-muted-foreground"><ArrowLeft className="h-4 w-4" />{t('unit.previous')}</span>
         <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{previous.title}</span>
       </Link> : <span />}
-      {next && <Link to={unitPath(course.slug, next.slug)} className="group flex flex-col gap-1 border border-input p-5 text-right transition-colors hover:border-foreground">
+      {next && <Link to={unitPath(course.slug, next.slug)} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 text-right transition-colors hover:border-foreground hover:bg-brand-orange/10">
         <span className="inline-flex items-center justify-end gap-2 text-sm text-muted-foreground">{t('unit.next')}<ArrowRight className="h-4 w-4" /></span>
         <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{next.title}</span>
       </Link>}

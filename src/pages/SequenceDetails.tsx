@@ -100,18 +100,18 @@ export default function SequenceDetails() {
         <li aria-current="page" className="line-clamp-1 text-foreground">{sequence.title}</li>
       </ol>
     </nav>
-    <header className="grid gap-8 border-b border-foreground pb-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+    <header className="grid gap-8 border-b border-foreground border-t-4 border-t-brand-pink pb-10 pt-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
       <div className="min-w-0">
         <p className="mb-5 flex flex-wrap items-center gap-2">
           <TypeBadge type="playlist" label={t('objectTypes.playlist')} className="border border-foreground" />
-          <span className="border border-input px-2 py-1 font-mono text-xs uppercase">{t('sequences.lessons', { count: items.length })}</span>
+          <span className="border border-foreground bg-brand-pink px-2.5 py-1 font-mono text-xs font-semibold uppercase text-brand-ink">{t('sequences.lessons', { count: items.length })}</span>
           {sequence.language && <span className="border border-input px-2 py-1 font-mono text-xs uppercase">{sequence.language}</span>}
         </p>
         <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-5xl">{sequence.title}</h1>
         {description && <p className="mt-5 max-w-prose leading-relaxed text-muted-foreground">{description}</p>}
         <div className="mt-6"><ShareButton title={sequence.title} /></div>
       </div>
-      <section aria-labelledby="sequence-progress" className="border border-foreground p-5">
+      <section aria-labelledby="sequence-progress" className="border border-foreground border-t-4 border-t-brand-pink bg-card p-5">
         <h2 id="sequence-progress" className="text-sm font-semibold">{t('sequences.yourProgress')}</h2>
         {!progress.signedIn ? <>
           <p className="mt-2 text-sm text-muted-foreground">{t('sequences.guest')}</p>

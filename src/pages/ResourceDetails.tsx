@@ -155,7 +155,7 @@ export default function ResourceDetails() {
       </ol>
     </nav>
 
-    <header className="grid gap-8 border-b border-foreground pb-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
+    <header className="grid gap-8 border-b border-foreground border-t-4 border-t-brand-cyan pb-8 pt-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
       <div className="min-w-0">
         <ul className="mb-5 flex flex-wrap gap-2 font-mono text-xs uppercase">
           <li><TypeBadge type={resource.object_type} label={typeLabel} className="border border-foreground" /></li>
@@ -207,20 +207,20 @@ export default function ResourceDetails() {
             <button type="button" className="mt-3 font-semibold underline underline-offset-4" onClick={() => void context.refetch()}>{t('common.retry')}</button>
           </div>
           : primary && unitHref ? <>
-            <section aria-labelledby="video-unit" className="border border-foreground bg-primary p-5 text-primary-foreground">
+            <section aria-labelledby="video-unit" className="border border-foreground bg-primary p-5 text-brand-ink">
               <h2 id="video-unit" className="text-sm font-semibold">{t('video.unit')}</h2>
-              {primary.code && <p className="mt-4 inline-block bg-ink px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
+              {primary.code && <p className="mt-4 inline-block bg-brand-ink px-2 py-1 font-mono text-xs text-primary">{primary.code}</p>}
               <p className="mt-3 text-2xl font-semibold leading-tight tracking-[-0.02em] [text-wrap:balance]"><Link to={unitHref} className="decoration-2 underline-offset-4 hover:underline">{primary.title}</Link></p>
-              <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-black/25 pt-4 text-sm">
+              <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-brand-ink/25 pt-4 text-sm">
                 {primary.ects != null && <div><dt className="text-xs">{t('course.ects')}</dt><dd className="font-mono tabular-nums">{primary.ects}</dd></div>}
                 {primary.year != null && <div><dt className="text-xs">{t('course.yearLabel')}</dt><dd className="font-mono tabular-nums">{primary.year}</dd></div>}
                 {primary.semester != null && <div><dt className="text-xs">{t('course.semesterLabel')}</dt><dd className="font-mono tabular-nums">{primary.semester}</dd></div>}
                 <div className="col-span-3"><dt className="text-xs">{t('video.course')}</dt><dd><Link to={`/courses/${primary.courses.slug}`} className="font-medium underline underline-offset-4">{primary.courses.title}</Link></dd></div>
               </dl>
-              <Link to={`${unitHref}#unit-resources`} className="mt-5 flex items-center justify-between gap-3 bg-ink px-4 py-3 text-sm font-semibold text-ink-foreground transition-colors hover:bg-ink/90">{t('video.openUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to={`${unitHref}#unit-resources`} className="mt-5 flex items-center justify-between gap-3 bg-brand-ink px-4 py-3 text-sm font-semibold text-ink-foreground transition-opacity hover:opacity-90">{t('video.openUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
             </section>
 
-            {!!sequence.length && <section aria-labelledby="video-sequence" className="border border-input">
+            {!!sequence.length && <section aria-labelledby="video-sequence" className="border border-foreground border-t-4 border-t-brand-pink bg-card">
               <div className="flex items-baseline justify-between gap-3 border-b border-input bg-muted px-5 py-3">
                 <h2 id="video-sequence" className="text-sm font-semibold">{t('video.sequence')}</h2>
                 {position >= 0 && <p className="font-mono text-xs tabular-nums text-muted-foreground">{t('video.position', { current: position + 1, total: sequence.length })}</p>}
