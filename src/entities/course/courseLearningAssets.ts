@@ -1,3 +1,5 @@
+import type { Json } from '@/integrations/supabase/types';
+
 /** Public learning materials linked to a course or any of its curricular units.
  * Relations are resolved by the API under RLS; this helper only deduplicates visible objects.
  */
@@ -7,6 +9,8 @@ export interface CourseLearningAsset {
   title: string;
   description: string | null;
   sourceUrl: string | null;
+  /** Video metadata is used only to render an existing, validated YouTube thumbnail. */
+  metadata?: Json | null;
   /** Unit names where the same object appears, without duplicate cards. */
   unitTitles: string[];
   /** Exact curricular-unit learning object IDs for scoped filtering. */
@@ -34,6 +38,7 @@ export interface CourseAssetObject {
   title: string;
   description: string | null;
   source_url: string | null;
+  metadata?: Json | null;
   object_type: string;
 }
 
@@ -71,7 +76,7 @@ export function composeCourseLearningAssets(
     if (!asset) {
       asset = {
         id: item.id, slug: item.slug, title: item.title,
-        description: item.description, sourceUrl: item.source_url, unitTitles: [], unitIds: [],
+        description: item.description, sourceUrl: item.source_url, metadata: item.metadata, unitTitles: [], unitIds: [],
       };
       buckets.set(item.id, asset);
       group.push(asset);
