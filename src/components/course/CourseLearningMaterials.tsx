@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
 import { useSequences } from '@/features/sequences/useSequences';
 import { SequenceList } from '@/components/sequence/SequenceList';
+import { VideoThumbnail } from '@/components/resource/VideoCard';
+import { videoInfo } from '@/entities/course/video';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
 import { plainText } from '@/shared/lib/text';
@@ -92,19 +94,20 @@ export function CourseLearningMaterials({
   function assetList(key: string, values: CourseLearningAsset[]) {
     const shown = expanded[key] ? values : values.slice(0, PREVIEW_COUNT);
     const tone = ASSET_STYLES[key]?.card ?? 'border-t-primary';
-    const cardClass = `group flex h-full min-h-36 flex-col gap-2 border border-input border-t-4 bg-card p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-5 ${tone}`;
+    const cardClass = `group flex h-full min-h-36 flex-col gap-2 border border-input border-t-4 bg-card transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${key === 'videos' ? '' : 'p-4 sm:p-5'} ${tone}`;
     return <>
       <ul className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {shown.map(asset => {
           const external = key === 'references' ? safeExternalUrl(asset.sourceUrl) : undefined;
           const content = <>
-            <span className="font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">{asset.title}</span>
-            {asset.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{plainText(asset.description)}</span>}
-            {!!asset.unitTitles.length && <span className="mt-auto pt-2 text-xs leading-relaxed text-muted-foreground">
+            {key === 'videos' && <VideoThumbnail info={videoInfo(asset.metadata, asset.sourceUrl)} zoom />}
+            <span className={key === 'videos' ? 'px-4 pt-3 font-semibold leading-snug group-hover:underline group-hover:underline-offset-4 sm:px-5' : 'font-semibold leading-snug group-hover:underline group-hover:underline-offset-4'}>{asset.title}</span>
+            {asset.description && <span className={key === 'videos' ? 'line-clamp-2 px-4 text-sm leading-relaxed text-muted-foreground sm:px-5' : 'line-clamp-2 text-sm leading-relaxed text-muted-foreground'}>{plainText(asset.description)}</span>}
+            {!!asset.unitTitles.length && <span className={key === 'videos' ? 'mt-auto px-4 pt-2 text-xs leading-relaxed text-muted-foreground sm:px-5' : 'mt-auto pt-2 text-xs leading-relaxed text-muted-foreground'}>
               {t('courseMaterials.linkedUnits')}: {asset.unitTitles.slice(0, 2).join(' · ')}
               {asset.unitTitles.length > 2 && <> · {t('courseMaterials.moreUnits', { count: asset.unitTitles.length - 2 })}</>}
             </span>}
-            <span className="inline-flex items-center gap-1 pt-1 text-xs font-semibold">
+            <span className={key === 'videos' ? 'inline-flex items-center gap-1 px-4 pb-4 pt-1 text-xs font-semibold sm:px-5' : 'inline-flex items-center gap-1 pt-1 text-xs font-semibold'}>
               {external ? t('courseMaterials.openSource') : t('courseMaterials.open')}
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
