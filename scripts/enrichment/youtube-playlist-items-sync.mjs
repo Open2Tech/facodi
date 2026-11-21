@@ -17,7 +17,7 @@
  */
 import { createClient } from '@supabase/supabase-js';
 import { parseYoutubeDuration } from './youtube-data-api-utils.mjs';
-import { playlistIdFromUrl, parsePlaylistItemsPage, verifiedPublicVideo, orderedUniqueMembers } from './youtube-playlist-items-utils.mjs';
+import { playlistIdFromUrl, parsePlaylistItemsPage, verifiedPublicVideo, orderedUniqueMembers, planPlaylistMemberImports } from './youtube-playlist-items-utils.mjs';
 
 const argv = process.argv.slice(2);
 const args = Object.fromEntries(argv.filter(v => v.startsWith('--') && v.includes('='))
@@ -139,9 +139,12 @@ async function knownVideoObjects(ids) {
       if (v.object_type === 'video' && v.published && v.status === 'active') published.add(v.id);
     }
   }
-  return new Map(rows.flatMap(v => v.learning_object_id && v.status === 'published'
-    && published.has(v.learning_object_id)
-    ? [[v.youtube_video_id, v.learning_object_id]] : []));
+  return {
+    published: new Map(rows.flatMap(v => v.learning_object_id && v.status === 'published'
+      && published.has(v.learning_object_id)
+      ? [[v.youtube_video_id, v.learning_object_id]] : [])),
+    cataloguedIds: new Set(rows.map(v => v.youtube_video_id)),
+  };
 }
 
 async function createPublishedVideo(video, playlistId, position, checkedAt) {
@@ -221,7 +224,8 @@ async function linkMember(playlist, member, videoObjectId, checkedAt) {
 const checkedAt = new Date().toISOString();
 const totals = { mode: apply ? (importNew ? 'apply_and_import' : 'apply_existing') : 'preview',
   playlist_count: 0, member_candidates: 0, published_members: 0, reusable_videos: 0,
-  new_video_candidates: 0, videos_registered: 0, relations_added: 0, partial_lists: 0, errors: [] };
+  new_video_candidates: 0, held_existing_rows: 0, videos_registered: 0,
+  relations_added: 0, partial_lists: 0, skipped_partial_applies: 0, errors: [] };
 const playlists = await loadPlaylists();
 for (const playlist of playlists) {
   try {
@@ -230,23 +234,30 @@ for (const playlist of playlists) {
     const available = await readAvailableVideos([...new Set(items.map(i => i.youtubeId))]);
     const members = orderedUniqueMembers(items, available);
     const known = await knownVideoObjects(members.map(m => m.youtubeId));
-    const toCreate = members.filter(m => !known.has(m.youtubeId)
-      && m.playlistChannelId && m.playlistChannelId === m.video.channelId);
-    const reusable = members.filter(m => known.has(m.youtubeId));
+    const { reusable, newCreatorOwned: toCreate, heldForReview } = planPlaylistMemberImports(
+      members, new Set(known.published.keys()), known.cataloguedIds);
     totals.playlist_count++;
     totals.member_candidates += items.length;
     totals.published_members += members.length;
     totals.reusable_videos += reusable.length;
     totals.new_video_candidates += toCreate.length;
+    totals.held_existing_rows += heldForReview.length;
     console.log(JSON.stringify({ playlist: playlist.youtubeId, title: playlist.title,
       complete, discovered: items.length, public_embeddable: members.length,
-      reusable: reusable.length, new_creator_owned: toCreate.length }));
+      reusable: reusable.length, new_creator_owned: toCreate.length,
+      held_existing_rows: heldForReview.length }));
     if (!apply) continue;
+    // Never partially publish the first pages of an incompletely retrieved list.
+    if (!complete) {
+      totals.skipped_partial_applies++;
+      console.warn('incomplete_playlist_skipped_apply', playlist.youtubeId);
+      continue;
+    }
     const toImport = importNew ? toCreate : [];
     for (const member of [...reusable, ...toImport]) {
-      const objectId = known.get(member.youtubeId) ?? await createPublishedVideo(
+      const objectId = known.published.get(member.youtubeId) ?? await createPublishedVideo(
         member.video, playlist.youtubeId, member.position, checkedAt);
-      if (!known.has(member.youtubeId)) totals.videos_registered++;
+      if (!known.published.has(member.youtubeId)) totals.videos_registered++;
       if (await linkMember(playlist, member, objectId, checkedAt)) totals.relations_added++;
     }
   } catch (error) {
