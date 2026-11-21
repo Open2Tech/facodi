@@ -10,9 +10,7 @@ import { videoInfo } from '@/entities/course/video';
 import { safeExternalUrl } from '@/shared/lib/navigation';
 import { unitPath } from '@/entities/course/course.paths';
 import { plainText } from '@/shared/lib/text';
-import { filterCourseLearningAssets, normalizeCourseMaterialTerm, emptyCourseLearningAssets, type CourseLearningAsset } from '@/entities/course/courseLearningAssets';
-
-const PREVIEW_COUNT = 6;
+import { COURSE_MATERIAL_PAGE, COURSE_MATERIAL_PREVIEW, nextCourseMaterialVisibleCount, filterCourseLearningAssets, normalizeCourseMaterialTerm, emptyCourseLearningAssets, type CourseLearningAsset } from '@/entities/course/courseLearningAssets';
 
 export interface CourseLearningUnit {
   learningObjectId: string | null;
@@ -35,7 +33,7 @@ export function CourseLearningMaterials({
   const navigate = useNavigate();
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({});
   const [searchTerm, setSearchTerm] = useState('');
   const requestedSlug = new URLSearchParams(location.search).get('materialsUnit');
   const selectedUnit = units.find(unit => unit.slug === requestedSlug && !!unit.learningObjectId);
@@ -51,7 +49,7 @@ export function CourseLearningMaterials({
       search: next.toString() ? `?${next}` : '',
       hash: '#course-materials',
     }, { replace: true, preventScrollReset: true });
-    setExpanded({});
+    setVisibleCounts({});
   }
   useEffect(() => {
     if (location.hash !== '#course-materials') return;
@@ -75,12 +73,19 @@ export function CourseLearningMaterials({
   if (!hasContent && !assets.isPending && !assets.error && !sequences.isPending && !sequences.error) return null;
 
   function showMore(key: string, total: number) {
-    return total > PREVIEW_COUNT && <button
+    if (total <= COURSE_MATERIAL_PREVIEW) return null;
+    const visible = Math.min(total, visibleCounts[key] ?? COURSE_MATERIAL_PREVIEW);
+    const allVisible = visible >= total;
+    const upcoming = Math.min(COURSE_MATERIAL_PAGE, total - visible);
+    return <button
       type="button"
-      aria-expanded={!!expanded[key]}
-      onClick={() => setExpanded(previous => ({ ...previous, [key]: !previous[key] }))}
+      aria-expanded={visible > COURSE_MATERIAL_PREVIEW}
+      onClick={() => setVisibleCounts(previous => ({
+        ...previous,
+        [key]: allVisible ? COURSE_MATERIAL_PREVIEW : nextCourseMaterialVisibleCount(total, visible),
+      }))}
       className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-      {expanded[key] ? t('courseMaterials.showLess') : t('courseMaterials.showAll', { count: total })}
+      {allVisible ? t('courseMaterials.showLess') : t('courseMaterials.loadMore', { count: upcoming, visible, total })}
       <ArrowRight className="h-4 w-4" aria-hidden="true" />
     </button>;
   }
@@ -92,7 +97,7 @@ export function CourseLearningMaterials({
   };
 
   function assetList(key: string, values: CourseLearningAsset[]) {
-    const shown = expanded[key] ? values : values.slice(0, PREVIEW_COUNT);
+    const shown = values.slice(0, visibleCounts[key] ?? COURSE_MATERIAL_PREVIEW);
     const tone = ASSET_STYLES[key]?.card ?? 'border-t-primary';
     const cardClass = `group flex h-full min-h-36 flex-col gap-2 border border-input border-t-4 bg-card transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${key === 'videos' ? '' : 'p-4 sm:p-5'} ${tone}`;
     return <>
@@ -132,7 +137,7 @@ export function CourseLearningMaterials({
     {hasContent && <div className="mt-6 grid gap-4 border border-foreground border-t-4 border-t-brand-mint bg-card p-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
       <div className="min-w-0">
         <label htmlFor="course-material-search" className="mb-2 block text-sm font-semibold">{t('courseMaterials.searchLabel')}</label>
-        <input id="course-material-search" type="search" value={searchTerm} onChange={event => { setSearchTerm(event.target.value); setExpanded({}); }}
+        <input id="course-material-search" type="search" value={searchTerm} onChange={event => { setSearchTerm(event.target.value); setVisibleCounts({}); }}
           placeholder={t('courseMaterials.searchPlaceholder')}
           className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
       </div>
@@ -163,7 +168,7 @@ export function CourseLearningMaterials({
     {hasContent && hasFilters && !hasMatches && !assets.isPending && !sequences.isPending && <p role="status" className="mt-6 border border-input p-5 text-sm text-muted-foreground">{t('courseMaterials.noMatches')}</p>}
     {!!editorial.length && <section aria-labelledby="course-editorial-sequences" className="mt-8">
       <h3 id="course-editorial-sequences" className="flex items-center gap-2 text-xl font-semibold"><ListVideo className="h-5 w-5" aria-hidden="true" />{t('courseMaterials.editorialSequences')} <span className="font-mono text-sm text-muted-foreground">({editorial.length})</span></h3>
-      <div className="mt-4"><SequenceList sequences={expanded.editorial ? editorial : editorial.slice(0, PREVIEW_COUNT)} headingLevel={4} showUnits={false} /></div>
+      <div className="mt-4"><SequenceList sequences={editorial.slice(0, visibleCounts.editorial ?? COURSE_MATERIAL_PREVIEW)} headingLevel={4} showUnits={false} /></div>
       {showMore('editorial', editorial.length)}
     </section>}
     {sequences.error && <p role="alert" className="mt-4 text-sm text-muted-foreground">{t('courseMaterials.sequencesFailed')}</p>}
