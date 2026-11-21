@@ -604,6 +604,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "Les côtés des carrés mesurent 1, 1, 2, 3 et 5. Chaque nouvelle valeur est la somme des deux précédentes. Un quart de cercle dans chaque carré dessine la spirale.",
+      "civil": "Les diagonales divisent les rectangles en triangles. Dans un treillis, cette géométrie aide la structure à garder sa forme sous charge.",
       "discover": "Découvrir le symbole de {{course}}",
       "greeting": "salut, monde",
       "accounting": "10 € au débit, 10 € au crédit. Les comptes sont équilibrés.",

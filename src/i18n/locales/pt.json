@@ -604,6 +604,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "Os lados destes quadrados medem 1, 1, 2, 3 e 5. Cada novo valor é a soma dos dois anteriores. Um quarto de círculo em cada quadrado desenha a espiral.",
+      "civil": "As diagonais dividem os retângulos em triângulos. Numa treliça, esta geometria ajuda a manter a forma sob carga.",
       "discover": "Descobrir o símbolo de {{course}}",
       "greeting": "olá, mundo",
       "accounting": "10 € a débito, 10 € a crédito. As contas batem.",

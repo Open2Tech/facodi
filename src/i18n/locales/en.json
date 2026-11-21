@@ -604,6 +604,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "These squares have sides of 1, 1, 2, 3 and 5. Each new value is the sum of the previous two. A quarter circle in each square traces the spiral.",
+      "civil": "The diagonals divide the rectangles into triangles. In a truss, this geometry helps the structure hold its shape under load.",
       "discover": "Discover the symbol for {{course}}",
       "greeting": "hello, world",
       "accounting": "€10 debit, €10 credit. The books balance.",

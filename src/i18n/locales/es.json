@@ -604,6 +604,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "Los lados de estos cuadrados miden 1, 1, 2, 3 y 5. Cada nuevo valor es la suma de los dos anteriores. Un cuarto de círculo en cada cuadrado dibuja la espiral.",
+      "civil": "Las diagonales dividen los rectángulos en triángulos. En una celosía, esta geometría ayuda a mantener la forma bajo carga.",
       "discover": "Descubre el símbolo de {{course}}",
       "greeting": "hola, mundo",
       "accounting": "10 € al debe, 10 € al haber. Las cuentas cuadran.",

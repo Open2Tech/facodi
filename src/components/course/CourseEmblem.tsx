@@ -1,10 +1,10 @@
 import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, DraftingCompass, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, Sigma, type LucideIcon } from 'lucide-react';
+import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, type LucideIcon } from 'lucide-react';
 import type { Course } from '@/entities/course/course.types';
 import './CourseEmblem.css';
 
-type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy';
+type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil';
 type Identity = Pick<Course, 'slug' | 'title'>;
 
 const subjects = new Map<string, Subject | LucideIcon>([
@@ -19,13 +19,13 @@ const subjects = new Map<string, Subject | LucideIcon>([
   ['ldcom', PenTool],
   ['desporto', Dumbbell],
   ['economia', ChartNoAxesCombined],
-  ['engenharia-civil', DraftingCompass],
+  ['engenharia-civil', 'civil'],
   ['lesti', 'computing'],
   ['engenharia-eletrotecnica-computadores', Cpu],
   ['gestao', BriefcaseBusiness],
   ['ufes-letras-ingles', Languages],
   ['marketing', Megaphone],
-  ['matematica-aplicada-economia-gestao', Sigma],
+  ['matematica-aplicada-economia-gestao', 'mathematics'],
   ['patrimonio-cultural-arqueologia', Landmark],
   ['psicologia', 'psychology'],
   ['neurociencias-cognitivas-neuropsicologia', 'neuroscience'],
@@ -34,6 +34,15 @@ const subjects = new Map<string, Subject | LucideIcon>([
 
 function Illustration({ subject, large = false, greeting }: { subject: Subject; large?: boolean; greeting?: string }) {
   return <svg viewBox="0 0 32 32" width={large ? 48 : 26} height={large ? 48 : 26} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {subject === 'mathematics' && <>
+      <rect x="4" y="8" width="24" height="15" />
+      <path d="M19 8v15m0-6h9m-6 0v6m-3-3h3" strokeWidth="1" />
+      <path className="emblem-reveal-line" pathLength="1" d="M4 23a15 15 0 0 1 15-15 9 9 0 0 1 9 9 6 6 0 0 1-6 6 3 3 0 0 1-3-3 3 3 0 0 1 3-3" />
+    </>}
+    {subject === 'civil' && <>
+      <path d="M2 23h28M4 23v4m24-4v4M4 21V10h24v11M12 10v13m8-13v13" />
+      <path className="emblem-reveal-line" pathLength="1" d="m4 23 8-13 8 13 8-13" />
+    </>}
     {subject === 'accounting' && <>
       <path d="M3 6q7-2 13 1 6-3 13-1v20q-7-2-13 1-6-3-13-1zM16 7v20M6 11h7m6 0h7" />
       <path className="emblem-ledger-lines" d="M6 15h6m8 0h6M6 19h4m10 0h4" />
