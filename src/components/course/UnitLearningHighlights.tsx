@@ -53,6 +53,9 @@ export function UnitLearningHighlights({
             <span className="font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">
               {item.title ?? t('unitHighlights.curatedPath')}
             </span>
+            {!!item.sourceHost && <span className="break-all text-xs text-muted-foreground">
+              {t('unitHighlights.sourceHost', { host: item.sourceHost })}
+            </span>}
             <span className="mt-auto inline-flex items-center gap-2 pt-1 text-xs font-semibold">
               {t('unitHighlights.open')}<ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </span>
