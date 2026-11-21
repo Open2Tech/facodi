@@ -38,6 +38,7 @@ describe('YouTube playlist import safety', () => {
   it('uses only publicly available, embeddable videos with verified channel and deduplicates in original order', () => {
     assert.equal(verifiedPublicVideo(apiVideo(id1, { status: { privacyStatus: 'private', embeddable: true } })), null);
     assert.equal(verifiedPublicVideo(apiVideo(id1, { status: { privacyStatus: 'public', embeddable: false } })), null);
+    assert.equal(verifiedPublicVideo(apiVideo(id1, { status: { privacyStatus: 'public' } })), null);
     const videos = [verifiedPublicVideo(apiVideo(id1)), verifiedPublicVideo(apiVideo(id2))].filter(Boolean);
     const members = orderedUniqueMembers([
       { youtubeId: id2, position: 2, videoOwnerChannelId: 'UCauthor' },
