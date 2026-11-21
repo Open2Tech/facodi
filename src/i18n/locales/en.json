@@ -344,7 +344,7 @@
     "addName": "Add your name in your profile"
   },
   "profile": {
-    "description": "Manage your details, account security, preferences for this browser and your contributions.",
+    "description": "Your campus settings corner: account details, security, preferences for this browser, and contribution history.",
     "saved": "Changes saved.",
     "summary": "Account summary",
     "memberSince": "Member since",
@@ -745,8 +745,8 @@
     "openSource": "Explore reference"
   },
   "authPanel": {
-    "title": "The catalogue stays open.",
-    "text": "You do not need an account to read. An account lets you manage your details and, with the right role, contribute."
+    "title": "The campus stays wide open.",
+    "text": "You do not need an account to study, read, or watch lessons. Sign in whenever you want to save your pace, take notes, or contribute references."
   },
   "studyReview": {
     "open": "Review study paths",
@@ -784,8 +784,8 @@
   "playlistSubmit": {
     "nav": "Contribute",
     "back": "Back to the project",
-    "title": "Submit a YouTube playlist",
-    "description": "Propose a YouTube playlist for a curricular unit. Videos become visible only after editorial review.",
+    "title": "Got a playlist that saves the semester?",
+    "description": "Link a YouTube playlist to a curricular unit to help the next learner. Every proposal goes through editorial review before entering the catalogue.",
     "course": "Course",
     "unit": "Curricular unit",
     "selectCourse": "Select a course",

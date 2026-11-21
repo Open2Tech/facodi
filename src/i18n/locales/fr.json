@@ -344,7 +344,7 @@
     "addName": "Ajoute ton nom dans ton profil"
   },
   "profile": {
-    "description": "Gérez vos informations, la sécurité du compte, les préférences de ce navigateur et vos contributions.",
+    "description": "Ton coin réglages sur le campus : informations du compte, sécurité, préférences de ce navigateur et historique des contributions.",
     "saved": "Modifications enregistrées.",
     "summary": "Résumé du compte",
     "memberSince": "Membre depuis",
@@ -745,8 +745,8 @@
     "openSource": "Consulter la référence"
   },
   "authPanel": {
-    "title": "Le catalogue reste ouvert.",
-    "text": "Aucun compte n’est nécessaire pour lire. Le compte sert à gérer tes informations et, avec le bon rôle, à contribuer."
+    "title": "Le campus reste grand ouvert.",
+    "text": "Aucun compte n’est nécessaire pour étudier, lire ou regarder des cours. Connecte-toi quand tu veux garder ton rythme, prendre des notes ou proposer des références."
   },
   "studyReview": {
     "open": "Réviser les parcours",
@@ -784,8 +784,8 @@
   "playlistSubmit": {
     "nav": "Contribuer",
     "back": "Retour au projet",
-    "title": "Soumettre une playlist YouTube",
-    "description": "Proposez une playlist pour une unité d'enseignement. Les vidéos ne sont publiées qu'après validation éditoriale.",
+    "title": "Tu as une playlist qui sauve le semestre ?",
+    "description": "Associe une playlist YouTube à une unité d'enseignement pour aider celles et ceux qui suivent. Chaque proposition passe par une révision éditoriale avant publication.",
     "course": "Cours",
     "unit": "Unité",
     "selectCourse": "Sélectionner un cours",

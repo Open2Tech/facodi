@@ -124,7 +124,7 @@ export default function Community() {
         <h2 id="community-cta" className="max-w-xl text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t('projectCommunity.ctaTitle')}</h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-brand-ink/90">{t('projectCommunity.ctaDescription')}</p>
       </div>
-      <Button size="lg" className="bg-brand-ink text-ink-foreground hover:bg-brand-ink/90" asChild><Link to={user ? '/community/join' : '/login?next=%2Fcommunity%2Fjoin'}>
+      <Button size="lg" className="border-brand-ink bg-brand-ink text-ink-foreground hover:bg-brand-ink/90" asChild><Link to={user ? '/community/join' : '/login?next=%2Fcommunity%2Fjoin'}>
         {t('communityJoin.cta')}<ArrowUpRight className="h-4 w-4" />
       </Link></Button>
     </section>

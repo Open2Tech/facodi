@@ -344,7 +344,7 @@
     "addName": "Añade tu nombre en el perfil"
   },
   "profile": {
-    "description": "Gestiona tus datos, la seguridad de la cuenta, las preferencias de este navegador y tus contribuciones.",
+    "description": "Tu rincón de ajustes en el campus: datos de cuenta, seguridad, preferencias de este navegador e historial de contribuciones.",
     "saved": "Cambios guardados.",
     "summary": "Resumen de la cuenta",
     "memberSince": "Miembro desde",
@@ -745,8 +745,8 @@
     "openSource": "Explorar referencia"
   },
   "authPanel": {
-    "title": "El catálogo sigue abierto.",
-    "text": "No necesitas una cuenta para leer. La cuenta sirve para gestionar tus datos y, con el rol adecuado, contribuir."
+    "title": "El campus sigue con las puertas abiertas.",
+    "text": "No necesitas cuenta para estudiar, leer o ver clases. Entra cuando quieras guardar tu ritmo, tomar notas o aportar referencias."
   },
   "studyReview": {
     "open": "Revisar itinerarios",
@@ -784,14 +784,14 @@
   "playlistSubmit": {
     "nav": "Contribuir",
     "back": "Volver al proyecto",
-    "title": "Enviar una lista de YouTube",
-    "description": "Proponga una lista de reproducción para una unidad curricular. Los vídeos se publican solo después de revisión editorial.",
+    "title": "¿Tienes una lista que salva el semestre?",
+    "description": "Asocia una lista de reproducción de YouTube a una unidad curricular para ayudar a quien viene detrás. Cada propuesta pasa por revisión editorial antes de publicarse.",
     "course": "Curso",
     "unit": "Unidad curricular",
-    "selectCourse": "Seleccione un curso",
-    "selectUnit": "Seleccione una unidad",
+    "selectCourse": "Elige un curso",
+    "selectUnit": "Elige una unidad",
     "url": "Enlace de lista de YouTube",
-    "urlHint": "Incluya el parámetro list= en el enlace completo.",
+    "urlHint": "Pega el enlace completo con el parámetro list=…",
     "optionalTitle": "Título (opcional)",
     "optionalDescription": "Contexto y pertinencia (opcional)",
     "maxVideos": "Número máximo de vídeos",

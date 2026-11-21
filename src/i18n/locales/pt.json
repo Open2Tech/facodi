@@ -344,7 +344,7 @@
     "addName": "Acrescenta o teu nome no perfil"
   },
   "profile": {
-    "description": "Gere os teus dados, a segurança da conta, as preferências deste navegador e as tuas contribuições.",
+    "description": "O teu canto de configuração no campus: dados da conta, segurança, preferências deste navegador e histórico de contribuições.",
     "saved": "Alterações guardadas.",
     "summary": "Resumo da conta",
     "memberSince": "Membro desde",
@@ -745,8 +745,8 @@
     "openSource": "Explorar referência"
   },
   "authPanel": {
-    "title": "O catálogo continua aberto.",
-    "text": "Não precisas de conta para ler. A conta serve para gerir os teus dados e, com o papel certo, para contribuir."
+    "title": "O campus continua de portas abertas.",
+    "text": "Não precisas de conta para estudar, ler ou ver aulas. Entra quando quiseres guardar o teu ritmo, tomar notas ou contribuir com referências."
   },
   "studyReview": {
     "open": "Rever percursos",
@@ -784,14 +784,14 @@
   "playlistSubmit": {
     "nav": "Contribuir",
     "back": "Voltar ao projeto",
-    "title": "Enviar playlist para a FACODI",
-    "description": "Associe uma playlist do YouTube a uma unidade curricular. A importação é uma proposta: os vídeos só ficam disponíveis como recursos aprovados depois da revisão editorial.",
+    "title": "Tens uma playlist que salva o semestre?",
+    "description": "Liga uma playlist do YouTube a uma unidade curricular para ajudar quem vem a seguir. A proposta passa primeiro pela revisão editorial antes de entrar no catálogo.",
     "course": "Curso",
     "unit": "Unidade curricular",
-    "selectCourse": "Selecione um curso",
-    "selectUnit": "Selecione uma UC",
+    "selectCourse": "Escolhe um curso",
+    "selectUnit": "Escolhe uma UC",
     "url": "URL da playlist YouTube",
-    "urlHint": "Copie a ligação completa com o parâmetro list=…",
+    "urlHint": "Cola a ligação completa com o parâmetro list=…",
     "optionalTitle": "Título (opcional)",
     "optionalDescription": "Contexto e pertinência da playlist (opcional)",
     "maxVideos": "Número máximo de vídeos a importar",

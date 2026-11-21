@@ -19,9 +19,9 @@ export function ProfileSummary({ sections }: { sections: { id: string; title: st
     ...(user?.created_at ? [{ icon: CalendarDays, label: t('profile.memberSince'), value: date(user.created_at) }] : []),
     ...(user?.last_sign_in_at ? [{ icon: Clock, label: t('profile.lastSignIn'), value: date(user.last_sign_in_at, true) }] : []),
   ];
-  return <aside aria-labelledby="profile-summary" className="border border-input">
+  return <aside aria-labelledby="profile-summary" className="border border-foreground border-t-4 border-t-primary bg-card">
     <div className="flex items-center gap-4 border-b border-input p-5">
-      <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center border border-foreground bg-primary text-xl font-bold text-ink">{initials(name) || '·'}</span>
+      <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center border border-foreground bg-primary text-xl font-bold text-brand-ink">{initials(name) || '·'}</span>
       <div className="min-w-0">
         <h2 id="profile-summary" className="sr-only">{t('profile.summary')}</h2>
         <p className="break-words font-semibold">{name}</p>
