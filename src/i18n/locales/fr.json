@@ -2514,6 +2514,7 @@
     "limited": "Affichage de {{shown}} sur {{total}}. Affinez votre recherche."
   },
   "unitHighlights": {
+    "sourceHost": "Source : {{host}}",
     "eyebrow": "Étudier cette unité",
     "title": "Commencer ici",
     "description": "Les ressources déjà associées à cette unité d’enseignement, présentées par format. Choisissez votre méthode.",
