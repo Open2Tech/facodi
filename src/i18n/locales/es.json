@@ -2472,5 +2472,20 @@
     "browseMaterials": "Explorar materiales del curso",
     "videoLessons": "Clases en vídeo por asignatura",
     "videoNotice": "Vídeos publicados y vinculados a asignaturas. No son automáticamente secuencias editoriales ni implica que cada clase se haya revisado íntegramente."
+  },
+  "courseStart": {
+    "eyebrow": "Tu siguiente paso",
+    "title": "¿Por dónde empezar?",
+    "description": "Estas asignaturas tienen materiales disponibles. Elige un tema y explora sus recursos.",
+    "noCoverage": "Explora las primeras asignaturas del plan de estudios. Los indicadores de materiales aún no están disponibles para este curso.",
+    "materials": "Ver materiales",
+    "plan": "Plan de estudios",
+    "coverage": "Cobertura disponible",
+    "availableSummary": "{{videos}} asignaturas con vídeos · {{readings}} con lecturas",
+    "unitLabel": "Asignatura",
+    "videoCount": "Vídeos: {{count}}",
+    "readingCount": "Lecturas: {{count}}",
+    "openUnit": "Explorar asignatura",
+    "disclaimer": "Las sugerencias siguen el orden curricular y la disponibilidad de recursos; no establecen requisitos previos oficiales."
   }
 }
