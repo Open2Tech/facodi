@@ -73,6 +73,20 @@ describe('filterCourseLearningAssets', () => {
     expect(filterCourseLearningAssets(assets, null, 'Fiscalidade I').playlists.map(item => item.slug)).toEqual(['playlist']);
   });
 
+  it('finds resources by exact or partial curricular-unit codes without affecting unit titles', () => {
+    const unitCodes = new Map([['unit-1', '18021027'], ['unit-2', '18021028']]);
+    expect(filterCourseLearningAssets(assets, null, '18021027', unitCodes).references.map(item => item.slug))
+      .toEqual(['iva']);
+    expect(filterCourseLearningAssets(assets, null, '18021027', unitCodes).playlists.map(item => item.slug))
+      .toEqual(['playlist']);
+    expect(filterCourseLearningAssets(assets, null, '18021028', unitCodes).references.map(item => item.slug))
+      .toEqual(['personalidade']);
+    expect(filterCourseLearningAssets(assets, 'unit-2', '18021027', unitCodes).references)
+      .toEqual([]);
+    expect(filterCourseLearningAssets(assets, null, '18021027').playlists)
+      .toEqual([]);
+  });
+
   it('handles combined filters and no results without mutating original collections', () => {
     const result = filterCourseLearningAssets(assets, 'unit-2', 'IVA');
     expect(result.references).toHaveLength(0);
