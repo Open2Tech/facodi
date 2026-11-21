@@ -2503,5 +2503,25 @@
     "materialCount": "{{videos}} vídeos · {{readings}} lecturas",
     "viewMaterials": "Ver materiales",
     "limited": "Mostrando {{shown}} de {{total}}. Refina la búsqueda."
+  },
+  "unitHighlights": {
+    "eyebrow": "Estudiar esta asignatura",
+    "title": "Empieza por aquí",
+    "description": "Materiales ya asociados a esta asignatura, organizados por formato. Elige cómo prefieres aprender.",
+    "allMaterials": "Ver todos los materiales",
+    "curatedPath": "Itinerario de estudio organizado",
+    "lessons": "{{count}} clases",
+    "open": "Explorar",
+    "empty": "Todavía no hay materiales vinculados directamente a esta asignatura. Explora la biblioteca del curso o sugiere un recurso.",
+    "unavailable": "No se han podido cargar algunos materiales. Explora la biblioteca del curso.",
+    "notice": "Los destacados respetan los vínculos y el orden editorial existentes. No implican revisión completa de los vídeos ni requisitos oficiales.",
+    "kinds": {
+      "path": "Itinerario editorial",
+      "sequence": "Secuencia FACODI",
+      "video": "Vídeo",
+      "playlist": "Lista externa",
+      "module": "Módulo de estudio",
+      "reading": "Referencia"
+    }
   }
 }
