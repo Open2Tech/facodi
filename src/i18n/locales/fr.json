@@ -2468,6 +2468,8 @@
     "openUnit": "Ouvrir l'unité",
     "noMatches": "Aucune ressource ne correspond aux filtres. Essayez une autre unité ou un autre mot-clé.",
     "viewUnitMaterials": "Voir les ressources de cette unité",
-    "browseMaterials": "Explorer les ressources du cursus"
+    "browseMaterials": "Explorer les ressources du cursus",
+    "videoLessons": "Cours vidéo par unité d’enseignement",
+    "videoNotice": "Vidéos publiés et associés aux unités d’enseignement. Ce ne sont pas automatiquement des séquences éditoriales, ni des cours intégralement révisés."
   }
 }
