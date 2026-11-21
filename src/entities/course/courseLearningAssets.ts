@@ -39,6 +39,9 @@ export interface CourseAssetObject {
   description: string | null;
   source_url: string | null;
   metadata?: Json | null;
+  /** Sparse JSON fields selected by PostgREST rather than the entire metadata blob. */
+  youtube_video_id?: string | null;
+  duration_seconds?: number | null;
   object_type: string;
 }
 
@@ -76,7 +79,12 @@ export function composeCourseLearningAssets(
     if (!asset) {
       asset = {
         id: item.id, slug: item.slug, title: item.title,
-        description: item.description, sourceUrl: item.source_url, metadata: item.metadata, unitTitles: [], unitIds: [],
+        description: item.description, sourceUrl: item.source_url,
+        metadata: item.metadata ?? (item.object_type === 'video'
+          && (item.youtube_video_id != null || item.duration_seconds != null)
+          ? { youtube_video_id: item.youtube_video_id ?? null, duration_seconds: item.duration_seconds ?? null }
+          : undefined),
+        unitTitles: [], unitIds: [],
       };
       buckets.set(item.id, asset);
       group.push(asset);
@@ -112,4 +120,12 @@ export function filterCourseLearningAssets(
     references: filter(assets.references),
     guides: filter(assets.guides),
   };
+}
+
+/** Rendering is incremental; filters still operate over all fetched public assets. */
+export const COURSE_MATERIAL_PREVIEW = 6;
+export const COURSE_MATERIAL_PAGE = 24;
+
+export function nextCourseMaterialVisibleCount(total: number, current = COURSE_MATERIAL_PREVIEW): number {
+  return Math.min(total, Math.max(COURSE_MATERIAL_PREVIEW, current) + COURSE_MATERIAL_PAGE);
 }

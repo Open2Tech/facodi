@@ -2455,6 +2455,7 @@
     "openSource": "Consultar fonte",
     "open": "Abrir recurso",
     "showAll": "Ver todos ({{count}})",
+    "loadMore": "Mostrar mais {{count}} ({{visible}} de {{total}})",
     "showLess": "Mostrar menos",
     "loadFailed": "Não foi possível carregar os materiais ligados a este curso.",
     "sequencesFailed": "Não foi possível consultar as sequências editoriais neste momento.",
