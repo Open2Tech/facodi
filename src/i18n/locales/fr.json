@@ -2503,5 +2503,25 @@
     "materialCount": "{{videos}} vidéos · {{readings}} lectures",
     "viewMaterials": "Voir les ressources",
     "limited": "Affichage de {{shown}} sur {{total}}. Affinez votre recherche."
+  },
+  "unitHighlights": {
+    "eyebrow": "Étudier cette unité",
+    "title": "Commencer ici",
+    "description": "Les ressources déjà associées à cette unité d’enseignement, présentées par format. Choisissez votre méthode.",
+    "allMaterials": "Voir toutes les ressources",
+    "curatedPath": "Parcours d’étude structuré",
+    "lessons": "{{count}} cours",
+    "open": "Découvrir",
+    "empty": "Aucune ressource n’est encore directement liée à cette unité. Parcourez la bibliothèque du cursus ou suggérez une ressource.",
+    "unavailable": "Certaines ressources n’ont pas pu être chargées. Parcourez la bibliothèque du cursus.",
+    "notice": "Les sélections suivent les liens et l’ordre éditorial existants. Elles ne prouvent ni la révision intégrale des vidéos ni des prérequis officiels.",
+    "kinds": {
+      "path": "Parcours éditorial",
+      "sequence": "Séquence FACODI",
+      "video": "Vidéo",
+      "playlist": "Playlist externe",
+      "module": "Module d’étude",
+      "reading": "Référence"
+    }
   }
 }
