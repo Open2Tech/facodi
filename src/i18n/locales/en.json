@@ -2503,5 +2503,25 @@
     "materialCount": "{{videos}} videos · {{readings}} readings",
     "viewMaterials": "View materials",
     "limited": "Showing {{shown}} of {{total}}. Refine your search to find a unit."
+  },
+  "unitHighlights": {
+    "eyebrow": "Study this unit",
+    "title": "Start here",
+    "description": "Already-linked learning materials for this curricular unit, grouped by format. Choose what works for you.",
+    "allMaterials": "View all materials",
+    "curatedPath": "Structured study path",
+    "lessons": "{{count}} lessons",
+    "open": "Explore",
+    "empty": "No materials are directly linked to this unit yet. Browse the course library or suggest a resource.",
+    "unavailable": "Some materials could not be loaded. Explore the course library.",
+    "notice": "Highlights follow existing resource links and editorial order. They are not proof of full video review or official prerequisites.",
+    "kinds": {
+      "path": "Editorial path",
+      "sequence": "FACODI sequence",
+      "video": "Video",
+      "playlist": "External playlist",
+      "module": "Study module",
+      "reading": "Reference"
+    }
   }
 }
