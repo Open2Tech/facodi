@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { composeCourseLearningAssets, filterCourseLearningAssets } from './courseLearningAssets';
+import { COURSE_MATERIAL_PREVIEW, COURSE_MATERIAL_PAGE, composeCourseLearningAssets, filterCourseLearningAssets, nextCourseMaterialVisibleCount } from './courseLearningAssets';
 
 const parentIds = ['course', 'unit-1', 'unit-2'];
 const labels = new Map([['unit-1', 'Fiscalidade I'], ['unit-2', 'Fiscalidade II']]);
@@ -107,5 +107,47 @@ describe('course-linked video discovery', () => {
     expect(filterCourseLearningAssets(videos, 'unit-1', 'algebra').videos.map(v => v.slug)).toEqual(['algebra-linear']);
     expect(filterCourseLearningAssets(videos, 'unit-1', 'estatistica').videos).toEqual([]);
     expect(filterCourseLearningAssets(videos, 'unit-2', 'ESTATISTICA').videos.map(v => v.slug)).toEqual(['estatistica']);
+  });
+});
+
+describe('lightweight PostgREST video metadata projection', () => {
+  it('reconstructs the same minimal metadata needed for thumbnails and duration', () => {
+    const result = composeCourseLearningAssets(parentIds, labels, [
+      { parent_object_id: 'unit-1', child_object_id: 'v-projected', position: 1 },
+    ], [{
+      id: 'v-projected', slug: 'material-video', title: 'Vídeo com duração', description: null,
+      source_url: 'https://www.youtube.com/watch?v=J7DzL2_Na80',
+      youtube_video_id: 'J7DzL2_Na80', duration_seconds: 1507, object_type: 'video',
+    }]);
+    expect(result.videos).toHaveLength(1);
+    expect(result.videos[0].metadata).toEqual({ youtube_video_id: 'J7DzL2_Na80', duration_seconds: 1507 });
+  });
+
+  it('allows video sources without either metadata field (fallback to source URL)', () => {
+    const result = composeCourseLearningAssets(parentIds, labels, [
+      { parent_object_id: 'unit-1', child_object_id: 'video-fallback', position: 1 },
+    ], [{
+      id: 'video-fallback', slug: 'video-fallback', title: 'Vídeo legado', description: null,
+      source_url: 'https://www.youtube.com/watch?v=J7DzL2_Na80',
+      youtube_video_id: null, duration_seconds: null, object_type: 'video',
+    }]);
+    expect(result.videos[0].metadata).toBeUndefined();
+    expect(result.videos[0].sourceUrl).toContain('youtube.com/watch');
+  });
+});
+
+describe('progressive rendering of course materials', () => {
+  it('starts with six and progressively reveals 24 more without exceeding the total', () => {
+    expect(COURSE_MATERIAL_PREVIEW).toBe(6);
+    expect(COURSE_MATERIAL_PAGE).toBe(24);
+    expect(nextCourseMaterialVisibleCount(601)).toBe(30);
+    expect(nextCourseMaterialVisibleCount(601, 30)).toBe(54);
+    expect(nextCourseMaterialVisibleCount(40, 30)).toBe(40);
+    expect(nextCourseMaterialVisibleCount(6, 6)).toBe(6);
+  });
+
+  it('works when filtering reduces a previously expanded list', () => {
+    expect(nextCourseMaterialVisibleCount(3, 54)).toBe(3);
+    expect(nextCourseMaterialVisibleCount(24, COURSE_MATERIAL_PREVIEW)).toBe(24);
   });
 });
