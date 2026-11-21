@@ -2466,6 +2466,8 @@
     "allUnits": "Todas las asignaturas",
     "clearFilters": "Borrar filtros",
     "openUnit": "Abrir asignatura",
-    "noMatches": "No se han encontrado materiales para estos filtros. Prueba con otra asignatura o palabra clave."
+    "noMatches": "No se han encontrado materiales para estos filtros. Prueba con otra asignatura o palabra clave.",
+    "viewUnitMaterials": "Ver materiales de esta asignatura",
+    "browseMaterials": "Explorar materiales del curso"
   }
 }

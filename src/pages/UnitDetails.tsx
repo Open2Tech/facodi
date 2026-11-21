@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Award, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
@@ -23,7 +23,7 @@ import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { StudyVideo } from '@/components/resource/StudyVideo';
 import { Skeleton } from '@/components/ui/skeleton';
-import { unitPath } from '@/entities/course/course.paths';
+import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
 import { ExamRevision } from '@/components/course/ExamRevision';
 import { cn } from '@/lib/utils';
@@ -114,7 +114,15 @@ export default function UnitDetails() {
         <Link to={`/courses/${course.slug}`} className="font-semibold underline decoration-2 underline-offset-4">{course.title}</Link>
       </p>
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
-      <div className="mt-6"><ShareButton title={unit.title} /></div>
+      <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
+        <ShareButton title={unit.title} />
+        <Link to={courseMaterialsPath(course.slug, unit.slug)}
+          className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <BookOpen className="h-4 w-4" aria-hidden="true" />
+          {t('courseMaterials.viewUnitMaterials')}
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
     </header>
     <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
       href={studyPath || composedPath || composedPending ? '#unit-study-path' : '#unit-resources'} />

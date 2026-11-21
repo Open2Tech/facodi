@@ -2466,6 +2466,8 @@
     "allUnits": "Toutes les unités",
     "clearFilters": "Effacer les filtres",
     "openUnit": "Ouvrir l'unité",
-    "noMatches": "Aucune ressource ne correspond aux filtres. Essayez une autre unité ou un autre mot-clé."
+    "noMatches": "Aucune ressource ne correspond aux filtres. Essayez une autre unité ou un autre mot-clé.",
+    "viewUnitMaterials": "Voir les ressources de cette unité",
+    "browseMaterials": "Explorer les ressources du cursus"
   }
 }
