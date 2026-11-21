@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, ArrowUpRight, BookOpen, Layers3, ListVideo } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
 import { useSequences } from '@/features/sequences/useSequences';
@@ -29,12 +29,31 @@ export function CourseLearningMaterials({
   units: readonly CourseLearningUnit[];
 }) {
   const { t } = useTranslation();
+  const { hash } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedUnitId, setSelectedUnitId] = useState('');
-  const selectedUnit = units.find(unit => unit.learningObjectId === selectedUnitId);
+  const requestedSlug = searchParams.get('materialsUnit');
+  const selectedUnit = units.find(unit => unit.slug === requestedSlug && !!unit.learningObjectId);
+  const selectedUnitId = selectedUnit?.learningObjectId ?? '';
+  /** Keep a canonical, shareable URL without changing unrelated course query params. */
+  function selectUnit(id: string) {
+    const unit = units.find(item => item.learningObjectId === id);
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous);
+      if (unit) next.set('materialsUnit', unit.slug);
+      else next.delete('materialsUnit');
+      return next;
+    }, { replace: true, preventScrollReset: true });
+    setExpanded({});
+  }
+  useEffect(() => {
+    if (hash !== '#course-materials') return;
+    const frame = requestAnimationFrame(() => document.getElementById('course-materials')?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
+  }, [hash, assets.isPending, sequences.isPending]);
   const search = normalizeCourseMaterialTerm(searchTerm);
   const codes = new Set(units.flatMap(unit => unit.code ? [unit.code] : []));
   const allEditorial = (sequences.data ?? []).filter(sequence =>
@@ -108,7 +127,7 @@ export function CourseLearningMaterials({
       </div>
       <div className="min-w-0">
         <label htmlFor="course-material-unit" className="mb-2 block text-sm font-semibold">{t('courseMaterials.unitFilterLabel')}</label>
-        <select id="course-material-unit" value={selectedUnitId} onChange={event => { setSelectedUnitId(event.target.value); setExpanded({}); }}
+        <select id="course-material-unit" value={selectedUnitId} onChange={event => selectUnit(event.target.value)}
           className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <option value="">{t('courseMaterials.allUnits')}</option>
           {units.filter(unit => unit.learningObjectId).map(unit =>
@@ -117,7 +136,7 @@ export function CourseLearningMaterials({
       </div>
       {hasFilters && <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:col-span-2">
         <button type="button" className="min-h-11 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={() => { setSearchTerm(''); setSelectedUnitId(''); setExpanded({}); }}>{t('courseMaterials.clearFilters')}</button>
+          onClick={() => { setSearchTerm(''); selectUnit(''); }}>{t('courseMaterials.clearFilters')}</button>
         {selectedUnit && <Link to={unitPath(courseSlug, selectedUnit.slug)}
           className="inline-flex min-h-11 items-center gap-1.5 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           {t('courseMaterials.openUnit')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
