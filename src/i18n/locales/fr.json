@@ -2443,6 +2443,8 @@
     "branchNotice": "La première année est commune. À partir de la deuxième, choisis une filière pour voir ses UE obligatoires et ses options."
   },
   "courseMaterials": {
+    "emptyCourse": "Aucune ressource spécifique n'a encore été publiée pour ce cursus. Vous pouvez explorer la bibliothèque générale en attendant.",
+    "browseLibrary": "Explorer la bibliothèque FACODI",
     "title": "Ressources pour étudier",
     "description": "Retrouvez les séquences, playlists et références déjà associées aux unités d'enseignement de ce cursus.",
     "editorialSequences": "Séquences d'apprentissage",
