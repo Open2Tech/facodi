@@ -54,7 +54,7 @@ export function pickUnitHighlights({
     href: `/resources/${encodeURIComponent(readings[0].slug)}`,
   });
   // When there is a path or playlist, a standalone video is a useful alternative entry point.
-  if (highlights.length < 3 && videos.length && !highlights.some(item => item.kind === 'video')) {
+  if (!hasStudyPath && highlights.length < 3 && videos.length && !highlights.some(item => item.kind === 'video')) {
     highlights.push({
       kind: 'video', title: videos[0].title,
       href: `${unitPath(courseSlug, unitSlug)}?v=${encodeURIComponent(videos[0].id)}#unit-resources`,
