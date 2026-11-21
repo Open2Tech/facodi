@@ -2443,6 +2443,8 @@
     "branchNotice": "The first year is shared. From the second year on, choose a branch to see its required units and options."
   },
   "courseMaterials": {
+    "emptyCourse": "No resources have been published specifically for this course yet. Explore the wider library while the catalogue grows.",
+    "browseLibrary": "Browse the FACODI library",
     "title": "Learning materials",
     "description": "Find the learning sequences, playlists and references already linked to this course's units, all in one place.",
     "editorialSequences": "Learning sequences",
