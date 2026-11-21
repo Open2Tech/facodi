@@ -89,7 +89,7 @@ describe('course-linked video discovery', () => {
     { parent_object_id: 'unit-2', child_object_id: 'v2', position: 11 },
     { parent_object_id: 'elsewhere', child_object_id: 'v3', position: 1 },
   ], [
-    { id: 'v1', slug: 'algebra-linear', title: 'Álgebra Linear — Matrizes', description: 'Introdução às matrizes', source_url: 'https://www.youtube.com/watch?v=example', object_type: 'video' },
+    { id: 'v1', slug: 'algebra-linear', title: 'Álgebra Linear — Matrizes', description: 'Introdução às matrizes', source_url: 'https://www.youtube.com/watch?v=J7DzL2_Na80', metadata: { youtube_video_id: 'J7DzL2_Na80' }, object_type: 'video' },
     { id: 'v2', slug: 'estatistica', title: 'Estatística Aplicada', description: null, source_url: null, object_type: 'video' },
     { id: 'v3', slug: 'fora', title: 'Vídeo externo a este curso', description: null, source_url: null, object_type: 'video' },
   ]);
@@ -97,6 +97,8 @@ describe('course-linked video discovery', () => {
   it('deduplicates published video assets from multiple UCs without mixing with playlists', () => {
     expect(videos.videos.map(v => v.slug)).toEqual(['algebra-linear', 'estatistica']);
     expect(videos.videos[0].unitIds).toEqual(['unit-1', 'unit-2']);
+    expect(videos.videos[0].metadata).toEqual({ youtube_video_id: 'J7DzL2_Na80' });
+    expect(videos.videos[1].metadata).toBeUndefined();
     expect(videos.playlists).toHaveLength(0);
     expect(videos.videos.every(v => v.id !== 'v3')).toBe(true);
   });
