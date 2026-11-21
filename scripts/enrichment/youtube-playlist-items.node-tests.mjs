@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { isYoutubeVideoId, playlistIdFromUrl, parsePlaylistItemsPage, verifiedPublicVideo, orderedUniqueMembers } from './youtube-playlist-items-utils.mjs';
+import { isYoutubeVideoId, playlistIdFromUrl, parsePlaylistItemsPage, verifiedPublicVideo, orderedUniqueMembers, planPlaylistMemberImports } from './youtube-playlist-items-utils.mjs';
 
 const listId = 'PLxI8Can9yAHeK7GUEGxMsqoPRmJKwI9Jw';
 const id1 = '3yLXNzDUH58';
@@ -33,6 +33,23 @@ describe('YouTube playlist import safety', () => {
     assert.deepEqual(page.items.map(x => [x.youtubeId, x.position]), [[id2, 3], [id1, 1]]);
     assert.equal(page.nextPageToken, 'PAGE2');
     assert.throws(() => parsePlaylistItemsPage({ error: 'missing' }, listId));
+  });
+
+  it('never imports a second copy of unpublished or orphaned catalogued videos', () => {
+    const video = { channelId: 'UCauthor' };
+    const members = [
+      { youtubeId: id1, playlistChannelId: 'UCauthor', video },
+      { youtubeId: id2, playlistChannelId: 'UCauthor', video },
+      { youtubeId: 'a1b2c3d4e5f', playlistChannelId: 'UCauthor', video },
+      { youtubeId: 'b1c2d3e4f5g', playlistChannelId: 'UCdifferent', video },
+    ];
+    const approved = new Set([id1]);
+    const allCatalogued = new Set([id1, id2]); // id2 is draft or lacks a learning object.
+    const plan = planPlaylistMemberImports(members, approved, allCatalogued);
+    assert.deepEqual(plan.reusable.map(m => m.youtubeId), [id1]);
+    assert.deepEqual(plan.heldForReview.map(m => m.youtubeId), [id2]);
+    assert.deepEqual(plan.newCreatorOwned.map(m => m.youtubeId), ['a1b2c3d4e5f']);
+    assert.equal(plan.newCreatorOwned.some(m => m.youtubeId === id2), false);
   });
 
   it('uses only publicly available, embeddable videos with verified channel and deduplicates in original order', () => {

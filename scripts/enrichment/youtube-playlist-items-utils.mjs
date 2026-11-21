@@ -79,3 +79,19 @@ export function orderedUniqueMembers(items, availableVideos) {
     return [{ ...member, video }];
   });
 }
+
+
+/**
+ * Treat any existing youtube_videos row as catalogued, even when not publicly
+ * eligible. Never turn a draft, archived or orphaned video into a fresh
+ * publication merely because it was found in an external YouTube playlist.
+ */
+export function planPlaylistMemberImports(members, publishedIds, cataloguedIds) {
+  return {
+    reusable: members.filter(m => publishedIds.has(m.youtubeId)),
+    newCreatorOwned: members.filter(m => !cataloguedIds.has(m.youtubeId)
+      && m.playlistChannelId && m.playlistChannelId === m.video.channelId),
+    heldForReview: members.filter(m => cataloguedIds.has(m.youtubeId)
+      && !publishedIds.has(m.youtubeId)),
+  };
+}
