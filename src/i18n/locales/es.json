@@ -2489,5 +2489,19 @@
     "readingCount": "Lecturas: {{count}}",
     "openUnit": "Explorar asignatura",
     "disclaimer": "Las sugerencias siguen el orden curricular y la disponibilidad de recursos; no establecen requisitos previos oficiales."
+  },
+  "courseUnitFinder": {
+    "title": "Encuentra tu asignatura",
+    "description": "Busca entre las {{count}} asignaturas de este curso sin recorrer todo el plan de estudios.",
+    "fullList": "Ver lista completa",
+    "searchLabel": "Nombre o código de la asignatura",
+    "searchPlaceholder": "Ej.: Estadística, 18021025, Álgebra…",
+    "clear": "Borrar búsqueda",
+    "onlyWithMaterials": "Solo asignaturas con vídeos o lecturas",
+    "matches": "{{count}} asignaturas encontradas",
+    "noMatches": "No se encontraron asignaturas. Prueba otro término o desactiva el filtro.",
+    "materialCount": "{{videos}} vídeos · {{readings}} lecturas",
+    "viewMaterials": "Ver materiales",
+    "limited": "Mostrando {{shown}} de {{total}}. Refina la búsqueda."
   }
 }
