@@ -2,6 +2,9 @@ import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, type LucideIcon } from 'lucide-react';
 import type { Course } from '@/entities/course/course.types';
+import { discoveryByCourse } from '@/features/discoveries/catalog';
+import { useDiscoveryAnchor } from '@/features/discoveries/useDiscoveryAnchor';
+import { rememberDiscovery } from '@/features/discoveries/useDiscoveries';
 import './CourseEmblem.css';
 
 type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil';
@@ -70,16 +73,20 @@ export function CourseEmblem({ course, detail = false }: { course: Identity; det
   const [open, setOpen] = useState(false);
   const captionId = useId();
   const SubjectIcon = subjects.get(course.slug) ?? BookOpen;
+  const discovery = discoveryByCourse.get(course.slug);
+  useDiscoveryAnchor('course-discovery', detail && Boolean(discovery));
+  const captionKey = typeof SubjectIcon === 'string' ? `course.emblem.${SubjectIcon}` : `discoveries.messages.${discovery}`;
   const tile = 'inline-grid shrink-0 place-items-center border border-foreground bg-primary text-brand-ink';
   const size = detail ? ' h-16 w-16' : ' h-12 w-12';
-  if (!detail || typeof SubjectIcon !== 'string') {
+  if (!detail || !discovery) {
     return <span aria-hidden="true" className={tile + size}>{typeof SubjectIcon === 'string' ? <Illustration subject={SubjectIcon} large={detail} /> : <SubjectIcon size={detail ? 36 : 24} strokeWidth={1.75} />}</span>;
   }
-  return <div className="flex items-center gap-4">
+  return <div id="course-discovery" className="flex scroll-mt-24 items-center gap-4">
     <button type="button" aria-label={t('course.emblem.discover', { course: course.title })} aria-expanded={open} aria-controls={captionId}
-      onClick={() => setOpen(!open)} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
-      <Illustration subject={SubjectIcon} large greeting={t('course.emblem.greeting')} />
+      onClick={() => { if (!open) rememberDiscovery(discovery); setOpen(!open); }} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
+      {typeof SubjectIcon === 'string' ? <Illustration subject={SubjectIcon} large greeting={t('course.emblem.greeting')} />
+        : <SubjectIcon size={36} strokeWidth={1.75} aria-hidden="true" className={open ? 'motion-safe:-rotate-12 motion-safe:transition-transform' : undefined} />}
     </button>
-    <p id={captionId} hidden={!open} className="max-w-prose text-sm">{t('course.emblem.' + SubjectIcon)}</p>
+    <p id={captionId} hidden={!open} className="max-w-prose text-sm">{t(captionKey)}</p>
   </div>;
 }

@@ -1,4 +1,44 @@
 {
+  "discoveries": {
+    "title": "Álbum de descobertas",
+    "progress": "{{found}} de {{total}} descobertas",
+    "description": "Explora as pistas e experimenta os símbolos pelo campus. O álbum fica guardado neste navegador.",
+    "complete": "Álbum completo! Podes voltar a qualquer descoberta pelas pistas abaixo.",
+    "found": "Descoberta registada",
+    "hints": {
+      "compass": "A bússola da página inicial",
+      "chain": "O elo nas Sequências",
+      "margin": "A margem do Caderno",
+      "accounting": "O livro de Contabilidade",
+      "computing": "O terminal de LESTI",
+      "psychology": "O duplo olhar da Psicologia",
+      "neuroscience": "A sinapse de Neurociências",
+      "astronomy": "A estrela de Astrofísica",
+      "mathematics": "A espiral de Matemática",
+      "civil": "A ponte de Engenharia Civil",
+      "biochemistry": "O frasco de Bioquímica",
+      "biomedicine": "O traçado de Ciências Biomédicas",
+      "marketing": "O cursor de Marketing Digital",
+      "design": "A ponta de Design de Comunicação",
+      "economy": "O gráfico de Economia",
+      "english": "As palavras de Língua Inglesa",
+      "electronics": "O chip de Engenharia Eletrotécnica",
+      "heritage": "As camadas de Arqueologia"
+    },
+    "messages": {
+      "compass": "Perdeste o norte? Segue uma pergunta até à biblioteca e volta com uma resposta que consigas explicar a alguém.",
+      "chain": "Experimenta ligar dois passos de uma sequência numa única frase. Que ideia do primeiro passo te ajuda a compreender o segundo?",
+      "margin": "O recado da margem. Fecha o material e escreve de memória uma pergunta e a tua resposta. Volta ao material para verificar o que escapou.",
+      "biochemistry": "Uma enzima acelera uma reação ao reduzir a energia de ativação. E se o frasco contivesse lactase? O substrato seria a lactose.",
+      "biomedicine": "O eletrocardiograma regista diferenças de potencial elétrico à superfície do corpo. O complexo QRS representa a despolarização dos ventrículos.",
+      "marketing": "Um anúncio teve 1 000 impressões e 25 cliques. O cursor encontrou a taxa de cliques. São 2,5%.",
+      "design": "Um cartaz também se desenha com espaço vazio. Experimenta afastar dois elementos e repara em como muda a ordem em que os lês.",
+      "economy": "Tens uma hora livre e duas alternativas. O custo de oportunidade é o valor da melhor alternativa a que renuncias ao escolher.",
+      "english": "Em inglês, «a novel» é um romance. Em «a novel idea», a mesma palavra é um adjetivo e significa «original». O contexto muda tudo.",
+      "electronics": "Dois interruptores em série precisam de estar fechados para deixar passar corrente. O circuito ilustra a operação lógica E.",
+      "heritage": "Numa sequência de camadas intacta, as camadas de baixo foram depositadas primeiro. Uma escavação começa por registar o contexto de cada achado."
+    }
+  },
   "brand": {
     "tagline": "Um campus digital aberto",
     "description": "Cursos, unidades curriculares e recursos educativos para seguir o fio do conhecimento. Aprende ao teu ritmo com a FACODI.",

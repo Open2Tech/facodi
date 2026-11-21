@@ -1,4 +1,44 @@
 {
+  "discoveries": {
+    "title": "Discovery album",
+    "progress": "{{found}} of {{total}} discoveries",
+    "description": "Follow the clues and try the symbols around campus. Your album is saved in this browser.",
+    "complete": "Album complete! Use the clues below to revisit any discovery.",
+    "found": "Discovery recorded",
+    "hints": {
+      "compass": "The home page compass",
+      "chain": "The link in Sequences",
+      "margin": "The Notebook margin",
+      "accounting": "The Accounting ledger",
+      "computing": "The LESTI terminal",
+      "psychology": "The Psychology double take",
+      "neuroscience": "The Neuroscience synapse",
+      "astronomy": "The Astrophysics star",
+      "mathematics": "The Mathematics spiral",
+      "civil": "The Civil Engineering bridge",
+      "biochemistry": "The Biochemistry flask",
+      "biomedicine": "The Biomedical Sciences trace",
+      "marketing": "The Digital Marketing cursor",
+      "design": "The Communication Design pen",
+      "economy": "The Economics chart",
+      "english": "The English Language words",
+      "electronics": "The Electrical Engineering chip",
+      "heritage": "The Archaeology layers"
+    },
+    "messages": {
+      "compass": "Lost your bearings? Follow a question into the library and come back with an answer you can explain to someone else.",
+      "chain": "Try linking two steps of a sequence in a single sentence. Which idea from the first step helps you understand the second?",
+      "margin": "A note from the margin. Close the material and write a question and your answer from memory. Open the material again to check what you missed.",
+      "biochemistry": "An enzyme speeds up a reaction by lowering its activation energy. What if the flask contained lactase? Its substrate would be lactose.",
+      "biomedicine": "An electrocardiogram records electrical potential differences at the body’s surface. The QRS complex represents ventricular depolarisation.",
+      "marketing": "An ad had 1,000 impressions and 25 clicks. The cursor found the click-through rate. It’s 2.5%.",
+      "design": "Empty space helps shape a poster. Move two elements apart and see how it changes the order in which you read them.",
+      "economy": "You have one free hour and two options. The opportunity cost is the value of the best alternative you give up when you choose.",
+      "english": "“Novel” can name a work of fiction or describe something original. Compare “a novel” with “a novel idea”.",
+      "electronics": "Two switches in series both need to be closed to let current flow. The circuit illustrates the logical AND operation.",
+      "heritage": "In an undisturbed sequence, the lower layers were deposited first. An excavation records the context of each find."
+    }
+  },
   "brand": {
     "tagline": "An open digital campus",
     "description": "Courses, curricular units and educational resources to follow the thread of knowledge. Learn at your own pace with FACODI.",

@@ -1,3 +1,4 @@
+import { CampusDiscovery } from '@/components/discoveries/CampusDiscovery';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { staticPageMeta } from '@/shared/seo/seo';
 import { useRef } from 'react';
@@ -42,6 +43,7 @@ export default function Sequences() {
     <PageSeo {...staticPageMeta('/sequences', { title: t('sequences.title'), description: t('sequences.description') })} />
     <CatalogHeader accent="sequences" title={t('sequences.title')} description={t('sequences.description')} total={query.data?.length} />
     <LearningContext focus="sequence" />
+    <div className="mb-6"><CampusDiscovery discovery="chain" /></div>
     <MonthlyChallenge className="mb-8" />
     <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t('sequences.notice')}</p>
     <CatalogToolbar

@@ -1,3 +1,5 @@
+import { CampusDiscovery } from '@/components/discoveries/CampusDiscovery';
+import { DiscoveryAlbum } from '@/components/discoveries/DiscoveryAlbum';
 import { ArrowRight, ArrowUpRight, BookOpen, CircleHelp, Compass, HandHeart, Layers, Link2, PlayCircle, Shapes, type LucideIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -51,6 +53,7 @@ export default function Home() {
     {/* Signed-in learners with a sequence in progress get straight back to it. */}
     <ContinueLearning className="mb-10" />
     <HomeHero counts={counts.data} />
+    <div className="my-8 flex flex-wrap items-start gap-3"><CampusDiscovery discovery="compass" /><DiscoveryAlbum className="min-w-0 flex-1 basis-60" /></div>
 
     <section aria-labelledby="paths" className="border-t border-foreground pt-10">
       <h2 id="paths" className="text-3xl font-semibold tracking-[-0.02em]">{t('home.pathsTitle')}</h2>
