@@ -39,6 +39,10 @@ export function highlightSourceHost(asset: NamedAsset): string | undefined {
     return undefined;
   }
 }
+function provenance(asset: NamedAsset): Pick<UnitHighlight, 'sourceHost'> {
+  const host = highlightSourceHost(asset);
+  return host ? { sourceHost: host } : {};
+}
 function isGeneralGateway(asset: NamedAsset): boolean {
   const title = normalizeCourseMaterialTerm(asset.title);
   const url = urlOf(asset);
@@ -104,12 +108,12 @@ export function pickUnitHighlights({
     else if (playlists.length) highlights.push({
       kind: 'playlist', title: playlists[0].title,
       href: `/resources/${encodeURIComponent(playlists[0].slug)}`,
-      sourceHost: highlightSourceHost(playlists[0]),
+      ...provenance(playlists[0]),
     });
     else if (videos.length) highlights.push({
       kind: 'video', title: videos[0].title,
       href: `${unitPath(courseSlug, unitSlug)}?v=${encodeURIComponent(videos[0].id)}#unit-resources`,
-      sourceHost: highlightSourceHost(videos[0]),
+      ...provenance(videos[0]),
     });
   }
   if (modules.length) highlights.push({
@@ -120,13 +124,13 @@ export function pickUnitHighlights({
   if (reading) highlights.push({
     kind: 'reading', title: reading.title,
     href: `/resources/${encodeURIComponent(reading.slug)}`,
-    sourceHost: highlightSourceHost(reading),
+    ...provenance(reading),
   });
   if (!hasStudyPath && highlights.length < 3 && videos.length && !highlights.some(item => item.kind === 'video')) {
     highlights.push({
       kind: 'video', title: videos[0].title,
       href: `${unitPath(courseSlug, unitSlug)}?v=${encodeURIComponent(videos[0].id)}#unit-resources`,
-      sourceHost: highlightSourceHost(videos[0]),
+      ...provenance(videos[0]),
     });
   }
   return highlights.slice(0, 3);
