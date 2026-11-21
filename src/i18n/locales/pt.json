@@ -2466,6 +2466,8 @@
     "allUnits": "Todas as unidades curriculares",
     "clearFilters": "Limpar filtros",
     "openUnit": "Abrir a página da UC",
-    "noMatches": "Não foram encontrados materiais para estes filtros. Experimente outra UC ou palavra-chave."
+    "noMatches": "Não foram encontrados materiais para estes filtros. Experimente outra UC ou palavra-chave.",
+    "viewUnitMaterials": "Ver materiais desta UC",
+    "browseMaterials": "Explorar materiais do curso"
   }
 }
