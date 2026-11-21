@@ -603,6 +603,15 @@
     "instagram": "FACODI en Instagram"
   },
   "course": {
+    "emblem": {
+      "discover": "Descubre el símbolo de {{course}}",
+      "greeting": "hola, mundo",
+      "accounting": "10 € al debe, 10 € al haber. Las cuentas cuadran.",
+      "computing": "¡Hola, mundo! Muchos primeros programas empiezan así.",
+      "psychology": "¿Dos caras o una copa? En la copa de Rubin se intercambian figura y fondo.",
+      "neuroscience": "La señal pasa de una neurona a otra a través de la sinapsis.",
+      "astronomy": "Cuando un planeta pasa por delante de su estrella, el brillo observado disminuye ligeramente."
+    },
     "facts": "Ficha del curso",
     "code": "Código",
     "degree": "Grado",

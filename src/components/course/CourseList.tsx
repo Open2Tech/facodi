@@ -1,4 +1,5 @@
-import { ArrowUpRight, BookOpen } from 'lucide-react';
+import { CourseEmblem } from '@/components/course/CourseEmblem';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { Course } from '@/entities/course/course.types';
@@ -9,7 +10,7 @@ export function CourseList({ courses, headingLevel = 'h2', className }: { course
   const Heading = headingLevel;
   return <div className={cn('divide-y divide-input border-y border-input', className)}>
     {courses.map(course => <article key={course.id} className="group grid gap-4 px-3 py-7 -mx-3 transition-colors hover:bg-primary/10 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-6 sm:items-start">
-      <span className="grid h-12 w-12 place-items-center border border-foreground bg-primary text-brand-ink" aria-hidden="true"><BookOpen className="h-6 w-6" strokeWidth={1.75} /></span>
+      <CourseEmblem course={course} />
       <div className="min-w-0">
         <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs uppercase text-muted-foreground">
           {course.code && <span className="font-semibold text-foreground">{course.code}</span>}
