@@ -70,3 +70,19 @@ describe('findCourseUnits', () => {
     expect(findCourseUnits(units, [], 'absent')).toEqual({ total: 0, results: [] });
   });
 });
+
+describe('playlist-aware study suggestions and search', () => {
+  it('prioritizes the first UC containing playlists even when no videos/readings are linked', () => {
+    const units = [unit('without', 1, 1, 1), unit('playlist', 1, 1, 2)];
+    const result = suggestStudyUnits(units, [{ curricular_unit_id: 'playlist', video_count: 0, reading_count: 0, playlist_count: 2 }]);
+    expect(result[0]).toMatchObject({ unit: units[1], playlistCount: 2 });
+    expect(findCourseUnits(units, [{ curricular_unit_id: 'playlist', video_count: 0, reading_count: 0, playlist_count: 2 }], '', true).results.map(x => x.unit.id)).toEqual(['playlist']);
+  });
+
+  it('includes only guide-linked units in the material filter', () => {
+    const units = [unit('guide', 1, 1, 1), unit('empty', 1, 1, 2)];
+    const result = findCourseUnits(units, [{ curricular_unit_id: 'guide', video_count: 0, reading_count: 0, guide_count: 1 }], '', true);
+    expect(result.total).toBe(1);
+    expect(result.results[0].guideCount).toBe(1);
+  });
+});
