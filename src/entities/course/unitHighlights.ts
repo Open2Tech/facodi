@@ -1,9 +1,11 @@
+import type { Json } from '@/integrations/supabase/types';
+import { unitHighlightFacts, type UnitHighlightFacts } from '@/entities/course/unitHighlightFacts';
 import { normalizeCourseMaterialTerm } from '@/entities/course/courseLearningAssets';
 import { unitPath } from '@/entities/course/course.paths';
 
 /** Highlights link to public items only; they never imply independent review or certification. */
 export type UnitHighlightKind = 'path' | 'sequence' | 'video' | 'playlist' | 'module' | 'reading';
-export interface UnitHighlight {
+export interface UnitHighlight extends UnitHighlightFacts {
   kind: UnitHighlightKind;
   title: string | null;
   href: string;
@@ -15,6 +17,9 @@ type NamedAsset = {
   id?: string; slug: string; title: string;
   sourceUrl?: string | null;
   source_url?: string | null;
+  language?: string | null;
+  metadata?: Json | null;
+  objectives?: Json | null;
 };
 type PublishedSequence = NamedAsset & { itemCount: number };
 
@@ -103,26 +108,31 @@ export function pickUnitHighlights({
   else {
     const sequence = sequences.find(item => item.itemCount > 0);
     if (sequence) highlights.push({
+      ...unitHighlightFacts(sequence),
       kind: 'sequence', title: sequence.title,
       href: `/sequences/${encodeURIComponent(sequence.slug)}`, count: sequence.itemCount,
     });
     else if (playlists.length) highlights.push({
+      ...unitHighlightFacts(playlists[0]),
       kind: 'playlist', title: playlists[0].title,
       href: `/resources/${encodeURIComponent(playlists[0].slug)}`,
       ...provenance(playlists[0]),
     });
     else if (videos.length) highlights.push({
+      ...unitHighlightFacts(videos[0]),
       kind: 'video', title: videos[0].title,
       href: `${unitPath(courseSlug, unitSlug)}?v=${encodeURIComponent(videos[0].id)}#unit-resources`,
       ...provenance(videos[0]),
     });
   }
   if (modules.length) highlights.push({
+    ...unitHighlightFacts(modules[0]),
     kind: 'module', title: modules[0].title,
     href: `/modules/${encodeURIComponent(modules[0].slug)}`,
   });
   const reading = chooseUnitHighlightReading(readings, unitTitle);
   if (reading) highlights.push({
+    ...unitHighlightFacts(reading),
     kind: 'reading', title: reading.title,
     href: `/resources/${encodeURIComponent(reading.slug)}`,
     ...provenance(reading),
