@@ -2654,5 +2654,21 @@
       "module": "Module d’étude",
       "reading": "Référence"
     }
+  },
+  "studyNotesReview": {
+    "eyebrow": "Votre carnet",
+    "unitTitle": "Revoir les notes de cette unité",
+    "unitDescription": "Notes de cette unité et des ressources directement associées. Les notes des autres cours sont visibles dans leurs séquences.",
+    "sequenceTitle": "Revoir les notes de cette séquence",
+    "sequenceDescription": "Vos annotations sur les leçons de cette séquence, liées à la vidéo et au moment précis.",
+    "courseTitle": "Revoir les notes de ce cursus",
+    "courseDescription": "Notes générales du cursus et de ses unités. Les vidéos conservent leurs propres annotations.",
+    "total": "{{count}} notes dans ce contexte",
+    "empty": "Vous n'avez pas encore de notes sur ces ressources.",
+    "start": "Créer une note",
+    "more": "{{count}} notes supplémentaires dans votre carnet.",
+    "openNote": "Ouvrir « {{title}} » dans son contexte d'étude",
+    "lessonNoteCount_one": "{{count}} note",
+    "lessonNoteCount_other": "{{count}} notes"
   }
 }
