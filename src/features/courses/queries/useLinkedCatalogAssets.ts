@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import type { Json } from '@/integrations/supabase/types';
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 
@@ -8,6 +9,9 @@ export interface LinkedCatalogAsset {
   title: string;
   description: string | null;
   sourceUrl: string | null;
+  language?: string | null;
+  metadata?: Json | null;
+  objectives?: Json | null;
 }
 
 type LinkedAssetType = 'playlist' | 'collection' | 'video' | 'module' | 'document' | 'external_resource';
@@ -30,7 +34,7 @@ async function loadLinkedCatalogAssets(parentId: string, type: LinkedAssetType, 
   const chunks: string[][] = [];
   for (let start = 0; start < ids.length; start += 60) chunks.push(ids.slice(start, start + 60));
   const replies = await Promise.all(chunks.map(chunk => supabase.from('learning_objects')
-    .select('id, slug, title, description, source_url')
+    .select('id, slug, title, description, source_url, language, metadata, objectives')
     .in('id', chunk)
     .eq('object_type', type)
     .eq('published', true)
@@ -46,6 +50,9 @@ async function loadLinkedCatalogAssets(parentId: string, type: LinkedAssetType, 
       title: object.title,
       description: object.description,
       sourceUrl: object.source_url,
+      language: object.language,
+      metadata: object.metadata,
+      objectives: object.objectives,
     });
   }
   const seen = new Set<string>();
