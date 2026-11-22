@@ -7,6 +7,7 @@ export const courseDiscoveries = {
   mathematics: 'matematica-aplicada-economia-gestao',
   civil: 'engenharia-civil',
   biochemistry: 'bioquimica',
+  biology: 'biologia',
   biomedicine: 'ciencias-biomedicas',
   marketing: 'ctesp-marketing-digital',
   design: 'ldcom',

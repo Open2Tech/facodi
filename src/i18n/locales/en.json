@@ -22,6 +22,7 @@
     "complete": "Album complete! Use the clues below to revisit any discovery.",
     "found": "Discovery recorded",
     "hints": {
+      "biology": "The Biology double helix",
       "modeling": "The Digital Modelling box",
       "networking": "The Information Systems and Technology cable",
       "education": "The Education Sciences cap",
@@ -50,6 +51,7 @@
       "communication": "The Communication Sciences broadcast antenna"
     },
     "messages": {
+      "biology": "A secret in the double helix: adenine pairs with thymine, and cytosine pairs with guanine. Can you complete ACGT? Its complementary strand is TGCA.",
       "modeling": "Turn a box beside a window and its shadow changes. In 3D modelling, you can also rotate the camera to reveal a face without moving the object.",
       "networking": "A switch learns which port each source MAC address appeared on. When it knows the destination port, it forwards the frame directly through that port.",
       "education": "After learning an idea, explain it from memory with an example of your own. Where your explanation stalls, you have a question for your next session.",
@@ -748,6 +750,7 @@
     "playlistChip": "{{count}} playlists",
     "guideChip": "{{count}} guides",
     "emblem": {
+      "biology": "In the double helix, adenine pairs with thymine and cytosine pairs with guanine. If one DNA strand reads ACGT, the complementary strand reads TGCA.",
       "mathematics": "These squares have sides of 1, 1, 2, 3 and 5. Each new value is the sum of the previous two. A quarter circle in each square traces the spiral.",
       "civil": "The diagonals divide the rectangles into triangles. In a truss, this geometry helps the structure hold its shape under load.",
       "discover": "Discover the symbol for {{course}}",

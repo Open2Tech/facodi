@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it } from 'vitest';
 import { CampusDiscovery } from '@/components/discoveries/CampusDiscovery';
+import { discoveryLinks } from '@/features/discoveries/catalog';
 import { DiscoveryAlbum } from '@/components/discoveries/DiscoveryAlbum';
 import i18n from '@/i18n/config';
 import { discoveryLinks } from '@/features/discoveries/catalog';

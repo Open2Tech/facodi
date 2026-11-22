@@ -7,7 +7,7 @@ import { useDiscoveryAnchor } from '@/features/discoveries/useDiscoveryAnchor';
 import { useDiscoveryReward } from '@/features/discoveries/useDiscoveryReward';
 import './CourseEmblem.css';
 
-type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil';
+type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil' | 'biology';
 type Identity = Pick<Course, 'slug' | 'title'>;
 
 const subjects = new Map<string, Subject | LucideIcon>([
@@ -17,6 +17,7 @@ const subjects = new Map<string, Subject | LucideIcon>([
   ['ctesp-sti', Cable],
   ['astronomia-astrofisica-gacs-2018', 'astronomy'],
   ['bioquimica', FlaskConical],
+  ['biologia', 'biology'],
   ['ciencias-biomedicas', Activity],
   ['ciencias-educacao-formacao', GraduationCap],
   ['ldcom', PenTool],
@@ -38,6 +39,15 @@ const subjects = new Map<string, Subject | LucideIcon>([
 
 function Illustration({ subject, large = false, greeting }: { subject: Subject; large?: boolean; greeting?: string }) {
   return <svg viewBox="0 0 32 32" width={large ? 48 : 26} height={large ? 48 : 26} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {subject === 'biology' && <>
+      <path className="emblem-dna-strand" d="M9 3C23 10 23 22 9 29" />
+      <path className="emblem-dna-strand" d="M23 3C9 10 9 22 23 29" />
+      <path className="emblem-dna-rungs" d="M13 7h6M11 12h10M10 17h12M12 22h8M13 27h6" />
+      {large && <g className="emblem-dna-labels" fill="currentColor" stroke="none" fontSize="5" textAnchor="middle">
+        <text x="11" y="15">A</text><text x="21" y="15">T</text>
+        <text x="11" y="24">C</text><text x="21" y="24">G</text>
+      </g>}
+    </>}
     {subject === 'mathematics' && <>
       <rect x="4" y="8" width="24" height="15" />
       <path d="M19 8v15m0-6h9m-6 0v6m-3-3h3" strokeWidth="1" />

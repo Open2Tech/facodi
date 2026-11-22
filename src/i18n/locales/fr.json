@@ -22,6 +22,7 @@
     "complete": "Album complet ! Les indices permettent de revoir chaque découverte.",
     "found": "Découverte enregistrée",
     "hints": {
+      "biology": "La double hélice de Biologie",
       "modeling": "La boîte de Modélisation numérique",
       "networking": "Le câble des Systèmes et Technologies de l’information",
       "education": "Le chapeau des Sciences de l’éducation",
@@ -50,6 +51,7 @@
       "communication": "L'antenne des Sciences de la communication"
     },
     "messages": {
+      "biology": "Un indice dans la double hélice : l’adénine s’apparie avec la thymine et la cytosine avec la guanine. Peux-tu compléter ACGT ? Le brin complémentaire est TGCA.",
       "modeling": "Tourne une boîte près d’une fenêtre et son ombre change. En modélisation 3D, tu peux aussi tourner la caméra pour révéler une face sans déplacer l’objet.",
       "networking": "Un commutateur apprend sur quel port il a vu chaque adresse MAC source. Lorsqu’il connaît le port de destination, il y transmet directement la trame.",
       "education": "Après avoir appris une idée, explique-la de mémoire avec ton propre exemple. Là où tu bloques, tu tiens une question pour ta prochaine séance.",
@@ -748,6 +750,7 @@
     "playlistChip": "{{count}} playlists",
     "guideChip": "{{count}} guides",
     "emblem": {
+      "biology": "Dans la double hélice, l’adénine s’apparie avec la thymine et la cytosine avec la guanine. Si un brin d’ADN est ACGT, le brin complémentaire est TGCA.",
       "mathematics": "Les côtés des carrés mesurent 1, 1, 2, 3 et 5. Chaque nouvelle valeur est la somme des deux précédentes. Un quart de cercle dans chaque carré dessine la spirale.",
       "civil": "Les diagonales divisent les rectangles en triangles. Dans un treillis, cette géométrie aide la structure à garder sa forme sous charge.",
       "discover": "Découvrir le symbole de {{course}}",

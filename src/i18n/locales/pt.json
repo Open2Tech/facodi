@@ -22,6 +22,7 @@
     "complete": "Álbum completo! Podes voltar a qualquer descoberta pelas pistas abaixo.",
     "found": "Descoberta registada",
     "hints": {
+      "biology": "A dupla hélice de Biologia",
       "modeling": "A caixa de Modelação Digital",
       "networking": "O cabo de Sistemas e Tecnologias de Informação",
       "education": "O chapéu de Ciências da Educação",
@@ -50,6 +51,7 @@
       "communication": "A antena de Ciências da Comunicação"
     },
     "messages": {
+      "biology": "Uma pequena pista na dupla hélice: a adenina emparelha com a timina, e a citosina com a guanina. Consegues completar a fita ACGT? A complementar é TGCA.",
       "modeling": "Vira uma caixa ao lado de uma janela e a sombra muda. Em modelação 3D, também podes rodar a câmara para revelar uma face sem tocar no objeto.",
       "networking": "Um switch aprende em que porta viu cada endereço MAC de origem. Quando conhece a porta do destino, encaminha a trama diretamente por aí.",
       "education": "Depois de aprender uma ideia, tenta explicá-la de memória com um exemplo teu. Onde a explicação emperrar, encontraste uma pergunta para a próxima sessão.",
@@ -748,6 +750,7 @@
     "playlistChip": "{{count}} playlists",
     "guideChip": "{{count}} guias",
     "emblem": {
+      "biology": "Na dupla hélice, a adenina emparelha com a timina e a citosina com a guanina. Se uma cadeia de DNA for ACGT, a complementar é TGCA.",
       "mathematics": "Os lados destes quadrados medem 1, 1, 2, 3 e 5. Cada novo valor é a soma dos dois anteriores. Um quarto de círculo em cada quadrado desenha a espiral.",
       "civil": "As diagonais dividem os retângulos em triângulos. Numa treliça, esta geometria ajuda a manter a forma sob carga.",
       "discover": "Descobrir o símbolo de {{course}}",
