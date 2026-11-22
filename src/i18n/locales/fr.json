@@ -1,4 +1,44 @@
 {
+  "discoveries": {
+    "title": "Album des découvertes",
+    "progress": "{{found}} découvertes sur {{total}}",
+    "description": "Suis les indices et essaie les symboles du campus. Ton album est enregistré dans ce navigateur.",
+    "complete": "Album complet ! Les indices permettent de revoir chaque découverte.",
+    "found": "Découverte enregistrée",
+    "hints": {
+      "compass": "La boussole de l’accueil",
+      "chain": "Le maillon des Séquences",
+      "margin": "La marge du Carnet",
+      "accounting": "Le grand livre de Comptabilité",
+      "computing": "Le terminal de LESTI",
+      "psychology": "Le double regard de Psychologie",
+      "neuroscience": "La synapse de Neurosciences",
+      "astronomy": "L’étoile d’Astrophysique",
+      "mathematics": "La spirale de Mathématiques",
+      "civil": "Le pont du Génie civil",
+      "biochemistry": "La fiole de Biochimie",
+      "biomedicine": "Le tracé des Sciences biomédicales",
+      "marketing": "Le curseur du Marketing numérique",
+      "design": "La plume du Design de communication",
+      "economy": "Le graphique d’Économie",
+      "english": "Les mots de Langue anglaise",
+      "electronics": "La puce du Génie électrique",
+      "heritage": "Les couches d’Archéologie"
+    },
+    "messages": {
+      "compass": "Tu as perdu le nord ? Suis une question jusqu’à la bibliothèque et reviens avec une réponse que tu peux expliquer à quelqu’un.",
+      "chain": "Relie deux étapes d’une séquence en une phrase. Quelle idée de la première t’aide à comprendre la seconde ?",
+      "margin": "Un mot dans la marge. Ferme le support et écris de mémoire une question et ta réponse. Rouvre le support pour vérifier ce qui t’a échappé.",
+      "biochemistry": "Une enzyme accélère une réaction en abaissant son énergie d’activation. Et si la fiole contenait de la lactase ? Son substrat serait le lactose.",
+      "biomedicine": "L’électrocardiogramme enregistre des différences de potentiel électrique à la surface du corps. Le complexe QRS représente la dépolarisation des ventricules.",
+      "marketing": "Une annonce a obtenu 1 000 impressions et 25 clics. Le curseur a trouvé le taux de clics. Il est de 2,5 %.",
+      "design": "Le vide participe à la composition d’une affiche. Éloigne deux éléments et observe comment l’ordre de lecture change.",
+      "economy": "Tu as une heure libre et deux possibilités. Le coût d’opportunité est la valeur de la meilleure option à laquelle tu renonces en choisissant.",
+      "english": "En anglais, « a novel » est un roman. Dans « a novel idea », le même mot est un adjectif qui signifie « originale ». Le contexte change la lecture.",
+      "electronics": "Deux interrupteurs en série doivent être fermés pour laisser passer le courant. Le circuit illustre l’opération logique ET.",
+      "heritage": "Dans une séquence intacte, les couches inférieures se sont déposées en premier. Une fouille enregistre le contexte de chaque découverte."
+    }
+  },
   "brand": {
     "tagline": "Un campus numérique ouvert",
     "description": "Cours, unités d'enseignement et ressources éducatives pour suivre le fil du savoir. Apprenez à votre rythme avec FACODI.",
@@ -604,6 +644,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "Les côtés des carrés mesurent 1, 1, 2, 3 et 5. Chaque nouvelle valeur est la somme des deux précédentes. Un quart de cercle dans chaque carré dessine la spirale.",
+      "civil": "Les diagonales divisent les rectangles en triangles. Dans un treillis, cette géométrie aide la structure à garder sa forme sous charge.",
       "discover": "Découvrir le symbole de {{course}}",
       "greeting": "salut, monde",
       "accounting": "10 € au débit, 10 € au crédit. Les comptes sont équilibrés.",

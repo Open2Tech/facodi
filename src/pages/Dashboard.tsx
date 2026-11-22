@@ -1,3 +1,4 @@
+import { DiscoveryAlbum } from '@/components/discoveries/DiscoveryAlbum';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight, BookOpen, Lightbulb, PenSquare, ShieldCheck, UserRound, type LucideIcon } from 'lucide-react';
@@ -36,6 +37,7 @@ export default function Dashboard() {
     <ContinueLearning className="mt-8" />
     <MonthlyChallenge className="mt-8" />
     <MyCourse className="mt-8" />
+    <DiscoveryAlbum className="mt-8" />
     <h2 className="sr-only">{t('dashboard.shortcuts')}</h2>
     <ul className="mt-8 grid gap-px border border-foreground bg-foreground sm:grid-cols-2">
       {links.map(({ to, title, description, icon: Icon, fill, hoverTint }) => <li key={to} className="bg-background sm:last:odd:col-span-2">

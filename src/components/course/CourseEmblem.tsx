@@ -1,10 +1,13 @@
 import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, DraftingCompass, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, Sigma, type LucideIcon } from 'lucide-react';
+import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, type LucideIcon } from 'lucide-react';
 import type { Course } from '@/entities/course/course.types';
+import { discoveryByCourse } from '@/features/discoveries/catalog';
+import { useDiscoveryAnchor } from '@/features/discoveries/useDiscoveryAnchor';
+import { rememberDiscovery } from '@/features/discoveries/useDiscoveries';
 import './CourseEmblem.css';
 
-type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy';
+type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil';
 type Identity = Pick<Course, 'slug' | 'title'>;
 
 const subjects = new Map<string, Subject | LucideIcon>([
@@ -19,13 +22,13 @@ const subjects = new Map<string, Subject | LucideIcon>([
   ['ldcom', PenTool],
   ['desporto', Dumbbell],
   ['economia', ChartNoAxesCombined],
-  ['engenharia-civil', DraftingCompass],
+  ['engenharia-civil', 'civil'],
   ['lesti', 'computing'],
   ['engenharia-eletrotecnica-computadores', Cpu],
   ['gestao', BriefcaseBusiness],
   ['ufes-letras-ingles', Languages],
   ['marketing', Megaphone],
-  ['matematica-aplicada-economia-gestao', Sigma],
+  ['matematica-aplicada-economia-gestao', 'mathematics'],
   ['patrimonio-cultural-arqueologia', Landmark],
   ['psicologia', 'psychology'],
   ['neurociencias-cognitivas-neuropsicologia', 'neuroscience'],
@@ -34,6 +37,15 @@ const subjects = new Map<string, Subject | LucideIcon>([
 
 function Illustration({ subject, large = false, greeting }: { subject: Subject; large?: boolean; greeting?: string }) {
   return <svg viewBox="0 0 32 32" width={large ? 48 : 26} height={large ? 48 : 26} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {subject === 'mathematics' && <>
+      <rect x="4" y="8" width="24" height="15" />
+      <path d="M19 8v15m0-6h9m-6 0v6m-3-3h3" strokeWidth="1" />
+      <path className="emblem-reveal-line" pathLength="1" d="M4 23a15 15 0 0 1 15-15 9 9 0 0 1 9 9 6 6 0 0 1-6 6 3 3 0 0 1-3-3 3 3 0 0 1 3-3" />
+    </>}
+    {subject === 'civil' && <>
+      <path d="M2 23h28M4 23v4m24-4v4M4 21V10h24v11M12 10v13m8-13v13" />
+      <path className="emblem-reveal-line" pathLength="1" d="m4 23 8-13 8 13 8-13" />
+    </>}
     {subject === 'accounting' && <>
       <path d="M3 6q7-2 13 1 6-3 13-1v20q-7-2-13 1-6-3-13-1zM16 7v20M6 11h7m6 0h7" />
       <path className="emblem-ledger-lines" d="M6 15h6m8 0h6M6 19h4m10 0h4" />
@@ -61,16 +73,20 @@ export function CourseEmblem({ course, detail = false }: { course: Identity; det
   const [open, setOpen] = useState(false);
   const captionId = useId();
   const SubjectIcon = subjects.get(course.slug) ?? BookOpen;
+  const discovery = discoveryByCourse.get(course.slug);
+  useDiscoveryAnchor('course-discovery', detail && Boolean(discovery));
+  const captionKey = typeof SubjectIcon === 'string' ? `course.emblem.${SubjectIcon}` : `discoveries.messages.${discovery}`;
   const tile = 'inline-grid shrink-0 place-items-center border border-foreground bg-primary text-brand-ink';
   const size = detail ? ' h-16 w-16' : ' h-12 w-12';
-  if (!detail || typeof SubjectIcon !== 'string') {
+  if (!detail || !discovery) {
     return <span aria-hidden="true" className={tile + size}>{typeof SubjectIcon === 'string' ? <Illustration subject={SubjectIcon} large={detail} /> : <SubjectIcon size={detail ? 36 : 24} strokeWidth={1.75} />}</span>;
   }
-  return <div className="flex items-center gap-4">
+  return <div id="course-discovery" className="flex scroll-mt-24 items-center gap-4">
     <button type="button" aria-label={t('course.emblem.discover', { course: course.title })} aria-expanded={open} aria-controls={captionId}
-      onClick={() => setOpen(!open)} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
-      <Illustration subject={SubjectIcon} large greeting={t('course.emblem.greeting')} />
+      onClick={() => { if (!open) rememberDiscovery(discovery); setOpen(!open); }} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
+      {typeof SubjectIcon === 'string' ? <Illustration subject={SubjectIcon} large greeting={t('course.emblem.greeting')} />
+        : <SubjectIcon size={36} strokeWidth={1.75} aria-hidden="true" className={open ? 'motion-safe:-rotate-12 motion-safe:transition-transform' : undefined} />}
     </button>
-    <p id={captionId} hidden={!open} className="max-w-prose text-sm">{t('course.emblem.' + SubjectIcon)}</p>
+    <p id={captionId} hidden={!open} className="max-w-prose text-sm">{t(captionKey)}</p>
   </div>;
 }

@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, GraduationCap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { CourseEmblem } from '@/components/course/CourseEmblem';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/features/auth/useAuth';
 import { usePublicCourses, useUnits } from '@/features/courses/queries/useCourses';
@@ -93,8 +94,10 @@ export function MyCourseView({ className, courses, choice, editing, units, units
       <div className="min-w-0">
         {eyebrow}
         <h2 id="my-course" className="mt-3 flex items-start gap-3 text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
-          <GraduationCap className="mt-1 h-6 w-6 shrink-0" aria-hidden="true" />
-          <span className="min-w-0">{course?.title ?? choice?.course}</span>
+          {course ? <Link to={`/courses/${encodeURIComponent(course.slug)}`} className="inline-flex min-w-0 items-center gap-3 underline decoration-1 underline-offset-4 hover:decoration-2 focus-visible:outline-ring">
+            <CourseEmblem course={course} />
+            <span className="min-w-0">{course.title}</span>
+          </Link> : choice?.course}
         </h2>
         {choice?.year && <p className="mt-1 text-muted-foreground">{t('catalog.year', { value: choice.year })}</p>}
       </div>

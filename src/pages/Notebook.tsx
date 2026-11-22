@@ -1,3 +1,4 @@
+import { CampusDiscovery } from '@/components/discoveries/CampusDiscovery';
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -67,6 +68,7 @@ export default function Notebook() {
       </div>
       {notebook.ready && notebook.all.length > 0 && <Button type="button" variant="outline" onClick={exportAll}><Download />{t('notebookPage.exportAll')}</Button>}
     </header>
+    <div className="mt-4"><CampusDiscovery discovery="margin" /></div>
 
     {notebook.failed ? <div role="alert" className="mt-10 border border-destructive px-5 py-5">
       <p>{t('notes.loadFailed')}</p>

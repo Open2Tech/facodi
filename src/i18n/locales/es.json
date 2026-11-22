@@ -1,4 +1,44 @@
 {
+  "discoveries": {
+    "title": "Álbum de descubrimientos",
+    "progress": "{{found}} de {{total}} descubrimientos",
+    "description": "Sigue las pistas y prueba los símbolos del campus. El álbum se guarda en este navegador.",
+    "complete": "¡Álbum completo! Usa las pistas para volver a cualquier descubrimiento.",
+    "found": "Descubrimiento registrado",
+    "hints": {
+      "compass": "La brújula de la página de inicio",
+      "chain": "El eslabón de las Secuencias",
+      "margin": "El margen del Cuaderno",
+      "accounting": "El libro de Contabilidad",
+      "computing": "La terminal de LESTI",
+      "psychology": "La doble mirada de Psicología",
+      "neuroscience": "La sinapsis de Neurociencias",
+      "astronomy": "La estrella de Astrofísica",
+      "mathematics": "La espiral de Matemáticas",
+      "civil": "El puente de Ingeniería Civil",
+      "biochemistry": "El matraz de Bioquímica",
+      "biomedicine": "El trazado de Ciencias Biomédicas",
+      "marketing": "El cursor de Marketing Digital",
+      "design": "La pluma de Diseño de Comunicación",
+      "economy": "El gráfico de Economía",
+      "english": "Las palabras de Lengua Inglesa",
+      "electronics": "El chip de Ingeniería Eléctrica",
+      "heritage": "Las capas de Arqueología"
+    },
+    "messages": {
+      "compass": "¿Perdiste el norte? Sigue una pregunta hasta la biblioteca y vuelve con una respuesta que puedas explicar a otra persona.",
+      "chain": "Intenta enlazar dos pasos de una secuencia en una sola frase. ¿Qué idea del primer paso te ayuda a entender el segundo?",
+      "margin": "Una nota al margen. Cierra el material y escribe de memoria una pregunta y tu respuesta. Vuelve al material para comprobar qué se te escapó.",
+      "biochemistry": "Una enzima acelera una reacción al reducir la energía de activación. ¿Y si el matraz contuviera lactasa? Su sustrato sería la lactosa.",
+      "biomedicine": "El electrocardiograma registra diferencias de potencial eléctrico en la superficie corporal. El complejo QRS representa la despolarización de los ventrículos.",
+      "marketing": "Un anuncio tuvo 1000 impresiones y 25 clics. El cursor encontró la tasa de clics. Es del 2,5 %.",
+      "design": "El espacio vacío también da forma a un cartel. Separa dos elementos y observa cómo cambia el orden en el que los lees.",
+      "economy": "Tienes una hora libre y dos opciones. El coste de oportunidad es el valor de la mejor alternativa a la que renuncias al elegir.",
+      "english": "En inglés, «a novel» es una novela. En «a novel idea», la misma palabra es un adjetivo que significa «original». El contexto cambia la lectura.",
+      "electronics": "Dos interruptores en serie deben estar cerrados para dejar pasar corriente. El circuito ilustra la operación lógica Y.",
+      "heritage": "En una secuencia intacta, las capas inferiores se depositaron primero. Una excavación registra el contexto de cada hallazgo."
+    }
+  },
   "brand": {
     "tagline": "Un campus digital abierto",
     "description": "Cursos, unidades curriculares y recursos educativos para seguir el hilo del conocimiento. Aprende a tu ritmo con FACODI.",
@@ -604,6 +644,8 @@
   },
   "course": {
     "emblem": {
+      "mathematics": "Los lados de estos cuadrados miden 1, 1, 2, 3 y 5. Cada nuevo valor es la suma de los dos anteriores. Un cuarto de círculo en cada cuadrado dibuja la espiral.",
+      "civil": "Las diagonales dividen los rectángulos en triángulos. En una celosía, esta geometría ayuda a mantener la forma bajo carga.",
       "discover": "Descubre el símbolo de {{course}}",
       "greeting": "hola, mundo",
       "accounting": "10 € al debe, 10 € al haber. Las cuentas cuadran.",

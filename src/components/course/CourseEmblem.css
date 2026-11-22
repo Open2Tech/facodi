@@ -8,7 +8,11 @@
 .course-emblem[aria-expanded="true"] .emblem-star { opacity: .72; }
 .course-emblem[aria-expanded="true"] .emblem-signal { transform: translate(5px, 3px); }
 
+.course-emblem .emblem-reveal-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.course-emblem[aria-expanded="true"] .emblem-reveal-line { stroke-dashoffset: 0; }
+
 @media (prefers-reduced-motion: no-preference) {
+  .course-emblem .emblem-reveal-line { transition: stroke-dashoffset 550ms ease-out; }
   .course-emblem .emblem-planet, .course-emblem .emblem-signal { transition: transform 650ms ease-in-out; }
   .course-emblem .emblem-star, .course-emblem .emblem-entry { transition: opacity 350ms ease-in; }
 }

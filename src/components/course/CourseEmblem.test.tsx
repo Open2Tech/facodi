@@ -5,11 +5,15 @@ import { renderWithProviders } from '@/shared/test/renderWithProviders';
 import i18n from '@/i18n/config';
 import { CourseEmblem } from '@/components/course/CourseEmblem';
 
-it('opens the neuroscience discovery with the keyboard and closes it on click', async () => {
+it.each([
+  ['neurociencias-cognitivas-neuropsicologia', 'Neurociências', /através da sinapse/],
+  ['engenharia-civil', 'Engenharia Civil', /treliça/],
+  ['matematica-aplicada-economia-gestao', 'Matemática', /espiral/],
+] as const)('opens the %s discovery with the keyboard and closes it on click', async (slug, title, text) => {
   await i18n.changeLanguage('pt');
-  renderWithProviders(<CourseEmblem detail course={{ slug: 'neurociencias-cognitivas-neuropsicologia', title: 'Neurociências' }} />);
-  const button = screen.getByRole('button', { name: /Neurociências/ });
-  const caption = screen.getByText(/através da sinapse/);
+  renderWithProviders(<CourseEmblem detail course={{ slug, title }} />);
+  const button = screen.getByRole('button', { name: `Descobrir o símbolo de ${title}` });
+  const caption = screen.getByText(text);
   const user = userEvent.setup();
   expect(caption).not.toBeVisible();
   await user.tab();
