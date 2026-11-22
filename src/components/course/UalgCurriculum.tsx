@@ -11,6 +11,8 @@ interface UnitCoverage {
   curricular_unit_id: string;
   video_count: number;
   reading_count: number;
+  playlist_count?: number;
+  guide_count?: number;
 }
 
 const SPECIALIZATIONS: UalgSpecialization[] = ['Neurociências Cognitivas', 'Neuropsicologia'];
@@ -114,7 +116,7 @@ export function UalgCurriculum({
             <ol className="mt-2 divide-y divide-input">
               {section.units.map(unit => {
                 const media = coverageById.get(unit.id);
-                const hasMedia = !!media && (media.video_count > 0 || media.reading_count > 0);
+                const hasMedia = !!media && (media.video_count > 0 || media.reading_count > 0 || (media.playlist_count ?? 0) > 0 || (media.guide_count ?? 0) > 0);
                 return <li key={unit.id}>
                   <Link to={unitPath(courseSlug, unit.slug)} className="group flex items-start justify-between gap-4 py-3 hover:bg-muted/30">
                     <span className="min-w-0 flex-1">
@@ -130,6 +132,12 @@ export function UalgCurriculum({
                       <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>
                       {!!media?.video_count && <span className="block text-xs text-muted-foreground">
                         {t('unit.videoChip', { count: media.video_count })}
+                      </span>}
+                      {!!media?.playlist_count && <span className="block text-xs text-muted-foreground">
+                        {t('course.playlistChip', { count: media.playlist_count })}
+                      </span>}
+                      {!!media?.guide_count && <span className="block text-xs text-muted-foreground">
+                        {t('course.guideChip', { count: media.guide_count })}
                       </span>}
                     </span>
                     <span className="shrink-0 text-right">
