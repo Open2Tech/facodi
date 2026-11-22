@@ -170,7 +170,8 @@ function noteHtml(note: StudyNote, group: NoteGroup, number: number, options: No
     ? formatTimestamp(note.timestamp) : null;
   const href = linkedMoment(group, note, options.origin);
   return '<article class="note"><div class="note-head"><span class="note-index">' +
-    String(number).padStart(2, '0') + '</span><h3>' + escapeNotebookHtml(note.title) + '</h3>' +
+    String(number).padStart(2, '0') + '</span><h3>' +
+    (href ? '<a href="' + escapeNotebookHtml(href) + '" rel="noreferrer">' + escapeNotebookHtml(note.title) + '</a>' : escapeNotebookHtml(note.title)) + '</h3>' +
     (note.pinned ? '<span class="pinned">' + escapeNotebookHtml(labels.pinned) + '</span>' : '') + '</div>' +
     '<div class="meta">' + (updated ? '<span>' + escapeNotebookHtml(labels.updated) + ': ' + escapeNotebookHtml(updated) + '</span>' : '') +
     (moment ? '<span>' + escapeNotebookHtml(labels.timestamp) + ': ' +
