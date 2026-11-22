@@ -33,6 +33,12 @@ async function moveToAccount(queryClient: QueryClient, userId: string, source: s
     const results = await Promise.allSettled(notes.map(note => saveNotes([note])));
     saved = results.flatMap(result => (result.status === 'fulfilled' ? result.value : []));
   }
+  const localById = new Map(notes.map(note => [note.id, note]));
+  saved = saved.map(note => ({
+    ...note,
+    ...(note.resourceHref ? {} : localById.get(note.id)?.resourceHref
+      ? { resourceHref: localById.get(note.id)!.resourceHref } : {}),
+  }));
   const movedIds = new Set(saved.map(note => note.id));
   const left = readNotebook(source).filter(note => !movedIds.has(note.id));
   if (left.length) writeNotebook(source, left); else clearNotebook(source);
