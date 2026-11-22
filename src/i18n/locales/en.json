@@ -127,7 +127,9 @@
     "lessons_one": "{{count}} video",
     "lessons_other": "{{count}} videos",
     "sourceNote": "FACODI editorial sequences using third-party videos. These are not official UAlg classes.",
-    "allMaterials": "Explore all learning materials"
+    "allMaterials": "Explore all learning materials",
+    "moreTopics": "Explore more themed study paths",
+    "moreTopicsDescription": "From gamification and philosophy to cinema and journalism in English. Choose a sequence for your interests or curricular units."
   },
   "brand": {
     "tagline": "An open digital campus",
