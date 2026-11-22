@@ -39,7 +39,7 @@ describe('CourseUnitQuickFinder', () => {
 
   it('filters UCs with published video or reading coverage', async () => {
     renderWithProviders(<CourseUnitQuickFinder courseSlug="marketing" units={units} coverage={coverage} />);
-    await userEvent.setup().click(screen.getByRole('checkbox', { name: 'Só UCs com vídeos ou leituras' }));
+    await userEvent.setup().click(screen.getByRole('checkbox', { name: 'Só UCs com materiais' }));
     expect(screen.getByRole('status')).toHaveTextContent('2 UCs encontradas');
     expect(screen.getByRole('link', { name: 'Cálculo Avançado' })).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Unidade Curricular 5' })).not.toBeInTheDocument();
@@ -57,5 +57,26 @@ describe('CourseUnitQuickFinder', () => {
   it('keeps the page compact for short curricula', () => {
     renderWithProviders(<CourseUnitQuickFinder courseSlug="astronomia" units={units.slice(0, 10)} coverage={[]} />);
     expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
+  });
+});
+
+describe('coverage loading and playlist-only UCs', () => {
+  it('includes playlist-only disciplines when filtering to units with study materials', async () => {
+    const additional = [
+      { curricular_unit_id: 'unit-5', video_count: 0, reading_count: 0, playlist_count: 3, guide_count: 0 },
+    ];
+    renderWithProviders(<CourseUnitQuickFinder courseSlug="marketing" units={units} coverage={[...coverage, ...additional]} />);
+    await userEvent.setup().click(screen.getByRole('checkbox', { name: 'Só UCs com materiais' }));
+    expect(screen.getByRole('status')).toHaveTextContent('3 UCs encontradas');
+    expect(screen.getByRole('link', { name: 'Unidade Curricular 5' })).toBeInTheDocument();
+    expect(screen.getByText(/3 playlists/)).toBeInTheDocument();
+  });
+
+  it('disables material-only filtering while counts are loading or unavailable but keeps search working', async () => {
+    renderWithProviders(<CourseUnitQuickFinder courseSlug="marketing" units={units} coverage={[]} coverageLoading />);
+    expect(screen.getByRole('checkbox', { name: 'Só UCs com materiais' })).toBeDisabled();
+    expect(screen.getByText(/A carregar a disponibilidade dos materiais/)).toBeInTheDocument();
+    await userEvent.setup().type(screen.getByRole('searchbox', { name: 'Nome ou código da UC' }), 'calculo');
+    expect(screen.getByRole('link', { name: 'Cálculo Avançado' })).toBeInTheDocument();
   });
 });

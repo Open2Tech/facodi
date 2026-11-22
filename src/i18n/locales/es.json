@@ -694,6 +694,10 @@
     "instagram": "FACODI en Instagram"
   },
   "course": {
+    "playlistCoverage": "{{count}} asignaturas con listas",
+    "guideCoverage": "{{count}} asignaturas con guías",
+    "playlistChip": "{{count}} listas",
+    "guideChip": "{{count}} guías",
     "emblem": {
       "mathematics": "Los lados de estos cuadrados miden 1, 1, 2, 3 y 5. Cada nuevo valor es la suma de los dos anteriores. Un cuarto de círculo en cada cuadrado dibuja la espiral.",
       "civil": "Las diagonales dividen los rectángulos en triángulos. En una celosía, esta geometría ayuda a mantener la forma bajo carga.",
@@ -2578,6 +2582,14 @@
     "videoNotice": "Vídeos publicados y vinculados a asignaturas. No son automáticamente secuencias editoriales ni implica que cada clase se haya revisado íntegramente."
   },
   "courseStart": {
+    "loading": "Consultando los materiales disponibles. Mientras tanto, puedes explorar las asignaturas.",
+    "unavailable": "No se ha podido confirmar la disponibilidad de materiales. Las asignaturas siguen accesibles.",
+    "videoUnits": "{{count}} asignaturas con vídeos",
+    "readingUnits": "{{count}} asignaturas con lecturas",
+    "playlistUnits": "{{count}} asignaturas con listas",
+    "guideUnits": "{{count}} asignaturas con guías",
+    "playlistCount": "Listas: {{count}}",
+    "guideCount": "Guías: {{count}}",
     "eyebrow": "Tu siguiente paso",
     "title": "¿Por dónde empezar?",
     "description": "Estas asignaturas tienen materiales disponibles. Elige un tema y explora sus recursos.",
@@ -2593,13 +2605,19 @@
     "disclaimer": "Las sugerencias siguen el orden curricular y la disponibilidad de recursos; no establecen requisitos previos oficiales."
   },
   "courseUnitFinder": {
+    "coverageLoading": "Cargando la disponibilidad de materiales…",
+    "coverageUnavailable": "Los indicadores de materiales no están disponibles temporalmente. Puedes seguir buscando por nombre o código.",
+    "videoCount": "{{count}} vídeos",
+    "readingCount": "{{count}} lecturas",
+    "playlistCount": "{{count}} listas",
+    "guideCount": "{{count}} guías",
     "title": "Encuentra tu asignatura",
     "description": "Busca entre las {{count}} asignaturas de este curso sin recorrer todo el plan de estudios.",
     "fullList": "Ver lista completa",
     "searchLabel": "Nombre o código de la asignatura",
     "searchPlaceholder": "Ej.: Estadística, 18021025, Álgebra…",
     "clear": "Borrar búsqueda",
-    "onlyWithMaterials": "Solo asignaturas con vídeos o lecturas",
+    "onlyWithMaterials": "Solo asignaturas con materiales",
     "matches": "{{count}} asignaturas encontradas",
     "noMatches": "No se encontraron asignaturas. Prueba otro término o desactiva el filtro.",
     "materialCount": "{{videos}} vídeos · {{readings}} lecturas",
