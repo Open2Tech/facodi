@@ -1,5 +1,18 @@
 {
   "discoveries": {
+    "stampsLabel": "Tampons d’exploration",
+    "stampEarned": "Tampon obtenu !",
+    "stampTarget_one": "{{count}} découverte",
+    "stampTarget_other": "{{count}} découvertes",
+    "earned": "Obtenu",
+    "locked": "À obtenir",
+    "revisit": "Choisis une découverte ci-dessous pour la réessayer.",
+    "stamps": {
+      "first": "Première étincelle",
+      "curious": "Regard curieux",
+      "explorer": "Explorateur du campus",
+      "complete": "Collection complète"
+    },
     "openAlbum": "Ouvrir l’album",
     "nextHint": "Indice suivant",
     "pendingOnly": "À découvrir seulement",

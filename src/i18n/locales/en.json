@@ -1,5 +1,18 @@
 {
   "discoveries": {
+    "stampsLabel": "Exploration stamps",
+    "stampEarned": "Stamp unlocked!",
+    "stampTarget_one": "{{count}} discovery",
+    "stampTarget_other": "{{count}} discoveries",
+    "earned": "Unlocked",
+    "locked": "To unlock",
+    "revisit": "Choose a discovery below to try it again.",
+    "stamps": {
+      "first": "First spark",
+      "curious": "Curious mind",
+      "explorer": "Campus explorer",
+      "complete": "Collection complete"
+    },
     "openAlbum": "Open album",
     "nextHint": "Next clue",
     "pendingOnly": "Undiscovered only",

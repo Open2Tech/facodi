@@ -1,5 +1,18 @@
 {
   "discoveries": {
+    "stampsLabel": "Sellos de exploración",
+    "stampEarned": "¡Sello conseguido!",
+    "stampTarget_one": "{{count}} descubrimiento",
+    "stampTarget_other": "{{count}} descubrimientos",
+    "earned": "Conseguido",
+    "locked": "Por conseguir",
+    "revisit": "Elige un descubrimiento para volver a probarlo.",
+    "stamps": {
+      "first": "Primera chispa",
+      "curious": "Mirada curiosa",
+      "explorer": "Explorador del campus",
+      "complete": "Colección completa"
+    },
     "openAlbum": "Abrir álbum",
     "nextHint": "Siguiente pista",
     "pendingOnly": "Solo por descubrir",
