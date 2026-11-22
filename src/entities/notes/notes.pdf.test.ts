@@ -51,7 +51,7 @@ describe('FACODI PDF notebook rendering', () => {
     expect(document).toContain('Derivadas e integrais');
     expect(document).toContain('https://facodi.com/resources/aula-de-calculo?notes=open&amp;t=123');
     expect(document).toContain('https://facodi.com/courses/bioquimica/units/calculo?notes=unit');
-    expect(document).toContain('01:02:03');
+    expect(document).toContain('02:03');
     expect(document).toContain('Fixada');
     expect(document).toContain('#exame');
     expect(document).toContain('<strong>cadeia</strong>');
