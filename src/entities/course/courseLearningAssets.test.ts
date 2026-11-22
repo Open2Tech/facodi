@@ -48,6 +48,29 @@ describe('composeCourseLearningAssets', () => {
   });
 });
 
+describe('playlist presentation semantics', () => {
+  it('separates YouTube playlists, generated topic guides and reviewed editorial sequences without duplication', () => {
+    const result = composeCourseLearningAssets(parentIds, labels, [
+      { parent_object_id: 'unit-1', child_object_id: 'external', position: 1 },
+      { parent_object_id: 'unit-1', child_object_id: 'topic-guide', position: 2 },
+      { parent_object_id: 'unit-2', child_object_id: 'topic-guide', position: 2 },
+      { parent_object_id: 'unit-1', child_object_id: 'editorial', position: 3 },
+    ], [
+      { id: 'external', slug: 'youtube-playlist', title: 'YouTube', description: null,
+        object_type: 'playlist', source_type: 'youtube', source_url: 'https://www.youtube.com/playlist?list=PLexample' },
+      { id: 'topic-guide', slug: 'topic-path', title: 'Study steps', description: null,
+        object_type: 'playlist', source_type: 'generated', playlist_type: null, source_url: null },
+      { id: 'editorial', slug: 'editorial-path', title: 'Video path', description: null,
+        object_type: 'playlist', source_type: 'generated', playlist_type: 'facodi_owned_editorial_sequence', source_url: null },
+    ]);
+    expect(result.playlists.map(item => item.slug)).toEqual(['youtube-playlist']);
+    expect(result.guides.map(item => item.slug)).toEqual(['topic-path']);
+    expect(result.guides[0].unitTitles).toEqual(['Fiscalidade I', 'Fiscalidade II']);
+    expect(result.playlists.some(item => item.slug === 'editorial-path')).toBe(false);
+    expect(result.guides.some(item => item.slug === 'editorial-path')).toBe(false);
+  });
+});
+
 describe('filterCourseLearningAssets', () => {
   const assets = composeCourseLearningAssets(parentIds, labels, [
     { parent_object_id: 'course', child_object_id: 'shared', position: 1 },
