@@ -710,14 +710,16 @@ export type Database = {
           event_key: string
           event_payload: Json
           failure_code: string | null
+          first_attempt_at: string | null
           id: string
           locked_at: string | null
           next_attempt_at: string
-          playlist_id: string
+          playlist_id: string | null
           provider_message_id: string | null
           recipient_user_id: string
           sent_at: string | null
           state: string
+          suggestion_id: string | null
           template_name: string
           updated_at: string
         }
@@ -727,14 +729,16 @@ export type Database = {
           event_key: string
           event_payload?: Json
           failure_code?: string | null
+          first_attempt_at?: string | null
           id?: string
           locked_at?: string | null
           next_attempt_at?: string
-          playlist_id: string
+          playlist_id?: string | null
           provider_message_id?: string | null
           recipient_user_id: string
           sent_at?: string | null
           state?: string
+          suggestion_id?: string | null
           template_name: string
           updated_at?: string
         }
@@ -744,14 +748,16 @@ export type Database = {
           event_key?: string
           event_payload?: Json
           failure_code?: string | null
+          first_attempt_at?: string | null
           id?: string
           locked_at?: string | null
           next_attempt_at?: string
-          playlist_id?: string
+          playlist_id?: string | null
           provider_message_id?: string | null
           recipient_user_id?: string
           sent_at?: string | null
           state?: string
+          suggestion_id?: string | null
           template_name?: string
           updated_at?: string
         }
@@ -761,6 +767,13 @@ export type Database = {
             columns: ["playlist_id"]
             isOneToOne: false
             referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "email_outbox_suggestion_id_fkey"
+            columns: ["suggestion_id"]
+            isOneToOne: false
+            referencedRelation: "resource_suggestions"
             referencedColumns: ["id"]
           },
         ]
@@ -2592,6 +2605,7 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      dispatch_contributor_email: { Args: { p_dry_run?: boolean }; Returns: number }
       dispatch_resource_suggestion_analysis: { Args: never; Returns: number }
       enrich_auto_published_object: {
         Args: { p_evidence: Json; p_job_id: string; p_object: string }

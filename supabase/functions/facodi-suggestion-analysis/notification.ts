@@ -1,3 +1,4 @@
+import { renderEmailLayout, emailButton } from "../_shared/email-layout.ts";
 // Editorial email for the suggestion pipeline: pure, so Vitest covers it. Sent through Resend by index.ts.
 import type { Decision, EvidenceLevel, Match, Notice } from "./analysis.ts";
 
@@ -74,18 +75,14 @@ export function buildNotification(settings: PipelineSettings, input: Notificatio
 
   const text = [heading, "", summary, "", ...rows.map(([k, v]) => `${k}: ${v}`), "",
     ...links.map(([k, v]) => `${k}: ${v}`)].join("\n");
-  const html = `<!doctype html><html lang="pt"><body style="margin:0;background:#faf9f2;font-family:Arial,Helvetica,sans-serif;color:#142846">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;border:1px solid #d5dfe7;background:#ffffff">
-<tr><td style="background:#142846;padding:26px 32px;border-bottom:4px solid #efff00">
-<strong style="color:#ffffff;font-size:25px;letter-spacing:1px">FACODI</strong>
-<div style="font-size:12px;color:#efff00;margin-top:5px">Curadoria automática de sugestões</div></td></tr>
-<tr><td style="padding:30px 32px"><h1 style="font-size:22px;line-height:1.3;margin:0 0 16px">${escape(heading)}</h1>
-<p style="font-size:15px;line-height:1.65;margin:0 0 18px">${escape(summary)}</p>
-${rows.map(([k, v]) => `<p style="font-size:14px;line-height:1.6;margin:0 0 10px"><strong>${escape(k)}:</strong><br>${escape(v).replace(/\n/g, "<br>")}</p>`).join("\n")}
-<p style="margin:24px 0 8px">${links.map(([k, v]) => `<a href="${escape(v)}" style="display:inline-block;margin:0 8px 8px 0;padding:11px 16px;background:#efff00;color:#142846;font-weight:700;text-decoration:none">${escape(k)}</a>`).join("")}</p>
-<p style="font-size:12px;color:#526173;line-height:1.6">Pode desativar estes emails ou a publicação automática em facodi.suggestion_pipeline_settings (Supabase Studio).</p>
-</td></tr></table></td></tr></table></body></html>`;
+  const html = renderEmailLayout({
+    title: heading, preheader: summary, category: "Curadoria do campus",
+    tone: published ? "mint" : "orange",
+    contentHtml: `<p style="font-size:16px;line-height:1.75;margin:0 0 22px">${escape(summary)}</p>
+${rows.map(([k, v]) => `<p style="font-size:14px;line-height:1.7;margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #d4dce7"><strong>${escape(k)}:</strong><br>${escape(v).replace(/\n/g, "<br>")}</p>`).join("\n")}
+${links.map(([k, v], i) => emailButton(k, v, i > 0)).join("\n")}`,
+    footerHtml: "Notificação editorial da FACODI. Pode gerir os avisos nas definições de curadoria.",
+  });
 
   const subject = `[FACODI] ${published ? "Publicado" : "Rever"}: ${input.title}`.slice(0, 160);
   return { to: settings.notification_recipient, subject, html, text };

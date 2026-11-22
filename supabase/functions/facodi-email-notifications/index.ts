@@ -1,16 +1,9 @@
 import { createClient } from "npm:@supabase/supabase-js@2.110.0";
+import { buildMail, deliveryFailure, isSuperseded, sameSecret, type MailEvent } from "./mail.ts";
 
-/**
- * FACODI transaction notifications (never Supabase Auth).
- *
- * Authorization: signed-in contributor owning the playlist or FACODI editor.
- * Data: server-generated facodi.email_outbox only, no arbitrary recipients,
- * templates, HTML, or message body from the request.
- *
- * Requires FACODI_RESEND_API_KEY and FACODI_EMAIL_FROM from a verified sending domain.
- * Without both, returns 503 and keeps events pending. Does NOT borrow the
- * shared Tube/Monynha sender address.
- */
+// Only server-generated events. Requests never supply a recipient, HTML or template.
+// Browser calls validate the session and playlist ownership. Cron uses the existing
+// FACODI worker secret, independently of shared Supabase Auth email settings.
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ALLOWED = new Set(["https://facodi.com", "https://facodi.marcelo-0d6.workers.dev", "https://facodi.vercel.app"]);
 const allowedOrigin = (value: string | null) => {
@@ -30,216 +23,207 @@ const corsHeaders = (req: Request) => {
     ...(origin ? { "Access-Control-Allow-Origin": origin, "Vary": "Origin" } : {}),
     "Access-Control-Allow-Headers": "authorization,apikey,content-type,x-client-info",
     "Access-Control-Allow-Methods": "POST,OPTIONS",
-    "Cache-Control": "no-store",
-    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": "no-store", "Content-Type": "application/json; charset=utf-8",
   };
 };
 const response = (req: Request, status: number, body: Record<string, unknown>) =>
   new Response(JSON.stringify(body), { status, headers: corsHeaders(req) });
 
-const escape = (text: unknown) => String(text ?? "")
-  .replaceAll("&", "&amp;").replaceAll("<", "&lt;")
-  .replaceAll(">", "&gt;").replaceAll('"', "&quot;")
-  .replaceAll("'", "&#39;");
-const plain = (text: unknown) => String(text ?? "").slice(0, 2000);
-
-type MailKind = "playlist_received" | "playlist_approved" | "playlist_rejected";
-type Event = {
-  id: string; event_key: string; recipient_user_id: string;
-  template_name: MailKind; event_payload: Record<string, unknown>;
-  attempts: number;
-};
-type Playlist = { id: string; title: string; submitted_by: string; status: string };
-
-function buildMail(event: Event) {
-  const kind = event.template_name;
-  const title = plain(event.event_payload.playlist_title).slice(0, 200);
-  const note = plain(event.event_payload.review_note);
-  const heading = kind === "playlist_received" ? "Recebemos a sua playlist"
-    : kind === "playlist_approved" ? "A sua playlist foi aprovada"
-    : "Atualização da sua playlist";
-  const detail = kind === "playlist_received"
-    ? "A sugestão entrou na fila de revisão editorial da FACODI. A submissão não implica publicação automática."
-    : kind === "playlist_approved"
-    ? "A revisão editorial foi concluída e a sua playlist foi aprovada."
-    : "A playlist não foi aprovada nesta revisão. Pode consultar o estado da submissão na FACODI.";
-  const noteMarkup = note && kind !== "playlist_received"
-    ? `<p style="line-height:1.65;margin:18px 0 0;color:#31435d"><strong>Observação da revisão:</strong> ${escape(note)}</p>`
-    : "";
-  const content = `<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;background:#faf9f2;font-family:Arial,Helvetica,sans-serif;color:#142846">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 14px">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;border:1px solid #d5dfe7;background:#ffffff">
-<tr><td style="background:#142846;padding:26px 32px;border-bottom:4px solid #efff00">
-<strong style="color:#ffffff;font-size:25px;letter-spacing:1px">FACODI</strong>
-<div style="font-size:12px;color:#efff00;margin-top:5px">Faculdade Comunitária Digital</div></td></tr>
-<tr><td style="padding:30px 32px"><h1 style="font-size:24px;line-height:1.3;margin:0 0 18px">${heading}</h1>
-<p style="font-size:15px;line-height:1.65">${detail}</p>
-<p style="font-size:15px;line-height:1.65"><strong>Playlist:</strong> ${escape(title)}</p>
-${noteMarkup}
-<p style="margin:26px 0 12px"><a href="https://facodi.com/playlists/submit" style="display:inline-block;padding:13px 19px;background:#efff00;color:#142846;font-weight:700;text-decoration:none">Consultar as minhas submissões</a></p>
-<p style="font-size:12px;color:#526173;line-height:1.6">Mensagem transacional associada a uma submissão feita na FACODI. Não partilhe códigos ou palavras-passe por email.</p>
-</td></tr></table></td></tr></table></body></html>`;
-  return {
-    subject: `FACODI · ${heading}`,
-    html: content,
-    text: `${heading}\n\n${detail}\n\nPlaylist: ${title}${note && kind !== "playlist_received" ? `\nObservação: ${note}` : ""}\n\nhttps://facodi.com/playlists/submit`,
-  };
-}
-
 Deno.serve(async (req: Request) => {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: corsHeaders(req) });
-  }
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(req) });
   if (req.method !== "POST") return response(req, 405, { error: "method_not_allowed" });
   if (req.headers.get("Origin") && !allowedOrigin(req.headers.get("Origin"))) {
     return response(req, 403, { error: "origin_not_allowed" });
   }
-  if (Number(req.headers.get("content-length") || 0) > 2000) {
-    return response(req, 413, { error: "request_too_large" });
-  }
-
   const apiUrl = Deno.env.get("SUPABASE_URL");
   const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!apiUrl || !anonKey || !serviceKey) return response(req, 503, { error: "db_not_configured" });
 
-  const bearer = req.headers.get("Authorization") || "";
-  if (!/^Bearer \S+$/i.test(bearer)) return response(req, 401, { error: "sign_in_required" });
-  const jwt = bearer.replace(/^Bearer /i, "");
-  const client = createClient(apiUrl, anonKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-    global: { headers: { Authorization: bearer } },
-  });
-  const { data: auth, error: authError } = await client.auth.getUser(jwt);
-  if (authError || !auth.user) return response(req, 401, { error: "invalid_session" });
-
-  let body: Record<string, unknown>;
-  try { body = await req.json(); }
-  catch { return response(req, 400, { error: "invalid_json" }); }
-  const playlistId = body?.playlist_id;
-  if (typeof playlistId !== "string" || !UUID.test(playlistId)) {
-    return response(req, 400, { error: "invalid_playlist_id" });
+  const workerHeader = req.headers.get("x-facodi-worker-secret");
+  const worker = sameSecret(workerHeader ?? "", Deno.env.get("FACODI_SUGGESTION_WORKER_SECRET") ?? "");
+  if (workerHeader !== null && !worker) return response(req, 401, { error: "unauthorized" });
+  let userId: string | null = null;
+  let isEditor = false;
+  if (!worker) {
+    const bearer = req.headers.get("Authorization") || "";
+    if (!/^Bearer \S+$/i.test(bearer)) return response(req, 401, { error: "sign_in_required" });
+    const client = createClient(apiUrl, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+    const { data, error } = await client.auth.getUser(bearer.replace(/^Bearer /i, ""));
+    if (error || !data.user) return response(req, 401, { error: "invalid_session" });
+    userId = data.user.id;
+    isEditor = ["editor", "admin"].includes(String(data.user.app_metadata?.role || ""));
   }
 
-  const admin = createClient(apiUrl, serviceKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-  const { data: playlist, error: playlistError } = await admin.schema("facodi")
-    .from("playlists").select("id,title,submitted_by,status")
-    .eq("id", playlistId).maybeSingle();
-  if (playlistError) return response(req, 500, { error: "playlist_lookup_failed" });
-  if (!playlist) return response(req, 404, { error: "not_found" });
+  let body: Record<string, unknown>;
+  try {
+    const raw = await req.text();
+    if (raw.length > 2000) return response(req, 413, { error: "request_too_large" });
+    body = JSON.parse(raw);
+    if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("invalid_json");
+  } catch { return response(req, 400, { error: "invalid_json" }); }
 
-  const isEditor = ["editor", "admin"].includes(String(auth.user.app_metadata?.role || ""));
-  if (playlist.submitted_by !== auth.user.id && !isEditor) {
-    return response(req, 404, { error: "not_found" });
+  const admin = createClient(apiUrl, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const db = admin.schema("facodi");
+  const playlistId = body.playlist_id;
+  // Preserve the existing browser contract; only cron can drain the entire queue.
+  if (!worker) {
+    if (typeof playlistId !== "string" || !UUID.test(playlistId)) {
+      return response(req, 400, { error: "invalid_playlist_id" });
+    }
+    const { data: playlist, error } = await db.from("playlists").select("submitted_by").eq("id", playlistId).maybeSingle();
+    if (error) return response(req, 500, { error: "playlist_lookup_failed" });
+    if (!playlist || (!isEditor && playlist.submitted_by !== userId)) return response(req, 404, { error: "not_found" });
   }
 
   const resendKey = Deno.env.get("FACODI_RESEND_API_KEY");
   const sender = Deno.env.get("FACODI_EMAIL_FROM");
-  if (!resendKey || !sender || !/^[^<>\r\n]*<[^<>\s@]+@[^<>\s@]+>$/.test(sender)) {
-    // Never fall back to another product's sending identity.
-    return response(req, 503, { error: "facodi_email_transport_not_configured" });
-  }
+  const configured = !!resendKey && !!sender && /^[^<>\r\n]*<[^<>\s@]+@[^<>\s@]+>$/.test(sender);
+  // Worker-only diagnostics do not send or mutate any event.
+  if (worker && body.dry_run === true) return response(req, 200, { transport_configured: configured });
+  if (!configured) return response(req, 503, { error: "facodi_email_transport_not_configured" });
 
-  // Recover a worker killed during dispatch. The provider idempotency key
-  // prevents unnecessary duplicate acceptance when retrying the same event.
   const now = new Date().toISOString();
-  await admin.schema("facodi").from("email_outbox")
-    .update({ state: "retry", locked_at: null, next_attempt_at: now,
-      failure_code: "stale_email_worker", updated_at: now })
-    .eq("playlist_id", playlistId).eq("state", "processing")
-    .lt("locked_at", new Date(Date.now() - 15 * 60 * 1000).toISOString());
+  let recover = db.from("email_outbox").update({ state: "retry", locked_at: null, next_attempt_at: now,
+    failure_code: "stale_email_worker", updated_at: now }).eq("state", "processing")
+    .lt("locked_at", new Date(Date.now() - 15 * 60_000).toISOString());
+  if (!worker) recover = recover.eq("playlist_id", playlistId);
+  const { error: recoveryError } = await recover;
+  let exhausted = db.from("email_outbox").update({ state: "failed", locked_at: null,
+    failure_code: "retry_limit_reached", updated_at: now }).in("state", ["pending", "retry"]).gte("attempts", 5);
+  if (!worker) exhausted = exhausted.eq("playlist_id", playlistId);
+  const { error: exhaustedError } = await exhausted;
+  if (exhaustedError) return response(req, 500, { error: "queue_recovery_failed" });
+  if (recoveryError) return response(req, 500, { error: "queue_recovery_failed" });
 
-  const { data: queued, error: queueError } = await admin.schema("facodi")
-    .from("email_outbox")
-    .select("id,event_key,recipient_user_id,template_name,event_payload,attempts,state,created_at")
-    .eq("playlist_id", playlistId)
-    .in("state", ["pending", "retry"])
-    .lte("next_attempt_at", new Date().toISOString())
-    .order("created_at", { ascending: true }).limit(4);
+  let query = db.from("email_outbox")
+    .select("id,event_key,recipient_user_id,playlist_id,suggestion_id,template_name,event_payload,attempts,created_at,first_attempt_at")
+    .in("state", ["pending", "retry"]).lt("attempts", 5).lte("next_attempt_at", now)
+    .order("created_at", { ascending: true }).order("id").limit(worker ? 10 : 4);
+  if (!worker) query = query.eq("playlist_id", playlistId);
+  const { data: queued, error: queueError } = await query;
   if (queueError) return response(req, 500, { error: "queue_unavailable" });
 
   let sent = 0, skipped = 0, failed = 0;
-  for (const queuedEvent of queued || []) {
-    const event = queuedEvent as Event;
-    if ((event.template_name === "playlist_received" && playlist.status !== "pending") ||
-        (event.template_name === "playlist_approved" && playlist.status !== "approved") ||
-        (event.template_name === "playlist_rejected" && playlist.status !== "rejected")) {
-      await admin.schema("facodi").from("email_outbox")
-        .update({ state: "skipped", failure_code: "superseded", updated_at: new Date().toISOString() })
-        .eq("id", event.id).in("state", ["pending", "retry"]);
-      skipped++;
-      continue;
-    }
+  for (const event of (queued ?? []) as MailEvent[]) {
+    const suggestion = !!event.suggestion_id;
 
-    const now = new Date().toISOString();
-    const { data: claimed, error: claimError } = await admin.schema("facodi")
-      .from("email_outbox")
-      .update({ state: "processing", attempts: event.attempts + 1, locked_at: now, updated_at: now })
-      .eq("id", event.id).eq("attempts", event.attempts)
-      .in("state", ["pending", "retry"]).select("id").maybeSingle();
-    if (claimError || !claimed) continue;
-
-    const { data: target, error: userError } = await admin.auth.admin.getUserById(event.recipient_user_id);
-    if (userError || !target?.user?.email) {
-      await admin.schema("facodi").from("email_outbox")
-        .update({ state: "failed", failure_code: "recipient_not_found", updated_at: new Date().toISOString() })
-        .eq("id", event.id);
-      failed++;
-      continue;
-    }
-
-    const mail = buildMail(event);
-    let success = false;
-    let providerMessageId: string | null = null;
-    let httpStatus = 0;
+    // Atomic compare-and-set prevents browser/cron workers claiming the same event.
+    const timestamp = new Date().toISOString();
+    const { data: claimed, error: claimError } = await db.from("email_outbox")
+      .update({ state: "processing", attempts: event.attempts + 1, locked_at: timestamp, updated_at: timestamp })
+      .eq("id", event.id).eq("attempts", event.attempts).in("state", ["pending", "retry"])
+      .select("id").maybeSingle();
+    if (claimError) return response(req, 500, { error: "claim_failed", sent, skipped, failed });
+    if (!claimed) continue;
+    const save = async (values: Record<string, unknown>) => {
+      const { error } = await db.from("email_outbox").update({ ...values, locked_at: null, updated_at: new Date().toISOString() })
+        .eq("id", event.id).eq("state", "processing").eq("attempts", event.attempts + 1);
+      if (error) throw new Error("queue_update_failed");
+    };
     try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-          "Idempotency-Key": event.event_key.slice(0, 200),
-        },
-        body: JSON.stringify({
-          from: sender, to: [target.user.email],
-          subject: mail.subject, html: mail.html, text: mail.text,
-        }),
-        signal: AbortSignal.timeout(12000),
-      });
-      httpStatus = res.status;
-      if (res.ok) {
-        const data = await res.json().catch(() => ({})) as { id?: string };
-        success = true;
-        providerMessageId = data.id ?? null;
+      let providerBody: string;
+      if (event.first_attempt_at) {
+        // Resend retains keys for 24h. Only a recorded provider request starts
+        // this window; queue claims and failed lookups do not start it.
+        if (Date.now() - Date.parse(event.first_attempt_at) >= 23 * 60 * 60_000) {
+          await save({ state: "failed", failure_code: "idempotency_window_expired" });
+          failed++;
+          continue;
+        }
+        const original = event.event_payload._delivery_request;
+        if (typeof original !== "string" || !original) {
+          // Legacy ambiguous attempts cannot be reconstructed safely with a new body.
+          await save({ state: "failed", failure_code: "delivery_snapshot_missing" });
+          failed++;
+          continue;
+        }
+        // Reconcile the original operation, even if locale, email, review or
+        // publication changed. Access to a now-private resource remains RLS-protected.
+        providerBody = original;
+      } else {
+        const { data: submission, error: sourceError } = suggestion
+          ? await db.from("resource_suggestions").select("submitted_by,status,learning_object_id")
+            .eq("id", event.suggestion_id!).maybeSingle()
+          : await db.from("playlists").select("submitted_by,status")
+            .eq("id", event.playlist_id!).maybeSingle();
+        if (sourceError) {
+          await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "submission_lookup_failed" });
+          failed++;
+          continue;
+        }
+
+        if (isSuperseded(event, submission)) {
+          await save({ state: "skipped", failure_code: "superseded" });
+          skipped++;
+          continue;
+        }
+        const { data: target, error: userError } = await admin.auth.admin.getUserById(event.recipient_user_id);
+        if (userError) {
+          if (userError.status !== 404) {
+            await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "recipient_lookup_failed" });
+            failed++;
+            continue;
+          }
+        }
+        if (!target?.user?.email || userError) {
+          await save({ state: "failed", failure_code: "recipient_not_found" });
+          failed++;
+          continue;
+        }
+        let publicSlug: string | undefined;
+        const objectId = submission && "learning_object_id" in submission ? submission.learning_object_id : null;
+        if (suggestion && event.template_name === "suggestion_approved" && objectId) {
+          const { data: resource } = await db.from("learning_objects").select("slug")
+            .eq("id", objectId).eq("published", true).in("status", ["active", "published"]).maybeSingle();
+          publicSlug = resource?.slug;
+        }
+        const metadata = target.user.user_metadata;
+        const mail = buildMail(event, metadata?.locale ?? metadata?.language ?? "pt", publicSlug);
+        providerBody = JSON.stringify({ from: sender, to: [target.user.email], subject: mail.subject, html: mail.html, text: mail.text });
+        // Write ahead immediately before the first provider request. Keep the exact
+        // serialized body in the private outbox; jsonb must not reorder its fields.
+        const preparedAt = new Date().toISOString();
+        const { data: prepared, error: prepareError } = await db.from("email_outbox")
+          .update({ event_payload: { ...event.event_payload, _delivery_request: providerBody },
+            first_attempt_at: preparedAt, updated_at: preparedAt })
+          .eq("id", event.id).eq("state", "processing").eq("attempts", event.attempts + 1)
+          .select("id").maybeSingle();
+        if (prepareError) throw new Error("queue_update_failed");
+        if (!prepared) continue; // The lease was lost; do not contact the provider.
+      }
+      let httpStatus = 0;
+      let providerMessageId: string | null = null;
+      let providerError: string | undefined;
+      try {
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST", headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json", "Idempotency-Key": event.event_key },
+          body: providerBody,
+          signal: AbortSignal.timeout(12_000),
+        });
+        httpStatus = res.status;
+        if (res.ok) {
+          const payload = await res.json().catch(() => ({})) as { id?: unknown };
+          if (typeof payload.id === "string" && payload.id) providerMessageId = payload.id;
+          else httpStatus = 0; // An ambiguous response is retried with the same key.
+        } else if (httpStatus === 409) {
+          const payload = await res.json().catch(() => ({})) as { name?: unknown } | null;
+          if (typeof payload?.name === "string") providerError = payload.name;
+        }
+      } catch { httpStatus = 0; }
+      if (providerMessageId) {
+        await save({ state: "sent", provider_message_id: providerMessageId, sent_at: new Date().toISOString(), failure_code: null });
+        sent++;
+      } else {
+        const failure = deliveryFailure(httpStatus, event.attempts, providerError);
+        await save({ state: failure.retry ? "retry" : "failed", failure_code: failure.code,
+          next_attempt_at: new Date(Date.now() + failure.delaySeconds * 1000).toISOString() });
+        failed++;
       }
     } catch {
-      httpStatus = 0;
-    }
-
-    if (success) {
-      await admin.schema("facodi").from("email_outbox")
-        .update({ state: "sent", provider_message_id: providerMessageId,
-          sent_at: new Date().toISOString(), failure_code: null, locked_at: null,
-          updated_at: new Date().toISOString() }).eq("id", event.id);
-      sent++;
-    } else {
-      const transient = httpStatus === 0 || httpStatus === 429 || httpStatus >= 500;
-      const retry = transient && event.attempts < 4;
-      const delay = Math.min(3600, 60 * Math.pow(2, event.attempts));
-      await admin.schema("facodi").from("email_outbox")
-        .update({
-          state: retry ? "retry" : "failed",
-          failure_code: httpStatus ? "email_provider_http_" + httpStatus : "email_provider_timeout",
-          locked_at: null,
-          next_attempt_at: new Date(Date.now() + delay * 1000).toISOString(),
-          updated_at: new Date().toISOString(),
-        })
-        .eq("id", event.id);
-      failed++;
+      // A failed persistence operation leaves its lease recoverable by the next cron.
+      return response(req, 500, { error: "queue_update_failed", sent, skipped, failed });
     }
   }
-  return response(req, 200, { processed: sent + skipped + failed, sent, skipped, failed });
+  return response(req, 200, { sent, skipped, failed });
 });

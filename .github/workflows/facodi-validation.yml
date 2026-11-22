@@ -41,7 +41,7 @@ jobs:
       - name: Unit tests
         run: bun run test
       - name: Validate FACODI email templates
-        run: bun scripts/validate-facodi-email-templates.mjs
+        run: bun run test:email
       - name: Build production bundle without network credentials
         env:
           VITE_SUPABASE_URL: https://ci-build-only.invalid

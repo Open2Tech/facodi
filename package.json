@@ -17,10 +17,11 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "preview": "vite preview",
-    "test:email": "node scripts/validate-facodi-email-templates.mjs",
+    "test:email": "bun scripts/generate-facodi-email-templates.ts --check && node scripts/validate-facodi-email-templates.mjs && vitest run --config vitest.email.config.ts",
     "test:project": "node scripts/validate-facodi-project-pages.mjs",
     "test:workers:smoke": "node scripts/smoke-facodi-workers.mjs",
-    "test:media": "node scripts/validate-facodi-media.mjs"
+    "test:media": "node scripts/validate-facodi-media.mjs",
+    "email:generate": "bun scripts/generate-facodi-email-templates.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5",
