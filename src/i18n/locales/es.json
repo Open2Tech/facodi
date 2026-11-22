@@ -127,7 +127,9 @@
     "lessons_one": "{{count}} vídeo",
     "lessons_other": "{{count}} vídeos",
     "sourceNote": "Secuencias editoriales FACODI con vídeos externos. No son clases oficiales de la UAlg.",
-    "allMaterials": "Explorar todos los materiales"
+    "allMaterials": "Explorar todos los materiales",
+    "moreTopics": "Explora más itinerarios temáticos",
+    "moreTopicsDescription": "De la gamificación y la filosofía al cine y el periodismo en inglés. Elige una secuencia según tus intereses o asignaturas."
   },
   "brand": {
     "tagline": "Un campus digital abierto",
