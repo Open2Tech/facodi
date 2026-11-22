@@ -22,6 +22,7 @@
     "complete": "Album complet ! Les indices permettent de revoir chaque découverte.",
     "found": "Découverte enregistrée",
     "hints": {
+      "biology": "La double hélice de Biologie",
       "modeling": "La boîte de Modélisation numérique",
       "networking": "Le câble des Systèmes et Technologies de l’information",
       "education": "Le chapeau des Sciences de l’éducation",
@@ -46,9 +47,11 @@
       "economy": "Le graphique d’Économie",
       "english": "Les mots de Langue anglaise",
       "electronics": "La puce du Génie électrique",
-      "heritage": "Les couches d’Archéologie"
+      "heritage": "Les couches d’Archéologie",
+      "communication": "L'antenne des Sciences de la communication"
     },
     "messages": {
+      "biology": "Un indice dans la double hélice : l’adénine s’apparie avec la thymine et la cytosine avec la guanine. Peux-tu compléter ACGT ? Le brin complémentaire est TGCA.",
       "modeling": "Tourne une boîte près d’une fenêtre et son ombre change. En modélisation 3D, tu peux aussi tourner la caméra pour révéler une face sans déplacer l’objet.",
       "networking": "Un commutateur apprend sur quel port il a vu chaque adresse MAC source. Lorsqu’il connaît le port de destination, il y transmet directement la trame.",
       "education": "Après avoir appris une idée, explique-la de mémoire avec ton propre exemple. Là où tu bloques, tu tiens une question pour ta prochaine séance.",
@@ -66,7 +69,51 @@
       "economy": "Tu as une heure libre et deux possibilités. Le coût d’opportunité est la valeur de la meilleure option à laquelle tu renonces en choisissant.",
       "english": "En anglais, « a novel » est un roman. Dans « a novel idea », le même mot est un adjectif qui signifie « originale ». Le contexte change la lecture.",
       "electronics": "Deux interrupteurs en série doivent être fermés pour laisser passer le courant. Le circuit illustre l’opération logique ET.",
-      "heritage": "Dans une séquence intacte, les couches inférieures se sont déposées en premier. Une fouille enregistre le contexte de chaque découverte."
+      "heritage": "Dans une séquence intacte, les couches inférieures se sont déposées en premier. Une fouille enregistre le contexte de chaque découverte.",
+      "communication": "Avant le direct, vérifie la source, la date et le contexte. Un titre peut attendre ; la confiance du public, non."
+    }
+  },
+  "lccNewsroom": {
+    "kicker": "Easter egg · Studio de vérification",
+    "title": "La rédaction secrète",
+    "intro": "Prends trois décisions avant de publier. Sans score ni collecte de données.",
+    "progress": "Décision {{current}} sur {{total}}",
+    "right": "Bonne décision éditoriale.",
+    "tryNext": "La rédaction demande plus de rigueur.",
+    "next": "Décision suivante",
+    "finish": "Boucler l'édition",
+    "finished": "Édition prête à publier !",
+    "finishText": "Une information ne doit avancer qu'après vérification. Poursuis avec la séquence d'éducation aux médias.",
+    "exploreSequence": "Explorer la séquence médias",
+    "restart": "Recommencer",
+    "scenarios": {
+      "source": {
+        "question": "Une source anonyme transmet une accusation importante, sans document ni confirmation. Que fais-tu ?",
+        "choices": [
+          "Publier tout de suite avec « prétendument ».",
+          "Chercher une confirmation indépendante et du contexte avant de publier.",
+          "Demander aux abonnés de voter pour savoir si c'est vrai."
+        ],
+        "explanation": "L'intérêt public ne dispense ni des vérifications indépendantes ni de la protection responsable des sources."
+      },
+      "image": {
+        "question": "Une photo virale circule sans date ni origine identifiable. Quel est ton premier geste ?",
+        "choices": [
+          "La recadrer pour qu'elle paraisse plus récente.",
+          "La partager avec une légende vague.",
+          "Vérifier origine, date, contexte, droits et retouches éventuelles."
+        ],
+        "explanation": "Une image authentique peut circuler dans un faux contexte. Vérifie sa provenance et les autorisations."
+      },
+      "headline": {
+        "question": "Le titre exagère ce que le reportage démontre réellement. Que décides-tu ?",
+        "choices": [
+          "Le réécrire pour correspondre aux faits vérifiés.",
+          "Le garder car il attirera plus de clics.",
+          "Supprimer la signature puis publier."
+        ],
+        "explanation": "Un titre participe à l'information : il doit respecter les preuves et éviter le sensationnalisme."
+      }
     }
   },
   "brand": {
@@ -703,6 +750,7 @@
     "playlistChip": "{{count}} playlists",
     "guideChip": "{{count}} guides",
     "emblem": {
+      "biology": "Dans la double hélice, l’adénine s’apparie avec la thymine et la cytosine avec la guanine. Si un brin d’ADN est ACGT, le brin complémentaire est TGCA.",
       "mathematics": "Les côtés des carrés mesurent 1, 1, 2, 3 et 5. Chaque nouvelle valeur est la somme des deux précédentes. Un quart de cercle dans chaque carré dessine la spirale.",
       "civil": "Les diagonales divisent les rectangles en triangles. Dans un treillis, cette géométrie aide la structure à garder sa forme sous charge.",
       "discover": "Découvrir le symbole de {{course}}",

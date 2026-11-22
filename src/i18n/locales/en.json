@@ -22,6 +22,7 @@
     "complete": "Album complete! Use the clues below to revisit any discovery.",
     "found": "Discovery recorded",
     "hints": {
+      "biology": "The Biology double helix",
       "modeling": "The Digital Modelling box",
       "networking": "The Information Systems and Technology cable",
       "education": "The Education Sciences cap",
@@ -46,9 +47,11 @@
       "economy": "The Economics chart",
       "english": "The English Language words",
       "electronics": "The Electrical Engineering chip",
-      "heritage": "The Archaeology layers"
+      "heritage": "The Archaeology layers",
+      "communication": "The Communication Sciences broadcast antenna"
     },
     "messages": {
+      "biology": "A secret in the double helix: adenine pairs with thymine, and cytosine pairs with guanine. Can you complete ACGT? Its complementary strand is TGCA.",
       "modeling": "Turn a box beside a window and its shadow changes. In 3D modelling, you can also rotate the camera to reveal a face without moving the object.",
       "networking": "A switch learns which port each source MAC address appeared on. When it knows the destination port, it forwards the frame directly through that port.",
       "education": "After learning an idea, explain it from memory with an example of your own. Where your explanation stalls, you have a question for your next session.",
@@ -66,7 +69,51 @@
       "economy": "You have one free hour and two options. The opportunity cost is the value of the best alternative you give up when you choose.",
       "english": "“Novel” can name a work of fiction or describe something original. Compare “a novel” with “a novel idea”.",
       "electronics": "Two switches in series both need to be closed to let current flow. The circuit illustrates the logical AND operation.",
-      "heritage": "In an undisturbed sequence, the lower layers were deposited first. An excavation records the context of each find."
+      "heritage": "In an undisturbed sequence, the lower layers were deposited first. An excavation records the context of each find.",
+      "communication": "Before going live, verify the source, date and context. A headline can wait; your audience's trust cannot."
+    }
+  },
+  "lccNewsroom": {
+    "kicker": "Easter egg · Verification studio",
+    "title": "The secret newsroom",
+    "intro": "Make three editorial decisions before publishing. No scores or personal data.",
+    "progress": "Decision {{current}} of {{total}}",
+    "right": "Good editorial call.",
+    "tryNext": "The newsroom needs a more careful call.",
+    "next": "Next decision",
+    "finish": "Close the edition",
+    "finished": "Ready for publication!",
+    "finishText": "A story should move forward only after it withstands scrutiny. Keep learning in the media literacy sequence.",
+    "exploreSequence": "Explore media literacy sequence",
+    "restart": "Start again",
+    "scenarios": {
+      "source": {
+        "question": "An anonymous source sends an important claim without documents or independent confirmation. What do you do?",
+        "choices": [
+          "Publish now with the word 'allegedly'.",
+          "Seek independent confirmation and context before publishing.",
+          "Ask followers to vote on whether it is true."
+        ],
+        "explanation": "Public interest does not eliminate the need for independent confirmation, context and responsible source protection."
+      },
+      "image": {
+        "question": "A viral photograph has no date or identifiable origin. What's your first move?",
+        "choices": [
+          "Crop it to make it look more recent.",
+          "Share with a vague caption.",
+          "Verify origin, date, context, rights and possible alterations."
+        ],
+        "explanation": "An authentic picture can be circulated with a false context. Check provenance, timing and permission."
+      },
+      "headline": {
+        "question": "A headline promises more than the reporting actually establishes. What should happen?",
+        "choices": [
+          "Rewrite it to match the verified facts.",
+          "Keep it because it will attract more clicks.",
+          "Remove the byline and publish."
+        ],
+        "explanation": "A headline is part of the reporting. It must represent the evidence accurately, without sensationalism."
+      }
     }
   },
   "brand": {
@@ -703,6 +750,7 @@
     "playlistChip": "{{count}} playlists",
     "guideChip": "{{count}} guides",
     "emblem": {
+      "biology": "In the double helix, adenine pairs with thymine and cytosine pairs with guanine. If one DNA strand reads ACGT, the complementary strand reads TGCA.",
       "mathematics": "These squares have sides of 1, 1, 2, 3 and 5. Each new value is the sum of the previous two. A quarter circle in each square traces the spiral.",
       "civil": "The diagonals divide the rectangles into triangles. In a truss, this geometry helps the structure hold its shape under load.",
       "discover": "Discover the symbol for {{course}}",

@@ -16,3 +16,13 @@
   .course-emblem .emblem-planet, .course-emblem .emblem-signal { transition: transform 650ms ease-in-out; }
   .course-emblem .emblem-star, .course-emblem .emblem-entry { transition: opacity 350ms ease-in; }
 }
+
+/* A double helix becomes a small base-pair puzzle when its discovery is opened. */
+.emblem-dna-labels { opacity: 0; }
+.course-emblem[aria-expanded="true"] .emblem-dna-labels { opacity: 1; }
+.course-emblem[aria-expanded="true"] .emblem-dna-rungs { stroke-dasharray: 2 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .emblem-dna-labels { transition: opacity 250ms ease-in; }
+  .course-emblem .emblem-dna-rungs { transition: stroke-dasharray 300ms ease-out; }
+}

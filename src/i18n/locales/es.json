@@ -22,6 +22,7 @@
     "complete": "¡Álbum completo! Usa las pistas para volver a cualquier descubrimiento.",
     "found": "Descubrimiento registrado",
     "hints": {
+      "biology": "La doble hélice de Biología",
       "modeling": "La caja de Modelado Digital",
       "networking": "El cable de Sistemas y Tecnologías de la Información",
       "education": "El birrete de Ciencias de la Educación",
@@ -46,9 +47,11 @@
       "economy": "El gráfico de Economía",
       "english": "Las palabras de Lengua Inglesa",
       "electronics": "El chip de Ingeniería Eléctrica",
-      "heritage": "Las capas de Arqueología"
+      "heritage": "Las capas de Arqueología",
+      "communication": "La antena de Ciencias de la Comunicación"
     },
     "messages": {
+      "biology": "Una pista en la doble hélice: la adenina se empareja con la timina y la citosina con la guanina. ¿Puedes completar ACGT? Su cadena complementaria es TGCA.",
       "modeling": "Gira una caja junto a una ventana y su sombra cambiará. En el modelado 3D, también puedes girar la cámara para revelar una cara sin mover el objeto.",
       "networking": "Un switch aprende en qué puerto vio cada dirección MAC de origen. Cuando conoce el puerto de destino, reenvía la trama directamente por ahí.",
       "education": "Después de aprender una idea, explícala de memoria con un ejemplo propio. Donde se atasque la explicación, tienes una pregunta para la próxima sesión.",
@@ -66,7 +69,51 @@
       "economy": "Tienes una hora libre y dos opciones. El coste de oportunidad es el valor de la mejor alternativa a la que renuncias al elegir.",
       "english": "En inglés, «a novel» es una novela. En «a novel idea», la misma palabra es un adjetivo que significa «original». El contexto cambia la lectura.",
       "electronics": "Dos interruptores en serie deben estar cerrados para dejar pasar corriente. El circuito ilustra la operación lógica Y.",
-      "heritage": "En una secuencia intacta, las capas inferiores se depositaron primero. Una excavación registra el contexto de cada hallazgo."
+      "heritage": "En una secuencia intacta, las capas inferiores se depositaron primero. Una excavación registra el contexto de cada hallazgo.",
+      "communication": "Antes de salir en directo, comprueba la fuente, la fecha y el contexto. Un titular puede esperar; la confianza del público, no."
+    }
+  },
+  "lccNewsroom": {
+    "kicker": "Easter egg · Estudio de verificación",
+    "title": "La redacción secreta",
+    "intro": "Toma tres decisiones antes de publicar. Sin puntos ni datos personales.",
+    "progress": "Decisión {{current}} de {{total}}",
+    "right": "Buena decisión editorial.",
+    "tryNext": "La redacción necesita más rigor.",
+    "next": "Siguiente decisión",
+    "finish": "Cerrar la edición",
+    "finished": "¡Edición lista para publicar!",
+    "finishText": "Una información solo debe publicarse después de verificarla. Sigue aprendiendo en la secuencia de alfabetización mediática.",
+    "exploreSequence": "Ver secuencia de alfabetización",
+    "restart": "Volver a empezar",
+    "scenarios": {
+      "source": {
+        "question": "Una fuente anónima comparte una acusación importante sin documentos ni confirmación. ¿Qué haces?",
+        "choices": [
+          "La publico con la palabra «presuntamente».",
+          "Busco confirmación independiente y contexto antes de publicar.",
+          "Pido a los seguidores que voten si es cierta."
+        ],
+        "explanation": "El interés público exige contrastar fuentes, entender el contexto y protegerlas responsablemente."
+      },
+      "image": {
+        "question": "Circula una fotografía viral sin fecha ni origen identificado. ¿Cuál es tu primer paso?",
+        "choices": [
+          "Recortarla para que parezca reciente.",
+          "Compartirla con un pie de foto genérico.",
+          "Verificar origen, fecha, contexto, derechos y posibles cambios."
+        ],
+        "explanation": "Una fotografía auténtica puede circular con un contexto falso. Comprueba procedencia y permisos."
+      },
+      "headline": {
+        "question": "El titular exagera lo que demuestra el reportaje. ¿Qué decides?",
+        "choices": [
+          "Reescribirlo según los hechos verificados.",
+          "Mantenerlo porque atraerá más clics.",
+          "Quitar la firma y publicarlo."
+        ],
+        "explanation": "El titular también forma parte de la información y debe reflejar los hechos sin sensacionalismo."
+      }
     }
   },
   "brand": {
@@ -703,6 +750,7 @@
     "playlistChip": "{{count}} listas",
     "guideChip": "{{count}} guías",
     "emblem": {
+      "biology": "En la doble hélice, la adenina se empareja con la timina y la citosina con la guanina. Si una cadena de ADN es ACGT, la complementaria es TGCA.",
       "mathematics": "Los lados de estos cuadrados miden 1, 1, 2, 3 y 5. Cada nuevo valor es la suma de los dos anteriores. Un cuarto de círculo en cada cuadrado dibuja la espiral.",
       "civil": "Las diagonales dividen los rectángulos en triángulos. En una celosía, esta geometría ayuda a mantener la forma bajo carga.",
       "discover": "Descubre el símbolo de {{course}}",

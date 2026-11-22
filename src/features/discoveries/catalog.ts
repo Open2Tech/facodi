@@ -7,6 +7,7 @@ export const courseDiscoveries = {
   mathematics: 'matematica-aplicada-economia-gestao',
   civil: 'engenharia-civil',
   biochemistry: 'bioquimica',
+  biology: 'biologia',
   biomedicine: 'ciencias-biomedicas',
   marketing: 'ctesp-marketing-digital',
   design: 'ldcom',
@@ -21,6 +22,7 @@ export const courseDiscoveries = {
   management: 'gestao',
   administration: 'ifes-cariacica-administracao-integrado-2026',
   positioning: 'marketing',
+  communication: 'ciencias-da-comunicacao',
 } as const;
 
 export type CourseDiscovery = keyof typeof courseDiscoveries;
