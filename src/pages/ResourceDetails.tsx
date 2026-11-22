@@ -1,3 +1,6 @@
+import CourseReader from '@/components/reader/CourseReader';
+import { readerAlias, readerEditions } from '@/entities/course/lessonReader';
+import type { LearningObject } from '@/entities/course/course.types';
 import { useCallback, useRef, useState } from 'react';
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +45,19 @@ export default function ResourceDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
   const query = useResource(slug);
+  if (query.isPending) return <PageState loading />;
+  if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   const resource = query.data;
+  if (!resource) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
+  const editions = resource.object_type === 'collection' && readerEditions(resource.metadata);
+  if (editions) return <CourseReader course={resource} editions={editions} />;
+  const alias = ['document','module'].includes(resource.object_type) && readerAlias(resource.metadata);
+  if (alias) return <Navigate replace to={alias} />;
+  return <ResourceContent resource={resource} slug={slug} />;
+}
+
+function ResourceContent({ resource, slug }: { resource: LearningObject; slug: string }) {
+  const { t } = useTranslation();
   const context = useResourceContext(resource);
   const playlistLessons = useLinkedCatalogAssets(resource?.object_type === 'playlist' && resource?.source_type === 'youtube' ? resource.id : undefined, 'video');
   const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
@@ -69,9 +84,7 @@ export default function ResourceDetails() {
     setClock(previous => previous?.id === resourceId && previous.time === time ? previous : { id: resourceId, time });
   }, [resourceId]);
 
-  if (query.isPending) return <PageState loading />;
-  if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!resource || !info) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
+  if (!info) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   // A previous study sequence may remain public as a historical URL alias.
   // Redirect only verified canonical slugs; keep the user's query parameters.
   const aliasMetadata = resource?.object_type === 'playlist' && resource.metadata

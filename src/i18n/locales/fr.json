@@ -198,6 +198,27 @@
     "videosText": "Premiers cours des parcours éditoriaux, prêts à lancer avec le contexte de l’unité juste à côté.",
     "videosCta": "Voir toutes les vidéos"
   },
+  "reader": {
+    "about": "À propos du cours",
+    "training": "Utilisez une société de démonstration en EUR. Les exemples utilisent des données fictives.",
+    "syllabus": "Consulter le programme original",
+    "community": "Cours de la communauté",
+    "course": "Cours de la communauté",
+    "contents": "Sommaire du cours",
+    "editions": "Éditions du cours",
+    "previous": "Leçon précédente",
+    "next": "Leçon suivante",
+    "workflow": "Dans Odoo",
+    "watch": "Démonstration vidéo",
+    "practice": "Exercice en base de test",
+    "answer": "Vérifier la réponse",
+    "source": "Documentation Odoo",
+    "account": "Compte",
+    "debit": "Débit",
+    "credit": "Crédit",
+    "total": "Total",
+    "position": "Leçon {{number}} sur {{total}}"
+  },
   "catalog": {
     "title": "Trouvez votre prochaine étape.",
     "description": "Programmes d’études réels, unités dans leur contexte et ressources ouvertes — choisis par où commencer.",

@@ -1,8 +1,8 @@
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 
-const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,language,tags,metadata';
-const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url';
+const PUBLIC_MODULE_FIELDS = 'id,slug,title,description,source_url,language,tags,metadata';
+const PUBLIC_CHILD_FIELDS = 'id,slug,title,description,object_type,source_url,language';
 // Match the public resource catalogue: a published object may be active or published.
 const PUBLIC_RESOURCE_STATUSES = ['active', 'published'];
 

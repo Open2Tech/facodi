@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, BookOpenCheck, ChevronRight, ClipboardList, Link2 } from 'lucide-react';
-import { Link, useParams } from 'react-router-dom';
+import { readerAlias } from '@/entities/course/lessonReader';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useModule } from '@/features/modules/useModules';
 import { moduleResourcePath, type StudyModuleDetail } from '@/entities/module/module.api';
@@ -31,6 +32,8 @@ export default function ModuleDetails() {
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
 
   const { module, units, items } = query.data;
+  const alias = readerAlias(module.metadata);
+  if (alias) return <Navigate replace to={alias} />;
   const activity = metaText(module.metadata,'activity_prompt');
   const deliverable = metaText(module.metadata,'suggested_deliverable');
   const selfReview = metaText(module.metadata,'self_review_criteria');

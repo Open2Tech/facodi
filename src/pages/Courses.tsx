@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+import { BookOpen } from 'lucide-react';
 import { useRef } from 'react';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { staticPageMeta } from '@/shared/seo/seo';
 import { useTranslation } from 'react-i18next';
-import { usePublicCourses } from '@/features/courses/queries/useCourses';
+import { useCommunityCourses, usePublicCourses } from '@/features/courses/queries/useCourses';
 import { CourseList } from '@/components/course/CourseList';
 import { Pagination } from '@/components/course/Pagination';
 import { PageState } from '@/components/layout/PageState';
@@ -19,6 +21,9 @@ export default function Courses() {
   const { t } = useTranslation();
   const { page, search, language, institution, degree, filter, reset } = useCatalogParams();
   const query = usePublicCourses();
+  const community = useCommunityCourses();
+  const editions = (community.data ?? []).filter(item =>
+    (!language || item.language === language) && (!search || item.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())));
   const results = useRef<HTMLDivElement>(null);
   const filters = { search, language, institution, degree };
   const courses = query.data ?? [];
@@ -42,6 +47,13 @@ export default function Courses() {
   return <>
     <PageSeo {...staticPageMeta('/courses', { title: t('nav.courses'), description: t('catalog.description') })} />
     <CatalogHeader title={t('catalog.title')} description={t('catalog.description')} total={chips.length ? undefined : query.data?.length} />
+    {page === 1 && !institution && !degree && editions.length > 0 && <section className="mb-6 rounded-lg border border-input bg-card p-4">
+      <h2 className="flex items-center gap-2 font-semibold"><BookOpen size={18} aria-hidden="true" />{t('reader.community')}</h2>
+      <ul className="mt-2 flex flex-wrap gap-x-5">{editions.map(item => <li key={item.id}>
+        <Link lang={item.language} className="inline-flex min-h-11 items-center gap-2 underline underline-offset-4" to={`/resources/${item.slug}`}>
+          {item.title}<span className="font-mono text-xs">{item.language.toUpperCase()}</span></Link>
+      </li>)}</ul>
+    </section>}
     <LearningContext focus="course" />
     <CatalogToolbar search={search} language={language} onFilter={filter}
       searchLabel={t('catalog.searchCourses')} searchPlaceholder={t('catalog.searchCoursesPlaceholder')} />

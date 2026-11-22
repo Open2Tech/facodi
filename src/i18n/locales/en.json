@@ -198,6 +198,27 @@
     "videosText": "Opening lessons from curated study trails, ready to play with full curricular unit context right beside you.",
     "videosCta": "See all videos"
   },
+  "reader": {
+    "about": "About this course",
+    "training": "Use a demo company in EUR. The examples use fictional data.",
+    "syllabus": "View the original syllabus",
+    "community": "Community courses",
+    "course": "Community course",
+    "contents": "Course contents",
+    "editions": "Course editions",
+    "previous": "Previous lesson",
+    "next": "Next lesson",
+    "workflow": "In Odoo",
+    "watch": "Video demonstration",
+    "practice": "Try it yourself",
+    "answer": "Check your answer",
+    "source": "Odoo documentation",
+    "account": "Account",
+    "debit": "Debit",
+    "credit": "Credit",
+    "total": "Total",
+    "position": "Lesson {{number}} of {{total}}"
+  },
   "catalog": {
     "title": "Find your next step.",
     "description": "Real degree plans, curricular units in context and open study resources — pick where you want to start.",
