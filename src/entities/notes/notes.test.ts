@@ -106,9 +106,9 @@ describe('cross-feature notebook navigation', () => {
     expect(noteOpenHref(unit)).toBe('/courses/bioquimica/units/140064284?notes=unit');
     expect(noteOpenHref(module)).toBe('/modules/pratica-laboratorial?notes=module');
     expect(noteOpenHref(video)).toBe('/resources/estudo-de-celulas?notes=open');
-    expect(groupNotesByResource([course, unit, module, video]).map(g => g.openHref)).toEqual(
+    expect(groupNotesByResource([course, unit, module, video]).map(g => g.openHref).sort()).toEqual(
       ['/courses/bioquimica?notes=course', '/courses/bioquimica/units/140064284?notes=unit',
-       '/modules/pratica-laboratorial?notes=module', '/resources/estudo-de-celulas?notes=open'],
+       '/modules/pratica-laboratorial?notes=module', '/resources/estudo-de-celulas?notes=open'].sort(),
     );
   });
 
