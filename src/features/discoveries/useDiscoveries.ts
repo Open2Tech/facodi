@@ -40,7 +40,7 @@ function subscribe(notify: () => void) {
 
 export function rememberDiscovery(id: Discovery) {
   const found = parse(read());
-  if (found.has(id)) return;
+  if (found.has(id)) return false;
   found.add(id);
   memory = JSON.stringify([...found]);
   try {
@@ -49,6 +49,7 @@ export function rememberDiscovery(id: Discovery) {
     storageBlocked = true;
   }
   window.dispatchEvent(new Event(changedEvent));
+  return true;
 }
 
 export function useDiscoveries() {

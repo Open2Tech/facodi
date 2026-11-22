@@ -1,11 +1,21 @@
 {
   "discoveries": {
+    "openAlbum": "Abrir álbum",
+    "nextHint": "Siguiente pista",
+    "pendingOnly": "Solo por descubrir",
     "title": "Álbum de descubrimientos",
     "progress": "{{found}} de {{total}} descubrimientos",
     "description": "Sigue las pistas y prueba los símbolos del campus. El álbum se guarda en este navegador.",
     "complete": "¡Álbum completo! Usa las pistas para volver a cualquier descubrimiento.",
     "found": "Descubrimiento registrado",
     "hints": {
+      "modeling": "La caja de Modelado Digital",
+      "networking": "El cable de Sistemas y Tecnologías de la Información",
+      "education": "El birrete de Ciencias de la Educación",
+      "sports": "La pesa de Deporte",
+      "management": "El maletín de Gestión",
+      "administration": "El inventario de Administración",
+      "positioning": "El megáfono de Marketing",
       "compass": "La brújula de la página de inicio",
       "chain": "El eslabón de las Secuencias",
       "margin": "El margen del Cuaderno",
@@ -26,6 +36,13 @@
       "heritage": "Las capas de Arqueología"
     },
     "messages": {
+      "modeling": "Gira una caja junto a una ventana y su sombra cambiará. En el modelado 3D, también puedes girar la cámara para revelar una cara sin mover el objeto.",
+      "networking": "Un switch aprende en qué puerto vio cada dirección MAC de origen. Cuando conoce el puerto de destino, reenvía la trama directamente por ahí.",
+      "education": "Después de aprender una idea, explícala de memoria con un ejemplo propio. Donde se atasque la explicación, tienes una pregunta para la próxima sesión.",
+      "sports": "Un salto desde una posición quieta y otro tras flexionar rápidamente las rodillas parten de formas distintas. Compáralos y observa cuánto cambia la altura.",
+      "management": "Si un equipo cierra 20 solicitudes al día y llegan 25, la cola crece en cinco al día. Antes de repartir el trabajo, localiza dónde se acumulan las solicitudes.",
+      "administration": "Hay 30 unidades en la estantería. Entran 12 y salen ocho. El registro debe mostrar 34. Si el recuento físico difiere, revisa los movimientos antes de ajustar el saldo.",
+      "positioning": "Imagina dos cafeterías en la misma calle, una para una pausa rápida y otra para quedarse a trabajar. ¿Qué detalle del escaparate aclararía la propuesta de cada una?",
       "compass": "¿Perdiste el norte? Sigue una pregunta hasta la biblioteca y vuelve con una respuesta que puedas explicar a otra persona.",
       "chain": "Intenta enlazar dos pasos de una secuencia en una sola frase. ¿Qué idea del primer paso te ayuda a entender el segundo?",
       "margin": "Una nota al margen. Cierra el material y escribe de memoria una pregunta y tu respuesta. Vuelve al material para comprobar qué se te escapó.",

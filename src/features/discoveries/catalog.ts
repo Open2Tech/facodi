@@ -14,6 +14,13 @@ export const courseDiscoveries = {
   english: 'ufes-letras-ingles',
   electronics: 'engenharia-eletrotecnica-computadores',
   heritage: 'patrimonio-cultural-arqueologia',
+  modeling: 'ctesp-desenho-modelacao-digital',
+  networking: 'ctesp-sti',
+  education: 'ciencias-educacao-formacao',
+  sports: 'desporto',
+  management: 'gestao',
+  administration: 'ifes-cariacica-administracao-integrado-2026',
+  positioning: 'marketing',
 } as const;
 
 export type CourseDiscovery = keyof typeof courseDiscoveries;

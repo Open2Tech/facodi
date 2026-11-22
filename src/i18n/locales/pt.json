@@ -1,11 +1,21 @@
 {
   "discoveries": {
+    "openAlbum": "Abrir álbum",
+    "nextHint": "Próxima pista",
+    "pendingOnly": "Só por descobrir",
     "title": "Álbum de descobertas",
     "progress": "{{found}} de {{total}} descobertas",
     "description": "Explora as pistas e experimenta os símbolos pelo campus. O álbum fica guardado neste navegador.",
     "complete": "Álbum completo! Podes voltar a qualquer descoberta pelas pistas abaixo.",
     "found": "Descoberta registada",
     "hints": {
+      "modeling": "A caixa de Modelação Digital",
+      "networking": "O cabo de Sistemas e Tecnologias de Informação",
+      "education": "O chapéu de Ciências da Educação",
+      "sports": "O peso de Desporto",
+      "management": "A pasta de Gestão",
+      "administration": "O inventário de Administração",
+      "positioning": "O megafone de Marketing",
       "compass": "A bússola da página inicial",
       "chain": "O elo nas Sequências",
       "margin": "A margem do Caderno",
@@ -26,6 +36,13 @@
       "heritage": "As camadas de Arqueologia"
     },
     "messages": {
+      "modeling": "Vira uma caixa ao lado de uma janela e a sombra muda. Em modelação 3D, também podes rodar a câmara para revelar uma face sem tocar no objeto.",
+      "networking": "Um switch aprende em que porta viu cada endereço MAC de origem. Quando conhece a porta do destino, encaminha a trama diretamente por aí.",
+      "education": "Depois de aprender uma ideia, tenta explicá-la de memória com um exemplo teu. Onde a explicação emperrar, encontraste uma pergunta para a próxima sessão.",
+      "sports": "Um salto do chão e um salto após uma pequena flexão começam de maneiras diferentes. Compara-os e observa o que muda na altura que consegues atingir.",
+      "management": "Se uma equipa fecha 20 pedidos por dia e entram 25, a fila cresce cinco por dia. Antes de dividir o trabalho, identifica a etapa onde os pedidos ficam à espera.",
+      "administration": "Há 30 unidades na prateleira. Entram 12 e saem oito. O registo deve mostrar 34. Se a contagem física der outro valor, verifica os movimentos antes de ajustar o saldo.",
+      "positioning": "Imagina dois cafés na mesma rua, um para uma pausa rápida e outro para ficar a trabalhar. Que detalhe na montra tornaria clara a proposta de cada um?",
       "compass": "Perdeste o norte? Segue uma pergunta até à biblioteca e volta com uma resposta que consigas explicar a alguém.",
       "chain": "Experimenta ligar dois passos de uma sequência numa única frase. Que ideia do primeiro passo te ajuda a compreender o segundo?",
       "margin": "O recado da margem. Fecha o material e escreve de memória uma pergunta e a tua resposta. Volta ao material para verificar o que escapou.",
