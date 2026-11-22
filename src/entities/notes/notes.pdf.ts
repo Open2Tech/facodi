@@ -31,7 +31,7 @@ const ESC: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"
 
 /** Everything authored by a student is escaped before controlled markup is added. */
 export function escapeNotebookHtml(value: string): string {
-  return value.replace(/[&<>"']/g, char => ESC[char]);
+  return value.replace(/[&<>"']/g, char => ESC[char] ?? char);
 }
 function inlineNotes(value: string): string {
   const pattern = /(\x60[^\x60\n]+\x60|\*\*[^*\n]+\*\*|\*[^*\n]+\*)/g;
@@ -158,7 +158,7 @@ a { color: inherit; overflow-wrap: anywhere; text-decoration-color: var(--cyan);
 @media print {
   .screen-tools { display: none !important; }
   .book { margin: 0; box-shadow: none; max-width: none; }
-  .cover { min-height: 297mm; margin: -15mm -14mm 0; padding: 36mm 27mm; }
+  .cover { min-height: 254mm; margin: 0; padding: 24mm 18mm; }
   .content { padding: 0; }
 }
 `;
