@@ -116,6 +116,19 @@
       }
     }
   },
+  "lccMediaLab": {
+    "eyebrow": "Studio FACODI · Sciences de la communication",
+    "title": "De l'idée au micro : apprends à produire",
+    "description": "Des vidéos portugaises organisées en parcours pratiques. Enquête, rédige, filme, monte et communique avec responsabilité.",
+    "localStory": "Réalisé en Algarve",
+    "localStoryTitle": "RTP Antena 3 + étudiants de l'UAlg",
+    "localStoryDescription": "Un épisode enregistré en public à l'Université de l'Algarve avec des étudiants en communication et la radio universitaire RUA FM.",
+    "openCase": "Explorer ce cas réel",
+    "lessons_one": "{{count}} vidéo",
+    "lessons_other": "{{count}} vidéos",
+    "sourceNote": "Séquences FACODI composées de vidéos externes. Ce ne sont pas des cours officiels de l'UAlg.",
+    "allMaterials": "Explorer tous les supports"
+  },
   "brand": {
     "tagline": "Un campus numérique ouvert",
     "description": "Cours, unités d'enseignement et ressources éducatives pour suivre le fil du savoir. Apprenez à votre rythme avec FACODI.",
