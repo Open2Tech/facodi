@@ -2654,5 +2654,22 @@
       "module": "Módulo de estudo",
       "reading": "Referência"
     }
+  },
+  "studyNotesReview": {
+    "eyebrow": "O teu caderno",
+    "unitTitle": "Rever as notas desta UC",
+    "unitDescription": "Notas da UC e dos materiais diretamente associados. As anotações de outras aulas aparecem nas respetivas sequências.",
+    "sequenceTitle": "Rever as notas da sequência",
+    "sequenceDescription": "As tuas anotações nas aulas desta sequência, ligadas ao vídeo e ao minuto exato.",
+    "courseTitle": "Rever as notas deste curso",
+    "courseDescription": "Notas gerais do curso e das suas UCs. Os vídeos mantêm as próprias anotações.",
+    "total": "{{count}} anotações no contexto",
+    "empty": "Ainda não tens notas nos materiais aqui apresentados.",
+    "start": "Criar uma anotação",
+    "more": "Mais {{count}} notas no teu caderno.",
+    "openNote": "Abrir «{{title}}» no contexto de estudo",
+    "lessonNoteCount_one": "{{count}} nota",
+    "lessonNoteCount_many": "{{count}} notas",
+    "lessonNoteCount_other": "{{count}} notas"
   }
 }
