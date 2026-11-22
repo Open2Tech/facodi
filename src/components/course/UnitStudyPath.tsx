@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
 import { completedCount, nextItem, type SequenceSummary } from '@/entities/sequence/sequence';
 import { groupStudyPathLessons, type StudyPathConfig } from '@/entities/course/studyPath';
+import { useNotebook } from '@/features/notes/useNotebook';
+import { noteCountsByResource } from '@/entities/notes/studyNoteContext';
 
 interface VideoResource { id: string; slug: string; title: string }
 
@@ -17,6 +19,8 @@ export function UnitStudyPath({
   videos: VideoResource[];
 }) {
   const { t, i18n } = useTranslation();
+  const notebook = useNotebook();
+  const noteCounts = noteCountsByResource(notebook.all);
   const locale = (['pt', 'en', 'es', 'fr'] as const)
     .find(candidate => i18n.language.toLowerCase().startsWith(candidate)) ?? 'pt';
   const sequence = useSequence(config.sequenceSlug);
@@ -77,7 +81,11 @@ export function UnitStudyPath({
                 <Link to={`/sequences/${encodeURIComponent(sequence.data!.slug)}?v=${encodeURIComponent(item.videoId)}`}
                   className="group flex items-center gap-3 py-3 text-sm hover:bg-muted/40">
                   <span className="w-7 shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
-                  <span className="min-w-0 flex-1 font-medium group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-medium group-hover:underline group-hover:underline-offset-4">{item.title}</span>
+                    {notebook.ready && item.slug && (noteCounts.get(item.videoId) ?? 0) > 0 &&
+                      <span className="mt-1 block text-xs text-muted-foreground">{t('studyNotesReview.lessonNoteCount', { count: noteCounts.get(item.videoId) })}</span>}
+                  </span>
                   {progress.signedIn && progressMap.get(item.videoId)?.completedAt
                     ? <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" aria-label={t('studyPath.done')} />
                     : <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />}
