@@ -100,3 +100,37 @@ describe('source-aware reading highlights', () => {
     expect(result.find(item => item.kind === 'playlist')?.sourceHost).toBeUndefined();
   });
 });
+
+describe('real educational metadata on highlights', () => {
+  it('reuses published language and upload year from an existing video without generating a level', () => {
+    const result = pickUnitHighlights({
+      ...base,
+      videos: [{
+        ...asset('video-1', 'Regra da Cadeia'),
+        language: 'pt-BR', metadata: {
+          published_date_on_youtube: '2019-05-24', reviewed_on: '2026-11-22',
+        },
+      }],
+    });
+    expect(result).toEqual([{
+      kind: 'video', title: 'Regra da Cadeia',
+      href: '/courses/ctesp-contabilidade/units/contabilidade-de-gestao?v=video-1#unit-resources',
+      language: 'pt-BR', publicationYear: 2019,
+    }]);
+  });
+
+  it('shows editorial level and a specific goal only when stored in the existing playlist', () => {
+    const result = pickUnitHighlights({
+      ...base,
+      playlists: [{
+        ...asset('neuro', 'Neurobiologia celular: neurónios e sinapses'),
+        language: 'pt-PT', metadata: { learning_level: 'intermediate' },
+        objectives: ['Explicar potencial de ação e libertação de neurotransmissores'],
+      }],
+    });
+    expect(result[0]).toMatchObject({
+      kind: 'playlist', language: 'pt-PT', level: 'intermediate',
+      learningGoal: 'Explicar potencial de ação e libertação de neurotransmissores',
+    });
+  });
+});
