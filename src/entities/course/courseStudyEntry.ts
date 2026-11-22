@@ -17,11 +17,15 @@ export interface StudyEntryCoverage {
   curricular_unit_id: string;
   video_count: number;
   reading_count: number;
+  playlist_count?: number;
+  guide_count?: number;
 }
 export interface SuggestedStudyUnit<T extends StudyEntryUnit = StudyEntryUnit> {
   unit: T;
   videoCount: number;
   readingCount: number;
+  playlistCount: number;
+  guideCount: number;
 }
 
 const count = (value: number | null | undefined) =>
@@ -46,8 +50,10 @@ export function suggestStudyUnits<T extends StudyEntryUnit>(
       unit,
       videoCount: count(counts.get(unit.id)?.video_count),
       readingCount: count(counts.get(unit.id)?.reading_count),
+      playlistCount: count(counts.get(unit.id)?.playlist_count),
+      guideCount: count(counts.get(unit.id)?.guide_count),
     }));
-  const withMaterials = ranked.filter(entry => entry.videoCount > 0 || entry.readingCount > 0);
+  const withMaterials = ranked.filter(entry => entry.videoCount > 0 || entry.readingCount > 0 || entry.playlistCount > 0 || entry.guideCount > 0);
   return (withMaterials.length ? withMaterials : ranked).slice(0, limit);
 }
 
@@ -74,9 +80,11 @@ export function findCourseUnits<T extends StudyEntryUnit>(
       unit,
       videoCount: count(counts.get(unit.id)?.video_count),
       readingCount: count(counts.get(unit.id)?.reading_count),
+      playlistCount: count(counts.get(unit.id)?.playlist_count),
+      guideCount: count(counts.get(unit.id)?.guide_count),
     }))
     .filter(({ unit, videoCount, readingCount }) => {
-      if (onlyWithMaterials && videoCount === 0 && readingCount === 0) return false;
+      if (onlyWithMaterials && videoCount === 0 && readingCount === 0 && guideCount === 0 && playlistCount === 0) return false;
       if (!tokens.length) return true;
       const value = normalizeCourseMaterialTerm([unit.title, unit.code ?? ''].join(' '));
       return tokens.every(token => value.includes(token));
