@@ -229,6 +229,10 @@
     "videosCta": "Voir toutes les vidéos"
   },
   "reader": {
+    "verify": "Vérifier la réponse",
+    "correct": "Bonne réponse.",
+    "revisit": "Revois ton choix.",
+    "enlarge": "Agrandir l’image",
     "about": "À propos du cours",
     "training": "Utilisez une société de démonstration en EUR. Les exemples utilisent des données fictives.",
     "syllabus": "Consulter le programme original",

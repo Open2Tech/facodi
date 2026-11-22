@@ -30,3 +30,24 @@ export function lessonNumber(value: string | null, count: number) {
   const n = Number(value);
   return Number.isInteger(n) && n >= 1 && n <= count ? n : 1;
 }
+
+const choice = z.object({ label: z.string().min(1), explanation: z.string().min(1), correct: z.boolean() });
+const checkpoint = z.object({
+  question: z.string().min(1),
+  choices: z.array(choice).min(2).max(5).refine(choices => choices.filter(item => item.correct).length === 1),
+});
+const odooScreen = z.object({
+  asset: slug,
+  original: z.string().regex(/^[a-zA-Z0-9_-]+\.png$/),
+  alt: z.string().min(1), caption: z.string().min(1),
+  width: z.number().int().positive(), height: z.number().int().positive(),
+});
+
+export type LessonCheckpoint = z.infer<typeof checkpoint>;
+export type OdooScreen = z.infer<typeof odooScreen>;
+export function readCheckpoint(metadata: Json) {
+  return z.object({ checkpoint }).safeParse(metadata).data?.checkpoint;
+}
+export function readOdooScreen(metadata: Json) {
+  return z.object({ odoo_screen: odooScreen }).safeParse(metadata).data?.odoo_screen;
+}
