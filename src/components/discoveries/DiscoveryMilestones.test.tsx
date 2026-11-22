@@ -18,7 +18,7 @@ it.each([
   [1, 'Primeira faísca'],
   [5, 'Olhar curioso'],
   [15, 'Explorador do campus'],
-  [25, 'Coleção completa'],
+  [discoveryLinks.length, 'Coleção completa'],
 ])('unlocks the stamp at %i discoveries and rewards it once', async (target, label) => {
   const previous = discoveryLinks.filter(item => item.id !== 'compass').slice(0, target - 1).map(item => item.id);
   localStorage.setItem('facodi.discoveries.v1', JSON.stringify(previous));
@@ -48,6 +48,6 @@ it('keeps the full collection available when the final pending clue is found', a
   expect(screen.getAllByRole('link')).toHaveLength(2);
   await user.click(screen.getByRole('button', { name: 'A bússola da página inicial' }));
   expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
-  expect(screen.getAllByRole('link')).toHaveLength(25);
+  expect(screen.getAllByRole('link')).toHaveLength(discoveryLinks.length);
   expect(screen.getByText('Escolhe uma descoberta abaixo para voltar a experimentar.')).toBeVisible();
 });

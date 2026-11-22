@@ -1,4 +1,5 @@
 import { CourseEmblem } from '@/components/course/CourseEmblem';
+import { CommunicationNewsroomChallenge } from '@/components/course/CommunicationNewsroomChallenge';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
@@ -135,6 +136,7 @@ export default function CourseDetails() {
     </div>
     <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
     <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
+    {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
     <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
