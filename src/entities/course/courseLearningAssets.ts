@@ -43,6 +43,9 @@ export interface CourseAssetObject {
   youtube_video_id?: string | null;
   duration_seconds?: number | null;
   object_type: string;
+  /** Separate external playlists, topic-based study guides, and playable FACODI sequences. */
+  source_type?: string | null;
+  playlist_type?: string | null;
 }
 
 export const emptyCourseLearningAssets = (): CourseLearningAssets => ({
@@ -70,7 +73,12 @@ export function composeCourseLearningAssets(
     if (!item || !rank.has(relation.parent_object_id)) continue;
     let group: CourseLearningAsset[] | undefined;
     if (item.object_type === 'video') group = result.videos;
-    else if (item.object_type === 'playlist') group = result.playlists;
+    else if (item.object_type === 'playlist') {
+      // Playable editorial sequences have their own /sequences list and progress tracking.
+      // Unplayable, generated topic outlines are study guides, not YouTube playlists.
+      if (item.playlist_type === 'facodi_owned_editorial_sequence') continue;
+      group = item.source_type === 'generated' ? result.guides : result.playlists;
+    }
     else if (item.object_type === 'external_resource') group = result.references;
     else if (item.object_type === 'document') group = result.guides;
     if (!group) continue;
