@@ -10,9 +10,13 @@ describe('safe navigation', () => {
     expect(safeReturnPath('/profile')).toBe('/profile');
     expect(safeReturnPath('/editor/study-paths?status=accepted')).toBe('/editor/study-paths?status=accepted');
     expect(safeReturnPath('/editor/course-quality')).toBe('/editor/course-quality');
+    expect(safeReturnPath('/editor/sequence-order')).toBe('/editor/sequence-order');
+    expect(safeReturnPath('/community/join')).toBe('/community/join');
     expect(safeReturnPath('/playlists/submit')).toBe('/playlists/submit');
     expect(safeReturnPath('/sequences/facodi-playlist-git?v=v1')).toBe('/sequences/facodi-playlist-git?v=v1');
     expect(safeReturnPath('/courses/ifes-cariacica-administracao-integrado-2026')).toBe('/courses/ifes-cariacica-administracao-integrado-2026');
+    expect(safeReturnPath('/courses/ifes-cariacica-administracao-integrado-2026/units/matematica')).toBe('/courses/ifes-cariacica-administracao-integrado-2026/units/matematica');
+    expect(safeReturnPath('/resources/intro-to-sql#timestamp-90')).toBe('/resources/intro-to-sql#timestamp-90');
     expect(safeReturnPath('//example.invalid/courses/ifes-cariacica-administracao-integrado-2026')).toBe('/dashboard');
     expect(safeReturnPath('/resources/intro-to-sql')).toBe('/resources/intro-to-sql');
   });

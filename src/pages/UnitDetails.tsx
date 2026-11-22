@@ -19,7 +19,6 @@ import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useSequences } from '@/features/sequences/useSequences';
-import { SequenceList } from '@/components/sequence/SequenceList';
 import { SuggestResourceCallout } from '@/components/suggestion/SuggestResourceCallout';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
@@ -344,11 +343,6 @@ export default function UnitDetails() {
               }
             </div>}
         </section></UnitVideoLibraryFrame>}
-        {showLegacy && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
-          <h2 id="unit-sequences" className="text-2xl font-semibold tracking-[-0.02em]">{t('sequences.forUnit')}</h2>
-          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('sequences.forUnitText')}</p>
-          <div className="mt-5"><SequenceList sequences={sequences.data} headingLevel={3} showUnits={false} /></div>
-        </section>}
         <SuggestResourceCallout context="unit" unitId={unit.id} />
         {!!siblings.length && <section aria-labelledby="unit-siblings">
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>

@@ -89,7 +89,7 @@ export function SiteHeader() {
   }
   const navigationClass = (hoverTone = 'hover:bg-muted', activeTone = 'bg-primary text-primary-foreground hover:bg-primary-hover') =>
     ({ isActive }: { isActive: boolean }) => cn(
-      'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold transition-colors min-[800px]:gap-1.5 min-[800px]:whitespace-nowrap min-[800px]:px-2 min-[800px]:text-[13px] xl:gap-1 xl:px-1.5 2xl:gap-1.5 2xl:px-2.5 2xl:text-sm',
+      'flex min-h-11 items-center gap-3 px-3 py-2 text-sm font-semibold text-foreground transition-colors min-[800px]:gap-1.5 min-[800px]:whitespace-nowrap min-[800px]:px-2 min-[800px]:text-[13px] xl:gap-1 xl:px-1.5 2xl:gap-1.5 2xl:px-2.5 2xl:text-sm',
       isActive ? activeTone : hoverTone,
     );
 
