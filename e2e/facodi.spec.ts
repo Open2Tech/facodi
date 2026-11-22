@@ -106,6 +106,20 @@ test('empty campus has no critical accessibility or contrast violations', async 
   expect(violations.map(item => ({ id: item.id, impact: item.impact, nodes: item.nodes.map(node => node.target) }))).toEqual([]);
 });
 
+for (const theme of ['light', 'dark']) {
+  test(`text fields retain a visible keyboard focus ring in ${theme} theme`, async ({ page }) => {
+    await page.addInitScript(theme => sessionStorage.setItem('facodi-theme', theme), theme);
+    await page.goto('/login');
+    await page.keyboard.press('Tab');
+    const email = page.getByLabel('Email', { exact: true });
+    await email.focus();
+    await expect(email).toBeFocused();
+    expect(await email.evaluate(element => element.matches(':focus-visible'))).toBe(true);
+    await expect.poll(() => email.evaluate(element => getComputedStyle(element).boxShadow))
+      .toMatch(/0px 0px 0px 4px/);
+  });
+}
+
 const LEGAL_PAGES = [
   ['/privacy', 'Privacy', 'Privacy Policy'],
   ['/terms', 'Terms of use', 'Terms of Use'],
@@ -272,13 +286,18 @@ for (const [width, height] of [[320, 568], [375, 667], [768, 500]]) {
     await expect(language).toBeInViewport();
     await sheet.getByRole('button', { name: 'Switch to dark theme' }).click();
     await expect(page.locator('html')).toHaveClass(/dark/);
+    const backgrounds = await sheet.evaluate(element => ({
+      sheet: getComputedStyle(element).backgroundColor,
+      page: getComputedStyle(document.body).backgroundColor,
+    }));
+    expect(backgrounds.sheet).toBe(backgrounds.page);
     await page.keyboard.press('Tab');
     expect(await sheet.evaluate(element => element.contains(document.activeElement))).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     if (width === 375) {
       await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
       const violations = await page.evaluate(async () => (await (window as typeof window & { axe: typeof import('axe-core') }).axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations);
-      expect(violations.map(item => item.id)).toEqual([]);
+      expect(violations.map(item => ({ id: item.id, nodes: item.nodes.map(node => ({ target: node.target, summary: node.failureSummary })) }))).toEqual([]);
       await sheet.getByRole('navigation', { name: 'Main navigation' }).scrollIntoViewIfNeeded();
       await page.screenshot({ path: 'test-results/header-mobile-menu.png' });
     }
@@ -915,7 +934,15 @@ test('editor reviews study paths and playlists through the review RPCs with stat
   await expect(page.getByRole('heading', { level: 2, name: 'Object-Oriented Programming' })).toBeVisible();
   await expect(page.getByText('2 videos · 1 readings available')).toBeVisible();
   await expect(page.getByRole('button', { name: /^Awaiting review/ })).toHaveAttribute('aria-pressed', 'true');
+  await page.setViewportSize({ width: 375, height: 320 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.getByRole('button', { name: 'Accept: Object-Oriented Programming' }).click();
+  const dialog = page.getByRole('alertdialog');
+  const bounds = await dialog.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.y).toBeGreaterThanOrEqual(0);
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(320);
+  expect(await dialog.evaluate(element => element.scrollHeight > element.clientHeight)).toBe(true);
   await page.getByLabel('Review notes').fill('Clear sequence');
   await page.getByRole('button', { name: 'Confirm' }).click();
   await expect(page.getByText('Review decision saved.')).toBeVisible();
