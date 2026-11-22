@@ -39,7 +39,7 @@ describe('CourseUnitQuickFinder', () => {
 
   it('filters UCs with published video or reading coverage', async () => {
     renderWithProviders(<CourseUnitQuickFinder courseSlug="marketing" units={units} coverage={coverage} />);
-    await userEvent.setup().click(screen.getByRole('checkbox', { name: 'Só UCs com vídeos ou leituras' }));
+    await userEvent.setup().click(screen.getByRole('checkbox', { name: 'Só UCs com materiais' }));
     expect(screen.getByRole('status')).toHaveTextContent('2 UCs encontradas');
     expect(screen.getByRole('link', { name: 'Cálculo Avançado' })).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Unidade Curricular 5' })).not.toBeInTheDocument();
