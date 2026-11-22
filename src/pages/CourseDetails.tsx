@@ -1,5 +1,6 @@
 import { CourseEmblem } from '@/components/course/CourseEmblem';
 import { CommunicationNewsroomChallenge } from '@/components/course/CommunicationNewsroomChallenge';
+import { CommunicationMediaLab } from '@/components/course/CommunicationMediaLab';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
@@ -135,6 +136,7 @@ export default function CourseDetails() {
       </aside>
     </div>
     <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
+    {course.code === 'LCC' && <CommunicationMediaLab />}
     <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
     {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
     <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
