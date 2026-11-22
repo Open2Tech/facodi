@@ -143,6 +143,49 @@ avançados que não estejam no formulário.
 HTML é sanitizado com DOMPurify e allowlist de elementos de texto, sem scripts,
 frames, estilos ou eventos. Links para recursos externos só aceitam HTTP(S).
 
+## Componentes e design system
+
+O [design system](../DESIGN.md) descreve a identidade visual; os tokens HSL
+vivem em [index.css](../src/index.css) e são expostos pelo
+[Tailwind](../tailwind.config.ts). Não substituir a paleta nem pressupor que
+uma primitiva presente em `components/ui` está necessariamente em uso.
+
+- **Primitivas** em [components/ui](../src/components/ui) fornecem elementos
+  visuais e comportamentos Radix. `Button` aceita as variantes `default`,
+  `destructive`, `outline`, `secondary`, `ghost`, `link`, `hero` e `accent`,
+  os tamanhos `default`, `sm`, `lg`, `xl` e `icon`, e `asChild` para compor
+  links sem criar um botão dentro de outro elemento interativo.
+- **Partilhados** em `components/layout`, `components/catalog` e
+  `components/auth` compõem navegação, estados e campos. `PageState` cobre
+  loading, vazio e erro com retry; `SearchInput` mantém um draft local e
+  debounce para pesquisas sincronizadas com o URL.
+- **Domínio** fica nos restantes diretórios de `components`; páginas em
+  `pages` compõem os fluxos e hooks em `features` coordenam o estado remoto.
+  Não mover chamadas Supabase para primitivas visuais.
+
+Exemplo de navegação com estilo de botão, sem perder a semântica de link:
+
+```tsx
+<Button asChild variant="outline">
+  <Link to="/courses">{t('nav.courses')}</Link>
+</Button>
+```
+
+Compõe classes com `cn()` e tokens semânticos (`bg-card`, `text-foreground`,
+`border-input`, `ring-ring`). Em fundos `brand-*` claros, usa `text-brand-ink`;
+as cores de tipo e estado devem ter também texto ou ícone. Mantém a geometria
+quadrada e verifica claro e escuro, sem copiar estilos genéricos de shadcn/ui.
+
+Para formulários, reutiliza validações partilhadas, React Hook Form quando
+adequado e o `FormField` de autenticação quando aplicável. Associa labels,
+ajudas e erros aos campos, desativa submissões pendentes e anuncia erros ou
+sucesso no contexto adequado. Texto visível e nomes acessíveis usam os quatro
+locales. Usa `AlertDialog` para confirmações que exigem decisão explícita e
+`Sheet` para painéis laterais, preservando o comportamento de foco e Escape
+do Radix. Botões só com ícone precisam de nome acessível; ícones decorativos
+devem ser ocultos aos leitores de ecrã. Testa teclado, ecrãs pequenos,
+conteúdo comprido e reduced motion nas interações alteradas.
+
 ## Páginas legais
 
 `/privacy`, `/terms`, `/cookies`, `/copyright`, `/accessibility` e `/legal`
