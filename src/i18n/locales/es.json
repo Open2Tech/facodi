@@ -2654,5 +2654,21 @@
       "module": "Módulo de estudio",
       "reading": "Referencia"
     }
+  },
+  "studyNotesReview": {
+    "eyebrow": "Tu cuaderno",
+    "unitTitle": "Revisar las notas de esta asignatura",
+    "unitDescription": "Notas de la asignatura y sus materiales directamente vinculados. Las notas de otras clases aparecen en sus secuencias.",
+    "sequenceTitle": "Revisar las notas de la secuencia",
+    "sequenceDescription": "Tus anotaciones de estas clases, vinculadas al vídeo y al momento exacto.",
+    "courseTitle": "Revisar las notas del curso",
+    "courseDescription": "Notas generales del curso y sus asignaturas. Los vídeos mantienen sus propias anotaciones.",
+    "total": "{{count}} anotaciones en contexto",
+    "empty": "Aún no tienes notas en estos materiales.",
+    "start": "Crear una nota",
+    "more": "{{count}} notas más en tu cuaderno.",
+    "openNote": "Abrir «{{title}}» en su contexto de estudio",
+    "lessonNoteCount_one": "{{count}} nota",
+    "lessonNoteCount_other": "{{count}} notas"
   }
 }
