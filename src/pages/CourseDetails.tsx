@@ -15,6 +15,8 @@ import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { CourseLearningMaterials } from '@/components/course/CourseLearningMaterials';
 import { CourseStudyEntry } from '@/components/course/CourseStudyEntry';
 import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
+import { StudyNotesReview } from '@/components/notes/StudyNotesReview';
+import type { StudyNoteContextResource } from '@/entities/notes/studyNoteContext';
 import { CourseUnitQuickFinder } from '@/components/course/CourseUnitQuickFinder';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { UalgCurriculum } from '@/components/course/UalgCurriculum';
@@ -87,6 +89,14 @@ export default function CourseDetails() {
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
   const years = groupYears(groupUnits(units));
   const enrichedCoverage = mergeCourseMaterialCoverage(units, coverage.data ?? [], courseAssets.data);
+  const noteResources: StudyNoteContextResource[] = [
+    ...(course.learning_object_id ? [{ id: course.learning_object_id, title: course.title,
+      path: `/courses/${encodeURIComponent(course.slug)}`, scope: 'course' as const }] : []),
+    ...units.filter(unit => unit.learning_object_id).map(unit => ({
+      id: unit.learning_object_id!, title: unit.title,
+      path: unitPath(course.slug, unit.slug), scope: 'unit' as const,
+    })),
+  ];
   const coverageById = new Map(enrichedCoverage.map(row => [row.curricular_unit_id, row]));
   const coverageLoading = coverage.isPending || courseAssets.isPending;
   const coverageError = Boolean(coverage.error || courseAssets.error);
@@ -125,6 +135,7 @@ export default function CourseDetails() {
     </div>
     <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
     <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
+    <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
