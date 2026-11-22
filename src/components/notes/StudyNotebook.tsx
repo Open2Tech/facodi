@@ -48,7 +48,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
   const { persist, remove } = useNoteActions(notebook, TOAST_POSITION);
 
   function exportMarkdown() {
-    const url = `${window.location.origin}/resources/${resource.slug}`;
+    const url = new URL(resource.href ?? `/resources/${encodeURIComponent(resource.slug)}`, window.location.origin).toString();
     const markdown = notesToMarkdown(resource, notes, url, { source: t('notes.exportSource'), exportedAt: t('notes.exportedAt') });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(new Blob([markdown], { type: 'text/markdown;charset=utf-8' }));

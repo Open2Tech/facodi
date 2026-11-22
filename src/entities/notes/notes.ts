@@ -15,6 +15,8 @@ const noteSchema = z.object({
   resourceTitle: z.string(),
   /** `learning_objects.object_type`; absent on notes written before it was recorded. */
   resourceType: z.string().optional(),
+  /** Canonical in-app route for course/UC notes; optional for legacy and browser notebooks. */
+  resourceHref: z.string().optional(),
   title: z.string(),
   body: z.string(),
   tags: z.array(z.string()),
@@ -25,7 +27,7 @@ const noteSchema = z.object({
 });
 export type StudyNote = z.infer<typeof noteSchema>;
 export type NoteDraft = Pick<StudyNote, 'title' | 'body' | 'tags' | 'timestamp'>;
-export type NoteResource = { id: string; slug: string; title: string; type?: string };
+export type NoteResource = { id: string; slug: string; title: string; type?: string; href?: string };
 
 export const notesStorageKey = (owner: string) => `${NOTES_STORAGE_PREFIX}${owner}`;
 
@@ -59,11 +61,36 @@ export function sortNotes(notes: StudyNote[]) {
 
 export const hasCode = (note: Pick<StudyNote, 'body'>) => note.body.includes('`');
 
+/** Only canonical internal study routes are accepted from stored notes.
+ * A retired or hidden course/UC remains in the notebook without a broken resource link.
+ */
+export function notePageHref(note: Pick<StudyNote, 'resourceType' | 'resourceSlug' | 'resourceHref'>): string | null {
+  if (!note.resourceSlug) return null;
+  if (note.resourceType === 'course') {
+    return note.resourceHref && /^\/courses\/[^/?#]+$/.test(note.resourceHref) ? note.resourceHref : null;
+  }
+  if (note.resourceType === 'curricular_unit') {
+    return note.resourceHref && /^\/courses\/[^/?#]+\/units\/[^/?#]+$/.test(note.resourceHref) ? note.resourceHref : null;
+  }
+  if (note.resourceType === 'module') return `/modules/${encodeURIComponent(note.resourceSlug)}`;
+  return `/resources/${encodeURIComponent(note.resourceSlug)}`;
+}
+export function noteOpenHref(note: Pick<StudyNote, 'resourceType' | 'resourceSlug' | 'resourceHref'>): string | null {
+  const page = notePageHref(note);
+  if (!page) return null;
+  const scope = note.resourceType === 'course' ? 'course'
+    : note.resourceType === 'curricular_unit' ? 'unit'
+    : note.resourceType === 'module' ? 'module' : 'open';
+  return `${page}?notes=${scope}`;
+}
+
+
 export function createNote(resource: NoteResource, draft: NoteDraft, now = new Date()): StudyNote {
   const stamp = now.toISOString();
   return {
     id: crypto.randomUUID(), resourceId: resource.id, resourceSlug: resource.slug, resourceTitle: resource.title,
-    ...(resource.type ? { resourceType: resource.type } : {}), ...draft, pinned: false, createdAt: stamp, updatedAt: stamp,
+    ...(resource.type ? { resourceType: resource.type } : {}),
+    ...(resource.href ? { resourceHref: resource.href } : {}), ...draft, pinned: false, createdAt: stamp, updatedAt: stamp,
   };
 }
 
@@ -131,7 +158,7 @@ export function tagCounts(notes: StudyNote[]) {
   return [...counts].map(([tag, count]) => ({ tag, count })).sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
-export type NoteGroup = { resourceId: string; slug: string; title: string; type: string | undefined; notes: StudyNote[]; updatedAt: string };
+export type NoteGroup = { resourceId: string; slug: string; title: string; href: string | null; openHref: string | null; type: string | undefined; notes: StudyNote[]; updatedAt: string };
 
 /** Notes per resource, sorted within each group; the most recently edited resource comes first. */
 export function groupNotesByResource(notes: StudyNote[]): NoteGroup[] {
@@ -141,6 +168,7 @@ export function groupNotesByResource(notes: StudyNote[]): NoteGroup[] {
     const latest = items.reduce((a, b) => (a.updatedAt > b.updatedAt ? a : b));
     return {
       resourceId, slug: latest.resourceSlug, title: latest.resourceTitle,
+      href: notePageHref(latest), openHref: noteOpenHref(latest),
       type: items.find(item => item.resourceType)?.resourceType, notes: sortNotes(items), updatedAt: latest.updatedAt,
     };
   }).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
@@ -150,7 +178,7 @@ export function groupNotesByResource(notes: StudyNote[]): NoteGroup[] {
 export function notebookToMarkdown(groups: NoteGroup[], origin: string, labels: ExportLabels & { title: string; unavailable: string }, now = new Date()) {
   const lines = [`# ${labels.title}`, '', `${labels.exportedAt}: ${now.toISOString().slice(0, 10)}`];
   for (const group of groups) {
-    const url = group.slug ? `${origin}/resources/${group.slug}` : '';
+    const url = group.href ? new URL(group.href, origin).toString() : '';
     lines.push('', `## ${group.title || labels.unavailable}`);
     if (url) lines.push('', `${labels.source}: ${url}`);
     for (const note of group.notes) lines.push(...noteMarkdown(url ? note : { ...note, timestamp: null }, url, '###'));

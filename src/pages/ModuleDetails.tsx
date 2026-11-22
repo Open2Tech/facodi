@@ -9,6 +9,7 @@ import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { PageState } from '@/components/layout/PageState';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { ShareButton } from '@/components/share/ShareButton';
+import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { resourceMeta } from '@/shared/seo/seo';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { plainText } from '@/shared/lib/text';
@@ -66,7 +67,7 @@ export default function ModuleDetails() {
       {module.description && <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
         {plainText(module.description)}
       </p>}
-      <div className="mt-6"><ShareButton title={module.title} /></div>
+      <div className="mt-6 flex flex-wrap items-center gap-3"><ShareButton title={module.title} /><StudyNotesAction scope="module" resource={{ id: module.id, slug: module.slug, title: module.title, type: 'module', href: `/modules/${encodeURIComponent(module.slug)}` }} /></div>
     </header>
     <LearningContext focus="module" />
     {!!units.length && <section aria-labelledby="module-curricular-context" className="border-y border-input py-7">

@@ -44,7 +44,35 @@ export async function listMyNotes(signal?: AbortSignal): Promise<StudyNote[]> {
   const { data, error } = await supabase.from('study_notes').select(NOTE_FIELDS)
     .order('updated_at', { ascending: false }).abortSignal(signal);
   if (error) throw new Error(getSupabaseErrorMessage(error));
-  return (data as NoteRow[] | null ?? []).map(noteFromRow);
+  const notes = (data as NoteRow[] | null ?? []).map(noteFromRow);
+  const courseIds = [...new Set(notes.filter(note => note.resourceType === 'course').map(note => note.resourceId))];
+  const unitIds = [...new Set(notes.filter(note => note.resourceType === 'curricular_unit').map(note => note.resourceId))];
+  if (!courseIds.length && !unitIds.length) return notes;
+  const routes = new Map<string, string>();
+  // Resolve only publicly readable curricular routes under their existing RLS.
+  // If a course/UC has been unpublished, notes remain editable in /notes without a dead link.
+  if (courseIds.length) {
+    const { data: courses, error: courseError } = await supabase.from('courses')
+      .select('learning_object_id, slug').in('learning_object_id', courseIds)
+      .eq('published', true).eq('status', 'active').abortSignal(signal);
+    if (!courseError) for (const course of courses ?? []) {
+      if (course.learning_object_id) routes.set(course.learning_object_id, `/courses/${encodeURIComponent(course.slug)}`);
+    }
+  }
+  if (unitIds.length) {
+    const { data: units, error: unitError } = await supabase.from('curricular_units')
+      .select('learning_object_id, slug, courses!inner(slug)')
+      .in('learning_object_id', unitIds)
+      .eq('published', true).eq('status', 'active')
+      .eq('courses.published', true).eq('courses.status', 'active').abortSignal(signal);
+    if (!unitError) for (const unit of units ?? []) {
+      if (unit.learning_object_id && unit.courses?.slug) {
+        routes.set(unit.learning_object_id, `/courses/${encodeURIComponent(unit.courses.slug)}/units/${encodeURIComponent(unit.slug)}`);
+      }
+    }
+  }
+  return notes.map(note => routes.has(note.resourceId)
+    ? { ...note, resourceHref: routes.get(note.resourceId) } : note);
 }
 
 /** Insert or re-insert (undo, import) by client id; `owner_id` comes from the session. */

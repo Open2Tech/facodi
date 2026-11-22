@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, NotebookPen } from 'lucide-react';
 import { useNotebook } from '@/features/notes/useNotebook';
-import type { StudyNote } from '@/entities/notes/notes';
+import { noteOpenHref, type StudyNote } from '@/entities/notes/notes';
 import { GuestImport, NotebookStorage } from './NotebookStorage';
 
 const LIMIT = 5;
@@ -43,7 +43,7 @@ export function NotebookOverview() {
       </div>
         : <ul className="divide-y divide-input border-b border-input">
           {groups.slice(0, LIMIT).map(({ latest, count }) => <li key={latest.resourceId}>
-            <OptionalLink to={latest.resourceSlug ? `/resources/${latest.resourceSlug}?notes=open` : null} className="group flex items-center gap-4 py-4 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:px-3">
+            <OptionalLink to={noteOpenHref(latest)} className="group flex items-center gap-4 py-4 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:px-3">
               <span className="min-w-0 flex-1">
                 <span className="block truncate font-semibold decoration-2 underline-offset-4 group-hover:underline">{latest.resourceTitle || t('notes.resourceUnavailable')}</span>
                 <span className="mt-1 block truncate text-sm text-muted-foreground">{t('notes.overviewLatest', { title: latest.title })}</span>
@@ -52,7 +52,7 @@ export function NotebookOverview() {
                 <span className="block font-mono tabular-nums text-foreground">{t('notes.count', { count })}</span>
                 <time dateTime={latest.updatedAt}>{date.format(new Date(latest.updatedAt))}</time>
               </span>
-              {latest.resourceSlug && <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />}
+              {noteOpenHref(latest) && <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />}
             </OptionalLink>
           </li>)}
         </ul>}

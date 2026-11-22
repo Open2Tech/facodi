@@ -112,7 +112,7 @@ export default function Notebook() {
           {!groups.length ? <p className="py-10 text-muted-foreground">{t('notes.emptyFiltered')}</p>
             : <div className="divide-y divide-input">
               {groups.map(group => {
-                const href = group.slug ? `/resources/${group.slug}` : null;
+                const href = group.href;
                 return <section key={group.resourceId} aria-labelledby={`group-${group.resourceId}`} className="py-8">
                   <header className="mb-4 flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0">
@@ -122,7 +122,7 @@ export default function Notebook() {
                       </h2>
                       <p className="mt-1 font-mono text-xs tabular-nums text-muted-foreground">{t('notes.count', { count: group.notes.length })}</p>
                     </div>
-                    {href && <Link to={`${href}?notes=open`} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold underline underline-offset-4">
+                    {href && <Link to={group.openHref!} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold underline underline-offset-4">
                       {t('notebookPage.openNotebook')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                     </Link>}
                   </header>

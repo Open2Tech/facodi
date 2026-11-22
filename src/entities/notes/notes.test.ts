@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   countNoteViews, createNote, formatTimestamp, groupNotesByResource, notebookToMarkdown, notesToMarkdown, parseNotebook, parseNoteView,
-  parseStartParam, parseTags, searchNotes, sortNotes, tagCounts,
+  parseStartParam, parseTags, searchNotes, sortNotes, tagCounts, notePageHref, noteOpenHref,
 } from './notes';
 
 const resource = { id: 'r1', slug: 'pipelines', title: 'Pipelines' };
@@ -91,5 +91,44 @@ describe('study notes', () => {
         '', '## Unavailable', '', '### Orphan', '',
       ].join('\n'));
     });
+  });
+});
+
+describe('cross-feature notebook navigation', () => {
+  const blank = { title: 'My note', body: '', tags: [], timestamp: null };
+
+  it('routes course, UC, module and video notes back to their real feature pages', () => {
+    const course = createNote({ id: 'c1', slug: 'bioquimica', title: 'Bioquímica', type: 'course', href: '/courses/bioquimica' }, blank);
+    const unit = createNote({ id: 'u1', slug: '140064284', title: 'Biologia Celular', type: 'curricular_unit', href: '/courses/bioquimica/units/140064284' }, blank);
+    const module = createNote({ id: 'm1', slug: 'pratica-laboratorial', title: 'Módulo', type: 'module' }, blank);
+    const video = createNote({ id: 'v1', slug: 'estudo-de-celulas', title: 'Aula', type: 'video' }, blank);
+    expect(noteOpenHref(course)).toBe('/courses/bioquimica?notes=course');
+    expect(noteOpenHref(unit)).toBe('/courses/bioquimica/units/140064284?notes=unit');
+    expect(noteOpenHref(module)).toBe('/modules/pratica-laboratorial?notes=module');
+    expect(noteOpenHref(video)).toBe('/resources/estudo-de-celulas?notes=open');
+    expect(groupNotesByResource([course, unit, module, video]).map(g => g.openHref).sort()).toEqual(
+      ['/courses/bioquimica?notes=course', '/courses/bioquimica/units/140064284?notes=unit',
+       '/modules/pratica-laboratorial?notes=module', '/resources/estudo-de-celulas?notes=open'].sort(),
+    );
+  });
+
+  it('keeps legacy notes and rejects unsafe, stale, or unpublished curricular links', () => {
+    const legacy = note({ id: 'legacy' });
+    expect(notePageHref(legacy)).toBe('/resources/pipelines');
+    expect(notePageHref({ resourceType: 'curricular_unit', resourceSlug: 'facodi-uc-bioquimica-140064284' })).toBeNull();
+    expect(noteOpenHref({ resourceType: 'course', resourceSlug: 'facodi-course-bioquimica', resourceHref: '//evil.example' })).toBeNull();
+    expect(noteOpenHref({ resourceType: 'curricular_unit', resourceSlug: 'uc', resourceHref: '/courses/bioquimica?bad' })).toBeNull();
+    const empty = { ...legacy, resourceSlug: '' };
+    expect(notePageHref(empty)).toBeNull();
+  });
+
+  it('keeps canonical links in guest-notebook exports instead of redirecting to resource details', () => {
+    const unit = createNote({ id: 'u2', slug: '140064284', title: 'Biologia Celular', type: 'curricular_unit', href: '/courses/bioquimica/units/140064284' }, blank);
+    const markdown = notebookToMarkdown(groupNotesByResource([unit]), 'https://facodi.com', {
+      title: 'Caderno', source: 'Fonte', exportedAt: 'Exportado em', unavailable: 'Indisponível',
+    }, new Date('2026-11-22T00:00:00Z'));
+    expect(markdown).toContain('Fonte: https://facodi.com/courses/bioquimica/units/140064284');
+    expect(markdown).not.toContain('/resources/140064284');
+    expect(parseNotebook(JSON.stringify([unit]))[0].resourceHref).toBe('/courses/bioquimica/units/140064284');
   });
 });
