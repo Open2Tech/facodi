@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, MousePointerClick, PenTool, type LucideIcon } from 'lucide-react';
+import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombined, Cpu, Dumbbell, FlaskConical, GraduationCap, Landmark, Languages, Megaphone, RadioTower, MousePointerClick, PenTool, type LucideIcon } from 'lucide-react';
 import type { Course } from '@/entities/course/course.types';
 import { discoveryByCourse } from '@/features/discoveries/catalog';
 import { useDiscoveryAnchor } from '@/features/discoveries/useDiscoveryAnchor';
@@ -20,6 +20,7 @@ const subjects = new Map<string, Subject | LucideIcon>([
   ['ciencias-biomedicas', Activity],
   ['ciencias-educacao-formacao', GraduationCap],
   ['ldcom', PenTool],
+  ['ciencias-da-comunicacao', RadioTower],
   ['desporto', Dumbbell],
   ['economia', ChartNoAxesCombined],
   ['engenharia-civil', 'civil'],
