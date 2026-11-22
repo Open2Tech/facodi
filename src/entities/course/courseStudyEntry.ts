@@ -83,7 +83,7 @@ export function findCourseUnits<T extends StudyEntryUnit>(
       playlistCount: count(counts.get(unit.id)?.playlist_count),
       guideCount: count(counts.get(unit.id)?.guide_count),
     }))
-    .filter(({ unit, videoCount, readingCount }) => {
+    .filter(({ unit, videoCount, readingCount, playlistCount, guideCount }) => {
       if (onlyWithMaterials && videoCount === 0 && readingCount === 0 && guideCount === 0 && playlistCount === 0) return false;
       if (!tokens.length) return true;
       const value = normalizeCourseMaterialTerm([unit.title, unit.code ?? ''].join(' '));
