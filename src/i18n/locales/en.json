@@ -116,6 +116,19 @@
       }
     }
   },
+  "lccMediaLab": {
+    "eyebrow": "FACODI studio · Communication Sciences",
+    "title": "From the first idea to the microphone",
+    "description": "Explore curated videos from Portugal, organised step by step. Research, write scripts, record, edit and communicate responsibly.",
+    "localStory": "Made in the Algarve",
+    "localStoryTitle": "RTP Antena 3 + UAlg students",
+    "localStoryDescription": "A live recording at the University of Algarve, with contributions from Communication Sciences students and RUA FM.",
+    "openCase": "Explore the real case",
+    "lessons_one": "{{count}} video",
+    "lessons_other": "{{count}} videos",
+    "sourceNote": "FACODI editorial sequences using third-party videos. These are not official UAlg classes.",
+    "allMaterials": "Explore all learning materials"
+  },
   "brand": {
     "tagline": "An open digital campus",
     "description": "Courses, curricular units and educational resources to follow the thread of knowledge. Learn at your own pace with FACODI.",
