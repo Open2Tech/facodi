@@ -9,6 +9,7 @@ import { useResourceNotes } from '@/features/notes/useNotebook';
 import { useNoteActions } from '@/features/notes/useNoteActions';
 import { cn } from '@/lib/utils';
 import { NoteCard } from './NoteCard';
+import { ExportNotesPdfButton } from './ExportNotesPdfButton';
 import { NoteComposer } from './NoteComposer';
 import { GuestImport, NotebookStorage } from './NotebookStorage';
 
@@ -132,7 +133,10 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
         <NotebookStorage isGuest={notebook.isGuest} />
         <GuestImport />
         {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(`${location.pathname}${location.search}${location.hash}`)}`} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
-        <Button type="button" variant="outline" className="w-full" disabled={!notes.length} onClick={exportMarkdown}><Download />{t('notes.export')}</Button>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <Button type="button" variant="outline" className="w-full" disabled={!notes.length} onClick={exportMarkdown}><Download />{t('notes.export')}</Button>
+          <ExportNotesPdfButton className="w-full" notes={notes} resource={resource} />
+        </div>
       </footer>
     </SheetContent>
   </Sheet>;
