@@ -1,5 +1,7 @@
 # FACODI — email, autenticação e notificações: verificação de produção
 
+> Atualização de 22/11/2026: o envio de agradecimento e resultado para sugestões e playlists está ativo, com cron e aceitação de mensagens pelo fornecedor verificados. Consultar [estado atual e operação](facodi-contributor-emails.md). O restante documento conserva a auditoria histórica de 14/11.
+
 Data: 2026-11-14  
 Projeto: Supabase `wvkjainfwsyiyfcmbtid`, schema `facodi`  
 Código: `Open2Tech/facodi`, branch `facodi`  

@@ -38,6 +38,9 @@ jobs:
       - name: Test
         run: bun run test
 
+      - name: Transactional email tests
+        run: bun run test:email
+
       - name: Test Coverage
         run: bun run test:coverage
 
