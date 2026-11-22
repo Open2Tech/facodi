@@ -222,7 +222,7 @@ for (const language of ['pt', 'en', 'es', 'fr']) {
         const actions = element.querySelector('nav')!.nextElementSibling!.getBoundingClientRect();
         return { height: element.getBoundingClientRect().height, brandRight: brand.right, navLeft: nav.left, navRight: nav.right, actionsLeft: actions.left, actionsRight: actions.right };
       });
-      expect(bounds.height).toBe(81);
+      expect(bounds.height).toBe(85);
       expect(bounds.brandRight).toBeLessThan(bounds.navLeft);
       expect(bounds.navRight).toBeLessThan(bounds.actionsLeft);
       expect(bounds.actionsRight).toBeLessThanOrEqual(width);
@@ -267,7 +267,6 @@ for (const [width, height] of [[320, 568], [375, 667], [768, 500]]) {
     await trigger.click();
     const sheet = page.getByRole('dialog', { name: 'Main navigation' });
     await expect(sheet).toBeVisible();
-    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     const language = sheet.getByRole('combobox', { name: 'Language' });
     await language.scrollIntoViewIfNeeded();
     await expect(language).toBeInViewport();

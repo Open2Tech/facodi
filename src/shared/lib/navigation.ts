@@ -1,12 +1,29 @@
-const privateDestinations = ['/dashboard', '/profile', '/notes', '/playlists/submit', '/suggest', '/editor', '/editor/study-paths', '/editor/course-quality', '/editor/playlists', '/editor/suggestions', '/admin'];
+const privateDestinations = [
+  '/dashboard',
+  '/profile',
+  '/notes',
+  '/playlists/submit',
+  '/community/join',
+  '/suggest',
+  '/editor',
+  '/editor/study-paths',
+  '/editor/sequence-order',
+  '/editor/course-quality',
+  '/editor/project-credits',
+  '/editor/email-templates',
+  '/editor/community',
+  '/editor/playlists',
+  '/editor/suggestions',
+  '/admin',
+];
 /** Public pages that invite signing in to save something (notes, sequence progress) and expect the learner back. */
-const contentDestination = /^\/(?:resources|sequences|courses)\/[\w.-]+$/;
+const contentDestination = /^\/(?:resources|sequences)\/[\w.-]+$|^\/courses\/[\w.-]+(?:\/units\/[\w.-]+)?$/;
 
 export function safeReturnPath(value: string | null | undefined): string {
   if (!value || /[\\\s]/.test(value) || [...value].some(char => char.charCodeAt(0) < 32) || !value.startsWith('/') || value.startsWith('//')) return '/dashboard';
   const url = new URL(value, 'https://internal.invalid');
   return url.origin === 'https://internal.invalid' && (privateDestinations.includes(url.pathname) || contentDestination.test(url.pathname))
-    ? `${url.pathname}${url.search}`
+    ? `${url.pathname}${url.search}${url.hash}`
     : '/dashboard';
 }
 

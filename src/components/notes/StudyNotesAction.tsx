@@ -26,8 +26,14 @@ export function StudyNotesAction({ resource, scope }: {
     }, { replace: true, preventScrollReset: true });
   }
 
+  const scopeLabel = scope === 'course'
+    ? t('studyNotesReview.courseTitle')
+    : scope === 'unit'
+      ? t('studyNotesReview.unitTitle')
+      : t('nav.modules');
+
   return <>
-    <button type="button" onClick={() => setOpen(true)} aria-haspopup="dialog" aria-expanded={open}
+    <button type="button" onClick={() => setOpen(true)} aria-label={scopeLabel} aria-haspopup="dialog" aria-expanded={open}
       className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-card px-4 py-2 text-sm font-semibold transition-colors hover:bg-brand-mint/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
       <NotebookPen className="h-4 w-4 shrink-0" aria-hidden="true" />
       {t('notes.open')}
