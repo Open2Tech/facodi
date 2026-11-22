@@ -4,7 +4,7 @@ import { Activity, BookOpen, Boxes, BriefcaseBusiness, Cable, ChartNoAxesCombine
 import type { Course } from '@/entities/course/course.types';
 import { discoveryByCourse } from '@/features/discoveries/catalog';
 import { useDiscoveryAnchor } from '@/features/discoveries/useDiscoveryAnchor';
-import { rememberDiscovery } from '@/features/discoveries/useDiscoveries';
+import { useDiscoveryReward } from '@/features/discoveries/useDiscoveryReward';
 import './CourseEmblem.css';
 
 type Subject = 'accounting' | 'computing' | 'psychology' | 'neuroscience' | 'astronomy' | 'mathematics' | 'civil';
@@ -70,6 +70,7 @@ function Illustration({ subject, large = false, greeting }: { subject: Subject; 
 
 export function CourseEmblem({ course, detail = false }: { course: Identity; detail?: boolean }) {
   const { t } = useTranslation();
+  const reward = useDiscoveryReward();
   const [open, setOpen] = useState(false);
   const captionId = useId();
   const SubjectIcon = subjects.get(course.slug) ?? BookOpen;
@@ -83,7 +84,7 @@ export function CourseEmblem({ course, detail = false }: { course: Identity; det
   }
   return <div id="course-discovery" className="flex scroll-mt-24 items-center gap-4">
     <button type="button" aria-label={t('course.emblem.discover', { course: course.title })} aria-expanded={open} aria-controls={captionId}
-      onClick={() => { if (!open) rememberDiscovery(discovery); setOpen(!open); }} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
+      onClick={() => { if (!open) reward(discovery); setOpen(!open); }} className={tile + size + ' course-emblem focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'}>
       {typeof SubjectIcon === 'string' ? <Illustration subject={SubjectIcon} large greeting={t('course.emblem.greeting')} />
         : <SubjectIcon size={36} strokeWidth={1.75} aria-hidden="true" className={open ? 'motion-safe:-rotate-12 motion-safe:transition-transform' : undefined} />}
     </button>

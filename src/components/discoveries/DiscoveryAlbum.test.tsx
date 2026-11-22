@@ -14,15 +14,18 @@ it('records a keyboard discovery once and restores the album after remounting', 
   await user.tab();
   await user.keyboard('{Enter}');
   expect(screen.getByText(/Perdeste o norte/)).toBeVisible();
-  expect(screen.getByText('1 de 18 descobertas')).toBeVisible();
+  expect(screen.getByText('1 de 25 descobertas')).toBeVisible();
 
   await user.keyboard('{Enter}{Enter}');
-  expect(screen.getByText('1 de 18 descobertas')).toBeVisible();
+  expect(screen.getByText('1 de 25 descobertas')).toBeVisible();
   view.unmount();
 
   renderWithProviders(<DiscoveryAlbum />);
-  expect(screen.getByText('1 de 18 descobertas')).toBeVisible();
+  expect(screen.getByText('1 de 25 descobertas')).toBeVisible();
   await user.click(screen.getByText('Álbum de descobertas'));
   expect(screen.getByRole('link', { name: /bússola.*Descoberta registada/ })).toHaveAttribute('href', '/#discovery-compass');
+  expect(screen.getByRole('link', { name: 'Próxima pista' })).toHaveAttribute('href', '/sequences#discovery-chain');
+  await user.click(screen.getByRole('checkbox', { name: 'Só por descobrir' }));
+  expect(screen.queryByRole('link', { name: /bússola.*Descoberta registada/ })).not.toBeInTheDocument();
   localStorage.clear();
 });

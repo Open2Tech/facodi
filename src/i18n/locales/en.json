@@ -1,11 +1,21 @@
 {
   "discoveries": {
+    "openAlbum": "Open album",
+    "nextHint": "Next clue",
+    "pendingOnly": "Undiscovered only",
     "title": "Discovery album",
     "progress": "{{found}} of {{total}} discoveries",
     "description": "Follow the clues and try the symbols around campus. Your album is saved in this browser.",
     "complete": "Album complete! Use the clues below to revisit any discovery.",
     "found": "Discovery recorded",
     "hints": {
+      "modeling": "The Digital Modelling box",
+      "networking": "The Information Systems and Technology cable",
+      "education": "The Education Sciences cap",
+      "sports": "The Sports weight",
+      "management": "The Management briefcase",
+      "administration": "The Administration inventory",
+      "positioning": "The Marketing megaphone",
       "compass": "The home page compass",
       "chain": "The link in Sequences",
       "margin": "The Notebook margin",
@@ -26,6 +36,13 @@
       "heritage": "The Archaeology layers"
     },
     "messages": {
+      "modeling": "Turn a box beside a window and its shadow changes. In 3D modelling, you can also rotate the camera to reveal a face without moving the object.",
+      "networking": "A switch learns which port each source MAC address appeared on. When it knows the destination port, it forwards the frame directly through that port.",
+      "education": "After learning an idea, explain it from memory with an example of your own. Where your explanation stalls, you have a question for your next session.",
+      "sports": "A jump from a still position and a jump after a quick bend start differently. Compare them and see what changes in the height you reach.",
+      "management": "If a team closes 20 requests per day and 25 arrive, the queue grows by five per day. Before dividing the work, find out where requests are waiting.",
+      "administration": "There are 30 units on the shelf. Twelve arrive and eight leave. The record should show 34. If the physical count differs, check the movements before adjusting the balance.",
+      "positioning": "Imagine two cafés on the same street, one for a quick break and another for working. What detail in each window would make its offer clear?",
       "compass": "Lost your bearings? Follow a question into the library and come back with an answer you can explain to someone else.",
       "chain": "Try linking two steps of a sequence in a single sentence. Which idea from the first step helps you understand the second?",
       "margin": "A note from the margin. Close the material and write a question and your answer from memory. Open the material again to check what you missed.",

@@ -1,11 +1,21 @@
 {
   "discoveries": {
+    "openAlbum": "Ouvrir l’album",
+    "nextHint": "Indice suivant",
+    "pendingOnly": "À découvrir seulement",
     "title": "Album des découvertes",
     "progress": "{{found}} découvertes sur {{total}}",
     "description": "Suis les indices et essaie les symboles du campus. Ton album est enregistré dans ce navigateur.",
     "complete": "Album complet ! Les indices permettent de revoir chaque découverte.",
     "found": "Découverte enregistrée",
     "hints": {
+      "modeling": "La boîte de Modélisation numérique",
+      "networking": "Le câble des Systèmes et Technologies de l’information",
+      "education": "Le chapeau des Sciences de l’éducation",
+      "sports": "L’haltère des Sciences du sport",
+      "management": "La mallette de Gestion",
+      "administration": "L’inventaire d’Administration",
+      "positioning": "Le mégaphone de Marketing",
       "compass": "La boussole de l’accueil",
       "chain": "Le maillon des Séquences",
       "margin": "La marge du Carnet",
@@ -26,6 +36,13 @@
       "heritage": "Les couches d’Archéologie"
     },
     "messages": {
+      "modeling": "Tourne une boîte près d’une fenêtre et son ombre change. En modélisation 3D, tu peux aussi tourner la caméra pour révéler une face sans déplacer l’objet.",
+      "networking": "Un commutateur apprend sur quel port il a vu chaque adresse MAC source. Lorsqu’il connaît le port de destination, il y transmet directement la trame.",
+      "education": "Après avoir appris une idée, explique-la de mémoire avec ton propre exemple. Là où tu bloques, tu tiens une question pour ta prochaine séance.",
+      "sports": "Un saut depuis une position immobile et un saut après une brève flexion commencent différemment. Compare-les et observe ce qui change dans la hauteur atteinte.",
+      "management": "Si une équipe traite 20 demandes par jour et qu’il en arrive 25, la file grandit de cinq par jour. Avant de répartir le travail, repère l’étape où les demandes s’accumulent.",
+      "administration": "Il y a 30 unités en rayon. Douze arrivent et huit sortent. Le registre doit en afficher 34. Si le comptage réel diffère, vérifie les mouvements avant d’ajuster le solde.",
+      "positioning": "Imagine deux cafés dans la même rue, l’un pour une pause rapide et l’autre pour s’installer et travailler. Quel détail de chaque vitrine rendrait son offre claire ?",
       "compass": "Tu as perdu le nord ? Suis une question jusqu’à la bibliothèque et reviens avec une réponse que tu peux expliquer à quelqu’un.",
       "chain": "Relie deux étapes d’une séquence en une phrase. Quelle idée de la première t’aide à comprendre la seconde ?",
       "margin": "Un mot dans la marge. Ferme le support et écris de mémoire une question et ta réponse. Rouvre le support pour vérifier ce qui t’a échappé.",
