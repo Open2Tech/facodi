@@ -2556,6 +2556,12 @@
     "limited": "Mostrando {{shown}} de {{total}}. Refina la búsqueda."
   },
   "unitHighlights": {
+    "catalogLanguage": "Idioma catalogado: {{language}}",
+    "catalogLevel": "Nivel editorial: {{level}}",
+    "publicationYear": "Publicado en {{year}}",
+    "editorialGoal": "Objetivo sugerido: {{goal}}",
+    "languages": {"pt":"Portugués","pt-PT":"Portugués (Portugal)","pt-BR":"Portugués (Brasil)","en":"Inglés","es":"Español","fr":"Francés"},
+    "levels": {"foundation":"Fundamentos","introductory":"Introductorio","intermediate":"Intermedio","advanced":"Avanzado","advanced_optional":"Avanzado (opcional)"},
     "sourceHost": "Fuente: {{host}}",
     "eyebrow": "Estudiar esta asignatura",
     "title": "Empieza por aquí",
