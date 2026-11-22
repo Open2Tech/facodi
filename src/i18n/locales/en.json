@@ -681,6 +681,10 @@
     "instagram": "FACODI on Instagram"
   },
   "course": {
+    "playlistCoverage": "{{count}} units with playlists",
+    "guideCoverage": "{{count}} units with guides",
+    "playlistChip": "{{count}} playlists",
+    "guideChip": "{{count}} guides",
     "emblem": {
       "mathematics": "These squares have sides of 1, 1, 2, 3 and 5. Each new value is the sum of the previous two. A quarter circle in each square traces the spiral.",
       "civil": "The diagonals divide the rectangles into triangles. In a truss, this geometry helps the structure hold its shape under load.",
@@ -2565,6 +2569,14 @@
     "videoNotice": "Published videos linked to curricular units. They are not automatically editorial sequences or proof that each lesson has been fully reviewed."
   },
   "courseStart": {
+    "loading": "Checking available learning materials. You can explore curricular units in the meantime.",
+    "unavailable": "Material coverage could not be confirmed. You can still open every curricular unit.",
+    "videoUnits": "{{count}} units with videos",
+    "readingUnits": "{{count}} units with readings",
+    "playlistUnits": "{{count}} units with playlists",
+    "guideUnits": "{{count}} units with guides",
+    "playlistCount": "Playlists: {{count}}",
+    "guideCount": "Guides: {{count}}",
     "eyebrow": "Your next step",
     "title": "Where to begin?",
     "description": "These units have learning materials available. Pick a topic and explore its linked resources.",
@@ -2580,13 +2592,19 @@
     "disclaimer": "Suggestions reflect curriculum order and available resources, not official prerequisite guidance."
   },
   "courseUnitFinder": {
+    "coverageLoading": "Loading material availability…",
+    "coverageUnavailable": "Material indicators are temporarily unavailable. Searching by title or code still works.",
+    "videoCount": "{{count}} videos",
+    "readingCount": "{{count}} readings",
+    "playlistCount": "{{count}} playlists",
+    "guideCount": "{{count}} guides",
     "title": "Find your course unit",
     "description": "Search all {{count}} curricular units without scrolling through the whole study plan.",
     "fullList": "View full list",
     "searchLabel": "Unit name or code",
     "searchPlaceholder": "E.g. Statistics, 18021025, Algebra…",
     "clear": "Clear search",
-    "onlyWithMaterials": "Only units with videos or readings",
+    "onlyWithMaterials": "Only units with materials",
     "matches": "{{count}} matching units",
     "noMatches": "No units found. Try another term or remove the filter.",
     "materialCount": "{{videos}} videos · {{readings}} readings",
