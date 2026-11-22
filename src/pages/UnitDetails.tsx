@@ -11,6 +11,7 @@ import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath
 import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
 import { UnitLearningHighlights } from '@/components/course/UnitLearningHighlights';
+import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { pickUnitHighlights } from '@/entities/course/unitHighlights';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
@@ -132,6 +133,7 @@ export default function UnitDetails() {
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={unit.title} />
+        {unit.learning_object_id && <StudyNotesAction scope="unit" resource={{ id: unit.learning_object_id, slug: unit.slug, title: unit.title, type: 'curricular_unit', href: unitPath(course.slug, unit.slug) }} />}
         <Link to={courseMaterialsPath(course.slug, unit.slug)}
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
