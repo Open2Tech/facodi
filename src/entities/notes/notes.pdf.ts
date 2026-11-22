@@ -60,7 +60,7 @@ export function printableNoteBody(body: string): string {
   }).join('');
 }
 function safeSource(path: string | null, origin: string): string | null {
-  if (!path || !path.startsWith('/') || path.startsWith('//') || /[\u0000-\u001f]/.test(path)) return null;
+  if (!path || !path.startsWith('/') || path.startsWith('//') || Array.from(path).some(c => c.charCodeAt(0) < 32)) return null;
   try {
     const base = new URL(origin);
     if (!['https:', 'http:'].includes(base.protocol)) return null;
