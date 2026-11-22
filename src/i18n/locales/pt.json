@@ -140,6 +140,22 @@
           "description": "Aulas em ordem para maratonar sem perder o fio — com progresso guardado."
         },
         "notes": {
+    "exportPdf": "Exportar PDF (A4)",
+    "pdfEdition": "Edição pessoal",
+    "pdfCoverLabel": "O teu caderno, do teu jeito",
+    "pdfCoverSubtitle": "Ideias, fórmulas, descobertas e aqueles momentos de aprendizagem que merecem ficar.",
+    "pdfContents": "Mapa do caderno",
+    "pdfResource": "Recurso de estudo",
+    "pdfNotes": "anotações",
+    "pdfResources": "recursos",
+    "pdfUpdated": "Atualizada",
+    "pdfMoment": "Momento da aula",
+    "pdfPrivate": "Documento pessoal: revê o conteúdo antes de o partilhar.",
+    "pdfPrint": "Guardar como PDF",
+    "pdfPrintHint": "No diálogo de impressão, escolhe «Guardar como PDF» e ativa os gráficos de fundo.",
+    "pdfGenerated": "Preparado localmente em facodi.com — sem enviar as notas a serviços externos.",
+    "pdfBlocked": "O navegador bloqueou a pré-visualização do PDF. Permite novas janelas para o FACODI e tenta novamente.",
+    "pdfFailed": "Não foi possível preparar o PDF. Tenta novamente.",
           "title": "Caderno de estudo",
           "description": "Anota ideias, fórmulas e código colados ao segundo exato do vídeo."
         },
