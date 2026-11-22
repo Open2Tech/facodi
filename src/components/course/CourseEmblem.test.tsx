@@ -7,6 +7,7 @@ import { CourseEmblem } from '@/components/course/CourseEmblem';
 
 it.each([
   ['neurociencias-cognitivas-neuropsicologia', 'Neurociências', /através da sinapse/],
+  ['biologia', 'Biologia', /adenina.*timina/],
   ['engenharia-civil', 'Engenharia Civil', /treliça/],
   ['matematica-aplicada-economia-gestao', 'Matemática', /espiral/],
 ] as const)('opens the %s discovery with the keyboard and closes it on click', async (slug, title, text) => {
@@ -30,4 +31,17 @@ it('keeps catalog symbols and the fallback for new courses decorative', () => {
     <CourseEmblem detail course={{ slug: 'novo', title: 'Novo curso' }} />
   </>);
   expect(screen.queryByRole('button')).not.toBeInTheDocument();
+});
+
+it('keeps the biology DNA icon decorative in catalogue cards but interactive on the course page', async () => {
+  await i18n.changeLanguage('pt');
+  renderWithProviders(<>
+    <CourseEmblem course={{ slug: 'biologia', title: 'Biologia' }} />
+    <CourseEmblem detail course={{ slug: 'biologia', title: 'Biologia' }} />
+  </>);
+  const icon = screen.getByRole('button', { name: 'Descobrir o símbolo de Biologia' });
+  expect(icon).toHaveAttribute('aria-expanded', 'false');
+  await userEvent.setup().click(icon);
+  expect(icon).toHaveAttribute('aria-expanded', 'true');
+  expect(screen.getByText(/adenina.*timina/)).toBeVisible();
 });
