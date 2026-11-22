@@ -19,6 +19,9 @@ import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
 import { StudyVideo } from '@/components/resource/StudyVideo';
+import { StudyNotesReview } from '@/components/notes/StudyNotesReview';
+import { useNotebook } from '@/features/notes/useNotebook';
+import { noteCountsByResource, type StudyNoteContextResource } from '@/entities/notes/studyNoteContext';
 import { CreatorLearningPanel } from '@/components/resource/CreatorLearningPanel';
 import { SequenceProgress } from '@/components/sequence/SequenceProgress';
 import { Button } from '@/components/ui/button';
@@ -44,6 +47,7 @@ export default function SequenceDetails() {
   const progress = useSequenceProgress(query.data?.id);
   const [params, setParams] = useSearchParams();
   const saved = useRef(new Map<string, number>());
+  const notebook = useNotebook();
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
@@ -66,6 +70,13 @@ export default function SequenceDetails() {
   const following = selectedIndex >= 0 ? items[selectedIndex + 1] ?? null : null;
   const selectedRow = selected ? rows.get(selected.videoId) : undefined;
   const resumeAt = selectedRow && !selectedRow.completedAt && selectedRow.lastPosition >= RESUME_MIN_SECONDS ? selectedRow.lastPosition : null;
+
+  const noteCounts = noteCountsByResource(notebook.all);
+  const noteResources: StudyNoteContextResource[] = items.filter(item => item.slug).map(item => ({
+    id: item.videoId, title: item.title,
+    path: `/sequences/${encodeURIComponent(sequence.slug)}?v=${encodeURIComponent(item.videoId)}`,
+    scope: 'open', timed: true,
+  }));
 
   function select(videoId: string) {
     setParams(previous => {
@@ -199,6 +210,7 @@ export default function SequenceDetails() {
                 <span className="min-w-0 flex-1">
                   <span className="line-clamp-2 font-medium leading-snug">{item.title}</span>
                   {item.channel && <span className={cn('mt-1 block truncate text-xs', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{item.channel}</span>}
+                  {notebook.ready && item.slug && (noteCounts.get(item.videoId) ?? 0) > 0 && <span className={cn('mt-1 block text-xs', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{t('studyNotesReview.lessonNoteCount', { count: noteCounts.get(item.videoId) })}</span>}
                   {complete ? <span className="sr-only">{t('sequences.completed')}</span> : row && <span className={cn('mt-1 block text-xs', active ? 'text-primary-foreground' : 'text-muted-foreground')}>{t('sequences.started')}</span>}
                 </span>
               </button>
@@ -214,6 +226,8 @@ export default function SequenceDetails() {
         </ol>
       </div>
     </section> : <PageState level="h2" title={t('sequences.noLessons')} description={t('sequences.noLessonsText')} />}
+
+    <div className="mt-4"><StudyNotesReview kind="sequence" resources={noteResources} /></div>
 
     {!!readings.data?.length && <section aria-labelledby="sequence-readings" className="mt-10 border-t border-foreground pt-8">
       <h2 id="sequence-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>

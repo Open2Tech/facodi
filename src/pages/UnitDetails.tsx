@@ -12,6 +12,8 @@ import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
 import { UnitLearningHighlights } from '@/components/course/UnitLearningHighlights';
 import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
+import { StudyNotesReview } from '@/components/notes/StudyNotesReview';
+import type { StudyNoteContextResource } from '@/entities/notes/studyNoteContext';
 import { pickUnitHighlights } from '@/entities/course/unitHighlights';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
@@ -97,6 +99,26 @@ export default function UnitDetails() {
     videos.error || readingsQuery.error || playlistsQuery.error || modulesQuery.error ||
     (unitCode && sequences.error),
   );
+  const noteResources: StudyNoteContextResource[] = [
+    ...(unit.learning_object_id ? [{ id: unit.learning_object_id, title: unit.title,
+      path: unitPath(course.slug, unit.slug), scope: 'unit' as const }] : []),
+    ...videoList.filter(video => video.slug).map(video => ({
+      id: video.id, title: video.title, path: `/resources/${encodeURIComponent(video.slug)}`,
+      scope: 'open' as const, timed: true,
+    })),
+    ...(modulesQuery.data ?? []).map(module => ({
+      id: module.id, title: module.title, path: `/modules/${encodeURIComponent(module.slug)}`,
+      scope: 'module' as const,
+    })),
+    ...(readingsQuery.data ?? []).map(reading => ({
+      id: reading.id, title: reading.title, path: `/resources/${encodeURIComponent(reading.slug)}`,
+      scope: 'open' as const,
+    })),
+    ...(playlistsQuery.data ?? []).map(playlist => ({
+      id: playlist.id, title: playlist.title, path: `/resources/${encodeURIComponent(playlist.slug)}`,
+      scope: 'open' as const,
+    })),
+  ];
   const facts = [
     ['code', unit.code],
     ['ects', ectsVerificationPending(unit.metadata) ? t('ualgCurriculum.ectsPending') : unit.ects != null ? `${unit.ects} ECTS` : null],
@@ -158,6 +180,7 @@ export default function UnitDetails() {
         {composedPath && <UnitComposedStudyPath config={composedPath} sequences={sequences.data ?? []} modules={modulesQuery.data ?? []} />}
         {studyPath && <UnitStudyPath config={studyPath}
           sequences={sequences.data ?? []} videos={videoList} />}
+        <StudyNotesReview kind="unit" resources={noteResources} />
         <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
           <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
           {outcomesQuery.isPending

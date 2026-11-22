@@ -2654,5 +2654,22 @@
       "module": "Study module",
       "reading": "Reference"
     }
+  },
+  "studyNotesReview": {
+    "eyebrow": "Your notebook",
+    "unitTitle": "Review notes from this unit",
+    "unitDescription": "Notes from this unit and directly linked materials. Notes from other lessons appear within their sequences.",
+    "sequenceTitle": "Review sequence notes",
+    "sequenceDescription": "Your annotations on this sequence's lessons, linked to the exact video and moment.",
+    "courseTitle": "Review notes from this course",
+    "courseDescription": "General course and curricular-unit notes. Videos keep their own annotations.",
+    "total": "{{count}} notes in context",
+    "empty": "You don't have notes on these materials yet.",
+    "start": "Create a note",
+    "more": "{{count}} more notes in your notebook.",
+    "openNote": "Open “{{title}}” in its study context",
+    "lessonNoteCount_one": "{{count}} note",
+    "lessonNoteCount_many": "{{count}} notes",
+    "lessonNoteCount_other": "{{count}} notes"
   }
 }
