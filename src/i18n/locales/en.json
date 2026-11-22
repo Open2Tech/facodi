@@ -2556,6 +2556,12 @@
     "limited": "Showing {{shown}} of {{total}}. Refine your search to find a unit."
   },
   "unitHighlights": {
+    "catalogLanguage": "Catalogued language: {{language}}",
+    "catalogLevel": "Editorial level: {{level}}",
+    "publicationYear": "Published in {{year}}",
+    "editorialGoal": "Suggested learning goal: {{goal}}",
+    "languages": {"pt":"Portuguese","pt-PT":"Portuguese (Portugal)","pt-BR":"Portuguese (Brazil)","en":"English","es":"Spanish","fr":"French"},
+    "levels": {"foundation":"Foundations","introductory":"Introductory","intermediate":"Intermediate","advanced":"Advanced","advanced_optional":"Advanced (optional)"},
     "sourceHost": "Source: {{host}}",
     "eyebrow": "Study this unit",
     "title": "Start here",

@@ -53,6 +53,14 @@ export function UnitLearningHighlights({
             <span className="font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">
               {item.title ?? t('unitHighlights.curatedPath')}
             </span>
+            {(item.language || item.level || item.publicationYear) && <span className="flex flex-wrap gap-x-3 gap-y-1 text-xs leading-relaxed text-muted-foreground">
+              {item.language && <span>{t('unitHighlights.catalogLanguage', { language: t(`unitHighlights.languages.${item.language}`) })}</span>}
+              {item.level && <span>{t('unitHighlights.catalogLevel', { level: t(`unitHighlights.levels.${item.level}`) })}</span>}
+              {item.publicationYear && <span>{t('unitHighlights.publicationYear', { year: item.publicationYear })}</span>}
+            </span>}
+            {item.learningGoal && <span className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+              {t('unitHighlights.editorialGoal', { goal: item.learningGoal })}
+            </span>}
             {!!item.sourceHost && <span className="break-all text-xs text-muted-foreground">
               {t('unitHighlights.sourceHost', { host: item.sourceHost })}
             </span>}

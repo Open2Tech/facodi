@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import type { Json } from '@/integrations/supabase/types';
 import { supabase } from '@/shared/api/supabase/supabaseClient';
 import { getSupabaseErrorMessage } from '@/shared/api/supabase/supabaseErrors';
 
@@ -8,6 +9,9 @@ export interface UnitReading {
   title: string;
   description: string | null;
   sourceUrl: string;
+  language?: string | null;
+  metadata?: Json | null;
+  objectives?: Json | null;
 }
 
 /** RLS allows only publicly approved external reading links and published objects.
@@ -29,7 +33,7 @@ async function loadUnitReadings(unitObjectId: string, signal?: AbortSignal): Pro
   for (let start = 0; start < ids.length; start += 60) chunks.push(ids.slice(start, start + 60));
   const replies = await Promise.all(chunks.map(chunk => supabase
     .from('learning_objects')
-    .select('id, slug, title, description, source_url')
+    .select('id, slug, title, description, source_url, language, metadata, objectives')
     .in('id', chunk)
     .eq('object_type', 'external_resource')
     .eq('published', true)
@@ -46,6 +50,9 @@ async function loadUnitReadings(unitObjectId: string, signal?: AbortSignal): Pro
       title: item.title,
       description: item.description,
       sourceUrl: item.source_url,
+      language: item.language,
+      metadata: item.metadata,
+      objectives: item.objectives,
     });
   }
   const seen = new Set<string>();

@@ -2556,6 +2556,12 @@
     "limited": "Affichage de {{shown}} sur {{total}}. Affinez votre recherche."
   },
   "unitHighlights": {
+    "catalogLanguage": "Langue cataloguée : {{language}}",
+    "catalogLevel": "Niveau éditorial : {{level}}",
+    "publicationYear": "Publié en {{year}}",
+    "editorialGoal": "Objectif proposé : {{goal}}",
+    "languages": {"pt":"Portugais","pt-PT":"Portugais (Portugal)","pt-BR":"Portugais (Brésil)","en":"Anglais","es":"Espagnol","fr":"Français"},
+    "levels": {"foundation":"Fondamentaux","introductory":"Introduction","intermediate":"Intermédiaire","advanced":"Avancé","advanced_optional":"Avancé (facultatif)"},
     "sourceHost": "Source : {{host}}",
     "eyebrow": "Étudier cette unité",
     "title": "Commencer ici",

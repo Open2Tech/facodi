@@ -71,3 +71,31 @@ describe('highlight provenance', () => {
     expect(screen.queryByText(/verificado por/i)).not.toBeInTheDocument();
   });
 });
+
+describe('educational metadata labels', () => {
+  it('displays actual catalogue values without official-level or freshness claims', () => {
+    renderWithProviders(
+      <UnitLearningHighlights courseSlug="neurociencias-cognitivas-neuropsicologia" unitSlug="neurobiologia"
+        highlights={[{
+          kind: 'playlist', title: 'Neurobiologia celular', href: '/resources/neuro',
+          sourceHost: 'youtube.com', language: 'pt-BR', level: 'intermediate',
+          publicationYear: 2024, learningGoal: 'Explicar potencial de ação e libertação de neurotransmissores',
+        }]} />,
+    );
+    expect(screen.getByText('Idioma catalogado: Português (Brasil)')).toBeInTheDocument();
+    expect(screen.getByText('Nível editorial: Intermédio')).toBeInTheDocument();
+    expect(screen.getByText('Publicado em 2024')).toBeInTheDocument();
+    expect(screen.getByText('Objetivo sugerido: Explicar potencial de ação e libertação de neurotransmissores')).toBeInTheDocument();
+  });
+
+  it('omits missing fields entirely when no verified metadata exists', () => {
+    renderWithProviders(
+      <UnitLearningHighlights courseSlug="marketing" unitSlug="marketing"
+        highlights={[{ kind: 'reading', title: 'Fonte sem data', href: '/resources/sem-data' }]} />,
+    );
+    expect(screen.queryByText(/Idioma catalogado:/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Nível editorial:/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Publicado em/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Objetivo sugerido:/)).not.toBeInTheDocument();
+  });
+});
