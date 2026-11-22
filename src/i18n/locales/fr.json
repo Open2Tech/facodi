@@ -681,6 +681,10 @@
     "instagram": "FACODI sur Instagram"
   },
   "course": {
+    "playlistCoverage": "{{count}} unités avec playlists",
+    "guideCoverage": "{{count}} unités avec guides",
+    "playlistChip": "{{count}} playlists",
+    "guideChip": "{{count}} guides",
     "emblem": {
       "mathematics": "Les côtés des carrés mesurent 1, 1, 2, 3 et 5. Chaque nouvelle valeur est la somme des deux précédentes. Un quart de cercle dans chaque carré dessine la spirale.",
       "civil": "Les diagonales divisent les rectangles en triangles. Dans un treillis, cette géométrie aide la structure à garder sa forme sous charge.",
@@ -2565,6 +2569,14 @@
     "videoNotice": "Vidéos publiés et associés aux unités d’enseignement. Ce ne sont pas automatiquement des séquences éditoriales, ni des cours intégralement révisés."
   },
   "courseStart": {
+    "loading": "Recherche des ressources disponibles. Vous pouvez explorer les unités entre-temps.",
+    "unavailable": "La disponibilité des ressources n'a pas pu être confirmée. Les unités restent accessibles.",
+    "videoUnits": "{{count}} unités avec vidéos",
+    "readingUnits": "{{count}} unités avec lectures",
+    "playlistUnits": "{{count}} unités avec playlists",
+    "guideUnits": "{{count}} unités avec guides",
+    "playlistCount": "Playlists : {{count}}",
+    "guideCount": "Guides : {{count}}",
     "eyebrow": "Votre prochaine étape",
     "title": "Par où commencer ?",
     "description": "Ces unités proposent des ressources pédagogiques. Choisissez un sujet pour explorer ses contenus.",
@@ -2580,13 +2592,19 @@
     "disclaimer": "Ces suggestions suivent l'ordre du programme et les ressources disponibles ; elles ne constituent pas des prérequis officiels."
   },
   "courseUnitFinder": {
+    "coverageLoading": "Chargement des ressources disponibles…",
+    "coverageUnavailable": "Les indicateurs de ressources sont temporairement indisponibles. La recherche par titre ou code reste disponible.",
+    "videoCount": "{{count}} vidéos",
+    "readingCount": "{{count}} lectures",
+    "playlistCount": "{{count}} playlists",
+    "guideCount": "{{count}} guides",
     "title": "Trouver une unité d’enseignement",
     "description": "Recherchez parmi les {{count}} unités de ce cursus sans parcourir tout le programme.",
     "fullList": "Voir la liste complète",
     "searchLabel": "Nom ou code de l’unité",
     "searchPlaceholder": "Ex. : Statistiques, 18021025, Algèbre…",
     "clear": "Effacer la recherche",
-    "onlyWithMaterials": "Uniquement les unités avec vidéos ou lectures",
+    "onlyWithMaterials": "Uniquement les unités avec ressources",
     "matches": "{{count}} unités trouvées",
     "noMatches": "Aucune unité trouvée. Essayez un autre terme ou retirez le filtre.",
     "materialCount": "{{videos}} vidéos · {{readings}} lectures",
