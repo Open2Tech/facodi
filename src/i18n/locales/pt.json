@@ -116,6 +116,19 @@
       }
     }
   },
+  "lccMediaLab": {
+    "eyebrow": "Estúdio FACODI · Ciências da Comunicação",
+    "title": "Da ideia ao microfone: aprende a produzir",
+    "description": "Percursos com vídeos portugueses organizados por etapas. Descobre como investigar, escrever um guião, filmar, editar e comunicar com responsabilidade.",
+    "localStory": "Feito no Algarve",
+    "localStoryTitle": "RTP Antena 3 + estudantes da UAlg",
+    "localStoryDescription": "Um episódio gravado ao vivo na Universidade do Algarve, com colaboração de estudantes de Ciências da Comunicação e da RUA FM.",
+    "openCase": "Explorar o caso real",
+    "lessons_one": "{{count}} vídeo",
+    "lessons_other": "{{count}} vídeos",
+    "sourceNote": "Sequências FACODI com recursos de autores externos. Os vídeos não são aulas oficiais da UAlg.",
+    "allMaterials": "Ver todos os materiais e percursos"
+  },
   "brand": {
     "tagline": "Um campus digital aberto",
     "description": "Cursos, unidades curriculares e recursos educativos para seguir o fio do conhecimento. Aprende ao teu ritmo com a FACODI.",
