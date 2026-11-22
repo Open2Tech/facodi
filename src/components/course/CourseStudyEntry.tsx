@@ -13,18 +13,22 @@ const TONES = [
 /** A small, truthful starting point for every public course.
  * No invented course prerequisites, recommended order or resource counts. */
 export function CourseStudyEntry({
-  courseSlug, units, coverage,
+  courseSlug, units, coverage, loading = false, hasError = false,
 }: {
   courseSlug: string;
   units: readonly StudyEntryUnit[];
   coverage: readonly StudyEntryCoverage[];
+  loading?: boolean;
+  hasError?: boolean;
 }) {
   const { t } = useTranslation();
   if (!units.length) return null;
   const suggestions = suggestStudyUnits(units, coverage);
-  const hasResources = suggestions.some(item => item.videoCount > 0 || item.readingCount > 0);
+  const hasResources = suggestions.some(item => item.videoCount > 0 || item.readingCount > 0 || item.playlistCount > 0 || item.guideCount > 0);
   const videoUnits = coverage.filter(item => item.video_count > 0).length;
   const readingUnits = coverage.filter(item => item.reading_count > 0).length;
+  const playlistUnits = coverage.filter(item => (item.playlist_count ?? 0) > 0).length;
+  const guideUnits = coverage.filter(item => (item.guide_count ?? 0) > 0).length;
 
   return <section aria-labelledby="course-study-entry-title" className="mb-12 border border-foreground border-t-4 border-t-primary bg-card p-4 sm:p-6">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
@@ -34,7 +38,7 @@ export function CourseStudyEntry({
           {t('courseStart.title')}
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          {t(hasResources ? 'courseStart.description' : 'courseStart.noCoverage')}
+          {t(loading ? 'courseStart.loading' : hasError ? 'courseStart.unavailable' : hasResources ? 'courseStart.description' : 'courseStart.noCoverage')}
         </p>
       </div>
       <div className="flex shrink-0 flex-wrap gap-2">
@@ -50,12 +54,17 @@ export function CourseStudyEntry({
       </div>
     </div>
 
-    {hasResources && <p className="mt-4 text-xs text-muted-foreground" aria-label={t('courseStart.coverage')}>
-      {t('courseStart.availableSummary', { videos: videoUnits, readings: readingUnits })}
+    {!loading && !hasError && hasResources && <p className="mt-4 text-xs text-muted-foreground" aria-label={t('courseStart.coverage')}>
+      {[
+        videoUnits && t('courseStart.videoUnits', { count: videoUnits }),
+        playlistUnits && t('courseStart.playlistUnits', { count: playlistUnits }),
+        readingUnits && t('courseStart.readingUnits', { count: readingUnits }),
+        guideUnits && t('courseStart.guideUnits', { count: guideUnits }),
+      ].filter(Boolean).join(' · ')}
     </p>}
 
     <ol className="mt-5 grid gap-3 md:grid-cols-3">
-      {suggestions.map(({ unit, videoCount, readingCount }, index) => <li key={unit.id} className="min-w-0">
+      {suggestions.map(({ unit, videoCount, readingCount, playlistCount, guideCount }, index) => <li key={unit.id} className="min-w-0">
         <Link to={unitPath(courseSlug, unit.slug)}
           className={`group flex h-full min-h-40 flex-col gap-3 border border-input border-t-4 bg-background p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${TONES[index % TONES.length]}`}>
           <span className="flex items-center justify-between gap-3">
@@ -66,7 +75,7 @@ export function CourseStudyEntry({
             <span className="font-mono text-xs font-semibold text-muted-foreground" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           </span>
           <span className="text-base font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
-          {(videoCount > 0 || readingCount > 0) && <span className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+          {!loading && !hasError && (videoCount > 0 || readingCount > 0 || playlistCount > 0 || guideCount > 0) && <span className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
             {videoCount > 0 && <span className="inline-flex items-center gap-1.5">
               <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
               {t('courseStart.videoCount', { count: videoCount })}
@@ -74,6 +83,14 @@ export function CourseStudyEntry({
             {readingCount > 0 && <span className="inline-flex items-center gap-1.5">
               <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
               {t('courseStart.readingCount', { count: readingCount })}
+            </span>}
+            {playlistCount > 0 && <span className="inline-flex items-center gap-1.5">
+              <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
+              {t('courseStart.playlistCount', { count: playlistCount })}
+            </span>}
+            {guideCount > 0 && <span className="inline-flex items-center gap-1.5">
+              <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+              {t('courseStart.guideCount', { count: guideCount })}
             </span>}
           </span>}
           <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">
