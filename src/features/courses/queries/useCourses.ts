@@ -1,9 +1,13 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { courseKeys } from '@/entities/course/course.keys';
-import { getResourceContext, listChannelVideos, listFeaturedVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listPublicCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
+import { listCommunityCourses, getResourceContext, listChannelVideos, listFeaturedVideos, listContainedVideos, changePublication, findContentOptions, getCatalogCounts, getCourse, getObjectTypeFacets, getOverview, getUnit, getUnitFacets, getResource, listPublicCourses, listEditorial, listResources, listTopics, listUnits, saveContent } from '@/entities/course/course.api';
 import type { CatalogParams, ContentKind } from '@/entities/course/course.types';
 import { useAuth } from '@/features/auth/useAuth';
 import { canAccessFacodiRoute } from '@/entities/facodi/access';
+
+export function useCommunityCourses() {
+  return useQuery({ queryKey: courseKeys.communityCourses(), queryFn: ({ signal }) => listCommunityCourses(signal), staleTime: 5 * 60_000 });
+}
 
 export function usePublicCourses() {
   return useQuery({ queryKey: courseKeys.publicCourses(), queryFn: ({ signal }) => listPublicCourses(signal), staleTime: 5 * 60_000 });

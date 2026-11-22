@@ -198,6 +198,27 @@
     "videosText": "Primeras clases de las rutas curadas, listas para reproducir con el contexto de la asignatura justo al lado.",
     "videosCta": "Ver todos los vídeos"
   },
+  "reader": {
+    "about": "Sobre el curso",
+    "training": "Utiliza una empresa de prueba en EUR. Los ejemplos usan datos ficticios.",
+    "syllabus": "Consultar el programa original",
+    "community": "Cursos de la comunidad",
+    "course": "Curso de la comunidad",
+    "contents": "Índice del curso",
+    "editions": "Ediciones del curso",
+    "previous": "Lección anterior",
+    "next": "Siguiente lección",
+    "workflow": "En Odoo",
+    "watch": "Demostración en vídeo",
+    "practice": "Practica en la base de prueba",
+    "answer": "Comprobar la respuesta",
+    "source": "Documentación de Odoo",
+    "account": "Cuenta",
+    "debit": "Debe",
+    "credit": "Haber",
+    "total": "Total",
+    "position": "Lección {{number}} de {{total}}"
+  },
   "catalog": {
     "title": "Encuentra tu próximo paso.",
     "description": "Planes de estudio reales, asignaturas en su sitio y recursos abiertos con contexto — elige por dónde empezar.",

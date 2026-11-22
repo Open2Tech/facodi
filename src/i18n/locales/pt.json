@@ -198,6 +198,27 @@
     "videosText": "Primeiras aulas das trilhas curadas, prontas para dar play com o contexto da unidade curricular logo ao lado.",
     "videosCta": "Ver todos os vídeos"
   },
+  "reader": {
+    "about": "Sobre o curso",
+    "training": "Usa uma empresa de demonstração em EUR. Os exemplos usam dados fictícios.",
+    "syllabus": "Consultar o programa original",
+    "community": "Cursos da Comunidade",
+    "course": "Curso da Comunidade",
+    "contents": "Índice do curso",
+    "editions": "Edições do curso",
+    "previous": "Aula anterior",
+    "next": "Próxima aula",
+    "workflow": "No Odoo",
+    "watch": "Demonstração em vídeo",
+    "practice": "Experimenta na base de treino",
+    "answer": "Conferir a resposta",
+    "source": "Documentação Odoo",
+    "account": "Conta",
+    "debit": "Débito",
+    "credit": "Crédito",
+    "total": "Total",
+    "position": "Aula {{number}} de {{total}}"
+  },
   "catalog": {
     "title": "Encontra o teu próximo passo.",
     "description": "Planos de estudos reais, unidades curriculares no sítio certo e recursos abertos com contexto — escolhe por onde começar.",

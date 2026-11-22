@@ -23,6 +23,15 @@ export async function listPublicCourses(signal?: AbortSignal): Promise<PublicCou
 
 const PUBLIC_RESOURCE_STATES = ['active', 'published'];
 
+export async function listCommunityCourses(signal?: AbortSignal) {
+  const { data, error } = await supabase.from('learning_objects').select('id,slug,title,language')
+    .eq('published', true).in('status', PUBLIC_RESOURCE_STATES).eq('object_type', 'collection')
+    .contains('metadata', { presentation: { kind: 'community_course', layout: 'lesson_reader' } })
+    .order('title').abortSignal(signal);
+  if (error) throw new Error(getSupabaseErrorMessage(error));
+  return data ?? [];
+}
+
 const UNIT_LIST_FIELDS = 'id, slug, title, code, ects, metadata, year, semester, position, language, courses!inner(slug, code, title, published, status)';
 
 /** PostgREST `or()` value: quoted so commas, dots or parentheses in user search stay literal. */
