@@ -681,6 +681,10 @@
     "instagram": "Instagram da FACODI"
   },
   "course": {
+    "playlistCoverage": "{{count}} UCs com playlists",
+    "guideCoverage": "{{count}} UCs com guias",
+    "playlistChip": "{{count}} playlists",
+    "guideChip": "{{count}} guias",
     "emblem": {
       "mathematics": "Os lados destes quadrados medem 1, 1, 2, 3 e 5. Cada novo valor é a soma dos dois anteriores. Um quarto de círculo em cada quadrado desenha a espiral.",
       "civil": "As diagonais dividem os retângulos em triângulos. Numa treliça, esta geometria ajuda a manter a forma sob carga.",
@@ -2565,6 +2569,14 @@
     "videoNotice": "Vídeos publicados e associados às unidades curriculares. Não são automaticamente sequências editoriais nem significam que a aula tenha sido revista integralmente."
   },
   "courseStart": {
+    "loading": "A consultar os materiais disponíveis. Podes explorar as UCs enquanto isso.",
+    "unavailable": "Não foi possível confirmar a cobertura de materiais. As unidades curriculares continuam acessíveis.",
+    "videoUnits": "{{count}} UCs com vídeos",
+    "readingUnits": "{{count}} UCs com leituras",
+    "playlistUnits": "{{count}} UCs com playlists",
+    "guideUnits": "{{count}} UCs com guias",
+    "playlistCount": "Playlists: {{count}}",
+    "guideCount": "Guias: {{count}}",
     "eyebrow": "O teu próximo passo",
     "title": "Por onde começar?",
     "description": "Estas unidades têm materiais disponíveis. Começa pela que te interessa e explora os recursos associados.",
@@ -2580,13 +2592,19 @@
     "disclaimer": "Sugestões baseadas na ordem curricular e nos materiais disponíveis; não são uma recomendação oficial de pré-requisitos."
   },
   "courseUnitFinder": {
+    "coverageLoading": "A carregar a disponibilidade dos materiais…",
+    "coverageUnavailable": "Os indicadores de materiais estão temporariamente indisponíveis; a pesquisa por nome ou código continua a funcionar.",
+    "videoCount": "{{count}} vídeos",
+    "readingCount": "{{count}} leituras",
+    "playlistCount": "{{count}} playlists",
+    "guideCount": "{{count}} guias",
     "title": "Encontra a tua UC",
     "description": "Pesquisa nas {{count}} unidades curriculares deste curso, sem percorrer todo o plano.",
     "fullList": "Ver lista completa",
     "searchLabel": "Nome ou código da UC",
     "searchPlaceholder": "Ex.: Estatística, 18021025, Álgebra…",
     "clear": "Limpar pesquisa",
-    "onlyWithMaterials": "Só UCs com vídeos ou leituras",
+    "onlyWithMaterials": "Só UCs com materiais",
     "matches": "{{count}} UCs encontradas",
     "noMatches": "Nenhuma UC encontrada. Experimenta outro termo ou desativa o filtro.",
     "materialCount": "{{videos}} vídeos · {{readings}} leituras",
