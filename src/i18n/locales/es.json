@@ -229,6 +229,10 @@
     "videosCta": "Ver todos los vídeos"
   },
   "reader": {
+    "verify": "Comprobar respuesta",
+    "correct": "Respuesta correcta.",
+    "revisit": "Revisa tu elección.",
+    "enlarge": "Ampliar imagen",
     "about": "Sobre el curso",
     "training": "Utiliza una empresa de prueba en EUR. Los ejemplos usan datos ficticios.",
     "syllabus": "Consultar el programa original",

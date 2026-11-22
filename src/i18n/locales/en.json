@@ -229,6 +229,10 @@
     "videosCta": "See all videos"
   },
   "reader": {
+    "verify": "Check answer",
+    "correct": "Correct.",
+    "revisit": "Revisit your choice.",
+    "enlarge": "Enlarge image",
     "about": "About this course",
     "training": "Use a demo company in EUR. The examples use fictional data.",
     "syllabus": "View the original syllabus",

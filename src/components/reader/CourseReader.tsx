@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { PageState } from '@/components/layout/PageState';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { YouTubePlayer } from '@/components/resource/YouTubePlayer';
+import { LessonCheckpoint } from './LessonCheckpoint';
+import { OdooScreenFigure } from './OdooScreenFigure';
 import { TeachingFigure } from './TeachingFigure';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { useModule } from '@/features/modules/useModules';
 import type { LearningObject } from '@/entities/course/course.types';
-import { lessonNumber, readerPath, readFigure } from '@/entities/course/lessonReader';
+import { lessonNumber, readerPath, readFigure, readCheckpoint, readOdooScreen } from '@/entities/course/lessonReader';
 import { youtubeIdFromUrl } from '@/entities/course/video';
 import type { StudyModuleDetail } from '@/entities/module/module.api';
 import { stringList } from '@/shared/lib/text';
@@ -27,11 +29,15 @@ function Lesson({ detail }: { detail: StudyModuleDetail }) {
   const videoId = youtubeIdFromUrl(video?.source_url);
   const metadata = module.metadata && typeof module.metadata === 'object' && !Array.isArray(module.metadata) ? module.metadata : {};
   const figure = readFigure(module.metadata);
+  const checkpoint = readCheckpoint(module.metadata);
+  const screen = readOdooScreen(module.metadata);
   const doc = safeExternalUrl(module.source_url);
   return <div className="space-y-7">
     <p className="max-w-prose text-lg leading-relaxed">{module.description}</p>
     {figure && <TeachingFigure figure={figure} language={module.language} />}
-    {typeof metadata.suggested_deliverable === 'string' && <section><h3 className="mb-2 text-xl font-bold">{t('reader.workflow')}</h3><p className="max-w-prose leading-relaxed">{metadata.suggested_deliverable}</p></section>}
+    {typeof metadata.suggested_deliverable === 'string' && <section><h3 className="mb-2 text-xl font-bold">{t('reader.workflow')}</h3><p className="max-w-prose leading-relaxed">{metadata.suggested_deliverable}</p>
+      {screen && <OdooScreenFigure screen={screen} language={module.language} />}
+    </section>}
     {video && videoId && <section className="space-y-3">
       <h3 className="text-xl font-bold">{t('reader.watch')}</h3>
       {videos.length > 1 && <select aria-label={t('reader.watch')} value={videoIndex} onChange={e => setVideoIndex(Number(e.target.value))} className="min-h-11 w-full rounded border border-input bg-background px-3">
@@ -44,6 +50,7 @@ function Lesson({ detail }: { detail: StudyModuleDetail }) {
       <h3 className="text-xl font-bold">{t('reader.practice')}</h3><p className="my-3 leading-relaxed">{metadata.activity_prompt}</p>
       {typeof metadata.self_review_criteria === 'string' && <details className="border-t border-input pt-3"><summary className="cursor-pointer py-1 font-semibold">{t('reader.answer')}</summary><p className="mt-3">{metadata.self_review_criteria}</p></details>}
     </section>}
+    {checkpoint && <LessonCheckpoint key={module.id} checkpoint={checkpoint} language={module.language} />}
     {doc && <a href={doc} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('reader.source')}<ExternalLink size={15} aria-hidden="true" /></a>}
   </div>;
 }
