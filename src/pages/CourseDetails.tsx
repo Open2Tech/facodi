@@ -14,6 +14,7 @@ import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { CourseLearningMaterials } from '@/components/course/CourseLearningMaterials';
 import { CourseStudyEntry } from '@/components/course/CourseStudyEntry';
+import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { CourseUnitQuickFinder } from '@/components/course/CourseUnitQuickFinder';
 import { IfesLearningJourney } from '@/components/course/IfesLearningJourney';
 import { UalgCurriculum } from '@/components/course/UalgCurriculum';
@@ -98,6 +99,7 @@ export default function CourseDetails() {
       {course.summary && course.summary.trim() !== course.title.trim() && <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted-foreground">{course.summary}</p>}
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={course.title} />
+        {course.learning_object_id && <StudyNotesAction scope="course" resource={{ id: course.learning_object_id, slug: course.slug, title: course.title, type: 'course', href: `/courses/${encodeURIComponent(course.slug)}` }} />}
         <Link to={courseMaterialsPath(course.slug)}
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
