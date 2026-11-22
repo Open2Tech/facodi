@@ -7,7 +7,7 @@ import { courseMeta } from '@/shared/seo/seo';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { useCourseCoverage } from '@/features/courses/queries/useCourseCoverage';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
-import { mergeCourseMaterialCoverage } from '@/entities/course/courseMaterialCoverage';
+import { hasCourseStudyMaterials, mergeCourseMaterialCoverage } from '@/entities/course/courseMaterialCoverage';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
@@ -176,7 +176,7 @@ export default function CourseDetails() {
               </div>
               <ol className="divide-y divide-input">{group.units.map(unit => {
                 const media = coverageById.get(unit.id);
-                const visible = media && (media.video_count > 0 || media.reading_count > 0);
+                const visible = !coverageLoading && !coverageError && media && hasCourseStudyMaterials(media);
                 return <li key={unit.id}>
                   <Link to={unitPath(course.slug, unit.slug)} className="-mx-2 group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 px-2 py-3 transition-colors hover:bg-primary/10">
                     <span className="min-w-0">
@@ -184,7 +184,9 @@ export default function CourseDetails() {
                       {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center border border-foreground bg-brand-mint align-middle text-brand-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}
                       {unit.code && map.explored.has(unit.code) && <ExploredMark />}
                       {unit.code && <span className="block font-mono text-xs text-muted-foreground">{unit.code}</span>}
-                      {!!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}
+                      {!coverageLoading && !coverageError && !!media?.video_count && <span className="block text-xs text-muted-foreground">{t('unit.videoChip', { count: media.video_count })}</span>}
+                       {!coverageLoading && !coverageError && !!media?.playlist_count && <span className="block text-xs text-muted-foreground">{t('course.playlistChip', { count: media.playlist_count })}</span>}
+                       {!coverageLoading && !coverageError && !!media?.guide_count && <span className="block text-xs text-muted-foreground">{t('course.guideChip', { count: media.guide_count })}</span>}
                     </span>
                     {unit.ects != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unit.ects} ECTS</span>
                       : unitHours(unit.metadata) != null ? <span className="font-mono text-sm tabular-nums text-muted-foreground">{unitHours(unit.metadata)} h</span> : null}
