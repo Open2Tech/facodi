@@ -11,7 +11,12 @@ const EMPTY: StudyNote[] = [];
 const touch = (note: StudyNote, patch: Patch): StudyNote => ({ ...note, ...patch, updatedAt: new Date().toISOString() });
 const upsertById = (notes: StudyNote[], saved: StudyNote[]) => {
   const ids = new Set(saved.map(note => note.id));
-  return [...notes.filter(note => !ids.has(note.id)), ...saved];
+  const previous = new Map(notes.map(note => [note.id, note]));
+  return [...notes.filter(note => !ids.has(note.id)), ...saved.map(note => ({
+    ...note,
+    ...(note.resourceHref ? {} : previous.get(note.id)?.resourceHref
+      ? { resourceHref: previous.get(note.id)!.resourceHref } : {}),
+  }))];
 };
 const useBrowserNotebook = (owner: string | null) =>
   useSyncExternalStore(subscribeNotebooks, () => readNotebook(owner), () => readNotebook(null));
