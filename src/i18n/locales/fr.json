@@ -2669,6 +2669,7 @@
     "more": "{{count}} notes supplémentaires dans votre carnet.",
     "openNote": "Ouvrir « {{title}} » dans son contexte d'étude",
     "lessonNoteCount_one": "{{count}} note",
+    "lessonNoteCount_many": "{{count}} notes",
     "lessonNoteCount_other": "{{count}} notes"
   }
 }
