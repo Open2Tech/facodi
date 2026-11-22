@@ -10,6 +10,16 @@ const featured = [
   { slug: 'facodi-lcc-pt-media-lab-pos-producao-creditos-etica', icon: Film, color: 'bg-primary' },
 ] as const;
 
+const additional = [
+  'facodi-lcc-pt-gap-gamificacao-sem-pontos-vazios',
+  'facodi-lcc-pt-gap-relacoes-publicas-reputacao-profissao',
+  'facodi-lcc-pt-gap-filosofia-significado-e-cooperacao',
+  'facodi-lcc-pt-gap-estetica-industria-cultural-plataformas',
+  'facodi-lcc-pt-gap-ingles-para-jornalismo-verificacao',
+  'facodi-lcc-pt-gap-portugues-redacao-contexto',
+  'facodi-lcc-pt-gap-leitura-critica-do-cinema',
+] as const;
+
 /**
  * The LCC course already includes its full learning-material catalogue below.
  * This small entrance uses the same public sequence RPC and links rather than
@@ -23,9 +33,13 @@ export function CommunicationMediaLab() {
     return sequence ? [{ ...item, sequence }] : [];
   });
 
-  // The content comes from published, reviewed sequences only. No dead CTAs
-  // while initial data is loading or if a sequence has been unpublished.
-  if (!visible.length) return null;
+  const extra = additional.flatMap(slug => {
+    const sequence = data?.find(item => item.slug === slug && item.itemCount > 0);
+    return sequence ? [sequence] : [];
+  });
+
+  // Only published, reviewed sequences create working links; missing items disappear safely.
+  if (!visible.length && !extra.length) return null;
 
   return <section id="lcc-media-lab" aria-labelledby="lcc-media-lab-title"
     className="mb-12 scroll-mt-28 border border-foreground border-t-4 border-t-brand-cyan bg-card">
@@ -75,6 +89,21 @@ export function CommunicationMediaLab() {
         </span>
       </Link>)}
     </div>
+    {!!extra.length && <div className="border-t border-input p-5 sm:p-7">
+      <h3 className="text-lg font-semibold tracking-[-0.02em]">{t('lccMediaLab.moreTopics')}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">{t('lccMediaLab.moreTopicsDescription')}</p>
+      <ul className="mt-4 grid gap-2 md:grid-cols-2">
+        {extra.map(sequence => <li key={sequence.id}>
+          <Link to={`/sequences/${encodeURIComponent(sequence.slug)}`}
+            className="group flex min-h-16 items-center gap-3 border border-input bg-background px-4 py-3 transition-colors hover:border-foreground hover:bg-brand-cyan/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <BookOpenCheck className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span className="min-w-0 flex-1 text-sm font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">{sequence.title}</span>
+            <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{sequence.itemCount}</span>
+            <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+          </Link>
+        </li>)}
+      </ul>
+    </div>}
     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-input px-5 py-4">
       <p className="text-xs text-muted-foreground">{t('lccMediaLab.sourceNote')}</p>
       <a href="#course-materials" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">
