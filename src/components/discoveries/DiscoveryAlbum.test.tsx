@@ -5,7 +5,6 @@ import { CampusDiscovery } from '@/components/discoveries/CampusDiscovery';
 import { discoveryLinks } from '@/features/discoveries/catalog';
 import { DiscoveryAlbum } from '@/components/discoveries/DiscoveryAlbum';
 import i18n from '@/i18n/config';
-import { discoveryLinks } from '@/features/discoveries/catalog';
 import { renderWithProviders } from '@/shared/test/renderWithProviders';
 
 it('records a keyboard discovery once and restores the album after remounting', async () => {
