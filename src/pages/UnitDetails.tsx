@@ -233,7 +233,7 @@ export default function UnitDetails() {
                   </li>)}
                 </ul>}
         </section>}
-        {!studyPath && !composedPending && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
+        {!studyPath && !composedPending && (!composedPath || videos.isPending || !!videoList.length || !!videos.error) && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
@@ -286,8 +286,37 @@ export default function UnitDetails() {
               </div>
             </>
             : <div className="mt-4 border border-input bg-muted/40 p-6">
-              <p className="font-semibold">{t('unitVideos.empty')}</p>
-              <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
+              {playlistsQuery.isPending || sequences.isPending || readingsQuery.isPending || modulesQuery.isPending
+                ? <p role="status" className="text-sm text-muted-foreground">{t('common.loading')}</p>
+                : playlistsQuery.data?.length
+                  ? <>
+                    <p className="font-semibold">{t('unitPlaylists.title')}</p>
+                    <Link to={`/resources/${encodeURIComponent(playlistsQuery.data[0].slug)}`}
+                      className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                      {playlistsQuery.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    </Link>
+                  </>
+                  : sequences.data?.length
+                    ? <>
+                      <p className="font-semibold">{t('sequences.forUnit')}</p>
+                      <Link to={`/sequences/${encodeURIComponent(sequences.data[0].slug)}`}
+                        className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                        {sequences.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                      </Link>
+                    </>
+                    : readingsQuery.data?.length
+                      ? <a href="#unit-readings" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                        {t('unitReadings.title')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                      : modulesQuery.data?.length
+                        ? <a href="#unit-modules" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                          {t('studyModules.forUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </a>
+                        : <>
+                          <p className="font-semibold">{t('unitVideos.empty')}</p>
+                          <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
+                        </>
+              }
             </div>}
         </section></UnitVideoLibraryFrame>}
         {showLegacy && !!sequences.data?.length && <section aria-labelledby="unit-sequences">
