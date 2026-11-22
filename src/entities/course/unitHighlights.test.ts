@@ -58,3 +58,45 @@ describe('pickUnitHighlights', () => {
     expect(pickUnitHighlights(base)).toEqual([]);
   });
 });
+
+describe('source-aware reading highlights', () => {
+  it('prefers an on-topic structured course over a broad gateway, preserving the bibliography itself', () => {
+    const readings = [
+      { ...asset('khan-index', 'Khan Academy em português — referência da Rede de Bibliotecas Escolares'), sourceUrl: 'https://www.rbe.mec.pt/np4/1493.html' },
+      { ...asset('calculus', 'OpenStax — Calculus Volume 1'), sourceUrl: 'https://openstax.org/books/calculus-volume-1/pages/1-introduction' },
+    ];
+    const result = pickUnitHighlights({ ...base, unitTitle: 'Cálculo I', readings });
+    expect(result).toEqual([{ kind: 'reading', title: 'OpenStax — Calculus Volume 1', href: '/resources/calculus', sourceHost: 'openstax.org' }]);
+    expect(readings[0].slug).toBe('khan-index');
+    expect(readings[1].slug).toBe('calculus');
+  });
+
+  it('does not highlight an official portal homepage ahead of a linked tax-code reference', () => {
+    const result = pickUnitHighlights({
+      ...base, unitTitle: 'Direito Fiscal Aplicado I',
+      readings: [
+        { ...asset('official', 'Diário da República — legislação portuguesa'), sourceUrl: 'https://diariodarepublica.pt/dr/home' },
+        { ...asset('civa', 'Código do IVA — Portal das Finanças'), sourceUrl: 'https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/civa_rep/Pages/codigo-do-iva-indice.aspx' },
+      ],
+    });
+    expect(result[0]).toMatchObject({ kind: 'reading', title: 'Código do IVA — Portal das Finanças', sourceHost: 'info.portaldasfinancas.gov.pt' });
+  });
+
+  it('preserves the first item if there is no evidence to prioritize another reading', () => {
+    const result = pickUnitHighlights({
+      ...base, unitTitle: 'Metodologias',
+      readings: [asset('first', 'Introdução'), asset('second', 'Outros materiais')],
+    });
+    expect(result[0]).toMatchObject({ title: 'Introdução', href: '/resources/first' });
+  });
+
+  it('shows only a neutral HTTPS source host and ignores malformed/unsafe URLs', () => {
+    const result = pickUnitHighlights({
+      ...base, unitTitle: 'Biologia Celular',
+      readings: [{ ...asset('biology', 'OpenStax Biology 2e — Capítulo 1'), sourceUrl: 'https://www.openstax.org/books/biology-2e/pages/1-introduction' }],
+      playlists: [{ ...asset('yt', 'Playlist externa'), sourceUrl: 'javascript:alert(1)' }],
+    });
+    expect(result.find(item => item.kind === 'reading')?.sourceHost).toBe('openstax.org');
+    expect(result.find(item => item.kind === 'playlist')?.sourceHost).toBeUndefined();
+  });
+});

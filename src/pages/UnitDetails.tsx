@@ -83,7 +83,7 @@ export default function UnitDetails() {
   const selected = videoList.find(video => video.id === params.get('v')) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
   const highlights = pickUnitHighlights({
-    courseSlug: course.slug, unitSlug: unit.slug,
+    courseSlug: course.slug, unitSlug: unit.slug, unitTitle: unit.title,
     hasStudyPath: Boolean(studyPath || composedPath),
     sequences: sequences.data ?? [], videos: videoList,
     playlists: playlistsQuery.data ?? [], modules: modulesQuery.data ?? [],

@@ -2514,6 +2514,7 @@
     "limited": "A mostrar {{shown}} de {{total}}. Refina a pesquisa para encontrar a UC."
   },
   "unitHighlights": {
+    "sourceHost": "Fonte: {{host}}",
     "eyebrow": "Estudar esta UC",
     "title": "Começa por aqui",
     "description": "Materiais já associados a esta unidade curricular, apresentados por tipo. Escolhe o formato que te ajuda a aprender.",
@@ -2523,7 +2524,7 @@
     "open": "Explorar",
     "empty": "Ainda não há materiais diretamente associados a esta UC. Consulta a biblioteca do curso ou sugere um recurso.",
     "unavailable": "Alguns materiais não puderam ser carregados. Explora a biblioteca do curso.",
-    "notice": "Os destaques seguem os recursos associados e a ordem editorial existente. Não representam validação integral dos vídeos nem pré-requisitos oficiais.",
+    "notice": "Os destaques privilegiam fontes específicas quando existem. A biblioteca completa mantém a ordem editorial; o domínio apresentado identifica a origem, não certifica o conteúdo.",
     "kinds": {
       "path": "Percurso editorial",
       "sequence": "Sequência FACODI",

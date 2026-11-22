@@ -59,3 +59,15 @@ describe('UnitLearningHighlights', () => {
       'href', '/courses/economia?materialsUnit=estatistica#course-materials');
   });
 });
+
+describe('highlight provenance', () => {
+  it('renders the actual original domain as neutral text, not a verification badge', () => {
+    renderWithProviders(
+      <UnitLearningHighlights courseSlug="bioquimica" unitSlug="calculo-1"
+        highlights={[{ kind: 'reading', title: 'OpenStax Calculus', href: '/resources/calculus', sourceHost: 'openstax.org' }]} />,
+    );
+    expect(screen.getByText('Fonte: openstax.org')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /OpenStax Calculus/i })).toHaveAttribute('href', '/resources/calculus');
+    expect(screen.queryByText(/verificado por/i)).not.toBeInTheDocument();
+  });
+});
