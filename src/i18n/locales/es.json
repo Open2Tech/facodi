@@ -2669,6 +2669,7 @@
     "more": "{{count}} notas más en tu cuaderno.",
     "openNote": "Abrir «{{title}}» en su contexto de estudio",
     "lessonNoteCount_one": "{{count}} nota",
+    "lessonNoteCount_many": "{{count}} notas",
     "lessonNoteCount_other": "{{count}} notas"
   }
 }
