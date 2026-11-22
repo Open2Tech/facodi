@@ -29,6 +29,6 @@ describe('CourseStudyEntry resource coverage', () => {
   it('shows an honest fallback if the coverage request fails', () => {
     renderWithProviders(<CourseStudyEntry courseSlug="matematica" units={units} coverage={[]} hasError />);
     expect(screen.getByText(/Não foi possível confirmar a cobertura/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Matemática I\b/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('link').some(link => link.getAttribute('href') === '/courses/matematica/units/first')).toBe(true);
   });
 });
