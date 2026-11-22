@@ -49,7 +49,7 @@ export function rememberDiscovery(id: Discovery) {
     storageBlocked = true;
   }
   window.dispatchEvent(new Event(changedEvent));
-  return true;
+  return found.size;
 }
 
 export function useDiscoveries() {
