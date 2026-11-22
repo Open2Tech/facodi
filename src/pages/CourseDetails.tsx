@@ -6,6 +6,8 @@ import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { courseMeta } from '@/shared/seo/seo';
 import { useCourse, useFeaturedVideos } from '@/features/courses/queries/useCourses';
 import { useCourseCoverage } from '@/features/courses/queries/useCourseCoverage';
+import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
+import { mergeCourseMaterialCoverage } from '@/entities/course/courseMaterialCoverage';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
@@ -58,6 +60,10 @@ export default function CourseDetails() {
   const { t } = useTranslation();
   const query = useCourse(slug);
   const coverage = useCourseCoverage(query.data?.course.id);
+  const courseAssets = useCourseLearningAssets(
+    query.data?.course.learning_object_id,
+    (query.data?.units ?? []).map(unit => ({ learningObjectId: unit.learning_object_id, title: unit.title })),
+  );
   const collections = useLinkedCatalogAssets(query.data?.course.learning_object_id, 'collection');
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
@@ -79,7 +85,10 @@ export default function CourseDetails() {
     ['language', course.language?.toUpperCase()], ['units', String(units.length)],
   ].filter((fact): fact is [string, string] => Boolean(fact[1]));
   const years = groupYears(groupUnits(units));
-  const coverageById = new Map((coverage.data ?? []).map(row => [row.curricular_unit_id, row]));
+  const enrichedCoverage = mergeCourseMaterialCoverage(units, coverage.data ?? [], courseAssets.data);
+  const coverageById = new Map(enrichedCoverage.map(row => [row.curricular_unit_id, row]));
+  const coverageLoading = coverage.isPending || courseAssets.isPending;
+  const coverageError = Boolean(coverage.error || courseAssets.error);
   return <article>
     <PageSeo {...courseMeta(course, { courses: t('nav.courses') })} />
     <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
@@ -112,8 +121,8 @@ export default function CourseDetails() {
         {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
       </aside>
     </div>
-    <CourseStudyEntry courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
-    <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={coverage.data ?? []} />
+    <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
+    <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
       action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
@@ -137,13 +146,15 @@ export default function CourseDetails() {
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{studyPlanLabel}</h2>
         {!!units.length && <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('course.filterUnits')}<ArrowRight className="h-4 w-4" /></Link>}
       </div>
-      {!!coverage.data?.length && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
-        {t('course.coverageSummary', { videos: coverage.data.filter(unit => unit.video_count > 0).length, units: units.length, readings: coverage.data.filter(unit => unit.reading_count > 0).length })}
+      {!!coverage.data?.length && !coverageLoading && !coverageError && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
+        {t('course.coverageSummary', { videos: enrichedCoverage.filter(unit => unit.video_count > 0).length, units: units.length, readings: enrichedCoverage.filter(unit => unit.reading_count > 0).length })}
+        {enrichedCoverage.some(unit => unit.playlist_count > 0) && <> · {t('course.playlistCoverage', { count: enrichedCoverage.filter(unit => unit.playlist_count > 0).length })}</>}
+        {enrichedCoverage.some(unit => unit.guide_count > 0) && <> · {t('course.guideCoverage', { count: enrichedCoverage.filter(unit => unit.guide_count > 0).length })}</>}
       </p>}
       {map.ready && !!units.length && <CourseMapSummary explored={countExplored(units, map.explored)} total={units.length} />}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {(course.code === 'LPSI' || course.code === 'MNCN' || hasCurriculumPlacements(units)) ? (
-        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={coverage.data ?? []} explored={map.explored} />
+        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={enrichedCoverage} explored={map.explored} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-foreground bg-card px-4 py-1.5 text-sm font-medium transition-colors hover:bg-brand-cyan hover:text-brand-ink">
