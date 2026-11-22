@@ -154,7 +154,7 @@ export default function CourseDetails() {
       {map.ready && !!units.length && <CourseMapSummary explored={countExplored(units, map.explored)} total={units.length} />}
       {!units.length && <PageState level="h3" title={t('catalog.noUnits')} description={t('catalog.noUnitsDescription')} />}
       {(course.code === 'LPSI' || course.code === 'MNCN' || hasCurriculumPlacements(units)) ? (
-        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={enrichedCoverage} explored={map.explored} />
+        <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageReady={!coverageLoading && !coverageError} explored={map.explored} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
         {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-foreground bg-card px-4 py-1.5 text-sm font-medium transition-colors hover:bg-brand-cyan hover:text-brand-ink">
