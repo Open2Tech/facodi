@@ -11,19 +11,22 @@ const MIN_UNITS_FOR_SEARCH = 13;
  * This is only a navigation aid: it does not alter specialisations or the official study plan.
  */
 export function CourseUnitQuickFinder({
-  courseSlug, units, coverage,
+  courseSlug, units, coverage, coverageLoading = false, coverageError = false,
 }: {
   courseSlug: string;
   units: readonly StudyEntryUnit[];
   coverage: readonly StudyEntryCoverage[];
+  coverageLoading?: boolean;
+  coverageError?: boolean;
 }) {
   const { t } = useTranslation();
   const searchId = useId();
   const searchInput = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState('');
   const [onlyWithMaterials, setOnlyWithMaterials] = useState(false);
-  const active = Boolean(search.trim() || onlyWithMaterials);
-  const { total, results } = active ? findCourseUnits(units, coverage, search, onlyWithMaterials) : { total: 0, results: [] };
+  const canFilterMaterials = !coverageLoading && !coverageError;
+  const active = Boolean(search.trim() || (onlyWithMaterials && canFilterMaterials));
+  const { total, results } = active ? findCourseUnits(units, coverage, search, onlyWithMaterials && canFilterMaterials) : { total: 0, results: [] };
   if (units.length < MIN_UNITS_FOR_SEARCH) return null;
 
   return <section aria-labelledby="course-unit-finder-title" className="mb-12 border-t-4 border-t-brand-orange bg-card p-4 sm:p-6">
@@ -57,27 +60,36 @@ export function CourseUnitQuickFinder({
         </div>
       </div>
       <label className="inline-flex min-h-11 cursor-pointer items-center gap-3 text-sm font-medium">
-        <input type="checkbox" checked={onlyWithMaterials}
+        <input type="checkbox" checked={onlyWithMaterials && canFilterMaterials} disabled={!canFilterMaterials}
           onChange={event => setOnlyWithMaterials(event.target.checked)}
           className="h-5 w-5 shrink-0 accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
         {t('courseUnitFinder.onlyWithMaterials')}
       </label>
     </div>
 
+    {(coverageLoading || coverageError) && <p role={coverageError ? 'alert' : 'status'} className="mt-3 text-xs text-muted-foreground">
+      {t(coverageError ? 'courseUnitFinder.coverageUnavailable' : 'courseUnitFinder.coverageLoading')}
+    </p>}
+
     {active && <div className="mt-5 border-t border-input pt-4">
       <p role="status" className="text-sm text-muted-foreground">
         {total ? t('courseUnitFinder.matches', { count: total }) : t('courseUnitFinder.noMatches')}
       </p>
       {!!results.length && <ul className="mt-3 divide-y divide-input border-y border-input">
-        {results.map(({ unit, videoCount, readingCount }) => <li key={unit.id} className="flex flex-col justify-between gap-2 py-3 sm:flex-row sm:items-center sm:gap-5">
+        {results.map(({ unit, videoCount, readingCount, playlistCount, guideCount }) => <li key={unit.id} className="flex flex-col justify-between gap-2 py-3 sm:flex-row sm:items-center sm:gap-5">
           <div className="min-w-0">
             <Link to={unitPath(courseSlug, unit.slug)}
               className="font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{unit.title}</Link>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               {[unit.code, unit.year != null ? t('catalog.year', { value: unit.year }) : null,
                 unit.semester != null ? t('catalog.semester', { value: unit.semester }) : null].filter(Boolean).join(' · ')}
-              {(videoCount > 0 || readingCount > 0) && <>
-                {' · '}{t('courseUnitFinder.materialCount', { videos: videoCount, readings: readingCount })}
+              {canFilterMaterials && (videoCount > 0 || readingCount > 0 || playlistCount > 0 || guideCount > 0) && <>
+                {' · '}{[
+                  videoCount && t('courseUnitFinder.videoCount', { count: videoCount }),
+                  playlistCount && t('courseUnitFinder.playlistCount', { count: playlistCount }),
+                  readingCount && t('courseUnitFinder.readingCount', { count: readingCount }),
+                  guideCount && t('courseUnitFinder.guideCount', { count: guideCount }),
+                ].filter(Boolean).join(' · ')}
               </>}
             </p>
           </div>
