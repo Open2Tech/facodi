@@ -1,0 +1,122 @@
+{
+  "confirmation": {
+    "title": "Confirme o seu endereço de email",
+    "preheader": "Confirmação da conta FACODI",
+    "category": "Bem-vindo ao campus",
+    "tone": "cyan",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Recebemos um pedido de registo na FACODI. Confirme que este endereço de email lhe pertence para concluir a criação da conta.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:27px 0 24px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .ConfirmationURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Confirmar email</a></td></tr></table><p style=\"font-size:12px;line-height:1.6;color:#516177;margin:0 0 12px\">Esta ligação é pessoal. Se o botão não abrir, tente a ligação no mesmo navegador em que iniciou o pedido.</p>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não criou uma conta, pode ignorar esta mensagem. Não partilhe este link.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "email_change": {
+    "title": "Confirmar alteração de email",
+    "preheader": "Confirmação de novo endereço de email na FACODI",
+    "category": "Segurança da conta",
+    "tone": "orange",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi pedida a alteração do endereço de email da sua conta FACODI para <strong>{{ .NewEmail }}</strong>. Confirme esta operação apenas se foi você quem a iniciou.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:27px 0 24px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .ConfirmationURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Confirmar alteração</a></td></tr></table><p style=\"font-size:12px;line-height:1.6;color:#516177;margin:0 0 12px\">Esta ligação é pessoal. Se o botão não abrir, tente a ligação no mesmo navegador em que iniciou o pedido.</p>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece este pedido, reveja imediatamente a segurança da sua conta.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "email_changed": {
+    "title": "O email da conta foi alterado",
+    "preheader": "Aviso de alteração de email da conta FACODI",
+    "category": "Segurança da conta",
+    "tone": "coral",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">O endereço de email associado à sua conta FACODI foi alterado de <strong>{{ .OldEmail }}</strong> para <strong>{{ .Email }}</strong>.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece esta alteração, procure apoio através dos canais oficiais da FACODI.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "identity_linked": {
+    "title": "Foi associado um método de acesso",
+    "preheader": "Novo método de acesso FACODI",
+    "category": "Segurança da conta",
+    "tone": "mint",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi associado à sua conta FACODI um método de início de sessão do fornecedor <strong>{{ .Provider }}</strong>.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece esta operação, aceda à sua conta e reveja os métodos de autenticação.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "identity_unlinked": {
+    "title": "Foi removido um método de acesso",
+    "preheader": "Alteração dos métodos de acesso FACODI",
+    "category": "Segurança da conta",
+    "tone": "coral",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi removido da sua conta FACODI um método de início de sessão do fornecedor <strong>{{ .Provider }}</strong>.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece esta operação, reveja a segurança e os métodos de autenticação da sua conta.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "invite": {
+    "title": "Recebeu um convite",
+    "preheader": "Convite para aceder à FACODI",
+    "category": "Bem-vindo ao campus",
+    "tone": "cyan",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi convidado a aceder à FACODI. Utilize o link abaixo para aceitar o convite e continuar o processo de acesso à plataforma.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:27px 0 24px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .ConfirmationURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Aceitar convite</a></td></tr></table><p style=\"font-size:12px;line-height:1.6;color:#516177;margin:0 0 12px\">Esta ligação é pessoal. Se o botão não abrir, tente a ligação no mesmo navegador em que iniciou o pedido.</p>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não esperava este convite, ignore esta mensagem. Não partilhe o link de acesso.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "magic_link": {
+    "title": "A sua ligação de acesso",
+    "preheader": "Ligação de acesso à FACODI",
+    "category": "Bem-vindo ao campus",
+    "tone": "cyan",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi pedida uma ligação para iniciar sessão na FACODI. Utilize-a apenas se foi você quem fez este pedido.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:27px 0 24px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .ConfirmationURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Iniciar sessão</a></td></tr></table><p style=\"font-size:12px;line-height:1.6;color:#516177;margin:0 0 12px\">Esta ligação é pessoal. Se o botão não abrir, tente a ligação no mesmo navegador em que iniciou o pedido.</p>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">A ligação é de utilização única. Não a partilhe. Se não pediu acesso, ignore esta mensagem.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "mfa_factor_enrolled": {
+    "title": "Foi adicionado um método de verificação",
+    "preheader": "Novo método de verificação da FACODI",
+    "category": "Segurança da conta",
+    "tone": "mint",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi ativado um novo método de verificação em dois passos (<strong>{{ .FactorType }}</strong>) na sua conta FACODI.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece esta alteração, entre na conta e reveja imediatamente a configuração de segurança.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "mfa_factor_unenrolled": {
+    "title": "Foi removido um método de verificação",
+    "preheader": "Alteração de verificação na FACODI",
+    "category": "Segurança da conta",
+    "tone": "coral",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Foi removido um método de verificação em dois passos (<strong>{{ .FactorType }}</strong>) da sua conta FACODI.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece a alteração, reveja imediatamente a segurança da sua conta.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "password_changed": {
+    "title": "A palavra-passe foi alterada",
+    "preheader": "Aviso de segurança da conta FACODI",
+    "category": "Segurança da conta",
+    "tone": "coral",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">A palavra-passe da sua conta FACODI foi alterada. Se efetuou a operação, não precisa de fazer mais nada.</p>\n          \n          <p style=\"margin:22px 0\"><a href=\"https://facodi.com/auth/reset-password\" style=\"color:#142948;text-decoration:underline;font-weight:600\">Abrir recuperação de conta</a></p>\n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece a alteração, procure recuperar o acesso à sua conta imediatamente.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "phone_changed": {
+    "title": "O número de telefone foi alterado",
+    "preheader": "Aviso de alteração de número da conta FACODI",
+    "category": "Segurança da conta",
+    "tone": "coral",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">O número de telefone da sua conta FACODI foi alterado de <strong>{{ .OldPhone }}</strong> para <strong>{{ .Phone }}</strong>.</p>\n          \n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não reconhece esta operação, reveja a segurança da conta.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "reauthentication": {
+    "title": "Código de verificação",
+    "preheader": "Código de confirmação de segurança da FACODI",
+    "category": "Segurança da conta",
+    "tone": "orange",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Para confirmar uma operação sensível na sua conta FACODI, introduza o seguinte código de utilização única na página onde fez o pedido.</p>\n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tr><td align=\"center\" bgcolor=\"#a6e8bd\" style=\"padding:24px 12px;border:1px solid #142948;border-radius:8px;font-size:30px;letter-spacing:7px;line-height:1.5;font-weight:700;color:#142948;font-family:Consolas,monospace\">{{ .Token }}</td></tr></table>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Não partilhe o código. A equipa FACODI nunca lhe pedirá este código por email ou telefone.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "recovery": {
+    "title": "Redefinir palavra-passe",
+    "preheader": "Pedido de redefinição de palavra-passe FACODI",
+    "category": "Segurança da conta",
+    "tone": "orange",
+    "contentHtml": "<p style=\"margin:0 0 22px;font-size:16px;line-height:1.75;color:#142948\">Recebemos um pedido para alterar a palavra-passe da sua conta FACODI. Utilize o link abaixo apenas se foi você quem fez este pedido.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:27px 0 24px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .ConfirmationURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Redefinir palavra-passe</a></td></tr></table><p style=\"font-size:12px;line-height:1.6;color:#516177;margin:0 0 12px\">Esta ligação é pessoal. Se o botão não abrir, tente a ligação no mesmo navegador em que iniciou o pedido.</p>\n          \n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Se não pediu esta alteração, ignore a mensagem. A sua palavra-passe atual não será alterada por este email.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem automática de segurança da FACODI. Não responda a este email nem envie palavras-passe ou códigos."
+  },
+  "study_reminder": {
+    "title": "A tua sequência continua aqui",
+    "preheader": "A tua sequência continua onde a deixaste",
+    "category": "O teu percurso",
+    "tone": "pink",
+    "contentHtml": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.75;color:#142948\">A sequência <strong>{{ .SequenceTitle }}</strong> continua onde a deixaste. A próxima aula é <strong>{{ .NextLessonTitle }}</strong>.</p>\n          <p style=\"margin:0 0 16px;font-size:16px;line-height:1.75;color:#142948\">Uma aula por semana já conta. Quando voltares, o progresso está guardado.</p>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:24px 0 22px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"{{ .SequenceURL }}\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Continuar a sequência</a></td></tr></table>\n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Enviamos no máximo um lembrete a cada 14 dias, e só quando passam 7 dias sem estudar.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem de estudo da FACODI, enviada só a quem a ativou. Pode desativá-la a qualquer momento: <a href=\"{{ .PreferencesURL }}\" style=\"color:#ffffff;text-decoration:underline\">preferências de email</a>."
+  },
+  "study_welcome": {
+    "title": "Bem-vindo à FACODI",
+    "preheader": "Três sítios por onde começar a estudar",
+    "category": "O teu percurso",
+    "tone": "mint",
+    "contentHtml": "<p style=\"margin:0 0 16px;font-size:16px;line-height:1.75;color:#142948\">Bem-vindo à FACODI. Aqui encontras os cursos com o plano oficial e, em cada unidade curricular, aulas abertas organizadas para estudar.</p>\n          <p style=\"margin:0 0 16px;font-size:16px;line-height:1.75;color:#142948\">Três sítios por onde começar:</p>\n          <ul style=\"margin:0 0 8px;padding-left:20px;font-size:16px;line-height:1.6;color:#142948\">\n            <li style=\"margin:0 0 12px\"><a href=\"https://facodi.com/dashboard\" style=\"color:#142948;font-weight:700;text-decoration:underline\">O teu painel</a><br><span style=\"color:#516177\">Diz em que curso e ano estás e vês as UCs desse ano.</span></li>\n            <li style=\"margin:0 0 12px\"><a href=\"https://facodi.com/sequences\" style=\"color:#142948;font-weight:700;text-decoration:underline\">Sequências de estudo</a><br><span style=\"color:#516177\">Aulas numa ordem pensada, com o teu progresso guardado.</span></li>\n            <li style=\"margin:0 0 12px\"><a href=\"https://facodi.com/notes\" style=\"color:#142948;font-weight:700;text-decoration:underline\">Caderno de estudo</a><br><span style=\"color:#516177\">Notas presas ao minuto do vídeo, que podes exportar.</span></li>\n          </ul>\n          <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin:24px 0 22px\"><tr><td bgcolor=\"#eeff00\" style=\"border-radius:4px\"><a href=\"https://facodi.com/dashboard\" style=\"display:inline-block;background:#eeff00;border:2px solid #142948;border-radius:4px;padding:13px 22px;color:#142948;text-decoration:none;font-size:16px;font-weight:700\">Abrir o meu painel</a></td></tr></table>\n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"margin-top:24px;border-top:1px solid #e0e8ed\"><tr><td style=\"padding:19px 0 0\">\n            <p style=\"margin:0;font-size:13px;line-height:1.6;color:#5b6e83\">Recebes este email porque ativaste os emails de estudo da FACODI.</p>\n          </td></tr></table>",
+    "footerHtml": "Mensagem de estudo da FACODI, enviada só a quem a ativou. Pode desativá-la a qualquer momento: <a href=\"{{ .PreferencesURL }}\" style=\"color:#ffffff;text-decoration:underline\">preferências de email</a>."
+  }
+}

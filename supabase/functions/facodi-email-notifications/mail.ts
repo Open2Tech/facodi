@@ -1,3 +1,4 @@
+import { renderEmailLayout, emailButton } from "../_shared/email-layout.ts";
 export type MailKind = 'playlist_received' | 'playlist_approved' | 'playlist_rejected'
   | 'suggestion_received' | 'suggestion_approved' | 'suggestion_rejected';
 export type MailEvent = {
@@ -90,22 +91,18 @@ export function buildMail(event: MailEvent, locale: unknown = 'pt', publicSlug?:
   const detail = received ? c.pending : approved ? resourceUrl ? c.published : c.accepted : c.declined;
   const statusUrl = playlist ? 'https://facodi.com/playlists/submit' : 'https://facodi.com/suggest';
   const label = playlist ? c.playlist : c.resource;
-  const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;background:#f3f6f9;font-family:Arial,Helvetica,sans-serif;color:#142846">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 14px">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;border:1px solid #d9e3eb;border-radius:12px;background:#ffffff">
-<tr><td style="background:#142846;padding:26px 28px;border-radius:11px 11px 0 0;border-bottom:4px solid #efff00">
-<strong style="color:#ffffff;font-size:25px;letter-spacing:1px">FACODI</strong>
-<div style="font-size:12px;color:#efff00;margin-top:6px">Faculdade Comunitária Digital</div></td></tr>
-<tr><td style="padding:30px 28px"><h1 style="font-size:25px;line-height:1.3;margin:0 0 18px">${escape(heading)}</h1>
-<p style="font-size:15px;line-height:1.75">${escape(detail)}</p>
-<p style="padding:16px;background:#f9fafb;border-left:4px solid #37bed2;line-height:1.6"><strong>${escape(label)}:</strong> ${escape(title)}</p>
-${note ? `<p style="line-height:1.75;white-space:pre-line"><strong>${escape(c.note)}:</strong><br>${escape(note)}</p>` : ''}
-<p style="font-size:15px;line-height:1.75">${escape(c.thanks)}</p>
-<p style="margin:26px 0"><a href="${resourceUrl ?? statusUrl}" style="display:inline-block;padding:13px 19px;border-radius:7px;background:#efff00;color:#142846;font-weight:700;text-decoration:none">${escape(resourceUrl ? c.open : c.status)}</a></p>
-${resourceUrl ? `<p><a href="${statusUrl}" style="color:#3979c8">${escape(c.status)}</a></p>` : ''}
-</td></tr><tr><td style="padding:20px 28px;background:#f9fafb;border-top:1px solid #e4ebf0;border-radius:0 0 11px 11px;font-size:12px;line-height:1.65;color:#526173">${escape(c.footer)}</td></tr>
-</table></td></tr></table></body></html>`;
+  const html = renderEmailLayout({
+    language: lang, title: heading, preheader: received ? c.pending : approved ? c.accepted : c.declined,
+    category: { pt: 'Contribuir para o campus', en: 'Campus contributions', es: 'Contribuir al campus', fr: 'Contribuer au campus' }[lang],
+    tone: received ? 'cyan' : approved ? 'mint' : 'orange',
+    contentHtml: `<p style="font-size:16px;line-height:1.75;margin:0 0 20px">${escape(detail)}</p>
+<p style="font-size:16px;line-height:1.65;padding:16px;border-left:4px solid #37bdd2;background:#fdfcf7"><strong>${escape(playlist ? c.playlist : c.resource)}:</strong> ${escape(title)}</p>
+${note && !received ? `<p style="font-size:16px;line-height:1.75"><strong>${escape(c.note)}:</strong><br>${escape(note)}</p>` : ''}
+<p style="font-size:16px;line-height:1.75">${escape(c.thanks)}</p>
+${emailButton(resourceUrl ? c.open : c.status, resourceUrl ?? statusUrl)}
+${resourceUrl ? `<p><a href="${statusUrl}" style="color:#142948;text-decoration:underline">${escape(c.status)}</a></p>` : ''}`,
+    footerHtml: escape(c.footer),
+  });
   return {
     subject: `FACODI · ${heading}`,
     html,
