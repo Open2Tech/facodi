@@ -64,6 +64,13 @@ describe('contributor emails', () => {
     expect(deliveryFailure(422, 0).retry).toBe(false);
     expect(deliveryFailure(429, 3).delaySeconds).toBe(480);
   });
+  it('retries only the temporary Resend idempotency conflict, within the attempt limit', () => {
+    expect(deliveryFailure(409, 0, 'concurrent_idempotent_requests').retry).toBe(true);
+    expect(deliveryFailure(409, 4, 'concurrent_idempotent_requests').retry).toBe(false);
+    expect(deliveryFailure(409, 0, 'invalid_idempotent_request').retry).toBe(false);
+    expect(deliveryFailure(409, 0).retry).toBe(false);
+    expect(deliveryFailure(409, 3, 'concurrent_idempotent_requests').delaySeconds).toBe(480);
+  });
   it('rejects missing, short and incorrect worker credentials', () => {
     expect(sameSecret('', '')).toBe(false);
     expect(sameSecret('short', 'short')).toBe(false);

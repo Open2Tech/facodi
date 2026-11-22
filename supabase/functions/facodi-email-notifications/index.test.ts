@@ -1,4 +1,4 @@
-import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { MailEvent } from './mail';
 const mailEvent = (): MailEvent => ({ id: 'event-1', event_key: 'facodi:event-1', recipient_user_id: 'author-1', playlist_id: null, suggestion_id: 'suggestion-1', template_name: 'suggestion_received', attempts: 0, created_at: new Date().toISOString(), first_attempt_at: null, event_payload: { title: 'Aula' } });
 
@@ -9,6 +9,9 @@ let handler: (req: Request) => Promise<Response>;
 let env: Record<string, string>;
 let rows: Record<string, Row[]>;
 let fetchMock: ReturnType<typeof vi.fn>;
+let recipientLookup: ReturnType<typeof vi.fn>;
+let readErrors: Set<string>;
+let snapshotSaveFails: boolean;
 const secret = 'worker-secret-'.repeat(4);
 const playlistId = '11111111-1111-1111-1111-111111111111';
 
@@ -30,6 +33,9 @@ function from(table: string) {
     limit: () => query,
     maybeSingle: () => { single = true; return query; },
     then: (resolve: (r: unknown) => unknown, reject: (error: unknown) => unknown) => Promise.resolve().then(() => {
+      if ((!changes && readErrors.has(table)) || (snapshotSaveFails && changes?.event_payload)) {
+        return { data: null, error: { message: 'simulated persistence/lookup failure' } };
+      }
       const matched = (rows[table] ?? []).filter(r => filters.every(f => f(r)));
       if (changes) matched.forEach(r => Object.assign(r, changes));
       return { data: structuredClone(single ? matched[0] ?? null : matched), error: null };
@@ -44,7 +50,11 @@ beforeAll(async () => {
   vi.stubGlobal('Deno', { env: { get: (key: string) => env[key] }, serve: (fn: typeof handler) => { handler = fn; } });
   await import('./index');
 });
+afterEach(() => { vi.useRealTimers(); });
 beforeEach(() => {
+  readErrors = new Set();
+  snapshotSaveFails = false;
+  recipientLookup = vi.fn().mockResolvedValue({ data: { user: { email: 'contributor@example.test', user_metadata: {} } }, error: null });
   env = { SUPABASE_URL: 'https://example.test', SUPABASE_ANON_KEY: 'anon', SUPABASE_SERVICE_ROLE_KEY: 'service',
     FACODI_SUGGESTION_WORKER_SECRET: secret, FACODI_RESEND_API_KEY: 'test-only', FACODI_EMAIL_FROM: 'FACODI <noreply@facodi.com>' };
   rows = {
@@ -55,7 +65,7 @@ beforeEach(() => {
   mocks.createClient.mockReturnValue({ schema: () => ({ from }), auth: {
     getUser: async (jwt: string) => ({ data: { user: jwt === 'valid-owner' ? { id: 'author-1', app_metadata: {} }
       : jwt === 'valid-other' ? { id: 'other', app_metadata: {} } : null }, error: null }),
-    admin: { getUserById: async () => ({ data: { user: { email: 'contributor@example.test', user_metadata: {} } }, error: null }) },
+    admin: { getUserById: (...args: unknown[]) => recipientLookup(...args) },
   } });
   fetchMock = vi.fn().mockImplementation(async () => Response.json({ id: 'provider-id' }));
   vi.stubGlobal('fetch', fetchMock);
@@ -111,13 +121,15 @@ describe('contributor notification handler', () => {
     expect(fetchMock.mock.calls.map(([, init]) => init.headers['Idempotency-Key'])).toEqual(['facodi:event-1', 'facodi:event-1']);
   });
   it('recovers an abandoned lease and stops at the retry limit', async () => {
-    Object.assign(rows.email_outbox[0], { state: 'processing', attempts: 1, locked_at: new Date(0).toISOString(), first_attempt_at: new Date().toISOString() });
+    fetchMock.mockRejectedValueOnce(new Error('provider timeout'));
+    await handler(request());
+    Object.assign(rows.email_outbox[0], { state: 'processing', locked_at: new Date(0).toISOString() });
     await handler(request());
     expect(rows.email_outbox[0].state).toBe('sent');
     Object.assign(rows.email_outbox[0], { state: 'processing', attempts: 5, locked_at: new Date(0).toISOString() });
     await handler(request());
     expect(rows.email_outbox[0]).toMatchObject({ state: 'failed', failure_code: 'retry_limit_reached' });
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
   it('does not retry an ambiguous send outside the provider idempotency window', async () => {
     Object.assign(rows.email_outbox[0], { state: 'retry', attempts: 1, first_attempt_at: new Date(0).toISOString() });
@@ -125,4 +137,84 @@ describe('contributor notification handler', () => {
     expect(rows.email_outbox[0]).toMatchObject({ state: 'failed', failure_code: 'idempotency_window_expired' });
     expect(fetchMock).not.toHaveBeenCalled();
   });
+  it.each(['submission', 'recipient'])('does not start the provider window when the %s lookup fails', async (lookup) => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    const start = Date.now();
+    if (lookup === 'submission') readErrors.add('resource_suggestions');
+    else recipientLookup.mockResolvedValueOnce({ data: { user: null }, error: { status: 503 } });
+    await handler(request());
+    expect(rows.email_outbox[0]).toMatchObject({ state: 'retry', first_attempt_at: null });
+    expect(rows.email_outbox[0].event_payload).not.toHaveProperty('_delivery_request');
+    expect(fetchMock).not.toHaveBeenCalled();
+    vi.setSystemTime(start + 24 * 60 * 60_000);
+    readErrors.clear();
+    await handler(request());
+    expect(rows.email_outbox[0]).toMatchObject({ state: 'sent', attempts: 2 });
+    expect(rows.email_outbox[0].first_attempt_at).toBe(new Date().toISOString());
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+  it('persists the exact request and start time before calling the provider', async () => {
+    fetchMock.mockImplementationOnce(async (_url, init) => {
+      expect(rows.email_outbox[0].first_attempt_at).toBeTruthy();
+      expect((rows.email_outbox[0].event_payload as Row)._delivery_request).toBe(init.body);
+      return Response.json({ id: 'provider-id' });
+    });
+    await handler(request());
+    expect(rows.email_outbox[0].state).toBe('sent');
+  });
+  it('never sends when writing the original request fails; the lease is recoverable', async () => {
+    snapshotSaveFails = true;
+    expect((await handler(request())).status).toBe(500);
+    expect(rows.email_outbox[0]).toMatchObject({ state: 'processing', first_attempt_at: null });
+    expect(fetchMock).not.toHaveBeenCalled();
+    snapshotSaveFails = false;
+    rows.email_outbox[0].locked_at = new Date(0).toISOString();
+    await handler(request());
+    expect(rows.email_outbox[0].state).toBe('sent');
+  });
+  it('replays identical bytes after a timeout despite changed address, locale, sender, review and publication', async () => {
+    rows.email_outbox[0].template_name = 'suggestion_approved';
+    rows.resource_suggestions[0].learning_object_id = 'object-1';
+    rows.learning_objects = [{ id: 'object-1', slug: 'original-resource', published: true, status: 'active' }];
+    fetchMock.mockRejectedValueOnce(new Error('accepted but response timed out'));
+    await handler(request());
+    const original = fetchMock.mock.calls[0][1];
+    expect(original.body).toContain('https://facodi.com/resources/original-resource');
+    rows.email_outbox[0].next_attempt_at = new Date(0).toISOString();
+    (rows.email_outbox[0].event_payload as Row).title = 'Edited title';
+    Object.assign(rows.learning_objects[0], { slug: 'edited-slug', published: false });
+    rows.resource_suggestions[0].status = 'rejected';
+    env.FACODI_EMAIL_FROM = 'FACODI <changed@facodi.com>';
+    recipientLookup.mockResolvedValue({ data: { user: { email: 'changed@example.test', user_metadata: { locale: 'fr' } } }, error: null });
+    readErrors.add('resource_suggestions'); // Replay must not depend on new lookups.
+    await handler(request());
+    expect(rows.email_outbox[0]).toMatchObject({ state: 'sent', provider_message_id: 'provider-id' });
+    const replay = fetchMock.mock.calls[1][1];
+    expect(replay.body).toBe(original.body);
+    expect(replay.headers['Idempotency-Key']).toBe(original.headers['Idempotency-Key']);
+    expect(recipientLookup).toHaveBeenCalledTimes(1);
+  });
+  it.each([
+    ['concurrent_idempotent_requests', 'retry'],
+    ['invalid_idempotent_request', 'failed'],
+    ['unknown_conflict', 'failed'],
+  ])('treats 409 %s as %s', async (name, state) => {
+    fetchMock.mockResolvedValueOnce(Response.json({ name }, { status: 409 }));
+    await handler(request());
+    expect(rows.email_outbox[0].state).toBe(state);
+    if (state === 'retry') {
+      expect(rows.email_outbox[0].failure_code).toBe('email_provider_concurrent_idempotent_requests');
+      rows.email_outbox[0].next_attempt_at = new Date(0).toISOString();
+      await handler(request());
+      expect(rows.email_outbox[0]).toMatchObject({ state: 'sent', provider_message_id: 'provider-id' });
+      expect(fetchMock.mock.calls[1][1].body).toBe(fetchMock.mock.calls[0][1].body);
+    }
+  });
+  it('leaves legacy ambiguous deliveries without an original request for manual inspection', async () => {
+    Object.assign(rows.email_outbox[0], { state: 'retry', attempts: 1, first_attempt_at: new Date().toISOString() });
+    await handler(request());
+    expect(rows.email_outbox[0]).toMatchObject({ state: 'failed', failure_code: 'delivery_snapshot_missing' });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
 });

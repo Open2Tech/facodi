@@ -16,12 +16,16 @@ export function isSuperseded(event: MailEvent, submission: Submission | null) {
   return !event.template_name.endsWith(`_${submission.status}`);
 }
 
-export function deliveryFailure(httpStatus: number, previousAttempts: number) {
-  const transient = httpStatus === 0 || httpStatus === 429 || httpStatus >= 500;
+export function deliveryFailure(httpStatus: number, previousAttempts: number, providerError?: string) {
+  const concurrent = httpStatus === 409 && providerError === 'concurrent_idempotent_requests';
+  const invalid = httpStatus === 409 && providerError === 'invalid_idempotent_request';
+  const transient = concurrent || httpStatus === 0 || httpStatus === 429 || httpStatus >= 500;
   return {
     retry: transient && previousAttempts < 4,
     delaySeconds: Math.min(3600, 60 * 2 ** previousAttempts),
-    code: httpStatus ? `email_provider_http_${httpStatus}` : 'email_provider_timeout',
+    code: concurrent ? 'email_provider_concurrent_idempotent_requests'
+      : invalid ? 'email_provider_invalid_idempotent_request'
+      : httpStatus ? `email_provider_http_${httpStatus}` : 'email_provider_timeout',
   };
 }
 

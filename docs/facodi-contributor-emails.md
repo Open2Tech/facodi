@@ -19,15 +19,18 @@ Os emails têm HTML responsivo com as cores FACODI e uma alternativa em texto si
 - O cron `facodi-contributor-email` verifica a fila a cada minuto. O envio não depende de manter o site aberto, do orçamento de IA, nem dos emails administrativos da análise.
 - A função `facodi-email-notifications` valida sessões e propriedade nas invocações existentes do frontend. O cron autentica-se com `FACODI_SUGGESTION_WORKER_SECRET`, já guardado em Vault. `verify_jwt=false` permite o cron; a autenticação é obrigatória no código antes de qualquer acesso à fila.
 - Há claim atómico por evento, recuperação de locks abandonados após 15 minutos, idempotência no fornecedor e até cinco tentativas com backoff. Falhas de consulta de uma contribuição não impedem processar as restantes.
-- Falhas definitivas ficam visíveis no banco de dados. Não se repetem envios ambíguos após 23 horas desde a primeira tentativa, respeitando a janela de idempotência de 24 horas do Resend.
-- Um agradecimento continua válido depois de uma revisão rápida; apenas decisões já ultrapassadas são ignoradas.
+- A reserva na fila não inicia a janela do fornecedor. Imediatamente antes do primeiro pedido ao Resend, a função persiste `first_attempt_at` e o corpo JSON completo como string em `event_payload._delivery_request`, na fila privada existente. A string preserva exatamente os bytes enviados, incluindo remetente, destinatário, assunto, HTML e texto. Uma falha ao gravar impede o envio; falhas de consulta anteriores mantêm o instante a `null`.
+- As repetições reutilizam esse corpo e a mesma chave de idempotência, sem reconstruir o email com um endereço, idioma, template, revisão ou slug entretanto alterado. Uma ligação para um recurso que deixe de ser público mantém-se no pedido original; a aplicação continua a negar acesso ao conteúdo privado. Repetir recupera o resultado do envio original, não promete o estado atual da publicação.
+- HTTP 409 `concurrent_idempotent_requests` é temporário e usa o mesmo backoff e limite de cinco tentativas. `invalid_idempotent_request` e outros conflitos 409 são definitivos.
+- Falhas definitivas ficam visíveis no banco de dados. Não se repetem envios ambíguos após 23 horas desde `first_attempt_at`, respeitando a janela de idempotência de 24 horas do Resend. Tentativas antigas com instante registado mas sem o corpo original ficam em `delivery_snapshot_missing` para inspeção manual, sem reconstrução ou reenvio automático. Na verificação anterior à publicação, a fila continha apenas três eventos já enviados, sem eventos pendentes nestas condições.
+- Um agradecimento continua válido depois de uma revisão rápida; antes do primeiro pedido ao fornecedor, decisões já ultrapassadas são ignoradas. Depois desse pedido, a repetição reconcilia o envio original congelado.
 - A tabela tem RLS e acesso exclusivo do serviço. As funções internas não têm `EXECUTE` para `anon`/`authenticated`. O serviço recebeu somente `SELECT (id,submitted_by,status)` na tabela de playlists, permissão em falta no fluxo anterior.
 - Mantêm-se `FACODI_RESEND_API_KEY` e `FACODI_EMAIL_FROM`, sem fallback para remetentes de outros produtos. Nenhum hook ou configuração do Auth partilhado foi alterado.
 - Não foi feito backfill de sugestões históricas. Os três eventos de playlists que já estavam pendentes foram processados.
 
 ## Validação realizada
 
-- `bun run test:email`: 21 testes de templates e handler, incluindo autenticação, destinatário real, concorrência, falha do transporte, backoff, recuperação e idempotência.
+- `bun run test:email`: 15 modelos estáticos e 56 testes do handler, entrega e apresentação, incluindo autenticação, destinatário real, concorrência, falha do transporte, backoff, recuperação, início da janela após falhas de consulta, persistência antes do envio e repetição do pedido original após timeout. O comando inclui os testes `.test.ts` e `.spec.ts`, executados no CI.
 - `bun run test`: 443 testes Vitest e 7 testes Node passaram.
 - `bun run lint`, `bun run typecheck`, `deno check` da Edge Function e build de produção sem credenciais passaram.
 - `supabase/tests/contributor_email_lifecycle.sql` passou no banco alojado. Verifica agradecimento, aprovação manual, aprovação automática, rejeição, duplicados e isolamento das permissões. Todos os dados de teste foram revertidos na mesma transação; não geraram emails.

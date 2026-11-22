@@ -111,7 +111,7 @@ Deno.serve(async (req: Request) => {
     // Atomic compare-and-set prevents browser/cron workers claiming the same event.
     const timestamp = new Date().toISOString();
     const { data: claimed, error: claimError } = await db.from("email_outbox")
-      .update({ state: "processing", attempts: event.attempts + 1, locked_at: timestamp, first_attempt_at: event.first_attempt_at ?? timestamp, updated_at: timestamp })
+      .update({ state: "processing", attempts: event.attempts + 1, locked_at: timestamp, updated_at: timestamp })
       .eq("id", event.id).eq("attempts", event.attempts).in("state", ["pending", "retry"])
       .select("id").maybeSingle();
     if (claimError) return response(req, 500, { error: "claim_failed", sent, skipped, failed });
@@ -122,57 +122,83 @@ Deno.serve(async (req: Request) => {
       if (error) throw new Error("queue_update_failed");
     };
     try {
-      const { data: submission, error: sourceError } = suggestion
-        ? await db.from("resource_suggestions").select("submitted_by,status,learning_object_id")
-          .eq("id", event.suggestion_id!).maybeSingle()
-        : await db.from("playlists").select("submitted_by,status")
-          .eq("id", event.playlist_id!).maybeSingle();
-      if (sourceError) {
-        await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "submission_lookup_failed" });
-        failed++;
-        continue;
-      }
-
-      if (isSuperseded(event, submission)) {
-        await save({ state: "skipped", failure_code: "superseded" });
-        skipped++;
-        continue;
-      }
-      // Resend retains idempotency keys for 24h. Don't silently resend an ambiguous
-      // delivery after that window; leave a visible failure for manual inspection.
-      if (event.attempts > 0 && Date.now() - Date.parse(event.first_attempt_at ?? event.created_at) >= 23 * 60 * 60_000) {
-        await save({ state: "failed", failure_code: "idempotency_window_expired" });
-        failed++;
-        continue;
-      }
-      const { data: target, error: userError } = await admin.auth.admin.getUserById(event.recipient_user_id);
-      if (userError) {
-        if (userError.status !== 404) {
-          await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "recipient_lookup_failed" });
+      let providerBody: string;
+      if (event.first_attempt_at) {
+        // Resend retains keys for 24h. Only a recorded provider request starts
+        // this window; queue claims and failed lookups do not start it.
+        if (Date.now() - Date.parse(event.first_attempt_at) >= 23 * 60 * 60_000) {
+          await save({ state: "failed", failure_code: "idempotency_window_expired" });
           failed++;
           continue;
         }
+        const original = event.event_payload._delivery_request;
+        if (typeof original !== "string" || !original) {
+          // Legacy ambiguous attempts cannot be reconstructed safely with a new body.
+          await save({ state: "failed", failure_code: "delivery_snapshot_missing" });
+          failed++;
+          continue;
+        }
+        // Reconcile the original operation, even if locale, email, review or
+        // publication changed. Access to a now-private resource remains RLS-protected.
+        providerBody = original;
+      } else {
+        const { data: submission, error: sourceError } = suggestion
+          ? await db.from("resource_suggestions").select("submitted_by,status,learning_object_id")
+            .eq("id", event.suggestion_id!).maybeSingle()
+          : await db.from("playlists").select("submitted_by,status")
+            .eq("id", event.playlist_id!).maybeSingle();
+        if (sourceError) {
+          await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "submission_lookup_failed" });
+          failed++;
+          continue;
+        }
+
+        if (isSuperseded(event, submission)) {
+          await save({ state: "skipped", failure_code: "superseded" });
+          skipped++;
+          continue;
+        }
+        const { data: target, error: userError } = await admin.auth.admin.getUserById(event.recipient_user_id);
+        if (userError) {
+          if (userError.status !== 404) {
+            await save({ state: "retry", next_attempt_at: new Date(Date.now() + 60_000).toISOString(), failure_code: "recipient_lookup_failed" });
+            failed++;
+            continue;
+          }
+        }
+        if (!target?.user?.email || userError) {
+          await save({ state: "failed", failure_code: "recipient_not_found" });
+          failed++;
+          continue;
+        }
+        let publicSlug: string | undefined;
+        const objectId = submission && "learning_object_id" in submission ? submission.learning_object_id : null;
+        if (suggestion && event.template_name === "suggestion_approved" && objectId) {
+          const { data: resource } = await db.from("learning_objects").select("slug")
+            .eq("id", objectId).eq("published", true).in("status", ["active", "published"]).maybeSingle();
+          publicSlug = resource?.slug;
+        }
+        const metadata = target.user.user_metadata;
+        const mail = buildMail(event, metadata?.locale ?? metadata?.language ?? "pt", publicSlug);
+        providerBody = JSON.stringify({ from: sender, to: [target.user.email], subject: mail.subject, html: mail.html, text: mail.text });
+        // Write ahead immediately before the first provider request. Keep the exact
+        // serialized body in the private outbox; jsonb must not reorder its fields.
+        const preparedAt = new Date().toISOString();
+        const { data: prepared, error: prepareError } = await db.from("email_outbox")
+          .update({ event_payload: { ...event.event_payload, _delivery_request: providerBody },
+            first_attempt_at: preparedAt, updated_at: preparedAt })
+          .eq("id", event.id).eq("state", "processing").eq("attempts", event.attempts + 1)
+          .select("id").maybeSingle();
+        if (prepareError) throw new Error("queue_update_failed");
+        if (!prepared) continue; // The lease was lost; do not contact the provider.
       }
-      if (!target?.user?.email || userError) {
-        await save({ state: "failed", failure_code: "recipient_not_found" });
-        failed++;
-        continue;
-      }
-      let publicSlug: string | undefined;
-      const objectId = submission && "learning_object_id" in submission ? submission.learning_object_id : null;
-      if (suggestion && event.template_name === "suggestion_approved" && objectId) {
-        const { data: resource } = await db.from("learning_objects").select("slug")
-          .eq("id", objectId).eq("published", true).in("status", ["active", "published"]).maybeSingle();
-        publicSlug = resource?.slug;
-      }
-      const metadata = target.user.user_metadata;
-      const mail = buildMail(event, metadata?.locale ?? metadata?.language ?? "pt", publicSlug);
       let httpStatus = 0;
       let providerMessageId: string | null = null;
+      let providerError: string | undefined;
       try {
         const res = await fetch("https://api.resend.com/emails", {
           method: "POST", headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json", "Idempotency-Key": event.event_key },
-          body: JSON.stringify({ from: sender, to: [target.user.email], subject: mail.subject, html: mail.html, text: mail.text }),
+          body: providerBody,
           signal: AbortSignal.timeout(12_000),
         });
         httpStatus = res.status;
@@ -180,13 +206,16 @@ Deno.serve(async (req: Request) => {
           const payload = await res.json().catch(() => ({})) as { id?: unknown };
           if (typeof payload.id === "string" && payload.id) providerMessageId = payload.id;
           else httpStatus = 0; // An ambiguous response is retried with the same key.
+        } else if (httpStatus === 409) {
+          const payload = await res.json().catch(() => ({})) as { name?: unknown } | null;
+          if (typeof payload?.name === "string") providerError = payload.name;
         }
       } catch { httpStatus = 0; }
       if (providerMessageId) {
         await save({ state: "sent", provider_message_id: providerMessageId, sent_at: new Date().toISOString(), failure_code: null });
         sent++;
       } else {
-        const failure = deliveryFailure(httpStatus, event.attempts);
+        const failure = deliveryFailure(httpStatus, event.attempts, providerError);
         await save({ state: failure.retry ? "retry" : "failed", failure_code: failure.code,
           next_attempt_at: new Date(Date.now() + failure.delaySeconds * 1000).toISOString() });
         failed++;
