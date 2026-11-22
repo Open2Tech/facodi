@@ -98,7 +98,7 @@ export function CommunicationMediaLab() {
             className="group flex min-h-16 items-center gap-3 border border-input bg-background px-4 py-3 transition-colors hover:border-foreground hover:bg-brand-cyan/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <BookOpenCheck className="h-5 w-5 shrink-0" aria-hidden="true" />
             <span className="min-w-0 flex-1 text-sm font-semibold leading-snug group-hover:underline group-hover:underline-offset-4">{sequence.title}</span>
-            <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{sequence.itemCount}</span>
+            <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{t('lccMediaLab.lessons', { count: sequence.itemCount })}</span>
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           </Link>
         </li>)}
