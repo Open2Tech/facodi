@@ -212,6 +212,6 @@ export default function CourseDetails() {
       </section>)}
       </>}
     </section>
-    {['LGEST', 'UFES-LETRAS-ING-83-2019'].includes(course.code) && <CurriculumArchive courseId={course.id} />}
+    {['LGEST', 'UFES-LETRAS-ING-83-2019', 'LCC'].includes(course.code) && <CurriculumArchive courseId={course.id} />}
   </article>;
 }
