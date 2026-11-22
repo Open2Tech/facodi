@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { SearchInput } from '@/components/catalog/SearchInput';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { NoteCard } from '@/components/notes/NoteCard';
+import { ExportNotesPdfButton } from '@/components/notes/ExportNotesPdfButton';
 import { NoteComposer } from '@/components/notes/NoteComposer';
 import { GuestImport, NotebookStorage } from '@/components/notes/NotebookStorage';
 import {
@@ -66,7 +67,10 @@ export default function Notebook() {
         </h1>
         <p className="mt-4 text-muted-foreground">{t('notebookPage.description')}</p>
       </div>
-      {notebook.ready && notebook.all.length > 0 && <Button type="button" variant="outline" onClick={exportAll}><Download />{t('notebookPage.exportAll')}</Button>}
+      {notebook.ready && notebook.all.length > 0 && <div className="flex flex-wrap items-center gap-2">
+        <Button type="button" variant="outline" onClick={exportAll}><Download />{t('notebookPage.exportAll')}</Button>
+        <ExportNotesPdfButton notes={notebook.all} />
+      </div>}
     </header>
     <div className="mt-4"><CampusDiscovery discovery="margin" /></div>
 
