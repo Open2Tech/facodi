@@ -24,7 +24,8 @@ export function mergeCourseMaterialCoverage(
   assets: CourseLearningAssets | undefined,
 ): EnrichedUnitCoverage[] {
   const baseline = new Map(coverage.map(row => [row.curricular_unit_id, row]));
-  const byObjectId = new Map(units.filter(unit => unit.learning_object_id).map(unit => [unit.learning_object_id, unit.id]));
+  const byObjectId = new Map<string, string>();
+  for (const unit of units) if (unit.learning_object_id) byObjectId.set(unit.learning_object_id, unit.id);
   const perUnit = (entries: readonly CourseLearningAsset[] | undefined): Map<string, number> => {
     const counts = new Map<string, number>();
     for (const entry of entries ?? []) {
