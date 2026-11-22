@@ -21,6 +21,7 @@ export const courseDiscoveries = {
   management: 'gestao',
   administration: 'ifes-cariacica-administracao-integrado-2026',
   positioning: 'marketing',
+  communication: 'ciencias-da-comunicacao',
 } as const;
 
 export type CourseDiscovery = keyof typeof courseDiscoveries;
