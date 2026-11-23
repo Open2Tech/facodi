@@ -212,7 +212,12 @@
       },
       "tabsLabel": "Modo del cuaderno",
       "quickPromptsLabel": "Prueba a buscar",
-      "quickPrompts": ["Álgebra lineal", "Python", "Psicología", "Estadística"],
+      "quickPrompts": [
+        "Álgebra lineal",
+        "Python",
+        "Psicología",
+        "Estadística"
+      ],
       "livePulse": "{{resources}} recursos publicados en {{courses}} cursos abiertos",
       "trySuggestTab": "Sugerir un enlace abierto",
       "suggestHeading": "¿Te salvó el semestre? Comparte ese enlace.",
@@ -2713,8 +2718,21 @@
     "catalogLevel": "Nivel editorial: {{level}}",
     "publicationYear": "Publicado en {{year}}",
     "editorialGoal": "Objetivo sugerido: {{goal}}",
-    "languages": {"pt":"Portugués","pt-PT":"Portugués (Portugal)","pt-BR":"Portugués (Brasil)","en":"Inglés","es":"Español","fr":"Francés"},
-    "levels": {"foundation":"Fundamentos","introductory":"Introductorio","intermediate":"Intermedio","advanced":"Avanzado","advanced_optional":"Avanzado (opcional)"},
+    "languages": {
+      "pt": "Portugués",
+      "pt-PT": "Portugués (Portugal)",
+      "pt-BR": "Portugués (Brasil)",
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés"
+    },
+    "levels": {
+      "foundation": "Fundamentos",
+      "introductory": "Introductorio",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado",
+      "advanced_optional": "Avanzado (opcional)"
+    },
     "sourceHost": "Fuente: {{host}}",
     "eyebrow": "Estudiar esta asignatura",
     "title": "Empieza por aquí",
@@ -2751,5 +2769,22 @@
     "lessonNoteCount_one": "{{count}} nota",
     "lessonNoteCount_many": "{{count}} notas",
     "lessonNoteCount_other": "{{count}} notas"
+  },
+  "officialFuc": {
+    "kicker": "Ficha oficial de la UAlg · {{year}}",
+    "title": "Contenidos de esta asignatura",
+    "description": "Temas extraídos de la ficha oficial de 2026/27, acompañados de un itinerario de estudio FACODI independiente. Las actividades propuestas no forman parte del programa oficial.",
+    "source": "Consultar la ficha oficial",
+    "topics": "Temas del programa",
+    "automatedNotice": "Extracción asistida de la ficha oficial. Consulta siempre el documento original.",
+    "studySteps": "Itinerario de estudio FACODI",
+    "openMaterials": "Explorar vídeos y referencias",
+    "assessmentNotice": "La evaluación y las condiciones de uso de IA se rigen exclusivamente por la Universidad del Algarve y sus documentos oficiales. FACODI no sustituye la docencia ni la evaluación."
+  },
+  "studyMissions": {
+    "eyebrow": "Misión FACODI · Aprende practicando",
+    "title": "Pon esta lección en práctica",
+    "notice": "Actividad complementaria independiente de FACODI, no una evaluación oficial ni una revisión íntegra del vídeo.",
+    "notebook": "Tomar notas"
   }
 }
