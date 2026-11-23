@@ -144,7 +144,7 @@ export default function CourseDetails() {
       </aside>
     </div>
     <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
-    {course.code === 'LCC' && <CommunicationMediaLab />}
+    {course.code === 'LCC' && <CommunicationMediaLab unitCodes={units.flatMap(unit => unit.code ? [unit.code] : [])} />}
     <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
     {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
     <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
