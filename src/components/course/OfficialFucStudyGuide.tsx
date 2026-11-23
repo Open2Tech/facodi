@@ -6,14 +6,15 @@ import { courseMaterialsPath } from '@/entities/course/course.paths';
 
 /** Facts link to the University's authoritative FUC; all study activities are FACODI editorial support. */
 export function OfficialFucStudyGuide({
-  metadata, courseSlug, unitSlug,
+  metadata, courseSlug, unitSlug, unitCode,
 }: {
   metadata: unknown;
   courseSlug: string;
   unitSlug: string;
+  unitCode: string | null;
 }) {
   const { t } = useTranslation();
-  const official = readOfficialFuc(metadata);
+  const official = readOfficialFuc(metadata, unitCode);
   if (!official) return null;
 
   return <section id="official-fuc" className="mb-10 border border-foreground border-t-4 border-t-brand-cyan bg-card"

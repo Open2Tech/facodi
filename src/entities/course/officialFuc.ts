@@ -12,7 +12,7 @@ const asRecord = (input: unknown): Record<string, unknown> | null =>
   input !== null && typeof input === 'object' && !Array.isArray(input)
     ? input as Record<string, unknown> : null;
 
-export function readOfficialFuc(metadata: unknown): OfficialFuc | null {
+export function readOfficialFuc(metadata: unknown, unitCode?: string | null): OfficialFuc | null {
   const m = asRecord(metadata);
   if (!m || m.official_fuc_checked !== true || m.official_fuc_verified_year !== '2026/27') return null;
   const url = m.official_fuc_url;
@@ -22,6 +22,7 @@ export function readOfficialFuc(metadata: unknown): OfficialFuc | null {
     if (target.protocol !== 'https:' || target.hostname !== 'academico.ualg.pt'
       || target.pathname !== '/netpa/doc' || target.searchParams.get('anoLectivo') !== '202627'
       || !/^\d{8}$/.test(target.searchParams.get('codeDiscip') ?? '')) return null;
+    if (unitCode && target.searchParams.get('codeDiscip') !== unitCode) return null;
   } catch { return null; }
   const topics = (Array.isArray(m.official_fuc_program_topics) ? m.official_fuc_program_topics : [])
     .filter((item): item is string => typeof item === 'string')

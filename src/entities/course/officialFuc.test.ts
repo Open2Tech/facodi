@@ -20,6 +20,8 @@ describe('readOfficialFuc', () => {
     expect(readOfficialFuc({ ...valid, official_fuc_verified_year: '2025/26' })).toBeNull();
     expect(readOfficialFuc({ ...valid, official_fuc_checked: false })).toBeNull();
     expect(readOfficialFuc({ ...valid, official_fuc_program_topics: [] })).toBeNull();
+    expect(readOfficialFuc({ ...valid }, '14561501')).toBeNull();
+    expect(readOfficialFuc({ ...valid }, '14561505')).not.toBeNull();
     expect(readOfficialFuc(null)).toBeNull();
   });
 });
