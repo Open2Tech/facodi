@@ -131,7 +131,11 @@
     "moreTopics": "Explore d’autres parcours thématiques",
     "moreTopicsDescription": "De la ludification et de la philosophie au cinéma et au journalisme en anglais. Choisis une séquence selon tes centres d’intérêt ou tes unités.",
     "showFewer": "Afficher moins de parcours",
-    "showAll": "Explorer les {{count}} parcours"
+    "showAll": "Explorer les {{count}} parcours",
+    "algarveTitle": "L'Algarve est aussi ton laboratoire",
+    "algarveDescription": "Des cas réels de communication scientifique et de radio universitaire pour relier les études à la pratique locale. Sources externes, sans partenariat FACODI implicite.",
+    "ciacCase": "Découvrir CIAC INTERFACE",
+    "ruaCase": "Écouter le témoignage sur RUA FM"
   },
   "brand": {
     "tagline": "Un campus numérique ouvert",
