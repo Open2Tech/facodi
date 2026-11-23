@@ -6,11 +6,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { z } from 'zod';
 import { useAuth } from '@/features/auth/useAuth';
-import { resendSignupConfirmation } from '@/entities/auth/auth.api';
+import { resendSignupConfirmation, signInWithGoogle } from '@/entities/auth/auth.api';
 import { signupSchema, signInFormSchema } from '@/shared/lib/validation';
 import { safeReturnPath } from '@/shared/lib/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
 import { FormField } from '@/components/auth/FormField';
 import { PageState } from '@/components/layout/PageState';
 import { AuthShell } from '@/components/auth/AuthShell';
@@ -46,6 +47,7 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
   const [sent, setSent] = useState(false);
   const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
+  const [googlePending, setGooglePending] = useState(false);
   const form = useForm<z.infer<typeof signupSchema>>({
     resolver: zodResolver(signup ? signupSchema : signInFormSchema),
     defaultValues: { name: '', email: '', password: '' },
@@ -72,21 +74,46 @@ function LoginForm({ signup, next }: { signup: boolean; next: string }) {
       {t(resending ? 'common.working' : 'auth.resendConfirmation')}
     </Button>
   </div>;
-  return <form className="space-y-5" noValidate onSubmit={form.handleSubmit(async values => {
-    setError('');
-    try {
-      const result = signup ? await signUp(values.email, values.password, values.name, next) : await signIn(values.email, values.password);
-      if (result.error) setError(authErrorKey(result.error));
-      else if (signup && !result.data?.session) setSent(true);
-    } catch (error) {
-      setError(authErrorKey(error));
-    }
-  })}>
-    {signup && <FormField label={t('auth.name')} error={form.formState.errors.name?.message}>{props => <Input {...props} {...form.register('name')} autoComplete="name" />}</FormField>}
-    <FormField label={t('auth.email')} error={form.formState.errors.email?.message}>{props => <Input {...props} {...form.register('email')} type="email" autoComplete="email" />}</FormField>
-    <FormField label={t('auth.password')} error={form.formState.errors.password?.message}>{props => <Input {...props} {...form.register('password')} type="password" autoComplete={signup ? 'new-password' : 'current-password'} />}</FormField>
+  const busy = googlePending || form.formState.isSubmitting;
+  return <div className="flex flex-col gap-5">
+    <Button type="button" variant="outline" className="w-full" disabled={busy}
+      aria-busy={googlePending} onClick={async () => {
+        setError('');
+        setGooglePending(true);
+        try {
+          await signInWithGoogle(next);
+        } catch (reason) {
+          setError(authErrorKey(reason));
+          setGooglePending(false);
+        }
+      }}>
+      <img src="/media/auth/google.svg" alt="" width={18} height={18} className="size-[18px] shrink-0" />
+      <span className="normal-case font-medium tracking-normal">{t(googlePending ? 'auth.googleRedirecting' : 'auth.continueWithGoogle')}</span>
+    </Button>
+    <div className="flex items-center gap-3">
+      <Separator className="min-w-0 flex-1" />
+      <span className="text-sm text-muted-foreground">{t('auth.orWithEmail')}</span>
+      <Separator className="min-w-0 flex-1" />
+    </div>
     {error && <p role="alert" className="text-sm text-destructive">{t(error)}</p>}
-    {signup && <p className="text-sm text-muted-foreground"><LegalRichText text={t('auth.legalNotice')} /></p>}
-    <Button className="w-full" disabled={form.formState.isSubmitting}>{t(form.formState.isSubmitting ? 'common.working' : signup ? 'auth.signup' : 'auth.login')}</Button>
-  </form>;
+    <form className="flex flex-col gap-5" noValidate onSubmit={form.handleSubmit(async values => {
+      if (busy) return;
+      setError('');
+      try {
+        const result = signup ? await signUp(values.email, values.password, values.name, next) : await signIn(values.email, values.password);
+        if (result.error) setError(authErrorKey(result.error));
+        else if (signup && !result.data?.session) setSent(true);
+      } catch (error) {
+        setError(authErrorKey(error));
+      }
+    })}>
+      <fieldset disabled={busy} className="flex min-w-0 flex-col gap-5">
+        {signup && <FormField label={t('auth.name')} error={form.formState.errors.name?.message}>{props => <Input {...props} {...form.register('name')} autoComplete="name" />}</FormField>}
+        <FormField label={t('auth.email')} error={form.formState.errors.email?.message}>{props => <Input {...props} {...form.register('email')} type="email" autoComplete="email" />}</FormField>
+        <FormField label={t('auth.password')} error={form.formState.errors.password?.message}>{props => <Input {...props} {...form.register('password')} type="password" autoComplete={signup ? 'new-password' : 'current-password'} />}</FormField>
+        <Button className="w-full" disabled={busy}>{t(form.formState.isSubmitting ? 'common.working' : signup ? 'auth.signup' : 'auth.login')}</Button>
+      </fieldset>
+    </form>
+    <p className="text-sm text-muted-foreground"><LegalRichText text={t('auth.legalNotice')} /></p>
+  </div>;
 }

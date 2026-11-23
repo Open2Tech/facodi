@@ -10,6 +10,8 @@ const CODE_KEYS: Record<string, string> = {
   over_email_send_rate_limit: 'auth.error.rateLimited',
   over_request_rate_limit: 'auth.error.rateLimited',
   signup_disabled: 'auth.error.signupDisabled',
+  provider_disabled: 'auth.error.oauthUnavailable',
+  provider_oauth_error: 'auth.error.oauthFailed',
   session_not_found: 'auth.error.sessionRequired',
   session_expired: 'auth.error.sessionRequired',
   refresh_token_not_found: 'auth.error.sessionRequired',

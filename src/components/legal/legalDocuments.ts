@@ -3,7 +3,7 @@ export const LEGAL_DOCUMENTS = ['privacy', 'terms', 'cookies', 'copyright', 'acc
 export type LegalDocumentId = typeof LEGAL_DOCUMENTS[number];
 
 /** Date of the last substantive review of the legal texts (ISO 8601). */
-export const LEGAL_LAST_UPDATED = '2026-11-15';
+export const LEGAL_LAST_UPDATED = '2026-11-23';
 
 export const legalPath = (id: LegalDocumentId) => `/${id}`;
 
