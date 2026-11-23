@@ -131,7 +131,11 @@
     "moreTopics": "Explora mais percursos temáticos",
     "moreTopicsDescription": "Da gamificação à filosofia, do cinema ao jornalismo em inglês. Escolhe uma sequência por interesse ou UC e avança com exercícios de aplicação.",
     "showFewer": "Mostrar menos percursos",
-    "showAll": "Explorar os {{count}} percursos"
+    "showAll": "Explorar os {{count}} percursos",
+    "algarveTitle": "O Algarve também é o teu laboratório",
+    "algarveDescription": "Projetos reais de comunicação científica e rádio universitária, para ligar as aulas ao que se faz na região. Referências externas, sem parceria FACODI implícita.",
+    "ciacCase": "Conhecer o CIAC INTERFACE",
+    "ruaCase": "Ouvir a experiência na RUA FM"
   },
   "brand": {
     "tagline": "Um campus digital aberto",
