@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight, BookOpenCheck, Clapperboard, Film, Mic2, PlayCircle, RadioTower } from 'lucide-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { SectionLink } from '@/components/layout/SectionLink';
@@ -11,33 +12,28 @@ const featured = [
   { slug: 'facodi-lcc-pt-media-lab-pos-producao-creditos-etica', icon: Film, color: 'bg-primary' },
 ] as const;
 
-const additional = [
-  'facodi-lcc-pt-gap-gamificacao-sem-pontos-vazios',
-  'facodi-lcc-pt-gap-relacoes-publicas-reputacao-profissao',
-  'facodi-lcc-pt-gap-filosofia-significado-e-cooperacao',
-  'facodi-lcc-pt-gap-estetica-industria-cultural-plataformas',
-  'facodi-lcc-pt-gap-ingles-para-jornalismo-verificacao',
-  'facodi-lcc-pt-gap-portugues-redacao-contexto',
-  'facodi-lcc-pt-gap-leitura-critica-do-cinema',
-] as const;
-
 /**
  * The LCC course already includes its full learning-material catalogue below.
  * This small entrance uses the same public sequence RPC and links rather than
  * duplicating, hardcoding or reimplementing a lesson catalogue.
  */
-export function CommunicationMediaLab() {
+export function CommunicationMediaLab({ unitCodes }: { unitCodes: readonly string[] }) {
   const { t } = useTranslation();
+  const [allPaths, setAllPaths] = useState(false);
   const { data } = useSequences();
   const visible = featured.flatMap(item => {
     const sequence = data?.find(value => value.slug === item.slug && value.itemCount > 0);
     return sequence ? [{ ...item, sequence }] : [];
   });
 
-  const extra = additional.flatMap(slug => {
-    const sequence = data?.find(item => item.slug === slug && item.itemCount > 0);
-    return sequence ? [sequence] : [];
-  });
+  // The curriculum itself determines the additional video paths. The four
+  // highlighted sequences above are the only editorially hand-picked cards.
+  const eligibleCodes = new Set(unitCodes);
+  const spotlight = new Set<string>(featured.map(item => item.slug));
+  const extra = (data ?? []).filter(sequence =>
+    sequence.itemCount > 0 && !spotlight.has(sequence.slug)
+    && sequence.unitCodes.some(code => eligibleCodes.has(code)))
+    .sort((a, b) => a.title.localeCompare(b.title, 'pt'));
 
   // Only published, reviewed sequences create working links; missing items disappear safely.
   if (!visible.length && !extra.length) return null;
@@ -94,7 +90,7 @@ export function CommunicationMediaLab() {
       <h3 className="text-lg font-semibold tracking-[-0.02em]">{t('lccMediaLab.moreTopics')}</h3>
       <p className="mt-1 text-sm text-muted-foreground">{t('lccMediaLab.moreTopicsDescription')}</p>
       <ul className="mt-4 grid gap-2 md:grid-cols-2">
-        {extra.map(sequence => <li key={sequence.id}>
+        {(allPaths ? extra : extra.slice(0, 8)).map(sequence => <li key={sequence.id}>
           <Link to={`/sequences/${encodeURIComponent(sequence.slug)}`}
             className="group flex min-h-16 items-center gap-3 border border-input bg-background px-4 py-3 transition-colors hover:border-foreground hover:bg-brand-cyan/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <BookOpenCheck className="h-5 w-5 shrink-0" aria-hidden="true" />
@@ -104,6 +100,12 @@ export function CommunicationMediaLab() {
           </Link>
         </li>)}
       </ul>
+      {extra.length > 8 && <button type="button" onClick={() => setAllPaths(previous => !previous)}
+        aria-expanded={allPaths}
+        className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        {t(allPaths ? 'lccMediaLab.showFewer' : 'lccMediaLab.showAll', { count: extra.length })}
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </button>}
     </div>}
     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-input px-5 py-4">
       <p className="text-xs text-muted-foreground">{t('lccMediaLab.sourceNote')}</p>
