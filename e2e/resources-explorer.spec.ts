@@ -113,6 +113,21 @@ test('progressive filters preserve deep links, search topics without accents, an
   await expect(page.getByRole('button', { name: 'Course 0', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('a resource returns to the filtered library, with a fallback for direct visits', async ({ page }) => {
+  await catalogue(page);
+  const resource = { ...videos[0], objectives: [], keywords: [], status: 'active', published: true };
+  await page.route('**/rest/v1/learning_objects*', route => route.fulfill({ json: resource }));
+  const search = '/resources?type=video&search=lesson+01&language=pt';
+  await page.goto(search);
+  await page.getByRole('heading', { name: resource.title }).getByRole('link').click();
+  await expect(page.getByRole('heading', { level: 1, name: resource.title })).toBeVisible();
+  await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Resources' }).click();
+  await expect(page).toHaveURL(search);
+  await expect(page.getByRole('searchbox', { name: 'Search the library' })).toHaveValue('lesson 01');
+  await page.goto('/resources/lesson-0');
+  await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Resources' })).toHaveAttribute('href', '/resources');
+});
+
 test('optional discovery and topic failures remain visible and retryable without hiding the library', async ({ page }) => {
   await catalogue(page);
   await page.route('**/rest/v1/rpc/list_public_editorial_sequences_v1', route => route.fulfill({ status: 500, json: { message: 'Sequence service unavailable' } }));

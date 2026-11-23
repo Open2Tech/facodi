@@ -1,7 +1,8 @@
 import { CourseEmblem } from '@/components/course/CourseEmblem';
+import { useEffect } from 'react';
 import { CommunicationNewsroomChallenge } from '@/components/course/CommunicationNewsroomChallenge';
 import { CommunicationMediaLab } from '@/components/course/CommunicationMediaLab';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Clock, GraduationCap, Hash, Languages, Layers, School, type LucideIcon } from 'lucide-react';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
@@ -27,9 +28,10 @@ import { useExploredUnits } from '@/features/milestones/useExploredUnits';
 import { countExplored } from '@/entities/sequence/courseMap';
 import { hasCurriculumPlacements } from '@/entities/course/ualgCurriculum';
 import { PageState } from '@/components/layout/PageState';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
-import { safeExternalUrl } from '@/shared/lib/navigation';
+import { catalogReturnPath, safeExternalUrl } from '@/shared/lib/navigation';
 import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
 import { courseHours, unitHours, ufesElectiveGroup, ufesElectiveGroupOrder, type UfesElectiveGroup } from '@/entities/course/brazilianCurriculum';
 
@@ -63,6 +65,7 @@ const FACT_ICONS: Record<string, LucideIcon> = {
 export default function CourseDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
+  const location = useLocation();
   const query = useCourse(slug);
   const coverage = useCourseCoverage(query.data?.course.id);
   const courseAssets = useCourseLearningAssets(
@@ -73,6 +76,11 @@ export default function CourseDetails() {
   const unitObjects = (query.data?.units ?? []).flatMap(unit => unit.learning_object_id ? [unit.learning_object_id] : []);
   const videos = useFeaturedVideos(6, unitObjects, unitObjects.length > 0);
   const map = useExploredUnits();
+  useEffect(() => {
+    if (!location.hash || location.hash === '#course-materials' || !query.data) return;
+    const frame = requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
+  }, [location.hash, query.data]);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
@@ -104,7 +112,7 @@ export default function CourseDetails() {
   const coverageError = Boolean(coverage.error || courseAssets.error);
   return <article>
     <PageSeo {...courseMeta(course, { courses: t('nav.courses') })} />
-    <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to="/courses"><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
+    <Link className="mb-8 inline-flex items-center gap-2 text-sm underline underline-offset-4" to={catalogReturnPath(location.state, '/courses')}><ArrowLeft className="h-4 w-4" />{t('nav.courses')}</Link>
     <header className="border-b border-foreground border-t-4 border-t-primary pb-10 pt-6">
       <div className="mb-4"><CourseEmblem key={course.slug} course={course} detail /></div>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-6xl">{course.title}</h1>
@@ -112,7 +120,7 @@ export default function CourseDetails() {
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={course.title} />
         {course.learning_object_id && <StudyNotesAction scope="course" resource={{ id: course.learning_object_id, slug: course.slug, title: course.title, type: 'course', href: `/courses/${encodeURIComponent(course.slug)}` }} />}
-        <Link to={courseMaterialsPath(course.slug)}
+        <Link to={courseMaterialsPath(course.slug)} state={location.state}
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
           {t('courseMaterials.browseMaterials')}
@@ -141,7 +149,7 @@ export default function CourseDetails() {
     {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
     <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
     {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
-      action={<a href="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>} />}
+      action={<SectionLink hash="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></SectionLink>} />}
     {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
     {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
       <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
@@ -174,9 +182,9 @@ export default function CourseDetails() {
         <UalgCurriculum program={course.code} courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageReady={!coverageLoading && !coverageError} explored={map.explored} />
       ) : <>
       {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
-        {years.map(year => <a key={year.key} href={`#year-${year.key}`} className="border border-foreground bg-card px-4 py-1.5 text-sm font-medium transition-colors hover:bg-brand-cyan hover:text-brand-ink">
+        {years.map(year => <SectionLink key={year.key} hash={`#year-${year.key}`} className="border border-foreground bg-card px-4 py-1.5 text-sm font-medium transition-colors hover:bg-brand-cyan hover:text-brand-ink">
           {year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}
-        </a>)}
+        </SectionLink>)}
       </nav>}
       {years.map(year => <section key={year.key} id={`year-${year.key}`} aria-labelledby={`year-${year.key}-title`} className="mt-12 scroll-mt-28">
         <h3 id={`year-${year.key}-title`} className="text-2xl font-semibold">{year.year != null ? t('catalog.year', { value: year.year }) : otherLabel}</h3>
@@ -195,7 +203,7 @@ export default function CourseDetails() {
                 const media = coverageById.get(unit.id);
                 const visible = !coverageLoading && !coverageError && media && hasCourseStudyMaterials(media);
                 return <li key={unit.id}>
-                  <Link to={unitPath(course.slug, unit.slug)} className="-mx-2 group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 px-2 py-3 transition-colors hover:bg-primary/10">
+                  <Link to={unitPath(course.slug, unit.slug)} state={location.state} className="-mx-2 group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 px-2 py-3 transition-colors hover:bg-primary/10">
                     <span className="min-w-0">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">{unit.title}</span>
                       {visible && <span className="ml-2 inline-grid h-5 w-5 place-items-center border border-foreground bg-brand-mint align-middle text-brand-ink" title={t('course.hasResource')}><BookOpen className="h-3.5 w-3.5" aria-hidden="true" /><span className="sr-only">{t('course.hasResource')}</span></span>}

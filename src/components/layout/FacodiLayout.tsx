@@ -7,6 +7,7 @@ import { useSeoClaims } from '@/components/layout/seoClaims';
 import { LEGAL_DOCUMENTS, legalPath } from '@/components/legal/legalDocuments';
 import { useAuth } from '@/features/auth/useAuth';
 import { SOCIAL_PROFILES } from '@/shared/seo/seo';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 
 export default function FacodiLayout() {
@@ -22,7 +23,7 @@ export default function FacodiLayout() {
   useEffect(() => { document.documentElement.lang = i18n.language; }, [i18n.language]);
   const footer = [
     { title: t('footer.learn'), swatch: 'bg-primary', textTone: 'text-primary', links: [{ to: '/courses', title: t('content.courses') }, { to: '/units', title: t('content.curricular_units') }, { to: '/resources', title: t('nav.resources') }, { to: '/sequences', title: t('nav.sequences') }] },
-    { title: t('footer.project'), swatch: 'bg-brand-cyan', textTone: 'text-brand-cyan', links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }, { to: '/suggest', title: t('suggest.nav') }] },
+    { title: t('footer.project'), swatch: 'bg-brand-cyan', textTone: 'text-brand-cyan', links: [{ to: '/about', title: t('nav.about') }, { to: '/how-it-works', title: t('learningGuide.nav') }, { to: '/community', title: t('projectCommunity.nav') }, { to: '/about#contribute', title: t('footer.contribute') }] },
     { title: t('footer.account'), swatch: 'bg-brand-mint', textTone: 'text-brand-mint', links: user
       ? [{ to: '/dashboard', title: t('nav.dashboard') }, { to: '/notes', title: t('nav.notes') }, { to: '/profile', title: t('nav.profile') }]
       : [{ to: '/login', title: t('nav.login') }, { to: '/notes', title: t('nav.notes') }] },
@@ -34,7 +35,7 @@ export default function FacodiLayout() {
       {!seoClaims.page && <meta name="description" content={t('brand.description')} />}
       {(privateRoute || isWorkersPreview) && !seoClaims.robots && <meta name="robots" content="noindex, nofollow, noarchive" />}
     </Helmet>
-    <a href="#main" className="sr-only z-50 bg-primary p-4 text-primary-foreground focus:not-sr-only focus:absolute">{t('nav.skip')}</a>
+    <SectionLink hash="#main" className="sr-only z-50 bg-primary p-4 text-primary-foreground focus:not-sr-only focus:absolute">{t('nav.skip')}</SectionLink>
     <SiteHeader />
     {/* At least one screen tall (minus the 5rem header), so the footer starts below the fold while a page loads
         its data and never jumps into view (cumulative layout shift). */}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award, BookOpen, Building2, Calendar, CalendarRange, ChevronRight, Clock, ExternalLink, Hash, Languages, PlayCircle, type LucideIcon } from 'lucide-react';
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
@@ -22,6 +22,7 @@ import { useSequences } from '@/features/sequences/useSequences';
 import { SuggestResourceCallout } from '@/components/suggestion/SuggestResourceCallout';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
@@ -34,6 +35,8 @@ import { cn } from '@/lib/utils';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { brazilianCredits, ufesElectiveGroup, unitHours } from '@/entities/course/brazilianCurriculum';
 import { ectsVerificationPending } from '@/entities/course/ualgCurriculum';
+import { catalogReturnPath } from '@/shared/lib/navigation';
+import { useContextSearchParams } from '@/shared/hooks/useContextSearchParams';
 
 const FACT_ICONS: Record<string, LucideIcon> = {
   code: Hash, ects: Award, hours: Clock, brazilianCredits: Award, electiveGroup: CalendarRange, yearLabel: Calendar, semesterLabel: CalendarRange, language: Languages, institution: Building2,
@@ -50,9 +53,10 @@ export default function UnitDetails() {
   const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
-  const [params, setParams] = useSearchParams();
+  const [params, setParams] = useContextSearchParams();
   const [engaged, setEngaged] = useState(false);
-  const { hash } = useLocation();
+  const location = useLocation();
+  const { hash } = location;
   const ready = Boolean(query.data);
   useEffect(() => {
     if (!hash || !ready) return;
@@ -133,9 +137,9 @@ export default function UnitDetails() {
     <PageSeo {...unitMeta(unit, course, { courses: t('nav.courses') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to="/units">{t('nav.units')}</Link></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/units')}>{t('nav.units')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/courses/${course.slug}`}>{course.code || course.title}</Link></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/courses/${course.slug}`} state={location.state}>{course.code || course.title}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li aria-current="page" className="text-foreground">{unit.code || unit.title}</li>
       </ol>
@@ -143,19 +147,19 @@ export default function UnitDetails() {
     <header className="border-b border-foreground border-t-4 border-t-brand-orange pb-10 pt-6">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <a href={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
+        {!!videoList.length && <SectionLink hash={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
           <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath || composedPending ? t('composedPath.title') : t('unit.videoChip', { count: videoList.length })}
-        </a>}
+        </SectionLink>}
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
       <p className="mt-5 text-lg">
-        <Link to={`/courses/${course.slug}`} className="font-semibold underline decoration-2 underline-offset-4">{course.title}</Link>
+        <Link to={`/courses/${course.slug}`} state={location.state} className="font-semibold underline decoration-2 underline-offset-4">{course.title}</Link>
       </p>
       {unit.summary && <p className="mt-4 max-w-prose text-lg leading-relaxed text-muted-foreground">{unit.summary}</p>}
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={unit.title} />
         {unit.learning_object_id && <StudyNotesAction scope="unit" resource={{ id: unit.learning_object_id, slug: unit.slug, title: unit.title, type: 'curricular_unit', href: unitPath(course.slug, unit.slug) }} />}
-        <Link to={courseMaterialsPath(course.slug, unit.slug)}
+        <Link to={courseMaterialsPath(course.slug, unit.slug)} state={location.state}
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
           {t('courseMaterials.viewUnitMaterials')}
@@ -290,12 +294,11 @@ export default function UnitDetails() {
                     const info = videoInfo(video.metadata, video.source_url);
                     const active = video.id === selected.id;
                     return <li key={video.id}>
-                      <button type="button" aria-pressed={active} onClick={() => setParams(previous => {
-                        const next = new URLSearchParams(previous);
+                      <button type="button" aria-pressed={active} onClick={() => setParams(next => {
                         if (next.get('v') !== video.id) next.delete('t');
                         next.set('v', video.id);
                         return next;
-                      }, { replace: true })}
+                      })}
                         className={cn('flex w-full gap-3 px-3 py-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring', active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted')}>
                         <span className="w-6 shrink-0 pt-0.5 font-mono text-xs tabular-nums">{String(position + 1).padStart(2, '0')}</span>
                         <span className="w-24 shrink-0"><VideoThumbnail info={info} /></span>
@@ -329,13 +332,13 @@ export default function UnitDetails() {
                       </Link>
                     </>
                     : readingsQuery.data?.length
-                      ? <a href="#unit-readings" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                      ? <SectionLink hash="#unit-readings" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                         {t('unitReadings.title')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+                      </SectionLink>
                       : modulesQuery.data?.length
-                        ? <a href="#unit-modules" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                        ? <SectionLink hash="#unit-modules" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                           {t('studyModules.forUnit')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        </a>
+                        </SectionLink>
                         : <>
                           <p className="font-semibold">{t('unitVideos.empty')}</p>
                           <p className="mt-2 max-w-prose text-sm text-muted-foreground">{t('unit.noResourcesText')}</p>
@@ -348,7 +351,7 @@ export default function UnitDetails() {
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>
           <ul className="mt-4 divide-y divide-input border-y border-input">
             {siblings.map(item => <li key={item.id}>
-              <Link to={unitPath(course.slug, item.slug)} className="flex items-baseline justify-between gap-4 py-4 hover:underline hover:underline-offset-4">
+              <Link to={unitPath(course.slug, item.slug)} state={location.state} className="flex items-baseline justify-between gap-4 py-4 hover:underline hover:underline-offset-4">
                 <span className="font-medium">{item.title}</span>
                 {ectsVerificationPending(item.metadata)
                   ? <span className="shrink-0 text-xs text-muted-foreground">{t('ualgCurriculum.ectsPending')}</span>
@@ -367,11 +370,11 @@ export default function UnitDetails() {
       </aside>
     </div>
     {(previous || next) && <nav aria-label={t('unit.sequence')} className="grid gap-4 border-t border-foreground pt-8 sm:grid-cols-2">
-      {previous ? <Link to={unitPath(course.slug, previous.slug)} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-orange/10">
+      {previous ? <Link to={unitPath(course.slug, previous.slug)} state={location.state} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-orange/10">
         <span className="inline-flex items-center gap-2 text-sm text-muted-foreground"><ArrowLeft className="h-4 w-4" />{t('unit.previous')}</span>
         <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{previous.title}</span>
       </Link> : <span />}
-      {next && <Link to={unitPath(course.slug, next.slug)} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 text-right transition-colors hover:border-foreground hover:bg-brand-orange/10">
+      {next && <Link to={unitPath(course.slug, next.slug)} state={location.state} className="group flex flex-col gap-1 border border-input border-t-4 border-t-brand-orange bg-card p-5 text-right transition-colors hover:border-foreground hover:bg-brand-orange/10">
         <span className="inline-flex items-center justify-end gap-2 text-sm text-muted-foreground">{t('unit.next')}<ArrowRight className="h-4 w-4" /></span>
         <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{next.title}</span>
       </Link>}

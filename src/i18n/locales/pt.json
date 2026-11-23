@@ -1508,6 +1508,7 @@
   },
   "sequences": {
     "title": "Sequências de estudo",
+    "backToSequence": "Voltar à sequência",
     "description": "Trilhas de aulas abertas no YouTube arrumadas pela FACODI para estudares um tema do zero até fazer sentido.",
     "search": "Pesquisar sequências",
     "searchPlaceholder": "Título, tema ou código da UC",

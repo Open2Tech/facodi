@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate, Link, useSearchParams } from 'react-router-dom';
+import { Navigate, Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { authErrorKey } from '@/entities/auth/authErrors';
 import { useForm } from 'react-hook-form';
@@ -19,12 +19,13 @@ import { LegalRichText } from '@/components/legal/LegalRichText';
 export default function Login() {
   const { t } = useTranslation();
   const { user, loading } = useAuth();
+  const location = useLocation();
   const [signup, setSignup] = useState(false);
   const [params] = useSearchParams();
   const next = safeReturnPath(params.get('next'));
-  const suggesting = next.split('?')[0] === '/suggest';
+  const suggesting = next.split(/[?#]/, 1)[0] === '/suggest';
   if (loading) return <PageState loading />;
-  if (user) return <Navigate to={next} replace />;
+  if (user) return <Navigate to={next} state={location.state} replace />;
   return <AuthShell>
     <h1 className="text-3xl font-semibold">{t(signup ? 'auth.signup' : 'auth.login')}</h1>
     <p className="mb-8 mt-4 text-muted-foreground">

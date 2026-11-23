@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, SlidersHorizontal, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUnitFacets, useUnits } from '@/features/courses/queries/useCourses';
 import { Pagination } from '@/components/course/Pagination';
@@ -44,6 +44,7 @@ function UnitFilters() {
 
 export default function Units() {
   const { t } = useTranslation();
+  const location = useLocation();
   const params = useCatalogParams();
   const { page, search, course, year, semester, sort, filter, reset, faceted } = params;
   const query = useUnits({ page, search, language: '', course, year, semester, sort });
@@ -102,7 +103,7 @@ export default function Units() {
                     <span className="font-semibold text-foreground">{unit.courses.code || unit.courses.title}</span>
                   </p>
                   <h2 className="text-xl font-semibold leading-snug">
-                    <Link to={href} className="decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline focus-visible:outline-none">{unit.title}</Link>
+                    <Link to={href} state={{ catalogReturn: location.pathname + location.search + location.hash }} className="decoration-2 underline-offset-4 after:absolute after:inset-0 group-hover:underline focus-visible:outline-none">{unit.title}</Link>
                   </h2>
                 </div>
                 <dl className="flex flex-wrap items-start gap-2 text-sm sm:max-w-56 sm:justify-end">

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { ArrowDown, ArrowUpRight, BookOpenCheck, ChevronDown, Search, SlidersHorizontal } from 'lucide-react';
 import { PageSeo } from '@/components/layout/PageSeo';
 import { staticPageMeta } from '@/shared/seo/seo';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useResources } from '@/features/courses/queries/useCourses';
 import { Pagination } from '@/components/course/Pagination';
@@ -37,6 +37,8 @@ const AREA_POSTER_TONES = [
 
 export default function Resources() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const state = { catalogReturn: location.pathname + location.search + location.hash };
   const { page, search, language, tag, area, type, filter, reset } = useCatalogParams();
   const query = useResources({ page, search, language, tag, area, objectType: type });
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -139,7 +141,7 @@ export default function Resources() {
             {query.data.items.length ? moduleOnly ? (
               <ul className="divide-y divide-input border-y border-input" aria-label={t('studyModules.title')}>
                 {query.data.items.map(module => <li key={module.id}>
-                  <Link to={moduleResourcePath(module.object_type, module.slug)}
+                  <Link to={moduleResourcePath(module.object_type, module.slug)} state={state}
                     className="group flex items-start gap-4 px-2 py-5 transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                     <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground bg-brand-mint text-ink">
                       <BookOpenCheck className="h-5 w-5" aria-hidden="true" />
@@ -168,19 +170,19 @@ export default function Resources() {
                   const action = resource.object_type === 'module' ? t('studyModules.open') : t('resources.open');
                   // Phones get a compact row (thumbnail beside the text) so several results fit on one screen.
                   return <li key={resource.id} className="relative -ml-px -mt-px flex border border-input transition-colors hover:z-10 hover:border-foreground sm:flex-col">
-                    {isVideo && <Link to={href} tabIndex={-1} aria-hidden="true" className="block w-32 shrink-0 self-start p-3 pr-0 sm:w-auto sm:self-auto sm:p-0"><VideoThumbnail info={info} /></Link>}
+                    {isVideo && <Link to={href} state={state} tabIndex={-1} aria-hidden="true" className="block w-32 shrink-0 self-start p-3 pr-0 sm:w-auto sm:self-auto sm:p-0"><VideoThumbnail info={info} /></Link>}
                     <div className="flex min-w-0 flex-1 flex-col p-3 sm:p-6">
                       <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase text-muted-foreground sm:mb-3">
                         <TypeBadge type={resource.object_type} label={typeLabel(resource.object_type)} />
                         <span lang={resource.language}>{resource.language}</span>
                       </p>
-                      <h3 className="text-base font-semibold leading-snug sm:text-lg"><Link to={href} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h3>
+                      <h3 className="text-base font-semibold leading-snug sm:text-lg"><Link to={href} state={state} className="decoration-2 underline-offset-4 hover:underline">{resource.title}</Link></h3>
                       {isVideo && info.channel && <p className="mt-1 truncate text-sm text-muted-foreground sm:mt-2">{info.channel}</p>}
                       {excerpt && <p className="mt-2 line-clamp-2 text-sm text-muted-foreground sm:line-clamp-3">{excerpt}</p>}
                       {!!studyTopics(resource.tags).length && <div className="mt-4 hidden flex-wrap gap-1.5 sm:flex" role="group" aria-label={t('resources.filterByTag')}>
                         {studyTopics(resource.tags).slice(0, 3).map(tagButton)}
                       </div>}
-                      <Link to={href} aria-label={action + ': ' + resource.title}
+                      <Link to={href} state={state} aria-label={action + ': ' + resource.title}
                         className="mt-auto hidden items-center gap-2 pt-5 text-sm font-semibold underline underline-offset-4 sm:inline-flex">
                         {action}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                       </Link>

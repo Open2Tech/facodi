@@ -1508,6 +1508,7 @@
   },
   "sequences": {
     "title": "Study sequences",
+    "backToSequence": "Back to the sequence",
     "description": "Curated trails of open YouTube lessons ordered by FACODI so you can take a topic from first question to solid grasp.",
     "search": "Search sequences",
     "searchPlaceholder": "Title, topic or unit code",

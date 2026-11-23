@@ -48,7 +48,7 @@ function setup() {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
   return render(<I18nextProvider i18n={i18n}>
     <QueryClientProvider client={client}>
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/courses/ifes-cariacica-administracao-integrado-2026?materialsUnit=matematica#course-materials']}>
         <IfesStudyProgressPanel
           courseSlug="ifes-cariacica-administracao-integrado-2026" units={units}
         />
@@ -77,7 +77,7 @@ describe('Ifes optional private progress', () => {
     expect(screen.getByText('Estatística — 1º ano')).toBeInTheDocument();
     const signIn = screen.getByRole('link', { name: /Entrar e guardar progresso/i });
     expect(signIn).toHaveAttribute('href',
-      '/login?next=%2Fcourses%2Fifes-cariacica-administracao-integrado-2026');
+      `/login?next=${encodeURIComponent('/courses/ifes-cariacica-administracao-integrado-2026?materialsUnit=matematica#course-materials')}`);
     expect(mocks.read).not.toHaveBeenCalled();
     expect(screen.queryByRole('button', { name: /Assinalar como concluído/i })).not.toBeInTheDocument();
   });

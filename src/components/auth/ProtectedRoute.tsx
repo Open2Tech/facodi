@@ -9,7 +9,7 @@ export default function ProtectedRoute({ required }: { required?: 'editor' | 'ad
   const location = useLocation();
   const { t } = useTranslation();
   if (loading) return <PageState loading />;
-  if (!user) return <Navigate replace to={`/login?next=${encodeURIComponent(location.pathname + location.search)}`} />;
+  if (!user) return <Navigate replace state={location.state} to={`/login?next=${encodeURIComponent(location.pathname + location.search + location.hash)}`} />;
   if (required && !canAccessFacodiRoute(role, required)) {
     return <PageState title={t('access.denied')} description={t('access.description')} />;
   }

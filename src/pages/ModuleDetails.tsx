@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, BookOpenCheck, ChevronRight, ClipboardList, Link2 } from 'lucide-react';
 import { readerAlias } from '@/entities/course/lessonReader';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useModule } from '@/features/modules/useModules';
 import { moduleResourcePath, type StudyModuleDetail } from '@/entities/module/module.api';
@@ -13,6 +13,7 @@ import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { resourceMeta } from '@/shared/seo/seo';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { plainText } from '@/shared/lib/text';
+import { catalogReturnPath } from '@/shared/lib/navigation';
 
 const GROUPS = ['module','topic','playlist','video','document','external_resource'] as const;
 type LearningItem = StudyModuleDetail['items'][number];
@@ -26,6 +27,7 @@ function metaText(metadata: StudyModuleDetail['module']['metadata'], key: string
 export default function ModuleDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
+  const location = useLocation();
   const query = useModule(slug);
 
   if (query.isPending) return <PageState loading />;
@@ -33,6 +35,8 @@ export default function ModuleDetails() {
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
 
   const { module, units, items } = query.data;
+  const catalog = catalogReturnPath(location.state, '/resources?type=module');
+  const catalogType = new URL(catalog, 'https://internal.invalid').searchParams.get('type');
   const alias = readerAlias(module.metadata);
   if (alias) return <Navigate replace to={alias} />;
   const activity = metaText(module.metadata,'activity_prompt');
@@ -49,8 +53,8 @@ export default function ModuleDetails() {
     <PageSeo {...resourceMeta({ ...module, object_type: 'module' }, null, { resources: t('nav.resources'), type: t('objectTypes.module') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-2 text-muted-foreground">
-        <li><Link to="/resources?type=module" className="inline-flex items-center gap-1 underline underline-offset-4">
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('studyModules.title')}
+        <li><Link to={catalog} className="inline-flex items-center gap-1 underline underline-offset-4">
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t(catalogType === 'module' ? 'studyModules.title' : 'nav.resources')}
         </Link></li>
         <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>
         <li aria-current="page" className="line-clamp-1 text-foreground">{module.title}</li>

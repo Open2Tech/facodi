@@ -22,7 +22,9 @@ export default function About() {
   const { role } = useAuth();
   const { hash } = useLocation();
   useEffect(() => {
-    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+    if (!hash) return;
+    const frame = requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
   }, [hash]);
   const editor = canAccessFacodiRoute(role, 'editor');
   // Shown on the page word for word, so the FAQPage structured data always matches visible content.

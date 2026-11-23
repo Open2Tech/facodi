@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { BookOpen, Check, LogIn, RotateCcw } from 'lucide-react';
@@ -36,6 +36,7 @@ type Props = {
 /** User-scoped reading, with PostgreSQL RLS as the actual authorization boundary. */
 export function IfesStudyProgressPanel({ courseSlug, units }: Props) {
   const { t } = useTranslation();
+  const location = useLocation();
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const progressKey = ['facodi', 'ifes-study-modules', user?.id, COURSE_CODE];
@@ -108,7 +109,7 @@ export function IfesStudyProgressPanel({ courseSlug, units }: Props) {
       <p className="mt-2 text-xs text-muted-foreground">{t('ifesProgress.disclaimer')}</p>
     </section> : <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border border-input p-4">
       <p className="max-w-prose text-sm text-muted-foreground">{t('ifesProgress.guest')}</p>
-      <Link to={`/login?next=${encodeURIComponent(`/courses/${courseSlug}`)}`}
+      <Link to={`/login?next=${encodeURIComponent(location.pathname + location.search + location.hash)}`} state={location.state}
         className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
         <LogIn className="h-4 w-4" aria-hidden="true" />
         {t('ifesProgress.signIn')}
@@ -121,7 +122,7 @@ export function IfesStudyProgressPanel({ courseSlug, units }: Props) {
         const done = !!moduleSlug && byModule.get(moduleSlug)?.status === 'completed';
         const savingThis = save.isPending && save.variables?.slug === moduleSlug;
         return <li key={unit.unit_slug} className="flex flex-col border border-input p-4 transition-colors hover:border-foreground">
-          <Link to={unitPath(courseSlug, unit.unit_slug)}
+          <Link to={unitPath(courseSlug, unit.unit_slug)} state={location.state}
             className="font-semibold underline-offset-4 hover:underline">{unit.unit_title}</Link>
           <p className="mt-2 font-mono text-xs tabular-nums text-muted-foreground">
             {t('ifesProgress.resources', {

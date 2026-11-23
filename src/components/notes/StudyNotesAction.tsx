@@ -1,9 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NotebookPen } from 'lucide-react';
 import { StudyNotebook } from '@/components/notes/StudyNotebook';
 import { useResourceNotes } from '@/features/notes/useNotebook';
 import type { NoteResource } from '@/entities/notes/notes';
+import { useContextSearchParams } from '@/shared/hooks/useContextSearchParams';
 
 /** The existing private notebook is shared by courses, UCs, modules and videos.
  * Use an explicit notes scope so a unit's notes never open the embedded video notebook.
@@ -13,17 +13,16 @@ export function StudyNotesAction({ resource, scope }: {
   scope: 'course' | 'unit' | 'module';
 }) {
   const { t } = useTranslation();
-  const [params, setParams] = useSearchParams();
+  const [params, setParams] = useContextSearchParams();
   const notebook = useResourceNotes(resource.id);
   const open = params.get('notes') === scope;
 
   function setOpen(nextOpen: boolean) {
-    setParams(previous => {
-      const next = new URLSearchParams(previous);
+    setParams(next => {
       if (nextOpen) next.set('notes', scope);
       else if (next.get('notes') === scope) next.delete('notes');
       return next;
-    }, { replace: true, preventScrollReset: true });
+    });
   }
 
   const scopeLabel = scope === 'course'

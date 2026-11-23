@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { unitPath } from '@/entities/course/course.paths';
 import { countExplored } from '@/entities/sequence/courseMap';
 import { ExploredMark } from './CourseMap';
@@ -34,6 +35,7 @@ export function UalgCurriculum({
   explored?: ReadonlySet<string>;
 }) {
   const { t } = useTranslation();
+  const { state } = useLocation();
   const [specialization, setSpecialization] = useState<UalgSpecialization>(SPECIALIZATIONS[0]);
   const branches = program === 'MNCN' || program === 'LPSI' ? [] : curriculumBranches(units);
   const [chosenBranch, setBranch] = useState<string | null>(null);
@@ -83,10 +85,10 @@ export function UalgCurriculum({
       </p>
     </>}
     {years.length > 1 && <nav aria-label={t('course.jumpToYear')} className="mt-6 flex flex-wrap gap-2">
-      {years.map(year => <a key={year} href={`#ualg-${program}-year-${year}`}
+      {years.map(year => <SectionLink key={year} hash={`#ualg-${program}-year-${year}`}
         className="border border-input px-3 py-1.5 text-sm hover:border-foreground">
         {t('catalog.year', { value: year })}
-      </a>)}
+      </SectionLink>)}
     </nav>}
     {years.map(year => <section key={year} id={`ualg-${program}-year-${year}`} className="mt-9 scroll-mt-28">
       <h3 className="border-b border-foreground pb-3 text-2xl font-semibold">{t('catalog.year', { value: year })}</h3>
@@ -119,7 +121,7 @@ export function UalgCurriculum({
                 const media = coverageById.get(unit.id);
                 const hasMedia = coverageReady && !!media && (media.video_count > 0 || media.reading_count > 0 || (media.playlist_count ?? 0) > 0 || (media.guide_count ?? 0) > 0);
                 return <li key={unit.id}>
-                  <Link to={unitPath(courseSlug, unit.slug)} className="group flex items-start justify-between gap-4 py-3 hover:bg-muted/30">
+                  <Link to={unitPath(courseSlug, unit.slug)} state={state} className="group flex items-start justify-between gap-4 py-3 hover:bg-muted/30">
                     <span className="min-w-0 flex-1">
                       <span className="font-medium group-hover:underline group-hover:underline-offset-4">
                         {unit.title}

@@ -36,6 +36,17 @@ for (const width of [375, 768, 1280, 1440]) {
   });
 }
 
+for (const width of [375, 1280]) {
+  test(`contribution guidance opens at its section at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.getByRole('contentinfo').locator('a[href="/about#contribute"]').click();
+    await expect(page).toHaveURL('/about#contribute');
+    await expect(page.locator('#contribute-title')).toBeInViewport();
+    await expect(page.getByRole('contentinfo').locator('a[href="/suggest"]')).toHaveCount(1);
+  });
+}
+
 test('course catalogue searches without accents, filters by language, institution and type, and paginates', async ({ page }) => {
   const requests: URL[] = [];
   const rows = Array.from({ length: 13 }, (_, index) => ({
@@ -81,6 +92,81 @@ test('course catalogue searches without accents, filters by language, institutio
   expect(requests[0].searchParams.get('curricular_units.status')).toBe('eq.active');
 });
 
+for (const width of [375, 1280]) {
+  test(`a filtered course catalogue is restored through a unit at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    const pageErrors: string[] = [];
+    page.on('pageerror', error => pageErrors.push(error.message));
+    const course = { id: 'course-1', slug: 'logic', code: 'LOG', title: 'Logic', language: 'en', published: true, status: 'active', curricular_units: [{ count: 2 }] };
+    const units = [
+      { id: 'unit-1', slug: 'logic-i', code: 'L1', title: 'Logic I', year: 1, semester: 1, metadata: {}, learning_object_id: 'object-1' },
+      { id: 'unit-2', slug: 'logic-ii', code: 'L2', title: 'Logic II', year: 1, semester: 1, metadata: {}, learning_object_id: 'object-2' },
+    ];
+    await page.route('**/rest/v1/courses*', route => {
+      const url = new URL(route.request().url());
+      return route.fulfill({ json: url.searchParams.has('slug') ? course : [course] });
+    });
+    await page.route('**/rest/v1/curricular_units*', route => {
+      const id = new URL(route.request().url()).searchParams.get('id')?.replace(/^eq\./, '');
+      return route.fulfill({ json: id ? units.find(unit => unit.id === id) : units });
+    });
+    await page.route('**/rest/v1/rpc/list_public_editorial_sequences_v1', route => route.fulfill({ json: [{
+      playlist_id: 'p1', playlist_slug: 'logic-sequence', playlist_title: 'Logic sequence', playlist_description: '',
+      language: 'en', item_count: 2, unit_codes: ['L1'], cover_youtube_id: null,
+    }] }));
+    await page.goto('/courses?search=logic&language=en');
+    await page.getByRole('link', { name: 'Logic', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Logic', level: 1, exact: true })).toBeVisible();
+    await page.getByRole('link', { name: 'Explore course materials' }).click();
+    const search = page.getByRole('searchbox', { name: 'Search materials' });
+    await search.pressSequentially('logic');
+    await expect(search).toHaveValue('logic');
+    await page.getByRole('combobox', { name: 'Curricular unit' }).selectOption('object-1');
+    await expect.poll(() => new URL(page.url()).searchParams.get('materialsSearch')).toBe('logic');
+    await expect.poll(() => new URL(page.url()).searchParams.get('materialsUnit')).toBe('logic-i');
+    await page.clock.install();
+    await search.fill('unfinished');
+    await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
+    await page.clock.fastForward(500);
+    await expect(search).toHaveValue('');
+    await expect.poll(() => new URL(page.url()).searchParams.get('materialsSearch')).toBeNull();
+    await expect.poll(() => new URL(page.url()).searchParams.get('materialsUnit')).toBeNull();
+    await page.getByRole('combobox', { name: 'Curricular unit' }).selectOption('object-1');
+    await search.fill('not yet applied');
+    await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
+    await page.clock.fastForward(500);
+    await expect(search).toHaveValue('');
+    await expect.poll(() => new URL(page.url()).searchParams.get('materialsSearch')).toBeNull();
+    await page.getByRole('combobox', { name: 'Curricular unit' }).selectOption('object-1');
+    await page.getByRole('link', { name: 'Open unit page' }).click();
+    await expect(page.getByRole('heading', { name: 'Logic I', level: 1 })).toBeVisible();
+    await page.getByRole('link', { name: /Logic II/ }).first().click();
+    await expect(page.getByRole('heading', { name: 'Logic II', level: 1 })).toBeVisible();
+    await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'LOG' }).click();
+    await expect(page.getByRole('heading', { name: 'Logic', level: 1, exact: true })).toBeVisible();
+    await page.getByRole('link', { name: 'Skip to content' }).focus();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL('/courses/logic#main');
+    await expect(page.locator('main#main')).toBeFocused();
+    await page.getByRole('link', { name: 'Study plan', exact: true }).click();
+    await expect(page.locator('#units')).toBeInViewport();
+    await page.goBack();
+    await expect(page).toHaveURL(/#main$/);
+    await page.goForward();
+    await expect(page.locator('#units')).toBeInViewport();
+    await page.locator('section[aria-labelledby="units"] a[href="/courses/logic/units/logic-i"]').click();
+    await expect(page.getByRole('heading', { name: 'Logic I', level: 1 })).toBeVisible();
+    await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'LOG' }).click();
+    await expect(page.getByRole('heading', { name: 'Logic', level: 1, exact: true })).toBeVisible();
+    await page.getByRole('main').getByRole('link', { name: 'Explore courses', exact: true }).click();
+    await expect(page).toHaveURL('/courses?search=logic&language=en');
+    await expect(page.getByRole('searchbox', { name: 'Search courses' })).toHaveValue('logic');
+    await page.goto('/courses/logic');
+    await expect(page.getByRole('main').getByRole('link', { name: 'Explore courses', exact: true })).toHaveAttribute('href', '/courses');
+    expect(pageErrors).toEqual([]);
+  });
+}
+
 test('private direct entry retains destination and obsolete social routes do not resolve', async ({ page }) => {
   await page.goto('/editor');
   await expect(page).toHaveURL(/\/login\?next=%2Feditor$/);
@@ -93,6 +179,18 @@ test('private direct entry retains destination and obsolete social routes do not
     await page.goto(route);
     await expect(page.getByRole('heading', { name: 'This path does not lead anywhere yet.' })).toBeVisible();
   }
+});
+
+test('a protected contribution-history link survives authentication with its query and fragment', async ({ page }) => {
+  await mockAuth(page);
+  const destination = '/suggest?unit=11111111-1111-4111-8111-111111111111#suggest-history';
+  await page.goto(destination);
+  await expect(page).toHaveURL(`/login?next=${encodeURIComponent(destination)}`);
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL(destination);
+  await expect(page.locator('#suggest-history')).toBeFocused();
 });
 
 test('empty campus has no critical accessibility or contrast violations', async ({ page }) => {
@@ -586,13 +684,49 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
   await expect(page.getByRole('heading', { level: 1, name: 'Logic I' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' })).toBeVisible();
+  const unitCatalogue = page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Units' });
+  await expect(unitCatalogue).toHaveAttribute('href', '/units?course=test-course&year=1');
   await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /Logic in practice/ })).toHaveAttribute('href', '/sequences/logic-path');
   expect(sequenceUnits).toEqual([{ p_unit_code: '1001' }]);
+  await unitCatalogue.click();
+  await expect(page).toHaveURL('/units?course=test-course&year=1');
+  await page.getByRole('link', { name: 'Logic I', exact: true }).click();
   await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'TST' }).click();
   await expect(page).toHaveURL(/\/courses\/test-course$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Test course' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
+});
+
+test('module notes keep their filtered catalogue and reopen after sign-in', async ({ page }) => {
+  const module = { id: 'm1', slug: 'study-algebra', title: 'Algebra study module', description: 'Study notes.', object_type: 'module', language: 'en', tags: [], metadata: {}, source_url: null };
+  await mockAuth(page);
+  await page.route('**/rest/v1/rpc/search_public_resources_v4', route => route.fulfill({ json: { items: [module], total: 1, types: [{ value: 'module', count: 1 }] } }));
+  await page.route('**/rest/v1/learning_objects*', route => route.fulfill({ json: module }));
+  const catalogue = '/resources?type=module&search=algebra';
+  await page.goto(catalogue);
+  await page.getByRole('link', { name: /Algebra study module/ }).click();
+  await expect(page.getByRole('heading', { level: 1, name: module.title })).toBeVisible();
+  await page.getByRole('button', { name: 'Study modules', exact: true }).click();
+  await expect(page.getByRole('link', { name: 'Sign in for your own notebook' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Study modules' })).toHaveAttribute('href', catalogue);
+  await page.getByRole('link', { name: 'Sign in for your own notebook' }).click();
+  await expect(page).toHaveURL(`/login?next=${encodeURIComponent('/modules/study-algebra?notes=module')}`);
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL('/modules/study-algebra?notes=module');
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Study modules' }).click();
+  await expect(page).toHaveURL(catalogue);
+  await expect(page.getByRole('searchbox', { name: 'Search the library' })).toHaveValue('algebra');
+  await page.goto('/modules/study-algebra#module-materials');
+  await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Study modules' })).toHaveAttribute('href', '/resources?type=module');
+  await page.getByRole('button', { name: 'Study modules', exact: true }).click();
+  await expect(page).toHaveURL('/modules/study-algebra?notes=module#module-materials');
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(page).toHaveURL('/modules/study-algebra#module-materials');
 });
 
 test('video page loads YouTube only on demand and places the video in its unit trail', async ({ page }) => {
@@ -681,9 +815,12 @@ test('study notebook keeps private, timed notes beside the video and exports the
     await route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
   });
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/resources/derivatives');
+  await page.goto('/resources/derivatives#main');
   await page.getByRole('button', { name: 'Study notebook' }).click();
   const drawer = page.getByRole('dialog', { name: 'Study notebook' });
+  await expect(page).toHaveURL('/resources/derivatives?notes=open#main');
+  await expect(drawer.getByRole('link', { name: 'Sign in for your own notebook' }))
+    .toHaveAttribute('href', `/login?next=${encodeURIComponent('/resources/derivatives?notes=open#main')}`);
   await expect(drawer.getByText('Start the video to tie each note to the moment you write it.')).toBeVisible();
   await expect(drawer.getByText('Without signing in, these notes are visible to anyone using this browser.')).toBeVisible();
 
@@ -738,7 +875,7 @@ test('study notebook keeps private, timed notes beside the video and exports the
   await expect(drawer.getByRole('heading', { name: 'General idea' })).toBeVisible();
   await drawer.getByRole('button', { name: 'Close' }).click();
   await expect(drawer).toBeHidden();
-  await expect(page).not.toHaveURL(/notes=open/);
+  await expect(page).toHaveURL('/resources/derivatives#main');
 
   // Notes persist in this browser and the URL can reopen the drawer.
   await page.setViewportSize({ width: 375, height: 800 });
@@ -1154,7 +1291,8 @@ test('editor reads the advisory analysis and approves a suggestion as a draft wi
   await expect(page.getByRole('heading', { name: 'No pending suggestions' })).toBeVisible();
 });
 
-test('guest browses study sequences, picks a lesson through the URL and is invited to save progress', async ({ page }) => {
+async function mockSequenceJourney(page: Page) {
+  await mockAuth(page);
   const item = (position: number, id: string, title: string) => ({
     position, video_id: id, youtube_id: `abcdefghij${position}`, title, channel: 'Canal Aberto', language: 'pt',
     youtube_url: `https://www.youtube.com/watch?v=abcdefghij${position}`, thumbnail_url: null, metadata_verified: true,
@@ -1176,12 +1314,25 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
         curricular_units: [{ unit_code: '101', unit_slug: 'programming-i', unit_title: 'Programming I', course_code: 'LESTI', course_slug: 'lesti' }],
       }] });
     }
+    if (url.pathname.endsWith('/rpc/list_public_sequences_for_video_v1')) return route.fulfill({ json: [{
+      playlist_id: 'p1', playlist_slug: 'python-basics', playlist_title: 'Python from scratch', lesson_position: 2, item_count: 2,
+    }] });
     expect(url.pathname).not.toContain('/rpc/');
-    if (url.pathname.endsWith('/learning_objects')) return route.fulfill({ json: [{ id: 'v1', slug: 'variables' }, { id: 'v2', slug: 'functions' }] });
+    if (url.pathname.endsWith('/learning_objects')) return route.fulfill({ json: url.searchParams.has('slug')
+      ? { id: 'v2', slug: 'functions', title: 'Functions', object_type: 'video', language: 'pt', source_url: null, metadata: {}, description: null, objectives: [], tags: [], keywords: [], status: 'active', published: true }
+      : [{ id: 'v1', slug: 'variables' }, { id: 'v2', slug: 'functions' }] });
+    if (url.pathname.endsWith('/editorial_playlist_progress')) return route.fulfill({ json: [{
+      playlist_id: 'p1', video_id: 'v1', completed_at: '2026-01-01T00:00:00Z', last_position_seconds: 0, updated_at: '2026-01-01T00:00:00Z',
+    }] });
     return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
   });
+}
 
-  await page.goto('/sequences');
+async function verifySequenceJourney(page: Page) {
+  const pageErrors: string[] = [];
+  page.on('pageerror', error => pageErrors.push(error.message));
+  await mockSequenceJourney(page);
+  await page.goto('/sequences?search=python&language=pt');
   await expect(page.getByRole('heading', { level: 1, name: 'Study sequences' })).toBeVisible();
   await expect(page.getByText('2 lessons')).toBeVisible();
   await page.getByRole('link', { name: /Python from scratch/ }).click();
@@ -1189,13 +1340,72 @@ test('guest browses study sequences, picks a lesson through the URL and is invit
   await expect(page.getByRole('heading', { level: 1, name: 'Python from scratch' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Share' })).toBeVisible();
   await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Sign in to save progress' }))
+    .toHaveAttribute('href', `/login?next=${encodeURIComponent('/sequences/python-basics?v=v1')}`);
   await page.getByRole('list', { name: 'Lessons in this sequence' }).getByRole('button', { name: /Functions/ }).click();
   await expect(page).toHaveURL(/\?v=v2$/);
   await expect(page.getByText('Lesson 2 of 2')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Sign in to save progress' })).toHaveAttribute('href', '/login?next=%2Fsequences%2Fpython-basics');
+  await expect(page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Study sequences' }))
+    .toHaveAttribute('href', '/sequences?search=python&language=pt');
+  await expect(page.getByRole('link', { name: 'Sign in to save progress' }))
+    .toHaveAttribute('href', `/login?next=${encodeURIComponent('/sequences/python-basics?v=v2')}`);
   await expect(page.getByRole('link', { name: /Programming I/ })).toHaveAttribute('href', '/courses/lesti/units/programming-i');
   await expect(page.getByRole('checkbox')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Open video page' }).click();
+  await expect(page).toHaveURL('/resources/functions');
+  await page.getByRole('link', { name: 'Back to the sequence' }).click();
+  await expect(page).toHaveURL('/sequences/python-basics?v=v2');
+  await expect(page.getByText('Lesson 2 of 2')).toBeVisible();
+  await page.getByRole('link', { name: 'Sign in to save progress' }).click();
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL('/sequences/python-basics?v=v2');
+  await expect(page.getByText('Lesson 2 of 2')).toBeVisible();
+  await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Study sequences' }).click();
+  await expect(page).toHaveURL('/sequences?search=python&language=pt');
+  await expect(page.getByRole('searchbox', { name: 'Search sequences' })).toHaveValue('python');
+  await page.goto('/sequences/python-basics?v=v1#sequence-progress');
+  await page.getByRole('list', { name: 'Lessons in this sequence' }).getByRole('button', { name: /Functions.*Canal Aberto/ }).click();
+  await expect(page).toHaveURL('/sequences/python-basics?v=v2#sequence-progress');
+  expect(pageErrors).toEqual([]);
+}
+
+test('sign-in keeps the first visible lesson when the account has saved progress', async ({ page }) => {
+  await mockSequenceJourney(page);
+  await page.goto('/sequences/python-basics');
+  await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await page.getByRole('link', { name: 'Sign in to save progress' }).click();
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL('/sequences/python-basics?v=v1');
+  await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Continue: Functions' })).toBeVisible();
 });
+
+test('notebook sign-in keeps the visible lesson and playback context with saved progress', async ({ page }) => {
+  await mockSequenceJourney(page);
+  await page.goto('/sequences/python-basics?t=45#sequence-progress');
+  await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
+  const drawer = page.getByRole('dialog', { name: 'Study notebook' });
+  await drawer.getByRole('link', { name: 'Sign in for your own notebook' }).click();
+  await page.getByLabel('Email', { exact: true }).fill('learner@example.test');
+  await page.getByLabel('Password', { exact: true }).fill('test-password-123');
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+  await expect(page).toHaveURL('/sequences/python-basics?t=45&notes=open&v=v1#sequence-progress');
+  await expect(drawer.getByText('Variables', { exact: true })).toBeVisible();
+  await expect(page.getByText('Lesson 1 of 2')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Continue: Functions' })).toBeVisible();
+});
+
+for (const width of [375, 1280]) {
+  test(`guest continues a selected sequence lesson after sign-in at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await verifySequenceJourney(page);
+  });
+}
 
 for (const surface of ['sequence', 'unit'] as const) {
   for (const width of [375, 1280]) {
@@ -1245,8 +1455,9 @@ for (const surface of ['sequence', 'unit'] as const) {
         return route.fulfill({ json: [], headers: { 'content-range': '*/0', 'access-control-expose-headers': 'content-range' } });
       });
       const path = surface === 'sequence' ? '/sequences/python-basics' : '/courses/test-course/units/programming';
+      const hash = surface === 'sequence' ? '#sequence-progress' : '#unit-resources';
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(`${path}?v=v1&t=12`);
+      await page.goto(`${path}?v=v1&t=12${hash}`);
       await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
       const drawer = page.getByRole('dialog', { name: 'Study notebook' });
       await expect(drawer.getByText('Start the video to tie each note to the moment you write it.')).toBeVisible();
@@ -1263,9 +1474,9 @@ for (const surface of ['sequence', 'unit'] as const) {
       await expect(drawer.getByLabel('Title or concept')).toHaveValue('Variable scope');
       await drawer.getByRole('button', { name: 'Save note', exact: true }).click();
       await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toBeVisible();
-      await expect(page).toHaveURL(new RegExp(`${path.replaceAll('/', '\\/')}\\?v=v1&t=12&notes=open$`));
+      await expect(page).toHaveURL(`${path}?v=v1&t=12&notes=open${hash}`);
       await expect(drawer.getByRole('link', { name: 'Sign in for your own notebook' }))
-        .toHaveAttribute('href', `/login?next=${encodeURIComponent(`${path}?v=v1&t=12&notes=open`)}`);
+        .toHaveAttribute('href', `/login?next=${encodeURIComponent(`${path}?v=v1&t=12&notes=open${hash}`)}`);
       await page.screenshot({ path: `test-results/notebook-${surface}-${width}.png` });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
@@ -1278,7 +1489,7 @@ for (const surface of ['sequence', 'unit'] as const) {
       await expect(drawer).toBeHidden();
       const lessons = page.getByRole('list', { name: surface === 'sequence' ? 'Lessons in this sequence' : 'Video lessons for this unit' });
       await lessons.getByRole('button', { name: /Functions/ }).click();
-      await expect(page).toHaveURL(`${path}?v=v2`);
+      await expect(page).toHaveURL(`${path}?v=v2${hash}`);
       await page.getByRole('button', { name: 'Study notebook', exact: true }).click();
       await expect(drawer.getByRole('heading', { name: 'Variable scope' })).toHaveCount(0);
       await expect(drawer.getByLabel('Title or concept')).toHaveValue('');

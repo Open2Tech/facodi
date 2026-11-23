@@ -17,14 +17,29 @@ const privateDestinations = [
   '/admin',
 ];
 /** Public pages that invite signing in to save something (notes, sequence progress) and expect the learner back. */
-const contentDestination = /^\/(?:resources|sequences)\/[\w.-]+$|^\/courses\/[\w.-]+(?:\/units\/[\w.-]+)?$/;
+const contentDestination = /^\/(?:modules|resources|sequences)\/[\w.-]+$|^\/courses\/[\w.-]+(?:\/units\/[\w.-]+)?$/;
+const internalOrigin = 'https://internal.invalid';
+
+function internalUrl(value: unknown): URL | null {
+  if (typeof value !== 'string' || !value || /[\\\s]/.test(value) || [...value].some(char => char.charCodeAt(0) < 32) || !value.startsWith('/') || value.startsWith('//')) return null;
+  const url = new URL(value, internalOrigin);
+  return url.origin === internalOrigin ? url : null;
+}
 
 export function safeReturnPath(value: string | null | undefined): string {
-  if (!value || /[\\\s]/.test(value) || [...value].some(char => char.charCodeAt(0) < 32) || !value.startsWith('/') || value.startsWith('//')) return '/dashboard';
-  const url = new URL(value, 'https://internal.invalid');
-  return url.origin === 'https://internal.invalid' && (privateDestinations.includes(url.pathname) || contentDestination.test(url.pathname))
+  const url = internalUrl(value);
+  return url && (privateDestinations.includes(url.pathname) || contentDestination.test(url.pathname))
     ? `${url.pathname}${url.search}${url.hash}`
     : '/dashboard';
+}
+
+/** Use a catalogue origin only when it points to the expected local listing. */
+export function catalogReturnPath(state: unknown, fallback: string): string {
+  const value = state && typeof state === 'object' && 'catalogReturn' in state ? state.catalogReturn : null;
+  const url = internalUrl(value);
+  return url && url.pathname === new URL(fallback, internalOrigin).pathname
+    ? `${url.pathname}${url.search}${url.hash}`
+    : fallback;
 }
 
 export function safeExternalUrl(value: string | null | undefined): string | undefined {

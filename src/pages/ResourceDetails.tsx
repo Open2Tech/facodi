@@ -2,7 +2,7 @@ import CourseReader from '@/components/reader/CourseReader';
 import { readerAlias, readerEditions } from '@/entities/course/lessonReader';
 import type { LearningObject } from '@/entities/course/course.types';
 import { useCallback, useRef, useState } from 'react';
-import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { resourceMeta } from '@/shared/seo/seo';
@@ -29,11 +29,12 @@ import { formatTimestamp, parseStartParam } from '@/entities/notes/notes';
 import { useResourceNotes } from '@/features/notes/useNotebook';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { safeExternalUrl } from '@/shared/lib/navigation';
+import { catalogReturnPath, safeExternalUrl, safeReturnPath } from '@/shared/lib/navigation';
 import { plainText, stringList } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
 import { ResourceFeedback } from '@/components/resource/ResourceFeedback';
 import { studyTopics } from '@/shared/lib/topicTags';
+import { useContextSearchParams } from '@/shared/hooks/useContextSearchParams';
 
 const SEQUENCE_WINDOW = 5;
 const MIRRORS = ['course', 'curricular_unit'];
@@ -58,6 +59,10 @@ export default function ResourceDetails() {
 
 function ResourceContent({ resource, slug }: { resource: LearningObject; slug: string }) {
   const { t } = useTranslation();
+  const location = useLocation();
+  const origin = location.state && typeof location.state === 'object' && typeof location.state.sequenceReturn === 'string'
+    ? safeReturnPath(location.state.sequenceReturn) : null;
+  const sequenceReturn = origin?.startsWith('/sequences/') ? origin : null;
   const context = useResourceContext(resource);
   const playlistLessons = useLinkedCatalogAssets(resource?.object_type === 'playlist' && resource?.source_type === 'youtube' ? resource.id : undefined, 'video');
   const collectionVideos = useLinkedCatalogAssets(resource?.object_type === 'collection' ? resource.id : undefined, 'video');
@@ -72,7 +77,7 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
   const info = resource ? videoInfo(resource.metadata, resource.source_url) : null;
   const channelVideos = useChannelVideos(isVideo ? info?.channel ?? null : null, resource?.id ?? '');
   const contribute = useContributePath();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useContextSearchParams();
   const playerRef = useRef<YouTubePlayerHandle>(null);
   const playerSection = useRef<HTMLElement>(null);
   const [engaged, setEngaged] = useState(false);
@@ -121,12 +126,11 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
 
   // The drawer state lives in the URL so dashboard links can open it, without adding history entries.
   function setNotesOpen(open: boolean) {
-    setSearchParams(previous => {
-      const next = new URLSearchParams(previous);
+    setSearchParams(next => {
       if (open) next.set('notes', 'open');
       else next.delete('notes');
       return next;
-    }, { replace: true });
+    });
   }
 
   function seek(seconds: number) {
@@ -157,9 +161,13 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
 
   return <article>
     <PageSeo {...resourceMeta(resource, info, { resources: t('nav.resources'), type: typeLabel })} />
+    {sequenceReturn && <Link to={sequenceReturn} state={{ catalogReturn: catalogReturnPath(location.state, '/sequences') }}
+      className="mb-5 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+      <ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('sequences.backToSequence')}
+    </Link>}
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className={CRUMB} to="/resources">{t('nav.resources')}</Link></li>
+        <li><Link className={CRUMB} to={catalogReturnPath(location.state, '/resources')}>{t('nav.resources')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li><Link className={CRUMB} to={`/resources?type=${encodeURIComponent(resource.object_type)}`}>{typeLabel}</Link></li>
         {primary && unitHref && <>
@@ -256,7 +264,7 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
                   return <li key={item.id}>
                     {current
                       ? <div aria-current="true" className="flex gap-3 bg-primary px-5 py-3 text-primary-foreground">{body}</div>
-                      : <Link to={`/resources/${item.slug}`} className="flex gap-3 px-5 py-3 transition-colors hover:bg-muted">{body}</Link>}
+                      : <Link to={`/resources/${item.slug}`} state={location.state} className="flex gap-3 px-5 py-3 transition-colors hover:bg-muted">{body}</Link>}
                   </li>;
                 })}
               </ol>
@@ -280,11 +288,11 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
 
       <div className={cn('min-w-0 space-y-12 lg:col-start-1', player ? 'lg:row-start-2' : 'lg:row-start-1')}>
         {(previous || next) && <nav aria-label={t('video.sequence')} className="grid gap-4 sm:grid-cols-2">
-          {previous ? <Link to={`/resources/${previous.slug}`} className="group flex flex-col gap-1 border border-input p-4 transition-colors hover:border-foreground">
+          {previous ? <Link to={`/resources/${previous.slug}`} state={location.state} className="group flex flex-col gap-1 border border-input p-4 transition-colors hover:border-foreground">
             <span className="inline-flex items-center gap-2 text-sm text-muted-foreground"><ArrowLeft className="h-4 w-4" aria-hidden="true" />{t('video.previous')}</span>
             <span className="line-clamp-2 font-semibold group-hover:underline group-hover:underline-offset-4">{previous.title}</span>
           </Link> : <span className="hidden sm:block" />}
-          {next && <Link to={`/resources/${next.slug}`} className="group flex flex-col gap-1 border border-input p-4 text-right transition-colors hover:border-foreground">
+          {next && <Link to={`/resources/${next.slug}`} state={location.state} className="group flex flex-col gap-1 border border-input p-4 text-right transition-colors hover:border-foreground">
             <span className="inline-flex items-center justify-end gap-2 text-sm text-muted-foreground">{t('video.next')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
             <span className="line-clamp-2 font-semibold group-hover:underline group-hover:underline-offset-4">{next.title}</span>
           </Link>}

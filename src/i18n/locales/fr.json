@@ -1508,6 +1508,7 @@
   },
   "sequences": {
     "title": "Séquences d’étude",
+    "backToSequence": "Retour à la séquence",
     "description": "Parcours de cours YouTube ouverts ordonnés par FACODI pour avancer sur un sujet du début à la fin sans perdre le fil.",
     "search": "Rechercher des séquences",
     "searchPlaceholder": "Titre, thème ou code d’UE",

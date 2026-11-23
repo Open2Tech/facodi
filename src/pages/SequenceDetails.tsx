@@ -2,14 +2,14 @@ import { useRef } from 'react';
 import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { sequenceMeta } from '@/shared/seo/seo';
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, LogIn, RotateCcw } from 'lucide-react';
-import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
 import { completedCount, nextItem, type SequenceItem } from '@/entities/sequence/sequence';
 import { formatDuration, type VideoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
-import { safeExternalUrl } from '@/shared/lib/navigation';
+import { catalogReturnPath, safeExternalUrl } from '@/shared/lib/navigation';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
@@ -28,6 +28,7 @@ import { Button } from '@/components/ui/button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { plainText } from '@/shared/lib/text';
 import { cn } from '@/lib/utils';
+import { useContextSearchParams } from '@/shared/hooks/useContextSearchParams';
 
 /** Positions closer than this to the start are not worth resuming from. */
 const RESUME_MIN_SECONDS = 15;
@@ -42,10 +43,11 @@ const infoOf = (item: SequenceItem): VideoInfo => ({
 export default function SequenceDetails() {
   const { slug = '' } = useParams();
   const { t } = useTranslation();
+  const location = useLocation();
   const query = useSequence(slug);
   const readings = useLinkedCatalogAssets(query.data?.id, 'external_resource');
   const progress = useSequenceProgress(query.data?.id);
-  const [params, setParams] = useSearchParams();
+  const [params, setParams] = useContextSearchParams();
   const saved = useRef(new Map<string, number>());
   const notebook = useNotebook();
 
@@ -58,7 +60,7 @@ export default function SequenceDetails() {
   // The SQL RPC resolves only explicit, public editorial alias metadata.
   if (sequence.slug !== slug) {
     const search = params.toString();
-    return <Navigate to={`/sequences/${encodeURIComponent(sequence.slug)}${search ? `?${search}` : ''}`} replace />;
+    return <Navigate to={`/sequences/${encodeURIComponent(sequence.slug)}${search ? `?${search}` : ''}${location.hash}`} state={location.state} replace />;
   }
   const items = sequence.items;
   const rows = progress.data ?? new Map();
@@ -70,6 +72,11 @@ export default function SequenceDetails() {
   const following = selectedIndex >= 0 ? items[selectedIndex + 1] ?? null : null;
   const selectedRow = selected ? rows.get(selected.videoId) : undefined;
   const resumeAt = selectedRow && !selectedRow.completedAt && selectedRow.lastPosition >= RESUME_MIN_SECONDS ? selectedRow.lastPosition : null;
+  const returnParams = new URLSearchParams(params);
+  if (selected && returnParams.get('v') !== selected.videoId) {
+    returnParams.set('v', selected.videoId);
+  }
+  const sequenceReturn = `${location.pathname}${returnParams.size ? `?${returnParams}` : ''}${location.hash}`;
 
   const noteCounts = noteCountsByResource(notebook.all);
   const noteResources: StudyNoteContextResource[] = items.filter(item => item.slug).map(item => ({
@@ -79,12 +86,11 @@ export default function SequenceDetails() {
   }));
 
   function select(videoId: string) {
-    setParams(previous => {
-      const next = new URLSearchParams(previous);
+    setParams(next => {
       if (next.get('v') !== videoId) next.delete('t');
       next.set('v', videoId);
       return next;
-    }, { replace: true });
+    });
   }
   function toggle(item: SequenceItem) {
     const completed = !rows.get(item.videoId)?.completedAt;
@@ -106,7 +112,7 @@ export default function SequenceDetails() {
     <PageSeo {...sequenceMeta(sequence, { sequences: t('sequences.title') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to="/sequences">{t('sequences.title')}</Link></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/sequences')}>{t('sequences.title')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li aria-current="page" className="line-clamp-1 text-foreground">{sequence.title}</li>
       </ol>
@@ -126,7 +132,7 @@ export default function SequenceDetails() {
         <h2 id="sequence-progress" className="text-sm font-semibold">{t('sequences.yourProgress')}</h2>
         {!progress.signedIn ? <>
           <p className="mt-2 text-sm text-muted-foreground">{t('sequences.guest')}</p>
-          <Button asChild size="sm" className="mt-4"><Link to={`/login?next=${encodeURIComponent(`/sequences/${sequence.slug}`)}`}><LogIn aria-hidden="true" />{t('sequences.signIn')}</Link></Button>
+          <Button asChild size="sm" className="mt-4"><Link to={`/login?next=${encodeURIComponent(sequenceReturn)}`} state={location.state}><LogIn aria-hidden="true" />{t('sequences.signIn')}</Link></Button>
         </> : progress.isError ? <div role="alert" className="mt-2 text-sm">
           <p>{t('sequences.loadFailed')}</p>
           <button type="button" onClick={() => void progress.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
@@ -169,7 +175,7 @@ export default function SequenceDetails() {
             {selected.youtubeId && progressReady
               ? selected.slug
                 ? <StudyVideo key={selected.videoId} resource={{ id: selected.videoId, slug: selected.slug, title: selected.title, type: 'video' }}
-                  videoId={selected.youtubeId} info={infoOf(selected)} start={resumeAt}
+                  videoId={selected.youtubeId} info={infoOf(selected)} start={resumeAt} signInReturn={sequenceReturn}
                   onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
                 : <YouTubePlayer key={selected.videoId} videoId={selected.youtubeId} title={selected.title} thumbnail={selected.thumbnail}
                   start={resumeAt} onPlay={() => void progress.start(selected.videoId)} onTime={seconds => trackTime(selected.videoId, seconds)} />
@@ -191,7 +197,9 @@ export default function SequenceDetails() {
             {following && <Button type="button" variant="outline" onClick={() => select(following.videoId)}>{t('sequences.next')}<ArrowRight aria-hidden="true" /></Button>}
           </div>
           <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
-            {selected.slug && <Link to={`/resources/${encodeURIComponent(selected.slug)}`} className="inline-flex items-center gap-2 underline underline-offset-4">{t('unit.openVideoPage')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>}
+            {selected.slug && <Link to={`/resources/${encodeURIComponent(selected.slug)}`}
+              state={{ sequenceReturn, catalogReturn: catalogReturnPath(location.state, '/sequences') }}
+              className="inline-flex items-center gap-2 underline underline-offset-4">{t('unit.openVideoPage')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>}
             {selected.youtubeUrl && <a href={selected.youtubeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 underline underline-offset-4">{t('video.watchOnYoutube')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>}
           </p>
           {selected.youtubeId && sequence.slug.startsWith('facodi-playlist-ifes-') &&
