@@ -1,4 +1,4 @@
-import { HOME_SNAPSHOT_FILE, isAppRoute, isPrivateRoute, NOINDEX, SECURITY_HEADERS } from './routes';
+import { HOME_SNAPSHOT_FILE, isAppRoute, isPrivateRoute, legacyPublicRedirect, NOINDEX, SECURITY_HEADERS } from './routes';
 
 /** Cloudflare Workers static assets binding (only the part this Worker uses). */
 interface AssetsBinding { fetch(request: Request): Promise<Response> }
@@ -30,6 +30,16 @@ export default {
       return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET, HEAD', ...SECURITY_HEADERS } });
     }
     const url = new URL(request.url);
+    const redirect = legacyPublicRedirect(url.pathname);
+    if (redirect) {
+      const target = new URL(redirect, url.origin);
+      target.search = url.search;
+      return new Response(null, {
+        status: 301, headers: {
+          Location: target.toString(), 'Cache-Control': 'public, max-age=3600', ...SECURITY_HEADERS,
+        },
+      });
+    }
     if (url.pathname === '/') {
       const home = await asset(env, request, url, `/${HOME_SNAPSHOT_FILE.replace(/\.html$/, '')}`);
       if (home.ok) return respond(home, 200, url, false);

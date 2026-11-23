@@ -68,10 +68,16 @@ describe('FACODI editorial sequences', () => {
         curricular_units: [{ unit_code: 'U1', unit_slug: 'u1', unit_title: 'Unit', course_code: 'C', course_slug: 'c' }, { unit_code: 'broken' }],
       }])),
       http.get(`${base}/learning_objects`, () => HttpResponse.json([{ id: 'v1', slug: 'one' }])),
+      http.get(`${base}/learning_object_relations`, () => HttpResponse.json([
+        { child_object_id: 'v1', metadata: { review_status: 'approved', editorial_activity: 'Draft an original headline and check two sources.' } },
+        { child_object_id: 'v2', metadata: { review_status: 'pending', editorial_activity: 'Unapproved activity must not display.' } },
+      ])),
     );
     const sequence = await getSequence('a');
     expect(sequence?.items.map(lesson => [lesson.videoId, lesson.slug])).toEqual([['v1', 'one'], ['v2', null]]);
     expect(sequence?.units).toHaveLength(1);
+    expect(sequence?.items[0].activity).toBe('Draft an original headline and check two sources.');
+    expect(sequence?.items[1].activity).toBeNull();
   });
 
   it('updates existing progress without rewriting the key columns', async () => {

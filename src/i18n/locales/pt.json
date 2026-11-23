@@ -129,7 +129,13 @@
     "sourceNote": "Sequências FACODI com recursos de autores externos. Os vídeos não são aulas oficiais da UAlg.",
     "allMaterials": "Ver todos os materiais e percursos",
     "moreTopics": "Explora mais percursos temáticos",
-    "moreTopicsDescription": "Da gamificação à filosofia, do cinema ao jornalismo em inglês. Escolhe uma sequência por interesse ou UC e avança com exercícios de aplicação."
+    "moreTopicsDescription": "Da gamificação à filosofia, do cinema ao jornalismo em inglês. Escolhe uma sequência por interesse ou UC e avança com exercícios de aplicação.",
+    "showFewer": "Mostrar menos percursos",
+    "showAll": "Explorar os {{count}} percursos",
+    "algarveTitle": "O Algarve também é o teu laboratório",
+    "algarveDescription": "Projetos reais de comunicação científica e rádio universitária, para ligar as aulas ao que se faz na região. Referências externas, sem parceria FACODI implícita.",
+    "ciacCase": "Conhecer o CIAC INTERFACE",
+    "ruaCase": "Ouvir a experiência na RUA FM"
   },
   "brand": {
     "tagline": "Um campus digital aberto",
@@ -212,7 +218,12 @@
       },
       "tabsLabel": "Modo do caderno",
       "quickPromptsLabel": "Experimenta pesquisar",
-      "quickPrompts": ["Álgebra linear", "Python", "Psicologia", "Estatística"],
+      "quickPrompts": [
+        "Álgebra linear",
+        "Python",
+        "Psicologia",
+        "Estatística"
+      ],
       "livePulse": "{{resources}} recursos publicados em {{courses}} cursos abertos",
       "trySuggestTab": "Sugerir um link aberto",
       "suggestHeading": "Salvou-te o semestre? Partilha esse link.",
@@ -2713,8 +2724,21 @@
     "catalogLevel": "Nível editorial: {{level}}",
     "publicationYear": "Publicado em {{year}}",
     "editorialGoal": "Objetivo sugerido: {{goal}}",
-    "languages": {"pt":"Português","pt-PT":"Português (Portugal)","pt-BR":"Português (Brasil)","en":"Inglês","es":"Espanhol","fr":"Francês"},
-    "levels": {"foundation":"Fundamentos","introductory":"Introdutório","intermediate":"Intermédio","advanced":"Avançado","advanced_optional":"Avançado (opcional)"},
+    "languages": {
+      "pt": "Português",
+      "pt-PT": "Português (Portugal)",
+      "pt-BR": "Português (Brasil)",
+      "en": "Inglês",
+      "es": "Espanhol",
+      "fr": "Francês"
+    },
+    "levels": {
+      "foundation": "Fundamentos",
+      "introductory": "Introdutório",
+      "intermediate": "Intermédio",
+      "advanced": "Avançado",
+      "advanced_optional": "Avançado (opcional)"
+    },
     "sourceHost": "Fonte: {{host}}",
     "eyebrow": "Estudar esta UC",
     "title": "Começa por aqui",
@@ -2751,5 +2775,22 @@
     "lessonNoteCount_one": "{{count}} nota",
     "lessonNoteCount_many": "{{count}} notas",
     "lessonNoteCount_other": "{{count}} notas"
+  },
+  "officialFuc": {
+    "kicker": "Ficha oficial UAlg · {{year}}",
+    "title": "O que está previsto nesta UC",
+    "description": "Tópicos extraídos da FUC de 2026/27, acompanhados de um roteiro de estudo FACODI para aprenderes e praticares. A organização pedagógica abaixo não é um programa oficial da Universidade.",
+    "source": "Consultar FUC oficial",
+    "topics": "Tópicos do programa",
+    "automatedNotice": "Extração assistida a partir da ficha oficial. Confirma sempre o texto integral na fonte.",
+    "studySteps": "Roteiro de estudo FACODI",
+    "openMaterials": "Explorar vídeos e referências da UC",
+    "assessmentNotice": "As regras, os métodos de avaliação e as condições de uso de IA são exclusivamente os da ficha oficial e da Universidade do Algarve. A FACODI não substitui a docência nem a avaliação."
+  },
+  "studyMissions": {
+    "eyebrow": "Missão FACODI · Faz acontecer",
+    "title": "Põe esta aula em prática",
+    "notice": "Atividade editorial complementar da FACODI, não é avaliação oficial nem comprova que o vídeo tenha sido integralmente revisto.",
+    "notebook": "Registar no caderno"
   }
 }

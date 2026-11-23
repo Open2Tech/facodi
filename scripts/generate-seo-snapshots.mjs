@@ -7,6 +7,7 @@ import {
   sequencePath, staticPageMeta, unitMeta, unitPagePath,
 } from '../src/shared/seo/seo.ts';
 import { HOME_SNAPSHOT_FILE } from '../src/worker/routes.ts';
+import { writeCommunicationCover } from './generate-facodi-social-covers.mjs';
 import {
   assertCompleteSequenceSnapshot, exactSnapshotCount, renderLlmsTxt, renderSitemap, renderSnapshotHtml, snapshotFilePath,
 } from '../src/shared/seo/snapshots.ts';
@@ -167,6 +168,8 @@ if (isBuildPlaceholder) {
   }
 
   for (const course of courses) {
+    if (course.slug === 'ciencias-da-comunicacao')
+      await writeCommunicationCover(outputDirectory, 'course', course.slug, course.title);
     addPage(courseMeta(course, { courses: pt.nav.courses }));
     llmsCourses.push({ name: course.title, path: coursePath(course.slug), note: [course.institution, metaDescription(course.summary, '', 200)].filter(Boolean).join(' — ') });
   }
@@ -278,6 +281,10 @@ if (isBuildPlaceholder) {
     }
     for (const lesson of lessons) videoSequences.set(lesson.path, [...(videoSequences.get(lesson.path) ?? []), { name: sequence.playlist_title, path }]);
   });
+  // Generated automatically from public approved sequences: new LCC sequences
+  // receive a real 1200x630 OG PNG without manual graphic uploads or database fields.
+  await mapLimit(sequences.filter(s => typeof s.playlist_slug === 'string' && s.playlist_slug.startsWith('facodi-lcc-')),
+    4, seq => writeCommunicationCover(outputDirectory, 'sequence', seq.playlist_slug, seq.playlist_title));
   for (const [videoPage, list] of videoSequences) addSection(videoPage, { title: pt.sequences.inSequences, links: unique(list) });
 
   addSection('/sequences', { links: llmsSequences.map(({ name, path: href }) => ({ name, path: href })) });

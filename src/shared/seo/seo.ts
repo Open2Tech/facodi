@@ -10,6 +10,16 @@ export const DEFAULT_IMAGE = {
   url: `${SITE_ORIGIN}/social-preview-default.png?v=20261115`, width: 1200, height: 630, alt: 'FACODI — Um campus digital aberto',
 };
 
+/** Original 1200×630 branded PNG assets emitted during production SEO snapshot builds. */
+const LCC_COURSE_IMAGE = {
+  url: `${SITE_ORIGIN}/og/lcc-course.png`, width: 1200, height: 630,
+  alt: 'FACODI — Licenciatura em Ciências da Comunicação, Universidade do Algarve',
+};
+const lccSequenceImage = (slug: string, title: string) => ({
+  url: `${SITE_ORIGIN}/og/lcc-sequence-${encodeURIComponent(slug)}.png`, width: 1200, height: 630,
+  alt: `FACODI — ${title}`,
+});
+
 type JsonLd = Record<string, unknown>;
 export type HeadTag =
   | { tag: 'title'; text: string }
@@ -245,6 +255,7 @@ export function courseMeta(course: CourseSeoInput, labels: { courses: string }):
   const description = metaDescription(course.summary || course.description_html, [course.title, course.institution].filter(Boolean).join(' — '));
   return {
     title: course.title, description, path, language: course.language,
+    image: course.slug === 'ciencias-da-comunicacao' ? LCC_COURSE_IMAGE : null,
     jsonLd: [
       courseJsonLd({ path, title: course.title, description, code: course.code, language: course.language, institution: course.institution, ects: course.ects_total }),
       breadcrumbJsonLd([{ name: labels.courses, path: '/courses' }, { name: course.title, path }]),
@@ -306,7 +317,9 @@ export function sequenceMeta(
   const cover = sequence.coverYoutubeId ?? sequence.items.find(item => item.youtubeId)?.youtubeId;
   return {
     title: sequence.title, description, path, language: sequence.language,
-    image: cover ? youtubeImage(cover, sequence.title) : null,
+    image: sequence.slug.startsWith('facodi-lcc-')
+      ? lccSequenceImage(sequence.slug, sequence.title)
+      : cover ? youtubeImage(cover, sequence.title) : null,
     jsonLd: [
       itemListJsonLd({
         path, title: sequence.title, description, itemCount: sequence.itemCount,

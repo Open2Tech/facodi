@@ -9,6 +9,24 @@ import { LEGAL_DOCUMENTS } from '../components/legal/legalDocuments';
 /** Built by scripts/generate-seo-snapshots.mjs; served for "/" only. */
 export const HOME_SNAPSHOT_FILE = '__home.html';
 
+/** Permanently map retired public URLs to their current equivalents, without blanket SPA rewrites. */
+const LEGACY_PUBLIC_REDIRECTS: Readonly<Record<string, string>> = {
+  '/pt': '/',
+  '/sobre': '/about',
+  '/roadmap': '/about',
+  '/unidades-curriculares': '/units',
+  '/slides': '/sequences',
+  '/pt/slides': '/sequences',
+  '/explore/content': '/resources',
+  '/explore': '/resources',
+  '/infrastructure': '/about',
+  '/academic-model': '/how-it-works',
+};
+
+export function legacyPublicRedirect(pathname: string): string | null {
+  return LEGACY_PUBLIC_REDIRECTS[pathname.length > 1 ? pathname.replace(/[/]+$/, '') : pathname] ?? null;
+}
+
 const STATIC_ROUTES = new Set([
   '/', '/about', '/admin', '/auth', '/auth/callback', '/auth/reset-password', '/community', '/community/join',
   '/courses', '/dashboard', '/editor', '/editor/community', '/editor/course-quality', '/editor/email-templates',

@@ -129,7 +129,13 @@
     "sourceNote": "Séquences FACODI composées de vidéos externes. Ce ne sont pas des cours officiels de l'UAlg.",
     "allMaterials": "Explorer tous les supports",
     "moreTopics": "Explore d’autres parcours thématiques",
-    "moreTopicsDescription": "De la ludification et de la philosophie au cinéma et au journalisme en anglais. Choisis une séquence selon tes centres d’intérêt ou tes unités."
+    "moreTopicsDescription": "De la ludification et de la philosophie au cinéma et au journalisme en anglais. Choisis une séquence selon tes centres d’intérêt ou tes unités.",
+    "showFewer": "Afficher moins de parcours",
+    "showAll": "Explorer les {{count}} parcours",
+    "algarveTitle": "L'Algarve est aussi ton laboratoire",
+    "algarveDescription": "Des cas réels de communication scientifique et de radio universitaire pour relier les études à la pratique locale. Sources externes, sans partenariat FACODI implicite.",
+    "ciacCase": "Découvrir CIAC INTERFACE",
+    "ruaCase": "Écouter le témoignage sur RUA FM"
   },
   "brand": {
     "tagline": "Un campus numérique ouvert",
@@ -212,7 +218,12 @@
       },
       "tabsLabel": "Mode du carnet",
       "quickPromptsLabel": "Essayer une recherche",
-      "quickPrompts": ["Algèbre linéaire", "Python", "Psychologie", "Statistiques"],
+      "quickPrompts": [
+        "Algèbre linéaire",
+        "Python",
+        "Psychologie",
+        "Statistiques"
+      ],
       "livePulse": "{{resources}} ressources publiées dans {{courses}} cours ouverts",
       "trySuggestTab": "Suggérer un lien ouvert",
       "suggestHeading": "Un cours ou un article ouvert a tout débloqué ? Partage le lien.",
@@ -2713,8 +2724,21 @@
     "catalogLevel": "Niveau éditorial : {{level}}",
     "publicationYear": "Publié en {{year}}",
     "editorialGoal": "Objectif proposé : {{goal}}",
-    "languages": {"pt":"Portugais","pt-PT":"Portugais (Portugal)","pt-BR":"Portugais (Brésil)","en":"Anglais","es":"Espagnol","fr":"Français"},
-    "levels": {"foundation":"Fondamentaux","introductory":"Introduction","intermediate":"Intermédiaire","advanced":"Avancé","advanced_optional":"Avancé (facultatif)"},
+    "languages": {
+      "pt": "Portugais",
+      "pt-PT": "Portugais (Portugal)",
+      "pt-BR": "Portugais (Brésil)",
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français"
+    },
+    "levels": {
+      "foundation": "Fondamentaux",
+      "introductory": "Introduction",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé",
+      "advanced_optional": "Avancé (facultatif)"
+    },
     "sourceHost": "Source : {{host}}",
     "eyebrow": "Étudier cette unité",
     "title": "Commencer ici",
@@ -2751,5 +2775,22 @@
     "lessonNoteCount_one": "{{count}} note",
     "lessonNoteCount_many": "{{count}} notes",
     "lessonNoteCount_other": "{{count}} notes"
+  },
+  "officialFuc": {
+    "kicker": "Fiche officielle UAlg · {{year}}",
+    "title": "Au programme de cette unité",
+    "description": "Thèmes extraits de la fiche officielle 2026/27, accompagnés d'un parcours FACODI indépendant. Les activités suggérées ne constituent pas le programme officiel.",
+    "source": "Consulter la fiche officielle",
+    "topics": "Thèmes du programme",
+    "automatedNotice": "Extraction assistée de la fiche officielle. Consulte toujours la source complète.",
+    "studySteps": "Parcours d'étude FACODI",
+    "openMaterials": "Explorer les vidéos et références",
+    "assessmentNotice": "Les règles d'évaluation et d'utilisation de l'IA relèvent exclusivement de l'Université de l'Algarve et de ses documents officiels. FACODI ne remplace ni l'enseignement ni l'évaluation."
+  },
+  "studyMissions": {
+    "eyebrow": "Mission FACODI · Apprendre en faisant",
+    "title": "Mets cette leçon en pratique",
+    "notice": "Exercice éditorial indépendant de FACODI, sans valeur d'évaluation officielle et sans révision intégrale de la vidéo.",
+    "notebook": "Prendre des notes"
   }
 }
