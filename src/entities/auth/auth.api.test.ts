@@ -1,10 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   signUpWithEmail, resendSignupConfirmation, requestPasswordReset,
-  updateAccount, updateUserPassword, processAuthLink,
+  updateAccount, updateUserPassword, processAuthLink, signInWithGoogle,
 } from './auth.api';
 
-const { signUp, resend, resetPasswordForEmail, getUser, updateUser, exchangeCodeForSession } = vi.hoisted(() => ({
+const { signInWithOAuth, signUp, resend, resetPasswordForEmail, getUser, updateUser, exchangeCodeForSession } = vi.hoisted(() => ({
+  signInWithOAuth: vi.fn(),
   signUp: vi.fn(),
   resend: vi.fn(),
   resetPasswordForEmail: vi.fn(),
@@ -15,12 +16,13 @@ const { signUp, resend, resetPasswordForEmail, getUser, updateUser, exchangeCode
 
 vi.mock('@/shared/api/supabase/supabaseClient', () => ({
   supabase: { auth: {
-    signUp, resend, resetPasswordForEmail, getUser, updateUser, exchangeCodeForSession,
+    signInWithOAuth, signUp, resend, resetPasswordForEmail, getUser, updateUser, exchangeCodeForSession,
   } },
 }));
 
 beforeEach(() => {
   vi.clearAllMocks();
+  signInWithOAuth.mockResolvedValue({ data: { provider: "google", url: "https://accounts.google.com/" }, error: null });
   signUp.mockResolvedValue({ data: { user: null, session: null }, error: null });
   resend.mockResolvedValue({ data: {}, error: null });
   resetPasswordForEmail.mockResolvedValue({ data: {}, error: null });
@@ -105,5 +107,32 @@ describe('FACODI email authentication flows', () => {
   it('updates passwords through Supabase Auth rather than a custom email endpoint', async () => {
     await updateUserPassword('new-secure-password');
     expect(updateUser).toHaveBeenCalledWith({ password: 'new-secure-password' });
+  });
+});
+
+
+describe('Google authentication', () => {
+  it.each(['/suggest', '/sequences/example?v=lesson&notes=open#notes', '//untrusted.example'])('starts OAuth with a safe PKCE callback for %s', async next => {
+    await signInWithGoogle(next);
+    const destination = next.startsWith('//') ? '/dashboard' : next;
+    expect(signInWithOAuth).toHaveBeenCalledWith({
+      provider: 'google',
+      options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(destination)}` },
+    });
+  });
+
+  it('surfaces startup errors to allow retrying with either method', async () => {
+    signInWithOAuth.mockResolvedValueOnce({ data: { url: null }, error: new Error('Provider unavailable') });
+    await expect(signInWithGoogle()).rejects.toThrow('Provider unavailable');
+  });
+
+  it.each([
+    ['?error=access_denied', 'auth.error.oauthCancelled'],
+    ['#error=access_denied', 'auth.error.oauthCancelled'],
+    ['?error=access_denied&error_code=provider_oauth_error&error_description=untrusted', 'auth.error.oauthFailed'],
+    ['?error=access_denied&error_code=otp_expired', 'auth.error.invalidLink'],
+  ])('handles callback failures without exchanging a code or displaying provider text', async (query, key) => {
+    await expect(processAuthLink(new URL(`${window.location.origin}/auth/callback${query}`))).rejects.toThrow(key);
+    expect(exchangeCodeForSession).not.toHaveBeenCalled();
   });
 });

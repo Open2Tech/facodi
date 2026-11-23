@@ -29,6 +29,17 @@ export async function signInWithEmail(email: string, password: string) {
   return supabase.auth.signInWithPassword({ email, password });
 }
 
+/** Uses the shared PKCE client and callback; no Google API scopes are requested. */
+export async function signInWithGoogle(next?: string) {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturnPath(next))}`,
+    },
+  });
+  if (error) throw error;
+}
+
 export async function signOutUser() {
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
@@ -76,7 +87,13 @@ export async function updateUserPassword(password: string) {
 
 export async function processAuthLink(url: URL) {
   const fragment = new URLSearchParams(url.hash.slice(1));
-  if (url.searchParams.has('error') || fragment.has('error')) throw new Error('auth.error.invalidLink');
+  const failure = url.searchParams.has('error') ? url.searchParams : fragment;
+  if (failure.has('error')) {
+    const code = failure.get('error_code');
+    if (code === 'provider_oauth_error') throw new Error('auth.error.oauthFailed');
+    if (failure.get('error') === 'access_denied' && !code) throw new Error('auth.error.oauthCancelled');
+    throw new Error('auth.error.invalidLink');
+  }
   const code = url.searchParams.get('code');
   if (!code) throw new Error('auth.error.invalidLink');
   const { data, error } = await supabase.auth.exchangeCodeForSession(code);

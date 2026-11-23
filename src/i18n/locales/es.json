@@ -398,7 +398,7 @@
     "login": "Entrar",
     "signup": "Crear cuenta",
     "loginDescription": "Continúa explorando con tu cuenta.",
-    "signupDescription": "Crea una cuenta por email. El catálogo sigue abierto a todos.",
+    "signupDescription": "Crea una cuenta con Google o email. El catálogo sigue abierto a todo el mundo.",
     "email": "Email",
     "password": "Contraseña",
     "name": "Nombre",
@@ -429,7 +429,10 @@
       "samePassword": "La nueva contraseña debe ser distinta de la actual.",
       "reauthenticationNeeded": "Por seguridad, confirma tu identidad con un enlace de recuperación antes de cambiar la contraseña.",
       "rateLimited": "Demasiadas solicitudes seguidas. Espera unos minutos y vuelve a intentarlo.",
-      "signupDisabled": "El registro de nuevas cuentas no está disponible temporalmente."
+      "signupDisabled": "El registro de nuevas cuentas no está disponible temporalmente.",
+      "oauthCancelled": "Se ha cancelado el acceso con Google.",
+      "oauthFailed": "No se ha podido completar el acceso con Google. Inténtalo de nuevo.",
+      "oauthUnavailable": "El acceso con Google no está disponible temporalmente. Puedes entrar con email."
     },
     "resetPassword": {
       "error": {
@@ -441,7 +444,11 @@
     "passwordHint": "Al menos 6 caracteres. Una frase larga es más segura y fácil de recordar.",
     "showPasswords": "Mostrar contraseñas",
     "hidePasswords": "Ocultar contraseñas",
-    "legalNotice": "Al crear una cuenta, aceptas los [Términos de uso](/terms) y confirmas que has leído la [Política de privacidad](/privacy)."
+    "legalNotice": "Al crear una cuenta, aceptas los [Términos de uso](/terms) y confirmas que has leído la [Política de privacidad](/privacy).",
+    "continueWithGoogle": "Continuar con Google",
+    "googleRedirecting": "Abriendo Google…",
+    "orWithEmail": "o con email",
+    "oauthRetryDescription": "Puedes volver a intentarlo con Google o continuar con email. Conservaremos tu destino."
   },
   "myCourse": {
     "eyebrow": "Tu curso",
@@ -1916,7 +1923,8 @@
           "id": "accounts",
           "title": "Autenticación y cuenta",
           "body": [
-            "La autenticación usa Supabase Auth con email y contraseña y el flujo PKCE. La sesión se guarda en el almacenamiento local del navegador y se renueva automáticamente hasta que cierras sesión.",
+            "La autenticación utiliza Supabase Auth con email y contraseña o, si lo eliges, con Google, mediante el flujo PKCE. La sesión se guarda en el almacenamiento local del navegador y se renueva automáticamente hasta que cierres sesión.",
+            "Si eliges Google, Supabase recibe el identificador de tu cuenta de Google, el email y datos básicos de perfil, como el nombre y la imagen. FACODI no recibe tu contraseña de Google ni solicita acceso a Gmail, Drive o contactos. Google gestiona el inicio de sesión según su [Política de Privacidad](https://policies.google.com/privacy).",
             "La autenticación utiliza infraestructura compartida con otra aplicación del mismo entorno; los datos educativos de FACODI se rigen por permisos de acceso propios. No utilizamos estos datos para publicidad.",
             "Los roles de editor y administrador se asignan manualmente, nunca de forma automática. El acceso a los datos se controla en la base de datos con reglas de seguridad por fila: las notas de estudio solo son visibles para ti y las contribuciones solo para ti y para el equipo editorial que las revisa."
           ]

@@ -398,7 +398,7 @@
     "login": "Se connecter",
     "signup": "Créer un compte",
     "loginDescription": "Reprenez l'exploration avec votre compte.",
-    "signupDescription": "Créez un compte par email. Le catalogue reste ouvert à tous.",
+    "signupDescription": "Crée un compte avec Google ou par email. Le catalogue reste ouvert à tous.",
     "email": "Email",
     "password": "Mot de passe",
     "name": "Nom",
@@ -429,7 +429,10 @@
       "samePassword": "Le nouveau mot de passe doit être différent de l’actuel.",
       "reauthenticationNeeded": "Par sécurité, confirmez votre identité avec un lien de récupération avant de changer le mot de passe.",
       "rateLimited": "Trop de demandes d’affilée. Patientez quelques minutes et réessayez.",
-      "signupDisabled": "La création de comptes est temporairement indisponible."
+      "signupDisabled": "La création de comptes est temporairement indisponible.",
+      "oauthCancelled": "La connexion avec Google a été annulée.",
+      "oauthFailed": "La connexion avec Google a échoué. Réessaie.",
+      "oauthUnavailable": "La connexion avec Google est temporairement indisponible. Tu peux te connecter par email."
     },
     "resetPassword": {
       "error": {
@@ -441,7 +444,11 @@
     "passwordHint": "Au moins 6 caractères. Une longue phrase est plus sûre et plus facile à retenir.",
     "showPasswords": "Afficher les mots de passe",
     "hidePasswords": "Masquer les mots de passe",
-    "legalNotice": "En créant un compte, vous acceptez les [Conditions d’utilisation](/terms) et confirmez avoir lu la [Politique de confidentialité](/privacy)."
+    "legalNotice": "En créant un compte, vous acceptez les [Conditions d’utilisation](/terms) et confirmez avoir lu la [Politique de confidentialité](/privacy).",
+    "continueWithGoogle": "Continuer avec Google",
+    "googleRedirecting": "Ouverture de Google…",
+    "orWithEmail": "ou par email",
+    "oauthRetryDescription": "Tu peux réessayer avec Google ou continuer par email. Nous conserverons ta destination."
   },
   "myCourse": {
     "eyebrow": "Ton cursus",
@@ -1916,7 +1923,8 @@
           "id": "accounts",
           "title": "Authentification et compte",
           "body": [
-            "L’authentification utilise Supabase Auth avec e-mail et mot de passe et le flux PKCE. La session est conservée dans le stockage local du navigateur et renouvelée automatiquement jusqu’à votre déconnexion.",
+            "L’authentification utilise Supabase Auth avec email et mot de passe ou, si tu le choisis, Google, via le flux PKCE. La session est conservée dans le stockage local du navigateur et renouvelée automatiquement jusqu’à ta déconnexion.",
+            "Si tu choisis Google, Supabase reçoit l’identifiant de ton compte Google, ton email et des informations de profil de base, comme ton nom et ta photo. FACODI ne reçoit pas ton mot de passe Google et ne demande pas l’accès à Gmail, Drive ou aux contacts. Google gère la connexion selon sa [Politique de confidentialité](https://policies.google.com/privacy).",
             "L’authentification utilise une infrastructure partagée avec une autre application du même écosystème ; les données éducatives de FACODI restent soumises à des autorisations distinctes. Ces données ne sont pas utilisées à des fins publicitaires.",
             "Les rôles d’éditeur et d’administrateur sont attribués manuellement, jamais automatiquement. L’accès aux données est contrôlé dans la base de données par des règles de sécurité au niveau des lignes : les notes d’étude ne sont visibles que par vous et les contributions seulement par vous et par l’équipe éditoriale qui les examine."
           ]
