@@ -129,7 +129,9 @@
     "sourceNote": "Séquences FACODI composées de vidéos externes. Ce ne sont pas des cours officiels de l'UAlg.",
     "allMaterials": "Explorer tous les supports",
     "moreTopics": "Explore d’autres parcours thématiques",
-    "moreTopicsDescription": "De la ludification et de la philosophie au cinéma et au journalisme en anglais. Choisis une séquence selon tes centres d’intérêt ou tes unités."
+    "moreTopicsDescription": "De la ludification et de la philosophie au cinéma et au journalisme en anglais. Choisis une séquence selon tes centres d’intérêt ou tes unités.",
+    "showFewer": "Afficher moins de parcours",
+    "showAll": "Explorer les {{count}} parcours"
   },
   "brand": {
     "tagline": "Un campus numérique ouvert",
