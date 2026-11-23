@@ -86,6 +86,22 @@ export function CommunicationMediaLab({ unitCodes }: { unitCodes: readonly strin
         </span>
       </Link>)}
     </div>
+    <div className="grid gap-4 border-t border-input bg-brand-mint/10 p-5 sm:p-7 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+      <div>
+        <h3 className="text-lg font-semibold">{t('lccMediaLab.algarveTitle')}</h3>
+        <p className="mt-1 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t('lccMediaLab.algarveDescription')}</p>
+      </div>
+      <div className="flex flex-wrap gap-x-5 gap-y-2">
+        <a href="https://www.ualg.pt/ciac-inaugura-laboratorio-de-traducao-digital-na-ualg" target="_blank" rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline underline-offset-4">
+          {t('lccMediaLab.ciacCase')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a href="https://www.ivoox.com/en/ciencias-da-comunicacao-licenciatura-confissoes-um-audios-mp3_rf_178818063_1.html" target="_blank" rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline underline-offset-4">
+          {t('lccMediaLab.ruaCase')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
     {!!extra.length && <div className="border-t border-input p-5 sm:p-7">
       <h3 className="text-lg font-semibold tracking-[-0.02em]">{t('lccMediaLab.moreTopics')}</h3>
       <p className="mt-1 text-sm text-muted-foreground">{t('lccMediaLab.moreTopicsDescription')}</p>
