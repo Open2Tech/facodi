@@ -24,7 +24,7 @@ const LEGACY_PUBLIC_REDIRECTS: Readonly<Record<string, string>> = {
 };
 
 export function legacyPublicRedirect(pathname: string): string | null {
-  return LEGACY_PUBLIC_REDIRECTS[pathname.length > 1 ? pathname.replace(/\\/+$/, '') : pathname] ?? null;
+  return LEGACY_PUBLIC_REDIRECTS[pathname.length > 1 ? pathname.replace(/[/]+$/, '') : pathname] ?? null;
 }
 
 const STATIC_ROUTES = new Set([
