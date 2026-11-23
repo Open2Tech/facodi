@@ -129,7 +129,9 @@
     "sourceNote": "Sequências FACODI com recursos de autores externos. Os vídeos não são aulas oficiais da UAlg.",
     "allMaterials": "Ver todos os materiais e percursos",
     "moreTopics": "Explora mais percursos temáticos",
-    "moreTopicsDescription": "Da gamificação à filosofia, do cinema ao jornalismo em inglês. Escolhe uma sequência por interesse ou UC e avança com exercícios de aplicação."
+    "moreTopicsDescription": "Da gamificação à filosofia, do cinema ao jornalismo em inglês. Escolhe uma sequência por interesse ou UC e avança com exercícios de aplicação.",
+    "showFewer": "Mostrar menos percursos",
+    "showAll": "Explorar os {{count}} percursos"
   },
   "brand": {
     "tagline": "Um campus digital aberto",
