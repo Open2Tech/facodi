@@ -21,11 +21,11 @@ export function readOfficialFuc(metadata: unknown): OfficialFuc | null {
     const target = new URL(url);
     if (target.protocol !== 'https:' || target.hostname !== 'academico.ualg.pt'
       || target.pathname !== '/netpa/doc' || target.searchParams.get('anoLectivo') !== '202627'
-      || !/^\\d{8}$/.test(target.searchParams.get('codeDiscip') ?? '')) return null;
+      || !/^\d{8}$/.test(target.searchParams.get('codeDiscip') ?? '')) return null;
   } catch { return null; }
   const topics = (Array.isArray(m.official_fuc_program_topics) ? m.official_fuc_program_topics : [])
     .filter((item): item is string => typeof item === 'string')
-    .map(item => item.replace(/^\\s*[.\-•]+\\s*/, '').trim())
+    .map(item => item.replace(/^\s*[.\-•]+\s*/, '').trim())
     .filter(Boolean).slice(0, 8);
   const guide = asRecord(m.facodi_editorial_study_guide);
   const steps = (Array.isArray(guide?.steps) ? guide.steps : []).flatMap(item => {
