@@ -131,7 +131,11 @@
     "moreTopics": "Explora más itinerarios temáticos",
     "moreTopicsDescription": "De la gamificación y la filosofía al cine y el periodismo en inglés. Elige una secuencia según tus intereses o asignaturas.",
     "showFewer": "Mostrar menos itinerarios",
-    "showAll": "Explorar los {{count}} itinerarios"
+    "showAll": "Explorar los {{count}} itinerarios",
+    "algarveTitle": "El Algarve también es tu laboratorio",
+    "algarveDescription": "Proyectos reales de comunicación científica y radio universitaria que conectan tus estudios con la práctica local. Fuentes externas, sin relación de colaboración implícita.",
+    "ciacCase": "Descubrir CIAC INTERFACE",
+    "ruaCase": "Escuchar la historia en RUA FM"
   },
   "brand": {
     "tagline": "Un campus digital abierto",
