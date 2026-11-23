@@ -5,7 +5,7 @@ import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence
 
 const PROGRESS_FIELDS = 'video_id, completed_at, last_position_seconds, updated_at';
 // Keep metadata JSON path selection dynamic to avoid recursive Supabase TS query type expansion.
-const SEQUENCE_ACTIVITY_FIELDS: string = 'child_object_id, activity:metadata->>editorial_activity, review_status:metadata->>review_status';
+const SEQUENCE_ACTIVITY_FIELDS = 'child_object_id, metadata';
 const MAX_POSITION = 10_000_000;
 
 type ProgressRow = { video_id: string; completed_at: string | null; last_position_seconds: number; updated_at: string };
@@ -46,8 +46,11 @@ export async function getSequence(slug: string, signal?: AbortSignal): Promise<S
     // Activities are optional; if the independent relation query is unavailable,
     // the learner can still watch videos and track their progress normally.
     for (const relation of promptsReply.data ?? []) {
-      if (relation.review_status === 'approved' && typeof relation.activity === 'string' && relation.activity.trim()) {
-        activities.set(relation.child_object_id, relation.activity.trim());
+      const metadata = relation.metadata;
+      if (metadata && typeof metadata === 'object' && !Array.isArray(metadata)
+        && metadata.review_status === 'approved' && typeof metadata.editorial_activity === 'string'
+        && metadata.editorial_activity.trim()) {
+        activities.set(relation.child_object_id, metadata.editorial_activity.trim());
       }
     }
   }
