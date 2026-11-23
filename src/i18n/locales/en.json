@@ -131,7 +131,11 @@
     "moreTopics": "Explore more themed study paths",
     "moreTopicsDescription": "From gamification and philosophy to cinema and journalism in English. Choose a sequence for your interests or curricular units.",
     "showFewer": "Show fewer learning paths",
-    "showAll": "Explore all {{count}} study paths"
+    "showAll": "Explore all {{count}} study paths",
+    "algarveTitle": "The Algarve is part of your learning lab",
+    "algarveDescription": "Real examples of science communication and university radio to connect your studies to local practice. External sources, not FACODI partnerships.",
+    "ciacCase": "Discover CIAC INTERFACE",
+    "ruaCase": "Hear the RUA FM story"
   },
   "brand": {
     "tagline": "An open digital campus",
