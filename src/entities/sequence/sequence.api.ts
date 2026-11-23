@@ -28,17 +28,31 @@ export async function getSequence(slug: string, signal?: AbortSignal): Promise<S
   if (!row) return null;
   const items = parseSequenceItems(row.items);
   const slugs = new Map<string, string>();
+  const activities = new Map<string, string>();
   if (items.length) {
-    // The RPC returns object ids; resolve the catalogue pages the learner may open (RLS hides the rest).
-    const { data: videos, error: slugError } = await supabase.from('learning_objects').select('id, slug')
-      .in('id', items.map(item => item.videoId)).abortSignal(signal);
-    if (slugError) throw new Error(getSupabaseErrorMessage(slugError));
-    for (const video of videos) slugs.set(video.id, video.slug);
+    // Read only published video slugs and approved editorial prompts under the caller's RLS.
+    // This extends the existing sequence endpoint without adding privileged RPCs or tables.
+    const [slugsReply, promptsReply] = await Promise.all([
+      supabase.from('learning_objects').select('id, slug')
+        .in('id', items.map(item => item.videoId)).abortSignal(signal),
+      supabase.from('learning_object_relations')
+        .select('child_object_id, activity:metadata->>editorial_activity, review_status:metadata->>review_status')
+        .eq('parent_object_id', row.playlist_id).eq('relation_type', 'contains').abortSignal(signal),
+    ]);
+    if (slugsReply.error) throw new Error(getSupabaseErrorMessage(slugsReply.error));
+    for (const video of slugsReply.data ?? []) slugs.set(video.id, video.slug);
+    // Activities are optional; if the independent relation query is unavailable,
+    // the learner can still watch videos and track their progress normally.
+    for (const relation of promptsReply.data ?? []) {
+      if (relation.review_status === 'approved' && typeof relation.activity === 'string' && relation.activity.trim()) {
+        activities.set(relation.child_object_id, relation.activity.trim());
+      }
+    }
   }
   return {
     id: row.playlist_id, slug: row.playlist_slug, title: row.playlist_title, description: row.playlist_description ?? '',
     language: row.language || null, verifiedCount: row.verified_metadata_count,
-    items: items.map(item => ({ ...item, slug: slugs.get(item.videoId) ?? null })),
+    items: items.map(item => ({ ...item, slug: slugs.get(item.videoId) ?? null, activity: activities.get(item.videoId) ?? null })),
     units: parseSequenceUnits(row.curricular_units),
   };
 }
