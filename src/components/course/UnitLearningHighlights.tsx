@@ -1,5 +1,5 @@
 import { ArrowRight, BookOpen, Layers3, ListVideo, PlayCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { UnitHighlight } from '@/entities/course/unitHighlights';
 import { courseMaterialsPath } from '@/entities/course/course.paths';
@@ -26,6 +26,7 @@ export function UnitLearningHighlights({
   hasError?: boolean;
 }) {
   const { t } = useTranslation();
+  const { state } = useLocation();
 
   return <section aria-labelledby="unit-learning-highlights" className="mb-10 border border-foreground border-t-4 border-t-primary bg-card p-4 sm:p-6">
     <div className="flex flex-wrap items-start justify-between gap-4">
@@ -34,7 +35,7 @@ export function UnitLearningHighlights({
         <h2 id="unit-learning-highlights" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{t('unitHighlights.title')}</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t('unitHighlights.description')}</p>
       </div>
-      <Link to={courseMaterialsPath(courseSlug, unitSlug)}
+      <Link to={courseMaterialsPath(courseSlug, unitSlug)} state={state}
         className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         {t('unitHighlights.allMaterials')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
       </Link>
@@ -44,7 +45,7 @@ export function UnitLearningHighlights({
       {highlights.map(item => {
         const { icon: Icon, line } = STYLES[item.kind];
         return <li key={item.kind} className="min-w-0">
-          <Link to={item.href} className={`group flex h-full min-h-36 flex-col gap-3 border border-input border-t-4 bg-background p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${line}`}>
+          <Link to={item.href} state={state} className={`group flex h-full min-h-36 flex-col gap-3 border border-input border-t-4 bg-background p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${line}`}>
             <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
               {t(`unitHighlights.kinds.${item.kind}`)}

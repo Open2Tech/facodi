@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NotebookPen } from 'lucide-react';
 import { YouTubePlayer, type YouTubePlayerHandle } from '@/components/resource/YouTubePlayer';
@@ -8,9 +7,10 @@ import { NoteTimeline } from '@/components/notes/NoteTimeline';
 import { useResourceNotes } from '@/features/notes/useNotebook';
 import { formatTimestamp, parseStartParam, type NoteResource } from '@/entities/notes/notes';
 import type { VideoInfo } from '@/entities/course/video';
+import { useContextSearchParams } from '@/shared/hooks/useContextSearchParams';
 
 /** Mount with the resource id as its key so playback and composer state never cross lessons. */
-export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, onTime }: {
+export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, onTime, signInReturn }: {
   resource: NoteResource;
   videoId: string;
   info: VideoInfo;
@@ -18,9 +18,10 @@ export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, o
   autoPlay?: boolean;
   onPlay?: () => void;
   onTime?: (seconds: number) => void;
+  signInReturn?: string;
 }) {
   const { t } = useTranslation();
-  const [params, setParams] = useSearchParams();
+  const [params, setParams] = useContextSearchParams();
   const player = useRef<YouTubePlayerHandle>(null);
   const section = useRef<HTMLDivElement>(null);
   const [time, setTime] = useState<number | null>(null);
@@ -28,12 +29,11 @@ export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, o
   const open = params.get('notes') === 'open';
 
   function setOpen(value: boolean) {
-    setParams(previous => {
-      const next = new URLSearchParams(previous);
+    setParams(next => {
       if (value) next.set('notes', 'open');
       else next.delete('notes');
       return next;
-    }, { replace: true });
+    });
   }
 
   function seek(seconds: number) {
@@ -63,6 +63,6 @@ export function StudyVideo({ resource, videoId, info, start, autoPlay, onPlay, o
       </div>
       {info.durationSeconds && <NoteTimeline notes={notes} duration={info.durationSeconds} playerTime={time} onSeek={seek} />}
     </div>
-    <StudyNotebook resource={resource} timed playerTime={time} onSeek={seek} open={open} onOpenChange={setOpen} />
+    <StudyNotebook resource={resource} timed playerTime={time} onSeek={seek} open={open} onOpenChange={setOpen} signInReturn={signInReturn} />
   </>;
 }

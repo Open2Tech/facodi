@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight, BookOpenCheck, Clapperboard, Film, Mic2, PlayCircle, RadioTower } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { useSequences } from '@/features/sequences/useSequences';
 
 const featured = [
@@ -106,9 +107,9 @@ export function CommunicationMediaLab() {
     </div>}
     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-input px-5 py-4">
       <p className="text-xs text-muted-foreground">{t('lccMediaLab.sourceNote')}</p>
-      <a href="#course-materials" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">
+      <SectionLink hash="#course-materials" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">
         {t('lccMediaLab.allMaterials')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
-      </a>
+      </SectionLink>
     </div>
   </section>;
 }

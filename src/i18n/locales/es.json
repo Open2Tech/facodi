@@ -1508,6 +1508,7 @@
   },
   "sequences": {
     "title": "Secuencias de estudio",
+    "backToSequence": "Volver a la secuencia",
     "description": "Rutas de clases abiertas en YouTube ordenadas por FACODI para estudiar un tema de principio a fin sin perderte.",
     "search": "Buscar secuencias",
     "searchPlaceholder": "Título, tema o código de asignatura",

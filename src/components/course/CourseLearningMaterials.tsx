@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, ArrowUpRight, BookOpen, Layers3, ListVideo, PlayCircle } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { SearchInput } from '@/components/catalog/SearchInput';
 import { useCourseLearningAssets } from '@/features/courses/queries/useCourseLearningAssets';
 import { useSequences } from '@/features/sequences/useSequences';
 import { SequenceList } from '@/components/sequence/SequenceList';
@@ -34,6 +35,7 @@ export function CourseLearningMaterials({
   const assets = useCourseLearningAssets(courseObjectId, units);
   const sequences = useSequences(null, units.some(unit => !!unit.code));
   const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({});
+  const [searchReset, setSearchReset] = useState(0);
   const query = new URLSearchParams(location.search);
   const searchTerm = query.get('materialsSearch') ?? '';
   const requestedSlug = query.get('materialsUnit');
@@ -50,7 +52,7 @@ export function CourseLearningMaterials({
       pathname: location.pathname,
       search: next.toString() ? `?${next}` : '',
       hash: '#course-materials',
-    }, { replace: true, preventScrollReset: true });
+    }, { replace: true, preventScrollReset: true, state: location.state });
     setVisibleCounts({});
   }
   function selectUnit(id: string) {
@@ -144,7 +146,7 @@ export function CourseLearningMaterials({
     {hasContent && <div className="mt-6 grid gap-4 border border-foreground border-t-4 border-t-brand-mint bg-card p-5 sm:grid-cols-2" role="search" aria-label={t('courseMaterials.filterTitle')}>
       <div className="min-w-0">
         <label htmlFor="course-material-search" className="mb-2 block text-sm font-semibold">{t('courseMaterials.searchLabel')}</label>
-        <input id="course-material-search" type="search" value={searchTerm} onChange={event => updateMaterialFilters(selectedUnit?.slug ?? null, event.target.value)}
+        <SearchInput key={searchReset} id="course-material-search" value={searchTerm} onSearch={value => updateMaterialFilters(selectedUnit?.slug ?? null, value)}
           placeholder={t('courseMaterials.searchPlaceholder')}
           className="min-h-11 w-full min-w-0 border border-input bg-background px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
       </div>
@@ -159,8 +161,8 @@ export function CourseLearningMaterials({
       </div>
       {hasFilters && <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm sm:col-span-2">
         <button type="button" className="min-h-11 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={() => updateMaterialFilters(null, '')}>{t('courseMaterials.clearFilters')}</button>
-        {selectedUnit && <Link to={unitPath(courseSlug, selectedUnit.slug)}
+          onClick={() => { setSearchReset(previous => previous + 1); updateMaterialFilters(null, ''); }}>{t('courseMaterials.clearFilters')}</button>
+        {selectedUnit && <Link to={unitPath(courseSlug, selectedUnit.slug)} state={location.state}
           className="inline-flex min-h-11 items-center gap-1.5 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           {t('courseMaterials.openUnit')}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </Link>}

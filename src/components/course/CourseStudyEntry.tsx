@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, Layers3, PlayCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { SectionLink } from '@/components/layout/SectionLink';
 import { unitPath } from '@/entities/course/course.paths';
 import { suggestStudyUnits, type StudyEntryCoverage, type StudyEntryUnit } from '@/entities/course/courseStudyEntry';
 
@@ -22,6 +23,7 @@ export function CourseStudyEntry({
   hasError?: boolean;
 }) {
   const { t } = useTranslation();
+  const { state } = useLocation();
   if (!units.length) return null;
   const suggestions = suggestStudyUnits(units, coverage);
   const hasResources = suggestions.some(item => item.videoCount > 0 || item.readingCount > 0 || item.playlistCount > 0 || item.guideCount > 0);
@@ -42,15 +44,15 @@ export function CourseStudyEntry({
         </p>
       </div>
       <div className="flex shrink-0 flex-wrap gap-2">
-        <a href="#course-materials" className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-brand-cyan px-4 py-2 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-cyan/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <SectionLink hash="#course-materials" className="inline-flex min-h-11 items-center gap-2 border border-foreground bg-brand-cyan px-4 py-2 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-cyan/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
           {t('courseStart.materials')}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </a>
-        <a href="#units" className="inline-flex min-h-11 items-center gap-2 border border-foreground px-4 py-2 text-sm font-semibold transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        </SectionLink>
+        <SectionLink hash="#units" className="inline-flex min-h-11 items-center gap-2 border border-foreground px-4 py-2 text-sm font-semibold transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <Layers3 className="h-4 w-4" aria-hidden="true" />
           {t('courseStart.plan')}
-        </a>
+        </SectionLink>
       </div>
     </div>
 
@@ -65,7 +67,7 @@ export function CourseStudyEntry({
 
     <ol className="mt-5 grid gap-3 md:grid-cols-3">
       {suggestions.map(({ unit, videoCount, readingCount, playlistCount, guideCount }, index) => <li key={unit.id} className="min-w-0">
-        <Link to={unitPath(courseSlug, unit.slug)}
+        <Link to={unitPath(courseSlug, unit.slug)} state={state}
           className={`group flex h-full min-h-40 flex-col gap-3 border border-input border-t-4 bg-background p-4 transition-colors hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${TONES[index % TONES.length]}`}>
           <span className="flex items-center justify-between gap-3">
             <span className="font-mono text-xs font-semibold uppercase tracking-wide text-muted-foreground">

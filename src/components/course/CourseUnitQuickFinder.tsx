@@ -1,6 +1,6 @@
 import { useId, useRef, useState } from 'react';
 import { ArrowRight, BookOpen, Search, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
 import { findCourseUnits, type StudyEntryCoverage, type StudyEntryUnit } from '@/entities/course/courseStudyEntry';
@@ -20,6 +20,7 @@ export function CourseUnitQuickFinder({
   coverageError?: boolean;
 }) {
   const { t } = useTranslation();
+  const { state } = useLocation();
   const searchId = useId();
   const searchInput = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState('');
@@ -78,7 +79,7 @@ export function CourseUnitQuickFinder({
       {!!results.length && <ul className="mt-3 divide-y divide-input border-y border-input">
         {results.map(({ unit, videoCount, readingCount, playlistCount, guideCount }) => <li key={unit.id} className="flex flex-col justify-between gap-2 py-3 sm:flex-row sm:items-center sm:gap-5">
           <div className="min-w-0">
-            <Link to={unitPath(courseSlug, unit.slug)}
+            <Link to={unitPath(courseSlug, unit.slug)} state={state}
               className="font-semibold underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{unit.title}</Link>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               {[unit.code, unit.year != null ? t('catalog.year', { value: unit.year }) : null,
@@ -93,7 +94,7 @@ export function CourseUnitQuickFinder({
               </>}
             </p>
           </div>
-          <Link to={courseMaterialsPath(courseSlug, unit.slug)}
+          <Link to={courseMaterialsPath(courseSlug, unit.slug)} state={state}
             className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:self-auto">
             <BookOpen className="h-4 w-4" aria-hidden="true" />
             {t('courseUnitFinder.viewMaterials')}

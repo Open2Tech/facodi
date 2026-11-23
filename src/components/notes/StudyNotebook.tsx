@@ -21,13 +21,14 @@ const TOAST_POSITION = 'bottom-left';
  * Side drawer with the learner's private notes for one resource. It is non-modal so the video
  * keeps playing and stays controllable while the learner writes.
  */
-export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpenChange }: {
+export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpenChange, signInReturn }: {
   resource: NoteResource;
   timed: boolean;
   playerTime: number | null;
   onSeek: ((seconds: number) => void) | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  signInReturn?: string;
 }) {
   const { t } = useTranslation();
   const location = useLocation();
@@ -132,7 +133,7 @@ export function StudyNotebook({ resource, timed, playerTime, onSeek, open, onOpe
       <footer className="space-y-3 border-t border-foreground bg-muted/40 px-5 py-4">
         <NotebookStorage isGuest={notebook.isGuest} />
         <GuestImport />
-        {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(`${location.pathname}${location.search}${location.hash}`)}`} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
+        {notebook.isGuest && <p className="text-xs">{t('notes.guestNotice')} <Link to={`/login?next=${encodeURIComponent(signInReturn ?? `${location.pathname}${location.search}${location.hash}`)}`} state={location.state} className="font-semibold underline underline-offset-4">{t('notes.signIn')}</Link></p>}
         <div className="grid gap-2 sm:grid-cols-2">
           <Button type="button" variant="outline" className="w-full" disabled={!notes.length} onClick={exportMarkdown}><Download />{t('notes.export')}</Button>
           <ExportNotesPdfButton className="w-full" notes={notes} resource={resource} />
