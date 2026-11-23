@@ -27,6 +27,8 @@ export interface SequenceItem {
   youtubeUrl: string | null;
   thumbnail: string | null;
   metadataVerified: boolean;
+  /** Optional FACODI editorial exercise associated with this lesson. */
+  activity: string | null;
 }
 
 export interface SequenceUnit {
@@ -90,7 +92,7 @@ export function filterSequences(sequences: SequenceSummary[], search: string, la
   });
 }
 
-export function parseSequenceItems(value: Json): Omit<SequenceItem, 'slug'>[] {
+export function parseSequenceItems(value: Json): Omit<SequenceItem, 'slug' | 'activity'>[] {
   if (!Array.isArray(value)) return [];
   return value.flatMap(entry => {
     const item = record(entry);
