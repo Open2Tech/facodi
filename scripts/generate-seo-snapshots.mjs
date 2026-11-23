@@ -291,6 +291,24 @@ if (isBuildPlaceholder) {
   console.log(`FACODI SEO snapshots: ${courses.length} courses, ${units.length} units, ${resources.length} learning objects, ${sequences.length} sequences.`);
 }
 
+// Fail the production build if Open Graph metadata points at a missing/corrupt
+// generated image. A successful HTML snapshot alone does not guarantee social cards.
+for (const page of pages.values()) {
+  const image = page.image?.url;
+  if (!image?.startsWith('https://facodi.com/og/lcc-')) continue;
+  const imageUrl = new URL(image);
+  if (imageUrl.pathname.includes('..') || !/^\\/og\\/lcc-[a-z0-9-]+\\.png$/.test(imageUrl.pathname))
+    throw new Error(`Unexpected FACODI social image path: ${image}`);
+  const absoluteFile = path.join(outputDirectory, imageUrl.pathname.slice(1));
+  const png = await readFile(absoluteFile).catch(() => {
+    throw new Error(`Missing generated social cover for ${page.path}: ${imageUrl.pathname}`);
+  });
+  const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  if (!png.subarray(0, 8).equals(pngSignature) || png.length < 33 ||
+      png.readUInt32BE(16) !== 1200 || png.readUInt32BE(20) !== 630)
+    throw new Error(`Invalid 1200x630 PNG social cover for ${page.path}: ${imageUrl.pathname}`);
+}
+
 const shell = await readFile(path.join(outputDirectory, 'index.html'), 'utf8');
 for (const page of pages.values()) {
   if (page.path !== '/') await writeSnapshot(shell, page, mergeSections(sections.get(page.path)));
