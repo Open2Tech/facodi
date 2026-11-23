@@ -212,7 +212,12 @@
       },
       "tabsLabel": "Notebook mode",
       "quickPromptsLabel": "Try searching",
-      "quickPrompts": ["Linear algebra", "Python", "Psychology", "Statistics"],
+      "quickPrompts": [
+        "Linear algebra",
+        "Python",
+        "Psychology",
+        "Statistics"
+      ],
       "livePulse": "{{resources}} published resources across {{courses}} open courses",
       "trySuggestTab": "Suggest an open link",
       "suggestHeading": "Know an open lesson, book or paper?",
@@ -2713,8 +2718,21 @@
     "catalogLevel": "Editorial level: {{level}}",
     "publicationYear": "Published in {{year}}",
     "editorialGoal": "Suggested learning goal: {{goal}}",
-    "languages": {"pt":"Portuguese","pt-PT":"Portuguese (Portugal)","pt-BR":"Portuguese (Brazil)","en":"English","es":"Spanish","fr":"French"},
-    "levels": {"foundation":"Foundations","introductory":"Introductory","intermediate":"Intermediate","advanced":"Advanced","advanced_optional":"Advanced (optional)"},
+    "languages": {
+      "pt": "Portuguese",
+      "pt-PT": "Portuguese (Portugal)",
+      "pt-BR": "Portuguese (Brazil)",
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French"
+    },
+    "levels": {
+      "foundation": "Foundations",
+      "introductory": "Introductory",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "advanced_optional": "Advanced (optional)"
+    },
     "sourceHost": "Source: {{host}}",
     "eyebrow": "Study this unit",
     "title": "Start here",
@@ -2751,5 +2769,22 @@
     "lessonNoteCount_one": "{{count}} note",
     "lessonNoteCount_many": "{{count}} notes",
     "lessonNoteCount_other": "{{count}} notes"
+  },
+  "officialFuc": {
+    "kicker": "Official UAlg syllabus · {{year}}",
+    "title": "What this course unit covers",
+    "description": "Topics extracted from the official 2026/27 unit syllabus, with an independent FACODI study guide. The learning activities below are not an official university syllabus.",
+    "source": "Read official syllabus",
+    "topics": "Official programme topics",
+    "automatedNotice": "Assisted extraction from the official document. Always check the complete source.",
+    "studySteps": "FACODI study route",
+    "openMaterials": "Explore unit videos and references",
+    "assessmentNotice": "Assessment requirements and AI-use policies are determined exclusively by the University of Algarve and its official unit documents. FACODI does not replace teaching or assessment."
+  },
+  "studyMissions": {
+    "eyebrow": "FACODI mission · Learn by doing",
+    "title": "Apply what you've watched",
+    "notice": "Independent FACODI learning exercise, not official assessment or evidence of a full video review.",
+    "notebook": "Write it in your notebook"
   }
 }
