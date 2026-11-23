@@ -297,7 +297,7 @@ for (const page of pages.values()) {
   const image = page.image?.url;
   if (!image?.startsWith('https://facodi.com/og/lcc-')) continue;
   const imageUrl = new URL(image);
-  if (imageUrl.pathname.includes('..') || !/^\\/og\\/lcc-[a-z0-9-]+\\.png$/.test(imageUrl.pathname))
+  if (imageUrl.pathname.includes('..') || !imageUrl.pathname.startsWith('/og/lcc-') || !imageUrl.pathname.endsWith('.png'))
     throw new Error(`Unexpected FACODI social image path: ${image}`);
   const absoluteFile = path.join(outputDirectory, imageUrl.pathname.slice(1));
   const png = await readFile(absoluteFile).catch(() => {
