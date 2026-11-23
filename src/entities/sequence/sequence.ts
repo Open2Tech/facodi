@@ -28,7 +28,7 @@ export interface SequenceItem {
   thumbnail: string | null;
   metadataVerified: boolean;
   /** Optional FACODI editorial exercise associated with this lesson. */
-  activity: string | null;
+  activity?: string | null;
 }
 
 export interface SequenceUnit {
