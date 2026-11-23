@@ -4,6 +4,8 @@ import type { Completion } from './milestones';
 import { parseSequenceItems, parseSequenceUnits, youtubeThumbnail, type Sequence, type SequenceProgressSummary, type SequenceSummary, type VideoProgress, type VideoSequence } from './sequence';
 
 const PROGRESS_FIELDS = 'video_id, completed_at, last_position_seconds, updated_at';
+// Keep metadata JSON path selection dynamic to avoid recursive Supabase TS query type expansion.
+const SEQUENCE_ACTIVITY_FIELDS: string = 'child_object_id, activity:metadata->>editorial_activity, review_status:metadata->>review_status';
 const MAX_POSITION = 10_000_000;
 
 type ProgressRow = { video_id: string; completed_at: string | null; last_position_seconds: number; updated_at: string };
@@ -36,7 +38,7 @@ export async function getSequence(slug: string, signal?: AbortSignal): Promise<S
       supabase.from('learning_objects').select('id, slug')
         .in('id', items.map(item => item.videoId)).abortSignal(signal),
       supabase.from('learning_object_relations')
-        .select('child_object_id, activity:metadata->>editorial_activity, review_status:metadata->>review_status')
+        .select(SEQUENCE_ACTIVITY_FIELDS)
         .eq('parent_object_id', row.playlist_id).eq('relation_type', 'contains').abortSignal(signal),
     ]);
     if (slugsReply.error) throw new Error(getSupabaseErrorMessage(slugsReply.error));
