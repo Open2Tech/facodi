@@ -171,7 +171,7 @@ export default function UnitDetails() {
     <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
       href={studyPath || composedPath || composedPending ? '#unit-study-path' : '#unit-resources'} />
     <LearningContext focus="unit" />
-    {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} />}
+    {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} unitCode={unit.code} />}
     <UnitLearningHighlights courseSlug={course.slug} unitSlug={unit.slug} highlights={highlights} loading={highlightsLoading} hasError={highlightsError} />
     <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="min-w-0 space-y-12">
