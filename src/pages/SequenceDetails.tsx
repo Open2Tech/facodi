@@ -187,6 +187,15 @@ export default function SequenceDetails() {
             {selected.channel && <span>{selected.channel}</span>}
             {resumeAt != null && <span>{t('sequences.resumeAt', { time: formatDuration(resumeAt) })}</span>}
           </p>
+          {selected.activity && <section className="mt-6 border border-foreground border-t-4 border-t-brand-cyan bg-card p-5 sm:p-6" aria-labelledby="sequence-mission-heading">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t('studyMissions.eyebrow')}</p>
+            <h4 id="sequence-mission-heading" className="mt-2 text-lg font-semibold">{t('studyMissions.title')}</h4>
+            <p className="mt-2 text-sm leading-relaxed">{selected.activity}</p>
+            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{t('studyMissions.notice')}</p>
+            <a href="#sequence-notes" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">
+              {t('studyMissions.notebook')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </section>}
           <div className="mt-5 flex flex-wrap items-center gap-3">
             {progress.signedIn && progressReady && !progress.isError && (() => {
               const complete = !!selectedRow?.completedAt;
@@ -235,7 +244,7 @@ export default function SequenceDetails() {
       </div>
     </section> : <PageState level="h2" title={t('sequences.noLessons')} description={t('sequences.noLessonsText')} />}
 
-    <div className="mt-4"><StudyNotesReview kind="sequence" resources={noteResources} /></div>
+    <div id="sequence-notes" className="mt-4 scroll-mt-28"><StudyNotesReview kind="sequence" resources={noteResources} /></div>
 
     {!!readings.data?.length && <section aria-labelledby="sequence-readings" className="mt-10 border-t border-foreground pt-8">
       <h2 id="sequence-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
