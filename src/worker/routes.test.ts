@@ -1,6 +1,6 @@
 import appSource from '../App.tsx?raw';
 import { describe, expect, it } from 'vitest';
-import { isAppRoute, isPrivateRoute } from './routes';
+import { isAppRoute, isPrivateRoute, legacyPublicRedirect } from './routes';
 import worker from './index';
 
 describe('isAppRoute', () => {
@@ -27,6 +27,19 @@ describe('isAppRoute', () => {
   });
 });
 
+describe('legacyPublicRedirect', () => {
+  it('maps only documented retired public routes and never targets a private page', () => {
+    expect(legacyPublicRedirect('/slides')).toBe('/sequences');
+    expect(legacyPublicRedirect('/pt/slides/')).toBe('/sequences');
+    expect(legacyPublicRedirect('/sobre')).toBe('/about');
+    expect(legacyPublicRedirect('/infrastructure')).toBe('/about');
+    expect(legacyPublicRedirect('/academic-model')).toBe('/how-it-works');
+    expect(legacyPublicRedirect('/courses/ciencias-da-comunicacao')).toBeNull();
+    expect(legacyPublicRedirect('/dashboard')).toBeNull();
+    expect(legacyPublicRedirect('/pagina-que-nao-existe')).toBeNull();
+  });
+});
+
 describe('worker', () => {
   const files: Record<string, string> = { '/': '<div id="root"></div>', '/__home': '<main>FACODI home</main>' };
   const env = { ASSETS: { fetch: async (request: Request) => {
@@ -34,6 +47,18 @@ describe('worker', () => {
     return body ? new Response(body, { headers: { 'Content-Type': 'text/html' } }) : new Response('missing', { status: 404 });
   } } };
   const get = (path: string, host = 'https://facodi.com') => worker.fetch(new Request(host + path), env);
+
+  it('sends permanent redirects for retired URLs and preserves query parameters', async () => {
+    const response = await get('/slides?course=lcc');
+    expect(response.status).toBe(301);
+    expect(response.headers.get('Location')).toBe('https://facodi.com/sequences?course=lcc');
+    expect(response.headers.get('X-Frame-Options')).toBe('DENY');
+    const old = await get('/pt/slides/');
+    expect(old.headers.get('Location')).toBe('https://facodi.com/sequences');
+    const head = await worker.fetch(new Request('https://facodi.com/sobre', { method: 'HEAD' }), env);
+    expect(head.status).toBe(301);
+    expect(head.headers.get('Location')).toBe('https://facodi.com/about');
+  });
 
   it('serves the home snapshot for "/"', async () => {
     const response = await get('/');
