@@ -16,7 +16,6 @@ import { VideoMosaic } from '@/components/resource/VideoMosaic';
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { CurriculumArchive } from '@/components/course/CurriculumArchive';
 import { CourseLearningMaterials } from '@/components/course/CourseLearningMaterials';
-import { CourseStudyEntry } from '@/components/course/CourseStudyEntry';
 import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { StudyNotesReview } from '@/components/notes/StudyNotesReview';
 import type { StudyNoteContextResource } from '@/entities/notes/studyNoteContext';
@@ -29,10 +28,9 @@ import { countExplored } from '@/entities/sequence/courseMap';
 import { hasCurriculumPlacements } from '@/entities/course/ualgCurriculum';
 import { PageState } from '@/components/layout/PageState';
 import { SectionLink } from '@/components/layout/SectionLink';
-import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { catalogReturnPath, safeExternalUrl } from '@/shared/lib/navigation';
-import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
+import { unitPath } from '@/entities/course/course.paths';
 import { courseHours, unitHours, ufesElectiveGroup, ufesElectiveGroupOrder, type UfesElectiveGroup } from '@/entities/course/brazilianCurriculum';
 
 type Unit = NonNullable<ReturnType<typeof useCourse>['data']>['units'][number];
@@ -120,52 +118,15 @@ export default function CourseDetails() {
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={course.title} />
         {course.learning_object_id && <StudyNotesAction scope="course" resource={{ id: course.learning_object_id, slug: course.slug, title: course.title, type: 'course', href: `/courses/${encodeURIComponent(course.slug)}` }} />}
-        <Link to={courseMaterialsPath(course.slug)} state={location.state}
+        <SectionLink hash="#units"
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
-          {t('courseMaterials.browseMaterials')}
+          {studyPlanLabel}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+        </SectionLink>
       </div>
     </header>
-    <LearningContext focus="course" />
-    <div className="grid gap-12 py-10 lg:grid-cols-[1fr_20rem]">
-      <div className="min-w-0">
-        {course.description_html ? <SafeHtml html={course.description_html} />
-          : !!units.length && <p className="max-w-prose text-lg leading-relaxed">{t('course.planIntro', { count: units.length, years: years.filter(year => year.year != null).length })}</p>}
-        {resource && <Link className="mt-6 inline-flex items-center gap-2 font-semibold underline underline-offset-4" to={`/resources/${resource.slug}`}>{resource.title}<ArrowUpRight className="h-4 w-4" /></Link>}
-      </div>
-      <aside aria-labelledby="facts" className="self-start border border-foreground bg-card lg:sticky lg:top-28">
-        <h2 id="facts" className="border-b border-foreground bg-primary px-5 py-3 text-sm font-semibold text-brand-ink">{t('course.facts')}</h2>
-        <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
-          <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
-        </div>)}</dl>
-        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
-      </aside>
-    </div>
-    <CourseStudyEntry courseSlug={course.slug} units={units} coverage={enrichedCoverage} loading={coverageLoading} hasError={coverageError} />
-    {course.code === 'LCC' && <CommunicationMediaLab unitCodes={units.flatMap(unit => unit.code ? [unit.code] : [])} />}
     <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
-    {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
-    <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
-    {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
-      action={<SectionLink hash="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></SectionLink>} />}
-    {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
-    {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
-      <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
-      <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {collections.data.map(collection => <li key={collection.id}>
-          <Link to={`/resources/${encodeURIComponent(collection.slug)}`} className="group flex h-full flex-col gap-3 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
-            <span className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">{collection.title}</span>
-            {collection.description && <span className="line-clamp-3 text-sm text-muted-foreground">{collection.description}</span>}
-            <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('courseCollections.open')}<ArrowUpRight className="h-4 w-4" /></span>
-          </Link>
-        </li>)}
-      </ul>
-    </section>}
-    <CourseLearningMaterials key={course.slug} courseSlug={course.slug} courseObjectId={course.learning_object_id}
-      units={units.map(unit => ({ learningObjectId: unit.learning_object_id, title: unit.title, code: unit.code, slug: unit.slug }))} />
     <section aria-labelledby="units" className="border-t border-foreground pt-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{studyPlanLabel}</h2>
@@ -224,6 +185,42 @@ export default function CourseDetails() {
       </section>)}
       </>}
     </section>
+
+    <div className="grid gap-12 py-10 lg:grid-cols-[1fr_20rem]">
+      <div className="min-w-0">
+        {course.description_html ? <SafeHtml html={course.description_html} />
+          : !!units.length && <p className="max-w-prose text-lg leading-relaxed">{t('course.planIntro', { count: units.length, years: years.filter(year => year.year != null).length })}</p>}
+        {resource && <Link className="mt-6 inline-flex items-center gap-2 font-semibold underline underline-offset-4" to={`/resources/${resource.slug}`}>{resource.title}<ArrowUpRight className="h-4 w-4" /></Link>}
+      </div>
+      <aside aria-labelledby="facts" className="self-start border border-foreground bg-card lg:sticky lg:top-28">
+        <h2 id="facts" className="border-b border-foreground bg-primary px-5 py-3 text-sm font-semibold text-brand-ink">{t('course.facts')}</h2>
+        <dl className="divide-y divide-input">{facts.map(([key, value]) => <div key={key} className="flex justify-between gap-4 px-5 py-3 text-sm">
+          <dt className="flex items-center gap-2 text-muted-foreground">{(() => { const Icon = FACT_ICONS[key]; return Icon && <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />; })()}{t(`course.${key}`)}</dt><dd className="text-right font-mono tabular-nums">{value}</dd>
+        </div>)}</dl>
+        {plan && <a href={plan} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 border-t border-input px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary hover:text-brand-ink">{isEditorialStudyPath ? t('course.sourceMaterials') : t('course.plan')}<ArrowUpRight className="h-4 w-4" /></a>}
+      </aside>
+    </div>
+    {course.code === 'LCC' && <CommunicationMediaLab unitCodes={units.flatMap(unit => unit.code ? [unit.code] : [])} />}
+    {course.code === 'LCC' && <CommunicationNewsroomChallenge />}
+    <div className="mb-12"><StudyNotesReview kind="course" resources={noteResources} /></div>
+    {!!videos.data?.length && <VideoMosaic id="course-videos" className="mb-12" title={t('course.videosTitle')} description={t('course.videosText', { count: units.length })} videos={videos.data}
+      action={<SectionLink hash="#units" className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4">{studyPlanLabel}<ArrowRight className="h-4 w-4" aria-hidden="true" /></SectionLink>} />}
+    {course.code === 'IFES-CAR-ADM-INT-2026' && <IfesLearningJourney courseSlug={course.slug} />}
+    {!!collections.data?.length && <section aria-labelledby="course-collections" className="mb-12 border-t border-foreground pt-9">
+      <h2 id="course-collections" className="text-2xl font-semibold tracking-[-0.02em]">{t('courseCollections.title')}</h2>
+      <p className="mt-3 max-w-prose text-sm text-muted-foreground">{t('courseCollections.notice')}</p>
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {collections.data.map(collection => <li key={collection.id}>
+          <Link to={`/resources/${encodeURIComponent(collection.slug)}`} className="group flex h-full flex-col gap-3 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
+            <span className="text-lg font-semibold group-hover:underline group-hover:underline-offset-4">{collection.title}</span>
+            {collection.description && <span className="line-clamp-3 text-sm text-muted-foreground">{collection.description}</span>}
+            <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('courseCollections.open')}<ArrowUpRight className="h-4 w-4" /></span>
+          </Link>
+        </li>)}
+      </ul>
+    </section>}
+    <CourseLearningMaterials key={course.slug} courseSlug={course.slug} courseObjectId={course.learning_object_id}
+      units={units.map(unit => ({ learningObjectId: unit.learning_object_id, title: unit.title, code: unit.code, slug: unit.slug }))} />
     {['LGEST', 'UFES-LETRAS-ING-83-2019', 'LCC'].includes(course.code) && <CurriculumArchive courseId={course.id} />}
   </article>;
 }

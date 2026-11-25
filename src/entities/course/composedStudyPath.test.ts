@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { canPresentComposedStudyPath, isComposedPathPending, parseComposedStudyPath } from './composedStudyPath';
+import { canPresentComposedStudyPath, isComposedPathPending, parseComposedStudyPath, resolveClassroomPath } from './composedStudyPath';
 
 const raw = {
   facodi_study_path_v2: {
@@ -59,4 +59,34 @@ describe('curricular-unit playlist composition', () => {
     expect(isComposedPathPending(null, ['pending', 'pending', 'pending'])).toBe(false);
   });
 
+});
+
+
+describe('universal classroom', () => {
+  const publicSequences = sequences.map(item => ({ ...item, title: item.slug }));
+  it('preserves authored chapters and adds newly published sequences once', () => {
+    const result = resolveClassroomPath(parseComposedStudyPath(raw), [
+      ...publicSequences, { slug: 'seq-new', itemCount: 4, title: 'New' },
+    ], playlists, modules);
+    expect(result?.sections.flatMap(section => section.sequenceSlugs)).toEqual(['seq-a', 'seq-b', 'seq-c']);
+    expect(result?.supplementarySequenceSlugs).toEqual(['seq-d', 'seq-new']);
+  });
+  it('uses the linked editorial order without inventing topic labels', () => {
+    const result = resolveClassroomPath(null, publicSequences, [...playlists].reverse(), modules);
+    expect(result?.sections.map(section => section.sequenceSlugs[0])).toEqual(['seq-d', 'seq-c', 'seq-b', 'seq-a']);
+    expect(result?.sections[0].labels.pt).toBe('seq-d');
+  });
+  it('ignores unavailable or empty sequences and handles no coverage', () => {
+    const result = resolveClassroomPath(parseComposedStudyPath(raw), [{ slug: 'seq-b', title: 'B', itemCount: 2 }, { slug: 'seq-c', title: 'C', itemCount: 0 }], playlists, []);
+    expect(result?.sections.flatMap(section => section.sequenceSlugs)).toEqual(['seq-b']);
+    expect(result?.guideModuleSlugs).toEqual([]);
+    expect(resolveClassroomPath(null, [], playlists, modules)).toBeNull();
+  });
+  it('accepts more than eight chapters', () => {
+    const input = structuredClone(raw);
+    input.facodi_study_path_v2.sections = Array.from({ length: 10 }, (_, i) => ({
+      id: 'chapter-' + i, labels: { pt: 'P', en: 'E', es: 'S', fr: 'F' }, sequence_slugs: ['sequence-' + i],
+    }));
+    expect(parseComposedStudyPath(input)?.sections).toHaveLength(10);
+  });
 });

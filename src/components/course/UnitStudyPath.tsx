@@ -1,5 +1,6 @@
 import { ArrowRight, BookOpenCheck, CheckCircle2, ListVideo, PlayCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { sequenceInUnitPath } from '@/entities/course/course.paths';
 import { useTranslation } from 'react-i18next';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
 import { completedCount, nextItem, type SequenceSummary } from '@/entities/sequence/sequence';
@@ -12,21 +13,27 @@ interface VideoResource { id: string; slug: string; title: string }
 /** One student-facing entry to an existing ordered sequence, not another playlist or module.
  * The playlist continues to own lesson IDs, order and learner progress. */
 export function UnitStudyPath({
-  config, sequences, videos,
+  config, sequences, videos, courseSlug, unitSlug,
 }: {
   config: StudyPathConfig;
+  courseSlug?: string;
+  unitSlug?: string;
   sequences: SequenceSummary[];
   videos: VideoResource[];
 }) {
   const { t, i18n } = useTranslation();
+  const href = (slug: string, videoId?: string) => courseSlug && unitSlug
+    ? sequenceInUnitPath(slug, courseSlug, unitSlug, videoId)
+    : '/sequences/' + encodeURIComponent(slug) + (videoId ? '?v=' + encodeURIComponent(videoId) : '');
   const notebook = useNotebook();
   const noteCounts = noteCountsByResource(notebook.all);
   const locale = (['pt', 'en', 'es', 'fr'] as const)
     .find(candidate => i18n.language.toLowerCase().startsWith(candidate)) ?? 'pt';
   const sequence = useSequence(config.sequenceSlug);
   const progress = useSequenceProgress(sequence.data?.id);
-  const extraSequences = config.supplementarySequenceSlugs
-    .flatMap(slug => sequences.find(item => item.slug === slug) ?? []);
+  const extraSequences = [...new Set([...config.supplementarySequenceSlugs, ...sequences.map(item => item.slug)])]
+    .filter(slug => slug !== config.sequenceSlug)
+    .flatMap(slug => sequences.find(item => item.slug === slug && item.itemCount > 0) ?? []);
   const standalone = config.standaloneResourceSlugs
     .flatMap(slug => videos.find(video => video.slug === slug) ?? []);
   const groups = sequence.data ? groupStudyPathLessons(config, sequence.data) : null;
@@ -47,7 +54,7 @@ export function UnitStudyPath({
       </div>
       : !sequence.data || !groups ? <div role="alert" className="mt-6 border border-input p-5 text-sm">
         <p>{t('studyPath.unavailable')}</p>
-        {sequence.data && <Link to={`/sequences/${encodeURIComponent(sequence.data.slug)}`} className="mt-3 inline-flex items-center gap-2 font-semibold underline underline-offset-4">
+        {sequence.data && <Link to={href(sequence.data.slug)} className="mt-3 inline-flex items-center gap-2 font-semibold underline underline-offset-4">
           {t('studyPath.openSequence')}<ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>}
       </div>
@@ -61,7 +68,7 @@ export function UnitStudyPath({
                 : t('studyPath.progressNote')}
             </p>
           </div>
-          {next && progressReady && <Link to={`/sequences/${encodeURIComponent(sequence.data.slug)}?v=${encodeURIComponent(next.videoId)}`}
+          {next && progressReady && <Link to={href(sequence.data.slug, next.videoId)}
             className="inline-flex items-center gap-2 bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
             <PlayCircle className="h-4 w-4" aria-hidden="true" />{t('studyPath.continue')}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -78,7 +85,7 @@ export function UnitStudyPath({
             </div>
             <ol className="mt-4 divide-y divide-input border-t border-input">
               {section.items.map((item, position) => <li key={item.videoId}>
-                <Link to={`/sequences/${encodeURIComponent(sequence.data!.slug)}?v=${encodeURIComponent(item.videoId)}`}
+                <Link to={href(sequence.data!.slug, item.videoId)}
                   className="group flex items-center gap-3 py-3 text-sm hover:bg-muted/40">
                   <span className="w-7 shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{String(position + 1).padStart(2, '0')}</span>
                   <span className="min-w-0 flex-1">
@@ -109,7 +116,7 @@ export function UnitStudyPath({
       <p className="mt-2 text-sm text-muted-foreground">{t('studyPath.extraDescription')}</p>
       <ul className="mt-4 space-y-3">
         {extraSequences.map(extra => <li key={extra.id}>
-          <Link to={`/sequences/${encodeURIComponent(extra.slug)}`} className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4">
+          <Link to={href(extra.slug)} className="inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4">
             {extra.title}<ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           </Link>
         </li>)}
