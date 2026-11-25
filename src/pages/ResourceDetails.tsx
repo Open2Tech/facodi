@@ -97,7 +97,7 @@ function ResourceContent({ resource, slug }: { resource: LearningObject; slug: s
     ? resource.metadata as Record<string, unknown> : null;
   const canonicalSlug = typeof aliasMetadata?.canonical_playlist_slug === 'string'
     ? aliasMetadata.canonical_playlist_slug : null;
-  if (canonicalSlug && canonicalSlug !== slug || aliasMetadata?.playlist_type === 'facodi_owned_editorial_sequence') {
+  if ((canonicalSlug && canonicalSlug !== slug) || aliasMetadata?.playlist_type === 'facodi_owned_editorial_sequence') {
     const target = canonicalSlug || slug;
     return <Navigate to={`/sequences/${encodeURIComponent(target)}${searchParams.toString() ? `?${searchParams.toString()}` : ''}${location.hash}`} state={location.state} replace />;
   }

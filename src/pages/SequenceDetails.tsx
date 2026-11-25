@@ -211,6 +211,7 @@ export default function SequenceDetails() {
               </Button>;
             })()}
             {following && <Button type="button" variant="outline" onClick={() => select(following.videoId)}>{t('sequences.next')}<ArrowRight aria-hidden="true" /></Button>}
+            {!following && activeUnit && <Button asChild variant="outline"><Link to={unitPath(activeUnit.courseSlug, activeUnit.unitSlug) + '#unit-study-path'}>{activeUnit.unitTitle}<ArrowRight aria-hidden="true" /></Link></Button>}
           </div>
           <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
             {selected.slug && <Link to={`/resources/${encodeURIComponent(selected.slug)}`}

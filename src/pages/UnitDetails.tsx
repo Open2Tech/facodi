@@ -68,7 +68,7 @@ export default function UnitDetails() {
   const { course, unit, outline } = query.data;
   const studyPath = parseStudyPath(unit.metadata);
   const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
-  const composedPending = !studyPath && Boolean(unitCode) && sequences.isPending;
+  const composedPending = !studyPath && (Boolean(unitCode) && sequences.isPending || Boolean(unit.learning_object_id) && (playlistsQuery.isPending || modulesQuery.isPending));
   const composedPath = !studyPath && !composedPending
     ? resolveClassroomPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
     : null;
@@ -123,14 +123,14 @@ export default function UnitDetails() {
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/courses/${course.slug}`} state={location.state}>{course.code || course.title}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
-        <li aria-current="page" className="text-foreground">{unit.code || unit.title}</li>
+        <li aria-current="page" className="text-foreground">{unit.title}</li>
       </ol>
     </nav>
     <header className="border-b border-foreground border-t-4 border-t-brand-orange pb-10 pt-6">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <SectionLink hash={hasPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
-          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{hasPath ? t('composedPath.title') : t('unit.videoChip', { count: videoList.length })}
+        {(hasPath || !!videoList.length) && <SectionLink hash={hasPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
+          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{hasPath ? t('sequences.forUnit') : t('unit.videoChip', { count: videoList.length })}
         </SectionLink>}
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
@@ -144,7 +144,7 @@ export default function UnitDetails() {
         <SectionLink hash={hasPath ? '#unit-study-path' : '#unit-resources'}
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
-          {t(hasPath ? 'composedPath.title' : 'unit.resources')}
+          {t(hasPath ? 'sequences.forUnit' : 'unit.resources')}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </SectionLink>
       </div>
@@ -164,88 +164,6 @@ export default function UnitDetails() {
           courseSlug={course.slug} unitSlug={unit.slug} authored={Boolean(composedCandidate)} />}
         {studyPath && <UnitStudyPath config={studyPath}
           sequences={sequences.data ?? []} videos={videoList} courseSlug={course.slug} unitSlug={unit.slug} />}
-        <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
-          href={hasPath ? '#unit-study-path' : '#unit-resources'} />
-        {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} unitCode={unit.code} />}
-        {unit.description_html && <SafeHtml html={unit.description_html} />}
-        <StudyNotesReview kind="unit" resources={noteResources} />
-        <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
-          <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
-          {outcomesQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : outcomesQuery.error
-              ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
-              : outcomesQuery.data?.length
-                ? <ol className="mt-5 space-y-3">
-                  {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
-                    className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
-                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
-                    <span>{outcome.statement}</span>
-                  </li>)}
-                </ol>
-                : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
-        </section>
-        {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
-          <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
-          {readingsQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : readingsQuery.error
-              ? <div role="alert" className="mt-5 text-sm text-destructive">
-                  <p>{readingsQuery.error.message}</p>
-                  <button type="button" onClick={() => void readingsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
-                    <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
-                      <span className="grid h-8 w-8 place-items-center border border-foreground bg-brand-cyan text-brand-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
-                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
-                      {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
-                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
-                    </Link>
-                  </li>)}
-                </ul>}
-        </section>}
-        {(modulesQuery.isPending || modulesQuery.error || !!extraModules.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
-          <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
-          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
-          {modulesQuery.isPending
-            ? <p className="mt-5 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
-            : modulesQuery.error
-              ? <div className="mt-4 text-sm text-destructive" role="alert"><p>{modulesQuery.error.message}</p>
-                  <button type="button" onClick={() => void modulesQuery.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!extraModules.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {extraModules.map(module => <li key={module.id}>
-                  <Link to={`/modules/${encodeURIComponent(module.slug)}`}
-                    className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-mint bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-mint/10">
-                    <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
-                    {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
-                    <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
-                  </Link>
-                </li>)}
-              </ul>}
-        </section>}
-        {(playlistsQuery.isPending || playlistsQuery.error || !!externalPlaylists.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
-          <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
-          {playlistsQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : playlistsQuery.error
-              ? <div role="alert" className="mt-5 text-sm text-destructive">
-                  <p>{playlistsQuery.error.message}</p>
-                  <button type="button" onClick={() => void playlistsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!externalPlaylists.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {externalPlaylists.map(playlist => <li key={playlist.id}>
-                    <Link to={`/resources/${encodeURIComponent(playlist.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-pink bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-pink/10">
-                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
-                      {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
-                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
-                    </Link>
-                  </li>)}
-                </ul>}
-        </section>}
         {!composedPending && (!hasPath || videos.isPending || !!videoList.length || !!videos.error) && <UnitVideoLibraryFrame collapsed={hasPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
@@ -331,6 +249,88 @@ export default function UnitDetails() {
               }
             </div>}
         </section></UnitVideoLibraryFrame>}
+        <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
+          href={hasPath ? '#unit-study-path' : '#unit-resources'} />
+        {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} unitCode={unit.code} />}
+        {unit.description_html && <SafeHtml html={unit.description_html} />}
+        <StudyNotesReview kind="unit" resources={noteResources} />
+        <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
+          <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
+          {outcomesQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : outcomesQuery.error
+              ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
+              : outcomesQuery.data?.length
+                ? <ol className="mt-5 space-y-3">
+                  {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
+                    className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{outcome.statement}</span>
+                  </li>)}
+                </ol>
+                : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
+        </section>
+        {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
+          <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
+          {readingsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : readingsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{readingsQuery.error.message}</p>
+                  <button type="button" onClick={() => void readingsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
+                    <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
+                      <span className="grid h-8 w-8 place-items-center border border-foreground bg-brand-cyan text-brand-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
+                      {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
+        </section>}
+        {(modulesQuery.isPending || modulesQuery.error || !!extraModules.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
+          <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
+          {modulesQuery.isPending
+            ? <p className="mt-5 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
+            : modulesQuery.error
+              ? <div className="mt-4 text-sm text-destructive" role="alert"><p>{modulesQuery.error.message}</p>
+                  <button type="button" onClick={() => void modulesQuery.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!extraModules.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {extraModules.map(module => <li key={module.id}>
+                  <Link to={`/modules/${encodeURIComponent(module.slug)}`}
+                    className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-mint bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-mint/10">
+                    <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
+                    {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
+                    <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                  </Link>
+                </li>)}
+              </ul>}
+        </section>}
+        {(playlistsQuery.isPending || playlistsQuery.error || !!externalPlaylists.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
+          <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
+          {playlistsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : playlistsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{playlistsQuery.error.message}</p>
+                  <button type="button" onClick={() => void playlistsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!externalPlaylists.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {externalPlaylists.map(playlist => <li key={playlist.id}>
+                    <Link to={playlist.metadata && typeof playlist.metadata === 'object' && !Array.isArray(playlist.metadata) && playlist.metadata.playlist_type === 'facodi_owned_editorial_sequence' ? sequenceInUnitPath(playlist.slug, course.slug, unit.slug) : `/resources/${encodeURIComponent(playlist.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-pink bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-pink/10">
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
+                      {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
+        </section>}
         <SuggestResourceCallout context="unit" unitId={unit.id} />
         {!!siblings.length && <section aria-labelledby="unit-siblings">
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>

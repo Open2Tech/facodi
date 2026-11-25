@@ -126,12 +126,12 @@ export default function CourseDetails() {
         </SectionLink>
       </div>
     </header>
-    <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
-    <section aria-labelledby="units" className="border-t border-foreground pt-10">
+    <section aria-labelledby="units" className="border-t border-foreground pt-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 id="units" className="scroll-mt-28 text-3xl font-semibold tracking-[-0.02em]">{studyPlanLabel}</h2>
         {!!units.length && <Link to={`/units?course=${encodeURIComponent(course.slug)}`} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">{t('course.filterUnits')}<ArrowRight className="h-4 w-4" /></Link>}
       </div>
+      <CourseUnitQuickFinder courseSlug={course.slug} units={units} coverage={enrichedCoverage} coverageLoading={coverageLoading} coverageError={coverageError} />
       {!!coverage.data?.length && !coverageLoading && !coverageError && <p className="mt-4 text-sm text-muted-foreground" aria-live="polite">
         {t('course.coverageSummary', { videos: enrichedCoverage.filter(unit => unit.video_count > 0).length, units: units.length, readings: enrichedCoverage.filter(unit => unit.reading_count > 0).length })}
         {enrichedCoverage.some(unit => unit.playlist_count > 0) && <> · {t('course.playlistCoverage', { count: enrichedCoverage.filter(unit => unit.playlist_count > 0).length })}</>}

@@ -13,8 +13,8 @@ export function UnitComposedStudyPath({
   config, sequences, modules, courseSlug, unitSlug, authored = true,
 }: {
   config: ComposedStudyPath;
-  courseSlug: string;
-  unitSlug: string;
+  courseSlug?: string;
+  unitSlug?: string;
   authored?: boolean;
   sequences: SequenceSummary[];
   modules: LinkedCatalogAsset[];
@@ -24,18 +24,24 @@ export function UnitComposedStudyPath({
     .find(candidate => i18n.language.toLowerCase().startsWith(candidate)) ?? 'pt';
   const bySlug = new Map(sequences.map(item => [item.slug, item]));
   const first = config.sections[0]?.sequenceSlugs[0];
-  const href = (slug: string) => sequenceInUnitPath(slug, courseSlug, unitSlug);
+  const href = (slug: string) => courseSlug && unitSlug ? sequenceInUnitPath(slug, courseSlug, unitSlug) : '/sequences/' + encodeURIComponent(slug);
   return <section id="unit-study-path" aria-labelledby="unit-composed-heading" className="scroll-mt-28 border-t border-foreground pt-9">
-    <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">{t('composedPath.eyebrow')}</p>
-    <h2 id="unit-composed-heading" className="mt-2 text-2xl font-semibold tracking-tight">{t('composedPath.title')}</h2>
+    {authored && <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground">{t('composedPath.eyebrow')}</p>}
+    <h2 id="unit-composed-heading" className="mt-2 text-2xl font-semibold tracking-tight">{t(authored ? 'composedPath.title' : 'sequences.forUnit')}</h2>
     <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground">{t(authored ? 'composedPath.description' : 'composedPath.progressNotice')}</p>
-    {first && <Link to={href(first)}
+    {authored && first && <Link to={href(first)}
       className="mt-6 inline-flex items-center gap-2 border border-foreground bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
       <PlayCircle className="h-4 w-4" aria-hidden="true" />{t('composedPath.start')}
       <ArrowRight className="h-4 w-4" aria-hidden="true" />
     </Link>}
     <ol className="mt-7 space-y-5">
-      {config.sections.map((section, index) => <li key={section.id} className="border border-input border-l-4 border-l-brand-cyan bg-card">
+      {config.sections.map((section, index) => !authored && section.sequenceSlugs.length === 1 ? <li key={section.id}>
+        <Link to={href(section.sequenceSlugs[0])} className="group flex min-h-16 items-center gap-4 border border-input border-l-4 border-l-brand-cyan bg-card p-4 hover:border-foreground hover:bg-brand-cyan/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <ListVideo className="h-5 w-5 shrink-0" aria-hidden="true" />
+          <span className="min-w-0 flex-1"><span className="block font-semibold group-hover:underline group-hover:underline-offset-4">{section.labels[locale]}</span><span className="mt-1 block text-xs text-muted-foreground">{t('composedPath.lessonCount', { count: bySlug.get(section.sequenceSlugs[0])?.itemCount ?? 0 })}</span></span>
+          <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+        </Link>
+      </li> : <li key={section.id} className="border border-input border-l-4 border-l-brand-cyan bg-card">
         <details open={index === 0} className="group/chapter">
         <summary className="flex cursor-pointer list-none items-start gap-3 p-5 [&::-webkit-details-marker]:hidden">
           <span className="grid h-9 w-9 shrink-0 place-items-center border border-foreground font-mono text-sm">{index + 1}</span>
