@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { courseMaterialsPath, unitPath } from './course.paths';
+import { courseMaterialsPath, sequenceInUnitPath, unitPath } from './course.paths';
 
 describe('FACODI course material deep links', () => {
   it('opens the course materials section', () => {
@@ -41,5 +41,21 @@ describe('FACODI course material deep links', () => {
   it('preserves the existing UC route contract', () => {
     expect(unitPath('ctesp-contabilidade', 'contabilidade-geral'))
       .toBe('/courses/ctesp-contabilidade/units/contabilidade-geral');
+  });
+});
+
+describe('contextual sequence navigation', () => {
+  it('keeps course, UC and lesson in a shareable URL', () => {
+    const url = new URL(sequenceInUnitPath('edo-1', 'lesti', '19411008', 'video-1'), 'https://facodi.com');
+    expect(url.pathname).toBe('/sequences/edo-1');
+    expect(url.searchParams.get('course')).toBe('lesti');
+    expect(url.searchParams.get('unit')).toBe('19411008');
+    expect(url.searchParams.get('v')).toBe('video-1');
+  });
+  it('preserves special characters without adding an empty lesson parameter', () => {
+    const url = new URL(sequenceInUnitPath('seq', 'course & other', 'uc/1'), 'https://facodi.com');
+    expect(url.searchParams.get('course')).toBe('course & other');
+    expect(url.searchParams.get('unit')).toBe('uc/1');
+    expect(url.searchParams.has('v')).toBe(false);
   });
 });

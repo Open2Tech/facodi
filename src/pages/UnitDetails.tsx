@@ -142,7 +142,7 @@ export default function UnitDetails() {
         <ShareButton title={unit.title} />
         {unit.learning_object_id && <StudyNotesAction scope="unit" resource={{ id: unit.learning_object_id, slug: unit.slug, title: unit.title, type: 'curricular_unit', href: unitPath(course.slug, unit.slug) }} />}
         <SectionLink hash={hasPath ? '#unit-study-path' : '#unit-resources'}
-          className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          className="inline-flex min-h-11 items-center gap-2 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
           {t(hasPath ? 'sequences.forUnit' : 'unit.resources')}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
