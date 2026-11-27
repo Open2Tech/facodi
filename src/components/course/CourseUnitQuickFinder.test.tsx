@@ -23,14 +23,14 @@ beforeEach(async () => {
 });
 
 describe('CourseUnitQuickFinder', () => {
-  it('finds a UC by accent-insensitive title or exact code and deep-links to its materials', async () => {
+  it('finds a UC by accent-insensitive title or exact code and links to its classroom', async () => {
     renderWithProviders(<CourseUnitQuickFinder courseSlug="marketing" units={units} coverage={coverage} />);
     const input = screen.getByRole('searchbox', { name: 'Nome ou código da UC' });
     await userEvent.setup().type(input, 'calculo');
     expect(screen.getByRole('link', { name: 'Cálculo Avançado' }))
       .toHaveAttribute('href', '/courses/marketing/units/unidade-3');
-    expect(screen.getByRole('link', { name: 'Ver materiais' }))
-      .toHaveAttribute('href', '/courses/marketing?materialsUnit=unidade-3#course-materials');
+    expect(screen.getByRole('link', { name: 'Explorar UC' }))
+      .toHaveAttribute('href', '/courses/marketing/units/unidade-3');
     expect(screen.getByRole('status')).toHaveTextContent('1 UCs encontradas');
     await userEvent.setup().clear(input);
     await userEvent.setup().type(input, '1432100');

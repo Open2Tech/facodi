@@ -51,6 +51,12 @@ export default function UnitDetails() {
   const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
+  const unitSequences = unitCode ? sequences.data ?? [] : [];
+  const sequencesPending = Boolean(unitCode && sequences.isPending);
+  const linkedAssetsPending = Boolean(query.data?.unit.learning_object_id
+    && (playlistsQuery.isPending || modulesQuery.isPending));
+  const studyPath = parseStudyPath(query.data?.unit.metadata ?? null);
+  const composedPending = !studyPath && (sequencesPending || linkedAssetsPending);
   const [params, setParams] = useContextSearchParams();
   const [engaged, setEngaged] = useState(false);
   const location = useLocation();
@@ -61,19 +67,18 @@ export default function UnitDetails() {
     // Runs after the layout's scroll reset so links to #unit-resources land on the section.
     const frame = requestAnimationFrame(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView());
     return () => cancelAnimationFrame(frame);
-  }, [hash, ready]);
+  }, [hash, ready, composedPending]);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   const { course, unit, outline } = query.data;
-  const studyPath = parseStudyPath(unit.metadata);
   const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
-  const composedPending = !studyPath && (Boolean(unitCode) && sequences.isPending || Boolean(unit.learning_object_id) && (playlistsQuery.isPending || modulesQuery.isPending));
   const composedPath = !studyPath && !composedPending
-    ? resolveClassroomPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
+    ? resolveClassroomPath(composedCandidate, unitSequences, playlistsQuery.data ?? [], modulesQuery.data ?? [])
     : null;
   const hasPath = Boolean(studyPath || composedPath || composedPending);
-  const knownSequences = new Set((sequences.data ?? []).filter(item => item.itemCount > 0).map(item => item.slug));
+  const knownSequences = new Set(unitSequences.filter(item => item.itemCount > 0).map(item => item.slug));
+  const openVideoLibrary = hash === '#unit-resources' || Boolean(params.get('v'));
   const externalPlaylists = (playlistsQuery.data ?? []).filter(item => !knownSequences.has(item.slug));
   const extraModules = (modulesQuery.data ?? []).filter(item => !composedPath?.guideModuleSlugs.includes(item.slug) && item.slug !== studyPath?.guideModuleSlug);
   const index = outline.findIndex(item => item.id === unit.id);
@@ -156,15 +161,15 @@ export default function UnitDetails() {
           <p role="status" className="mt-3 text-sm text-muted-foreground">{t('common.loading')}</p>
           <Skeleton className="mt-5 h-24 w-full" />
         </section>}
-        {!studyPath && sequences.isError && <div role="alert" className="border border-input p-4 text-sm">
+        {unitCode && sequences.isError && <div role="alert" className="border border-input p-4 text-sm">
           <p>{t('common.error')}</p>
           <button type="button" onClick={() => void sequences.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
         </div>}
-        {composedPath && <UnitComposedStudyPath config={composedPath} sequences={sequences.data ?? []} modules={modulesQuery.data ?? []}
+        {composedPath && <UnitComposedStudyPath config={composedPath} sequences={unitSequences} modules={modulesQuery.data ?? []}
           courseSlug={course.slug} unitSlug={unit.slug} authored={Boolean(composedCandidate)} />}
         {studyPath && <UnitStudyPath config={studyPath}
-          sequences={sequences.data ?? []} videos={videoList} courseSlug={course.slug} unitSlug={unit.slug} />}
-        {!composedPending && (!hasPath || videos.isPending || !!videoList.length || !!videos.error) && <UnitVideoLibraryFrame collapsed={hasPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
+          sequences={unitSequences} videos={videoList} courseSlug={course.slug} unitSlug={unit.slug} />}
+        {(openVideoLibrary || (!composedPending && (!hasPath || videos.isLoading || !!videoList.length || !!videos.error))) && <UnitVideoLibraryFrame collapsed={hasPath} count={videoList.length} forceOpen={openVideoLibrary}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
@@ -216,7 +221,7 @@ export default function UnitDetails() {
               </div>
             </>
             : <div className="mt-4 border border-input bg-muted/40 p-6">
-              {playlistsQuery.isPending || sequences.isPending || readingsQuery.isPending || modulesQuery.isPending
+              {linkedAssetsPending || sequencesPending || readingsQuery.isLoading
                 ? <p role="status" className="text-sm text-muted-foreground">{t('common.loading')}</p>
                 : playlistsQuery.data?.length
                   ? <>
@@ -226,12 +231,12 @@ export default function UnitDetails() {
                       {playlistsQuery.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                     </Link>
                   </>
-                  : sequences.data?.length
+                  : unitSequences.length > 0
                     ? <>
                       <p className="font-semibold">{t('sequences.forUnit')}</p>
-                      <Link to={sequenceInUnitPath(sequences.data[0].slug, course.slug, unit.slug)}
+                      <Link to={sequenceInUnitPath(unitSequences[0].slug, course.slug, unit.slug)}
                         className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                        {sequences.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                        {unitSequences[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                       </Link>
                     </>
                     : readingsQuery.data?.length

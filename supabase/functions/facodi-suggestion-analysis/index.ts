@@ -532,6 +532,38 @@ async function dryRun(body: NonNullable<DryRunBody["dry_run"]>) {
   }
 }
 
+// KF_ASYNC_AV_V2_START
+async function kfPrivateAv() {
+  const { data: claim, error } = await db.rpc("kf_claim_private_av_v2");
+  if (error) return json(500, { error: "kf_claim_failed" });
+  if (!claim || claim.reason !== "claimed") return json(200, { reason: claim?.reason ?? "empty" });
+  const run = async () => {
+    let status = 502;
+    let result: Record<string, unknown> = {};
+    try {
+      const response = await dryRun({
+        title: claim.title, canonical_url: claim.canonical_url, provider: "youtube",
+        object_type: "video", language: "pt", course_id: claim.course_id,
+      });
+      status = response.status;
+      result = await response.json();
+    } catch { status = 502; }
+    const { data, error } = await db.rpc("kf_finish_private_av_v2", {
+      p_job: claim.job_id, p_token: claim.lease_token, p_status: status, p_result: result,
+    });
+    console.log(JSON.stringify({ step: "kf_private_av_finish", status: error ? "persist_failed" : data?.outcome ?? data?.reason ?? "unknown" }));
+  };
+  // Keep the execution alive after acknowledging the durable reservation.
+  const runtime = (globalThis as unknown as { EdgeRuntime?: { waitUntil(p: Promise<void>): void } }).EdgeRuntime;
+  if (runtime?.waitUntil) {
+    runtime.waitUntil(run().catch(() => console.error("kf_private_av_unhandled")));
+    return json(202, { reason: "claimed", job_id: claim.job_id });
+  }
+  await run();
+  return json(200, { reason: "completed", job_id: claim.job_id });
+}
+// KF_ASYNC_AV_V2_END
+
 Deno.serve(async (req) => {
   if (req.method !== "POST") return json(405, { error: "method_not_allowed" });
   const secret = Deno.env.get("FACODI_SUGGESTION_WORKER_SECRET") ?? "";
@@ -539,6 +571,9 @@ Deno.serve(async (req) => {
     return json(401, { error: "unauthorized" });
   }
   const body = await req.json().catch(() => ({})) as DryRunBody;
+  if (body && typeof body === "object" && (body as DryRunBody & { kf_private_av?: boolean }).kf_private_av === true) {
+    return kfPrivateAv();
+  }
   if (body && typeof body === "object" && body.dry_run && typeof body.dry_run === "object") {
     return dryRun(body.dry_run);
   }

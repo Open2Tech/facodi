@@ -1,0 +1,6 @@
+do $m$ declare s text; begin
+select pg_get_functiondef('facodi.kf_odoo_elearning_sync_v1(integer)'::regprocedure) into s;
+s:=replace(s,'phase:=''publish_channels'';model:=''slide.channel'';fields:=''["id","is_published"]''::jsonb;','phase:=''publish_channels'';model:=''slide.channel'';fields:=''["id","is_published","promote_strategy","promoted_slide_id/id"]''::jsonb;');
+s:=replace(s,'select jsonb_agg(jsonb_build_array(x->>''external_id'',''True'') order by ord) into rows_data from jsonb_array_elements(batch) with ordinality t(x,ord);','select jsonb_agg(jsonb_build_array(x->>''external_id'',''True'',case when c.priority=1 then ''specific'' else ''none'' end,case when c.priority=1 then (select d.external_id from facodi.kf_odoo_mirror_slides_v1 d where d.channel_key=x->>''external_id'' order by d.seq,d.external_id limit 1) else '''' end) order by ord) into rows_data from jsonb_array_elements(batch) with ordinality t(x,ord) join facodi.kf_odoo_mirror_channels_v1 c on c.external_id=x->>''external_id'';');
+if position('promoted_slide_id/id' in s)=0 or position('case when c.priority=1' in s)=0 then raise exception 'Unexpected mirror function'; end if; execute s; end $m$;
+revoke all on function facodi.kf_odoo_elearning_sync_v1(integer) from public,anon,authenticated,service_role;
