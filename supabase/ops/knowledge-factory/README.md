@@ -23,4 +23,4 @@ psql "$KF_SCRATCH_DATABASE_URL" -X -v ON_ERROR_STOP=1 -f supabase/ops/knowledge-
 
 The second command uses an empty PostgreSQL database and synthetic jobs. It exercises claim, finish, retry and the daily cap, then rolls back its fixtures. Deployment verification also requires the worker secrets, the enabled cron jobs and an Odoo instance configured for the integration.
 
-For private audiovisual analysis, first attempts precede retries. A gateway failure with HTTP 502, 503 or 504 makes the job eligible for one additional attempt within the existing daily cap. The previous attempt stays in the job record. Two consecutive failures still open the circuit.
+For private audiovisual analysis, first attempts precede retries. A provider timeout or confirmed upstream 5xx makes the job eligible for one additional attempt within the daily cap. The worker also reports quota, authentication and configuration failures as HTTP 502, so the stored retry verdict governs eligibility. The previous attempt stays in the job record. Two consecutive failures still open the circuit.
