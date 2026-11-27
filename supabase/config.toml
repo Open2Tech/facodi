@@ -68,3 +68,10 @@ verify_jwt = false
 # Validates user JWTs itself for playlist actions; cron uses x-facodi-worker-secret.
 [functions.facodi-email-notifications]
 verify_jwt = false
+
+# Native Odoo webhooks authenticate against scoped database capabilities.
+[functions.facodi-kf-editorial-receipt]
+verify_jwt = false
+
+[functions.facodi-kf-bom-release]
+verify_jwt = false
