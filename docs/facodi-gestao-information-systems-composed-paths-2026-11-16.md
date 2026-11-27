@@ -38,7 +38,7 @@ Estes percursos são **propostas editoriais da FACODI**: não se apresentam como
 
 ## Integridade da migração
 
-`supabase/migrations/20261116230000_facodi_gestao_information_systems_composed_study_paths.sql`
+`supabase/migrations/20261116230152_facodi_gestao_information_systems_composed_study_paths_20261116.sql`
 
 A migração:
 - altera apenas `facodi.curricular_units.metadata.facodi_study_path_v2` das duas UCs;
