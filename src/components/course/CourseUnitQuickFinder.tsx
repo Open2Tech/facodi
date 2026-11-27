@@ -2,7 +2,7 @@ import { useId, useRef, useState } from 'react';
 import { ArrowRight, BookOpen, Search, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
+import { unitPath } from '@/entities/course/course.paths';
 import { findCourseUnits, type StudyEntryCoverage, type StudyEntryUnit } from '@/entities/course/courseStudyEntry';
 
 const MIN_UNITS_FOR_SEARCH = 13;
@@ -94,10 +94,10 @@ export function CourseUnitQuickFinder({
               </>}
             </p>
           </div>
-          <Link to={courseMaterialsPath(courseSlug, unit.slug)} state={state}
+          <Link to={unitPath(courseSlug, unit.slug)} state={state}
             className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:self-auto">
             <BookOpen className="h-4 w-4" aria-hidden="true" />
-            {t('courseUnitFinder.viewMaterials')}
+            {t('courseStart.openUnit')}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </li>)}

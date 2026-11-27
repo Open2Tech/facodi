@@ -62,6 +62,7 @@ export default function SequenceDetails() {
     const search = params.toString();
     return <Navigate to={`/sequences/${encodeURIComponent(sequence.slug)}${search ? `?${search}` : ''}${location.hash}`} state={location.state} replace />;
   }
+  const activeUnit = sequence.units.find(unit => unit.courseSlug === params.get('course') && (unit.unitSlug === params.get('unit') || unit.unitCode === params.get('unit')));
   const items = sequence.items;
   const rows = progress.data ?? new Map();
   const progressReady = !progress.signedIn || progress.isSuccess;
@@ -112,7 +113,13 @@ export default function SequenceDetails() {
     <PageSeo {...sequenceMeta(sequence, { sequences: t('sequences.title') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/sequences')}>{t('sequences.title')}</Link></li>
+        {activeUnit ? <>
+          <li><Link className="underline underline-offset-4 hover:text-foreground" to="/courses">{t('nav.courses')}</Link></li>
+          <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+          <li><Link className="underline underline-offset-4 hover:text-foreground" to={'/courses/' + encodeURIComponent(activeUnit.courseSlug)}>{activeUnit.courseCode}</Link></li>
+          <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+          <li><Link className="font-semibold underline underline-offset-4 hover:text-foreground" to={unitPath(activeUnit.courseSlug, activeUnit.unitSlug) + '#unit-study-path'}>{activeUnit.unitTitle}</Link></li>
+        </> : <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/sequences')}>{t('sequences.title')}</Link></li>}
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li aria-current="page" className="line-clamp-1 text-foreground">{sequence.title}</li>
       </ol>
@@ -164,7 +171,7 @@ export default function SequenceDetails() {
         </>}
       </section>
     </header>
-    <LearningContext focus="sequence" />
+    {!activeUnit && <LearningContext focus="sequence" />}
 
     <div className="pt-8"><CreatorLearningPanel kind="playlist" slug={sequence.slug} youtubeId={null} inlineSequence /></div>
     {selected ? <section aria-labelledby="sequence-lessons" className="py-10">
@@ -204,6 +211,7 @@ export default function SequenceDetails() {
               </Button>;
             })()}
             {following && <Button type="button" variant="outline" onClick={() => select(following.videoId)}>{t('sequences.next')}<ArrowRight aria-hidden="true" /></Button>}
+            {!following && activeUnit && <Button asChild variant="outline"><Link to={unitPath(activeUnit.courseSlug, activeUnit.unitSlug) + '#unit-study-path'}>{activeUnit.unitTitle}<ArrowRight aria-hidden="true" /></Link></Button>}
           </div>
           <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
             {selected.slug && <Link to={`/resources/${encodeURIComponent(selected.slug)}`}

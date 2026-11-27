@@ -6,15 +6,13 @@ import { PageSeo, NoIndex } from '@/components/layout/PageSeo';
 import { unitMeta } from '@/shared/seo/seo';
 import { useUnit, useUnitVideos } from '@/features/courses/queries/useCourses';
 import { parseStudyPath } from '@/entities/course/studyPath';
-import { parseComposedStudyPath, canPresentComposedStudyPath, isComposedPathPending } from '@/entities/course/composedStudyPath';
+import { parseComposedStudyPath, resolveClassroomPath } from '@/entities/course/composedStudyPath';
 import { UnitComposedStudyPath } from '@/components/course/UnitComposedStudyPath';
 import { UnitVideoLibraryFrame } from '@/components/course/UnitVideoLibraryFrame';
 import { UnitStudyPath } from '@/components/course/UnitStudyPath';
-import { UnitLearningHighlights } from '@/components/course/UnitLearningHighlights';
 import { StudyNotesAction } from '@/components/notes/StudyNotesAction';
 import { StudyNotesReview } from '@/components/notes/StudyNotesReview';
 import type { StudyNoteContextResource } from '@/entities/notes/studyNoteContext';
-import { pickUnitHighlights } from '@/entities/course/unitHighlights';
 import { useUnitOutcomes } from '@/features/courses/queries/useUnitOutcomes';
 import { useUnitReadings } from '@/features/courses/queries/useUnitReadings';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
@@ -23,12 +21,11 @@ import { SuggestResourceCallout } from '@/components/suggestion/SuggestResourceC
 import { SafeHtml } from '@/components/course/SafeHtml';
 import { PageState } from '@/components/layout/PageState';
 import { SectionLink } from '@/components/layout/SectionLink';
-import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
 import { StudyVideo } from '@/components/resource/StudyVideo';
 import { Skeleton } from '@/components/ui/skeleton';
-import { courseMaterialsPath, unitPath } from '@/entities/course/course.paths';
+import { sequenceInUnitPath, unitPath } from '@/entities/course/course.paths';
 import { formatDuration, videoInfo } from '@/entities/course/video';
 import { ExamRevision } from '@/components/course/ExamRevision';
 import { OfficialFucStudyGuide } from '@/components/course/OfficialFucStudyGuide';
@@ -54,6 +51,12 @@ export default function UnitDetails() {
   const modulesQuery = useLinkedCatalogAssets(query.data?.unit.learning_object_id, 'module');
   const unitCode = query.data?.unit.code ?? null;
   const sequences = useSequences(unitCode, !!unitCode);
+  const unitSequences = unitCode ? sequences.data ?? [] : [];
+  const sequencesPending = Boolean(unitCode && sequences.isPending);
+  const linkedAssetsPending = Boolean(query.data?.unit.learning_object_id
+    && (playlistsQuery.isPending || modulesQuery.isPending));
+  const studyPath = parseStudyPath(query.data?.unit.metadata ?? null);
+  const composedPending = !studyPath && (sequencesPending || linkedAssetsPending);
   const [params, setParams] = useContextSearchParams();
   const [engaged, setEngaged] = useState(false);
   const location = useLocation();
@@ -64,23 +67,20 @@ export default function UnitDetails() {
     // Runs after the layout's scroll reset so links to #unit-resources land on the section.
     const frame = requestAnimationFrame(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView());
     return () => cancelAnimationFrame(frame);
-  }, [hash, ready]);
+  }, [hash, ready, composedPending]);
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
   if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
   const { course, unit, outline } = query.data;
-  const studyPath = parseStudyPath(unit.metadata);
   const composedCandidate = !studyPath ? parseComposedStudyPath(unit.metadata) : null;
-  // A configured journey must not flash the legacy catalog while its dependencies load.
-  // Errors/invalid links still fall back to the complete catalog after queries settle.
-  const composedPending = isComposedPathPending(composedCandidate, [
-    sequences.status, playlistsQuery.status, modulesQuery.status,
-  ]);
-  const composedPath = composedCandidate && !composedPending
-    && sequences.isSuccess && modulesQuery.isSuccess && playlistsQuery.isSuccess
-    && canPresentComposedStudyPath(composedCandidate, sequences.data ?? [], playlistsQuery.data ?? [], modulesQuery.data ?? [])
-    ? composedCandidate : null;
-  const showLegacy = !studyPath && !composedPath && !composedPending;
+  const composedPath = !studyPath && !composedPending
+    ? resolveClassroomPath(composedCandidate, unitSequences, playlistsQuery.data ?? [], modulesQuery.data ?? [])
+    : null;
+  const hasPath = Boolean(studyPath || composedPath || composedPending);
+  const knownSequences = new Set(unitSequences.filter(item => item.itemCount > 0).map(item => item.slug));
+  const openVideoLibrary = hash === '#unit-resources' || Boolean(params.get('v'));
+  const externalPlaylists = (playlistsQuery.data ?? []).filter(item => !knownSequences.has(item.slug));
+  const extraModules = (modulesQuery.data ?? []).filter(item => !composedPath?.guideModuleSlugs.includes(item.slug) && item.slug !== studyPath?.guideModuleSlug);
   const index = outline.findIndex(item => item.id === unit.id);
   const previous = index > 0 ? outline[index - 1] : null;
   const next = index >= 0 && index < outline.length - 1 ? outline[index + 1] : null;
@@ -89,20 +89,6 @@ export default function UnitDetails() {
   const videoList = videos.data ?? [];
   const selected = videoList.find(video => video.id === params.get('v')) ?? videoList[0];
   const selectedInfo = selected ? videoInfo(selected.metadata, selected.source_url) : null;
-  const highlights = pickUnitHighlights({
-    courseSlug: course.slug, unitSlug: unit.slug, unitTitle: unit.title,
-    hasStudyPath: Boolean(studyPath || composedPath),
-    sequences: sequences.data ?? [], videos: videoList,
-    playlists: playlistsQuery.data ?? [], modules: modulesQuery.data ?? [],
-    readings: readingsQuery.data ?? [],
-  });
-  const highlightsLoading = Boolean(unit.learning_object_id) && [
-    videos.isPending, readingsQuery.isPending, playlistsQuery.isPending, modulesQuery.isPending,
-  ].some(Boolean) || (Boolean(unitCode) && sequences.isPending);
-  const highlightsError = Boolean(
-    videos.error || readingsQuery.error || playlistsQuery.error || modulesQuery.error ||
-    (unitCode && sequences.error),
-  );
   const noteResources: StudyNoteContextResource[] = [
     ...(unit.learning_object_id ? [{ id: unit.learning_object_id, title: unit.title,
       path: unitPath(course.slug, unit.slug), scope: 'unit' as const }] : []),
@@ -119,7 +105,7 @@ export default function UnitDetails() {
       scope: 'open' as const,
     })),
     ...(playlistsQuery.data ?? []).map(playlist => ({
-      id: playlist.id, title: playlist.title, path: `/resources/${encodeURIComponent(playlist.slug)}`,
+      id: playlist.id, title: playlist.title, path: knownSequences.has(playlist.slug) ? sequenceInUnitPath(playlist.slug, course.slug, unit.slug) : `/resources/${encodeURIComponent(playlist.slug)}`,
       scope: 'open' as const,
     })),
   ];
@@ -138,18 +124,18 @@ export default function UnitDetails() {
     <PageSeo {...unitMeta(unit, course, { courses: t('nav.courses') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/units')}>{t('nav.units')}</Link></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/courses')}>{t('nav.courses')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/courses/${course.slug}`} state={location.state}>{course.code || course.title}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
-        <li aria-current="page" className="text-foreground">{unit.code || unit.title}</li>
+        <li aria-current="page" className="text-foreground">{unit.title}</li>
       </ol>
     </nav>
     <header className="border-b border-foreground border-t-4 border-t-brand-orange pb-10 pt-6">
       <p className="mb-5 flex flex-wrap items-center gap-2">
         <TypeBadge type="curricular_unit" label={course.code === 'FACODI-GACS-ASTRO-2018' ? t('unit.editorialStudyStep') : t('objectTypes.curricular_unit')} className="border border-foreground" />
-        {!!videoList.length && <SectionLink hash={studyPath || composedPath || composedPending ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
-          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{studyPath || composedPath || composedPending ? t('composedPath.title') : t('unit.videoChip', { count: videoList.length })}
+        {(hasPath || !!videoList.length) && <SectionLink hash={hasPath ? "#unit-study-path" : "#unit-resources"} className="inline-flex items-center gap-1.5 border border-foreground bg-card px-2.5 py-1 font-mono text-xs uppercase transition-colors hover:bg-brand-pink hover:text-brand-ink">
+          <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />{hasPath ? t('sequences.forUnit') : t('unit.videoChip', { count: videoList.length })}
         </SectionLink>}
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] [text-wrap:balance] sm:text-6xl">{unit.title}</h1>
@@ -160,110 +146,30 @@ export default function UnitDetails() {
       <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3">
         <ShareButton title={unit.title} />
         {unit.learning_object_id && <StudyNotesAction scope="unit" resource={{ id: unit.learning_object_id, slug: unit.slug, title: unit.title, type: 'curricular_unit', href: unitPath(course.slug, unit.slug) }} />}
-        <Link to={courseMaterialsPath(course.slug, unit.slug)} state={location.state}
-          className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <SectionLink hash={hasPath ? '#unit-study-path' : '#unit-resources'}
+          className="inline-flex min-h-11 items-center gap-2 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <BookOpen className="h-4 w-4" aria-hidden="true" />
-          {t('courseMaterials.viewUnitMaterials')}
-          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+          {t(hasPath ? 'sequences.forUnit' : 'unit.resources')}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </SectionLink>
       </div>
     </header>
-    <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
-      href={studyPath || composedPath || composedPending ? '#unit-study-path' : '#unit-resources'} />
-    <LearningContext focus="unit" />
-    {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} unitCode={unit.code} />}
-    <UnitLearningHighlights courseSlug={course.slug} unitSlug={unit.slug} highlights={highlights} loading={highlightsLoading} hasError={highlightsError} />
-    <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
-      <div className="min-w-0 space-y-12">
-        {unit.description_html && <SafeHtml html={unit.description_html} />}
-        {composedPending && <section id="unit-study-path" aria-labelledby="composed-loading-heading" aria-busy="true" className="scroll-mt-28 border-t border-foreground pt-9">
-          <h2 id="composed-loading-heading" className="text-2xl font-semibold tracking-tight">{t('composedPath.title')}</h2>
+    <div className="grid gap-12 py-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div className="min-w-0 space-y-10">
+        {composedPending && <section id="unit-study-path" aria-busy="true" className="scroll-mt-28">
+          <h2 className="text-2xl font-semibold">{t('composedPath.title')}</h2>
           <p role="status" className="mt-3 text-sm text-muted-foreground">{t('common.loading')}</p>
           <Skeleton className="mt-5 h-24 w-full" />
-          <Skeleton className="mt-3 h-24 w-full" />
         </section>}
-        {composedPath && <UnitComposedStudyPath config={composedPath} sequences={sequences.data ?? []} modules={modulesQuery.data ?? []} />}
+        {unitCode && sequences.isError && <div role="alert" className="border border-input p-4 text-sm">
+          <p>{t('common.error')}</p>
+          <button type="button" onClick={() => void sequences.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+        </div>}
+        {composedPath && <UnitComposedStudyPath config={composedPath} sequences={unitSequences} modules={modulesQuery.data ?? []}
+          courseSlug={course.slug} unitSlug={unit.slug} authored={Boolean(composedCandidate)} />}
         {studyPath && <UnitStudyPath config={studyPath}
-          sequences={sequences.data ?? []} videos={videoList} />}
-        <StudyNotesReview kind="unit" resources={noteResources} />
-        <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
-          <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
-          {outcomesQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : outcomesQuery.error
-              ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
-              : outcomesQuery.data?.length
-                ? <ol className="mt-5 space-y-3">
-                  {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
-                    className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
-                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
-                    <span>{outcome.statement}</span>
-                  </li>)}
-                </ol>
-                : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
-        </section>
-        {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
-          <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
-          {readingsQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : readingsQuery.error
-              ? <div role="alert" className="mt-5 text-sm text-destructive">
-                  <p>{readingsQuery.error.message}</p>
-                  <button type="button" onClick={() => void readingsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
-                    <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
-                      <span className="grid h-8 w-8 place-items-center border border-foreground bg-brand-cyan text-brand-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
-                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
-                      {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
-                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
-                    </Link>
-                  </li>)}
-                </ul>}
-        </section>}
-        {showLegacy && (modulesQuery.isPending || modulesQuery.error || !!modulesQuery.data?.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
-          <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
-          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
-          {modulesQuery.isPending
-            ? <p className="mt-5 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
-            : modulesQuery.error
-              ? <div className="mt-4 text-sm text-destructive" role="alert"><p>{modulesQuery.error.message}</p>
-                  <button type="button" onClick={() => void modulesQuery.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!modulesQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {modulesQuery.data.map(module => <li key={module.id}>
-                  <Link to={`/modules/${encodeURIComponent(module.slug)}`}
-                    className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-mint bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-mint/10">
-                    <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
-                    {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
-                    <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
-                  </Link>
-                </li>)}
-              </ul>}
-        </section>}
-        {showLegacy && (playlistsQuery.isPending || playlistsQuery.error || !!playlistsQuery.data?.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
-          <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
-          {playlistsQuery.isPending
-            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
-            : playlistsQuery.error
-              ? <div role="alert" className="mt-5 text-sm text-destructive">
-                  <p>{playlistsQuery.error.message}</p>
-                  <button type="button" onClick={() => void playlistsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
-                </div>
-              : !!playlistsQuery.data?.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {playlistsQuery.data.map(playlist => <li key={playlist.id}>
-                    <Link to={`/resources/${encodeURIComponent(playlist.slug)}`}
-                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-pink bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-pink/10">
-                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
-                      {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
-                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
-                    </Link>
-                  </li>)}
-                </ul>}
-        </section>}
-        {!studyPath && !composedPending && (!composedPath || videos.isPending || !!videoList.length || !!videos.error) && <UnitVideoLibraryFrame collapsed={!!composedPath} count={videoList.length} forceOpen={Boolean(params.get('v')) || hash === '#unit-resources'}><section aria-labelledby="unit-resources">
+          sequences={unitSequences} videos={videoList} courseSlug={course.slug} unitSlug={unit.slug} />}
+        {(openVideoLibrary || (!composedPending && (!hasPath || videos.isLoading || !!videoList.length || !!videos.error))) && <UnitVideoLibraryFrame collapsed={hasPath} count={videoList.length} forceOpen={openVideoLibrary}><section aria-labelledby="unit-resources">
           <h2 id="unit-resources" className="scroll-mt-28 text-2xl font-semibold tracking-[-0.02em]">{t('unit.resources')}</h2>
           {videos.isLoading ? <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{[0, 1, 2].map(key => <li key={key}><Skeleton className="aspect-video w-full" /></li>)}</ul>
             : videos.error ? <div role="alert" className="mt-4 border border-input p-5 text-sm">
@@ -315,22 +221,22 @@ export default function UnitDetails() {
               </div>
             </>
             : <div className="mt-4 border border-input bg-muted/40 p-6">
-              {playlistsQuery.isPending || sequences.isPending || readingsQuery.isPending || modulesQuery.isPending
+              {linkedAssetsPending || sequencesPending || readingsQuery.isLoading
                 ? <p role="status" className="text-sm text-muted-foreground">{t('common.loading')}</p>
                 : playlistsQuery.data?.length
                   ? <>
                     <p className="font-semibold">{t('unitPlaylists.title')}</p>
-                    <Link to={`/resources/${encodeURIComponent(playlistsQuery.data[0].slug)}`}
+                    <Link to={knownSequences.has(playlistsQuery.data[0].slug) ? sequenceInUnitPath(playlistsQuery.data[0].slug, course.slug, unit.slug) : `/resources/${encodeURIComponent(playlistsQuery.data[0].slug)}`}
                       className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                       {playlistsQuery.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                     </Link>
                   </>
-                  : sequences.data?.length
+                  : unitSequences.length > 0
                     ? <>
                       <p className="font-semibold">{t('sequences.forUnit')}</p>
-                      <Link to={`/sequences/${encodeURIComponent(sequences.data[0].slug)}`}
+                      <Link to={sequenceInUnitPath(unitSequences[0].slug, course.slug, unit.slug)}
                         className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                        {sequences.data[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                        {unitSequences[0].title}<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
                       </Link>
                     </>
                     : readingsQuery.data?.length
@@ -348,6 +254,88 @@ export default function UnitDetails() {
               }
             </div>}
         </section></UnitVideoLibraryFrame>}
+        <ExamRevision institution={course.institution} semester={unit.semester} lessons={videoList.length}
+          href={hasPath ? '#unit-study-path' : '#unit-resources'} />
+        {course.code === 'LCC' && <OfficialFucStudyGuide metadata={unit.metadata} courseSlug={course.slug} unitSlug={unit.slug} unitCode={unit.code} />}
+        {unit.description_html && <SafeHtml html={unit.description_html} />}
+        <StudyNotesReview kind="unit" resources={noteResources} />
+        <section aria-labelledby="unit-outcomes" className="border-t border-input pt-9">
+          <h2 id="unit-outcomes" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitOutcomes.title')}</h2>
+          {outcomesQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : outcomesQuery.error
+              ? <p role="alert" className="mt-5 text-sm text-destructive">{outcomesQuery.error.message}</p>
+              : outcomesQuery.data?.length
+                ? <ol className="mt-5 space-y-3">
+                  {outcomesQuery.data.map((outcome, i) => <li key={outcome.id}
+                    className="flex items-start gap-4 border-b border-input pb-3 text-sm leading-relaxed">
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{outcome.statement}</span>
+                  </li>)}
+                </ol>
+                : <p className="mt-5 text-sm text-muted-foreground">{t('unitOutcomes.empty')}</p>}
+        </section>
+        {(readingsQuery.isPending || readingsQuery.error || !!readingsQuery.data?.length) && <section aria-labelledby="unit-readings" className="border-t border-input pt-9">
+          <h2 id="unit-readings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitReadings.title')}</h2>
+          {readingsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : readingsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{readingsQuery.error.message}</p>
+                  <button type="button" onClick={() => void readingsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!readingsQuery.data?.length && <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {readingsQuery.data.map(reading => <li key={reading.id} className="min-w-0">
+                    <Link to={`/resources/${encodeURIComponent(reading.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-cyan bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-cyan/10">
+                      <span className="grid h-8 w-8 place-items-center border border-foreground bg-brand-cyan text-brand-ink" aria-hidden="true"><ExternalLink className="h-4 w-4" /></span>
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{reading.title}</span>
+                      {reading.description && <span className="line-clamp-3 text-sm text-muted-foreground">{reading.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-foreground">{t('unitReadings.openSource')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
+        </section>}
+        {(modulesQuery.isPending || modulesQuery.error || !!extraModules.length) && <section aria-labelledby="unit-modules" className="border-t border-input pt-9">
+          <h2 id="unit-modules" className="text-2xl font-semibold tracking-tight">{t('studyModules.forUnit')}</h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">{t('studyModules.forUnitText')}</p>
+          {modulesQuery.isPending
+            ? <p className="mt-5 text-sm text-muted-foreground" role="status">{t('common.loading')}</p>
+            : modulesQuery.error
+              ? <div className="mt-4 text-sm text-destructive" role="alert"><p>{modulesQuery.error.message}</p>
+                  <button type="button" onClick={() => void modulesQuery.refetch()} className="mt-2 font-semibold underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!extraModules.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {extraModules.map(module => <li key={module.id}>
+                  <Link to={`/modules/${encodeURIComponent(module.slug)}`}
+                    className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-mint bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-mint/10">
+                    <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{module.title}</span>
+                    {module.description && <span className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{module.description}</span>}
+                    <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold">{t('studyModules.open')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                  </Link>
+                </li>)}
+              </ul>}
+        </section>}
+        {(playlistsQuery.isPending || playlistsQuery.error || !!externalPlaylists.length) && <section aria-labelledby="unit-playlists" className="border-t border-input pt-9">
+          <h2 id="unit-playlists" className="text-2xl font-semibold tracking-[-0.02em]">{t('unitPlaylists.title')}</h2>
+          {playlistsQuery.isPending
+            ? <p role="status" className="mt-5 text-sm text-muted-foreground">{t('common.loading')}</p>
+            : playlistsQuery.error
+              ? <div role="alert" className="mt-5 text-sm text-destructive">
+                  <p>{playlistsQuery.error.message}</p>
+                  <button type="button" onClick={() => void playlistsQuery.refetch()} className="mt-2 underline underline-offset-4">{t('common.retry')}</button>
+                </div>
+              : !!externalPlaylists.length && <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {externalPlaylists.map(playlist => <li key={playlist.id}>
+                    <Link to={playlist.metadata && typeof playlist.metadata === 'object' && !Array.isArray(playlist.metadata) && playlist.metadata.playlist_type === 'facodi_owned_editorial_sequence' ? sequenceInUnitPath(playlist.slug, course.slug, unit.slug) : `/resources/${encodeURIComponent(playlist.slug)}`}
+                      className="group flex h-full flex-col gap-2 border border-input border-t-4 border-t-brand-pink bg-card p-5 transition-colors hover:border-foreground hover:bg-brand-pink/10">
+                      <span className="font-semibold group-hover:underline group-hover:underline-offset-4">{playlist.title}</span>
+                      {playlist.description && <span className="line-clamp-3 text-sm text-muted-foreground">{playlist.description}</span>}
+                      <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold">{t('unitPlaylists.openDetails')}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    </Link>
+                  </li>)}
+                </ul>}
+        </section>}
         <SuggestResourceCallout context="unit" unitId={unit.id} />
         {!!siblings.length && <section aria-labelledby="unit-siblings">
           <h2 id="unit-siblings" className="text-2xl font-semibold tracking-[-0.02em]">{t('unit.sameTerm', { year: unit.year, semester: unit.semester })}</h2>

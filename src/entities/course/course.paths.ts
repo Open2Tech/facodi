@@ -10,3 +10,10 @@ export const courseMaterialsPath = (courseSlug: string, unitSlug?: string | null
   ].filter(Boolean);
   return `${path}${params.length ? `?${params.join('&')}` : ''}#course-materials`;
 };
+
+/** Keep the selected course and UC through reloads, sign-in and lesson changes. */
+export function sequenceInUnitPath(sequenceSlug: string, courseSlug: string, unitSlug: string, videoId?: string) {
+  const params = new URLSearchParams({ course: courseSlug, unit: unitSlug });
+  if (videoId) params.set('v', videoId);
+  return '/sequences/' + encodeURIComponent(sequenceSlug) + '?' + params.toString();
+}

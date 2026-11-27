@@ -27,7 +27,7 @@ export function parseComposedStudyPath(metadata: Json | null): ComposedStudyPath
   if (!isRecord(metadata) || !isRecord(metadata.facodi_study_path_v2)) return null;
   const root = metadata.facodi_study_path_v2;
   if (root.version !== 2 || !Array.isArray(root.sections)
-    || root.sections.length < 2 || root.sections.length > 8
+    || root.sections.length < 2 || root.sections.length > 20
     || !validSlugs(root.supplementary_sequence_slugs, 20)
     || !validSlugs(root.guide_module_slugs, 15)) return null;
 
@@ -83,4 +83,46 @@ export function isComposedPathPending(
   status: readonly ('pending' | 'error' | 'success')[],
 ): boolean {
   return !!config && status.includes('pending');
+}
+
+
+/** Build the classroom from the public sequence list; preserve configured chapters
+ * even when a new sequence is linked or an old one is unpublished. Unassigned
+ * sequences remain discoverable, without claiming a new official syllabus. */
+export function resolveClassroomPath<T extends PublicSequence & { title: string }>(
+  config: ComposedStudyPath | null, sequences: readonly T[],
+  playlists: readonly PublicAsset[], modules: readonly PublicAsset[],
+): ComposedStudyPath | null {
+  const visible = new Map(sequences.filter(item => item.itemCount > 0).map(item => [item.slug, item]));
+  if (!visible.size) return null;
+  const ordered = [...new Set([...playlists.map(item => item.slug), ...visible.keys()])].filter(slug => visible.has(slug));
+  const used = new Set<string>();
+  const take = (slugs: readonly string[]) => slugs.filter(slug => {
+    if (!visible.has(slug) || used.has(slug)) return false;
+    used.add(slug);
+    return true;
+  });
+  const sections = (config?.sections ?? []).flatMap(section => {
+    const sequenceSlugs = take(section.sequenceSlugs);
+    return sequenceSlugs.length ? [{ ...section, sequenceSlugs }] : [];
+  });
+  const supplementarySequenceSlugs = take(config?.supplementarySequenceSlugs ?? []);
+  if (sections.length) supplementarySequenceSlugs.push(...take(ordered));
+  else {
+    for (const slug of take(ordered)) {
+      const title = visible.get(slug)!.title;
+      sections.push({ id: slug, labels: { pt: title, en: title, es: title, fr: title }, sequenceSlugs: [slug] });
+    }
+    // If an old configuration only references supplemental sequences, keep
+    // those visible as primary choices rather than leaving an empty classroom.
+    if (!sections.length) {
+      for (const slug of supplementarySequenceSlugs.splice(0)) {
+        const title = visible.get(slug)!.title;
+        sections.push({ id: slug, labels: { pt: title, en: title, es: title, fr: title }, sequenceSlugs: [slug] });
+      }
+    }
+  }
+  const guideModuleSlugs = [...new Set([...(config?.guideModuleSlugs ?? []), ...modules.map(item => item.slug)])]
+    .filter(slug => modules.some(item => item.slug === slug));
+  return { sections, supplementarySequenceSlugs, guideModuleSlugs };
 }
