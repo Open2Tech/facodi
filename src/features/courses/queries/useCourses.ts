@@ -62,8 +62,8 @@ export function useTopics() {
 export function useCourse(slug: string) {
   return useQuery({ queryKey: courseKeys.detail(slug), queryFn: ({ signal }) => getCourse(slug, signal) });
 }
-export function useResource(slug: string) {
-  return useQuery({ queryKey: courseKeys.resource(slug), queryFn: ({ signal }) => getResource(slug, signal) });
+export function useResource(slug: string, enabled = true) {
+  return useQuery({ queryKey: courseKeys.resource(slug), queryFn: ({ signal }) => getResource(slug, signal), enabled });
 }
 export function useEditorial(kind: ContentKind, params: CatalogParams) {
   const { user, role } = useAuth();

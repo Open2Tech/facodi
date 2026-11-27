@@ -687,7 +687,7 @@ test('unit catalogue facets drive the URL and open the unit page inside its cour
   const unitCatalogue = page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Units' });
   await expect(unitCatalogue).toHaveAttribute('href', '/units?course=test-course&year=1');
   await expect(page.getByRole('link', { name: /Next unit/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Logic in practice/ })).toHaveAttribute('href', '/sequences/logic-path');
+  await expect(page.getByRole('link', { name: /Logic in practice/ })).toHaveAttribute('href', '/sequences/logic-path?course=test-course&unit=u-1');
   expect(sequenceUnits).toEqual([{ p_unit_code: '1001' }]);
   await unitCatalogue.click();
   await expect(page).toHaveURL('/units?course=test-course&year=1');
@@ -1629,4 +1629,22 @@ test('unified resources catalogue searches every type with contextual facets, ta
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('test:module-share'))).toBe(JSON.stringify({
     title: 'Introduction to algebra', url: 'https://facodi.com/modules/intro-algebra#practice',
   }));
+});
+
+test('a legacy Odoo link opens the public YouTube playlist player', async ({ page }) => {
+  const slug = 'external-playlist';
+  await page.route('**/rest/v1/rpc/get_public_editorial_playlist_v2', route => route.fulfill({ json: [] }));
+  await page.route('**/rest/v1/learning_objects*', route => {
+    const url = new URL(route.request().url());
+    return url.searchParams.get('slug') === `eq.${slug}`
+      ? route.fulfill({ json: [{
+        id: 'external-1', slug, object_type: 'playlist', title: 'Public web lessons', metadata: {},
+        source_type: 'youtube', source_url: 'https://www.youtube.com/playlist?list=PL1234567890',
+        status: 'active', published: true, tags: [], keywords: [], objectives: [],
+      }] })
+      : route.fulfill({ json: [] });
+  });
+  await page.goto(`/sequences/${slug}?course=web&unit=intro`);
+  await expect(page).toHaveURL(`/resources/${slug}?course=web&unit=intro`);
+  await expect(page.getByRole('heading', { level: 1, name: 'Public web lessons' })).toBeVisible();
 });

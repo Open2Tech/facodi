@@ -124,7 +124,7 @@ export default function UnitDetails() {
     <PageSeo {...unitMeta(unit, course, { courses: t('nav.courses') })} />
     <nav aria-label={t('unit.breadcrumb')} className="mb-8 text-sm">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
-        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, '/courses')}>{t('nav.courses')}</Link></li>
+        <li><Link className="underline underline-offset-4 hover:text-foreground" to={catalogReturnPath(location.state, `/units?course=${encodeURIComponent(course.slug)}`)}>{t('nav.units')}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
         <li><Link className="underline underline-offset-4 hover:text-foreground" to={`/courses/${course.slug}`} state={location.state}>{course.code || course.title}</Link></li>
         <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>

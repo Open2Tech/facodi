@@ -7,13 +7,14 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { useSequence, useSequenceProgress } from '@/features/sequences/useSequences';
 import { completedCount, nextItem, type SequenceItem } from '@/entities/sequence/sequence';
-import { formatDuration, type VideoInfo } from '@/entities/course/video';
+import { formatDuration, youtubePlaylistIdFromUrl, type VideoInfo } from '@/entities/course/video';
 import { unitPath } from '@/entities/course/course.paths';
 import { catalogReturnPath, safeExternalUrl } from '@/shared/lib/navigation';
 import { PageState } from '@/components/layout/PageState';
 import { LearningContext } from '@/components/learning/LearningPathGuide';
 import { ShareButton } from '@/components/share/ShareButton';
 import { ShareAchievementButton } from '@/components/share/ShareAchievementButton';
+import { useResource } from '@/features/courses/queries/useCourses';
 import { useLinkedCatalogAssets } from '@/features/courses/queries/useLinkedCatalogAssets';
 import { TypeBadge } from '@/components/catalog/TypeBadge';
 import { VideoThumbnail } from '@/components/resource/VideoCard';
@@ -45,6 +46,8 @@ export default function SequenceDetails() {
   const { t } = useTranslation();
   const location = useLocation();
   const query = useSequence(slug);
+  const missingSequence = query.isSuccess && query.data === null;
+  const legacyPlaylist = useResource(slug, missingSequence);
   const readings = useLinkedCatalogAssets(query.data?.id, 'external_resource');
   const progress = useSequenceProgress(query.data?.id);
   const [params, setParams] = useContextSearchParams();
@@ -53,7 +56,20 @@ export default function SequenceDetails() {
 
   if (query.isPending) return <PageState loading />;
   if (query.error) return <PageState title={t('common.error')} description={query.error.message} retry={() => void query.refetch()} />;
-  if (!query.data) return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
+  if (!query.data) {
+    if (legacyPlaylist.isPending) return <PageState loading />;
+    if (legacyPlaylist.error) return <PageState title={t('common.error')} description={legacyPlaylist.error.message} retry={() => void legacyPlaylist.refetch()} />;
+    const resource = legacyPlaylist.data;
+    const metadata = resource?.metadata;
+    const redirectsToSequence = metadata && typeof metadata === 'object' && !Array.isArray(metadata)
+      && (metadata.playlist_type === 'facodi_owned_editorial_sequence' || metadata.canonical_playlist_slug);
+    // The Odoo mirror used the sequence route for public YouTube playlists as well.
+    if (resource?.object_type === 'playlist' && resource.source_type === 'youtube'
+      && youtubePlaylistIdFromUrl(resource.source_url) && !redirectsToSequence) {
+      return <Navigate to={`/resources/${encodeURIComponent(slug)}${location.search}${location.hash}`} state={location.state} replace />;
+    }
+    return <><NoIndex /><PageState title={t('common.notFound')} description={t('common.notFoundDescription')} /></>;
+  }
 
   const sequence = query.data;
   // Preserve bookmarks while canonicalizing duplicate video sequences.
